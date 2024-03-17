@@ -1,0 +1,105 @@
+{
+  "name": "programme-de-colle",
+  "displayName": "Programme de colle",
+  "description": "Affiche le programme de colle",
+  "version": "0.0.1",
+  "publisher": "QFTrules",
+  "icon": "images/prog_colle.png",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": ["onView:${package-explorer}"],
+  "main": "./extension.js",
+  "contributes": {
+
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "package-explorer",        
+          "title": "Lectures",
+          "icon": "images/Copilot-App-Icon.png"               
+        }
+      ]
+    },
+
+    "views": {
+      "package-explorer": [               
+        {
+          "id": "programme-colle",  
+          "name": "Programme de colle",
+          "type": "tree"
+        },
+        {
+          "id": "package-outline",
+          "name": "Outline"
+        }
+      ]
+    },
+
+    "commands": [{
+      "command": "test.colle",
+      "title": "Programme de colle"
+    },
+    {
+      "command": "search.colle",
+      "title": "modifier",
+      "icon": "$(extensions-refresh)"
+    }],
+    
+    "menus": {
+      "view/item/context": [
+          {
+              "command": "search.colle",
+              "when": "view == programme-colle",
+              "group": "navigation"
+          }
+        ]
+    },
+
+    "configuration": {
+      "title": "Programme de colle",
+      "properties": {
+        "Programme-de-colle.collepath": {
+          "type": "string",
+          "default": "/home/eb/Dropbox/CPGE/Physique/Exercices/Colles/PC/",
+          "description": "Définit le chemin d'accès vers le dossier de colles."
+        }
+        ,
+        "Programme-de-colle.stypath": {
+            "type": "string",
+            "default": "/home/eb/Dropbox/texmf/tex/latex/Preambles/",
+            "description": "Définit le chemin d'accès vers le préambule latex colle.sty."
+        }
+        ,
+        "Programme-de-colle.Python-command": {
+            "type": "string",
+            "default": "/home/eb/anaconda3/bin/python3",
+            "description": "Définit la commande python à utiliser. La bibliothèque python selenium est utilisée pour téléverser le programme de colle sur Cahier de Prépa."
+        }
+        ,
+        "Programme-de-colle.Programme-balise": {
+            "type": "string",
+            "default": "\\ProgrammeColle",
+            "description": "Définit la balise latex qui situe la partie du document au programme."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "pretest": "npm run lint",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.85.0",
+    "@types/mocha": "^10.0.6",
+    "@types/node": "18.x",
+    "eslint": "^8.54.0",
+    "typescript": "^5.3.2",
+    "@vscode/test-cli": "^0.0.4",
+    "@vscode/test-electron": "^2.3.8"
+  }
+}

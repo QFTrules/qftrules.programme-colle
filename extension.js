@@ -138,15 +138,17 @@ function activate(context) {
 			});
 		});
 
-	let disposable2 = vscode.commands.registerCommand('search.colle', function (document) {
-			// Add your code here
-			const extensionDir = __dirname;
-			// open the latex document in vscode
-			const fichier = document.trim();
-			vscode.commands.executeCommand('vscode.open',vscode.Uri.file(fichier.trim()));
-			child_process.execSync(pythoncommand + ' ' + extensionDir + '/search-within-file_java.py ' + document.trim() + ' "' + programmebalise + '"');
-			// loop to call again the main message box
-			// vscode.commands.executeCommand(commandName);
+	let disposable2 = vscode.commands.registerCommand('copy.exo', function (document) {
+		// Copy the document path to the clipboard
+		// child_process.execSync(`echo ${document} | xclip -selection clipboard`);
+		let editor = vscode.window.activeTextEditor;
+		if (editor) {
+			// let document = editor.document;
+			let position = editor.selection.active;
+			editor.edit(editBuilder => {
+				editBuilder.insert(position, document.label.replace(/"/g, ''));
+			});
+		}
 		}
 	)
 
@@ -275,16 +277,138 @@ var ProgShow = /** @class */ (function () {
     };
     return ProgShow;
 }());
+
+// access tree item whatever the data provider
+// var TreeItem = /** @class */ (function (_super) {
+//     __extends(TreeItem, _super);
+//     function TreeItem(label, children) {
+//         var _this = _super.call(this, label, children === undefined ? vscode.TreeItemCollapsibleState.None :
+//             vscode.TreeItemCollapsibleState.Expanded) || this;
+//         _this.children = children;
+//         return _this;
+//     }
+//     return TreeItem;
+// }(vscode.TreeItem));
+
 var TreeItem = /** @class */ (function (_super) {
-    __extends(TreeItem, _super);
-    function TreeItem(label, children) {
-        var _this = _super.call(this, label, children === undefined ? vscode.TreeItemCollapsibleState.None :
-            vscode.TreeItemCollapsibleState.Expanded) || this;
-        _this.children = children;
-        return _this;
-    }
-    return TreeItem;
+	__extends(TreeItem, _super);
+	function TreeItem(label, children, filePath, contextValue) {
+		var _this = _super.call(this, label, children === undefined ? vscode.TreeItemCollapsibleState.None :
+			vscode.TreeItemCollapsibleState.Expanded) || this;
+		_this.children = children;
+		_this.filePath = filePath;
+		_this.contextValue = contextValue;
+		return _this;
+	}
+
+	// // Add missing semicolon at the end of the constructor definition
+	// TreeItem.prototype.constructor = function(label) {
+	// 	_super.call(this, label);
+	// 	this.command = {
+	// 		title: "Show error",
+	// 		command: "copy.exo",
+	// 		arguments: [label]
+	// 	};
+	// };
+	return TreeItem;
 }(vscode.TreeItem));
 
+var BanqueExoShow = /** @class */ (function () {
+    function BanqueExoShow() {
+	// let disposable2 = vscode.commands.registerCommand('show.colle', function () {
+		// The code you place here will be executed every time your command is executed
 
+		// LIST OF SETTINGS VARIABLES
+		// const collepath = vscode.workspace.getConfiguration('Programme-de-colle').get('collepath');
+		// const stypath = vscode.workspace.getConfiguration('Programme-de-colle').get('stypath');
+		// const pythoncommand = vscode.workspace.getConfiguration('Programme-de-colle').get('Python-command');
+		// const programmebalise = vscode.workspace.getConfiguration('Programme-de-colle').get('Programme-balise');
+
+		// Get the active text editor
+		var editor = vscode.window.activeTextEditor;
+		if (!editor) {
+			return;
+		}
+
+		// Access the directory where extension.js is located
+		// const extensionDir = __dirname;
+
+		// Decompose the output string into a list of words
+		var latex_files = child_process.execSync('find ~/Dropbox/CPGE/Physique/Exercices/Recueil/Thermo -maxdepth 1 -type f -name "*.tex"').toString().split('\n');
+		// remove the last element which is an empty string
+		latex_files.pop();
+		// get only the basename of filenames
+		latex_files = latex_files.map(function(filename) {
+			return path.parse(filename).name;
+		});
+		this.data = latex_files.map(function(basename) {
+			var filePath = path.join('/home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Thermo', basename + '.tex');
+			var exercices = child_process.execSync('grep -E "\\\\\\\\begin{exo}" ' + filePath).toString().split('\n');
+			exercices = exercices.map(function(exo) {
+				var start = exo.indexOf('{', exo.indexOf('{') + 1) + 1;
+				var end = exo.indexOf('}', exo.indexOf('}') + 1);
+				return exo.substring(start, end);
+			});
+			// remove the last element which is an empty string
+			exercices.pop();
+			// var exercices = ['exo1', 'exo2', 'exo3']
+			// now display all exercices in a subtree
+			// exercices = exercices.split('\n');
+			// exercices = exercices.map(function(exo) {
+			// 	return exo.replace('\\begin{exo}', '');
+			// }
+			// );
+			
+			// const icon = vscode.Uri.file(__dirname + '/images/default_folder_opened.svg').toString();
+			return new TreeItem(basename, 
+				exercices.map(function(exo) {
+					return new TreeItem(exo, undefined, filePath, 'file');
+				}), 
+				filePath
+			);
+			// return new TreeItem(basename);
+		});
+		// new TreeItem('COURS', [
+		// 	new TreeItem('Ford', [new TreeItem('Fiesta'), new TreeItem('Focus'), new TreeItem('Mustang')]),
+		// 	new TreeItem('BMW', [new TreeItem('320'), new TreeItem('X3'), new TreeItem('X5')])
+		// ])];
+    }
+
+    BanqueExoShow.prototype.getTreeItem = function (element) {
+        // return element;
+		// var item = new TreeItem(element.label, element.children, element.filePath);
+		// element.command = {
+		// 	command: 'copy.exo',
+		// 	title: 'Copy Exercise Name',
+		// 	arguments: [element.label]
+		// };
+		return element;
+    };
+    BanqueExoShow.prototype.getChildren = function (element) {
+        if (element === undefined) {
+            return this.data;
+        }
+        return element.children;
+    };
+
+	BanqueExoShow.prototype.resolveTreeItem = function (item) {
+		item.tooltip = item.filePath;
+		return item;
+	};
+
+    return BanqueExoShow;
+}());
+// var TreeItem = /** @class */ (function (_super) {
+//     __extends(TreeItem, _super);
+//     function TreeItem(label, children) {
+//         var _this = _super.call(this, label, children === undefined ? vscode.TreeItemCollapsibleState.None :
+//             vscode.TreeItemCollapsibleState.Expanded) || this;
+//         _this.children = children;
+//         return _this;
+//     }
+//     return TreeItem;
+// }(vscode.TreeItem));
+
+// register data providers
 vscode.window.registerTreeDataProvider('programme-colle', new ProgShow());
+vscode.window.registerTreeDataProvider('package-banque', new BanqueExoShow());

@@ -45,6 +45,10 @@
       "title": "Programme de colle"
     },
     {
+      "command": "goto.exo",
+      "title": "Ouvrir exercice"
+    },
+    {
       "command": "copy.exo",
       "title": "Ajouter",
       "icon": "$(file)"

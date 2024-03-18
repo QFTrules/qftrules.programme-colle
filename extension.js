@@ -152,9 +152,61 @@ function activate(context) {
 		}
 	)
 
-	// Make this function active
+	let disposable3 = vscode.commands.registerCommand('goto.exo', function (doc) {
+		// open document in vscode
+		vscode.commands.executeCommand('vscode.open',vscode.Uri.file(doc.filePath));
+
+			// The code you place here will be executed every time your command is executed
+		// Get the active text editor
+		// var editor = vscode.window.activeTextEditor;
+		// if (!editor) {
+		// 	return;
+		// }
+		// Search for the string "test" within the document
+		var searchString = doc.label;
+		// vscode.window.showInformationMessage('Searching for ' + searchString + ' in ' + doc.filePath);
+		var searchOptions = {
+			matchCase: false,
+			matchWholeWord: true,
+			// Add any other search options here
+		};
+		// var searchRange = new vscode.Range(0, 0, doc.lineCount, 0);
+		// var searchResults = doc.getText().match(new RegExp(searchString, 'g'));
+		// then go the position of the first instance of searchresults in the file given by filepath
+
+
+
+		// vscode.commands.executeCommand('workbench.action.findInFiles', {
+		// 	query: searchString,
+		// 	triggerSearch: true,
+		// 	matchCase: false,
+		// 	matchWholeWord: true,
+		// 	isRegex: false,
+		// 	filesToInclude: doc.filePath,
+		// 	filesToExclude: '',
+		// 	useExcludeSettingsAndIgnoreFiles: true,
+		// });
+		
+		// Process the search results
+		// if (searchResults) {
+		// 	// Iterate over each search result
+		// 	for (var i = 0; i < searchResults.length; i++) {
+		// 		var searchResult = searchResults[i];
+		// 		// Do something with each search result
+		// 		console.log("Found at line " + (searchResult.range.start.line + 1) + ", column " + (searchResult.range.start.character + 1));
+		// 	}
+		// } else {
+		// 	console.log("No matches found");
+		// }
+
+		}
+	)
+
+
+	// Make these functions active
 	context.subscriptions.push(disposable);
 	context.subscriptions.push(disposable2);
+	context.subscriptions.push(disposable3);
 }
 
 // This method is called when your extension is deactivated
@@ -202,6 +254,8 @@ var ProgShow = /** @class */ (function () {
 		if (!editor) {
 			return;
 		}
+
+		
 
 		// Access the directory where extension.js is located
 		const extensionDir = __dirname;
@@ -298,18 +352,15 @@ var TreeItem = /** @class */ (function (_super) {
 		_this.children = children;
 		_this.filePath = filePath;
 		_this.contextValue = contextValue;
+		// test to add action on item click
+		// _this.command = {
+		// 		title: "Ouvrir exercice",
+		// 		command: "goto.exo", 
+		// 		arguments: [filePath]
+		// 	};
 		return _this;
 	}
 
-	// // Add missing semicolon at the end of the constructor definition
-	// TreeItem.prototype.constructor = function(label) {
-	// 	_super.call(this, label);
-	// 	this.command = {
-	// 		title: "Show error",
-	// 		command: "copy.exo",
-	// 		arguments: [label]
-	// 	};
-	// };
 	return TreeItem;
 }(vscode.TreeItem));
 
@@ -376,14 +427,15 @@ var BanqueExoShow = /** @class */ (function () {
 
     BanqueExoShow.prototype.getTreeItem = function (element) {
         // return element;
-		// var item = new TreeItem(element.label, element.children, element.filePath);
-		// element.command = {
-		// 	command: 'copy.exo',
-		// 	title: 'Copy Exercise Name',
-		// 	arguments: [element.label]
-		// };
-		return element;
+		var item = new TreeItem(element.label, element.children, element.filePath, element.contextValue);
+		item.command = {
+			command: 'goto.exo',
+			title: 'Ouvrir exercice',
+			arguments: [element]
+		};
+		return item;
     };
+
     BanqueExoShow.prototype.getChildren = function (element) {
         if (element === undefined) {
             return this.data;

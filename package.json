@@ -30,12 +30,14 @@
         {
           "id": "programme-colle",  
           "name": "Programme de colle",
-          "type": "tree"
+          "type": "tree",
+          "icon" : "images/default_folder_opened.svg"
         },
         {
           "id": "package-banque",
           "name": "Banque d'exercices",
-          "type": "tree"
+          "type": "tree",
+          "icon" : "images/default_folder_opened.svg"
         }
       ]
     },

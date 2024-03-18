@@ -14,19 +14,20 @@ const path = require('path');
 
 /**
  * @param {vscode.ExtensionContext} context
- */
+*/
 function activate(context) {
-
+	
 	// Use the console to output diagnostic information (console.log) and errors (console.error)
 	// This line of code will only be executed once when your extension is activated
 	console.log('Congratulations, your extension "show-programme-colle" is now active!');
+	
+	
 	
 	// LIST OF SETTINGS VARIABLES
 	const collepath = vscode.workspace.getConfiguration('Programme-de-colle').get('collepath');
 	const stypath = vscode.workspace.getConfiguration('Programme-de-colle').get('stypath');
 	const pythoncommand = vscode.workspace.getConfiguration('Programme-de-colle').get('Python-command');
 	const programmebalise = vscode.workspace.getConfiguration('Programme-de-colle').get('Programme-balise');
-	
 	// The command has been defined in the package.json file
 	// Now provide the implementation of the command with  registerCommand
 	// The commandId parameter must match the command field in package.json
@@ -156,6 +157,50 @@ function activate(context) {
 		// open document in vscode
 		vscode.commands.executeCommand('vscode.open',vscode.Uri.file(doc.filePath));
 
+		// The code you place here will be executed every time your command is executed
+		// Get the active text editor
+		var editor = vscode.window.activeTextEditor;
+		if (!editor) {
+			return;
+		}
+		// Search for the string "doc.label" within the document
+		var searchString = '{' + doc.label + '}';
+		// vscode.window.showInformationMessage('Searching for ' + searchString + ' in ' + doc.filePath);
+		// var searchOptions = {
+		// 	matchCase: false,
+		// 	matchWholeWord: true,
+		// 	// Add any other search options here
+		// };
+
+		let document = editor.document;
+        let text = document.getText();
+        let position = text.indexOf(searchString);
+
+        if (position !== -1) {
+            let startPosition = document.positionAt(position);
+            let endPosition = document.positionAt(position + searchString.length);
+            let range = new vscode.Range(startPosition, endPosition);
+            editor.selection = new vscode.Selection(range.start, range.end);
+			editor.revealRange(range, vscode.TextEditorRevealType.AtTop);
+        } else {
+            vscode.window.showInformationMessage('String not found');
+        }
+		// var searchRange = new vscode.Range(0, 0, doc.lineCount, 0);
+		// editor.selection = new vscode.Selection(searchRange.start, searchRange.end);
+		// editor.revealRange(searchRange, vscode.TextEditorRevealType.InCenter);
+		// vscode.commands.executeCommand('editor.action.
+		// ', {
+		// 	query: searchString,
+		// 	triggerSearch: true,
+		// 	matchCase: false,
+		// 	matchWholeWord: true,
+		// 	isRegex: false,
+		// 	filesToInclude: doc.filePath,
+		// 	filesToExclude: '',
+		// 	useExcludeSettingsAndIgnoreFiles: true,
+		// });
+		// vscode.commands.executeCommand('editor.action.nextMatchFindAction', searchString);
+
 			// The code you place here will be executed every time your command is executed
 		// Get the active text editor
 		// var editor = vscode.window.activeTextEditor;
@@ -163,13 +208,13 @@ function activate(context) {
 		// 	return;
 		// }
 		// Search for the string "test" within the document
-		var searchString = doc.label;
+		// var searchString = doc.label;
 		// vscode.window.showInformationMessage('Searching for ' + searchString + ' in ' + doc.filePath);
-		var searchOptions = {
-			matchCase: false,
-			matchWholeWord: true,
-			// Add any other search options here
-		};
+		// var searchOptions = {
+		// 	matchCase: false,
+		// 	matchWholeWord: true,
+		// 	// Add any other search options here
+		// };
 		// var searchRange = new vscode.Range(0, 0, doc.lineCount, 0);
 		// var searchResults = doc.getText().match(new RegExp(searchString, 'g'));
 		// then go the position of the first instance of searchresults in the file given by filepath
@@ -202,11 +247,16 @@ function activate(context) {
 		}
 	)
 
+	let disposable4 = vscode.commands.registerCommand('push.colle', function () {
+		child_process.execSync('bash ' + __dirname + '/build_programme_colle_java.sh ' + collepath + ' ' + stypath + ' ' + pythoncommand).toString();
+	});
+
 
 	// Make these functions active
 	context.subscriptions.push(disposable);
 	context.subscriptions.push(disposable2);
 	context.subscriptions.push(disposable3);
+	context.subscriptions.push(disposable4);
 }
 
 // This method is called when your extension is deactivated
@@ -315,6 +365,26 @@ var ProgShow = /** @class */ (function () {
 				})
 			);
 		});
+
+		// this.data.push(new TreeItem('', undefined, undefined, undefined, {
+		// 	command: 'command:push.colle',
+		// 	title: 'Your message here',
+		// 	tooltip: 'Your message here',
+		// 	contextValue: 'message'
+		// }));
+
+	
+		// this.data.push(new TreeItem('Téléverser', undefined, undefined, 'push.colle', {
+		// 	command: 'push.colle',
+		// 	title: 'Téléverser',
+		// 	tooltip: 'Téléverser',
+		// 	// iconPath: {
+		// 	// 	light: path.join(__filename, '..', 'resources', 'light', 'upload.svg'),
+		// 	// 	dark: path.join(__filename, '..', 'resources', 'dark', 'upload.svg')
+		// 	// },
+		// 	contextValue: 'push.colle'
+		// }));
+		
 		// new TreeItem('COURS', [
 		// 	new TreeItem('Ford', [new TreeItem('Fiesta'), new TreeItem('Focus'), new TreeItem('Mustang')]),
 		// 	new TreeItem('BMW', [new TreeItem('320'), new TreeItem('X3'), new TreeItem('X5')])
@@ -352,6 +422,11 @@ var TreeItem = /** @class */ (function (_super) {
 		_this.children = children;
 		_this.filePath = filePath;
 		_this.contextValue = contextValue;
+		_this.description = _this.contextValue === 'file' ? 'test' : '';
+		_this.iconPath = {
+			light: path.join(__filename, '..', '..', 'images', 'light', 'atom2.png'),
+			dark: path.join(__filename, '..', '..', 'images', 'dark', 'atom2.png')
+		};
 		// test to add action on item click
 		// _this.command = {
 		// 		title: "Ouvrir exercice",
@@ -413,6 +488,8 @@ var BanqueExoShow = /** @class */ (function () {
 			// const icon = vscode.Uri.file(__dirname + '/images/default_folder_opened.svg').toString();
 			return new TreeItem(basename, 
 				exercices.map(function(exo) {
+					// var icon = vscode.Uri.file(__dirname + '/images/default_folder_opened.svg').toString();
+					// return new TreeItem('exo ' + exo, undefined, filePath, 'file', { light: icon, dark: icon });
 					return new TreeItem(exo, undefined, filePath, 'file');
 				}), 
 				filePath
@@ -425,16 +502,16 @@ var BanqueExoShow = /** @class */ (function () {
 		// ])];
     }
 
-    BanqueExoShow.prototype.getTreeItem = function (element) {
-        // return element;
+	BanqueExoShow.prototype.getTreeItem = function (element) {
 		var item = new TreeItem(element.label, element.children, element.filePath, element.contextValue);
 		item.command = {
 			command: 'goto.exo',
 			title: 'Ouvrir exercice',
 			arguments: [element]
 		};
+		item.tooltip = "Voir l'exercice";
 		return item;
-    };
+	};
 
     BanqueExoShow.prototype.getChildren = function (element) {
         if (element === undefined) {

@@ -47,6 +47,11 @@
       "title": "Programme de colle"
     },
     {
+      "command": "upload.colle",
+      "icon": "$(cloud-upload)",
+      "title": "Téléverser"
+    },
+    {
       "command": "goto.exo",
       "title": "Ouvrir exercice"
     },
@@ -63,7 +68,14 @@
               "when": "view == package-banque && viewItem == file",
               "group": "inline"
           }
-        ]
+        ],
+      "view/title": [
+        {
+          "command": "upload.colle",
+          "title": "Upload",
+          "when": "view == programme-colle",
+          "group": "navigation@1"
+        }]
     },
 
     "configuration": {

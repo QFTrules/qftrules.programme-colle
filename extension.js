@@ -286,6 +286,7 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var vscode = require("vscode");
+const fs = require('fs');
 // import * as fs from 'fs';
 // import * as path from 'path';
 var ProgShow = /** @class */ (function () {
@@ -414,19 +415,98 @@ var ProgShow = /** @class */ (function () {
 //     return TreeItem;
 // }(vscode.TreeItem));
 
+function GetTypeExo(label, filepath) {
+	// filepath in undefined for items in programme de colle
+	if (typeof filepath === 'undefined') {
+		return '';
+	}
+	
+	// if no error, returns the info about the exercise
+	const fileContent = fs.readFileSync(filepath, 'utf8');
+	const lines = fileContent.split('\n');
+	for (let i = 0; i < lines.length; i++) {
+		if (lines[i].includes(label)) {
+			// get the type of exercise (python, devoir, ...)
+			var startIndex = lines[i].lastIndexOf('[') + 1;
+			var endIndex = lines[i].lastIndexOf(']');
+			const typeexo = lines[i].substring(startIndex, endIndex);
+			// get the difficulty of the exercise (on, two, three stars)
+			var startIndex = lines[i].indexOf('[', lines[i].indexOf('[') + 1) + 1;
+			var endIndex = lines[i].indexOf(']', lines[i].indexOf(']') + 1);
+			const difficulty = lines[i].substring(startIndex, endIndex);
+			// return the type of exercise and its difficulty
+			return [typeexo, difficulty];
+		}
+	}
+	return '';
+}
+
 var TreeItem = /** @class */ (function (_super) {
 	__extends(TreeItem, _super);
-	function TreeItem(label, children, filePath, contextValue) {
+	function TreeItem(label, children, filePath, contextValue, collapsed) {
 		var _this = _super.call(this, label, children === undefined ? vscode.TreeItemCollapsibleState.None :
 			vscode.TreeItemCollapsibleState.Expanded) || this;
 		_this.children = children;
 		_this.filePath = filePath;
 		_this.contextValue = contextValue;
-		_this.description = _this.contextValue === 'file' ? 'test' : '';
-		_this.iconPath = {
-			light: path.join(__filename, '..', '..', 'images', 'light', 'atom2.png'),
-			dark: path.join(__filename, '..', '..', 'images', 'dark', 'atom2.png')
-		};
+		if (typeof collapsed === 'undefined') {
+			_this.collapsibleState = vscode.TreeItemCollapsibleState.Expanded;
+		} else {
+			_this.collapsibleState = collapsed;
+		}
+
+		// get the type of exercise and its difficulty
+		var typeexo = GetTypeExo(label, filePath)[0]
+		var difficulty = GetTypeExo(label, filePath)[1]
+		_this.description = _this.contextValue === 'file' ? '★'.repeat(difficulty) : '';
+
+		// define context-specific icons
+		if (_this.contextValue === 'file') {
+			if (typeexo.includes('python')) {
+				_this.iconPath = {
+					light: path.join(__dirname, 'images', 'file_type_python.svg'),
+					dark: path.join(__dirname, 'images', 'file_type_python.svg')
+				};
+			} else {
+				if (typeexo.includes('TD')) {
+					_this.iconPath = {
+						light: path.join(__dirname, 'images', 'paper_light.png'),
+						dark: path.join(__dirname, 'images', 'paper_dark.png')
+					};
+				} else {
+					if (typeexo.includes('colle')) {
+						_this.iconPath = {
+							light: path.join(__dirname, 'images', 'chalk_light.png'),
+							dark: path.join(__dirname, 'images', 'chalk_dark.png')
+						};
+					} else {
+					_this.iconPath = {
+						light: path.join(__dirname, 'images', 'default_file.svg'),
+						dark: path.join(__dirname, 'images', 'default_file.svg')
+					};
+					}
+				}
+			}
+		} else {
+			if (label === 'Cours') {
+				_this.iconPath = {
+					light: path.join(__dirname, 'images', 'chalk_light.png'),
+					dark: path.join(__dirname, 'images', 'chalk_dark.png')
+				};
+			} else {
+				if (label === 'TD') {
+					_this.iconPath = {
+						light: path.join(__dirname, 'images', 'paper_light.png'),
+						dark: path.join(__dirname, 'images', 'paper_dark.png')
+					};
+				} else {
+					_this.iconPath = {
+						light: path.join(__dirname, 'images', 'default_folder_opened.svg'),
+						dark: path.join(__dirname, 'images', 'default_folder_opened.svg')
+					};
+				}
+			}
+		}
 		// test to add action on item click
 		// _this.command = {
 		// 		title: "Ouvrir exercice",
@@ -460,41 +540,46 @@ var BanqueExoShow = /** @class */ (function () {
 		// const extensionDir = __dirname;
 
 		// Decompose the output string into a list of words
-		var latex_files = child_process.execSync('find ~/Dropbox/CPGE/Physique/Exercices/Recueil/Thermo -maxdepth 1 -type f -name "*.tex"').toString().split('\n');
-		// remove the last element which is an empty string
-		latex_files.pop();
-		// get only the basename of filenames
-		latex_files = latex_files.map(function(filename) {
-			return path.parse(filename).name;
-		});
-		this.data = latex_files.map(function(basename) {
-			var filePath = path.join('/home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Thermo', basename + '.tex');
-			var exercices = child_process.execSync('grep -E "\\\\\\\\begin{exo}" ' + filePath).toString().split('\n');
-			exercices = exercices.map(function(exo) {
-				var start = exo.indexOf('{', exo.indexOf('{') + 1) + 1;
-				var end = exo.indexOf('}', exo.indexOf('}') + 1);
-				return exo.substring(start, end);
-			});
+		const themes_list = [
+			'Thermo',
+			'Fluide',
+			'Ondes',
+			'Optique',
+			'Mecanique',
+		]
+		this.data = themes_list.map(function(theme) {
+			// get the list of latex files for the theme 
+			var latex_files = child_process.execSync('find ~/Dropbox/CPGE/Physique/Exercices/Recueil/' + theme + ' -maxdepth 1 -type f -name "*.tex"').toString().split('\n');
 			// remove the last element which is an empty string
-			exercices.pop();
-			// var exercices = ['exo1', 'exo2', 'exo3']
-			// now display all exercices in a subtree
-			// exercices = exercices.split('\n');
-			// exercices = exercices.map(function(exo) {
-			// 	return exo.replace('\\begin{exo}', '');
-			// }
-			// );
-			
-			// const icon = vscode.Uri.file(__dirname + '/images/default_folder_opened.svg').toString();
-			return new TreeItem(basename, 
-				exercices.map(function(exo) {
-					// var icon = vscode.Uri.file(__dirname + '/images/default_folder_opened.svg').toString();
-					// return new TreeItem('exo ' + exo, undefined, filePath, 'file', { light: icon, dark: icon });
-					return new TreeItem(exo, undefined, filePath, 'file');
-				}), 
-				filePath
+			latex_files.pop();
+			// get only the basename of filenames
+			// latex_files = latex_files.map(function(filename) {
+			// 	return path.parse(filename).name;
+			// });
+
+			// return a tree item for each theme
+			return new TreeItem(theme.toUpperCase(), 
+				latex_files.map(function(filePath) {
+					// get the latex filepath
+					const basename = path.parse(filePath).name
+					// var filePath = path.join('~/Dropbox/CPGE/Physique/Exercices/Recueil/', theme, basename + '.tex');
+					var exercices = child_process.execSync('grep -E "\\\\\\\\begin{exo}" ' + filePath).toString().split('\n');
+					exercices = exercices.map(function(exo) {
+						var start = exo.indexOf('{', exo.indexOf('{') + 1) + 1;
+						var end = exo.indexOf('}', exo.indexOf('}') + 1);
+						return exo.substring(start, end);
+					});
+					// remove the last element which is an empty string
+					exercices.pop();
+					return new TreeItem(basename,
+						exercices.map(function(exo) {
+							return new TreeItem(exo, undefined, filePath, 'file');
+						}),
+						filePath,
+					);
+				}),
+				undefined,
 			);
-			// return new TreeItem(basename);
 		});
 		// new TreeItem('COURS', [
 		// 	new TreeItem('Ford', [new TreeItem('Fiesta'), new TreeItem('Focus'), new TreeItem('Mustang')]),
@@ -503,13 +588,15 @@ var BanqueExoShow = /** @class */ (function () {
     }
 
 	BanqueExoShow.prototype.getTreeItem = function (element) {
-		var item = new TreeItem(element.label, element.children, element.filePath, element.contextValue);
+		var item = new TreeItem(element.label, element.children, element.filePath, element.contextValue, vscode.TreeItemCollapsibleState.Collapsed);
 		item.command = {
 			command: 'goto.exo',
 			title: 'Ouvrir exercice',
 			arguments: [element]
 		};
-		item.tooltip = "Voir l'exercice";
+		if (element.contextValue === 'file') {
+			item.tooltip = "Voir l'exercice";
+		}
 		return item;
 	};
 

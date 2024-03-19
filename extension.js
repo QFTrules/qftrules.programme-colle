@@ -460,7 +460,7 @@ var TreeItem = /** @class */ (function (_super) {
 		var difficulty = GetTypeExo(label, filePath)[1]
 		_this.description = _this.contextValue === 'file' ? '★'.repeat(difficulty) : '';
 
-		// define context-specific icons
+		// define context-specific icons for banque-exercices
 		if (_this.contextValue === 'file') {
 			if (typeexo.includes('python')) {
 				_this.iconPath = {
@@ -476,34 +476,62 @@ var TreeItem = /** @class */ (function (_super) {
 				} else {
 					if (typeexo.includes('colle')) {
 						_this.iconPath = {
-							light: path.join(__dirname, 'images', 'chalk_light.png'),
-							dark: path.join(__dirname, 'images', 'chalk_dark.png')
+							// light: path.join(__dirname, 'images', 'chalk_light.png'),
+							// dark: path.join(__dirname, 'images', 'chalk_dark.png')
+							light: path.join(__dirname, 'images', 'pencil_light.png'),
+							dark: path.join(__dirname, 'images', 'pencil_dark.png')
 						};
 					} else {
 					_this.iconPath = {
-						light: path.join(__dirname, 'images', 'default_file.svg'),
-						dark: path.join(__dirname, 'images', 'default_file.svg')
+						// light: path.join(__dirname, 'images', 'default_file.svg'),
+						// dark: path.join(__dirname, 'images', 'default_file.svg')
+						light: path.join(__dirname, 'images', 'paper_light.png'),
+						dark: path.join(__dirname, 'images', 'paper_dark.png')
 					};
 					}
 				}
 			}
+		// define specific icon for programme-colle	
 		} else {
 			if (label === 'Cours') {
 				_this.iconPath = {
-					light: path.join(__dirname, 'images', 'chalk_light.png'),
-					dark: path.join(__dirname, 'images', 'chalk_dark.png')
+					light: path.join(__dirname, 'images', 'chalkboard_light.png'),
+					dark: path.join(__dirname, 'images', 'chalkboard_dark.png')
 				};
 			} else {
 				if (label === 'TD') {
 					_this.iconPath = {
-						light: path.join(__dirname, 'images', 'paper_light.png'),
-						dark: path.join(__dirname, 'images', 'paper_dark.png')
+						light: path.join(__dirname, 'images', 'pencil_light.png'),
+						dark: path.join(__dirname, 'images', 'pencil_dark.png')
 					};
 				} else {
-					_this.iconPath = {
-						light: path.join(__dirname, 'images', 'default_folder_opened.svg'),
-						dark: path.join(__dirname, 'images', 'default_folder_opened.svg')
-					};
+					if (label === 'DM') {
+						_this.iconPath = {
+							light: path.join(__dirname, 'images', 'house_light.png'),
+							dark: path.join(__dirname, 'images', 'house_dark.png')
+						};
+					} else {
+						if (label === 'TP') {
+							_this.iconPath = {
+								light: path.join(__dirname, 'images', 'flask_light.png'),
+								dark: path.join(__dirname, 'images', 'flask_dark.png')
+							};
+						} else {
+							if (label === 'DS') {
+								_this.iconPath = {
+									light: path.join(__dirname, 'images', 'paper_light.png'),
+									dark: path.join(__dirname, 'images', 'paper_dark.png')
+								};
+							} else {
+								if (contextValue === 'folder') {
+									_this.iconPath = {
+										light: path.join(__dirname, 'images', 'default_folder_opened.svg'),
+										dark: path.join(__dirname, 'images', 'default_folder_opened.svg')
+									};
+								}
+							}
+						}
+					}
 				}
 			}
 		}
@@ -573,12 +601,15 @@ var BanqueExoShow = /** @class */ (function () {
 					exercices.pop();
 					return new TreeItem(basename,
 						exercices.map(function(exo) {
+							// const exo_short = (exo.slice(0, 25) + "...").toString();
 							return new TreeItem(exo, undefined, filePath, 'file');
 						}),
 						filePath,
+						'folder',
 					);
 				}),
 				undefined,
+				'folder',
 			);
 		});
 		// new TreeItem('COURS', [
@@ -589,13 +620,13 @@ var BanqueExoShow = /** @class */ (function () {
 
 	BanqueExoShow.prototype.getTreeItem = function (element) {
 		var item = new TreeItem(element.label, element.children, element.filePath, element.contextValue, vscode.TreeItemCollapsibleState.Collapsed);
-		item.command = {
-			command: 'goto.exo',
-			title: 'Ouvrir exercice',
-			arguments: [element]
-		};
 		if (element.contextValue === 'file') {
 			item.tooltip = "Voir l'exercice";
+			item.command = {
+				command: 'goto.exo',
+				title: 'Ouvrir exercice',
+				arguments: [element]
+			};
 		}
 		return item;
 	};
@@ -624,6 +655,20 @@ var BanqueExoShow = /** @class */ (function () {
 //     }
 //     return TreeItem;
 // }(vscode.TreeItem));
+
+
+// function textEllipsis(str, maxLength, { side = "end", ellipsis = "..." } = {}) {
+// 	if (str.length > maxLength) {
+// 	  switch (side) {
+// 		case "start":
+// 		  return ellipsis + str.slice(-(maxLength - ellipsis.length));
+// 		case "end":
+// 		default:
+// 		  return str.slice(0, maxLength - ellipsis.length) + ellipsis;
+// 	  }
+// 	}
+// 	return str;
+//   }
 
 // register data providers
 vscode.window.registerTreeDataProvider('programme-colle', new ProgShow());

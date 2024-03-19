@@ -52,6 +52,11 @@
       "title": "Téléverser"
     },
     {
+      "command": "build.colle",
+      "icon": "$(gear)",
+      "title": "Compiler et téléverser"
+    },
+    {
       "command": "compile.colle",
       "icon": "$(file-code)",
       "title": "Compiler"
@@ -77,15 +82,18 @@
       "view/title": [
         {
           "command": "upload.colle",
-          "title": "Upload",
           "when": "view == programme-colle",
           "group": "navigation@1"
         },
         {
           "command": "compile.colle",
-          "title": "Compile",
           "when": "view == programme-colle",
           "group": "navigation@2"
+        },
+        {
+          "command": "build.colle",
+          "when": "view == programme-colle",
+          "group": "navigation@3"
         }]
     },
 

@@ -177,9 +177,10 @@ mv $ProgColle $collepath$Filedate$txxName
 mv ProgrammeColle.toc $collepath
 mv $Filedate$texName $collepath
 mv $Filedate$pdfName $collepath
+echo $Filedate$pdfName
 #cd ~/Dropbox/CPGE/Physique/Exercices/Colles/
 # code $Filedate$pdfName
 
 # NOW UPLOAD TO CAHIER DE PREPA
 # echo "Trying to upload to cahier de prepa..." 
-$pythoncommand $pythonpath/upload_programme_colle_java.py $collepath $Filedate$pdfName
+# $pythoncommand $pythonpath/upload_programme_colle_java.py $collepath $Filedate$pdfName

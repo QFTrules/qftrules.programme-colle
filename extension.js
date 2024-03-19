@@ -155,6 +155,7 @@ function activate(context) {
 
 	let disposable3 = vscode.commands.registerCommand('goto.exo', function (doc) {
 		// open document in vscode
+		// vscode.window.showInformationMessage('Ouverture de ' + document.filePath, '\\\\\\\\ProgrammeColle');
 		vscode.commands.executeCommand('vscode.open',vscode.Uri.file(doc.filePath));
 
 		// The code you place here will be executed every time your command is executed
@@ -163,8 +164,14 @@ function activate(context) {
 		if (!editor) {
 			return;
 		}
+		if (doc.contextValue === 'latex') {
+			var searchString = '\\ProgrammeColle';
+			// vscode.window.showInformationMessage('Searching for ' + searchString + ' in ' + doc.filePath);
+		} else {
+			var searchString = '{' + doc.label + '}';
+		}
 		// Search for the string "doc.label" within the document
-		var searchString = '{' + doc.label + '}';
+		// var searchString = '{' + docstring + '}';
 		// vscode.window.showInformationMessage('Searching for ' + searchString + ' in ' + doc.filePath);
 		// var searchOptions = {
 		// 	matchCase: false,
@@ -180,6 +187,8 @@ function activate(context) {
             let startPosition = document.positionAt(position);
             let endPosition = document.positionAt(position + searchString.length);
             let range = new vscode.Range(startPosition, endPosition);
+            editor.selection = new vscode.Selection(range.start, range.end);
+			editor.revealRange(range, vscode.TextEditorRevealType.AtTop);
             editor.selection = new vscode.Selection(range.start, range.end);
 			editor.revealRange(range, vscode.TextEditorRevealType.AtTop);
         } else {
@@ -247,13 +256,22 @@ function activate(context) {
 		}
 	)
 
+	// commande pour téléverser le programme de colle sur le cahier de prépa depuis title view : programme de colle
 	let disposable4 = vscode.commands.registerCommand('upload.colle', function () {
 		const output = child_process.execSync('bash ' + __dirname + '/build_programme_colle_java.sh ' + collepath + ' ' + stypath + ' ' + pythoncommand + ' ' + __dirname).toString();
 		vscode.window.showInformationMessage(output, 'OK')
 	});
 
+	// commande pour compiler le programme de colle depuis title view : programme de colle
 	let disposable5 = vscode.commands.registerCommand('compile.colle', function () {
 		const output = child_process.execSync('bash ' + __dirname + '/build_programme_colle.sh ' + collepath + ' ' + stypath + ' ' + pythoncommand + ' ' + __dirname).toString();
+		vscode.window.showInformationMessage(output, 'OK')
+	});
+
+	// commande pour compiler et téléverser le programme de colle depuis title view : programme de colle
+	let disposable6 = vscode.commands.registerCommand('build.colle', function () {
+		const programme_colle_file = child_process.execSync('bash ' + __dirname + '/build_programme_colle.sh ' + collepath + ' ' + stypath + ' ' + pythoncommand + ' ' + __dirname).toString();
+		const output = child_process.execSync(pythoncommand +  ' ' + __dirname + ' ' + '/upload_programme_colle_java.py ' + collepath + programme_colle_file).toString();
 		vscode.window.showInformationMessage(output, 'OK')
 	});
 
@@ -264,6 +282,7 @@ function activate(context) {
 	context.subscriptions.push(disposable3);
 	context.subscriptions.push(disposable4);
 	context.subscriptions.push(disposable5);
+	context.subscriptions.push(disposable6);
 }
 
 // This method is called when your extension is deactivated
@@ -349,7 +368,8 @@ var ProgShow = /** @class */ (function () {
 					// output_message = [...output_message, separator, type_colle[j], ' : '];
 				// }
 				for (let i = 0; i < documents.length-1; i++) {
-					list_doc[j] = [...list_doc[j], path.parse(documents[i].trim()).name];
+					list_doc[j] = [...list_doc[j], documents[i].trim()];
+					// list_doc[j] = [...list_doc[j], path.parse(documents[i].trim()).name];
 					// all_basenames.push(path.parse(documents[i].trim()).name);
 					// output_message.push(path.parse(documents[i].trim()).name);
 					// if (i !== documents.length-2) {
@@ -368,8 +388,9 @@ var ProgShow = /** @class */ (function () {
 		// });
 		this.data = type_doc.map(function(basename, i) {
 			return new TreeItem(basename,
-				list_doc[i].map(function(filename) {
-					return new TreeItem(filename);
+				list_doc[i].map(function(filePath) {
+					var filename = path.basename(filePath).toString();
+					return new TreeItem(filename, undefined, filePath, 'latex', undefined);
 				})
 			);
 		});
@@ -401,9 +422,16 @@ var ProgShow = /** @class */ (function () {
 			item.tooltip = "Ouvrir pdf";
 			item.command = {
 				command: 'vscode.open',
-				title: 'Ouvrir exercice',
 				arguments: [vscode.Uri.file(element.filePath), { viewColumn: vscode.ViewColumn.Beside }]
 			};
+		} else {
+			if (element.contextValue === 'latex') {
+				item.tooltip = "Modifier le fichier";
+				item.command = {
+					command: 'goto.exo',
+					arguments: [element]
+				};
+			}
 		}
 		return item;
         // return element;

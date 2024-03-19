@@ -52,6 +52,11 @@
       "title": "Téléverser"
     },
     {
+      "command": "compile.colle",
+      "icon": "$(file-code)",
+      "title": "Compiler"
+    },
+    {
       "command": "goto.exo",
       "title": "Ouvrir exercice"
     },
@@ -75,6 +80,12 @@
           "title": "Upload",
           "when": "view == programme-colle",
           "group": "navigation@1"
+        },
+        {
+          "command": "compile.colle",
+          "title": "Compile",
+          "when": "view == programme-colle",
+          "group": "navigation@2"
         }]
     },
 

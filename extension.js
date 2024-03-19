@@ -247,8 +247,14 @@ function activate(context) {
 		}
 	)
 
-	let disposable4 = vscode.commands.registerCommand('push.colle', function () {
-		child_process.execSync('bash ' + __dirname + '/build_programme_colle_java.sh ' + collepath + ' ' + stypath + ' ' + pythoncommand).toString();
+	let disposable4 = vscode.commands.registerCommand('upload.colle', function () {
+		const output = child_process.execSync('bash ' + __dirname + '/build_programme_colle_java.sh ' + collepath + ' ' + stypath + ' ' + pythoncommand + ' ' + __dirname).toString();
+		vscode.window.showInformationMessage(output, 'OK')
+	});
+
+	let disposable5 = vscode.commands.registerCommand('compile.colle', function () {
+		const output = child_process.execSync('bash ' + __dirname + '/build_programme_colle.sh ' + collepath + ' ' + stypath + ' ' + pythoncommand + ' ' + __dirname).toString();
+		vscode.window.showInformationMessage(output, 'OK')
 	});
 
 
@@ -257,6 +263,7 @@ function activate(context) {
 	context.subscriptions.push(disposable2);
 	context.subscriptions.push(disposable3);
 	context.subscriptions.push(disposable4);
+	context.subscriptions.push(disposable5);
 }
 
 // This method is called when your extension is deactivated
@@ -367,12 +374,9 @@ var ProgShow = /** @class */ (function () {
 			);
 		});
 
-		// this.data.push(new TreeItem('', undefined, undefined, undefined, {
-		// 	command: 'command:push.colle',
-		// 	title: 'Your message here',
-		// 	tooltip: 'Your message here',
-		// 	contextValue: 'message'
-		// }));
+		var programme_colle_pdf = child_process.execSync('find ~/Dropbox/CPGE/Physique/Exercices/Colles/PC/ -maxdepth 1 -type f -name "*_PC_Phy_colle.pdf"').toString().split('\n')[0];
+		var programme_colle_pdf_basename = path.basename(programme_colle_pdf);
+		this.data.push(new TreeItem(programme_colle_pdf_basename, undefined, programme_colle_pdf, 'pdf', undefined));
 
 	
 		// this.data.push(new TreeItem('Téléverser', undefined, undefined, 'push.colle', {
@@ -392,7 +396,17 @@ var ProgShow = /** @class */ (function () {
 		// ])];
     }
     ProgShow.prototype.getTreeItem = function (element) {
-        return element;
+		var item = new TreeItem(element.label, element.children, element.filePath, element.contextValue, vscode.TreeItemCollapsibleState.Expanded);
+		if (element.contextValue === 'pdf') {
+			item.tooltip = "Ouvrir pdf";
+			item.command = {
+				command: 'vscode.open',
+				title: 'Ouvrir exercice',
+				arguments: [vscode.Uri.file(element.filePath), { viewColumn: vscode.ViewColumn.Beside }]
+			};
+		}
+		return item;
+        // return element;
     };
     ProgShow.prototype.getChildren = function (element) {
         if (element === undefined) {
@@ -528,6 +542,13 @@ var TreeItem = /** @class */ (function (_super) {
 										light: path.join(__dirname, 'images', 'default_folder_opened.svg'),
 										dark: path.join(__dirname, 'images', 'default_folder_opened.svg')
 									};
+								 } else {
+									if (contextValue === 'pdf') {
+										_this.iconPath = {
+											light: path.join(__dirname, 'images', 'file_type_pdf.svg'),
+											dark: path.join(__dirname, 'images', 'file_type_pdf.svg')
+										};
+									}
 								}
 							}
 						}

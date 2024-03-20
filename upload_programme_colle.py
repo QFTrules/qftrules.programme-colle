@@ -17,6 +17,7 @@ import sys
 
 path = sys.argv[1]
 prog_file = sys.argv[2]
+week = sys.argv[3]
 prog = prog_file[:-4]
 
 def get_id():
@@ -37,8 +38,10 @@ def uploaded(l,p):
             return True
     return False
 
-def waitabit(t=0.5):
+def waitabit(driver=None,t=0.4):
+    # WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, "body")))
     time.sleep(t)
+    # pass
 
 # connect to cahier de prepa
 chrome_options = Options()
@@ -47,7 +50,6 @@ service = Service('/home/eb/Dropbox/.latex/Commands/chromedriver')
 # driver = webdriver.Chrome('/home/eb/Dropbox/.latex/Commands/chromedriver')
 # , options=chrome_options)
 driver = webdriver.Chrome(service=service, options=chrome_options)
-# driver = webdriver.Chrome(service=service)
 driver.maximize_window()
 url1 = "https://cahier-de-prepa.fr/pc-theo/docs?rep=28"
 driver.get(url1)
@@ -58,11 +60,12 @@ elem.send_keys(userName)
 elem = driver.find_element(by=By.NAME, value="motdepasse")
 elem.send_keys(passWord)
 elem.send_keys(Keys.RETURN)
-waitabit()
+waitabit(driver=driver)
+# WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, "body")))
 
 # go to programme de colle page
 list_prog = driver.find_elements(by=By.CSS_SELECTOR, value="span[class='nom editable']")
-waitabit()
+waitabit(driver=driver)
 
 # upload if not present
 if uploaded(list_prog,prog):
@@ -77,48 +80,53 @@ else:
     choose_file = driver.find_element(by=By.CSS_SELECTOR, value="input[name='fichier[]']")
     choose_file.send_keys(path + prog_file)
     driver.find_element(by=By.CSS_SELECTOR, value="a[class='icon-envoidoc']").click()
-waitabit()
+waitabit(driver=driver)
 
 # ajout dans onglet programme de colle
 try:
     url2 = "https://cahier-de-prepa.fr/pc-theo/progcolles?phys"
     driver.get(url2)
-    waitabit()
+    waitabit(driver=driver)
     
     # essaye de supprimer le lien vers programme de colle si déjà présent
     try:
         # find the last element which contains the icon suprrime
         driver.find_elements(by=By.CSS_SELECTOR, value="a[class='icon-supprime']")[-1].click()
         # driver.find_element(by=By.CSS_SELECTOR, value="a[class='icon-supprime']").click()
-        waitabit()
+        waitabit(driver=driver)
         driver.find_element(by=By.CSS_SELECTOR, value="button[class='icon-ok']").click()
-        waitabit()
+        waitabit(driver=driver)
     except:
         pass
     # print('---> Programme de colle already in onglet programme de colle')
-    driver.find_elements(by=By.CSS_SELECTOR, value="a[class='icon-ajoutecolle']")[-1].click()
-    waitabit()
+    liste_semaines = driver.find_elements(by=By.CSS_SELECTOR, value="h3[class='edition']")
+    for i, semaine in enumerate(liste_semaines):
+        # print(i, semaine.text, week)
+        if week in semaine.text:
+            break
+    driver.find_elements(by=By.CSS_SELECTOR, value="a[class='icon-ajoutecolle']")[i].click()
+    waitabit(driver=driver)
     driver.find_element(by=By.CSS_SELECTOR, value="button[class='icon-lien1']").click()
-    waitabit()
+    waitabit(driver=driver)
     background = driver.find_element(by=By.CSS_SELECTOR, value="select[id='rep']")
     menu = Select(driver.find_element(by=By.CSS_SELECTOR, value="select[id='rep']"))
     menu.select_by_visible_text('Physique/Programme de colle')
-    waitabit()
+    waitabit(driver=driver)
     menu = Select(driver.find_element(by=By.CSS_SELECTOR, value="select[id='doc']"))
     menu.select_by_visible_text(prog_file[:-4] + ' (pdf)')
-    waitabit()
+    waitabit(driver=driver)
     action = webdriver.common.action_chains.ActionChains(driver)
     action.move_to_element_with_offset(background, 0, 200)
     action.click()
     action.perform()
-    waitabit()
+    waitabit(driver=driver)
     driver.find_element(by=By.CSS_SELECTOR, value="article[id='fenetre']>a[class='icon-ok']").click()
     driver.find_element(by=By.CSS_SELECTOR, value="a[class='icon-ok']").click()
-    waitabit()
+    waitabit(driver=driver)
 except(NoSuchElementException):
     pass
     # print('---> Programme de colle already in onglet programme de colle')
 
 # close the driver
 driver.close()
-print('Programme de colle téléversé sur Cahier de Prépa.')
+print('Programme de colle téléversé avec succès.')

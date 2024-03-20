@@ -180,17 +180,24 @@ function activate(context) {
 		// };
 
 		let document = editor.document;
-        let text = document.getText();
-        let position = text.indexOf(searchString);
+        var text = document.getText();
+        var position = text.indexOf(searchString);
 
         if (position !== -1) {
-            let startPosition = document.positionAt(position);
-            let endPosition = document.positionAt(position + searchString.length);
-            let range = new vscode.Range(startPosition, endPosition);
+            var startPosition = document.positionAt(position);
+            var endPosition = document.positionAt(position + searchString.length);
+            var range = new vscode.Range(startPosition, endPosition);
             editor.selection = new vscode.Selection(range.start, range.end);
 			editor.revealRange(range, vscode.TextEditorRevealType.AtTop);
-            editor.selection = new vscode.Selection(range.start, range.end);
-			editor.revealRange(range, vscode.TextEditorRevealType.AtTop);
+			
+			// try to run the code again to select the searchstring, does not work, needs double click.
+			// var text = document.getText();
+			// var position = text.indexOf(searchString);
+			// var startPosition = document.positionAt(position);
+            // var endPosition = document.positionAt(position + searchString.length);
+            // var range = new vscode.Range(startPosition, endPosition);
+            // editor.selection = new vscode.Selection(range.start, range.end);
+			// editor.revealRange(range, vscode.TextEditorRevealType.AtTop);
         } else {
             vscode.window.showInformationMessage('String not found');
         }
@@ -258,21 +265,58 @@ function activate(context) {
 
 	// commande pour téléverser le programme de colle sur le cahier de prépa depuis title view : programme de colle
 	let disposable4 = vscode.commands.registerCommand('upload.colle', function () {
-		const output = child_process.execSync('bash ' + __dirname + '/build_programme_colle_java.sh ' + collepath + ' ' + stypath + ' ' + pythoncommand + ' ' + __dirname).toString();
-		vscode.window.showInformationMessage(output, 'OK')
+
+		const getNextTuesday = () => {
+			const today = new Date();
+			const nextMonday = new Date(today.getTime() + (7 - today.getDay() + 1) * 24 * 60 * 60 * 1000);
+			const year = nextMonday.getFullYear();
+			const month = String(nextMonday.getMonth() + 1).padStart(2, '0');
+			const day = String(nextMonday.getDate()).padStart(2, '0');
+			return `${year}_${month}_${day}`;
+		};
+
+		const nextTuesdayDate = getNextTuesday();
+		// console.log(nextTuesdayDate);
+		let programme_colle_file = nextTuesdayDate + '_PC_Phy_colle.pdf';
+		// vscode.window.showInformationMessage(programme_colle_file);
+		// // Read the contents of the collepath directory
+		// fs.readdir(collepath, (err, files) => {
+		// 	if (err) {
+		// 		console.error(err);
+		// 		return;
+		// 	}
+			
+		// 	// Loop through each file in the directory
+		// 	for (const file of files) {
+		// 		vscode.window.showInformationMessage(file);
+		// 		// Check if the file is of type pdf and contains the string '_PC_Phy_colle.pdf'
+		// 		if (file.endsWith('_PC_Phy_colle.pdf')) {
+		// 			// Set the programme_colle_file variable to the file path
+		// 			programme_colle_file = file;
+		// 			break; // Stop the loop if a matching file is found
+		// 		}
+		// 	}
+		// });
+
+		// Continue with the rest of your code...
+		
+		const output = child_process.execSync(pythoncommand + ' ' + __dirname + '/upload_programme_colle.py ' + collepath + ' ' + programme_colle_file + ' "lundi 25 mars 2024"').toString();
+		vscode.window.showInformationMessage(output);
+		// const output = child_process.execSync('bash ' + __dirname + '/build_programme_colle_java.sh ' + collepath + ' ' + stypath + ' ' + pythoncommand + ' ' + __dirname).toString();
+		// vscode.window.showInformationMessage(output, 'OK')
 	});
 
 	// commande pour compiler le programme de colle depuis title view : programme de colle
 	let disposable5 = vscode.commands.registerCommand('compile.colle', function () {
 		const output = child_process.execSync('bash ' + __dirname + '/build_programme_colle.sh ' + collepath + ' ' + stypath + ' ' + pythoncommand + ' ' + __dirname).toString();
-		vscode.window.showInformationMessage(output, 'OK')
+		vscode.window.showInformationMessage(output, { timeout: 1 });
 	});
 
 	// commande pour compiler et téléverser le programme de colle depuis title view : programme de colle
 	let disposable6 = vscode.commands.registerCommand('build.colle', function () {
 		const programme_colle_file = child_process.execSync('bash ' + __dirname + '/build_programme_colle.sh ' + collepath + ' ' + stypath + ' ' + pythoncommand + ' ' + __dirname).toString();
 		const output = child_process.execSync(pythoncommand +  ' ' + __dirname + ' ' + '/upload_programme_colle_java.py ' + collepath + programme_colle_file).toString();
-		vscode.window.showInformationMessage(output, 'OK')
+		vscode.window.showInformationMessage(output)
 	});
 
 

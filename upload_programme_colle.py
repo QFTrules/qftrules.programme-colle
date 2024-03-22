@@ -15,9 +15,11 @@ from selenium.webdriver.support import expected_conditions
 import time
 import sys
 
+# print(sys.argv)
 path = sys.argv[1]
 prog_file = sys.argv[2]
 week = sys.argv[3]
+# pdf programme de colle without extension
 prog = prog_file[:-4]
 
 def get_id():
@@ -38,7 +40,7 @@ def uploaded(l,p):
             return True
     return False
 
-def waitabit(driver=None,t=0.4):
+def waitabit(driver=None,t=1.5):
     # WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, "body")))
     time.sleep(t)
     # pass
@@ -71,8 +73,11 @@ waitabit(driver=driver)
 if uploaded(list_prog,prog):
     # print('---> Programme de colle already uploaded, updating...')
     driver.find_elements(by=By.CSS_SELECTOR, value="a[class='icon-actualise formulaire']")[-1].click()
-    choose_file = driver.find_element(by=By.CSS_SELECTOR, value="input[name='fichier[]']")
+    # waitabit(driver=driver)
+    choose_file = driver.find_element(by=By.CSS_SELECTOR, value="input[id='fichier']")
+    # waitabit(driver=driver)
     choose_file.send_keys(path + prog_file)
+    # waitabit(driver=driver)
     driver.find_element(by=By.CSS_SELECTOR, value="a[class='icon-envoidoc']").click()
 else:
     # print('---> Uploading programme de colle...')
@@ -80,9 +85,9 @@ else:
     choose_file = driver.find_element(by=By.CSS_SELECTOR, value="input[name='fichier[]']")
     choose_file.send_keys(path + prog_file)
     driver.find_element(by=By.CSS_SELECTOR, value="a[class='icon-envoidoc']").click()
-waitabit(driver=driver)
 
 # ajout dans onglet programme de colle
+waitabit(driver=driver)
 try:
     url2 = "https://cahier-de-prepa.fr/pc-theo/progcolles?phys"
     driver.get(url2)
@@ -90,7 +95,7 @@ try:
     
     # essaye de supprimer le lien vers programme de colle si déjà présent
     try:
-        # find the last element which contains the icon suprrime
+        # find the last element which contains the icon supprime
         driver.find_elements(by=By.CSS_SELECTOR, value="a[class='icon-supprime']")[-1].click()
         # driver.find_element(by=By.CSS_SELECTOR, value="a[class='icon-supprime']").click()
         waitabit(driver=driver)
@@ -104,29 +109,30 @@ try:
         # print(i, semaine.text, week)
         if week in semaine.text:
             break
+    # waitabit(driver=driver,t=0.2)
     driver.find_elements(by=By.CSS_SELECTOR, value="a[class='icon-ajoutecolle']")[i].click()
     waitabit(driver=driver)
     driver.find_element(by=By.CSS_SELECTOR, value="button[class='icon-lien1']").click()
-    waitabit(driver=driver)
+    waitabit(driver=driver,t=0.2)
     background = driver.find_element(by=By.CSS_SELECTOR, value="select[id='rep']")
     menu = Select(driver.find_element(by=By.CSS_SELECTOR, value="select[id='rep']"))
     menu.select_by_visible_text('Physique/Programme de colle')
-    waitabit(driver=driver)
+    waitabit(driver=driver,t=0.2)
     menu = Select(driver.find_element(by=By.CSS_SELECTOR, value="select[id='doc']"))
     menu.select_by_visible_text(prog_file[:-4] + ' (pdf)')
-    waitabit(driver=driver)
+    waitabit(driver=driver,t=0.2)
     action = webdriver.common.action_chains.ActionChains(driver)
     action.move_to_element_with_offset(background, 0, 200)
     action.click()
     action.perform()
-    waitabit(driver=driver)
+    waitabit(driver=driver,t=0.2)
     driver.find_element(by=By.CSS_SELECTOR, value="article[id='fenetre']>a[class='icon-ok']").click()
     driver.find_element(by=By.CSS_SELECTOR, value="a[class='icon-ok']").click()
-    waitabit(driver=driver)
+    # waitabit(driver=driver)
 except(NoSuchElementException):
     pass
     # print('---> Programme de colle already in onglet programme de colle')
 
 # close the driver
 driver.close()
-print('Programme de colle téléversé avec succès.')
+# print('Programme de colle téléversé avec succès.')

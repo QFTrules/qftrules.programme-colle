@@ -180,4 +180,4 @@ mv $Filedate$pdfName $collepath
 #cd ~/Dropbox/CPGE/Physique/Exercices/Colles/
 # code $Filedate$pdfName
 
-echo $Filedate$pdfName" compilé avec succès."
+echo $Filedate$pdfName

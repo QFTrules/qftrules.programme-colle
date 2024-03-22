@@ -15,6 +15,12 @@
   "main": "./extension.js",
   "contributes": {
 
+    "viewsWelcome": [
+      {
+        "view": "suggestions",
+        "contents": "Voici les activités suggérées.\n[Indiquer la difficulté des exercices suivants](command:fetch.exo)"
+      }],
+
     "viewsContainers": {
       "activitybar": [
         {
@@ -24,6 +30,14 @@
         }
       ]
     },
+
+    "keybindings": [
+      {
+        "command": "workbench.view.extension.package-explorer",
+        "key": "ctrl+shift+p",
+        "when": "editorTextFocus"
+      }
+    ],
 
     "views": {
       "package-explorer": [               
@@ -38,6 +52,11 @@
           "name": "Banque d'exercices",
           "type": "tree",
           "icon" : "images/default_folder_opened.svg"
+        },
+        {
+          "id": "suggestions",
+          "name": "Suggestions",
+          "type": "tree"
         }
       ]
     },
@@ -68,14 +87,25 @@
     {
       "command": "copy.exo",
       "title": "Ajouter",
-      "icon": "$(file)"
-    }],
+      "icon": "$(clippy)"
+    },
+    {
+      "command": "open.latex",
+      "title": "Ajouter",
+      "icon": "$(clippy)"
+    }
+  ],
     
     "menus": {
       "view/item/context": [
           {
               "command": "copy.exo",
               "when": "view == package-banque && viewItem == file",
+              "group": "inline"
+          },
+          {
+              "command": "open.latex",
+              "when": "view == package-banque && viewItem == chapter",
               "group": "inline"
           }
         ],
@@ -96,6 +126,7 @@
           "group": "navigation@3"
         }]
     },
+    
 
     "configuration": {
       "title": "Programme de colle",

@@ -6,6 +6,18 @@ var child_process = require('child_process');
 // const { execSync } = require('child_process');
 const path = require('path');
 
+// Function to get the next Monday date for the programme de colle
+function getNextMonday() {
+	const today = new Date();
+	const nextMonday = new Date(today.getTime() + (7 - today.getDay() + 1) * 24 * 60 * 60 * 1000);
+	const year = nextMonday.getFullYear();
+	const month = String(nextMonday.getMonth() + 1).padStart(2, '0');
+	const day = String(nextMonday.getDate()).padStart(2, '0');
+	const dayOfWeek = nextMonday.toLocaleDateString('fr', { weekday: 'long' });
+	const monthName = nextMonday.toLocaleDateString('fr', { month: 'long' });
+	return [`${year}_${month}_${day}`,`"${dayOfWeek} ${day} ${monthName} ${year}"`];
+};
+
 // Import the function show_programme_colle from the file show_programme_colle_cours.js
 // import {show_programme_colle} from "./show_programme_colle_cours.js"
 
@@ -153,6 +165,60 @@ function activate(context) {
 		}
 	)
 
+
+	let disposable2bis = vscode.commands.registerCommand('open.latex', function (document) {
+		// open the latex document in vscode
+		// vscode.commands.executeCommand('vscode.open',vscode.Uri.file(document.filePath));
+		// open the latex document in vscode
+		// vscode.commands.executeCommand('vscode.open', vscode.Uri.file(document.filePath));
+		// Add the string '\Source{' + document.filePath + '}\n' to the current editor
+		let editor = vscode.window.activeTextEditor;
+		if (editor) {
+			// let document = editor.document;
+			let position = editor.selection.active;
+			editor.edit(editBuilder => {
+				editBuilder.insert(position, '\\Source{' + path.basename(document.filePath) + '}\n');
+			});
+		}
+	})
+
+	let disposable3bis = vscode.commands.registerCommand('fetch.exo', function () {
+		// open an exercise listed in the file /tmp/exercices-sans-difficulte.txt
+
+		// Read the contents of the file
+		const fileContent = fs.readFileSync(__dirname + '/tmp/exercices-sans-difficulte.txt', 'utf8');
+		const lines = fileContent.split('\n');
+		var [filePath, exo] = lines[0].split(':');
+		var exo = exo.toString().trim();
+		// vscode.window.showInformationMessage('Ouverture de ' + filePath, exo);
+		// open the latex document in vscode
+		vscode.commands.executeCommand('vscode.open',vscode.Uri.file(filePath));
+		
+		// search for the exo in the file
+		var editor = vscode.window.activeTextEditor;
+		if (!editor) {
+			return;
+		}
+
+		let document = editor.document;
+        var text = document.getText();
+        var position = text.indexOf(exo);
+
+        if (position !== -1) {
+            var startPosition = document.positionAt(position);
+            var endPosition = document.positionAt(position + exo.length);
+            var range = new vscode.Range(startPosition, endPosition);
+            editor.selection = new vscode.Selection(range.start, range.end);
+			editor.revealRange(range, vscode.TextEditorRevealType.AtTop);
+        } else {
+            vscode.window.showInformationMessage('String not found');
+        }
+			// child_process.execSync(pythoncommand + ' ' + __dirname + '/search-within-file_java.py ' + filePath + ' "' + exo + '"');
+		}
+	)
+
+
+
 	let disposable3 = vscode.commands.registerCommand('goto.exo', function (doc) {
 		// open document in vscode
 		// vscode.window.showInformationMessage('Ouverture de ' + document.filePath, '\\\\\\\\ProgrammeColle');
@@ -199,7 +265,7 @@ function activate(context) {
             // editor.selection = new vscode.Selection(range.start, range.end);
 			// editor.revealRange(range, vscode.TextEditorRevealType.AtTop);
         } else {
-            vscode.window.showInformationMessage('String not found');
+            vscode.window.showInformationMessage('Exercice ou balise non trouvée.');
         }
 		// var searchRange = new vscode.Range(0, 0, doc.lineCount, 0);
 		// editor.selection = new vscode.Selection(searchRange.start, searchRange.end);
@@ -266,16 +332,9 @@ function activate(context) {
 	// commande pour téléverser le programme de colle sur le cahier de prépa depuis title view : programme de colle
 	let disposable4 = vscode.commands.registerCommand('upload.colle', function () {
 
-		const getNextTuesday = () => {
-			const today = new Date();
-			const nextMonday = new Date(today.getTime() + (7 - today.getDay() + 1) * 24 * 60 * 60 * 1000);
-			const year = nextMonday.getFullYear();
-			const month = String(nextMonday.getMonth() + 1).padStart(2, '0');
-			const day = String(nextMonday.getDate()).padStart(2, '0');
-			return `${year}_${month}_${day}`;
-		};
+		const nextTuesdayDate = getNextMonday()[0];
+		const week = getNextMonday()[1];
 
-		const nextTuesdayDate = getNextTuesday();
 		// console.log(nextTuesdayDate);
 		let programme_colle_file = nextTuesdayDate + '_PC_Phy_colle.pdf';
 		// vscode.window.showInformationMessage(programme_colle_file);
@@ -299,31 +358,47 @@ function activate(context) {
 		// });
 
 		// Continue with the rest of your code...
-		
-		const output = child_process.execSync(pythoncommand + ' ' + __dirname + '/upload_programme_colle.py ' + collepath + ' ' + programme_colle_file + ' "lundi 25 mars 2024"').toString();
-		vscode.window.showInformationMessage(output);
+		// vscode.window.showInformationMessage(pythoncommand +  ' ' + __dirname + '/upload_programme_colle.py ' + collepath + ' ' + programme_colle_file + ' ' + week);
+
+		child_process.execSync(pythoncommand + ' ' + __dirname + '/upload_programme_colle.py ' + collepath + ' ' + programme_colle_file + ' ' + week).toString();
+		vscode.window.showInformationMessage(programme_colle_file  + ' téléversé avec succès');
 		// const output = child_process.execSync('bash ' + __dirname + '/build_programme_colle_java.sh ' + collepath + ' ' + stypath + ' ' + pythoncommand + ' ' + __dirname).toString();
 		// vscode.window.showInformationMessage(output, 'OK')
 	});
 
 	// commande pour compiler le programme de colle depuis title view : programme de colle
 	let disposable5 = vscode.commands.registerCommand('compile.colle', function () {
-		const output = child_process.execSync('bash ' + __dirname + '/build_programme_colle.sh ' + collepath + ' ' + stypath + ' ' + pythoncommand + ' ' + __dirname).toString();
-		vscode.window.showInformationMessage(output, { timeout: 1 });
+		const programme_colle_file = child_process.execSync('bash ' + __dirname + '/build_programme_colle.sh ' + collepath + ' ' + stypath + ' ' + pythoncommand + ' ' + __dirname).toString();
+		vscode.window.showInformationMessage(programme_colle_file  + ' compilé avec succès', { timeout: 1 });
+		vscode.commands.executeCommand('vscode.open', vscode.Uri.file(path.join(collepath.trim(),programme_colle_file.trim())), { viewColumn: vscode.ViewColumn.Beside });
 	});
+
+	// refresh the tree view
+	// let disposable7 = vscode.commands.registerCommand('refresh.colle', function () {
+	// 	vscode.commands.executeCommand('show.colle');
+	// });
 
 	// commande pour compiler et téléverser le programme de colle depuis title view : programme de colle
 	let disposable6 = vscode.commands.registerCommand('build.colle', function () {
-		const programme_colle_file = child_process.execSync('bash ' + __dirname + '/build_programme_colle.sh ' + collepath + ' ' + stypath + ' ' + pythoncommand + ' ' + __dirname).toString();
-		const output = child_process.execSync(pythoncommand +  ' ' + __dirname + ' ' + '/upload_programme_colle_java.py ' + collepath + programme_colle_file).toString();
-		vscode.window.showInformationMessage(output)
+		vscode.commands.executeCommand('compile.colle');
+		vscode.commands.executeCommand('upload.colle');
+		// first compile the programme de colle
+		// let programme_colle_file = child_process.execSync('bash ' + __dirname + '/build_programme_colle.sh ' + collepath + ' ' + stypath + ' ' + pythoncommand + ' ' + __dirname).toString();
+		// vscode.window.showInformationMessage(programme_colle_file + ' compilé avec succès');
+		// then upload the programme de colle
+		// const week = getNextMonday()[1];
+		// vscode.window.showInformationMessage(pythoncommand +  ' ' + __dirname + '/upload_programme_colle.py ' + collepath + ' ' + programme_colle_file + ' ' + week);
+		// const output = child_process.execSync(pythoncommand +  ' ' + __dirname + '/upload_programme_colle.py ' + collepath + ' ' + programme_colle_file + ' ' + week).toString();
+		// vscode.window.showInformationMessage(output)
 	});
 
 
 	// Make these functions active
 	context.subscriptions.push(disposable);
 	context.subscriptions.push(disposable2);
+	context.subscriptions.push(disposable2bis);
 	context.subscriptions.push(disposable3);
+	context.subscriptions.push(disposable3bis);
 	context.subscriptions.push(disposable4);
 	context.subscriptions.push(disposable5);
 	context.subscriptions.push(disposable6);
@@ -480,12 +555,26 @@ var ProgShow = /** @class */ (function () {
 		return item;
         // return element;
     };
+
     ProgShow.prototype.getChildren = function (element) {
         if (element === undefined) {
             return this.data;
         }
         return element.children;
     };
+
+	// to refresh tree elements of the programme de colle
+	ProgShow.prototype.onDidChangeTreeData = function (listener) {
+		// Implement the onDidChangeTreeData method
+		this.changeTreeDataListener = listener;
+	};
+
+	ProgShow.prototype.refresh = function () {
+		// Call this method whenever you want to refresh the tree view
+		if (this.changeTreeDataListener) {
+			this.changeTreeDataListener();
+		}
+	};
     return ProgShow;
 }());
 
@@ -520,6 +609,12 @@ function GetTypeExo(label, filepath) {
 			var startIndex = lines[i].indexOf('[', lines[i].indexOf('[') + 1) + 1;
 			var endIndex = lines[i].indexOf(']', lines[i].indexOf(']') + 1);
 			const difficulty = lines[i].substring(startIndex, endIndex);
+
+			// if (difficulty !== '1' || difficulty !== '2' || difficulty !== '3') {
+				// add this exercise to a file that stores all exercices where the difficulty is not specified
+			// fs.appendFileSync(__dirname  + 'exercices-sans-difficulte.txt', filepath + '\n');
+			// }
+
 			// return the type of exercise and its difficulty
 			return [typeexo, difficulty];
 		}
@@ -541,9 +636,19 @@ var TreeItem = /** @class */ (function (_super) {
 			_this.collapsibleState = collapsed;
 		}
 
+		//  do not show the small arrow indicating the collapsed state for files (leaves of the tree)
+		if (_this.contextValue === 'file' || _this.contextValue === 'pdf' || _this.contextValue === 'latex') {
+			_this.collapsibleState = vscode.TreeItemCollapsibleState.None;
+		}
+
 		// get the type of exercise and its difficulty
 		var typeexo = GetTypeExo(label, filePath)[0]
 		var difficulty = GetTypeExo(label, filePath)[1]
+
+		// if (difficulty !== '1' || difficulty !== '2' || difficulty !== '3') {
+		// 	// add this exercise to a file that stores all exercices where the difficulty is not specified
+		// 	fs.appendFileSync(__dirname  + 'exercices-sans-difficulte.txt', filePath + '\n');
+		// }
 		_this.description = _this.contextValue === 'file' ? '★'.repeat(difficulty) : '';
 
 		// define context-specific icons for banque-exercices
@@ -556,16 +661,16 @@ var TreeItem = /** @class */ (function (_super) {
 			} else {
 				if (typeexo.includes('TD')) {
 					_this.iconPath = {
-						light: path.join(__dirname, 'images', 'paper_light.png'),
-						dark: path.join(__dirname, 'images', 'paper_dark.png')
+						light: path.join(__dirname, 'images', 'pencil_light.png'),
+						dark: path.join(__dirname, 'images', 'pencil_dark.png')
 					};
 				} else {
 					if (typeexo.includes('colle')) {
 						_this.iconPath = {
 							// light: path.join(__dirname, 'images', 'chalk_light.png'),
 							// dark: path.join(__dirname, 'images', 'chalk_dark.png')
-							light: path.join(__dirname, 'images', 'pencil_light.png'),
-							dark: path.join(__dirname, 'images', 'pencil_dark.png')
+							light: path.join(__dirname, 'images', 'chalkboard_light.png'),
+							dark: path.join(__dirname, 'images', 'chalkboard_dark.png')
 						};
 					} else {
 					_this.iconPath = {
@@ -609,7 +714,7 @@ var TreeItem = /** @class */ (function (_super) {
 									dark: path.join(__dirname, 'images', 'paper_dark.png')
 								};
 							} else {
-								if (contextValue === 'folder') {
+								if (contextValue === 'folder' || contextValue === 'chapter') {
 									_this.iconPath = {
 										light: path.join(__dirname, 'images', 'default_folder_opened.svg'),
 										dark: path.join(__dirname, 'images', 'default_folder_opened.svg')
@@ -628,12 +733,15 @@ var TreeItem = /** @class */ (function (_super) {
 				}
 			}
 		}
+
 		// test to add action on item click
 		// _this.command = {
 		// 		title: "Ouvrir exercice",
 		// 		command: "goto.exo", 
 		// 		arguments: [filePath]
 		// 	};
+
+		
 		return _this;
 	}
 
@@ -677,6 +785,9 @@ var BanqueExoShow = /** @class */ (function () {
 			// latex_files = latex_files.map(function(filename) {
 			// 	return path.parse(filename).name;
 			// });
+			
+			// remove the file that stores all exercices where the difficulty is not specified
+			fs.unlinkSync(__dirname + '/tmp/exercices-sans-difficulte.txt');
 
 			// return a tree item for each theme
 			return new TreeItem(theme.toUpperCase(), 
@@ -694,15 +805,23 @@ var BanqueExoShow = /** @class */ (function () {
 					exercices.pop();
 					return new TreeItem(basename,
 						exercices.map(function(exo) {
+							var difficulty = GetTypeExo(exo, filePath)[1]
+							if (difficulty !== '1' || difficulty !== '2' || difficulty !== '3') {
+								// add this exercise to a file that stores all exercices where the difficulty is not specified
+								fs.appendFileSync(__dirname  + '/tmp/exercices-sans-difficulte.txt', filePath + ':' + exo + '\n');
+								// vscode.window.showInformationMessage('Exercice sans difficulté : ' + exo + ' dans ' + filePath);
+							}
 							// const exo_short = (exo.slice(0, 25) + "...").toString();
 							return new TreeItem(exo, undefined, filePath, 'file');
 						}),
 						filePath,
-						'folder',
+						'chapter',
+						undefined
 					);
 				}),
 				undefined,
 				'folder',
+				undefined
 			);
 		});
 		// new TreeItem('COURS', [
@@ -719,8 +838,17 @@ var BanqueExoShow = /** @class */ (function () {
 				command: 'goto.exo',
 				title: 'Ouvrir exercice',
 				arguments: [element]
-			};
-		}
+			}
+		} 
+		// else {
+		// 	if (element.contextValue === 'chapter') {
+		// 		item.tooltip = "Ajouter";
+		// 		item.command = {
+		// 			command: 'open.latex',
+		// 			arguments: [element]
+		// 		};
+		// 	}
+		// }
 		return item;
 	};
 

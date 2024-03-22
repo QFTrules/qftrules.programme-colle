@@ -37,10 +37,11 @@ def uploaded(l,p):
     """
     for prog in l:
         if prog.text == p:
-            return True
-    return False
+            data_id = prog.get_attribute("data-id")
+            return data_id
+    return -1
 
-def waitabit(driver=None,t=1.5):
+def waitabit(driver=None,t=0.6):
     # WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, "body")))
     time.sleep(t)
     # pass
@@ -70,9 +71,13 @@ list_prog = driver.find_elements(by=By.CSS_SELECTOR, value="span[class='nom edit
 waitabit(driver=driver)
 
 # upload if not present
-if uploaded(list_prog,prog):
+data_id = uploaded(list_prog,prog)
+if data_id != -1:
     # print('---> Programme de colle already uploaded, updating...')
-    driver.find_elements(by=By.CSS_SELECTOR, value="a[class='icon-actualise formulaire']")[-1].click()
+    # list_prog = driver.find_elements(by=By.CSS_SELECTOR, value="a[class='icon-actualise formulaire']")
+    file_to_replace = driver.find_element(by=By.CSS_SELECTOR, value="p[data-id='" + str(data_id) + "']>a[class='icon-actualise formulaire']")
+    driver.execute_script("arguments[0].click();", file_to_replace)
+    # raise StaleElementReferenceException(data_id)
     # waitabit(driver=driver)
     choose_file = driver.find_element(by=By.CSS_SELECTOR, value="input[id='fichier']")
     # waitabit(driver=driver)
@@ -104,28 +109,33 @@ try:
     except:
         pass
     # print('---> Programme de colle already in onglet programme de colle')
-    liste_semaines = driver.find_elements(by=By.CSS_SELECTOR, value="h3[class='edition']")
+    # liste_semaines = driver.find_elements(by=By.CSS_SELECTOR, value="h3[class='edition']")
+    liste_semaines = driver.find_elements(by=By.CSS_SELECTOR, value="article")
     for i, semaine in enumerate(liste_semaines):
         # print(i, semaine.text, week)
         if week in semaine.text:
+            data_id = semaine.get_attribute("data-id")
             break
     # waitabit(driver=driver,t=0.2)
-    driver.find_elements(by=By.CSS_SELECTOR, value="a[class='icon-ajoutecolle']")[i].click()
+    # raise ArithmeticError(data_id)
+    week_to_add = driver.find_element(by=By.CSS_SELECTOR, value="article[data-id='" + str(data_id) + "']>a[class='icon-ajoutecolle']")
+    week_to_add.click()
+    # driver.execute_script("arguments[0].click();", week_to_add[0])
     waitabit(driver=driver)
     driver.find_element(by=By.CSS_SELECTOR, value="button[class='icon-lien1']").click()
-    waitabit(driver=driver,t=0.2)
+    waitabit(driver=driver)
     background = driver.find_element(by=By.CSS_SELECTOR, value="select[id='rep']")
     menu = Select(driver.find_element(by=By.CSS_SELECTOR, value="select[id='rep']"))
     menu.select_by_visible_text('Physique/Programme de colle')
-    waitabit(driver=driver,t=0.2)
+    waitabit(driver=driver)
     menu = Select(driver.find_element(by=By.CSS_SELECTOR, value="select[id='doc']"))
     menu.select_by_visible_text(prog_file[:-4] + ' (pdf)')
-    waitabit(driver=driver,t=0.2)
+    waitabit(driver=driver)
     action = webdriver.common.action_chains.ActionChains(driver)
     action.move_to_element_with_offset(background, 0, 200)
     action.click()
     action.perform()
-    waitabit(driver=driver,t=0.2)
+    waitabit(driver=driver)
     driver.find_element(by=By.CSS_SELECTOR, value="article[id='fenetre']>a[class='icon-ok']").click()
     driver.find_element(by=By.CSS_SELECTOR, value="a[class='icon-ok']").click()
     # waitabit(driver=driver)

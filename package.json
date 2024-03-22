@@ -71,6 +71,11 @@
       "title": "Téléverser"
     },
     {
+      "command": "do.nothing",
+      "icon": "$(refresh)",
+      "title": "Téléversement en cours"
+    },
+    {
       "command": "build.colle",
       "icon": "$(gear)",
       "title": "Compiler et téléverser"
@@ -112,7 +117,12 @@
       "view/title": [
         {
           "command": "upload.colle",
-          "when": "view == programme-colle",
+          "when": "view == programme-colle && static",
+          "group": "navigation@1"
+        },
+        {
+          "command": "do.nothing",
+          "when": "view == programme-colle && !static",
           "group": "navigation@1"
         },
         {

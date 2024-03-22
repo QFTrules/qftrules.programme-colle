@@ -56,13 +56,13 @@ with open(sys.argv[1], 'r') as f:
                             lookforentete = True
                             continue
                     # else:
-                    theme = line[i+1:j]
+                    theme = line[i:j+1]
                 if found:
                     if entete and not type == 'devoir' and not type == 'td':
                         if type == 'tp':
                             # \TPName
                             # g.write('\\subsection' + theme + '\n')
-                            g.write('\\subsection{\\TPName' + theme + '}\n')
+                            g.write('\\subsection{~\\TPName' + theme + '}\n')
                         else:
                             g.write('\\Theme' + theme + '\n')
                         entete = False

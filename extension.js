@@ -329,8 +329,14 @@ function activate(context) {
 		}
 	)
 
+	vscode.commands.executeCommand('setContext', 'static', true);
+
 	// commande pour téléverser le programme de colle sur le cahier de prépa depuis title view : programme de colle
 	let disposable4 = vscode.commands.registerCommand('upload.colle', function () {
+
+		// change icon
+		vscode.commands.executeCommand('setContext', 'static', false);
+		
 
 		const nextTuesdayDate = getNextMonday()[0];
 		const week = getNextMonday()[1];
@@ -362,6 +368,9 @@ function activate(context) {
 
 		child_process.execSync(pythoncommand + ' ' + __dirname + '/upload_programme_colle.py ' + collepath + ' ' + programme_colle_file + ' ' + week).toString();
 		vscode.window.showInformationMessage(programme_colle_file  + ' téléversé avec succès');
+
+		// change icon
+		vscode.commands.executeCommand('setContext', 'static', true);
 		// const output = child_process.execSync('bash ' + __dirname + '/build_programme_colle_java.sh ' + collepath + ' ' + stypath + ' ' + pythoncommand + ' ' + __dirname).toString();
 		// vscode.window.showInformationMessage(output, 'OK')
 	});

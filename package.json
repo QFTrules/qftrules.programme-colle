@@ -98,6 +98,11 @@
       "command": "open.latex",
       "title": "Ajouter",
       "icon": "$(clippy)"
+    },
+    {
+      "command": "programme-colle.refresh",
+      "title": "Rafraîchir",
+      "icon": "$(refresh)"
     }
   ],
     
@@ -134,6 +139,11 @@
           "command": "build.colle",
           "when": "view == programme-colle",
           "group": "navigation@3"
+        },
+        {
+          "command": "programme-colle.refresh",
+          "when": "view == programme-colle",
+          "group": "navigation@4"
         }]
     },
     

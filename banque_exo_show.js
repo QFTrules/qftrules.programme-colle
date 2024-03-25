@@ -83,6 +83,19 @@ class BanqueExoShow {
 								// this will be used by the suggestions tree view panel
 								fs.appendFileSync(__dirname  + '/tmp/exercices-sans-difficulte.txt', filePath + ':' + exo + '\n');
 							}
+							// // create a simple completion provider item
+							// const completionItem = new vscode.CompletionItem(exo);
+							// completionItem.insertText = exo;
+							// completionItem.documentation = 'This is a sample completion item';
+							// // register the completion item provider for latex language
+							// vscode.languages.registerCompletionItemProvider({ language: 'latex' }, {
+							// 	triggerCharacters: ['\\Ex{'],
+							// 	provideCompletionItems() {
+							// 		// vscode.commands.executeCommand('editor.action.triggerSuggest');
+							// 		// return the completion item
+							// 		return [completionItem];
+							// 	}
+							// });
 							return new TreeItem(exo, undefined, filePath, 'file', undefined, typeExo, difficulty);
 						}),
 						filePath,

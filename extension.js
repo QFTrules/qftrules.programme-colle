@@ -7,6 +7,11 @@ const fs = require('fs');
 const path = require('path');
 const ProgShow = require('./prog_show');
 const BanqueExoShow = require('./banque_exo_show');
+// const pdfjsLib = require('pdfjs-dist');
+// const pdfWriter = require('pdfwriter');
+
+// set the boolean variables for when clauses
+vscode.commands.executeCommand('setContext', 'static', true);
 
 // Function to get the next Monday date for the programme de colle
 function getNextMonday() {
@@ -20,6 +25,76 @@ function getNextMonday() {
 	return [`${year}_${month}_${day}`,`"${dayOfWeek} ${day} ${monthName} ${year}"`];
 };
 
+
+	// register the completion item provider for latex documents
+	vscode.languages.registerCompletionItemProvider('latex', {
+
+		provideCompletionItems() {
+
+
+			// a simple completion item which inserts `Hello World!`
+			const simpleCompletion = new vscode.CompletionItem('Hello World!');
+
+			// a completion item that inserts its text as snippet,
+			// the `insertText`-property is a `SnippetString` which will be
+			// honored by the editor.
+			const snippetCompletion = new vscode.CompletionItem('Good part of the day');
+			snippetCompletion.insertText = new vscode.SnippetString('Good ${1|morning,afternoon,evening|}. It is ${1}, right?');
+			const docs = new vscode.MarkdownString("Inserts a snippet that lets you select [link](x.ts).");
+			snippetCompletion.documentation = docs;
+			docs.baseUri = vscode.Uri.parse('http://example.com/a/b/c/');
+
+			// a completion item that can be accepted by a commit character,
+			// the `commitCharacters`-property is set which means that the completion will
+			// be inserted and then the character will be typed.
+			const commitCharacterCompletion = new vscode.CompletionItem('console');
+			commitCharacterCompletion.commitCharacters = ['.'];
+			commitCharacterCompletion.documentation = new vscode.MarkdownString('Press `.` to get `console.`');
+
+			// a completion item that retriggers IntelliSense when being accepted,
+			// the `command`-property is set which the editor will execute after 
+			// completion has been inserted. Also, the `insertText` is set so that 
+			// a space is inserted after `new`
+			const commandCompletion = new vscode.CompletionItem('new');
+			commandCompletion.kind = vscode.CompletionItemKind.Keyword;
+			commandCompletion.insertText = 'new ';
+			commandCompletion.command = { command: 'editor.action.triggerSuggest', title: 'Re-trigger completions...' };
+
+			// return all completion items as array
+			return [
+				simpleCompletion,
+				snippetCompletion,
+				commitCharacterCompletion,
+				commandCompletion
+			];
+		}
+	});
+
+	vscode.languages.registerCompletionItemProvider(
+		'latex',
+		{
+			provideCompletionItems(document, position) {
+				const lineText = document.lineAt(position.line).text;
+				const linePrefix = lineText.slice(0, position.character);
+				const lineSuffix = lineText.slice(position.character);
+
+				// Check if the cursor is surrounded by {}
+				if (linePrefix.endsWith('\Ex{') && lineSuffix.startsWith('}')) {
+					// Return your completion items here
+					return [
+						new vscode.CompletionItem('item1'),
+						new vscode.CompletionItem('item2'),
+						new vscode.CompletionItem('item3')
+					];
+				}
+
+				return undefined;
+			}
+		},
+		'{' // triggered whenever a '{' is being typed
+	);
+
+
 /**
  * @param {vscode.ExtensionContext} context
 */
@@ -27,128 +102,20 @@ function activate(context) {
 	// Use the console to output diagnostic information (console.log) and errors (console.error)
 	console.log('Congratulations, your extension "show-programme-colle" is now active!');
 	
-	// set the boolean variables for when clauses
-	vscode.commands.executeCommand('setContext', 'static', true);
+
 
 	// get the user setting variables
-	const collePath = vscode.workspace.getConfiguration('Programme-de-colle').get('collepath');
-	const styPath = vscode.workspace.getConfiguration('Programme-de-colle').get('stypath');
-	const pythonCommand = vscode.workspace.getConfiguration('Programme-de-colle').get('Python-command');
-	const programmeBalise = vscode.workspace.getConfiguration('Programme-de-colle').get('Programme-balise');
-	// The command has been defined in the package.json file
-	// Now provide the implementation of the command with  registerCommand
-	// The commandId parameter must match the command field in package.json
-	// let disposable = vscode.commands.registerCommand('test.colle', function () {
-	// 	// The code you place here will be executed every time your command is executed
-
-
-	// 	// Get the active text editor
-	// 	var editor = vscode.window.activeTextEditor;
-	// 	if (!editor) {
-	// 		return;
-	// 	}
-
-	// 	// Access the directory where extension.js is located
-    //     const extensionDir = __dirname;
-
-	// 	// Decompose the output string into a list of words
-	// 	// var output = show_programme_colle();
-	// 	var output = child_process.execSync('bash ' + extensionDir + '/show_programme_colle_java.sh').toString();
-	// 	var words = output.split(':');
-	// 	// remove the first element of the words array
-	// 	words.shift();
-	// 	const type_colle = words.filter((_, index) => index % 2 == 0);
-	// 	// Define a list variable with the same length as contenu
-	// 	// Initialize an empty list
-	// 	let all_basenames = [];
-	// 	let all_documents = [];
-	// 	let output_message = ['Cours : '];
-	// 	// const type_colle = [
-	// 	// 	'Cours : ',
-	// 	// 	'TD : ',
-	// 	// 	'DM : ',
-	// 	// 	'DS : ',
-	// 	// 	'TP : ',
-	// 	// ];
-	// 	const separator = ' | ';
-	// 	for (let j = 0; j < type_colle.length; j++) {
-	// 		var documents = words[2*j+1].trim().split(',');
-	// 		// Loop through the contenu array to keep only the basename of the paths
-	// 		if (documents.length !== 1) {
-	// 			if (j !== 0) {
-	// 				output_message = [...output_message, separator, type_colle[j], ' : '];
-	// 			}
-	// 			for (let i = 0; i < documents.length-1; i++) {
-	// 				all_documents.push(documents[i].trim())
-	// 				all_basenames.push(path.parse(documents[i].trim()).name);
-	// 				output_message.push(path.parse(documents[i].trim()).name);
-	// 				if (i !== documents.length-2) {
-	// 					output_message = [...output_message, ', '];
-	// 					}
-	// 			}
-	// 		} else {
-	// 			// Pass
-	// 		}
-	// 	}
-
-	// 	// / Concatenate the strings of the list all_documents
-	// 	const concatenatedDocuments = output_message.join('')
-
-	// 	// FIRST VERSION : Type of doc and then documents as subsequent messages : too long !
-	// 	vscode.window.showInformationMessage(concatenatedDocuments, { modal: false }, 'Téléverser', ...type_colle)
-	// 		.then(selection => {
-	// 			// loop through the words array
-	// 			for (let i = 0; i < words.length; i++) {	
-	// 				// react if button clicked
-	// 				const commandName = `programme-de-colle.buttonSelection${i}`;
-	// 				vscode.commands.registerCommand(commandName, function () {
-	// 					// If the button words[i] is clicked
-	// 					if (selection === words[i]) {
-	// 						// Define a list variable with the same length as contenu
-	// 						var documents = words[i+1].trim().split(',');
-	// 						// Define a list variable with the same length as contenu
-	// 						const documents_basename = new Array(documents.length);
-	// 						// Loop through the contenu array to keep only the basename of the paths
-	// 						for (let i = 0; i < documents.length; i++) {
-	// 							documents_basename[i] = path.parse(documents[i].trim()).name;
-	// 						}
-							
-	// 						// show a message box to choose the document to modify
-	// 						vscode.window.showInformationMessage('Sélectionner le ' + words[i] + ' à modifier', { modal: false }, 'Passer', ...documents_basename)
-	// 						.then(selection => {
-	// 							// loop through the words array
-	// 							for (let i = 0; i < documents_basename.length; i++) {	
-	// 								// Handle the button click
-	// 								if (selection === documents_basename[i]) {
-	// 									// Add your code here
-	// 									// open the latex document in vscode
-	// 									const fichier = documents[i].trim();
-	// 									vscode.commands.executeCommand('vscode.open',vscode.Uri.file(fichier.trim()));
-	// 									child_process.execSync(pythonCommand + ' ' + extensionDir + '/search-within-file_java.py ' + documents[i].trim() + ' "' + programmeBalise + '"');
-	// 									// loop to call again the main message box
-	// 									// vscode.commands.executeCommand(commandName);
-	// 								}
-	// 							}
-	// 						});
-	// 					}
-	// 				});
-	// 				// Call or activate the command using commandName
-	// 				vscode.commands.executeCommand(commandName);
-	// 			}
-
-	// 			// Téléverser sur cahier de prépa
-	// 			if (selection === 'Téléverser') {
-	// 				output = child_process.execSync('bash ' + extensionDir + '/build_programme_colle_java.sh ' + collePath + ' ' + styPath + ' ' + pythonCommand).toString();
-	// 				// output = child_process.execSync('/home/eb/anaconda3/bin/python3 /home/eb/Dropbox/.latex/Commands/upload_programme_colle.py').toString();
-	// 				vscode.window.showInformationMessage(output, 'OK')
-	// 				.then()
-	// 			}
-	// 		});
-	// 	});
-
-	vscode.commands.registerCommand('copy.exo', function (document) {
+	const collePath = vscode.workspace.getConfiguration('programme-colle').get('collePath');
+	const styPath = vscode.workspace.getConfiguration('programme-colle').get('styPath');
+	const pythonCommand = vscode.workspace.getConfiguration('programme-colle').get('pythonCommand');
+	const programmeBalise = vscode.workspace.getConfiguration('programme-colle').get('programmeBalise');
+	// const mathpixCommand = vscode.workspace.getConfiguration('mathpix-pdf').get('mpxCommand');
+	// const texPath = vscode.workspace.getConfiguration('mathpix-pdf').get('texPath');
+	const texArchives = vscode.workspace.getConfiguration('mathpix-pdf').get('texArchives');
+	const flashDrive = vscode.workspace.getConfiguration('flash').get('flashDrive');
+	
+	let copy = vscode.commands.registerCommand('banque.copy', function (document) {
 		// Copy the document path to the clipboard
-		// child_process.execSync(`echo ${document} | xclip -selection clipboard`);
 		let editor = vscode.window.activeTextEditor;
 		if (editor) {
 			// let document = editor.document;
@@ -160,27 +127,8 @@ function activate(context) {
 		}
 	)
 
-	// let disposable2 = vscode.commands.registerCommand('copy.exo', function (document) {
-	// 	// Copy the document path to the clipboard
-	// 	// child_process.execSync(`echo ${document} | xclip -selection clipboard`);
-	// 	let editor = vscode.window.activeTextEditor;
-	// 	if (editor) {
-	// 		// let document = editor.document;
-	// 		let position = editor.selection.active;
-	// 		editor.edit(editBuilder => {
-	// 			editBuilder.insert(position, document.label.replace(/"/g, ''));
-	// 		});
-	// 	}
-	// 	}
-	// )
-
-
-	let disposable2bis = vscode.commands.registerCommand('open.latex', function (document) {
+	let open = vscode.commands.registerCommand('banque.open', function (document) {
 		// open the latex document in vscode
-		// vscode.commands.executeCommand('vscode.open',vscode.Uri.file(document.filePath));
-		// open the latex document in vscode
-		// vscode.commands.executeCommand('vscode.open', vscode.Uri.file(document.filePath));
-		// Add the string '\Source{' + document.filePath + '}\n' to the current editor
 		let editor = vscode.window.activeTextEditor;
 		if (editor) {
 			// let document = editor.document;
@@ -191,7 +139,7 @@ function activate(context) {
 		}
 	})
 
-	let disposable3bis = vscode.commands.registerCommand('fetch.exo', function () {
+	let go = vscode.commands.registerCommand('suggestions.go', function () {
 		// open an exercise listed in the file /tmp/exercices-sans-difficulte.txt
 
 		// Read the contents of the file
@@ -220,39 +168,25 @@ function activate(context) {
             editor.selection = new vscode.Selection(range.start, range.end);
 			editor.revealRange(range, vscode.TextEditorRevealType.AtTop);
         } else {
-            vscode.window.showInformationMessage('String not found');
+            // vscode.window.showInformationMessage('String not found');
         }
-			// child_process.execSync(pythoncommand + ' ' + __dirname + '/search-within-file_java.py ' + filePath + ' "' + exo + '"');
 		}
 	)
 
-
-
-	let disposable3 = vscode.commands.registerCommand('goto.exo', function (doc) {
+	let fetch = vscode.commands.registerCommand('banque.fetch', function (doc) {
 		// open document in vscode
-		// vscode.window.showInformationMessage('Ouverture de ' + document.filePath, '\\\\\\\\ProgrammeColle');
 		vscode.commands.executeCommand('vscode.open',vscode.Uri.file(doc.filePath));
 
-		// The code you place here will be executed every time your command is executed
-		// Get the active text editor
+		// Get the active text editor and string to search
 		var editor = vscode.window.activeTextEditor;
 		if (!editor) {
 			return;
 		}
 		if (doc.contextValue === 'latex') {
-			var searchString = '\\ProgrammeColle';
-			// vscode.window.showInformationMessage('Searching for ' + searchString + ' in ' + doc.filePath);
+			var searchString = programmeBalise;
 		} else {
 			var searchString = '{' + doc.label + '}';
 		}
-		// Search for the string "doc.label" within the document
-		// var searchString = '{' + docstring + '}';
-		// vscode.window.showInformationMessage('Searching for ' + searchString + ' in ' + doc.filePath);
-		// var searchOptions = {
-		// 	matchCase: false,
-		// 	matchWholeWord: true,
-		// 	// Add any other search options here
-		// };
 
 		let document = editor.document;
         var text = document.getText();
@@ -264,83 +198,14 @@ function activate(context) {
             var range = new vscode.Range(startPosition, endPosition);
             editor.selection = new vscode.Selection(range.start, range.end);
 			editor.revealRange(range, vscode.TextEditorRevealType.AtTop);
-			
-			// try to run the code again to select the searchstring, does not work, needs double click.
-			// var text = document.getText();
-			// var position = text.indexOf(searchString);
-			// var startPosition = document.positionAt(position);
-            // var endPosition = document.positionAt(position + searchString.length);
-            // var range = new vscode.Range(startPosition, endPosition);
-            // editor.selection = new vscode.Selection(range.start, range.end);
-			// editor.revealRange(range, vscode.TextEditorRevealType.AtTop);
         } else {
-            vscode.window.showInformationMessage('Exercice ou balise non trouvée.');
+            // vscode.window.showInformationMessage('Exercice ou balise non trouvée.');
         }
-		// var searchRange = new vscode.Range(0, 0, doc.lineCount, 0);
-		// editor.selection = new vscode.Selection(searchRange.start, searchRange.end);
-		// editor.revealRange(searchRange, vscode.TextEditorRevealType.InCenter);
-		// vscode.commands.executeCommand('editor.action.
-		// ', {
-		// 	query: searchString,
-		// 	triggerSearch: true,
-		// 	matchCase: false,
-		// 	matchWholeWord: true,
-		// 	isRegex: false,
-		// 	filesToInclude: doc.filePath,
-		// 	filesToExclude: '',
-		// 	useExcludeSettingsAndIgnoreFiles: true,
-		// });
-		// vscode.commands.executeCommand('editor.action.nextMatchFindAction', searchString);
-
-			// The code you place here will be executed every time your command is executed
-		// Get the active text editor
-		// var editor = vscode.window.activeTextEditor;
-		// if (!editor) {
-		// 	return;
-		// }
-		// Search for the string "test" within the document
-		// var searchString = doc.label;
-		// vscode.window.showInformationMessage('Searching for ' + searchString + ' in ' + doc.filePath);
-		// var searchOptions = {
-		// 	matchCase: false,
-		// 	matchWholeWord: true,
-		// 	// Add any other search options here
-		// };
-		// var searchRange = new vscode.Range(0, 0, doc.lineCount, 0);
-		// var searchResults = doc.getText().match(new RegExp(searchString, 'g'));
-		// then go the position of the first instance of searchresults in the file given by filepath
-
-
-
-		// vscode.commands.executeCommand('workbench.action.findInFiles', {
-		// 	query: searchString,
-		// 	triggerSearch: true,
-		// 	matchCase: false,
-		// 	matchWholeWord: true,
-		// 	isRegex: false,
-		// 	filesToInclude: doc.filePath,
-		// 	filesToExclude: '',
-		// 	useExcludeSettingsAndIgnoreFiles: true,
-		// });
-		
-		// Process the search results
-		// if (searchResults) {
-		// 	// Iterate over each search result
-		// 	for (var i = 0; i < searchResults.length; i++) {
-		// 		var searchResult = searchResults[i];
-		// 		// Do something with each search result
-		// 		console.log("Found at line " + (searchResult.range.start.line + 1) + ", column " + (searchResult.range.start.character + 1));
-		// 	}
-		// } else {
-		// 	console.log("No matches found");
-		// }
-
-		}
-	)
+	})
 
 
 	// commande pour téléverser le programme de colle sur le cahier de prépa depuis title view : programme de colle
-	let disposable4 = vscode.commands.registerCommand('upload.colle', function () {
+	let upload = vscode.commands.registerCommand('programme.upload', function () {
 
 		// change icon
 		vscode.commands.executeCommand('setContext', 'static', false);
@@ -351,40 +216,20 @@ function activate(context) {
 
 		// console.log(nextTuesdayDate);
 		let programme_colle_file = nextTuesdayDate + '_PC_Phy_colle.pdf';
-		// vscode.window.showInformationMessage(programme_colle_file);
-		// // Read the contents of the collepath directory
-		// fs.readdir(collepath, (err, files) => {
-		// 	if (err) {
-		// 		console.error(err);
-		// 		return;
-		// 	}
-			
-		// 	// Loop through each file in the directory
-		// 	for (const file of files) {
-		// 		vscode.window.showInformationMessage(file);
-		// 		// Check if the file is of type pdf and contains the string '_PC_Phy_colle.pdf'
-		// 		if (file.endsWith('_PC_Phy_colle.pdf')) {
-		// 			// Set the programme_colle_file variable to the file path
-		// 			programme_colle_file = file;
-		// 			break; // Stop the loop if a matching file is found
-		// 		}
-		// 	}
-		// });
-
-		// Continue with the rest of your code...
-		// vscode.window.showInformationMessage(pythoncommand +  ' ' + __dirname + '/upload_programme_colle.py ' + collepath + ' ' + programme_colle_file + ' ' + week);
-
 		child_process.execSync(pythonCommand + ' ' + __dirname + '/upload_programme_colle.py ' + collePath + ' ' + programme_colle_file + ' ' + week).toString();
 		vscode.window.showInformationMessage(programme_colle_file  + ' téléversé avec succès');
 
 		// change icon
 		vscode.commands.executeCommand('setContext', 'static', true);
-		// const output = child_process.execSync('bash ' + __dirname + '/build_programme_colle_java.sh ' + collepath + ' ' + stypath + ' ' + pythoncommand + ' ' + __dirname).toString();
-		// vscode.window.showInformationMessage(output, 'OK')
+	});
+
+	// commande pour téléverser le programme de colle sur le cahier de prépa depuis title view : programme de colle
+	let uploading = vscode.commands.registerCommand('programme.uploading', function () {
+		// empty function to change the icon when programme de colle uploading
 	});
 
 	// commande pour compiler le programme de colle depuis title view : programme de colle
-	let disposable5 = vscode.commands.registerCommand('compile.colle', function () {
+	let compile = vscode.commands.registerCommand('programme.compile', function () {
 		const programme_colle_file = child_process.execSync('bash ' + __dirname + '/build_programme_colle.sh ' + collePath + ' ' + styPath + ' ' + pythonCommand + ' ' + __dirname).toString();
 		vscode.window.showInformationMessage(programme_colle_file  + ' compilé avec succès', { timeout: 1 });
 		vscode.commands.executeCommand('vscode.open', vscode.Uri.file(path.join(collePath.trim(),programme_colle_file.trim())), { viewColumn: vscode.ViewColumn.Beside });
@@ -393,43 +238,212 @@ function activate(context) {
 
 
 	// commande pour compiler et téléverser le programme de colle depuis title view : programme de colle
-	let disposable6 = vscode.commands.registerCommand('build.colle', function () {
-		vscode.commands.executeCommand('compile.colle');
-		vscode.commands.executeCommand('upload.colle');
-		// first compile the programme de colle
-		// let programme_colle_file = child_process.execSync('bash ' + __dirname + '/build_programme_colle.sh ' + collepath + ' ' + stypath + ' ' + pythoncommand + ' ' + __dirname).toString();
-		// vscode.window.showInformationMessage(programme_colle_file + ' compilé avec succès');
-		// then upload the programme de colle
-		// const week = getNextMonday()[1];
-		// vscode.window.showInformationMessage(pythoncommand +  ' ' + __dirname + '/upload_programme_colle.py ' + collepath + ' ' + programme_colle_file + ' ' + week);
-		// const output = child_process.execSync(pythoncommand +  ' ' + __dirname + '/upload_programme_colle.py ' + collepath + ' ' + programme_colle_file + ' ' + week).toString();
-		// vscode.window.showInformationMessage(output)
+	let build = vscode.commands.registerCommand('programme.build', function () {
+		vscode.commands.executeCommand('programme.compile');
+		vscode.commands.executeCommand('programme.upload');
 	});
-
-
-	// Make these functions active
-	// context.subscriptions.push(disposable);
-	// context.subscriptions.push(disposable2);
-	context.subscriptions.push(disposable2bis);
-	context.subscriptions.push(disposable3);
-	context.subscriptions.push(disposable3bis);
-	context.subscriptions.push(disposable4);
-	context.subscriptions.push(disposable5);
-	context.subscriptions.push(disposable6);
 
 	// register data providers
 	const programme_colle = new ProgShow();
+	const banque_exercices = new BanqueExoShow();
 	vscode.window.registerTreeDataProvider('programme-colle', programme_colle);
-	vscode.window.registerTreeDataProvider('package-banque', new BanqueExoShow());
-	// vscode.commands.registerCommand('programme-colle.refresh', () => {
-			// vscode.commands.executeCommand('show.colle');
-			// programme_colle.refresh();
+	vscode.window.registerTreeDataProvider('banque-exercices', banque_exercices);
+
+	// commands to refresh the data providers
+	let refresh = vscode.commands.registerCommand('programme.refresh', () => {
+			programme_colle.refresh();
+	});
+
+	// command in the explorer context menu to convert pdf to latex	
+	let convert = vscode.commands.registerCommand('mathpix-pdf.convert', function (uri) {
+		// The code you place here will be executed every time your command is executed
+		const fileName = path.basename(uri.toString());
+		const fileDirectory = path.dirname(uri.toString().replace("file://", ""));
+		
+		// Prompt the user for the pages range
+		vscode.window.showInputBox({ placeHolder: 'Enter the pages range (e.g. 1, 1-5, or 2-end)' }).then(range => {
+			if (range) {
+				vscode.window.showQuickPick(texArchives, { placeHolder: 'Enter the tex archive to store the exercise (e.g. dynapoint.tex)' }).then(texFile => {
+					if (texFile) {
+						// Run the bash program on the active file
+						// vscode.window.showInformationMessage(`Converting pages ${range} of ${fileName} to latex...`);
+						// decode the string
+						const pageRange = range.split('-');
+						const startPage = pageRange[0];
+						const endPage = pageRange[1] || 'end';
+
+						// Read the PDF file using a library like pdfjs-dist
+
+						const fileData = fs.readFileSync(`${fileDirectory}/${fileName}`);
+						const loadingTask = pdfjsLib.getDocument(fileData);
+
+						loadingTask.promise.then((pdf) => {
+							const totalPages = pdf.numPages;
+
+							// Calculate the actual page numbers based on the range
+							const startPageNumber = parseInt(startPage);
+							const endPageNumber = endPage === 'end' ? totalPages : parseInt(endPage);
+
+							// Validate the page numbers
+							if (startPageNumber <= 0 || startPageNumber > totalPages || endPageNumber <= 0 || endPageNumber > totalPages || startPageNumber > endPageNumber) {
+								vscode.window.showErrorMessage('Invalid page range');
+								return;
+							}
+
+							// Extract the pages using pdfjs-dist
+							const pagesToExtract = [];
+							for (let i = startPageNumber; i <= endPageNumber; i++) {
+								pagesToExtract.push(i);
+							}
+
+							const writer = new pdfWriter.PDFWriter();
+
+							const outputFile = `${fileDirectory}/file_to_convert.pdf`;
+							const outputStream = fs.createWriteStream(outputFile);
+
+							pdf.copyPagesInto(pagesToExtract, writer);
+							writer.pipe(outputStream);
+							writer.end();
+
+							vscode.window.showInformationMessage(`Pages ${startPage}-${endPage} extracted successfully`);
+						}).catch((error) => {
+							vscode.window.showErrorMessage(`Error: ${error.message}`);
+						});
+						// child_process.execSync(decodeURI(`pdftk ${fileDirectory}/${fileName} cat ${range} output "${fileDirectory}/file_to_convert.pdf"`));
+						// const commande = decodeURI(__dirname + `/mathpix_pdf_to_latex.sh ${fileName} ${fileDirectory} "${texPath}${texFile}" ${range}`, 'utf-8'); 
+						// vscode.window.showInformationMessage(commande);
+						// child_process.execSync(commande, (error, stdout, stderr) => {
+						// 	if (error) {
+						// 		// Display an error message if the bash program encounters an error
+						// 		vscode.window.showErrorMessage(`Error: ${error.message} | ${stderr}`);
+						// 		return;
+						// 	}
+						// });
+						// child_process.exec(decodeURI(mathpixCommand + ` convert ${fileDirectory}/file_to_convert.pdf ${fileDirectory}/file_to_convert.tex`), (error, stderr) => {
+						// 	if (error) {
+						// 		// Display an error message if the bash program encounters an error
+						// 		vscode.window.showErrorMessage(`Error: ${error.message} | ${stderr}`);
+						// 		return;
+						// 	}
+						// });
+					}
+				});
+			}
+		});
+	});
+
+	// command to send file in the editor to the flash drive
+	let send = vscode.commands.registerCommand('flash.send', function () {
+		// get the active text editor
+		let editor = vscode.window.activeTextEditor;
+		if (!editor) {
+			return;
+		}
+		// get the file path
+		const filePath = editor.document.fileName;
+		// check if the destination path is a directory
+		if (fs.existsSync(flashDrive) && fs.lstatSync(flashDrive).isDirectory()) {
+			// copy the file to the flash drive
+			const fileName = path.basename(filePath);
+			const destinationPath = path.join(flashDrive, fileName);
+			fs.copyFileSync(filePath, destinationPath);
+			// show information message
+			vscode.window.showInformationMessage(`${fileName} copied to flash drive`);
+		} else {
+			vscode.window.showErrorMessage('Invalid destination path');
+		}
+	});
+
+
+
+	// now push these functions to the context
+	context.subscriptions.push(copy);
+	context.subscriptions.push(open);
+	context.subscriptions.push(go);
+	context.subscriptions.push(fetch);
+	context.subscriptions.push(upload);
+	context.subscriptions.push(uploading);
+	context.subscriptions.push(compile);
+	context.subscriptions.push(build);
+	context.subscriptions.push(refresh);
+	context.subscriptions.push(convert);
+	context.subscriptions.push(send);
+
+	// // register the completion item provider for latex documents
+	// let complet1 = vscode.languages.registerCompletionItemProvider('latex', {
+
+	// 	provideCompletionItems() {
+
+
+	// 		// a simple completion item which inserts `Hello World!`
+	// 		const simpleCompletion = new vscode.CompletionItem('Hello World!');
+
+	// 		// a completion item that inserts its text as snippet,
+	// 		// the `insertText`-property is a `SnippetString` which will be
+	// 		// honored by the editor.
+	// 		const snippetCompletion = new vscode.CompletionItem('Good part of the day');
+	// 		snippetCompletion.insertText = new vscode.SnippetString('Good ${1|morning,afternoon,evening|}. It is ${1}, right?');
+	// 		const docs = new vscode.MarkdownString("Inserts a snippet that lets you select [link](x.ts).");
+	// 		snippetCompletion.documentation = docs;
+	// 		docs.baseUri = vscode.Uri.parse('http://example.com/a/b/c/');
+
+	// 		// a completion item that can be accepted by a commit character,
+	// 		// the `commitCharacters`-property is set which means that the completion will
+	// 		// be inserted and then the character will be typed.
+	// 		const commitCharacterCompletion = new vscode.CompletionItem('console');
+	// 		commitCharacterCompletion.commitCharacters = ['.'];
+	// 		commitCharacterCompletion.documentation = new vscode.MarkdownString('Press `.` to get `console.`');
+
+	// 		// a completion item that retriggers IntelliSense when being accepted,
+	// 		// the `command`-property is set which the editor will execute after 
+	// 		// completion has been inserted. Also, the `insertText` is set so that 
+	// 		// a space is inserted after `new`
+	// 		const commandCompletion = new vscode.CompletionItem('new');
+	// 		commandCompletion.kind = vscode.CompletionItemKind.Keyword;
+	// 		commandCompletion.insertText = 'new ';
+	// 		commandCompletion.command = { command: 'editor.action.triggerSuggest', title: 'Re-trigger completions...' };
+
+	// 		// return all completion items as array
+	// 		return [
+	// 			simpleCompletion,
+	// 			snippetCompletion,
+	// 			commitCharacterCompletion,
+	// 			commandCompletion
+	// 		];
+	// 	}
 	// });
+
+	// let complet2 = vscode.languages.registerCompletionItemProvider(
+	// 	'latex',
+	// 	{
+	// 		provideCompletionItems(document, position) {
+
+	// 			// get all text until the `position` and check if it reads `console.`
+	// 			// and if so then complete if `log`, `warn`, and `error`
+	// 			const linePrefix = document.lineAt(position).text.slice(0, position.character);
+	// 			if (!linePrefix.endsWith('console.')) {
+	// 				return undefined;
+	// 			}
+
+	// 			return [
+	// 				new vscode.CompletionItem('log', vscode.CompletionItemKind.Method),
+	// 				new vscode.CompletionItem('warn', vscode.CompletionItemKind.Method),
+	// 				new vscode.CompletionItem('error', vscode.CompletionItemKind.Method),
+	// 			];
+	// 		}
+	// 	},
+	// 	'.' // triggered whenever a '.' is being typed
+	// );
+
+	// context.subscriptions.push(complet1, complet2);
+
 }
 
 // This method is called when your extension is deactivated
 function deactivate() {}
 
+
+// export modules
 module.exports = {
 	activate,
 	deactivate

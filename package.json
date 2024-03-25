@@ -18,7 +18,7 @@
     "viewsWelcome": [
       {
         "view": "suggestions",
-        "contents": "Voici les activités suggérées.\n[Indiquer la difficulté des exercices suivants](command:fetch.exo)"
+        "contents": "Voici les activités suggérées.\n[Indiquer la difficulté des exercices suivants](command:suggestions.go)"
       }],
 
     "viewsContainers": {
@@ -48,7 +48,7 @@
           "icon" : "images/default_folder_opened.svg"
         },
         {
-          "id": "package-banque",
+          "id": "banque-exercices",
           "name": "Banque d'exercices",
           "type": "tree",
           "icon" : "images/default_folder_opened.svg"
@@ -61,87 +61,112 @@
       ]
     },
 
-    "commands": [{
-      "command": "test.colle",
-      "title": "Programme de colle"
+    "commands": [
+    {
+      "command": "mathpix-pdf.convert",
+      "title": "Convert to tex"
     },
     {
-      "command": "upload.colle",
+      "command": "programme.upload",
       "icon": "$(cloud-upload)",
       "title": "Téléverser"
     },
     {
-      "command": "do.nothing",
-      "icon": "$(refresh)",
-      "title": "Téléversement en cours"
-    },
-    {
-      "command": "build.colle",
+      "command": "programme.build",
       "icon": "$(gear)",
       "title": "Compiler et téléverser"
     },
     {
-      "command": "compile.colle",
+      "command": "programme.compile",
       "icon": "$(file-code)",
       "title": "Compiler"
     },
     {
-      "command": "goto.exo",
+      "command": "banque.fetch",
       "title": "Ouvrir exercice"
     },
     {
-      "command": "copy.exo",
-      "title": "Ajouter",
+      "command": "banque.copy",
+      "title": "Ajouter exercice",
       "icon": "$(clippy)"
     },
     {
-      "command": "open.latex",
-      "title": "Ajouter",
+      "command": "banque.open",
+      "title": "Ajouter source",
       "icon": "$(clippy)"
     },
     {
-      "command": "programme-colle.refresh",
+      "command": "programme.refresh",
       "title": "Rafraîchir",
       "icon": "$(refresh)"
+    },
+    {
+      "command": "suggestions.go",
+      "title": "Aller aux suggestions",
+      "icon": "$(star)"
+    },
+    {
+      "command": "flash.send",
+      "title": "Envoyer pdf vers clé USB",
+      "icon": "$(symbol-event)"
+    },
+    {
+      "command": "programme.uploading",
+      "title": "Téléversement en cours",
+      "icon": "$(sync)"
     }
   ],
     
     "menus": {
+      "editor/title": [
+        {
+            "command": "flash.send",
+            "group": "navigation@-1",
+            "when": "resourceExtname == .pdf"
+        }
+    ],
+      "explorer/context": [
+        {
+          "command": "mathpix-pdf.convert",
+          "group": "navigation",
+          "when": "resourceExtname == .pdf"
+        }
+      ],
       "view/item/context": [
           {
-              "command": "copy.exo",
+              "command": "banque.copy",
               "when": "view == package-banque && viewItem == file",
               "group": "inline"
           },
           {
-              "command": "open.latex",
+              "command": "banque.open",
               "when": "view == package-banque && viewItem == chapter",
               "group": "inline"
           }
         ],
       "view/title": [
         {
-          "command": "upload.colle",
+          "command": "programme.upload",
           "when": "view == programme-colle && static",
           "group": "navigation@1"
         },
         {
-          "command": "do.nothing",
+          "command": "programme.uploading",
           "when": "view == programme-colle && !static",
           "group": "navigation@1"
         },
         {
-          "command": "compile.colle",
+          "command": "programme.compile",
           "when": "view == programme-colle",
           "group": "navigation@2"
         },
         {
-          "command": "build.colle",
+          "command": "programme.build",
           "when": "view == programme-colle",
           "group": "navigation@3"
         },
         {
-          "command": "programme-colle.refresh",
+          "command": "programme.refresh",
           "when": "view == programme-colle",
           "group": "navigation@4"
         }]
@@ -149,30 +174,54 @@
     
 
     "configuration": {
-      "title": "Programme de colle",
+      "title": "Physique",
       "properties": {
-        "Programme-de-colle.collepath": {
+        "flash.flashDrive": {
+          "type": "string",
+          "default": "/media/eb/USB/Print/",
+          "description": "Définit le chemin d'accès vers la clé USB."
+        },
+        "programme-colle.collePath": {
           "type": "string",
           "default": "/home/eb/Dropbox/CPGE/Physique/Exercices/Colles/PC/",
           "description": "Définit le chemin d'accès vers le dossier de colles."
         }
         ,
-        "Programme-de-colle.stypath": {
+        "programme-colle.styPath": {
             "type": "string",
             "default": "/home/eb/Dropbox/texmf/tex/latex/Preambles/",
             "description": "Définit le chemin d'accès vers le préambule latex colle.sty."
         }
         ,
-        "Programme-de-colle.Python-command": {
+        "programme-colle.pythonCommand": {
             "type": "string",
             "default": "/home/eb/anaconda3/bin/python3",
             "description": "Définit la commande python à utiliser. La bibliothèque python selenium est utilisée pour téléverser le programme de colle sur Cahier de Prépa."
         }
         ,
-        "Programme-de-colle.Programme-balise": {
+        "programme-colle.programmeBalise": {
             "type": "string",
             "default": "\\ProgrammeColle",
             "description": "Définit la balise latex qui situe la partie du document au programme."
+        }
+        ,
+        "mathpix-pdf.texArchives": {
+          "type": "string",
+          "default": ["Electromag/conduction.tex",
+                      "Electromag/conduction.tex"],
+          "description": "Définit la liste des chemins d'accès vers le fichiers tex qui contiennent les exercices."
+        }
+        ,
+        "mathpix-pdf.texPath": {
+          "type": "string",
+          "default": "/home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/",
+          "description": "Définit la liste des chemins d'accès vers le fichiers tex qui contiennent les exercices."
+        }
+        ,
+        "mathpix-pdf.mpxCommand": {
+          "type": "string",
+          "default": "/usr/local/bin/mpx",
+          "description": "Définit le chemin d'accès à la commande mpx. La commande mpx de mathpix permet de convertir un pdf en tex."
         }
       }
     }

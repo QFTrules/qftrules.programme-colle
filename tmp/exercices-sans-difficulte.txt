@@ -1,26 +1,8 @@
-/home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Mecanique/dynapoint.tex:Le toboggan
-/home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Mecanique/dynapoint.tex:Modèle classique d'un trou noir
-/home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Mecanique/dynapoint.tex:Bille dans une cuvette parabolique
-/home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Mecanique/dynapoint.tex:Descente à ski
-/home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Mecanique/dynapoint.tex:Enroulement d'un pendule
-/home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Mecanique/dynapoint.tex:Propulsion d'une bille de flipper
-/home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Mecanique/dynapoint.tex:Propulsion d'une boule de flipper
-/home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Mecanique/dynapoint.tex:Masselotte immergée attachée à un ressort
-/home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Mecanique/dynapoint.tex:Atterrissage d'un avion de chasse
-/home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Mecanique/dynapoint.tex:Atterrissage d'un avion
-/home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Mecanique/dynapoint.tex:Déviation d’un faisceau d’électrons
-/home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Mecanique/dynapoint.tex:Mouvement dans un cyclotron
-/home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Mecanique/referentiels.tex:Pendule pesant à extrémité oscillante
-/home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Mecanique/referentiels.tex:Pendule simple à extrémité oscillante
-/home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Mecanique/referentiels.tex:Oscillations d'un pendule dans un camion
-/home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Mecanique/referentiels.tex:Train à inclinaison de caisse
-/home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Mecanique/referentiels.tex:Limite de Roche
-/home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Mecanique/referentiels.tex:Transport dans un camion-citerne
-/home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Mecanique/referentiels.tex:Déviation vers le Sud
-/home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Mecanique/referentiels.tex:Surélévation de la rive droite de la Seine
-/home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Mecanique/cinemapoint.tex:Éléments cinématiques en coordonnées cylindriques
-/home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Mecanique/cinemapoint.tex:Parcours d’un cycliste sur un vélodrome
-/home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Mecanique/cinemapoint.tex:Poursuite du chien et du lapin
-/home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Mecanique/cinemapoint.tex:Parcours d’un cycliste sur un vélodrome
-/home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Mecanique/dimension.tex:Estimation de l'énergie d'une bombe atomique
-/home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Mecanique/dimension.tex:Énergie produite par une bombe atomique
+/home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Quantique/puits.tex:Effet Ramsauer
+/home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Quantique/puits.tex:Effet Ramsauer
+/home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Quantique/puits.tex:Effet tunnel
+/home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Quantique/introq.tex:La marche de potentiel
+/home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Quantique/introq.tex:Modèle de l'atome d'hydrogène
+/home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Quantique/introq.tex:Puits dissymétrique
+/home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Quantique/introq.tex:Effet tunnel
+/home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Quantique/introq.tex:Interférences d'atomes de néon

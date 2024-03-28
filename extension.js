@@ -142,6 +142,16 @@ function getNextMonday() {
 function activate(context) {
 	// Use the console to output diagnostic information (console.log) and errors (console.error)
 	console.log('Congratulations, your extension "show-programme-colle" is now active!');
+
+	// remove all files in /tmp directory
+	fs.readdir(__dirname + '/tmp', (err, files) => {
+		if (err) throw err;
+		for (const file of files) {
+			fs.unlink(path.join(__dirname + '/tmp', file), err => {
+				if (err) throw err;
+			});
+		}
+	});
 	
 	// get the user setting variables
 	const collePath = vscode.workspace.getConfiguration('programme-colle').get('collePath');
@@ -428,8 +438,59 @@ function activate(context) {
 		}
 	});
 
+	// compile to compile an exercise separately
+	let compile_exercise = vscode.commands.registerCommand('banque.compile', function (document = undefined) {
+		
+		// get the active text editor
+		let editor = vscode.window.activeTextEditor;
+		if (!editor) {
+			return;
+		}
+		
+		// check if command called from the explorer context menu or from the editor (document undefined)
+		if (document === undefined) {
+			// declare the cursorPosition variable
+			const cursorPosition = editor.selection.active;
+			// find the first line before the cursor position that contains the string '\begin{exo}'
+			let lineNumber = cursorPosition.line - 1;
+			let lineText = editor.document.lineAt(lineNumber).text;
+			while (lineNumber >= 0 && !lineText.includes('\\begin{exo}')) {
+				lineNumber--;
+				lineText = editor.document.lineAt(lineNumber).text;
+			}
+			const start = lineText.indexOf('{', lineText.indexOf('{') + 1) + 1;
+			const end = lineText.indexOf('}', lineText.indexOf('}') + 1);
+			var exo = lineText.substring(start, end);
+		} else {
+			var exo = document.label.replace(/"/g, '');
+		}
 
+		// insert the TEX root line at the beginning of the file
+		const editorText = editor.document.getText();
+		const exercice = 'Exercice'
+		const latex_magic = `% !TEX root = ${__dirname}/tmp/${exercice}.tex\n`;
+		if (!editorText.includes(`% !TEX root = ${__dirname}/tmp`)) {
+			editor.edit(editBuilder => {
+				editBuilder.insert(new vscode.Position(0, 0), latex_magic);
+			});
+		}
 
+		// get the basename with extension of current latex file 
+		if (document === undefined) {
+			var fileName = path.basename(editor.document.fileName);
+		} else {	
+			var fileName = path.basename(document.filePath);
+		}
+
+		// write a new template latex file in directory tmp 
+		const template = `\\input{TD.sty}\n\\begin{document}\n\\Source{${fileName}}\n\\Ex{${exo}}\n\\end{document}`;
+		fs.writeFileSync(__dirname + `/tmp/${exercice}.tex`, template);
+		// compile the template file and open when finished
+		vscode.commands.executeCommand('latex-workshop.build').then(() => {
+			vscode.commands.executeCommand('latex-workshop.tab');
+		});
+	});
+	
 	// now push these functions to the context
 	context.subscriptions.push(copy);
 	context.subscriptions.push(open);
@@ -442,6 +503,7 @@ function activate(context) {
 	context.subscriptions.push(refresh);
 	// context.subscriptions.push(convert);
 	context.subscriptions.push(send);
+	context.subscriptions.push(compile_exercise);
 
 	// // register the completion item provider for latex documents
 	// let complet1 = vscode.languages.registerCompletionItemProvider('latex', {

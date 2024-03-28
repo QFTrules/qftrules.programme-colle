@@ -90,11 +90,12 @@ class BanqueExoShow {
 
 		// Decompose the output string into a list of words
 		const themes_list = [
+			'Mecanique',
 			'Thermo',
+			'Optique',
 			'Fluide',
 			'Ondes',
-			'Optique',
-			'Mecanique',
+			'Quantique'
 		]
 		this.data = themes_list.map(function(theme) {
 

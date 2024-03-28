@@ -36,6 +36,11 @@
         "command": "workbench.view.extension.package-explorer",
         "key": "ctrl+shift+p",
         "when": "editorTextFocus"
+      },
+      {
+        "command": "banque.compile",
+        "key": "f8",
+        "when": "editorTextFocus"
       }
     ],
 
@@ -68,18 +73,18 @@
     },
     {
       "command": "programme.upload",
-      "icon": "$(cloud-upload)",
-      "title": "Téléverser"
+      "title": "Téléverser",
+      "icon": "$(cloud-upload)"
     },
     {
       "command": "programme.build",
-      "icon": "$(gear)",
-      "title": "Compiler et téléverser"
+      "title": "Compiler et téléverser",
+      "icon": "$(gear)"
     },
     {
       "command": "programme.compile",
-      "icon": "$(file-code)",
-      "title": "Compiler"
+      "title": "Compiler",
+      "icon": "$(file-code)"
     },
     {
       "command": "banque.fetch",
@@ -88,12 +93,17 @@
     {
       "command": "banque.copy",
       "title": "Ajouter exercice",
-      "icon": "$(clippy)"
+      "icon": "$(add)"
     },
     {
       "command": "banque.source",
       "title": "Ajouter source",
       "icon": "$(clippy)"
+    },
+    {
+      "command": "banque.compile",
+      "title": "Compiler exercice",
+      "icon": "$(file-pdf)"
     },
     {
       "command": "programme.refresh",
@@ -121,7 +131,7 @@
       "editor/title": [
         {
             "command": "flash.send",
-            "group": "navigation@1",
+            "group": "navigation@-1",
             "when": "resourceExtname == .pdf"
         }
     ],
@@ -137,6 +147,11 @@
               "command": "banque.copy",
               "when": "view == banque-exercices && viewItem == file",
               "group": "inline"
+          },
+          {
+            "command": "banque.compile",
+            "when": "view == banque-exercices && viewItem == file",
+            "group": "inline@-1"
           },
           {
               "command": "banque.source",

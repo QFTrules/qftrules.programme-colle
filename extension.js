@@ -25,76 +25,117 @@ function getNextMonday() {
 	return [`${year}_${month}_${day}`,`"${dayOfWeek} ${day} ${monthName} ${year}"`];
 };
 
+// // register the completion item provider for latex documents
+// vscode.languages.registerCompletionItemProvider('latex', {
+	
+	// 	provideCompletionItems() {
+		
+		
+		// 		// a simple completion item which inserts `Hello World!`
+		// 		const simpleCompletion = new vscode.CompletionItem('Hello World!');
+		
+		// 		// a completion item that inserts its text as snippet,
+		// 		// the `insertText`-property is a `SnippetString` which will be
+		// 		// honored by the editor.
+		// 		const snippetCompletion = new vscode.CompletionItem('Good part of the day');
+		// 		snippetCompletion.insertText = new vscode.SnippetString('Good ${1|morning,afternoon,evening|}. It is ${1}, right?');
+		// 		const docs = new vscode.MarkdownString("Inserts a snippet that lets you select [link](x.ts).");
+		// 		snippetCompletion.documentation = docs;
+		// 		docs.baseUri = vscode.Uri.parse('http://example.com/a/b/c/');
+		
+		// 		// a completion item that can be accepted by a commit character,
+		// 		// the `commitCharacters`-property is set which means that the completion will
+		// 		// be inserted and then the character will be typed.
+		// 		const commitCharacterCompletion = new vscode.CompletionItem('console');
+		// 		commitCharacterCompletion.commitCharacters = ['.'];
+		// 		commitCharacterCompletion.documentation = new vscode.MarkdownString('Press `.` to get `console.`');
+		
+		// 		// a completion item that retriggers IntelliSense when being accepted,
+		// 		// the `command`-property is set which the editor will execute after 
+		// 		// completion has been inserted. Also, the `insertText` is set so that 
+		// 		// a space is inserted after `new`
+		// 		const commandCompletion = new vscode.CompletionItem('new');
+		// 		commandCompletion.kind = vscode.CompletionItemKind.Keyword;
+		// 		commandCompletion.insertText = 'new ';
+		// 		commandCompletion.command = { command: 'editor.action.triggerSuggest', title: 'Re-trigger completions...' };
+		
+		// 		// return all completion items as array
+		// 		return [
+			// 			simpleCompletion,
+			// 			snippetCompletion,
+			// 			commitCharacterCompletion,
+			// 			commandCompletion
+			// 		];
+			// 	}
+			// });
+			
+			// vscode.languages.registerCompletionItemProvider(
+				// 	'latex',
+				// 	{
+					// 		provideCompletionItems(document, position) {
+						// 			const lineText = document.lineAt(position.line).text;
+						// 			const linePrefix = lineText.slice(0, position.character);
+						// 			const lineSuffix = lineText.slice(position.character);
+						
+						// 			// Check if the cursor is surrounded by {}
+						// 			if (linePrefix.endsWith('\Ex{') && lineSuffix.startsWith('}')) {
+							// 				// Return your completion items here
+							// 				return [
+								// 					new vscode.CompletionItem('item1'),
+								// 					new vscode.CompletionItem('item2'),
+								// 					new vscode.CompletionItem('item3')
+								// 				];
+								// 			}
+								
+								// 			return undefined;
+								// 		}
+								// 	},
+								// 	'{' // triggered whenever a '{' is being typed
+								// );
+								
+								
+// function suggestions_refresh() {
 
-	// register the completion item provider for latex documents
-	vscode.languages.registerCompletionItemProvider('latex', {
+// 	// list of themes
+// 	const themes_list = [
+// 					'Thermo',
+// 					'Fluide',
+// 					'Ondes',
+// 					'Optique',
+// 					'Mecanique',
+// 				]
 
-		provideCompletionItems() {
-
-
-			// a simple completion item which inserts `Hello World!`
-			const simpleCompletion = new vscode.CompletionItem('Hello World!');
-
-			// a completion item that inserts its text as snippet,
-			// the `insertText`-property is a `SnippetString` which will be
-			// honored by the editor.
-			const snippetCompletion = new vscode.CompletionItem('Good part of the day');
-			snippetCompletion.insertText = new vscode.SnippetString('Good ${1|morning,afternoon,evening|}. It is ${1}, right?');
-			const docs = new vscode.MarkdownString("Inserts a snippet that lets you select [link](x.ts).");
-			snippetCompletion.documentation = docs;
-			docs.baseUri = vscode.Uri.parse('http://example.com/a/b/c/');
-
-			// a completion item that can be accepted by a commit character,
-			// the `commitCharacters`-property is set which means that the completion will
-			// be inserted and then the character will be typed.
-			const commitCharacterCompletion = new vscode.CompletionItem('console');
-			commitCharacterCompletion.commitCharacters = ['.'];
-			commitCharacterCompletion.documentation = new vscode.MarkdownString('Press `.` to get `console.`');
-
-			// a completion item that retriggers IntelliSense when being accepted,
-			// the `command`-property is set which the editor will execute after 
-			// completion has been inserted. Also, the `insertText` is set so that 
-			// a space is inserted after `new`
-			const commandCompletion = new vscode.CompletionItem('new');
-			commandCompletion.kind = vscode.CompletionItemKind.Keyword;
-			commandCompletion.insertText = 'new ';
-			commandCompletion.command = { command: 'editor.action.triggerSuggest', title: 'Re-trigger completions...' };
-
-			// return all completion items as array
-			return [
-				simpleCompletion,
-				snippetCompletion,
-				commitCharacterCompletion,
-				commandCompletion
-			];
-		}
-	});
-
-	vscode.languages.registerCompletionItemProvider(
-		'latex',
-		{
-			provideCompletionItems(document, position) {
-				const lineText = document.lineAt(position.line).text;
-				const linePrefix = lineText.slice(0, position.character);
-				const lineSuffix = lineText.slice(position.character);
-
-				// Check if the cursor is surrounded by {}
-				if (linePrefix.endsWith('\Ex{') && lineSuffix.startsWith('}')) {
-					// Return your completion items here
-					return [
-						new vscode.CompletionItem('item1'),
-						new vscode.CompletionItem('item2'),
-						new vscode.CompletionItem('item3')
-					];
-				}
-
-				return undefined;
-			}
-		},
-		'{' // triggered whenever a '{' is being typed
-	);
-
-
+// 	themes_list.forEach(function(theme) {
+// 			// get the list of latex files for the theme 
+// 			var latex_files = child_process.execSync('find ~/Dropbox/CPGE/Physique/Exercices/Recueil/' + theme + ' -maxdepth 1 -type f -name "*.tex"').toString().split('\n').pop();
+	
+// 			vscode.window.showInformationMessage(latex_files);
+// 			// try to remove the file exercices-sans-difficulte.txt, pass if already removed
+// 			try {
+// 					fs.unlinkSync(__dirname + '/tmp/exercices-sans-difficulte.txt');
+// 				} catch (error) {
+// 						// pass
+// 					}
+			
+// 					// look for all chapters in each theme
+// 					latex_files.forEach(function(chapter) {
+// 							// fetch all exercise names in latex file basename
+// 							var exercices = child_process.execSync('grep -E "\\\\\\\\begin{exo}" ' + chapter).toString().split('\n').pop();
+// 							exercices.forEach(function(exo) {
+// 									var start = exo.indexOf('{', exo.indexOf('{') + 1) + 1;
+// 									var end = exo.indexOf('}', exo.indexOf('}') + 1);
+// 									var exo =  exo.substring(start, end);
+// 									// look if the difficulty is defined for each exercise
+// 									// var typeExo = GetTypeExo(exo, filePath)[0];
+// 									var difficulty = GetTypeExo(exo, chapter)[1];
+// 									if (difficulty !== '1' || difficulty !== '2' || difficulty !== '3') {
+// 											fs.appendFileSync(__dirname  + '/tmp/exercices-sans-difficulte.txt', chapter + ':' + exo + '\n');
+// 										}
+// 									});
+// 								});
+// 							});
+// 						}
+						
 /**
  * @param {vscode.ExtensionContext} context
 */
@@ -102,8 +143,6 @@ function activate(context) {
 	// Use the console to output diagnostic information (console.log) and errors (console.error)
 	console.log('Congratulations, your extension "show-programme-colle" is now active!');
 	
-
-
 	// get the user setting variables
 	const collePath = vscode.workspace.getConfiguration('programme-colle').get('collePath');
 	const styPath = vscode.workspace.getConfiguration('programme-colle').get('styPath');
@@ -111,9 +150,10 @@ function activate(context) {
 	const programmeBalise = vscode.workspace.getConfiguration('programme-colle').get('programmeBalise');
 	// const mathpixCommand = vscode.workspace.getConfiguration('mathpix-pdf').get('mpxCommand');
 	// const texPath = vscode.workspace.getConfiguration('mathpix-pdf').get('texPath');
-	const texArchives = vscode.workspace.getConfiguration('mathpix-pdf').get('texArchives');
+	// const texArchives = vscode.workspace.getConfiguration('mathpix-pdf').get('texArchives');
 	const flashDrive = vscode.workspace.getConfiguration('flash').get('flashDrive');
 	
+	// BANQUE EXERCICES commands
 	let copy = vscode.commands.registerCommand('banque.copy', function (document) {
 		// Copy the document path to the clipboard
 		let editor = vscode.window.activeTextEditor;
@@ -127,7 +167,8 @@ function activate(context) {
 		}
 	)
 
-	let open = vscode.commands.registerCommand('banque.open', function (document) {
+	// copy the latex file and use it as a source in an exercise latex document (TD, ...)
+	let open = vscode.commands.registerCommand('banque.source', function (document) {
 		// open the latex document in vscode
 		let editor = vscode.window.activeTextEditor;
 		if (editor) {
@@ -139,40 +180,7 @@ function activate(context) {
 		}
 	})
 
-	let go = vscode.commands.registerCommand('suggestions.go', function () {
-		// open an exercise listed in the file /tmp/exercices-sans-difficulte.txt
-
-		// Read the contents of the file
-		const fileContent = fs.readFileSync(__dirname + '/tmp/exercices-sans-difficulte.txt', 'utf8');
-		const lines = fileContent.split('\n');
-		var [filePath, exo] = lines[0].split(':');
-		var exo = exo.toString().trim();
-		// vscode.window.showInformationMessage('Ouverture de ' + filePath, exo);
-		// open the latex document in vscode
-		vscode.commands.executeCommand('vscode.open',vscode.Uri.file(filePath));
-		
-		// search for the exo in the file
-		var editor = vscode.window.activeTextEditor;
-		if (!editor) {
-			return;
-		}
-
-		let document = editor.document;
-        var text = document.getText();
-        var position = text.indexOf(exo);
-
-        if (position !== -1) {
-            var startPosition = document.positionAt(position);
-            var endPosition = document.positionAt(position + exo.length);
-            var range = new vscode.Range(startPosition, endPosition);
-            editor.selection = new vscode.Selection(range.start, range.end);
-			editor.revealRange(range, vscode.TextEditorRevealType.AtTop);
-        } else {
-            // vscode.window.showInformationMessage('String not found');
-        }
-		}
-	)
-
+	// fetch a string in a latex file, like exercise name of balise
 	let fetch = vscode.commands.registerCommand('banque.fetch', function (doc) {
 		// open document in vscode
 		vscode.commands.executeCommand('vscode.open',vscode.Uri.file(doc.filePath));
@@ -203,6 +211,61 @@ function activate(context) {
         }
 	})
 
+	//  SUGGESTIONS commands
+	let go = vscode.commands.registerCommand('suggestions.go', function () {
+		// open an exercise listed in the file /tmp/exercices-sans-difficulte.txt
+
+		// Read the contents of the file
+		const exercice_liste = __dirname + '/tmp/exercices-sans-difficulte.txt';
+		// let fileContent;
+		var fileContent = fs.readFileSync(exercice_liste, 'utf8');
+		// try {
+		// } catch (error) {
+		// 	if (error.code === 'ENOENT') {
+		// 		// File does not exist, create it
+		// 		fs.writeFileSync(exercice_liste, '', 'utf8');
+		// 		fileContent = '';
+		// 	} else {
+		// 		// Other error occurred, handle it accordingly
+		// 		console.error(error);
+		// 	}
+		// }
+
+		// vscode.window.showInformationMessage('Ouverture de ' + exercice_liste);
+		const lines = fileContent.split('\n');
+		var [filePath, exo] = lines[0].split(':');
+		var exo = exo.toString().trim();
+
+		var editor = vscode.window.activeTextEditor;
+		if (!editor) {
+			vscode.workspace.onDidOpenTextDocument(() => {});
+		}
+
+		// vscode.window.showInformationMessage('Ouverture de ' + filePath, exo);
+		// open the latex document in vscode
+		// if (filePath !== vscode.window.activeTextEditor.document.uri.fsPath) {
+		vscode.commands.executeCommand('vscode.open', vscode.Uri.file(filePath));
+			// Your code here
+					// search for the exo in the file
+		
+		let document = editor.document;
+		var text = document.getText();
+		var position = text.indexOf(exo);
+		if (position !== -1) {
+			var startPosition = document.positionAt(position);
+			var endPosition = document.positionAt(position + exo.length);
+			var range = new vscode.Range(startPosition, endPosition);
+			editor.selection = new vscode.Selection(range.start, range.end);
+			editor.revealRange(range, vscode.TextEditorRevealType.AtTop);
+		} else {
+			// vscode.window.showInformationMessage('String not found');
+		}
+		// refresh list of exercises without difficulty
+		new BanqueExoShow();
+	}
+	)
+
+	// PROGRAMME DE COLLE commands
 
 	// commande pour téléverser le programme de colle sur le cahier de prépa depuis title view : programme de colle
 	let upload = vscode.commands.registerCommand('programme.upload', function () {
@@ -254,93 +317,105 @@ function activate(context) {
 			programme_colle.refresh();
 	});
 
-	// command in the explorer context menu to convert pdf to latex	
-	let convert = vscode.commands.registerCommand('mathpix-pdf.convert', function (uri) {
-		// The code you place here will be executed every time your command is executed
-		const fileName = path.basename(uri.toString());
-		const fileDirectory = path.dirname(uri.toString().replace("file://", ""));
+	// // command in the explorer context menu to convert pdf to latex	
+	// let convert = vscode.commands.registerCommand('mathpix-pdf.convert', function (uri) {
+	// 	// The code you place here will be executed every time your command is executed
+	// 	const fileName = path.basename(uri.toString());
+	// 	const fileDirectory = path.dirname(uri.toString().replace("file://", ""));
 		
-		// Prompt the user for the pages range
-		vscode.window.showInputBox({ placeHolder: 'Enter the pages range (e.g. 1, 1-5, or 2-end)' }).then(range => {
-			if (range) {
-				vscode.window.showQuickPick(texArchives, { placeHolder: 'Enter the tex archive to store the exercise (e.g. dynapoint.tex)' }).then(texFile => {
-					if (texFile) {
-						// Run the bash program on the active file
-						// vscode.window.showInformationMessage(`Converting pages ${range} of ${fileName} to latex...`);
-						// decode the string
-						const pageRange = range.split('-');
-						const startPage = pageRange[0];
-						const endPage = pageRange[1] || 'end';
+	// 	// Prompt the user for the pages range
+	// 	vscode.window.showInputBox({ placeHolder: 'Enter the pages range (e.g. 1, 1-5, or 2-end)' }).then(range => {
+	// 		if (range) {
+	// 			vscode.window.showQuickPick(texArchives, { placeHolder: 'Enter the tex archive to store the exercise (e.g. dynapoint.tex)' }).then(texFile => {
+	// 				if (texFile) {
+	// 					// Run the bash program on the active file
+	// 					// vscode.window.showInformationMessage(`Converting pages ${range} of ${fileName} to latex...`);
+	// 					// decode the string
+	// 					const pageRange = range.split('-');
+	// 					const startPage = pageRange[0];
+	// 					const endPage = pageRange[1] || 'end';
 
-						// Read the PDF file using a library like pdfjs-dist
+	// 					// Read the PDF file using a library like pdfjs-dist
 
-						const fileData = fs.readFileSync(`${fileDirectory}/${fileName}`);
-						const loadingTask = pdfjsLib.getDocument(fileData);
+	// 					const fileData = fs.readFileSync(`${fileDirectory}/${fileName}`);
+	// 					const loadingTask = pdfjsLib.getDocument(fileData);
 
-						loadingTask.promise.then((pdf) => {
-							const totalPages = pdf.numPages;
+	// 					loadingTask.promise.then((pdf) => {
+	// 						const totalPages = pdf.numPages;
 
-							// Calculate the actual page numbers based on the range
-							const startPageNumber = parseInt(startPage);
-							const endPageNumber = endPage === 'end' ? totalPages : parseInt(endPage);
+	// 						// Calculate the actual page numbers based on the range
+	// 						const startPageNumber = parseInt(startPage);
+	// 						const endPageNumber = endPage === 'end' ? totalPages : parseInt(endPage);
 
-							// Validate the page numbers
-							if (startPageNumber <= 0 || startPageNumber > totalPages || endPageNumber <= 0 || endPageNumber > totalPages || startPageNumber > endPageNumber) {
-								vscode.window.showErrorMessage('Invalid page range');
-								return;
-							}
+	// 						// Validate the page numbers
+	// 						if (startPageNumber <= 0 || startPageNumber > totalPages || endPageNumber <= 0 || endPageNumber > totalPages || startPageNumber > endPageNumber) {
+	// 							vscode.window.showErrorMessage('Invalid page range');
+	// 							return;
+	// 						}
 
-							// Extract the pages using pdfjs-dist
-							const pagesToExtract = [];
-							for (let i = startPageNumber; i <= endPageNumber; i++) {
-								pagesToExtract.push(i);
-							}
+	// 						// Extract the pages using pdfjs-dist
+	// 						const pagesToExtract = [];
+	// 						for (let i = startPageNumber; i <= endPageNumber; i++) {
+	// 							pagesToExtract.push(i);
+	// 						}
 
-							const writer = new pdfWriter.PDFWriter();
+	// 						const writer = new pdfWriter.PDFWriter();
 
-							const outputFile = `${fileDirectory}/file_to_convert.pdf`;
-							const outputStream = fs.createWriteStream(outputFile);
+	// 						const outputFile = `${fileDirectory}/file_to_convert.pdf`;
+	// 						const outputStream = fs.createWriteStream(outputFile);
 
-							pdf.copyPagesInto(pagesToExtract, writer);
-							writer.pipe(outputStream);
-							writer.end();
+	// 						pdf.copyPagesInto(pagesToExtract, writer);
+	// 						writer.pipe(outputStream);
+	// 						writer.end();
 
-							vscode.window.showInformationMessage(`Pages ${startPage}-${endPage} extracted successfully`);
-						}).catch((error) => {
-							vscode.window.showErrorMessage(`Error: ${error.message}`);
-						});
-						// child_process.execSync(decodeURI(`pdftk ${fileDirectory}/${fileName} cat ${range} output "${fileDirectory}/file_to_convert.pdf"`));
-						// const commande = decodeURI(__dirname + `/mathpix_pdf_to_latex.sh ${fileName} ${fileDirectory} "${texPath}${texFile}" ${range}`, 'utf-8'); 
-						// vscode.window.showInformationMessage(commande);
-						// child_process.execSync(commande, (error, stdout, stderr) => {
-						// 	if (error) {
-						// 		// Display an error message if the bash program encounters an error
-						// 		vscode.window.showErrorMessage(`Error: ${error.message} | ${stderr}`);
-						// 		return;
-						// 	}
-						// });
-						// child_process.exec(decodeURI(mathpixCommand + ` convert ${fileDirectory}/file_to_convert.pdf ${fileDirectory}/file_to_convert.tex`), (error, stderr) => {
-						// 	if (error) {
-						// 		// Display an error message if the bash program encounters an error
-						// 		vscode.window.showErrorMessage(`Error: ${error.message} | ${stderr}`);
-						// 		return;
-						// 	}
-						// });
-					}
-				});
-			}
-		});
-	});
+	// 						vscode.window.showInformationMessage(`Pages ${startPage}-${endPage} extracted successfully`);
+	// 					}).catch((error) => {
+	// 						vscode.window.showErrorMessage(`Error: ${error.message}`);
+	// 					});
+	// 					// child_process.execSync(decodeURI(`pdftk ${fileDirectory}/${fileName} cat ${range} output "${fileDirectory}/file_to_convert.pdf"`));
+	// 					// const commande = decodeURI(__dirname + `/mathpix_pdf_to_latex.sh ${fileName} ${fileDirectory} "${texPath}${texFile}" ${range}`, 'utf-8'); 
+	// 					// vscode.window.showInformationMessage(commande);
+	// 					// child_process.execSync(commande, (error, stdout, stderr) => {
+	// 					// 	if (error) {
+	// 					// 		// Display an error message if the bash program encounters an error
+	// 					// 		vscode.window.showErrorMessage(`Error: ${error.message} | ${stderr}`);
+	// 					// 		return;
+	// 					// 	}
+	// 					// });
+	// 					// child_process.exec(decodeURI(mathpixCommand + ` convert ${fileDirectory}/file_to_convert.pdf ${fileDirectory}/file_to_convert.tex`), (error, stderr) => {
+	// 					// 	if (error) {
+	// 					// 		// Display an error message if the bash program encounters an error
+	// 					// 		vscode.window.showErrorMessage(`Error: ${error.message} | ${stderr}`);
+	// 					// 		return;
+	// 					// 	}
+	// 					// });
+	// 				}
+	// 			});
+	// 		}
+	// 	});
+	// });
 
 	// command to send file in the editor to the flash drive
 	let send = vscode.commands.registerCommand('flash.send', function () {
 		// get the active text editor
+		// vscode.window.showInformationMessage(`copié sur la clé USB`);
 		let editor = vscode.window.activeTextEditor;
-		if (!editor) {
-			return;
+		// get the active text editor
+
+		// check if an editor is active
+		if (editor) {
+			// get the file path of the active document
+			const filePath = editor.document.fileName;
+			vscode.window.showInformationMessage(`Current PDF file: ${filePath}`);
+		} else {
+			vscode.window.showErrorMessage('No active editor found');
 		}
+		// if (!editor) {
+		// 	return;
+		// }
 		// get the file path
 		const filePath = editor.document.fileName;
+		vscode.window.showInformationMessage(`copié sur la clé USB`);
 		// check if the destination path is a directory
 		if (fs.existsSync(flashDrive) && fs.lstatSync(flashDrive).isDirectory()) {
 			// copy the file to the flash drive
@@ -348,7 +423,6 @@ function activate(context) {
 			const destinationPath = path.join(flashDrive, fileName);
 			fs.copyFileSync(filePath, destinationPath);
 			// show information message
-			vscode.window.showInformationMessage(`${fileName} copied to flash drive`);
 		} else {
 			vscode.window.showErrorMessage('Invalid destination path');
 		}
@@ -366,7 +440,7 @@ function activate(context) {
 	context.subscriptions.push(compile);
 	context.subscriptions.push(build);
 	context.subscriptions.push(refresh);
-	context.subscriptions.push(convert);
+	// context.subscriptions.push(convert);
 	context.subscriptions.push(send);
 
 	// // register the completion item provider for latex documents
@@ -442,7 +516,7 @@ function activate(context) {
 // This method is called when your extension is deactivated
 function deactivate() {}
 
-
+	
 // export modules
 module.exports = {
 	activate,

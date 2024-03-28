@@ -95,7 +95,7 @@ class ProgShow {
 			if (element.contextValue === 'latex') {
 				item.tooltip = "Modifier le fichier";
 				item.command = {
-					command: 'goto.exo',
+					command: 'banque.fetch',
 					arguments: [element]
 				};
 			}

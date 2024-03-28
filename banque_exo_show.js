@@ -34,10 +34,54 @@ function GetTypeExo(label, filepath) {
 		return ['undefined','undefined'];
 	}
 
+
+// refresh suggestions at extension activation
+// function suggestions_refresh() {
+// 	// list of themes
+// 	const themes_list = [
+// 		'Thermo',
+// 		'Fluide',
+// 		'Ondes',
+// 		'Optique',
+// 		'Mecanique',
+// 	]
+
+// 	themes_list.forEach(function(theme) {
+// 	// get the list of latex files for the theme 
+// 	var latex_files = child_process.execSync('find ~/Dropbox/CPGE/Physique/Exercices/Recueil/' + theme + ' -maxdepth 1 -type f -name "*.tex"').toString().split('\n');
+// 	latex_files.pop()
+
+// 	// try to remove the file exercices-sans-difficulte.txt, pass if already removed
+// 	try {
+// 		fs.unlinkSync(__dirname + '/tmp/exercices-sans-difficulte.txt');
+// 	} catch (error) {
+// 			// pass
+// 		}
+
+// 	// look for all chapters in each theme
+// 	latex_files.forEach(function(chapter) {
+// 			// fetch all exercise names in latex file basename
+// 			var exercices = child_process.execSync('grep -E "\\\\\\\\begin{exo}" ' + chapter).toString().split('\n');
+// 			exercices.pop();
+// 			exercices.forEach(function(exo) {
+// 					var start = exo.indexOf('{', exo.indexOf('{') + 1) + 1;
+// 					var end = exo.indexOf('}', exo.indexOf('}') + 1);
+// 					var exo =  exo.substring(start, end);
+// 					// look if the difficulty is defined for each exercise
+// 					// var typeExo = GetTypeExo(exo, filePath)[0];
+// 					var difficulty = GetTypeExo(exo, chapter)[1];
+// 					if (difficulty === '') {
+// 							fs.appendFileSync(__dirname  + '/tmp/exercices-sans-difficulte.txt', chapter + ':' + exo + '\n');
+// 						}
+// 					});
+// 				});
+// 			});
+// 		}
+
 // define the data providers for the programme de colle panel
 class BanqueExoShow {
     constructor() {
-
+		
 		// Get the active text editor
 		var editor = vscode.window.activeTextEditor;
 		if (!editor) {
@@ -53,32 +97,34 @@ class BanqueExoShow {
 			'Mecanique',
 		]
 		this.data = themes_list.map(function(theme) {
+
 			// get the list of latex files for the theme 
 			var latex_files = child_process.execSync('find ~/Dropbox/CPGE/Physique/Exercices/Recueil/' + theme + ' -maxdepth 1 -type f -name "*.tex"').toString().split('\n');
-			// remove the last element which is an empty string
 			latex_files.pop();
+
 			// remove the file that stores all exercices where the difficulty is not specified
-			fs.unlinkSync(__dirname + '/tmp/exercices-sans-difficulte.txt');
+			const exercice_liste = __dirname + '/tmp/exercices-sans-difficulte.txt';
+			if (fs.existsSync(exercice_liste)) {
+				fs.unlinkSync(exercice_liste);
+			}
 
 			// return a tree item for each theme
 			return new TreeItem(theme.toUpperCase(), 
 				latex_files.map(function(filePath) {
-					// get the latex filepath
-					const basename = path.parse(filePath).name
-					// var filePath = path.join('~/Dropbox/CPGE/Physique/Exercices/Recueil/', theme, basename + '.tex');
+
 					var exercices = child_process.execSync('grep -E "\\\\\\\\begin{exo}" ' + filePath).toString().split('\n');
-					exercices = exercices.map(function(exo) {
-						var start = exo.indexOf('{', exo.indexOf('{') + 1) + 1;
-						var end = exo.indexOf('}', exo.indexOf('}') + 1);
-						return exo.substring(start, end);
-					});
-					// remove the last element which is an empty string
 					exercices.pop();
+					const basename = path.parse(filePath).name
+
 					return new TreeItem(basename,
 						exercices.map(function(exo) {
+							var start = exo.indexOf('{', exo.indexOf('{') + 1) + 1;
+							var end = exo.indexOf('}', exo.indexOf('}') + 1);
+							var exo = exo.substring(start, end);
 							var typeExo = GetTypeExo(exo, filePath)[0];
 							var difficulty = GetTypeExo(exo, filePath)[1];
-							if (difficulty !== '1' || difficulty !== '2' || difficulty !== '3') {
+							if (difficulty === '') {
+								// vscode.window.showInformationMessage(difficulty);
 								// add this exercise to a file that stores all exercices where the difficulty is not specified
 								// this will be used by the suggestions tree view panel
 								fs.appendFileSync(__dirname  + '/tmp/exercices-sans-difficulte.txt', filePath + ':' + exo + '\n');
@@ -114,11 +160,19 @@ class BanqueExoShow {
 		if (element.contextValue === 'file') {
 			item.tooltip = "Voir l'exercice";
 			item.command = {
-				command: 'goto.exo',
+				command: 'banque.fetch',
 				title: 'Ouvrir exercice',
-				arguments: [element]
+				arguments: [element],
 			}
 		} 
+		// if (element.contextValue === 'chapter') {
+		// 	item.tooltip = "Ouvrir le fichier latex";
+		// 	item.command = {
+		// 		command: 'vscode.open',
+		// 		title: 'Ouvrir le fichier latex',
+		// 		arguments: [element.filePath],
+		// 	}
+		// } 
 		return item;
 	};
 
@@ -135,4 +189,5 @@ class BanqueExoShow {
 	};
 };
 
-module.exports = BanqueExoShow;
+module.exports = BanqueExoShow
+	

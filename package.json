@@ -91,7 +91,7 @@
       "icon": "$(clippy)"
     },
     {
-      "command": "banque.open",
+      "command": "banque.source",
       "title": "Ajouter source",
       "icon": "$(clippy)"
     },
@@ -121,7 +121,7 @@
       "editor/title": [
         {
             "command": "flash.send",
-            "group": "navigation@-1",
+            "group": "navigation@1",
             "when": "resourceExtname == .pdf"
         }
     ],
@@ -135,12 +135,12 @@
       "view/item/context": [
           {
               "command": "banque.copy",
-              "when": "view == package-banque && viewItem == file",
+              "when": "view == banque-exercices && viewItem == file",
               "group": "inline"
           },
           {
-              "command": "banque.open",
-              "when": "view == package-banque && viewItem == chapter",
+              "command": "banque.source",
+              "when": "view == banque-exercices && viewItem == chapter",
               "group": "inline"
           }
         ],

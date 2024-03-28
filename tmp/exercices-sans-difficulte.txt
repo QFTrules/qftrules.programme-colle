@@ -1,14 +1,3 @@
-/home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Mecanique/dynapoint.tex:Particule dans des champs E et B orthogonaux
-/home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Mecanique/dynapoint.tex:Rayonnement gravitationnel d'un système de deux étoiles
-/home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Mecanique/dynapoint.tex:De l'évolution du concept d'atome au cours du \textsc{xx
-/home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Mecanique/dynapoint.tex:Tir au basketball
-/home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Mecanique/dynapoint.tex:Balistique d'un projectile dans l'air
-/home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Mecanique/dynapoint.tex:Vitesse d'un satellite
-/home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Mecanique/dynapoint.tex:Pendule simple
-/home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Mecanique/dynapoint.tex:Moment cinétique et pendule simple amorti
-/home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Mecanique/dynapoint.tex:Approche énergétique du pendule simple
-/home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Mecanique/dynapoint.tex:Modèle de Drude
-/home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Mecanique/dynapoint.tex:Particule dans des champs E et B parallèles
 /home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Mecanique/dynapoint.tex:Le toboggan
 /home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Mecanique/dynapoint.tex:Modèle classique d'un trou noir
 /home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Mecanique/dynapoint.tex:Bille dans une cuvette parabolique
@@ -16,54 +5,22 @@
 /home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Mecanique/dynapoint.tex:Enroulement d'un pendule
 /home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Mecanique/dynapoint.tex:Propulsion d'une bille de flipper
 /home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Mecanique/dynapoint.tex:Propulsion d'une boule de flipper
-/home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Mecanique/dynapoint.tex:Chute d'un satellite Starlink
 /home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Mecanique/dynapoint.tex:Masselotte immergée attachée à un ressort
 /home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Mecanique/dynapoint.tex:Atterrissage d'un avion de chasse
 /home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Mecanique/dynapoint.tex:Atterrissage d'un avion
 /home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Mecanique/dynapoint.tex:Déviation d’un faisceau d’électrons
 /home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Mecanique/dynapoint.tex:Mouvement dans un cyclotron
-/home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Mecanique/dynapoint.tex:Force magnétique
-/home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Mecanique/dynapoint.tex:Deux ressorts en équilibre
-/home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Mecanique/dynapoint.tex:Deux blocs en mouvement
-/home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Mecanique/dynapoint.tex:Mise en orbite d'une sonde spatiale
-/home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Mecanique/dynapoint.tex:Frottement sur un toboggan
-/home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Mecanique/dynapoint.tex:Glissement d'un anneau
-/home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Mecanique/dynapoint.tex:Équilibre d'une barre
-/home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Mecanique/referentiels.tex:Le vase en rotation
-/home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Mecanique/referentiels.tex:Le phénomène de marées
-/home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Mecanique/referentiels.tex:Modélisation du mouvement d'une plateforme en mer
-/home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Mecanique/referentiels.tex:Le sismographe horizontal
-/home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Mecanique/referentiels.tex:Dynamique terrestre
 /home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Mecanique/referentiels.tex:Pendule pesant à extrémité oscillante
 /home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Mecanique/referentiels.tex:Pendule simple à extrémité oscillante
 /home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Mecanique/referentiels.tex:Oscillations d'un pendule dans un camion
-/home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Mecanique/referentiels.tex:Éjection d'une bille dans un tube en rotation
-/home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Mecanique/referentiels.tex:Force de Coriolis sur un train
-/home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Mecanique/referentiels.tex:Système masse-ressort dans un référentiel tournant
-/home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Mecanique/referentiels.tex:Pendule dans une voiture
-/home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Mecanique/referentiels.tex:Gravité artificielle dans un vaisseau spatial
-/home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Mecanique/referentiels.tex:Le sismographe
-/home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Mecanique/referentiels.tex:Mouvement d'une bille sur un plateau tournant
-/home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Mecanique/referentiels.tex:Le pendule de Foucault
-/home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Mecanique/referentiels.tex:L'expérience historique du pendule de Foucault
-/home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Mecanique/referentiels.tex:Trajectoire d'une balle lancée
 /home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Mecanique/referentiels.tex:Train à inclinaison de caisse
 /home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Mecanique/referentiels.tex:Limite de Roche
 /home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Mecanique/referentiels.tex:Transport dans un camion-citerne
 /home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Mecanique/referentiels.tex:Déviation vers le Sud
 /home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Mecanique/referentiels.tex:Surélévation de la rive droite de la Seine
-/home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Mecanique/cinemapoint.tex:Les coordonnées cylindriques
-/home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Mecanique/cinemapoint.tex:Les coordonnées sphériques
-/home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Mecanique/cinemapoint.tex:Des projections
-/home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Mecanique/cinemapoint.tex:Mouvement en spirale
-/home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Mecanique/cinemapoint.tex:Un mouvement en spirale
-/home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Mecanique/cinemapoint.tex:Bretelle d’autoroute
-/home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Mecanique/cinemapoint.tex:Course automobile
 /home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Mecanique/cinemapoint.tex:Éléments cinématiques en coordonnées cylindriques
-/home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Mecanique/cinemapoint.tex:Une course de voitures télécommandées
 /home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Mecanique/cinemapoint.tex:Parcours d’un cycliste sur un vélodrome
 /home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Mecanique/cinemapoint.tex:Poursuite du chien et du lapin
 /home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Mecanique/cinemapoint.tex:Parcours d’un cycliste sur un vélodrome
-/home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Mecanique/solide.tex:Rotation d'un œuf dur
 /home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Mecanique/dimension.tex:Estimation de l'énergie d'une bombe atomique
 /home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Mecanique/dimension.tex:Énergie produite par une bombe atomique

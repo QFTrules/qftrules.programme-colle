@@ -35,11 +35,11 @@
       {
         "command": "workbench.view.extension.package-explorer",
         "key": "ctrl+shift+p",
-        "when": "editorTextFocus"
+        "when": "true"
       },
       {
         "command": "banque.compile",
-        "key": "f8",
+        "key": "f4",
         "when": "editorTextFocus"
       }
     ],
@@ -98,7 +98,12 @@
     {
       "command": "banque.source",
       "title": "Ajouter source",
-      "icon": "$(clippy)"
+      "icon": "$(add)"
+    },
+    {
+      "command": "banque.open",
+      "title": "Ouvrir source",
+      "icon": "$(file-code)"
     },
     {
       "command": "banque.compile",
@@ -157,7 +162,12 @@
               "command": "banque.source",
               "when": "view == banque-exercices && viewItem == chapter",
               "group": "inline"
-          }
+          },
+          {
+            "command": "banque.open",
+            "when": "view == banque-exercices && viewItem == chapter",
+            "group": "inline@-1"
+        }
         ],
       "view/title": [
         {

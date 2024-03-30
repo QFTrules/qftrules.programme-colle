@@ -81,6 +81,8 @@ class ProgShow {
 		var programme_colle_pdf_basename = path.basename(programme_colle_pdf);
 		this.data.push(new TreeItem(programme_colle_pdf_basename, undefined, programme_colle_pdf, 'pdf', undefined));
 
+		// define the event when tree data change
+		this._onDidChangeTreeData = new vscode.EventEmitter();
     }
     
 	getTreeItem(element) {
@@ -110,18 +112,15 @@ class ProgShow {
         return element.children;
     };
 
+	
 	// to refresh tree elements of the programme de colle
-	onDidChangeTreeData(listener) {
-		// Implement the onDidChangeTreeData method
-		this.changeTreeDataListener = listener;
-	};
+	get onDidChangeTreeData() {
+        return this._onDidChangeTreeData.event;
+    };
 
-	refresh() {
-		// Call this method whenever you want to refresh the tree view
-		if (this.changeTreeDataListener) {
-			this.changeTreeDataListener();
-		}
-	};
+    refresh() {
+        this._onDidChangeTreeData.fire();
+    };
 };
 
 module.exports = ProgShow;

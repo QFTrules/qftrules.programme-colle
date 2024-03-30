@@ -144,14 +144,14 @@ function activate(context) {
 	console.log('Congratulations, your extension "show-programme-colle" is now active!');
 
 	// remove all files in /tmp directory
-	fs.readdir(__dirname + '/tmp', (err, files) => {
-		if (err) throw err;
-		for (const file of files) {
-			fs.unlink(path.join(__dirname + '/tmp', file), err => {
-				if (err) throw err;
-			});
-		}
-	});
+	// fs.readdir(__dirname + '/tmp', (err, files) => {
+	// 	if (err) throw err;
+	// 	for (const file of files) {
+	// 		fs.unlink(path.join(__dirname + '/tmp', file), err => {
+	// 			if (err) throw err;
+	// 		});
+	// 	}
+	// });
 	
 	// get the user setting variables
 	const collePath = vscode.workspace.getConfiguration('programme-colle').get('collePath');
@@ -178,7 +178,7 @@ function activate(context) {
 	)
 
 	// copy the latex file and use it as a source in an exercise latex document (TD, ...)
-	let open = vscode.commands.registerCommand('banque.source', function (document) {
+	let source = vscode.commands.registerCommand('banque.source', function (document) {
 		// open the latex document in vscode
 		let editor = vscode.window.activeTextEditor;
 		if (editor) {
@@ -190,10 +190,16 @@ function activate(context) {
 		}
 	})
 
+	// copy the latex file and use it as a source in an exercise latex document (TD, ...)
+	let open = vscode.commands.registerCommand('banque.open', function (document) {
+		// open the latex document in vscode
+		vscode.commands.executeCommand('vscode.open', vscode.Uri.file(document.filePath));
+	})
+
 	// fetch a string in a latex file, like exercise name of balise
 	let fetch = vscode.commands.registerCommand('banque.fetch', function (doc) {
 		// open document in vscode
-		vscode.commands.executeCommand('vscode.open',vscode.Uri.file(doc.filePath));
+		vscode.commands.executeCommand('vscode.open', vscode.Uri.file(doc.filePath), { viewColumn: vscode.ViewColumn.One });
 
 		// Get the active text editor and string to search
 		var editor = vscode.window.activeTextEditor;
@@ -317,8 +323,8 @@ function activate(context) {
 	});
 
 	// register data providers
-	const programme_colle = new ProgShow();
-	const banque_exercices = new BanqueExoShow();
+	var programme_colle = new ProgShow();
+	var banque_exercices = new BanqueExoShow();
 	vscode.window.registerTreeDataProvider('programme-colle', programme_colle);
 	vscode.window.registerTreeDataProvider('banque-exercices', banque_exercices);
 
@@ -439,8 +445,9 @@ function activate(context) {
 	});
 
 	// compile to compile an exercise separately
-	let compile_exercise = vscode.commands.registerCommand('banque.compile', function (document = undefined) {
+	let compile_exercise = vscode.commands.registerCommand('banque.compile', function (document) {
 		
+		// vscode.window.showInformationMessage(document.filePath);
 		// get the active text editor
 		let editor = vscode.window.activeTextEditor;
 		if (!editor) {
@@ -463,30 +470,38 @@ function activate(context) {
 			var exo = lineText.substring(start, end);
 		} else {
 			var exo = document.label.replace(/"/g, '');
+			// vscode.window.showInformationMessage(exo, document.filePath);
+			vscode.commands.executeCommand('vscode.open', vscode.Uri.file(document.filePath)).then(() => {
+				// just pass
+			}
+			);
 		}
 
-		// insert the TEX root line at the beginning of the file
-		const editorText = editor.document.getText();
+		// name of temporary latex exercise file
 		const exercice = 'Exercice'
-		const latex_magic = `% !TEX root = ${__dirname}/tmp/${exercice}.tex\n`;
-		if (!editorText.includes(`% !TEX root = ${__dirname}/tmp`)) {
-			editor.edit(editBuilder => {
-				editBuilder.insert(new vscode.Position(0, 0), latex_magic);
-			});
-		}
 
 		// get the basename with extension of current latex file 
-		if (document === undefined) {
+		// if (document === undefined) {
+			// insert the TEX root line at the beginning of the file
+			const editorText = editor.document.getText();
+			const latex_magic = `% !TEX root = ${__dirname}/tmp/${exercice}.tex\n`;
+			if (!editorText.includes(`% !TEX root = ${__dirname}/tmp`)) {
+				editor.edit(editBuilder => {
+						editBuilder.insert(new vscode.Position(0, 0), latex_magic);
+					}).then(() => {
+						//  just pass
+				});
+			}
 			var fileName = path.basename(editor.document.fileName);
-		} else {	
-			var fileName = path.basename(document.filePath);
-		}
+		// } else {	
+			// var fileName = path.basename(document.filePath);
+		// }
 
 		// write a new template latex file in directory tmp 
 		const template = `\\input{TD.sty}\n\\begin{document}\n\\Source{${fileName}}\n\\Ex{${exo}}\n\\end{document}`;
 		fs.writeFileSync(__dirname + `/tmp/${exercice}.tex`, template);
 		// compile the template file and open when finished
-		vscode.commands.executeCommand('latex-workshop.build').then(() => {
+		vscode.commands.executeCommand('latex-workshop.build', { rootFile: fileName} ).then(() => {
 			vscode.commands.executeCommand('latex-workshop.tab');
 		});
 	});
@@ -504,6 +519,10 @@ function activate(context) {
 	// context.subscriptions.push(convert);
 	context.subscriptions.push(send);
 	context.subscriptions.push(compile_exercise);
+	context.subscriptions.push(source);
+
+	// use banque compile ones to initialize tmp/Exercice.tex
+	// vscode.commands.executeCommand('banque.compile');
 
 	// // register the completion item provider for latex documents
 	// let complet1 = vscode.languages.registerCompletionItemProvider('latex', {

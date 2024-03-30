@@ -1,8 +1,5 @@
 /home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Quantique/puits.tex:Effet Ramsauer
 /home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Quantique/puits.tex:Effet Ramsauer
 /home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Quantique/puits.tex:Effet tunnel
-/home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Quantique/introq.tex:La marche de potentiel
 /home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Quantique/introq.tex:Modèle de l'atome d'hydrogène
-/home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Quantique/introq.tex:Puits dissymétrique
-/home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Quantique/introq.tex:Effet tunnel
 /home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Quantique/introq.tex:Interférences d'atomes de néon

@@ -167,10 +167,10 @@ class BanqueExoShow {
 			}
 		} 
 		// if (element.contextValue === 'chapter') {
-		// 	item.tooltip = "Ouvrir le fichier latex";
+		// 	item.tooltip = "Ouvrir fichier latex";
 		// 	item.command = {
 		// 		command: 'vscode.open',
-		// 		title: 'Ouvrir le fichier latex',
+		// 		title: 'Ouvrir fichier latex',
 		// 		arguments: [element.filePath],
 		// 	}
 		// } 

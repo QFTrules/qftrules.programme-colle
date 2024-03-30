@@ -83,32 +83,42 @@ var TreeItem = /** @class */ (function (_super) {
 			} else {
 				if (label === 'Cours') {
 					_this.iconPath = {
-						light: path.join(__dirname, 'images', 'chalkboard_light.png'),
-						dark: path.join(__dirname, 'images', 'chalkboard_dark.png')
+						light: path.join(__dirname, 'images', 'default_folder_opened.svg'),
+						dark: path.join(__dirname, 'images', 'default_folder_opened.svg')
+						// light: path.join(__dirname, 'images', 'chalkboard_light.png'),
+						// dark: path.join(__dirname, 'images', 'chalkboard_dark.png')
 				};
 				} else {
 					if (label === 'TD') {
 						_this.iconPath = {
-							light: path.join(__dirname, 'images', 'pencil_light.png'),
-							dark: path.join(__dirname, 'images', 'pencil_dark.png')
+							light: path.join(__dirname, 'images', 'default_folder_opened.svg'),
+							dark: path.join(__dirname, 'images', 'default_folder_opened.svg')
+							// light: path.join(__dirname, 'images', 'pencil_light.png'),
+							// dark: path.join(__dirname, 'images', 'pencil_dark.png')
 						};
 					} else {
 						if (label === 'DM') {
 							_this.iconPath = {
-								light: path.join(__dirname, 'images', 'house_light.png'),
-								dark: path.join(__dirname, 'images', 'house_dark.png')
+								light: path.join(__dirname, 'images', 'default_folder_opened.svg'),
+								dark: path.join(__dirname, 'images', 'default_folder_opened.svg')
+								// light: path.join(__dirname, 'images', 'house_light.png'),
+								// dark: path.join(__dirname, 'images', 'house_dark.png')
 							};
 						} else {
 							if (label === 'TP') {
 								_this.iconPath = {
-									light: path.join(__dirname, 'images', 'flask_light.png'),
-									dark: path.join(__dirname, 'images', 'flask_dark.png')
+									light: path.join(__dirname, 'images', 'default_folder_opened.svg'),
+									dark: path.join(__dirname, 'images', 'default_folder_opened.svg')
+									// light: path.join(__dirname, 'images', 'flask_light.png'),
+									// dark: path.join(__dirname, 'images', 'flask_dark.png')
 								};
 							} else {
 								if (label === 'DS') {
 									_this.iconPath = {
-										light: path.join(__dirname, 'images', 'paper_light.png'),
-										dark: path.join(__dirname, 'images', 'paper_dark.png')
+										light: path.join(__dirname, 'images', 'default_folder_opened.svg'),
+										dark: path.join(__dirname, 'images', 'default_folder_opened.svg')
+										// light: path.join(__dirname, 'images', 'paper_light.png'),
+										// dark: path.join(__dirname, 'images', 'paper_dark.png')
 									};
 								} else {
 									if (contextValue === 'folder' || contextValue === 'chapter') {

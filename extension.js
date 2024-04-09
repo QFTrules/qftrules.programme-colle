@@ -251,6 +251,7 @@ function activate(context) {
 		const lines = fileContent.split('\n');
 		var [filePath, exo] = lines[0].split(':');
 		var exo = exo.toString().trim();
+		exo = `{${exo}}`;
 
 		var editor = vscode.window.activeTextEditor;
 		if (!editor) {
@@ -276,8 +277,8 @@ function activate(context) {
 		} else {
 			// vscode.window.showInformationMessage('String not found');
 		}
-		// refresh list of exercises without difficulty
-		new BanqueExoShow();
+		// refresh list of exercises without difficulty, does not work
+		// new BanqueExoShow();
 	}
 	)
 
@@ -505,10 +506,84 @@ function activate(context) {
 			vscode.commands.executeCommand('latex-workshop.tab');
 		});
 	});
+
+	// command to build a test for a given chapter
+	let test = vscode.commands.registerCommand('flash.test', function () {
+		// get the active text editor
+		let editor = vscode.window.activeTextEditor;
+		if (!editor) {
+			return;
+		}
+		// get the file path
+		const cours = editor.document.fileName;
+		// const coursDir = path.dirname(cours);
+		// write the test file
+		const template = __dirname + '/tmp/QCM.tex';
+		// make directory QCM if not existent 
+		// if (!fs.existsSync(coursDir + '/QCM')) {
+		// 	fs.mkdirSync(coursDir + '/QCM');
+		// }
+		const destination = '/home/eb/MC-Projects/QCM-PC/QCM.tex';
+		//  copy template file to another name in the same directory
+		fs.copyFileSync(template, destination);
+
+
+		// build the interro file
+		// fs.writeFileSync(template, '\\input{devoir.sty}\n\\begin{document}\n\\EnteteInter{06/10/2022}{1}\n\\begin{quest}\n');
+		child_process.execSync(`python3 ${__dirname}/build_QCM.py ${cours} ${destination}`, (error, stdout, stderr) => {
+			if (error) {
+				console.error(`Error: ${error.message}`);
+				return;
+			}
+			if (stderr) {
+				console.error(`stderr: ${stderr}`);
+				return;
+			}
+			console.log(`stdout: ${stdout}`);
+		});
+		fs.appendFileSync(destination, '\\AMCaddpagesto{1}\n\\end{copieexamen}\n\\end{document}');
+		// open the test file in vscode
+		// const outdir = vscode.workspace.getConfiguration('latex-workshop').get('latex.outDir');
+		// vscode.workspace.getConfiguration('latex-workshop').update('latex.outDir', __dirname + '/tmp');
+		// vscode.workspace.openTextDocument(fichier).then((document) => {
+			// vscode.window.showTextDocument(document);
+			// compile the test file
+		//  open the file QCM.tex in vscode
+		vscode.commands.executeCommand('vscode.open', vscode.Uri.file(destination));
+		// now execute amc command
+		vscode.commands.executeCommand('flash.amc', destination);
+	});
+
+	// command to compile using auto-multiple-choice
+	let amc = vscode.commands.registerCommand('flash.amc', function (destination) {
+		// get the active text editor
+		let editor = vscode.window.activeTextEditor;
+		if (!editor) {
+			return;
+		}
+		// get destination file if undefined
+		if (destination === undefined) {
+			var destination = '/' + editor.document.fileName;
+		} else {
+			var destination = String(destination).replace("file://", "");
+		}
+		// var filePath = path.dirname(destination);
+		// vscode.window.showInformationMessage(`auto-multiple-choice prepare --mode=s ${String(destination)}`);
+		try {
+			child_process.execSync(`auto-multiple-choice prepare --mode=s ${destination}`, { stdio: 'ignore' });
+		} catch (error) {
+			// Handle the error silently
+		}
+		// open file sujet.pdf on vscode on right panel o
+		// vscode.commands.executeCommand('vscode.open', vscode.Uri.file(filePath + '/amc-compiled.pdf'), { viewColumn: vscode.ViewColumn.Beside });
+		vscode.commands.executeCommand('vscode.open', vscode.Uri.file(destination.replace('.tex','_filtered-sujet.pdf') 
+		), { viewColumn: vscode.ViewColumn.Beside });
+
+	});
 	
 	// now push these functions to the context
 	context.subscriptions.push(copy);
-	context.subscriptions.push(open);
+	context.subscriptions.push(open);	
 	context.subscriptions.push(go);
 	context.subscriptions.push(fetch);
 	context.subscriptions.push(upload);
@@ -520,6 +595,8 @@ function activate(context) {
 	context.subscriptions.push(send);
 	context.subscriptions.push(compile_exercise);
 	context.subscriptions.push(source);
+	context.subscriptions.push(test);
+	context.subscriptions.push(amc);
 
 	// use banque compile ones to initialize tmp/Exercice.tex
 	// vscode.commands.executeCommand('banque.compile');

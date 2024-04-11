@@ -10,7 +10,7 @@ const BanqueExoShow = require('./banque_exo_show');
 // const pdfjsLib = require('pdfjs-dist');
 // const pdfWriter = require('pdfwriter');
 
-// set the boolean variables for when clauses
+// set the boolean variables to change icon when uploading programme de colle
 vscode.commands.executeCommand('setContext', 'static', true);
 
 // Function to get the next Monday date for the programme de colle
@@ -324,15 +324,33 @@ function activate(context) {
 	});
 
 	// register data providers
-	var programme_colle = new ProgShow();
-	var banque_exercices = new BanqueExoShow();
-	vscode.window.registerTreeDataProvider('programme-colle', programme_colle);
-	vscode.window.registerTreeDataProvider('banque-exercices', banque_exercices);
+	// var programme_colle = new ProgShow();
+	// const banque_exercices = new BanqueExoShow();
+	// vscode.window.registerTreeDataProvider('programme-colle', programme_colle);
+	// vscode.window.registerTreeDataProvider('banque-exercices', banque_exercices);
 
 	// commands to refresh the data providers
-	let refresh = vscode.commands.registerCommand('programme.refresh', () => {
-			programme_colle.refresh();
+	let programme_refresh = vscode.commands.registerCommand('programme.refresh', () => {
+		// var programme_colle = new ProgShow();
+		// var banque_exercices = new BanqueExoShow();
+		// programme_colle.refresh();
+		const programme_colle = new ProgShow();
+		vscode.window.registerTreeDataProvider('programme-colle', programme_colle);
 	});
+	// commands to refresh the data providers
+	let banque_refresh = vscode.commands.registerCommand('banque.refresh', () => {
+		// var programme_colle = new ProgShow();
+		// var banque_exercices = new BanqueExoShow();
+		// banque_exercices.refresh();
+		const banque_exercices = new BanqueExoShow();
+		vscode.window.registerTreeDataProvider('banque-exercices', banque_exercices);
+		// programme_colle.refresh();
+		// banque_exercices.onDidChangeTreeData;
+	});
+
+	// generate the tree data a first time
+	vscode.commands.executeCommand('programme.refresh');
+	vscode.commands.executeCommand('banque.refresh');
 
 	// // command in the explorer context menu to convert pdf to latex	
 	// let convert = vscode.commands.registerCommand('mathpix-pdf.convert', function (uri) {
@@ -499,7 +517,8 @@ function activate(context) {
 		// }
 
 		// write a new template latex file in directory tmp 
-		const template = `\\input{TD.sty}\n\\begin{document}\n\\Source{${fileName}}\n\\Ex{${exo}}\n\\end{document}`;
+		// const template = `\\input{TD.sty}\n\\begin{document}\n\\Source{${fileName}}\n\\Ex{${exo}}\n\\end{document}`;
+		const template = `\\input{TD.sty}\n\\Soluce\n\\begin{document}\n\\Source{${fileName}}\n\\Ex{${exo}}\n\\end{document}`;
 		fs.writeFileSync(__dirname + `/tmp/${exercice}.tex`, template);
 		// compile the template file and open when finished
 		vscode.commands.executeCommand('latex-workshop.build', { rootFile: fileName} ).then(() => {
@@ -580,6 +599,61 @@ function activate(context) {
 		), { viewColumn: vscode.ViewColumn.Beside });
 
 	});
+
+	// command to build soluce for latex file
+	let soluce = vscode.commands.registerCommand('flash.soluce', function () {
+		// get the active text editor
+		let editor = vscode.window.activeTextEditor;
+		if (!editor) {
+			return;
+		}
+		// get the file path
+		const latex = editor.document.fileName;
+		// get current day as a string in yyyy-mm-dd format
+		const today = new Date().toISOString().slice(0, 10);
+		// copy file to file_soluce.tex
+		const corrige = latex.replace('.tex', '_soluce.tex');
+		// fs.copyFileSync(latex, corrige);
+		// apply $HOME/Dropbox/.latex/Commands/build-soluce.py
+		child_process.execSync(`python3 ${__dirname}/build-soluce.py ${latex} ${today}`, () => {
+		});
+		// build using latex-workshop
+		// child_process.execSync(`pdflatex ${corrige}`, () => {});
+		// define magic comment for root file
+		const latex_magic = `% !TEX root = ${corrige}\n`;
+		// add latex_magic as first line of the file
+		var editorText = editor.document.getText();
+		if (editorText.includes(`% !TEX root `)) {
+			editor.edit(editBuilder => {
+				editBuilder.delete(new vscode.Range(new vscode.Position(0, 0), new vscode.Position(1, 0)));
+				editBuilder.insert(new vscode.Position(0, 0), latex_magic);
+			}).then(() => {});
+		} else {
+			editor.edit(editBuilder => {
+				editBuilder.insert(new vscode.Position(0, 0), latex_magic);
+			}).then(() => {});
+		}
+		// run latex-workshop build command
+		vscode.commands.executeCommand('latex-workshop.build').then(() => {
+			// clean all auxiliary files
+			// vscode.commands.executeCommand('latex-workshop.clean');
+			// remove latex command
+			editor.edit(editBuilder => {
+				editBuilder.delete(new vscode.Range(new vscode.Position(0, 0), new vscode.Position(1, 0)));
+			});
+ 			// open the soluce pdf in vscode	
+			vscode.commands.executeCommand('latex-workshop.tab');
+			// remove all auxiliary files like .aux, .log, .out, .synctex.gz
+			const files = ['.aux', '.log', '.out', '.synctex.gz','.tex'];
+			files.forEach(file => {
+				const auxFile = corrige.replace('.tex', file);
+				if (fs.existsSync
+				(auxFile)) {
+					fs.unlinkSync(auxFile);
+				}
+			});
+		});
+	});
 	
 	// now push these functions to the context
 	context.subscriptions.push(copy);
@@ -590,13 +664,15 @@ function activate(context) {
 	context.subscriptions.push(uploading);
 	context.subscriptions.push(compile);
 	context.subscriptions.push(build);
-	context.subscriptions.push(refresh);
+	context.subscriptions.push(programme_refresh);
+	context.subscriptions.push(banque_refresh);
 	// context.subscriptions.push(convert);
 	context.subscriptions.push(send);
 	context.subscriptions.push(compile_exercise);
 	context.subscriptions.push(source);
 	context.subscriptions.push(test);
 	context.subscriptions.push(amc);
+	context.subscriptions.push(soluce);
 
 	// use banque compile ones to initialize tmp/Exercice.tex
 	// vscode.commands.executeCommand('banque.compile');

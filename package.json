@@ -41,6 +41,11 @@
         "command": "banque.compile",
         "key": "f4",
         "when": "editorTextFocus"
+      },
+      {
+        "command": "flash.soluce",
+        "key": "ctrl+f1",
+        "when": "editorTextFocus"
       }
     ],
 
@@ -116,6 +121,11 @@
       "icon": "$(refresh)"
     },
     {
+      "command": "banque.refresh",
+      "title": "Rafraîchir",
+      "icon": "$(refresh)"
+    },
+    {
       "command": "programme.uploading",
       "title": "Téléversement en cours",
       "icon": "$(sync)"
@@ -139,6 +149,11 @@
       "command": "flash.amc",
       "title": "Compiler AMC",
       "icon": "$(debug-stackframe)"
+    },
+    {
+      "command": "flash.soluce",
+      "title": "Compiler soluce",
+      "icon": "$(debug-stackframe-active)"
     }
   ],
     
@@ -156,6 +171,11 @@
         },
         {
           "command": "flash.amc",
+          "group": "navigation@-1",
+          "when": "resourceExtname == .tex"
+        },
+        {
+          "command": "flash.soluce",
           "group": "navigation@-1",
           "when": "resourceExtname == .tex"
         }
@@ -213,6 +233,11 @@
         {
           "command": "programme.refresh",
           "when": "view == programme-colle",
+          "group": "navigation@4"
+        },
+        {
+          "command": "banque.refresh",
+          "when": "view == banque-exercices",
           "group": "navigation@4"
         }]
     },

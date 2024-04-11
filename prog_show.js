@@ -114,13 +114,13 @@ class ProgShow {
 
 	
 	// to refresh tree elements of the programme de colle
-		get onDidChangeTreeData() {
-			return this._onDidChangeTreeData && this._onDidChangeTreeData.event;
-		};
+	get onDidChangeTreeData() {
+		return this._onDidChangeTreeData && this._onDidChangeTreeData.event;
+	};
 
-		refresh() {
-			this._onDidChangeTreeData && this._onDidChangeTreeData.fire();
-		};
+	refresh() {
+		this._onDidChangeTreeData && this._onDidChangeTreeData.fire();
+	};
 };
 
 module.exports = ProgShow;

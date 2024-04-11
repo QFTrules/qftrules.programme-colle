@@ -39,13 +39,13 @@
       },
       {
         "command": "banque.compile",
-        "key": "f4",
-        "when": "editorTextFocus"
+        "key": "alt+f1",
+        "when": "editorTextFocus && editorLangId == latex"
       },
       {
         "command": "flash.soluce",
         "key": "ctrl+f1",
-        "when": "editorTextFocus"
+        "when": "editorTextFocus && editorLangId == latex"
       }
     ],
 
@@ -272,7 +272,13 @@
         "programme-colle.programmeBalise": {
             "type": "string",
             "default": "\\ProgrammeColle",
-            "description": "Définit la balise latex qui situe la partie du document au programme."
+            "description": "Macro latex qui délimite les parties du document latex (cours, TD, etc.) au programme de colle. Cette macro agit comme un interrupteur et peut délimiter le début ou la fin de la partie au programme. En présence d'une seule macro, toute la partie du document qui suit est considérée au programme. En l'absence complète de macro dans un document, celui-ci n'est pas considéré au programme. "
+        }
+        ,
+        "banque-exercices.exerciceEnvironment": {
+            "type": "string",
+            "default": "exo",
+            "description": "Nom de l'environnement latex utilisé pour les exercices. La commande `banque.compile` cherche la chaîne de caractères `\\begin{nom_de_l'environnement}{nom_de_l'exercice}` pour identifier les exercices. L'environnement peut comprendre des arguments optionnels, placés entre crochets [...]."
         }
         ,
         "mathpix-pdf.texArchives": {

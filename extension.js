@@ -158,6 +158,7 @@ function activate(context) {
 	const styPath = vscode.workspace.getConfiguration('programme-colle').get('styPath');
 	const pythonCommand = vscode.workspace.getConfiguration('programme-colle').get('pythonCommand');
 	const programmeBalise = vscode.workspace.getConfiguration('programme-colle').get('programmeBalise');
+	const exoenvi = vscode.workspace.getConfiguration('banque-exercices').get('exerciceEnvironment');
 	// const mathpixCommand = vscode.workspace.getConfiguration('mathpix-pdf').get('mpxCommand');
 	// const texPath = vscode.workspace.getConfiguration('mathpix-pdf').get('texPath');
 	// const texArchives = vscode.workspace.getConfiguration('mathpix-pdf').get('texArchives');
@@ -472,7 +473,10 @@ function activate(context) {
 		if (!editor) {
 			return;
 		}
-		
+
+		// string to search in the document
+		const searchString = '\\begin{' + exoenvi +'}';
+
 		// check if command called from the explorer context menu or from the editor (document undefined)
 		if (document === undefined) {
 			// declare the cursorPosition variable
@@ -480,12 +484,14 @@ function activate(context) {
 			// find the first line before the cursor position that contains the string '\begin{exo}'
 			let lineNumber = cursorPosition.line - 1;
 			let lineText = editor.document.lineAt(lineNumber).text;
-			while (lineNumber >= 0 && !lineText.includes('\\begin{exo}')) {
+			while (lineNumber >= 0 && !lineText.includes(searchString)) {
 				lineNumber--;
 				lineText = editor.document.lineAt(lineNumber).text;
 			}
+			// get second { character in line
 			const start = lineText.indexOf('{', lineText.indexOf('{') + 1) + 1;
-			const end = lineText.indexOf('}', lineText.indexOf('}') + 1);
+			// get last } caracter in line in case {} characters are present in exo title
+			const end = lineText.lastIndexOf('}');
 			var exo = lineText.substring(start, end);
 		} else {
 			var exo = document.label.replace(/"/g, '');
@@ -502,16 +508,27 @@ function activate(context) {
 		// get the basename with extension of current latex file 
 		// if (document === undefined) {
 			// insert the TEX root line at the beginning of the file
-			const editorText = editor.document.getText();
-			const latex_magic = `% !TEX root = ${__dirname}/tmp/${exercice}.tex\n`;
-			if (!editorText.includes(`% !TEX root = ${__dirname}/tmp`)) {
-				editor.edit(editBuilder => {
-						editBuilder.insert(new vscode.Position(0, 0), latex_magic);
-					}).then(() => {
-						//  just pass
-				});
-			}
-			var fileName = path.basename(editor.document.fileName);
+		const editorText = editor.document.getText();
+		const latex_magic = `% !TEX root = ${__dirname}/tmp/${exercice}.tex\n`;
+		if (editorText.includes(`% !TEX root `)) {
+			editor.edit(editBuilder => {
+				editBuilder.delete(new vscode.Range(new vscode.Position(0, 0), new vscode.Position(1, 0)));
+				editBuilder.insert(new vscode.Position(0, 0), latex_magic);
+			}).then(() => {});
+		} else {
+			editor.edit(editBuilder => {
+				editBuilder.insert(new vscode.Position(0, 0), latex_magic);
+			}).then(() => {});
+		}
+		// if (!editorText.includes(`% !TEX root = ${__dirname}/tmp`)) {
+		// 	editor.edit(editBuilder => {
+		// 			editBuilder.insert(new vscode.Position(0, 0), latex_magic);
+		// 		}).then(() => {
+		// 			//  just pass
+		// 	});
+		// }
+		var filePath = editor.document.fileName;
+		var fileName = path.basename(editor.document.fileName);
 		// } else {	
 			// var fileName = path.basename(document.filePath);
 		// }
@@ -521,7 +538,7 @@ function activate(context) {
 		const template = `\\input{TD.sty}\n\\Soluce\n\\begin{document}\n\\Source{${fileName}}\n\\Ex{${exo}}\n\\end{document}`;
 		fs.writeFileSync(__dirname + `/tmp/${exercice}.tex`, template);
 		// compile the template file and open when finished
-		vscode.commands.executeCommand('latex-workshop.build', { rootFile: fileName} ).then(() => {
+		vscode.commands.executeCommand('latex-workshop.build', {rootFile:filePath}).then(() => {
 			vscode.commands.executeCommand('latex-workshop.tab');
 		});
 	});

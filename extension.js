@@ -644,32 +644,54 @@ function activate(context) {
 			editor.edit(editBuilder => {
 				editBuilder.delete(new vscode.Range(new vscode.Position(0, 0), new vscode.Position(1, 0)));
 				editBuilder.insert(new vscode.Position(0, 0), latex_magic);
-			}).then(() => {});
+			}).then(() => {
+				// run latex-workshop build command
+				vscode.commands.executeCommand('latex-workshop.build').then(() => {
+					// clean all auxiliary files
+					// vscode.commands.executeCommand('latex-workshop.clean');
+					// remove latex command
+					editor.edit(editBuilder => {
+						editBuilder.delete(new vscode.Range(new vscode.Position(0, 0), new vscode.Position(1, 0)));
+					});
+					// open the soluce pdf in vscode	
+					vscode.commands.executeCommand('latex-workshop.tab');
+					// remove all auxiliary files like .aux, .log, .out, .synctex.gz
+					const files = ['.synctex.gz','.tex'];
+					files.forEach(file => {
+						const auxFile = corrige.replace('.tex', file);
+						if (fs.existsSync
+						(auxFile)) {
+							fs.unlinkSync(auxFile);
+						}
+					});
+				});
+			});
 		} else {
 			editor.edit(editBuilder => {
 				editBuilder.insert(new vscode.Position(0, 0), latex_magic);
-			}).then(() => {});
+			}).then(() => {
+				// run latex-workshop build command
+				vscode.commands.executeCommand('latex-workshop.build').then(() => {
+					// clean all auxiliary files
+					// vscode.commands.executeCommand('latex-workshop.clean');
+					// remove latex command
+					editor.edit(editBuilder => {
+						editBuilder.delete(new vscode.Range(new vscode.Position(0, 0), new vscode.Position(1, 0)));
+					});
+					 // open the soluce pdf in vscode	
+					vscode.commands.executeCommand('latex-workshop.tab');
+					// remove all auxiliary files like .aux, .log, .out, .synctex.gz
+					const files = ['.synctex.gz','.tex'];
+					files.forEach(file => {
+						const auxFile = corrige.replace('.tex', file);
+						if (fs.existsSync
+						(auxFile)) {
+							fs.unlinkSync(auxFile);
+						}
+					});
+				});
+			});
 		}
-		// run latex-workshop build command
-		vscode.commands.executeCommand('latex-workshop.build').then(() => {
-			// clean all auxiliary files
-			// vscode.commands.executeCommand('latex-workshop.clean');
-			// remove latex command
-			editor.edit(editBuilder => {
-				editBuilder.delete(new vscode.Range(new vscode.Position(0, 0), new vscode.Position(1, 0)));
-			});
- 			// open the soluce pdf in vscode	
-			vscode.commands.executeCommand('latex-workshop.tab');
-			// remove all auxiliary files like .aux, .log, .out, .synctex.gz
-			const files = ['.aux', '.log', '.out', '.synctex.gz','.tex'];
-			files.forEach(file => {
-				const auxFile = corrige.replace('.tex', file);
-				if (fs.existsSync
-				(auxFile)) {
-					fs.unlinkSync(auxFile);
-				}
-			});
-		});
 	});
 	
 	// now push these functions to the context

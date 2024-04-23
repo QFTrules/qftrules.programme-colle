@@ -147,13 +147,13 @@
     },
     {
       "command": "flash.amc",
-      "title": "Compiler AMC",
-      "icon": "$(debug-stackframe)"
+      "title": "Compiler QCM",
+      "icon": "$(debug-stackframe-active)"
     },
     {
       "command": "flash.soluce",
       "title": "Compiler soluce",
-      "icon": "$(debug-stackframe-active)"
+      "icon": "$(debug-stackframe)"
     }
   ],
     
@@ -166,12 +166,12 @@
         },
         {
           "command": "flash.test",
-          "group": "navigation@-1",
+          "group": "navigation@-2",
           "when": "resourceExtname == .tex"
         },
         {
           "command": "flash.amc",
-          "group": "navigation@-1",
+          "group": "navigation@-3",
           "when": "resourceExtname == .tex"
         },
         {

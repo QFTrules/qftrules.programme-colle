@@ -59,7 +59,7 @@ var TreeItem = /** @class */ (function (_super) {
 							dark: path.join(__dirname, 'images', 'file_type_python.svg')
 						};
 					} else {
-						if (typeExo.includes('TD')) {
+						if (typeExo.includes('TD') || typeExo.includes('appli')) {
 							_this.iconPath = {
 								light: path.join(__dirname, 'images', 'pencil_light.png'),
 								dark: path.join(__dirname, 'images', 'pencil_dark.png')
@@ -71,10 +71,17 @@ var TreeItem = /** @class */ (function (_super) {
 									dark: path.join(__dirname, 'images', 'chalkboard_dark.png')
 								};
 							} else {
-								_this.iconPath = {
-									light: path.join(__dirname, 'images', 'paper_light.png'),
-									dark: path.join(__dirname, 'images', 'paper_dark.png')
-								};
+								if (typeExo.includes('oral')) {
+									_this.iconPath = {
+										light: path.join(__dirname, 'images', 'gear-solid_light.png'),
+										dark: path.join(__dirname, 'images', 'gear-solid_dark.png')
+									};
+								} else {
+									_this.iconPath = {
+										light: path.join(__dirname, 'images', 'paper_light.png'),
+										dark: path.join(__dirname, 'images', 'paper_dark.png')
+									};
+								}
 							}
 						}
 					}

@@ -43,6 +43,11 @@
         "when": "editorTextFocus && editorLangId == latex"
       },
       {
+        "command": "banque.reveal",
+        "key": "ctrl+alt+r",
+        "when": "editorTextFocus && editorLangId == latex"
+      },
+      {
         "command": "flash.soluce",
         "key": "ctrl+f1",
         "when": "editorTextFocus && editorLangId == latex"
@@ -116,6 +121,11 @@
       "icon": "$(file-pdf)"
     },
     {
+      "command": "banque.reveal",
+      "title": "Révéler exercice",
+      "icon": "$(file-pdf)"
+    },
+    {
       "command": "programme.refresh",
       "title": "Rafraîchir",
       "icon": "$(refresh)"
@@ -134,6 +144,11 @@
       "command": "suggestions.go",
       "title": "Aller aux suggestions",
       "icon": "$(star)"
+    },
+    {
+      "command": "suggestions.refresh",
+      "title": "Rafraîchir",
+      "icon": "$(refresh)"
     },
     {
       "command": "flash.send",
@@ -238,6 +253,11 @@
         {
           "command": "banque.refresh",
           "when": "view == banque-exercices",
+          "group": "navigation@4"
+        },
+        {
+          "command": "suggestions.refresh",
+          "when": "view == suggestions",
           "group": "navigation@4"
         }]
     },

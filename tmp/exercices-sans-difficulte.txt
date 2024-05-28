@@ -1,4 +1,3 @@
-/home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Thermo/radiation.tex:Luminosité des étoiles
 /home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Thermo/ouverts.tex:Le turboréacteur
 /home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Thermo/ouverts.tex:Étude d'un congélateur
 /home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Thermo/ouverts.tex:Échangeur thermique
@@ -10,7 +9,6 @@
 /home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Thermo/principes.tex:Dissociation du dibrome gazeux
 /home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Thermo/principes.tex:Pression de l'eau sur quelques ouvrages
 /home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Thermo/principes.tex:Études de thermomètres
-/home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Thermo/principes.tex:Transformations brutales vs quasistatiques
 /home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Thermo/diffusion.tex:Simple et double vitrage
 /home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Thermo/diffusion.tex:Ailette de refroidissement
 /home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Thermo/diffusion.tex:Température dans un câble électrique

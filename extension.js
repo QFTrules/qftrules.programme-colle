@@ -7,6 +7,7 @@ const fs = require('fs');
 const path = require('path');
 const ProgShow = require('./prog_show');
 const BanqueExoShow = require('./banque_exo_show');
+// const GetTypeExo = BanqueExoShow.GetTypeExo;
 // const pdfjsLib = require('pdfjs-dist');
 // const pdfWriter = require('pdfwriter');
 
@@ -332,24 +333,21 @@ function activate(context) {
 
 	// commands to refresh the data providers
 	let programme_refresh = vscode.commands.registerCommand('programme.refresh', () => {
-		// var programme_colle = new ProgShow();
-		// var banque_exercices = new BanqueExoShow();
-		// programme_colle.refresh();
 		const programme_colle = new ProgShow();
 		vscode.window.registerTreeDataProvider('programme-colle', programme_colle);
 	});
-	// commands to refresh the data providers
+
+	
 	let banque_refresh = vscode.commands.registerCommand('banque.refresh', () => {
-		// var programme_colle = new ProgShow();
-		// var banque_exercices = new BanqueExoShow();
-		// banque_exercices.refresh();
 		const banque_exercices = new BanqueExoShow();
 		vscode.window.registerTreeDataProvider('banque-exercices', banque_exercices);
-		// programme_colle.refresh();
-		// banque_exercices.onDidChangeTreeData;
+	});
+	
+	let suggestions_refresh = vscode.commands.registerCommand('suggestions.refresh', () => {
+		vscode.commands.executeCommand('banque.refresh');
 	});
 
-	// generate the tree data a first time
+	// generate the tree data at extension startup
 	vscode.commands.executeCommand('programme.refresh');
 	vscode.commands.executeCommand('banque.refresh');
 
@@ -464,7 +462,7 @@ function activate(context) {
 		}
 	});
 
-	// compile to compile an exercise separately
+	// command to compile an exercise separately
 	let compile_exercise = vscode.commands.registerCommand('banque.compile', function (document) {
 		
 		// vscode.window.showInformationMessage(document.filePath);
@@ -535,12 +533,63 @@ function activate(context) {
 
 		// write a new template latex file in directory tmp 
 		// const template = `\\input{TD.sty}\n\\begin{document}\n\\Source{${fileName}}\n\\Ex{${exo}}\n\\end{document}`;
-		const template = `\\input{TD.sty}\n\\Soluce\n\\begin{document}\n\\Source{${fileName}}\n\\Ex{${exo}}\n\\end{document}`;
+		// const template = `\\input{TD.sty}\n\\Soluce\n\\begin{document}\n\\Source{${fileName}}\n\\Ex{${exo}}\n\\end{document}`;
+		const template = `%&Exercice\n% \\input{TDappli.sty}\n% \\endofdump\n\\Soluce\n\\begin{document}\n\\Source{${fileName}}\n\\Ex{${exo}}\n\\end{document}`;
 		fs.writeFileSync(__dirname + `/tmp/${exercice}.tex`, template);
 		// compile the template file and open when finished
 		vscode.commands.executeCommand('latex-workshop.build', {rootFile:filePath}).then(() => {
 			vscode.commands.executeCommand('latex-workshop.tab');
 		});
+	});
+
+	// command to reveal an exercise in tree view
+	let reveal_exercise = vscode.commands.registerCommand('banque.reveal', function () {
+		
+		// vscode.window.showInformationMessage(document.filePath);
+		// get the active text editor
+		let editor = vscode.window.activeTextEditor;
+		if (!editor) {
+			return;
+		}
+	
+		// vscode.window.showInformationMessage(folderName, fileName);
+
+		// get label of exercise from current mouse position
+		const cursorPosition = editor.selection.active;
+		// find the first line before the cursor position that contains the string '\begin{exo}'
+		let lineNumber = cursorPosition.line;
+		let lineText = editor.document.lineAt(lineNumber).text;
+		// get second { character in line
+		var start = lineText.indexOf('{', lineText.indexOf('{') + 1) + 1;
+		// get last } caracter in line in case {} characters are present in exo title
+		var end = lineText.lastIndexOf('}');
+		var exo = lineText.substring(start, end);
+		// highlight the exercise in the editor
+		// vscode.commands.executeCommand('editor.action.selectHighlights', {label: exo});
+		// vscode.window.showInformationMessage(lineText.toString());
+		vscode.commands.executeCommand('extension.selectCurlyBrackets', {label: exo});
+
+		// get document filename and folder name 
+		if (lineText.includes('begin{Exocolle}')) { // exercice de colle
+			const editorText = editor.document.getText();
+			const sourceIndex = editorText.indexOf('\\Source{');
+			var start = sourceIndex + ('\\Source{').length;
+			var end = editorText.indexOf('.tex}', start);
+			var fileName = editorText.substring(start, end);
+			vscode.window.showInformationMessage(fileName);
+			var folderName = 'undefined';
+		}
+		else { // exercice de TD
+			var filePath = editor.document.fileName;
+			var fileName = path.basename(filePath).replace('.tex', '');
+			var folderName = filePath.substring(filePath.lastIndexOf('/', filePath.lastIndexOf('/') - 1)+1, filePath.lastIndexOf('/'));
+		}
+
+		const banque_exercices = new BanqueExoShow();
+		const TreeView = vscode.window.createTreeView('banque-exercices', { treeDataProvider: banque_exercices });
+		const item = banque_exercices.getTreeItemByLabel(folderName,fileName,exo);
+		// vscode.window.showInformationMessage(item.label);
+		TreeView.reveal(item, {focus: true, select: true, expand: true});
 	});
 
 	// command to build a test for a given chapter
@@ -681,7 +730,8 @@ function activate(context) {
 					 // open the soluce pdf in vscode	
 					vscode.commands.executeCommand('latex-workshop.tab');
 					// remove all auxiliary files like .aux, .log, .out, .synctex.gz
-					const files = ['.synctex.gz','.tex'];
+					// const files = ['.synctex.gz','.tex'];
+					const files = ['.tex'];
 					files.forEach(file => {
 						const auxFile = corrige.replace('.tex', file);
 						if (fs.existsSync
@@ -712,6 +762,8 @@ function activate(context) {
 	context.subscriptions.push(test);
 	context.subscriptions.push(amc);
 	context.subscriptions.push(soluce);
+	context.subscriptions.push(reveal_exercise);
+	context.subscriptions.push(suggestions_refresh);
 
 	// use banque compile ones to initialize tmp/Exercice.tex
 	// vscode.commands.executeCommand('banque.compile');

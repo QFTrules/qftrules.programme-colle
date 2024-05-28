@@ -26,15 +26,19 @@ var __extends = (this && this.__extends) || (function () {
 // define the properties of the tree items, notably the icons, descriptions, and the collapsible states
 var TreeItem = /** @class */ (function (_super) {
 	__extends(TreeItem, _super);
-	function TreeItem(label, children, filePath, contextValue, collapsed, typeExo, difficulty) {
+	function TreeItem(label, children, filePath, contextValue, collapsed, typeExo, difficulty, chapter, theme) {
 		// _this is used to keep the initial object this available in the constructor
 		var _this = _super.call(this, label, children === undefined ? vscode.TreeItemCollapsibleState.None :
-			vscode.TreeItemCollapsibleState.Expanded, collapsed, typeExo, difficulty) || this;
+			vscode.TreeItemCollapsibleState.Expanded, collapsed, typeExo, difficulty, chapter, theme) || this;
 			_this.children = children;
 			_this.filePath = filePath;
 			_this.contextValue = contextValue;
 			_this.typeExo = typeExo;
 			_this.difficulty = difficulty;
+			_this.chapter = chapter;
+			_this.theme = theme;
+
+			// indicate difficulty level in the tree view
 			_this.description = _this.contextValue === 'file' ? '★'.repeat(difficulty) : '';
 
 			// define the collapsible state of the tree items, expanded by default
@@ -50,7 +54,6 @@ var TreeItem = /** @class */ (function (_super) {
 			}
 			
 			if (typeof typeExo === 'string') {
-				// the banque-exercices data provider is called
 				// define context-specific icons for banque-exercices
 				if (_this.contextValue === 'file') {
 					if (typeExo.includes('python')) {

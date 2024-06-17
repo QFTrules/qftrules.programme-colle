@@ -11,9 +11,11 @@ with open(filename, 'r') as f:
             if '% !TEX root' in line:
                 continue
             if '\\begin{document}' in line:
+                g.write(line)
                 g.write('%--- added by build-soluce.py on ' + date + ' ---\n')
                 g.write('\\Soluce\n')               # commande qui redéfinit la macro \sol{}, voir préambule symbols.sty 
                 g.write('%----------------------------------------------\n')
+                continue
             if '\\ProgrammeColle' in line:
                 continue
             if '\\question['  in line :

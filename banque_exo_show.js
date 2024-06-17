@@ -45,12 +45,14 @@ function generateTreeItems() {
 	// vscode.window.showInformationMessage('Liste des thèmes : ' + themes_list);
 	// remove folders Figure, _fiches, etc.
 	themes_list.splice(themes_list.indexOf('Figure'), 1);
-	themes_list.splice(themes_list.indexOf('_fiches'), 1);
+	// themes_list.splice(themes_list.indexOf('_fiches'), 1);
 	themes_list.splice(themes_list.indexOf('Oraux'), 1);
 	themes_list.splice(themes_list.indexOf('.git'), 1);
 	themes_list.splice(themes_list.indexOf('Info'), 1);
 
-	const data = themes_list.map(function (theme) {
+	return themes_list.map(function (theme) {
+		// vscode.window.showInformationMessage(theme);
+
 		// get the list of latex files for the theme 
 		var latex_files = child_process.execSync('find ' + texPath  + theme + ' -maxdepth 1 -type f -name "*.tex"').toString().split('\n');
 		latex_files.pop();
@@ -111,7 +113,7 @@ function generateTreeItems() {
 		);
 	});
 
-	return data;
+	// return data;
 }
 
 // refresh suggestions at extension activation

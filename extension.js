@@ -172,9 +172,24 @@ function activate(context) {
 		if (editor) {
 			// let document = editor.document;
 			let position = editor.selection.active;
-			editor.edit(editBuilder => {
-				editBuilder.insert(position, document.label.replace(/"/g, ''));
-			});
+			// get name of file opened in editor
+			const fileName = path.basename(editor.document.fileName);
+			// if TD in fileName
+			if (fileName.includes('TD')) {
+				editor.edit(editBuilder => {
+					editBuilder.insert(position, '\\Ex{' + document.label.replace(/"/g, '') + '}\n');
+				});
+			} else {
+				if (fileName.includes('Colle')) {			
+					editor.edit(editBuilder => {
+						editBuilder.insert(position, document.label.replace(/"/g, ''));
+					});
+				} else {
+					editor.edit(editBuilder => {
+						editBuilder.insert(position, document.label.replace(/"/g, ''));
+					});
+				}
+			}
 		}
 		}
 	)
@@ -556,34 +571,38 @@ function activate(context) {
 
 		// get label of exercise from current mouse position
 		const cursorPosition = editor.selection.active;
+		const editorText = editor.document.getText();
 		// find the first line before the cursor position that contains the string '\begin{exo}'
 		let lineNumber = cursorPosition.line;
 		let lineText = editor.document.lineAt(lineNumber).text;
-		// get second { character in line
-		var start = lineText.indexOf('{', lineText.indexOf('{') + 1) + 1;
-		// get last } caracter in line in case {} characters are present in exo title
-		var end = lineText.lastIndexOf('}');
-		var exo = lineText.substring(start, end);
-		// highlight the exercise in the editor
-		// vscode.commands.executeCommand('editor.action.selectHighlights', {label: exo});
-		// vscode.window.showInformationMessage(lineText.toString());
-		vscode.commands.executeCommand('extension.selectCurlyBrackets', {label: exo});
-
+		
 		// get document filename and folder name 
-		if (lineText.includes('begin{Exocolle}')) { // exercice de colle
-			const editorText = editor.document.getText();
+		if (lineText.includes('begin{Exocolle}') || editorText.includes('\\Source')) { // Source
+			// exo
+			var startexo = lineText.indexOf('{', lineText.indexOf('{') + 1) + 1;
+			var endexo = lineText.lastIndexOf('}');
+			var exo = lineText.substring(startexo, endexo);
+			// fileName
 			const sourceIndex = editorText.indexOf('\\Source{');
 			var start = sourceIndex + ('\\Source{').length;
 			var end = editorText.indexOf('.tex}', start);
 			var fileName = editorText.substring(start, end);
-			vscode.window.showInformationMessage(fileName);
 			var folderName = 'undefined';
 		}
-		else { // exercice de TD
-			var filePath = editor.document.fileName;
-			var fileName = path.basename(filePath).replace('.tex', '');
-			var folderName = filePath.substring(filePath.lastIndexOf('/', filePath.lastIndexOf('/') - 1)+1, filePath.lastIndexOf('/'));
+		else { // Source en argument de \Ex[]{}
+			// exo 
+			var startexo = lineText.indexOf('{') + 1;
+			var endexo = lineText.lastIndexOf('}');
+			var exo = lineText.substring(startexo, endexo);
+			// fileName
+			var start = lineText.indexOf('[') +1;
+			var end = lineText.indexOf(']');
+			var fileName = lineText.substring(start, end);
+			var folderName = 'undefined';
 		}
+		// vscode.window.showInformationMessage(fileName, folderName, exo);
+		// hihglight the exercise in the editor
+		vscode.commands.executeCommand('extension.selectCurlyBrackets', {label: exo});
 
 		const banque_exercices = new BanqueExoShow();
 		const TreeView = vscode.window.createTreeView('banque-exercices', { treeDataProvider: banque_exercices });

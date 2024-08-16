@@ -175,7 +175,7 @@ function activate(context) {
 			// get name of file opened in editor
 			const fileName = path.basename(editor.document.fileName);
 			// if TD in fileName
-			if (fileName.includes('TD')) {
+			if (fileName.includes('TD') || fileName.includes('DS') || fileName.includes('DM')) {
 				editor.edit(editBuilder => {
 					editBuilder.insert(position, '\\Ex{' + document.label.replace(/"/g, '') + '}\n');
 				});
@@ -678,11 +678,13 @@ function activate(context) {
 		} catch (error) {
 			// Handle the error silently
 		}
+		// define filePath
+		// const filePath = path.dirname(destination);
 		// open file sujet.pdf on vscode on right panel o
-		// vscode.commands.executeCommand('vscode.open', vscode.Uri.file(filePath + '/amc-compiled.pdf'), { viewColumn: vscode.ViewColumn.Beside });
-		vscode.commands.executeCommand('vscode.open', vscode.Uri.file(destination.replace('.tex','_filtered-sujet.pdf') 
-		), { viewColumn: vscode.ViewColumn.Beside });
-
+		vscode.commands.executeCommand('vscode.open', vscode.Uri.file(destination.replace('.tex','_filtered-sujet.pdf') )
+		, { viewColumn: vscode.ViewColumn.Two });
+		// vscode.commands.executeCommand('vscode.open', vscode.Uri.file(filePath + '/amc-compiled.pdf'), { viewColumn: vscode.ViewColumn.Two });
+		// vscode.commands.executeCommand('vscode.open', vscode.Uri.file('amc-compiled.pdf')
 	});
 
 	// command to build soluce for latex file

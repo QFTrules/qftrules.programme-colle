@@ -14,6 +14,7 @@ cd ~/Dropbox/.latex/Commands/
 ProgColle="ProgrammeColle.tex"
 # create list of files to parse
 find ~/Dropbox/CPGE/Physique/Cours/ \( -name "*.tex" ! -name "*TD*" ! -name "*Fig*" ! -name "*Doc*" \) | sort > list_cours.txt
+find ~/Dropbox/PCAME/Cours/ \( -name "*.tex" ! -name "*TD*" ! -name "*Fig*" ! -name "*Doc*" \) | sort > list_cours.txt
 # echo "List of Cours files printed in list_cours.txt"
 find ~/Dropbox/CPGE/Physique/TD/ -name "*TD*.tex" | sort > list_TD.txt
 # echo "List of TD files printed in list_TD.txt"

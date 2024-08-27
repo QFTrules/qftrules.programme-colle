@@ -719,21 +719,22 @@ function activate(context) {
 				vscode.commands.executeCommand('latex-workshop.build').then(() => {
 					// clean all auxiliary files
 					// vscode.commands.executeCommand('latex-workshop.clean');
+					// open the soluce pdf in vscode	
+					vscode.commands.executeCommand('latex-workshop.tab');
 					// remove latex command
 					editor.edit(editBuilder => {
 						editBuilder.delete(new vscode.Range(new vscode.Position(0, 0), new vscode.Position(1, 0)));
 					});
-					// open the soluce pdf in vscode	
-					vscode.commands.executeCommand('latex-workshop.tab');
 					// remove all auxiliary files like .aux, .log, .out, .synctex.gz
 					const files = ['.synctex.gz','.tex'];
 					files.forEach(file => {
 						const auxFile = corrige.replace('.tex', file);
-						if (fs.existsSync
-						(auxFile)) {
+						if (fs.existsSync(auxFile)) {
 							fs.unlinkSync(auxFile);
 						}
 					});
+					// save the file
+					editor.document.save();
 				});
 			});
 		} else {
@@ -744,21 +745,24 @@ function activate(context) {
 				vscode.commands.executeCommand('latex-workshop.build').then(() => {
 					// clean all auxiliary files
 					// vscode.commands.executeCommand('latex-workshop.clean');
-					// remove latex command
-					editor.edit(editBuilder => {
-						editBuilder.delete(new vscode.Range(new vscode.Position(0, 0), new vscode.Position(1, 0)));
-					});
-					 // open the soluce pdf in vscode	
-					vscode.commands.executeCommand('latex-workshop.tab');
-					// remove all auxiliary files like .aux, .log, .out, .synctex.gz
-					// const files = ['.synctex.gz','.tex'];
-					const files = ['.tex'];
-					files.forEach(file => {
-						const auxFile = corrige.replace('.tex', file);
-						if (fs.existsSync
-						(auxFile)) {
-							fs.unlinkSync(auxFile);
-						}
+					// open the soluce pdf in vscode	
+					vscode.commands.executeCommand('latex-workshop.tab').then(() => {
+						// remove latex command
+						editor.edit(editBuilder => {
+							editBuilder.delete(new vscode.Range(new vscode.Position(0, 0), new vscode.Position(1, 0)));
+						});
+						// remove all auxiliary files like .aux, .log, .out, .synctex.gz
+						// const files = ['.synctex.gz','.tex'];
+						const files = ['.tex'];
+						files.forEach(file => {
+							const auxFile = corrige.replace('.tex', file);
+							if (fs.existsSync
+							(auxFile)) {
+								fs.unlinkSync(auxFile);
+							}
+						});
+						// save the file
+						editor.document.save();
 					});
 				});
 			});

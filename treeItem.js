@@ -80,10 +80,14 @@ var TreeItem = /** @class */ (function (_super) {
 										dark: path.join(__dirname, 'images', 'gear-solid_dark.png')
 									};
 								} else {
-									// _this.iconPath = {
-										// light: path.join(__dirname, 'images', 'paper_light.png'),
-										// dark: path.join(__dirname, 'images', 'paper_dark.png')
-									// };
+									if (typeExo.includes('devoir')) {
+										_this.iconPath = {
+											light: path.join(__dirname, 'images', 'paper_light.png'),
+											dark: path.join(__dirname, 'images', 'paper_dark.png')
+										};
+									}
+									else {
+									}
 								}
 							}
 						}

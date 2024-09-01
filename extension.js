@@ -452,26 +452,28 @@ function activate(context) {
 		// get the active text editor
 
 		// check if an editor is active
-		if (editor) {
-			// get the file path of the active document
-			const filePath = editor.document.fileName;
-			vscode.window.showInformationMessage(`Current PDF file: ${filePath}`);
-		} else {
-			vscode.window.showErrorMessage('No active editor found');
-		}
+		// if (editor) {
+		// 	// get the file path of the active document
+		// 	const filePath = editor.document.fileName;
+		// 	vscode.window.showInformationMessage(`Current PDF file: ${filePath}`);
+		// } else {
+		// 	vscode.window.showErrorMessage('No active editor found');
+		// }
 		// if (!editor) {
 		// 	return;
 		// }
 		// get the file path
 		const filePath = editor.document.fileName;
-		vscode.window.showInformationMessage(`copié sur la clé USB`);
+		// change the file extension to .pdf
+		const pdfFilePath = filePath.replace(/\.[^/.]+$/, ".pdf");
 		// check if the destination path is a directory
 		if (fs.existsSync(flashDrive) && fs.lstatSync(flashDrive).isDirectory()) {
-			// copy the file to the flash drive
-			const fileName = path.basename(filePath);
+			// copy the file to the flash drive with the new file extension
+			const fileName = path.basename(pdfFilePath);
 			const destinationPath = path.join(flashDrive, fileName);
-			fs.copyFileSync(filePath, destinationPath);
+			fs.copyFileSync(pdfFilePath, destinationPath);
 			// show information message
+			vscode.window.showInformationMessage(`File ${fileName} successfully copied to ${flashDrive}`);
 		} else {
 			vscode.window.showErrorMessage('Invalid destination path');
 		}

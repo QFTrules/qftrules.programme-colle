@@ -177,7 +177,7 @@
         {
             "command": "flash.send",
             "group": "navigation@-1",
-            "when": "resourceExtname == .pdf"
+            "when": "resourceExtname == '.tex' || resourceExtname == '.pdf'"
         },
         {
           "command": "flash.test",

@@ -466,6 +466,7 @@ function activate(context) {
 		const filePath = editor.document.fileName;
 		// change the file extension to .pdf
 		const pdfFilePath = filePath.replace(/\.[^/.]+$/, ".pdf");
+		const pdfFilePath_soluce = filePath.replace(/\.[^/.]+$/, "_soluce.pdf");
 		// check if the destination path is a directory
 		if (fs.existsSync(flashDrive) && fs.lstatSync(flashDrive).isDirectory()) {
 			// copy the file to the flash drive with the new file extension
@@ -473,7 +474,16 @@ function activate(context) {
 			const destinationPath = path.join(flashDrive, fileName);
 			fs.copyFileSync(pdfFilePath, destinationPath);
 			// show information message
-			vscode.window.showInformationMessage(`File ${fileName} successfully copied to ${flashDrive}`);
+			vscode.window.showInformationMessage(`${fileName} copied to ${flashDrive}`);
+			// check if the soluce file exists
+			if (fs.existsSync(pdfFilePath_soluce)) {
+				// copy the soluce file to the flash drive with the new file extension
+				const soluceFileName = path.basename(pdfFilePath_soluce);
+				const soluceDestinationPath = path.join(flashDrive, soluceFileName);
+				fs.copyFileSync(pdfFilePath_soluce, soluceDestinationPath);
+				// show information message
+				vscode.window.showInformationMessage(`${soluceFileName} copied to ${flashDrive}`);
+			}
 		} else {
 			vscode.window.showErrorMessage('Invalid destination path');
 		}

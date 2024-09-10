@@ -52,9 +52,10 @@ chrome_options.add_argument("--headless")       # to run in the background
 service = Service('/home/eb/Dropbox/.latex/Commands/chromedriver')
 # driver = webdriver.Chrome('/home/eb/Dropbox/.latex/Commands/chromedriver')
 # , options=chrome_options)
-driver = webdriver.Chrome(service=service, options=chrome_options)
+driver = webdriver.Chrome(service=service)
+# , options=chrome_options)
 driver.maximize_window()
-url1 = "https://cahier-de-prepa.fr/pc-theo/docs?rep=28"
+url1 = "https://cahier-de-prepa.fr/pc-theo/docs?rep=158"
 driver.get(url1)
 
 userName, passWord = get_id()
@@ -110,12 +111,13 @@ try:
         pass
     # print('---> Programme de colle already in onglet programme de colle')
     # liste_semaines = driver.find_elements(by=By.CSS_SELECTOR, value="h3[class='edition']")
-    liste_semaines = driver.find_elements(by=By.CSS_SELECTOR, value="article")
-    for i, semaine in enumerate(liste_semaines):
-        # print(i, semaine.text, week)
-        if week in semaine.text:
-            data_id = semaine.get_attribute("data-id")
-            break
+    # liste_semaines = driver.find_elements(by=By.CSS_SELECTOR, value="article")
+    # for i, semaine in enumerate(liste_semaines):
+    #     # print(i, semaine.text, week)
+    #     if week in semaine.text:
+    #         data_id = semaine.get_attribute("data-id")
+    #         break
+    data_id = '1'
     # waitabit(driver=driver,t=0.2)
     # raise ArithmeticError(data_id)
     week_to_add = driver.find_element(by=By.CSS_SELECTOR, value="article[data-id='" + str(data_id) + "']>a[class='icon-ajoutecolle']")

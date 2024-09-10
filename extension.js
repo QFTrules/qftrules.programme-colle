@@ -329,9 +329,38 @@ function activate(context) {
 	let compile = vscode.commands.registerCommand('programme.compile', function () {
 		const programme_colle_file = child_process.execSync('bash ' + __dirname + '/build_programme_colle.sh ' + collePath + ' ' + styPath + ' ' + pythonCommand + ' ' + __dirname).toString();
 		vscode.window.showInformationMessage(programme_colle_file  + ' compilé avec succès', { timeout: 1 });
-		vscode.commands.executeCommand('vscode.open', vscode.Uri.file(path.join(collePath.trim(),programme_colle_file.trim())), { viewColumn: vscode.ViewColumn.Beside });
+		vscode.commands.executeCommand('vscode.open', vscode.Uri.file(path.join(collePath.trim(),programme_colle_file.trim())), { viewColumn: vscode.ViewColumn.Two });
 	});
 
+	// commande pour compiler bilan-DS.sh à partir d'un fichier .ods ouvert dans l'éditeur
+	let compile_bilan_DS = vscode.commands.registerCommand('flash.compile_bilan_DS', function () {
+		// get the active text editor
+		let editor = vscode.window.tabGroups.activeTabGroup.activeTab.input;
+		if (!editor) {
+			return;
+		}
+		// get the file path
+		const ods = editor.uri.fsPath;
+		// const ods = editor.document.fileName;
+		//  show message
+		vscode.window.showInformationMessage('Compilation du bilan de ' + ods + '...');
+		// vscode.window.showInformationMessage('bash ' + __dirname + '/scripts/build-bilanDS.sh ' + ods + ' ' + __dirname);
+		const bilanDS = child_process.execSync('bash ' + __dirname + '/scripts/build-bilanDS.sh ' + ods + ' ' + __dirname).toString();
+		// child_process.execSync('bash ' + __dirname + '/scripts/build-bilanDS.sh ' + ods + ' ' + __dirname, (error, stdout, stderr) => {
+		// 	if (error) {
+		// 		// Display an error message if the bash program encounters an error
+		// 		vscode.window.showErrorMessage(`Error: ${error.message} | ${stderr}`);
+		// 		return;
+		// 	}
+			// Continue with the following lines of code
+			// ...
+		vscode.window.showInformationMessage(ods + ' compilé avec succès');
+		// get first substring of ods before _ underscore
+		// const bilanDS = ods.substring(0, ods.indexOf('_')) + '_bilanDS.pdf';
+		// open file bilanDS.pdf in vscode on right panel
+		vscode.commands.executeCommand('vscode.open', vscode.Uri.file(bilanDS), { viewColumn: vscode.ViewColumn.Two });
+		// });
+	});
 
 
 	// commande pour compiler et téléverser le programme de colle depuis title view : programme de colle
@@ -467,6 +496,7 @@ function activate(context) {
 		// change the file extension to .pdf
 		const pdfFilePath = filePath.replace(/\.[^/.]+$/, ".pdf");
 		const pdfFilePath_soluce = filePath.replace(/\.[^/.]+$/, "_soluce.pdf");
+		const pdfFilePath_bilan = filePath.substring(0, filePath.indexOf('_')) + '_bilan.pdf';
 		// check if the destination path is a directory
 		if (fs.existsSync(flashDrive) && fs.lstatSync(flashDrive).isDirectory()) {
 			// copy the file to the flash drive with the new file extension
@@ -483,6 +513,14 @@ function activate(context) {
 				fs.copyFileSync(pdfFilePath_soluce, soluceDestinationPath);
 				// show information message
 				vscode.window.showInformationMessage(`${soluceFileName} copied to ${flashDrive}`);
+			}
+			if (fs.existsSync(pdfFilePath_bilan)) {
+				// copy the bilan file to the flash drive with the new file extension
+				const bilanFileName = path.basename(pdfFilePath_bilan);
+				const bilanDestinationPath = path.join(flashDrive, bilanFileName);
+				fs.copyFileSync(pdfFilePath_bilan, bilanDestinationPath);
+				// show information message
+				vscode.window.showInformationMessage(`${bilanFileName} copied to ${flashDrive}`);
 			}
 		} else {
 			vscode.window.showErrorMessage('Invalid destination path');
@@ -623,7 +661,7 @@ function activate(context) {
 		TreeView.reveal(item, {focus: true, select: true, expand: true});
 	});
 
-	// command to build a test for a given chapter
+	// command to build a QCM for a given chapter
 	let test = vscode.commands.registerCommand('flash.test', function () {
 		// get the active text editor
 		let editor = vscode.window.activeTextEditor;
@@ -642,8 +680,8 @@ function activate(context) {
 		const destination = '/home/eb/MC-Projects/QCM-PC/QCM.tex';
 		//  copy template file to another name in the same directory
 		fs.copyFileSync(template, destination);
-
-
+		
+		
 		// build the interro file
 		// fs.writeFileSync(template, '\\input{devoir.sty}\n\\begin{document}\n\\EnteteInter{06/10/2022}{1}\n\\begin{quest}\n');
 		child_process.execSync(`python3 ${__dirname}/build_QCM.py ${cours} ${destination}`, (error, stdout, stderr) => {
@@ -664,39 +702,91 @@ function activate(context) {
 		// vscode.workspace.openTextDocument(fichier).then((document) => {
 			// vscode.window.showTextDocument(document);
 			// compile the test file
-		//  open the file QCM.tex in vscode
+			//  open the file QCM.tex in vscode
 		vscode.commands.executeCommand('vscode.open', vscode.Uri.file(destination));
+
+		// copy tex file to local folder
+		// const folder = path.dirname(cours);
+		// // get basename of cours
+		// const coursName = path.basename(cours); 
+		// const destination_save = folder + '/QCM_' + coursName;
+		// fs.copyFileSync(destination, destination_save);
 		// now execute amc command
-		vscode.commands.executeCommand('flash.amc', destination);
+		// vscode.commands.executeCommand('flash.amc', destination);
 	});
 
 	// command to compile using auto-multiple-choice
-	let amc = vscode.commands.registerCommand('flash.amc', function (destination) {
+	let amc = vscode.commands.registerCommand('flash.amc', function () {
+		// get the active text editor
+		child_process.execSync(`auto-multiple-choice`);
+		// let editor = vscode.window.activeTextEditor;
+		// if (!editor) {
+		// 	return;
+		// }
+		// // get destination file if undefined
+		// if (destination === undefined) {
+		// 	var destination = '/' + editor.document.fileName;
+		// } else {
+		// 	var destination = String(destination).replace("file://", "");
+		// }
+		// // deal with [ and ] characters in destination path
+		// destination = destination.replace('%5B', '[').replace('%5D', ']');
+		// destination = destination.replace('%5B', '[').replace('%5D', ']');
+		// vscode.window.showInformationMessage(destination);
+		// try {
+		// 	child_process.execSync(`auto-multiple-choice prepare --mode=s ${destination}`, { stdio: 'ignore' });
+		// } catch (error) {
+		// 	// Handle the error silently
+		// 	vscode.window.showErrorMessage(`Error: ${error.message}`);
+		// }
+		// // open file sujet.pdf on vscode on right panel o
+		// vscode.commands.executeCommand('vscode.open', vscode.Uri.file(destination.replace('.tex','_filtered-sujet.pdf') )
+		// , { viewColumn: vscode.ViewColumn.Two });
+	});
+
+	// // command to compile using auto-multiple-choice
+	// let amc = vscode.commands.registerCommand('flash.amc', function (destination) {
+	// 	// get the active text editor
+	// 	let editor = vscode.window.activeTextEditor;
+	// 	if (!editor) {
+	// 		return;
+	// 	}
+	// 	// get destination file if undefined
+	// 	if (destination === undefined) {
+	// 		var destination = '/' + editor.document.fileName;
+	// 	} else {
+	// 		var destination = String(destination).replace("file://", "");
+	// 	}
+	// 	// deal with [ and ] characters in destination path
+	// 	destination = destination.replace('%5B', '[').replace('%5D', ']');
+	// 	destination = destination.replace('%5B', '[').replace('%5D', ']');
+	// 	vscode.window.showInformationMessage(destination);
+	// 	try {
+	// 		child_process.execSync(`auto-multiple-choice prepare --mode=s ${destination}`, { stdio: 'ignore' });
+	// 	} catch (error) {
+	// 		// Handle the error silently
+	// 		vscode.window.showErrorMessage(`Error: ${error.message}`);
+	// 	}
+	// 	// open file sujet.pdf on vscode on right panel o
+	// 	vscode.commands.executeCommand('vscode.open', vscode.Uri.file(destination.replace('.tex','_filtered-sujet.pdf') )
+	// 	, { viewColumn: vscode.ViewColumn.Two });
+	// });
+
+	// command to apply the bash script 
+
+	// command to see the soluce version of tex file
+	let view_soluce = vscode.commands.registerCommand('flash.view_soluce', function () {
 		// get the active text editor
 		let editor = vscode.window.activeTextEditor;
 		if (!editor) {
 			return;
 		}
-		// get destination file if undefined
-		if (destination === undefined) {
-			var destination = '/' + editor.document.fileName;
-		} else {
-			var destination = String(destination).replace("file://", "");
-		}
-		// var filePath = path.dirname(destination);
-		// vscode.window.showInformationMessage(`auto-multiple-choice prepare --mode=s ${String(destination)}`);
-		try {
-			child_process.execSync(`auto-multiple-choice prepare --mode=s ${destination}`, { stdio: 'ignore' });
-		} catch (error) {
-			// Handle the error silently
-		}
-		// define filePath
-		// const filePath = path.dirname(destination);
-		// open file sujet.pdf on vscode on right panel o
-		vscode.commands.executeCommand('vscode.open', vscode.Uri.file(destination.replace('.tex','_filtered-sujet.pdf') )
-		, { viewColumn: vscode.ViewColumn.Two });
-		// vscode.commands.executeCommand('vscode.open', vscode.Uri.file(filePath + '/amc-compiled.pdf'), { viewColumn: vscode.ViewColumn.Two });
-		// vscode.commands.executeCommand('vscode.open', vscode.Uri.file('amc-compiled.pdf')
+		// get the file path
+		const latex = editor.document.fileName;
+		// get the pdf soluce file name 
+		const soluce = latex.replace('.tex', '_soluce.pdf');
+		// open the soluce pdf in vscode in the right panel
+		vscode.commands.executeCommand('vscode.open', vscode.Uri.file(soluce), { viewColumn: vscode.ViewColumn.Two });
 	});
 
 	// command to build soluce for latex file
@@ -801,6 +891,8 @@ function activate(context) {
 	context.subscriptions.push(soluce);
 	context.subscriptions.push(reveal_exercise);
 	context.subscriptions.push(suggestions_refresh);
+	context.subscriptions.push(view_soluce);
+	context.subscriptions.push(compile_bilan_DS);
 
 	// use banque compile ones to initialize tmp/Exercice.tex
 	// vscode.commands.executeCommand('banque.compile');

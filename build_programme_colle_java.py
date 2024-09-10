@@ -125,7 +125,7 @@ with open(sys.argv[1], 'r') as f:
                     found = not found
             except:
                 filename = sys.argv[1].split('/')[-1]
-                print('Error on line ' + str(linenumber) + ' in file ' + filename)
+                # print('Error on line ' + str(linenumber) + ' in file ' + filename)
         #g.write('\\end{document}')
     #print(secname)
     g.close()

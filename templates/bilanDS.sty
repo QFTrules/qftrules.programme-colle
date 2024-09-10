@@ -1,0 +1,707 @@
+% CE FICHIER DEFINIT LE PREAMBULE POUR LES BILANS DE DS
+
+%%% DOCUMENT %%%
+\documentclass[a4paper,twocolumn,11pt,landscape]{book}
+\setlength{\columnsep}{2cm}
+\setlength{\columnseprule}{0.5pt}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[autolanguage]{numprint}
+\usepackage{lmodern}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{cases}
+\usepackage{mathrsfs}
+\usepackage{textcomp}
+\usepackage[top=1cm,bottom=0cm,left=1cm,right=1cm]{geometry}
+\usepackage{stmaryrd}
+\usepackage{inputenc}
+\usepackage{moreverb}
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage{fancyvrb}
+\usepackage{listings}
+\usepackage{wrapfig}
+\usepackage{subfigure}
+\usepackage{pgfplots}
+\usepackage{esint}
+\usepackage{tikz}
+\usepackage[europeanresistors]{circuitikz}
+\usepackage{multicol}
+\usepackage{tabularx}
+\usepackage{lipsum}
+\usepackage{chngcntr}
+\usepackage{fancyhdr}
+\usepackage{exercise}
+\usepackage{titlesec}
+\usepackage{titletoc}
+\usepackage{vwcol}
+\counterwithin{table}{section}
+\usepackage[titletoc]{appendix}
+\usepackage{changepage}
+\usepackage{mdframed}
+\usepackage{pdfpages}
+% \usepackage[inline]{enumitem}
+\usepackage{multirow}
+\pgfplotsset{compat=1.16}
+% \usepackage{empheq} % loaded in symbols.sty
+\usepackage{afterpage}
+% \usepackage{tocloft}
+% \usepackage{subequations}
+\usepackage{import}
+
+%%% CAPTIONS %%%
+%\DeclareCaptionLabelSeparator{trait}{$\,-\,$}
+\usepackage[font      = small,
+			%labelfont = bf,
+			labelsep  = endash]{caption}
+
+%%% MINTED %%%
+\usepackage[cache=false]{minted}
+\setminted{fontsize=\footnotesize}
+
+%%% SYMBOLS %%%
+\input{$HOME/Dropbox/texmf/tex/latex/Preambles/symbols.sty}
+\input{$HOME/Dropbox/texmf/tex/latex/Preambles/programme.tex}
+% \input{$HOME/Dropbox/texmf/tex/latex/Preambles/_preambule_CdE_PC.tex}
+
+\usepackage[colorlinks=true,
+pdfstartview=FitV,
+linkcolor= brickred,
+citecolor= brickred,
+urlcolor= brickred,
+hyperindex=true,
+hyperfigures=true]
+{hyperref}
+\usepackage{bookmark}
+\hypersetup{linktoc=page}
+
+\usetikzlibrary{arrows}
+
+
+% ---------------------------------------------------------------------------------------
+%	ENVIRONNEMENT
+%---------------------------------------------------------------------------------------
+\definecolor{tealblue}{rgb}{0.21, 0.46, 0.53}
+
+\newcommand{\carre}{\begin{tikzpicture} \draw[thick] (0,0) rectangle (0.15,0.15); \end{tikzpicture}}
+
+% \usepackage{enumitem}
+\newlist{protocole}{enumerate}{1}
+\setlist[protocole]{%
+  label=\fbox{$\arabic*$},
+	% start=2,
+  resume,
+	leftmargin=1cm
+}
+
+%%% NUMBERING STYLE %%%
+\makeatletter
+\renewcommand{\thefigure}{\ifnum \c@section>\z@ \thesection.\fi
+ \@arabic\c@figure}
+\@addtoreset{figure}{section}
+ \let\p@subfigure\thefigure
+\makeatother
+\makeatletter
+%\renewcommand\theequation{\theExercise.\arabic{equation}}
+\renewcommand\theequation{\arabic{equation}}
+\@addtoreset{equation}{section}
+\@addtoreset{section}{part}
+\makeatother
+
+\renewcommand{\thepart}{\arabic{part}}
+\renewcommand{\thesection}{\thepart.\arabic{section}}
+\newcommand{\sectionbreak}{\clearpage}
+
+%%% STRUCTURE AND FORMAT %%%
+\titlecontents{section}
+[0.75cm]             % left margin
+{\thispagestyle{plain}\vspace{0.2cm}}                  % above code
+{\bfseries                  % numbered format
+{\thecontentslabel\ }%
+}%
+{}         % unnumbered format
+{}         % filler-page-format, e.g dots
+
+\titlecontents{subsection}
+[1cm]             % left margin
+{}                  % above code
+{                  % numbered format
+{\thecontentslabel\ }%
+}%
+{}         % unnumbered format
+{\titlerule*[0.5pc]{.}\large \contentspage}         % filler-page-format, e.g dots
+
+
+\renewcommand{\thesubsubsection}{\arabic{Exercise}.\arabic{subsubsection}}
+
+\titleformat{\subsubsection}
+{\color{coolblack}\Large}{}{0em}
+{\color{coolblack}\Large\thesubsubsection\ \;}
+
+\newcommand*\parttitle{}
+\let\origpart\part
+\renewcommand*{\part}[2][]{%
+   \ifx\\#1\\% optional argument not present?
+      \origpart{#2}%
+      \renewcommand*\parttitle{#2}%
+i   \else
+      \origpart[#1]{#2}%
+      \renewcommand*\parttitle{#1}%
+   \fi
+}
+
+%%% TO PREDEFINE SOLUTION ENVIRONMENT %%%
+\newcommand{\sol}[1]{}
+%\newcommand{\sol}{}
+
+\newrobustcmd{\EndSoluce}{
+% sstop printing the solution to each question for partial correction of TD
+\renewcommand{\sol}[1]{}
+}
+
+%\usepackage{fancyhdr}
+% \renewcommand{\sectionmark}[1]{\bfseries{#1}}
+\renewcommand{\subsectionmark}[1]{}
+% \pagestyle{fancy}
+\pagestyle{empty}
+% \cfoot{}
+% \fancyhead[RO,LE]{\bfseries\thepage}
+% \fancyhead[R]{\nouppercase{\rightmark}\quad\quad\bfseries\thepage}
+%\fancyhead[RE]{{\bfseries\thepage}\quad\quad\parttitle}
+% \renewcommand{\headrulewidth}{0.8pt}
+
+\ListOfExerciseInToc
+\ExerciseLevelInToc{subsection}
+% \renewcommand{\subsection}[1]{\for{toc}{#1}\except{toc}{#1}}
+
+% fix the wrong code in exercise.sty
+% \makeatletter
+% \patchcmd{\@@@ExeEnv}{\expandafter}{}{}{}
+% \patchcmd{\@@@Execmd}{\expandafter}{}{}{}
+% \makeatother
+
+\date{}
+
+%%% ENTETE %%%
+\usepackage{varwidth}
+\usepackage[skins]{tcolorbox}
+\renewcommand{\title}[1]{#1}
+\newcommand{\subtitle}[1]{#1}
+\newcommand{\cover}[1]{}
+
+\lhead{\small PC Théophile Gautier}
+\chead{\small \theyears}
+\rhead{\small Eric Brillaux}
+\cfoot{\small \thepage}
+\lfoot{}
+\rfoot{}
+\renewcommand{\footrulewidth}{0pt}
+
+%%% REMARQUE %%%
+% \usepackage{mdframed}
+% \newmdenv[
+%   topline=false,
+%   bottomline=false,
+%   rightline=false,
+%   linecolor=JoliRouge,
+%   linewidth=1.5pt,
+%   skipabove=\topsep,
+%   skipbelow=\topsep
+% ]{sideruleremarque}
+%
+% \makeatletter
+% \newenvironment{remarque}
+% {  \begin{sideruleremarque}
+%  \small}
+% {\end{sideruleremarque}
+% \normalsize}
+
+
+%%% TWO TYPES OF EXERCICES %%%
+\newcommand{\Exos}{
+
+\vspace{0.5cm}
+\noindent{\color{coolblack}\hrulefill~
+\Large\textsc{Exercices}~\hrulefill\\[-0.5em]
+% \hspace{-1.2cm}
+}
+}
+
+\newcommand{\Appli}{
+
+\vspace{0.5cm}
+\noindent{\color{coolblack}\hrulefill~
+\Large\textsc{Applications du cours}~\hrulefill\\[-0.5em]
+% \hspace{-0.9cm}
+}
+}
+
+\newcommand{\Problemes}{
+	
+\vspace{0.5cm}
+\noindent{\color{coolblack}\hrulefill~
+\Large\textsc{Résolutions de problème}~\hrulefill\\[-0.5em]
+% \hspace{-1.3cm}
+}
+\begin{remarque}
+Un exercice de type résolution de problème requiert davantage d’initiative. Il peut être utile de faire un
+schéma modèle, d’identifier et nommer les grandeurs pertinentes, d’utiliser l’analyse dimensionnelle,
+de proposer des hypothèses simplificatrices, de décomposer le problème en des sous-problèmes simples,
+etc.
+%Le candidat peut également être amené à proposer des valeurs numériques raisonnables pour les grandeurs manquantes ... et toutes les valeurs données ne sont pas forcément utiles. Le tout est évidemment à adapter à la situation proposée !
+\end{remarque}
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%% EXERCICE %%%
+\renewcommand{\ExerciseHeaderTitle}{~\ExerciseTitle}
+\renewcommand{\ExerciseHeaderOrigin}{%
+[\textit{\!\ExerciseOrigin\!}]}
+\renewcommand{\ExerciseName}{\large Exercice}
+\renewcommand{\ExerciseHeader}{\noindent \textcolor{coolblack}{\textbf{\Large
+\ExerciseName \space \ExerciseHeaderNB~:\large\ExerciseHeaderTitle
+\dotfill\ExerciseHeaderOrigin}}\medskip\newline
+\setcounter{quest}{0}}
+
+%%% EXO ENVIRONMENT %%%
+\makeatletter
+\newenvironment{exodm}[2][]
+{\begin{Exercise}[title={#2}, label={#2}]
+%\ref{exo:{#2}}
+\setcounter{equation}{0}
+\setcounter{quest}{0}
+}
+{
+\end{Exercise}
+}
+\makeatother
+
+\makeatletter
+\newenvironment{exotd}[3][]
+{
+\def\diff{
+$\star$\ifnum#3=1\else
+$\star$\ifnum#3=2\else
+$\star$\ifnum#3=3\fi\fi\fi}
+\begin{Exercise}[title={#2}, label={#2}, origin={\diff~}]
+%\ref{exo:{#2}}
+\setcounter{equation}{0}
+\setcounter{quest}{0}
+}
+{
+\end{Exercise}
+}
+\makeatother
+
+\makeatletter
+\newenvironment{exopython}[3][]
+{
+%\renewcommand{\ExerciseHeaderOrigin}{%
+%\includegraphics[height=15pt]{python.jpeg}[\textit{\!\ExerciseOrigin\!}]}
+\def\diff{
+$\star$\ifnum#3=1\else
+$\star$\ifnum#3=2\else
+$\star$\ifnum#3=3\fi\fi\fi}
+\renewcommand{\ExerciseName}{{\normalsize \faPython
+}~\large Exercice}
+\begin{Exercise}[title={#2}, label={#2}, origin={\diff~}]
+%\ref{exo:{#2}}
+\setcounter{equation}{0}
+\setcounter{quest}{0}
+}
+{
+\end{Exercise}
+\renewcommand{\ExerciseName}{\large Exercice}
+}
+\makeatother
+
+\newenvironment{doc}[1]
+{\renewcommand{\ExerciseName}{\large Document}
+\begin{Exercise}[title=#1]
+\vspace{-0.5cm}
+\begin{quest}
+}{\end{quest}
+\end{Exercise}
+\renewcommand{\ExerciseName}{\large Exercice}
+}
+
+\renewcounter{Exercise}[section]% Reset counter every section
+%\renewcommand{\theExercise}{\thepart.\arabic{Exercise}}
+\renewcommand{\theExercise}{\arabic{Exercise}}
+
+
+%%% REDIFINITION OF \d %%%
+\renewcommand{\d}{\mathrm{d}}
+\renewcommand{\k}{\Vec{k}}
+\renewcommand{\ae}{\Vec{a_{\rm{e}}}(M)}
+
+% %%% PYTHON CODE %%%%
+% \usepackage{minted}
+% \setminted{fontsize=\footnotesize}
+
+% command to insert an exercise in TD
+\renewcommand{\Ex}[2][0]{
+\ExerciseSelect[exam={#2}]
+\ifthenelse{\equal{#1}{0}}
+{\input{\source}}
+{\renewcommand{\source}{#1.tex}
+\input{#1.tex}}
+}
+
+% REDEFINE exo command
+\RenewDocumentEnvironment{exo}{O{PC} O{1} O{colle} m}
+{
+\setcounter{equation}{0}
+\setcounter{quest}{0}
+\def\diff{
+$\star$\ifnum#2=1\else
+$\star$\ifnum#2=2\else
+$\star$\ifnum#2=3\fi\fi\fi}
+% counter redefinition
+\ifthenelse{\equal{\detokenize{#3}}{\detokenize{appli}}}
+	{
+	% \setcounter{nombreExercices}{0}
+	% \initializeCounterForCalcul
+	% \hauteurLargeurCadreReponse		{8mm}{3cm}
+	% \dureeResolutionFacultative		{2} % 1, 2, 3 ou 4
+	% \typeEntrainement				{Newton} % Newton ou QCM ou AN ou vide (exercice "normal")
+	% \basiqueEtTransversal			{Y}
+	% \nombreColonnesQuestions		{1} % vide, 1, 2, 3, etc.
+	% \avecPlusieursQuestions			{Y} % Y ou N
+	% \renewcommand{\ExerciseName}{{\normalsize \includegraphics[height=10pt]{Bulldozer.pdf}}~\large Exercice}
+	\begin{Exercise}[title={#4}, exam={#4}, origin={\diff~}, label=appli, type={\textsc{#1}}]
+	\vspace{-0.5cm}
+	\begin{adjustwidth}{0.01cm}{0cm}
+	% \indent
+	}{
+	\ifthenelse{\equal{\detokenize{#3}}{\detokenize{python}}}
+		{
+		\def\diff{
+		$\star$\ifnum#2=1\else
+		$\star$\ifnum#2=2\else
+		$\star$\ifnum#2=3\fi\fi\fi}
+		\renewcommand{\ExerciseName}{{\normalsize \faPython}~\large Exercice}
+		\begin{Exercise}[title={#4}, exam={#4}, origin={\diff~}, label=python, type={\textsc{#1}}]
+		}{
+		\begin{Exercise}[title={#4}, exam={#4}, origin={\diff~}, label=TD, type={\textsc{#1}}]
+		}
+	}
+}{
+\ifthenelse{\equal{\detokenize{#3}}{\detokenize{appli}}}
+{
+\end{adjustwidth}
+\end{Exercise}
+}
+{\end{Exercise}}
+}
+
+% REMOVE Cahier exercices commands
+% \renewcommand{\initialisationEntrainement}{}
+% \renewcommand{\debutEntrainement}{}
+% \renewcommand{\pauseEntrainement}{}
+% \renewcommand{\repriseEntrainement}{}
+% \renewcommand{\finEntrainement}{}
+
+
+%%% ORAUX BLANCS %%%
+\newcounter{oral}
+\setcounter{oral}{0}
+\newenvironment{oral}[1][1]{
+\def\diff{% $\star$\ifnum#1=1\else
+% $\star$\ifnum#1=2\else
+% $\star$\ifnum#1=3\fi\fi\fi
+}
+\stepcounter{oral}
+\renewcommand{\thesubsubsection}{\arabic{subsubsection}}
+\titleformat{\subsubsection}
+{\color{coolblack}\Huge}{}{0em}
+{\color{coolblack}\Large}
+\subsubsection{\textbf{Exercice~\theoral~}\hrulefill~{\diff}}
+\vspace{-0.5cm}
+\renewcommand{\ExerciseHeader}{\noindent \textcolor{black}{\textbf{\Large\ExerciseName}}~--\!\!\!\!\noindent}
+\renewcommand{\ExerciseName}{\normalsize Exercice principal~(14~pt)}
+}{}
+
+\newrobustcmd{\Principal}[2][]{
+% remove name of exercise
+\renewcommand{\Notions}[1]{}
+\renewenvironment{mywrap}[2]{
+% \begin{wrapfigure}{#1}{#2}
+% \vspace{-0.5cm}
+% \begin{flushleft}
+% \includegraphics[scale=1]{cable.pdf}
+% \end{flushleft}
+% \begin{figure}[h!]
+##2
+\begin{center}
+}{
+\end{center}
+% #2
+% \end{figure}
+% \end{wrapfigure}
+}
+\renewcommand{\ExerciseName}{\normalsize Exercice principal~(14~pt)}
+\renewcommand{\ExerciseHeader}{\noindent \textcolor{black}{\textbf{\Large\ExerciseName}}~--\!\!\!\!\noindent}
+\Ex[#1]{#2}
+\renewcommand{\ExerciseName}{\normalsize Résolution de problème~(6~pt)}
+}
+
+\newcommand{\Probleme}[2][]{
+% remove name of exercise
+\renewcommand{\ExerciseName}{\normalsize Résolution de problème~(6~pt)}
+\renewcommand{\ExerciseHeader}{\noindent \textcolor{black}{\textbf{\Large\ExerciseName}}~--\!\!\!\!\noindent}
+\Ex[#1]{#2}
+}
+
+
+% problem redefinition commands
+% \renewcommand{\[}{\left[}
+% \renewcommand{\]}{\right]}
+% \renewcommand{\(}{\left(}
+% \renewcommand{\)}{\right)}
+
+
+% redefine enumerate environment
+\setlist[enumerate]{label=\alph*)}
+% define enonce env for application exercices
+\newenvironment{enonce}{}{}
+\newcommand{\hauteurLargeurCadreReponse}[2]{}
+\newcommand{\pourcentageDeLaPartieAGauche}[1]{}
+\newcommand{\initialisationPartieGauche}{}
+\newcommand{\initialisationPartieDroite}{}
+\newcommand{\finalisationDuPartageDePage}{}
+\newcommand{\reponse}[1]{\sol{#1}}
+\newenvironment{listeQCM3Colonnes}{\begin{liste}}{\end{liste}}
+\newenvironment{listeQCM2Colonnes}{\begin{liste}}{\end{liste}}
+
+\newcommand{\blueOrBlack}{}
+\newcommand{\dureeResolutionFacultative}[1]{}
+\newcommand{\typeEntrainement}[1]{}
+\newcommand{\basiqueEtTransversal}[1]{}
+\newcommand{\nombreColonnesQuestions}[1]{}
+\newcommand{\avecPlusieursQuestions}[1]{}
+
+% do not display points per question as in devoirs
+\renewcommand{\question}{\item}
+
+% STRUCTURE OF BILAN PAGE
+\newcommand{\Perso}{%
+\noindent{\color{coolblack}\hrulefill~\Large\textsc{Ma copie}~\hrulefill\\}%
+
+\noindent%
+}%
+
+\newcommand{\Histo}{%
+
+\vspace{0.3cm}%
+\noindent{\color{coolblack}\hrulefill~\Large\textsc{Histogramme des notes}~\hrulefill\\}%
+% \vspace{-0.5cm}%
+}%
+
+\newcommand{\Glossaire}{
+	{\footnotesize%
+	\begin{liste}
+		\item \udl{Efficacité} : nombre de points gagnés PG sur nombre de points abordés PA.\\[-0.2cm]
+
+		Une efficacité faible traduit une lacune disciplinaire ou de méthodologie : mieux maîtriser le course, soigner la rigueur et la présentation, et éviter de papillonner entre les questions.
+		\item \udl{Productivité} : nombre de questions abordés QA sur nombre de questions total QT.\\[-0.2cm] 
+		
+		Une productivité faible traduit un manque de recul ou une mauvaise gestion du temps~: travailler les exercices éloignés du cours qui requiert davantage d'initiative, éviter de passer trop de temps sur une question, gagner en concision.
+	\end{liste}
+	}%
+}
+
+% define command for entete bilan
+\newcommand{\EnteteBilan}[8]{
+	\begin{center}
+		{\large\textsc{Rapport de correction}}\\[-0.1cm]
+		{\large $-$}\\
+		\fbox{\Large\textsc{#1}}%
+	\end{center}
+	\Perso
+	\begin{minipage}{0.45\columnwidth}
+		\begin{notes}[*]
+		\centering
+		% \begin{tabular}{|c|c|}
+		% 	\hline
+		% 	Note brute & #2 \\
+		% 	\hline
+		% 	Note finale & #3 \\
+		% 	\hline
+		% \end{tabular}
+		\begin{tabular}{cr}
+			Note brute :& #2 \\
+			\JRouge{Note finale :}& {\JRouge{#3}} \\
+		\end{tabular}
+	\end{notes}
+	\end{minipage}\hfill
+	\begin{minipage}{0.45\columnwidth}
+		\begin{notes}
+			\centering
+			% \begin{tabular}{|c|c|}
+			% 	\hline
+			% 	Note brute & #2 \\
+			% 	\hline
+			% 	Note finale & #3 \\
+			% 	\hline
+			% \end{tabular}
+			\begin{tabular}{lc}
+				Efficacité :& #4 \\
+				Productivité :& #5 \\
+			\end{tabular}
+		\end{notes}
+	% \begin{tabular}{|c|c|}
+	% \hline
+	% Efficacité & #4 \\
+	% \hline
+	% Productivité & #5 \\
+	% \hline
+	% \end{tabular}
+	\end{minipage}
+
+	\Glossaire
+	\Histo
+	% La barre noire indique où se situe votre note dans l'histogramme.
+
+	% \begin{minipage}{0.59\columnwidth}
+	\begin{center}
+		\begin{moyenne}
+			\centering
+			\begin{tabular}{lc}
+				Moyenne :& #7 \\
+				Écart-type :& #8 \\
+			\end{tabular}
+		\end{moyenne}
+	\end{center}
+		\begin{center}
+			\includegraphics[width=0.7\columnwidth]{#6}
+		\end{center}
+	% \end{minipage}
+	% \begin{minipage}{0.39\columnwidth}
+	% \end{minipage}
+}
+
+%%% TCOLORBOX %%%
+\usepackage{pifont,manfnt,bbding}
+%\RequirePackage[many]{tcolorbox}
+% \newlength{\normalparindent}
+% \setlength{\normalparindent}{\parindent}
+\tcbset{
+common/.style={
+fontupper=\citshape,
+lower separated=false,
+% before upper={\setlength{\parindent}{\normalparindent}},
+coltitle=white,
+colback=gray!5,
+boxrule=0.5pt,
+fonttitle=\bfseries,
+enhanced,
+breakable,
+top=8pt,
+before skip=8pt,
+attach boxed title to top left={
+yshift=-0.11in,
+xshift=0.15in},
+boxed title style={
+boxrule=0pt,
+colframe=white,
+arc=0pt,
+outer arc=0pt},
+separator sign={.},},
+defstyle/.style={
+common,
+colframe=main,
+colback=main!5,
+colbacktitle=main,
+overlay unbroken and last={
+\node[anchor=south east, outer sep=0pt] at (\linewidth-width,0) {
+\textcolor{main}{
+%$\clubsuit$
+}};}},
+thmstyle/.style={
+common,
+colframe=second,
+colback=second!5,
+colbacktitle=second,
+overlay unbroken and last={
+\node[anchor=south east, outer sep=0pt] at (\linewidth-width,0) {
+\textcolor{second}{
+%$\heartsuit$
+}};}},
+propstyle/.style={
+common,
+colframe=third,
+colback=third!5,
+colbacktitle=third,
+overlay unbroken and last={
+\node[anchor=south east, outer sep=0pt] at (\linewidth-width,0) {
+\textcolor{third}{
+%$\spadesuit$
+}};}},
+}
+\tcbset{
+  introductionsty/.style={
+    enhanced,
+    breakable,
+    colback=structurecolor!10,
+    colframe=structurecolor,
+    fonttitle=\bfseries,
+    colbacktitle=structurecolor,
+    fontupper=\citshape,
+    attach boxed title to top center={yshift=-3mm,yshifttext=-1mm},
+    boxrule=0pt,
+    toprule=0.5pt,
+    bottomrule=0.5pt,
+    top=8pt,
+    before skip=8pt,
+    sharp corners
+  },
+  }
+
+% \newtcbtheorem[auto counter,number within=chapter]{definition}{\definitionname}{defstyle}{def}
+\DeclareTColorBox[auto counter]{notes}{ o t\label g }{
+common,defstyle,
+IfValueTF={#1}{title={Notes}}{title=Indicateurs},
+IfBooleanTF={#2}{label=#3}{}}
+
+\DeclareTColorBox[auto counter]{moyenne}{ o t\label g }{
+common,defstyle,
+IfValueTF={#1}{title={Statistique}}{title=Statistique},
+IfBooleanTF={#2}{label=#3}{}}
+% % \newtcbtheorem[auto counter,number within=chapter]{theorem}{\theoremname}{thmstyle}{thm}
+% \DeclareTColorBox[auto counter,number within=chapter]{theorem}{ o t\label g }{
+% common,thmstyle,
+% IfValueTF={#1}{title={\theoremname~\thetcbcounter\ (#1)}}{title=\theoremname~\formucounter.\thetcbcounter},
+% IfBooleanTF={#2}{label=#3}{}}
+% \DeclareTColorBox[auto counter]{prop}{ o t\label g }{
+% common,propstyle,
+% IfValueTF={#1}{title={\propname~\thetcbcounter\ (#1)}}{title=\propname~\formucounter.\thetcbcounter},
+% IfBooleanTF={#2}{label=#3}{}}
+% % \newtcbtheorem[auto counter,number within=chapter]{postulate}{\postulatename}{thmstyle}{pos}
+% \DeclareTColorBox[auto counter,number within=chapter]{postulate}{ o t\label g }{
+% common,thmstyle,
+% IfValueTF={#1}{title={\postulatename~\thetcbcounter\ (#1)}}{title=\postulatename~\thetcbcounter},
+% IfBooleanTF={#2}{label=#3}{}}
+% % \newtcbtheorem[auto counter,number within=chapter]{axiom}{\axiomname}{thmstyle}{axi}
+% \DeclareTColorBox[auto counter,number within=chapter]{axiom}{ o t\label g }{
+% common,thmstyle,
+% IfValueTF={#1}{title={\axiomname~\thetcbcounter\ (#1)}}{title=\axiomname~\thetcbcounter},
+% IfBooleanTF={#2}{label=#3}{}}
+% % \newtcbtheorem[auto counter,number within=chapter]{corollary}{\corollaryname}{thmstyle}{cor}
+% \DeclareTColorBox[auto counter,number within=chapter]{corollary}{ o t\label g }{
+% common,thmstyle,
+% IfValueTF={#1}{title={\corollaryname~\thetcbcounter\ (#1)}}{title=\corollaryname~\thetcbcounter},
+% IfBooleanTF={#2}{label=#3}{}}
+% % \newtcbtheorem[auto counter,number within=chapter]{lemma}{\lemmaname}{thmstyle}{lem}
+% \DeclareTColorBox[auto counter,number within=chapter]{lemma}{ o t\label g }{
+% common,thmstyle,
+% IfValueTF={#1}{title={\lemmaname~\thetcbcounter\ (#1)}}{title=\lemmaname~\thetcbcounter},
+% IfBooleanTF={#2}{label=#3}{}}
+% % \newtcbtheorem[auto counter,number within=chapter]{proposition}{\propositionname}{propstyle}{pro}
+% \DeclareTColorBox[auto counter,number within=chapter]{proposition}{ o t\label g }{
+% common,propstyle,
+% IfValueTF={#1}{title={\propositionname~\thetcbcounter\ (#1)}}{title=\propositionname~\thetcbcounter},
+% IfBooleanTF={#2}{label=#3}{}}

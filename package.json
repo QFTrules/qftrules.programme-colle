@@ -19,7 +19,12 @@
       {
         "view": "suggestions",
         "contents": "Voici les activités suggérées.\n[Indiquer la difficulté des exercices suivants](command:suggestions.go)"
-      }],
+      },
+      {
+        "view": "amc",
+        "contents": "\n[Ouvrir auto-multiple-choice](command:flash.amc)"
+      }
+    ],
 
     "viewsContainers": {
       "activitybar": [
@@ -48,9 +53,19 @@
         "when": "editorTextFocus && editorLangId == latex"
       },
       {
-        "command": "flash.soluce",
         "key": "ctrl+f1",
+        "command": "flash.soluce",
         "when": "editorTextFocus && editorLangId == latex"
+      },
+      {
+        "key": "ctrl+f2",
+        "command": "flash.view_soluce",
+        "when": "editorTextFocus && editorLangId == latex"
+      },
+      {
+        "key": "f1",
+        "command": "flash.compile_bilan_DS",
+        "when": "editorTextFocus && editorLangId == 'ods'"
       }
     ],
 
@@ -71,6 +86,11 @@
         {
           "id": "suggestions",
           "name": "Suggestions",
+          "type": "tree"
+        },
+        {
+          "id": "amc",
+          "name": "AMC",
           "type": "tree"
         }
       ]
@@ -156,19 +176,28 @@
       "icon": "$(symbol-event)"
     },
     {
+      "command": "flash.amc",
+      "title": "Ouvrir AMC"
+    },
+    {
       "command": "flash.test",
       "title": "Produire QCM",
       "icon": "$(chrome-restore)"
     },
     {
-      "command": "flash.amc",
-      "title": "Compiler QCM",
+      "command": "flash.soluce",
+      "title": "Compiler soluce",
       "icon": "$(debug-stackframe-active)"
     },
     {
-      "command": "flash.soluce",
-      "title": "Compiler soluce",
+      "command": "flash.view_soluce",
+      "title": "Voir soluce",
       "icon": "$(debug-stackframe)"
+    },
+    {
+      "command": "flash.compile_bilan_DS",
+      "title": "Compiler bilan",
+      "icon": "$(debug-stackframe-active)"
     }
   ],
     
@@ -177,7 +206,7 @@
         {
             "command": "flash.send",
             "group": "navigation@-1",
-            "when": "resourceExtname == '.tex' || resourceExtname == '.pdf'"
+            "when": "resourceExtname == .tex"
         },
         {
           "command": "flash.test",
@@ -185,15 +214,20 @@
           "when": "resourceExtname == .tex"
         },
         {
-          "command": "flash.amc",
-          "group": "navigation@-3",
+          "command": "flash.soluce",
+          "group": "navigation@0",
           "when": "resourceExtname == .tex"
         },
         {
-          "command": "flash.soluce",
-          "group": "navigation@-1",
+          "command": "flash.view_soluce",
+          "group": "navigation@0",
           "when": "resourceExtname == .tex"
-        }
+      },
+      {
+        "command": "flash.compile_bilan_DS",
+        "group": "navigation@-1",
+        "when": "resourceExtname == .ods"
+    }
     ],
       "explorer/context": [
         {

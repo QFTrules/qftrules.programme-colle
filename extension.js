@@ -670,15 +670,26 @@ function activate(context) {
 		}
 		// get the file path
 		const cours = editor.document.fileName;
-		// const coursDir = path.dirname(cours);
+		const coursDir = path.dirname(cours);
 		// write the test file
-		const template = __dirname + '/tmp/QCM.tex';
+		const template = __dirname + '/templates/source.tex';
 		// make directory QCM if not existent 
 		// if (!fs.existsSync(coursDir + '/QCM')) {
 		// 	fs.mkdirSync(coursDir + '/QCM');
 		// }
-		const destination = '/home/eb/MC-Projects/QCM-PC/QCM.tex';
+		//  get theme letter and chapter number
+		var chapter = coursDir.substring(coursDir.lastIndexOf('/') + 1);
+		const theme = chapter.substring(chapter.lastIndexOf('/') + 1).substring(1, 2);
+		var chapter = chapter.substring(1, 2);
+		// .substring(2, 3);
+		// vscode.window.showInformationMessage(theme + '-' + chapter);
+		// const destination = '/home/eb/MC-Projects/QCM-PC/QCM.tex';
+		// make directory if not existent
+		var destination = '/home/eb/MC-Projects/QCM-PC-' + theme + '-' + chapter;
+		if (!fs.existsSync(destination)) {
+			fs.mkdirSync(destination);}
 		//  copy template file to another name in the same directory
+		var destination = destination + '/source.tex';
 		fs.copyFileSync(template, destination);
 		
 		
@@ -703,6 +714,8 @@ function activate(context) {
 			// vscode.window.showTextDocument(document);
 			// compile the test file
 			//  open the file QCM.tex in vscode
+		// vscode.window.showInformationMessage(`auto-multiple-choice prepare --mode=s ${destination}`);
+		child_process.execSync(`auto-multiple-choice prepare --mode=s ${destination}`, { stdio: 'ignore' });
 		vscode.commands.executeCommand('vscode.open', vscode.Uri.file(destination));
 
 		// copy tex file to local folder

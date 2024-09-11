@@ -178,22 +178,23 @@ with open(cours, 'r') as f:
         eqprev  = False
         defini  = False
         formula = False
-        quest   = 0
+        quest   = 1
         CHOIX = []
         prevline = ''
         g.write('\n\n')
+        g.write('\AMCnoCompleteMulti \n')
         for line in f:
             if line[0] == '%':
                 continue
             if '\\begin{theorem}' in line:
                 # or '\\begin{prop}' in line:
-                g.write('\\begin{question}{' + str(int(quest)) + '}\!\!\!:~' + get_theorem(line) + '\n')
+                g.write('\\begin{questionmult}{' + str(int(quest)) + '}\!\!\!:~' + get_theorem(line) + '\n')
                 formula = True
                 quest += 0.5
                 continue
             if '\\end{theorem}' in line:
                 # or '\\end{prop}' in line:
-                g.write('\\end{question}\n')
+                g.write('\\end{questionmult}\n')
                 formula = False
                 quest += 0.5
                 eq = False
@@ -247,13 +248,13 @@ with open(cours, 'r') as f:
                 # else:
                     # if not eqprev:
                     #     # g.write('\\item ' + line)
-                    #     g.write('\\begin{question}{' + str(quest) + '}')
+                    #     g.write('\\begin{questionmult}{' + str(quest) + '}')
                     #     g.write(line + '\n')
                     #     g.write('\\begin{reponses}\n')
                     #     g.write('\mauvaise{Faux}\n')
                     #     g.write('\\bonne{Vrai}\n')
                     #     g.write('\end{reponses}\n')
-                    #     g.write('\end{question}\n')
+                    #     g.write('\end{questionmult}\n')
                     # else:
                     #     eqprev = False
             if '\\begin{definition}' in line or '\\end{definition}' in line:
@@ -263,13 +264,13 @@ with open(cours, 'r') as f:
             # if '\\begin{prop}[' in line or (prop and'\\end{prop}' in line):
             #     i = line.index('[')
             #     j = line.index(']')
-            #     g.write('\\begin{question}{' + str(quest) + '}')
+            #     g.write('\\begin{questionmult}{' + str(quest) + '}')
             #     g.write(line[i+1:j] + '\n')
             #     g.write('\\begin{reponses}\n')
             #     g.write('\mauvaise{Faux}\n')
             #     g.write('\\bonne{Vrai}\n')
             #     g.write('\end{reponses}\n')
-            #     g.write('\end{question}\n')
+            #     g.write('\end{questionmult}\n')
             #     # g.write('\\item ' + line[i+1:j] + '\\ansbox\n')
             #     quest += 2
             # # if prop:
@@ -285,23 +286,23 @@ with open(cours, 'r') as f:
             #         continue
             #     if eq:
             #         i = line.index('=')
-            #         g.write('\\begin{question}{' + str(quest) + '}')
+            #         g.write('\\begin{questionmult}{' + str(quest) + '}')
             #         g.write(line[:i+1] + '\n')
             #         g.write('\\begin{reponses}\n')
             #         g.write('\mauvaise{Faux}\n')
             #         g.write('\\bonne{Vrai}\n')
             #         g.write('\end{reponses}\n')
-            #         g.write('\end{question}\n')
+            #         g.write('\end{questionmult}\n')
             #         # g.write('\\ansbox[$\displaystyle' + line[:i+1] + '$\qquad]\n')
             #     else:
             #         if not eqprev:
-            #             g.write('\\begin{question}{' + str(quest) + '}')
+            #             g.write('\\begin{questionmult}{' + str(quest) + '}')
             #             g.write(line + '\n')
             #             g.write('\\begin{reponses}\n')
             #             g.write('\mauvaise{Faux}\n')
             #             g.write('\\bonne{Vrai}\n')
             #             g.write('\end{reponses}\n')
-            #             g.write('\end{question}\n')
+            #             g.write('\end{questionmult}\n')
             #             # g.write('\\item ' + line)
             #         else:
             #             eqprev = False

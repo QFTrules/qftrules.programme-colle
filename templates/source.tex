@@ -1,0 +1,44 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{multicol}
+\usepackage{xcolor}
+\input{/home/eb/Dropbox/texmf/tex/latex/Preambles/symbols.sty}
+\usepackage[francais,bloc,completemulti]{automultiplechoice}
+
+\begin{document}
+
+% \title{Automultiplechoice Example}
+% \author{Your Name}
+% \date{\today}
+% \maketitle
+
+% \exemplaire{1}{
+\begin{copieexamen}[1]
+%%% debut de l’en-tête des copies :
+\begin{minipage}{.4\linewidth}
+\centering\large\bf Interrogation de cours\\ 01/01/2008\end{minipage}
+\champnom{\fbox{
+\begin{minipage}{.5\linewidth}
+    \vspace*{.5cm}
+    Nom et prénom :
+\namefielddots
+\vspace*{1mm}
+\end{minipage}
+}}
+\begin{center}\em
+Durée : 10 minutes.
+
+Aucun document n’est autorisé.
+L’usage de la calculatrice est interdit.
+Les questions faisant apparaître le symbole \multiSymbole{} peuvent
+présenter zéro, une ou plusieurs bonnes réponses. Les autres ont
+une unique bonne réponse.
+Des points négatifs pourront être affectés à de \emph{très
+mauvaises} réponses.
+\end{center}
+\vspace{1ex}

@@ -4,15 +4,10 @@
 /home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Thermo/particules.tex:Diffusion de particules en régime permanent
 /home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Thermo/particules.tex:Réacteur nucléaire
 /home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Thermo/particules.tex:Diffusion du bore dans le silicium
-/home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Thermo/particules.tex:Diffusion et modèle de marche aléatoire à 1D
 /home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Thermo/particules.tex:Marche aléatoire et propriétés de la diffusion
 /home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Thermo/principes.tex:Dissociation du dibrome gazeux
 /home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Thermo/principes.tex:Pression de l'eau sur quelques ouvrages
 /home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Thermo/principes.tex:Études de thermomètres
 /home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Thermo/diffusion.tex:Simple et double vitrage
-/home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Thermo/diffusion.tex:Ailette de refroidissement
 /home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Thermo/diffusion.tex:Température dans un câble électrique
 /home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Thermo/diffusion.tex:Isolation du mur d'une maison
-/home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Thermo/diffusion.tex:Évolution d'une plaque de glace
-/home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Thermo/diffusion.tex:Évolution d'une plaque de glace
-/home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Thermo/diffusion.tex:Ailette de refroidissement

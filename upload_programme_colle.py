@@ -100,24 +100,24 @@ try:
     waitabit(driver=driver)
     
     # essaye de supprimer le lien vers programme de colle si déjà présent
-    try:
-        # find the last element which contains the icon supprime
-        driver.find_elements(by=By.CSS_SELECTOR, value="a[class='icon-supprime']")[-1].click()
-        # driver.find_element(by=By.CSS_SELECTOR, value="a[class='icon-supprime']").click()
-        waitabit(driver=driver)
-        driver.find_element(by=By.CSS_SELECTOR, value="button[class='icon-ok']").click()
-        waitabit(driver=driver)
-    except:
-        pass
+    # try:
+    #     # find the last element which contains the icon supprime
+    #     driver.find_elements(by=By.CSS_SELECTOR, value="a[class='icon-supprime']")[-1].click()
+    #     # driver.find_element(by=By.CSS_SELECTOR, value="a[class='icon-supprime']").click()
+    #     waitabit(driver=driver)
+    #     driver.find_element(by=By.CSS_SELECTOR, value="button[class='icon-ok']").click()
+    #     waitabit(driver=driver)
+    # except:
+    #     pass
     # print('---> Programme de colle already in onglet programme de colle')
-    # liste_semaines = driver.find_elements(by=By.CSS_SELECTOR, value="h3[class='edition']")
-    # liste_semaines = driver.find_elements(by=By.CSS_SELECTOR, value="article")
-    # for i, semaine in enumerate(liste_semaines):
-    #     # print(i, semaine.text, week)
-    #     if week in semaine.text:
-    #         data_id = semaine.get_attribute("data-id")
-    #         break
-    data_id = '1'
+    liste_semaines = driver.find_elements(by=By.CSS_SELECTOR, value="h3[class='edition']")
+    liste_semaines = driver.find_elements(by=By.CSS_SELECTOR, value="article")
+    for i, semaine in enumerate(liste_semaines):
+        # print(i, semaine.text, week)
+        if week in semaine.text:
+            data_id = semaine.get_attribute("data-id")
+            break
+    # data_id = '1'
     # waitabit(driver=driver,t=0.2)
     # raise ArithmeticError(data_id)
     week_to_add = driver.find_element(by=By.CSS_SELECTOR, value="article[data-id='" + str(data_id) + "']>a[class='icon-ajoutecolle']")

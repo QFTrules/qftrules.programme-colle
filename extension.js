@@ -4,6 +4,7 @@
 var vscode = require('vscode');
 var child_process = require('child_process');
 const fs = require('fs');
+// const fsextra = require('fs-extra');
 const path = require('path');
 const ProgShow = require('./prog_show');
 const BanqueExoShow = require('./banque_exo_show');
@@ -678,17 +679,17 @@ function activate(context) {
 		// 	fs.mkdirSync(coursDir + '/QCM');
 		// }
 		//  get theme letter and chapter number
-		var chapter = coursDir.substring(coursDir.lastIndexOf('/') + 1);
-		const theme = chapter.substring(chapter.lastIndexOf('/') + 1).substring(1, 2);
-		var chapter = chapter.substring(1, 2);
-		// .substring(2, 3);
+		var theme = coursDir.substring(0,coursDir.lastIndexOf('/'));
+		var theme = theme.substring(theme.lastIndexOf('/')+2,theme.lastIndexOf('/')+3);
+		var chapter =  coursDir.substring(coursDir.lastIndexOf('/')+2,coursDir.lastIndexOf('/')+3);
 		// vscode.window.showInformationMessage(theme + '-' + chapter);
-		// const destination = '/home/eb/MC-Projects/QCM-PC/QCM.tex';
-		// make directory if not existent
+		// destination folder
 		var destination = '/home/eb/MC-Projects/QCM-PC-' + theme + '-' + chapter;
 		if (!fs.existsSync(destination)) {
 			fs.mkdirSync(destination);}
 		//  copy template file to another name in the same directory
+		fs.cpSync('/home/eb/MC-Projects/QCM-PC', destination, { recursive: true });
+		// destination file
 		var destination = destination + '/source.tex';
 		fs.copyFileSync(template, destination);
 		
@@ -715,7 +716,8 @@ function activate(context) {
 			// compile the test file
 			//  open the file QCM.tex in vscode
 		// vscode.window.showInformationMessage(`auto-multiple-choice prepare --mode=s ${destination}`);
-		child_process.execSync(`auto-multiple-choice prepare --mode=s ${destination}`, { stdio: 'ignore' });
+		// child_process.execSync(`auto-multiple-choice prepare --mode=s ${destination}`, { stdio: 'ignore' });
+		vscode.commands.executeCommand('flash.amc');
 		vscode.commands.executeCommand('vscode.open', vscode.Uri.file(destination));
 
 		// copy tex file to local folder
@@ -731,7 +733,7 @@ function activate(context) {
 	// command to compile using auto-multiple-choice
 	let amc = vscode.commands.registerCommand('flash.amc', function () {
 		// get the active text editor
-		child_process.execSync(`auto-multiple-choice`);
+		child_process.exec(`auto-multiple-choice`);
 		// let editor = vscode.window.activeTextEditor;
 		// if (!editor) {
 		// 	return;

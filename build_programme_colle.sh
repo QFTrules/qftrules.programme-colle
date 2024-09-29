@@ -151,9 +151,9 @@ pdflatex -synctex=1 --shell-escape  -interaction=nonstopmode $Filedate$texName 2
 # pdflatex -synctex=1 --shell-escape  --interaction=batchmode $Filedate$texName 2>&1 > /dev/null
 
 # remove auxiliary files
-#rm list_cours.txt
 aux="_PC_Phy_colle.aux"
 log="_PC_Phy_colle.log"
+out="_PC_Phy_colle.out"
 sync="_PC_Phy_colle.synctex.gz"
 rm list_TD.txt
 rm list_DM.txt
@@ -163,6 +163,7 @@ rm list_cours.txt
 rm $Filedate$aux
 rm $Filedate$log
 rm $Filedate$sync
+rm $Filedate$out
 #rm ProgrammeColle.toc
 #rm $ProgColle
 #rm ProgrammeColle_print.tex
@@ -178,6 +179,7 @@ mv $ProgColle $collepath$Filedate$txxName
 mv ProgrammeColle.toc $collepath
 mv $Filedate$texName $collepath
 mv $Filedate$pdfName $collepath
+rm ${ProgColle%.*}.*
 #cd ~/Dropbox/CPGE/Physique/Exercices/Colles/
 # code $Filedate$pdfName
 

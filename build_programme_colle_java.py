@@ -81,10 +81,16 @@ with open(sys.argv[1], 'r') as f:
                         #     g.write('\\subsubsection{' + line[i+1:j])
                         secname.append(line[i+1:j])
                     if '\\section' in line and not '%' in line and type == 'tp':
-                            k = line.index('\\')
-                            i = line.index('{')
-                            j = line.index('}')
-                            g.write('\\subsub' + line[k+1:])
+                        # if '\\bonus' in line:
+                        #     i = line.index('\\bonus')
+                        #     line = line[:i] + '}\n'
+                        if '\\technique' in line:
+                            i = line.index('\\technique')
+                            line = line[:i]
+                        k = line.index('\\')
+                        i = line.index('{')
+                        j = line.index('}')
+                        g.write('\\subsub' + line[k+1:])
                     if '\\subsection' in line and not '%' in line and type == 'tp':
                             i = line.index('{')
                             j = line.index('}')
@@ -121,7 +127,7 @@ with open(sys.argv[1], 'r') as f:
                     #     i = line.index('{')
                     #     j = line.index('}')
                     #     g.write('\\paragraph{\underline{Analyse Documentaire} : ' + line[i+1:j] + '}\n')
-                if ('\\ProgrammeColle' in line and not '\%' in line) or '\\end{document}' in line:
+                if ('\\ProgrammeColle' in line and not '\\%' in line) or '\\end{document}' in line:
                     found = not found
             except:
                 filename = sys.argv[1].split('/')[-1]

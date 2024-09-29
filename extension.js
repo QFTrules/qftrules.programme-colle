@@ -18,7 +18,7 @@ vscode.commands.executeCommand('setContext', 'static', true);
 // Function to get the next Monday date for the programme de colle
 function getNextMonday() {
 	const today = new Date();
-	const nextMonday = new Date(today.getTime() + (7 - today.getDay() + 1) * 24 * 60 * 60 * 1000);
+	const nextMonday = new Date(today.getTime() + ((7 - today.getDay()) % 7 +1) * 24 * 60 * 60 * 1000);
 	const year = nextMonday.getFullYear();
 	const month = String(nextMonday.getMonth() + 1).padStart(2, '0');
 	const day = String(nextMonday.getDate()).padStart(2, '0');
@@ -314,7 +314,10 @@ function activate(context) {
 
 		// console.log(nextTuesdayDate);
 		let programme_colle_file = nextTuesdayDate + '_PC_Phy_colle.pdf';
-		child_process.execSync(pythonCommand + ' ' + __dirname + '/upload_programme_colle.py ' + collePath + ' ' + programme_colle_file + ' ' + week).toString();
+		vscode.window.showInformationMessage(pythonCommand + ' ' + __dirname + '/upload_programme_colle.py ' + collePath + ' ' + programme_colle_file + ' ' + week);
+		child_process.execSync(pythonCommand + ' ' + __dirname + '/upload_programme_colle.py ' + collePath + ' ' + programme_colle_file + ' ' + week);
+		// console.log(output);
+		// vscode.window.showInformationMessage(output);
 		vscode.window.showInformationMessage(programme_colle_file  + ' téléversé avec succès');
 
 		// change icon

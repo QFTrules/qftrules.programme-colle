@@ -22,6 +22,7 @@ week = sys.argv[3]
 # pdf programme de colle without extension
 prog = prog_file[:-4]
 
+
 def get_id():
     """
     Fetch the id and password of Cahier de Prepa
@@ -41,7 +42,7 @@ def uploaded(l,p):
             return data_id
     return -1
 
-def waitabit(driver=None,t=0.6):
+def waitabit(driver=None,t=1.5):
     # WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, "body")))
     time.sleep(t)
     # pass

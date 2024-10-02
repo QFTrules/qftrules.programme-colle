@@ -42,7 +42,7 @@ def uploaded(l,p):
             return data_id
     return -1
 
-def waitabit(driver=None,t=1.5):
+def waitabit(driver=None,t=0.6):
     # WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, "body")))
     time.sleep(t)
     # pass
@@ -53,8 +53,7 @@ chrome_options.add_argument("--headless")       # to run in the background
 service = Service('/home/eb/Dropbox/.latex/Commands/chromedriver')
 # driver = webdriver.Chrome('/home/eb/Dropbox/.latex/Commands/chromedriver')
 # , options=chrome_options)
-driver = webdriver.Chrome(service=service)
-# , options=chrome_options)
+driver = webdriver.Chrome(service=service, options=chrome_options)
 driver.maximize_window()
 url1 = "https://cahier-de-prepa.fr/pc-theo/docs?rep=158"
 driver.get(url1)

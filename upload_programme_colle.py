@@ -19,6 +19,14 @@ import sys
 path = sys.argv[1]
 prog_file = sys.argv[2]
 week = sys.argv[3]
+
+# # remove trailing 0 in week
+# i = week.index(' ')
+# num1 = week[i+1]
+# num2 = week[i+2]
+# if num1 == '0':
+#     week = week[:i] + num2 + week[i+3:]
+    
 # pdf programme de colle without extension
 prog = prog_file[:-4]
 
@@ -53,7 +61,8 @@ chrome_options.add_argument("--headless")       # to run in the background
 service = Service('/home/eb/Dropbox/.latex/Commands/chromedriver')
 # driver = webdriver.Chrome('/home/eb/Dropbox/.latex/Commands/chromedriver')
 # , options=chrome_options)
-driver = webdriver.Chrome(service=service, options=chrome_options)
+driver = webdriver.Chrome(service=service)
+# , options=chrome_options)
 driver.maximize_window()
 url1 = "https://cahier-de-prepa.fr/pc-theo/docs?rep=158"
 driver.get(url1)

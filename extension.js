@@ -21,10 +21,16 @@ function getNextMonday() {
 	const nextMonday = new Date(today.getTime() + ((7 - today.getDay()) % 7 +1) * 24 * 60 * 60 * 1000);
 	const year = nextMonday.getFullYear();
 	const month = String(nextMonday.getMonth() + 1).padStart(2, '0');
-	const day = String(nextMonday.getDate()).padStart(2, '0');
+	var day = String(nextMonday.getDate()).padStart(2, '0');
+	if (day.startsWith('0')) {
+		var daynumber = day.substring(1);
+	}
+	else {
+		var daynumber = day;
+	}
 	const dayOfWeek = nextMonday.toLocaleDateString('fr', { weekday: 'long' });
 	const monthName = nextMonday.toLocaleDateString('fr', { month: 'long' });
-	return [`${year}_${month}_${day}`,`"${dayOfWeek} ${day} ${monthName} ${year}"`];
+	return [`${year}_${month}_${day}`,`"${dayOfWeek} ${daynumber} ${monthName} ${year}"`];
 };
 
 // // register the completion item provider for latex documents
@@ -314,7 +320,7 @@ function activate(context) {
 
 		// console.log(nextTuesdayDate);
 		let programme_colle_file = nextTuesdayDate + '_PC_Phy_colle.pdf';
-		vscode.window.showInformationMessage(pythonCommand + ' ' + __dirname + '/upload_programme_colle.py ' + collePath + ' ' + programme_colle_file + ' ' + week);
+		// vscode.window.showInformationMessage(pythonCommand + ' ' + __dirname + '/upload_programme_colle.py ' + collePath + ' ' + programme_colle_file + ' ' + week);
 		child_process.execSync(pythonCommand + ' ' + __dirname + '/upload_programme_colle.py ' + collePath + ' ' + programme_colle_file + ' ' + week);
 		// console.log(output);
 		// vscode.window.showInformationMessage(output);

@@ -10,7 +10,8 @@ pythoncommand=$3
 pythonpath=$4
 
 # change directory
-cd ~/Dropbox/.latex/Commands/
+# cd ~/Dropbox/.latex/Commands/
+cd ./tmp/
 ProgColle="ProgrammeColle.tex"
 # create list of files to parse
 find ~/Dropbox/CPGE/Physique/Cours/ \( -name "*.tex" ! -name "*TD*" ! -name "*Fig*" ! -name "*Doc*" \) | sort > list_cours.txt
@@ -183,4 +184,4 @@ rm ${ProgColle%.*}.*
 #cd ~/Dropbox/CPGE/Physique/Exercices/Colles/
 # code $Filedate$pdfName
 
-echo $Filedate$pdfName
+# echo $Filedate$pdfName

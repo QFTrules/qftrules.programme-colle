@@ -185,6 +185,11 @@
       "icon": "$(chrome-restore)"
     },
     {
+      "command": "flash.fiche_colle",
+      "title": "Fiche de colle",
+      "icon": "$(debug-stackframe-active)"
+    },
+    {
       "command": "flash.soluce",
       "title": "Compiler soluce",
       "icon": "$(debug-stackframe-active)"
@@ -210,6 +215,11 @@
         },
         {
           "command": "flash.test",
+          "group": "navigation@-2",
+          "when": "resourceExtname == .tex"
+        },
+        {
+          "command": "flash.fiche_colle",
           "group": "navigation@-2",
           "when": "resourceExtname == .tex"
         },

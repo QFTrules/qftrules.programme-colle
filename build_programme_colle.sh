@@ -184,4 +184,4 @@ rm ${ProgColle%.*}.*
 #cd ~/Dropbox/CPGE/Physique/Exercices/Colles/
 # code $Filedate$pdfName
 
-# echo $Filedate$pdfName
+echo $Filedate$pdfName

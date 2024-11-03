@@ -798,6 +798,43 @@ function activate(context) {
 
 	// command to apply the bash script 
 
+	// command to build fiche colle
+	let fiche_colle = vscode.commands.registerCommand('flash.fiche_colle', function () {
+		// get the active text editor
+		let editor = vscode.window.activeTextEditor;
+		if (!editor) {
+			return;
+		}
+
+		// get the Colle date
+		const nextTuesday = new Date();
+		nextTuesday.setDate(nextTuesday.getDate() + ((2 + 7 - nextTuesday.getDay()) % 7));
+		const nextNextTuesday = new Date(nextTuesday);
+		nextNextTuesday.setDate(nextTuesday.getDate() + 7);
+
+		const NextTuesday = nextTuesday.toLocaleDateString('fr-FR');
+		const NextnextTuesday = nextNextTuesday.toLocaleDateString('fr-FR');
+
+		vscode.window.showInformationMessage(`Next Tuesday: ${NextTuesday}`);
+		vscode.window.showInformationMessage(`Next next Tuesday: ${NextnextTuesday}`);
+
+		// get the file path
+		const colle_file = editor.document.fileName;
+		// get directory
+		// const fileDirname = path.dirname(latex);
+		// get basename
+		// const fileBasename = path.basename(latex);
+		// execute the bash script
+		// get the fiche.tex path 
+		const fiche_latex = __dirname + '/templates/Fiche.tex';
+		// get tmp path
+		const tmp = __dirname + '/tmp';
+		const output = child_process.execSync(`python ${__dirname}/scripts/build-fiche-colle.py ${colle_file} ${NextTuesday} ${NextnextTuesday} ${fiche_latex} ${tmp}`).toString();
+		// const output = child_process.execSync(`bash ${__dirname}/build-fiche-colle.sh ${colle_file}`);
+		// show the output
+		vscode.window.showInformationMessage(output);
+	});
+
 	// command to see the soluce version of tex file
 	let view_soluce = vscode.commands.registerCommand('flash.view_soluce', function () {
 		// get the active text editor
@@ -917,6 +954,7 @@ function activate(context) {
 	context.subscriptions.push(suggestions_refresh);
 	context.subscriptions.push(view_soluce);
 	context.subscriptions.push(compile_bilan_DS);
+	context.subscriptions.push(fiche_colle);
 
 	// use banque compile ones to initialize tmp/Exercice.tex
 	// vscode.commands.executeCommand('banque.compile');

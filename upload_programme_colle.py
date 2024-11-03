@@ -61,8 +61,7 @@ chrome_options.add_argument("--headless")       # to run in the background
 service = Service('/home/eb/Dropbox/.latex/Commands/chromedriver')
 # driver = webdriver.Chrome('/home/eb/Dropbox/.latex/Commands/chromedriver')
 # , options=chrome_options)
-driver = webdriver.Chrome(service=service)
-# , options=chrome_options)
+driver = webdriver.Chrome(service=service, options=chrome_options)
 driver.maximize_window()
 url1 = "https://cahier-de-prepa.fr/pc-theo/docs?rep=158"
 driver.get(url1)

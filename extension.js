@@ -821,18 +821,60 @@ function activate(context) {
 		// get the file path
 		const colle_file = editor.document.fileName;
 		// get directory
-		// const fileDirname = path.dirname(latex);
+		const fileDirname = path.dirname(colle_file);
 		// get basename
 		// const fileBasename = path.basename(latex);
 		// execute the bash script
 		// get the fiche.tex path 
 		const fiche_latex = __dirname + '/templates/Fiche.tex';
+		const fiche_pdf = colle_file.replace('.tex', '_fiche.pdf');
 		// get tmp path
-		const tmp = __dirname + '/tmp';
-		const output = child_process.execSync(`python ${__dirname}/scripts/build-fiche-colle.py ${colle_file} ${NextTuesday} ${NextnextTuesday} ${fiche_latex} ${tmp}`).toString();
-		// const output = child_process.execSync(`bash ${__dirname}/build-fiche-colle.sh ${colle_file}`);
-		// show the output
-		vscode.window.showInformationMessage(output);
+		const tmp_tex = __dirname + '/tmp/Fiche_tmp_simple.tex';
+		child_process.execSync(`python ${__dirname}/scripts/build-fiche-colle.py ${colle_file} ${NextTuesday} ${NextnextTuesday} ${fiche_latex} ${tmp_tex}`);
+		// insert magic command 
+		const latex_magic = `% !TEX root = ${tmp_tex}\n`;
+		// add latex_magic as first line of the file
+		var editorText = editor.document.getText();
+		if (editorText.includes(`% !TEX root `)) {
+			editor.edit(editBuilder => {
+				editBuilder.delete(new vscode.Range(new vscode.Position(0, 0), new vscode.Position(1, 0)));
+				editBuilder.insert(new vscode.Position(0, 0), latex_magic);
+			}).then(() => {
+				// run latex-workshop build command
+				vscode.commands.executeCommand('latex-workshop.build').then(() => {
+					// rename fiche file
+					fs.renameSync(tmp_tex.replace('.tex', '.pdf'), fiche_pdf);
+					// move fiche file to fileDirname folder
+					fs.renameSync(fiche_pdf, fileDirname + '/' + path.basename(fiche_pdf));
+					// open the fiche pdf in vscode in the right panel
+					vscode.commands.executeCommand('vscode.open', vscode.Uri.file(fiche_pdf), { viewColumn: vscode.ViewColumn.Two });
+					// remove latex command
+					editor.edit(editBuilder => {
+						editBuilder.delete(new vscode.Range(new vscode.Position(0, 0), new vscode.Position(1, 0)));
+					});
+			});
+		});
+		} else {
+			editor.edit(editBuilder => {
+				editBuilder.insert(new vscode.Position(0, 0), latex_magic);
+			}).then(() => {
+				// run latex-workshop build command
+				vscode.commands.executeCommand('latex-workshop.build').then(() => {
+					// rename fiche file
+					fs.renameSync(tmp_tex.replace('.tex', '.pdf'), fiche_pdf);
+					// move fiche file to fileDirname folder
+					fs.renameSync(fiche_pdf, fileDirname + '/' + path.basename(fiche_pdf));
+					// open the fiche pdf in vscode in the right panel
+					vscode.commands.executeCommand('vscode.open', vscode.Uri.file(fiche_pdf), { viewColumn: vscode.ViewColumn.Two });
+					// remove latex command
+					editor.edit(editBuilder => {
+						editBuilder.delete(new vscode.Range(new vscode.Position(0, 0), new vscode.Position(1, 0)));
+					});
+				});
+			});
+		}
+			// show the output
+			vscode.window.showInformationMessage(`${fiche_pdf} généré avec succès`);
 	});
 
 	// command to see the soluce version of tex file

@@ -8,7 +8,7 @@ fichier = sys.argv[1]
 date    = sys.argv[2]
 nextdate = sys.argv[3]
 fiche_latex    = sys.argv[4]
-tmp = sys.argv[5]
+tmp_tex = sys.argv[5]
 double  = False
 triple  = False
 datefound = False
@@ -83,7 +83,7 @@ with open(fichier, 'r') as f:
     # section = section[::-1]
     # if len(cours) > 0:
     with open(fiche_latex,'r') as g:
-        with open(tmp + 'Fiche_tmp_simple.tex','w') as h:
+        with open(tmp_tex,'w') as h:
             # h.write('\\renewcommand{\\classe}{' + classe + '}\n')
             # h.write('\\lhead{\\small \\classe}\n')
             for line in g:

@@ -141,6 +141,16 @@
       "icon": "$(file-pdf)"
     },
     {
+      "command": "programme.pdf",
+      "title": "Voir pdf",
+      "icon": "$(file-pdf)"
+    },
+    {
+      "command": "programme.remove",
+      "title": "Retirer",
+      "icon": "$(discard)"
+    },
+    {
       "command": "banque.reveal",
       "title": "Révéler exercice",
       "icon": "$(file-pdf)"
@@ -255,6 +265,16 @@
           {
             "command": "banque.compile",
             "when": "view == banque-exercices && viewItem == file",
+            "group": "inline@-1"
+          },
+          {
+            "command": "programme.pdf",
+            "when": "view == programme-colle && viewItem == latex",
+            "group": "inline"
+          },
+          {
+            "command": "programme.remove",
+            "when": "view == programme-colle && viewItem == latex",
             "group": "inline@-1"
           },
           {

@@ -77,6 +77,7 @@ class ProgShow {
 			);
 		});
 
+		// pdf du programme de colle
 		var programme_colle_pdf = child_process.execSync('find ~/Dropbox/CPGE/Physique/Exercices/Colles/PC/ -maxdepth 1 -type f -name "*_PC_Phy_colle.pdf"').toString().split('\n')[0];
 		var programme_colle_pdf_basename = path.basename(programme_colle_pdf);
 		this.data.push(new TreeItem(programme_colle_pdf_basename, undefined, programme_colle_pdf, 'pdf', undefined));

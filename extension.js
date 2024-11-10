@@ -330,6 +330,29 @@ function activate(context) {
 		vscode.commands.executeCommand('setContext', 'static', true);
 	});
 
+	// commande pour afficher pdf affiché dans le programme de colle
+	let programme_pdf = vscode.commands.registerCommand('programme.pdf', function (document) {
+		// define pdf file associated to latex document
+		const pdfFile = document.filePath.replace(/\.[^/.]+$/, ".pdf");
+		// open the pdf file in vscode
+		vscode.commands.executeCommand('vscode.open', vscode.Uri.file(pdfFile), { viewColumn: vscode.ViewColumn.Two });
+	});
+
+	// commande pour enlever une balise de programme de colle dans un fichier latex
+	let remove = vscode.commands.registerCommand('programme.remove', function (document) {
+		const text = fs.readFileSync(document.filePath, 'utf8');
+		const updatedText = text.replace(programmeBalise, '');
+		fs.writeFileSync(document.filePath, updatedText, 'utf8');
+	});
+
+	// commande pour ajouter un fichier latex dans le type de documents
+	// let add = vscode.commands.registerCommand('programme.add', function (typePath) {
+	// 	// get the list of latex files in the folder "type"
+	// 	const latex_files = child_process.execSync('find ' + typePath + ' -maxdepth 1 -type f -name "*.tex"').toString().split('\n').pop();
+	// 	// find 
+	// });
+
+
 	// commande pour téléverser le programme de colle sur le cahier de prépa depuis title view : programme de colle
 	let uploading = vscode.commands.registerCommand('programme.uploading', function () {
 		// empty function to change the icon when programme de colle uploading
@@ -997,6 +1020,8 @@ function activate(context) {
 	context.subscriptions.push(view_soluce);
 	context.subscriptions.push(compile_bilan_DS);
 	context.subscriptions.push(fiche_colle);
+	context.subscriptions.push(programme_pdf);
+	context.subscriptions.push(remove);
 
 	// use banque compile ones to initialize tmp/Exercice.tex
 	// vscode.commands.executeCommand('banque.compile');

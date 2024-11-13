@@ -15,6 +15,34 @@ const BanqueExoShow = require('./banque_exo_show');
 // set the boolean variables to change icon when uploading programme de colle
 vscode.commands.executeCommand('setContext', 'static', true);
 
+// asynchronous function to find the flash drive
+async function findFlashDrive() {
+    try {
+		// if vscode.workspace.getConfiguration('flash').get('flashDrive') is not empty, do
+		// if (vscode.workspace.getConfiguration('flash').get('flashDrive') !== '') {
+		// 	// folder for the USB path
+		// 	var flashDrive = vscode.workspace.getConfiguration('flash').get('flashDrive');
+		// 	// add / character if absent at end of string
+		// 	if (!flashDrive.endsWith('/')) {
+		// 		flashDrive += '/';
+		// 	}
+		// 	return flashDrive;
+		// } else {
+		const files = await fs.promises.readdir('/media/eb/');
+		for (const name of files) {
+			const fullPath = path.join('/media/eb/', name);
+			const stats = await fs.promises.lstat(fullPath);
+			if (stats.isDirectory()) {
+				return fullPath;
+			}
+		}
+		// }
+    } catch (error) {
+        console.error('Error reading /media/ directory:', error);
+    }
+    return undefined;
+}
+
 // Function to get the next Monday date for the programme de colle
 function getNextMonday() {
 	const today = new Date();
@@ -170,7 +198,7 @@ function activate(context) {
 	// const mathpixCommand = vscode.workspace.getConfiguration('mathpix-pdf').get('mpxCommand');
 	// const texPath = vscode.workspace.getConfiguration('mathpix-pdf').get('texPath');
 	// const texArchives = vscode.workspace.getConfiguration('mathpix-pdf').get('texArchives');
-	const flashDrive = vscode.workspace.getConfiguration('flash').get('flashDrive');
+	
 	
 	// BANQUE EXERCICES commands
 	let copy = vscode.commands.registerCommand('banque.copy', function (document) {
@@ -530,14 +558,27 @@ function activate(context) {
 		const pdfFilePath = filePath.replace(/\.[^/.]+$/, ".pdf");
 		const pdfFilePath_soluce = filePath.replace(/\.[^/.]+$/, "_soluce.pdf");
 		const pdfFilePath_bilan = filePath.substring(0, filePath.indexOf('_')) + '_bilan.pdf';
-		// check if the destination path is a directory
-		if (fs.existsSync(flashDrive) && fs.lstatSync(flashDrive).isDirectory()) {
+
+		// find any folder in /media/ that could match a USB flash drive - replaces variable "flashDrive" defined in settings.json
+		// var flashDrive = fs.readdirSync('/media/').map(name => path.join('/media/', name)).find(f => fs.lstatSync(f).isDirectory());
+		// var flashDrive = child_process.execSync('find /media/ -mindepth 2 -maxdepth 2 -type d').toString().split('\n').pop();
+		findFlashDrive().then(flashDrive => {
+			console.log('Flash Drive:', flashDrive);
+			// find the print subdirectory in directory flashDrive
+			// add / character if not present at the end of the string
+			const printDirectory = path.join(flashDrive, 'print');
+			// check if the print directory exists
+			if (!fs.existsSync(printDirectory)) {
+				// send error message
+				vscode.window.showErrorMessage(`No print directory found in ${flashDrive}`);
+				return;
+			}
 			// copy the file to the flash drive with the new file extension
 			const fileName = path.basename(pdfFilePath);
-			const destinationPath = path.join(flashDrive, fileName);
+			const destinationPath = path.join(printDirectory, fileName);
 			fs.copyFileSync(pdfFilePath, destinationPath);
 			// show information message
-			vscode.window.showInformationMessage(`${fileName} copied to ${flashDrive}`);
+			vscode.window.showInformationMessage(`${fileName} copied to ${printDirectory}`);
 			// check if the soluce file exists
 			if (fs.existsSync(pdfFilePath_soluce)) {
 				// copy the soluce file to the flash drive with the new file extension
@@ -545,19 +586,48 @@ function activate(context) {
 				const soluceDestinationPath = path.join(flashDrive, soluceFileName);
 				fs.copyFileSync(pdfFilePath_soluce, soluceDestinationPath);
 				// show information message
-				vscode.window.showInformationMessage(`${soluceFileName} copied to ${flashDrive}`);
+				vscode.window.showInformationMessage(`${soluceFileName} copied to ${printDirectory}`);
 			}
+			// check if the bilan DS file exists
 			if (fs.existsSync(pdfFilePath_bilan)) {
 				// copy the bilan file to the flash drive with the new file extension
 				const bilanFileName = path.basename(pdfFilePath_bilan);
 				const bilanDestinationPath = path.join(flashDrive, bilanFileName);
 				fs.copyFileSync(pdfFilePath_bilan, bilanDestinationPath);
 				// show information message
-				vscode.window.showInformationMessage(`${bilanFileName} copied to ${flashDrive}`);
+				vscode.window.showInformationMessage(`${bilanFileName} copied to ${printDirectory}`);
 			}
-		} else {
-			vscode.window.showErrorMessage('Invalid destination path');
-		}
+		});
+		// vscode.window.showInformationMessage(flashDrive);
+
+		// check if the destination path is a directory
+		// if (fs.existsSync(flashDrive) && fs.lstatSync(flashDrive).isDirectory()) {
+		// 	// copy the file to the flash drive with the new file extension
+		// 	const fileName = path.basename(pdfFilePath);
+		// 	const destinationPath = path.join(flashDrive, fileName);
+		// 	fs.copyFileSync(pdfFilePath, destinationPath);
+		// 	// show information message
+		// 	vscode.window.showInformationMessage(`${fileName} copied to ${flashDrive}`);
+		// 	// check if the soluce file exists
+		// 	if (fs.existsSync(pdfFilePath_soluce)) {
+		// 		// copy the soluce file to the flash drive with the new file extension
+		// 		const soluceFileName = path.basename(pdfFilePath_soluce);
+		// 		const soluceDestinationPath = path.join(flashDrive, soluceFileName);
+		// 		fs.copyFileSync(pdfFilePath_soluce, soluceDestinationPath);
+		// 		// show information message
+		// 		vscode.window.showInformationMessage(`${soluceFileName} copied to ${flashDrive}`);
+		// 	}
+		// 	if (fs.existsSync(pdfFilePath_bilan)) {
+		// 		// copy the bilan file to the flash drive with the new file extension
+		// 		const bilanFileName = path.basename(pdfFilePath_bilan);
+		// 		const bilanDestinationPath = path.join(flashDrive, bilanFileName);
+		// 		fs.copyFileSync(pdfFilePath_bilan, bilanDestinationPath);
+		// 		// show information message
+		// 		vscode.window.showInformationMessage(`${bilanFileName} copied to ${flashDrive}`);
+		// 	}
+		// } else {
+		// 	vscode.window.showErrorMessage('Invalid destination path');
+		// }
 	});
 
 	// command to compile an exercise separately
@@ -852,50 +922,63 @@ function activate(context) {
 		const fiche_latex = __dirname + '/templates/Fiche.tex';
 		const fiche_pdf = colle_file.replace('.tex', '_fiche.pdf');
 		// get tmp path
-		const tmp_tex = __dirname + '/tmp/Fiche_tmp_simple.tex';
+		const tmp_tex = __dirname + '/tmp/Fiche_tmp_simple';
 		child_process.execSync(`python ${__dirname}/scripts/build-fiche-colle.py ${colle_file} ${NextTuesday} ${NextnextTuesday} ${fiche_latex} ${tmp_tex}`);
-		// insert magic command 
-		const latex_magic = `% !TEX root = ${tmp_tex}\n`;
-		// add latex_magic as first line of the file
-		var editorText = editor.document.getText();
-		if (editorText.includes(`% !TEX root `)) {
-			editor.edit(editBuilder => {
-				editBuilder.delete(new vscode.Range(new vscode.Position(0, 0), new vscode.Position(1, 0)));
-				editBuilder.insert(new vscode.Position(0, 0), latex_magic);
-			}).then(() => {
-				// run latex-workshop build command
-				vscode.commands.executeCommand('latex-workshop.build').then(() => {
-					// rename fiche file
-					fs.renameSync(tmp_tex.replace('.tex', '.pdf'), fiche_pdf);
-					// move fiche file to fileDirname folder
-					fs.renameSync(fiche_pdf, fileDirname + '/' + path.basename(fiche_pdf));
-					// open the fiche pdf in vscode in the right panel
-					vscode.commands.executeCommand('vscode.open', vscode.Uri.file(fiche_pdf), { viewColumn: vscode.ViewColumn.Two });
-					// remove latex command
-					editor.edit(editBuilder => {
-						editBuilder.delete(new vscode.Range(new vscode.Position(0, 0), new vscode.Position(1, 0)));
-					});
-			});
+		// vscode.commands.executeCommand('latex-workshop.build', {rootFile:tmp_tex}).then(() => {
+		// get first recipe listed in the latex settings
+		var recipe = vscode.workspace.getConfiguration('latex-workshop').get('latex.tools')[0].args.toString();
+		// replace substring %DOC% by tmp_tex
+		var recipe = recipe.replace('%DOC%', tmp_tex);
+		vscode.window.showInformationMessage(recipe);
+		child_process.execSync(`latexmk ${recipe} -output-directory=${__dirname}/tmp`, () => { 
+			// rename fiche file
+			fs.renameSync(tmp_tex.replace('.tex', '.pdf'), fiche_pdf);
+			// move fiche file to fileDirname folder
+			fs.renameSync(fiche_pdf, fileDirname + '/' + path.basename(fiche_pdf));
+			vscode.commands.executeCommand('vscode.open', vscode.Uri.file(fiche_pdf), { viewColumn: vscode.ViewColumn.Two });
 		});
-		} else {
-			editor.edit(editBuilder => {
-				editBuilder.insert(new vscode.Position(0, 0), latex_magic);
-			}).then(() => {
-				// run latex-workshop build command
-				vscode.commands.executeCommand('latex-workshop.build').then(() => {
-					// rename fiche file
-					fs.renameSync(tmp_tex.replace('.tex', '.pdf'), fiche_pdf);
-					// move fiche file to fileDirname folder
-					fs.renameSync(fiche_pdf, fileDirname + '/' + path.basename(fiche_pdf));
-					// open the fiche pdf in vscode in the right panel
-					vscode.commands.executeCommand('vscode.open', vscode.Uri.file(fiche_pdf), { viewColumn: vscode.ViewColumn.Two });
-					// remove latex command
-					editor.edit(editBuilder => {
-						editBuilder.delete(new vscode.Range(new vscode.Position(0, 0), new vscode.Position(1, 0)));
-					});
-				});
-			});
-		}
+		// insert magic command 
+		// const latex_magic = `% !TEX root = ${tmp_tex}\n`;
+		// add latex_magic as first line of the file
+		// var editorText = editor.document.getText();
+		// if (editorText.includes(`% !TEX root `)) {
+		// 	editor.edit(editBuilder => {
+		// 		editBuilder.delete(new vscode.Range(new vscode.Position(0, 0), new vscode.Position(1, 0)));
+		// 		editBuilder.insert(new vscode.Position(0, 0), latex_magic);
+		// 	}).then(() => {
+		// 		// run latex-workshop build command
+		// 		vscode.commands.executeCommand('latex-workshop.build').then(() => {
+		// 			// rename fiche file
+		// 			fs.renameSync(tmp_tex.replace('.tex', '.pdf'), fiche_pdf);
+		// 			// move fiche file to fileDirname folder
+		// 			fs.renameSync(fiche_pdf, fileDirname + '/' + path.basename(fiche_pdf));
+		// 			// open the fiche pdf in vscode in the right panel
+		// 			vscode.commands.executeCommand('vscode.open', vscode.Uri.file(fiche_pdf), { viewColumn: vscode.ViewColumn.Two });
+		// 			// remove latex command
+		// 			editor.edit(editBuilder => {
+		// 				editBuilder.delete(new vscode.Range(new vscode.Position(0, 0), new vscode.Position(1, 0)));
+		// 			});
+		// 	});
+		// });
+		// } else {
+		// 	editor.edit(editBuilder => {
+		// 		editBuilder.insert(new vscode.Position(0, 0), latex_magic);
+		// 	}).then(() => {
+		// 		// run latex-workshop build command
+		// 		vscode.commands.executeCommand('latex-workshop.build').then(() => {
+		// 			// rename fiche file
+		// 			fs.renameSync(tmp_tex.replace('.tex', '.pdf'), fiche_pdf);
+		// 			// move fiche file to fileDirname folder
+		// 			fs.renameSync(fiche_pdf, fileDirname + '/' + path.basename(fiche_pdf));
+		// 			// open the fiche pdf in vscode in the right panel
+		// 			vscode.commands.executeCommand('vscode.open', vscode.Uri.file(fiche_pdf), { viewColumn: vscode.ViewColumn.Two });
+		// 			// remove latex command
+		// 			editor.edit(editBuilder => {
+		// 				editBuilder.delete(new vscode.Range(new vscode.Position(0, 0), new vscode.Position(1, 0)));
+		// 			});
+		// 		});
+		// 	});
+		// }
 			// show the output
 			vscode.window.showInformationMessage(`${fiche_pdf} généré avec succès`);
 	});

@@ -183,7 +183,10 @@
     {
       "command": "flash.send",
       "title": "Envoyer vers clé USB",
-      "icon": "$(symbol-event)"
+      "icon": {
+        "light": "images/usb-brands-solid_light.svg",
+        "dark": "images/usb-brands-solid_dark.svg"
+      }
     },
     {
       "command": "flash.amc",

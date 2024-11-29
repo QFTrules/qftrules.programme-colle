@@ -1,7 +1,3 @@
-%!TEX root = /home/eric/Dropbox/CPGE/Info/Devoirs/DS.Info/[1]/DS1_info.tex
-%%% PREAMBLE %%%
-% \input{DM.sty}%$
-
 % \newcommand{\Coursun}{}
 % \newcommand{\Exoun}{}
 % \newcommand{\Coursdeux}{}
@@ -9,235 +5,46 @@
 % \newcommand{\Courstrois}{}
 % \newcommand{\Exotrois}{}
 % \newcommand{\classe}{}
+% \newcommand{\thedate}{}
 
 %%% DOCUMENT %%%
 \documentclass[a4paper,11pt]{book}
+\usepackage[top=0.5cm,bottom=0.5cm,left=1cm,right=1cm]{geometry}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage[french]{babel}
-\usepackage[autolanguage]{numprint}
 \usepackage{lmodern}
-\usepackage{amsmath}
-\usepackage{amssymb}
-\usepackage{cases}
-\usepackage{mathrsfs}
-\usepackage{textcomp}
-\usepackage[top=0cm,bottom=0cm,left=1cm,right=1cm]{geometry}
-\usepackage{stmaryrd}
-\usepackage{inputenc}
-\usepackage{moreverb}
-\usepackage{listings}
-\usepackage{graphicx}
-\usepackage{fancyvrb}
-\usepackage{listings}
-\usepackage{wrapfig}
-\usepackage{subfigure}
-\usepackage{pgfplots}
-\usepackage{esint}
-\usepackage{tikz}
-\usepackage[europeanresistors]{circuitikz}
-\usepackage{multicol}
 \usepackage{tabularx}
-\usepackage{lipsum}
-\usepackage{chngcntr}
-\usepackage{fancyhdr}
-\usepackage{exercise}
-\usepackage{titlesec}
-\usepackage{titletoc}
-\usepackage{vwcol}
-\counterwithin{table}{section}
-\usepackage[titletoc]{appendix}
-\usepackage{changepage}
-\usepackage{mdframed}
-\usepackage{pdfpages}
-\usepackage{enumitem}
+\usepackage{multicol}
 \usepackage{multirow}
-\pgfplotsset{compat=1.16}
 
-%%% CAPTIONS %%%
-%\DeclareCaptionLabelSeparator{trait}{$\,-\,$}
-\usepackage[font      = small,
-			%labelfont = bf,
-			labelsep  = endash]{caption}
-
-%%% SYMBOLS %%%
-\input{$HOME/Dropbox/texmf/tex/latex/Preambles/symbols.sty}%$
-\input{$HOME/Dropbox/texmf/tex/latex/Preambles/programme.tex}%$
-%\newcommand{\vv}[1]{\Vec{#1}}
-
-%%% COLORS %%%
-\def\colorSec{coolblack}
-%\def\colorTP{brickred}
-\def\colorTP{coolblack}
-
-% %%% PARAGRAPHS %%%
-% \renewcommand{\theparagraph}{}
-% \newcommand{\parag}[1]{
-% \paragraph{{#1}~---$\!\!\!\!$}}
-
-%%% PATH %%%
-\def\pathtocolles{/home/eric/pCloudDrive/Colles/Exos.de.Colles}
-\def\pathtoexos{$HOME/Dropbox/CPGE/Physique/Exercices/Recueil}%$
-\makeatletter
-\def\input@path{{\pathtoexos/Dimensionnelle/}{\pathtoexos/Optique/}{\pathtoexos/Mecanique/}{\pathtoexos/Thermo/}{\pathtoexos/Fluide/}{\pathtoexos/Electromag/}{\pathtoexos/Ondes/}{\pathtoexos/Quantique/}{\pathtocolles/Mecanique}{\pathtoexos/Figure/}{\pathtoexos/Mecanique/Figures/}{\pathtoexos/Thermo/Figures/}{\pathtoexos/Optique/Figures/}{\pathtoexos/Fluide/Figures/}{\pathtoexos/Electromag/Figures/}{\pathtoexos/Ondes/Figures/}{\pathtoexos/Quantique/Figures/}}
-\makeatother
-\graphicspath{{./Figures/}{\pathtoexos/Figure/}{\pathtoexos/Mecanique/Figures/}{\pathtoexos/Thermo/Figures/}{\pathtoexos/Optique/Figures/}{\pathtoexos/Fluide/Figures/}{\pathtoexos/Electromag/Figures/}{\pathtoexos/Ondes/Figures/}{\pathtoexos/Quantique/Figures/}{\pathtoexos/Info/Figures/}}
-
-
-\rhead{}
-\chead{}
-\renewcommand{\headrulewidth}{-15pt}
-\newcommand{\colleskip}{\vspace{0.3cm}}
-\newcommand{\heig}{2cm}
-\begin{document}
-
-\vspace{-2cm}
-\begin{center}
-\textsc{Fiche de colle}\\
-Physique - \classe
-\end{center}
-\vspace{-0.9cm}
-\begin{minipage}{0.48\textwidth}
-\flushleft{Correcteur : Eric Brillaux
+\newcommand{\heig}{1.6cm}
+\newcommand{\ColleFiche}[3]{
+	\begin{tabularx}{\textwidth}{|p{2cm}|X|X|}
+	\hline
+	\multicolumn{2}{|p{0.5\textwidth}|}{Nom :\hspace{1.2cm}}  & Correcteur~:~\textsc{BRILLAUX}\hspace{1cm} Date:~#1  \\[0.2cm]
+	\hline
+	\multirow{3}{*}{\textsc{Note} :\hspace{1.2cm}} & \multicolumn{2}{|l|}{\textsc{Question de cours}} \\[0.1cm]
+	 & \multicolumn{2}{|l|}{Énoncé : #2} \\[0.1cm]
+	 & \multicolumn{2}{|l|}{Commentaire : }  \\[\heig]
+	 \cline{2-3}
+	 \multirow{2}{*}{Savoir :}& \multicolumn{2}{|l|}{\textsc{Exercice}} \\[0.1cm]
+	 & \multicolumn{2}{|l|}{Énoncé : #3} \\[0.1cm]
+	 \multirow{2}{*}{Capacité :}   & \multicolumn{2}{|l|}{Commentaire :} \\[0.1cm] 
+	 & \multicolumn{2}{|l|}{} \\[0.1cm]
+	 \multirow{2}{*}{Attitude :} & \multicolumn{2}{|l|}{} \\[0.1cm]
+	 & \multicolumn{2}{|l|}{} \\[\heig]
+	\hline
+	\end{tabularx}
 }
-\end{minipage}\hfill
-\begin{minipage}{0.48\textwidth}
-\flushright{Date : \hspace{2cm}}
-\end{minipage}
-\vspace{0.2cm}
 
-%%% TABLE %%%
+
+\begin{document}
 \centering
-\begin{tabularx}{\textwidth}{|c|X|}
-\hline
-\multicolumn{2}{|l|}{\begin{minipage}{2cm}Nom :\hspace{1.2cm}\end{minipage}} \\[0.2cm]
-\hline
-\multirow{3}{*}{Note :\hspace{1.2cm}} & \textsc{Question de cours} \\[0.1cm]
- & Énoncé : \Coursun \\[0.1cm]
- & Commentaire : \\[\heig]
- \cline{2-2}
-S :\hspace{1.2cm} & \textsc{Exercice} \\[0.1cm]
-C :\hspace{1.2cm} & Énoncé : \Exoun \\[0.1cm]
-A :\hspace{1.2cm} & Commentaire : \\[\heig]
-\hline
-\end{tabularx}
-%%%%%%%%%%
-
-
-\colleskip
-%%% TABLE %%%
-\centering
-\begin{tabularx}{\textwidth}{|c|X|}
-\hline
-\multicolumn{2}{|l|}{\begin{minipage}{2cm}Nom :\hspace{1.2cm}\end{minipage}} \\[0.2cm]
-\hline
-\multirow{3}{*}{Note :\hspace{1.2cm}} & \textsc{Question de cours} \\[0.1cm]
- & Énoncé : \Coursdeux \\[0.1cm]
- & Commentaire : \\[\heig]
- \cline{2-2}
- S :\hspace{1.2cm} & \textsc{Exercice} \\[0.1cm]
- C :\hspace{1.2cm} & Énoncé : \Exodeux \\[0.1cm]
- A :\hspace{1.2cm} & Commentaire : \\[\heig]
-\hline
-\end{tabularx}
-%%%%%%%%%%
-
-\colleskip
-%%% TABLE %%%
-\centering
-\begin{tabularx}{\textwidth}{|c|X|}
-\hline
-\multicolumn{2}{|l|}{\begin{minipage}{1.5cm}Nom :\hspace{1.2cm}\end{minipage}} \\[0.2cm]
-\hline
-\multirow{3}{*}{Note :\hspace{1.2cm}} & \textsc{Question de cours} \\[0.1cm]
- & Énoncé : \Courstrois \\[0.1cm]
- & Commentaire : \\[\heig]
- \cline{2-2}
- S :\hspace{1.2cm} & \textsc{Exercice} \\[0.1cm]
- C :\hspace{1.2cm} & Énoncé : \Exotrois \\[0.1cm]
- A :\hspace{1.2cm} & Commentaire : \\[\heig]
-\hline
-\end{tabularx}
-%%%%%%%%%%
-
-% % to double the page
-% \newpage
-
-% \renewcommand{\Coursun}{}
-% \renewcommand{\Exoun}{}
-% \renewcommand{\Coursdeux}{}
-% \renewcommand{\Exodeux}{}
-% \renewcommand{\Courstrois}{}
-% \renewcommand{\Exotrois}{}
-
-% \vspace{-2cm}
-% \begin{center}
-% \textsc{Fiche de colle}\\
-% Physique - \classe
-% \end{center}
-% \vspace{-0.9cm}
-% \begin{minipage}{0.48\textwidth}
-% \flushleft{Correcteur : Eric Brillaux
-% }
-% \end{minipage}\hfill
-% \begin{minipage}{0.48\textwidth}
-% \flushright{Date : \hspace{2cm}}
-% \end{minipage}
-% \vspace{0.2cm}
-
-% %%% TABLE %%%
-% \centering
-% \begin{tabularx}{\textwidth}{|c|X|}
-% \hline
-% \multicolumn{2}{|l|}{\begin{minipage}{2cm}Nom :\hspace{1.2cm}\end{minipage}} \\[0.2cm]
-% \hline
-% \multirow{3}{*}{Note :\hspace{1.2cm}} & \textsc{Question de cours} \\[0.1cm]
-%  & Énoncé : \Coursun \\[0.1cm]
-%  & Commentaire : \\[\heig]
-%  \cline{2-2}
-%  S :\hspace{1.2cm} & \textsc{Exercice} \\[0.1cm]
-%  C :\hspace{1.2cm} & Énoncé : \Exoun \\[0.1cm]
-%  A :\hspace{1.2cm} & Commentaire : \\[\heig]
-% \hline
-% \end{tabularx}
-% %%%%%%%%%%
-
-
-% \colleskip
-% %%% TABLE %%%
-% \centering
-% \begin{tabularx}{\textwidth}{|c|X|}
-% \hline
-% \multicolumn{2}{|l|}{\begin{minipage}{2cm}Nom :\hspace{1.2cm}\end{minipage}} \\[0.2cm]
-% \hline
-% \multirow{3}{*}{Note :\hspace{1.2cm}} & \textsc{Question de cours} \\[0.1cm]
-%  & Énoncé : \Coursdeux \\[0.1cm]
-%  & Commentaire : \\[\heig]
-%  \cline{2-2}
-%  S :\hspace{1.2cm} & \textsc{Exercice} \\[0.1cm]
-%  C :\hspace{1.2cm} & Énoncé : \Exodeux \\[0.1cm]
-%  A :\hspace{1.2cm} & Commentaire : \\[\heig]
-% \hline
-% \end{tabularx}
-% %%%%%%%%%%
-
-% \colleskip
-% %%% TABLE %%%
-% \centering
-% \begin{tabularx}{\textwidth}{|c|X|}
-% \hline
-% \multicolumn{2}{|l|}{\begin{minipage}{1.5cm}Nom :\hspace{1.2cm}\end{minipage}} \\[0.2cm]
-% \hline
-% \multirow{3}{*}{Note :\hspace{1.2cm}} & \textsc{Question de cours} \\[0.1cm]
-%  & Énoncé : \Courstrois \\[0.1cm]
-%  & Commentaire : \\[\heig]
-%  \cline{2-2}
-%  S :\hspace{1.2cm} & \textsc{Exercice} \\[0.1cm]
-%  C :\hspace{1.2cm} & Énoncé : \Exotrois \\[0.1cm]
-%  A :\hspace{1.2cm} & Commentaire : \\[\heig]
-% \hline
-% \end{tabularx}
-% %%%%%%%%%%
-
-
+\textsc{Fiche de colle} - \classe
+\vfill
+\ColleFiche{\thedate}{\Coursun}{\Exoun}
+\vfill
+\ColleFiche{\thedate}{\Coursdeux}{\Exodeux}
+\vfill
+\ColleFiche{\thedate}{\Courstrois}{\Exotrois}
 \end{document}

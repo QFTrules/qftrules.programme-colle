@@ -15,6 +15,23 @@ const BanqueExoShow = require('./banque_exo_show');
 // set the boolean variables to change icon when uploading programme de colle
 vscode.commands.executeCommand('setContext', 'static', true);
 
+// synchronous function to compile latex document
+function compileLatex(filePath, outputDirectory = `${__dirname}/tmp`) {
+	// difife default recipe
+	const recipe = `pdflatex -interaction=nonstopmode -shell-escape -output-directory ${outputDirectory}`;
+	// compile the latex document synchronously
+	child_process.execSync(`${recipe} ${filePath}`);
+}
+
+// synchronous function to copy one pdf into several copies of itself 
+function copyPdf(filePath, copies = 1) {
+	for (let i = 0; i < copies; i++) {
+		// copy filePath into filePath_copy_i.pdf
+		fs.copyFileSync(filePath, `${filePath}_copy_${i}.pdf`);
+	}
+	child_process.execSync(`pdftk ${filePath}_copy_*.pdf cat output ${filePath}`);
+} 
+
 // asynchronous function to find the flash drive
 async function findFlashDrive() {
     try {
@@ -583,7 +600,7 @@ function activate(context) {
 			if (fs.existsSync(pdfFilePath_soluce)) {
 				// copy the soluce file to the flash drive with the new file extension
 				const soluceFileName = path.basename(pdfFilePath_soluce);
-				const soluceDestinationPath = path.join(flashDrive, soluceFileName);
+				const soluceDestinationPath = path.join(printDirectory, soluceFileName);
 				fs.copyFileSync(pdfFilePath_soluce, soluceDestinationPath);
 				// show information message
 				vscode.window.showInformationMessage(`${soluceFileName} copied to ${printDirectory}`);
@@ -592,7 +609,7 @@ function activate(context) {
 			if (fs.existsSync(pdfFilePath_bilan)) {
 				// copy the bilan file to the flash drive with the new file extension
 				const bilanFileName = path.basename(pdfFilePath_bilan);
-				const bilanDestinationPath = path.join(flashDrive, bilanFileName);
+				const bilanDestinationPath = path.join(printDirectory, bilanFileName);
 				fs.copyFileSync(pdfFilePath_bilan, bilanDestinationPath);
 				// show information message
 				vscode.window.showInformationMessage(`${bilanFileName} copied to ${printDirectory}`);
@@ -908,35 +925,46 @@ function activate(context) {
 		const NextTuesday = nextTuesday.toLocaleDateString('fr-FR');
 		const NextnextTuesday = nextNextTuesday.toLocaleDateString('fr-FR');
 
-		vscode.window.showInformationMessage(`Next Tuesday: ${NextTuesday}`);
-		vscode.window.showInformationMessage(`Next next Tuesday: ${NextnextTuesday}`);
+		// vscode.window.showInformationMessage(`Next Tuesday: ${NextTuesday}`);
+		// vscode.window.showInformationMessage(`Next next Tuesday: ${NextnextTuesday}`);
 
 		// get the file path
 		const colle_file = editor.document.fileName;
+		const fiche_pdf = colle_file.replace('.tex', '_fiche.pdf');
 		// get directory
-		const fileDirname = path.dirname(colle_file);
+		// const fileDirname = path.dirname(colle_file);
 		// get basename
 		// const fileBasename = path.basename(latex);
 		// execute the bash script
 		// get the fiche.tex path 
 		const fiche_latex = __dirname + '/templates/Fiche.tex';
-		const fiche_pdf = colle_file.replace('.tex', '_fiche.pdf');
 		// get tmp path
-		const tmp_tex = __dirname + '/tmp/Fiche_tmp_simple';
+		const tmp_tex = __dirname + '/tmp/Fiche_tmp_simple.tex';
 		child_process.execSync(`python ${__dirname}/scripts/build-fiche-colle.py ${colle_file} ${NextTuesday} ${NextnextTuesday} ${fiche_latex} ${tmp_tex}`);
 		// vscode.commands.executeCommand('latex-workshop.build', {rootFile:tmp_tex}).then(() => {
 		// get first recipe listed in the latex settings
-		var recipe = vscode.workspace.getConfiguration('latex-workshop').get('latex.tools')[0].args.toString();
+		// var recipe = vscode.workspace.getConfiguration('latex-workshop').get('latex.tools')[0].args.toString();
 		// replace substring %DOC% by tmp_tex
-		var recipe = recipe.replace('%DOC%', tmp_tex);
-		vscode.window.showInformationMessage(recipe);
-		child_process.execSync(`latexmk ${recipe} -output-directory=${__dirname}/tmp`, () => { 
-			// rename fiche file
-			fs.renameSync(tmp_tex.replace('.tex', '.pdf'), fiche_pdf);
-			// move fiche file to fileDirname folder
-			fs.renameSync(fiche_pdf, fileDirname + '/' + path.basename(fiche_pdf));
-			vscode.commands.executeCommand('vscode.open', vscode.Uri.file(fiche_pdf), { viewColumn: vscode.ViewColumn.Two });
-		});
+		// var recipe = recipe.replace('%DOC%', tmp_tex);
+		// var recipe = `pdflatex -interaction=nonstopmode -shell-escape -output-directory ${__dirname}/tmp`;
+		// vscode.window.showInformationMessage(fiche_pdf);
+		// child_process.execSync(`latexmk ${recipe} -output-directory=${__dirname}/tmp`, () => { 
+		compileLatex(tmp_tex);
+		// find \Count{#1} in the file and copy pdf files as many times as value of #1
+		const tmp_pdf = tmp_tex.replace('.tex', '.pdf');
+		const count = fs.readFileSync(colle_file).toString().match(/\\Count{(\d+)}/)[1];
+		// vscode.window.showInformationMessage(count);
+		
+		copyPdf(tmp_pdf, count);
+		fs.renameSync(tmp_pdf, fiche_pdf);
+		
+		// child_process.execSync(`${recipe} ${tmp_tex}`);
+		// rename fiche file
+		// move pdf file
+		// move fiche file to fileDirname folder
+		// fs.renameSync(fiche_pdf, fileDirname + '/' + path.basename(fiche_pdf));
+		vscode.commands.executeCommand('vscode.open', vscode.Uri.file(fiche_pdf), { viewColumn: vscode.ViewColumn.Two });
+		// });
 		// insert magic command 
 		// const latex_magic = `% !TEX root = ${tmp_tex}\n`;
 		// add latex_magic as first line of the file
@@ -980,7 +1008,9 @@ function activate(context) {
 		// 	});
 		// }
 			// show the output
-			vscode.window.showInformationMessage(`${fiche_pdf} généré avec succès`);
+			// get basename of fiche
+			const basename = path.basename(fiche_pdf);
+			vscode.window.showInformationMessage(`${basename} généré avec succès`);
 	});
 
 	// command to see the soluce version of tex file

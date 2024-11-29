@@ -200,7 +200,10 @@
     {
       "command": "flash.fiche_colle",
       "title": "Fiche de colle",
-      "icon": "$(debug-stackframe-active)"
+      "icon": {
+        "light": "images/receipt-solid_light_small.svg",
+        "dark": "images/receipt-solid_dark_small.svg"
+      }
     },
     {
       "command": "flash.soluce",

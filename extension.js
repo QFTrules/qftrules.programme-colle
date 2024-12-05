@@ -30,6 +30,10 @@ function copyPdf(filePath, copies = 1) {
 		fs.copyFileSync(filePath, `${filePath}_copy_${i}.pdf`);
 	}
 	child_process.execSync(`pdftk ${filePath}_copy_*.pdf cat output ${filePath}`);
+	// remove auxiliary pdf files
+	for (let i = 0; i < copies; i++) {
+		fs.unlinkSync(`${filePath}_copy_${i}.pdf`);
+	}
 } 
 
 // asynchronous function to find the flash drive
@@ -569,12 +573,44 @@ function activate(context) {
 		// if (!editor) {
 		// 	return;
 		// }
+		// if doc is defined, use it as the document
+		// if (doc) {
+			// get the file path of the active document
+			// var filePath = doc.filePath;
+		// } else {
+			// get the file path of the active document
+		var filePath = editor.document.fileName;
+		// }
+
+		// if doc is pdf, then send only this document to the flash drive
+		// if (filePath.endsWith('.pdf')) {
+		// 	// find any folder in /media/ that could match a USB flash drive - replaces variable "flashDrive" defined in settings.json
+		// 	findFlashDrive().then(flashDrive => {
+		// 		console.log('Flash Drive:', flashDrive);
+		// 		// add / character if not present at the end of the string
+		// 		const printDirectory = path.join(flashDrive, 'print');
+		// 		// check if the print directory exists
+		// 		if (!fs.existsSync(printDirectory)) {
+		// 			// send error message
+		// 			vscode.window.showErrorMessage(`No print directory found in ${flashDrive}`);
+		// 			return;
+		// 		}
+		// 		// copy the file to the flash drive with the new file extension
+		// 		const fileName = path.basename(filePath);
+		// 		const destinationPath = path.join(printDirectory, fileName);
+		// 		fs.copyFileSync(filePath, destinationPath);
+		// 		// show information message
+		// 		vscode.window.showInformationMessage(`${fileName} copied to ${printDirectory}`);
+		// 	});
+		// 	return;
+		// }
 		// get the file path
-		const filePath = editor.document.fileName;
+		// const filePath = editor.document.fileName;
 		// change the file extension to .pdf
 		const pdfFilePath = filePath.replace(/\.[^/.]+$/, ".pdf");
 		const pdfFilePath_soluce = filePath.replace(/\.[^/.]+$/, "_soluce.pdf");
 		const pdfFilePath_bilan = filePath.substring(0, filePath.indexOf('_')) + '_bilan.pdf';
+		const pdfFilePath_fiche = filePath.replace(/\.[^/.]+$/, "_fiche.pdf");
 
 		// find any folder in /media/ that could match a USB flash drive - replaces variable "flashDrive" defined in settings.json
 		// var flashDrive = fs.readdirSync('/media/').map(name => path.join('/media/', name)).find(f => fs.lstatSync(f).isDirectory());
@@ -582,6 +618,7 @@ function activate(context) {
 		findFlashDrive().then(flashDrive => {
 			console.log('Flash Drive:', flashDrive);
 			// find the print subdirectory in directory flashDrive
+
 			// add / character if not present at the end of the string
 			const printDirectory = path.join(flashDrive, 'print');
 			// check if the print directory exists
@@ -590,12 +627,24 @@ function activate(context) {
 				vscode.window.showErrorMessage(`No print directory found in ${flashDrive}`);
 				return;
 			}
+
 			// copy the file to the flash drive with the new file extension
 			const fileName = path.basename(pdfFilePath);
 			const destinationPath = path.join(printDirectory, fileName);
 			fs.copyFileSync(pdfFilePath, destinationPath);
 			// show information message
 			vscode.window.showInformationMessage(`${fileName} copied to ${printDirectory}`);
+
+			// check if the fiche colle exists
+			if (fs.existsSync(pdfFilePath_fiche)) {
+				// copy the fiche file to the flash drive with the new file extension
+				const ficheFileName = path.basename(pdfFilePath_fiche);
+				const ficheDestinationPath = path.join(printDirectory, ficheFileName);
+				fs.copyFileSync(pdfFilePath_fiche, ficheDestinationPath);
+				// show information message
+				vscode.window.showInformationMessage(`${ficheFileName} copied to ${printDirectory}`);
+			}
+
 			// check if the soluce file exists
 			if (fs.existsSync(pdfFilePath_soluce)) {
 				// copy the soluce file to the flash drive with the new file extension

@@ -195,7 +195,10 @@
     {
       "command": "flash.test",
       "title": "Produire QCM",
-      "icon": "$(chrome-restore)"
+      "icon": {
+      "light": "images/question-solid_light.svg",
+      "dark": "images/question-solid_dark.svg"
+      }
     },
     {
       "command": "flash.fiche_colle",
@@ -206,15 +209,21 @@
       }
     },
     {
-      "command": "flash.soluce",
-      "title": "Compiler soluce",
-      "icon": "$(debug-stackframe-active)"
-    },
-    {
       "command": "flash.view_soluce",
       "title": "Voir soluce",
-      "icon": "$(debug-stackframe)"
-    },
+      "icon": {
+        "light": "images/check-solid_light.svg",
+        "dark": "images/check-solid_dark.svg"
+      }
+        },
+        {
+      "command": "flash.soluce",
+      "title": "Compiler soluce",
+      "icon": {
+        "light": "images/check-double-solid_light.svg",
+        "dark": "images/check-double-solid_dark.svg"
+      }
+        },
     {
       "command": "flash.compile_bilan_DS",
       "title": "Compiler bilan",
@@ -232,12 +241,12 @@
         {
           "command": "flash.test",
           "group": "navigation@-2",
-          "when": "resourceExtname == .tex"
+          "when": "resourceExtname == .tex && resourcePath =~ /\\/Cours\\//"
         },
         {
           "command": "flash.fiche_colle",
           "group": "navigation@-2",
-          "when": "resourceExtname == .tex"
+          "when": "resourceExtname == .tex && resourceFilename =~ /^Colle/"
         },
         {
           "command": "flash.soluce",

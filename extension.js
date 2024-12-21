@@ -1,4 +1,3 @@
-"use strict";
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 var vscode = require('vscode');
@@ -17,10 +16,15 @@ vscode.commands.executeCommand('setContext', 'static', true);
 
 // synchronous function to compile latex document
 function compileLatex(filePath, outputDirectory = `${__dirname}/tmp`) {
-	// difife default recipe
+	// define default recipe
 	const recipe = `pdflatex -interaction=nonstopmode -shell-escape -output-directory ${outputDirectory}`;
 	// compile the latex document synchronously
 	child_process.execSync(`${recipe} ${filePath}`);
+}
+
+function viewPdf(filePath, options = { viewColumn: vscode.ViewColumn.Two }) {
+	// open the pdf file in vscode
+	vscode.commands.executeCommand('vscode.open', vscode.Uri.file(filePath), options);
 }
 
 // synchronous function to copy one pdf into several copies of itself 
@@ -705,7 +709,7 @@ function activate(context) {
 		if (!editor) {
 			return;
 		}
-
+		
 		// string to search in the document
 		const searchString = '\\begin{' + exoenvi +'}';
 
@@ -725,23 +729,27 @@ function activate(context) {
 			// get last } caracter in line in case {} characters are present in exo title
 			const end = lineText.lastIndexOf('}');
 			var exo = lineText.substring(start, end);
+			var FilePath = editor.document.fileName;
+			var SourceFile = path.basename(FilePath);
 		} else {
 			var exo = document.label.replace(/"/g, '');
+			var FilePath = document.filePath;
+			var SourceFile = path.basename(FilePath);
 			// vscode.window.showInformationMessage(exo, document.filePath);
-			vscode.commands.executeCommand('vscode.open', vscode.Uri.file(document.filePath)).then(() => {
-				// just pass
-			}
-			);
+			// vscode.commands.executeCommand('vscode.open', vscode.Uri.file(document.filePath)).then(() => {
+			// 	// just pass
+			// }
+			// );
 		}
 
 		// name of temporary latex exercise file
-		const exercice = 'Exercice'
-
+		const exercice_name = 'Exercice'
+		const exercice = __dirname + `/tmp/${exercice_name}`;
 		// get the basename with extension of current latex file 
 		// if (document === undefined) {
 			// insert the TEX root line at the beginning of the file
 		const editorText = editor.document.getText();
-		const latex_magic = `% !TEX root = ${__dirname}/tmp/${exercice}.tex\n`;
+		const latex_magic = `% !TEX root = ${exercice}.tex\n`;
 		if (editorText.includes(`% !TEX root `)) {
 			editor.edit(editBuilder => {
 				editBuilder.delete(new vscode.Range(new vscode.Position(0, 0), new vscode.Position(1, 0)));
@@ -759,19 +767,27 @@ function activate(context) {
 		// 			//  just pass
 		// 	});
 		// }
-		var filePath = editor.document.fileName;
-		var fileName = path.basename(editor.document.fileName);
+		// var filePath = editor.document.fileName;
+		// var fileName = path.basename(editor.document.fileName);
 		// } else {	
-			// var fileName = path.basename(document.filePath);
+		// 	var fileName = path.basename(document.filePath);
 		// }
 
 		// write a new template latex file in directory tmp 
 		// const template = `\\input{TD.sty}\n\\begin{document}\n\\Source{${fileName}}\n\\Ex{${exo}}\n\\end{document}`;
 		// const template = `\\input{TD.sty}\n\\Soluce\n\\begin{document}\n\\Source{${fileName}}\n\\Ex{${exo}}\n\\end{document}`;
-		const template = `%&Exercice\n% \\input{TDappli.sty}\n% \\endofdump\n\\Soluce\n\\begin{document}\n\\Source{${fileName}}\n\\Ex{${exo}}\n\\end{document}`;
-		fs.writeFileSync(__dirname + `/tmp/${exercice}.tex`, template);
+		const template = `%&Exercice\n%\\input{TDappli.sty}\n%\\Soluce\n% \\endofdump\n\\begin{document}\n\\Source{${SourceFile}}\n\\Ex{${exo}}\n\\end{document}`;
+		fs.writeFileSync(exercice + '.tex', template);
 		// compile the template file and open when finished
-		vscode.commands.executeCommand('latex-workshop.build', {rootFile:filePath}).then(() => {
+		// compileLatex(exercice + '.tex');
+		// try {
+		// 	child_process.execSync('/usr/bin/pdflatex -interaction=nonstopmode -shell-escape /home/eb/.vscode/extensions/qftrules.programme-colle/tmp/Exercice.tex');
+		// } catch (error) {
+		// 	vscode.window.showErrorMessage(`Error running pdflatex: ${error.message}`);
+		// }
+		// viewPdf(exercice + '.pdf');
+		vscode.commands.executeCommand('vscode.open', vscode.Uri.file(exercice + `.pdf`), { viewColumn: vscode.ViewColumn.Two });
+		vscode.commands.executeCommand('latex-workshop.build', {rootFile:FilePath, recipe:'pdflatex'}).then(() => {
 			vscode.commands.executeCommand('latex-workshop.tab');
 		});
 	});

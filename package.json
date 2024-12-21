@@ -1,418 +1,411 @@
 {
-  "name": "programme-de-colle",
-  "displayName": "Programme de colle",
-  "description": "Affiche le programme de colle",
-  "version": "0.0.1",
-  "publisher": "QFTrules",
-  "icon": "images/prog_colle.png",
-  "engines": {
-    "vscode": "^1.85.0"
-  },
-  "categories": [
-    "Other"
-  ],
-  "activationEvents": ["*"],
-  "main": "./extension.js",
-  "contributes": {
-
-    "viewsWelcome": [
-      {
-        "view": "suggestions",
-        "contents": "Voici les activités suggérées.\n[Indiquer la difficulté des exercices suivants](command:suggestions.go)"
-      },
-      {
-        "view": "amc",
-        "contents": "\n[Ouvrir auto-multiple-choice](command:flash.amc)"
-      }
-    ],
-
-    "viewsContainers": {
-      "activitybar": [
-        {
-          "id": "package-explorer",        
-          "title": "Physique",
-          "icon": "images/atom2.png"               
-        }
-      ]
-    },
-
-    "keybindings": [
-      {
-        "command": "workbench.view.extension.package-explorer",
-        "key": "ctrl+shift+p",
-        "when": "true"
-      },
-      {
-        "command": "banque.compile",
-        "key": "alt+f1",
-        "when": "editorTextFocus && editorLangId == latex"
-      },
-      {
-        "command": "banque.reveal",
-        "key": "ctrl+alt+r",
-        "when": "editorTextFocus && editorLangId == latex"
-      },
-      {
-        "key": "ctrl+f1",
-        "command": "flash.soluce",
-        "when": "editorTextFocus && editorLangId == latex"
-      },
-      {
-        "key": "ctrl+f2",
-        "command": "flash.view_soluce",
-        "when": "editorTextFocus && editorLangId == latex"
-      },
-      {
-        "key": "f1",
-        "command": "flash.compile_bilan_DS",
-        "when": "editorTextFocus && editorLangId == 'ods'"
-      }
-    ],
-
-    "views": {
-      "package-explorer": [               
-        {
-          "id": "programme-colle",  
-          "name": "Programme de colle",
-          "type": "tree",
-          "icon" : "images/default_folder_opened.svg"
-        },
-        {
-          "id": "banque-exercices",
-          "name": "Banque d'exercices",
-          "type": "tree",
-          "icon" : "images/default_folder_opened.svg"
-        },
-        {
-          "id": "suggestions",
-          "name": "Suggestions",
-          "type": "tree"
-        },
-        {
-          "id": "amc",
-          "name": "AMC",
-          "type": "tree"
-        }
-      ]
-    },
-
-    "commands": [
-    {
-      "command": "mathpix-pdf.convert",
-      "title": "Convert to tex"
-    },
-    {
-      "command": "programme.upload",
-      "title": "Téléverser",
-      "icon": "$(cloud-upload)"
-    },
-    {
-      "command": "programme.build",
-      "title": "Compiler et téléverser",
-      "icon": "$(gear)"
-    },
-    {
-      "command": "programme.compile",
-      "title": "Compiler",
-      "icon": "$(file-code)"
-    },
-    {
-      "command": "banque.fetch",
-      "title": "Ouvrir exercice"
-    },
-    {
-      "command": "banque.copy",
-      "title": "Ajouter exercice",
-      "icon": "$(add)"
-    },
-    {
-      "command": "banque.source",
-      "title": "Ajouter source",
-      "icon": "$(add)"
-    },
-    {
-      "command": "banque.open",
-      "title": "Ouvrir source",
-      "icon": "$(file-code)"
-    },
-    {
-      "command": "banque.compile",
-      "title": "Compiler exercice",
-      "icon": "$(file-pdf)"
-    },
-    {
-      "command": "programme.pdf",
-      "title": "Voir pdf",
-      "icon": "$(file-pdf)"
-    },
-    {
-      "command": "programme.remove",
-      "title": "Retirer",
-      "icon": "$(discard)"
-    },
-    {
-      "command": "banque.reveal",
-      "title": "Révéler exercice",
-      "icon": "$(file-pdf)"
-    },
-    {
-      "command": "programme.refresh",
-      "title": "Rafraîchir",
-      "icon": "$(refresh)"
-    },
-    {
-      "command": "banque.refresh",
-      "title": "Rafraîchir",
-      "icon": "$(refresh)"
-    },
-    {
-      "command": "programme.uploading",
-      "title": "Téléversement en cours",
-      "icon": "$(sync)"
-    },
-    {
-      "command": "suggestions.go",
-      "title": "Aller aux suggestions",
-      "icon": "$(star)"
-    },
-    {
-      "command": "suggestions.refresh",
-      "title": "Rafraîchir",
-      "icon": "$(refresh)"
-    },
-    {
-      "command": "flash.send",
-      "title": "Envoyer vers clé USB",
-      "icon": {
-        "light": "images/usb-brands-solid_light.svg",
-        "dark": "images/usb-brands-solid_dark.svg"
-      }
-    },
-    {
-      "command": "flash.amc",
-      "title": "Ouvrir AMC"
-    },
-    {
-      "command": "flash.test",
-      "title": "Produire QCM",
-      "icon": {
-      "light": "images/question-solid_light.svg",
-      "dark": "images/question-solid_dark.svg"
-      }
-    },
-    {
-      "command": "flash.fiche_colle",
-      "title": "Fiche de colle",
-      "icon": {
-        "light": "images/receipt-solid_light_small.svg",
-        "dark": "images/receipt-solid_dark_small.svg"
-      }
-    },
-    {
-      "command": "flash.view_soluce",
-      "title": "Voir soluce",
-      "icon": {
-        "light": "images/check-solid_light.svg",
-        "dark": "images/check-solid_dark.svg"
-      }
-        },
-        {
-      "command": "flash.soluce",
-      "title": "Compiler soluce",
-      "icon": {
-        "light": "images/check-double-solid_light.svg",
-        "dark": "images/check-double-solid_dark.svg"
-      }
-        },
-    {
-      "command": "flash.compile_bilan_DS",
-      "title": "Compiler bilan",
-      "icon": "$(debug-stackframe-active)"
-    }
-  ],
-    
-    "menus": {
-      "editor/title": [
-        {
-            "command": "flash.send",
-            "group": "navigation@-1",
-            "when": "resourceExtname == .tex"
-        },
-        {
-          "command": "flash.test",
-          "group": "navigation@-2",
-          "when": "resourceExtname == .tex && resourcePath =~ /\\/Cours\\//"
-        },
-        {
-          "command": "flash.fiche_colle",
-          "group": "navigation@-2",
-          "when": "resourceExtname == .tex && resourceFilename =~ /^Colle/"
-        },
-        {
-          "command": "flash.soluce",
-          "group": "navigation@0",
-          "when": "resourceExtname == .tex"
-        },
-        {
-          "command": "flash.view_soluce",
-          "group": "navigation@0",
-          "when": "resourceExtname == .tex"
-      },
-      {
-        "command": "flash.compile_bilan_DS",
-        "group": "navigation@-1",
-        "when": "resourceExtname == .ods"
-    }
-    ],
-      "explorer/context": [
-        {
-          "command": "mathpix-pdf.convert",
-          "group": "navigation",
-          "when": "resourceExtname == .pdf"
-        }
-      ],
-      "view/item/context": [
-          {
-              "command": "banque.copy",
-              "when": "view == banque-exercices && viewItem == file",
-              "group": "inline"
-          },
-          {
-            "command": "banque.compile",
-            "when": "view == banque-exercices && viewItem == file",
-            "group": "inline@-1"
-          },
-          {
-            "command": "programme.pdf",
-            "when": "view == programme-colle && viewItem == latex",
-            "group": "inline"
-          },
-          {
-            "command": "programme.remove",
-            "when": "view == programme-colle && viewItem == latex",
-            "group": "inline@-1"
-          },
-          {
-              "command": "banque.source",
-              "when": "view == banque-exercices && viewItem == chapter",
-              "group": "inline"
-          },
-          {
-            "command": "banque.open",
-            "when": "view == banque-exercices && viewItem == chapter",
-            "group": "inline@-1"
-        }
-        ],
-      "view/title": [
-        {
-          "command": "programme.upload",
-          "when": "view == programme-colle && static",
-          "group": "navigation@1"
-        },
-        {
-          "command": "programme.uploading",
-          "when": "view == programme-colle && !static",
-          "group": "navigation@1"
-        },
-        {
-          "command": "programme.compile",
-          "when": "view == programme-colle",
-          "group": "navigation@2"
-        },
-        {
-          "command": "programme.build",
-          "when": "view == programme-colle",
-          "group": "navigation@3"
-        },
-        {
-          "command": "programme.refresh",
-          "when": "view == programme-colle",
-          "group": "navigation@4"
-        },
-        {
-          "command": "banque.refresh",
-          "when": "view == banque-exercices",
-          "group": "navigation@4"
-        },
-        {
-          "command": "suggestions.refresh",
-          "when": "view == suggestions",
-          "group": "navigation@4"
-        }]
-    },
-    
-
-    "configuration": {
-      "title": "Physique",
-      "properties": {
-        "flash.flashDrive": {
-          "type": "string",
-          "default": "/media/eb/USB/Print/",
-          "description": "Définit le chemin d'accès vers la clé USB."
-        },
-        "programme-colle.collePath": {
-          "type": "string",
-          "default": "/home/eb/Dropbox/CPGE/Physique/Exercices/Colles/PC/",
-          "description": "Définit le chemin d'accès vers le dossier de colles."
-        }
-        ,
-        "programme-colle.styPath": {
-            "type": "string",
-            "default": "/home/eb/Dropbox/texmf/tex/latex/Preambles/",
-            "description": "Définit le chemin d'accès vers le préambule latex colle.sty."
-        }
-        ,
-        "programme-colle.pythonCommand": {
-            "type": "string",
-            "default": "/home/eb/anaconda3/bin/python3",
-            "description": "Définit la commande python à utiliser. La bibliothèque python selenium est utilisée pour téléverser le programme de colle sur Cahier de Prépa."
-        }
-        ,
-        "programme-colle.programmeBalise": {
-            "type": "string",
-            "default": "\\ProgrammeColle",
-            "description": "Macro latex qui délimite les parties du document latex (cours, TD, etc.) au programme de colle. Cette macro agit comme un interrupteur et peut délimiter le début ou la fin de la partie au programme. En présence d'une seule macro, toute la partie du document qui suit est considérée au programme. En l'absence complète de macro dans un document, celui-ci n'est pas considéré au programme. "
-        }
-        ,
-        "banque-exercices.exerciceEnvironment": {
-            "type": "string",
-            "default": "exo",
-            "description": "Nom de l'environnement latex utilisé pour les exercices. La commande `banque.compile` cherche la chaîne de caractères `\\begin{nom_de_l'environnement}{nom_de_l'exercice}` pour identifier les exercices. L'environnement peut comprendre des arguments optionnels, placés entre crochets [...]."
-        }
-        ,
-        "mathpix-pdf.texArchives": {
-          "type": "string",
-          "default": ["Electromag/conduction.tex",
-                      "Electromag/conduction.tex"],
-          "description": "Définit la liste des chemins d'accès vers le fichiers tex qui contiennent les exercices."
-        }
-        ,
-        "mathpix-pdf.texPath": {
-          "type": "string",
-          "default": "/home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/",
-          "description": "Définit la liste des chemins d'accès vers le fichiers tex qui contiennent les exercices."
-        }
-        ,
-        "mathpix-pdf.mpxCommand": {
-          "type": "string",
-          "default": "/usr/local/bin/mpx",
-          "description": "Définit le chemin d'accès à la commande mpx. La commande mpx de mathpix permet de convertir un pdf en tex."
-        }
-      }
-    }
-  },
-  "scripts": {
-    "lint": "eslint .",
-    "pretest": "npm run lint",
-    "test": "vscode-test"
-  },
-  "devDependencies": {
-    "@types/vscode": "^1.85.0",
-    "@types/mocha": "^10.0.6",
-    "@types/node": "18.x",
-    "eslint": "^8.54.0",
-    "typescript": "^5.3.2",
-    "@vscode/test-cli": "^0.0.4",
-    "@vscode/test-electron": "^2.3.8"
-  }
+	"name": "programme-de-colle",
+	"displayName": "Programme de colle",
+	"description": "Affiche le programme de colle",
+	"version": "0.0.1",
+	"publisher": "QFTrules",
+	"icon": "images/prog_colle.png",
+	"engines": {
+		"vscode": "^1.85.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"*"
+	],
+	"main": "./extension.js",
+	"contributes": {
+		"viewsWelcome": [
+			{
+				"view": "suggestions",
+				"contents": "Voici les activités suggérées.\n[Indiquer la difficulté des exercices suivants](command:suggestions.go)"
+			},
+			{
+				"view": "amc",
+				"contents": "\n[Ouvrir auto-multiple-choice](command:flash.amc)"
+			}
+		],
+		"viewsContainers": {
+			"activitybar": [
+				{
+					"id": "package-explorer",
+					"title": "Physique",
+					"icon": "images/atom2.png"
+				}
+			]
+		},
+		"keybindings": [
+			{
+				"command": "workbench.view.extension.package-explorer",
+				"key": "ctrl+shift+p",
+				"when": "true"
+			},
+			{
+				"command": "banque.compile",
+				"key": "alt+f1",
+				"when": "editorTextFocus && editorLangId == latex"
+			},
+			{
+				"command": "banque.reveal",
+				"key": "ctrl+alt+r",
+				"when": "editorTextFocus && editorLangId == latex"
+			},
+			{
+				"key": "ctrl+f1",
+				"command": "flash.soluce",
+				"when": "editorTextFocus && editorLangId == latex"
+			},
+			{
+				"key": "ctrl+f2",
+				"command": "flash.view_soluce",
+				"when": "editorTextFocus && editorLangId == latex"
+			},
+			{
+				"key": "f1",
+				"command": "flash.compile_bilan_DS",
+				"when": "editorTextFocus && editorLangId == 'ods'"
+			}
+		],
+		"views": {
+			"package-explorer": [
+				{
+					"id": "programme-colle",
+					"name": "Programme de colle",
+					"type": "tree",
+					"icon": "images/default_folder_opened.svg"
+				},
+				{
+					"id": "banque-exercices",
+					"name": "Banque d'exercices",
+					"type": "tree",
+					"icon": "images/default_folder_opened.svg"
+				},
+				{
+					"id": "suggestions",
+					"name": "Suggestions",
+					"type": "tree"
+				},
+				{
+					"id": "amc",
+					"name": "AMC",
+					"type": "tree"
+				}
+			]
+		},
+		"commands": [
+			{
+				"command": "mathpix-pdf.convert",
+				"title": "Convert to tex"
+			},
+			{
+				"command": "programme.upload",
+				"title": "Téléverser",
+				"icon": "$(cloud-upload)"
+			},
+			{
+				"command": "programme.build",
+				"title": "Compiler et téléverser",
+				"icon": "$(gear)"
+			},
+			{
+				"command": "programme.compile",
+				"title": "Compiler",
+				"icon": "$(file-code)"
+			},
+			{
+				"command": "banque.fetch",
+				"title": "Ouvrir exercice"
+			},
+			{
+				"command": "banque.copy",
+				"title": "Ajouter exercice",
+				"icon": "$(add)"
+			},
+			{
+				"command": "banque.source",
+				"title": "Ajouter source",
+				"icon": "$(add)"
+			},
+			{
+				"command": "banque.open",
+				"title": "Ouvrir source",
+				"icon": "$(file-code)"
+			},
+			{
+				"command": "banque.compile",
+				"title": "Compiler exercice",
+				"icon": "$(file-pdf)"
+			},
+			{
+				"command": "programme.pdf",
+				"title": "Voir pdf",
+				"icon": "$(file-pdf)"
+			},
+			{
+				"command": "programme.remove",
+				"title": "Retirer",
+				"icon": "$(discard)"
+			},
+			{
+				"command": "banque.reveal",
+				"title": "Révéler exercice",
+				"icon": "$(file-pdf)"
+			},
+			{
+				"command": "programme.refresh",
+				"title": "Rafraîchir",
+				"icon": "$(refresh)"
+			},
+			{
+				"command": "banque.refresh",
+				"title": "Rafraîchir",
+				"icon": "$(refresh)"
+			},
+			{
+				"command": "programme.uploading",
+				"title": "Téléversement en cours",
+				"icon": "$(sync)"
+			},
+			{
+				"command": "suggestions.go",
+				"title": "Aller aux suggestions",
+				"icon": "$(star)"
+			},
+			{
+				"command": "suggestions.refresh",
+				"title": "Rafraîchir",
+				"icon": "$(refresh)"
+			},
+			{
+				"command": "flash.send",
+				"title": "Envoyer vers clé USB",
+				"icon": {
+					"light": "images/usb-brands-solid_light.svg",
+					"dark": "images/usb-brands-solid_dark.svg"
+				}
+			},
+			{
+				"command": "flash.amc",
+				"title": "Ouvrir AMC"
+			},
+			{
+				"command": "flash.test",
+				"title": "Produire QCM",
+				"icon": {
+					"light": "images/question-solid_light.svg",
+					"dark": "images/question-solid_dark.svg"
+				}
+			},
+			{
+				"command": "flash.fiche_colle",
+				"title": "Fiche de colle",
+				"icon": {
+					"light": "images/receipt-solid_light_small.svg",
+					"dark": "images/receipt-solid_dark_small.svg"
+				}
+			},
+			{
+				"command": "flash.view_soluce",
+				"title": "Voir soluce",
+				"icon": {
+					"light": "images/check-solid_light.svg",
+					"dark": "images/check-solid_dark.svg"
+				}
+			},
+			{
+				"command": "flash.soluce",
+				"title": "Compiler soluce",
+				"icon": {
+					"light": "images/check-double-solid_light.svg",
+					"dark": "images/check-double-solid_dark.svg"
+				}
+			},
+			{
+				"command": "flash.compile_bilan_DS",
+				"title": "Compiler bilan",
+				"icon": "$(debug-stackframe-active)"
+			}
+		],
+		"menus": {
+			"editor/title": [
+				{
+					"command": "flash.send",
+					"group": "navigation@-1",
+					"when": "resourceExtname == .tex"
+				},
+				{
+					"command": "flash.test",
+					"group": "navigation@-2",
+					"when": "resourceExtname == .tex && resourcePath =~ /\\/Cours\\//"
+				},
+				{
+					"command": "flash.fiche_colle",
+					"group": "navigation@-2",
+					"when": "resourceExtname == .tex && resourceFilename =~ /^Colle/"
+				},
+				{
+					"command": "flash.soluce",
+					"group": "navigation@0",
+					"when": "resourceExtname == .tex"
+				},
+				{
+					"command": "flash.view_soluce",
+					"group": "navigation@0",
+					"when": "resourceExtname == .tex"
+				},
+				{
+					"command": "flash.compile_bilan_DS",
+					"group": "navigation@-1",
+					"when": "resourceExtname == .ods"
+				}
+			],
+			"explorer/context": [
+				{
+					"command": "mathpix-pdf.convert",
+					"group": "navigation",
+					"when": "resourceExtname == .pdf"
+				}
+			],
+			"view/item/context": [
+				{
+					"command": "banque.copy",
+					"when": "view == banque-exercices && viewItem == file",
+					"group": "inline"
+				},
+				{
+					"command": "banque.compile",
+					"when": "view == banque-exercices && viewItem == file",
+					"group": "inline@-1"
+				},
+				{
+					"command": "programme.pdf",
+					"when": "view == programme-colle && viewItem == latex",
+					"group": "inline"
+				},
+				{
+					"command": "programme.remove",
+					"when": "view == programme-colle && viewItem == latex",
+					"group": "inline@-1"
+				},
+				{
+					"command": "banque.source",
+					"when": "view == banque-exercices && viewItem == chapter",
+					"group": "inline"
+				},
+				{
+					"command": "banque.open",
+					"when": "view == banque-exercices && viewItem == chapter",
+					"group": "inline@-1"
+				}
+			],
+			"view/title": [
+				{
+					"command": "programme.upload",
+					"when": "view == programme-colle && static",
+					"group": "navigation@1"
+				},
+				{
+					"command": "programme.uploading",
+					"when": "view == programme-colle && !static",
+					"group": "navigation@1"
+				},
+				{
+					"command": "programme.compile",
+					"when": "view == programme-colle",
+					"group": "navigation@2"
+				},
+				{
+					"command": "programme.build",
+					"when": "view == programme-colle",
+					"group": "navigation@3"
+				},
+				{
+					"command": "programme.refresh",
+					"when": "view == programme-colle",
+					"group": "navigation@4"
+				},
+				{
+					"command": "banque.refresh",
+					"when": "view == banque-exercices",
+					"group": "navigation@4"
+				},
+				{
+					"command": "suggestions.refresh",
+					"when": "view == suggestions",
+					"group": "navigation@4"
+				}
+			]
+		},
+		"configuration": {
+			"title": "Physique",
+			"properties": {
+				"flash.flashDrive": {
+					"type": "string",
+					"default": "/media/eb/USB/Print/",
+					"description": "Définit le chemin d'accès vers la clé USB."
+				},
+				"programme-colle.collePath": {
+					"type": "string",
+					"default": "/home/eb/Dropbox/CPGE/Physique/Exercices/Colles/PC/",
+					"description": "Définit le chemin d'accès vers le dossier de colles."
+				},
+				"programme-colle.styPath": {
+					"type": "string",
+					"default": "/home/eb/Dropbox/texmf/tex/latex/Preambles/",
+					"description": "Définit le chemin d'accès vers le préambule latex colle.sty."
+				},
+				"programme-colle.pythonCommand": {
+					"type": "string",
+					"default": "/home/eb/anaconda3/bin/python3",
+					"description": "Définit la commande python à utiliser. La bibliothèque python selenium est utilisée pour téléverser le programme de colle sur Cahier de Prépa."
+				},
+				"programme-colle.programmeBalise": {
+					"type": "string",
+					"default": "\\ProgrammeColle",
+					"description": "Macro latex qui délimite les parties du document latex (cours, TD, etc.) au programme de colle. Cette macro agit comme un interrupteur et peut délimiter le début ou la fin de la partie au programme. En présence d'une seule macro, toute la partie du document qui suit est considérée au programme. En l'absence complète de macro dans un document, celui-ci n'est pas considéré au programme. "
+				},
+				"banque-exercices.exerciceEnvironment": {
+					"type": "string",
+					"default": "exo",
+					"description": "Nom de l'environnement latex utilisé pour les exercices. La commande `banque.compile` cherche la chaîne de caractères `\\begin{nom_de_l'environnement}{nom_de_l'exercice}` pour identifier les exercices. L'environnement peut comprendre des arguments optionnels, placés entre crochets [...]."
+				},
+				"mathpix-pdf.texArchives": {
+					"type": "string",
+					"default": [
+						"Electromag/conduction.tex",
+						"Electromag/conduction.tex"
+					],
+					"description": "Définit la liste des chemins d'accès vers le fichiers tex qui contiennent les exercices."
+				},
+				"mathpix-pdf.texPath": {
+					"type": "string",
+					"default": "/home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/",
+					"description": "Définit la liste des chemins d'accès vers le fichiers tex qui contiennent les exercices."
+				},
+				"mathpix-pdf.mpxCommand": {
+					"type": "string",
+					"default": "/usr/local/bin/mpx",
+					"description": "Définit le chemin d'accès à la commande mpx. La commande mpx de mathpix permet de convertir un pdf en tex."
+				}
+			}
+		}
+	},
+	"scripts": {
+		"lint": "eslint .",
+		"pretest": "npm run lint",
+		"test": "vscode-test"
+	},
+	"devDependencies": {
+		"@types/vscode": "^1.85.0",
+		"@types/mocha": "^10.0.6",
+		"@types/node": "18.x",
+		"eslint": "^8.54.0",
+		"typescript": "^5.3.2",
+		"@vscode/test-cli": "^0.0.4",
+		"@vscode/test-electron": "^2.3.8"
+	},
+	"__metadata": {
+		"size": 109677881
+	}
 }

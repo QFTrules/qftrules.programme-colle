@@ -406,10 +406,6 @@
 		"@vscode/test-electron": "^2.3.8"
 	},
 	"__metadata": {
-<<<<<<< HEAD
 		"size": 102344055
-=======
-		"size": 109677881
->>>>>>> f33174b476567ef3838dc23cb9ad82ce809ac8a6
 	}
 }

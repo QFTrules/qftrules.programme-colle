@@ -101,13 +101,13 @@ with open(sys.argv[1], 'r') as f:
                         if not line[i+1:j] in secname[-1]:
                             g.write('\\paragraph' + line[i:j+1] +'\n')
                         secname.append(line[i+1:j])
-                    if '\\begin{theorem}' in line and not '%' in line:
-    #                    environ = True
-                        i = line.index('[')
-                        j = line.index(']')
-                        if not line[i+1:j] in secname and not line[i+2:j] in secname[-1] and not "nonc" in secname[-1]:
-                            g.write('\\paragraph{\\textit{Formule : ' + line[i+1:j] +'}}\n')
-                            secname.append(line[i+1:j])
+    #                 if '\\begin{theorem}' in line and not '%' in line:
+    # #                    environ = True
+    #                     i = line.index('[')
+    #                     j = line.index(']')
+    #                     if not line[i+1:j] in secname and not line[i+2:j] in secname[-1] and not "nonc" in secname[-1]:
+    #                         g.write('\\paragraph{\\textit{Formule : ' + line[i+1:j] +'}}\n')
+    #                         secname.append(line[i+1:j])
                     if '\\begin{exemple}' in line and not '%' in line:
                         i = line.index('}')
                         j = -1

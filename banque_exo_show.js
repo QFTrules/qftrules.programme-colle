@@ -41,14 +41,10 @@ function generateTreeItems() {
 	const texPath = vscode.workspace.getConfiguration('mathpix-pdf').get('texPath');
 	// const path_to_recueil = vscode.workspace.getConfiguration('banque-exercices').get("RecueilPath");
 	// list all folders in the recueil directory
-	const themes_list = fs.readdirSync(texPath).filter(file => fs.statSync(path.join(texPath, file)).isDirectory());
-	// vscode.window.showInformationMessage('Liste des thèmes : ' + themes_list);
-	// remove folders Figure, _fiches, etc.
-	themes_list.splice(themes_list.indexOf('Figure'), 1);
-	// themes_list.splice(themes_list.indexOf('_fiches'), 1);
-	themes_list.splice(themes_list.indexOf('Oraux'), 1);
-	themes_list.splice(themes_list.indexOf('.git'), 1);
-	themes_list.splice(themes_list.indexOf('Info'), 1);
+	var themes_list = fs.readdirSync(texPath).filter(file => fs.statSync(path.join(texPath, file)).isDirectory());
+	// list all folders in the recueil directory and remove the ones excluded
+	const exclude = ['.vscode','Figure','Figures','_Fiches'];
+	var themes_list = themes_list.filter(theme => !exclude.includes(theme));
 
 	return themes_list.map(function (theme) {
 		// vscode.window.showInformationMessage(theme);

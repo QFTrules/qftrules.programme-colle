@@ -14,6 +14,30 @@ const BanqueExoShow = require('./banque_exo_show');
 // set the boolean variables to change icon when uploading programme de colle
 vscode.commands.executeCommand('setContext', 'static', true);
 
+// AUXILIARY FUNCTIONS //
+
+// find all subdirectories, WHATEVER THE DEPTH, within directory basePath, which are called dirName
+// function findDirectories(basePath, dirName) {
+//     let results = [];
+//     const items = fs.readdirSync(basePath, { withFileTypes: true });
+
+//     for (const item of items) {
+//         if (item.isDirectory()) {
+// 			var fullPath = basePath + item.name + '/';
+//             // var fullPath = path.join(basePath, item.name);
+// 			if (item.name.includes(dirName)) {
+// 				results.push(fullPath);
+// 			}
+//             results = results.concat(findDirectories(fullPath, dirName));
+	
+
+
+//         }
+//     }
+
+//     return results;
+// }
+
 // synchronous function to compile latex document
 function compileLatex(filePath, outputDirectory = `${__dirname}/tmp`) {
 	// define default recipe
@@ -22,10 +46,10 @@ function compileLatex(filePath, outputDirectory = `${__dirname}/tmp`) {
 	child_process.execSync(`${recipe} ${filePath}`);
 }
 
-function viewPdf(filePath, options = { viewColumn: vscode.ViewColumn.Two }) {
-	// open the pdf file in vscode
-	vscode.commands.executeCommand('vscode.open', vscode.Uri.file(filePath), options);
-}
+// function viewPdf(filePath, options = { viewColumn: vscode.ViewColumn.Two }) {
+// 	// open the pdf file in vscode
+// 	vscode.commands.executeCommand('vscode.open', vscode.Uri.file(filePath), options);
+// }
 
 // synchronous function to copy one pdf into several copies of itself 
 function copyPdf(filePath, copies = 1) {
@@ -43,16 +67,6 @@ function copyPdf(filePath, copies = 1) {
 // asynchronous function to find the flash drive
 async function findFlashDrive() {
     try {
-		// if vscode.workspace.getConfiguration('flash').get('flashDrive') is not empty, do
-		// if (vscode.workspace.getConfiguration('flash').get('flashDrive') !== '') {
-		// 	// folder for the USB path
-		// 	var flashDrive = vscode.workspace.getConfiguration('flash').get('flashDrive');
-		// 	// add / character if absent at end of string
-		// 	if (!flashDrive.endsWith('/')) {
-		// 		flashDrive += '/';
-		// 	}
-		// 	return flashDrive;
-		// } else {
 		const files = await fs.promises.readdir('/media/eb/');
 		for (const name of files) {
 			const fullPath = path.join('/media/eb/', name);
@@ -66,6 +80,36 @@ async function findFlashDrive() {
         console.error('Error reading /media/ directory:', error);
     }
     return undefined;
+}
+
+
+// insert the TEX root line at the beginning of the file
+function insertLatexMagic(editor, rootFile) {
+	// get text of the active editor
+	const editorText = editor.document.getText();
+	// define latex magic line
+	const latex_magic = `% !TEX root = ${rootFile}.tex`;
+	// add this line if not present at the beginning of the file
+	if (editorText.includes(`% !TEX root `)) {
+		editor.edit(editBuilder => {
+			// get line number that contains the magic line
+			const lineIndex = editorText.indexOf(latex_magic);
+			const line = editor.document.lineAt(editor.document.positionAt(lineIndex).line);
+			// delete the line
+			editBuilder.delete(line.range);
+			// insert the magic line at the beginning of the file
+			// editBuilder.insert(new vscode.Position(0, 0), latex_magic);
+		}).then(() => {
+			editor.edit(editBuilder => {
+				editBuilder.insert(new vscode.Position(0, 0), latex_magic);
+			});
+		}
+		);
+	}  else {
+		editor.edit(editBuilder => {
+			editBuilder.insert(new vscode.Position(0, 0), latex_magic);
+		});
+	}
 }
 
 // Function to get the next Monday date for the programme de colle
@@ -86,117 +130,8 @@ function getNextMonday() {
 	return [`${year}_${month}_${day}`,`"${dayOfWeek} ${daynumber} ${monthName} ${year}"`];
 };
 
-// // register the completion item provider for latex documents
-// vscode.languages.registerCompletionItemProvider('latex', {
-	
-	// 	provideCompletionItems() {
-		
-		
-		// 		// a simple completion item which inserts `Hello World!`
-		// 		const simpleCompletion = new vscode.CompletionItem('Hello World!');
-		
-		// 		// a completion item that inserts its text as snippet,
-		// 		// the `insertText`-property is a `SnippetString` which will be
-		// 		// honored by the editor.
-		// 		const snippetCompletion = new vscode.CompletionItem('Good part of the day');
-		// 		snippetCompletion.insertText = new vscode.SnippetString('Good ${1|morning,afternoon,evening|}. It is ${1}, right?');
-		// 		const docs = new vscode.MarkdownString("Inserts a snippet that lets you select [link](x.ts).");
-		// 		snippetCompletion.documentation = docs;
-		// 		docs.baseUri = vscode.Uri.parse('http://example.com/a/b/c/');
-		
-		// 		// a completion item that can be accepted by a commit character,
-		// 		// the `commitCharacters`-property is set which means that the completion will
-		// 		// be inserted and then the character will be typed.
-		// 		const commitCharacterCompletion = new vscode.CompletionItem('console');
-		// 		commitCharacterCompletion.commitCharacters = ['.'];
-		// 		commitCharacterCompletion.documentation = new vscode.MarkdownString('Press `.` to get `console.`');
-		
-		// 		// a completion item that retriggers IntelliSense when being accepted,
-		// 		// the `command`-property is set which the editor will execute after 
-		// 		// completion has been inserted. Also, the `insertText` is set so that 
-		// 		// a space is inserted after `new`
-		// 		const commandCompletion = new vscode.CompletionItem('new');
-		// 		commandCompletion.kind = vscode.CompletionItemKind.Keyword;
-		// 		commandCompletion.insertText = 'new ';
-		// 		commandCompletion.command = { command: 'editor.action.triggerSuggest', title: 'Re-trigger completions...' };
-		
-		// 		// return all completion items as array
-		// 		return [
-			// 			simpleCompletion,
-			// 			snippetCompletion,
-			// 			commitCharacterCompletion,
-			// 			commandCompletion
-			// 		];
-			// 	}
-			// });
-			
-			// vscode.languages.registerCompletionItemProvider(
-				// 	'latex',
-				// 	{
-					// 		provideCompletionItems(document, position) {
-						// 			const lineText = document.lineAt(position.line).text;
-						// 			const linePrefix = lineText.slice(0, position.character);
-						// 			const lineSuffix = lineText.slice(position.character);
-						
-						// 			// Check if the cursor is surrounded by {}
-						// 			if (linePrefix.endsWith('\Ex{') && lineSuffix.startsWith('}')) {
-							// 				// Return your completion items here
-							// 				return [
-								// 					new vscode.CompletionItem('item1'),
-								// 					new vscode.CompletionItem('item2'),
-								// 					new vscode.CompletionItem('item3')
-								// 				];
-								// 			}
-								
-								// 			return undefined;
-								// 		}
-								// 	},
-								// 	'{' // triggered whenever a '{' is being typed
-								// );
-								
-								
-// function suggestions_refresh() {
+// ------------------------------ //
 
-// 	// list of themes
-// 	const themes_list = [
-// 					'Thermo',
-// 					'Fluide',
-// 					'Ondes',
-// 					'Optique',
-// 					'Mecanique',
-// 				]
-
-// 	themes_list.forEach(function(theme) {
-// 			// get the list of latex files for the theme 
-// 			var latex_files = child_process.execSync('find ~/Dropbox/CPGE/Physique/Exercices/Recueil/' + theme + ' -maxdepth 1 -type f -name "*.tex"').toString().split('\n').pop();
-	
-// 			vscode.window.showInformationMessage(latex_files);
-// 			// try to remove the file exercices-sans-difficulte.txt, pass if already removed
-// 			try {
-// 					fs.unlinkSync(__dirname + '/tmp/exercices-sans-difficulte.txt');
-// 				} catch (error) {
-// 						// pass
-// 					}
-			
-// 					// look for all chapters in each theme
-// 					latex_files.forEach(function(chapter) {
-// 							// fetch all exercise names in latex file basename
-// 							var exercices = child_process.execSync('grep -E "\\\\\\\\begin{exo}" ' + chapter).toString().split('\n').pop();
-// 							exercices.forEach(function(exo) {
-// 									var start = exo.indexOf('{', exo.indexOf('{') + 1) + 1;
-// 									var end = exo.indexOf('}', exo.indexOf('}') + 1);
-// 									var exo =  exo.substring(start, end);
-// 									// look if the difficulty is defined for each exercise
-// 									// var typeExo = GetTypeExo(exo, filePath)[0];
-// 									var difficulty = GetTypeExo(exo, chapter)[1];
-// 									if (difficulty !== '1' || difficulty !== '2' || difficulty !== '3') {
-// 											fs.appendFileSync(__dirname  + '/tmp/exercices-sans-difficulte.txt', chapter + ':' + exo + '\n');
-// 										}
-// 									});
-// 								});
-// 							});
-// 						}
-						
 /**
  * @param {vscode.ExtensionContext} context
 */
@@ -467,8 +402,8 @@ function activate(context) {
 		vscode.window.registerTreeDataProvider('programme-colle', programme_colle);
 	});
 
-	
-	let banque_refresh = vscode.commands.registerCommand('banque.refresh', () => {
+	// refresh banque view
+	vscode.commands.registerCommand('banque.refresh', () => {
 		const banque_exercices = new BanqueExoShow();
 		vscode.window.registerTreeDataProvider('banque-exercices', banque_exercices);
 	});
@@ -745,49 +680,16 @@ function activate(context) {
 		// name of temporary latex exercise file
 		const exercice_name = 'Exercice'
 		const exercice = __dirname + `/tmp/${exercice_name}`;
-		// get the basename with extension of current latex file 
-		// if (document === undefined) {
-			// insert the TEX root line at the beginning of the file
-		const editorText = editor.document.getText();
-		const latex_magic = `% !TEX root = ${exercice}.tex\n`;
-		if (editorText.includes(`% !TEX root `)) {
-			editor.edit(editBuilder => {
-				editBuilder.delete(new vscode.Range(new vscode.Position(0, 0), new vscode.Position(1, 0)));
-				editBuilder.insert(new vscode.Position(0, 0), latex_magic);
-			}).then(() => {});
-		} else {
-			editor.edit(editBuilder => {
-				editBuilder.insert(new vscode.Position(0, 0), latex_magic);
-			}).then(() => {});
-		}
-		// if (!editorText.includes(`% !TEX root = ${__dirname}/tmp`)) {
-		// 	editor.edit(editBuilder => {
-		// 			editBuilder.insert(new vscode.Position(0, 0), latex_magic);
-		// 		}).then(() => {
-		// 			//  just pass
-		// 	});
-		// }
-		// var filePath = editor.document.fileName;
-		// var fileName = path.basename(editor.document.fileName);
-		// } else {	
-		// 	var fileName = path.basename(document.filePath);
-		// }
-
-		// write a new template latex file in directory tmp 
-		// const template = `\\input{TD.sty}\n\\begin{document}\n\\Source{${fileName}}\n\\Ex{${exo}}\n\\end{document}`;
-		// const template = `\\input{TD.sty}\n\\Soluce\n\\begin{document}\n\\Source{${fileName}}\n\\Ex{${exo}}\n\\end{document}`;
+		// insert the TEX root line at the beginning of the file
+		insertLatexMagic(editor, exercice);
+		// create the exercise latex file
 		const template = `%&Exercice\n%\\input{TDappli.sty}\n%\\Soluce\n% \\endofdump\n\\begin{document}\n\\Source{${SourceFile}}\n\\Ex{${exo}}\n\\end{document}`;
 		fs.writeFileSync(exercice + '.tex', template);
-		// compile the template file and open when finished
-		// compileLatex(exercice + '.tex');
-		// try {
-		// 	child_process.execSync('/usr/bin/pdflatex -interaction=nonstopmode -shell-escape /home/eb/.vscode/extensions/qftrules.programme-colle/tmp/Exercice.tex');
-		// } catch (error) {
-		// 	vscode.window.showErrorMessage(`Error running pdflatex: ${error.message}`);
-		// }
-		// viewPdf(exercice + '.pdf');
-		vscode.commands.executeCommand('vscode.open', vscode.Uri.file(exercice + `.pdf`), { viewColumn: vscode.ViewColumn.Two });
+		// compile and open the exercise
 		vscode.commands.executeCommand('latex-workshop.build', {rootFile:FilePath, recipe:'pdflatex'}).then(() => {
+			// message to show that the exercise has been compiled
+			vscode.window.showInformationMessage(`Exercice « ${exo} » compilé avec succès.`);
+			// open tab
 			vscode.commands.executeCommand('latex-workshop.tab');
 		});
 	});
@@ -1185,7 +1087,7 @@ function activate(context) {
 	context.subscriptions.push(compile);
 	context.subscriptions.push(build);
 	context.subscriptions.push(programme_refresh);
-	context.subscriptions.push(banque_refresh);
+	// context.subscriptions.push(banque_refresh);
 	// context.subscriptions.push(convert);
 	context.subscriptions.push(send);
 	context.subscriptions.push(compile_exercise);
@@ -1201,76 +1103,8 @@ function activate(context) {
 	context.subscriptions.push(programme_pdf);
 	context.subscriptions.push(remove);
 
-	// use banque compile ones to initialize tmp/Exercice.tex
-	// vscode.commands.executeCommand('banque.compile');
-
-	// // register the completion item provider for latex documents
-	// let complet1 = vscode.languages.registerCompletionItemProvider('latex', {
-
-	// 	provideCompletionItems() {
-
-
-	// 		// a simple completion item which inserts `Hello World!`
-	// 		const simpleCompletion = new vscode.CompletionItem('Hello World!');
-
-	// 		// a completion item that inserts its text as snippet,
-	// 		// the `insertText`-property is a `SnippetString` which will be
-	// 		// honored by the editor.
-	// 		const snippetCompletion = new vscode.CompletionItem('Good part of the day');
-	// 		snippetCompletion.insertText = new vscode.SnippetString('Good ${1|morning,afternoon,evening|}. It is ${1}, right?');
-	// 		const docs = new vscode.MarkdownString("Inserts a snippet that lets you select [link](x.ts).");
-	// 		snippetCompletion.documentation = docs;
-	// 		docs.baseUri = vscode.Uri.parse('http://example.com/a/b/c/');
-
-	// 		// a completion item that can be accepted by a commit character,
-	// 		// the `commitCharacters`-property is set which means that the completion will
-	// 		// be inserted and then the character will be typed.
-	// 		const commitCharacterCompletion = new vscode.CompletionItem('console');
-	// 		commitCharacterCompletion.commitCharacters = ['.'];
-	// 		commitCharacterCompletion.documentation = new vscode.MarkdownString('Press `.` to get `console.`');
-
-	// 		// a completion item that retriggers IntelliSense when being accepted,
-	// 		// the `command`-property is set which the editor will execute after 
-	// 		// completion has been inserted. Also, the `insertText` is set so that 
-	// 		// a space is inserted after `new`
-	// 		const commandCompletion = new vscode.CompletionItem('new');
-	// 		commandCompletion.kind = vscode.CompletionItemKind.Keyword;
-	// 		commandCompletion.insertText = 'new ';
-	// 		commandCompletion.command = { command: 'editor.action.triggerSuggest', title: 'Re-trigger completions...' };
-
-	// 		// return all completion items as array
-	// 		return [
-	// 			simpleCompletion,
-	// 			snippetCompletion,
-	// 			commitCharacterCompletion,
-	// 			commandCompletion
-	// 		];
-	// 	}
-	// });
-
-	// let complet2 = vscode.languages.registerCompletionItemProvider(
-	// 	'latex',
-	// 	{
-	// 		provideCompletionItems(document, position) {
-
-	// 			// get all text until the `position` and check if it reads `console.`
-	// 			// and if so then complete if `log`, `warn`, and `error`
-	// 			const linePrefix = document.lineAt(position).text.slice(0, position.character);
-	// 			if (!linePrefix.endsWith('console.')) {
-	// 				return undefined;
-	// 			}
-
-	// 			return [
-	// 				new vscode.CompletionItem('log', vscode.CompletionItemKind.Method),
-	// 				new vscode.CompletionItem('warn', vscode.CompletionItemKind.Method),
-	// 				new vscode.CompletionItem('error', vscode.CompletionItemKind.Method),
-	// 			];
-	// 		}
-	// 	},
-	// 	'.' // triggered whenever a '.' is being typed
-	// );
-
-	// context.subscriptions.push(complet1, complet2);
+	// call here all commands necessary at launch
+	vscode.commands.executeCommand('banque.refresh');
 
 }
 

@@ -1,0 +1,228 @@
+{
+	".text.tex.latex .text.sty.latex": {
+	  "refChap": {
+		"prefix": "refChap",
+		"body": "\\\\refChap{${1:Theme}}{${2:Chapter}}"
+	  },
+	  "refTP": {
+		"prefix": "refTP",
+		"body": "\\\\refTP{${1:Number}}"
+	  },
+	  "refTD": {
+		"prefix": "refTD",
+		"body": "\\\\refTD{${1:Number}}"
+	  },
+	  "refFormu": {
+		"prefix": "refFormu",
+		"body": "\\\\refFormu{${1:Number}}"
+	  },
+	  "refCN": {
+		"prefix": "refCN",
+		"body": "\\\\refCN{${1:Number}}"
+	  },
+	  "ProgrammeColle": {
+		"prefix": "ProgrammeColle",
+		"body": "\\\\ProgrammeColle"
+	  },
+	  "ansbox": {
+		"prefix": "ansbox",
+		"body": "\\\\ansbox"
+	  },
+	  "Appli": {
+		"prefix": "Appli",
+		"body": "\\\\Appli"
+	  },
+	  "Problemes": {
+		"prefix": "Problemes",
+		"body": "\\\\Problemes"
+	  },
+	  "Exos": {
+		"prefix": "Exos",
+		"body": "\\\\Exos"
+	  },
+	  "cases": {
+		"prefix": "cases",
+		"body": "\\\\begin{cases}\n\t$0&\t\\\\\n\t&\t\n\\\\end{cases}"
+	  },
+	  "danger": {
+		"prefix": "danger",
+		"body": "\\\\begin{danger}\n\t$0\n\\\\end{danger}"
+	  },
+	  "minipage": {
+		"prefix": "minipage",
+		"body": "\\\\begin{minipage}{0.49\\\\textwidth}\n\t$0\n\\\\end{minipage}"
+	  },
+	  "methode": {
+		"prefix": "methode",
+		"body": "\\\\begin{methode}[]\n\t\\\\item\t$0\n\\\\end{methode}"
+	  },
+	  "quest": {
+		"prefix": "quest",
+		"body": "\\\\begin{quest}\n\t\\\\item\t$0\n\\\\end{quest}"
+	  },
+	  "fig": {
+		"prefix": "fig",
+		"body": "\\\\begin{fig}[label]\n\t\\\\centering\n\t\\\\includegraphics[width=0.7\\\\columnwidth]{$0}\n\t%\\\\capt{}\n\\\\end{fig}"
+	  },
+	  "liste": {
+		"prefix": "liste",
+		"body": "\\\\begin{liste}\n\t\\\\item$0\n\\\\end{liste}"
+	  },
+	  "center": {
+		"prefix": "center",
+		"body": "\\\\begin{center}\n\t$0\n\\\\end{center}"
+	  },
+	  "experience": {
+		"prefix": "experience",
+		"body": "\\\\begin{experience}{$0}\\\\label{exp:}\n\t$1\n\\\\end{experience}"
+	  },
+	  "prop": {
+		"prefix": "prop",
+		"body": "\\\\begin{prop}[]\\\\label{prop:}\n\t$0\n\\\\end{prop}"
+	  },
+	  "theorem": {
+		"prefix": "theorem",
+		"body": "\\\\begin{theorem}[]\\\\label{form:}\n\t$0\n\\\\end{theorem}"
+	  },
+	  "definition": {
+		"prefix": "definition",
+		"body": "\\\\begin{definition}[]\\\\label{def:}\n\t$0\n\\\\end{definition}"
+	  },
+	  "remarque": {
+		"prefix": "remarque",
+		"body": "\\\\begin{remarque}\n\t$0\n\\\\end{remarque}"
+	  },
+	  "exo": {
+		"prefix": "exo",
+		"body": "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n\\\\begin{exo}[PC][1][colle]{$0}\n\t$1\n\\\\end{exo}\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
+	  },
+	  "docu": {
+		"prefix": "docu",
+		"body": "\\\\docu{${1:titre}}{${2:auteur,date}}{}{}"
+	  },
+	  "examplesol": {
+		"prefix": "examplesol",
+		"body": "\\\\examplesol{$1}"
+	  },
+	  "exemple": {
+		"prefix": "exemple",
+		"body": "\\\\begin{exemple}{$0}\n\t$1\n\\\\end{exemple}\n\\\\examplesol{}"
+	  },
+	  "subfig": {
+		"prefix": "subfig",
+		"body": "\\\\begin{subfig}[label][0.49]\n\t\\\\includegraphics[width=\\\\textwidth]{$0}\n\\\\end{subfig}"
+	  },
+	  "protocole": {
+		"prefix": "protocole",
+		"body": "\\\\begin{protocole}\n\t\\\\item $0\n\\\\end{protocole}"
+	  },
+	  "oral": {
+		"prefix": "oral",
+		"body": "\\\\begin{oral}[1]\n\t\\\\Principal[$1]{$2}\n\t\\\\Probleme[$3]{$4}\n\\\\end{oral}"
+	  },
+	  "Double": {
+		"prefix": "Double",
+		"body": "\\\\Double{\n$1\n}"
+	  },
+	  "subfigure": {
+		"prefix": "subfigure",
+		"body": "\\\\subfigure[$0]{\\\\label{fig:}\n\t$1\n}"
+	  },
+	  "eqbox": {
+		"prefix": "eqbox",
+		"body": "\\\\eqbox{\n$0\n}"
+	  },
+	  "imp": {
+		"prefix": "imp",
+		"body": "\\\\imp{$1}$0"
+	  },
+	  "sol": {
+		"prefix": "sol",
+		"body": "\\\\sol{\n$1\n}$0"
+	  },
+	  "Source": {
+		"prefix": "Source",
+		"body": "\\\\Source{$1}$0"
+	  },
+	  "hfill": {
+		"prefix": "hfill",
+		"body": "\\\\hfill"
+	  },
+	  "Prop": {
+		"prefix": "Prop",
+		"body": "\\\\Prop{$0}"
+	  },
+	  "textwidth": {
+		"prefix": "textwidth",
+		"body": "\\\\textwidth"
+	  },
+	  "displayname": {
+		"prefix": "displayname",
+		"body": "% displayname :"
+	  },
+	  "Annale": {
+		"prefix": "Annale",
+		"body": "\\\\Annale[Physique PC]{E3A}{2022}"
+	  },
+	  "python": {
+		"prefix": "python",
+		"body": "\\\\python{$0}"
+	  },
+	  "Ex": {
+		"prefix": "Ex",
+		"body": "\\\\Ex{$0}"
+	  },
+	  "EndSoluce": {
+		"prefix": "EndSoluce",
+		"body": "\\\\EndSoluce"
+	  },
+	  "crit": {
+		"prefix": "crit",
+		"body": "\\\\crit {$1}"
+	  },
+	  "inline math - $$": {
+		"prefix": "inline",
+		"body": "$$1$$0"
+	  },
+	  "TeXroot": {
+		"prefix": ["TeXroot","teXroot","Texroot","texroot"],
+		"body": "% !TEX root = /home/eb$TM_DIRECTORY/$TM_FILENAME"
+	  },
+	  "questionmult": {
+		"prefix": "questionmult",
+		"body": "\\\\begin{questionmult}{1}\\!\\!\\!:$0\n\\\\begin{reponses}\n\\\\bonne{}\n\\\\mauvaise{}\n\\\\end{reponses}\n\\\\end{questionmult}"
+	  },
+	"Fig": {
+	  "prefix": "Fig",
+	  "body": "\\\\Fig{$0}"
+		},
+	"label": {
+		"prefix": "label",
+		"body": "\\\\label{$0}"
+			},
+	"Notions": {
+		"prefix": "Notions",
+		"body": "\\\\Notions{\\\\item $0 \\\\task}"
+			},
+	"SI": {
+	  "prefix": "SI",
+	  "body": "\\\\SI{$0}{}"
+		},
+	"num": {
+		"prefix": "num",
+		"body": "\\\\num{$0}"
+			},
+	"flushleft": {
+		"prefix": "flushleft",
+		"body": "\\\\begin{flushleft}\n$0\n\\\\end{flushleft}"
+			},
+	"flushright": {
+		"prefix": "flushright",
+		"body": "\\\\begin{flushright}\n$0\n\\\\end{flushright}"
+	},
+	"Entete": {
+		"prefix": "Entete",
+		"body": "\\\\Entete[document][chapter][theme]{${1:number}}\n"
+	}
+	}
+  }

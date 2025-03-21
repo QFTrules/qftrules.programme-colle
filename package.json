@@ -16,6 +16,12 @@
 	],
 	"main": "./extension.js",
 	"contributes": {
+		"snippets": [
+			{
+				"language": "latex",
+				"path": "./snippets.json"
+			}
+		],
 		"viewsWelcome": [
 			{
 				"view": "suggestions",

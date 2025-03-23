@@ -250,33 +250,7 @@ function activate(context) {
 		});
 	})
 
-	// fetch a string in a latex file, like exercise name of balise
-	let fetch = vscode.commands.registerCommand('banque.fetch', function (doc) {
-		// open document in vscode
-		vscode.commands.executeCommand('vscode.open', vscode.Uri.file(doc.filePath), { viewColumn: vscode.ViewColumn.One });
-
-		// Get the active text editor and string to search
-		var editor = vscode.window.activeTextEditor;
-		if (!editor) {
-			return;
-		}
-		
-
-		let document = editor.document;
-        var text = document.getText();
-        var position = text.indexOf(searchString);
-
-        if (position !== -1) {
-            var startPosition = document.positionAt(position);
-            var endPosition = document.positionAt(position + searchString.length);
-            var range = new vscode.Range(startPosition, endPosition);
-            editor.selection = new vscode.Selection(range.start, range.end);
-			editor.revealRange(range, vscode.TextEditorRevealType.AtTop);
-        } else {
-            // vscode.window.showInformationMessage('Exercice ou balise non trouvée.');
-        }
-	})
-
+	
 	//  SUGGESTIONS commands
 	let go = vscode.commands.registerCommand('suggestions.go', function () {
 		// open an exercise listed in the file /tmp/exercices-sans-difficulte.txt
@@ -1119,7 +1093,7 @@ function activate(context) {
 	context.subscriptions.push(copy);
 	context.subscriptions.push(open);	
 	context.subscriptions.push(go);
-	context.subscriptions.push(fetch);
+	// context.subscriptions.push(fetch);
 	context.subscriptions.push(upload);
 	context.subscriptions.push(uploading);
 	context.subscriptions.push(compile);

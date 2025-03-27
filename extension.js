@@ -38,6 +38,26 @@ vscode.commands.executeCommand('setContext', 'static', true);
 //     return results;
 // }
 
+// AUXILIARY FUNCTIONS //
+
+// find all subdirectories, WHATEVER THE DEPTH, within directory basePath that are called dirName
+// function findDirectories(basePath, dirName) {
+//     let results = [];
+//     const items = fs.readdirSync(basePath, { withFileTypes: true });
+
+//     for (const item of items) {
+//         if (item.isDirectory()) {
+// 			var fullPath = basePath + item.name + '/';
+// 			if (item.name.includes(dirName)) {
+// 				results.push(fullPath);
+// 			}
+//             results = results.concat(findDirectories(fullPath, dirName));
+//         }
+//     }
+
+//     return results;
+// }
+
 // synchronous function to compile latex document
 function compileLatex(filePath, outputDirectory = `${__dirname}/tmp`) {
 	// define default recipe
@@ -189,8 +209,9 @@ function activate(context) {
 		}
 	)
 
+	// FUNCTIONS OF VIEW - ITEM - THEME //
 	// copy the latex file and use it as a source in an exercise latex document (TD, ...)
-	let source = vscode.commands.registerCommand('banque.source', function (document) {
+	vscode.commands.registerCommand('banque.source', function (document) {
 		// open the latex document in vscode
 		let editor = vscode.window.activeTextEditor;
 		if (editor) {
@@ -402,11 +423,6 @@ function activate(context) {
 		vscode.commands.executeCommand('programme.upload');
 	});
 
-	// register data providers
-	// var programme_colle = new ProgShow();
-	// const banque_exercices = new BanqueExoShow();
-	// vscode.window.registerTreeDataProvider('programme-colle', programme_colle);
-	// vscode.window.registerTreeDataProvider('banque-exercices', banque_exercices);
 
 	// commands to refresh the data providers
 	let programme_refresh = vscode.commands.registerCommand('programme.refresh', () => {
@@ -414,158 +430,25 @@ function activate(context) {
 		vscode.window.registerTreeDataProvider('programme-colle', programme_colle);
 	});
 
-	// refresh banque view
-	vscode.commands.registerCommand('banque.refresh', () => {
-		const banque_exercices = new BanqueExoShow();
-		vscode.window.registerTreeDataProvider('banque-exercices', banque_exercices);
-	});
-	
 	let suggestions_refresh = vscode.commands.registerCommand('suggestions.refresh', () => {
 		vscode.commands.executeCommand('banque.refresh');
 	});
 
 	// generate the tree data at extension startup
 	vscode.commands.executeCommand('programme.refresh');
-	vscode.commands.executeCommand('banque.refresh');
 
-	// // command in the explorer context menu to convert pdf to latex	
-	// let convert = vscode.commands.registerCommand('mathpix-pdf.convert', function (uri) {
-	// 	// The code you place here will be executed every time your command is executed
-	// 	const fileName = path.basename(uri.toString());
-	// 	const fileDirectory = path.dirname(uri.toString().replace("file://", ""));
-		
-	// 	// Prompt the user for the pages range
-	// 	vscode.window.showInputBox({ placeHolder: 'Enter the pages range (e.g. 1, 1-5, or 2-end)' }).then(range => {
-	// 		if (range) {
-	// 			vscode.window.showQuickPick(texArchives, { placeHolder: 'Enter the tex archive to store the exercise (e.g. dynapoint.tex)' }).then(texFile => {
-	// 				if (texFile) {
-	// 					// Run the bash program on the active file
-	// 					// vscode.window.showInformationMessage(`Converting pages ${range} of ${fileName} to latex...`);
-	// 					// decode the string
-	// 					const pageRange = range.split('-');
-	// 					const startPage = pageRange[0];
-	// 					const endPage = pageRange[1] || 'end';
-
-	// 					// Read the PDF file using a library like pdfjs-dist
-
-	// 					const fileData = fs.readFileSync(`${fileDirectory}/${fileName}`);
-	// 					const loadingTask = pdfjsLib.getDocument(fileData);
-
-	// 					loadingTask.promise.then((pdf) => {
-	// 						const totalPages = pdf.numPages;
-
-	// 						// Calculate the actual page numbers based on the range
-	// 						const startPageNumber = parseInt(startPage);
-	// 						const endPageNumber = endPage === 'end' ? totalPages : parseInt(endPage);
-
-	// 						// Validate the page numbers
-	// 						if (startPageNumber <= 0 || startPageNumber > totalPages || endPageNumber <= 0 || endPageNumber > totalPages || startPageNumber > endPageNumber) {
-	// 							vscode.window.showErrorMessage('Invalid page range');
-	// 							return;
-	// 						}
-
-	// 						// Extract the pages using pdfjs-dist
-	// 						const pagesToExtract = [];
-	// 						for (let i = startPageNumber; i <= endPageNumber; i++) {
-	// 							pagesToExtract.push(i);
-	// 						}
-
-	// 						const writer = new pdfWriter.PDFWriter();
-
-	// 						const outputFile = `${fileDirectory}/file_to_convert.pdf`;
-	// 						const outputStream = fs.createWriteStream(outputFile);
-
-	// 						pdf.copyPagesInto(pagesToExtract, writer);
-	// 						writer.pipe(outputStream);
-	// 						writer.end();
-
-	// 						vscode.window.showInformationMessage(`Pages ${startPage}-${endPage} extracted successfully`);
-	// 					}).catch((error) => {
-	// 						vscode.window.showErrorMessage(`Error: ${error.message}`);
-	// 					});
-	// 					// child_process.execSync(decodeURI(`pdftk ${fileDirectory}/${fileName} cat ${range} output "${fileDirectory}/file_to_convert.pdf"`));
-	// 					// const commande = decodeURI(__dirname + `/mathpix_pdf_to_latex.sh ${fileName} ${fileDirectory} "${texPath}${texFile}" ${range}`, 'utf-8'); 
-	// 					// vscode.window.showInformationMessage(commande);
-	// 					// child_process.execSync(commande, (error, stdout, stderr) => {
-	// 					// 	if (error) {
-	// 					// 		// Display an error message if the bash program encounters an error
-	// 					// 		vscode.window.showErrorMessage(`Error: ${error.message} | ${stderr}`);
-	// 					// 		return;
-	// 					// 	}
-	// 					// });
-	// 					// child_process.exec(decodeURI(mathpixCommand + ` convert ${fileDirectory}/file_to_convert.pdf ${fileDirectory}/file_to_convert.tex`), (error, stderr) => {
-	// 					// 	if (error) {
-	// 					// 		// Display an error message if the bash program encounters an error
-	// 					// 		vscode.window.showErrorMessage(`Error: ${error.message} | ${stderr}`);
-	// 					// 		return;
-	// 					// 	}
-	// 					// });
-	// 				}
-	// 			});
-	// 		}
-	// 	});
-	// });
 
 	// command to send file in the editor to the flash drive
 	let send = vscode.commands.registerCommand('flash.send', function () {
 		// get the active text editor
-		// vscode.window.showInformationMessage(`copié sur la clé USB`);
 		let editor = vscode.window.activeTextEditor;
-		// get the active text editor
-
-		// check if an editor is active
-		// if (editor) {
-		// 	// get the file path of the active document
-		// 	const filePath = editor.document.fileName;
-		// 	vscode.window.showInformationMessage(`Current PDF file: ${filePath}`);
-		// } else {
-		// 	vscode.window.showErrorMessage('No active editor found');
-		// }
-		// if (!editor) {
-		// 	return;
-		// }
-		// if doc is defined, use it as the document
-		// if (doc) {
-			// get the file path of the active document
-			// var filePath = doc.filePath;
-		// } else {
-			// get the file path of the active document
 		var filePath = editor.document.fileName;
-		// }
-
-		// if doc is pdf, then send only this document to the flash drive
-		// if (filePath.endsWith('.pdf')) {
-		// 	// find any folder in /media/ that could match a USB flash drive - replaces variable "flashDrive" defined in settings.json
-		// 	findFlashDrive().then(flashDrive => {
-		// 		console.log('Flash Drive:', flashDrive);
-		// 		// add / character if not present at the end of the string
-		// 		const printDirectory = path.join(flashDrive, 'print');
-		// 		// check if the print directory exists
-		// 		if (!fs.existsSync(printDirectory)) {
-		// 			// send error message
-		// 			vscode.window.showErrorMessage(`No print directory found in ${flashDrive}`);
-		// 			return;
-		// 		}
-		// 		// copy the file to the flash drive with the new file extension
-		// 		const fileName = path.basename(filePath);
-		// 		const destinationPath = path.join(printDirectory, fileName);
-		// 		fs.copyFileSync(filePath, destinationPath);
-		// 		// show information message
-		// 		vscode.window.showInformationMessage(`${fileName} copied to ${printDirectory}`);
-		// 	});
-		// 	return;
-		// }
-		// get the file path
-		// const filePath = editor.document.fileName;
-		// change the file extension to .pdf
 		const pdfFilePath = filePath.replace(/\.[^/.]+$/, ".pdf");
 		const pdfFilePath_soluce = filePath.replace(/\.[^/.]+$/, "_soluce.pdf");
 		const pdfFilePath_bilan = filePath.substring(0, filePath.indexOf('_')) + '_bilan.pdf';
 		const pdfFilePath_fiche = filePath.replace(/\.[^/.]+$/, "_fiche.pdf");
 
 		// find any folder in /media/ that could match a USB flash drive - replaces variable "flashDrive" defined in settings.json
-		// var flashDrive = fs.readdirSync('/media/').map(name => path.join('/media/', name)).find(f => fs.lstatSync(f).isDirectory());
-		// var flashDrive = child_process.execSync('find /media/ -mindepth 2 -maxdepth 2 -type d').toString().split('\n').pop();
 		findFlashDrive().then(flashDrive => {
 			console.log('Flash Drive:', flashDrive);
 			// find the print subdirectory in directory flashDrive
@@ -615,46 +498,34 @@ function activate(context) {
 				vscode.window.showInformationMessage(`${bilanFileName} copied to ${printDirectory}`);
 			}
 		});
-		// vscode.window.showInformationMessage(flashDrive);
-
-		// check if the destination path is a directory
-		// if (fs.existsSync(flashDrive) && fs.lstatSync(flashDrive).isDirectory()) {
-		// 	// copy the file to the flash drive with the new file extension
-		// 	const fileName = path.basename(pdfFilePath);
-		// 	const destinationPath = path.join(flashDrive, fileName);
-		// 	fs.copyFileSync(pdfFilePath, destinationPath);
-		// 	// show information message
-		// 	vscode.window.showInformationMessage(`${fileName} copied to ${flashDrive}`);
-		// 	// check if the soluce file exists
-		// 	if (fs.existsSync(pdfFilePath_soluce)) {
-		// 		// copy the soluce file to the flash drive with the new file extension
-		// 		const soluceFileName = path.basename(pdfFilePath_soluce);
-		// 		const soluceDestinationPath = path.join(flashDrive, soluceFileName);
-		// 		fs.copyFileSync(pdfFilePath_soluce, soluceDestinationPath);
-		// 		// show information message
-		// 		vscode.window.showInformationMessage(`${soluceFileName} copied to ${flashDrive}`);
-		// 	}
-		// 	if (fs.existsSync(pdfFilePath_bilan)) {
-		// 		// copy the bilan file to the flash drive with the new file extension
-		// 		const bilanFileName = path.basename(pdfFilePath_bilan);
-		// 		const bilanDestinationPath = path.join(flashDrive, bilanFileName);
-		// 		fs.copyFileSync(pdfFilePath_bilan, bilanDestinationPath);
-		// 		// show information message
-		// 		vscode.window.showInformationMessage(`${bilanFileName} copied to ${flashDrive}`);
-		// 	}
-		// } else {
-		// 	vscode.window.showErrorMessage('Invalid destination path');
-		// }
 	});
 
+// -----------------------------------
+// BANQUE D'EXERCICES COMMANDS //
+// -----------------------------------
+
+	// FUNCTIONS OF VIEW - TITLE //
+	// refresh banque d'exercices tree view
+	vscode.commands.registerCommand('banque.refresh', () => {
+		// save current files opened in editor, then register banque d'exercices tree view
+		vscode.commands.executeCommand('workbench.action.files.saveAll').then(() => {
+			vscode.window.registerTreeDataProvider('banque-exercices', new BanqueExoShow());
+		});
+	});
+	
+	// collapse all items in the tree view
+	vscode.commands.registerCommand('banque.collapse', () => {
+		vscode.commands.executeCommand("workbench.actions.treeView.banque-exercices.collapseAll");
+	});
+
+	// FUNCTIONS OF VIEW - ITEM - EXERCICE INLINE //
+
 	// command to compile an exercise separately
-	let compile_exercise = vscode.commands.registerCommand('banque.compile', function (document) {
+	vscode.commands.registerCommand('banque.compile', function (document) {
 		
-		// vscode.window.showInformationMessage(document.filePath);
 		// get the active text editor
 		let editor = vscode.window.activeTextEditor;
 		if (!editor) {
-			return;
 		}
 		
 		// string to search in the document
@@ -682,11 +553,6 @@ function activate(context) {
 			var exo = document.label.replace(/"/g, '');
 			var FilePath = document.filePath;
 			var SourceFile = path.basename(FilePath);
-			// vscode.window.showInformationMessage(exo, document.filePath);
-			// vscode.commands.executeCommand('vscode.open', vscode.Uri.file(document.filePath)).then(() => {
-			// 	// just pass
-			// }
-			// );
 		}
 
 		// name of temporary latex exercise file
@@ -706,17 +572,15 @@ function activate(context) {
 		});
 	});
 
+	// FUNCTIONS ONLY USED AS KEYBINDINGS //
+
 	// command to reveal an exercise in tree view
-	let reveal_exercise = vscode.commands.registerCommand('banque.reveal', function () {
+	vscode.commands.registerCommand('banque.reveal', function () {
 		
-		// vscode.window.showInformationMessage(document.filePath);
 		// get the active text editor
 		let editor = vscode.window.activeTextEditor;
 		if (!editor) {
-			return;
 		}
-	
-		// vscode.window.showInformationMessage(folderName, fileName);
 
 		// get label of exercise from current mouse position
 		const cursorPosition = editor.selection.active;
@@ -760,8 +624,12 @@ function activate(context) {
 		TreeView.reveal(item, {focus: true, select: true, expand: true});
 	});
 
+	// COMMANDS AT LAUNCH //
+	vscode.window.registerTreeDataProvider('banque-exercices', new BanqueExoShow())
+	// update_graphics_path();
+
 	// command to build a QCM for a given chapter
-	let test = vscode.commands.registerCommand('flash.test', function () {
+	vscode.commands.registerCommand('flash.test', function () {
 		// get the active text editor
 		let editor = vscode.window.activeTextEditor;
 		if (!editor) {
@@ -805,90 +673,21 @@ function activate(context) {
 			}
 			console.log(`stdout: ${stdout}`);
 		});
+		
 		fs.appendFileSync(destination, '\\AMCaddpagesto{1}\n\\end{copieexamen}\n\\end{document}');
-		// open the test file in vscode
-		// const outdir = vscode.workspace.getConfiguration('latex-workshop').get('latex.outDir');
-		// vscode.workspace.getConfiguration('latex-workshop').update('latex.outDir', __dirname + '/tmp');
-		// vscode.workspace.openTextDocument(fichier).then((document) => {
-			// vscode.window.showTextDocument(document);
-			// compile the test file
-			//  open the file QCM.tex in vscode
-		// vscode.window.showInformationMessage(`auto-multiple-choice prepare --mode=s ${destination}`);
-		// child_process.execSync(`auto-multiple-choice prepare --mode=s ${destination}`, { stdio: 'ignore' });
 		vscode.commands.executeCommand('flash.amc');
 		vscode.commands.executeCommand('vscode.open', vscode.Uri.file(destination));
 
-		// copy tex file to local folder
-		// const folder = path.dirname(cours);
-		// // get basename of cours
-		// const coursName = path.basename(cours); 
-		// const destination_save = folder + '/QCM_' + coursName;
-		// fs.copyFileSync(destination, destination_save);
-		// now execute amc command
-		// vscode.commands.executeCommand('flash.amc', destination);
 	});
 
 	// command to compile using auto-multiple-choice
 	let amc = vscode.commands.registerCommand('flash.amc', function () {
 		// get the active text editor
 		child_process.exec(`auto-multiple-choice`);
-		// let editor = vscode.window.activeTextEditor;
-		// if (!editor) {
-		// 	return;
-		// }
-		// // get destination file if undefined
-		// if (destination === undefined) {
-		// 	var destination = '/' + editor.document.fileName;
-		// } else {
-		// 	var destination = String(destination).replace("file://", "");
-		// }
-		// // deal with [ and ] characters in destination path
-		// destination = destination.replace('%5B', '[').replace('%5D', ']');
-		// destination = destination.replace('%5B', '[').replace('%5D', ']');
-		// vscode.window.showInformationMessage(destination);
-		// try {
-		// 	child_process.execSync(`auto-multiple-choice prepare --mode=s ${destination}`, { stdio: 'ignore' });
-		// } catch (error) {
-		// 	// Handle the error silently
-		// 	vscode.window.showErrorMessage(`Error: ${error.message}`);
-		// }
-		// // open file sujet.pdf on vscode on right panel o
-		// vscode.commands.executeCommand('vscode.open', vscode.Uri.file(destination.replace('.tex','_filtered-sujet.pdf') )
-		// , { viewColumn: vscode.ViewColumn.Two });
 	});
 
-	// // command to compile using auto-multiple-choice
-	// let amc = vscode.commands.registerCommand('flash.amc', function (destination) {
-	// 	// get the active text editor
-	// 	let editor = vscode.window.activeTextEditor;
-	// 	if (!editor) {
-	// 		return;
-	// 	}
-	// 	// get destination file if undefined
-	// 	if (destination === undefined) {
-	// 		var destination = '/' + editor.document.fileName;
-	// 	} else {
-	// 		var destination = String(destination).replace("file://", "");
-	// 	}
-	// 	// deal with [ and ] characters in destination path
-	// 	destination = destination.replace('%5B', '[').replace('%5D', ']');
-	// 	destination = destination.replace('%5B', '[').replace('%5D', ']');
-	// 	vscode.window.showInformationMessage(destination);
-	// 	try {
-	// 		child_process.execSync(`auto-multiple-choice prepare --mode=s ${destination}`, { stdio: 'ignore' });
-	// 	} catch (error) {
-	// 		// Handle the error silently
-	// 		vscode.window.showErrorMessage(`Error: ${error.message}`);
-	// 	}
-	// 	// open file sujet.pdf on vscode on right panel o
-	// 	vscode.commands.executeCommand('vscode.open', vscode.Uri.file(destination.replace('.tex','_filtered-sujet.pdf') )
-	// 	, { viewColumn: vscode.ViewColumn.Two });
-	// });
-
-	// command to apply the bash script 
-
 	// command to build fiche colle
-	let fiche_colle = vscode.commands.registerCommand('flash.fiche_colle', function () {
+	vscode.commands.registerCommand('flash.fiche_colle', function () {
 		// get the active text editor
 		let editor = vscode.window.activeTextEditor;
 		if (!editor) {
@@ -904,96 +703,27 @@ function activate(context) {
 		const NextTuesday = nextTuesday.toLocaleDateString('fr-FR');
 		const NextnextTuesday = nextNextTuesday.toLocaleDateString('fr-FR');
 
-		// vscode.window.showInformationMessage(`Next Tuesday: ${NextTuesday}`);
-		// vscode.window.showInformationMessage(`Next next Tuesday: ${NextnextTuesday}`);
-
 		// get the file path
 		const colle_file = editor.document.fileName;
 		const fiche_pdf = colle_file.replace('.tex', '_fiche.pdf');
-		// get directory
-		// const fileDirname = path.dirname(colle_file);
-		// get basename
-		// const fileBasename = path.basename(latex);
-		// execute the bash script
-		// get the fiche.tex path 
 		const fiche_latex = __dirname + '/templates/Fiche.tex';
 		// get tmp path
 		const tmp_tex = __dirname + '/tmp/Fiche_tmp_simple.tex';
 		child_process.execSync(`python ${__dirname}/scripts/build-fiche-colle.py ${colle_file} ${NextTuesday} ${NextnextTuesday} ${fiche_latex} ${tmp_tex}`);
-		// vscode.commands.executeCommand('latex-workshop.build', {rootFile:tmp_tex}).then(() => {
-		// get first recipe listed in the latex settings
-		// var recipe = vscode.workspace.getConfiguration('latex-workshop').get('latex.tools')[0].args.toString();
-		// replace substring %DOC% by tmp_tex
-		// var recipe = recipe.replace('%DOC%', tmp_tex);
-		// var recipe = `pdflatex -interaction=nonstopmode -shell-escape -output-directory ${__dirname}/tmp`;
-		// vscode.window.showInformationMessage(fiche_pdf);
-		// child_process.execSync(`latexmk ${recipe} -output-directory=${__dirname}/tmp`, () => { 
 		compileLatex(tmp_tex);
 		// find \Count{#1} in the file and copy pdf files as many times as value of #1
 		const tmp_pdf = tmp_tex.replace('.tex', '.pdf');
 		const count = fs.readFileSync(colle_file).toString().match(/\\Count{(\d+)}/)[1];
-		// vscode.window.showInformationMessage(count);
-		
 		copyPdf(tmp_pdf, count);
 		fs.renameSync(tmp_pdf, fiche_pdf);
-		
-		// child_process.execSync(`${recipe} ${tmp_tex}`);
-		// rename fiche file
-		// move pdf file
-		// move fiche file to fileDirname folder
-		// fs.renameSync(fiche_pdf, fileDirname + '/' + path.basename(fiche_pdf));
 		vscode.commands.executeCommand('vscode.open', vscode.Uri.file(fiche_pdf), { viewColumn: vscode.ViewColumn.Two });
-		// });
-		// insert magic command 
-		// const latex_magic = `% !TEX root = ${tmp_tex}\n`;
-		// add latex_magic as first line of the file
-		// var editorText = editor.document.getText();
-		// if (editorText.includes(`% !TEX root `)) {
-		// 	editor.edit(editBuilder => {
-		// 		editBuilder.delete(new vscode.Range(new vscode.Position(0, 0), new vscode.Position(1, 0)));
-		// 		editBuilder.insert(new vscode.Position(0, 0), latex_magic);
-		// 	}).then(() => {
-		// 		// run latex-workshop build command
-		// 		vscode.commands.executeCommand('latex-workshop.build').then(() => {
-		// 			// rename fiche file
-		// 			fs.renameSync(tmp_tex.replace('.tex', '.pdf'), fiche_pdf);
-		// 			// move fiche file to fileDirname folder
-		// 			fs.renameSync(fiche_pdf, fileDirname + '/' + path.basename(fiche_pdf));
-		// 			// open the fiche pdf in vscode in the right panel
-		// 			vscode.commands.executeCommand('vscode.open', vscode.Uri.file(fiche_pdf), { viewColumn: vscode.ViewColumn.Two });
-		// 			// remove latex command
-		// 			editor.edit(editBuilder => {
-		// 				editBuilder.delete(new vscode.Range(new vscode.Position(0, 0), new vscode.Position(1, 0)));
-		// 			});
-		// 	});
-		// });
-		// } else {
-		// 	editor.edit(editBuilder => {
-		// 		editBuilder.insert(new vscode.Position(0, 0), latex_magic);
-		// 	}).then(() => {
-		// 		// run latex-workshop build command
-		// 		vscode.commands.executeCommand('latex-workshop.build').then(() => {
-		// 			// rename fiche file
-		// 			fs.renameSync(tmp_tex.replace('.tex', '.pdf'), fiche_pdf);
-		// 			// move fiche file to fileDirname folder
-		// 			fs.renameSync(fiche_pdf, fileDirname + '/' + path.basename(fiche_pdf));
-		// 			// open the fiche pdf in vscode in the right panel
-		// 			vscode.commands.executeCommand('vscode.open', vscode.Uri.file(fiche_pdf), { viewColumn: vscode.ViewColumn.Two });
-		// 			// remove latex command
-		// 			editor.edit(editBuilder => {
-		// 				editBuilder.delete(new vscode.Range(new vscode.Position(0, 0), new vscode.Position(1, 0)));
-		// 			});
-		// 		});
-		// 	});
-		// }
-			// show the output
-			// get basename of fiche
-			const basename = path.basename(fiche_pdf);
-			vscode.window.showInformationMessage(`${basename} généré avec succès`);
+		// get basename of fiche
+		const basename = path.basename(fiche_pdf);
+		vscode.window.showInformationMessage(`${basename} généré avec succès`);
 	});
 
 	// command to see the soluce version of tex file
-	let view_soluce = vscode.commands.registerCommand('flash.view_soluce', function () {
+	vscode.commands.registerCommand('flash.view_soluce', function () {
 		// get the active text editor
 		let editor = vscode.window.activeTextEditor;
 		if (!editor) {
@@ -1008,7 +738,7 @@ function activate(context) {
 	});
 
 	// command to build soluce for latex file
-	let soluce = vscode.commands.registerCommand('flash.soluce', function () {
+	vscode.commands.registerCommand('flash.soluce', function () {
 		// get the active text editor
 		let editor = vscode.window.activeTextEditor;
 		if (!editor) {
@@ -1099,19 +829,11 @@ function activate(context) {
 	context.subscriptions.push(compile);
 	context.subscriptions.push(build);
 	context.subscriptions.push(programme_refresh);
-	// context.subscriptions.push(banque_refresh);
-	// context.subscriptions.push(convert);
 	context.subscriptions.push(send);
-	context.subscriptions.push(compile_exercise);
-	context.subscriptions.push(source);
 	context.subscriptions.push(test);
 	context.subscriptions.push(amc);
-	context.subscriptions.push(soluce);
-	context.subscriptions.push(reveal_exercise);
 	context.subscriptions.push(suggestions_refresh);
-	context.subscriptions.push(view_soluce);
 	context.subscriptions.push(compile_bilan_DS);
-	context.subscriptions.push(fiche_colle);
 	context.subscriptions.push(programme_pdf);
 	context.subscriptions.push(remove);
 
@@ -1129,3 +851,84 @@ module.exports = {
 	activate,
 	deactivate
 }
+
+
+// WORK IN PROGRESS //
+
+	// // command in the explorer context menu to convert pdf to latex	
+	// let convert = vscode.commands.registerCommand('mathpix-pdf.convert', function (uri) {
+	// 	// The code you place here will be executed every time your command is executed
+	// 	const fileName = path.basename(uri.toString());
+	// 	const fileDirectory = path.dirname(uri.toString().replace("file://", ""));
+		
+	// 	// Prompt the user for the pages range
+	// 	vscode.window.showInputBox({ placeHolder: 'Enter the pages range (e.g. 1, 1-5, or 2-end)' }).then(range => {
+	// 		if (range) {
+	// 			vscode.window.showQuickPick(texArchives, { placeHolder: 'Enter the tex archive to store the exercise (e.g. dynapoint.tex)' }).then(texFile => {
+	// 				if (texFile) {
+	// 					// Run the bash program on the active file
+	// 					// vscode.window.showInformationMessage(`Converting pages ${range} of ${fileName} to latex...`);
+	// 					// decode the string
+	// 					const pageRange = range.split('-');
+	// 					const startPage = pageRange[0];
+	// 					const endPage = pageRange[1] || 'end';
+
+	// 					// Read the PDF file using a library like pdfjs-dist
+
+	// 					const fileData = fs.readFileSync(`${fileDirectory}/${fileName}`);
+	// 					const loadingTask = pdfjsLib.getDocument(fileData);
+
+	// 					loadingTask.promise.then((pdf) => {
+	// 						const totalPages = pdf.numPages;
+
+	// 						// Calculate the actual page numbers based on the range
+	// 						const startPageNumber = parseInt(startPage);
+	// 						const endPageNumber = endPage === 'end' ? totalPages : parseInt(endPage);
+
+	// 						// Validate the page numbers
+	// 						if (startPageNumber <= 0 || startPageNumber > totalPages || endPageNumber <= 0 || endPageNumber > totalPages || startPageNumber > endPageNumber) {
+	// 							vscode.window.showErrorMessage('Invalid page range');
+	// 							return;
+	// 						}
+
+	// 						// Extract the pages using pdfjs-dist
+	// 						const pagesToExtract = [];
+	// 						for (let i = startPageNumber; i <= endPageNumber; i++) {
+	// 							pagesToExtract.push(i);
+	// 						}
+
+	// 						const writer = new pdfWriter.PDFWriter();
+
+	// 						const outputFile = `${fileDirectory}/file_to_convert.pdf`;
+	// 						const outputStream = fs.createWriteStream(outputFile);
+
+	// 						pdf.copyPagesInto(pagesToExtract, writer);
+	// 						writer.pipe(outputStream);
+	// 						writer.end();
+
+	// 						vscode.window.showInformationMessage(`Pages ${startPage}-${endPage} extracted successfully`);
+	// 					}).catch((error) => {
+	// 						vscode.window.showErrorMessage(`Error: ${error.message}`);
+	// 					});
+	// 					// child_process.execSync(decodeURI(`pdftk ${fileDirectory}/${fileName} cat ${range} output "${fileDirectory}/file_to_convert.pdf"`));
+	// 					// const commande = decodeURI(__dirname + `/mathpix_pdf_to_latex.sh ${fileName} ${fileDirectory} "${texPath}${texFile}" ${range}`, 'utf-8'); 
+	// 					// vscode.window.showInformationMessage(commande);
+	// 					// child_process.execSync(commande, (error, stdout, stderr) => {
+	// 					// 	if (error) {
+	// 					// 		// Display an error message if the bash program encounters an error
+	// 					// 		vscode.window.showErrorMessage(`Error: ${error.message} | ${stderr}`);
+	// 					// 		return;
+	// 					// 	}
+	// 					// });
+	// 					// child_process.exec(decodeURI(mathpixCommand + ` convert ${fileDirectory}/file_to_convert.pdf ${fileDirectory}/file_to_convert.tex`), (error, stderr) => {
+	// 					// 	if (error) {
+	// 					// 		// Display an error message if the bash program encounters an error
+	// 					// 		vscode.window.showErrorMessage(`Error: ${error.message} | ${stderr}`);
+	// 					// 		return;
+	// 					// 	}
+	// 					// });
+	// 				}
+	// 			});
+	// 		}
+	// 	});
+	// });

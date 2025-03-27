@@ -43,8 +43,10 @@ function generateTreeItems() {
 	// list all folders in the recueil directory
 	var themes_list = fs.readdirSync(texPath).filter(file => fs.statSync(path.join(texPath, file)).isDirectory());
 	// list all folders in the recueil directory and remove the ones excluded
-	const exclude = ['.vscode','Figure','Figures','_Fiches'];
+	const exclude = ['.vscode','Figure','Figures'];
 	var themes_list = themes_list.filter(theme => !exclude.includes(theme));
+	// exclude themes that start with an underscore
+	themes_list = themes_list.filter(theme => !theme.startsWith('_'));
 
 	return themes_list.map(function (theme) {
 		// vscode.window.showInformationMessage(theme);

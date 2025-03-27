@@ -90,12 +90,14 @@
 				{
 					"id": "suggestions",
 					"name": "Suggestions",
-					"type": "tree"
+					"type": "tree",
+					"icon": "images/default_folder_opened.svg"
 				},
 				{
 					"id": "amc",
 					"name": "AMC",
-					"type": "tree"
+					"type": "tree",
+					"icon": "images/default_folder_opened.svg"
 				}
 			]
 		},
@@ -104,6 +106,8 @@
 				"command": "mathpix-pdf.convert",
 				"title": "Convert to tex"
 			},
+
+
 			{
 				"command": "programme.upload",
 				"title": "Téléverser",
@@ -119,6 +123,28 @@
 				"title": "Compiler",
 				"icon": "$(file-code)"
 			},
+			{
+				"command": "programme.pdf",
+				"title": "Voir pdf",
+				"icon": "$(file-pdf)"
+			},
+			{
+				"command": "programme.remove",
+				"title": "Retirer",
+				"icon": "$(discard)"
+			},
+			{
+				"command": "programme.refresh",
+				"title": "Rafraîchir",
+				"icon": "$(refresh)"
+			},
+			{
+				"command": "programme.uploading",
+				"title": "Téléversement en cours",
+				"icon": "$(sync)"
+			},
+			
+			
 			{
 				"command": "banque.fetch",
 				"title": "Ouvrir exercice"
@@ -144,24 +170,9 @@
 				"icon": "$(file-pdf)"
 			},
 			{
-				"command": "programme.pdf",
-				"title": "Voir pdf",
-				"icon": "$(file-pdf)"
-			},
-			{
-				"command": "programme.remove",
-				"title": "Retirer",
-				"icon": "$(discard)"
-			},
-			{
 				"command": "banque.reveal",
 				"title": "Révéler exercice",
 				"icon": "$(file-pdf)"
-			},
-			{
-				"command": "programme.refresh",
-				"title": "Rafraîchir",
-				"icon": "$(refresh)"
 			},
 			{
 				"command": "banque.refresh",
@@ -169,10 +180,12 @@
 				"icon": "$(refresh)"
 			},
 			{
-				"command": "programme.uploading",
-				"title": "Téléversement en cours",
-				"icon": "$(sync)"
+				"command": "banque.collapse",
+				"title": "Réduire",
+				"icon": "$(collapse-all)"
 			},
+
+
 			{
 				"command": "suggestions.go",
 				"title": "Aller aux suggestions",
@@ -331,11 +344,20 @@
 					"when": "view == programme-colle",
 					"group": "navigation@4"
 				},
+
+				
 				{
 					"command": "banque.refresh",
 					"when": "view == banque-exercices",
 					"group": "navigation@4"
 				},
+				{
+				"command": "banque.collapse",
+				"when": "view == banque-exercices",
+				"group": "navigation@5"
+				},
+
+
 				{
 					"command": "suggestions.refresh",
 					"when": "view == suggestions",

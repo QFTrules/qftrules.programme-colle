@@ -523,16 +523,15 @@ function activate(context) {
 	// command to compile an exercise separately
 	vscode.commands.registerCommand('banque.compile', function (document) {
 		
-		// get the active text editor
-		let editor = vscode.window.activeTextEditor;
-		if (!editor) {
-		}
-		
 		// string to search in the document
 		const searchString = '\\begin{' + exoenvi +'}';
 
 		// check if command called from the explorer context menu or from the editor (document undefined)
 		if (document === undefined) {
+			// get the active text editor
+			vscode.commands.executeCommand('vscode.open', vscode.Uri.file(document.filePath), { viewColumn: vscode.ViewColumn.One })
+			let editor = vscode.window.activeTextEditor;
+
 			// declare the cursorPosition variable
 			const cursorPosition = editor.selection.active;
 			// find the first line before the cursor position that contains the string '\begin{exo}'
@@ -550,6 +549,9 @@ function activate(context) {
 			var FilePath = editor.document.fileName;
 			var SourceFile = path.basename(FilePath);
 		} else {
+			// open document.path
+			vscode.commands.executeCommand('vscode.open', vscode.Uri.file(document.filePath), { viewColumn: vscode.ViewColumn.One })
+			var editor = vscode.window.activeTextEditor;
 			var exo = document.label.replace(/"/g, '');
 			var FilePath = document.filePath;
 			var SourceFile = path.basename(FilePath);
@@ -838,7 +840,8 @@ function activate(context) {
 	context.subscriptions.push(remove);
 
 	// call here all commands necessary at launch
-	vscode.commands.executeCommand('banque.refresh');
+	vscode.window.registerTreeDataProvider('banque-exercices', new BanqueExoShow());
+	vscode.window.registerTreeDataProvider('programme-colle', new ProgShow());
 
 }
 

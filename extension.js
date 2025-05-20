@@ -526,11 +526,16 @@ function activate(context) {
 		// string to search in the document
 		const searchString = '\\begin{' + exoenvi +'}';
 
-		// check if command called from the explorer context menu or from the editor (document undefined)
+		// check if command called from the explorer context menu (document defined) or from the editor (document undefined)
 		if (document === undefined) {
 			// get the active text editor
-			vscode.commands.executeCommand('vscode.open', vscode.Uri.file(document.filePath), { viewColumn: vscode.ViewColumn.One })
-			let editor = vscode.window.activeTextEditor;
+			// vscode.window.showInformationMessage('document undefined');
+			// vscode.commands.executeCommand('vscode.open', vscode.Uri.file(document.filePath), { viewColumn: vscode.ViewColumn.One })
+
+			var editor = vscode.window.activeTextEditor;
+			if (!editor) {
+				vscode.window.showInformationMessage('No active editor found.');
+			}
 
 			// declare the cursorPosition variable
 			const cursorPosition = editor.selection.active;
@@ -556,12 +561,15 @@ function activate(context) {
 			var FilePath = document.filePath;
 			var SourceFile = path.basename(FilePath);
 		}
-
+		
 		// name of temporary latex exercise file
 		const exercice_name = 'Exercice'
 		const exercice = __dirname + `/tmp/${exercice_name}`;
 		// insert the TEX root line at the beginning of the file
+		// vscode.window.showInformationMessage(editor);
+		// vscode.window.showInformationMessage('Entering potentially buggy line');
 		insertLatexMagic(editor, exercice);
+		// vscode.window.showInformationMessage('Exiting potentially buggy line');
 		// create the exercise latex file
 		const template = `%&Exercice\n%\\input{TDappli.sty}\n%\\Soluce\n% \\endofdump\n\\begin{document}\n\\Source{${SourceFile}}\n\\Ex{${exo}}\n\\end{document}`;
 		fs.writeFileSync(exercice + '.tex', template);

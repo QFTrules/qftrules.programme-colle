@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 from selenium import webdriver
+from chromedriver_py import binary_path
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support.ui import Select
@@ -14,6 +15,14 @@ from selenium.common.exceptions import StaleElementReferenceException
 from selenium.webdriver.support import expected_conditions
 import time
 import sys
+
+""" 
+To install latest chromedriver version :
+« pip install chromedriver-py »
+in bash shell.
+
+Link : https://pypi.org/project/chromedriver-py/#history
+"""
 
 # print(sys.argv)
 path = sys.argv[1]
@@ -58,7 +67,7 @@ def waitabit(driver=None,t=0.6):
 # connect to cahier de prepa
 chrome_options = Options()
 chrome_options.add_argument("--headless")       # to run in the background
-service = Service('/home/eb/Dropbox/.latex/Commands/chromedriver')
+service = Service(binary_path)
 # driver = webdriver.Chrome('/home/eb/Dropbox/.latex/Commands/chromedriver')
 # , options=chrome_options)
 driver = webdriver.Chrome(service=service, options=chrome_options)

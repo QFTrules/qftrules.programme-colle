@@ -63,6 +63,11 @@
 				"when": "editorTextFocus && editorLangId == latex"
 			},
 			{
+				"key": "ctrl+f3",
+				"command": "flash.soluce_only",
+				"when": "editorTextFocus && editorLangId == latex"
+			},
+			{
 				"key": "ctrl+f2",
 				"command": "flash.view_soluce",
 				"when": "editorTextFocus && editorLangId == latex"

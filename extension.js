@@ -828,6 +828,88 @@ function activate(context) {
 			});
 		}
 	});
+
+	// command to build soluce for latex file
+	vscode.commands.registerCommand('flash.soluce_only', function () {
+		// get the active text editor
+		let editor = vscode.window.activeTextEditor;
+		if (!editor) {
+			return;
+		}
+		// get the file path
+		const latex = editor.document.fileName;
+		// get current day as a string in yyyy-mm-dd format
+		const today = new Date().toISOString().slice(0, 10);
+		// copy file to file_soluce.tex
+		const corrige = latex.replace('.tex', '_soluce.tex');
+		// fs.copyFileSync(latex, corrige);
+		// apply $HOME/Dropbox/.latex/Commands/build-soluce.py
+		child_process.execSync(`python3 ${__dirname}/build-soluce_only.py ${latex} ${today}`, () => {
+		});
+		// build using latex-workshop
+		// child_process.execSync(`pdflatex ${corrige}`, () => {});
+		// define magic comment for root file
+		const latex_magic = `% !TEX root = ${corrige}\n`;
+		// add latex_magic as first line of the file
+		var editorText = editor.document.getText();
+		if (editorText.includes(`% !TEX root `)) {
+			editor.edit(editBuilder => {
+				editBuilder.delete(new vscode.Range(new vscode.Position(0, 0), new vscode.Position(1, 0)));
+				editBuilder.insert(new vscode.Position(0, 0), latex_magic);
+			}).then(() => {
+				// run latex-workshop build command
+				vscode.commands.executeCommand('latex-workshop.build').then(() => {
+					// clean all auxiliary files
+					// vscode.commands.executeCommand('latex-workshop.clean');
+					// open the soluce pdf in vscode	
+					vscode.commands.executeCommand('latex-workshop.tab');
+					// remove latex command
+					editor.edit(editBuilder => {
+						editBuilder.delete(new vscode.Range(new vscode.Position(0, 0), new vscode.Position(1, 0)));
+					});
+					// remove all auxiliary files like .aux, .log, .out, .synctex.gz
+					const files = ['.synctex.gz','.tex'];
+					files.forEach(file => {
+						const auxFile = corrige.replace('.tex', file);
+						if (fs.existsSync(auxFile)) {
+							fs.unlinkSync(auxFile);
+						}
+					});
+					// save the file
+					editor.document.save();
+				});
+			});
+		} else {
+			editor.edit(editBuilder => {
+				editBuilder.insert(new vscode.Position(0, 0), latex_magic);
+			}).then(() => {
+				// run latex-workshop build command
+				vscode.commands.executeCommand('latex-workshop.build').then(() => {
+					// clean all auxiliary files
+					// vscode.commands.executeCommand('latex-workshop.clean');
+					// open the soluce pdf in vscode	
+					vscode.commands.executeCommand('latex-workshop.tab').then(() => {
+						// remove latex command
+						editor.edit(editBuilder => {
+							editBuilder.delete(new vscode.Range(new vscode.Position(0, 0), new vscode.Position(1, 0)));
+						});
+						// remove all auxiliary files like .aux, .log, .out, .synctex.gz
+						// const files = ['.synctex.gz','.tex'];
+						const files = ['.tex'];
+						files.forEach(file => {
+							const auxFile = corrige.replace('.tex', file);
+							if (fs.existsSync
+							(auxFile)) {
+								fs.unlinkSync(auxFile);
+							}
+						});
+						// save the file
+						editor.document.save();
+					});
+				});
+			});
+		}
+	});
 	
 	// now push these functions to the context
 	context.subscriptions.push(copy);

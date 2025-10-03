@@ -81,7 +81,7 @@
 		"body": "\\\\begin{prop}[]\\\\label{prop:}\n\t$0\n\\\\end{prop}"
 	  },
 	  "theorem": {
-		"prefix": "theorem",
+		"prefix": "theo",
 		"body": "\\\\begin{theorem}[]\\\\label{form:}\n\t$0\n\\\\end{theorem}"
 	  },
 	  "definition": {
@@ -120,9 +120,9 @@
 		"prefix": "oral",
 		"body": "\\\\begin{oral}[1]\n\t\\\\Principal[$1]{$2}\n\t\\\\Probleme[$3]{$4}\n\\\\end{oral}"
 	  },
-	  "Double": {
-		"prefix": "Double",
-		"body": "\\\\Double{\n$1\n}"
+	  "Count": {
+		"prefix": "Count",
+		"body": "\\\\Count{${0:1}}{\n$1\n}"
 	  },
 	  "subfigure": {
 		"prefix": "subfigure",
@@ -223,6 +223,10 @@
 	"Entete": {
 		"prefix": "Entete",
 		"body": "\\\\Entete[document][chapter][theme]{${1:number}}\n"
+	},
+	"demo" : {
+		"prefix": "demo",
+		"body": "\\\\begin{demo}\n#1\n\\\\end{demo}"		
 	}
 	}
   }

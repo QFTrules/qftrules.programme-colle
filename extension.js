@@ -506,7 +506,7 @@ function activate(context) {
 
 	// FUNCTIONS OF VIEW - TITLE //
 	// refresh banque d'exercices tree view
-	vscode.commands.registerCommand('banque.refresh', () => {
+	let banque_refresh = vscode.commands.registerCommand('banque.refresh', () => {
 		// save current files opened in editor, then register banque d'exercices tree view
 		vscode.commands.executeCommand('workbench.action.files.saveAll').then(() => {
 			vscode.window.registerTreeDataProvider('banque-exercices', new BanqueExoShow());
@@ -514,14 +514,14 @@ function activate(context) {
 	});
 	
 	// collapse all items in the tree view
-	vscode.commands.registerCommand('banque.collapse', () => {
+	let banque_collapse = vscode.commands.registerCommand('banque.collapse', () => {
 		vscode.commands.executeCommand("workbench.actions.treeView.banque-exercices.collapseAll");
 	});
 
 	// FUNCTIONS OF VIEW - ITEM - EXERCICE INLINE //
 
 	// command to compile an exercise separately
-	vscode.commands.registerCommand('banque.compile', function (document) {
+	let banque_compile = vscode.commands.registerCommand('banque.compile', function (document) {
 		
 		// string to search in the document
 		const searchString = '\\begin{' + exoenvi +'}';
@@ -585,7 +585,7 @@ function activate(context) {
 	// FUNCTIONS ONLY USED AS KEYBINDINGS //
 
 	// command to reveal an exercise in tree view
-	vscode.commands.registerCommand('banque.reveal', function () {
+	let banque_reveal = vscode.commands.registerCommand('banque.reveal', function () {
 		
 		// get the active text editor
 		let editor = vscode.window.activeTextEditor;
@@ -697,7 +697,7 @@ function activate(context) {
 	});
 
 	// command to build fiche colle
-	vscode.commands.registerCommand('flash.fiche_colle', function () {
+	let flash_fiche_colle = vscode.commands.registerCommand('flash.fiche_colle', function () {
 		// get the active text editor
 		let editor = vscode.window.activeTextEditor;
 		if (!editor) {
@@ -733,7 +733,7 @@ function activate(context) {
 	});
 
 	// command to see the soluce version of tex file
-	vscode.commands.registerCommand('flash.view_soluce', function () {
+	let flash_view_soluce = vscode.commands.registerCommand('flash.view_soluce', function () {
 		// get the active text editor
 		let editor = vscode.window.activeTextEditor;
 		if (!editor) {
@@ -748,7 +748,7 @@ function activate(context) {
 	});
 
 	// command to build soluce for latex file
-	vscode.commands.registerCommand('flash.soluce', function () {
+	let flash_soluce = vscode.commands.registerCommand('flash.soluce', function () {
 		// get the active text editor
 		let editor = vscode.window.activeTextEditor;
 		if (!editor) {
@@ -928,6 +928,16 @@ function activate(context) {
 	context.subscriptions.push(compile_bilan_DS);
 	context.subscriptions.push(programme_pdf);
 	context.subscriptions.push(remove);
+	context.subscriptions.push(flash_soluce);
+	// context.subscriptions.push(flash_amc);
+	context.subscriptions.push(flash_fiche_colle);
+	context.subscriptions.push(flash_view_soluce);
+	context.subscriptions.push(banque_compile);
+	context.subscriptions.push(banque_reveal);
+	context.subscriptions.push(banque_refresh);
+	context.subscriptions.push(banque_collapse);
+	// context.subscriptions.push(convert);
+	// context.subscriptions.push(flash_soluce_only);
 
 	// call here all commands necessary at launch
 	vscode.window.registerTreeDataProvider('banque-exercices', new BanqueExoShow());

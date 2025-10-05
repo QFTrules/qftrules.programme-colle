@@ -2,19 +2,23 @@ import sys
 import time 
 filename = sys.argv[1]
 date = sys.argv[2]
+# to_write = False
 # tic = time.perf_counter()
 with open(filename, 'r') as f:
-    with open(filename[:-4]+'_soluce.tex','w') as g:
+    with open(filename[:-4]+'_soluce_only.tex','w') as g:
         points = []
         quest  = False
         for line in f:
             if '% !TEX root' in line:
                 continue
+            if '\\input{devoir.sty}' in line:
+                g.write('\\input{devoir_soluce.sty}\n')
+                continue
             if '\\begin{document}' in line:
                 g.write(line)
                 g.write('%--- added by build-soluce_only.py on ' + date + ' ---\n')
-                g.write('\\Soluce\n')               # commande qui redéfinit la macro \sol{}, voir préambule symbols.sty 
-                g.write('\\SoluceOnly\n') 
+                # g.write('\\Soluce\n')               # commande qui redéfinit la macro \sol{}, voir préambule symbols.sty 
+                # g.write('\\SoluceOnly\n') 
                 g.write('%----------------------------------------------\n')
                 continue
             if '\\ProgrammeColle' in line:
@@ -36,6 +40,16 @@ with open(filename, 'r') as f:
             if '\\Entete' in line:
                 g.write('{\\textcolor{gray}Version corrigée du ' + str(date) + '}\n')
             g.write(line)
+            # if '\\sol{' in line and not '%' in line:
+            #     to_write = True
+            # if to_write:
+            #     g.write(line)
+            #     if '}' in line:
+            #         to_write = False
+                    # quest = False
+            # else:
+                # if not quest:
+                    # g.write(line)
     g.close()
 f.close()
 # toc = time.perf_counter()

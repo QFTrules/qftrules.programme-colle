@@ -60,6 +60,10 @@
 		"prefix": "quest",
 		"body": "\\\\begin{quest}\n\t\\\\item\t$0\n\\\\end{quest}"
 	  },
+		"QR": {
+		"prefix": "QR",
+		"body": "\\\\QR{${1:Question}}{${2:Réponse}}"
+	  },
 	  "fig": {
 		"prefix": "fig",
 		"body": "\\\\begin{fig}[label]\n\t\\\\centering\n\t\\\\includegraphics[width=0.7\\\\columnwidth]{$0}\n\t%\\\\capt{}\n\\\\end{fig}"

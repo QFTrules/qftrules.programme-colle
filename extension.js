@@ -841,7 +841,7 @@ function activate(context) {
 		// get current day as a string in yyyy-mm-dd format
 		const today = new Date().toISOString().slice(0, 10);
 		// copy file to file_soluce.tex
-		const corrige = latex.replace('.tex', '_soluce.tex');
+		const corrige = latex.replace('.tex', '_soluce_only.tex');
 		// fs.copyFileSync(latex, corrige);
 		// apply $HOME/Dropbox/.latex/Commands/build-soluce.py
 		child_process.execSync(`python3 ${__dirname}/build-soluce_only.py ${latex} ${today}`, () => {

@@ -11,8 +11,12 @@ with open(filename, 'r') as f:
         for line in f:
             if '% !TEX root' in line:
                 continue
-            if '\\input{devoir.sty}' in line:
-                g.write('\\input{devoir_soluce.sty}\n')
+            if '\\input{' in line:
+                g.write(line)
+                g.write('\\Soluce\n')
+                g.write('\\SoluceOnly\n')
+                if '\\input{TP.sty}' in line:
+                    g.write("\\renewcommand{\\todo}[1]{\\stepcounter{protocolei}\\item[\\icontodo\\theprotocolei]}\n")
                 continue
             if '\\begin{document}' in line:
                 g.write(line)

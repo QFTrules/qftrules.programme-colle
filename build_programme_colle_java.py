@@ -22,7 +22,9 @@ with open(sys.argv[1], 'r') as f:
                     type = 'td'
                 if 'TP.sty' in line:
                     type = 'tp'
-                if '\\begin{document}' in line:
+                # if '\\begin{document}' in line:
+                    # found = False
+                if '\\input{' in line:
                     found = False
                 if '\\Chapit{' in line:
                     i = line.index('{')

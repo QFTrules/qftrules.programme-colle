@@ -71,6 +71,9 @@ service = Service(binary_path)
 # driver = webdriver.Chrome('/home/eb/Dropbox/.latex/Commands/chromedriver')
 # , options=chrome_options)
 driver = webdriver.Chrome(service=service, options=chrome_options)
+#  TO DEBUG :
+# driver = webdriver.Chrome(service=service)
+
 driver.maximize_window()
 url1 = "https://cahier-de-prepa.fr/pc-theo/docs?rep=158"
 driver.get(url1)

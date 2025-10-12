@@ -12,7 +12,10 @@ with open(filename, 'r') as f:
             if '% !TEX root' in line:
                 continue
             if '\\input{' in line:
-                g.write(line)
+                if 'devoir.sty' in line:
+                    g.write('\\input{devoir_soluce.sty}\n')
+                else:
+                    g.write(line)
                 g.write('\\Soluce\n')
                 g.write('\\SoluceOnly\n')
                 if '\\input{TP.sty}' in line:

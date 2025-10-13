@@ -445,6 +445,7 @@ function activate(context) {
 		var filePath = editor.document.fileName;
 		const pdfFilePath = filePath.replace(/\.[^/.]+$/, ".pdf");
 		const pdfFilePath_soluce = filePath.replace(/\.[^/.]+$/, "_soluce.pdf");
+		const pdfFilePath_soluce_only = filePath.replace(/\.[^/.]+$/, "_soluce_only.pdf");
 		const pdfFilePath_bilan = filePath.substring(0, filePath.indexOf('_')) + '_bilan.pdf';
 		const pdfFilePath_fiche = filePath.replace(/\.[^/.]+$/, "_fiche.pdf");
 
@@ -488,6 +489,17 @@ function activate(context) {
 				// show information message
 				vscode.window.showInformationMessage(`${soluceFileName} copied to ${printDirectory}`);
 			}
+			
+			// check if the soluce_only file exists
+			if (fs.existsSync(pdfFilePath_soluce_only)) {
+				// copy the soluce_only file to the flash drive with the new file extension
+				const soluce_onlyFileName = path.basename(pdfFilePath_soluce_only);
+				const soluce_onlyDestinationPath = path.join(printDirectory, soluce_onlyFileName);
+				fs.copyFileSync(pdfFilePath_soluce_only, soluce_onlyDestinationPath);
+				// show information message
+				vscode.window.showInformationMessage(`${soluce_onlyFileName} copied to ${printDirectory}`);
+			}
+
 			// check if the bilan DS file exists
 			if (fs.existsSync(pdfFilePath_bilan)) {
 				// copy the bilan file to the flash drive with the new file extension

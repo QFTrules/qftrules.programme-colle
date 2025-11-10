@@ -8,7 +8,18 @@ with open(filename, 'r') as f:
     with open(filename[:-4]+'_soluce_only.tex','w') as g:
         points = []
         quest  = False
+        entete = False
         for line in f:
+            if '\\todo' in line:
+                g.write(line.replace('\\todo','\\question'))
+                continue
+            if '\\Entete' in line or entete:
+                g.write(line)
+                entete = True
+                pass
+            if '\end \entete' in line:
+                entete = False
+                pass
             if '% !TEX root' in line:
                 continue
             if '\\input{' in line:
@@ -23,6 +34,7 @@ with open(filename, 'r') as f:
                 continue
             if '\\begin{document}' in line:
                 g.write(line)
+                g.write('{\\textcolor{gray}Version corrigée du ' + str(date) + '}\n')
                 g.write('%--- added by build-soluce_only.py on ' + date + ' ---\n')
                 # g.write('\\Soluce\n')               # commande qui redéfinit la macro \sol{}, voir préambule symbols.sty 
                 # g.write('\\SoluceOnly\n') 
@@ -30,23 +42,26 @@ with open(filename, 'r') as f:
                 continue
             if '\\ProgrammeColle' in line:
                 continue
-            if '\\question['  in line :
+            if '\\begin{quest}' in line and not '%' in line:
                 quest = True
-                i=line.index('[')
-                points.append(int(line[i+1:i+2]))
-            elif '\\question'  in line and not '%' in line:
-                quest = True
-                points.append(1)
-            if '\\end{document}' in line and quest:
-                g.write('\\reversemarginpar\\marginnote{\\raggedleft{\\color{JoliRouge}(%.i~pt.)}}\n'%(sum(points)))
+                # i=line.index('[')
+                # points.append(int(line[i+1:i+2]))
+            elif '\\end{quest}'  in line and not '%' in line:
+                g.write(line)
+                quest = False
+                # points.append(1)
+            if '\\end{document}' in line:
+                g.write(line)
+                # g.write('\\reversemarginpar\\marginnote{\\raggedleft{\\color{JoliRouge}(%.i~pt.)}}\n'%(sum(points)))
             if '\\begin{Exocolle}' in line:
                 i=line.index('[')
                 j=line.index(']')
                 g.write(line[:j+1] + '[nofig]' + line[j+1:])
                 continue
-            if '\\Entete' in line:
-                g.write('{\\textcolor{gray}Version corrigée du ' + str(date) + '}\n')
-            g.write(line)
+            # if '\\Entete' in line:
+                # g.write('{\\textcolor{gray}Version corrigée du ' + str(date) + '}\n')
+            if '\\section' in line or '\\subsection' in line or '\\subsubsection' in line or quest :
+                g.write(line)
             # if '\\sol{' in line and not '%' in line:
             #     to_write = True
             # if to_write:

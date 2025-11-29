@@ -327,6 +327,36 @@ function activate(context) {
 	}
 	)
 
+	// -----------------------------------
+	// FLASH COMMANDS //
+	// -----------------------------------
+
+	let colle_qcours = vscode.commands.registerCommand('flash.colle_qcours', function () {
+		// apply build_colle.py to latex document
+		// get the active text editor
+		let editor = vscode.window.activeTextEditor;
+		if (!editor) {
+			return;
+		}
+		// get the file and folder paths
+		const filePath = editor.document.fileName;
+		const folderPath = path.dirname(filePath);
+
+		// find file in folder that starts with " programme- " and ends with ".pdf"
+		let programmeFile = fs.readdirSync(folderPath).find(file => file.startsWith("programme-") && file.endsWith(".pdf"));
+
+		vscode.window.showInformationMessage('Fichier programme de colle trouvé : ' + programmeFile);
+		// generate the questions de cours using build_colle.py
+		vscode.window.showInformationMessage('Génération des questions de cours pour ' + filePath + '...');
+		child_process.execSync(pythonCommand + ` ${__dirname}/scripts/build_colle.py ` + programmeFile + ' ' + filePath, { cwd: folderPath });
+
+		// reload the LATEX document in the editor
+		vscode.commands.executeCommand('vscode.open', vscode.Uri.file(filePath), { viewColumn: vscode.ViewColumn.One });
+
+		// show success message
+		vscode.window.showInformationMessage('Questions de cours générées avec succès.');
+	})
+
 	// PROGRAMME DE COLLE commands
 
 	// commande pour téléverser le programme de colle sur le cahier de prépa depuis title view : programme de colle
@@ -731,7 +761,7 @@ function activate(context) {
 		const fiche_latex = __dirname + '/templates/Fiche.tex';
 		// get tmp path
 		const tmp_tex = __dirname + '/tmp/Fiche_tmp_simple.tex';
-		child_process.execSync(`python ${__dirname}/scripts/build-fiche-colle.py ${colle_file} ${NextTuesday} ${NextnextTuesday} ${fiche_latex} ${tmp_tex}`);
+		child_process.execSync(pythonCommand + ` ${__dirname}/scripts/build-fiche-colle.py ${colle_file} ${NextTuesday} ${NextnextTuesday} ${fiche_latex} ${tmp_tex}`);
 		compileLatex(tmp_tex);
 		// find \Count{#1} in the file and copy pdf files as many times as value of #1
 		const tmp_pdf = tmp_tex.replace('.tex', '.pdf');
@@ -948,6 +978,7 @@ function activate(context) {
 	context.subscriptions.push(banque_reveal);
 	context.subscriptions.push(banque_refresh);
 	context.subscriptions.push(banque_collapse);
+	context.subscriptions.push(colle_qcours);
 	// context.subscriptions.push(convert);
 	// context.subscriptions.push(flash_soluce_only);
 

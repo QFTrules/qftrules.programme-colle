@@ -223,10 +223,18 @@
 			},
 			{
 				"command": "flash.fiche_colle",
-				"title": "Fiche de colle",
+				"title": "Générer fiche",
 				"icon": {
 					"light": "images/receipt-solid_light_small.svg",
 					"dark": "images/receipt-solid_dark_small.svg"
+				}
+			},
+			{ 
+				"command": "flash.colle_qcours",
+				"title": "Générer questions",
+				"icon": {
+					"light": "images/question-solid_light.svg",
+					"dark": "images/question-solid_dark.svg"
 				}
 			},
 			{
@@ -266,6 +274,11 @@
 				{
 					"command": "flash.fiche_colle",
 					"group": "navigation@-2",
+					"when": "resourceExtname == .tex && resourceFilename =~ /^Colle/"
+				},
+				{
+					"command": "flash.colle_qcours",
+					"group": "navigation@-3",
 					"when": "resourceExtname == .tex && resourceFilename =~ /^Colle/"
 				},
 				{

@@ -46,7 +46,7 @@ do
   then
     # simple_fichier=$(basename "$fichier")
     # echo -e "${RED}Cours${END} $simple_fichier added to programme de colle"
-    python $pythonpath/build_programme_colle_java.py $fichier $ProgColle
+    $pythoncommand $pythonpath/build_programme_colle_java.py $fichier $ProgColle
   else
       continue
   fi
@@ -60,7 +60,7 @@ do
   then
     # simple_fichier=$(basename "$fichier")
     # echo -e "${RED}TD${END} $simple_fichier added to programme de colle"
-    python $pythonpath/build_programme_colle_java.py $fichier $ProgColle
+    $pythoncommand $pythonpath/build_programme_colle_java.py $fichier $ProgColle
   else
       continue
   fi
@@ -74,7 +74,7 @@ do
   then
     # simple_fichier=$(basename "$fichier")
     # echo -e "${RED}DM${END} $simple_fichier added to programme de colle"
-    python $pythonpath/build_programme_colle_java.py $fichier $ProgColle
+    $pythoncommand $pythonpath/build_programme_colle_java.py $fichier $ProgColle
   else
       continue
   fi
@@ -88,7 +88,7 @@ do
   then
     # simple_fichier=$(basename "$fichier")
     # echo -e "${RED}DS${END} $simple_fichier added to programme de colle"
-    python $pythonpath/build_programme_colle_java.py $fichier $ProgColle
+    $pythoncommand $pythonpath/build_programme_colle_java.py $fichier $ProgColle
   else
       continue
   fi
@@ -102,7 +102,7 @@ do
   then
     # simple_fichier=$(basename "$fichier")
     # echo -e "${RED}TP${END} $simple_fichier added to programme de colle"
-    python $pythonpath/build_programme_colle_java.py $fichier $ProgColle
+    $pythoncommand $pythonpath/build_programme_colle_java.py $fichier $ProgColle
   else
       continue
   fi

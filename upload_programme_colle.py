@@ -3,16 +3,16 @@
 from selenium import webdriver
 from chromedriver_py import binary_path
 from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.support.ui import WebDriverWait
+# from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support.ui import Select
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
-from webdriver_manager.chrome import ChromeDriverManager
+# from webdriver_manager.chrome import ChromeDriverManager
 from selenium.common.exceptions import NoSuchElementException
-from selenium.common.exceptions import StaleElementReferenceException
-from selenium.webdriver.support import expected_conditions
+# from selenium.common.exceptions import StaleElementReferenceException
+# from selenium.webdriver.support import expected_conditions
 import time
 import sys
 
@@ -67,6 +67,8 @@ def waitabit(driver=None,t=0.6):
 # connect to cahier de prepa
 chrome_options = Options()
 chrome_options.add_argument("--headless")       # to run in the background
+# select chrome browser instead of chromium, because chromium deprecated
+# chrome_options.binary_location = "google-chrome"
 service = Service(binary_path)
 # driver = webdriver.Chrome('/home/eb/Dropbox/.latex/Commands/chromedriver')
 # , options=chrome_options)

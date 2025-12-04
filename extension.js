@@ -714,7 +714,7 @@ function activate(context) {
 		
 		// build the interro file
 		// fs.writeFileSync(template, '\\input{devoir.sty}\n\\begin{document}\n\\EnteteInter{06/10/2022}{1}\n\\begin{quest}\n');
-		child_process.execSync(`python3 ${__dirname}/build_QCM.py ${cours} ${destination}`, (error, stdout, stderr) => {
+		child_process.execSync(pythonCommand + ` ${__dirname}/build_QCM.py ${cours} ${destination}`, (error, stdout, stderr) => {
 			if (error) {
 				console.error(`Error: ${error.message}`);
 				return;
@@ -804,7 +804,7 @@ function activate(context) {
 		const corrige = latex.replace('.tex', '_soluce.tex');
 		// fs.copyFileSync(latex, corrige);
 		// apply $HOME/Dropbox/.latex/Commands/build-soluce.py
-		child_process.execSync(`python3 ${__dirname}/build-soluce.py ${latex} ${today}`, () => {
+		child_process.execSync(pythonCommand + ` ${__dirname}/build-soluce.py ${latex} ${today}`, () => {
 		});
 		// build using latex-workshop
 		// child_process.execSync(`pdflatex ${corrige}`, () => {});
@@ -886,7 +886,7 @@ function activate(context) {
 		const corrige = latex.replace('.tex', '_soluce_only.tex');
 		// fs.copyFileSync(latex, corrige);
 		// apply $HOME/Dropbox/.latex/Commands/build-soluce.py
-		child_process.execSync(`python3 ${__dirname}/build-soluce_only.py ${latex} ${today}`, () => {
+		child_process.execSync(pythonCommand + ` ${__dirname}/build-soluce_only.py ${latex} ${today}`, () => {
 		});
 		// build using latex-workshop
 		// child_process.execSync(`pdflatex ${corrige}`, () => {});

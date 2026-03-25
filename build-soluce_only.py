@@ -43,12 +43,15 @@ with open(filename, 'r') as f:
             if '\\ProgrammeColle' in line:
                 continue
             if '\\begin{quest}' in line and not '%' in line:
+                g.write(line)
                 quest = True
+                continue
                 # i=line.index('[')
                 # points.append(int(line[i+1:i+2]))
             elif '\\end{quest}'  in line and not '%' in line:
                 g.write(line)
                 quest = False
+                continue
                 # points.append(1)
             if '\\end{document}' in line:
                 g.write(line)

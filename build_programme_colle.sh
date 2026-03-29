@@ -184,4 +184,22 @@ rm ${ProgColle%.*}.*
 #cd ~/Dropbox/CPGE/Physique/Exercices/Colles/
 # code $Filedate$pdfName
 
+# COMPILE MD FILE FOR GITHUB PAGES
+mdName="_PC_Phy_colle.md"
+mdpath="/mnt/6c456fe5-0860-4e31-b184-d80b85b72fc1/qftrules.github.io/_docs/"
+echo "---
+layout: document
+image: /assets/images/3.jpg
+lien: ${collepath}${Filedate}${pdfName}
+student: 
+title: Semaine du lundi $NextMonday au vendredi $NextFriday
+type: programme_colle
+corrige: 
+theme: 
+deadline: 
+semaine: 
+summary: 
+---" > $mdpath$Filedate$mdName
+
 echo $Filedate$pdfName
+# echo $collepath$Filedate$mdName

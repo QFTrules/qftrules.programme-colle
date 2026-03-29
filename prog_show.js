@@ -5,6 +5,7 @@ var vscode = require('vscode');
 var child_process = require('child_process');
 const path = require('path');
 const TreeItem = require('./treeItem');
+const collePath = vscode.workspace.getConfiguration('programme-colle').get('collePath');
 // Object.defineProperty(exports, "__esModule", { value: true });
 
 // define the data providers for the programme de colle panel
@@ -78,7 +79,7 @@ class ProgShow {
 		});
 
 		// pdf du programme de colle
-		var programme_colle_pdf = child_process.execSync('find ~/Dropbox/CPGE/Physique/Exercices/Colles/PC/ -maxdepth 1 -type f -name "*_PC_Phy_colle.pdf"').toString().split('\n')[0];
+		var programme_colle_pdf = child_process.execSync('find' +  collePath + ' -maxdepth 1 -type f -name "*_PC_Phy_colle.pdf"').toString().split('\n')[0];
 		var programme_colle_pdf_basename = path.basename(programme_colle_pdf);
 		this.data.push(new TreeItem(programme_colle_pdf_basename, undefined, programme_colle_pdf, 'pdf', undefined));
 

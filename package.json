@@ -156,18 +156,23 @@
 			},
 			{
 				"command": "banque.copy",
-				"title": "Ajouter exercice",
-				"icon": "$(add)"
+				"title": "Copier-coller",
+				"icon": "$(copy)"
 			},
 			{
 				"command": "banque.source",
-				"title": "Ajouter source",
+				"title": "Copier-Coller",
+				"icon": "$(copy)"
+			},
+			{
+				"command": "banque.addexo",
+				"title": "Ajouter exercice",
 				"icon": "$(add)"
 			},
 			{
 				"command": "banque.open",
 				"title": "Ouvrir source",
-				"icon": "$(file-code)"
+				"icon": "$(code)"
 			},
 			{
 				"command": "banque.compile",
@@ -334,6 +339,11 @@
 					"command": "banque.open",
 					"when": "view == banque-exercices && viewItem == chapter",
 					"group": "inline@-1"
+				},
+				{
+					"command": "banque.addexo",
+					"when": "view == banque-exercices && viewItem == chapter",
+					"group": "inline@-2"
 				}
 			],
 			"view/title": [
@@ -400,6 +410,11 @@
 					"type": "string",
 					"default": "/home/eb/Dropbox/texmf/tex/latex/Preambles/",
 					"description": "Définit le chemin d'accès vers le préambule latex colle.sty."
+				},
+				"programme-colle.mdPath": {
+					"type": "string",
+					"default": "/home/eb/qftrules.github.io/_docs/",
+					"description": "Définit le chemin d'accès vers le dossier des fichiers markdown."
 				},
 				"programme-colle.pythonCommand": {
 					"type": "string",

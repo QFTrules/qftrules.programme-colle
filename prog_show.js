@@ -6,6 +6,7 @@ var child_process = require('child_process');
 const path = require('path');
 const TreeItem = require('./treeItem');
 const collePath = vscode.workspace.getConfiguration('programme-colle').get('collePath');
+const mdPath = vscode.workspace.getConfiguration('programme-colle').get('mdPath');
 // Object.defineProperty(exports, "__esModule", { value: true });
 
 // define the data providers for the programme de colle panel
@@ -79,9 +80,15 @@ class ProgShow {
 		});
 
 		// pdf du programme de colle
-		var programme_colle_pdf = child_process.execSync('find' +  collePath + ' -maxdepth 1 -type f -name "*_PC_Phy_colle.pdf"').toString().split('\n')[0];
+		var programme_colle_pdf = child_process.execSync('find ' +  collePath + ' -maxdepth 1 -type f -name "*_PC_Phy_colle.pdf"').toString().split('\n')[0];
 		var programme_colle_pdf_basename = path.basename(programme_colle_pdf);
 		this.data.push(new TreeItem(programme_colle_pdf_basename, undefined, programme_colle_pdf, 'pdf', undefined));
+
+		// md du programme de colle
+		var programme_colle_md = child_process.execSync('find ' +  
+			mdPath + ' -maxdepth 1 -type f -name "*_PC_Phy_colle.md"').toString().split('\n')[0];
+		var programme_colle_md_basename = path.basename(programme_colle_md);
+		this.data.push(new TreeItem(programme_colle_md_basename, undefined, programme_colle_md, 'md', undefined));
 
 		// define the event when tree data change
 		this._onDidChangeTreeData = new vscode.EventEmitter();
@@ -97,10 +104,16 @@ class ProgShow {
 			};
 		} else {
 			if (element.contextValue === 'latex') {
-				item.tooltip = "Modifier le fichier";
+				item.tooltip = "Modifier tex";
 				item.command = {
 					command: 'banque.fetch',
 					arguments: [element]
+				};
+			} else if (element.contextValue === 'md') {
+				item.tooltip = "Ouvrir markdown";
+				item.command = {
+					command: 'vscode.open',
+					arguments: [vscode.Uri.file(element.filePath), { viewColumn: vscode.ViewColumn.Beside }]
 				};
 			}
 		}

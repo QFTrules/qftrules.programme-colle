@@ -411,6 +411,11 @@
 					"default": "/home/eb/Dropbox/texmf/tex/latex/Preambles/",
 					"description": "Définit le chemin d'accès vers le préambule latex colle.sty."
 				},
+				"programme-colle.mdPath": {
+					"type": "string",
+					"default": "/home/eb/qftrules.github.io/_docs/",
+					"description": "Définit le chemin d'accès vers le dossier des fichiers markdown."
+				},
 				"programme-colle.pythonCommand": {
 					"type": "string",
 					"default": "/home/eb/anaconda3/bin/python3",

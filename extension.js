@@ -423,6 +423,14 @@ function activate(context) {
 		vscode.commands.executeCommand('vscode.open', vscode.Uri.file(pdfFile), { viewColumn: vscode.ViewColumn.Two });
 	});
 
+		// commande pour afficher md affiché dans le programme de colle
+	vscode.commands.registerCommand('programme.md', function (document) {
+		// define md file associated to latex document
+		const mdFile = document.filePath.replace(/\.[^/.]+$/, ".md");
+		// open the md file in vscode
+		vscode.commands.executeCommand('vscode.open', vscode.Uri.file(mdFile), { viewColumn: vscode.ViewColumn.Two });
+	});
+
 	// commande pour enlever une balise de programme de colle dans un fichier latex
 	let remove = vscode.commands.registerCommand('programme.remove', function (document) {
 		const text = fs.readFileSync(document.filePath, 'utf8');

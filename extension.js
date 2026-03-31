@@ -229,6 +229,40 @@ function activate(context) {
 		vscode.commands.executeCommand('vscode.open', vscode.Uri.file(document.filePath));
 	})
 
+	vscode.commands.registerCommand('banque.addexo', function (document) {
+		// open the latex document in vscode
+
+
+		vscode.commands.executeCommand('vscode.open', vscode.Uri.file(document.filePath)).then(() => {
+
+		const exo_begin = '%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n\\begin{' + exoenvi + '}[PC][1][colle]{'
+		const exercec_name = 'Nom de l\'exercice}';
+		const exo_end = '\\end{' + exoenvi +'}\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n';
+		let editor = vscode.window.activeTextEditor;
+		if (editor) {
+			// go to end of document
+			// editor.selection = new vscode.Selection(editor.document.lineCount, 0, editor.document.lineCount, 0);
+			vscode.commands.executeCommand('cursorBottom').then(() => {
+
+				editor.edit(editBuilder => {
+
+					editBuilder.insert(new vscode.Position(editor.document.lineCount, 0), `\n${exo_begin}${exercec_name}\n${exo_end}\n`);
+					
+					// find position of Nom de l'exercice and then highlight it
+					let document = editor.document;
+					var text = document.getText();
+					var position = text.indexOf(exercec_name);
+					var startPosition = document.positionAt(position);
+					var endPosition = document.positionAt(position + exercec_name.length);
+					const range = new vscode.Range(startPosition, endPosition);
+					editor.selection = new vscode.Selection(range.start, range.end);
+					editor.revealRange(range, vscode.TextEditorRevealType.InCenter);
+						})
+					});
+				}
+			})
+	})
+
 	// fetch a string in a latex file, like exercise name of balise
 	vscode.commands.registerCommand('banque.fetch', function (doc) {
 		vscode.commands.executeCommand('vscode.open', vscode.Uri.file(doc.filePath), { viewColumn: vscode.ViewColumn.One }).then(() => {

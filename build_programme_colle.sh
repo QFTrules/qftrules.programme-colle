@@ -197,7 +197,7 @@ type: programme_colle
 corrige: 
 theme: 
 deadline: 
-semaine: 
+semaine: $NextMonday
 summary: 
 ---" > $mdpath$Filedate$mdName
 

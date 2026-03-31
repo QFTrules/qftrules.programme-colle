@@ -43,13 +43,13 @@ with open(filename, 'r') as f:
             if '\\ProgrammeColle' in line:
                 continue
             if '\\begin{quest}' in line and not '%' in line:
-                g.write(line)
+                # g.write(line)
                 quest = True
                 continue
                 # i=line.index('[')
                 # points.append(int(line[i+1:i+2]))
             elif '\\end{quest}'  in line and not '%' in line:
-                g.write(line)
+                # g.write(line)
                 quest = False
                 continue
                 # points.append(1)
@@ -63,8 +63,8 @@ with open(filename, 'r') as f:
                 continue
             # if '\\Entete' in line:
                 # g.write('{\\textcolor{gray}Version corrigée du ' + str(date) + '}\n')
-            if '\\section' in line or '\\subsection' in line or '\\subsubsection' in line or quest :
-                g.write(line)
+            # if '\\section' in line or '\\subsection' in line or '\\subsubsection' in line or quest :
+                # g.write(line)
             # if '\\sol{' in line and not '%' in line:
             #     to_write = True
             # if to_write:

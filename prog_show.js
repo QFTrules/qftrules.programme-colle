@@ -104,10 +104,16 @@ class ProgShow {
 			};
 		} else {
 			if (element.contextValue === 'latex') {
-				item.tooltip = "Modifier le fichier";
+				item.tooltip = "Modifier tex";
 				item.command = {
 					command: 'banque.fetch',
 					arguments: [element]
+				};
+			} else if (element.contextValue === 'md') {
+				item.tooltip = "Ouvrir markdown";
+				item.command = {
+					command: 'vscode.open',
+					arguments: [vscode.Uri.file(element.filePath), { viewColumn: vscode.ViewColumn.Beside }]
 				};
 			}
 		}

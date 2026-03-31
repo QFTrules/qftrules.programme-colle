@@ -145,7 +145,13 @@ var TreeItem = /** @class */ (function (_super) {
 											_this.iconPath = {
 												light: path.join(__dirname, 'images', 'file_type_pdf.svg'),
 												dark: path.join(__dirname, 'images', 'file_type_pdf.svg')
-											};
+											}}
+											 else {if (contextValue === 'md') {
+												_this.iconPath = {
+													light: path.join(__dirname, 'images', 'file_type_markdown.svg'),
+													dark: path.join(__dirname, 'images', 'file_type_markdown.svg')
+												};
+											}
 										}
 									}
 								}

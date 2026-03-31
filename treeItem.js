@@ -49,7 +49,7 @@ var TreeItem = /** @class */ (function (_super) {
 			}
 			
 			//  do not show the small arrow indicating the collapsed state for leaves of the tree
-			if (_this.contextValue === 'file' || _this.contextValue === 'pdf' || _this.contextValue === 'latex') {
+			if (_this.contextValue === 'file' || _this.contextValue === 'pdf' || _this.contextValue === 'latex' || _this.contextValue === 'md') {
 				_this.collapsibleState = vscode.TreeItemCollapsibleState.None;
 			}
 			

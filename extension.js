@@ -175,6 +175,7 @@ function activate(context) {
 	const pythonCommand = vscode.workspace.getConfiguration('programme-colle').get('pythonCommand');
 	const programmeBalise = vscode.workspace.getConfiguration('programme-colle').get('programmeBalise');
 	const exoenvi = vscode.workspace.getConfiguration('banque-exercices').get('exerciceEnvironment');
+	const explorerCommand = vscode.workspace.getConfiguration('banque-exercices').get('explorerCommand');
 	// const mathpixCommand = vscode.workspace.getConfiguration('mathpix-pdf').get('mpxCommand');
 	// const texPath = vscode.workspace.getConfiguration('mathpix-pdf').get('texPath');
 	// const texArchives = vscode.workspace.getConfiguration('mathpix-pdf').get('texArchives');
@@ -229,38 +230,47 @@ function activate(context) {
 		vscode.commands.executeCommand('vscode.open', vscode.Uri.file(document.filePath));
 	})
 
+	// open the theme folder with latex	 chapter exercices in explorer
+	vscode.commands.registerCommand('banque.folder', function (document) {
+		// open the latex document in vscode
+		// vscode.window.showInformationMessage('Ouverture du dossier de ' + document.label + ' (' + document.filePath  + ')');
+		const folderPath = document.filePath.replace(/\/[^\/]*$/, '/');
+		child_process.exec(`${explorerCommand} ${folderPath}`);
+	})
+
 	vscode.commands.registerCommand('banque.addexo', function (document) {
 		// open the latex document in vscode
-
-
 		vscode.commands.executeCommand('vscode.open', vscode.Uri.file(document.filePath)).then(() => {
 
-		const exo_begin = '%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n\\begin{' + exoenvi + '}[PC][1][colle]{'
+		// define the text to insert at the end of the file, with the name of the exercise to edit and then highlight it
+		const exo_begin = '\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n\\begin{' + exoenvi + '}[PC][1][colle]{'
 		const exercec_name = 'Nom de l\'exercice}';
 		const exo_end = '\\end{' + exoenvi +'}\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n';
+
+		// get the active text editor and insert the text at the end of the file
 		let editor = vscode.window.activeTextEditor;
 		if (editor) {
-			// go to end of document
-			// editor.selection = new vscode.Selection(editor.document.lineCount, 0, editor.document.lineCount, 0);
+
+			// move the cursor to the end of the file
 			vscode.commands.executeCommand('cursorBottom').then(() => {
 
 				editor.edit(editBuilder => {
-
 					editBuilder.insert(new vscode.Position(editor.document.lineCount, 0), `\n${exo_begin}${exercec_name}\n${exo_end}\n`);
-					
-					// find position of Nom de l'exercice and then highlight it
-					let document = editor.document;
-					var text = document.getText();
-					var position = text.indexOf(exercec_name);
-					var startPosition = document.positionAt(position);
-					var endPosition = document.positionAt(position + exercec_name.length);
-					const range = new vscode.Range(startPosition, endPosition);
-					editor.selection = new vscode.Selection(range.start, range.end);
-					editor.revealRange(range, vscode.TextEditorRevealType.InCenter);
-						})
-					});
-				}
+				}).then(() => {
+					// give the editor time to refresh before selecting text
+						// find position of Nom de l'exercice and then highlight it
+						let document = editor.document;
+						var text = document.getText();
+						var position = text.lastIndexOf(exercec_name);
+						var startPosition = document.positionAt(position);
+						var endPosition = document.positionAt(position + exercec_name.length);
+						const range = new vscode.Range(startPosition, endPosition);
+						editor.selection = new vscode.Selection(range.start, range.end);
+						editor.revealRange(range, vscode.TextEditorRevealType.InCenter);
+				});
 			})
+			}
+		})
 	})
 
 	// fetch a string in a latex file, like exercise name of balise
@@ -413,6 +423,11 @@ function activate(context) {
 
 		// change icon
 		vscode.commands.executeCommand('setContext', 'static', true);
+	});
+
+	// commande pour réduire tous les éléments du programme de colle dans le tree view
+	vscode.commands.registerCommand('programme.collapse', () => {
+		vscode.commands.executeCommand("workbench.actions.treeView.programme-colle.collapseAll");
 	});
 
 	// commande pour afficher pdf affiché dans le programme de colle

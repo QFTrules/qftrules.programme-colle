@@ -50,6 +50,7 @@ function generateTreeItems() {
 
 	return themes_list.map(function (theme) {
 		// vscode.window.showInformationMessage(theme);
+		const folderPath = path.join(texPath, theme.trim(), '/');
 
 		// get the list of latex files for the theme 
 		var latex_files = child_process.execSync('find ' + texPath  + theme + ' -maxdepth 1 -type f -name "*.tex"').toString().split('\n');
@@ -101,7 +102,7 @@ function generateTreeItems() {
 					theme.toUpperCase() // theme
 				);
 			}),
-			undefined, // filePath
+			folderPath, // filePath
 			'folder',  // contextValue
 			undefined, // collapsed
 			undefined, // typeExo

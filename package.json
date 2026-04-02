@@ -165,6 +165,11 @@
 				"icon": "$(copy)"
 			},
 			{
+				"command": "banque.folder",
+				"title": "Ouvrir dossier",
+				"icon": "$(folder-opened)"
+			},
+			{
 				"command": "banque.addexo",
 				"title": "Ajouter exercice",
 				"icon": "$(add)"
@@ -194,8 +199,11 @@
 				"title": "Réduire",
 				"icon": "$(collapse-all)"
 			},
-
-
+			{
+				"command": "programme.collapse",
+				"title": "Réduire",
+				"icon": "$(collapse-all)"
+			},
 			{
 				"command": "suggestions.go",
 				"title": "Aller aux suggestions",
@@ -336,6 +344,11 @@
 					"group": "inline"
 				},
 				{
+					"command": "banque.folder",
+					"when": "view == banque-exercices && viewItem == folder",
+					"group": "inline@-1"
+				},
+				{
 					"command": "banque.open",
 					"when": "view == banque-exercices && viewItem == chapter",
 					"group": "inline@-1"
@@ -384,8 +397,11 @@
 				"when": "view == banque-exercices",
 				"group": "navigation@5"
 				},
-
-
+				{
+					"command": "programme.collapse",
+					"when": "view == programme-colle",
+					"group": "navigation@5"
+				},
 				{
 					"command": "suggestions.refresh",
 					"when": "view == suggestions",
@@ -430,6 +446,11 @@
 					"type": "string",
 					"default": "exo",
 					"description": "Nom de l'environnement latex utilisé pour les exercices. La commande `banque.compile` cherche la chaîne de caractères `\\begin{nom_de_l'environnement}{nom_de_l'exercice}` pour identifier les exercices. L'environnement peut comprendre des arguments optionnels, placés entre crochets [...]."
+				},
+				"banque-exercices.explorerCommand": {
+					"type": "string",
+					"default": "thunar",
+					"description": "Commande à utiliser pour ouvrir le dossier (thème) contenant les fichiers latex (chapitres) des exercices.  Cette commande correspond à la commande d'explorateur de fichiers du système d'exploitation, e.g. nautilus sous ubuntu, thunar sous linux mint xfce, open sous macOS, explorer sous windows, etc."
 				},
 				"mathpix-pdf.texArchives": {
 					"type": "string",

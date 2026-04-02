@@ -87,6 +87,12 @@ var TreeItem = /** @class */ (function (_super) {
 										};
 									}
 									else {
+										if (typeExo.includes('exp')) {
+										_this.iconPath = {
+											light: path.join(__dirname, 'images', 'flask_light.png'),
+											dark: path.join(__dirname, 'images', 'flask_dark.png')
+										};
+									}
 									}
 								}
 							}

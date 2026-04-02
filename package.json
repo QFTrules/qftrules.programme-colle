@@ -37,7 +37,7 @@
 				{
 					"id": "package-explorer",
 					"title": "Physique",
-					"icon": "images/atom2.png"
+					"icon": "images/graduation-cap-solid_dark.png"
 				}
 			]
 		},
@@ -172,7 +172,7 @@
 			{
 				"command": "banque.open",
 				"title": "Ouvrir source",
-				"icon": "$(code)"
+				"icon": "$(file-code)"
 			},
 			{
 				"command": "banque.compile",

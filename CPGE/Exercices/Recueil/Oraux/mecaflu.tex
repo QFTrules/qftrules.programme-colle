@@ -1,0 +1,142 @@
+% !TEX root = /home/eb/.vscode/extensions/qftrules.programme-colle/tmp/Exercice.tex
+\begin{exo}[PC][3][oral]{Vidange d'un liquide visqueux/}
+  % \begin{center}
+  % \includegraphics[width=\textwidth]{2023_03_23_1d13bbb3e942933df844g-1}
+  % \end{center}
+  Le réservoir I est rempli d'un liquide visqueux sur une hauteur $h_0$. La conduite horizontale et le réservoir II sont vides avant l'ouverture de la vanne. On ouvre la vanne en $O$ à l'instant $t=0$.
+
+  \begin{fig}[]
+    \centering
+    \includegraphics[width=0.4\textwidth]{2023_03_23_1d13bbb3e942933df844g-1.jpg}
+    % \capt{}
+  \end{fig}
+
+  On considère que $R \gg a$, le fluide est incompressible, et la conduite est horizontale d'axe $(Ox)$.   On donne le laplacien en cylindrique, pour une fonction vectorielle de la seule variable $r$ :
+  $
+  \Delta (v \ex)=\frac{1}{r} \frac{\partial}{\partial r}\left(r \frac{\partial v}{\partial r}\right)\ex.
+  $
+
+  \begin{quest}
+    \item Déterminer le profil du champ de vitesse eulérien dans la conduite.
+\sol{
+Navier-Stokes en régime quasi-stationnaire :
+$$
+\rho \Dt{\Vec{v}} \simeq \rho \Vec{v}\ps\grad \Vec{v} =  - \rho \grad p + \eta \Delta \Vec{v},
+$$
+avec $\Vec{v} = v(r)\ex$ et $p=p(x)$ On en déduit par projection
+$$
+\dr{p}{x} = \nu \frac{1}{r} \frac{\partial}{\partial r}\left(r \frac{\partial v}{\partial r}\right),
+$$
+avec $\nu=\eta/\rho$. Les deux termes dépendent de variables différentes, donc sont constants. Ainsi, $p(x) = \Delta p \frac{x}{L} + p_I$ avec $\Delta p = p_{II}-p_I < 0$. De plus,
+$$
+\frac{1}{r} \frac{\partial}{\partial r}\left(r \frac{\partial v}{\partial r}\right) = \frac{\Delta p}{\nu} \Rar  r \frac{\partial v}{\partial r} = \frac{r^2}{2} \frac{\Delta p}{\nu} + B \Rar v(r) = \frac{r^2}{4} \frac{\Delta p}{\nu} + B \ln r + C.
+$$
+Pour éviter une divergence non physique, $B=0$. Par continuité en $r=a$, on a $v(r=a) = 0 = C + \frac{\Delta p}{\nu} \frac{a^2}{4}$ et donc
+$$
+v(r) = \frac{\Delta p}{4\nu}(r^2-a^2).
+$$
+Il s'agit d'un écoulement de Poiseuille.
+}
+    \item En déduire le débit volumique $\DV$ dans la conduite.
+    \sol{
+    $$\DV = 2\pi \int_0^a v(r) r \d r = \frac{\pi \Delta p}{2\nu} \int_0^a (r^3-a^3r)\d r = \frac{\pi \Delta p}{2\nu} \left( \frac{a^4}{4} - \frac{a^4}{2} \right) = -\frac{\pi \Delta p a^4}{8\nu}$$.
+    }
+
+    \item Déterminer la hauteur $h$ du fluide dans le réservoir II après son remplissage.
+    \sol{
+    Après remplissage, à l'équilibre, en négligeant le volume dans la conduite (car $R\gg a$), on a $h_II=h_I = \frac{h_0}{2}$.
+    }
+
+    \item Calculer le temps nécessaire pour remplir le réservoir II.
+    \sol{
+    Il suffit d'exprimer la différence de pression entre les réservoirs. La loi de l'hydrostatique donne $\Delta p = \rho g (h_II-h_I)$.
+
+     On veut trouver l'équation différentielle vérifiée par $h_I(t)$. Par conservation du volume, on sait que $h_II = h_0-h_I$.
+
+    Par définition du débit volumique,
+    $
+    \DV = \frac{\d V}{\d t} = \frac{\pi a^4}{8\nu} (h_I-h_II) = \frac{\pi a^4}{8\nu} (2h_I-h_0)
+    $,
+    avec $V = h_I \pi R^2$ le volume d’eau dans le récipient au-dessus de l’orifice.
+    Donc,
+    $$
+    \pi R^2 \dd{h_I}{t} =  \frac{\pi a^4}{8\nu} (2h_I-h_0) \Rar  \dd{h_I}{t} - \frac{a^4}{4R^2\nu} h_I = -\frac{a^4}{8R^2\nu}h_0.
+    $$
+    On résout et on obtient $h_I(t) = \frac{h_0}{2} + A e^{-t/\tau}$ avec $\tau = \frac{4R^2\nu}{a^4}$. Condition initiale : $h_I(t=0) = h_0 = \frac{h_0}{2} + A$ donc $A=-\frac{h_0}{2}$ et
+    $$
+    h_I(t) = \frac{h_0}{2}(1+e^{-t/\tau})
+    $$
+    Le réservoir II met un temps infini à se remplir ! En réalité, on a négligé la taille de la conduite, et le régime quasi-stationnaire n'est pas valable en fin de vidange.
+    }
+
+    \item Au bout de combien de temps le réservoir II est-il rempli à $95 \%$ ?
+    \sol{
+    Ce temps correspond à $2\tau$.
+    }
+
+  \end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{exo}[PC][3][oral]{Vidange d'un liquide visqueux}
+  % \begin{center}
+  % \includegraphics[width=\textwidth]{2023_03_23_1d13bbb3e942933df844g-1}
+  % \end{center}
+  Le réservoir I est rempli d'un liquide visqueux de viscosité dynamique $\eta$ et de masse volumique $\rho$ sur une hauteur initiale $h_0$. La conduite horizontale, de rayon $a$, et le réservoir II sont vides avant l'ouverture de la vanne. Les deux réservoirs sont de rayon $R$. On ouvre la vanne en $\rm O$ à l'instant $t=0$. En précisant les hypothèses, déterminer l'expression de la hauteur $h_I(t)$ du fluide dans le réservoir I à tout instant $t$.
+
+  \begin{fig}[]
+    \centering
+    \includegraphics[width=0.4\textwidth]{2023_03_23_1d13bbb3e942933df844g-1.jpg}
+    % \capt{}
+  \end{fig}
+
+  % On considère que $R \gg a$, le fluide est incompressible, et la conduite est horizontale d'axe $(Ox)$.  
+  \textsc{Données}.  On donne le laplacien en cylindrique, pour une fonction vectorielle de la seule variable $r$ :
+  $$
+  \Delta (v \ex)=\frac{1}{r} \frac{\partial}{\partial r}\left(r \frac{\partial v}{\partial r}\right)\ex.
+  $$
+\sol{
+Navier-Stokes en régime quasi-stationnaire :
+$$
+\rho \Dt{\Vec{v}} \simeq \rho \Vec{v}\ps\grad \Vec{v} =  - \rho \grad p + \eta \Delta \Vec{v},
+$$
+avec $\Vec{v} = v(r)\ex$ et $p=p(x)$ On en déduit par projection
+$$
+\dr{p}{x} = \nu \frac{1}{r} \frac{\partial}{\partial r}\left(r \frac{\partial v}{\partial r}\right),
+$$
+avec $\nu=\eta/\rho$. Les deux termes dépendent de variables différentes, donc sont constants. Ainsi, $p(x) = \Delta p \frac{x}{L} + p_I$ avec $\Delta p = p_{II}-p_I < 0$. De plus,
+$$
+\frac{1}{r} \frac{\partial}{\partial r}\left(r \frac{\partial v}{\partial r}\right) = \frac{\Delta p}{\nu} \Rar  r \frac{\partial v}{\partial r} = \frac{r^2}{2} \frac{\Delta p}{\nu} + B \Rar v(r) = \frac{r^2}{4} \frac{\Delta p}{\nu} + B \ln r + C.
+$$
+Pour éviter une divergence non physique, $B=0$. Par continuité en $r=a$, on a $v(r=a) = 0 = C + \frac{\Delta p}{\nu} \frac{a^2}{4}$ et donc
+$$
+v(r) = \frac{\Delta p}{4\nu}(r^2-a^2).
+$$
+Il s'agit d'un écoulement de Poiseuille.
+    $$\DV = 2\pi \int_0^a v(r) r \d r = \frac{\pi \Delta p}{2\nu} \int_0^a (r^3-a^3r)\d r = \frac{\pi \Delta p}{2\nu} \left( \frac{a^4}{4} - \frac{a^4}{2} \right) = -\frac{\pi \Delta p a^4}{8\nu}$$.
+
+    Après remplissage, à l'équilibre, en négligeant le volume dans la conduite (car $R\gg a$), on a $h_II=h_I = \frac{h_0}{2}$.
+
+    Il suffit d'exprimer la différence de pression entre les réservoirs. La loi de l'hydrostatique donne $\Delta p = \rho g (h_II-h_I)$.
+
+     On veut trouver l'équation différentielle vérifiée par $h_I(t)$. Par conservation du volume, on sait que $h_II = h_0-h_I$.
+
+    Par définition du débit volumique,
+    $
+    \DV = \frac{\d V}{\d t} = \frac{\pi a^4}{8\nu} (h_I-h_II) = \frac{\pi a^4}{8\nu} (2h_I-h_0)
+    $,
+    avec $V = h_I \pi R^2$ le volume d’eau dans le récipient au-dessus de l’orifice.
+    Donc,
+    $$
+    \pi R^2 \dd{h_I}{t} =  \frac{\pi a^4}{8\nu} (2h_I-h_0) \Rar  \dd{h_I}{t} - \frac{a^4}{4R^2\nu} h_I = -\frac{a^4}{8R^2\nu}h_0.
+    $$
+    On résout et on obtient $h_I(t) = \frac{h_0}{2} + A e^{-t/\tau}$ avec $\tau = \frac{4R^2\nu}{a^4}$. Condition initiale : $h_I(t=0) = h_0 = \frac{h_0}{2} + A$ donc $A=-\frac{h_0}{2}$ et
+    $$
+    h_I(t) = \frac{h_0}{2}(1+e^{-t/\tau})
+    $$
+    Le réservoir II met un temps infini à se remplir ! En réalité, on a négligé la taille de la conduite, et le régime quasi-stationnaire n'est pas valable en fin de vidange.
+
+    Ce temps correspond à $2\tau$.
+}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

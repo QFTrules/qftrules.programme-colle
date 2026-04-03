@@ -1,0 +1,23 @@
+\input{tikz.tex}
+\begin{document}
+    \begin{tikzpicture}
+        \def\valuetau{1.5}
+        \def\Vi{1.5}
+        % axes t et V
+        \draw[->] (0,0) -- (0,3) node[above] {$V$};
+        \draw[->] (-0.5,0) -- (5,0) node[right] {$t$};
+        % entrée Ve en rouge
+        \draw[red,thick] (-0.5,0) --++(0.5,0) -- ++ (0,\Vi) -- ++ (2*\valuetau,0) -- ++ (0,-\Vi) -- ++ (0.5,0) ; 
+        % \draw[red,thick] (0.5,\Vi) node[above] {$V_e$};
+        % sortie Vc en bleu
+        \draw[blue,thick] (-0.5,0)  -- ++ (5.5,0); 
+        % \draw[blue,thick] (\valuetau,1)  node[right] {$V_s$};
+        % ticks on x axis at tau and 2 tau
+        \draw[thick] (\valuetau,0) --++(0,-0.2) node[below] {$\tau$};
+        \draw[thick] (2*\valuetau,0) --++(0,-0.2) node[below] {$2\tau$};
+
+        % legend with red and blue
+        \draw[red,thick] (1,2.5) --++(0.5,0) node[right] {$V_e$};
+        \draw[blue,thick] (1,3) --++(0.5,0) node[right] {$V_s$};
+    \end{tikzpicture}
+\end{document}

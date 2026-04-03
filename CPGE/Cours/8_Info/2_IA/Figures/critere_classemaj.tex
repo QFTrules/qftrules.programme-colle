@@ -1,0 +1,14 @@
+\input{tikz.tex}
+\begin{document}
+\begin{tikzpicture}[scale=5]
+    \draw (0.55,0.55) circle (0.25);
+    \draw[->,>=latex] (0,0) -- (0,1.5/1.618) node[above] {\contour{white}{$s$}};
+    \draw[->,>=latex] (0,0) -- (1.5,0) node[right] {\contour{white}{$c$}};
+    \draw[fill=blue] (0.8,0.5) circle (0.05) node[right=0.2] {\contour{white}{Article 1}};
+    \draw[fill=red] (0.2,0.9) circle (0.05) node[above right=0.2] {\contour{white}{Article 2}};
+    \draw[fill=blue] (0.6,0.3) circle (0.05) node[above right=0.2] {\contour{white}{Article 3}};
+    \draw[fill=red] (0.4,0.7) circle (0.05) node[above right=0.2] {\contour{white}{Article 4}};
+    \draw[fill=blue] (0.9,0.2) circle (0.05) node[right=0.2] {\contour{white}{Article 5}};
+    \draw[fill=green] (0.55,0.55) circle (0.05) node[left=0.2] {\contour{white}{Article 6}};
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,86 @@
+% !TEX encoding = UTF-8 Unicode
+% experiénce des trous d'young
+% © J.Roussel 2017-10-10
+%-------------------------------------------
+\documentclass[11pt]{article}
+\input{/home/eb/Dropbox/texmf/tex/latex/Preambles/styles_ondes.tex}
+\begin{document}
+
+ \pgfplotsset{
+    colormap={redwhite}{rgb255(0cm)=(255,0,0); rgb255(1cm)=(0,0,0)}}
+% \begin{tikzpicture}[]
+% \begin{axis}[
+% 	name=plot1,
+%    % colormap/blackwhite,
+%    colormap/redwhite,
+%    point meta min=0,
+%    point meta max=2,
+%    view={0}{90},		%vue de dessus
+%    width=5cm, height=5cm,	%je ne sais pas trop
+%    xmin=-5, xmax=5,
+%    ymin=-5, ymax=5, 		%les limites des axes
+%    samples=50,			%le nombre d'echantillons
+%    hide axis
+%    ]			%cache les axes
+%    \addplot3[domain=-5:5, surf,shader=interp]{1+cos(360*y)};
+%    \draw[white,->](axis cs:0,0,0)--(axis cs:1,0,0)node[right]{$y$};
+%    \draw[white,->](axis cs:0,0,0)--(axis cs:0,1,0)node[above]{$x$};
+% \end{axis}
+% \begin{axis}[
+% 	% title={$\gamma=1$},
+% 	name=plot2,at={($(plot1.east)$)},anchor=west,
+% 	width=5cm,
+% 	height=2cm,
+% 	xmin=-5, xmax=5,
+% 	ymin=-2.5,ymax=2.5,
+% 	samples=50,
+% 	hide axis,
+% 	xtick=\empty,
+% 	ytick={1},
+% 	yticklabels={},
+% 	grid=major,
+% 	rotate=90,
+% 	]
+%    \addplot[domain=-5:5,samples=100]{1+cos(360*x)};
+%    \draw[|<->|] (axis cs:0,-.5)--(axis cs:1,-.5)node[midway,right]{$i$};
+% \end{axis}
+% \end{tikzpicture}
+		\begin{tikzpicture}[]
+		\begin{axis}[
+			name=plot1,
+		   colormap/redwhite,
+		   point meta min=0,
+		   point meta max=2,
+		   view={0}{90},		%vue de dessus
+		   width=5cm, height=4cm,	%je ne sais pas trop
+		   xmin=-5, xmax=5,
+		   ymin=-5, ymax=5, 		%les limites des axes
+		   samples=50,			%le nombre d'echantillons
+		   hide axis
+		   ]			%cache les axes
+		   \addplot3[domain=-5:5, surf,shader=interp]{1+cos(360*y)};
+		   \draw[white,->](axis cs:0,0,0)--(axis cs:1,0,0)node[right]{$y$};
+		   \draw[white,->](axis cs:0,0,0)--(axis cs:0,1,0)node[above]{$x$};
+		\end{axis}
+		\begin{axis}[
+			% title={$\gamma=1$},
+			name=plot2,at={($(plot1.east)$)},anchor=west,	
+			width=4cm,
+			height=2cm,
+			xmin=-5, xmax=5,
+			% ymin=-2.5,ymax=2.5,
+			samples=50,
+			hide axis,
+			xtick=\empty,
+			ytick={1},
+			yticklabels={},
+			grid=major,
+			rotate=-90,
+			clip=false,
+			]
+		   \addplot[domain=-5:5,samples=100]{1+cos(360*x)};
+		   \draw[|<->|] (axis cs:0,2.5)--(axis cs:1,2.5)node[midway,right]{$i$};
+		\end{axis}
+		\end{tikzpicture}
+
+\end{document}

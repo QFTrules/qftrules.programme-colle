@@ -1,0 +1,13 @@
+\begin{tikzpicture}[scale=0.7]
+		\draw[->,>=latex] (0,0) -- (0,3) node[above]{$y$};
+		\draw[->,>=latex] (0,0) -- (6,0) node[right]{$x$};
+		\draw (8*0.7,3*0.7) -- (0,0) ;
+		\draw[->,>=latex] (2,0) arc (0:20:2) node[midway,right]{$\alpha$};
+%		\draw[->,thick,red] (5,3) -- ($(5,3)+(30:1)$) node[right]{$\overrightarrow{e_r}$};
+%		\draw[->,thick,red] (5,3) -- ($(5,3)+(120:1)$) node[above]{$\overrightarrow{e_\theta}$};
+		\draw[->,thick,>=latex] (0,0) -- ($(0,0)+(20:1)$) node at (-0.1,-.4) {$\vv{e_{x'}}$};
+		\fill[color=\JRLblueF] (0,.3) circle(.3);
+		\fill[color=\JRLred] ($(0,.3)+(20.6:4)$) circle(.3);
+		\draw[->,thick,>=latex,] ($(0,.3)+(20.6:4)$) -- ($(0,.3)+(20.6:4.8)$) node[above]{$\vv{v_B}$};
+		\draw[->,thick,>=latex] (0,.3) -- ($(0,.3)+(20:.8)$) node[above]{$\overrightarrow{v_A}$};
+\end{tikzpicture}

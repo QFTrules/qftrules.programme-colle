@@ -1,0 +1,39 @@
+\input{tikz.tex}
+\begin{document}
+\begin{tikzpicture}[scale=1.5]
+
+% \usetikzlibrary{calc}
+
+\coordinate (C) at (-3,0);
+\coordinate (A) at (1,0);
+\coordinate (Q) at (-1,0);
+\coordinate (O) at (0,0);
+\coordinate (E) at (3,0);
+\coordinate (F) at (-1.5,0);
+
+\draw[dashed] (F) -- (E);
+
+% L1
+\lens[$(\mc{L}_2)$]{(O)}{1}
+% center of lens
+\coordinate (L1) at (0,0);
+\point[above right=0.1]{(L1)}{$\rm O$};
+
+% fente
+% \draw[JoliRouge] (F)  -- (L1) -- (E);
+% \draw[JoliRouge] (F)  -- (L2) -- (E);
+
+% \point[left=0.2]{(F)}{$A$}
+\obj[$\rm A$]{(F)}{0.5}
+% \point[right=0.2]{(E)}{$A’$}
+\img[$\rm A’$]{(E)}{-1}
+
+\point[below=0.2]{(Q)}{$F$}
+\point[above=0.2]{(A)}{$F’$}
+
+\draw[JoliRouge] (B) -- ++ (1.5,0) -- (A) -- (Bp);
+\draw[JoliRouge] (B) -- (O) -- (Bp);
+
+
+\end{tikzpicture}
+\end{document}

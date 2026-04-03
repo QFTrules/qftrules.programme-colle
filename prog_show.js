@@ -5,6 +5,7 @@ var vscode = require('vscode');
 var child_process = require('child_process');
 const path = require('path');
 const TreeItem = require('./treeItem');
+const cpgePath = vscode.workspace.getConfiguration('programme-colle').get('cpgePath');
 const collePath = vscode.workspace.getConfiguration('programme-colle').get('collePath');
 const mdPath = vscode.workspace.getConfiguration('programme-colle').get('mdPath');
 // Object.defineProperty(exports, "__esModule", { value: true });
@@ -23,7 +24,7 @@ class ProgShow {
 
 		// Decompose the output string into a list of words
 		// var output = show_programme_colle();
-		var output = child_process.execSync('bash ' + extensionDir + '/show_programme_colle_java.sh').toString();
+		var output = child_process.execSync('bash ' + extensionDir + '/show_programme_colle_java.sh ' + cpgePath).toString();
 		var words = output.split(':');
 		// remove the first element of the words array
 		words.shift();
@@ -80,6 +81,7 @@ class ProgShow {
 		});
 
 		// pdf du programme de colle
+		vscode.window.showInformationMessage('Recherche du programme de colle en cours...' + collePath);
 		var programme_colle_pdf = child_process.execSync('find ' +  collePath + ' -maxdepth 1 -type f -name "*_PC_Phy_colle.pdf"').toString().split('\n')[0];
 		var programme_colle_pdf_basename = path.basename(programme_colle_pdf);
 		this.data.push(new TreeItem(programme_colle_pdf_basename, undefined, programme_colle_pdf, 'pdf', undefined));

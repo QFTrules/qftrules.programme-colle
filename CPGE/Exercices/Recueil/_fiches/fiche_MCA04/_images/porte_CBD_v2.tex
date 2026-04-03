@@ -1,0 +1,32 @@
+%\usepackage{tikz-3dplot}
+%
+%\begin{document}
+
+\tdplotsetmaincoords{70}{110}
+\begin{tikzpicture}[tdplot_main_coords]
+  \pgfmathsetmacro{\L}{3}
+  \pgfmathsetmacro{\X}{2}
+  \pgfmathsetmacro{\DX}{0.2}
+  \pgfmathsetmacro{\E}{0.3}
+  \pgfmathsetmacro{\H}{6}
+
+  \draw [->, ultra thick] (0, -0.4, 0) -- (0, \L+1, 0) node [above] {$x$};
+  \draw [->, ultra thick] (0, 0, -0.5) -- (0, 0, \H+1) node [left] {$z$} ;
+  \filldraw [black] (0,0,0) circle (1pt) ;
+%  \draw[fill=gray, draw=black] (0,0,0) -- (\E,0,0) -- (\E,0,\H) -- (0,0,\H) -- cycle;
+  \begin{scope}[shift={(-\E,0,0)}]
+	\draw[fill=gray, draw=black] (0,0,0) -- (0,0,\H) -- (0,\L,\H) -- (0,\L,0) -- cycle;
+	\draw[fill=gray, draw=black] (0,0,\H) -- (\E,0,\H) -- (\E,\L,\H) -- (0,\L,\H) -- cycle;
+	\draw[fill=gray, draw=black] (\E,0,\H) -- (\E,0,0) -- (\E,\L,0) -- (\E,\L,\H) -- cycle;
+	\draw[fill=gray, draw=black] (\E,\L,0) -- (0,\L,0) -- (0,\L,\H) -- (\E,\L,\H) -- cycle;
+	\draw (\E, \X, 0) -- (\E, \X, \H) -- (0, \X, \H) ;
+	\draw (\E, \X+\DX, 0) -- (\E, \X+\DX, \H) -- (0, \X+\DX, \H) ;
+	\draw [<->] (\E, \X, -0.2) -- (\E, \X+\DX, -0.2) node [pos=0.5,below] {$\mathrm{d}x$} ;
+	\draw [<->] (\E, 0, -0.7) -- (\E, \L, -0.7) node [pos=0.5,below] {$L$} ;
+  \end{scope}
+  \draw [<->] (0, -0.5, 0) -- (0, -0.5, \H) node [pos=0.5, left] {$h$} ;
+  \filldraw (0, 0, 0) circle (2pt) node [below left] {$\mathrm{O}$} ;
+\end{tikzpicture}
+
+
+%\end{document}

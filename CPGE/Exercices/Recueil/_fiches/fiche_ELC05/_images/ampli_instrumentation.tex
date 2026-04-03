@@ -1,0 +1,17 @@
+\begin{tikzpicture}
+  \ctikzset{tripoles/en amp/input height=0.45}
+  \draw (0,0) node [en amp] (A1){};
+  \draw (0,4.5) node [en amp, noinv input up] (A2){};
+  \draw (6,2.25) node [en amp] (A3){};
+  \draw (A3.-) to [short, *-] ++(0,1.5) coordinate (tmp) to [R = \(R_4\)] (tmp-|A3.out) -- (A3.out);
+  \draw (A1.out) to [R, l_= \(R_7\), *-*] ++(0,1.5) coordinate (t1) to [R, l_= \(R_5\), -*] ++(0,1.5) coordinate (t2) to [R, l_=\(R_6\), -*] (A2.out);
+  \draw (t1) -| (A1.-) (t2) -| (A2.-);
+  \draw (A1.out) to [R,l_= \(R_1\)] ++(3,0)|-(A3.+) (A2.out) to [R,l= \(R_3\)] ++(3,0)|-(A3.-) (A3.+) to [R, l = \(R_2\), *-] ++(0,-3) node [eground]{};
+  \draw (A3.out) to[short, *-*] ++(1,0) node (s3){} (A1.+) to [short, -*] ++(-.5,0) node (e1){} (A2.+) to [short, -*]++(-.5,0) node (e2){};
+  \draw [latex-] (s3) --++(0,-3) coordinate (tmp) node [midway, left]{\(V_s\)};
+  \draw (tmp) node [eground]{};
+  \draw [latex-] (e1) --++(0,-1.5) coordinate (tmp) node [midway, left]{\(V_1\)};
+  \draw (tmp) node [eground]{};
+  \draw [latex-] (e2) --++(0,-1.5) coordinate (tmp) node [midway, left]{\(V_2\)};
+  \draw (tmp) node [eground]{};
+\end{tikzpicture}

@@ -1,0 +1,15 @@
+\input{tikz.tex}
+\begin{document}
+\begin{tikzpicture}
+    % \begin{scope}[rotate=90,shift={(0,0)}]
+        \node at (0,0) {\includegraphics[width=5cm,angle=90]{interf_coin.png}};
+    % \end{scope}
+    % \draw[->,white] (0,-2.5) -- ++(0,4.5) node[above] {$x $(cm)};
+    % \draw[white] (0,0) -- ++(-0.2,0) node[left] {$0$};
+    % \draw[white] (0,1.25) -- ++(-0.2,0) node[left] {$20$};
+    \draw[thick,white] (0,0) -- ++(0.73,0) node[midway,below=0.15] {$\SI{20}{cm}$};
+\draw[white] (0,0.1) -- ++(0,-0.2);
+\draw[white] (0.73,0.1) -- ++(0,-0.2);
+\end{tikzpicture}
+
+\end{document}

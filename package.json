@@ -419,7 +419,7 @@
 				},
 				"programme-colle.collePath": {
 					"type": "string",
-					"default": "/home/eb/Dropbox/CPGE/Physique/Exercices/Colles/PC/",
+					"default": "/home/eb/qftrules.github.io/assets/CPGE/Exercices/Colles/PC/",
 					"description": "Définit le chemin d'accès vers le dossier de colles."
 				},
 				"programme-colle.styPath": {
@@ -447,10 +447,15 @@
 					"default": "exo",
 					"description": "Nom de l'environnement latex utilisé pour les exercices. La commande `banque.compile` cherche la chaîne de caractères `\\begin{nom_de_l'environnement}{nom_de_l'exercice}` pour identifier les exercices. L'environnement peut comprendre des arguments optionnels, placés entre crochets [...]."
 				},
+				"programme-colle.cpgePath": {
+					"type": "string",
+					"default": "/home/eb/qftrules.github.io/assets/CPGE/",
+					"description": "Définit le chemin d'accès vers le dossier contenant les fichiers latex des cours, TD, DM, DS, TP, etc. de la CPGE. Ce chemin est utilisé pour compiler le programme de colle."
+				},
 				"banque-exercices.explorerCommand": {
 					"type": "string",
-					"default": "thunar",
-					"description": "Commande à utiliser pour ouvrir le dossier (thème) contenant les fichiers latex (chapitres) des exercices.  Cette commande correspond à la commande d'explorateur de fichiers du système d'exploitation, e.g. nautilus sous ubuntu, thunar sous linux mint xfce, open sous macOS, explorer sous windows, etc."
+					"default": "xdg-open",
+					"description": "Commande appelée pour ouvrir le dossier (thème) contenant les fichiers latex (chapitres) des exercices.  Cette commande correspond à la commande d'explorateur de fichiers du système d'exploitation, e.g. xdg-open sous Linux, open sous MacOS, start sous Windows."
 				},
 				"mathpix-pdf.texArchives": {
 					"type": "string",
@@ -462,7 +467,7 @@
 				},
 				"mathpix-pdf.texPath": {
 					"type": "string",
-					"default": "/home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/",
+					"default": "/home/eb/qftrules.github.io/assets/CPGE/Exercices/Recueil/",
 					"description": "Définit la liste des chemins d'accès vers le fichiers tex qui contiennent les exercices."
 				},
 				"mathpix-pdf.mpxCommand": {

@@ -1,0 +1,9 @@
+\begin{tikzpicture}
+  \ctikzset{tripoles/en amp/input height=0.45}
+  \draw (0,0) node [en amp] (A) {}
+  (A.-) |- ++(1,1) -|(A.out) to[short, *-*]++(1,0) node(S){}
+  (A.+) to [short, -*]++(-1,0) node (E){};
+  \draw [latex-] (E) --++(0,-1) coordinate(C)  node [midway, left] {\(v_e\)};
+  \draw [latex-] (S) --(S|-C) coordinate(B) node [midway, right] {\(v_s\)};
+  \draw (C) node [eground]{} (B) node [eground]{};
+\end{tikzpicture}

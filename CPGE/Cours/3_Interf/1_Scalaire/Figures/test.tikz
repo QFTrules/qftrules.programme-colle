@@ -1,0 +1,6 @@
+\input{/home/eb/Dropbox/texmf/tex/latex/Preambles/tikz.tex}
+\begin{document}
+\begin{tikzpicture}
+
+\end{tikzpicture}
+\end{document}

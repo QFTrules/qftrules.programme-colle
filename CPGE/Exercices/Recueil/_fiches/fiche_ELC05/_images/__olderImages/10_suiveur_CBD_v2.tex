@@ -1,0 +1,8 @@
+\begin{tikzpicture}
+  \ctikzset{tripoles/en amp/input height=0.45}
+  \draw (0,0) node [en amp] (A) {}
+  (A.-) |- ++(1,1) -|(A.out) to[short, *-*]++(1,0) coordinate(S)
+  (A.+) to [short, -*]++(-1,0) coordinate (E)
+  (E) to [vsource, v<=\(v_e\), i<_= \(i_e\)] ++(0, -2) coordinate (masse) node [eground]{}
+  (S) to [R, l=\(R_c\), v = \(v_s\), i>^=\(i_s\)] (S|-masse) node [eground]{};
+\end{tikzpicture}

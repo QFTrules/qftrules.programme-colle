@@ -1,0 +1,1881 @@
+% !TEX root = /home/eb/.vscode/extensions/qftrules.programme-colle/tmp/Exercice.tex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][colle]{Sensibilité acoustique}
+	% Circuit $G_BF$ et $G_HF$.
+Le vieillissement est responsable d'une perte de sensibilité aux sons aigus. On représente ci-dessous l'évolution de la sensibilité acoustique en fréquence en fonction de l'âge. 
+\begin{fig}[label]
+	\centering
+	\includegraphics[width=0.7\columnwidth]{audiogramme.png}
+	%\capt{}
+\end{fig}
+Pour corriger cette 
+	\begin{fig}[label]
+		\centering
+		\includegraphics[width=0.5\columnwidth]{filtre_audio}
+		%\capt{}
+	\end{fig}
+	
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][colle]{Circuit de butterworth d'ordre 2}
+	On considère un circuit de Butterworth d'ordre 2. Ce filtre est donné par le circuit suivant, et vérifie l'équation différentielle 
+	$$
+	\frac{{\d^2V_s}}{{\d t^2}} + \sqrt{2}\,\omega_0\frac{{\d V_s}}{{\d t}} + \omega_0^2 V_s = 0
+	$$
+		\begin{fig}[]
+			\centering
+			% \includegraphics[width=0.7\columnwidth]{butterworth2.png}
+			% \capt{}
+		\end{fig}
+		\begin{quest}
+			\item	Déterminer à quelle condition sur $C_1$ et $C_2$ l'équation différentielle précédente est vérifiée.	Quelle est alors l'expression de $\omega_0$ ?
+			\sol{
+			On a $i_1 = C_1 \dd{V_s}{t}$ et $i_2 = C_2 \dd{V_2}{t} = R_2C_2 \dd{i}{t}$. La loi des mailles donne $0 = V_s + R i_e + R i$. Avec $i_e=i+i_2=i_1$ on a donc $0 = V_s + R i_1 + R i_2$ soit
+			$$
+			0 = V_s + R i_1 + R i_2 \Rar \dd{V_e}{t} V_s + 2R i + R^2 C_2 \dd{i}{t}.
+			$$
+			}
+			\item Dans cette situation, résoudre l'équation différentielle précédente en l'absence de source en entrée. On prendra pour conditions initiales $V_s(0)=V_0$ et $\frac{\d V_s}{\d t}(0)=0$.
+		\end{quest}
+	\end{exo}
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\begin{exo}[PC][1][colle]{Réponses d'un circuit du second-ordre}
+		
+
+% \titreEntrainementFacultatif	{}
+\hauteurLargeurCadreReponse		{0mm}{0cm}
+% \dureeResolutionFacultative		{1} % 1, 2, 3 ou 4
+% \typeEntrainement				{AN} % Newton ou QCM ou AN ou vide (exercice "normal")
+% \nombreColonnesQuestions		{1} % vide, 1, 2, 3, etc.
+% \avecPlusieursQuestions			{Y} % Y ou N
+% \initialisationEntrainement
+
+Les graphes ci-dessous représentent l'évolution de trois tensions $u_1(t)$, $u_2(t)$, et $u_3(t)$ au cours du temps. Toutes ces grandeurs évoluent suivant une équation différentielle du type 
+$$
+\dd{x(t)}{t} + \frac{\omega_0}{Q} \dd{x(t)}{t} + \omega_0^2\, x(t) =\cte.
+$$
+
+\begin{center}
+	\includegraphics{courbes_2_CBD_v2.pdf}
+	% \input{courbes_2_CBD_v2.tex}
+\end{center}
+
+
+% =============================================================================== %
+% \debutEntrainement
+% =============================================================================== %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{quest}
+	\item	
+		Quelle courbe est associée au plus grand facteur de qualité $Q$ ?
+% \begin{listeQCM3Colonnes}
+% 	\item courbe 1
+% \item courbe 2
+% \item courbe 3
+% \end{listeQCM3Colonnes}
+% \reponse{\reponseB}
+\begin{corrige}
+Le facteur de qualité est inférieur à $1/2$ pour la courbe 3. De plus, il est sensiblement égal au nombre d'oscillations observables dans le cas du régime pseudo-périodique. On observe environ dix oscillations pour la courbe~2 et six pour la courbe~1. La courbe~2 possède donc le facteur de qualité le plus grand.
+\end{corrige}
+
+% ************************************** %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\item On a 
+\[
+u_1(t)=ae^{-t/\tau_1}-be^{-t/\tau_2}.
+\]
+ Quelle est la courbe correspondante ? Que valent $t_1$, $t_2$ et $Q$ ?
+% \begin{listeQCM3Colonnes}
+% \item courbe 1
+% \item courbe 2
+% \item courbe 3
+% \end{listeQCM3Colonnes}
+% \reponse{\reponseC}
+\begin{corrige}
+La fonction $u_1(t)$ ne contient pas de grandeurs circulaires ($\cos(\omega t)$ ou $\sin(\omega t)$) et évolue de $u_1(0)=a-b$ vers $u_1(+\infty)=0$. Cela correspond à la courbe~3.
+\end{corrige}
+
+% ************************************** %
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\item On a 
+\[
+u_2(t)=E\sin(\Omega t)\,e^{-t/\tau}.
+\] Quelle est la courbe correspondante ? Que valent $\tau$, $\Omega$ et $Q$ ?
+% \begin{listeQCM3Colonnes}
+% \item courbe 1
+% \item courbe 2
+% \item courbe 3
+% \end{listeQCM3Colonnes}
+% \reponse{\reponseB}
+\begin{corrige}
+La tension $u_2(t)$ présente des oscillations amorties et tend vers zéro lorsque $t$ tend vers l'infini. Seule la courbe 2 vérifie ces propriétés.
+\end{corrige}
+
+% ************************************** %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\item 
+On a 
+\[
+u_3(t)=E\left[1 - \left(\cos(\Omega' t)+a\sin(\Omega't)\right)e^{-t/\tau'}\right].
+\]
+ Quelle est la courbe correspondante ? Que valent $\tau'$, $\Omega'$ et $Q$ ?
+% \begin{listeQCM3Colonnes}
+% \item courbe 1
+% \item courbe 2
+% \item courbe 3
+% \end{listeQCM3Colonnes}
+
+% \reponse{\reponseA}
+
+\begin{corrige}
+On a $\lim_{t \to + \infty } u_3(t)=E$. Seule la courbe 1 présente une asymptote horizontale d'ordonnée non nulle.
+\end{corrige}
+
+% ************************************** %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+% \item Déterminer la valeur numérique de la pseudo-pulsation $\Omega$ qui intervient dans $u_2(t)$.
+
+% \reponse{\SI{1.2e3}{rad.s^{-1}}}
+
+% \begin{corrige}
+% On détermine la pseudo période $T$ en mesurant la durée correspondant à 10 oscillations : $10T \simeq \SI{52}{ms}$ d'où $T\simeq\SI{5.2}{ms}$. On en déduit $\Omega = 2\pi/T \simeq \SI{1.2e3}{rad.s^{-1}}$.
+% \end{corrige}
+\end{quest}
+
+\end{exo}
+% ************************************** %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\begin{exo}[PC][1][colle]{Un circuit RLC mixte}
+		On considère le circuit suivant, où $R = \SI{1}{k\ohm}$, $L = \SI{10}{mH}$, $C = \SI{20}{\micro F}$.
+		\begin{fig}[]
+			\centering
+			\includegraphics[width=0.6\columnwidth]{RLC_mixte.png}
+			% \capt{}
+		\end{fig}
+		\begin{quest}
+			\item	Établir l'équation différentielle vérifiée par $s(t)$. Quelle est la nature de cette équation ? Définir la pulsation propre $\omega_0$ et le facteur de qualité $Q$.
+			\sol{
+			Loi des mailles : $e=s + Ri$, loi des nœuds : $i = i_L + i_C \Rar \dd{i}{t} = \dd{i_L}{t} = \frac{1}{L}s + C \ddd{s}{t}$. On a donc :
+			$$
+			\dd{e}{t} = \dd{s}{t} + R\dd{i}{t} = \dd{s}{t} + \frac{R}{L}s + RC \ddd{s}{t} \Rar \ddd{s}{t} + \frac{1}{RC} \dd{s}{t} + \frac{1}{LC}s = \frac{1}{RC}\dd{e}{t}.
+			$$
+			}
+			\item Résoudre cette équation pour un échelon de tension $e(t) = 0$ si $t<0$ et $e(t)=E$ si $t>0$.
+			\item Effectuer un bilan de puissance dans le circuit.
+		\end{quest}
+	\end{exo}
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\begin{exo}[PC][1][colle]{Étude énergétique d'un oscillateur harmonique électrique}
+
+Dans le circuit ci-contre, le générateur supposé idéal est brusquement éteint. On le modélise par un échelon de courant, $\eta(t)$ passant de $I_0$ à 0 à l'instant $t=0$. On appelle $\mathcal{E}_{\text {tot }}=\mathcal{E}_C+\mathcal{E}_L$ l'énergie électromagnétique totale stockée dans le condensateur et la bobine.
+\begin{fig}[label]
+	\centering
+	\includegraphics[width=0.5\columnwidth]{LC_courant.png}
+	%\capt{}
+\end{fig}
+\begin{quest}
+	\item	
+	Exprimer la dérivée $\frac{\mathrm{d} \mathcal{E}_{\text {tot }}}{\mathrm{d} t}$ en fonction de $i$ et $\frac{\mathrm{d} i}{\mathrm{~d} t}$.
+	\item Justifier qualitativement que $\mathcal{E}_{\text {tot }}$ est constante après coupure du générateur. En déduire l'équation différentielle vérifiée par $i$. Retrouver cette équation par application des lois de Kirchoff.
+	\item Établir les conditions initiales sur $i$ et sa dérivée.
+	\item En déduire l'expression de $i(t)$.
+\end{quest}
+	\end{exo}
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][devoir]{L'hygromètre capacitif}
+	\Annale[Physique PC]{E3A}{2009}
+Un air humide est caractérisé par son humidité relative HU$_{\rm R}$, qui varie entre $0$ (air sec) et $1$ (air saturé). Certains oxydes métalliques comme Al$_2$O$_3$ (alumine) sont hygroscopiques, c'est-à-dire qu’ils peuvent absorber l’eau contenue dans un gaz humide. En conséquence, leurs propriétés électriques
+sont modifiées. L’utilisation de ces substances comme isolant électrique d’un condensateur permet de réaliser des capacités qui dépendent de l’humidité relative. La capacité électrique $C_h$ dépend de l’humidité relative HU$_{\rm R}$ selon la loi approchée :
+\begin{equation}
+C_h = C_0 (1 + a \,{\rm HU}_{\rm R}).
+\end{equation}
+où $C_0$ et $a$ sont deux constantes.  La mesure de la capacité de ce type de condensateur constitue actuellement une technique fiable et précise pour déterminer l’humidité relative.
+
+%%%%%%%%%%%%%%%%%%%%
+%\begin{figure}[b!]
+%\centering
+%\includegraphics[width=0.65\textwidth]{hygro1.png}
+%\caption{}
+%\label{fig:hygro1}
+%\end{figure}
+%%%%%%%%%%%%%%
+
+%Ce type de condensateur est réalisé à partir d’une lame d’aluminium constituant l’une des armatures, sur laquelle est déposée une couche d’alumine poreuse. La seconde armature du condensateur est une lame d’or.
+
+
+Étudions dans cette partie un montage électrocinétique permettant la mesure de $C_h$.
+%Le montage complet est représenté sur la \Fig{hygro1} et l
+Les premiers éléments du montage seront abordés successivement au cours du problème. Le dipôle représenté ci-dessous est une diode, supposée idéale, dont la caractéristique vérifie :
+\vspace{0.2cm}
+
+\begin{minipage}[l]{0.49\textwidth}
+	$$
+\begin{cases}
+	i_d=0 & \text{ lorsque } u_d\leq0 \text{ (état bloqué),}\\
+	u_d=0 & \text{ lorsque } i_d\geq0 \text{ (état passant).}
+\end{cases}
+$$
+\end{minipage}
+\begin{minipage}[l]{0.49\textwidth}
+	\begin{center}
+		\includegraphics[%width=0.4\textwidth
+		scale=1]{symbol_diode.pdf}
+	\end{center}
+%%%%%%%%%%%%%
+\end{minipage}
+
+\begin{quest}
+% Quelle est l’origine physique de la variation de la constante diélectrique de l’alumine Al$_2$O$_3$(s) lorsqu’elle absorbe de l’eau ?
+%\sol{
+%
+%}
+
+\question La capacité étudiée varie de $\SI{110}{pF}$ à $\SI{250}{pF}$ lorsque l’humidité relative HU$_R$ passe de la valeur $0$ à la valeur $1$. Calculer les valeurs numériques de $C_0$ et $a$.
+\sol{
+Lorsque HU$_{\rm R}=0$, la capacité vaut $C_h = C_0 = \SI{110}{pF}$ et lorsque HU$_{\rm R}=1$, la capacité vaut $C_h = C_0(1+a) = \SI{250}{pF}$. On trouve donc 
+\eqbox{
+C_0=\SI{110}{pF}, \text{ et } a=\SI{1.273}{}.
+}
+}
+
+\end{quest}
+Considérons le dipôle (AB) de la \Fig{hygroa} constitué de deux diodes idéales identiques ($D_a$) et ($D_b$) orientés dans des sens opposées.
+
+\begin{fig}[hygroa]
+\begin{subfig}[2a][0.48]
+	\includegraphics[height=0.7\textwidth]{hygro2a.png}
+\end{subfig}
+\begin{subfig}[2b][0.48]
+	\includegraphics[height=0.7\textwidth]{hygro2b.png}
+\end{subfig}
+\capt{Montage à deux diodes têtes-bêches.}
+\end{fig}
+%%%%%%%%%%%%%
+
+\begin{quest}
+
+
+
+\question Montrer que les deux diodes ne peuvent pas être simultanément dans le même état. Montrer que selon le signe de la tension $u$, le résistor ohmique équivalent à (AB) est soit $R_a$, soit $R_b$.
+
+\sol{
+Supposons la diode $D_a$ passante : le courant $i_a \geq 0$ qui circule dans
+$R_a$ est donc positif de $A$ vers $B$. On en déduit que la tension $u = u_{AB} = R_a i_a \geq 0$ est positive. Mais alors la diode $D_b$ est polarisée en inverse, et est bloquante. Le même raisonnement s'applique si $D_b$ est passante, auquel cas $D_a$ est bloquante. On en conclut que les diodes \fbox{ne peuvent pas être simultanément dans le même état}.
+
+De plus, si $D_a$ est passante, alors la loi des mailles et la loi d'Ohm donnent $u = u_{AB} = u_{d,a} + R_a i_a = R_a i_a = R_a i$ car $i_b=0$, et donc le dipôle est équivalent à une résistance $R_a$. Le raisonnement symétrique s'applique si $D_b$ est passant. En conclusion,
+\begin{align*}
+\boxed{D_a\text{ passante} \Rightarrow \text{(AB) équivalent à } R_a,}\\
+\boxed{D_b \text{ passante} \Rightarrow \text{(AB) équivalent à } R_b.}
+\end{align*}
+}
+\end{quest}
+
+
+Ce dipôle est maintenant inséré dans le montage de la \Fig{hygroa} dans lequel $u_e(t)$ est une tension nulle pour $t < 0$ et $t > T_1$ et égale à une constante $E > 0$ lorsque $0 < t < T_1$. A l’instant
+$t=0$, le condensateur est déchargé.
+
+\begin{quest}
+
+
+\question Établir l’équation différentielle vérifiée par $u_c(t)$ puis exprimer sa solution pour $0 < t < T_1$, en faisant apparaître une constante de temps, notée $\tau_a$.
+
+\sol{
+La tension $u_e(t)=E$ est positive lorsque $t>0$. Le dipôle est équivalent à une résistance $R_a$, et donc tout se passe comme si le condensateur se chargeait à travers $R_a$. La loi des mailles donne $u_e(t) = u_c(t) + u_{AB}(t)$, soit $E = u_c + R_a i$. La caractéristique du condensateur donne $i = C\dd{u_c}{t}$, d'où l'équation différentielle
+\eqbox{
+u_c(t) +  R_a C\dd{u_c}{t}(t) = E.
+}
+On introduit la constante de temps caractéristique du circuit $\tau_a = R_a C_h$. La solution générale de l'équation homogène est $u_h(t) = A e^{-t/\tau_a}$ avec $A$ une constante. Une solution particulière est la constante $u_p(t) = E$, donc la solution générale s'écrit 
+$$
+u_c(t) = E + A e^{-t/\tau_a}.
+$$
+On détermine $A$ à l'aide des conditions aux limites, qui imposent la continuité de $u_c(t)$, soit $u_c(t=0) = E + A = 0$ et donc $A = -E$. La solution est donc 
+\eqbox{
+	u_c(t) = E(1-e^{-t/\tau_a}).
+}
+}
+\end{quest}
+	À partir de l’instant $T_1$, la tension $u_e(t)$ redevient nulle.
+\begin{quest}
+\question Quelle est alors l’équation différentielle vérifiée par $u_c(t)$ ? Expliciter dans ce cas $u_c(t)$ pour $t > T_1$, en fonction des paramètres $E$, $T_1$, $R_a$, $R_b$ et $C_h$.
+
+\sol{
+	La tension $u_e(t)$ est nulle lorsque $t>T_1$. Par continuité, la tension aux bornes du dipôle vaut $u_d = - u_c(t) \leq 0$. Le dipôle est alors équivalent à une résistance $R_b$, et donc tout se passe comme si le condensateur se déchargeait à travers $R_b$. La loi des mailles  donne $u_e(t) = u_c(t) + u_{AB}(t)$, soit $0 = u_c + R_b i$. La caractéristique du condensateur donne $i = C_h\dd{u_c}{t}$, d'où l'équation différentielle
+\eqbox{
+u_c(t) +  R_b C_h\dd{u_c}{t}(t) = 0.
+}
+La solution de cette équation est de la forme 
+$$
+u_c(t) = B e^{-t/\tau_b}.
+$$
+avec $\tau_b = R_b C_h$ le temps caractéristique de la décharge.
+On détermine $B$ à l'aide des conditions aux limites, qui imposent la continuité de $u_c(t)$, soit $u_c(t=T_1) = Be^{-T_1/\tau_a} = E(1-e^{-T_1/\tau_a})$, soit
+$$
+B = Ee^{T_1/\tau_b}(1-e^{-T_1/\tau_a}).
+$$
+La solution de cette équation différentielle s'écrit donc 
+\eqbox{
+u_c(t) = Ee^{(T_1-t)/\tau_b}(1-e^{-T_1/\tau_a}).
+}
+
+}
+
+\question	Représenter l’allure de $u_c(t)$ en fonction du temps dans le cas particulier où
+$R_b = 10 R_a$. Faire figurer sur ce schéma les asymptotes et les points remarquables.
+
+\sol{
+	Pour $R_b=10R_a$, on a $\tau_b=10\tau_a$. La décharge se fait $10$ fois plus lentement que la charge. Nous représentons la tension ci-dessous dans le cas où $T_1$ est conpris entre $\tau_a$ et $\tau_b$.
+\begin{center}
+\includegraphics[width=0.5\textwidth]{decroi_uc.png}
+\end{center}
+}
+
+
+\end{quest}
+
+Dans le montage de la \Fig{hygrob}, l’amplificateur opérationnel (AO1) est supposé idéal et fonctionne en régime de saturation. Les tensions de saturation haute et basse sont notées respectivement  $+U_{\rm sat}$ et $-U_{\rm sat}$. La tension $u_e(t)$ est maintenant une tension créneau périodique de période $T$, maintenue à une valeur constante $E > 0$ pendant une durée $T_1$ $(T_1 < T)$ et nulle pendant le reste de la période, schématisée sur la \Fig{hygrob}.
+Le régime permanent est supposé établi : toutes les tensions sont périodiques avec la même période $T$. Celle-ci est choisie de sorte que $R_bC_h \ll T$, ce qui entraîne que le condensateur est déchargé à la fin de chaque période. Le fonctionnement du montage sera donc étudié entre les instants $0$ et $T$.
+
+\begin{fig}[hygrob]
+\centering
+\begin{subfig}[3a][0.48]
+	\includegraphics[height=0.71\textwidth]{hygro3a.png}
+\end{subfig}\hfill
+\begin{subfig}[3b][0.48]
+	\includegraphics[height=0.71\textwidth]{hygro3b.png}
+\end{subfig}
+\capt{Montage à amplificateur opérationnel.}
+\end{fig}
+%%%%%%%%%%%%%
+
+\begin{quest}
+
+\question[2] 	Expliciter la condition reliant  $R_a C_h$ et la durée $T_1$, pour que la tension $u_1(t)$ en sortie de l’AO1 puisse basculer de  $+U_{\rm sat}$ à $-U_{\rm sat}$ durant la phase où $u_e(t)=E$ (cette condition sera supposée vérifiée par la suite). Déterminer, en fonction de $\tau_a$, l’instant $T_2$ qui correspond au basculement de $u_1(t)$ de la valeur $+U_{\rm sat}$ à la valeur $-U_{\rm sat}$.
+\sol{
+L’ALI fonctionnant en régime de saturation, la
+tension différentielle d’entrée $\epsilon = v_+ - v_-$ fixe le signe de la
+tension de sortie $u_1(t)$, soit $u_1 (t) = \text{signe}(\epsilon) U_{\rm sat}$.
+ Au début de chaque période, donc en particulier à
+$t = 0^+$, la tension d’entrée vaut $u_e(0^+) = + E$ et donc la formule du pont diviseur donne $v_+ = E/2$, tandis que $v_- = u_c(t=0^+)=0$. On en déduite que $\epsilon(t=0^+) > 0$ et donc 
+$$ 
+u_1(t=0^+) = + U_{\rm sat}.
+$$
+ La tension $u_c(t)=v_-$ augmente ensuite jusqu'à atteindre la valeur maximale $u_c(T_1) = E(1 - e^{-T_1/\tau_a})$ à la date $T_1$. La tension différentielle vaut alors 
+$$
+\epsilon(t=T_1) = v_+ - v_- = E/2 - E(1 - e^{-T_1/\tau_a}) = E(e^{-T_1/\tau_a} - 1/2).
+$$
+
+Pour avoir basculement, il faut $\epsilon(T_1) < 0$, soit $e^{-T_1/\tau_a} < 1/2$, ou encore 
+\eqbox{
+	T_1 > \tau_a \ln(2).
+}
+Si cette dernière condition est satisfaite, l’ALI bascule
+à la date $T_2$ définie par 
+\eqbox{
+T_2 = \tau_a \ln(2).
+}
+}
+
+\question	Évaluer la valeur minimale de $T_1$ assurant le fonctionnement correct du montage, sachant que $R_a=\SI{2.70}{M\Omega}$. Calculer les deux valeurs extrêmes de $T_2$ qui correspondent respectivement  à $C_h=\SI{110}{pF}$ et $C_h=\SI{250}{pF}$.
+
+\sol{
+Il faut que le circuit fonctionne quelle que soit la
+valeur du taux d’humidité ( quelque soit la capacité du
+condensateur). On va donc évaluer $T_1$ en utilisant la plus
+grande valeur possible pour $\tau_a$, et donc pour $C_h$ le plus
+grand possible, soit avec $\tau_a = \SI{6.75e-4}{s}$, $T_1 > \SI{4.68e-4}{s}$. Pour $T_2$ on a l'encadrement
+\eqbox{
+	\SI{2.06e-4}{s } < T_2 < \SI{4.68e-4}{s}.
+}
+}
+
+\question 	En choisissant les valeurs numériques suivantes : $T=\SI{1.0}{ms}$, $T_2=\SI{0.33}{ms}$, $C_h=\SI{110}{pF}$, $E=\SI{5,0}{V}$ et $U_{SAT }=\SI{12,6}{V}$, représenter en concordance de temps les tensions $u_c(t)$ et $u_1(t)$ sur un intervalle de temps de deux périodes.
+
+\sol{
+ Le fait d’avoir $T = T_1$ sous-entend que le signal périodique d’entrée est une impulsion négative ramenant très brièvement $u_e$ à $0$ à chaque début de
+période. Ainsi, $v_+$ est aussi nul tandis que $v_-$ est encore
+très légèrement positif, permettant ainsi le basculement de
+la tension de sortie $u_1(t)$ de $-U_{\rm sat}$ à $+U_{\rm sat}$.
+On a donc les graphes suivants :
+
+\begin{center}
+\includegraphics[width=0.5\textwidth]{uc_u1.png}
+\end{center}
+%%%%%%%%%%%%%
+}
+
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PCSI]{Équivalence de deux dipôles}
+On considère un dipôle 1 correspondant à l'association série d'une inductance $L_1$ et d'une résistance $R_1$, et un dipôle 2 correspondant à l'association parallèle d'une inductance $L_2$ et d'une résistance $R_2$. On se place en régime sinusoïdal de pulsation $\omega$.
+\begin{quest}
+\item Pour quelles valeurs de $R_1$ et $L_1$ a-t-on équivalence des deux dipôles précédents ?
+\item Pour quelle(s) valeur(s) de fréquence a-t-on $\frac{L_1}{R_1}=\frac{L_2}{R_2}$ ?
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC]{Impédances équivalentes}
+On considère les associations suivantes : (a) RC série, (b) RL parallèle, (c) R en série avec (L,C) en parallèle.
+
+\begin{quest}
+	\item Représenter le schéma du circuit électrique correspondant à chaque association.
+\QR{
+	  Calculer les impédances complexes de chaque association.
+}{
+
+	(a) $R+\frac{1}{jC\omega}$
+
+	(b) $\frac{RjL\omega}{R+jL\omega}$
+
+	(c) $R+\frac{\frac{L}{C}}{jL\omega+\frac{1}{jC\omega}}$
+}
+
+\QR{
+	 Déterminer le module et l’argument de l’impédance complexe.
+}{
+
+	(a) $\sqrt{R^2+\frac{1}{(C\omega)^2}}$ et $\arctan \frac{-1}{RC\omega}$
+
+	(b) $\frac{RL\omega}{\sqrt{R^2+(L\omega)^2}}$ et $\arctan \frac{R}{L\omega}$
+
+	(c) $\sqrt{R^2+\frac{L^2}{C^2\left(L\omega - \frac{1}{C\omega} \right)^2}   }$ et $\arctan \frac{L}{CR\left( \frac{1}{C\omega} - L\omega\right)}$
+
+}
+
+\QR{
+	 Quels sont les limites de ces impédances pour $\omega \to 0$ et $\omega \to \infty$ ? Interpréter.
+}{
+
+	(a) $\infty$ et $R$
+
+	(b) $0$ et $R$
+
+	(c) $R$ et $R$
+
+
+	$0$ : interupteur fermé
+
+	$R$ : résistance
+
+	$\infty$ : interupteur ouvert
+
+}
+\end{quest}
+\end{exo}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][colle]{Courant indépendant de la charge}
+	Dans le circuit ci-contre, à quelle fréquence faut-il régler le générateur afin que l'intensité du courant qui traverse le conducteur ohmique soit indépendante de la résistance $R$ ?
+
+\begin{center}
+% \includegraphics[width=0.5\columnwidth]{2023_11_26_be3a346defc8fb2b601bg-27(1)}
+\end{center}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PCSI]{RLC parallèle en régime sinusoïdal}
+	\Notions{\item Électrocinétique \task Régime forcé harmonique \task Intensité du courant \task  Résonance}
+	On soumet le circuit ci-contre à une tension harmonique $e(t)=E\cos(\omega t)$. On souhaite déterminer l’amplitude et la phase du courant $i(t)$ débité par le générateur.
+	\begin{fig}[]
+	\centering
+	\includegraphics[width=0.6\textwidth]{circuit_RLC_parallele}
+	% \capt{Circuit RLC parallèle excité en régime sinusoïdal.}
+  \end{fig}
+
+
+  \begin{quest}
+  \item
+	   Déterminer l’amplitude complexe de $i(t)$ notée $\underline{I}$ à l’aide d’associations de résistance.
+  \sol{
+	   L'impédance équivalente au RLC $\udl{Z}$ s'obtient par association parallèle :
+	  \eq{
+	  \frac{1}{\underline{Z}}=\frac{1}{R}+\frac{1}{jL\omega}+jC\omega
+	  \quad \text{avec} \quad
+	  \underline{I}=\frac{\underline{U}}{\underline{Z}}=\frac{E}{\underline{Z}},
+	  }
+	  donc
+	%   \eqbox{
+	$$
+	  \underline{I}=\frac{E}{R}+\frac{E}{jL\omega}+EjC\omega,
+	$$
+	soit,
+	\eqbox{
+	\udl{I}		=E\left[ \frac{1}{R}+j\left(\frac{-1}{L\omega}+C\omega \right)\right]
+		}
+	%   }
+  }
+
+  \item
+	   En déduire l’amplitude du courant $I=|\underline{I}|$ et sa phase $\varphi=\arg(\underline{I})$. Représenter le graphe des fonctions $I(\omega)$ et $\vphi(\omega)$.
+  \sol{
+	\begin{enumerate}
+		\item 
+		Le module de l'intensité est donné par
+		\eq{
+			I=E\sqrt{ \frac{1}{R^2}+\left(\frac{-1}{L\omega}+C\omega \right)^2} 
+			=E\sqrt{ \frac{1}{R^2}+\left(\frac{LC\omega^2-1}{L\omega}\right)^2},
+			}
+			soit 
+			\eqbox{
+			I = I_0 \sqrt{1+Q^2\left(\frac{\omega}{\omega_0}-\frac{\omega_0}{\omega}\right)^2},
+			}
+			où $I_0 = \textstyle\frac{E}{R}$, $\omega_0 = 1/\sqrt{LC}$ et $Q=\omega_0RC$ est le facteur de qualité du circuit. 
+			
+			\item La phase est donnée par
+			\eq{
+				\varphi_I= \arctan \left(\frac{\frac{-1}{L\omega}+C\omega }{\frac{1}{R}} \right),
+				}
+				soit 
+				\eqbox{
+				\varphi_I = \arctan \left[Q\left( \frac{\omega_0}{\omega} - \frac{\omega}{\omega_0} \right) \right].
+				}
+			\item Le graphe des fonctions $I(x)$ et $\vphi(x)$ avec $x=\omega/\omega_0$ est donné ci-dessous pour différentes valeurs de $Q$.
+				\begin{fig}[]
+					\centering
+					\includegraphics[scale=1.2]{I(x)_RLC_para}
+					% \capt{}
+				\end{fig}
+				\begin{fig}[label]
+					\centering
+					\includegraphics[scale=1.2]{phi(x)_RLC_para}
+					%\capt{}
+				\end{fig}
+			\end{enumerate}
+  }
+
+  \item
+	   Quelle est la condition sur la pulsation pour que $I=E/R$ et $\varphi=0$ ? À quel point du graphe de la fonction $I(\omega)$ cette valeur correspond-elle ? Quelle phénomène met-on ainsi en évidence ?
+  \sol{
+	   Il faut que
+	  \eq{
+	  \frac{-1}{L\omega}+C\omega=0
+	  \quad \Leftrightarrow \quad
+	  \boxed{\omega=\omega_0}
+	  }
+	  Il s'agit du \udl{minimum} d'intensité. Dans ces conditions, la perte d'énergie dans le circuit, qui s'effectue uniquement dans la résistance, d'expression $\mc{P}=\frac{1}{2}RI^2$, est minimale et donc la transmission d'énergie au circuit maximale : il y a \udl{résonance}.
+
+	}
+\end{quest}
+
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][colle]{Calculs d'impédance}
+	Calculer l'impédance équivalente $\udl{Z}$ des associations suivantes.
+	\begin{fig}[label]
+		\centering
+		\begin{subfig}[label][0.45]
+			\includegraphics[width=\columnwidth]{1-2-Association dipoles-enonce a_CLE_v2.pdf}
+		\end{subfig}
+		\begin{subfig}[label][0.45]
+			\includegraphics[width=\columnwidth]{1-2-Association dipoles-enonce b_CLE_v2.pdf}
+		\end{subfig}
+		\begin{subfig}[label][0.45]
+			\includegraphics[width=\columnwidth]{1-2-Association dipoles-enonce d_CLE_v2.pdf}
+		\end{subfig}
+		\begin{subfig}[label][0.45]
+			\includegraphics[width=\columnwidth]{1-2-Association dipoles-enonce c_CLE_v2.pdf}
+		\end{subfig}
+		%\capt{}
+	\end{fig}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][colle]{Calcul d'impédance}
+	Comment doit-on choisir $R$ et $R^{\prime}$ en fonction de $L$ et $C$ pour que la tension $u(t)$ et l'intensité $i(t)$ oscillent en phase pour toute valeur de la fréquence?
+	
+	\begin{center}
+	% \includegraphics[width=0.7\columnwidth]{2023_11_26_ba04340c18f4532a20c5g-25}
+	\end{center}
+	
+	\end{exo}
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PCSI]{Tension et intensité dans un circuit résistif simple}
+On se propose d'utiliser les lois de Kirschoff pour étudier le circuit suivant.
+\begin{center}
+ \includegraphics[scale=0.8]{elec3.eps}
+\end{center}
+  \begin{quest}
+	\item Rappeler les loi de Kirschoff.
+	\sol{Maille et nœuds.}
+   \item Calculer $u$ en fonction de $E$ et des résistances $R$ et $R'$.
+	 \sol{
+	 Maille de gauche : $E = R i_E + u$ avec $u=R'i'$.
+	 Maile de droite : $u = 2Ri$.
+	 Loi des nœuds : $i_E = i + i'$. Donc $i_E = i + u/R'$ et $E = Ri + u R/R' + u = u/2 + u(1+R'/R) = u(3/2 + R'/R)$.
+	 \eqbox[*]{u = \frac{E}{3/2+R'/R}.}
+	 }
+  \item Calculer $i$ en fonction de $E$ et des résistances $R$ et $R'$.
+	\sol{On en déduit
+	\eqbox{i = \frac{u}{2R} = \frac{E}{3R/2 + R'}.}
+  }
+  \end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{exo}[PCSI]{Tension et intensité dans un circuit résistif simple - 2}
+% On se propose d'utiliser les lois de Kirschoff pour étudier le circuit suivant.
+% \begin{center}
+%  \includegraphics[scale=0.8]{elec3.eps}
+% \end{center}
+%   \begin{quest}
+% 	\item Rappeler les loi de Kirschoff.
+% 	\sol{Maille et nœuds.}
+%    \item Calculer $u$ en fonction de $E$ et des résistances $R$ et $R'$.
+% 	 \sol{
+% 	 Maille de gauche : $E = R i_E + u$ avec $u=R'i'$.
+% 	 Maile de droite : $u = 2Ri$.
+% 	 Loi des nœuds : $i_E = i + i'$. Donc $i_E = i + u/R'$ et $E = Ri + u R/R' + u = u/2 + u(1+R'/R) = u(3/2 + R'/R)$.
+% 	 \eqbox[*]{u = \frac{E}{3/2+R'/R}.}
+% 	 }
+%   \item Calculer $i$ en fonction de $E$ et des résistances $R$ et $R'$.
+% 	On en déduit
+% 	\eqbox[*]{i = \frac{u}{2R} = \frac{E}{3R/2 + R'}.}
+%   \end{quest}
+% \end{exo}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PCSI]{Comparateur de tension}
+	On considère le circuit suivant. Les sources de tension $E_1$ et $E_2$	sont idéales. La résistance $x$ est réglable.
+\begin{center}
+ \includegraphics[scale=0.8]{comtension.pdf}
+\end{center}
+\begin{quest}
+ \item Quels sont les paramètres du problème ? Les inconnues ? Trouver un système de deux équations ayant pour inconnues $I_{1}$ et $I_{2}$ et le résoudre.
+ \sol{
+Loi des mailles : $E_1 = x i + R_1 I_1$ et $E_2 = x i + R_2 I_2$. Loi des nœuds : $i = I_1+ I_2$. Les deux équations sont donc
+% \begin{align}
+$$
+\left\{
+\begin{array}{ll}
+E_1 & = (R_1+x) I_1 + x I_2\\
+E_2 & = x I_1 + (R_2 + x) I_2.
+\end{array}
+\right.
+$$
+On résout par substitution pour trouver $I_2 = (E_1/x)-(1+R_1/x)I_1$ puis $E_2 = x I_1 + (1+R_2/x)E_1 - (R_2+R_1R_2/x + x + R_1)I_1 = (1+R_2/x)E_1 - (R_2+R_1R_2/x  + R_1)I_1$, soit
+\eqbox{
+\left\{
+\begin{array}{ll}
+I_1 & = \displaystyle\frac{(R_2+x) E_1 - E_2 x}{(R_1+R_2)x + R_1R_2}\\[0.5cm]
+I_2 & = \displaystyle\frac{(R_1+x)E_2-E_1x}{(R_1+R_2)x + R_1R_2}.
+\end{array}
+\right.
+}
+On peut retrouver cette dernière expression par symétrie des indices $1$ et $2$.
+% \end{align}
+ }
+ \item Exprimer l'intensité $i$ traversant la résistance $x$. 
+ \sol{
+On trouve 
+\eqbox{
+i = I_1 + I_2 = \frac{R_2E_1 + R_1E_2}{(R_1+R_2)x + R_1R_2}.
+}
+ }
+ \item On règle $x$ pour que $I_{2}=0$. Montrer que l'on peut déterminer le rapport $E_{1}/E_{2}$ en fonction de $R_1$ et de $x$ ? Comment déterminer $E_1/E_2$ si l'on ne connaît pas $R_1$ mais $R_2$ ?
+ \sol{
+ On trouve $(R_1+x)E_2 - E_1 x=0$, soit 
+ \eqbox{
+ \frac{E_1}{E_2} = 1+\frac{R_1}{x}.
+ }
+ }
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PCSI]{Résistance équivalente}
+Calculer la résistance équivalente de ce circuit.
+\begin{center}
+	\includegraphics[width= 0.7\columnwidth]{Resistance_equivalente.jpg}
+\end{center}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PCSI]{Courant et tension en phase}
+On considère le circuit suivant.
+%\begin{figure}[h!]
+%\centering
+\begin{center}
+\includegraphics[width=0.5\columnwidth]{courant_tension_phase.pdf}
+\end{center}
+%\end{figure}
+
+\noindent Déterminer la condition à vérifier pour que le courant parcourant $R_1$ soit en phase avec la tension aux bornes du générateur en régime sinusoïdal.
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PCSI]{Adaptation d'impédance}
+On étudie un réacteur à plasma modélisé par un circuit série $R_{\rm{p}}-C_{\rm{p}}$, d'impédance complexe $\underline{Z}_{\rm{p}}$. On cherche à diminuer au maximum la partie imaginaire de $\underline{Z}_{\rm{p}}$ et dans ce but, on réalise le circuit ci-dessous.
+%\begin{figure}[h!]
+%\centering
+\begin{center}
+\includegraphics[width=0.3\columnwidth]{adaptation_impedance.pdf}
+\end{center}
+%\end{figure}
+
+\begin{quest}
+\item Exprimer l'impédance complexe totale, notée $\underline{Z}$, du circuit ci-dessus.
+\item En déduire la valeur de $C$ qui annule la partie imaginaire de $\underline{Z}$.
+\item La condition précédente étant réalisée, déterminer l'expression de l'impédance $\underline{Z}$ totale du dipôle.
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PCSI]{Établir une équation différentielle}
+En passant par la notation complexe, montrer que la tension $u$ vérifie l'équation différentielle $4\tau^2\frac{\d^2 u}{\d t^2}+5\tau\frac{\d u}{\d t}+u=e$, où l'on précisera l'expression de $\tau$.
+%\begin{figure}[h!]
+%\centering
+\begin{center}
+\includegraphics[width=0.3\textwidth]{circuit_etablir_ED.pdf}
+\end{center}
+%\end{figure}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PCSI]{Déterminer une intensité par plusieurs méthodes}
+On cherche à déterminer l'intensité qui circule dans la résistance $R_3$ par plusieurs méthodes.
+\begin{center}
+\includegraphics[width=0.34\textwidth]{circuit_exo5p45sanz.pdf}
+\end{center}
+\begin{quest}
+\item Appliquer tout d'abord des équivalences Thévenin-Norton.
+\item Utiliser le théorème de superposition. Pour cela, calculer tout d'abord $i_1$ dans $R_3$ lorsque seule la source idéale de tension $e_1$ est allumée. Exprimer de même l'intensité $i_2$ dans $R_3$ lorsque seule la source idéale de tension $e_5$ est allumée. Conclure.
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PCSI]{Résolution par équivalences Thévenin-Norton}
+Déterminer l'intensité $i$ qui circule dans la résistance $R$ à l'aide d'équivalences Thévenin-Norton.
+\begin{center}
+\includegraphics[width=0.34\textwidth]{circuit_exo6p45sanz.pdf}
+\end{center}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PCSI]{Annulation d'un régime transitoire}
+On considère un circuit formé de l'association en série d'un générateur de tension idéale de fem $E$, d'une bobine réelle d'inductance $L$ et de résistance $r$ et d'un interrupteur.
+\begin{quest}
+\item Déterminer l'expression du courant parcourant le circuit après la fermeture de l'interrupteur. Interpréter les deux termes obtenus.
+\item On souhaite annuler dans le courant traversant le générateur les effets du régime transitoire lié à la fermeture de l'interrupteur. Pour cela, on place en parallèle sur la bobine un condensateur de capacité $C$ en série avec une résistance $R$.
+
+Déterminer la nouvelle expression du courant traversant le générateur, puis en déduire les valeurs de $R$ et $C$ à choisir.
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PCSI]{Deux condensateurs en série avec une résistance}
+Deux condensateurs de capacités $C_1$ et $C_2$ sont reliés par une résistance $R$. À l'instant initial, leurs charges respectives sont $Q_{1}(0)=Q_0$ et $Q_2(0)=0$. On pose $\tau=R\frac{C_1C_2}{C_1+C_2}$.
+\begin{center}
+\includegraphics[width=0.34\textwidth]{circuit_exo3p76sanz.pdf}
+\end{center}
+\begin{quest}
+\item Établir l'expression de l'intensité $i(t)$ du courant dans la résistance $R$.
+\item Déterminer les charges $Q_1(t)$ et $Q_2(t)$ des deux condensateurs.
+\item Calculer la variation de l'énergie emmagasinée dans les deux condensateurs entre l'instant initial $t=0$ et l'instant final $t_{\rm{f}}$.
+\item Calculer l'énergie consommée par effet Joule dans la résistance $R$ entre $t=0$ et $t_{\rm{f}}$.
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PCSI]{Étude d'un circuit $RL$}
+On considère le circuit ci-dessous. À l'instant $t=0$, on ferme l'interrupteur qui était ouvert depuis très longtemps.
+\begin{center}
+\includegraphics[width=0.34\textwidth]{circuit_exo5p81sanz.pdf}
+\end{center}
+\begin{quest}
+\item L'intensité du courant $i$ traversant la résistance $R$ est-elle continue en $t=0$ ? Si oui, expliquer pourquoi, si non donner les valeurs en $0^{-}$ et $0^{+}$. Même question pour la tension $s$. Que vaut $s(t)$ lorsque $t\rightarrow\infty$ ?
+\item Montrer que $s(t)$ vérifie l'équation différentielle $$3\,\frac{\d s(t)}{\d t}+\frac{R}{L}s(t)=\frac{\d e(t)}{\d t}.$$
+\item En déduire l'expression de $s(t)$ et tracer l'allure de $s(t)$.
+\item Exprimer en fonction de $L$ et $R$ le temps $t_0$ au bout duquel la tension $s$ a été divisée par $10$.
+\item Proposer une méthode expérimentale pour déterminer $t_0$ avec un oscilloscope. À l'aide de cette méthode, on mesure $t_0=\SI{3}{\micro s}$ avec $R=\SI{1}{k\ohm}$. En déduire la valeur de $L$.
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[MPII]{Réponse à un créneau - effet inductif}
+On souhaite étudier la réponse de ce circuit à une entrée $V_e(t)$ en forme de créneau.
+
+%%% FIGURE %%%
+\begin{fig}
+\includegraphics[scale=1]{R3L.pdf}
+\end{fig}
+%%%%%%%%%%
+
+\begin{quest}
+\item Déterminer la résistance équivalente $R_{\rm eq}$ à l'association des trois résistances du bloc de droite du circuit. Représenter le schéma équivalent du circuit.
+
+\sol{
+$R_{\rm eq} = 2R \parallel 3R = \dfrac{6}{5} R$.
+}
+
+
+\item À partir des lois de Kirchhoff, établir l'équation différentielle qui lie la tension de sortie $V_{\rm s}(t)$ à la tension d'entrée $V_{\rm e}(t)$.
+
+\sol{
+$V_e = V_s + L\d i/\d t = V_s + \dfrac{L}{R_{\rm eq}} \d V_s/\d t$.
+}
+
+
+\item On envoie en entrée un échelon de tension, $V_e(t) = 0$ si $t<0$ et $V_e(t)=E$ si $t>0$. Que peut-on dire du courant traversant la bobine, et donc de $V_s(t)$ ? Résoudre l'équation différentielle pour obtenir $V_s(t)$. On définira un temps caractéristique $\tau$.
+
+\sol{
+$i$ et $V_s$ continues. $V_s(t) = E(1-e^{-t/\tau})$ avec $\tau = L/R_{\rm eq}$.
+}
+
+\item En déduire le graphe de $V_s(t)$ lorsque l'on envoie en entrée un créneau symétrique de hauteur $E$ de période $T$, dans les limites $\tau \ll T$ et $\tau \gg T$.
+
+\item On prend maintenant en compte la résistance interne $r$ de la bobine à induction. Reprendre les questions précédentes pour le circuit suivant.
+
+%%% FIGURE %%%
+\begin{fig}[h!]
+\includegraphics[scale=1]{RrL.pdf}
+\end{fig}
+%%%%%%%%%%
+
+
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[MPII]{Réponse à un créneau - effet capacitif}
+On souhaite étudier la réponse de ce circuit à une entrée $V_e(t)$ en forme de créneau.
+
+%%% FIGURE %%%
+\begin{fig}[h!]
+\includegraphics[scale=1]{R3C.pdf}
+\end{fig}
+%%%%%%%%%%
+
+
+\begin{quest}
+\item Déterminer la résistance équivalente $R_{\rm eq}$ à l'association des trois résistances du bloc de droite du circuit. Représenter le schéma équivalent du circuit.
+
+\sol{
+$R_{\rm eq} = 3R \parallel 2R = \dfrac{6}{5} R$.
+}
+
+
+\item À partir des lois de Kirchhoff, établir l'équation différentielle qui lie la tension de sortie $V_{\rm s}(t)$ à la tension d'entrée $V_{\rm e}(t)$.
+
+\sol{
+$\d V_e/\d t = \d V_s/\d t + \d u_c/\d t = \d V_s/\d t + \dfrac{V_s}{RC}$.
+}
+
+
+\item On envoie en entrée un échelon de tension, $V_e(t) = 0$ si $t<0$ et $V_e(t)=E$ si $t>0$. Que peut-on dire de la tension aux bornes du condensateur ? La tension $V_s(t)$ est-elle continue ? Résoudre l'équation différentielle pour obtenir $V_s(t)$ à un facteur près. En étudiant la limite $t \rightarrow \infty$, déterminer ce facteur. On définira un temps caractéristique $\tau$.
+
+\sol{
+$V_s(t) = Ae^{-t/\tau}$ avec $u_c(\infty) = 1/\tau * \int_0^\infty A e^{-t/\tau} \d t = A = E$.
+}
+
+\item En déduire le graphe de $V_s(t)$ lorsque l'on envoie en entrée un créneau symétrique de hauteur $E$ de période $T$, dans les limites $\tau \ll T$ et $\tau \gg T$.
+
+\item On prend maintenant en compte la résistance interne $r$ du condensateur. Reprendre les questions précédentes pour le circuit suivant.
+\vspace{-0.5cm}
+%%% FIGURE %%%
+\begin{fig}[h!]
+\includegraphics[scale=1]{RrC.pdf}
+\end{fig}
+%%%%%%%%%%
+
+
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PCSI]{Étude d'un circuit $LC$}
+	\Notions{\item Électrocinétique \task Régime transitoire \task Oscillateur harmonique}
+On considère le circuit $LC$ ci-dessous. Un générateur impose une tension continue $E > 0$. À l'instant $t=0$, on ferme l'interrupteur qui était ouvert depuis très longtemps.
+\begin{center}
+\includegraphics[width=0.5\columnwidth]{circuit_LC.png}
+\end{center}
+\begin{quest}
+\item Établir l'équation différentielle vérifiée par la tension aux bornes du condensateur $u_{C}(t)$ et l'écrire sous forme canonique.
+\sol{
+La loi des mailles donne 
+$$
+E = u_{C} + L\frac{\d i}{\d t} = u_{C} + LC\ddd{u_{C}}{t},
+$$
+soit sous forme canonique, avec $\omega_0 = 1/\sqrt{LC}$ la pulsation caractéristique, 
+\eqbox{
+\ddd{u_{C}}{t} + \omega_0^2 u_{C} = \omega_0^2 E.
+}
+}
+\item Donner la forme générale des solutions de cette équation différentielle.
+\sol{
+La solution générale est de la forme 
+\eqbox{
+u_{C}(t) = A\cos(\omega_0 t) + B\sin(\omega_0 t) + E.
+}
+}
+\item Quelle sont les conditions initiales qui portent sur la tension et l’intensité du courant ? En déduire les constantes d'intégration puis représenter la courbe $u_C(t)$.
+\sol{
+L'intensité du courant $i$ qui traverse une bobine et la tension $u_C$ aux bornes d'un condensateur sont continues en $t=0$. On a donc
+$$
+\left\{ 
+\begin{array}{l}
+u_C(t=0) = 0,\\
+\dd{u_C}{t}(t=0) = 0.
+\end{array}
+\right.
+\Rar 
+\left\{
+\begin{array}{l}
+A + E = 0,\\
+-B\omega_0 = 0.
+\end{array}
+\right.
+$$
+d'où l'on tire $A = -E$ et $B = 0$. La solution est donc 
+\eqbox{
+u_{C}(t) = E(1-\cos(\omega_0 t)).
+}
+}
+\item Réaliser un bilan d'énergie. Montrer que l'énergie électromagnétique $\Etot_{\rm em}$, à définir, est conservée.
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PCSI]{Doubleur de tension}
+Une source de tension continue de f.e.m $E=\SI{10}{V}$ est montée en série avec un interrupteur, une diode idéale, une bobine idéale d'inductance $L=\SI{10}{mH}$ et un condensateur idéal de capacité $C=\SI{0,1}{\micro F}$. Le condensateur étant déchargé, à $t=0$, l'interrupteur est fermé.
+On rappelle qu'une diode idéale est un composant qui se comporte comme un interrupteur fermé si la tension à ses bornes est positive, et comme un interrupteur ouvert si la tension à ses bornes est négative.
+
+Déterminer les variations de la tension $u_{\rm{c}}(t)$ aux bornes du condensateur.
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PCSI]{RLC parallèle}
+On considère le circuit suivant avec $i_{0}=\cte$.
+%\begin{figure}[h!]
+%\centering
+\begin{center}
+	\includegraphics[width=0.5\columnwidth]{RLC_parallele.pdf}
+\end{center}
+%\end{figure}
+\begin{quest}
+\item Déterminer l'équation différentielle vérifiée par $u_C(t)$ et la mettre sous forme canonique.
+\item En déduire l'expression de la pulsation propre $\omega_0$ et du facteur de qualité $Q$ en fonction de $R$, $L$ et $C$.
+\item À $t=0$, l'intensité $i_0$ du générateur de courant passe de $0$ à \SI{10}{mA}. On a $R=\SI{50}{\ohm}$, $C=\SI{10}{nF}$ et $L=\SI{100}{mH}$. Quel est le régime d'évolution de $u_{C}(t)$ ?
+\item À $t=0$, $i_L=0$ et $u_C=0$. Donner l'expression de $u_C(t)$ pour $t>0$. Tracer l'allure de $u_C(t)$.
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PCSI]{Un circuit RLC particulier}
+On considère le circuit suivant. À $t<0$ les interrupteurs sont fermés et on suppose le régime permanent atteint. Puis à $t=0$ on ouvre les deux interrupteurs. On suppose que le facteur de qualité vaut exactement $Q=1/2$.
+%\begin{figure}[h!]
+%\centering
+\begin{center}
+	\includegraphics[width=0.5\columnwidth]{RLC_variante.pdf}
+\end{center}
+%\end{figure}
+\begin{quest}
+\item Déterminer l'équation différentielle vérifiée par $i(t)$ aux bornes de la bobine pour $t>0$.
+\item En déduire l'expression de la pulsation propre $\omega_0$ et du facteur de qualité $Q$ en fonction de $R$, $L$ et $C$.
+\item Résoudre l'équation différentielle en faisant apparaître deux constantes d'intégration $A$ et $B$.
+\item Justifier que $i(0^{-})=i_0-E/R$ et que $u_{C}(0^{-})=E$. En déduire l'expression des constantes $A$ et $B$ et donner l'expression finale de $i(t)$.
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PCSI]{Circuit RLC et décrément logarithmique}
+On étudie la réponse $u(t)$ à un échelon de tension $e(t)$ dans le circuit ci-dessous.
+\begin{center}
+\includegraphics[width=0.4\textwidth]{RLC_variante2.pdf}
+\end{center}
+\begin{quest}
+\item Définir et tracer un échelon de tension. Expliquer comment on peut le réaliser expérimentalement.
+\item Déterminer la valeur $u(\infty)$ vers laquelle tend $u(t)$ lorsque $e(t)$ tend vers $E$, en redessinant le circuit en régime permanent.
+\item Démontrer que $\frac{\d^2 u(t)}{\d t^2}+2\lambda\frac{\d u(t)}{\d t}+\omega_{0}^2\, u(t)=\omega_0^2\,u(\infty)$ et donner les valeurs de $\lambda$ et $\omega_0$ en fonction des paramètres du circuit.
+\item Exprimer la forme mathématique de $u(t)$ en fonction de $\lambda$, $\omega_0$, $u(\infty)$ et $t$ en supposant que $\lambda<\omega_0$. On ne cherchera pas à déterminer les constantes d'intégration.
+\item On définit le décrément logarithmique $\delta$ par $\delta=\frac{1}{n}\ln\left(\frac{u(t)-u(\infty)}{u(t+nT)-u(\infty)}\right)$ avec $n$ un entier positif. Déterminer la relation entre $\delta$, $\lambda$ et la période $T$.
+\item Expliquer alors comment on peut mesurer expérimentalement le décrément logarithmique pour remonter à la valeur de $\lambda$.
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PCSI]{Récepteur radio}
+Une radio doit capter des signaux de fréquences comprises entre \SI{150}{kHz} et \SI{300}{kHz}. Le récepteur est composé d'un circuit RLC-série comportant une résistance $R=\SI{2}{k\ohm}$, une inductance $L=\SI{1}{mH}$ et un condensateur de capacité $C$ variable.
+\begin{quest}
+\item Quel type de filtre doit-on réaliser ? Par une analyse qualitative, déterminer si la tension de sortie doit être mesurée aux bornes de $R$, $L$ ou $C$.
+\item En déduire la fonction de transfert du filtre, et la mettre sous forme canonique en posant $x=\omega/\omega_0$. Donner les valeurs de $Q$ et $\omega_0$.
+\item Pourquoi est-il nécessaire et suffisant de faire varier la capacité $C$ ? Dans quel intervalle ? Commenter.
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PSI][2][TD]{Oscillateur à pont de Wien}
+On considère l'oscillateur à pont de Wien, représenté par le circuit suivant.
+%%% FIGURE %%%
+%\begin{figure}[h!]
+%\centering
+\begin{center}
+\includegraphics[width=0.5\textwidth]{Wien.png}
+\end{center}
+%\caption{Oscillateur à pont de Wien. L'oscsillateur se compose d'un bloc d'amplification et d'un filtre de Wien.}
+%\label{fig:Wien}
+%\end{figure}
+%%%%%%%%%%
+On s'intéresse pour commencer au filtre de Wien en sortie ouverte. Soit $V_{\rm ef}$ la tension d'entrée et $V_{\rm sf}$ la tension de sortie.
+
+\begin{quest}
+	\item Sans calcul, étudier le comportement haute et basse fréquence du circuit à pont de Wien. En déduire qu'il s'agit d'un filtre passe-bande.
+
+	\sol{	}
+
+	\item Déterminer la fonction de transfert $H(\omega) = V_{\rm sf}/V_{\rm ef}$ de ce filtre, que l'on mettra sous forme canonique. Calculer la pulsation caractéristique $\omega_0$  pour $R=1\,$k$\Omega$ et $C=10\,$nF.
+
+	\sol{$H(\omega)=H_0/(1+jQ(x-1/x))$ avec $H_0=1/3$, $\omega_0=1/RC$ et $Q=1/3$.}
+
+	\vspace{0.5cm}
+	On considère ensuite le bloc amplificateur en circuit ouvert.
+
+	\item S'agit-il d'un amplificateur inverseur ou non-inverseur ? Que vaut le gain $A$ du filtre ?
+	\sol{ $A(\omega)=1+R_2/R_1$}
+
+	\vspace{0.5cm}
+	On boucle ensuite le filtre de Wien sur l'amplificateur comme illustré sur la figure.
+
+	\item Rappeler le critère de Barkhausen qui permet d'observer des oscillations de la tension $V_{\rm ef}$. En déduire la valeur de la pulsation des oscillations, ainsi que la valeur du gain $A$.
+
+	\sol{$\omega_0$ et $A=1/H_0=3$}
+
+	\item Déterminer l'équation d'évolution temporelle de $V_{\rm ef}(t)$. Étudier la stabilité du montage en fonction de la valeur du gain $A$.
+
+	\sol{$\dfrac{\d^2 v}{\d t^2}+(3-A)\dfrac{\d v}{\d t} + \omega_0^2 v=0$}
+
+	\item Qu'est-ce qui fixe l'amplitude de la tension $V_{\rm ef}(t)$ une fois le régime permanent atteint ? Quelle est alors la valeur de $V_{\rm sf}$ ?
+
+	\sol{Saturation de l'ALI. $V_{\rm sf} \simeq 15/3=5\,$V.}
+
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][colle]{Transformation étoile-triangle}
+	Considérons un réseau en triangle (ou en $\Pi$) et un autre en étoile (ou en $T$), constitués par des résistances.
+	\begin{quest}
+		\item En analysant les résistances vues entre $A$ et $C$, entre $A$ et $B$ puis entre $B$ et $C$, trouver les relations qui permettent de passer d'un réseau en triangle à un réseau en étoile.
+		\begin{fig}[]
+			\centering
+			\includegraphics[scale=0.25]{etoile-triangle.png}
+			% \capt{}
+		\end{fig}
+		\item Application : déterminer la résistance équivalente entre les points A et B du dipôle suivant constitué de 5 conducteurs ohmiques identiques de résistance $R$.
+		\begin{fig}[]
+			\centering
+			\includegraphics[scale=0.25]{5branches.png}
+			% \capt{}
+		\end{fig}
+	\end{quest}
+	\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PSI][2][TD]{Oscillateurs à relaxation}
+
+On considère le circuit électrique suivant.
+
+%%% FIGURE %%%
+%\begin{figure}[h!]
+%\centering
+\begin{center}
+\includegraphics[scale=0.5]{oscillateur.png}
+\end{center}
+%\caption{Oscillateur à relaxation}
+%\label{fig:}
+%\end{figure}
+%%%%%%%%%%
+
+\begin{quest}
+	\item Quel opération réalise chacun des deux blocs du circuit ?
+
+	\sol{Amplificateur inverseur, intégrateur.}
+%
+
+	\item Décrire l'effet de la saturation de l'ALI. En déduire l'évolution temporelle et la nature du signal en sortie $v_{s2}(t)$. Quelle est la période $T$ du signal ?
+
+	\sol{Créneau, $V_{\rm sat}$, $T=4R_1R_2C/R_2$.}
+
+	\item Quelle est la forme, l'amplitude et la période du signal $v_{s1}(t)$ ?
+
+	\sol{Triangle, $R_1 V_{\rm sat}/R_2$, même période.}
+
+	\vspace{1cm}
+	On considère maintenant le montage suivant, appelé multivibrateur astable.
+
+%%% FIGURE %%%
+%\begin{figure}[h!]
+%\centering
+\begin{center}
+\includegraphics[scale=0.5]{multivib.png}
+\end{center}
+%\caption{Multivibrateur astable.}
+%\label{fig:}
+%\end{figure}
+%%%%%%%%%%
+
+\item Identifier deux blocs principaux sur le circuit électrique. Quels opérations réalisent-t-ils ? Déterminer la tension seuil à l'entrée du comparateur à hystérésis $V_0$.
+
+\sol{$V_0 = V_{\rm sat}R_1/(R_1+R_2)$}
+
+\item Combien de temps $T_+$ met la tension $v_{s1}(t)$ pour passer de $-V_0$ à $+V_0$ ? En déduire la nature et la période $T$ du signal en sortie $v_{s2}(t)$.
+
+\sol{Branches d'exponentielles, $T=2RC\ln(1+2R_1/R_2)$}
+
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PT][2][TD]{Quelques montages à ALI}
+
+On considère le circuit électrique suivant.
+
+
+%%% FIGURE %%%
+%\begin{figure}[h!]
+%\centering
+\begin{center}
+\includegraphics[scale=0.5]{montageALI.png}
+\end{center}
+%\caption{Montage à ALI}
+%\label{fig:2}
+%\end{figure}
+%%%%%%%%%%
+
+On suppose l'ALI idéal et considère le régime linéaire uniquement.
+
+\begin{quest}
+	\item Que valent l'impédance d'entrée $Z_e$ et le gain statique $\mu$ d'un ALI idéal ? En déduire les courants d'entrée~$I_\pm$ et la différence de tension $\varepsilon = V_+-V_-$ pour un ALI idéal.
+
+	\sol{$Z_e=\infty$, $\mu= \infty$, $I_\pm=0$ et $\varepsilon=0$}
+
+	\item Déterminer la fonction de transfert $H=v_S/v_E$. Comment ce nomme ce montage ?
+
+	\sol{
+	Millman en A : $v_A \left( \dfrac{1}{R_1} + \dfrac{1}{R_2} \right) = \dfrac{v_S}{R_2}$ puis condition idéalité $v_A=v_E$ d'où $H=\dfrac{v_S}{v_E} = 1+\dfrac{R_2}{R_1}$. Amplificateur non-inverseur.
+	}
+
+\vspace{0.5cm}
+{On remplace la résistance $R_2$ par un condensateur de capacité $C$. De plus, on impose maintenant la tension d'entrée $v_E$ aux bornes de $R_1$, et met la borne $+$ de l'ALI à la masse.}
+
+\item Représenter le nouveau circuit électrique.
+
+\sol{
+%%% FIGURE %%%
+\includegraphics[scale=0.5]{montageALI2.png}
+%%%%%%%%%%
+}
+
+\item Déterminer la fonction de transfert en régime sinusoïdal puis l'équation différentielle qui régit l'évolution de $v_S(t)$. Comment se nomme ce montage ?
+
+\sol{
+Millman : $v_A \left( \dfrac{1}{R} + jC\omega \right) = \dfrac{v_E}{R} + v_sjC\omega$ puis $v_A = 0$ d'où $H=-1/jRC\omega$ et $\dfrac{\d v_S}{\d t} = - \dfrac{v_E}{RC}$. Montage intégrateur.
+}
+
+\item Résoudre l'équation d'évolution pour une tension d'entrée constante avec pour condition initiale $v_S(t=0)=0$. Au bout de combien de temps l'expression ci-dessus n'est plus valable pour un ALI réel, et que se passe-t-il alors ? On donne $R=10\,{\rm k}\Omega$, $C = 33\,{\rm nF}$ et $v_E=5\,{\rm V}$.
+
+\sol{
+$v_S(t)= v_E t/RC$ et saturation à $v_{\rm sat} \simeq 15\,{\rm V}$ à partir d'un temps $\tau=RCv_{\rm sat}/v_E = 1\,{\rm ms}$.
+}
+
+On considère ensuite le circuit électrique suivant. L'ALI est supposé idéal, de sorte que $E=0$ sur le schéma.
+
+
+%%% FIGURE %%%
+%\begin{figure}[h!]
+%\centering
+\begin{center}
+\includegraphics[scale=0.5]{sommateur.png}
+\end{center}
+%\caption{Montage à ALI}
+%\label{fig:3}
+%\end{figure}
+%%%%%%%%%%
+
+\item Déterminer la tension en sortie $v_S$. Quelle opération réalise ce montage ?
+
+\sol{
+$v_1+v_2=2R_1i$ et $v_s=(R_1+R_2)i$ d'où $v_s = \dfrac{1}{2}\left(1+\dfrac{R 2}{R 1}\right)(v_1+v_2)$. Montage sommateur.
+}
+
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[MPSI]{Étude de quelques circuits passifs}
+\begin{quest}
+\item Déterminer la résistance équivalente du circuit suivant.
+
+
+%%% FIGURE %%%
+%\begin{figure}[h!]
+%\centering
+\begin{center}
+\input{1.pgf}
+\end{center}
+%\caption{}
+%\label{fig:}
+%\end{figure}
+%%%%%%%%%%%
+
+
+\item Établir l'équation différentielle qui lie la tension $V_{\rm s}(t)$ à la tension $V_{\rm e}(t)$ dans le circuit suivant.
+
+%%%% FIGURE %%%
+%\begin{figure}[h!]
+%\centering
+\begin{center}
+\input{2.pgf}
+\end{center}
+%\caption{}
+%\label{fig:}
+%\end{figure}
+%%%%%%%%%%%
+
+\item Établir l'équation différentielle qui lie la tension $V_{\rm s}(t)$ à la tension $V_{\rm e}(t)$ dans le circuit suivant.
+
+%%%% FIGURE %%%
+%\begin{figure}[h!]
+%\centering
+\begin{center}
+\input{3.pgf}
+\end{center}
+%\caption{}
+%\label{fig:}
+%\end{figure}
+%%%%%%%%%%%
+
+
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[MPSI]{Étude de quelques circuits passifs}
+
+\begin{quest}
+
+\item Déterminer la résistance équivalente du circuit suivant.
+
+%%%% FIGURE %%%
+%\begin{figure}[h!]
+%\centering
+\begin{center}
+\input{1bis.pgf}
+\end{center}
+%\caption{}
+%\label{fig:}
+%\end{figure}
+%%%%%%%%%%%
+
+
+\item Établir l'équation différentielle qui lie la tension $V_{\rm s}(t)$ à la tension $V_{\rm e}(t)$ dans le circuit suivant.
+%
+%%%% FIGURE %%%
+%\begin{figure}[h!]
+%\centering
+\begin{center}
+\input{2bis.pgf}
+\end{center}
+%\caption{}
+%\label{fig:}
+%\end{figure}
+%%%%%%%%%%%
+
+\item Établir l'équation différentielle qui lie la tension $V_{\rm s}(t)$ à la tension $V_{\rm e}(t)$ dans le circuit suivant.
+
+%%%% FIGURE %%%
+%\begin{figure}[h!]
+%\centering
+\begin{center}
+\input{3bis.pgf}
+\end{center}
+%\caption{}
+%\label{fig:}
+%\end{figure}
+%%%%%%%%%%%
+
+
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[MPSI]{Bilans de puissance}
+
+On considère le circuit suivant. On note $e(t)$ la tension aux bornes de l'alimentation, dépendante du temps $t$. Soit $V_s(t)$ la tension de sortie du circuit.
+
+%%%% FIGURE %%%
+%\begin{figure}[h!]
+%\centering
+\begin{center}
+\input{2ter.pgf}
+\end{center}
+%\caption{}
+%\label{fig:}
+%\end{figure}
+%%%%%%%%%%%
+
+\begin{quest}
+
+ \item En utilisant les lois de Kirschoff, établir une équation différentielle sur la tension $V_{\rm s}(t)$.
+
+ \sol{
+
+ }
+
+\item Établir de même une équation différentielle sur le courant $i_{\rm s}(t)$ en sortie du circuit.
+
+\item Exprimer la puissance instantanée $P_{\rm s}$ consommée par la bobine en sortie, en fonction de $i_{\rm s}$ et~$V_{\rm s}$. En déduire l'expression de l'énergie stockée dans une bobine.
+
+\item En utilisant les expressions de $i_{\rm s}(t)$ et $V_{\rm s}(t)$, montrer que la puissance instantanée $P$ fournie par le générateur est égale à la somme des puissances dissipées dans chacun des composants passifs.
+
+
+\end{quest}
+
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[MPSI]{Résonance en intensité série vs parallèle}
+
+\begin{quest}
+\item Écrire l’impédance $Z$ complexe d’un circuit composé d’une résistance $R$, d’une inductance $L$ et
+d’une capacité $C$ placées en série. On pose $\omega\-0 = \dfrac{1}{\sqrt{LC}}$, $Q = \dfrac{L\omega\-0}{R}$ et $x = \dfrac{\omega}{\omega\-0}$.
+Donner l’expression de l’impédance en fonction de $x$, $Q$ et $R$.
+
+
+\sol{
+$$
+Z = R+jL\omega+1/jC\omega = R[1+jQ(x-1/x)]
+$$
+}
+
+
+\item Établir l’existence d’un extremum du module de l’impédance. Donner l’expression de $x$ puis de la pulsation correspondant à l’extremum, et tracer la fonction $|Z|(x)$.
+
+
+\sol{
+Extremum lorsque $\d |Z|^2/\d y=0$ avec $y=x^2$ et
+$$
+|Z|^2 = 1+Q^2(x-1/x)^2 = 1-2Q^2 + Q^2(y + 1/y)
+$$
+donc
+$$
+0 = Q^2(1-1/y^2)
+$$
+et $x=1$, soit en $\omega=\omega_0$.
+}
+
+
+\item Déterminer le retard de phase $\phi$ de l’intensité $i$ parcourant ce circuit lorsqu’on l’alimente
+par une tension sinusoïdale d’amplitude $E$ et de pulsation $\omega$. En déduire que le module de l’intensité $I$ passe par un maximum $I_{\rm max}$ dont on donnera la valeur.
+
+
+\sol{
+$\tan(\phi) = Q(x-1/x)$ et $I_{\rm max} = E/|Z|_{\rm max} = E/R$.
+}
+
+\item On définit l’acuité de la résonance par $A = \Delta \omega/\omega_0$
+ où $\Delta \omega$ est la bande de pulsations pour laquelle $I(\omega)  \geq I_{\rm max}/\sqrt{2}$. Exprimer $A$ en fonction de $Q$.
+
+ \sol{
+ $\omega$ au bord de la bande passante lorsque $Q(x-1/x) = \pm 1$, soit $x^2 \pm x/Q-1=0$. On trouve $\Delta = 1/Q^2+4$ et
+ $$x = \pm \dfrac{1}{2Q} + \dfrac{\sqrt{1+4Q^2}}{2Q}$$ et l'acuité $$A=\dfrac{1}{Q}.$$
+ }
+
+
+\item Reprendre toutes les questions précédentes pour une association en parallèle.
+
+
+\end{quest}
+
+
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][devoir]{Imagerie par Résonance Magnétique nucléaire ou IRM}
+	\Annale[Physique MP]{CCINP}{2017}
+
+L'IRM, qui s'utilise dans des conditions quasi-naturelles et même in vivo, est une technique non destructive de visualisation en coupes des tissus organiques mous, en les laissant intacts. Elle utilise un champ magnétique intense permanent $\B_0$ combiné avec un faible champ perturbateur oscillant. L'interaction de ces champs avec le moment magnétique d'une particule élémentaire (électron ou proton) engendre un comportement dynamique qui fournit des renseignements sur l'environnement atomique de ces particules.
+
+% Dans ce sujet, nous étudierons quelques aspects de cette technique sans caractère exhaustif. Les questions ne font appel qu'à des éléments du programme MPSI/MP de physique. Les candidats peuvent à tout moment utiliser un résultat donné par l'énoncé pour répondre aux questions suivantes.
+
+\begin{center}
+	\textsc{Données}\\[0.5cm]
+	\begin{tabular}{|l|l|}
+		\hline
+		Constante de Boltzmann  & $k=1,4 \cdot 10^{-23} \mathrm{~J} \cdot \mathrm{K}^{-1}$ \\
+		Constante d'Avogadro : & $N_{\mathrm{A}}=6,0.10^{23} \mathrm{~mol}^{-1}$ \\
+		\begin{tabular}{l}
+			Facteur de Boltzmann associé à un système \\
+			d'énergie E, en équilibre à la température T : \\
+		\end{tabular} & $\exp (-E / kT)$ \\
+		Vitesse de la lumière dans le vide : & $c=3,0.10^{8} \mathrm{~m}^{-1}$ \\
+		Constante de Planck « réduite » & $\hbar = \frac{h}{2 \pi} = 1,05 \cdot 10^{-34} \mathrm{~J} \cdot \mathrm{s}$ \\
+		Perméabilité du vide : & $\mu_{0}=4 \pi \cdot 10^{-7} \mathrm{H} \cdot \mathrm{m}^{-1}$ \\
+		Masse de l'électron : & $m_{\mathrm{e}}=9,1 \cdot 10^{-31} \mathrm{~kg}$ \\
+		Charge de l'électron : & $-e=-1,6 \cdot 10^{-19} \mathrm{C}$ \\
+		Rayon de l'orbite 1s du modèle de Bohr : & $r_{\mathrm{B}}=5,3 \cdot 10^{-11} \mathrm{~m}$ \\
+		Moment magnétique du proton : & $\mu_{\mathrm{p}}=1,4 \cdot 10^{-26} \mathrm{~J} \cdot \mathrm{T}^{-1}$ \\
+		Conductivité du cuivre : & $\sigma=6,0.10^{7} \mathrm{~S} \cdot \mathrm{m}^{-1}$ \\
+		Développement limité de la fonction : & $\exp (x)=1+\frac{x}{1 !}+\frac{x^{2}}{2 !}+o\left(x^{2}\right)$ \\
+
+		\hline
+	\end{tabular}
+\end{center}
+
+Précession : la précession est le nom donné au changement graduel d'orientation d'un vecteur qui décrit un cône dont l'axe est la direction de précession. Ce cône est parcouru à vitesse constante dans un sens donné.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Comportement d'une population de dipôles dans un champ magnétique}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\parag{Dipôles magnétiques}
+\begin{quest}
+	\item Définir le vecteur moment magnétique $\vec{\mu}$ associé à une boucle circulaire de courant de rayon $\mathrm{R}$ et d'axe de révolution $\mathrm{Oz}$, parcourue par une intensité $\mathrm{I}$, dans le cadre de l'approximation dipolaire (figure 1). On note $\ez$ le vecteur unitaire de l'axe Oz. Le sens de rotation directe autour de l'axe Oz est le sens d'orientation de l'intensité algébrique.
+	\sol{
+		Eu égard aux conventions d'orientations retenues (Cf figure 1), le moment magnétique $\vec{\mu}$ d'un moment magnétique d'une spire circulaire de rayon $R$ est: $\vec{\mu}=\pi R^2 I \ez$
+	}
+
+	\item Expliquer pourquoi une sphère chargée, en rotation autour d'un axe passant par son centre, est elle-aussi caractérisée par un moment magnétique dont on précisera la direction et le sens (on ne demande pas le calcul du moment mais seulement la justification de son existence).
+	\sol{
+		Décomposons la sphère (supposée chargée uniformément en volume) porteuse d'une charge $q$ en petites charges élémentaires $d q$. Lorsque la sphère chargée est en rotation autour d'un axe $(O Z)$, chacune de ces charges en déplacement (par rapport au référentiel du laboratoire) situées à une distance $r$ de l'axe de rotation constituent une petite boucle de courant de rayon $r$ à laquelle on associe un moment magnétique $\vec{\mu}$. Si la sphère rotate dans le sens positif donné par la figure 1 , chacun de ces moments est porté selon l'axe $(O Z)$, selon $+\vec{e}_Z$ si $d q>0,-\vec{e}_Z$ si $d q<0$. Par symétrie (le plan perpendiculaire à l'axe de rotation passant par le centre de la sphère est un plan de symétrie pour la distribution de charges et le moment magnétique est un vecteur axial), le moment magnétique de la sphère, somme de tous les moments magnétiques élémentaires est dirigé selon $+\vec{e}_Z$ si $q>0$ ou $-\vec{e}_Z$ si $q<0$. Lorsque la rotation de la sphère cesse, son moment magnétique devient nul.
+
+		Le même raisonnement tient pour une sphère chargée en surface.
+	}
+
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\begin{fig}[label]
+\centering
+% \includegraphics[width=0.2\columnwidth]{2024_02_07_cf6d71ba6ea012c1b88ag-03}
+\capt{Boucle de courant}
+\end{fig}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Dans le cas du proton (noyau d'hydrogène) qui tourne sur lui-même (rotation propre de vecteur de rotation $\vec{\Omega}$ autour d'un axe $\mathrm{Oz}$ ), on peut lui associer un moment magnétique $\overrightarrow{\mu_{\mathrm{p}}}$ colinéaire à $\vec{\Omega}$ et de norme $\mu_{\mathrm{p}}$.
+
+\item Justifier par analyse dimensionnelle l'unité écrite dans le tableau de données.
+\sol{
+	En s'appuyant sur la définition du moment magnétique d'une spire de courant, l'équation aux dimensions du moment magnétique d'un proton est: $\left[\mu_p\right]=I L^2$.
+Or, en utilisant des relations typiques connues telles $B=\mu_0 n I$ et $w_m=\frac{B^2}{2 \mu_0}\left(w_m\right.$ densité d'énergie magnétique), il vient d'une part que $[B]=\left[\mu_0\right] \frac{I}{L}$ et d'autre part que $\frac{[B]^2}{\left[\mu_0\right]}=\frac{[E]}{L^3}$ ( $E$ est une grandeur homogène à une énergie). On en déduit que: $\frac{[B] I}{L}=\frac{[E]}{L^3}$ puis $\left[\mu_p\right]=\frac{[E]}{[B]}$.
+L'unité SI du moment magnétique est l'A.m² ou le J.T ${ }^{-1}$.
+Ceci dit, en utilisant l'expression de l'énergie potentielle d'interaction $E_{p o t}=-\vec{\mu} \cdot \vec{B}_0$ d'un dipôle dans un champ magnétique (relation rappelée en préambule de la question 4.), le résultat est immédiat.
+
+Remarque: Quid du texte qui introduit le vecteur rotation instantanée du proton sur lui-même?
+}
+\end{quest}
+Soit un dipôle magnétique de moment $\vec{\mu}$ placé en $\mathrm{O}$ dans un champ magnétique extérieur uniforme permanent $\B_0=B_0 \ez$. On rappelle les expressions de l'énergie potentielle $\mathrm{E}_{\mathrm{pot}}=-\vec{\mu} \cdot \B_0$ et du couple (moment de force) d'interaction $\Vec{\Gamma}_0=\vec{\mu} \wedge \B_0$.
+
+\begin{quest}
+\item En déduire quelles sont les 2 positions d'équilibre d'un moment dipolaire magnétique, dans un champ magnétique extérieur uniforme $\B_0$, en précisant les valeurs associées de l'énergie potentielle.
+\sol{
+	Dans toutes les questions où on applique des théorèmes relatfs à la mécanique (questions 4., 19., ...), le caractère galiléen du référentiel du laboratoire n'est pas explicitement indiqué. Nous le supposerons galiléen. Les positions d'équilibre du dipôle correspondent à la nullité du moment des actions mécaniques qu'il subit, ce qui donne deux positions d'équilibre:
+- l'une où le dipôle est orienté selon le champ $\vec{B}_0$; c'est une position d'équilibre stable car l'énergie potentielle d'interaction est minimale:
+$$
+E_{\text {pot } \min }=-\mu B_0 \text {, }
+$$
+- l'autre où le dipôle est anticolinéaire au champ; il s'agit d'une position d'équilibre instable car l'énergie potentielle d'interaction est maximale:
+$$
+E_{\text {pot } \max }=+\mu B_0 \text {. }
+$$
+}
+
+\item Évaluer la différence d'énergie en eV entre les deux configurations d'équilibre d'un noyau d'hydrogène soumis à un champ magnétique permanent de 1 tesla (ordre de grandeur typique en RMN).
+\sol{
+	La différence d'énergie entre les deux positions d'équilibre est: $\Delta E=E_{\text {pot } \max }-E_{\text {pot } \min }=+2 \mu B_0$.
+A.N.: Pour $B \sim 1 T$ et $\mu \sim \mu_p$, on a: $\Delta E=1,7 \cdot 10^{-7} \mathrm{eV}$.
+}
+
+\item Comparer cette valeur à celle de l'énergie thermique à $37^{\circ} \mathrm{C}$.
+\sol{
+	L'énergie thermique est de l'ordre de $E_{\text {thermique }}$ $k_B T$.
+A.N.: Pour $T=37^{\circ} \mathrm{C}, E_{\text {thermique }}=4,3.10^{-21} \mathrm{~J}=27 \mathrm{meV}$
+
+On a : $E_{\text {thermique }}>>E$ : le dipôle peut occuper les deux configurations d'équilibre.
+}
+
+\item L'ordre de grandeur de l'énergie de liaison covalente de $\mathrm{OH}$ dans l'eau est de $5 \mathrm{eV}$ et celui d'une énergie d'ionisation est de 13,6 eV. Justifier l'utilisation de la RMN en imagerie médicale, en considérant que la méthode fait passer le proton d'un état d'équilibre à l'autre.
+\sol{
+	Les énergies mises en jeu dans la RMN ne doivent pas perturber les édifices moléculaires au sein desquels se trouvent les protons. Comme les énergie mises en jeu dans la RMN sont bien plus faibles que l'énergie d'ionisation de l'atome d'hydrogène ou d'une énergie de liaison $O H$, la RMN est utilisable en imagerie médicale.
+}
+
+\end{quest}
+Nous considérons qu'une population de dipôles, placés dans un champ magnétique extérieur $\B_0$ de 1 tesla, en équilibre thermique à la température $T$, obéit à la statistique de Boltzmann.
+
+\begin{quest}
+\item Rappeler, à un facteur multiplicatif près, l'expression de la probabilité d'occuper un état d'énergie E par un dipôle, en utilisant le facteur de Boltzmann.
+\sol{
+	On suppose ici qu'on a affaire à un système à deux niveaux discrets (non dégénérés) d'énergie $\pm \mu B_0$. Dans l'ensemble canonique, la probabilité d'occupation d'un niveau d'énergie $E$ par un dipôle est proportionnelle au facteur de Boltzmann, soit: $P=C e^{-\frac{E}{k_B T}}$ avec $C=\frac{1}{Z}$ une constante de normalisation et $Z$ la fonction de partition canonique du dipôle. En écrivant la condition de normalisation, on a: $Z=$ $e^{-\frac{E_{\text {pot } \max }}{k_B T}}+e^{-\frac{E_{p o t \min }}{k_B T}}$.
+}
+
+\item Évaluer le rapport des populations $\frac{N_{+}}{N_{-}}$, en équilibre thermique à la température $\mathrm{T}, N_{+}$étant la densité volumique de dipôles de plus grande énergie et $N_{-}$ étant la densité volumique de dipôles de plus petite énergie (on admettra que l'on peut effectuer un développement limité à l'ordre 1).
+\sol{
+	La probabilité d'occupation de l'état de plus basse énergie $E_{\text {potmin }}=E_{-}$est donnée d'une part par la statistique de Boltzmann mais également par le nombre de cas favorables rapportés au nombre total de cas, soit avec les notations de l'énoncé ( $N$ nombre de dipôles par unité de volume): $P_{-}=\frac{N_{-}}{N}=\frac{e^{-\frac{E_{-}}{k_B T}}}{Z}$. En procédant de même pour l'état de plus haute énergie $E_{\text {pot } \max }=E_{+}$, on aboutit à $\left(\mu B_0<<k_B T\right)$ :
+$$
+\frac{N_{+}}{N_{-}}=e^{-\frac{2 \mu B_0}{k_B T}} \sim 1-\frac{2 \mu B_0}{k_B T}
+$$
+}
+
+\item À quelle orientation correspond la population la plus nombreuse à l'équilibre thermique? 
+\sol{
+	On a $N_{+}<N_{-}$. La population la plus nombreuse est celle des dipôles alignés selon le champ magnétique $\vec{B}_0$. Ceci dit, dans "la limite des hautes températures" $\left(T>>\theta=\frac{\mu B_0}{k_B}\right.$ avec $\theta$ une température caractéristique), $N_{+} \approx N_{-}$(Cf question suivante).
+}
+% On note $\eta=\frac{N_{-}-N_{+}}{N_{+}+N_{-}}$ la différence relative de population entre les deux niveaux.
+
+\item Exprimer, à l'équilibre thermique, la différence relative de population entre les deux niveaux $\eta=\frac{N_{-}-N_{+}}{N_{+}+N_{-}}=\eta_{0}$ (toujours à l'ordre 1) en fonction de $\mu, \mathrm{k}$, $\mathrm{T}$ et $B_0$.
+\sol{
+	Tous calculs menés, le rapport
+$$
+\eta=\frac{N_{-}-N_{+}}{N_{-}+N_{+}}
+$$
+vaut:
+$$
+\eta=\frac{1-e^{-\frac{2 \mu B_0}{k_B T}}}{1+e^{-\frac{2 \mu B_0}{k_B T}}} \approx \frac{\mu B_0}{k_B T} .
+$$
+}
+
+\item Donner sa valeur numérique pour des protons placés dans un champ de 1 tesla, à une température de $37^{\circ} \mathrm{C}$ et commenter.
+\sol{
+	A.N. Pour $T=310 \mathrm{~K}\left(\theta \sim 10^{-3} \mathrm{~K}\right), \mu=\mu_p$, $\eta=3,3 \cdot 10^{-6}$. A la température du corps humain, les dipôles protoniques placés dans un champ de 1 T sont statistiquement orientés pour moitié selon le champ magnétique, pour moitié orientés selon $-\vec{B}_0$.
+}
+\end{quest}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Rapports gyromagnétiques}
+Une boucle de courant est créée par un électron dans son mouvement orbital autour du noyau. On considère l'orbite circulaire, de rayon $\mathrm{r}_{\mathrm{B}}$ et de centre $\mathrm{O}$, contenue dans le plan $\mathrm{xOy}$. Le vecteur vitesse de l'électron s'écrit $\vec{v}=v \vec{t}$ avec $\vec{t}$ le vecteur unitaire tangent au cercle orienté dans le sens direct autour de O.
+\begin{quest}
+	\item Exprimer le moment magnétique $\overrightarrow{\mu_{e}}=\mu_{e} \ez$ associé à cette boucle de courant en fonction du rayon $r_{\mathrm{B}}$, de la vitesse ${v}$, du vecteur $\ez$ et de constantes fondamentales.
+	\sol{
+		Le moment magnétique électronique est défini par: $\vec{\mu}_e=\pi r_B^2 I \vec{e}_Z$ avec $I=-\frac{e}{T}$ ( $T$ période de révolution de l'électron sur son orbite). En outre, comme l'électron subit de la part de son noyau la force coulombienne (force centrale), le mouvement circulaire est uniforme; on écrit: $v=\frac{2 \pi r_B}{T}$. On en déduit que:
+% $$
+\eqbox{
+	\vec{\mu}_e=-\frac{e r_B v}{2} \vec{e}_Z
+}
+% $$
+	}
+
+	\item Exprimer le moment cinétique de l'électron $\Vec{L}_O = L_e \ez$ en fonction des mêmes paramètres.
+	\sol{
+		Dans la base cylindrique ( $\left.\vec{e}_r, \vec{e}_\theta=\vec{t}, \vec{e}_Z\right)$, le moment cinétique (orbital) de l'électron est:
+		% $$
+		\eqbox{
+			\vec{\sigma}_O=m\left(\vec{r}_B \times \vec{v}\right)=m r_B v \vec{e}_Z
+		}
+		% $$
+	}
+
+	\item Exprimer le rapport gyromagnétique correspondant $\gamma_{e}=\frac{\mu_{e}}{L_{e}}$ en fonction des constantes fondamentales et calculer la valeur numérique du rapport gyromagnétique de l'électron.
+	\sol{
+		On en déduit le rapport gyromagnétique (classique) de l'électron: $\gamma_e=-\frac{e}{2 m_e}$. A.N. $\gamma_e=-8,8 \cdot 10^{10} \mathrm{C} \cdot \mathrm{kg}^{-1}$.
+	}
+\end{quest}
+Le corps humain est essentiellement constitué d'eau: l'hydrogène représente $10 \%$ de la masse corporelle, c'est-à-dire $86 \%$ de la composition chimique de notre organisme. On étudiera donc, par la suite, le comportement de ces protons soumis à un champ magnétique extérieur $\B_0=B_0 \ez$.
+
+On peut, comme dans l'exemple de l'électron, associer au proton un rapport gyromagnétique égal au rapport de son moment magnétique et de son moment cinétique. Pour l'hydrogène $H$ isolé, le rapport gyromagnétique, qui vaut $\gamma_{\mathrm{p}}=2,67 \cdot 10^{8}\,\mathrm{rad} \cdot \mathrm{s}^{-1} . \mathrm{T}^{-1}$, est associé à un moment cinétique quantifié qui ne peut prendre que les valeurs $\pm \hbar / 2$.
+
+\begin{quest}
+	\item Les valeurs ci-dessus sont-elles conformes à la valeur du moment magnétique $\mu_{\mathrm{p}}$ ?
+	\sol{
+		Le moment magnétique du proton est relié à son moment cinétique (ici intrinsèque de spin) par: $\vec{\mu}_p=$ $\gamma_p \overrightarrow{\sigma_p}$. En tenant compte de la quantification du moment cinétique (projeté selon $(O Z)$ ), ce dernier prend les valeurs $\pm \gamma_p \frac{\hbar}{2}$
+		A.N. $\left\|\overrightarrow{\mu_p}\right\|=\frac{\gamma_p \hbar}{2}=1,4 \cdot 10^{26} \mathrm{~J} . \mathrm{T}^{-1}$, valeur conforme à celle de l'énoncé.
+	}
+
+	\item Exprimer en fonction de $B_0$ et $\gamma_{\mathrm{p}}$ la fréquence du photon qui permet le passage du niveau de plus basse énergie au niveau de plus haute énergie pour l'hydrogène.
+	\sol{
+		Le photon permettant le passage de l'état de plus basse énergie $-\gamma_p \frac{\hbar}{2} B_0$ à la plus haute énergie $\gamma_p \frac{\hbar}{2} B_0$ est tel que son énergie vale: $h \nu=\gamma_p \hbar$, soit une fréquence $\nu=\frac{\gamma_p B_0}{2 \pi}$.
+	}
+
+	\item Quelles sont la fréquence $f$ et la longueur d'onde $\lambda$ correspondantes pour un champ permanent de 1 tesla?
+	\sol{
+		A.N. Pour $B_0=1 \mathrm{~T}, \nu=4,2 \cdot 10^7 \mathrm{~Hz}$ et $\lambda=\frac{c}{\nu}=7,1$ m. Il s'agit de photons appartenant au domaine des ondes radio.
+	}
+\end{quest}
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\subsection{Précession d'un dipôle}
+	On écarte un dipôle d'un angle $\alpha$ par rapport à la position d'équilibre stable dans un champ magnétique $\B_0=B_0 \ez$.
+	\begin{quest}
+		\item Écrire l'équation différentielle caractéristique de l'évolution du vecteur moment dipolaire sous la forme $\frac{\mathrm{d} \vec{\mu}}{\mathrm{dt}}=\Vec{\omega}_0 \wedge \vec{\mu}$ en précisant ce que vaut $\Vec{\omega}_0$.
+		\sol{
+			On applique le théorème du moment cinétique à un dipôle (ponctuel) dans le référentiel du laboratoire galiléen. Ce dipôle (placé en un point $\mathrm{O}$ ) ne subit qu'un couple $\vec{\Gamma}_O=\vec{\mu} \times \vec{B}_0$; on écrit donc: $\frac{d \vec{\sigma}_O}{d t}=$ $\vec{\mu} \times \vec{B}_0$. En multipliant cette équation par le rapport gyromagnétique $\gamma$ du dipôle $\left(\vec{\mu}=\gamma \vec{\sigma}_O\right)$ et en tenant compte du caractère antisymétrique du produit vectoriel, on a:
+			$$
+			\frac{d \vec{\mu}}{d t}=\vec{\omega}_0 \times \vec{\mu}
+			$$
+			avec $\vec{\omega}_0=-\gamma \vec{B}_0$ une grandeur homogène à une vitesse angulaire (pulsation de Larmor).
+		}
+
+		\item Montrer que sa norme se conserve et que la projection du moment sur l'axe du champ magnétique se conserve aussi.
+		\sol{
+			En multipliant scalairement l'équation (3) par $\vec{e}_Z$ lequel garde une direction fixe dans le référentiel du laboratoire, on a:
+			$$
+			\vec{e}_Z \cdot \frac{d \vec{\mu}}{d t}=\frac{d\left(\vec{e}_Z \cdot \vec{\mu}\right)}{d t}=\frac{d \mu_Z}{d t}=\vec{e}_{Z \cdot}\left(\vec{\omega}_0 \times \vec{\mu}\right)=0
+			$$
+			car le champ magnétique $\vec{B}_0$ est orienté selon l'axe $(O Z)$. La projection $\mu_Z$ du moment magnétique selon cet axe se conserve donc.
+
+			En multipliant maintenant scalairement l'équation
+			(3) par $\vec{\mu}$, on aboutit, par propriété du produit mixte, à:
+			$$
+			\vec{\mu} \cdot \frac{d \vec{\mu}}{d t}=\frac{d}{d t}\left(\frac{\mu^2}{2}\right)=0 .
+			$$
+
+			Il y a conservation de la norme du moment magnétique.
+		}
+
+		\item Décrire le mouvement de la projection du vecteur dans un plan orthogonal au champ magnétique, en précisant ce que représente $\left\|\Vec{\omega}_0\right\|=\omega_{0}$.
+		\sol{
+			Dans cette question, on demande de "décrire" et non "d'établir" le mouvement de la projection du moment magnétique dans un plan orthogonal au champ magétique (nous proposerons une démonstration à la question 61.).
+			Qualitativement, du fait des deux lois de conservation précédentes, l'extrémité du moment magnétique projeté dans le plan (Oxy) (plan orthogonal au champ magnétique) décrit une trajectoire circulaire à la vitesse angulaire $\omega_0=\gamma B_0$.
+		}
+
+		\item Décrire le mouvement complet du dipôle en vous appuyant sur un dessin. Préciser le sens du mouvement de précession.
+		\sol{
+			Le dipôle effectue un mouvement de précession autour de l'axe $(O Z)$ à la vitesse angulaire (algébrique) $\overline{\omega_0}=-\gamma B_0$, dans le sens horaire pour un observateur regardant selon $-\vec{e}_Z$ si $\gamma>0$, dans le sens trigonométrique (sens rétrograde) si $\gamma<0$ (Cf figure 2).
+		}
+
+	\end{quest}
+		Lorsque les protons étudiés se trouvent dans une molécule (ou un cristal), les liaisons chimiques entre atomes modifient la fréquence de résonance précédente par modification du rapport gyromagnétique. Mais ces effets sont très petits (ils sont généralement mesurés en parties par million ou ppm). Il faut donc des instruments très sensibles pour distinguer entre protons libres et protons engagés dans une liaison chimique.
+
+		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		\subsection{Précession de l'aimantation}
+		À l'état naturel, les vecteurs moments dipolaires des noyaux d'hydrogène sont répartis dans toutes les directions et il n'y a pas d'effet magnétique global pour un échantillon. Par contre, en présence d'un champ magnétique extérieur, l'hydrogène aura des propriétés magnétiques caractérisées par un vecteur moment magnétique global volumique appelé aimantation $\Vec{M}=\sum_{\mathrm{i}} \Vec{\mu_{i}}$, la somme étant réalisée sur tous les noyaux d'hydrogène composant l'unité de volume. En IRM, c'est ce vecteur aimantation $\vec{M}$, obtenu en présence d'un champ magnétique extérieur, qui permet d'obtenir des images des tissus du corps humain.
+
+		On considère l'état d'équilibre thermique d'un échantillon contenant des hydrogènes en présence d'un seul champ fort permanent $\B_0=B_0 \ez$. On suppose, pour simplifier, que le système des dipôles magnétiques associés aux protons peut être décrit comme un système à 2 états ne pouvant occuper que les positions parallèles (vecteur moment dipolaire et champ magnétique de même sens) ou antiparallèles (vecteur moment dipolaire et champ magnétique de sens contraire), décrites à la question Q4.
+		\begin{quest}
+			\item Comment est orienté le vecteur aimantation de norme ${M}_{0}$ ?
+			\sol{
+				Par superposition des moments dipolaires individuels tous portés par l'axe $(O Z)$, le vecteur aimantation volumique $\vec{M}$ est également orienté selon cet axe.
+			}
+
+			\item Exprimer la valeur de ${M}_{0}$ en fonction du nombre ${N}$ de noyaux d'hydrogène par unité de volume, de $\eta$ et de $\mu_{\mathrm{p}}$.
+			\sol{
+				A l'aide de (3), on écrit:
+				$$
+				\vec{M}=N_{-} \mu_p \vec{e}_Z+N_{+}\left[-\mu_p \vec{e}_Z\right]=N \eta \mu_p \vec{e}_Z \text {. On }
+				$$
+				pose: $M_0=N \eta \mu_p$.
+			}
+		\end{quest}
+		En mécanique quantique, le moment cinétique du noyau d'hydrogène est quantifié en projection sur l'axe Oz par $\sigma_{\mathrm{z}}= \pm \hbar \mathrm{S}$, avec $\mathrm{S}=1 / 2$.
+
+		\begin{quest}
+			\item Exprimer ${M}_{0}$ à partir du nombre ${N}$ de noyaux d'hydrogène par unité de volume, du rapport gyromagnétique $\gamma_{\mathrm{p}}$ du proton, du champ magnétique $B_0$, de la température ${T}$ et des constantes de Planck et de Boltzmann.
+			\sol{
+				En utilisant l'équation (2) non linéarisée, on obtient: $M_0=N \mu_p t h\left(\frac{\mu_p B_0}{k_B T}\right)$ ("th" désigne la fonction tangente hyperbolique). Or, $\mu_p=\gamma_p \frac{\hbar}{2}$, d'où: $M_0=\frac{N \gamma_p \hbar}{2} t h\left(\frac{\gamma_p \hbar B_0}{2 k_B T}\right)$, ou encore en linéarisant cette dernière relation (avec la condition $\theta<<T$ ):
+				$$
+				M_0=\frac{\gamma_p^2 \hbar^2 N B_0}{4 k_B T} .
+				$$
+			}
+
+			\item Évaluer la concentration volumique des noyaux d'hydrogène (exprimée en $\mathrm{m}^{-3}$ ) en assimilant le corps humain à de l'eau (masse molaire de l'eau $\mathrm{H}_{2} 0: {m}=18 \mathrm{~g} \cdot \mathrm{mol}^{-1}$ et masse volumique de l'eau $\rho=1,0 \mathrm{~g} . \mathrm{cm}^{-3}$ ).
+			\sol{
+				Par définition, de la masse volumique $\rho$ et de la densité particulaire $N$, on écrit pour le corps humain supposé constitué exclusivement d'eau (densité particulaire $\left.N\left(\mathrm{H}_2 \mathrm{O}\right)\right): \rho=\frac{N\left(\mathrm{H}_2 \mathrm{O}\right) M\left(\mathrm{H}_2 \mathrm{O}\right)}{N_A}$. Or, il y a deux protons par molécule d'eau, d'où une densité particulaire associée égale à:
+				$$
+				N=\frac{2 \rho N_A}{M\left(H_2 O\right)}
+				$$
+				A.N. $N=6,7 \cdot 10^{28} \mathrm{~m}^{-3}$.
+			}
+
+			\item Comparer le champ créé par ce dipôle global à une distance de $1 \mathrm{~m}$ sur son axe au champ permanent $B_0=1 \mathrm{~T}$. On rappelle qu'un moment magnétique $\Vec{M}=M \ez$, placé en $\mathrm{O}$ point origine des coordonnées, crée un champ égal à $\overrightarrow{\mathrm{B}(\mathrm{r}, \theta, \phi)}=\frac{\mu_{0} \mathrm{M}\left(2 \cos \theta \overrightarrow{\mathrm{e}_{\mathrm{r}}}+\sin \theta \overrightarrow{\mathrm{e}_{\theta}}\right)}{4 \pi \mathrm{r}^{3}}$ en un point $\mathrm{P}$ de coordonnées sphériques $(\mathrm{r}, \theta, \phi)$.
+			\sol{
+				Le champ dipolaire créé sur l'axe $(O Z)$ à une distance $r(\theta=0)$ est: $\vec{B}_{\text {dip }}=\frac{2 \mu_0 M}{4 \pi r^3} \vec{e}_Z$ ou encore compte tenu de (8):
+				$$
+				\vec{B}_{d i p}=\frac{\mu_0 \gamma_p^2 \hbar^2 N B_0}{8 \pi k_B T r^3} \vec{e}_Z
+				$$
+
+				Soit $\alpha$ le rapport $\alpha=\frac{B_{d i p}}{B_0}=\frac{\mu_0 \gamma_p^2 \hbar^2 N}{8 \pi k_B T r^3}$.
+				A.N. $T=310 \mathrm{~K}$ (j'imagine!), $r=1 \mathrm{~m}, N=6,7 \cdot 10^{28}$ $\mathrm{m}^{-3}, \alpha=6,1 \cdot 10^{-10}<<1$.
+			}
+
+			\item Justifier l'introduction d'un champ perturbateur qui change la direction de l'aimantation.
+			\sol{
+				Statistiquement, les dipôles microscopiques s'alignent selon la direction du champ $\vec{B}_0$; en outre, les champs dipolaires n'ont pas d'influence sur $\vec{B}_0$. A une échelle mésoscopique, par application d'un champ $\vec{B}_0$, il apparaît un vecteur aimantation (volumique) également portée par la direction de ce champ. En appliquant un champ magnétique "perturbateur" non colinéaire à $\vec{B}_0$, il est possible de modifier la direction de l'aimantation.
+			}
+
+		\end{quest}
+			Pour la RMN, on dévie l'aimantation de sa direction d'équilibre afin de lui donner une composante transversale. Le champ $B_0$, très intense par rapport au champ créé par l'aimantation, ne permet pas l'étude sur $\mathrm{Oz}$.
+
+			Il est particulièrement compliqué de décrire la RMN à une échelle microscopique individuelle. Une description macroscopique et semi-classique suffit pour en comprendre les concepts. On va donc étudier l'évolution dans le temps du vecteur aimantation $\vec{M}$ qui caractérise l'ensemble des moments dipolaires des protons présents dans l'échantillon.
+
+			Si on provoque un changement de l'orientation des moments magnétiques, l'aimantation va tendre à retourner à sa valeur à l'équilibre thermique avec un temps de relaxation ou temps caractéristique.
+
+			Les notions introduites dans les deux documents suivants peuvent être utilisées par les candidats dans toute la suite du sujet
+
+			% \section*{a) Temps de relaxation longitudinale $T_{1}$}
+			Quand on applique un champ magnétique $B_0$ sur la direction $\mathrm{Oz}$, l'aimantation n'atteint pas sa valeur d'équilibre instantanément, elle augmente alors de la valeur initiale $\mathrm{M}_{\mathrm{z}}=0$ à la valeur d'équilibre $\mathrm{M}_{\mathrm{z}}=\mathrm{M}_{0}$ en un certain temps. On observe que $\mathrm{M}_{\mathrm{z}}$ croît exponentiellement avec le temps vers $\mathrm{M}_{0}$ avec un temps caractéristique $\mathrm{T}_{1}$, appelé temps de relaxation longitudinale, comme l'indique la figure 2 :
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{fig}[label]
+\centering
+% \includegraphics[width=0.5\columnwidth]{2024_02_07_cf6d71ba6ea012c1b88ag-06}
+\capt{Relaxation longitudinale}
+\end{fig}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+On va donc supposer que, dans toute situation hors d'équilibre, l'aimantation longitudinale $\mathrm{M}_{\mathrm{z}}$ tend vers l'équilibre à une vitesse proportionnelle à l'écart par rapport à la valeur d'équilibre $\mathrm{M}_{0}$ :
+
+% \section*{b) Temps de relaxation transversale $T_{2}$}
+$$
+\frac{\mathrm{dM}_{{z}}}{\mathrm{dt}}=-\frac{{M}_{{z}}-{M}_{0}}{T_{1}}
+$$
+
+Supposons qu'à ${t}=0$, l'échantillon présente une aimantation transversale, ${M}_{\perp}$ dans le plan $\mathrm{xOy}$ orthogonal à ${Oz}$ (on verra plus tard comment créer cette situation).
+
+Alors ${M}_{\perp}$ doit tendre vers 0 , avec un temps caractéristique $T_{2}$, car à l'équilibre thermique, les composantes transversales de l'aimantation sont nulles.
+
+La situation est représentée sur la figure 3 ci-dessous :
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{fig}[label]
+\centering
+% \includegraphics[width=0.5\columnwidth]{2024_02_07_cf6d71ba6ea012c1b88ag-06(1)}
+\capt{Relaxation transversale}
+\end{fig}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${T}_{2}$ est appelé temps de relaxation transversale et est toujours inférieur à ${T}_{1}$.
+
+À ${t}=0$, l'aimantation transversale se met à précesser autour de l'axe ${Oz}$ à la pulsation $\omega_{0}=\gamma_{\mathrm{p}} B_0$ dans le sens rétrograde. Mais les inhomogénéités du champ magnétique d'une part et les interactions moléculaires d'autre part, font que chaque noyau ressent un champ magnétique différent $\left(\gamma_{p}\right.$ différent), ce qui entraîne une différence dans leur fréquence de précession. Si ces spins sont initialement en phase, leurs différences de phase deviennent aléatoires au cours du temps et les valeurs de ${M}_{{x}}$ et ${M}_{{y}}$ s'annulent. Le temps nécessaire au déphasage est de l'ordre de $3 {~T}_{2}$.
+
+Remarque : les interactions moléculaires, responsables de valeurs de $\gamma_{\mathrm{p}}$ légèrement différentes d'un noyau à l'autre, entraînent l'élargissement de la raie d'absorption, centrée sur $\omega_{0}$, dans l'expérience RMN d'absorption réalisée en continu. Cet élargissement (figure 4) sera de l'ordre de $1 / T_{2}$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{fig}[label]
+\centering
+% \includegraphics[width=0.5\columnwidth]{2024_02_07_cf6d71ba6ea012c1b88ag-07}
+\capt{Absorption de résonance des protons dans l'eau : élargissement de la raie autour de la pulsation $\omega_{0}$.}
+\end{fig}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \section*{c) Équations de Bloch}
+Ces équations différentielles couplées sont appelées les équations de Bloch. Elles permettent de décrire le comportement de l'aimantation dans l'espace et en fonction du temps en présence d'un champ magnétique permanent $\B=B_0 \ez$. Elles s'écrivent :
+
+$$
+\begin{gathered}
+	\frac{d M_{x}}{d t}=\gamma\left(\vec{M} \wedge \overrightarrow{B_{0}}\right)_{x}-\frac{M_{x}}{T_{2}} \\
+	\frac{d M_{y}}{d t}=\gamma\left(\vec{M} \wedge \overrightarrow{B_{0}}\right)_{y}-\frac{M_{y}}{T_{2}} \\
+	\frac{d M_{z}}{d t}=\gamma\left(\vec{M} \wedge \overrightarrow{B_{0}}\right)_{z}+\frac{M_{0}-M_{z}}{T_{1}}
+\end{gathered}
+$$
+
+% \section*{d) Résonance Magnétique Nucléaire Pulsée}
+L'expérience de RMN d'absorption en continu permet de mesurer des fréquences de résonance et, à partir de là, de déduire des valeurs de rapport gyromagnétique $\gamma_{\mathrm{p}}$ du proton en utilisant l'expression $\omega_{0}=\gamma_{\mathrm{p}} B_0$. La valeur de $\gamma_{\mathrm{p}}$ dépend de l'environnement du proton, mais l'effet de l'environnement sur la fréquence de résonance est très petit et il faut des appareils très sensibles. Beaucoup d'informations intéressantes et complémentaires sur l'environnement sont déductibles des temps ${T}_{1}$ et $T_{2}$. De plus, l'effet de l'environnement est beaucoup plus grand sur $T_{2}$ que sur la fréquence de résonance : on s'attend à plus de sensibilité sur la mesure de $T_{2}$ que sur la mesure de $\omega_{0}$. On a donc intérêt à mesurer ces temps de relaxation. Mais la détermination des temps ${T}_{1}$ et ${T}_{2}$ à l'aide de l'expérience de RMN d'absorption en continu n'est pas très précise : ${T}_{2}$ est obtenu à partir de l'élargissement de la raie d'absorption et ${T}_{1}$ n'est obtenu qu'avec une mesure indirecte, source d'imprécisions.
+
+Pour mesurer $T_{1}$ et $T_{2}$, on préférera donc la méthode qui consiste à mettre le système de moments dipolaires hors d'équilibre et à déterminer les temps de relaxations longitudinale et transversale : c'est la RMN pulsée.
+
+Pour créer un système de moments dipolaires hors d'équilibre, on utilise des champs magnétiques perturbateurs pulsés oscillants dans le domaine des radiofréquences.
+
+% Source: partie d'un énoncé de TP sur un appareil de RMN dans un tutorat expérimental.
+
+% \section*{Document 2}
+Le temps de relaxation ${T}_{1}$ dépend de l'intensité du champ magnétique principal $B_0$. Le temps ${T}_{2}$ en est indépendant. Ils dépendent de la nature des tissus comme l'indique le tableau de valeurs ci-dessous.
+
+\begin{center}
+
+	\begin{tabular}{|c|c|c|c|}
+		\hline
+		Champ magnétique $B_0$ & 1 Tesla & 1,5 Tesla &  \\
+		\hline
+		Tissus & ${T}_{1}$ en $\mathrm{ms}$ & ${T}_{1}$ en $\mathrm{ms}$ & ${T}_{2}$ en $\mathrm{ms}$ \\
+		\hline
+		Liquide céphalorachidien & 2500 & 3000 & 200 \\
+		\hline
+		Graisse & 180 & 200 & 90 \\
+		\hline
+		Substance blanche & 500 & 750 & 90 \\
+		\hline
+		Substance grise & 350 & 500 & 75 \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Les tissus cancéreux ont une décroissance $T_{2}$ plus lente que celle des tissus sains.
+
+% Source: Guide des technologies de l'imagerie médicale et de la radiothérapie, JP Dillenseger, E Moerschel, Masson, 2009.
+\begin{quest}
+	\item Interpréter les équations de Bloch en précisant à quel couple supplémentaire $\overrightarrow{\mathrm{C}_{\mathrm{r}}(0)}$ est soumis le vecteur aimantation pour traduire le phénomène de relaxation.
+	\sol{
+		Outre un moment magnétique couplant aimantation et champ magnétique, l'équation d'évolution de l'aimantation met en jeu un couple de "frottement" de la forme $\overrightarrow{C_r}(O)=-\frac{\vec{M}}{\tau}$ avec $\tau$ un temps caractéristique de relaxation. Plus précisément, dans les équations de Bloch, les temps de relaxation de l'aimantation transervale $M_{\perp}\left(\tau=T_2\right)$ et longitudinale $M_z\left(\tau^{\prime}=T_1\right)$ sont différents.
+	}
+
+	\item Quel est le domaine des radiofréquences?
+
+	Est-ce conforme au résultat de la question Q18 ?
+
+	\sol{
+		Le domaine des ondes radio s'étend des longueurs d'onde (dans le vide) allant de $\lambda_0 \sim 10^{-1} \mathrm{~m}$ à plusieurs milliers de km. A la question 18., il est bien question d'ondes radio.
+	}
+\end{quest}
+
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

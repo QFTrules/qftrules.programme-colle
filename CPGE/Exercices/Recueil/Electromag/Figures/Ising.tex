@@ -1,0 +1,11 @@
+\input{tikz.tex}
+\begin{document}
+    \begin{tikzpicture}[scale=1.5]
+        %  graphe de l'aimamntation en fonction du champ magnétique pour plusieurs températures suivant la loi en tanh(B/T)
+        \draw[axe] (-2.5,0) -- ++ (5,0) node[right] {$B_0$};
+        \draw[axe] (0,-2.5/1.618) -- ++(0,5/1.618) node[above] {$M_z$};
+        \draw[thick,blue] plot[domain=-2.5:2.5] (\x,{tanh(\x/1)}) node [above right] {$T=T_0$};
+        \draw[thick,red] plot[domain=-2.5:2.5] (\x,{tanh(\x/2)}) node [right] {$T=2T_0$};
+        \draw[thick,green] plot[domain=-2.5:2.5] (\x,{tanh(\x/3)}) node [below right] {$T=3T_0$};
+    \end{tikzpicture}
+\end{document}

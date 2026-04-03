@@ -1,0 +1,16 @@
+% !TEX root = /home/eb/Dropbox/CPGE/Physique/Cours/[6]Pondes/[5]Dispersion/Figures/wave_packet_omega.tex
+\input{/home/eb/Dropbox/texmf/tex/latex/Preambles/tikz.tex}
+\begin{document}
+
+\begin{tikzpicture}[scale=1.2]
+
+	\draw[axe] (0,0) -- ++ (5,0) node[right] {$\omega$};
+	\draw[axe] (0,-2) -- ++ (0,4) node[above] {$|\tilde{s}(\omega)|$};
+	\draw[JoliRouge,thick] plot[domain=0:5,samples=200] (\x,{exp(-2*(\x-2.5)^2)});
+	\draw[<->] (2,1.2) -- ++ (1,0) node[midway,above] {$\Delta \omega$};
+	\draw[] (2.5,0.1) -- ++ (0,-0.2) node[midway,below=0.2] {$\omega_0$};
+
+
+\end{tikzpicture}
+
+\end{document}

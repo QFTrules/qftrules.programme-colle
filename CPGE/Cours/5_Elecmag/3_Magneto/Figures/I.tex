@@ -1,0 +1,47 @@
+\input{tikz.tex}
+\begin{document}
+\begin{tikzpicture}[scale=0.6]
+  % \fill[opacity=0,JoliVert,draw opacity=1,draw=JoliVert,thick] (0,0) ellipse (1cm and 2cm);
+  \draw[white,thick] (0,2) coordinate (A) arc(90:270:1cm and 2cm) coordinate (B);
+  \def\len{6}
+  \draw[JoliRouge,thick,<-] (A) ++ (-0.5*\len,-1) node[right] {} -- ++ (-\len,-1) coordinate (A1);
+  \node at (A1) {\includegraphics{charge.pdf}};
+  \begin{scope}[rotate=0,shift={(-1,-0.75)}]
+    \draw[JoliRouge,thick,<-] (0,2) ++ (-0.5*\len,-1) node[right] {} -- ++ (-\len,-1) coordinate (A1);
+    \node at (A1) {\includegraphics{charge.pdf}};
+  \end{scope}
+  \begin{scope}[rotate=0,shift={(0.5,-1.3)}]
+    \draw[JoliRouge,thick,<-] (0,2) ++ (-0.5*\len,-1) node[right] {} -- ++ (-\len,-1) coordinate (A1);
+    \node at (A1) {\includegraphics{charge.pdf}};
+  \end{scope}
+  \begin{scope}[rotate=0,shift={(0,-2.5)}]
+    \draw[JoliRouge,thick,<-] (0,2) ++ (-0.5*\len,-1) node[right] {} -- ++ (-\len,-1) coordinate (A1);
+    \node at (A1) {\includegraphics{charge.pdf}};
+  \end{scope}
+  % \draw[thick] (A) -- ++ (\len,0) coordinate (A2);
+  \draw[JoliRouge,thick] (B)
+   ++ (-\len,-1) coordinate (B1);
+  % \draw[thick] (B) -- ++ (\len,0) coordinate (B2);
+  \fill[opacity=0.5,JoliVert,draw opacity=1,draw=JoliVert,thick] (-\len,-1) ellipse (1cm and 2cm);
+  \node[] at (-\len,1.5) {$\Surf$};
+  % \draw[thick,JoliVert] (A1) arc(90:270:1cm and 2cm) coordinate (B1);
+  % \draw[thick] (A2) arc(90:270:1cm and 2cm) coordinate (B2) arc(270:450:1cm and 2cm) ;
+  % \fill[gray,opacity=0.3] (A2) arc(90:450:1cm and 2cm);
+    % \draw[JoliVert] (A) SSarc(90:150:1cm and 2cm) coordinate (C);
+      % \draw[JoliVert] (A) arc(90:210:1cm and 2cm) coordinate (D);
+  \fill[white,opacity=0.3] (A) arc(90:270:1cm and 2cm) -- (B1) arc(270:90:1cm and 2cm) -- cycle;
+  % \fill[gray,opacity=0.3] (A) arc(90:270:1cm and 2cm) -- (B2) arc(270:90:1cm and 2cm) -- cycle;
+  % \fill[] (0,0) circle(0.1);
+  \fill[JoliVert] (-\len,-1) coordinate (R) circle(0.25);
+  \draw[->,JoliVert] (R) -- ++ (1.5,0) node[right] {\contour{white}{$\Vec{\d S}$}};
+  % \fill[] (R) circle(0.1) node[above=0.13] {\contour{white}{$\rm M$}};
+  % \draw[JoliVert,thick] (0,2) coordinate (A) arc(90:270:1cm and 2cm) coordinate (B);
+
+
+  % \draw[JoliRouge,thick] (C)
+    % ++ (-\len,-1) coordinate (B1);
+  % \draw[JoliRouge,thick] (D)
+  % ++ (-\len,-1) coordinate (B1);
+
+\end{tikzpicture}
+\end{document}

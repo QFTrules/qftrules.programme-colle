@@ -1,0 +1,551 @@
+\input{devoir.sty}
+\begin{document}
+\EnteteDS{02/04/2025}{8}
+% theme : O
+\Source{dalembert.tex}
+\Ex{Chaîne d'oscillateurs et onde mécanique}
+
+
+\section{Ondes stationnaires le long d'une corde vibrante}
+\Annale[Physique TPC]{CCINP}{2017}
+Afin d'étayer quelques affirmations présentées dans le document 1, annexe documentaire, page 1, on modélise une corde de guitare par une fine corde homogène, inextensible, de masse linéique \(\mu\), de longueur \(L\), tendue horizontalement sous la tension \(T_{0}\). On se place dans le cadre des hypothèses suivantes:
+
+\begin{itemize}
+  \item (H1) l'action du champ de pesanteur est négligée ;
+  \item (H2) les phénomènes dissipatifs sont négligés ;
+  \item (H3) le déplacement d'un point matériel de la corde est strictement vertical (l'onde est dite transversale) ;
+  \item (H4) les déformations que fait la corde avec l'horizontale sont suffisamment faibles pour que l'on puisse supposer que l'angle que fait la corde avec l'horizontale est un infiniment petit du premier ordre.\\
+  On se place dans un repère cartésien \((O, x, y, z)\) et on s'intéresse aux forces subies par un tronçon infinitésimal de corde de longueur \(d x\) et de masse \(d m\).\\
+\begin{fig}[label]
+    \centering
+    \includegraphics[width=0.9\textwidth]{2025_03_29_3c33f36af576bc3dc527g-02}
+    %\capt{}
+\end{fig}
+\end{itemize}
+
+% Figure 1\\
+Soit \(\vec{T}_{g}\) (respectivement \(\vec{T}_{d}\)) la tension exercée par la partie gauche (respectivement droite) de la corde sur le tronçon infinitésimal représenté.
+\begin{quest}
+
+\item Expliquer pourquoi l'observation d'une corde de guitare sur l'instrument permet de valider l'hypothèse (H1).
+\sol{
+    Au repos, on observe que les cordes de guitare sont rectilignes. Elles ne s'incurvent pas, quelle que soit l'orientation choisie pour l'axe de la guitare. L'action du champ de pesanteur sur les cordes peut donc être négligée : l'hypothèse (H1) est validée.
+}
+
+\item Exprimer les forces de tension \(\vec{T}_{g}\) et \(\vec{T}_{d}\) en fonction de \(T_{0}\) et \(\alpha\), d'abord de façon exacte puis, en utilisant l'hypothèse (H4).
+En déduire que \(\left\|\vec{T}_{g}\right\|=\left\|\vec{T}_{d}\right\|=T_{0}\).
+
+\sol{
+    Cette question est mal posée : on ne peut pas faire intervenir $T_0$ dans l'expression des tensions $\vec{T}_g$ et $\vec{T}_d$ avant d'avoir montré que leurs normes valent $T_0$.
+    La troisième loi de Newton (actions réciproques) appliquée au point x donne : $\vec{T}_g(x, t)=-\vec{T}_d(x, t)$ d'où : $\left\|\vec{T}_g(x, t)\right\|=\left\|\vec{T}_d(x, t)\right\|=T(x, t)$. Projetons les tensions sur la base $\left(\vec{e}_x, \vec{e}_z\right)$ :
+    
+    $$
+    \left\{\begin{array}{c}
+    \vec{T}_g(x, t)=-T(x, t)\left(\cos (\alpha(x, t)) \vec{e}_x+\sin (\alpha(x, t)) \vec{e}_z\right) \\
+    \vec{T}_d(x+d x, t)=T(x+d x, t)\left(\cos (\alpha(x+d x, t)) \vec{e}_x+\sin (\alpha(x+d x, t)) \vec{e}_z\right)
+    \end{array}\right.
+    $$
+    
+    
+    Avec l'hypothèse (H4), un développement à l'ordre 1 en $\alpha$ donne :
+    
+    $$
+    \left\{\begin{array}{c}
+    \vec{T}_g(x, t)=-T(x, t)\left(\vec{e}_x+\alpha(x, t) \vec{e}_z\right) \\
+    \vec{T}_d(x+d x, t)=T(x+d x, t)\left(\vec{e}_x+\alpha(x+d x, t) \vec{e}_z\right)
+    \end{array}\right.
+    $$
+    
+    
+    La deuxième loi de Newton appliquée à la portion $(x ; x+d x)$ de la corde de masse $\mu d x$ est nécessaire pour faire intervenir $T_0$. D'après les hypothèses $(\mathrm{H} 1)$ et $(\mathrm{H} 2)$, on néglige le poids et les frottements, donc les seules forces appliquées à ce système sont $\vec{T}_g(x, t)$ et $\vec{T}_d(x+d x, t)$. Il vient :
+    
+    $$
+    \mu d x \vec{a}=\vec{T}_g(x, t)+\vec{T}_d(x+d x, t)
+    $$
+    
+    
+    L'hypothèse (H3) permet de conclure que l'accélération est uniquement selon $\vec{e}_z$ donc la projection sur $\vec{e}_x$ donne : $0=-T(x, t)+T(x+d x, t)$ valable pour tout $x$ à toute date $t$. On en déduit alors que : $T(x+d x, t)=T(x, t)=T_0$ et les tensions s'écrivent de manière approchée :
+    
+    $$
+    \left\{\begin{array}{c}
+    \vec{T}_g(x, t)=-T_0\left(\vec{e}_x+\alpha(x, t) \vec{e}_z\right) \\
+    \vec{T}_d(x+d x, t)=T_0\left(\vec{e}_x+\alpha(x+d x, t) \vec{e}_z\right)
+    \end{array}\right.
+    $$
+    
+}
+\item En appliquant la \(2^{\mathrm{e}}\) loi de Newton sur le tronçon infinitésimal de corde compris entre \(x\) et \(x+d x\), de masse \(d m=\mu d x\), montrer que :
+
+% \[
+\begin{equation}
+    \mu \frac{\partial^{2} z}{\partial t^{2}}=T_{0} \frac{\partial \alpha(x, t)}{\partial x}
+\end{equation}
+% \]
+
+On précisera quelles hypothèses ont été employées et comment.
+\sol{
+    Projection de la deuxième loi de Newton sur $\vec{e}_z$ en utilisant les hypothèses (H1), (H2) et (H3) :
+
+    $$
+    \mu d x \frac{\partial^2 z}{\partial t^2}=T_0(\alpha(x+d x, t)-\alpha(x, t))
+    $$
+    
+    
+    La division par $d x$ permet de faire apparaitre un taux d'accroissement, qui s'identifie (à l'ordre 1 en $d x)$ avec la dérivée spatiale de l'angle $\alpha$, d'où la relation demandée : $\mu \frac{\partial^2 z}{\partial t^2}=T_0 \frac{\partial \alpha}{\partial x}$
+}
+\item En déduire une équation aux dérivées partielles que l'on mettra sous la forme :
+
+% \[
+\begin{equation}\label{eq:onde}
+    \frac{\partial^{2} z}{\partial t^{2}}=c^{2} \frac{\partial^{2} z}{\partial x^{2}}
+\end{equation}
+% \]
+
+Comment se nomme cette équation ? Exprimer la célérité \(c\) de l'onde en fonction des données, préciser son sens physique et établir son unité dans le SI.
+
+\sol{
+Avec l'hypothèse (H4), $\alpha$ est un infiniment petit d'ordre 1 , donc : $\alpha \cong \tan (\alpha)$ or $\tan (\alpha)=\frac{d z}{d x}$ d'où : $\alpha \cong \frac{\partial z}{\partial x}$ qu'on reporte dans l'équation obtenue en Q3. : $\mu \frac{\partial^2 z}{\partial t^2}=T_0 \frac{\partial^2 z}{\partial x^2}$ On reconnait une équation de d'Alembert unidimensionnelle de la forme : $\frac{\partial^2 z}{\partial t^2}=c^2 \frac{\partial^2 z}{\partial x^2}$ Où $c=\sqrt{\frac{T_0}{\mu}}$ est la célérité de l'onde (vitesse de propagation de la déformation ou plus précisément vitesse de phase), homogène à une vitesse : $[c]=\left[\frac{T_0}{\mu}\right]^{1 / 2}=\left[\frac{M . L . T^{-2}}{M . L^{-1}}\right]^{1 / 2}=L . T^{-1}$ donc USI : $m . S^{-1}$
+}
+\end{quest}
+
+On cherche des solutions de l'\Eq{onde} sous la forme \(z(x, t)=Z_{n} \sin \left( \frac{\omega_{n} x}{c} \right) \cos \left(\omega_{n} t\right)\) où les amplitudes \(Z_{n}\) et les pulsations \(\omega_{n}\) sont des constantes du mode \(n\) considéré \(\left(n \in \mathbb{N}^{*}\right)\).
+\begin{quest}
+
+\item Comment se nomme ce type de solution?
+\sol{
+    Ce type de solution est un mode propre de la corde vibrante (solution stationnaire avec vecteur d'onde quantifié par conditions aux limites).
+}
+\item En précisant les conditions aux limites du problème, établir la quantification des pulsations selon l'équation :
+
+\[
+\omega_{n}=n \frac{\pi c}{L}
+\]
+
+\sol{
+    La corde de guitare est fixée à ses deux extrémités donc les conditions aux limites sont :
+    $$
+    \left[\begin{array} { l l } 
+    { \forall t \in \mathbb { R } , } & { z ( x = 0 , t ) = 0 } \\
+    { \forall t \in \mathbb { R } , } & { z ( x = L , t ) = 0 } \\
+    { ( C 2 ) }
+    \end{array} \text { soit : } \left\{\begin{array}{cc}
+    \forall t \in \mathbb{R}, & Z_n \sin \left(\frac{\omega_n}{c} 0\right) \cos \left(\omega_n t\right)=0 \\
+    \forall t \in \mathbb{R}, & Z_n \sin \left(\frac{\omega_n}{c} L\right) \cos \left(\omega_n t\right)=0
+    \end{array}\right.\right.
+    $$
+    
+    
+    Avec la forme proposée pour $z(x, t)$, (C1) est toujours vraie et (C2) est validée ssi : $\sin \left(\frac{\omega_n}{c} L\right)=0$ Cette relation conduit à la quantification voulue : $\omega_n=n \frac{\pi c}{l}$ où $n \in \mathbb{N}^*$
+}
+
+\item Justifier alors les affirmations (I1), (I2) et (I3) du document 1.
+\sol{
+    D'après le document 1 , si on raisonne pour un mode propre donné ( $n$ fixé) avec $f_n=\frac{\omega_n}{2 \pi}=n \frac{c}{2 L}$ :
+    - Si la masse linéique diminue, la célérité augmente ( $c=\sqrt{T_0 / \mu}$ ), donc $f_n$ augmente : (I1) vérifiée ;
+    - Si la tension augmente, la célérité augmente ( $c=\sqrt{T_0 / \mu}$ ), donc $f_n$ augmente : (I2) vérifiée ;
+    - Si la longueur augmente, la célérité $c$ est fixée mais $f_n=n \frac{c}{2 L}$ diminue : (I3) vérifiée.
+}
+\item À partir du document 2, annexe documentaire, page 2, donner, à un même instant, la représentation graphique de l'allure de la corde pour les 3 modes impairs dont l'amplitude est la plus importante.
+\sol{
+    Pour simplifier, on choisit la date $t=0$ comme instant fixé. D'après le document 2 , les trois modes impairs dont l'amplitude est la plus importante sont les modes 1,3 et 7 , avec (approximativement) $Z_7=Z_1$ et $Z_3=3 Z_1$.
+
+    On représente donc: $\left\{\begin{array}{c}z_1(x, t=0)=Z_1 \sin \left(\pi \frac{x}{L}\right) \\ z_3(x, t=0)=3 Z_1 \sin \left(3 \pi \frac{x}{L}\right) \\ z_7(x, t=0)=Z_1 \sin \left(7 \pi \frac{x}{L}\right)\end{array}\right.$
+    \begin{fig}[label]
+        \centering
+        \includegraphics[width=0.7\columnwidth]{modes_propres_corde.png}
+        %\capt{}
+    \end{fig}
+}
+
+\item Déduire des documents 1 et 2, en explicitant votre démarche, quelle corde a été excitée.
+\sol{
+    D'après le document 2 , la fréquence fondamentale $(n=1)$ de la corde excitée est $f_1=250 \mathrm{~Hz}$ environ. Or d'après le document 1, la corde $\mathrm{n}^{\circ} 5$ a une fréquence fondamentale de $246,9 \mathrm{~Hz}$ correspondant à un $\mathrm{Si}^2$. C'est donc la corde $\mathrm{n}^{\circ} 5$ qui a été excitée pour enregistrer le spectre.
+}
+\item Le document 1 précise que «la tension de chaque corde représente un poids d'environ cinq à quinze kilogrammes ». Les données permettent-elles de valider cette affirmation?
+\sol{
+    L'expression de $f_1=\frac{c}{2 L}=\sqrt{T_0 / \mu} \frac{1}{2 L}$ permet de remonter à la tension de la corde : $T_0=\mu\left(2 L f_1\right)^2$ avec la masse linéique s'exprimant en fonction de la masse volumique $\rho$ par : $\mu=\pi \frac{d^2}{4} \rho$ où $d$ est le diamètre de la corde.
+
+    On en déduit le tableau suivant pour $\rho=1140 \mathrm{~kg} \cdot \mathrm{~m}^{-3}$ et $L=63 \mathrm{~cm}$ :
+\begin{tabular}{|c|c|c|c|c|c|c|}
+\hline Corde & 1 & 2 & 3 & 4 & 5 & 6 \\
+\hline Note & $\mathrm{Mi}^1$ & $\mathrm{La}^1$ & Ré $^2$ & $\mathrm{Sol}^2$ & $\mathrm{Si}^2$ & $\mathrm{Mi}^3$ \\
+\hline Fréquence $f_1(\mathrm{~Hz})$ & 82,40 & 110,0 & 146,8 & 196,0 & 246,9 & 329,6 \\
+\hline Diamètre $d(\mathrm{~mm})$ & 1,07 & 0,81 & 0,61 & 0,41 & 0,25 & 0,23 \\
+\hline Tension $T_0(\mathrm{~N})$ & 11,05 & 11,29 & 11,40 & 9,18 & 5,42 & 8,17 \\
+\hline « Poids » $T_0 / g(\mathrm{~kg})$ & 1,13 & 1,15 & 1,16 & 0,936 & 0,553 & 0,833 \\
+\hline
+\end{tabular}
+
+D'après les données, la tension varie entre 5 et 15 N , soit le poids équivalent d'une masse de 0,5 à $1,5 \mathrm{~kg}$. Il y a un facteur 10 d'écart avec la fourchette proposée dans le document 1.
+}
+\end{quest}
+
+
+\section{Échauffement d'un plasma par ondes électromagnétiques}
+\Annale[Physique PC]{CCINP}{2024}
+Pour rendre possible la fusion, il faut vaincre la barrière coulombienne qui s'oppose au rapprochement des deux noyaux d'hydrogène. C'est la raison pour laquelle il est préalablement nécessaire d'échauffer le plasma jusqu'à ce que les réactions de fusion s'initient. L'objectif est ensuite d'atteindre le seuil d'ignition, c'est-à-dire le moment où l'énergie libérée par les réactions de fusion suffit à maintenir la température nécessaire à la fusion.
+
+L'utilisation d'ondes électromagnétiques est envisagée. On se place ici dans l'hypothèse d'un plasma dilué non relativiste. On munit l'espace d'une base orthonormée directe (\(\overrightarrow{u_{x}}, \overrightarrow{u_{y}}, \overrightarrow{u_{z}}\)) et on suppose qu'une onde électromagnétique plane transversale de champ électrique \(\vec{E}=E_{x}(z, t) \overrightarrow{u_{x}}+E_{y}(z, t) \overrightarrow{u_{y}}\) se propage selon \(\overrightarrow{u_{z}}\). Du fait du confinement magnétique, on tient compte de la présence d'un champ magnétique stationnaire et uniforme qu'on suppose colinéaire à la direction de propagation : \(\vec{B}_{0}=B_{0} \overrightarrow{u_{z}}\).
+\begin{quest}
+    \item Écrire les équations de MAXWELL. On notera \(\vec{j}\) la densité volumique de courant et \(\rho\) la densité volumique de charge.
+    \sol{
+        $$
+        \begin{aligned}
+            &\text { Équations de MAXWELL : }\\
+            &\begin{gathered}
+            \operatorname{div} \vec{E}=\frac{\rho}{\varepsilon_0} \text { MAXWELL-GAUSS } \\
+            \overrightarrow{\operatorname{rot}} \vec{E}=-\frac{\partial \vec{B}}{\partial t} \text { MAXWELL-FARADAY } \\
+            \operatorname{div} \vec{B}=0 \text { MAXWELL-FLUX } \\
+            \overrightarrow{\operatorname{rot}} \vec{B}=\mu_0 \vec{j}+\mu_0 \varepsilon_0 \frac{\partial \vec{E}}{\partial t} \text { MAXWELL-AMPÈRE }
+            \end{gathered}
+            \end{aligned}
+            $$
+    }
+    \item Montrer que le caractère transversal de l'onde implique \(\rho=0\).
+    \sol{
+        On calcule la divergence de $\vec{E}$. Comme l'onde est transverse, $E_z=0$ et comme l'onde est plane, $E_x$ et $E_y$ ne dépendent que de $z$. Ainsi, $\operatorname{div} \vec{E}=0$ donc $\boldsymbol{\rho}=\mathbf{0}$.
+    }
+    
+    \item Établir l'équation d'onde sur le champ électrique \(\vec{E}\) :
+    
+    \[
+\vec{\Delta} \vec{E}-\frac{1}{c^{2}} \frac{\partial^{2} \vec{E}}{\partial t^{2}}=\mu_{0} \frac{\partial \vec{j}}{\partial t}
+\]
+
+où \(c\) sera exprimée en fonction de \(\varepsilon_{0}\) et \(\mu_{0}\).
+
+\sol{
+    On applique la formule du double rotationnel : $\overrightarrow{\operatorname{rot}}(\overrightarrow{\operatorname{rot}} \vec{E})=\overrightarrow{\operatorname{grad}}(\operatorname{div} \vec{E})-\vec{\Delta} \vec{E}$ D'après ce qui précède, $\operatorname{div} \vec{E}=0$ puis on utilise successivement MAXWELL-FARADAY puis MAXWELL-AMPÈRE pour obtenir
+
+    $$
+    \vec{\Delta} \vec{E}-\frac{1}{c^2} \frac{\partial^2 \vec{E}}{\partial t^2}=\mu_0 \frac{\partial \vec{j}}{\partial t} \text { avec } c=\frac{1}{\sqrt{\mu_0 \varepsilon_0}}
+    $$
+    
+}
+\end{quest}
+On souhaite maintenant déterminer \(\vec{j}\) dans le plasma.
+\begin{quest}
+\item Pour quelle raison peut-on faire l'hypothèse que les ions du plasma ont une contribution négligeable devant celle des électrons dans l'expression de \(\vec{j}\) ? Par la suite, on n'envisagera que la contribution des électrons dans l'expression de \(\vec{j}\).
+\sol{
+    La masse des ions du plasma est beaucoup plus importante que celle des électrons (au moins d'un facteur 1000), donc à excitation (force électrique) égale, leur vitesse sera nettement plus faible, donc leur contribution à $\vec{j}$ sera négligeable (à charge et densité équivalentes).
+}
+\end{quest}
+
+On suppose que le champ électrique est une pseudo-onde plane progressive sinusoïdale à laquelle on associe une polarisation circulaire gauche (figure 9, qu'on écrit sous forme complexe :
+
+\[
+    \underline{\vec{E}}(z, t)=E_{0} \exp (i(\omega t-\underline{k} z)) \overrightarrow{u_{x}}-i E_{0} \exp (i(\omega t-\underline{k} z)) \overrightarrow{u_{y}}
+    \]
+    
+    avec \(\omega\) la pulsation et \(\underline{k}\) le module d'onde complexe.\\
+    On étudie le mouvement d'un électron dans le plan \(z=0\) sous l'effet conjugué du champ électrique \(\underline{\vec{E}}(z, t)\) et du champ magnétique \(\vec{B}_{0}\). En régime permanent, sa vitesse a pour expression complexe :
+    
+    \[
+        \underline{\vec{v}}=\underline{v_{x}} \exp (i \omega t) \overrightarrow{u_{x}}+\underline{v_{y}} \exp (i \omega t) \overrightarrow{u_{y}}
+        \]
+        
+        avec \(\underline{v_{x}}\) et \(\underline{v_{y}}\) les amplitudes complexes. On considère que les seules forces s'exerçant sur l'électron sont la force électrique et la force magnétique liée au champ magnétique statique \(\vec{B}_{0}\). On néglige le poids de l'électron et la force magnétique liée au passage de l'onde.\\
+        \begin{fig}[label]
+            \centering
+            \includegraphics[width=0.25\textwidth]{2025_03_29_06c30dc6d9e0e0619578g-8}
+            %\capt{}
+        \end{fig}
+        
+        % Figure 9 - Onde de polarisation circulaire gauche se propageant parallèlement au champ magnétique \(\overrightarrow{B_{0}}\)
+\begin{quest}
+        
+        \item En appliquant le principe fondamental de la dynamique à l'électron, montrer que \(\underline{v_{x}}\) et \(\underline{v_{y}}\) vérifient le système :
+        
+        \[
+            \left\{\begin{array}{l}
+                \underline{v_{x}}=\frac{i \alpha}{\omega}+\frac{i \omega_{c}}{\omega} \underline{v_{y}} \\
+                \underline{v_{y}}=\frac{\alpha}{\omega}-\frac{i \omega_{c}}{\omega} \underline{v_{x}}
+            \end{array}\right.
+            \]
+            
+            avec \(\omega_{c}=\frac{e B_{0}}{m_{e}}\) la pulsation cyclotron et \(\alpha\) à exprimer en fonction de \(e, m_{e}\) et de \(E_{0}\).
+
+            \sol{
+                On applique le principe fondamental de la dynamique à l'électron, soumis à 2 forces : la force électrique et la force magnétique:
+
+                $$
+                m_e \frac{\mathrm{~d} \vec{v}}{\mathrm{~d} t}=-e \vec{E}-e \vec{v} \wedge \vec{B}
+                $$
+                
+                
+                On projette et on obtient le système suivant (en complexes) :
+                
+                $$
+                \left\{\begin{array}{l}
+                m_e i \omega \underline{v_x}=-e E_0-e \underline{v_y} B_0 \\
+                m_e i \omega \underline{v_y}=+i e E_0+\underline{e v_x} B_0
+                \end{array}\right.
+                $$
+                
+                
+                En divisant par $m_e i \omega$, on obtient bien
+                
+                $$
+                \left\{\begin{array}{l}
+                \underline{\boldsymbol{v}_x}=\frac{i \alpha}{\omega}+\frac{i \omega_c}{\omega} \underline{\boldsymbol{v}_y} \\
+                \underline{\boldsymbol{v}_y}=\frac{\alpha}{\omega}-\frac{\boldsymbol{i} \omega_c}{\omega} \underline{\boldsymbol{v}_x}
+                \end{array}\right.
+                $$
+                $\text { avec } \omega_c=\frac{e B_0}{m_e} \text { et } \boldsymbol{\alpha}=\frac{\boldsymbol{e} \boldsymbol{E}_{\mathbf{0}}}{\boldsymbol{m}} \text {. }$
+            }
+
+        \end{quest}
+        La résolution de ce système d'équations permet d'établir la relation, vraie pour tout \(z\) :
+        
+        \[
+            \underline{\vec{v}}=i \frac{e}{m_{e}\left(\omega-\omega_{c}\right)} \underline{\vec{E}}
+            \]
+            
+            \begin{quest}
+                \item Lorsque \(\omega=\omega_{c}\), l'onde électromagnétique échauffe le plasma : expliquer pourquoi. On parle alors de chauffage à résonance cyclotronique électronique. Justifier le terme de résonance employé dans cette situation.
+                \sol{
+                    Pour $\omega=\omega_c$, la norme de la vitesse devient infiniment grande : c'est la définition d'une résonance. On peut imaginer qu'il se produit alors de nombreuses collisions qi échauffent le plasma (collisions qui ont été négligées jusqu'à présent dans le modèle, ce qui conduit à cette divergence).
+                }
+                \item On note \(n_{0}\) la densité volumique d'électrons (\(\mathrm{en}^{-3}\)) dans le plasma. Établir l'expression de \(\underline{{j}}\), puis montrer que la relation de dispersion de cette onde s'écrit:
+                
+                \[
+                    \underline{k}^{2}=\frac{\omega^{2}}{c^{2}}\left(1-\frac{\omega_{p}^{2}}{\omega\left(\omega-\omega_{c}\right)}\right)
+                    \]
+                    
+                    avec \(\omega_{p}=\sqrt{\frac{n_{e} e^{2}}{m_{e} \varepsilon_{0}}}\) la pulsation plasma.
+
+                    \sol{
+                        La densité volumique de courant $\underline{\vec{j}}$ est le produit de la densité volumique de charge libre, qui vaut ici $n_0 .(-e)$, par la vitesse de ces charges, donc $\underline{\vec{v}}$, soit $\underline{\vec{j}}=-\bar{n}_0 e \underline{\vec{~}}$.
+
+                        $$
+                        \underline{\vec{j}}=-n_0 e i \frac{e}{m_e\left(\omega-\omega_c\right)} \overrightarrow{\underline{E}}
+                        $$
+                        
+                        
+                        On remplace alors dans l'équation de propagation et on en déduit la relation de dispersion :
+                        
+                        $$
+                        (-i \underline{k})^2-\frac{1}{c^2}(i \omega)^2=\mu_0 i \omega \frac{-i n_0 e^2}{m_e\left(\omega-\omega_c\right)} \Rightarrow \underline{k}^2=\frac{\omega^2}{c^2}-\frac{\mu_0 \omega n_0 e^2}{m_e\left(\omega-\omega_c\right)}
+                        $$
+                        
+                        
+                        En posant $\omega_p=\sqrt{\frac{n_0 e^2}{m_e \varepsilon_0}}$, on trouve bien $\underline{\boldsymbol{h}}^2=\frac{\boldsymbol{\omega}^2}{\boldsymbol{c}^2}\left(1-\frac{\omega_p^2}{\omega\left(\omega-\omega_c\right)}\right)$.
+                    }
+                    \item Calculer la pulsation plasma \(\omega_{p}\) au sein du tokamak ITER dans lequel \(n_{0}=1.10^{20} \mathrm{~m}^{-3}\).
+                    \sol{
+                        $\text { Application numérique : } \omega_p \approx 5,6.10^{11} \mathrm{~Hz}$
+                    }
+                \end{quest}
+                Sur la figure 10, on a tracé \(\frac{\omega^{2}}{\underline{k}^{2}}\) en fonction de \(\omega\). On a introduit la pulsation \(\omega_{g}=\frac{\omega_{c}+\sqrt{\omega_{c}^{2}+4 \omega_{p}^{2}}}{2}\).\\
+                \begin{fig}[label]
+                        \centering
+                        %\capt{}
+                        \includegraphics[width=0.5\textwidth]{2025_03_29_06c30dc6d9e0e0619578g-9}
+                    \end{fig}
+                    
+                    \begin{quest}
+                    % Figure 10 - Relation de dispersion\\
+\item Déterminer, en justifiant votre réponse, pour quel(s) intervalle(s) de pulsations l'onde peut se propager dans le plasma.
+\sol{
+    Pour que l'onde puisse se propager dans le plasma, il faut que $\underline{k}$ soit réel et non imaginaire pur, donc que $\underline{k}^2>0$ soit $\frac{\omega^2}{\underline{k}^2}>0$. C'est donc possible pour $\omega<\omega_{\boldsymbol{c}}$ ou $\omega>\omega_{\boldsymbol{g}}$.
+}
+\item Déterminer la vitesse de phase de l'onde pour \(\omega=\omega_{c}\). Interpréter.
+\sol{
+     Par définition, $v_{\varphi}=\frac{\omega}{k} $ lorsque  $k$ est réel. Pour $\omega \rightarrow \omega_c$, on a $\boldsymbol{v}_{\boldsymbol{\varphi}} \rightarrow \mathbf{0}$ : l'onde ne se propage pas. Interprétation??? 
+}
+\end{quest}
+
+
+\section{Réflexion d'une onde électromagnétique}
+\Annale[Physique MP]{CCINP}{2013}
+Dans l'espace, défini par le repère \((O, x, y, z)\), une onde plane électromagnétique, progressive, sinusoïdale, monochromatique de pulsation \(\omega\) et polarisée rectilignement suivant \(O x\) arrive, conformément à la figure 7, avec l'incidence \(i\) sur l'interface en \(z=0\) séparant le vide ( \(z<0\) ) d'un milieu conducteur métallique parfait non chargé \((z>0)\) de permittivité et perméabilité assimilables respectivement à \(\varepsilon_{0}=8,85 \cdot 10^{-12}\) F.m \({ }^{-1}\) et \(\mu_{0}=4 \pi \cdot 10^{-7} \mathrm{H} . \mathrm{m}^{-1}\). On s'intéresse aux champs complexes caractérisant les ondes.
+\begin{fig}[label]
+    \centering
+    \includegraphics[width=0.5\textwidth]{2025_03_29_ff92c627150f6cbfba10g-09}
+    %\capt{}
+\end{fig}
+
+% Figure 7 : onde plane électromagnétique incidente
+
+\subsection{Onde incidente}
+\begin{quest}
+    \item Rappeler ce qu'est une onde progressive.
+    \sol{
+         Une onde progressive est le phénomène de propagation d'une vibration ou d'une perturbation. 
+    }
+    \item Déterminer les composantes du vecteur de propagation \(\Vec{k}\) de l'onde incidente.
+    \sol{
+        $\vec{k}=k\left(-\sin i \vec{e}_y+\cos i \vec{e}_z\right)=\frac{\omega}{c}\left(-\sin i \vec{e}_y+\cos i \vec{e}_z\right)$.
+    }
+    \item Écrire en notations complexes, en un point \(M\) du vide repéré par ses coordonnées cartésiennes \(x, y\) et \(z<0\) et à un instant \(t\) donné, l'expression du champ électrique \(\underline{\Vec{E}}_{\mathrm{i}}\). On notera \(E_{0}\) son amplitude et on prendra la convention \(\exp [-j(\omega t-\varphi)]\) avec \(j^{2}=-1\).
+    \sol{
+        $\vec{E}_i(M, t)=E_0 \exp [-j(\omega t-\vec{k} \cdot \overrightarrow{O M})] \vec{e}_x=E_0 \exp [-j(\omega t+k \sin i y-k \cos i z)] \vec{e}_x$.
+    }
+    \item Déduire, des équations de Maxwell, l'équation de structure de l'onde.
+    \sol{
+        D'après l'équation de Maxwell-Faraday $\vec{\nabla} \times \vec{E}_i(M, t)=-\frac{\partial \vec{B}_i(M, t)}{\partial t}=j \omega \vec{B}_i(M, t)$.
+
+        $$
+        4
+        $$
+        
+        
+        Or : $\vec{\nabla} \times \vec{E}_i=\vec{\nabla} \varphi \times E_0 \exp [-j(\omega t-\varphi)] \vec{e}_x=j \vec{k} \times \vec{E}_i$. D'où la relation de structure : $\overrightarrow{\underline{B}}_i(M, t)=\frac{\vec{k}}{\omega} \times \vec{E}_i(M, t)$.
+    }
+    \item Écrire en notations complexes en fonction de \(E_{0}\), en \(M\) et à l'instant \(t\), l'expression du champ magnétique \(\underline{\Vec{B}}_{\mathrm{i}}\) associé à \(\underline{\Vec{E}}_{\mathrm{i}}\). Quelle est la direction de polarisation de \(\underline{\Vec{B}}_{\mathrm{i}}\) ?
+    \sol{
+        $\vec{B}_i(M, t)=\frac{E_0}{c}\left(\cos i \vec{e}_y+\sin i \vec{e}_z\right) \exp [-j(\omega t+k \sin i y-k \cos i z)] \vec{e}_x$.
+        $\underline{\underline{B}}_i$ est polarisé dans la direction parallèle au vecteur unitaire $\vec{u}_B=\cos i \vec{e}_y+\sin i \vec{e}_z$.
+    }
+    \item Déterminer l'expression du vecteur de Poynting réel \(\Vec{R}\) de l'onde incidente. Quelle est sa valeur moyenne temporelle \(\langle\Vec{R}\rangle\) ? Quelle est la direction de \(\Vec{R}\) ? Justifier.
+    \sol{
+        $\vec{R}=\vec{E} \times \frac{\vec{B}}{\mu_0}=\vec{E} \times\left(\frac{\vec{k}}{\mu_0 \omega} \times \vec{E}\right)=\frac{\vec{E}^2}{\mu_0 \omega} \vec{k}$.
+
+        Soit : $\vec{R}=\frac{E_0^2}{\mu_0 \omega} \cos ^2(\omega t+k \sin i y-k \cos i z) \vec{k}$ : Orienté dans la direction de propagation de l'onde incidente. $\langle\vec{R}\rangle=\frac{E_0^2}{2 \mu_0 \omega} \vec{k}=\frac{E_0^2}{2 \mu_0 c}\left(-\sin i \vec{e}_y+\cos i \vec{e}_z\right)$.
+    }
+    
+\end{quest}
+    \subsection{Onde réfléchie}
+    \begin{quest}
+        \item Après avoir énoncé les lois de Descartes pour la réflexion, déterminer l'expression du vecteur de propagation \(\Vec{k}_{r}\) de l'onde réfléchie. On suppose que la polarisation de l'onde réfléchie est du même type et de même direction que celle de l'onde incidente.
+        \sol{
+            Lois de Descartes : (1) Le rayon réfléchie est dans le plan d'incidence.
+            (2) L'angle de réflexion est égal, en valeur absolue, à
+            l'angle d'incidence.
+            
+            $$
+            \vec{k}_r=-k\left(\sin i \vec{e}_y+\cos i \vec{e}_z\right)=-\frac{\omega}{c}\left(\sin i \vec{e}_y+\cos i \vec{e}_z\right)
+            $$
+            
+        }
+        \item Donner l'expression générale, en \(M\) et à l'instant \(t\), du champ électrique \(\underline{\Vec{E}}_{\mathrm{r}}\) de l'onde réfléchie, d'amplitude \(E_{0 \mathrm{r}}\).
+        \sol{
+            $\vec{E}_r(M, t)=E_{0 r} \exp \left[-j\left(\omega t-\vec{k}_r \cdot \overrightarrow{O M}\right)\right] \vec{e}_x=E_{0 r} \exp [-j(\omega t+k \sin i y+k \cos i z)] \vec{e}_x .$
+        }
+        \item En déduire l'expression générale du champ magnétique \(\underline{\Vec{B}}_{\mathrm{r}}\) de l'onde réfléchie.
+        \sol{
+           $ \overrightarrow{\underline{B}}_r=\frac{\vec{k}_r}{\omega} \times \overrightarrow{\underline{E}}_r=\frac{E_{0 r}}{c}\left(-\cos i \vec{e}_y+\sin i \vec{e}_z\right) \exp [-j(\omega t+k \sin i y+k \cos i z)] .$
+        }
+        \item Enoncer les équations de passage sur le champ électrique et sur le champ magnétique, à la traversée d'une surface séparant deux milieux, notés 1 et 2 , puis rappeler les propriétés d'un conducteur parfait. En déduire l'expression de \(E_{0 \mathrm{r}}\), en fonction de \(E_{0}\).
+        \sol{
+        A l'interface des deux milieux, les relations de passage s'écrivent :
+
+            $$
+            \vec{E}_2(M, t)-\vec{E}_1(M, t)=\frac{\sigma(M, t)}{\varepsilon_0} \vec{n}_{1 \rightarrow 2}(1) \text { et } \vec{B}_2(M, t)-\vec{B}_1(M, t)=\mu_0 \vec{j}_s(M, t) \times \vec{n}_{1 \rightarrow 2}(2)
+            $$
+            
+            
+            Dans un conducteur parfait (milieu 2), $\vec{E}_2(M, t)=\overrightarrow{0}$ et $\vec{B}_2(M, t)=\overrightarrow{0}$.
+            (1) $\Rightarrow \overrightarrow{0}-\left(E_0 \vec{e}_x+E_{0 r} \vec{e}_x\right)=\frac{\sigma(0,0,0,0)}{\varepsilon_0} \vec{e}_z \Rightarrow E_{0 r}=-E_0$.
+        }
+        \item Déterminer l'expression du vecteur de Poynting réel \(\Vec{R}_{\mathrm{r}}\) de l'onde réfléchie. Quelle est sa valeur moyenne temporelle \(<\Vec{R}_{\mathrm{r}}>\) ? Comparer \(<\left\|\Vec{R}_{\mathrm{r}}\right\|>\) avec \(<\|\Vec{R}\|>\). Quelle est la direction de \(\Vec{R}_{\mathrm{r}}\) ? Justifier.
+        \sol{
+            $\vec{R}_r=\frac{E_{0 r}^2}{\mu_0 \omega} \cos ^2(\omega t+k y \sin i+k z \cos i) \vec{k}_r=-\frac{E_0^2}{\mu_0 c} \cos ^2(\omega t+k y \sin i+k z \cos i)\left(\sin i \vec{e}_y+\cos i \vec{e}_z\right)$ orienté dans la direction de l'onde réfléchie. $\left\langle\vec{R}_r\right\rangle=-\frac{E_0^2}{2 \mu_0 c}\left(\sin i \vec{e}_y+\cos i \vec{e}_z\right)$.
+        }
+    \end{quest}
+        
+        \subsection{Onde résultante}
+        \begin{quest}
+            \item Déterminer les expressions des champs réels résultants électrique \(\Vec{E}_{\mathrm{t}}\) et magnétique \(\Vec{B}_{\mathrm{t}}\) dans le vide.
+            \sol{
+%             $$
+% \overrightarrow{\underline{E}}_t = \overrightarrow{\vec{E}}_i+\underline{\vec{E}}_r = E_0 \mathrm{e}^{-j(\omega +k \sin(i) y-k \cos(i) z)} \vec{e}_x-E_0 \mathrm{e}^{-j(\omega x+k \sin i y+k \cos i z)} \vec{e}_x=2 j E_0 \sin (k \cos i z) \mathrm{e}^{-j(\omega t+k \sin(i) y)} \vec{e}_x
+% $$
+
+
+% En notation réelle : $\vec{E}_t=2 E_0 \sin (k \cos(i) z) \sin (\omega t+k \sin(i) y) \vec{e}_x$.
+
+% $$
+% \begin{aligned}
+% & \overrightarrow{\underline{B}}_t=\overrightarrow{\underline{B}}_i+\overrightarrow{\underline{B}}_r=\frac{E_0}{c} \mathrm{e}^{-j(\omega t+k \sin i y)}\left[\left(\cos i \vec{e}_y+\sin i \vec{e}_z\right) \mathrm{e}^{j(k \cos i z)}-\left(-\cos i \vec{e}_y+\sin i \vec{e}_z\right) \mathrm{e}^{-j(k \cos i z)}\right] \\
+% & \overrightarrow{\underline{B}}_t=\frac{2 E_0}{c} \mathrm{e}^{-j(\omega+k \sin i y)}\left[j \sin (k \cos i z) \sin i \vec{e}_z+\cos (k \cos i z) \cos i \vec{e}_y\right]
+% \end{aligned}
+% $$
+
+% En notation réelle :
+
+% $$
+% \vec{B}_t=\frac{2 E_0}{c}\left[\sin (i) \sin (k \cos i z) \sin (\omega t+k \sin i y) \vec{e}_z+\cos (i) \cos (k \cos i z) \cos (\omega t+k \sin i y) \vec{e}_y\right]
+% $$
+
+}
+            \item Déterminer l'expression du vecteur de Poynting résultant \(\Vec{R}_{\mathrm{t}}\) ainsi que sa valeur moyenne temporelle \(<\Vec{R}_{\mathrm{t}}>\). Commenter.
+            \sol{
+            $$
+\begin{aligned}
+& \text { III.3.b. } \vec{R}_t=2 E_0 \sin (k \cos i z) \sin (\Phi) \vec{e}_x \times \frac{2 E_0}{\mu_0 c}[\sin (i) \sin (k \cos i z) \sin (\Phi) \vec{e}_z+\cos (i) \cos (k \cos(iz))\operatorname {cos}(\Phi )\vec {e}_{y}]. \\
+& \vec{R}_t=\frac{2 E_0^2}{\mu_0 c}\left[-2 \sin (i) \sin ^2(k \cos i z) \sin ^2(\Phi) \vec{e}_y+\cos (i) \cos (2 k \cos i z) \cos (2 \Phi) \vec{e}_z\right] ; \text { avec } \Phi(M, t)=\omega t+k \sin i y \\
+& \left\langle\vec{R}_t\right\rangle=-\frac{2 E_0^2}{\mu_0 c} \sin (i) \sin ^2(k \cos i z) \vec{e}_y=-\frac{E_0^2}{\mu_0 c} \sin (i)\left(1-\cos \left(\frac{2 \pi z}{\lambda / 2 \cos i}\right)\right) \vec{e}_y .
+\end{aligned}
+$$
+
+- L'onde résultante se propage dans la direction Oy dans le sens des y décroissants à la vitesse de phase
+
+$$
+v_{\varphi}=\frac{\omega}{k \sin i}=\frac{c}{\sin i} .
+$$
+
+- Il y'a interférence entre l'onde incidente et l'onde réfléchie. Les surfaces d'égale intensité sont des plans parallèles à (xoy). L'interfrange dans un plan normal à la direction de propagation oy est $I=\frac{\lambda}{2 \cos i}$.
+            }
+        \end{quest}
+
+        \section{Courant dans un conducteur en regime variable}
+        Le conducteur métallique ci-dessus n'est plus supposé parfait mais possède une conductivité \(\gamma\), ce dernier paramètre intervenant dans la loi d'Ohm locale. Ce conducteur est le siège d'un courant volumique \(\Vec{J}\) sinusoïdal de pulsation élevée \(\omega\). On admet que la loi d'Ohm locale liant le courant volumique et le champ électrique est vérifiée dans le domaine de fréquences considérées.
+        \begin{quest}
+        \item Écrire les équations locales de Maxwell pour ce milieu non chargé.
+        \sol{
+           $\vec{\nabla} \cdot \vec{E}=\frac{\rho}{\varepsilon_0}=0 ; \mathrm{MF}: \vec{\nabla} \times \vec{E}=-\frac{\partial \vec{B}}{\partial t} ; \mathrm{M} \Phi: \vec{\nabla} \cdot \vec{B}=0 ; \mathrm{MA}: \vec{\nabla} \times \vec{B}=\mu_0 \vec{J}+\mu_0 \varepsilon_0 \frac{\partial \vec{E}}{\partial t} \text {. }$
+        }
+        \item Définir le courant de déplacement \(\Vec{J}_{\mathrm{D}}\) et montrer, qu'à très haute fréquence, son amplitude est négligeable devant celle du courant de conduction \(\Vec{J}_{\mathrm{C}}\). Pour cela, on prendra l'exemple du cuivre de conductivité \(\gamma=5,7.10^{7}\) S.I. à la fréquence \(v=100 \mathrm{MHz}\). On négligera par la suite le courant de déplacement dans le conducteur.
+        \sol{
+            $\vec{J}_D=\varepsilon_0 \frac{\partial \vec{E}}{\partial t}$. En régime sinusoïdal : $\frac{\left|\underline{J}_D\right|}{\left|\underline{J}_C\right|}=\frac{\varepsilon_0 \omega|\underline{E}|}{\gamma|\underline{E}|}=\frac{\varepsilon_0 \omega}{\gamma}$.
+
+            Ordre de grandeur : pour le cuivre à $100 \mathrm{MHz}, \frac{\left|\underline{J}_D\right|}{\left|\underline{J}_C\right|}=\frac{4 \pi \varepsilon_0 v}{2 \gamma} \sim 10^{-10} \ll 1$.
+        }
+        
+        \item Montrer que \(\Vec{J}\) satisfait à une équation aux dérivées partielles de la forme \(\Delta \Vec{J}-\alpha \frac{\partial \Vec{J}}{\partial t}=0\), où \(\alpha\) est une constante à déterminer en fonction de \(\mu_{0}\) et de \(\gamma\). On rappelle, que pour le champ de vecteurs \(\Vec{F}, \nabla \wedge(\nabla \wedge \Vec{F})=\nabla(\nabla . \Vec{F})-\nabla^{2} \Vec{F}\), dans laquelle \(\nabla\) représente l'opérateur nabla.
+        \sol{
+            $\vec{\nabla} \times(\vec{\nabla} \times \vec{E})=\vec{\nabla}(\vec{\nabla} \cdot \vec{E})-\vec{\nabla}^2 \vec{E}=-\vec{\nabla}^2 \vec{E}=-\gamma \vec{\nabla}^2 \vec{J}=-\frac{\partial \vec{\nabla} \times \vec{B}}{\partial t}=-\mu_0 \frac{\partial \vec{J}}{\partial t} . \text { D'où }: \vec{\nabla}^2 \vec{J}-\frac{\mu_0}{\gamma} \frac{\partial \vec{J}}{\partial t}=\overrightarrow{0} ; \alpha=\frac{\mu_0}{\gamma} .$
+        }
+        
+        \item Le courant volumique \(\Vec{J}\) est parallèle à l'axe \(O y\) et ne dépend que du temps \(t\) et de la coordonnée \(z\).
+        \sol{
+            $\frac{\partial^2 \vec{J}(z, t)}{\partial z^2}-\frac{\mu_0}{\gamma} \frac{\partial \vec{J}(z, t)}{\partial t}=\overrightarrow{0}$.
+        }
+        \begin{enumerate}
+            \item 
+             Écrire l'équation aux dérivées partielles satisfaite par \(\Vec{J}(z, t)\).
+            \item Vérifier qu'en notation complexe l'expression de \(\underline{\Vec{J}}(z, t)\) peut être du type 
+            \[
+            \underline{\Vec{J}}(z, t)=\Vec{J}_{0} \exp (-z / \Vec{\delta}) \exp [\mathrm{j}((z / \Vec{\delta})-\omega t)],
+            \] où \(\delta\) et \(\omega\) sont des constantes.
+
+            \sol{
+                $\underline{\vec{J}}=\vec{J}_0 e^{(-z / \delta)} e^{j(z / \delta-\omega t)} \cdot \frac{\partial^2 \overrightarrow{\underline{J}}}{\partial z^2}-\mu_0 \gamma \frac{\partial \overrightarrow{\underline{J}}}{\partial t}=\left(j \gamma \mu_0 \omega-\frac{(1+j)^2}{\delta^2}\right) \vec{J}=\overrightarrow{0}$. L'expression vérifie l'équation (3) à condition que : $j \gamma \mu_0 \omega-(1+j)^2 / \delta^2=\gamma \mu_0 \omega-2 / \delta^2=0$.
+            }
+            \item Expliciter \(\delta\) en fonction de \(\omega, \mu_{0}\) et \(\gamma\).
+            \sol{
+                $\delta=\sqrt{\frac{2}{\mu_0 \gamma \omega}}$.
+            }
+            \item Calculer \(\delta\) en utilisant les données numériques fournies au IV.2. Préciser son unité et conclure sur la pénétration du courant dans un conducteur à très haute fréquence.
+            \sol{
+                $\delta = 9,4 \mu \mathrm{~m}$ . Valeur trop faible. A très hautes fréquences, le courant est pratiquement surfacique. 
+            }
+        \end{enumerate}
+        \item Donner l'expression réelle de \(\Vec{J}\) dans le conducteur et en déduire l'expression du champ électrique réel \(\Vec{E}(M, t)\) en tout point \(M\) du conducteur. Déterminer l'expression de la puissance volumique moyenne \(\ll P_{\mathrm{J}} \gg\) dissipée par effet Joule sur une période d'oscillation du champ et dans la totalité du conducteur, en fonction du module de \(\Vec{J}_{0}\), des paramètres \(\delta\) et \(\gamma\) et de la surface \(S\) du conducteur.
+        \sol{
+            $\vec{J}=J_0 e^{(-z / \delta)} \cos (z / \delta-\omega t) \vec{e}_y \cdot \vec{E}=\frac{J_0}{\gamma} e^{(-z / \delta)} \cos (z / \delta-\omega t) \vec{e}_y$. La puissance volumique instantanée dissipée par effet Joule et $P(t)=\vec{J} \cdot \vec{E}=\frac{J_0^2}{\gamma} e^{(-2 z / \delta)} \cos ^2(z / \delta-\omega t) \vec{e}_y$.
+
+            $$
+            6
+            $$
+            
+            
+            Sur une période : $<P \gg \iiint_{\text {conducteur }} \frac{J_0^2}{2 \gamma} e^{(-2 z / \delta)} d \tau=\frac{J_0^2 S}{2 \gamma} \int_0^{\infty} e^{(-2 z / \delta)} d z . \quad \ll P \gg=\frac{J_0^2 S \delta}{4 \gamma}$
+        }
+        
+        \end{quest}
+            
+\FIN
+\end{document}
+            

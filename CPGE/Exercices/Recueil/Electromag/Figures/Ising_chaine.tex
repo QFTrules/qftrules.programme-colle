@@ -1,0 +1,26 @@
+\input{tikz.tex}
+\begin{document}
+    \begin{tikzpicture}
+        %  chaine de spins 1D avec fléches vers le haut ou le bas sur l'axe Ox.
+        \draw[axe] (0,0) -- ++(8,0) node[right] {$x$};
+        \foreach \i in {0,...,7} {
+            \pgfmathsetmacro{\thenum}{int(random(0,2))}
+            \ifdim\thenum pt<1 pt
+                \draw[thick,->,JoliRouge] (\i+0.5,-0.5) -- ++(0,1);
+            \else
+                \draw[thick,->,JoliRouge] (\i+0.5,0.5) -- ++(0,-1);
+            \fi
+        }
+        % label for first magnetic moment mu
+        \node[above,JoliRouge] at (0.5,0.5) {$\M$};
+        % draw atoms as blue balls with ball shading
+        \foreach \i in {0,...,7} {
+            \shade[ball color=JoliBleu] (\i+0.5,0) circle (0.075);
+        }
+        %  distance a between neighboring spins
+        \draw[<->] (0.5,-0.6) -- ++(1,0) node[midway,above] {$a$};
+
+        % magnetic fuild B0 in the z direction
+        \draw[thick,->,JoliVert] (9,-0.5) -- ++(0,1) node[above] {$\B_0$};
+    \end{tikzpicture}
+\end{document}

@@ -1,0 +1,39 @@
+\begin{tikzpicture}
+
+\begin{scope}[shift={(0,0)}]
+\draw[-latex] (-4,0) -- +(1,0) node[right]{$\vec{e_x}$};
+\draw[-latex] (-4,0) -- +(0,1) node[above]{$\vec{e_y}$};
+\filldraw[fill=white,draw=black] (-4,0) circle(3pt) node[below left]{$\vec{e_z}$};
+\fill (-4,0) circle(1.2pt);
+
+\draw[-{Latex[scale=1.25]}] (1,-0.1)  -- +(0,0.2) node[midway,right]{$I$};
+\draw (-1,-1) node[below]{$A_1$} -- (1,-1) node[below]{$B_1$} -- (1,1) node[above]{$C_1$} -- (-1,1) node[above]{$D_1$} -- cycle;
+\draw[dashed] (-1,1) -- (1,-1);
+\draw[dashed] (-1,-1) -- (1,1);
+\fill (0,0) circle(0.8pt) node[left]{$O_1$};
+\draw (0,-1) node[below]{$a$};
+
+\draw (0,-2) node[text centered]{circuit 1};
+\end{scope}
+
+
+\begin{scope}[shift={(5.5,-1)},scale=1.5]
+
+\draw[decoration={markings,mark= at position 0.3 with {\arrow{Latex[scale=1.25]}}},postaction={decorate}] (-1,0) node[below](A){$A_2$} -- (1,0) node[below](B){$B_2$}  node[near start,below]{$I$};
+
+\draw (1,0) -- ++(120:2) coordinate(C) node[above]{$C_2$} coordinate [midway] (m1);
+\draw (-1,0) -- ++(60:2) coordinate [midway] (m2);
+\draw[dashed] (m1.center) -- (-1,0);
+\draw[dashed] (m2.center) -- (1,0);
+\draw[dashed] (C.center) -- (0,0);
+\fill (0,0.577) circle(0.8pt) node[left]{$O_2$};
+\draw (0,-0.1) node[below]{$a$};
+
+\draw[double] ($(1,0)+(-0.2,0)$) arc(180:120:0.2);
+\draw[double] ($(-1,0)+(0.2,0)$) arc(0:60:0.2);
+\draw[double] ($(C)+(-60:0.2)$) arc(-60:-120:0.2);
+
+\draw (0,-0.667) node[text centered]{circuit 2};
+\end{scope}
+
+\end{tikzpicture}

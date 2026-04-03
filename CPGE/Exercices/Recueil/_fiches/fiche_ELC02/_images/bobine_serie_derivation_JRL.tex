@@ -1,0 +1,16 @@
+\shorthandoff{:!} %règle un problème de compatibilité avec babel
+
+\begin{circuitikz}
+\draw (0,0) to[short,*-,L=$L$,i^=$i$] (1.5,0) to[short,-*,L=$L'$] (3,0);
+%\draw[-latex](0,0)--++(8pt,0)node[midway,above]{$i$};
+\draw[latex-,shorten >=5pt,shorten <=5pt](0,-.5)--++(3,0)node[midway,below]{$u$};
+\node at(1.5,-1)[below]{montage \reponseA};
+\begin{scope}[shift={(5,0)}]
+\draw (0,0) to[short, *-, i=$i$](0.5,0) --++(0,0.5) to[L=$L$] ++(1.5,0) --++(0,-0.5) to[short, -*] ++(0.5,0);
+\draw (0,0) --(0.5,0) --++(0,-0.5) to[L=$L'$] ++(1.5,0) --++(0,+0.5)-- ++(0.5,0);
+%\draw[-latex](0,0)--++(8pt,0)node[midway,above]{$i$};
+\draw[latex-,shorten >=5pt,shorten <=5pt](0,-.75)--++(2.5,0)node[midway,below]{$u$};
+\node at(1.5,-1)[below]{montage \reponseB};
+\end{scope}
+\end{circuitikz}
+\shorthandon{:!}

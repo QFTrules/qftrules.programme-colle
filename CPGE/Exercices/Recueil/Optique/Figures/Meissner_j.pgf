@@ -1,0 +1,16 @@
+\begin{tikzpicture}
+\draw[-stealth,line width=2pt] (-11,0) -- (11,0);
+\draw (11,-0.25) node [below] {\Huge $z$};
+\draw[-stealth,line width=2pt] (0,-5.5) -- (0,5.5);
+\draw (0.25,5.5) node [right] {\Huge $j$};
+
+\draw[samples=500,domain=-2.5:2.5,line width=2.5pt,color=bostonuniversityred] plot (\x,{5*sinh(\x/2)/cosh(1)});
+
+ \draw[samples=500,domain=-10:10,line width=2.5pt,color=tealblue,dashed] plot (\x,{5*sinh(\x/2)/cosh(5)});
+
+\draw [line width=2.5pt,color=bostonuniversityred] (-8,4) -- (-6,4);
+\draw (-5.25,4.15) node [right] {\huge $d= \lambda$};
+\draw [line width=2.5pt,color=tealblue,dashed] (-8,3.25) -- (-6,3.25);
+\draw (-5.25,3.4) node [right] {\huge $d= 10 \lambda$};
+
+\end{tikzpicture}

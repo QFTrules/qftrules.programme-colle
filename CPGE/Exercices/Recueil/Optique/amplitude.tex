@@ -1,0 +1,2322 @@
+% !TEX root = /home/eb/.vscode/extensions/qftrules.programme-colle/tmp/Exercice.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][devoir]{Interférométrie a deux ondes}
+  \Annale[Physique 2 PC]{CCP}{2010}
+  
+% \section{Dispositif interférentiel}
+
+\Enonce{
+On s'intéresse au dispositif interférentiel de Mach-Zehnder schématisé sur la figure 1, que l'on peut considérer comme un «Michelson déplié » et dans lequel on trouve deux miroirs plans $\left(\mc{M}_1\right)$ et $\left(\mc{M}_2\right)$ ainsi que deux lames séparatrices $\left(\mathrm{SP}_{1}\right)$ et $\left(\mathrm{SP}_{2}\right)$ d'épaisseurs supposées nulles, tous ces instruments étant inclinés à $45^{\circ}$ par rapport aux faisceaux optiques. Une source ponctuelle S est placée au foyer objet d'une lentille convergente $(\mathrm{L})$. Le faisceau réfracté par la lentille est séparé en deux parties de même intensité par la lame $\left(\mathrm{SP}_{1}\right)$ pour être recomposé partiellement au niveau de la séparatrice $\left(\mathrm{SP}_{2}\right)$ identique à la première, après réflexion sur l'un ou l'autre des miroirs. Le faisceau émergent est ensuite reçu sur un écran (EC).
+Ce dispositif est entièrement plongé dans l'air dont on admettra que l'indice a pour valeur $n_0=1$.
+
+\begin{fig}[michelson_deplie]
+  \centering
+\includegraphics[width=0.7\textwidth]{bb5c4fae-0be4-4397-9257-d61c721eca30-03.jpg}
+% \captionsetup{labelformat=empty}
+% \caption{Figure 1}
+\end{fig}
+}
+
+
+\begin{quest}
+  \QR{	
+ Justifier, sans calcul, qu'en l'état de la \Fig{michelson_deplie}, tous les points éclairés sur l'écran (EC) reçoivent deux ondes en phase. En déduire l'aspect, brillant ou sombre, de la tache lumineuse sur l'écran.
+  }{
+    La source $S$ placée au foyer objet d'une lentille convergente fournit ,après traversée de la lentille, une onde plane. Cette onde est divisée en deux ondes égales par ($S P_{1}$), se réfléchissent sur ($M_{1}$) et ($M_{2}$) et s'ajoutent sur $\left(S P_{2}\right)$. Si on admet que les trajets de ces ondes ont rigoureusement la même longueur (selon la figure) après $\left(S P_{2}\right)$ ces ondes sont en phase et l'éclairement de l'écran vaut $4\mathcal{E}_{0}$. La tache lumineuse sur l'écran est donc brillante.
+  }
+\QR{ Sur le trajet issu de ($\mc{M}_1$) et dirigé vers ($\mathrm{SP}_{2}$) on introduit (\Fig{lame_incline}) une lame à faces parallèles $\left(\mc{L}_1\right)$ d'épaisseur e et d'indice n , perpendiculaire au faisceau. Sur l'autre trajet, de $\left(\mathrm{SP}_{1}\right)$ vers $\left(\mc{M}_2\right)$ on introduit une lame à faces parallèles ($\mc{L}_2$) identique à la première (Fig 2.b), mais faiblement inclinée, de manière à se présenter sous une faible incidence $\theta$ par rapport au faisceau.
+}{
+ 
+}
+\QR{ Exprimer, pour le parcours de $\left(\mc{M}_1\right)$ à $\left(\mathrm{SP}_{2}\right)$, la différence de marche supplémentaire $\delta_{1}$ introduite par la présence de lame à face parallèle $\left(\mc{L}_1\right)$.}
+{
+   Sur le parcours de ($M_{1}$) à ($S P_{2}$) la différence de marche supplémentaire introduite par ($\mc{L}_{1}$) vaut
+   \eqbox{
+   \delta_1 = e(n-1).
+   }
+}
+\end{quest}
+
+\Enonce{
+\begin{fig}[lame_incline]
+  \centering
+  \includegraphics[width=0.5\columnwidth]{bb5c4fae-0be4-4397-9257-d61c721eca30-04.jpg}
+  %\capt{}
+\end{fig}
+}
+
+\begin{quest}
+\QR{ 
+ Exprimer, pour le parcours de ($\mathrm{SP}_{1}$ ) à ($\mc{M}_2$), le chemin optique $\mathscr{L}\left(\mathrm{A}^{\prime} \mathrm{B}^{\prime}\right)$ puis la distance ( $\mathrm{A}^{\prime} \mathrm{H}^{\prime}$ ) (projection de ($\mathrm{A}^{\prime} \mathrm{B}^{\prime}$) sur l'axe optique) en fonction de l'angle $\theta$ supposé très petit et des données n et e . En déduire la différence de marche supplémentaire $\delta_{2}$ introduite par la présence de la lame à face parallèle $\left(\mc{L}_2\right)$.
+Les calculs seront développés en les limitant au second ordre (inclus) en $\theta$.}{
+
+  L'angle de réfraction dans la lame est tel que $\sin \theta=n  \sin \theta^{\prime}$. Le chemin optique $\mathcal{L}\left(A^{\prime} B^{\prime}\right)=n  A^{\prime} B^{\prime}=$ n.e $/ \cos \theta^{\prime}$. Au troisième ordre près en $\theta$ on peut écrire $\theta \sim n \theta^{\prime}$ et $\cos \theta^{\prime} \sim\left(1-\theta^{\prime 2} / 2\right) \sim\left(1-\theta^{2} /\left(2  n^{2}\right)\right)$.
+
+  En faisant les calculs au second ordre près en $\theta$ on obtient $\mathcal{L}\left(A^{\prime} B^{\prime}\right)= ne \left(1+\theta^{2} /\left(2  n^{2}\right)\right)$.
+Par ailleurs $A^{\prime} H^{\prime}=A^{\prime} B^{\prime} \cos \left(\theta-\theta^{\prime}\right)=A^{\prime} B^{\prime} \left[\cos \theta . \cos \theta^{\prime}+\sin \theta \sin \theta^{\prime}\right] \sim A^{\prime} B^{\prime}\left[\left(1-\theta^{2} / 2\right)\left(1-\theta^{2} / 2 n^{2}\right)+\right. \theta  \theta / n]$. Soit en simplifiant $A^{\prime} H^{\prime} \sim e \left(1-\theta^{2} / 2+\theta^{2} / n\right)$.
+$\mathcal{L}\left(A^{\prime} B^{\prime}\right)$ est le chemin optique parcouru dans la lame, $A^{\prime} H^{\prime}$ est le chemin optique qui serait parcouru dans
+l'air si la lame n'existait pas. La différence de marche supplémentaire vaut donc $\delta_{2} \sim e \left(n-1-\theta^{2} / 2  n+\theta^{2} / 2\right)$ soit 
+\eqbox{
+\delta_2 \simeq e(n-1) + e \theta^{2} \left(\frac{1}{2} - \frac{1}{2 n}\right).
+}
+
+}
+\QR{ En supposant que la source $\rm S$ émette une onde monochromatique de longueur d'onde $\lambda$ dans le vide, exprimer le déphasage $\Phi$ des faisceaux au niveau de la tache sur l'écran. L'éclairement sur l'écran est-il alterné ou uniforme ?}{
+
+  Le déphasage $\Phi$ des faisceaux au niveau de l'écran vaut $2 \pi \left(\delta_{2}-\delta_{1}\right) / \lambda$ soit $\Phi=2 \pi  e \theta^{2}(1 / 2-1 / 2  n) / \lambda$.
+Le déphasage $\Phi$ ne dépend que de $\theta^{2}$ et de constantes. Quand $\Phi$ est un multiple entier de $2 \pi$ l'éclairement de l'écran est maximal $\cos \Phi=1$, quand $\Phi$ est de la forme $(2 k+1) \pi$, on a $\cos \Phi=-1$ et l'éclairement est nul.
+
+}
+\QR{ En augmentant lentement l'angle $\theta$ à partir d'une valeur nulle (sous réserve qu'il demeure petit), on peut obtenir sa mesure en relevant celle de l'éclairement et à condition de compter le nombre entier $k$ de passages par un maximum de brillance.}{
+
+}
+\QR{ Pour quelles valeurs de $\theta$ a-t-on un éclairement maximal ? En prenant $\lambda=\SI{632,8}{nm}$, $n=\num{1.5}$ et $e=\SI{1.0}{mm}$, calculer en degrés la valeur $\theta_{1}$ de l'angle correspondant à $k=1$.}{
+
+  On a vu qu'on a un maximum de brillance pour $\Phi= 2 k\pi$, donc :
+% $$
+\eqbox{
+  \theta=\sqrt{\frac{k  \lambda}{e (1 / 2-1 / 2 n)}}
+  }
+% $$
+
+Avec les valeurs numériques de l'énoncé on obtient : $\theta_{1}=0,06$ rad $=3,5$ degré.
+
+
+  
+}
+
+
+\QR{ Si ce dispositif était utilisé pour la mesure d'angles, dans quel sens faudrait-il modifier l'épaisseur de la lame pour gagner en sensibilité ?}{
+  L'épaisseur de la lame apparaît au dénominateur de la valeur de $\theta$. Pour gagner en sensibilité sur $\theta$ il faut donc \fbox{diminuer $e$}.
+}
+\QR{ En supposant que la source ait une longueur de cohérence $\ell_{\mathrm{c}}=10 \mu \mathrm{~m}$, quelle condition devrait-on imposer à l'épaisseur de la lame si l'on voulait mesurer un angle de $1^{\circ}$ tout en maintenant $\mathrm{k}=1$ ?}{
+
+  La longueur de cohérence de la source est la longueur pendant laquelle la source conserve une phase constante. Pour obtenir des interférences il faut donc éviter que la différence de marche entre les deux ondes issues de la même source soit supérieure à cette longueur. On devra donc avoir $\delta_{2}-\delta_{1}<\lc$ soit pour $k=1 e \theta^{2} (1 / 2-1 / 2 n)<\lc$. On doit donc avoir :
+\eqbox{
+  e<\frac{\lc}{\theta^{2}(1 / 2-1 / 2 {n})} \simeq \SI{197}{mm}.
+  }
+
+Cette valeur semble relativement élevée car le déphasage $\Phi$ augmente avec l'épaisseur de la lame. Pour obtenir de bons résultats il vaut mieux prendre une valeur beaucoup plus faible de l'ordre de $\SI{10}{mm}$.
+
+
+}
+\end{quest}
+\begin{fig}[label]
+  \centering
+  \includegraphics[width=0.5\columnwidth]{bb5c4fae-0be4-4397-9257-d61c721eca30-04.jpg}
+  %\capt{}
+\end{fig}
+\begin{quest}
+\QR{ 
+ La source S est maintenant supposée polychromatique, avec un spectre étalé entre les longueurs d'onde $\SI{0,4}{\micro m}$ et $\SI{0,8}{\micro m}$. La lame ($\mc{L}_2$) est positionnée avec l'angle $\theta_{1}$ obtenu à la question (4.3.1). On négligera les variations de l'indice n des lames avec la longueur d'onde.
+- Montrer que certaines longueurs d'ondes sont absentes sur l'écran. Les calculer.
+- Comment appelle-t-on la couleur globale obtenue sur l'écran ?}{
+
+  Quand le déphasage $\Phi=(2 k+1) \pi$ l'éclairement sur l'écran est nul, la longueur d'onde correspondante est absente. L'épaisseur de la lame, l'angle $\theta$ et l'indice ne changent pas, pour $\lambda_{1}=\SI{632,8}{nm}$ et  $\Phi=2 \pi$, donc la constante $e  \theta^{2} \cdot(1 / 2-1 / 2 n)=\lambda_{1}$. La condition pour avoir un éclairement nul s'écrit alors : $(2 k+1) \pi=2  \pi \lambda_{1} / \lambda \quad$ soit $\quad \lambda=2 \lambda_{1} /(2 k+1)$. On essaie les valeurs entières successives de $k: k=0$, $\lambda= \SI{1265,6}{nm}$, en dehors du domaine de la lumière blanche; $k=1 \quad \lambda=\SI{421,9}{nm}$ et $k= 2 \lambda=\SI{253,1}{nm}$ en dehors du domaine.
+La couleur obtenue sur l'écran est appelée la teinte sensible.
+
+
+
+}
+\QR{ La lame ($\mc{L}_1$) étant maintenue en place, la lame ($\mc{L}_2$) est remplacée (Figure 3) par une lame à face parallèles $\left(\mathrm{L}_{3}\right)$, de même épaisseur $e$, perpendiculaire au faisceau optique et présentant un gradient d'indice, de norme $\gamma$. Ce gradient est parallèle à l'axe $(Oy)$ du repère cartésien orthonormé ($\mathrm{O}, {x}, {y}, {z}$) dont l'axe $(Ox)$ est confondu avec la direction de propagation de la lumière et l'axe $(Oz)$ (non dessiné) est normal au plan de figure.
+Dans tout ce qui suit, on supposera que la source est à nouveau monochromatique, de longueur d'onde dans le vide égale à $\lambda$.}{
+}
+
+
+\end{quest}
+
+
+\begin{fig}[label]
+  \centering
+  \includegraphics[width=0.5\columnwidth]{bb5c4fae-0be4-4397-9257-d61c721eca30-05.jpg}
+  %\capt{}
+\end{fig}
+
+\begin{quest}
+
+
+\QR{ L'indice $n^{\prime}$ de la lame ($\mc{L}_{3}$) évolue de manière linéaire entre les deux limites de cette lame où ${y}={h}$ et ${y}=-{h}$, de sorte que : ${n}^{\prime}={n}-\gamma {y}$.
+On considérera que ${h}=\SI{1}{cm}$, ${n}=1,5$ et $\gamma=\SI{10}{m}^{-1}$.}{
+
+
+}
+\QR{ Dans quel sens de l'axe $(Oy)$ le gradient de l'indice $n’$ se trouve-t-il orienté ?}{
+  L’indice
+$n^{\prime}$ ne dépend que de $y$ son gradient est le vecteur tel que $\overrightarrow{\operatorname{grad} n^{\prime}}= \dd{n^{\prime}}{y} \overrightarrow{u_{y}}=-\gamma  \overrightarrow{u_{y}}$. Le gradient de l'indice est donc orienté dans le sens des $y$ décroissants.
+}
+\QR{ Exprimer, en fonction de $n$, $e$, $\gamma$ et $y$, la différence de marche supplémentaire $\delta_{3}$ engendrée par l'interposition de la lame ($\mc{L}_{3}$), pour le seul rayon du plan de figure atteignant la lame $\left(\mc{L}_{3}\right)$ avec un décalage y par rapport à l'axe optique.}{
+    La différence de marche pour le seul rayon atteignant la lame $\left(L_{3}\right)$ vaut
+    \eqbox{
+    \delta_3 = e (n' - 1) = e (n - 1 - \gamma y).
+    }
+}
+\QR{ Tracer le cheminement complet de ce rayon, de la source jusqu'à l'écran. Quelle sera l'ordonnée $\mathrm{Y}=\Omega \mathrm{M}$ de son point d'impact M sur l'écran (EC)?
+}{
+
+\begin{fig}[label]
+  \centering
+  \includegraphics[width=0.7\columnwidth]{021f25ba-7496-4163-a4e9-9fddfafdb62b-05.jpg}
+  %\capt{}
+\end{fig}
+}
+\QR{ En déduire la différence de marche globale $\delta$ entre les deux rayons, issus de S et interférant en M.
+}{
+  La différence de marche globale entre les deux rayons vaut $\delta_{3}-\delta_{1}$ soit $\delta=-e . \gamma \cdot y$
+}
+\QR{ Décrire l'aspect de la figure obtenue sur l'écran, puis préciser la valeur de l'interfrange $i$ lorsque $\lambda=\SI{546}{nm}$ et ${e}=\SI{1}{mm}$.
+}{
+  La différence de marche est fonction de $y$, le déphasage entre les deux ondes sera $\Phi=2 \pi \delta / \lambda= -2 \pi e \gamma y / \lambda$. Il y aura donc des interférences lumineuses parallèles à l'axe de $z$. Les franges brillantes seront telles que $\Phi=2 k  \pi=-2 \pi e \gamma y / \lambda$ soit $y=-k \lambda / e \gamma$. La valeur absolue de l'interfrange est alors de 
+  \eqbox{
+    i=\frac{\lambda}{e \gamma}.
+  }
+Avec les valeurs numériques de l'énoncé on trouve $i=546.10^{-9} / 10.10^{-3}=5,46.10^{-5} \mathrm{~m}=\SI{54,6}{\micro m}$.
+}
+\end{quest}
+
+
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][colle]{Lame et miroir}
+  \begin{fig}[label]
+    \centering
+    \includegraphics[width=0.7\columnwidth]{interf_S_M}
+    %\capt{}
+  \end{fig}
+  
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][TD]{Différence de marche dans un Michelson}
+\Notions{\item Différence de marche \task Lame d’air \task Coin d’air}
+On souhaite calculer la différence de marche $\delta$ entre les deux rayons issus de l’interféromètre de Michelson en configuration lame d’air et coin d’air.
+  \begin{quest}
+    \item \udl{Lame d’air}. On représente ci-dessous le trajet fictif de deux rayons qui interfèrent à l’infini, et réfléchis sur les miroirs $(\mc{M}_1)$ et $(\mc{M}_2’)$. À partir de la construction ci-dessous, déterminer la différence de marche $\delta$ en fonction de $e$ et $\theta$. Comparer à la formule du cours.
+      % \centering
+      %
+     \begin{fig}[label] 
+      \centering
+       \includegraphics[scale=0.45]{michelson_lame_air_delta.pdf}
+      %\capt{}
+    \end{fig}
+    \sol{
+  \begin{align}
+   \delta(P) & =\opt{\Sp P}-\opt{\Sp P}=\opt{AC}+\opt{CD}-\opt{AB}\\
+   &=\frac{2e}{\cos \theta}-AD\sin \theta=\frac{2e}{\cos \theta}-2e\tan \theta \sin \theta\\
+   &=\frac{2e}{\cos \theta}\left[1-\sin^2 \theta\right]=2e\cos \theta,
+ \end{align}
+ donc 
+  \eqbox{
+    \delta = 2e \cos \theta.
+  }
+}
+    \item \udl{Coin d’air}. On représente ci-dessous le trajet fictif de deux rayons qui arrivent en incidence normale et réfléchis sur les miroirs $(\mc{M}_1)$ et $(\mc{M}_2’)$. Justifier que pour $\alpha \ll 1$, la différence de marche vaut $\delta=2e(x)$ où $e(x)$ représente l’épaisseur variable de la lame d’air à l’abscisse $x$. Conclure sur l’expression de la différence de marche. Comparer à la formule admise en cours.
+      \begin{fig}[label]
+        \centering
+        \includegraphics[scale=0.45]{michelson_coin_air_delta.pdf}
+        %\capt{}
+      \end{fig}
+    \sol{
+      La condition d’interférence constructive est
+      $$
+      \delta = 2e \cos \theta_m = m \lambda_0,
+      $$
+      soit
+      \eqbox{
+        \theta_{m}=\arccos\left(\frac{m\lambda_0}{2e}\right).
+      }
+    }
+  \end{quest}
+  
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][TD]{Intérêt de la compensatrice}
+  \Notions{\item Michelson \task Compensatrice}
+
+  On considère l’interféromètre de Michelson en configuration lame d’air et éclairé en incidence normale par une lumière monochromatique de longueur d’onde $\lambda_0$. On souhaite discuter de l’intérêt de la compensatrice, qui est disposé dans l’interféromètre entre la séparatrice $(\Surf)$ et le miroir $(\mc{M}_1)$, comme indiqué  ci-dessous.
+  \begin{fig}[label]
+  \centering
+    \includegraphics[scale=1.2]{S_C_variante.pdf}
+    %\capt{}
+  \end{fig}
+
+  \begin{quest}
+    \item	Soit $\ell$ la distance de verre traversée, et $n$ l’indice de réfraction du verre. Déterminer la différence de marche $\delta_{\Surf}$ introduite par la séparatrice $(\Surf)$ entre les rayons des voies $1$ et $2$ en fonction de $n$ et $\ell$.
+    \sol{
+      \begin{enumerate}
+        \item Voie 1 : $1$ traversée de la séparatrice $(\Surf)$ : chemin optique $n\ell$.
+        \item Voie 2 : $3$ traversées de la séparatrice $(\Surf)$ : chemin optique $3\ell$.
+      \end{enumerate}
+      \eqbox{
+        \delta_{\Surf} = 2n\ell.
+      }
+    }
+    \item On suppose que la compensatrice est de même épaisseur que la séparatrice. Déterminer de même la différence de marche $\delta_{\mc{C}}$ introduite par la compensatrice $(\mc{C})$ entre les rayons des voies $1$ et $2$ en fonction de $n$ et $\ell$. 
+    \sol{
+      \begin{enumerate}
+        \item Voie 1 : $3$ traversées de la compensatrice $(\mc{C})$ : chemin optique $3n\ell$.
+        \item Voie 2 : $1$ traversée de la compensatrice $(\mc{C})$ : chemin optique $n\ell$.
+      \end{enumerate}
+      \eqbox{
+        \delta_{\mc{C}} = -2n\ell.
+      }
+    }
+    \item En déduire la différence de marche totale $\delta$ introduite par l’ensemble séparatrice-compensatrice. Sachant que $n(\lambda)$ dépend de la longueur d’onde, discuter de l’intérêt de la compensatrice dans le cas où la source utilisée n’est pas monochromatique. 
+    \sol{
+      La différence de marche totale est
+      \eqbox{
+        \delta = \delta_{\Surf} + \delta_{\mc{C}} = 2n\ell - 2n\ell = 0.
+        }
+      La différence de marche totale est nulle, et donc indépendante de la longueur d’onde. L’intérêt de la compensatrice est donc d’éliminer les effets de dispersion dus à la séparatrice lorsque la source n’est pas monochromatique.
+    }
+    % \item Soit $e$ l’épaisseur de la séparatrice et de la compensatrice, supposée égale. Exprimer la différence de marche introduite par la séparatrice $(\Surf)$ en fonction de $e$ et $n$ en incidence normale.
+  \end{quest}
+  
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][3][TD]{Interféromètre de Mach-Zehnder}
+  \Notions{\item Division d’amplitude \task Ondes multiples \task Lame de verre}
+L'interféromètre de Mach-Zehnder est constitué de 
+deux miroirs parfaitement réfléchissants $(\mc{M}_1)$ et $(\mc{M}_2)$ et de deux séparatrices $({\Surf}_1)$ et $({\Surf}_2)$ semi-réfléchissantes, disposées à $45^{\circ}$ par rapport aux rayons lumineux.
+Un faisceau incident $\mathscr{F}_0$ de rayons parallèles, monochromatique de longueur d'onde $\lambda=\SI{600}{nm}$ et d'intensité $I_0$, est divisé en deux faisceaux par la première séparatrice. Ces deux faisceaux parcourent la même distance avant d'arriver au niveau de la deuxième séparatrice. Celle-ci produit enfin deux faisceaux $\mathscr{F}_1$ et~$\mathscr{F}_2$ d'intensité respective $I_1$ et $I_2$.  On dispose un capteur lumineux en sortie du faisceau $\mathscr{F}_2$.
+% En plus de séparer un faisceau en deux faisceaux d'intensité identique, les lames introduisent un déphasage de~$\textstyle\frac{\pi}{2}$ lorsqu'il y a réflexion, et aucun déphasage lorsqu'il y a transmission.
+
+
+% chaque réflexion sur un miroir s'accompagne d'un déphasage de $\pi$. 
+\begin{fig}[]
+  \centering
+  \includegraphics[width=0.6\textwidth]{mach_zen.pdf}
+  \capt{Interféromètre de Mach-Zehnder.}
+\end{fig}
+
+
+On admet que chaque réflexion s’accompagne d’un déphasage égal à :
+\begin{itemize}
+  \item $\pi$ sur un miroir ;
+  \item $\pi/2$ sur une séparatrice.
+\end{itemize}
+
+
+On dispose une lame à faces parallèles d'épaisseur $e$ et d'indice de réfraction $n$ (objet de phase) entre le miroir $(\mc{M}_1)$ et la séparatrice $(\Surf_2)$, perpendiculairement à la direction du faisceau lumineux. 
+\begin{quest}
+  \item En l'absence de la lame de verre, calculer les vibrations lumineuses complexes $\udl{s}_1$ et $\udl{s}_2$ en sortie de la séparatrice $(\Surf_2)$. En déduire la vibration résultante $\udl{s}$ et l'intensité résultante $I$.
+  \sol{
+    Appelons $\udl{\vib}_0$ la vibration lumineuse complexe de l'onde incidente $\mathscr{F}_0$. L'onde qui parcourt le trajet $\mathrm{S}_1 \mathrm{M}_1 \mathrm{S}_2$ acquiert une amplitude
+    $$
+    \udl{\vib}_1=\udl{\vib}_0 \times \underbrace{\frac{\mathrm{e}^{i \pi / 2}}{\sqrt{2}}}_{S_1} \times \underbrace{\mathrm{e}^{i \pi}}_{M_1} \times \underbrace{\frac{\mathrm{e}^{i \pi / 2}}{\sqrt{2}}}_{S_2} \times \underbrace{\mathrm{e}^{-i 2 \pi L / \lambda}}_{\rm{propagation}} = \frac{ \udl{\vib}_0}{2} \mathrm{e}^{-i 2 \pi L / \lambda}.
+    $$
+    où $L$ est la longueur du trajet de l'onde. 
+    L'onde qui parcourt le trajet $\mathrm{S}_1 \mathrm{M}_2 \mathrm{S}_2$ acquiert une amplitude
+    $$
+    \udl{\vib}_2=\udl{\vib}_0 \times \underbrace{\frac{1}{\sqrt{2}}}_{S_1} \times \underbrace{\frac{1}{\sqrt{2}}}_{S_2} \times \underbrace{\mathrm{e}^{-i 2 \pi L / \lambda}}_{\rm{propagation}} = - \frac{ \udl{\vib}_0}{2}\mathrm{e}^{-i 2 \pi L / \lambda}.
+    $$
+    
+    L'amplitude de l'onde résultante s'obtient par le principe de superposition :
+    $$
+    \udl{\vib} = \udl{\vib}_1 + \udl{\vib}_2 = 0
+    $$
+    L'intensité correspondante est donc nulle : on observe de l'obscurité,
+    \eqbox{
+      I = 0.
+    }
+  }
+  \item Refaire le calcul en présence de la lame. On exprimera $I$ en fonction de $I_0, n$, $e$ et $\lambda$.
+  \sol{
+    Nous avons vu qu'une lame à faces parallèles d'épaisseur $e$ et d'indice $n$ introduit une différence de marche supplémentaire 
+    $$
+    \delta = (n-1)e.
+    $$
+    L'amplitude de l'onde qui parcourt le trajet $\mathrm{S}_1 \mathrm{M}_1 \mathrm{S}_2$ devient
+    $$
+    \udl{\vib}_1=\udl{\vib}_0 \times \underbrace{\frac{\mathrm{e}^{i \pi / 2}}{\sqrt{2}}}_{S_1} \times \underbrace{\mathrm{e}^{i \pi}}_{M_1} \times \underbrace{\frac{\mathrm{e}^{i \pi / 2}}{\sqrt{2}}}_{S_2} \times \underbrace{\mathrm{e}^{-i 2 \pi L / \lambda}}_{\rm{propagation}} \times \underbrace{\mathrm{e}^{-i 2\pi (n-1) e / \lambda}}_{\rm{lame}} = \frac{\udl{\vib}_0}{2} \mathrm{e}^{-i 2\pi L / \lambda}\mathrm{e}^{-i 2\pi n e / \lambda}.
+    $$
+    L'amplitude de l'onde qui parcourt le trajet $\mathrm{S}_1 \mathrm{M}_2 \mathrm{S}_2$ est inchangée. On obtient donc
+    $$
+  \udl{\vib} = \udl{\vib}_1 + \udl{\vib}_2 = \udl{\vib}_1\left(\mathrm{e}^{-i 2 \pi(n-1) e / \lambda} - 1\right).
+    $$
+    La carré du module nous donne ensuite l'intensité du flux lumineux après interférence :
+    $$
+    I = \left| \udl{\vib} \right|^2 = \left| \udl{\vib}_1\right|^2 \left( \mathrm{e}^{-i 2 \pi(n-1) e / \lambda} -1 \right)\left(\mathrm{e}^{i 2 \pi(n-1) e / \lambda} -1\right) = \frac{I_0}{4}\left[ 2 - 2 \cos(2 \pi(n-1) e / \lambda)\right],
+    $$
+    soit
+  \eqbox{
+    I = \frac{I_0}{2}\left[1-\cos \left(\frac{2 \pi e(n-1)}{\lambda}\right)\right].
+  }
+  }
+  \item En fait cette lame modélise une fluctuation d'indice de l'air suite à une variation de pression : on écrit donc $n=1+\delta n$ avec $\delta n \ll \frac{\lambda}{e}$. Montrer que l'appareil est très sensible aux fluctuations d'indice. Voyez-vous une application de l'interféromètre de Mach-Zehnder?
+  \sol{
+    Pour des fluctuations d'indice suffisamment petites, le terme $e \, \delta n$ est petit devant $\lambda$ ce qui permet d'approcher le cosinus par un développement limité d'ordre $2: \cos \left(\frac{2 \pi e \delta n}{\lambda}\right) \simeq 1-\left(2 \pi^2 e^2 \delta n^2\right) / \lambda^2$. Finalement, l'intensité est sensible au carré des fluctuations :
+\eqbox{
+  I_2=\frac{I_0 \pi^2 e^2}{\lambda^2} \delta n^2 \propto \delta n^2.
+}
+Ce dispositif est utilisé pour visualiser les écoulements d'un fluide; les variations de vitesse s'accompagnant en général de faibles fluctuations d'indice. L'image obtenue présente des franges d'interférence qui renseignent sur les lieux d'égal indice.
+  }
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][devoir]{L'expérience de Michelson et Morley (1887)}
+\Annale[Physique MP]{CCINP}{2020}
+
+\Enonce{
+Le schéma de principe du dispositif que Michelson et Morley utilisèrent en 1887 est représenté en \Fig{MM_michelson}. Il s'agit d'un interféromètre de Michelson réglé au contact optique avec $L$ la longueur commune des bras de l'interféromètre : $L=\mathrm{OH}_1=\mathrm{OH}_2$. L'ensemble Séparatrice-Compensatrice est modélisé comme une lame semi-réfléchissante d'épaisseur nulle, placée à $45^{\circ}$ du faisceau incident et n'introduisant aucun déphasage supplémentaire sur les trajets lumineux. Les deux faisceaux lumineux obtenus après division d'amplitude suivent des trajets selon les axes $Ox$ et $Oy$ perpendiculaires. On observe les franges d'interférences à l'aide d'un oculaire micrométrique placé à la sortie de l'appareil.
+
+\begin{fig}[MM_michelson]
+  \centering
+  \includegraphics[width=0.8\textwidth]{MM_michelson.png}
+  \capt{
+  Schéma de l'interféromètre de Michelson dans la configuration $\alpha$.
+  }
+\end{fig}
+
+À l'entrée de l'interféromètre, un filtre interférentiel isole la raie $\mathrm{H}_\alpha$ du rayonnement solaire. On note $\nu$ la fréquence de la lumière monochromatique ainsi obtenue.
+Le référentiel d'observation ($R_{\rm obs}$) est ici le référentiel terrestre dans lequel les miroirs $M_1$ et $M_2$ sont immobiles. L'air est assimilé au vide et nous considérerons qu'il n'a aucune influence sur la propagation. En revanche, l'ensemble du dispositif baigne dans l'éther en mouvement à la vitesse $\vec{w}=w \vec{e}_x$ uniforme avec $w>0$ (mouvement appelé "vent d'éther").
+\begin{liste}
+  \item
+  Configuration $\alpha$ : l'interféromètre est positionné de telle sorte que le trajet lumineux sur le bras $\mathrm{n}^{\circ} 1$ soit colinéaire au vent d'éther. Le bras $\mathrm{n}^{\circ} 2$ est perpendiculaire à cette direction.
+  \item Configuration $\beta$ : on fait subir à l'ensemble $S=\{$Source, interféromètre, observateur$\}$ une rotation de $90^{\circ}$ autour de l'axe Oz dans le sens horaire, de telle sorte que ce soit le bras $\mathrm{n}^{\circ} 2$ qui devienne colinéaire au vent d'éther.
+\end{liste}
+
+
+L'interféromètre est dans la configuration $\alpha$ (\Fig{MM_michelson}). On appelle $A_1$, un point quelconque entre $\mathrm{O}$ et $\mathrm{H}_1$ sur le trajet lumineux aller du bras $\mathrm{n}^{\circ} 1$ et $\mathrm{R}_1$ un point sur le trajet retour. On note de même $\mathrm{A}_2$ et $\mathrm{R}_2$ deux points entre $\mathrm{O}$ et $\mathrm{H}_2$ sur les trajets aller et retour du bras $\mathrm{n}^{\circ} 2$.
+En utilisant l'indice $i=1$ ou 2 pour indiquer la voie de l'interféromètre et l'indice $\varepsilon=a$ ou $r$ pour indiquer le sens aller ou retour, on note $\vec{v}_{\veps i}$ la vitesse de la lumière dans ($\left.\mathrm{R}_{\mathrm{obs}}\right)$ et $\vec{c}_{\veps i}$ sa vitesse dans le référentiel de l’éther ($\mathrm{R}_{\mathrm{eth}}$). Par souci de lisibilité les quatre points $\mathrm{A}_1$, $\mathrm{A}_2$, $\mathrm{R}_1$
+ et $\mathrm{R}_2$
+ et les vitesses $\vec{v}_{\varepsilon i}$ ont été représentées hors des trajets des rayons lumineux.
+}
+\begin{quest}
+  \QR{
+ Reproduire la \Fig{MM_michelson} et la compléter en dessinant les "triangles des vitesses" reliant les vecteurs $\vec{v}_{\varepsilon i}, \vec{c}_{\varepsilon i}$ et $\vec{w}$ aux points $\mathrm{A}_1$, $\mathrm{A}_2$, $\mathrm{R}_1$, et $\mathrm{R}_2$ en supposant qu'une loi de composition galiléenne des vitesses s'applique.
+Attribuer à chaque expression fournie ci-dessous la norme $v_{\veps i}$ correspondante :
+$$
+c-w ; \sqrt{c^2-w^2} ; c+w ; \sqrt{c^2-w^2}
+$$
+}{
+Les vitesses $\Vec{v}_{\epsilon i}$ sont selon les axes, on en déduit la
+  direction de $\Vec{c}_{\epsilon i}$ via la loi de composition des vitesses
+  $\Vec{v}_{\epsilon i} = \Vec{c}_{\epsilon i} + \Vec{w}_{\epsilon i}$.
+
+\begin{fig}[]
+  \centering
+  \includegraphics[width=\columnwidth]{triangle_vitesses.png}
+  % \capt{}
+\end{fig}
+
+On en déduit: $v_{a1} = c + w$, $v_{r1} = c - w$, et $c^2 = v^2 + w^2$
+dans les deux autres cas, ce qui donne bien $v = \sqrt{c^2 - w^2}$.
+}
+
+\QR{En déduire l'expression de la différence $\tau(\alpha)=\tau_2(\alpha)-\tau_1(\alpha)$ des durées de parcours de la lumière arrivant à l'oculaire en suivant la voie 1 (respectivement 2) dans la configuration $\alpha$.
+Faire un développement limité de $\tau(\alpha)$ à l'ordre 2 en $\frac{w}{c}$.
+Donner alors l'expression de l'ordre d'interférence $p(\alpha)$ en fonction de la fréquence $\nu$, de $L$, de $c$ et du rapport $\frac{w}{c}$ (on rappelle que l'ordre d'interférence de deux signaux lumineux cohérents entre eux et présentant un déphasage $\varphi$ est égal à $\varphi / 2 \pi$).
+}{
+On aurait alors $$\tau(\alpha) = \frac{L}{v_{a2}} +  \frac{L}{v_{r2}} - \frac{L}{v_{a1}} - \frac{L}{v_{r1}},$$ soit:
+
+  $$\tau(\alpha) = \frac{L}{c}\left(2\left(1-w^2/c^2\right)^{-1/2} -
+    \frac{1}{1+w/c} - \frac{1}{1-w/c}\right)$$
+
+    Avec un DL à l'ordre 2, on a:
+
+    $\tau(\alpha) = \frac{L}{c}\left(2 + \frac{w^2}{c^2} - 1 +
+      \frac{w}{c} - \frac{w^2}{c^2} - 1 - \frac{w}{c} -
+      \frac{w^2}{c^2}\right)$.
+
+      Aprés simplification:
+
+      \eqbox{\tau(\alpha) = - \frac{Lw^2}{c^3}}
+
+      L'ordre d'interférence $p$ vaut
+
+      \eqbox{p = \nu \tau(\alpha) = -\frac{Lw^2\nu}{c^3}}
+}
+
+\QR{Avec le moins possible de calculs, donner de même les expressions :
+\begin{enumerate}
+  \item
+   de la différence $\tau(\beta)=\tau_2(\beta)-\tau_1(\beta)$ des durées de parcours de la lumière arrivant à l'oculaire en suivant la voie 1 (respectivement 2 ) dans la configuration $\beta$;
+   \item du développement limité de $\tau(\beta)$ à l'ordre 2 en $\frac{w}{c}$;
+   \item de l'ordre d'interférence $p(\beta)$ en fonction de $v, L, c$ et du rapport $\frac{w}{c}$.
+\end{enumerate}
+}{
+La rotation de \SI{90}{\degres} est équivalente à un échange des voies 1
+  et 2 (l'ordre de l'aller et du retour n'ayant pas d'importance),
+  donc on a simplement un changement de signe:
+
+  $\tau(\beta) = -\tau(\alpha)$ et ainsi de suite.
+
+  En particulier 
+  \eqbox{
+  p(\beta) = \frac{Lw^2\nu}{c^3}.
+  }
+}
+
+\QR{ \label{quest:deltap} Soit $\Delta p=p(\beta)-p(\alpha)$ la variation de l'ordre d'interférence produite lors du passage de l'interféromètre de la configuration $\alpha$ à la configuration $\beta$. Montrer que $\Delta p=2 L \frac{v}{c}\left(\frac{w}{c}\right)^2$.
+}{
+C'est immédiat à partir de ce qui précède.
+}
+
+\QR{De manière à visualiser un petit nombre de franges d'interférence à l'oculaire micrométrique, on règle l'interféromètre en coin d'air à partir de la configuration $\alpha$ en opérant une toute petite rotation du miroir $\mathrm{M}_1$ autour de son diamètre $\mathrm{H}_{1 \mathrm{z}}$. La figure d'interférences se présente alors comme un ensemble de franges rectilignes parallèles équidistantes d'interfrange $i$.
+En supposant la variation $\Delta p$ de l'ordre d'interférence obtenue en \ref{quest:deltap} inchangée par ce nouveau réglage, indiquer quelle modification de la figure d'interférences est attendue lors du passage de la configuration $\alpha$ à la configuration $\beta$. Exprimer cette modification à l'aide de $\Delta p$ et $i$.
+}{
+On attend un déplacement de la figure d'interférence d'une
+  distance $i \Delta p$, orthogonalement à la direction des
+  franges.
+}
+
+\item En faisant l'hypothèse d'un éther immobile dans le référentiel héliocentrique et ne subissant aucun effet d'entraînement par l'atmosphère terrestre, Michelson et Morley comptaient observer cette modification avec une vitesse de vent d'éther de norme $w=30,0 \mathrm{~km} \cdot \mathrm{s}^{-1}$ environ.
+\begin{enumerate}
+  \QR{
+   Rappeler la définition du référentiel héliocentrique.
+   }{
+   Le référentiel héliocentrique est le référentiel
+         barycentrique du Soleil (centré sur le Soleil, avec des axes
+         pointant vers des étoiles lointaines).
+   }
+   
+   \QR{ Énoncer, sans les démontrer, les trois lois de Képler pour une planète autour du Soleil.
+   }{
+    \begin{itemize}
+      \item 
+      \udl{Première loi} : les trajectoires des planètes sont des
+      ellipses dont le Soleil est un des foyers.
+      
+      \item \udl{Deuxième loi}: L'aire balayée par unité de temps par le rayon
+      Soleil-planète est constante.
+      
+      \item \udl{Troisième loi}: Le rapport $T^2/a^3$ entre la période $T$ et le
+      demi-grand axe $a$ de l'ellipse est indépendant de la planète.
+    \end{itemize}
+      }
+
+   \QR{Expliquer à quelle caractéristique terrestre correspond la valeur $w=30,0 \mathrm{~km} \cdot \mathrm{s}^{-1}$ escomptée par Michelson et Morley. Retrouver cette valeur à partir de $G$ (constante de Newton), $M_S$ (masse du Soleil) et $T_{a n}$ (durée de l'année terrestre).
+   Faire l'application numérique avec $G=6,67 \cdot 10^{-11} \mathrm{~N} \cdot \mathrm{kg}^{-2} \cdot \mathrm{m}^2, M_S=1,99 \cdot 10^{30} \mathrm{~kg}$ et $T_{a n}=365,25$ jours.
+   }{
+   Il s'agit de la vitesse de la Terre dans le référentiel
+     héliocentrique. On peut la retrouver avec un PFD:
+
+     $$\Vec{a} = -\frac{M_sG}{r^2}\Vec{u}_r =
+     -r\dot\theta^2\Vec{u_r}.$$
+
+     On a donc: $$r^3 = \frac{M_sG}{\dot\theta^2}$$, et donc, comme $v
+     = r\dot\theta$,
+
+     $$v^3 = M_sG\dot\theta,$$ et donc \eqbox{v =
+       \left(M_sG\frac{2\pi}{T}\right)^{1/3} = 
+       \SI{29,8}{km.s^{-1}}}.
+   }
+\end{enumerate}
+\end{quest}
+
+\Enonce{
+Pour passer de la configuration $\alpha$ à la configuration $\beta$, Michelson et Morley avaient monté leur interféromètre sur une table en granit posée au-dessus d'un flotteur en bois sur un bain de mercure, ce qui leur permettait d'opérer une rotation de l'ensemble en toute simplicité \Fig{photo_michelson}.
+
+\begin{fig}[photo_michelson]
+  \centering
+  \includegraphics[width=0.6\textwidth]{photo_michelson.png}
+  \capt{
+  L'interféromètre utilisé par Michelson et Morley en 1887.
+  }
+\end{fig}
+
+% (source : hatp://ondes-relativite.info/ DomniqueCabala/chapd_histo.htm)
+Une grande longueur des bras de l'interféromètre (obtenue par un rallongement des trajets à l'aide de plusieurs jeux de miroirs) et un oculaire micrométrique avaient été prévus afin d'assurer une détection confortable des modifications attendues de la figure d'interférences. La sensibilité du dispositif était de l'ordre du centième d'interfrange.
+}
+
+\begin{quest}
+\QR{  Avec $w=30,0 \mathrm{~km} \cdot \mathrm{s}^{-1}, L=11,2 \mathrm{~m}$ et $\nu=4,57 \cdot 10^{14} \mathrm{~Hz}$, donner la valeur numérique de $\Delta p$, variation de l'ordre d'interférence escomptée par Michelson et Morley. Commenter.
+}{On trouve
+\eqbox{\Delta p = \num{0,341},}
+ ce qui est largement suffisant pour
+  observer un éventuel effet.
+}
+
+\QR{ Donner une estimation numérique de la vitesse d'éther minimale que le dispositif permettait de mesurer a priori. Quelle(s) objection(s) aurait-on pu faire quant au résultat de l'expérience finalement annoncé négatif par Michelson et Morley? Pourquoi l'expérience fut-elle reconduite à différents moments de l'année ?
+}{On trouve 
+
+\eqbox{
+  w = c \sqrt{\frac{\Delta p}{2L\nu}} \simeq \SI{6,5}{km.s^{-1}} \text{ pour } \Delta p = 1/100.
+}
+
+  On aurait pu considérer que le Soleil se déplaçait par rapport à
+  l'éther et que la somme des vitesses $\vec{v}_{Sol} +
+  \vec{v}_{Terre/Sol}$ aurait par hasard était plus faible que les $\SI{5}{km.s^{-1}}$. Ce ne peut en revanche pas être le cas à tout
+  moment de l'année, puisque la direction de $\vec{v}_{Terre}$
+  varie. Il y a en particulier au moins un moment où elle est
+  alignée avec $\vec{v}_{Sol}$. La reconduction de différents
+  moments de l'année permet d'écarter cette objection.
+
+  Reste encore l'objection ``historique'', qui était que la Terre
+  aurait pu entraîner l'éther avec son mouvement.
+}
+\end{quest}
+
+\Enonce{
+Le résultat négatif de l'expérience de Michelson et Morley a révélé la mise en défaut de la transformation de Galilée. Cette dernière conduit également à des lois erronées de changement de référentiel pour le champ électromagnétique.
+}
+ % C'est l'objet de la partie II ci-après.
+%
+% \section{Traitement numérique d'une image}
+% Un des apports les plus importants de la photographie numérique est la possibilité de modifier l'image après la prise de vue, que ce soit en utilisant un logiciel de retouche d'images ou bien directement avec l'appareil photo numérique.
+%
+% Dans cette partie (Informatique Pour Tous), on travaillera avec l'image de la figure 8. Le traitement numérique de cette image se fera avec le langage Python et avec la bibliothèque PIL (ou PILLOW) dont la connaissance n'est pas nécessaire.
+%
+% Par ailleurs, les lignes de code proposées en $\mathbf{Q} 40$ et $\mathbf{Q} 41$ ne correspondent pas à l'ensemble du listing du programme, mais seulement aux lignes utiles afin de répondre aux questions.
+%
+% La bibliothèque PIL possède une classe Image qui permet d'ouvrir le fichier de l'image et de créer un objet qui sera nommé "img" (avec l'instruction Image.open('nom du fichier')) sur lequel on pourra appliquer des méthodes propres à cette bibliothèque.
+%
+% Cet objet peut être considéré comme un tableau de pixels, organisés comme indiqué sur la figure 9. La hauteur de l'image correspond au nombre de pixels de chaque colonne et la largeur au nombre de pixels de chaque ligne. La position d'un pixel est donnée par un couple (x,y) de coordonnées. L'origine est située en haut à gauche ; le pixel situé en haut et à gauche de l'image a donc pour coordonnées $(0,0)$.
+%
+% L'image étant en niveaux de gris, la valeur de chaque pixel est un entier codé sur un octet compris entre 0 (pour un pixel noir) et 255 (pour un pixel blanc), les autres valeurs donnant un gris plus ou moins foncé. Deux méthodes sont particulièrement utiles :
+%
+% \begin{itemize}
+%   \item img.getpixel $((\mathrm{x}, \mathrm{y}))$ renvoie la valeur du pixel de coordonnées $(\mathrm{x}, \mathrm{y})$ de l'image nommée "img";
+%
+%   \item img.putpixel $((x, y), p)$ affecte la valeur $p$ au pixel de coordonnées (x,y) de l'image nommée "img".
+%
+% \end{itemize}
+%
+% \begin{center}
+% \includegraphics[width=\textwidth]{2023_02_15_4f93073c85ff0ec4e99dg-17}
+% \end{center}
+%
+% Figure 8 - Image d'origine
+%
+% \begin{center}
+% \includegraphics[width=\textwidth]{2023_02_15_4f93073c85ff0ec4e99dg-17(1)}
+% \end{center}
+%
+% Figure 9 - Coordonnées d'un pixel
+%
+% Q39. L'objet "img" possède un attribut "size" qui permet d'obtenir des informations sur sa taille : img.size renvoie le couple de valeurs (largeur, hauteur).
+%
+% Lors de l'exécution de l'instruction print (img.size), la console affiche " (2592,1936) ". Calculer l'ordre de grandeur de la taille (en octets) de cette image.
+%
+% Q40. On souhaite créer un "négatif" de l'image, c'est-à-dire à transformer la valeur de chaque pixel de façon à ce que les pixels noirs deviennent blancs, les pixels gris clair devienne gris foncé, etc.
+%
+% Les lignes de code suivantes permettent de créer ce négatif, nommé " nouvelleImage ".
+%
+% \begin{center}
+% \includegraphics[width=\textwidth]{2023_02_15_4f93073c85ff0ec4e99dg-17(2)}
+% \end{center}
+%
+% L'affichage de " nouvelleImage " permet d'obtenir l'image de la figure $\mathbf{1 0 .}$
+%
+% Indiquer par quoi il faut remplacer " expression 1 ", " expression 2 ", " expression 3 " et " expression 4 " afin que le programme fonctionne correctement.
+%
+% \begin{center}
+% \includegraphics[width=\textwidth]{2023_02_15_4f93073c85ff0ec4e99dg-18}
+% \end{center}
+%
+% Figure 10 - Négatif de l'image d'origine
+%
+% \begin{center}
+% \includegraphics[width=\textwidth]{2023_02_15_4f93073c85ff0ec4e99dg-18(1)}
+% \end{center}
+%
+% Figure 11 - Histogramme de l'image d'origine
+%
+% L'histogramme d'une image est un outil particulièrement utile pour un photographe. Il s'agit d'un graphe sur lequel figurent :
+%
+% \begin{itemize}
+%   \item en abscisse, les valeurs possibles d'un pixel (entre 0 et 255 ici),
+%
+%   \item en ordonnée, le nombre de pixels ayant cette valeur dans l'image.
+%
+% \end{itemize}
+%
+% L'histogramme de l'image d'origine est indiqué sur la figure $\mathbf{1 1 .}$
+%
+% Q41. Pour réaliser cet histogramme avec le langage Python, on a écrit les lignes de code qui sont reproduites dans l'encadré qui suit.
+%
+% Un affichage de "liste\_x" en abscisse et de "liste\_y" en ordonnée permet d'obtenir l'histogramme de la figure 11.
+%
+% Écrire l'instruction notée "expression 5 " ci-dessous, sachant qu'il s'agit d'une seule instruction n'exploitant aucune bibliothèque.
+%
+% \begin{center}
+% \includegraphics[width=\textwidth]{2023_02_15_4f93073c85ff0ec4e99dg-18(2)}
+% \end{center}
+%
+% Q42. Lequel de ces histogramme (figures 12a, 12b, 12c, 12d) correspond au négatif de l'image d'origine (figure 10)?
+%
+% \begin{center}
+% \includegraphics[width=\textwidth]{2023_02_15_4f93073c85ff0ec4e99dg-19}
+% \end{center}
+%
+% Figure 12a
+%
+% \begin{center}
+% \includegraphics[width=\textwidth]{2023_02_15_4f93073c85ff0ec4e99dg-19(1)}
+% \end{center}
+%
+% Figure 12c
+%
+% \begin{center}
+% \includegraphics[width=\textwidth]{2023_02_15_4f93073c85ff0ec4e99dg-19(2)}
+% \end{center}
+%
+% Figure 12b
+%
+% \begin{center}
+% \includegraphics[width=\textwidth]{2023_02_15_4f93073c85ff0ec4e99dg-19(3)}
+% \end{center}
+%
+% Figure 12d
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][devoir]{Interféromètre de Fabry-Perot}
+  \Enonce{
+  Un interféromètre de Fabry-Perot est constitué d'une lame d'air à faces parallèles d'épaisseur $e$ comprise entre deux lames de verre $(\mc{L}_1)$ et $(\mc{L}_2)$ d'épaisseur négligeable. Ces lames ont un coefficient de transmission en amplitude $t$ et un coefficient de réflexion en amplitude $r$, ce qui signifie qu'à chaque réflexion (respectivement, transmission), la vibration lumineuse incidente $s_i$ est multipliée par $r$ (respectivement, $t$).
+  On éclaire la lame avec une source étendue monochromatique de longueur d'onde $\lambda=\SI{422,7}{nm}$. Un rayon incident donne naissance à différents rayons dont on doit tenir compte si le coefficient de réflexion est élevé.
+  \begin{fig}[]
+    \centering
+    \includegraphics[scale=1]{Diff_marche.pdf}
+    % \capt{Cavité Fabry-Perot.}
+  \end{fig}
+  }
+  \begin{quest}
+    \QR {Justifier que la relation $r^2 + t^2=1$ est valable dans un milieu transparent.}
+    {
+    Par \udl{conservation de l'énergie}, l'énergie incidente doit être égale à la somme des énergies réfléchie et transmise :
+    $$
+I_i = I_r + I_t,
+    $$
+    Or $I_r = r^2 I_i$ et $I_t = t^2 I_i$ donc,
+    \eqbox{
+      r^2 + t^2 = 1.
+    }
+    }
+    \QR {Déterminer le déphasage constant $\vphi$ entre deux rayons émergents successifs en fonction de $e, \lambda$ et $\theta$.}
+    {
+ Le calcul de la différence de marche se fait comme dans le cours sur la division d'amplitude.
+    On trouve $\delta = 2e \cos \theta$ donc 
+    \eqbox{
+      \vphi = \frac{2\pi}{\lambda} \delta = \frac{4\pi e}{\lambda} \cos \theta.
+    }
+    Le déphasage entre deux rayons successifs est le même que pour l'interféromètre de Michelson en configuration lame d'air. La différence est que l'interféromètre de Michelson ne fait interférer que deux rayons, tandis que le Fabry-Perot en fait interférer une infinité.
+    }
+    \QR {On appelle $\udl{s}_p$ l'amplitude complexe de l'onde associée au $p$-ième rayon, avec $p\in \N^*$. Déterminer une relation de récurrente entre $\udl{s}_{p+1}$ et $\udl{s}_p$, en fonction de $r$ et $\vphi$. }
+    {
+       Chaque aller-retour entre les lames de verre s'accompagnent de deux réflexions supplémentaires, ainsi que d'un déphasage égal à $\vphi$. On a donc la relation de récurrence
+       \eqbox{
+          \udl{s}_{p+1} = r^2 \e^{i \vphi} \udl{s}_p.
+       }
+
+    }
+    \QR {Calculer la vibration résultante $\udl{s}$, en justifiant la loi utilisée.
+    En déduire que l'intensité lumineuse $I$ à pour expression 
+  %   $$
+  \begin{equation}
+    I=\frac{I_{\rm max}}{1+m \sin ^2(\frac{\vphi}{2})},
+  \end{equation}
+  % $$
+  où le coefficient $m$ est à déterminer. \textsc{Données} : $\cos(2a) = 1-2\sin^2(a)$.}
+  {
+           
+    On utilise la méthode de sommation du cours pour les interférences à $N$ ondes. D'après le \udl{principe de superposition}, on a 
+    $$\udl{s} = \sum_{p=1}^{\infty} \udl{s}_p = \udl{s}_1 \sum_{k=0}^{\infty} r^{2k} \e^{i k \vphi} = \udl{s}_0\frac{1}{1-r^2\e^{i\vphi}}.$$
+    L’intensité s'obtient comme le module carré de l'amplitude complexe : 
+    $$
+  I = \frac{1}{2} \udl{s} \udl{s}^\star = \frac{I_0}{(1-r^2\cos\vphi)^2 + r^4 \sin^2(\vphi) } = \frac{I_0}{1 - 2r^2\cos\vphi + r^4} = \frac{I_{\rm max}}{(1-r^2)^2 + 4r^2 \sin^2(\frac{\vphi}{2})},
+    $$
+    en utilisant la formule $\cos(2a) = 1-2\sin^2(a)$. On a donc
+    % $$
+    \eqbox{
+      I_{\rm max} = \frac{I_0}{(1-r^2)^2}.
+      }
+    % $$
+    avec 
+    \eqbox{
+      m = \frac{4r^2}{(1-r^2)^2}.
+    }}
+  \QR {Représenter l'intensité $I$ en fonction de $\vphi$ pour différentes valeurs de $r$. On désire des interférences très contrastées. Comment faut-il choisir $r$ ?}
+  {
+    On a représenté ci-dessous le graphe de la fonction $I(\vphi)$ (fonction d'Airy) pour plusieurs valeurs de $R=r^2$ (coefficient de réflexion en intensité).
+    \begin{fig}[label]
+      \centering
+      \includegraphics[width=0.7\columnwidth]{Fonction_airy_new.pdf}
+      %\capt{}
+    \end{fig}
+  Le contraste vaut $\mc{C}\simeq 1$ car l'intensité  minimale est quasi nulle pour $m$ grand, et donc $r$ proche de $1$. De plus les franges brillantes sont d'autant mieux séparées les unes des autres que $r$ est proche $1$. On le verra ci-après en calculant la finesse.
+  }
+  \QR {En pratique on utilise une lame d'épaisseur $e=1 \mathrm{\,cm}$ avec des lames de verre de coefficient de réflexion $r=\num{0,95}$. Les interférences sont observés sur un écran situé dans le plan focal image d'une lentille convergente de focale $f^{\prime}=1 \mathrm{\,m}$ dont l'axe est perpendiculaire à la cavité Fabry-Perot. À quoi ressemble la figure d'interférences ? Calculer le rayon des $5$ premières franges. }
+  {
+    Le calcul du rayon des anneaux se fait comme pour l'interféromètre de Michelson en configuration lame d'air. On trouve 
+    \eqbox{
+      R_k = f' \sqrt{k \frac{\lambda}{e}}.
+    }
+    Le rayon des cinq premières franges est donc
+    \begin{align*}
+      R_1 & = \SI{6.5}{mm}, \\
+      R_2 & = \SI{9.2}{mm}, \\
+      R_3 & = \SI{11.3}{mm}, \\
+      R_4 & = \SI{13.0}{mm}, \\
+      R_5 & = \SI{14.6}{mm}.
+    \end{align*}
+  }
+  \QR {Déterminer la finesse $\mc{F}$ de la cavité Fabry-Perot, définie comme le rapport entre le déphasage $\Delta \vphi$ entre deux franges brillantes successives et leur largeur à mi-hauteur $\delta \vphi$. Comparer la résolution de cet appareil par rapport à celle d'un interféromètre de Michelson.}
+  {
+  Les franges sont séparés de $\Delta \vphi = 2\pi$ et de largeur à mi-hauteur $\delta \vphi $ telle que 
+  $$
+  I(\delta \vphi/2) = \frac{I_{\rm max}}{2} = \frac{I_{\rm max}}{1+m\sin^2(\delta \vphi/4)} \simeq \frac{I_{\rm max}}{1+m\,\delta \vphi^2/16} \Rar \delta \vphi = \frac{4}{\sqrt{m}}.
+  $$
+  On en déduit la finesse
+  $$
+  \mc{F} = \frac{2\pi }{4/\sqrt{m}} = \frac{\pi}{2} \sqrt{m},
+  $$
+  soit
+  \eqbox{
+    \mc{F} = \frac{\pi r}{1-r^2}.
+  }
+  \AN~:  Avec $r=\num{0,95}$, on trouve $\mc{F} \simeq 30$. 
+  Pour un interféromètre de Michelson, les anneaux sont beaucoup plus larges, et la finesse est proche de l'unité ; alors que $\mc{F} \gg 1$ pour un interféromètre de Fabry-Perot si $r$ est suffisamment proche de $1$. L'interféromètre de Fabry-Perot est donc un appareil de haute résolution.
+  }
+  \end{quest}
+  \end{exo}
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][devoir]{Interféromètre de Michelson avec un miroir parabolique} 
+  Un interféromètre de Michelson est constitué d'un miroir $(\mc{M}_1)$ plan  et d'un miroir $(\mc{M}_2)$ parabolique, représenté ci-dessous. On suppose que le plan tangent du miroir parabolique et le miroir plan sont perpendiculaires. La hauteur du miroir parabolique est d'équation $e(x) = ax^2$. On éclaire l’interféromètre avec une source ponctuelle monochromatique de longueur d'onde $\lambda$.
+\begin{fig}[label]
+  \centering
+  \includegraphics[width=0.3\columnwidth]{miroir_parab.pdf}
+  %\capt{}
+\end{fig}
+
+  \begin{quest} 
+    \item Faire un schéma de l'interféromètre de Michelson. Tracer le trajet d'un rayon incident, sachant que l'on éclaire en incidence normale, et que l'on observe la figure d'interférences sur un écran conjugué au miroir plan par une lentille de focale $f^{\prime}$.
+    \sol{
+      {\color{red} Erratum} On n'observe pas la figure dans le plan focal image, mais la lentille conjugue le miroir $M_1$ et l'écran. Les conditions d'éclairage et d'observation sont donc les mêmes que pour une configuration coin d'air.
+    }
+    \item Représenter le symétrique du miroir parabolique par rapport à la séparatrice. En déduire l'expression de la différence de marche $\delta$ en fonction de l'abscisse $x$ sur les miroirs.
+    \sol{
+      On obtient la différence de marche par analogie avec la configuration coin d'air avec un miroir plan. On suppose que la courbure du miroir parabolique est faible, soit $e\ll x$ et l'angle $\alpha \ll 1$. On a $\delta =2 \alpha y$ où $y$ représente l'abscisse par rapport au point de croisement de la tangente et du miroir plan, soit $\alpha y = e(x)$ et donc 
+      \eqbox{
+      \delta = 2e(x) = 2 ax^2.
+      }
+      \begin{fig}[label]
+        \centering
+        \includegraphics[width=0.4\columnwidth]{miroir_parab_alpha.pdf}
+        %\capt{}
+      \end{fig}
+    }
+    \item En déduire l'allure de la figure d'interférences. Déterminer le rayon $R_k$ de la frange numéro $k$.
+    \sol{
+      Le miroir est à symétrie de révolution et donc on observe des anneaux. 
+      L'abscisse sur l'écran $X$ est reliée à $x$ par $X=\gamma x$ avec $\gamma$ le grandissement. Le rayon $R_k$ correspond à la valeur de $X$ pour l'anneau numéro $k$. L'ordre $p_0=0$ au centre de la figure est nul puisque qu'alors $\delta=0$. Le $k^e$ anneau a donc un ordre d'interférences $p_k = 4ax^2/\lambda=k$, d'où l'on tire 
+      $$
+      x = \sqrt{\frac{k\lambda}{2a}} \Rar \boxed{R_k = \gamma \sqrt{\frac{k\lambda}{2a}}.}
+      $$
+      On obtient la même loi en $\sqrt{k}$ que les anneaux en lame d'air du Michelson classique.
+    }
+    \item Quelles analogies et différences voyez-vous avec les configurations lame d'air et coin d'air de l'interféromètre de Michelson classique ?
+    \sol{
+      Il s'agit d'une configuration coin d'air, puisque les miroirs font un angle entre eux. Mais cet angle dépend de $x$ ! Les conditions d'éclairage et d'observation sont celles de la configuration coin d'air. Mais comme le miroir est à symétrie de révolution, on observe des anneaux et non des franges rectilignes.
+    }
+  \end{quest} 
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][TD]{Configuration lame d'air}
+  \Notions{\item Michelson \task Lame d'air \task Anneaux}
+  En sortie d'un interféromètre de Michelson, on place une lentille convergente de distance focale $f^{\prime}=\SI{50}{cm}$.
+Dans le plan focal de cette lentille, on place un écran.
+% carré de coté $2a=\SI{100}{mm}$.
+On observe la figure d'interférence ci-dessous lorsque l'interféromètre est éclairé en entrée par une source conjugué au miroir par un condenseur (lentille convergente). L'air est assimilé au vide, d'indice de réfraction $n=1$. La source est une lampe spectrale au sodium basse pression, assimilé à une source monochromatique qui émet une lumière de longueur d'onde $\lambda\simeq\SI{590}{nm}$.
+\begin{fig}[]
+  \centering
+  \includegraphics[scale=1]{michel_anneau.pdf}
+  % \capt{}
+\end{fig}
+\begin{quest}
+  \item D'après la figure d'interférences, dans quelle configuration est réglé le Michelson ? Justifier le choix de la lentille et le placement de l'écran en sortie. Justifier l'utilisation du condenseur en entrée. Faire un schéma de la situation en représentant le trajet des rayons lumineux dans l'interféromètre depuis la source jusqu'à l'écran. L'extension spatiale de la source a-t-elle un effet sur la figure d'interférences ?
+\sol{
+  \begin{enumerate}
+    \item 
+    La figure d'interférences est formée de franges d'égale inclinaison (anneaux) donc le Michelson est réglé en \fbox{lame d'air} (en supposant que les miroirs sont plans)
+    \item  Les interférences observées avec un interféromètre de Michelson en lame d'air éclairé par une source étendue sont localisées à \fbox{l'infini}. Pour observer la figure d'interférences à distance finie on place un écran dans le plan focal image d'une lentille convergente située en sortie de l'interféromètre. 
+  \item De même, pour observer le plus d'anneaux possibles, autrement dit le plus grand nombre d'ordres d'interférences, on cherchera à ce que l'angle d'incidence $\theta$ varie de façon importante. Pour ce faire, on place une lentille fortement convergente en entrée de l'interféromètre et on fait l'image de la source sur les miroirs.
+  \end{enumerate}
+    }
+\item Démontrer en définissant deux sources secondaires $\rm S_1$ et $\rm S_2$ et en s'aidant d'un schéma clair, que la différence de marche dans cette configuration a pour expression $\delta = 2e \cos \theta$.
+\sol{
+  Voir cours.
+}
+\item On suppose que l'ordre d'interférence au centre de la figure, noté $p_0$, est entier, et on se place dans les conditions de Gauss. En s'aidant d'un tracé de rayons, montrer  que le rayon du $m^{\rm e}$ anneau en partant du centre vaut
+\begin{equation}\label{eq:rayon_anneau}
+  R_m = f' \sqrt{m\frac{\lambda}{e}}.
+ \end{equation}
+
+ \sol{
+ Au centre des franges ($\theta=0$), $\delta=2e$ et l'ordre d'interférences est maximal : $p_{0}=2e/\lambda_0$. Soit $R_{m}$ le rayon du $m^{\rm e}$ anneau en partant du centre et $p_m$ l'ordre d'interférences correspondant. 
+
+
+ \udl{Hypothèse} : supposons qu'on observe le maximum d'intensité d'une frange brillante au centre ($p_0$ entier). 
+ 
+ Alors $p_{m}=p_{0}-m$ et donc
+$$
+   \frac{2e}{\lambda_0}\cos(i_m)=\frac{2e}{\lambda_0}-m.
+$$
+   Dans les conditions de Gauss ($\theta_{\rm m}\ll 1$) on a $\cos i_m\simeq 1-i_{m}^2/2$ d'où
+$$
+  i_{m}=\sqrt{m\frac{\lambda_0}{e}}.
+$$
+ En plaçant une lentille mince convergente de distance focale $f'$ en sortie de l'interféromètre, le $m^{\rm e}$ anneau sur l'écran est de rayon $R_{m}=f'\tan i_{m} \simeq f' i_m$. On en déduit 
+ \eqbox{
+  R_m = f' \sqrt{m\frac{\lambda}{e}}.
+ }
+ }
+\item En réalité, on ne sait pas si l'ordre d'interférence au centre $p_0$ est entier. Il faut donc remplacer $m$ par $m+\veps$ dans \l'\Eq{rayon_anneau}, où $\veps$ désigne la partie fractionnaire de $p_0$. Montrer qu'on peut néanmoins exprimer $e$ en fonction de deux rayons successifs $R_m$ et $R_{m+1}$ sans connaître $p_0$. Que vaut l'épaisseur $e$ pour obtenir les anneaux de la figure ci-dessus ?
+\sol{
+% \begin{liste}
+  L'expression générale du rayon est donc 
+  \eqbox{
+  R_m = f' \sqrt{(m+\veps)\frac{\lambda}{e}}.
+  }
+  On ne connaît pas $\veps$ donc on ne peut pas se servir de la mesure d'un seul rayon. Il faut mesurer deux rayons successifs $R_{m}$ et $R_{m+1}$ puis déterminer l'épaisseur par la relation 
+  $$
+  R_{m+1}^2 - R_m^2 = f'^2 \frac{\lambda}{e} ((m+1+\veps) - (m+\veps)) = f'^2 \frac{\lambda}{e},
+  $$
+  soit 
+  \eqbox{
+  e  = \frac{f'^2  \lambda}{R_{m+1}^2-R_m^2}.
+  }
+  Sur la figure, on mesure $R_1 = \SI{20}{cm}$ et $R_2=\SI{35}{cm}$, et donc
+  \eqbox{
+  e = \SI{1.7}{\micro m}.
+  }
+% \end{liste}
+}
+% \item Une lampe à vapeur de sodium émet un doublet spectral de longueurs d'onde $\lambda=\SI{589.0}{nm}$ et $\lambda^{\prime}=\SI{589.6}{nm}$. De quelle distance minimale faut-il charioter pour observer un brouillage complet?
+% \sol{
+% Longueur de cohérence temporelle $l_c = \frac{\lambda^2 }{\Delta\lambda} = \SI{0.6}{mm}$. On observe un brouillage lorsque la différence de marche $\delta \simeq l_c$. Donc l'épaisseur de la lame d'air vaut (en considérant l'incidence parallèle) $e\simeq\frac{\delta}{2}\simeq \SI{0.3}{mm}$.
+% }
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC]{Angle du coin d'air}
+Un interféromètre de Michelson est réglé pour observer les franges du coin d'air. On voit environ 40 franges rectilignes sur les \SI{1.5}{cm} de largeur du miroir. En déduire une estimation de l'angle $\alpha$ du coin d'air que forment les deux miroirs. Que se passe-t-il si on augmente $\alpha$ ?
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC]{Configuration coin d'air} 
+  \Notions{\item Michelson \task Coin d'air \task Franges rectilignes}
+  À la sortie d'un interféromètre de Michelson, on place une lentille $(\mc{L}_2)$ de distance focale $f^{\prime}_2=\SI{20}{cm}$, et l'on fait l'image des miroirs sur un écran. 
+  On observe la figure d'interférence suivante lorsque l'interféromètre est éclairé en entrée par une source monochromatique ponctuelle placée au foyer d'une lentille $(\mc{L}_1)$ de distance focale $f^{\prime}_1=\SI{10}{cm}$. La source est une lampe spectrale au sodium qui émet à la longueur d'onde $\lambda\simeq\SI{590}{nm}$.
+  \begin{fig}[]
+    \centering
+    \includegraphics[scale=1]{michel_frange.pdf}
+    % \capt{}
+  \end{fig}
+  \begin{quest}
+    \item D'après la figure d'interférences, dans quelle configuration est réglé le Michelson ? Justifier le choix de la lentille en sortie et le placement de l'écran. Justifier l'utilisation de la sortie en entrée. Faire un schéma de la situation en représentant le trajet des rayons lumineux dans l'interféromètre depuis la source jusqu'à l'écran. L'extension spatiale de la source a-t-elle un effet sur la figure d'interférences ?
+  \sol{
+  La figure d'interférences est formée de franges \begin{enumerate}
+    \item La figure d’interférences est formée de franges rectilignes donc le Michelson est réglé en \fbox{coin d'air} (en supposant que les miroirs sont plans).
+    \item Les interférences observées avec un interféromètre de Michelson en coin d'air éclairé par une source ponctuelle sont localisées sur les \fbox{miroirs}. Pour observer la figure d'interférences à distance finie on place un écran dans le plan focal image d'une lentille convergente située en sortie de l'interféromètre.
+    \item On éclaire l’interféromètre en configuration coin d’air avec un faisceau parallèle en incidence \fbox{normale}.
+    \item L'extension spatiale de la source n'a \fbox{pas d'effet} sur la figure d'interférences si l’on observe les franges sur les miroirs.
+  \end{enumerate}
+  }
+    \item On rappelle que la différence de marche en configuration coin d'air vaut $\delta = 2\alpha x$. Que représente $x$ ? Faire un schéma. En déduire que l'interfrange sur les miroirs vaut $i = \frac{\lambda}{2\alpha}$. 
+    \sol{
+      La grandeur $x$ représente l'abscisse sur les miroirs par rapport au point de croisement de $(\mc{M}_1)$ et $(\mc{M}_2’)$.
+      \begin{fig}[label]
+        \centering
+        \includegraphics[scale=0.4]{coin_x.pdf}
+        %\capt{}
+      \end{fig}
+      L’interfrange $i$ est la distance entre deux franges brillantes successives, et virifie donc 
+      $$
+      p(x+i) - p(x) = 1 \Rar \frac{2\alpha (x+i)}{\lambda} - \frac{2\alpha x}{\lambda} = 1 \Rar \boxed{i = \frac{\lambda}{2\alpha}.}
+      $$
+    }
+    \item L'écran est placé en sortie à une distance $D=\SI{2}{m}$ de la lentille  mince $(\mc{L}_2)$. À partir de la relation de conjugaison, déterminer le grandissement $\gamma$. En déduire l'expression de l'interfrange $j$ sur l'écran. 
+    \sol{
+      \begin{fig}[label]
+        \centering
+        \includegraphics[scale=1.1]{lentille.pdf}
+        %\capt{}
+      \end{fig}
+      La relation de conjugaison donne
+      $$
+      \frac{1}{f'_2} = \frac{1}{\overline{OA}} - \frac{1}{\overline{OA'}}  = \frac{1}{\overline{OA’}}(\gamma - 1) = \frac{1}{D}(\gamma - 1),
+      $$
+      car d’après le théorème de Thalès,
+      $$
+      \gamma = \frac{\overline{OA'}}{\overline{OA}}.
+      $$
+      On en déduit
+      \eqbox{
+        \gamma = 1 + \frac{D}{f'_2} = 11.
+      }
+      L’interfrange sur l’écran vaut ensuite 
+      \eqbox{
+      j = \gamma i =\frac{ \gamma  \lambda}{2\alpha}.
+      }
+    }
+     \item À partir de la figure d'interférences ci-dessus, estimer l'angle $\alpha$ du coin d'air entre les deux miroirs. 
+    \sol{ On mesure sur l’écran 
+    $$
+    j = \SI{1.4}{cm},
+    $$
+    ce qui donne 
+    \eqbox{
+    \alpha = \frac{\gamma  \lambda}{2j} \simeq \SI{2.3e-4}{rad}.
+    }
+    
+    }
+    % Que se passe-t-il si on augmente $\alpha$ ?
+    % \item Donnez un exemple d'application pratique de la configuration du coin d'air dans le domaine de l'optique. 
+  \end{quest} 
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][2][devoir]{Interféromètre de Michelson et épaisseur d'une lame de savon}
+L'étude d'écoulements tourbillonnaires plans, dits aussi bidimensionnels, s'applique dans de nombreux domaines, dont les écoulements géophysiques. Parmi ceux-ci, une thématique particulièrement riche est celle des
+écoulements tourbillonnaires océaniques et atmosphériques de fluide (eau ou air) sur des distances horizontales
+grandes devant l'épaisseur de la couche de fluide concernée. L'image satellite de la \Fig{cap} présente une allée
+tourbillonnaire dans le sillage des îles du Cap Vert (image NASA).
+
+\begin{fig}[cap]
+  \centering
+  \includegraphics[width=0.4\textwidth]{ecoul_savon.png}
+  \capt{Image satellite d'une allée tourbillonaire.}
+\end{fig}
+
+% Sous certaines conditions, ces écoulements peuvent être modélisés par l'étude des écoulements tourbillonnaires
+% plans dans une lame de savon. Ce sujet propose d'aborder quelques aspects de ces écoulements.
+
+Le but de cette partie est de quantifier, par l'étude de la figure d'interférence à la surface d'une lame de savon,
+l'écart que présente celle-ci à un écoulement rigoureusement plan. On procédera par analogie avec la figure
+d'interférence obtenue à l'aide d'un interféromètre Michelson réglé en coin d'air.
+
+
+\subsection{Réglage de l'interféromètre}
+
+
+
+On considère un interféromètre de Michelson dans lequel l'ensemble \{lame séparatrice + compensatrice\} est assimilé à une unique lame semi-réfléchissante d'épaisseur négligeable. On la note par la suite lame
+séparatrice $(L)$.
+L'interféromètre, éclairé par une source étendue monochromatique de longueur d'onde dans le vide $\lambda_0$ est réglé
+comme schématisé sur la \Fig{michel} : les deux bras sont dissymétriques du fait de la position relative des miroirs :
+$M_1$ est parallèle à $(Jx)$ et $M_2$ est parallèle à $(Jy)$ mais ils ne sont pas à égale distance de $J$. On considère que
+les deux ondes qui émergent de l'interféromètre vers l'espace d'observation ont le même éclairement $I_0$.
+
+\begin{fig}[michel]
+  \centering
+  \includegraphics[width=0.7\textwidth]{savon_michelson.png}
+  \capt{Schéma du dispositif de Michelson.}
+\end{fig}
+
+\begin{quest}
+  \item En s'aidant de la \Fig{michel}, tracer  avec soin, sur la figure A du document réponse en annexe, les deux rayons issus du
+rayon incident qui émergent de l'interféromètre dans l'espace d'observation. Sur le même schéma, dans l'espace
+réservé à cet effet, montrer graphiquement que l'on peut considérer que ces deux rayons sont issus d'une « lame
+d'air » d'épaisseur $e$ que l'on représentera. On supposera que l'indice de l'air est égal à $1$.
+\sol{
+Cours.
+}
+\item  Établir la différence de marche introduite par le système en fonction de l'angle d'incidence $\theta$ sur cette
+lame et de son épaisseur $e$.
+\sol{
+Cours : $\delta = 2e \cos\theta$.
+}
+\item Où est localisée la figure d'interférence ? Comment l'observer dans de bonnes conditions si l'on dispose
+d'un jeu complet de lentilles convergentes de distances focales comprises entre 20 cm et 1 m ? Un schéma clair
+de la situation expérimentale correspondante est attendu.
+\sol{
+Figure à l'infini (si source étendue). Observation dans le plan focal image d'une lentille convergente de distance focale la plus grande possible.
+}
+\item Montrer que la figure d'interférence est formée d'anneaux d'égale inclinaison (justifier ce terme).
+On observe sur l'écran la figure d'interférence présentée \Fig{anneaux}.
+\end{quest}
+On souhaite maintenant régler l'appareil au contact optique.
+
+\begin{fig}[anneaux][0.49]
+  \centering
+  \includegraphics[width=4cm]{savon_anneaux.png}
+  \capt{Interférences sur une lame de savon en lame d'air.}
+\end{fig}
+
+
+\begin{quest}
+  \item Décrire l'opération : faut-il tourner ou translater un miroir ? Comment savoir dans quel sens ? Décrire
+l'évolution de la figure d'interférence au cours de l'opération. Quel est l'aspect de l'éclairement sur l'écran une
+fois ce réglage réalisé ?
+\sol{
+Il faut translater un miroir ( en général M2), de manière à diminuer le nombre d'anneaux visibles sur l'écran. Les anneaux sont de plus en plus gros, et semblent « rentrer dans le centre » lorsque l'on se rapproche du contact optique. Lorsqu'on est au contact optique, l'éclairement est uniforme.
+}
+\item Partant de cette situation on incline un des miroirs d'un petit angle $\alpha$ pour former un coin d'air. On
+éclaire le système en incidence quasi-normale de telle sorte que l'on observe des franges d'interférences rectilignes
+parallèles entre elles. Où sont-elles localisées ? Préciser les conditions de leur observation.
+\sol{
+Localisation sur les miroirs (source étendue). Observation avec une lentille en faisant l'image des miroirs sur un écran.
+}
+\item On admet que la différence de marche introduite par le coin d'air en un point $M$ de la surface de
+localisation situé à une distance $x$ de l'arête commune des deux miroirs est $\delta(M ) \simeq \pm 2 n \alpha x$ avec $n = 1$.
+Déterminer l'interfrange $i$ sur la surface de localisation, en fonction de $\alpha$ et $\lambda_0$. Comment évolue la figure
+d'interférence si l'angle $\alpha$ varie ?
+
+\sol{
+Cours.
+}
+\end{quest}
+
+\subsection{Coin d'air sur une lame de savon}
+
+
+Une lame de savon est constituée d'une mince couche d'eau entourée de part et d'autre par
+une couche de savon. Cette configuration est due aux tensio-actifs contenus dans le savon. Ces molécules sont
+constituées de deux parties distinctes : une tête hydrophile, généralement ionique, et une queue hydrophobe,
+généralement constituée d'une chaîne carbonée, voir \Fig{savon}.
+
+\begin{fig}[savon][0.49]
+  \centering
+  \includegraphics[height=4cm]{savon_lame.png}
+  \capt{Représentation de molécules tensio-actives à la surface d'une mince couche d'eau.}
+\end{fig}
+Cette propriété amène ainsi les tensio-actifs à se concentrer et à se fixer les uns aux autres aux interfaces entre
+l'eau et l'air. En éclairage monochromatique, cette lame fait apparaitre des franges d'interférence (\Fig{interf_savon}), dont
+l'interfrange diminue vers le bas de la lame. Ces franges sont liées à un phénomène d'interférence se produisant
+sur une couche mince. On suppose ici que l'indice de cette fine couche est $n \simeq \num{1.4}$. L'épaisseur de cette couche
+est variable de haut en bas sans dépasser une épaisseur maximum d'environ $\SI{1}{\micro m}$. La masse volumique et la
+viscosité du liquide savonneux sont pris égaux à ceux de l'eau.
+
+Le trajet d'un rayon lumineux arrivant sous incidence $\theta$ sur une lame d'indice n et d'épaisseur locale e, doit
+tenir compte du phénomène de réfraction à l'intérieur de la lame. On note $\theta_r$ l'angle de réfraction et $\theta$ l'angle
+d'incidence. Une division d'amplitude se produit sur la face avant, suivie d'une réflexion sur la face arrière,
+produisant deux rayons réfléchis par la lame qui interfèrent au point P. On admet que la réflexion sur un milieu
+plus réfringent s'accompagne d'un déphasage de $\pi$.
+
+\begin{fig}[interf_savon]
+  \centering
+  \includegraphics[width=0.7\textwidth]{savon_interf.png}
+  \capt{Origine des interférences sur un film de savon.}
+\end{fig}
+
+\begin{quest}
+\item Justifier qu'en incidence quasi-normale, le déphasage entre les deux ondes qui interfèrent peut s'écrire
+$$
+\Delta \varphi = \frac{2\pi}{\lambda_0}\pa{ 2 n e + \frac{\lambda_0}{2}}.
+$$
+\sol{
+Pour $\theta \simeq 0$ (incidence quasi-normale), $\delta \simeq 2ne$. La réflexion en $B$ s'accompagne d'un déphasage de  $\pi$, donc
+$$
+\Delta \varphi = 2\pi\frac{\delta}{\lambda} + \pi.
+$$
+}
+\end{quest}
+
+En l'absence de perturbation extérieures (telles que celles qui seront abordées par la suite) la lame n'est le
+siège que de son écoulement gravitaire (du haut vers le bas sous l'effet de la gravité). Dans le cadre d'un modèle
+simplifié, dit d'interface sans interaction, la pression $p$ au sein du fluide en écoulement gravitaire entre l'interface
+de tensioactifs est supposée uniforme. Le phénomène de drainage des tensioactifs est alors négligé. L'axe $(Oz)$
+sera pris vertical ascendant. La \Fig{franges} présente la figure d'interférence observée sur un film de savon, ainsi que
+les notations introduites.
+
+\begin{fig}[franges]
+  \centering
+  \includegraphics[width=0.5\textwidth]{face_savon.png}
+  \capt{Interférences sur un film de savon.}
+\end{fig}
+
+On note $H = \SI{5,0}{cm}$ la hauteur de la lame de savon. On note $e(z, t)$ l'épaisseur de la lame, dans la direction
+$(Oy)$, à l'altitude $z$ et à l'instant $t$. Du fait de l'écoulement de drainage gravitaire, cette épaisseur varie au cours
+du temps à $z$ fixé et à $t$ fixé elle augmente vers le bas.
+
+\begin{quest}
+  \item  Compte tenu de la topographie des franges observées sur la \Fig{franges}, discuter qualitativement l'écart
+  du profil de la lame à une portion de coin d'angle constant, induit par son drainage gravitaire.
+  \sol{
+  Pour un coin d'air d'angle $\alpha$ constant, l'interfrange $i=\frac{\lambda}{2\alpha}$ est également constant. Or ce n'est pas le cas ici : l'interfrange $i$ diminue du haut vers le bas (les franges se resserrent).
+  }
+\end{quest}
+
+Afin d'interpréter ces différences, une modélisation de mécanique des fluides, non détaillée ici, aboutit à l'expression suivante pour l'épaisseur e de la lame en fonction de $z$ et du temps $t$ :
+$$
+e(z,t) = \sqrt{\frac{2\eta(H-z)}{\rho g t}}
+$$
+\begin{quest}
+  \item  Discuter qualitativement la validité de cette expression en regard de la \Fig{franges}.
+  \sol{
+  \begin{fig}[]
+    \centering
+    \includegraphics[width=0.2\textwidth]{profil_ez.pdf}
+    \capt{Allure du profil $e(z,t)$ de la lame de savon.}
+  \end{fig}
+
+  La forme proposée présente un problème en $t=0$ puisque l'épaisseur devient infini. La formule n'est donc pas valable au premiers instants.
+  % l'épaisseur devrait être finie pour tout $z$.
+On voit par contre que l'épaisseur tend vers zéro lorsque $t$ tend vers l'infini.
+
+On constate que la pente $\tan \alpha$ du profil, et donc l'angle $\alpha$ du coin d'air, augmente lorsque $z$ diminue, ce qui explique bier que l'interfrange $i$ diminue.
+
+Pour  $z = H$, la formule fournit $e=0$, ce qui indique une frange noire : c'est bien ce qu'on observe sur la figure.
+  }
+
+\end{quest}
+Pour aller plus loin dans la caractérisation de la variation de l'épaisseur de la lame, on se propose d'effectuer
+une approche semi-empirique de la loi de variation de l'épaisseur de la lame. On se place à t fixé et on suppose
+une loi de puissance semi-empirique de la forme
+$e(z,t) = K (H - z)^\beta$
+où $\beta$ et $K$ sont des constantes. On relève pour cela expérimentalement la position des premières franges brillantes.
+Le tableau ci-dessous présente les résultats obtenus en indiquant la position $z$ de ces franges, pour un éclairage monochromatique de longueur d'onde $\lambda_0 =\SI{ 600}{ nm}$ et un film de savon d'indice optique $n = \num{1.4}$.
+
+\begin{fig}[]
+  \centering
+  \includegraphics[width=0.7\textwidth]{tab_savon.png}
+  \capt{Position $z$ des franges brillantes.}
+\end{fig}
+
+\begin{quest}
+  \item Compte tenu de ces valeurs numériques, analyser graphiquement, à l'aide du support fourni en figure B
+du document réponse, si cette loi semi-empirique est conforme aux observations. Si c'est le cas, donner la valeur
+numérique de $\beta$.
+\sol{
+Si l'épaisseur de la lame est nulle en $z = H$, la frange brillante numéro $k$ correspond à un ordre d'interférence $k$, soit :
+$$
+2ne + \frac{\lambda}{2} = k \lambda \Leftrightarrow e = (k-\frac{1}{2}) \frac{\lambda}{2n}.
+$$
+La loi semi-empirique s'écrit donc
+$$
+(k-\frac{1}{2}) \frac{\lambda}{2n} = K(H-z)^\alpha
+$$
+Afin de chercher à représenter une droite, pour valider visuellement, une loi de puissance, on trace $(k-\frac{1}{2}) \frac{\lambda}{2n} $ en fonction de $\ln(H-z)$. L'alignement est bon, on valide le modèle. Une régression linéaire fournit une pente $\alpha=\SI{1.7}{}$. Cette valeur n'est pas celle prédite par le modèle
+}
+\end{quest}
+
+\clearpage
+\includegraphics[width=\textwidth]{CCS_figA_michel_reponse.pdf}
+\clearpage
+\includegraphics[width=\textwidth]{CCS_figB_michel_reponse.pdf}
+
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][2][colle]{Coin d'air éclairé avec une source polychromatique}
+Un interféromètre de Michelson est réglé en coin d'air et éclairé par un laser de longueur d'onde $\lambda_0=$ $\SI{633}{nm}$. L'observation est réalisée en utilisant une lentille mince convergente de focale $f^{\prime}=\SI{20}{cm}$ qui fait l'image des franges sur un écran situé à $D=\SI{1,0}{m}$ de la lentille. On mesure un interfrange sur l'écran de $\SI{5,25}{mm}$.
+
+\begin{quest}
+  \item Déterminer la valeur de l'interfrange $i$ au niveau des miroirs. En déduire l'angle $\alpha$ du coin d'air.
+\end{quest}
+
+En utilisant la même disposition que précédemment, le laser est remplacé par une source de spectre inconnu placée dans le plan focal objet d'une lentille convergente. L'intensité sur l'écran est représentée sur la figure ci-contre.
+\begin{fig}[]
+  \centering
+  \includegraphics[width=0.7\columnwidth]{coin_lumière_blanche.png}
+  % \capt{}
+\end{fig}
+
+\begin{quest}
+  \item Pour les sources (a) et (b), déterminer si le spectre est un doublet ou un spectre continu. Dans le cas d'un doublet, déterminer les deux longueurs d'ondes $\lambda_1$ et $\lambda_2$ du spectre et dans le cas d'un spectre continu, déterminer la longueur d'onde moyenne $\lambda_{\mathrm{m}}$ ainsi que la largeur spectrale en longueur d'onde $\Delta \lambda$.
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][3][devoir]{Coin d'air sur une lame de savon}
+  
+  Une lame de savon est constituée d'une mince couche d'eau entourée de part et d'autre par
+  une couche de savon. 
+  En éclairage monochromatique, cette lame fait apparaître des franges d'interférence (\Fig{interf_savon}), dont
+  l'interfrange diminue vers le bas de la lame. Ces franges sont liées à un phénomène d'interférence se produisant
+  sur la couche de savon. On suppose ici que l'indice de cette couche est $n \simeq \num{1.4}$. 
+  % L'épaisseur de cette couche   est variable de haut en bas sans dépasser une épaisseur maximum d'environ $\SI{1}{\micro m}$. 
+  % La masse volumique et la   viscosité du liquide savonneux sont pris égaux à ceux de l'eau.
+  
+  Le trajet d'un rayon lumineux arrivant sous incidence $\theta$ sur une lame d'indice $n$ et d'épaisseur locale $e$ doit
+  tenir compte du phénomène de réfraction à l'intérieur de la lame. On note $\theta_r$ l'angle de réfraction.
+  % et $\theta$ l'angle d'incidence. 
+  Une division d'amplitude se produit sur la face avant, suivie d'une réflexion sur la face arrière,
+  produisant deux rayons réfléchis par la lame qui interfèrent au point P. On admet que la réflexion sur un milieu
+  plus réfringent s'accompagne d'un déphasage de $\pi$.
+  
+  \begin{fig}[]
+    \centering
+    \begin{subfig}[interf_savon][0.65]
+      \includegraphics[height=4cm]{savon_interf.png}
+    \end{subfig}
+    \begin{subfig}[frange][0.3]
+      \includegraphics[height=4cm]{face_savon.png}
+    \end{subfig}
+    \capt{(a) Origine des interférences sur un film de savon. (b) Interférences sur un film de savon.}
+  \end{fig}
+  
+  \begin{quest}
+  \item On suppose que l'épaisseur $e$ varie peu sur des distances de l'ordre de la longueur d'onde. Justifier qu'en incidence quasi-normale, le déphasage entre les deux ondes qui interfèrent peut s'écrire
+  $$
+  \Delta \varphi = \frac{2\pi}{\lambda_0}\pa{ 2 n e + \frac{\lambda_0}{2}}.
+  $$
+  \sol{
+  Pour $\theta \simeq 0$ (incidence quasi-normale), $\delta \simeq 2ne$. La réflexion en $B$ s'accompagne d'un déphasage de  $\pi$, donc
+  $$
+  \Delta \varphi = 2\pi\frac{\delta}{\lambda} + \pi.
+  $$
+  }
+  \end{quest}
+  
+  % En l'absence de perturbation extérieures (telles que celles qui seront abordées par la suite) la lame n'est le
+  % siège que de son écoulement gravitaire (du haut vers le bas sous l'effet de la gravité). Dans le cadre d'un modèle
+  % simplifié, dit d'interface sans interaction, la pression $p$ au sein du fluide en écoulement gravitaire entre l'interface
+  % de tensioactifs est supposée uniforme. Le phénomène de drainage des tensioactifs est alors négligé. L'axe $(Oz)$
+  % sera pris vertical ascendant. 
+  
+  La \Fig{frange} présente la figure d'interférence observée sur un film de savon, ainsi que
+  les notations introduites.  
+  On note $H = \SI{5,0}{cm}$ la hauteur de la lame de savon. Du fait de l'écoulement de drainage gravitaire  l'épaisseur de la lame  $e(z, t)$ dans la direction
+  $(Oy)$ dépend de l'altitude $z$ et du temps $t$.
+  %  fixé elle augmente vers le bas.
+  
+  \begin{quest}
+    \item Comment varierait l'épaisseur $e(z,t)$ en fonction de $z$ pour un coin d'air d'angle constant $\alpha$. Compte tenu de la topographie des franges observées sur la \Fig{frange}, comparer qualitativement le profil réel de la lame à une portion de coin d'air d'angle constant.
+    \sol{
+    Pour un coin d'air d'angle $\alpha$ constant, l'interfrange $i=\frac{\lambda}{2\alpha}$ est également constant. Or ce n'est pas le cas ici : l'interfrange $i$ diminue du haut vers le bas (les franges se resserrent).
+    }
+  \end{quest}
+  
+  Afin d'interpréter ces différences, une modélisation de mécanique des fluides, non détaillée ici, aboutit à l'expression suivante pour l'épaisseur de la lame en fonction de $z$ et du temps $t$ :
+  $$
+  e(z,t) = \sqrt{\frac{2\eta(H-z)}{\rho g t}}
+  $$
+  \begin{quest}
+    \item  Discuter qualitativement la validité de cette expression en regard de la \Fig{frange}.
+    \sol{
+    \begin{fig}[]
+      \centering
+      \includegraphics[width=0.2\textwidth]{profil_ez.pdf}
+      \capt{Allure du profil $e(z,t)$ de la lame de savon.}
+    \end{fig}
+  
+    La forme proposée présente un problème en $t=0$ puisque l'épaisseur devient infini. La formule n'est donc pas valable au premiers instants.
+    % l'épaisseur devrait être finie pour tout $z$.
+  On voit par contre que l'épaisseur tend vers zéro lorsque $t$ tend vers l'infini.
+  
+  On constate que la pente $\tan \alpha$ du profil, et donc l'angle $\alpha$ du coin d'air, augmente lorsque $z$ diminue, ce qui explique bier que l'interfrange $i$ diminue.
+  
+  Pour  $z = H$, la formule fournit $e=0$, ce qui indique une frange noire : c'est bien ce qu'on observe sur la figure.
+    }
+  
+  \end{quest}
+  Pour aller plus loin dans la caractérisation de la variation de l'épaisseur de la lame, on se propose d'effectuer
+  une approche semi-empirique de la loi de variation de l'épaisseur de la lame. On se place à t fixé et on suppose
+  une loi de puissance semi-empirique de la forme
+  $e(z,t) = K (H - z)^\beta$
+  où $\beta$ et $K$ sont des constantes. On relève pour cela expérimentalement la position des premières franges brillantes.
+  Le tableau ci-dessous présente les résultats obtenus en indiquant la position $z$ de ces franges, pour un éclairage monochromatique de longueur d'onde $\lambda_0 =\SI{ 600}{ nm}$ et un film de savon d'indice optique $n = \num{1.4}$.
+  
+  \begin{fig}[]
+    \centering
+    \includegraphics[width=0.7\textwidth]{tab_savon.png}
+    \capt{Position $z$ des franges brillantes.}
+  \end{fig}
+  
+  \begin{quest}
+    \item Compte tenu de ces valeurs numériques, analyser graphiquement si cette loi semi-empirique est conforme aux observations. Si c'est le cas, donner la valeur
+  numérique de $\beta$ à partir d'une modélisation affine.
+  \sol{
+  Si l'épaisseur de la lame est nulle en $z = H$, la frange brillante numéro $k$ correspond à un ordre d'interférence $k$, soit :
+  $$
+  2ne + \frac{\lambda}{2} = k \lambda \Leftrightarrow e = (k-\frac{1}{2}) \frac{\lambda}{2n}.
+  $$
+  La loi semi-empirique s'écrit donc
+  $$
+  (k-\frac{1}{2}) \frac{\lambda}{2n} = K(H-z)^\alpha
+  $$
+  Afin de chercher à représenter une droite, pour valider visuellement, une loi de puissance, on trace $(k-\frac{1}{2}) \frac{\lambda}{2n} $ en fonction de $\ln(H-z)$. L'alignement est bon, on valide le modèle. Une régression linéaire fournit une pente $\alpha=\SI{1.7}{}$. Cette valeur n'est pas celle prédite par le modèle
+  }
+  \end{quest}
+  \end{exo}
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][devoir]{Détection des ondes gravitationnelles}
+
+  \Annale[Physique PC]{E3A}{2006}
+  \setcounter{subsection}{0}
+
+\subsection{Interféromètre de Michelson}
+% \parag{Interférences entre deux ondes monochromatiques cohérentes}
+% Étudions la superposition de deux ondes lumineuses monochromatiques, de même pulsation $\omega$, de même amplitude $A$. Au point $M$ considéré, l'onde 1 possède une phase  $\varphi_1(M)$ et l'onde 2, une phase $\varphi_2(M)$.
+% \begin{quest}
+%   \item Exprimer le signal lumineux complexe $\underline{s}( M, t)$ résultant de la superposition de ces deux ondes au point $M$, en fonction de $A$,  $\varphi_1(M)$ et  $\varphi_2(M)$.
+%   \sol{
+%   $\underline{s}(M,t) = \udl{s_1}(M,t) + \udl{s_2}(M,t) = 2Ae^{i\omega t } e^{-i(\varphi_1+\varphi_2)/2} \cos(\frac{\vphi_2-\vphi_1}{2})$.
+%   }
+%   \item Montrer que l'intensité observée en $M$ peut s'écrire sous la forme :
+%   $I(M) = 2 I_0 [ 1+ \cos( \varphi_2(M) - \varphi_1(M)) ]$, et exprimer $I_0$ en fonction de $A$. Quel est   le sens concret de $I_0$ ?
+%   \sol{
+% $I(M) = \frac{1}{2} \underline{s}(M,t) \underline{s}(M,t)^* = 2A^2 \cos^2(\frac{\vphi_2-\vphi_1}{2})$
+%   }
+% \item Posons  $\Delta \varphi(M) = \varphi_2(M) - \varphi_1(M)$. Quelle condition doit vérifier  $\Delta \varphi(M)$ pour que soit observé en $M$ un maximum d'intensité ? À quelle condition sur $\Delta \varphi(M)$ l'intensité est-elle minimale en $M$ ?
+% \sol{
+% Maxima pour $\Delta \varphi=2p\pi$ avec $p$ entier ; minima pour  $\Delta \varphi=(2p+1)\pi$ avec $p$ entier.
+% }
+% \end{quest}
+
+% \parag{Source monochromatique}
+
+\Enonce{
+La \Fig{michel1} représente le dispositif interférentiel utilisant un interféromètre de MICHELSON :
+La séparatrice, $S$, inclinée de $\SI{45}{^\circ}$ par rapport aux miroirs $M_1$ et $M_2$ est idéalisée : il est admis qu'elle n'introduit aucun déphasage supplémentaire. L'interféromètre est supposé réglé en  lame d'air, ce qui signifie que les deux miroirs sont parfaitement perpendiculaires. Le milieu est de l'air d'indice $n=1$.
+
+\begin{fig}[michel1]
+  \centering
+  \includegraphics[width=0.4\textwidth]{michel_son.png}
+  \capt{Interféromètre de Michelson réglé en lame d'air.}
+\end{fig}
+
+Les  bras  de l'interféromètre ont pour longueurs $d_1 = AB$ et $d_2 = AC$. Notons $\delta_0 =2(d_2-d_1)$.
+Le bras 2 a une longueur fixée, notée $d_2 = L$. Le miroir $M_1$ peut être translaté (lors d'un  chariotage).
+Le LASER utilisé comme source émet un faisceau très fin, parfaitement perpendiculaire à $M_1$ de sorte que les deux faisceaux qui émergent de l'interféromètre sont exactement superposés sur le détecteur.
+Le LASER est tout d'abord supposé parfaitement monochromatique, de longueur d'onde dans le vide $ \lambda = \SI{1.06}{\micro m}$.
+L'éclairement reçu par le détecteur lorsque l'un des miroirs est occulté, est noté $I_0$.
+}
+
+\begin{quest}
+  \QR{ À quelle condition sur  $\delta_0$  dit-on que l'interféromètre de MICHELSON est au contact optique ?
+  %Décrire brièvement comment procéder, avec les interféromètres utilisés en Travaux Pratiques, pour déterminer précisément le contact optique.
+  }{
+  Au contact optique, 
+  \eqbox{
+    \delta_0 = 0.
+  }
+  Pour déterminer le contact optique en TP, a partir d'un Michelson réglé en lame d'air, on fait rentrer les anneaux, puis avec une source blanche, on cherche la teinte plate, c'est-à-dire le blanc entouré des teintes de Newton par un infime chariotage
+  }
+  \QR{ Exprimer l'intensité $I(\delta_0)$ reçue par le détecteur, en fonction de $I_0$,  $\lambda$ et $\delta_0$.
+  }{
+    \eqbox{
+    I(\delta) = 2I_0\left(1+\cos\left(2\pi \frac{\delta_0}{\lambda}\right)\right).
+    }
+  }
+\end{quest}
+
+\subsection{Passage d'une onde gravitationnelle}
+
+\parag{Variation d'intensité}
+
+La théorie d'EINSTEIN de la relativité générale prévoit qu'une onde gravitationnelle provoque une variation de la longueur relative des bras, ce qui se traduit par un changement de différence de marche entre les deux signaux optiques qui interfèrent.
+En présence d'un onde gravitationnelle, la différence de marche entre les deux ondes optiques au niveau du détecteur devient : $\delta = \delta_0+ L \varepsilon$, où $\varepsilon$ est appelée amplitude de l'onde gravitationnelle. C'est une quantité extrêmement petite, dont l'ordre de grandeur attendu est  $\varepsilon=\SI{e-21}{}$.
+
+\begin{quest}
+  \QR{ En effectuant un développement limité au premier ordre en $\varepsilon$, déterminer la variation d'intensité $\Delta I_{\rm grav}= I(\delta) - I(\delta_0)$ induite par l'onde gravitationnelle en fonction de $I_0$, $\delta_0$, $L$, et~$\varepsilon$.
+  }{
+$\Delta I_{\rm gr} = 2I_0 \left( \cos\left(2\pi \frac{\delta_0 + \varepsilon L}{\lambda}\right) - \cos\left(2\pi \frac{\delta_0}{\lambda}\right) \right)$, soit par un DL$_1(\veps)$,
+\eqbox{
+I \simeq  - I_0 \veps \frac{4\pi L}{\lambda} \sin\left(2\pi \frac{\delta_0 }{\lambda}\right).
+}
+  }
+  \QR{ L'intensité $I_0$ étant donnée, comment faut-il choisir $\delta_0$ pour que la variation d'éclairement $\Delta I_{\rm grav}$ soit aussi grande que possible en valeur absolue ?
+  }{
+  La variation d'éclairement est la plus grande si le sinus vaut $1$ en valeur absolue, soit 
+  \eqbox{
+  \delta_0 = (2p+1)\frac{\lambda}{4}, \quad p \in \Z.
+  }
+  }
+  \QR{ Pour améliorer la sensibilité de détection, il est intéressant de choisir une longueur $L$ très grande. (pour les applications numériques, prendre $L = \SI{100}{km}$). Déterminer numériquement la variation relative $\Delta I_{\rm grav}/I_0$  maximale attendue.
+  }{
+    \eqbox{
+    \frac{\Delta I_{\rm grav}}{I_0} = -\frac{4\pi L}{\lambda} \veps = -\SI{1.2e-9}{}.
+    }
+  }
+\end{quest}
+
+En réalité, les miroirs et la séparatrice sont distants de « seulement » quelques kilomètres (trois kilomètres pour le projet européen VIRGO), mais la longueur effective des bras est allongée à l'aide d'un dispositif optique (interféromètre de Fabry-Pérot) qui ne sera pas étudié ici.
+
+\parag{Influence de la largeur spectrale du LASER}
+
+Dans cette question, le LASER n'est plus une source parfaitement monochromatique, mais possède une largeur spectrale non nulle. Le LASER est considéré comme la superposition de sources quasi monochromatiques de pulsations $\omega$ , et l'intensité spectrale en pulsation sera désigné par $D(\omega)$.
+Plus précisément, si l'un des miroirs de l'interféromètre est occulté (donc si une seule onde lumineuse
+parvient au détecteur), les composantes de pulsation comprise dans l'intervalle $[\omega,  \omega + \d \omega  ]$ donnent sur le détecteur une intensité $\d I_0 = D(\omega) \d \omega$.
+
+Considérons un LASER possédant un profil spectral rectangulaire en pulsation, de largeur $\Delta \omega$  centré sur la pulsation $\omega_0$, de la forme :
+$D(\omega)  = K$ (constante), si  $\omega \in [ \omega_0- \Delta \omega/2, \omega_0+ \Delta \omega /2  ]$ et
+$D(\omega)  = 0$  sinon.
+
+\begin{quest}
+  \QR{ Pourquoi est-il légitime de sommer les intensités associés à des signaux de pulsations différentes ? Exprimer l'intensité totale $I_0$ reçue par le détecteur, si l'un des miroirs est occulté, en fonction de $K$ et $\Delta \omega$.
+  }{
+Les deux ondes de fréquences différentes sont incohérentes : les éclairements associés s'additionnent.
+\eqbox[*]{
+  I_0 = \int_{-\infty}^{+\infty} D(\omega)\d \omega = K \Delta \omega.
+}
+  }
+\QR{ Supposons que la différence de marche entre les deux ondes est  $\delta$. Si aucun des miroirs n'est occulté, exprimer l'intensité $\d I$ associée aux composantes de pulsation situées dans l'intervalle $[\omega,  \omega + \d \omega ]$, en fonction de $\omega$, $I_0$, $\delta$, $\Delta \omega$  et $\d \omega$.
+}{
+  \eqbox{
+  \d I = 2I_0 \frac{\d \omega}{\Delta \omega} \left( 1 + \cos\left( \frac{\omega \delta}{c} \right) \right).
+  }
+}
+\QR{ En déduire que l'intensité $I(\delta)$  au niveau du détecteur est de la forme :
+  $$I (\delta) = 2 I_0 [ 1+ V (\delta) \cos (\omega_0 \delta/c)],$$ et exprimer $V (\delta)$ en fonction de  $\Delta \omega$, $\delta$  et de la célérité de la lumière $c$.
+ Que vaut $V(\omega)$ si  $\Delta \omega  = 0$ ? Commenter ce résultat.
+ }{
+  On intègre sur toutes les fréquences, ce qui donne 
+  $$
+  I(\delta) = 2I_0 \int_{-\infty}^{+\infty} \frac{\d \omega}{\Delta \omega} \left( 1 + \cos\left( \frac{\omega \delta}{c} \right) \right).
+  $$
+  Le calcul a été mené en TD.
+  La visibilité, ou contraste, vaut 
+  \eqbox{
+  V(\delta) = \sinc\left(\Delta \omega \frac{\delta}{2c}\right).
+  }
+ }
+ \QR{ Quelle est la signification concrète du paramètre $|V(\omega)|$ ?
+Pour une valeur donnée de la largeur $\Delta \omega$, représenter  $|V(\omega)|$ en fonction de $\delta$, en faisant apparaître les points remarquables.
+}{
+$|V(\delta)|$ représente le contraste de la figure d'interférences. Les zéros de la fonction sont en $\delta = p \frac{2\pi c}{\Delta \omega}$. On représente ci-dessous le graphe de la fonction $\sinc$.
+% \begin{center}
+%   \includegraphics[scale=0.4]{sinc.png}
+% \end{center}
+}
+\QR{ Justifier que le phénomène d'interférences n'est plus décelable si la différence de marche $\delta$ est nettement plus grande, en valeur absolue, que la longueur caractéristique  $\ell_c = 2\pi c/ \Delta \omega$.
+}{
+La visibilité est très réduite au-delà du pic central. $\ell_c$ représente la longueur de cohérence temporelle.
+}
+\end{quest}
+
+Dans l'interféromètre réel, il est difficile de garantir que les longueurs des deux bras sont identiques à mieux que quelques mètres près. La différence de marche exacte de l'interféromètre, $\delta_0$  n'est donc pas connue précisément ; en tout état de cause, elle est inférieure à  $\delta_{0,\rm max}= \SI{10}{m}$.
+
+\begin{quest}
+  \QR{ Déterminer en fonction de $\delta_{0,\rm max}$ un ordre de grandeur de la largeur $\Delta \omega_{\rm max}$  maximale permettant d'observer des interférences pour  $\delta = \delta_{0,\rm max}$. Estimer numériquement $\Delta \omega_{\rm max}/\omega_0$.
+  }{
+  On doit avoir au pire $\delta_{0 \rm max} \simeq \ell_c$, ce qui donne
+  \eqbox{
+    \frac{\Delta \omega}{\omega_0} = \SI{6e-7}{}.
+  }
+  }
+\end{quest}
+
+% Admettons désormais que la largeur spectrale du LASER vérifie $\Delta \omega \ll \Delta \omega_{\rm max}$  ce qui autorise à le considérer comme parfaitement monochromatique.% ; les résultats de la sous-partie \item peuvent donc être appliqués.
+
+% % \subsubsection{Prise en compte des fluctuations de puissance du LASER}
+% \parag{Influence des fluctuations de puissance}
+
+% La puissance du LASER n'est en fait pas rigoureusement constante au cours du temps, mais a tendance à fluctuer de façon aléatoire, ce qui fait varier la quantité $I_0$.
+
+% \begin{quest}
+%   \item Sous l'effet d'une fluctuation de puissance, l'éclairement $I_0$ devient $I_0+ \Delta I_0$. En supposant que $\varepsilon=0$, déterminer la variation correspondante d'intensité détecté, $\Delta I_{\rm fluc}$ en fonction de $\Delta I_0$, $\delta_0$ et $\lambda$.
+%   \sol{
+%   $\Delta I = 2\Delta I_0\left( 1 + \cos\left(2\pi \frac{\delta_0}{\lambda}\right) \right)$.
+%   }
+%   \item Comment doit-on choisir $\delta_0$ pour que le signal détecté soit aussi insensible que possible aux fluctuations de puissance du LASER ? Comparer ce choix à la condition de détection optimale des ondes gravitationnelles établie et commenter.
+%   \sol{
+%   $\Delta I$ minimal si $\delta_0 = (k+\frac{1}{2})\lambda$. Cette condition est incompatible avec celle obtenue précédemment pour observer de façon optimal les ondes gravitationnelles.
+%   }
+% \end{quest}
+
+% \parag{Dispositif de POUND DREVER HALL} Le montage est modifié en intercalant sur chacun des bras une lame de verre, comme indiqué sur la \Fig{RD} :
+% Les indices de chaque lame, respectivement $n_1$ et $n_2$ sont a priori différents. Chaque lame possède exactement la même épaisseur $e$. Le dispositif fonctionne en présence d'une onde gravitationnelle d'amplitude $\varepsilon$.
+
+% \begin{fig}[RD]
+% \centering
+% \includegraphics[]{round_drever.png}
+% \capt{Méthode de Pound-Drever-Hall.}
+% \end{fig}
+
+% \begin{quest}
+%   \item Exprimer la nouvelle différence de marche  au niveau du détecteur en fonction de $n_1$, $n_2$, $\delta_0$, $L$, $\varepsilon$ et $e$.
+%   \sol{
+%   $\delta' = \delta_0' + L \veps = \delta + 2(n_2-n_1)e + L \veps$
+%   }
+% \end{quest}
+
+% Les lames de verre sont en fait constituées d'un matériau dont l'indice de réfraction peut varier de façon contrôlée. Imposons ainsi à $n_1$ et $n_2$ une variation sinusoïdale au cours du temps, à la pulsation  $\Omega$, selon :
+% $n_1 (t) = n - a_o \cos (\Omega t)$ et $n_2 (t) = n + a_o \cos (\Omega t)$, où $a_o$ est une constante.
+
+% \begin{quest}
+%   \item Montrer que l'éclairement peut s'écrire :
+% $I = 2 I_0 [1 + \cos( \Phi_0 + \alpha \varepsilon + 2 m \cos( \Omega t)] $,
+% et exprimer les constantes $\Phi_0$, $\alpha$ et $m$ en fonction de paramètres choisis parmi $\lambda$, $L$, $a_0$, $e$ et $\delta_0$.
+% \sol{
+% $\delta' = \delta_0 + L \veps + 4a_0 e\cos(\Omega t)$ et donc
+% $$
+% I = 2 I_0 \left( 1 + \cos\left(2\pi \frac{\delta_0}{\lambda} + 2\pi \frac{L \veps}{\lambda} + 2\pi \frac{4ea_0 \cos(\Omega t)}{\lambda}\right) \right).
+% $$
+% Donc $\Phi_0 = 2\pi \frac{\delta_0}{\lambda}$, $\alpha = 2\pi \frac{L}{\lambda}$ et $m=\pi \frac{4ea_0}{\lambda}$.
+% }
+% \end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][colle]{Interféromètre de Sagnac}
+  \Notions{\item Division d’amplitude \task Différence de marche}
+  Les interféromètres de Sagnac sont couramment utilisés en navigation et pour l'aérospatiale en tant que gyroslaser. Un émetteur est placé sur un disque en rotation et envoie deux signaux lumineux se propageant à la célérité de la lumière $c$, et contraints de suivre la circonférence d'un disque, chacun dans un sens. Les deux signaux reviennent à l'émetteur après un tour complet, mais avec un léger décalage temporel qui dépend de la vitesse de rotation du disque. Le disque est de rayon $R=\SI{10}{cm}$ et tourne à la vitesse angulaire $\omega$ dans le sens direct.
+  
+  \begin{figure}[H]
+    \centering
+    \includegraphics{sagnac_joli.pdf}
+    % \caption{}
+    \label{fig:}
+  \end{figure}
+
+  \begin{quest}
+    \item	Déterminez le temps $\tau_+$ que met un rayon pour parcourir un tour complet du disque dans le sens direct. En déduire le chemin optique $\delta_+$ parcouru par ce rayon.
+    \sol{
+       $\tau_+ = {{2 \pi R} \over {c- \Omega R}}$ et donc 
+       \eqbox{
+       \delta_+ = {{2 \pi R c} \over {c- \Omega R}}.
+       }
+    }
+    \item Même question pour un rayon parcourant le disque dans le sens indirect.
+    \sol{
+      $\tau_+ = {{2 \pi R} \over {c+ \Omega R}}$ et donc 
+      \eqbox{
+      \delta_+ = {{2 \pi R c} \over {c+\Omega R}}.
+      }
+   }
+    \item  En déduire la différence de marche entre les deux rayons $\delta = \delta_+ - \delta_-$ sachant que $c \gg \omega R$.
+    \sol{
+      \eqbox{
+      \delta \simeq \frac{4\pi R^2 \Omega}{c}.
+      }
+    }
+    \item Soit $\lambda=\SI{633}{nm}$ la longueur d'onde des signaux lumineux. Que voit-on en sortie de l'interféromètre si le disque est immobile ? Lorsque qu'un avion équipé d'un interféromètre de Sagnac change de cap à une vitesse angulaire de $\SI{1}{\degree}$ par seconde, quelle est la variation de l'ordre d'interférences $p$ ? L'effet est-ile mesurable tel quel ?
+  \end{quest}
+
+
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][2][TD]{Observation d'ondes gravitationnelles}
+  \Notions{\item Michelson \task Lame d'air \task Onde gravitationnelle}
+
+  \Annale[Physique PC]{E3A}{2006}
+  
+  L’interféromètre de Michelson est utilisé dans les expériences LIGO et VIRGO pour détecter les ondes gravitationnelles. Le dispositif LIGO, pour \emph{Laser Interferometer Gravitational-Wave Observatory}, a permis la première détection directe d'ondes gravitationnelles en septembre 2015.   
+  L’interféromètre de Michelson est réglé en configuration lame d'air. Le milieu est de l'air d'indice $n_{\rm air} \simeq 1$. Les bras de l'interféromètre ont pour longueurs $d_1 \simeq d_2 \simeq \SI{4}{km}$.
+  Le laser utilisé comme source émet un faisceau très fin en incidence normale sur le miroir mobile $(\mc{M}_2)$. La lumière est parfaitement monochromatique, de longueur d'onde dans le vide $\lambda = \SI{1.06}{\micro m}$.  L'intensité de chaque onde individuelle en sortie de l’interféromètre est notée $I_0$.
+  
+  \begin{fig}[label]
+    \centering
+    \setcounter{figure}{0}
+    \includegraphics[width=0.5\columnwidth]{LIGO.jpeg}
+    \capt{Photographie du dispositif LIGO.}
+  \end{fig}
+
+  \begin{quest}
+    \item Justifier que la différence de marche vaut $\delta_0 =2(d_2-d_1)$. À quelle condition sur  $\delta_0$ l'interféromètre est-il au contact optique ?
+    %Décrire brièvement comment procéder, avec les interféromètres utilisés en Travaux Pratiques, pour déterminer précisément le contact optique.
+    \sol{
+    Au contact optique, $\delta_0 = 0$. Pour déterminer le contact optique en TP, a partir d'un Michelson réglé en lame d'air, on fait « rentrer» les anneaux, puis avec une source blanche, on cherche le « blanc pur  », c'est-à-dire le blanc entouré de s « teintes de Newton » par un infime chariotage
+    }
+    \item Exprimer l'intensité $I(\delta)$ reçue par le détecteur en sortie de l'interféromètre, en justifiant la formule utilisée et en précisant les hypothèses.
+    % , en fonction de $I_0$,  $\lambda$ et $\delta_0$.
+    \sol{
+    $$I(\delta) = 2I_0\left(1+\cos\left(2\pi \frac{\delta}{\lambda}\right)\right)$$
+    }
+  \end{quest}
+  
+  La théorie de la relativité générale prévoit qu'une onde gravitationnelle provoque une variation de la longueur relative des bras, ce qui se traduit par une variation de différence de marche entre les deux signaux optiques qui interfèrent. En présence d'un onde gravitationnelle, la différence de marche entre les deux ondes optiques au niveau du détecteur devient : $\delta = \delta_0 + L \varepsilon$, où $\varepsilon \sim \SI{e-21}{}$ est l'amplitude de l'onde gravitationnelle et $L = d_2 \simeq d_1$ est la longueur des bras de l'interféromètre.
+  %  C'est une quantité extrêmement petite, dont l'ordre de grandeur attendu est  $\varepsilon =$.
+  
+  \begin{quest}
+    \item En effectuant un développement limité au premier ordre en $\varepsilon$, déterminer la variation d'intensité $\Delta I = I(\delta) - I(\delta_0)$ induite par l'onde gravitationnelle en fonction de $I_0$, $\delta_0$, $L$, et~$\varepsilon$.
+    \sol{
+  $\Delta I_{\rm gr} = 2I_0 \left( \cos\left(2\pi \frac{\delta_0 + \varepsilon L}{\lambda}\right) - \cos\left(2\pi \frac{\delta_0}{\lambda}\right) \right) \simeq I_0 \veps \frac{4\pi L}{\lambda} \sin\left(2\pi \frac{\delta_0 }{\lambda}\right) $
+    }
+    \item L'intensité $I_0$ étant donnée, comment faut-il choisir $\delta_0$  pour que la variation d'intensité $\Delta I$ soit aussi grande que possible en valeur absolue ?
+    \sol{
+    La variation d'éclairement est la plus grande si le sinus vaut $1$ en valeur absolue, soit $\delta_0 = \frac{2p+1}{4}\lambda$.
+    }
+    \item Comment choisir la longueur $L$ pour améliorer la sensibilité de détection ? \AN~: déterminer numériquement la variation relative maximale $\Delta I/I_0$  attendue pour $L = \SI{4}{km}$.
+    \sol{
+    $\Delta I_{\rm grav}/I_0 = \frac{4\pi L}{\lambda} \veps = \SI{1.2e-9}{}$.
+    }
+  \end{quest}
+  
+  % En réalité, les miroirs et la séparatrice sont distants de « seulement » quelques kilomètres (trois kilomètres pour le projet européen VIRGO), mais la longueur effective des bras est allongée à l'aide d'un dispositif optique (interféromètre de Fabry-Pérot) qui ne sera pas étudié ici.
+  
+  
+  % Le montage est modifié en intercalant sur chacun des bras une lame de verre de même épaisseur $\ell$ mais d'indices de réfraction différents $n_1$ et $n_2$.  Le dispositif ainsi formé, dit de Pound-Drever-Hall, subit le passage d'une onde gravitationnelle d'amplitude $\varepsilon$.
+  
+  % % \begin{fig}[RD]
+  % % \centering
+  % % \includegraphics[]{round_drever.png}
+  % % \capt{Méthode de Pound-Drever-Hall.}
+  % % \end{fig}
+  
+  % \begin{quest}
+  %   \item Exprimer la nouvelle différence de marche  au niveau du détecteur en fonction de $n_1$, $n_2$, $\delta_0$, $L$, $\varepsilon$ et $\ell$.
+  %   \sol{
+  %   $\delta' = \delta_0' + L \veps = \delta + 2(n_2-n_1)e + L \veps$
+  %   }
+  % \end{quest}
+  
+  % Les lames de verre sont en fait constituées d'un matériau dont l'indice de réfraction peut varier de façon contrôlée. Imposons ainsi à $n_1$ et $n_2$ une variation sinusoïdale au cours du temps, à la pulsation  $\Omega$, selon :
+  % $n_1 (t) = n - a\cos (\Omega t)$ et $n_2 (t) = n + a\cos (\Omega t)$, où $a_o$ est une constante.
+  
+  % \begin{quest}
+  %   \item Montrer que l'intensité peut s'écrire 
+  % $$I = 2 I_0 [1 + \cos( \vphi_0 + \alpha \varepsilon + 2 m \cos( \Omega t)] ,$$
+  % et exprimer les constantes $\vphi_0$, $\alpha$ et $m$ en fonction de paramètres choisis parmi $\lambda$, $L$, $a_0$, $\ell$ et $\delta_0$.
+  % \sol{
+  % $\delta' = \delta_0 + L \veps + 4a_0 e\cos(\Omega t)$ et donc
+  % $$
+  % I = 2 I_0 \left( 1 + \cos\left(2\pi \frac{\delta_0}{\lambda} + 2\pi \frac{L \veps}{\lambda} + 2\pi \frac{4ea_0 \cos(\Omega t)}{\lambda}\right) \right).
+  % $$
+  % Donc $\Phi_0 = 2\pi \frac{\delta_0}{\lambda}$, $\alpha = 2\pi \frac{L}{\lambda}$ et $m=\pi \frac{4ea_0}{\lambda}$.
+  % }
+  % \end{quest}
+  \end{exo}
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC]{Mesure de l'épaisseur d'un film alimentaire}%{1}
+  \Notions{\item Division d’amplitude \task Lame à faces parallèles \task Spectre cannelé}
+On dispose d'un interféromètre de Michelson réglé en configuration lame d'air éclairé par une source de lumière blanche. On se place ensuite au contact optique, puis on insère dans l'un des bras de l'interféromètre un film alimentaire tendu, assimilé à une lame à faces parallèles d'épaisseur $e$ d'indice $n=\num{1.5}$. 
+
+\begin{quest}
+\item À quoi ressemble la figure d’interférences ? Décrire le spectre lumineux
+mesuré au centre de la figure d’interférences en l'absence puis en présence du film alimentaire.
+\item Montrer que les longueurs d'onde $\lambda_k$ absentes du spectre vérifie $\lambda_k =\frac{4e}{2k+1}$ avec $k\in\mathbb{N}$.
+\item On enregistre le spectre au centre de la figure d'interférences et on obtient la figure ci-après. En déduire l'épaisseur $e$ du film alimentaire.
+
+%\begin{figure}[h!]
+%\centering
+\begin{center}
+\includegraphics[width=0.7\columnwidth]{spectre_cannele.png}
+\end{center}
+%\end{figure}
+
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC]{Division d'amplitude par une lame de verre}%{1}
+Une source spatialement étendue éclaire une lame de verre (indice $n$, épaisseur $e$). En sortie on place une lentille et un écran. On considère qu'après deux réflexions ou plus dans la lame de verre l'intensité est négligeable.
+
+%\begin{figure}[h!]
+%\centering
+\begin{center}
+\includegraphics[width=0.45\columnwidth]{lame_verre.png}
+\end{center}
+%\end{figure}
+
+\begin{quest}
+\item Quelles sont les deux ondes qui interfèrent ? Justifier que la figure
+d'interférences est un cercle centré autour de $O$.
+\item Par analogie avec un interféromètre de Michelson réglé en lame d'air, en déduire la lentille à utiliser ainsi que sa position par rapport à l'écran.
+\item Montrer que $\delta=2ne \cos r$.
+\item En supposant les rayons peu inclinés, exprimer l'ordre d'interférences $p(M)$ en fonction de la distance $R = OM$.
+\item Déterminer le rayon du premier anneau brillant pour $n = 1.5$, $e = \SI{10}{\micro m}$, $\lambda = \SI{550}{nm}$ et $f_0 = \SI{20}{cm}$.
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC]{Spectroscopie par transformée de Fourier}%{1}
+On considère un interféromètre de Michelson en lame d'air, éclairé par une lampe au mercure dont on isole par un filtre la raie verte de longueur d'onde $\lambda$.
+\begin{quest}
+\item Représenter l'interféromètre et préciser la localisation des franges. Justifier qu'il s'agit d'anneaux.
+\item On déplace le miroir mobile de $2\lambda$. Qu'observe-t-on ?
+\item Le miroir mobile est motorisé, et se déplace avec une vitesse constante $v_0 = \SI{1}{\micro m.s^{-1}}$. On place un photodétecteur au centre de la figure d'interférences, il renvoie une tension image de l'éclairement de la forme $u(t) = u_0 + u_1 \cos(\omega t + \phi)$.
+
+Justifier l'expression de $u$ et exprimer $\omega$ en fonction de $v_0$ et $\lambda$.
+\item Une transformée de Fourier numérique de $u$ donne un pic à la fréquence $f = \SI{3,7}{Hz}$. En déduire $\lambda$. Comment estimer l'incertitude sur la mesure ?
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC]{Bande passante d'un filtre}
+Un interféromètre de Michelson est éclairé par une source de lumière blanche munie d'un filtre.
+\begin{quest}
+\item Avec un filtre coloré vert, la zone de déplacement du miroir mobile $(\mathcal{M}_2)$ où l'on voit les franges est d'environ \SI{5}{\micro\meter}. Quel est l'ordre de grandeur de la bande passante en longueur d'onde de ce filtre? Comparer avec le spectre de la lumière blanche.
+\item Avec un filtre interférentiel, on obtient cette fois des franges visibles en chariotant sur \SI{30}{\micro\meter}. En déduire l'ordre de grandeur de la bande passante du filtre, et commenter avec l'indication donnée sur le filtre de \SI{546}{nm}.
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[MPSI]{Expérience de Fizeau}
+
+  \Enonce{
+On considère le dispositif de la Fig.~\ref{fig:fizeau}, où la source lumineuse est monochromatique de longueur d'onde dans le vide $\lambda$, de période $T = \lambda/c$. L'amplitude du rayon incident est divisé en deux au passage d'une lame semi-réfléchissante ($\mathcal{L}$). Les deux tubes horizontaux sont de même longueur $L$, de sorte que la distance des trajets lumineux $[1]$ et $[2]$ est identique. Dans chacun des tubes circule de l'eau à une vitesse $v$, mais dans des sens de parcours différents. La vitesse de la lumière dans l'eau est $c/n$, avec $n$ l'indice de réfraction de l'eau.
+
+
+%%% FIGURE : %%%%
+%\begin{figure}[h!]
+%\centering
+\begin{fig}[fizeau]
+  \centering
+  \includegraphics[width=0.7\textwidth]{fizeau.png}
+  \capt{Dispositif expérimental utilisé par \textsc{Fizeau}. }
+\end{fig}
+% \begin{center}
+% \includegraphics[width=0.6\textwidth]{fizeau.png}
+% \end{center}
+%\caption{}
+%\label{fig:fizeau}
+%\end{figure}
+%%%%%%%%%%%%%
+  }
+
+\begin{quest}
+
+\QR {Justifier que la vitesse de la lumière dans les tubes pour un observateur immobile par rapport à ce dispositif est $v_1 = c/n-v$ pour le faisceau $1$ et $v_2 =c/n+v$ pour le faisceau $2$.}{
+  On utilise la loi de composition galiléenne des vitesses : $v' = v_{\rm eau} + v_{\rm lumière \, dans \, l'eau}$. On en déduit 
+  \eqbox{
+  v_1 = \frac{c}{n} - v \quad \text{et} \quad v_2 = \frac{c}{n} + v.
+  }
+}
+
+ \QR {En déduire le retard $\Delta t$ du faisceau [1] par rapport au faisceau [2].}
+
+{
+Il vient
+$$
+\Delta t = 2L\left(\dfrac{1}{c_1}-\dfrac{1}{c_2}\right) = 2L\left(\dfrac{1}{c/n-v} - \dfrac{1}{c/n+v} \right) = 2L\dfrac{(c/n+v)-(c/n-v)}{c^2/n^2-v^2}
+$$
+soit
+\eqbox{
+  \Delta t = 2L\dfrac{2v}{c^2/n^2-v^2} =4Lv\dfrac{n^2}{c^2-n^2v^2}.
+  }
+}
+
+
+\QR {Calculer le déphasage $\Delta \phi$ du faisceau [1] par rapport au faisceau [2] en fonction de $L$, $\lambda$, $n$ et du rapport $\beta=v/c$. Donner un ordre de grandeur raisonnable pour $\beta$. En déduire une formule simplifiée pour le déphasage.}
+{
+$
+\Delta \phi = 2\pi \dfrac{\Delta t}{T} = 2\pi \dfrac{c \Delta t}{\lambda} = \dfrac{8\pi L \beta}{\lambda} \dfrac{n^2}{1-n^2\beta^2}, 
+$
+soit 
+\eqbox{
+\Delta \phi \simeq \dfrac{8\pi L \beta n^2}{\lambda}
+}
+}
+
+\QR {Que se passe-t-il sur l'écran lorsqu'on augmente progressivement la vitesse $v$ de l'eau ? Que vaut la valeur $\beta_0$ du rapport $\beta$ séparant deux interférences constructives ? \AN~pour  $\lambda = 590\,$nm, $L = 2\,$m et $n = 1,\!33$. Calculer également le rapport $\Delta \phi/2\pi$ pour $v = 5\,$m$\p$s$^{-1}$.}
+{ $\Delta \phi = 2\pi$ donne 
+\eqbox{
+  \beta_0 = \dfrac{\lambda }{4 L n^2} = \SI{4.2e-8}{}.
+  }
+Pour $v = 5\,$m$\p$s$^{-1}$, on trouve 
+\eqbox{
+\frac{\Delta \phi}{2\pi} \simeq \num{0.4}.
+}
+}
+
+\end{quest}
+
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][2][TD]{Mesure d'une épaisseur par interférométrie de Michelson}
+  \Notions{\item Michelson \task Coin d'air \task Lumière blanche  \task Lame de verre}
+On cherche à mesurer l'épaisseur $\ell$ d'une lame de verre, d'indice $n_{\rm m}=\num{1.520}$ à la longueur d'onde $\SI{550}{nm}$. Pour cela, on dispose d'un interféromètre de Michelson réglé en coin d’air, et d'une lampe à incandescence placée devant un filtre coloré de longueur d'onde moyenne $\lambda_{\rm m}=\SI{550}{nm}$ et de largeur spectrale $\Delta \lambda = \SI{100}{nm}$.%des 4 sources suivantes: (S1) une lampe à incandescence (source blanche); (S2) une lampe à incandescence placée devant un filtre coloré de longueur d'onde moyenne \SI{550}{nm} et de largeur spectrale totale \SI{100}{nm}; (S3) une lampe à incandescence placée devant un filtre interférentiel centré sur \SI{550}{nm} et de largeur spectrale \SI{10}{nm}; (S4) une source monochromatique constituée d'une source spectrale placée devant un filtre interférentiel isolant une des raies du spectre par exemple de longueur d'onde \SI{550}{nm}.
+\begin{quest}
+\item Rappeler le critère d'observation des interférences qui porte sur la différence de marche $\delta$ dans le cas d'une source polychromatique centrée sur la longueur d'onde $\lambda_{\rm m}$ et de largeur spectrale $\Delta\lambda$. En déduire le nombre $N_{\rm f}$ de franges d'interférences observables de part et d'autre de la frange centrale. %Préciser l'ordre de grandeur de la différence de chemin optique maximale $\delta_{\rm{max}}$ et faire l'application numérique.% pour les 4 sources.
+\sol{
+  Le critère de cohérence temporelle est que
+  \eqbox{
+  \delta \leq \lc
+  } pour observer des interférences contrastées, avec la longueur de cohérence temporelle
+  % $$
+  \eqbox{
+    \lc = \frac{\lambda_{\rm m}^2}{\Delta \lambda}.
+    }
+  % $$
+
+
+}
+\item Rappeler le montage permettant d'observer les franges d'interférences en configuration coin d'air avec une source étendue. Préciser le rôle des lentilles et de la compensatrice. Donner l’allure de la figure d’interférences en lumière monochromatique, et rappeler l’expression de la différence de marche.
+\sol{Voir cours.}
+% \item On réalise l'expérience. Donner l'ordre de grandeur du nombre de franges observables.
+\end{quest}
+On règle la distance du miroir mobile $(\mc{M}_2)$ de sorte qu'en l'absence de lame, l'ordre d'interférences au centre de la figure soit nul. On interpose ensuite la lame de verre sur le trajet du faisceau $1$ comme ci-dessous.
+\begin{fig}[label]
+  \centering
+  \setcounter{figure}{0}
+  \includegraphics[width=0.55\columnwidth]{schema_michelson_lame_verre.pdf}
+  \capt{Lame de verre dans un interféromètre de Michelson en configuration lame d'air.}
+\end{fig}
+\begin{quest}
+\item Qu'observe t-on qualitativement si l'épaisseur $\ell$ de la lame est faible devant la longueur de cohérence ? Du même ordre de grandeur ? Grande ? Dans quel sens et de quelle distance $e_m$ faut-il déplacer (chariotter) le miroir mobile pour retrouver un ordre d'interférences nul au centre de la figure d'interférences à la longueur d'onde $\lambda_m$ ?
+\sol{
+  La différence de marche introduite par la lame à la longeur d’onde moyenne est 
+  \eqbox{
+  \delta_{\rm lame} = 2(n_{\rm m}-1)\ell.
+  }
+  D’après le critère de cohérence temporelle,
+  \begin{enumerate}
+    \item si $\ell \ll \lc$, on a $\delta_{\rm lame} \ll \lc$ et on observe une frange brillante blanche;
+    \item si $\ell \sim \lc$, on a $\delta_{\rm lame} \sim \lc$ et on observe des franges colorées décalées;
+    \item si $\ell \gg \lc$, on a $\delta_{\rm lame} \gg \lc$ et on n'observe plus de franges d'interférences : la teinte est blanche uniforme.
+  \end{enumerate}
+  En chariottant le miroir mobile de $e_m$, la différence de marche vaut
+  $$
+  \delta = 2e_m + \delta_{\rm lame},
+  $$
+  puisque l’incidence est normale en configuration coin d’air, 
+  et donc 
+  \eqbox{
+  e_m = -(n_{\rm m}-1)\ell
+  }
+  pour retrouver l'ordre d'interférences nul au centre de la figure d'interférences.
+}
+\end{quest}
+On suppose que l'indice varie selon la loi de Cauchy $n(\lambda)=A+\textstyle\frac{B}{\lambda^2}$ avec $B=\SI{1.06e-2}{\micro\meter^2}$. En pratique, on ne peut pas repérer la frange d'ordre nul, mais on peut repérer la frange achromatique, c'est-à-dire celle dont l'ordre d'interférences $p(\lambda)$ ne dépend pas au premier ordre de la longueur d'onde $\lambda$. 
+\begin{quest}
+\item Pourquoi ne peut-on pas observer la frange d’ordre nul ?
+\sol{
+  La différence de marche après chariottage d’une épaisseur $e$ vaut
+  $$
+  \delta = 2\alpha x  + 2e + 2(n(\lambda)-1)\ell,
+  $$
+  La frange d’ordre $p_0= 0$ nul vérifie
+  $$
+  \delta_0 = 0 \Rar x_0(\lambda) = -(n(\lambda)-1)\frac{\ell}{\alpha} - \frac{e}{\alpha}.
+  $$
+  Mais alors la \udl{position dépend de la longueur d'onde}, et donc chaque longueur d’onde produit sa propre frange d’ordre nul, qui ne coïncident pas ! On ne peut donc pas distinguer les franges d’ordre nul d’autres franges.
+}
+\item Quelle équation sur $p(\lambda)$ vérifie que la frange achromatique ? De quelle couleur est cette frange ? 
+% \begin{equation}
+%   \frac{\der p}{\der \lambda}(\lambda=\lambda_m) \simeq 0.
+% \end{equation}
+Déterminer la relation entre l'épaisseur $\ell$, la longueur d'onde moyenne $\lambda_m$, l'indice moyen $n_m$, la constante $B$, et la distance algébrique $e$ dont il faut déplacer le miroir mobile pour que la frange achromatique soit au centre de la figure d'interférences. \AN~: on mesure $e = -\SI{50}{\micro\meter}$ : calculer  $\ell$.
+
+\sol{
+  La frange achromatique vérifie la relation 
+  % $$
+  \eqbox{
+    \frac{\der p}{\der \lambda}(\lambda=\lambda_m) \simeq 0.
+    }
+  % $$
+  L’ordre d’interférences a pour expression 
+  $$
+  p(\lambda) = \frac{\delta}{\lambda} = \frac{2\alpha x}{\lambda} + \frac{2\ell}{\lambda}(n(\lambda)-1),
+  $$
+  et donc 
+  $$
+  \dd{p}{\lambda}(\lambda = \lmoy) = -\frac{2(\alpha x + e)}{\lmoy^2} - \frac{2\ell}{\lmoy^2}(n_{\rm m}-1) + \frac{2\ell}{\lmoy}\dd{n}{\lambda}(\lambda=\lmoy) = -\frac{2(\alpha x+e)}{\lmoy^2} - \frac{2\ell}{\lmoy^2}(n_{\rm m}-1) - \frac{4\ell B}{\lmoy^4}.
+  $$
+  La position $x_a$ de la frange achromatique vérifie donc
+  $$
+  \dd{p}{\lambda}(\lambda=\lmoy) = 0 \Rar x_a = -\frac{\ell}{\alpha}\left[ (n_{\rm m}-1) + \frac{2B}{\lmoy^2} \right] - \frac{e}{\alpha}.
+  $$
+  Cette frange est située au centre de la figure d'interférences lorsque $x_a = 0$, soit 
+  $$
+ -\ell \left[ (n_{\rm m}-1) + \frac{2B}{\lmoy^2} \right] = e.
+  $$
+  On en déduit l’épaisseur de la lame de verre,
+  \eqbox{
+  \ell = -\frac{e}{(n_{\rm m}-1) + \frac{2B}{\lmoy^2}} \simeq \SI{34.9}{\micro\meter}.
+  }
+}
+%  et l'ordre d'interp_{0}$ numériquement.
+%En déduire l'erreur relative qui aurait été commise si on n'avait pas repéré la frange achromatique (on néglige la dispersion).
+%\item Quelles autres sources peut-on utiliser pour réaliser cette mesure d'épaisseur?
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC]{Teinte d'une lame mince}
+Une goutte d'huile est déposée sur une flaque d'eau. Elle s'étale en surface et forme une mince couche d'épaisseur $e$ supposée constante. L'indice de l'huile est $n=1.5$. Un observateur regarde le reflet du Soleil en se plaçant quasiment à la verticale au dessus de la flaque, et il observe une teinte magenta.
+\begin{quest}
+\item En considérant uniquement les interférences entre une onde réfléchie sur l'interface air-huile et l'autre sur l'interface huile-eau, écrire la condition d'interférences destructives en fonction de la longueur d'onde $\lambda_0$ de la lumière dans l'air.
+\item Expliquer pourquoi le reflet est coloré.
+\item Sachant que le magenta est la teinte complémentaire du vert ($\lambda_0\simeq\SI{550}{nm}$), estimer l'épaisseur $e$ minimale de la couche d'huile donnant cette teinte.
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC]{Écart de longueur d'onde du doublet du sodium}
+Un interféromètre de Michelson réglé en lame d'air à faces parallèles est éclairé par une lampe à vapeur de sodium émettant deux radiations de même intensité et de longueurs d'onde voisines $\lambda_1$ et $\lambda_2$. L'éclairement au foyer image d'une lentille convergente est enregistré en fonction de l'épaisseur $e$ de la lame d'air.
+\begin{quest}
+\item Déterminer les valeurs de $e$ pour lesquelles le contraste local s'annule. Donner la période spatiale $X_{\rm{f}}$ de ces annulations.
+\item Déterminer la période spatiale des franges notée $X_{\rm{p}}$. Montrer que $X_{\rm{p}}\ll X_{\rm{f}}$.
+\item Donner l'expression du nombre $N$ de franges brillantes entre deux anticoïncidences.
+\item L'expérience donne $N=\SI{982\pm 1}{}$ et une mesure à l'aide d'un réseau et d'un goniomètre donne $\lambda_1=\SI{589.0\pm 0.2}{nm}$. On souhaite déterminer l'écart entre les deux longueurs d'onde de la source en calculant $\Delta\lambda=\lambda_2-\lambda_1$. Exprimer $\Delta\lambda$ en fonction de $\lambda_1$ et $N$, puis calculer numériquement $\Delta\lambda$ en précisant l'incertitude sur cette mesure.
+\item Quelle aurait été cette incertitude si la mesure de $\Delta \lambda$ avait été réalisée à l'aide d'un réseau et d'un goniomètre dans les mêmes conditions que la mesure de $\lambda_1$ ?
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC]{Mesure d'un indice par interférométrie de Michelson}
+On cherche à déterminer l'écart $n-1$ de l'indice de l'air par rapport à l'unité par une méthode interférentielle. Pour cela, on règle un interféromètre de Michelson en lame d'air et on l'éclaire par une lampe à vapeur de mercure dont l'ampoule est relativement large ($\simeq\SI{1}{cm}$). La lumière est condensée par un condenseur sur les miroirs. Un filtre permet d'obtenir une onde quasi-monochromatique de longueur d'onde dans le vide $\lambda_0=\SI{546.1}{nm}$.
+\begin{quest}
+\item Décrire l'allure de la figure d'interférences observée sur un écran placé en sortie de l'appareil dans le plan focal image d'une lentille convergente. Qu'observerait-on sans lentille ?
+\item On veut maintenant régler l'appareil au contact optique. Décrire l'opération: faut-il tourner ou translater le miroir ? Comment savoir dans quel sens ? Quel est l'aspect de l'éclairement sur l'écran une fois ce réglage réalisé ?
+\item On place contre l'un des deux miroirs une petite cuve cylindrique fermée (la base du cylindre étant contre le miroir), dont les parois en verre sont d'épaisseur constante $e_{\rm{verre}}=\SI{0.5}{mm}$ (l'indice du verre est $n_{\rm{verre}}=1.5$). Cette cuve contient initialement de l'air à pression atmosphérique (comme à l'extérieur), sur une épaisseur $e_{0}$.
+\begin{quest}
+\item Que vaut la différence de marche $\delta$? Pourquoi observe-t-on des anneaux sur l'écran?
+\item Quelle doit être la propriété de cohérence temporelle de la source pour que les interférences restent visibles en présence de cette cuve ? Donner une valeur minimale de la longueur de cohérence temporelle $l_{\rm{c}}$ et de la largeur spectrale correspondante $\Delta\lambda$.
+\end{quest}
+\item On translate le miroir devant lequel on a placé la cuve de façon à avoir un éclairement homogène sur l'écran. Que vaut alors la différence de marche $\delta$ ? De quelle distance $x$ a-t-on translaté le miroir et dans quel sens (rapproché ou éloigné de la séparatrice) ?
+\item On fait ensuite progressivement le vide dans le récipient. L'indice de l'air à l'intérieur de la cuve varie progressivement de $n$ à 1 (vide). On observe alors le défilement de $N$ anneaux d'interférences. Expliquer.
+\item Relier la variation de la différence de marche $\delta$ au centre des anneaux d'une part à $\lambda_0$ et $N$, d'autre part à la variation d'épaisseur optique de la cuve due à la variation de pression, qu'on exprimera en fonction de $n$ et $e_0$.
+\item En déduire l'expression de $n-1$ en fonction de $\lambda_0$, $e_0$ et $N$. Une mesure avec $\lambda_0=\SI{546.1\pm 0.1}{nm}$ et $e_0=\SI{25.0\pm 0.1}{mm}$ a donné $N={27.0\pm 0.5}{}$. Calculer alors $n-1$, évaluer l'incertitude et présenter le résultat sous la forme $n\pm\Delta n$. Commenter.
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][colle]{Résolution du doublet du mercure}
+  \Notions{\item Interféromètre de Michelson \task Doublet de raie}
+L'interféromètre de Michelson est constitué d'une source lumineuse $S$, d'un miroir $M_1$ fixe,
+d'un miroir mobile $M_2$, et d'une lame semi-réfléchissante (notée séparatrice). On se place en position lame d'air, pour laquelle l'image du miroir $M_2'$ est parallèle au miroir fixe $M_1$. Un moteur permet de déplacer le miroir mobile de telle façon que sa position $z$ évolue à vitesse $v_0$ constante, $z(t) = v_0 t$.
+
+On éclaire d'abord l'interféromètre par une source monochromatique de nombre d'onde~$\sigma_0 = 1/\lambda_0$.
+
+
+%%% FIGURE %%%
+%\begin{figure}[h!]
+%\centering
+\begin{center}
+\includegraphics[scale=0.5]{lame.png}
+\end{center}
+%\caption{Interféromètre de Michelson en position lame d'air.}
+%\label{fig:lame}
+%\end{figure}
+%%%%%%%%%%
+
+\begin{quest}
+
+	\item À quel type de dispositif interférentiel appartient cet interféromètre ? Citer un exemple d'une telle source. Que vaut la différence de marche $\delta(t)$ en fonction du temps, sachant que $\delta(t=0)=0$ ?
+
+\sol{
+L'exemple canonique de source monochromatique est le \fbox{laser}. En configuration lame d'air, la différence de marche vaut $\delta=2e \cos \theta$. En incidence normale, $\theta = 0$ et ici $e=z(t)$ par définition de l'axe $(Oz)$, ce qui donne 
+\eqbox{
+\delta(t) = 2v_0t.
+}
+}
+	\item En supposant les intensités dans les deux bras identiques en sortie, de valeur $I_1=I_2=I_0$, déterminer l'expression de l'intensité lumineuse $I(t)$ à l'instant $t$ en sortie de l'interféromètre en fonction de $I_0$, $v_0$ et $\sigma_0$. Tracer l'allure de l'interférogramme obtenu.
+
+	\sol{
+      D'après la formule des interférences de Fresnel,
+      $$
+      I = 2I_0 \left[1+\cos\left(2\pi \frac{\delta}{\lambda_0}\right)\right]
+      $$
+	d'où 
+  \eqbox{
+  I(t) = 2I_0[1+\cos(4\pi v_0 t \sigma)].
+  }
+	}
+
+	\end{quest}
+
+	On éclaire ensuite l'interféromètre de Michelson par une source dont le spectre présente un doublet : deux raies monochromatiques de même intensité $I_m$ et de nombres d'onde $\sigma_0 \pm \Delta \sigma/2$. On supposera $\Delta \sigma \ll \sigma_0$. On suppose que la séparatrice réfléchit $50\,\%$ de l'intensité lumineuse.
+
+	\begin{quest}
+
+	\item Montrer que l'expression de l'intensité lumineuse $I(t)$ enregistrée à l'instant $t$ pour une telle source, lorsque la position du miroir mobile est repérée
+par $z(t)$, peut s'écrire
+\begin{equation}
+I(t) = 2 I_m [1 + \cos(2\pi \Delta \sigma v_0 t)\cos(4\pi \sigma_0 v_0 t)].
+\end{equation}
+Tracer dans le cas d'une telle source l'allure de l'interférogramme, en identifiant quelques points caractéristiques.
+\sol{
+  Deux ondes de longueurs d'onde différentes sont incohérentes. On somme donc les intensités provenant des deux raies du sodium, soit $I_{\rm tot} = I_2 + I_2$, et donc
+  \begin{align*}
+    I_{\rm tot}  &= 2I_0 \left[1+\cos\left(4\pi \frac{v_0 t}{\lambda_1}\right)\right] + 2I_0 \left[1+\cos\left(4\pi \frac{v_0 t}{\lambda_2}\right)\right]    \\
+    & = 2I_0 \left[2+\cos\left(4\pi \frac{v_0 t}{\lambda_1}\right) + \cos\left(4\pi \frac{v_0 t}{\lambda_1}\right)\right] \\
+    & = 4I_0 \left[1+\cos\left(2\pi v_0 t \left( \frac{1}{\lambda_1} + \frac{1}{\lambda_2} \right) \right) \cos\left(2\pi v_0 t \left( \frac{1}{\lambda_1} - \frac{1}{\lambda_2} \right)\right)\right] .
+  \end{align*}
+  On simplifie ensuite les expressions à l'ordre dominant en $\Delta \sigma/\sigma_0$, soit $\frac{1}{\lambda_1} + \frac{1}{\lambda_2} \simeq 2\sigma_0 $ et $\frac{1}{\lambda_1} - \frac{1}{\lambda_2} = \Delta \sigma$. De plus, l'intensité dans chaque bras vaut $I_0 = I_m/2$, ce qui donne
+  \eqbox{
+  I(t) = 2I_m[1 + \cos(2\pi \Delta \sigma v_0 t)\cos(4\pi \sigma_0 v_0 t)].
+  }
+  On identifie le contraste à 
+  \eqbox{
+  \mc{C}(t) = \cos(2\pi \Delta \sigma v_0 t).
+  }
+  }
+\item Que vaut la période des battements de l'interférogramme pour le doublet de raie du mercire à  $\lambda_1 = \SI{577.0}{nm}$ et $\lambda_2=\SI{579.1}{nm}$, à la vitesse $v_0 = \SI{10}{\micro m.s^{-1}}$ ?
+
+\sol{
+  On trouve $\Delta \sigma = \SI{}{nm^{-1}}$. Le contraste est une fonction périodique de période
+  \eqbox{
+    \Delta t = \frac{1}{\Delta \sigma v_0} = \SI{}{s}.
+  }
+  La période des battements est celle de l'enveloppe, qui vaut $2\Delta t = \SI{}{s}$.
+  }
+\end{quest}
+
+
+\textsc{Données:} $\cos(a) + \cos(b) = 2\cos\left(\dfrac{a+b}{2}\right)\cos\left(\dfrac{a-b}{2}\right)$.
+
+
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][TD]{Propriétés spectrales du doublet du sodium}
+  \Notions{\item Michelson \task Lame d'air \task Cohérence temporelle \task Doublet de raie}
+  Un interféromètre de Michelson réglé en configuration lame d'air d'épaisseur $e$ est éclairé par une lampe à vapeur de sodium. La vapeur de sodium émet deux radiations de même intensité $I_0$ et de longueurs d'onde voisines $\lambda_1$ et $\lambda_2$. On introduit l'écart en longueur d'onde $\Delta\lambda=\lambda_2-\lambda_1 \ll \lmoy $, où $\lmoy \simeq \SI{589}{nm}$ désigne la longueur d'onde moyenne. La figure d'interférences est observé sur un écran placé dans le plan focal image d'une lentille convergente en sortie de l'interféromètre.
+  \begin{quest}
+  \item Rappeler l'expression de la différence de marche $\delta$. Exprimer l'intensité lumineuse $I_\lambda$ pour une onde lumineuse \emph{monochromatique} de longueur d'onde $\lambda$, sachant que la séparatrice ne transmet et réfléchit que la moitié de l'intensité incidente.
+  \sol{
+    D'après le cours, la différence de marche en configuration lame d'air est 
+    \eqbox{
+\delta = 2e \cos \theta,
+  }
+  Chaque onde en sortie de l'interféromètre a une intensité $I_1 = I_2 = I_0/4$, en raison des deux passages par la séparatrice. D'après la formule des interférences,
+  $$
+  I = \frac{I_0}{2} \left[1+\cos\left(2\pi \frac{\delta}{\lambda}\right)\right] =  2I_0 \left[1+\cos\left(4\pi \frac{e \cos \theta}{\lambda}\right)\right].
+  $$
+  On trouve donc
+  \eqbox{
+I_\lambda = \frac{I_0}{2} \left[1+\cos\left(4\pi \frac{e \cos \theta}{\lambda}\right)\right].
+  }
+  }
+  \item Montrer que l'intensité résultant de la superposition du doublet de raies au centre de la figure s'écrit
+  % \begin{equation}
+  % I_{\rm tot} = 4I_0\left[1 + \cos\pa{2\pi\frac{\Delta \lambda}{\lambda^2} e}\cos\pa{4\pi \frac{e}{\lambda}}\right].
+  % \end{equation}
+  \begin{equation}
+    I(e) = I_0\left[1 + \Co(e)\cos\pa{4\pi \frac{e}{\lmoy}}\right],
+    \end{equation}
+    où l'on exprimera $\Co(e)$ en fonction de $e$ et de la longueur de cohérence temporelle $\lc$.
+  \sol{
+    Les deux raies du sodium sont incohérentes, car de longueurs d'onde différentes.  On somme donc les intensités provenant des deux raies du sodium, soit 
+    $$I = I_{ \lambda_1} + I_{\lambda_2}.$$
+    Au centre de la figure, on a $\theta = 0$, et donc
+  \begin{align*}
+    I  &= \frac{I_0}{2} \left[1+\cos\left(4\pi \frac{e}{\lambda_1}\right)\right] + \frac{I_0}{2} \left[1+\cos\left(4\pi \frac{e}{\lambda_2}\right)\right]    \\
+    & = \frac{I_0}{2} \left[2+\cos\left(4\pi \frac{e}{\lambda_1}\right) + \cos\left(4\pi \frac{e}{\lambda_1}\right)\right] \\
+    & = I_0 \left[1+\cos\left(2\pi e \left( \frac{1}{\lambda_1} + \frac{1}{\lambda_2} \right) \right) \cos\left(2\pi e \left( \frac{1}{\lambda_1} - \frac{1}{\lambda_2} \right)\right)\right] .
+  \end{align*}
+  On simplifie ensuite les expressions à l'ordre dominant en $\Delta \lambda/\lambda$, soit $\frac{1}{\lambda_1} + \frac{1}{\lambda_2} \simeq \frac{2  }{\lmoy}$ et $\frac{1}{\lambda_1} - \frac{1}{\lambda_2} \simeq \frac{\Delta \lambda}{\lmoy^2} = \frac{2}{\lc}$.
+  On en déduit,
+  \eqbox{
+  I(e) = I_0 \left[1 + \cos\pa{2\pi\frac{e}{\lc}}\cos\pa{4\pi \frac{e}{\lmoy}}\right].
+  }
+  }
+  \item 
+  % Identifier le terme de contraste dans l'expression de $I_{\rm tot}$ ci-dessus ainsi que la longueur de cohérence temporelle $\lc$.
+   Représenter le graphe de la fonction $I_{}(e)$. On fait défiler les anneaux d'interférences en variant l'épaisseur $e$ grâce à la vise de translation du miroir mobile. Exprimer le nombre $N$ de franges brillantes qui défilent entre deux anticoïncidences (deux annulations successives du contraste).
+  \sol{
+    \begin{fig}[label]
+      \centering
+      \includegraphics[width=0.8\columnwidth]{interfero_lampe_e.pdf}
+      %\capt{}
+    \end{fig}
+  La période due la fonction contraste $$\mc{C}(e) =  \cos\pa{2\pi \frac{e}{\lc}},$$ vaut $\lc$.
+  Le déplacement entre deux anticoïncidences vaut la demi-période, soit $\frac{\lc}{2}$. Or la période des oscillations rapides d'intensité (alternance des franges sombres et brillantes) vaut $\frac{\lmoy}{2}$. Le nombre $N$ de franges qui défilent entre deux anticoïncidences vaut ainsi
+  $$
+  N = \frac{\lc/2}{\lmoy/2} = \frac{\lc}{\lmoy},
+  $$
+  soit 
+  \eqbox{
+  N = \frac{\lmoy}{\Delta \lambda}.
+  }
+  }
+  \item L'expérience donne $N=\SI{982}{}$. Déterminer l'écart en longueur d'onde du doublet du sodium $\Delta\lambda$.
+
+  \sol{
+  On trouve
+  % $$
+  \eqbox{
+    \Delta \lambda = \frac{\lmoy}{N} \simeq \SI{0.6}{nm}.
+    }
+  % $$
+  }
+  % en fonction de $\lambda_1$ et $N$, puis calculer numériquement $\Delta\lambda$ en précisant l'incertitude sur cette mesure.
+  % \item Quelle aurait été cette incertitude si la mesure de $\Delta \lambda$ avait été réalisée à l'aide d'un réseau et d'un goniomètre dans les mêmes conditions que la mesure de $\lambda_1$ ?
+  \end{quest}
+    
+  \noindent\emph{
+  Nous mesurerons l’écart  du doublet du sodium dans le \refTP{8}.}
+
+  {\small
+\textsc{Données:} $\cos(a) + \cos(b) = 2\cos\left(\dfrac{a+b}{2}\right)\cos\left(\dfrac{a-b}{2}\right)$.
+  }
+
+  
+
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][2][TD]{Spectre cannelé en lumière blanche}
+  \Notions{\item Michelon \task Coin d'ain \task Lumière blanche}
+  Un interféromètre de Michelson réglé en configuration coin d'air d'angle $\alpha$ est éclairé par une source de lumière blanche. La figure d'interférences est observée sur un écran placé en sortie d'une lentille convergente qui fait l'image des miroirs. Le milieu est de l'air d'indice optique $n=1$.
+  \begin{quest}
+    \item Faire un schéma de la situation. 
+    Rappeler l'expression de la différence de marche $\delta$ en fonction de l'abscisse $x$ le long du miroir fixe, et de $\alpha$, ainsi que l'expression de l'interfrange $i$ sur les miroirs à la longueur d'onde $\lambda$.
+    %  En notant $\gamma$ le grandissement transversal, exprimer $\delta$ en fonction de l'abscisse $X$ sur l'écran. Déterminer l'interfrange $j$ sur l'écran.
+    \sol{
+    Coin d'air : éclairage en incidence normale (diaphragme au foyer objet d'une lentille en entrée) et observation des interférences en faisant l'image des miroirs sur un écran en sortie par une lentille.
+    On a $\delta=2\alpha x$, où $x$ est l'abscisse sur le miroir fixe $\mc{M}_1$.  On a donc
+    \eqbox{
+      \delta = 2\alpha  x.
+      }
+    L'interfrange à la longueur d'onde $\lambda$ s'obtient par $\delta(x+i) = \delta(x) + \lambda$, soit 
+    \eqbox{
+    i = \frac{\lambda}{2\alpha}.
+    }
+    }
+  \item On note $\tilde{D}(\lambda)$ la densité spectrale en longueur d'onde de la source de lumière blanche. Justifier que la densité spectrale de la lumière interférant sur l'écran s'écrit
+  \begin{equation*}
+    \dd{I}{\lambda}(\lambda) =  \tilde{D}(\lambda)\left[1 + \cos\pa{2\pi \frac{\delta}{\lambda}}\right].
+  \end{equation*}
+  Montrer que le spectre de cette lumière est \emph{cannelé} en tout point de l'écran, i.e. que certaines longueurs d'ondes $\lambda_k$, que l'on déterminera, sont éteintes, i.e. d'intensité nulle.
+  % \Gamma n_0 -B u(\omega) (n_2-n_1) - A n_2comme illustré sur la figure ci-dessous.
+  % \begin{fig}[label]
+  %   \centering
+  %     \includegraphics[width=0.35\textwidth]{cannelures3.pdf}
+  %   %\capt{}
+  % \end{fig}
+  \sol{
+  Si l'on place un spectromètre au niveau de l'écran, on mesure la densité spectrale de la lumière qui interfère. D'après la formule de Fresnel, chaque bande de longueur d'onde centrée autour de $\lambda$ et de largeur $\d \lambda$ interfère avec elle-même sur l'écran, et contribue une intensité 
+  $$
+  \d I = \tilde{D}(\lambda)\d \lambda \left[1 + \cos\pa{2\pi \frac{\delta}{\lambda}}\right].
+  $$
+  L'intensité par unité de longueur d'onde (densité spectrale) vaut donc 
+  % $$
+  \eqbox{
+    \dd{I}{\lambda}(\lambda) = \tilde{D}(\lambda)\left[1 + \cos\pa{2\pi \frac{\delta}{\lambda}}\right].
+    }
+  Cette grandeur s'annule lorsque $\cos\pa{2\pi\frac{\delta}{\lambda}}=-1$, soit $2\pi\frac{\delta}{\lambda} = \pi + 2k\pi$, soit pour les longueurs d'onde 
+  \eqbox{
+    \lambda_k = \frac{\alpha x}{k+1/2}.
+    }
+  }
+  \item On représente ci-dessous l'allure de la densité spectrale de la lumière interférant sur l'écran dans trois situations : $x \ll i$, $x \simeq i$ et $x \gg i$, où $i$ désigne l'interfrange moyen à la longueur d'onde $\lambda_{\rm m}$. Associer chaque figure à chaque valeur de $x$ en justifiant. Comparer $\delta$ à la longueur de cohérence temporelle $\lc$ dans chacune de ces situation. Que voit-on sur l'écran dans chacune de ces situations ?
+  \begin{fig}[label]
+    \centering
+    \setcounter{figure}{0}
+    \begin{subfig}[label][0.28]
+      \includegraphics[width=\textwidth]{cannelures1.pdf}
+    \end{subfig}
+    \begin{subfig}[label][0.28]
+      \includegraphics[width=\textwidth]{cannelures2.pdf}
+    \end{subfig}
+    \begin{subfig}[label][0.28]
+      \includegraphics[width=\textwidth]{cannelures3.pdf}
+    \end{subfig}
+    \capt{Spectre cannelé en lumière blanche. (a) Teinte plate. (b) Teinte de Newton. (c) Blanc d'ordre supérieur.}
+  \end{fig}
+  \sol{
+  Ici $i$ représente l'interfrange \guill{moyen}. Pour de la lumière visible, par exemple, ce $i$ moyen s'obtient pour une longueur d'onde au milieu du spectre visible, $\lambda_{\rm moy} \sim \SI{600}{nm}$.
+
+  \begin{enumerate}
+    \item 
+    Lorsque $X\simeq 0$, $\lambda_k \simeq 0$ n'appartient pas au domaine du visible $[\SI{400}{nm},\SI{800}{nm}]$, et donc on n'observe aucune cannelure dans le spectre de la lumière sur l'écran.
+    
+    % \begin{fig}[]
+    %   \centering
+    \begin{center}
+  \includegraphics[width=0.4\textwidth]{cannelures1.pdf}
+\end{center}    %   \capt{}
+    % \end{fig}
+
+  \item  Lorsque $\frac{\alpha X}{\gamma} \sim \lambda_{\rm moy}$, on a $\lambda_k \sim \lambda_{\rm moy}/(k+1/2)$, et on observe donc une ou deux cannelures dans le spectre visible (pour $k=1$ typiquement). Dans ce cas, la lumière apparaît colorée, puisque qu'une bonne partie du spectre visible est absente. On observe une \imp{teinte de Newton}. Exemple ci-dessous pour  $\frac{\alpha X}{\gamma} = \lambda_{\rm moy}$.
+
+  % \begin{fig}[]
+  %   \centering
+  \begin{center}
+  \includegraphics[width=0.4\textwidth]{cannelures2.pdf}
+\end{center}  %   \capt{}
+  % \end{fig}
+
+ \item Lorsque $\frac{\alpha X}{\gamma} \gg \lambda_{\rm moy}$, par exemple $\frac{\alpha X}{\gamma} \simeq p \lambda_{\rm moy}$ avec un grand entier, alors $\lambda_k \simeq  \frac{p}{k+1/2} \lambda_{\rm moy}$. On observe alors un grand nombre de cannelures dans le spectre visible. La lumière apparaît blanche, mais ce n'est pas le même blanc que celui de la source. On parle de \imp{blanc d'ordre supérieur}.
+  Exemples ci-dessous pour $\frac{\alpha X}{\gamma} = 10 \lambda_{\rm moy} \simeq \SI{6}{\mu m}$, soit $p=10$. On observe des cannelures dans le spectre visible entre $\SI{400}{nm}$ et $\SI{800}{nm}$, soit de $k=15$ à $k=7$ ou $8$.
+
+% \begin{fig}[]
+%   \centering
+\begin{center}
+  \includegraphics[width=0.4\textwidth]{cannelures3.pdf}
+\end{center}
+%   \capt{}
+% \end{fig}
+\end{enumerate}
+  }
+  % en fonction de $\lambda_1$ et $N$, puis calculer numériquement $\Delta\lambda$ en précisant l'incertitude sur cette mesure.
+  % \item Quelle aurait été cette incertitude si la mesure de $\Delta \lambda$ avait été réalisée à l'aide d'un réseau et d'un goniomètre dans les mêmes conditions que la mesure de $\lambda_1$ ?
+\end{quest}
+
+  \emph{Nous étudierons le spectre cannelé en lumière blanche dans le \refTP{8}.}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][colle]{Rayon des anneaux en lame d'air}
+  Un interféromètre de Michelson réglé en configuration coin d'air d'angle $\alpha$ est éclairé par une source de lumière planche, de densité spectrale en longueur d'onde $D(\lambda)$. La figure d'interférences est observée sur un écran placé en sortie d'une lentille convergente qui fait l'image des miroirs. Le milieu est de l'air d'indice optique $n=1$.
+  \begin{quest}
+    \item Faire un schéma de la situation. Rappeler l'expression de la différence de marche $\delta$ en fonction de l'abscisse $x$ le long du miroir fixe et de $\alpha$. En notant $\gamma$ le grandissement transversal, exprimer $\delta$ en fonction de l'abscisse $X$ sur l'écran. Déterminer l'interfrange $i$ sur l'écran.
+  \item On rappelle que l'intensité totale $I$ sur l'écran s'écrit
+  \begin{equation}
+  I = \int D(\lambda)\left[1 + \cos\pa{2\pi \frac{\delta}{\lambda}}\right] \d \lambda.
+  \end{equation}
+  En déduire l'expression de la densité spectrale de la lumière sur l'écran $\dd{I}{\lambda}$.
+  % en fonction de $X$.
+  Montrer qu'en tout point de l'écran, le spectre de cette lumière est cannelé, dans lequel certaines longueurs d'ondes $\lambda_p$, que l'on déterminera, sont éteintes.
+  \item Représenter l'allure de la densité spectrale de la lumière sur l'écran dans les trois situations $x=0$, $x \simeq i$ et $x \gg i$. Que voit-on sur l'écran dans chacune de ces situations ?
+  % en fonction de $\lambda_1$ et $N$, puis calculer numériquement $\Delta\lambda$ en précisant l'incertitude sur cette mesure.
+  % \item Quelle aurait été cette incertitude si la mesure de $\Delta \lambda$ avait été réalisée à l'aide d'un réseau et d'un goniomètre dans les mêmes conditions que la mesure de $\lambda_1$ ?
+  \end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][2][TD]{Anneaux d'interférences en configuration lame d'air}
+Un interféromètre de Michelson est réglée en lame d'air et éclairé par une source supposée ponctuelle et monochromatique de longueur d'onde $\lambda_0 = \SI{546}{nm}$ située à une distance $d = \SI{50}{cm}$ de la lame séparatrice.
+Les miroirs $M_1$ et $M_2$ sont circulaires de rayon $\rho = \SI{3}{cm}$, et sont respectivement situés à des distances $L_1=\SI{10}{cm}$ et $L_2$ de la lame séparatrice. On dispose d'une lentille convergente de focale $f' = \SI{1}{m}$.
+\begin{quest}
+  \item Proposer un montage permettant d'observer les anneaux sur un écran.
+  \sol{
+  Lentille $\mc{L}_2$ en sortie de l'interféromètre, puis écran dans le plan focal image de $\mc{L}_2$. On rappelle qu'en lame d'air, les interférences obtenues avec une source étendue sont localisées à l'infini. Prendre une grande focale pour avoir une grande image, par exemple $f'_2=\SI{50}{cm}$ ou $\SI{1}{m}$.
+  }
+  \item Partant du contact optique on décale le miroir $M_2$ de $e = \SI{1}{mm}$.
+  Quel est l'ordre d'interférence au centre.
+  La frange centrale est-elle brillante ou sombre?
+  \sol{
+  D'après le cours, la différence de marche pour une inclinaison l'angle $i$ vaut $\delta = 2e \cos i$. Au centre la figure, $\delta_0 = 2e$ et donc l'ordre d'interférence vaut $p_0 = \frac{\delta_0}{\lambda_0} = \frac{2e}{\lambda_0} = 3663$, qui est entier. Donc la frange est brilante.
+
+  \underline{Remarque :} En réalité, sur les Michelson que vous avez en TP, l'ordre d'intefrénences est décalé de $1/2$ à cause du déphasage de $\pi$ introduit par la réflexion air$\rightarrow$verre du rayon $1$ sur la séparatrice. Au contact optique, on observe donc une frange sombre, et non une frange brillante.
+  }
+  \item Donner l'expression du rayon $r_k$ de l'anneau numéro $k$ dans l'approximation de Gauss.
+  Calculer les rayons des 5 premiers anneaux brillants.
+  \sol{
+  Revoir calcul du cours.
+  $$
+  r_k = f'_2 \sqrt{k \frac{e}{\lambda_0}}.
+  $$
+  }
+  \item Déterminer le nombre d'anneaux visibles sur l'écran dans le cas où la lentille ne limite pas l'observation des anneaux.
+  \sol{
+  L'angle d'inclinaison maximal $i_{\rm max}$ est obtenu pour les rayons qui frappent le bord du miroir. Comme la source $S$ est à une distance optique $L_1 + d \simeq L_2+ d $ des miroirs, on a dans les conditions de Gauss
+  $$
+  i_{\rm max} \simeq \frac{\rho}{L+d},
+  $$
+  avec $L = L_1 \simeq L_2=L_1+e$, car $e \ll L_1$. Le rayon maximal vaut donc
+  $$
+  r_{\rm max} \simeq f'_2 i_{\rm max} \simeq \frac{f'_2 \rho}{L+d} = \SI{5}{cm}
+  $$
+  pour une distance focale $f_2'=\SI{1}{m}$.
+  }
+
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

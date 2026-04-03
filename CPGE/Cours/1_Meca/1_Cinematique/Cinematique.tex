@@ -1,0 +1,535 @@
+% displayname : Cinématique du point
+\documentclass[12pt,fancy]{cours}
+\Chapit{1}{1}
+\begin{document}
+\maketitre[**] % ** : do not print programme officiel
+{Dans ce premier chapitre de mécanique du point, nous rappelons les notions vues en première année liées au repérage du mouvement, puis nous abordons la cinématique du point, qui consiste à étudier le mouvement d'un objet ponctuel sans s'intéresser aux causes de ce mouvement. L’étude des causes du mouvement est l'objet du chapitre de dynamique, au cours duquel nous ferons également quelques rappels de première année.
+}{
+\item Cours Mécanique 1 et 4 - 0
+\item Documents de cours Mécanique 1 - 1 à 3 et Mécanique 2 - 1
+\item TD Mécanique 1 et 4
+}
+
+
+
+\section{Repérer le mouvement}
+
+
+\subsection{Référentiel}
+
+\parag{Définitions} Un référentiel est la donnée d’un repère lié à un observateur et d'une horloge.
+
+\begin{liste}
+  \item \imp{Repère} : trois axes de référence indéformables et indépendants.
+  
+  Ces trois axes forment une base de l’espace, et permettent ainsi de repérer un mouvement. Ils sont en général choisis orthogonaux. Les axes se croisent en un point \imp{origine} $\rm O$ assimilé à un observateur.
+
+  \item \imp{Horloge} : instrument de mesure du temps.
+  
+  En mécanique newtonienne, le temps est absolu : il est décrit par une variable réelle $t$ qui est la même dans tous les référentiels. 
+  
+  \begin{remarque}
+    La mécanique newtonienne est une approximation de la mécanique relativiste, valable lorsque la vitesse d’un objet dans le référentiel d'étude est négligeable par rapport à la célérité de la lumière dans le vide.
+  \end{remarque}
+  \end{liste}
+
+
+\begin{definition}[Référentiel]
+Un \imp{référentiel} est la donnée d’un repère lié à un observateur et d'une horloge.
+\end{definition}
+
+\begin{danger}
+  Un référentiel sert de cadre d'étude d'un mouvement, voir \Fig{ref_def}~: il est donc \textit{indispensable} de préciser le référentiel lors d'une étude de mécanique, parce que la trajectoire, la vitesse, l’énergie, etc. dépendent du référentiel. 
+\end{danger}
+%  Un référentiel est souvent (pas toujours) lié à un solide par rapport auquel on se réfère pour décrire le mouvement (par exemple le quai de la gare lorsqu'on étudie le mouvement d'un train).
+%Les référentiels galiléens et barycentriques sont deux exemples fondamentaux de référentiels.
+
+
+
+% \parag{Quelques référentiels usuels}
+Ces quelques référentiels usuels, définis sur la \Fig{referentiels}, sont à connaître.
+
+\begin{liste}
+\item Référentiel de \imp{Copernic} $\mathcal{R_{\rm{C}}}$ : origine = centre de masse C du système solaire ;  les axes $(x_C,y_C,z_C)$ pointent vers trois étoiles fixes.
+% (non précisées). 
+% Par hypothèse, le référentiel de Copernic est postulé galiléen, et sert donc de référence.
+
+% \item  Le référentiel \imp{héliocentrique} $\mathcal{R}_{\rm{S}}$, dont l'origine coïncide avec le centre de masse du Soleil, et dont les axes sont parallèles aux axes du référentiel de Copernic. En raison de la présence des planètes, et en particulier de Jupiter (la plus massive), le centre du Soleil n’est pas confondu avec le centre de masse du système solaire.
+% Ce référentiel est utile pour décrire le mouvement d’une planète par rapport au Soleil.
+
+\item  Le référentiel \imp{géocentrique} $\mathcal{R}_{\rm{G}}$ : l’origine est le centre de masse T de la Terre ;  les axes $(x_G,y_G,z_G)$ sont parallèles aux axes de $\RC$. 
+
+% Comme $\mathcal{R}_{\rm{G}}$ décrit dans $\mathcal{R}_{\rm{C}}$ une trajectoire quasi-circulaire de période $T = \SI{1}{an}$, $\mathcal{R}_{\rm{G}}$ peut être considéré comme galiléen si l’expérience dure moins de $t_{\rm exp} \simeq \SI{1}{mois}$.
+
+
+
+\item  Le référentiel \imp{terreste} $\mathcal{R}_{\rm{T}}$, dans lequel la Terre est immobile. Plusieurs choix de repère sont possibles. 
+\begin{liste}
+  \item Point de vue global : l’origine est le centre de masse T de la Terre ; les axes $(x_T,y_T,z_T)$ suivent la Terre dans sa rotation, où $(Tz_T)$ correspond à l’axe de rotation Nord-Sud.
+  \item Point de vue local : l’origine est un point O à la surface de la Terre : les axes $(x_T,y_T,z_T)$ sont telles que $(Tz_T)$ est vertical et $(Tx_T)$ et $(Ty_T)$ horizontaux.
+\end{liste}
+% l’origine et des axes dépendent du problème. Pour une étude locale, on attachera l’origine et les axes à un solide de la surface terrestre (le laboratoire par exemple). Pour une étude à l’échelle planétaire, on placera plutôt l’origine au centre de masse de la Terre, avec les axes pointant vers la verticale local, le nord local, et l’est. 
+
+% Comme $\mathcal{R}_{\rm{T}}$ décrit dans $\mathcal{R}_{\rm{G}}$ un mouvement de rotation uniforme autour de période $T = \SI{1}{jour}$, $\mathcal{R}_{\rm{T}}$ peut être considéré comme galiléen si l’expérience dure moins de $t_{\rm exp} \simeq \SI{1}{h}$. La rotation s’effectue autour de l’axe Nord-Sud, qui est incliné d’environ \SI{23}{\degree} par rapport à la normale du plan de l'écliptique.
+
+
+\end{liste}
+
+\parag{Caractère galiléen d’un référentiel} Pour faire de la mécanique, nous devons connaître les lois qui gouvernent le mouvement dans le référentiel d’étude. Les référentiels galiléens sont des référentiels privilégiés, dans la mesure où les lois de la mécanique y sont les plus simples.
+
+\begin{figure}[H]
+\centering
+\subfigure[]{\label{fig:ref_def}
+\includegraphics[scale=1.1]{fiche_referentiel.pdf}
+}\hspace{1cm}
+\subfigure[]{\label{fig:ref_usuels}
+  \includegraphics[scale=1]{referentiels_simple.pdf}
+}
+\caption{(a) Un référentiel est constitué d'une repère $(x,y,z)$ lié à un observateur O, associé à l'origine du repère, et muni d'une horloge qui donne le temps $t$. Le temps $t$ est absolu en mécanique newtonienne. (b) Définition des référentiels de Copernic $\RC$, géocentrique $\RG$ et terrestre $\RT$. La trajectoire de la Terre dans $\RC$ est une ellipse.}
+\label{fig:referentiels}
+\end{figure}
+
+\begin{definition}\label{def:galile}
+Un référentiel est dit \imp{galiléen} lorsque les lois de Newton s’y appliquent.
+\end{definition}
+Nous reverrons les lois de Newton au \refChap{1}{3}.
+\begin{enumerate}
+  \item Principe d'inertie : il affirme l’existence des référentiels galiléens, et permet donc de donner un sens à la \Def{galile} :
+\emph{
+  Un système isolé a un mouvement rectiligne uniforme dans un référentiel galiléen.
+}
+  \item Principe fondamental de la dynamique (PFD).
+  \item Principe des actions réciproques.
+\end{enumerate}
+% Cela signifie en particulier que le principe fondamental de la dynamique et le principe d’action-réaction sont valables dans un référentiel galiléen. Le principe d’inertie, quant à lui, affirme l’existence des référentiels galiléens, et donne donc un sens à la \Def{galile} :
+% \emph{
+  % Un système isolé a un mouvement rectiligne uniforme dans un référentiel galiléen.
+% }
+Une conséquence du principe d’inertie est la propriété suivante.
+\begin{prop}[Transitivité du caractère galiléen]\label{prop:}
+Un référentiel obtenu par \imp{translation rectiligne uniforme} d’un référentiel galiléen est aussi galiléen.
+\end{prop}
+% De plus, le principe d’inertie affirme qu’un référentiel obtenu par \imp{translation rectiligne uniforme} d’un référentiel galiléen est aussi galiléen.
+
+\parag{Caractère galiléen approché}
+Les référentiels galiléens sont un \imp{modèle} : un référentiel réel s’en approche plus ou moins. En pratique, un référentiel est dit galiléen approché si l’on peut appliquer les lois de Newton pendant la durée de l'expérience, autrement dit s’il s’écarte peu d’un référentiel fictif qui serait en translation rectiligne uniforme par rapport à un référentiel galiléen.
+
+Si le mouvement d’un référentiel $\Rcal$ par rapport à un référentiel galiléen $\Rcal_g$ est de durée typique $T$, on peut considérer $\Rcal$ comme galiléen si la durée de l’expérience est négligeable devant $T$.
+
+\begin{prop}[Caractère galiléen approché]\label{prop:}
+Un référentiel $\Rcal$ est \imp{galiléen approché} si la durée de l’expérience $T_{\rm exp} \ll T$ est négligeable devant la durée $T$ du mouvement de $\Rcal$ par rapport à un référentiel galiléen exact.
+\end{prop}
+
+% \parag{Quelques référentiels usuels}
+% Ces quelques référentiels, définis sur la \Fig{referentiels}, sont à connaître.
+
+Précisons à quelle condition les référentiels usuels sont galiléens approché.
+\begin{liste}
+\item Le référentiel de \imp{Copernic} $\mathcal{R_{\rm{C}}}$ sera toujours considéré comme \imp{galiléen} dans le cadre du programme.
+
+% \item  Le référentiel \imp{héliocentrique} $\mathcal{R}_{\rm{S}}$, dont l'origine coïncide avec le centre de masse du Soleil, et dont les axes sont parallèles aux axes du référentiel de Copernic. En raison de la présence des planètes, et en particulier de Jupiter (la plus massive), le centre du Soleil n’est pas confondu avec le centre de masse du système solaire.
+% Ce référentiel est utile pour décrire le mouvement d’une planète par rapport au Soleil.
+
+\item  Le référentiel \imp{géocentrique} $\mathcal{R}_{\rm{G}}$ décrit dans $\mathcal{R}_{\rm{C}}$ une trajectoire quasi-circulaire de période $T = \SI{1}{an}$, donc $\mathcal{R}_{\rm{G}}$ peut être considéré comme galiléen approché si la durée de l’expérience vérifie
+% \begin{equation}
+\eqbox{
+  T_{\rm exp} \ll \SI{1}{an}.
+  }
+% \end{equation}
+
+
+
+\item  Le référentiel \imp{terreste} $\mathcal{R}_{\rm{T}}$ décrit dans $\mathcal{R}_{\rm{G}}$ un mouvement de rotation uniforme autour de l’axe Nord-Sud de période $T = \SI{1}{jour}$, donc $\mathcal{R}_{\rm{T}}$ peut être considéré comme galiléen approché si la durée de l’expérience vérifie
+%  \begin{equation}
+\eqbox{
+  T_{\rm exp} \ll \SI{1}{jour}.
+  }
+% \end{equation}
+
+
+\end{liste}
+
+
+%Un référentiel est dit \imp{barycentrique} s'il a pour origine le centre de masse du système étudié, et ses axes pointent vers des directions fixes (donc non liées au solide si celui-ci est en rotation!).
+%
+%\subsection{Temps}
+%En mécanique classique (non relativiste), le temps est absolu: il est le même dans tous les référentiels. Cette approximation n'est plus valable lorsque la vitesse dans le référentiel d'étude s'approche de la vitesse de la lumière dans le vide (théorie de la relativité).
+%
+\subsection{Système de coordonnées}
+
+Une fois le référentiel $\Rcal$ choisi, nous avons besoin d'un système de coordonnées pour décrire la trajectoire d'un point matériel.
+
+\begin{definition}\label{def:galile}
+Un \imp{système de coordonnées} est un jeu de variables qui permet de repérer la position d’un point. Les coordonnées sont au nombre de $1$ sur un axe, $2$ dans un plan, et $3$ dans l’espace.
+\end{definition}
+
+Contrairement au repère, dont les axes ne dépendent que du référentiel, un système de coordonnées est attaché au point matériel $M$ en mouvement et peu donc dépendre du temps et de la position. À un système de coordonnées est également attachée une \imp{base locale}, i.e. une famille de vecteurs, en général choisis orthonormaux, attachés au point matériel et formant une base de l’espace.
+
+\parag{Système cartésien}
+
+Les coordonnées cartésiennes $(x,y,z)$ repèrent la position d’un point dans une base orthonormale $(\ex, \ey, \ez)$ attachée à l’origine $O$ du repère, ou bien au point matériel $M$, voir \Fig{carte}. Soient $\Vec{r}=\Vec{OM}$ le vecteur position, $\Vec{v} = \dR{\Vec{r}}{t}{\Rcal} = \dot{\Vec{r}}$ le vecteur vitesse, et $\Vec{a} = \dR{\Vec{v}}{t}{\Rcal} = \ddot{\Vec{r}}$ le vecteur accélération. Dans le système cartésien, les vecteurs déplacement élémentaire, vitesse et accélération ont les expressions suivantes :
+
+\begin{equation}
+\left\{
+\begin{array}{lllr}
+\Vec{r} & = & x\,\ex+y\,\ey+z\,\ez, & \text{(position)} \\
+\Vec{\d r} & = & \d x\,\ex+\d y\,\ey+\d z\,\ez, & \text{(déplacement élémentaire)} \\
+\Vec{v} & = & \dot{x}\,\ex+\dot{y}\,\ey+\dot{z}\,\ez, & \text{(vitesse)}  \\
+\Vec{a} & = & \ddot{x}\,\ex+\ddot{y}\,\ey+\ddot{z}\,\ez. & \text{(accélération)}
+\end{array}
+\right.
+\end{equation}
+
+\begin{prop}
+Le système de coordonnées cartésiennes est avantageux lorsque le point d'étude présente une trajectoire rectiligne, ou sans géométrie particulière.
+\end{prop}
+
+\begin{exemple}{Pavé sur un plan incliné}
+Exprimer les vecteurs $\vv{P}$ (le poids), $\vv{T}$ (la réaction tangentielle) et $\vv{N}$ (la réaction normale) représentés sur le schéma ci-dessous dans la base $(\vv{e_x},\vv{e_z})$ puis dans la base ($\ex',\ez'$). Par définition, $\alpha>0$. On notera $P$, $T$ et $N$ la norme de ces vecteurs.
+\begin{center}
+\includegraphics[width=0.4\textwidth]{pave.pdf}
+\end{center}
+\end{exemple}
+\examplesol{
+  \begin{wrapfigure}{r}{0.2\textwidth}
+    \centering
+    \includegraphics[width=0.2\textwidth]{pavé_base.png}
+    %\capt{}
+  \end{wrapfigure}
+Faisons le lien entre les deux bases cartésiennes du plan. La base $(\ex',\ez')$ est obtenue par une rotation d'angle $\alpha$ de la base $(\ex,\ez)$, comme on peut le voir en ramenant les deux bases à la même origine.
+On a donc
+$$
+\left\{ 
+  \begin{array}{lllr}
+    \ex' & = & \cos \alpha \, \ex + \sin \alpha \, \ez, \\
+    \ez' & = & -\sin \alpha \, \ex + \cos \alpha \, \ez.
+  \end{array}
+  \right.
+  $$
+  On peut retrouver ces coefficients en notant que $\ex \cdot \ex' = \ez \cdot \ez' = \cos \alpha$ et $\ex \cdot \ez' = -\ez \cdot \ex' = \cos(\pi/2-\alpha) = \sin \alpha$, par définition du produit scalaire.
+
+On en déduit :
+\begin{liste}
+  \item $\Vec{P}=-P\ez= -P \cos \alpha \, \ez' + P \sin\alpha \, \ex'$;
+  \item $\Vec{T}=-T\ex' = -T\cos \alpha \, \ex +T \sin \alpha\, \ez$;
+  \item $\Vec{N} = N \ez' = N \cos \alpha \, \ez + N \sin \alpha\, \ex$.
+\end{liste}
+
+
+
+% Déterminons aussi la norme du vecteur $\vv{P}-\vv{T}=-P \cos \alpha \,\ez'  - (T+P \sin\alpha) \ex'$. On a $\norm{\vv{P}-\vv{T}}^2 = P^2 (\cos \alpha)^2 + (T+P \sin\alpha)^2 = P^2 + T^2 + 2TP \sin \alpha.$
+}
+
+\parag{Système cylindrique}
+
+Les coordonnées cylindriques $(r,\theta,z)$ repèrent la position d’un point dans une base orthonormale $(\er, \et, \ez)$ attachée au point d’étude $M$, voir \Fig{cylind}. Si $H$ désigne projeté orthogonal du point $M$ dans le plan $(x,y)$, alors par définition $r=OH$ et $\theta$ est l’angle $(\Vec{OH},\ex)$. Le vecteur $\er$ est radial dirigé vers l’extérieur, et $\et$ est choisi de sorte que la base $(\er, \et, \ez)$ soit directe. Les vecteurs $(\er, \et)$ s'obtiennent par une rotation d'angle $\theta$
+des vecteurs de la base cartésienne $(\ex,\ey)$, soit
+\begin{equation}\label{eq:er_et}
+\left\{
+\begin{array}{lllr}
+\er & = \cos\theta\,\ex+\sin\theta\,\ey, \\
+\et & = -\sin\theta\,\ex+\cos\theta\,\ey. \\
+\end{array}
+\right.
+\end{equation}
+ Dans le système cylindrique, les vecteurs déplacement élémentaire, vitesse et accélération ont les expressions suivantes :
+
+\begin{equation}\label{eq:cylind}
+\left\{
+\begin{array}{lllr}
+\Vec{r} & = & r\,\er+z\,\ez, & \text{(position)} \\
+\Vec{\d r} & = & \d r\,\er + r \d \theta\,\et +\d z\,\ez, & \text{(délacement élémentaire)} \\
+\Vec{v} & = & \dot{r}\,\er+r\dot{\theta}\,\et+\dot{z}\,\ez, & \text{(vitesse)}  \\
+\Vec{a} & = & (\ddot{r}-r\dot{\theta}^{2})\,\er+(r\ddot{\theta}+2\dot{r}\dot{\theta})\,\et +\ddot{z}\,\ez. & \text{(accélération)}
+\end{array}
+\right.
+\end{equation}
+
+
+%%% FIGURE : %%%%
+\begin{figure}[H]
+\centering
+\hfill
+\subfigure[]{\label{fig:carte} %\input{./figure/cartes.pgf}
+\includegraphics[scale=1]{cartes_M.pdf}
+}\hfill
+\subfigure[]{\label{fig:cylind}
+%\input{./figure/cylind.pgf}
+\includegraphics[scale=1]{cylind.pdf}
+}\hfill\hfill
+\caption{(a) Dans le système de coordonnées cartésiennes $(x,y,z)$, la base locale $(\Vec{e_x}, \Vec{e_y}, \Vec{e_z})$ est fixe et coïncide avec les axes du repère.
+(b) Dans le système de coordonnées
+cylindriques $(r,\theta,z)$, la base locale $(\er, \et, \ez)$  n'est pas fixe dans le repère mais dépend de l'angle $\theta$.
+}
+\label{fig:}
+\end{figure}
+%%%%%%%%%%%%%
+
+
+
+\begin{demo}
+  La méthode pour établir l’\Eq{cylind} est à connaître. En dérivant la relation $\er=\cos\theta\,\ex+\sin\theta\,\ey$ par rapport au temps, il vient $\dot{\vec{e}}_r =\dot{\theta}\et$ puis $\dot{\vec{e}}_\theta = -\dot{\theta}\er$. 
+\end{demo}
+Contrairement au système cartésien, où les vecteurs unitaires $\ex$, $\ey$ et $\ez$ sont fixes, les vecteurs unitaires du système cylindrique peuvent tourner au cours du temps. La base cylindrique est une base \imp{mobile}.
+
+\begin{prop}
+Le système de coordonnées cylindriques est avantageux lorsque le point d'étude  est en rotation autour d’un axe ou dans un plan.
+\end{prop}
+
+Lorsque le point matériel est astreint à se déplacer dans le plan $(x,y)$, les coordonnées cylindriques $(r,\theta,z)$ se restreignent aux coordonnées polaires $(r,\theta)$.
+% L’expression des vecteurs vitesse et accélération se simplifient si le mouvement de rotation dans le plan est :
+%\begin{liste}
+%\item circulaire, auquel cas $r=\text{cte}$ et donc
+%$\Vec{v} = r\dot{\theta}\,\et $ (la vitesse est orthoradiale). L’accélération vaut alors
+%$\Vec{a}= -r\dot{\theta}^{2}\,\er + r \ddot{\theta} \,\et$.
+%\item circulaire uniforme, auquel cas on a de plus $\dot{\theta}=\text{cte}$ et donc
+%$\Vec{a}= -r\dot{\theta}^{2}\,\er $ (l’accélération est centripète).
+%\end{liste}
+
+
+%\begin{remarque}
+%Lorsqu'on se place dans un plan $z=\text{cte}$ on parle de coordonnées polaires. Si de plus le mouvement est circulaire, alors $r=\text{cte}$ et donc $\Vec{v}=r\dot{\theta}\,\et$ et $\Vec{a}=-r\dot{\theta}^2\,\er+r\ddot{\theta}\,\et$. Ces dernières expressions sont très utiles, il faut les connaître par coeur. Si le mouvement est de plus uniforme, alors $\dot{\theta}=\text{cte}$ et donc $\Vec{a}=-r\dot{\theta}^2\,\er$ (accélération centripète).
+%\end{remarque}
+
+
+%\begin{figure}[!tb]
+%	\centering
+%	\sousfigure{coord_spheriques.pdf}{fig:coordonnes_spheriques}{0.46}{spheriques_cartesiennes.pdf}{fig:sph_to_cart}{0.5}
+%	\caption{(a) Définition des coordonnées sphériques et (b) correspondance avec les coordonnées cartésiennes.}
+%\end{figure}
+
+\vspace{1em}
+\begin{exemple}{Cerceau lesté}
+On considère une masselotte fixée à un point $M$ d'un cerceau de rayon $a$. On repère la masse soit dans le système de coordonnées cylindrique d'origine le centre $C$ du cerceau, soit dans le système de coordonnées cartésiennes d'origine O. Décomposer les vecteurs $\Vec{P}$ et $\Vec{OM}$ dans les bases $(\ex,\ez)$ et $(\er,\et)$.
+\begin{center}
+\includegraphics[width=0.4\textwidth]{projection_anneau.pdf}
+\end{center}
+%\includegraphics[width=0.4\textwidth]{cerceau_leste.pdf}
+%\caption{(a)  (b) entraînement 4.}
+
+% Enfin, exprimer avec la relation de Varignon la vitesse de M en fonction de la vitesse de C, de norme $\dot{x}'$, dans la base $(\vv{e_x'},\vv{e_z'})$.
+
+\end{exemple}
+\examplesol{
+On commence par exprimer la base polaire $(\er,\et)$ dans la base cartésienne du plan, soit $\er = \cos \theta\, \ex + \sin \theta\, \ez$ et $\et = \cos \theta  \,\ez - \sin \theta \,\ex$. On en déduit :
+\begin{liste}
+  \item $\Vec{P} = -P\ez = -P\cos \theta \,\er + P\sin \theta \,\et$;
+  \item $\Vec{OM} = \Vec{OC} + \Vec{CM} = a\ex + a\er = a(1+\cos \theta)\ex + a \sin \theta\, \ez .$
+\end{liste}
+% Soit $\Vec{P}=-P\ez$ le poids de la masselotte. La décomposition de $\vv{P}$ dans la base polaire $(\er,\et)$ donne, sachant que $\er = \cos \theta\, \ex + \sin \theta\, \ez$ et $\et = \cos \theta  \,\ez - \sin \theta \,\ex$,
+% \begin{equation}
+%
+% \end{equation}
+% La décomposition du vecteur position $\Vec{OM}$ dans la base cartésienne $(\ex,\ez)$ donne
+% \begin{equation}
+%
+% \end{equation}
+}
+
+
+\parag{Système sphérique}
+
+Les coordonnées sphériques $(r,\theta,\varphi)$ ne sont pas à connaître par cœur. Elles repèrent la position d’un point dans une base orthonormale $(\er, \et, \ep)$ attachée au point d’étude~$M$.
+%, comme discuté dans l'\App{sphe}. %Si $H$ désigne projeté orthogonal du point $M$ dans le plan $(x,y)$, alors par définition $r$ est la distance $OH$ et $\theta$ l’angle $(\Vec{OH},\ex)$. Le vecteur $\Vec{e}_r$ est radial dirigé vers l’extérieur, et $\et$ est choisi de sorte que la base $(\Vec{e}_r, \Vec{e}_\theta, \ez)$ soit directe.
+Dans le système sphérique, les vecteurs déplacement élémentaire, vitesse et accélération ont les expressions suivantes :
+
+\begin{equation}\label{eq:cylind}
+\left\{
+\begin{array}{lllr}
+\Vec{r} & = & r\, \er, & \text{(position)} \\
+\Vec{\d r} & = & \d r\,\er +r\d\theta\,\et +r\sin\theta\,\d \varphi\,\ep, & \text{(délacement élémentaire)} \\
+\Vec{v} & = & \dot{r}\,\er+r\dot{\theta}\,\et +r\dot{\varphi}\sin\theta\,\ep, & \text{(vitesse)}  \\
+\Vec{a} & = & (\ddot{r}-r\dot{\theta}^{2}-r\dot{\varphi}^{2}\sin^{2}\theta)\,\er+(r\ddot{\theta}+2\dot{r}\dot{\theta}-r\dot{\varphi}^{2}\sin\theta\cos\theta)\,\et & \text{(accélération)}  \\ & &
++ \,(2\dot{r}\dot{\varphi}\sin\theta+2r\dot{\theta}\dot{\varphi}\cos\theta+r\ddot{\varphi}\sin\theta)\,\ep.  &
+\end{array}
+\right.
+\end{equation}
+
+\begin{prop}
+Le système de coordonnées sphériques est avantageux lorsque le point d'étude est en rotation autour d’un centre.
+\end{prop}
+
+
+
+%%%%%%%%%%%%%%%%%%%
+\begin{figure}[h!]
+\centering
+\subfigure[]{\label{fig:coord_spheriques}
+  \includegraphics[height=7cm]{coord_spheriques.pdf}
+}\hspace{1cm}
+\subfigure[]{\label{fig:spheriques_cartesiennes}
+\includegraphics[height=7cm]{spheriques_cartesiennes.pdf}
+}
+\caption{Définition des coordonnées sphériques.}
+\label{fig:sph}
+\end{figure}
+%%%%%%%%%%%%%
+
+
+
+%\imp{Sphérique} $(r,\theta,\varphi)$ (Fig.~\ref{fig:coordonnes_spheriques})
+%
+%\begin{equation}
+%\begin{split}
+%\Vec{v}&= \\
+%\Vec{a}&=
+%\end{split}
+%\end{equation}
+%Pour savoir comment obtenir ou retrouver ce résultat, on pourra se reporter au Complément~\ref{comp:vitesse_acceleration_spheriques}.
+
+\section{Mouvements particuliers}
+
+\subsection{Mouvement rectiligne}
+
+Un mouvement est dit \imp{rectiligne} lorsque la trajectoire est une \imp{droite}. En notant $(Ox)$ l'axe porté par cette droite, on a alors
+\begin{equation}
+\Vec{r}(t) = x(t) \ex.
+\end{equation}
+Suivant l'expression de la fonction $x(t)$, le mouvement peut être
+\begin{liste}
+  \item \imp{uniforme} si $\dot{x} = \cte =v$, soit $x(t) = v t + x_0$;
+  \item \imp{uniformément accéléré} si $\ddot{x} = \cte =a$, soit $x(t) = \frac{1}{2} a t^2 + v t + x_0$;
+  \item sinusoïdal si $x(t) = x_0 \cos(\omega t + \vphi)$;
+  \item de toute autre nature pour d'autres fonctions $x(t)$.
+\end{liste}
+
+\begin{exemple}{Électron dans un champ électrique}
+Un électron, de charge électrique $-e$ et de masse $m$, est émis dans un tube cathodique, en un point pris comme origine du repère, avec une vitesse initiale  $\Vec{v_0}=v_0\,\ex$. Il subit un champ électrique uniforme et stationnaire $\Vec{E}=E\,\ex$. Son accélération vaut
+\begin{equation*}
+\Vec{a} = -\dfrac{eE}{m} \ex.
+\end{equation*}
+Déterminer les équations horaires du mouvement et l'équation de la trajectoire.
+%Avec $e=\SI{1.6e-19}{C}$ et $m=\SI{9.1e-31}{kg}$, et pour un champ électrique $E=\SI{1}{kV.m^{-1}}$, on trouve une accélération $\norm{\Vec{a}} = \SI{}{m.s^{-2}}$.
+\end{exemple}
+\examplesol{
+L'équation horaire s'obtient par intégration. On peut intégrer les vecteurs directement :
+$$
+\Vec{v}(t) = \left(-\dfrac{eE}{m}t + v_0\right) \ex, \qquad
+\Vec{r}(t) = \left(-\dfrac{eE}{m} \frac{t^2}{2} + v_0 t\right) \ex =  x(t) \ex.
+$$
+L'équation horaire du mouvement est donc 
+\eqbox{
+  x(t)=-\frac{eE}{m}\frac{t^2}{2}  + v_0 t.
+}
+La trajectoire est \fbox{rectiligne} puisque portée par la droite $(Ox)$.
+}
+
+
+\subsection{Mouvement uniformément accéléré}
+
+Un mouvement est dit \imp{uniformément accéléré} lorsque le vecteur accélération est constant,
+\begin{equation}
+\Vec{a}(t) = \Vec{\rm Cte}.
+\end{equation}
+%\begin{prop}
+%La trajectoire d’un mouvement uniformément accéléré est parabolique ou rectiligne selon les conditions initiales.
+%\end{prop}
+La trajectoire d’un mouvement uniformément accéléré peut être
+\begin{liste}
+  \item rectiligne si la vitesse initiale $\Vec{v}(t=0)$ est colinéaire à $\Vec{a}$ ;
+  \item parabolique sinon.
+\end{liste}
+
+
+\begin{exemple}{Électron dans un champ électrique}
+% Un électron, de charge électrique $-e$ et de masse $m$, est émis dans un tube cathodique avec une vitesse initiale  $\Vec{v_0}=v_0\,\ex$. Il part de l'origine du repère. Il subit un champ électrique uniforme et stationnaire $\Vec{E}=E\,\ey$. Son accélération est donc constante et vaut
+% \begin{equation}
+% \Vec{a} = -\dfrac{eE}{m} \ey.
+% \end{equation}
+%Avec $e=\SI{1.6e-19}{C}$ et $m=\SI{9.1e-31}{kg}$, et pour un champ électrique $E=\SI{1}{kV.m^{-1}}$, on trouve une accélération $\norm{\Vec{a}} = \SI{}{m.s^{-2}}$.
+On reprend l'exemple précédent avec un champ électrique uniforme et stationnaire porté par $\ey$, soit $\Vec{E}=E\,\ey$. Déterminer les équations horaires du mouvement et l'équation de la trajectoire.
+\end{exemple}
+\examplesol{
+L'équation horaire s'obtient par intégration,
+\begin{equation*}
+\Vec{v}(t) = -\dfrac{eEt}{m} \ey  + v_0\, \ex, \qquad
+\Vec{r}(t) = -\dfrac{eEt^2}{2m} \ey + v_0 t\, \ex = y(t) \ey + x(t) \ex.
+\end{equation*}
+La trajectoire dans les coordonnées cartésiennes est une branche de parabole,
+% \begin{equation*}
+\eqbox{
+  y(x) = -\dfrac{eE}{2mv_0^2} x^2.
+  }
+% \end{equation*}
+}
+
+\subsection{Mouvement circulaire} 
+Un mouvement est dit \imp{circulaire uniforme} lorsque :
+\begin{liste}
+\item la trajectoire est \imp{circulaire} : dans les coordonnées polaires, on a donc
+% \begin{equation}
+\eqbox[]{
+  r = {\rm Cte}.
+  }
+% \end{equation}
+La vitesse est alors orthoradiale : $\Vec{v} = r\dot{\theta}\,\et $. L'accélération se simplifie en $\Vec{a}= -r\dot{\theta}^{2}\,\er + r \ddot{\theta} \,\et$.
+\item le mouvement est \imp{uniforme} : la norme de la vitesse et donc la vitesse angulaire sont constantes :
+% \begin{equation}
+\eqbox[]{
+  \dot{\theta} = {\rm Cte}.
+  }
+% \end{equation}
+L'accélération est alors centripète~: $\Vec{a}= -r\dot{\theta}^{2}\,\er $.
+\end{liste}
+
+
+% \vspace{1em}
+% \begin{exemple}{Pendule simple}
+% Un pendule simple de masse $m$ et de longueur $\ell$ effectue un mouvement circulaire de rayon $r=\ell$. Pour les petits angles, l'angle a pour expression $\theta(t) = \theta_0 \cos(\omega t)$ en notant $\theta_0$ la position initiale et en supposant que le pendule est lâché sans vitesse initiale. Le mouvement n'est pas uniforme puisque la vitesse angulaire $\dot{\theta}$ n'est pas constante.
+
+% \end{exemple}
+
+
+\begin{exemple}{Proton dans un champ magnétique}
+Un proton, de charge électrique $e$ et de masse $m$, est émis
+%dans le collisionneur de particules LHC
+à une vitesse initiale $\Vec{v_0}=v_0\,\ex$ avec $v_0>0$. Il subit un champ magnétique uniforme et stationnaire $\Vec{B}=B\,\ez$. On admet que l’accélération vérifie
+$$
+\Vec{a} = \Vec{v} \pv \dfrac{eB}{m} \ez.
+$$
+En admettant que le mouvement du proton est circulaire,
+ % son accélération vérifie
+% $$
+% \Vec{a} = \dfrac{eR \dot{\theta} B}{m} \er.
+% $$
+déterminer le rayon $R$ de la trajectoire, ainsi que le sens de parcours. \AN~pour $e=\SI{1.6e-19}{C}$, $m=\SI{1.7e-27}{kg}$, $B=\SI{20}{T}$ et $v_0 = \SI{1.0e6}{m.s^{-1}}$.
+\end{exemple}
+\examplesol{
+On utilise l'expression de l'accélération et de la vitesse en coordonnées polaires pour un mouvement circulaire,
+$$
+\Vec{a} =-R\dot{\theta}^{2}\,\er + R \ddot{\theta} \,\et = R\dot{\theta} \pv  \dfrac{eB}{m} \ez = \dfrac{eR \dot{\theta} B}{m} \er.
+$$
+On en déduit par projection 
+
+$$
+\left\{ 
+  \begin{array}{ll}
+    R \ddot{\theta} = 0,\\
+    -R\dot{\theta}^{2} = \dfrac{eR \dot{\theta} B}{m}, 
+  \end{array}
+\right.
+$$
+ce qui donne $\dot{\theta} = \cte = -\frac{eB}{m}<0$ :  le mouvement est \fbox{circulaire uniforme} dans le sens indirect, de centre l'origine O du repère $(Oxy)$. On sait que la vitesse initiale vaut 
+$$
+\Vec{v}(t=0) = v_0 \ex = R\dot{\theta} \et(t=0) = -\frac{eRB}{m} \et(t=0),
+$$
+Comme $v_0>0$ et $R>0$, on doit avoir $\et(t=0) = -\ex$, soit $\theta(t=0) = \pi$ : la définition des axes $(Ox)$ et $(Oy)$ impose donc que la position initiale du proton soit à l'abscisse $-R$ sur l'axe $(Ox)$.
+On a de plus,
+% $$
+\eqbox{
+  R=\frac{mv_0}{eB}.
+  }
+% $$
+\begin{fig}[label]
+  \centering
+  \includegraphics[scale=1.3]{muon_g-2.pdf}
+  %\capt{}
+\end{fig}
+\AN~: avec $e=\SI{1.6e-19}{C}$ et $m=\SI{1.7e-27}{kg}$, pour un champ magnétique $B=\SI{20}{T}$ et
+% une vitesse initiale $v_0 = \SI{3.0e8}{m.s^{-1}}$, on trouve $R = \SI{16}{cm}$.
+ une vitesse initiale $v_0 = \SI{1.0e6}{m.s^{-1}}$, on trouve \fbox{$R = \SI{0.5}{mm}$}.
+
+}
+
+
+\end{document}

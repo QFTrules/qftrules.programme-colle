@@ -1,0 +1,21 @@
+﻿\begin{tikzpicture}
+
+\draw[ax] (0,0) -- ++ (5,0) node[right] {fréquence};
+\draw[ax] (0,0) -- ++ (0,3) node[above] {amplitude};
+
+\draw[thick,gray] (3.5,0)  -- ++ (0,2) coordinate (C) node[above] {$2f_p$};
+
+
+\draw[thick,gray] (4,0) node[below=2] {$~~~~2f_{\rm p}+f$}  -- ++ (0,0.5) coordinate (A);
+\draw[thick,gray] (3,0) node[above=12.5] {$2f_{\rm p}-f~~~~$}  -- ++ (0,0.5) coordinate (D);
+\draw[thick,gray] (1,0) node[below=2] {$f$}  -- ++ (0,1) coordinate (B);
+
+\draw[ultra thick,gray] (0,0) node[below=2] {$0$}  -- ++ (0,2) coordinate (C);
+
+
+\end{tikzpicture}de[left] {$\frac{kA_{\rm i}A_{\rm p}}{2}$};
+
+\draw[thick,gray] (0,0) node[below=2] {$0$}  -- ++ (0,1) coordinate (C);
+
+
+\end{tikzpicture}

@@ -1,0 +1,22 @@
+\begin{tikzpicture}
+\fill[rounded corners, opacity=0.1, draw opacity=1, draw=black] (0,0) rectangle (2,1);
+\draw (-1,-0.5) rectangle (3,0);
+\draw (-1,-0.5) rectangle (-0.5,-2);
+\draw (3,-0.5) rectangle (2.5,-2);
+\draw (-0.5,-2) rectangle (-2,-2.5);
+\draw (2.5,-2) rectangle (4,-2.5);
+
+\node at (1,-0.25) {$T_f$};
+\node at (-1.25,-2.25) {$T_c$};
+\node at (3.25,-2.25) {$T_c$};
+
+\node at (-0.75,-1.25) {$G$};
+\node at (2.75,-1.25) {$D$};
+
+\draw[<->,>=latex] (-1.25,-2) -- ++(0,1.5) node[midway, left] {$l$};
+\draw[->,>=latex] (-2.25,-2.25) node[left] {$I$} -- ++(0.5,0);
+\draw[->,>=latex] (3.75,-2.25) -- ++(0.5,0) node[right] {$I$};
+
+\node at (1,0.5) {Objet};
+
+\end{tikzpicture}

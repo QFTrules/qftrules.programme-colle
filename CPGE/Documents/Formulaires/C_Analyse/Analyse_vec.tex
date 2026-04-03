@@ -1,0 +1,473 @@
+\input{formulaire.sty}
+\begin{document}
+\Entete[formu][C]{}
+% displayname : Analyse vectorielle
+
+\section{Opérateurs du premier ordre}
+
+%Tous les opérateurs de cette section ($\dr{}{x}$, $\grad{}$, $\dive{}$, $\rot{}$)
+% font intervenir des dérivées spatiales d'ordre $1$.
+\subsection{Dérivées partielles}
+
+Soit une fonction scalaire de plusieurs variables $f(x,y,z)$.
+On souhaiterait calculer la variation de $f$ sous l'effet d'une variation d'une de ses variables, pas exemple $x$. On définit la \imp{dérivée partielle} de $f$ par rapport à $x$ comme
+$$
+\dr{f}{x} = \lim\limits_{\d x \rightarrow 0}\frac{f(x+\d x,y,z)-f(x,y,z)}{\d x}.
+$$
+On définit de même les dérivées partielles par rapport à $y$ et $z$.
+Une dérivée partielle fonctionne donc comme une dérivée classique en gardant les autres variables constantes.
+
+ \parag{Exemple de résolution d'équations} $\displaystyle\dr{f}{x}  = a~\text{(1)}$ et  $\displaystyle\dr{f}{y}  = b~\text{(2)}$.
+%   $
+%  \left\{
+% \begin{array}{ll}
+% \displaystyle
+% \dr{f}{x} & = a~\text{(1)}\\[0.3cm]
+% \displaystyle\dr{f}{y} & = b~\text{(2)}
+% \end{array}
+%  \right..
+%  $
+ \begin{liste}
+ \item
+
+L'équation (1) donne $f(\JRouge{x})  = a \JRouge{x} + \cte$. Il s'agit d'une dérivée partielle, donc la \guill{constante} dépend en réalité de $y$ : $f(\JRouge{x},\JBleu{y})  = a \JRouge{x} + g(\JBleu{y})$.
+
+\item  L'équation (2) donne
+$$\dr{f}{y} = \dr{}{\JBleu{y}}\left[ax + g(\JBleu{y})\right] = \dd{}{\JBleu{y}} [\cte + g(\JBleu{y})] =  \dd{g}{y} = b,$$ donc $g(\JBleu{y}) = b\JBleu{y} + \cte$, où cette fois-ci $\cte$ est une vraie constante. On en déduit $f(\JRouge{x},\JBleu{y}) = a\JRouge{x} + b\JBleu{y} + \cte$.
+ \end{liste}
+
+\begin{definition}
+On appelle \imp{différentielle} de $f$ et on note $\d f$ la petite variation de $f$ sous l'effet de petites variations de ses variables $\d x$, $\d y$, $\d z$, etc.
+$$
+\d f = f(x+\d x,y+\d y, z + \d z) -f(x,y,z) =  \dr{f}{x} \d x + \dr{f}{y} \d y  + \dr{f}{z} \d z.
+$$
+\end{definition}
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.23\textwidth]{dp.pdf}
+\caption{La variation de la pression $p(x,y)$ le long du vecteur $\Vec{\d \ell} = \d x \, \ex  + \d y \, \ey$ vaut $\d p =  p(x+\d x,y + \d y)- p(x,y) =  1020-1016 = \SI{4}{hPa}$.}
+\label{fig:}
+\end{figure}
+%%%%%%%%%%%%%
+
+\subsection{Gradient}
+%\parag{Définition}
+Soit $f(M)$ un champ scalaire (pression, température, altitude, etc.).
+\begin{definition}
+On appelle \imp{gradient} de $f$ le champ vectoriel $\grad{f}$ tel que pour tout déplacement élémentaire $\Vec{\d \ell}$, la différentielle de $f$ s'écrive
+$$
+\d f =\grad{f} \cdot \Vec{\d \ell}.
+$$
+\end{definition}
+%\begin{remarque}
+%Comme $\Vec{\d \ell}$ est homogène à une distance (L),
+%\end{remarque}
+\begin{prop}\label{prop:}
+Le sens de
+$\grad{f}$ indique dans quelle direction $f$ croît le plus.
+
+La norme de $\grad{f}$ indique avec quelle intensité $f$ croît.
+
+Les surfaces iso-$f$ ($f(M) = \cte$) sont orthogonales à $\grad{f}$.
+\end{prop}
+
+\def\WID{0.23\textwidth}
+\begin{figure}[h!]
+\centering
+\subfigure[]{
+\includegraphics[width=\WID]{p_map.png}
+}
+\subfigure[]{
+\includegraphics[width=\WID]{gradp.pdf}
+}
+% \vspace{-0.1cm}
+\caption{(a) Lignes isobares $p(M)=\cte$. (b) Le champ vectoriel $\grad{p}$ est orthogonal aux isobares ; il pointe vers les régions de haute pression, et plus les isobares sont rapprochées, plus sa norme est grande.}
+\label{fig:}
+\end{figure}
+%%%%%%%%%%%%%
+
+
+\parag{Coordonnées cartésiennes}
+Pour une fonction des coordonnées cartésiennes $f(x,y,z)$, le déplacement élémentaire s'écrit $\Vec{\d \ell} = \d x  \,\ex + \d y\, \ey + \d  z\, \ez$. Or la différentielle s'écrit
+$
+\d  f = \dr{f}{x} \, \d x + \dr{f}{y} \, \d y + \dr{f}{z} \, \d z
+$, et donc
+\eqbox[*]{\grad{f} = \dr{f}{x} \ex + \dr{f}{y} \ey + \dr{f}{z} \ez.}
+
+\parag{Coordonnées cylindriques et sphériques} Dans les autres systèmes de coordonnées : en cylindrique, $f(r,\theta,z)$ a pour gradient
+$$
+\grad{f} = \dr{f}{r} \er + \frac{1}{r}\dr{f}{\theta} \et + \dr{f}{z} \ez;
+$$
+en sphérique, $f(r,\theta,\varphi)$ a pour gradient
+$$
+\grad{f} = \dr{f}{r} \er + \frac{1}{r}\dr{f}{\theta} \et + \frac{1}{r \sin \theta}\dr{f}{\varphi} \ep.
+$$
+
+\parag{Théorème du gradient} Le théorème suivant permet de trouver l’équivalent volumique d’une force de contact surfacique (pression, viscosité).
+
+\begin{theorem}[Théorème du gradient]
+Soit $V$ un volume délimité par sa surface fermée $S$. Alors
+$$
+\oiint_S f \,\Vec{ \d S} = \iiint_V \grad f \, \d V.
+$$
+\end{theorem}
+\noindent
+
+
+\subsection{Divergence}
+
+Soit $\Vec{v}(M)$ un champ vectoriel (vitesse, densité de courant, etc.).
+\begin{definition}[Théorème de Green-Ostrogradski]
+On appelle \imp{divergence} de $\Vec{v}$ le champ scalaire $\dive{\Vec{v}}$ tel que pour tout volume fermé $V$ de surface $S$, le flux de $\Vec{v}$ à travers $S$ s'écrive
+$$
+\oiint_S \Vec{v}\cdot \Vec{\d S} = \iiint_V \dive{\Vec{v}}\, \d V.
+$$
+\end{definition}
+%\begin{remarque}
+%Comme $\Vec{\d \ell}$ est homogène à une distance (L),
+%\end{remarque}
+\begin{prop}\label{prop:}
+Si $\dive{\Vec{v}} > 0$ en $M$, le champ vectoriel $\Vec{v}$ fuit le point $M$.
+
+Si $\dive{\Vec{v}} < 0$ en $M$, le champ vectoriel $\Vec{v}$ converge vers le point $M$.
+
+Si $\dive{\Vec{v}} = 0$ en $M$, le champ vectoriel $\Vec{v}$ ne fuit ni ne converge en moyenne vers le point $M$.
+\end{prop}
+
+\def\WID{0.12\textwidth}
+\begin{figure}[h!]
+\centering
+\subfigure[]{
+\includegraphics[height=\WID]{crop_divergence1.pdf}
+}
+\subfigure[]{
+\includegraphics[height=\WID]{crop_divergence2.pdf}
+}
+\subfigure[]{
+\includegraphics[height=\WID]{crop_divergence3.pdf}
+}
+\subfigure[]{
+\includegraphics[height=\WID]{crop_divergence4.pdf}
+}
+\caption{(a) Le champ $\Vec{v}$ fuit le point $M$. (b) Le champ $\Vec{v}$ converge vers $M$. (c) Le champ $\Vec{v}$ est uniforme  près de $M$. (d) Le champ $\Vec{v}$ tourne autour de $M$.}
+\label{fig:}
+\end{figure}
+%%%%%%%%%%%%%
+
+
+\parag{Coordonnées cartésiennes}
+Le flux de $\Vec{v}$ à travers un pavé élémentaire de côtés $\d x \times \d y \times \d z$, et de coin le point $(x,y,z)$, vaut
+\begin{align*}
+\oiint_S \Vec{v}\cdot \Vec{\d S} & = [v_x(x+\d x,y,z) - v_x(x,y,z) ]\d y \d z   \\ & + [v_y(x,y+\d y,z) - v_y(x,y,z) ]\d x \d z \\  & + [v_z(x,y,z+\d z) - v_z(x,y,z) ]\d x \d y  \\ &
+\underset{\text{DL1}}{\simeq} \left(\dr{v_x}{x} + \dr{v_y}{y} + \dr{v_z}{z}\right) \d x \d y \d z.
+\end{align*}
+Or $\d x \d y \d z = \d V$.
+D'après le théorème de Green-Ostrogradski, on a donc
+\eqbox[*]{\dive{\Vec{v}} =\dr{v_x}{x} + \dr{v_y}{y} + \dr{v_z}{z}.}
+\parag{Coordonnées cylindriques et sphériques} Dans les autres systèmes de coordonnées : en cylindrique, $\Vec{v}(r,\theta,z)$ a pour divergence
+$$
+\dive{\Vec{v}} = \frac{1}{r} \dr{(r v_r)}{r} + \frac{1}{r} \dr{v_\theta}{\theta} + \dr{v_z}{z};
+$$
+en sphérique, $\Vec{v}(r,\theta,\varphi)$ a pour divergence
+$$
+\dive{\Vec{v}} = \frac{1}{r^2} \dr{(r^2 v_r)}{r} + \frac{1}{r \sin \theta} \dr{(\sin \theta \, v_\theta)}{\theta} + \frac{1}{r \sin \theta} \dr{v_\varphi}{\varphi}.
+$$
+
+
+\subsection{Rotationnel}
+
+Soit $\Vec{v}(M)$ un champ vectoriel (vitesse, densité de courant, etc.).
+\begin{definition}[Théorème de Stokes]
+On appelle \imp{rotationnel} de $\Vec{v}$ le champ vectoriel $\Rot{\Vec{v}}$ tel que pour toute surface $S$ porté par un circuit fermé $\Gamma$, la circulation de~$\Vec{v}$ s’écrit
+$$
+\oint_\Gamma \Vec{v}\cdot \Vec{\d \ell} = \iint_S \Rot{\Vec{v}} \cdot \Vec{ \d S}.
+$$
+\end{definition}
+%\begin{remarque}
+%Comme $\Vec{\d \ell}$ est homogène à une distance (L),
+%\end{remarque}
+\begin{prop}\label{prop:}
+La direction de $\Rot{\Vec{v}}$ indique autour de quel axe  le champ $\Vec{v}$ s'enroule.
+
+Le sens  de $\Rot{\Vec{v}}$ indique dans quel sens le champ $\Vec{v}$ s'enroule.
+
+La norme  de $\Rot{\Vec{v}}$ indique avec quelle intensité le champ $\Vec{v}$ s'enroule.
+\end{prop}
+
+
+
+\parag{Coordonnées cartésiennes}
+La circulation de $\Vec{v}$ le long un carré élémentaire parcouru dans le sens direct de côtés $\d x \times \d y$, de vecteur surface $\Vec{\d S} = \d x \d y \,\ez$, et de coin le point $(x,y,z)$,  vaut
+\begin{align*}
+\oint_\Gamma \Vec{v}\cdot \Vec{\d \ell} & = [v_x(x,y+\d y,z) - v_x(x,y,z) ]\d x  \\  & + [v_y(x+\d x,y,z) - v_y(x,y,z) ]\d y  \\
+& \underset{\text{DL1}}{\simeq} \left(\dr{v_x}{y} -\dr{v_y}{x}\right) \d x \d y.
+\end{align*}
+%Or $\d x \d y \d z = \d V$.
+D'après le théorème de Stokes, on a donc
+\eqbox[*]{
+\Rot{\Vec{v}} =
+\left(
+\dfrac{\partial v_z}{\partial y} - \dfrac{\partial v_y}{\partial z}
+\right)\ex
++
+\left(
+\dfrac{\partial v_x}{\partial z} - \dfrac{\partial v_z}{\partial x}
+\right)\ey
++
+\left(
+\dfrac{\partial v_y}{\partial x} - \dfrac{\partial v_x}{\partial y}
+\right) \ez.
+}
+
+\def\WID{0.12\textwidth}
+\begin{figure}[h!]
+\centering
+\subfigure[]{
+\includegraphics[height=\WID]{curl1-crop.pdf}
+}
+\subfigure[]{
+\includegraphics[height=\WID]{curl3-crop.pdf}
+}
+\subfigure[]{
+\includegraphics[height=\WID]{curl2-crop.pdf}
+}
+\hspace{0.1cm}
+\subfigure[]{
+\includegraphics[height=\WID]{curl5-crop.pdf}
+}
+\caption{(a) Le champ $\Vec{v}$ tourne autour du point $M$ dans le sens direct. (b) Le champ $\Vec{v}$ tourne autour de $M$ dans le sens indirect. (c) Le champ $\Vec{v}$ cisaille le point $M$ dans le sens indirect.  (d) Le champ $\Vec{v}$ est uniforme.
+}
+\label{fig:}
+\end{figure}
+%%%%%%%%%%%%
+
+
+\parag{Coordonnées cylindriques et sphériques} Dans les autres systèmes de coordonnées : en cylindrique, $\Vec{v}(r,\theta,z)$ a pour divergence
+$$
+\rot{\Vec{v}} = \pa{\frac{1}{r}\, \frac{\partial v_z}{\partial \theta} - \frac{\partial v_\theta}{\partial z}} \er + \pa{\frac{\partial v_r}{\partial z} -\frac{\partial v_z}{\partial r}} \et +  \frac{1}{r} \pa{\frac{\partial (r\, v_\theta)}{\partial r} - \frac{\partial v_r}{\partial \theta}} \vv{e_z} ;
+$$
+en sphérique, $\Vec{v}(r,\theta,\varphi)$ a pour divergence
+\begin{multline*}
+\rot{\Vec{v}} = \frac{1}{r\, \sin \theta} \pa{\frac{1}{r}\, \frac{\partial (\sin \theta\, v_\varphi)}{\partial \theta} - \frac{\partial v_\theta}{\partial \varphi}} \er + \frac{1}{r} \pa{\frac{1}{\sin \theta}\, \frac{\partial v_r}{\partial \varphi} -\frac{\partial (r\, v_\varphi)}{\partial r}} \et \\ +  \frac{1}{r} \pa{\frac{\partial (r\, v_\theta)}{\partial r} - \frac{\partial v_r}{\partial \theta}} \ep.
+\end{multline*}
+
+\subsection{Advection}
+
+\parag{Advection d'un champ scalaire}
+Soit $\Vec{v}(M)$ et $\Vec{w}(M)$ deux champs vectoriels (vitesse, densité de courant, etc.). Soit $f(M)$ un champ scalaire (pression, température, altitude, etc.).
+
+\begin{definition}
+On appelle \imp{advection} du champ scalaire $f$ par $\Vec{v}$ le champ scalaire $$\Vec{v} \cdot \grad f.$$
+
+% v_x \dr{\Vec{w}}{x} + v_y \dr{\Vec{w}}{y} + v_z \dr{\Vec{w}}{z}.
+\end{definition}
+
+En coordonnées cartésiennes, l'expression du gradient donne
+\eqbox[*]{
+\Vec{v} \cdot \grad f  =  v_x \dr{f}{x} + v_y \dr{f}{y} + v_z \dr{f}{z}.
+}
+En coordonnées cylindriques,
+$$
+\Vec{v} \cdot \grad f  =  v_r \dr{f}{r} + \frac{v_\theta}{r} \dr{f}{\theta} + v_z \dr{f}{z}.
+$$
+% Les expressions dans les systèmes de coordonnées cylindriques et sphériques sont rarement utilisées.
+%Par analogie,
+
+\parag{Advection d'un champ vectoriel}
+% On étend cette définition à un champ vectoriel $\Vec{w}(M)$.
+\begin{definition}
+On appelle \imp{advection} du champ vectoriel $\Vec{w}$ par $\Vec{v}$ le champ vectoriel
+$$
+(\Vec{v} \cdot \grad) \Vec{w} = v_x \dr{\Vec{w}}{x} + v_y \dr{\Vec{w}}{y} + v_z \dr{\Vec{w}}{z}.
+$$
+
+\end{definition}
+
+\parag{Coordonnées cartésiennes} Nous avons défini l'advection d'un champ vectoriel uniquement en coordonnées cartésiennes. Elle peut aussi s'écrire
+\eqbox[*]{
+(\Vec{v} \cdot \grad) \Vec{w }  = (\Vec{v} \cdot \grad{w_x})\ex  +  (\Vec{v} \cdot \grad{w_y})\ey  +  (\Vec{v} \cdot \grad{w_z})\ez.
+}
+Les expressions dans les systèmes de coordonnées cylindriques et sphériques sont rarement utilisées.
+\parag{Accélération convective} L’accélération convective désigne l’advection du champ des vitesses $\Vec{v}$ par lui-même. Elle s’écrit aussi
+$$
+(\Vec{v} \cdot \grad) \Vec{v} = \grad\left( \frac{v^2}{2} \right) + \rot \Vec{v} \pv \Vec{v}.
+$$
+Cette formule est particulièrement utile dans les écoulements irrotationnels.
+
+\section{Opérateurs du second ordre}
+
+
+\subsection{Dérivées partielles d'ordre deux}
+
+Pour simplifier, soit une fonction scalaire de deux variables seulement $f(x,y)$. Les dérivées partielles de $f$ par rapport à $x$ et $y$ sont elles-mêmes des fonctions des variables $x$ et $y$.
+% $$
+% \dr{f}{x}(x,y,z), \quad \dr{f}{y}(x,y,z), \quad \dr{f}{z}(x,y,z).
+% $$
+On peut donc calculer les dérivées partielles de chacune de ces fonctions, appelées dérivées partielles secondes, que l'on note de la façon suivante :
+
+$$
+ \left\{
+\begin{array}{ll}
+\displaystyle
+\dr{}{x}\left(\dr{f}{x}\right) = \ddr{f}{x}, & \displaystyle\dr{}{x}\left(\dr{f}{y}\right) = \dcr{f}{x}{y}, \\[0.3cm]
+\displaystyle\dr{}{y}\left(\dr{f}{x}\right) = \dcr{f}{y}{x}, & \displaystyle\dr{}{y}\left(\dr{f}{y}\right) = \ddr{f}{y}.  \\
+\end{array}
+ \right.
+ $$
+
+% $
+%  \left\{
+% \begin{array}{lll}
+% \displaystyle
+% \dr{}{x}\left(\dr{f}{x}\right) = \ddr{f}{x}, & \displaystyle\dr{}{x}\left(\dr{f}{y}\right) = \dcr{f}{x}{y}, & \displaystyle\dr{}{x}\left(\dr{f}{z}\right) = \dcr{f}{x}{z}.\\[0.3cm]
+% \displaystyle\dr{}{y}\left(\dr{f}{x}\right) = \dcr{f}{y}{x}, & \displaystyle\dr{}{y}\left(\dr{f}{y}\right) = \ddr{f}{y}, & \displaystyle\dr{}{y}\left(\dr{f}{z}\right) = \dcr{f}{y}{z}. \\[0.3cm]
+% \displaystyle\dr{}{z}\left(\dr{f}{x}\right) = \dcr{f}{x}{z}, & \displaystyle\dr{}{z}\left(\dr{f}{y}\right) = \dcr{f}{z}{y}, & \displaystyle\dr{}{z}\left(\dr{f}{z}\right) = \ddr{f}{z}.
+% \end{array}
+%  \right.
+%  $
+
+Ces notations s'étendent à une fonction de plus de deux variables.  Pour toutes les fonctions rencontrées en physique, les dérivées croisées par rapport à $x$ et $y$ sont égales en vertu du théorème de Schwartz.
+\begin{theorem}[Théorème de Schwartz]
+Soit $f(x,y)$ une fonction de deux variables suffisamment régulière. Alors les dérivées croisées ne dépendent pas de l'ordre de dérivation,
+$$
+\dcr{f}{y}{x} = \dcr{f}{x}{y}.
+$$
+\end{theorem}
+
+Or peut définir un opérateur à partir des dérivées secondes pour les fonctions scalaires $f(M)$ et vectorielles $\Vec{v}(M)$ : le laplacien.
+%Tous les opérateurs de cette section ($\dr{}{x}$, $\grad{}$, $\dive{}$, $\rot{}$)
+% font intervenir des dérivées spatiales d'ordre $1$.
+\subsection{Laplacien scalaire}
+
+
+
+Soit $f(M)$ un champ scalaire (pression, température, altitude, etc.).
+
+\begin{definition}
+On appelle \imp{laplacien scalaire} de $f$ le champ scalaire
+% $\Delta f$ défini par
+$$
+ \Delta f = \Dive{}\Grad{f}.
+$$
+\end{definition}
+
+
+\begin{prop}\label{prop:}
+Si $\Delta f > 0$ en $M$, la grandeur $f$ est en manque au point $M$.
+
+Si $\Delta f < 0$ en $M$, la grandeur $f$ est en excès au point $M$.
+
+Si $\Delta f = 0$ en $M$, la grandeur $f$ ne s'accumule pas au point $M$.
+\end{prop}
+
+\def\WID{0.23\textwidth}
+\begin{figure}[h!]
+\centering
+\subfigure[]{
+\includegraphics[width=\WID]{p_map.png}
+}
+\subfigure[]{
+\includegraphics[width=\WID]{gradp_lap.pdf}
+}
+\vspace{-0.1cm}
+\caption{(a) Lignes isobares $p(M)=\cte$. (b) Le champ $\grad{p}$ converge vers les régions de haute pression (H) et diverge des zones de basse pression (L). Or $\Delta p = \dive{}\grad{p}$.
+Donc $\Delta p < 0$ en H et $\Delta p > 0$ en L.}
+\label{fig:}
+\end{figure}
+%%%%%%%%%%%%%
+
+\parag{Coordonnées cartésiennes} D'après les expressions du gradient,
+$$
+\Delta f = \dive{}\!\left(\dr{f}{x} \ex + \dr{f}{y} \ey + \dr{f}{z} \ez \right),
+$$
+soit d'après l'expression de la divergence,
+\eqbox[*]{\Delta f =
+\frac{\partial^2 f}{\partial x^2} +  \frac{\partial^2 f}{\partial y^2} + \frac{\partial^2 f}{\partial z^2} .
+}
+% $$ \boxed{ \Delta f =
+% \left| \begin{matrix}
+% \dfrac{\partial }{\partial x} \$$3mm]
+% \dfrac{\partial }{\partial y} \$$3mm]
+% \dfrac{\partial }{\partial z}
+% \end{matrix}
+% \right. \cdot
+% \left| \begin{matrix}
+% \dfrac{\partial f}{\partial x} \$$3mm]
+% \dfrac{\partial f}{\partial y} \$$3mm]
+% \dfrac{\partial f}{\partial z}
+% \end{matrix}
+% \right. = \frac{\partial^2 f}{\partial x^2} +  \frac{\partial^2 f}{\partial y^2} + \frac{\partial^2 f}{\partial z^2} }
+% $$
+
+
+\parag{Coordonnées cylindriques et sphériques} Dans les autres systèmes de coordonnées : en cylindrique, $f(r,\theta,z)$ a pour laplacien
+$$ \Delta f = \frac{1}{r}\, \frac{\partial}{\partial r}\pa{ r\, \frac{\partial f}{\partial r}} + \frac{1}{r^2}\, \frac{\partial^2 f}{\partial \theta^2} + \frac{\partial^2 f}{\partial z^2};$$
+en sphérique, $f(r,\theta,\varphi)$ a pour laplacien
+$$ \Delta f = \frac{1}{r^2}\, \frac{\partial}{\partial r}\left( r^2 \dr{f}{r}\right) + \frac{1}{r^2\, \sin \theta}\, \frac{\partial}{\partial \theta} \pa{\sin \theta\, \frac{\partial f}{\partial \theta}} + \frac{1}{r^2\, \sin^2 \theta}\, \frac{\partial^2 f}{\partial \varphi^2}.$$
+%\noindent \textbf{Remarque :} Le laplacien scalaire est en m$^{-2}$ (comme une dérivée seconde spatiale).
+
+\subsection{Laplacien vectoriel}
+
+Soit $\Vec{v}(M)$ un champ vectoriel (vitesse, densité de courant, etc.).
+\begin{definition}
+On appelle \imp{laplacien vectoriel} de $\Vec{v}$ le champ vectoriel
+$$
+\Delta \vv{v} = \grad{}\dive{\vv{v}} - \rot{\rot{\vv{v}}} .
+$$
+\end{definition}
+%\begin{remarque}
+%On ne note pas $\JRouge{\Vec{\Delta}} \Vec{v}$ pour éviter toute confusion avec un produit scalaire.
+%\end{remarque}
+
+
+\parag{Coordonnées cartésiennes} Dans ces coordonnées seulement, les composantes du laplacien vectoriel sont les laplaciens scalaires des composantes,
+\eqbox[*]{\Delta \vv{v} =
+\Delta v_x \,\ex +
+\Delta v_y \, \ey +
+\Delta v_z \, \ez.
+}
+En coordonnées cylindriques et sphériques, son expression est très lourde.
+
+\noindent \textbf{Remarque :} Le laplacien vectoriel est en m$^{-2}$ (comme une dérivée seconde spatiale).
+
+
+\section{Formules}
+
+\parag{Théorèmes d’existence}
+Pour tous champs scalaire $f$ et vectoriel $\Vec{v}$ :
+$$\rot \grad f = \vv{0} \qquad \text{et} \qquad \dive \rot \vv{v} = 0. $$
+Les réciproques sont vraies. Pour tout champ vectoriel $\Vec{v}$ :
+$$\rot \Vec{v} = \vv{0} \Rightarrow  \text{il existe un champ scalaire }f\text{ tel que } \Vec{v} = \grad f ; $$
+%Pour tout champ vectoriel $\Vec{v}$ :
+$$\dive \Vec{v} = \vv{0} \Rightarrow  \text{il existe un champ vectoriel }\Vec{w}\text{ tel que } \Vec{v} = \rot \Vec{w}. $$
+
+\begin{remarque}
+  En électrostatique, l'équation de Maxwell-Faraday $\rot \E = \Vec{0}$ assure l'existence du potentiel électrostatique $V(M)$, tel que $\E = - \grad{V}$.
+\end{remarque}
+
+
+
+\parag{Produits}
+Pour tous champs scalaires $f, g$ et tout champ vectoriel $\Vec{v}$ :
+$$
+\grad (f g ) =f \, \grad g + g \, \grad f ;
+$$
+$$
+\dive (f \Vec{v} ) =f \, \dive \Vec{v} +  \grad f \ps \Vec{v}.
+$$
+$$
+\rot (f \Vec{v} ) =f \, \rot \Vec{v} + \grad f \pv \Vec{v}.
+$$
+Pour tous champs vectoriel $\Vec{v}$  et $\Vec{w}$ :
+$$
+\dive ( \Vec{v} \pv \Vec{w} ) = - \Vec{v} \ps \rot \Vec{w} + \Vec{w} \ps \rot \Vec{v}.
+$$
+Pour tout champ vectoriel uniforme $\Vec{v_0}$ et tout champ vectoriel $\Vec{w}$ :
+$$
+\grad ( \Vec{v_0} \ps \Vec{w} ) = (\Vec{v_0} \ps \grad) \Vec{w} + \Vec{v_0} \pv \rot \Vec{w}.
+$$
+$$
+\rot ( \Vec{v_0} \pv \Vec{w} ) = \Vec{v}  \,(\dive \Vec{w}) - (\Vec{v_0} \ps \grad) \Vec{w}.
+$$
+\end{document}

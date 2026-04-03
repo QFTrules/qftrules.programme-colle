@@ -1,0 +1,11 @@
+\input{tikz.tex}
+\begin{document}
+\begin{tikzpicture}[x={(-1cm,-0.4cm)}, y={(0.8cm, -0.3cm)}, z={(0cm,1cm)}, line join=round]
+    % radius a of helix
+    \draw[red, thick] (0,0,-0.8) -- ++(-0.7,0.7,0) node[above right,midway] {$a$};
+    % z axis
+    \draw[->] (0,0,-5) -- (0,0,1) node[above] {$z$};
+    %  helix
+\draw[blue, very thick] plot[domain=0.3:3, samples=200, smooth, variable=\t] ({cos(8*\t r)},{sin(8*\t r)},{\t*sqrt(\t)-5});
+\end{tikzpicture}
+\end{document}

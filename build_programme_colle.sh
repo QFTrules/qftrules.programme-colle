@@ -4,26 +4,29 @@
 # RED="\033[1;31m"
 # END='\e[0m'
 
-collepath=$1
-stypath=$2
-pythoncommand=$3
-pythonpath=$4
+dirname=$1
+tmpdir=$1"tmp/"
+collepath=$2
+stypath=$3
+pythoncommand=$4
+cpgepath=$5
+mdpath=$6
 
 # change directory
 # cd ~/Dropbox/.latex/Commands/
-cd ./tmp/
+cd $tmpdir
 ProgColle="ProgrammeColle.tex"
 # create list of files to parse
-find ~/Dropbox/CPGE/Physique/Cours/ \( -name "*.tex" ! -name "*TD*" ! -name "*Fig*" ! -name "*Doc*" \) | sort > list_cours.txt
+find $cpgepath/Cours/ \( -name "*.tex" ! -name "*TD*" ! -name "*Fig*" ! -name "*Doc*" \) | sort > list_cours.txt
 # find ~/Dropbox/PCAME/Cours/ \( -name "*.tex" ! -name "*TD*" ! -name "*Fig*" ! -name "*Doc*" \) | sort > list_cours.txt
 # echo "List of Cours files printed in list_cours.txt"
-find ~/Dropbox/CPGE/Physique/TD/ -name "*TD*.tex" | sort > list_TD.txt
+find $cpgepath/TD/ -name "*TD*.tex" | sort > list_TD.txt
 # echo "List of TD files printed in list_TD.txt"
-find ~/Dropbox/CPGE/Physique/Devoirs/DM -name "*.tex" | sort > list_DM.txt
+find $cpgepath/Devoirs/DM -name "*.tex" | sort > list_DM.txt
 # echo "List of DM files printed in list_DM.txt"
-find ~/Dropbox/CPGE/Physique/Devoirs/DS/ -name "*.tex" | sort > list_DS.txt
+find $cpgepath/Devoirs/DS/ -name "*.tex" | sort > list_DS.txt
 # echo "List of DS files printed in list_DS.txt"
-find ~/Dropbox/CPGE/Physique/TP/ -name "*.tex" | sort > list_TP.txt
+find $cpgepath/Devoirs/TP/ -name "*.tex" | sort > list_TP.txt
 # echo "List of TP files printed in list_TP.txt"
 
 # create tex file with programme de colle
@@ -36,7 +39,7 @@ echo "\input{/home/eb/Dropbox/texmf/tex/latex/Preambles/progcolle.sty}%$
       \input{/home/eb/Dropbox/texmf/tex/latex/Preambles/programme.tex}%$
       \begin{document}
       \tableofcontents
-      " > $ProgColle
+      " > $tmpdir$ProgColle
 
 # echo "Warning : "
 # fetch program in all lecture files
@@ -46,7 +49,7 @@ do
   then
     # simple_fichier=$(basename "$fichier")
     # echo -e "${RED}Cours${END} $simple_fichier added to programme de colle"
-    $pythoncommand $pythonpath/build_programme_colle_java.py $fichier $ProgColle
+    $pythoncommand $dirname/build_programme_colle_java.py $fichier $ProgColle
   else
       continue
   fi
@@ -60,7 +63,7 @@ do
   then
     # simple_fichier=$(basename "$fichier")
     # echo -e "${RED}TD${END} $simple_fichier added to programme de colle"
-    $pythoncommand $pythonpath/build_programme_colle_java.py $fichier $ProgColle
+    $pythoncommand $dirname/build_programme_colle_java.py $fichier $ProgColle
   else
       continue
   fi
@@ -74,7 +77,7 @@ do
   then
     # simple_fichier=$(basename "$fichier")
     # echo -e "${RED}DM${END} $simple_fichier added to programme de colle"
-    $pythoncommand $pythonpath/build_programme_colle_java.py $fichier $ProgColle
+    $pythoncommand $dirname/build_programme_colle_java.py $fichier $ProgColle
   else
       continue
   fi
@@ -88,7 +91,7 @@ do
   then
     # simple_fichier=$(basename "$fichier")
     # echo -e "${RED}DS${END} $simple_fichier added to programme de colle"
-    $pythoncommand $pythonpath/build_programme_colle_java.py $fichier $ProgColle
+    $pythoncommand $dirname/build_programme_colle_java.py $fichier $ProgColle
   else
       continue
   fi
@@ -102,7 +105,7 @@ do
   then
     # simple_fichier=$(basename "$fichier")
     # echo -e "${RED}TP${END} $simple_fichier added to programme de colle"
-    $pythoncommand $pythonpath/build_programme_colle_java.py $fichier $ProgColle
+    $pythoncommand $dirname/build_programme_colle_java.py $fichier $ProgColle
   else
       continue
   fi
@@ -186,7 +189,7 @@ rm ${ProgColle%.*}.*
 
 # COMPILE MD FILE FOR GITHUB PAGES
 mdName="_PC_Phy_colle.md"
-mdpath="/mnt/6c456fe5-0860-4e31-b184-d80b85b72fc1/qftrules.github.io/_docs/"
+# mdpath="/mnt/6c456fe5-0860-4e31-b184-d80b85b72fc1/qftrules.github.io/_docs/"
 echo "---
 layout: document
 image: /assets/images/3.jpg

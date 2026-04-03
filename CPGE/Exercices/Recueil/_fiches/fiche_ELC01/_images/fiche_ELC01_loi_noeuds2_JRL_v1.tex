@@ -1,0 +1,16 @@
+\begin{tikzpicture}[
+	scale=1,
+	font=\footnotesize
+	]
+	\draw[-latex,shift={(-1,2)}](0,0)--(10pt,0)node[midway,above]{$i$};
+	\draw[-latex,shift={(5,1.25)}](-5pt,0)--(5pt,0)node[midway,above]{$i$};
+	\draw[-latex,shift={(3,2.75)}](5pt,0)--(-5pt,0)node[midway,above]{$i$};
+	\draw(-1,2)--++(1,0)node{•}node[below]{\ptA} --++(2,0)node{•}node[above]{\ptB}--++(2,0)node{•}node[below]{\ptC}--++(2,0)node{•}node[above]{\ptD}--++(1,0);
+	\draw (0,2) rectangle(4,2.75);
+	\draw (2,2) rectangle(6,1.25);
+	\resistanceH{shift={(2,2.75)}}{};
+	\resistanceH{shift={(4,1.25)}}{};
+	\resistanceH{shift={(1,2)}}{};
+	\resistanceH{shift={(3,2)}}{};
+	\resistanceH{shift={(5,2)}}{};
+\end{tikzpicture}

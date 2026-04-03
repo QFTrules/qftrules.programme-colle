@@ -1,0 +1,38 @@
+\def\longueurVecteurs{0.75}
+
+\begin{tikzpicture}[force/.style={->,>=latex,draw=\blueOrBlack,very thick,nodes={\blueOrBlack}}]
+  \tikzstyle{fleche}=[->,>=stealth];
+
+  \coordinate (O) at (0,0);
+  \coordinate (A) at (0,2*\longueurVecteurs);
+  \coordinate (B) at (1.5*\longueurVecteurs,0);
+  \coordinate (C) at (-1.5*\longueurVecteurs,0);
+
+  \draw [fleche] (-2*\longueurVecteurs,0) -- (3*\longueurVecteurs,0) node [right] {$x$};
+  \draw [fleche] (O) -- (0,3.1*\longueurVecteurs) node [right] {$y$};
+
+  \draw[dashed] (B) -- (A);
+
+  \draw ($(B)+(0,5pt)$) -- ($(B)-(0,5pt)$) node [below] {$a$};
+  \draw ($(A)+(5pt,0)$) -- ($(A)-(5pt,0)$) node [left] {$y$};
+
+  \draw ($(C)+(0,5pt)$) -- ($(C)-(0,5pt)$) node [below] {$-a$};
+  
+
+  \draw [fleche] ($(B)+(-0.4*1.5*\longueurVecteurs,0.4*2*\longueurVecteurs)$) arc (127:180:\longueurVecteurs);
+  \path (B)++(153:1.2*\longueurVecteurs) node {$\alpha$};
+
+  \draw [fleche, very thick] (O) -- (\longueurVecteurs,0) node [below left] {$\vv{e_x}$};
+  \draw [fleche, very thick] (O) -- (0,\longueurVecteurs) node [left] {$\vv{e_y}$};
+  
+  \draw [force, \blueOrBlack] (A) -- ($(A)+(-0.75*\longueurVecteurs,\longueurVecteurs)$) node [left] {$\vv{F}$};
+
+  \draw (O) node[below] {$\ptO$};
+  \draw (A) node {\color{\redOrBlack} $\bullet$};
+  \draw ($(A)+(5pt,0)$) node[right] {$q_0$, $\ptA$};
+
+  \draw (B) node {\color{\redOrBlack} $\bullet$};
+  \draw ($(B)+(5pt,5pt)$) node[above] {$q$, $\ptB$};
+
+  
+\end{tikzpicture}

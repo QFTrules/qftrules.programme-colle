@@ -1,0 +1,33 @@
+\input{tikz.tex}
+\begin{document}
+\begin{tikzpicture}[scale=1.5]
+    % axe x
+    \draw[->] (0,0) -- (5,0) node[right] {$x$};
+    % axe y
+    \draw[->] (0,0) -- (0,2.5) node[above] {$y$};
+    % miroir de normale suivant l'axe y
+    \coordinate (A) at (1,0.5);
+    \def\leng{2};
+    \draw[thick] (A) -- ++ (\leng,0) coordinate (B) node[below=0.2,midway] {Miroir};
+    % ticks inclinés sur le miroir
+    \begin{scope}[shift={(A)}, rotate=0]
+        \foreach \x in {0,0.25,...,\leng} {
+            \draw[thick] (\x,0) -- ++ (0.05,-0.1);
+        }
+    \end{scope}
+    % point source S
+    \coordinate (S) at (0.5,1.5);
+    \filldraw[black] (S) circle (1.5pt) node[above=0.1] {$S$};
+    % rayon incident d'angle alpha par rapport à x
+    \def\alph{33} % angle d'incidence
+    \draw[ray] (S) -- ($(A) + (0.5*\leng,0)$) coordinate (I);
+    % angle alpha entre le rayon incident et l'axe x
+    \draw[->] ($(A) + (0.2*\leng,0)$) arc (180:180-\alph:0.3*\leng) node[midway, left] {$\alpha$};
+    % rayon réfléchi d'angle alpha par rapport à y
+    \draw[ray] (I) -- ++ (\alph:2);
+    % point d'incidence I
+    % \filldraw[black] (I) circle (1.5pt);
+    % vitesse du miroir dans R
+    \draw[->,thick,JoliBleu] ($(B) + (0.2,0)$) -- ++ (0.5,0) node[right] {$\Vec{v}$};
+\end{tikzpicture}
+\end{document}

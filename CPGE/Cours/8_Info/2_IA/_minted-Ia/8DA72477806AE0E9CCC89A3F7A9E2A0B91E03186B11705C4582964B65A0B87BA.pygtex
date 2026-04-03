@@ -1,0 +1,13 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{def}\PYG{+w}{ }\PYG{n+nf}{bary}\PYG{p}{(}\PYG{n}{points}\PYG{p}{):}
+\PYG{+w}{    }\PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+\PYG{l+s+sd}{    Entrée : points = liste de points de dimension 2}
+\PYG{l+s+sd}{    Action : calcule le barycentre des points}
+\PYG{l+s+sd}{    Sortie : b = barycentre des points}
+\PYG{l+s+sd}{    \PYGZdq{}\PYGZdq{}\PYGZdq{}}
+    \PYG{n}{b} \PYG{o}{=} \PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{]}               \PYG{c+c1}{\PYGZsh{} initialisation du barycentre}
+    \PYG{k}{for} \PYG{n}{x} \PYG{o+ow}{in} \PYG{n}{points}\PYG{p}{:}        \PYG{c+c1}{\PYGZsh{} boucle sur les points}
+        \PYG{n}{b}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]} \PYG{o}{=} \PYG{n}{b}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]} \PYG{o}{+} \PYG{n}{x}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]}  \PYG{c+c1}{\PYGZsh{} addition coordonnée x1}
+        \PYG{n}{b}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]} \PYG{o}{=} \PYG{n}{b}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]} \PYG{o}{+} \PYG{n}{x}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]}  \PYG{c+c1}{\PYGZsh{} addition coordonnée x2}
+    \PYG{k}{return} \PYG{n}{b}\PYG{o}{/}\PYG{n+nb}{len}\PYG{p}{(}\PYG{n}{points}\PYG{p}{)}    \PYG{c+c1}{\PYGZsh{} barycentre = somme divisée par N}
+\end{Verbatim}

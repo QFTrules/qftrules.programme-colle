@@ -1,0 +1,572 @@
+%&TP5_divers
+% displayname : Diffusion thermique
+% \input{TP.sty}
+% \endofdump
+\begin{document}
+\Entete[TPrevision][
+\item Mettre en œuvre un dispositif
+expérimental utilisant une caméra thermique.
+\item Vérifier expérimentalement les lois de la diffusion thermique et de la conducto-convection.
+\item Mettre en œuvre un dispositif
+expérimental utilisant des capteurs
+inductifs.
+]{Divers}
+
+\matos{
+\item dispositif d'étude de la conductivité thermique (4 tiges métalliques, la cuve en métal, le bain thermostaté, le circuit d'eau chaude) ;
+\item tige d'environ $\SI{20}{cm}$ (à mesurer) pour servir d'étalon de longueur ;
+\item caméra thermique Chauvin-Arnoux ;
+\item PC avec CamReport et Regressi.
+\item Tubes en cuivre, alu, de différents diamètres. 1 tube en plastique pour toute la classe.
+\item Bobinages en spire, au moins 2 par groupe, idéalement 4 ou 5.
+\item Oscilloscope et carte d’acquisition Syzam.
+\item 1 aimant formées de 2 petits aimants au néodyme-fer-bore accolés par groupe.
+\item 1 balance pour la classe.
+\item 1 pied à coulisse par groupe. 1 longue règle en bois ou 1 mètre-ruban.
+\item des masselottes de 5g et de la patafix.
+}
+
+
+
+
+\section{Étude de la diffusion thermique}
+
+\subsection{Principe}
+\label{sec:exp}
+
+Nous allons étudier un dispositif pour modéliser le fonctionnement d’une ailette de refroidissement et mesurer une conductivité thermique $\lambda$ et un coefficient conducto-convectif $h$. Nous utiliserons une caméra sensible aux infrarouges (caméra thermique) pour relever un profil de température.% puis l’outil informatique \texttt{python} pour résoudre l’équation d’onde thermique régissant le régime transitoire de l’ailette.
+% Une ailette de refroidissement est un dispositif visant à augmenter la surface de contact d’un appareil électronique (par exemple un processeur d’ordinateur) avec l’air ambiant pour augmenter les échanges convectifs et donc accélérer le refroidissement de l’appareil. Pour étudier le fonctionnement d’une ailette de refroidissement, nous utiliserons le montage suivant.% de la \Fig{exp}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\begin{figure}[h!]
+%\centering
+%%\includegraphics[height=6cm]{Figures/cooler.jpg}\hspace{1cm}
+%\includegraphics[scale=1]{exp.pdf}
+%\caption{(a) Une ailette de refroidissement commerciale (avec son ventilateur). (b) Dispositif expérimentale pour l’étude d’une ailette.}
+%\label{fig:exp}
+%\end{figure}
+%%%%%%%%%%%%%%
+%\begin{liste}
+%\item d’un bloc de pyrex faisant office d’ailette, d’épaisseur $e=\SI{}{}$, de masse volumique $\mu = \SI{2.0e3}{kg.m^{-3}}$, et de capacité calorifique massique $c=\SI{750}{J.kg^{-1}.K^{-1}}$, de conductivité thermique $\lambda = \SI{}{}$ ;
+%\item de cuves en cuivre maintenus à la température $T_1=\SI{80}{\degree C}$ jouant le rôle de l’appareil à refroidir ;
+%\item d’une caméra thermique.
+%\end{liste}
+
+
+Un ensemble de quatre tiges métalliques (cuivre, aluminium, laiton, acier) sont disposées verticalement. L'extrémité haute est à l'air libre ; l'extrémité basse est inséré dans une cuve métallique reliée à un circuit d'eau chaude. L'eau est chauffé et pompé dans un bain thermostaté. Une caméra thermique permet de prendre des images infrarouge des tiges métalliques. Les matériaux des tiges métalliques ont les conductivités thermiques suivantes.
+
+\begin{table}[b]
+\centering
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+Matériau & Acier & Laiton & Aluminium & Cuivre \\
+\hline
+$\lambda~(\SI{}{W.m^{-1}.K^{-1}})$ & $54$ & $121$ & $200$ & $386$ \\
+\hline
+$c~(\SI{}{J.kg^{-1}.K^{-1}})$ & $502$ & $377$ & $897$ & $385$ \\
+\hline
+$\rho~(\SI{e3}{kg.m^{-3}})$ & $\num{7.5}-\num{8.1}$ & $\num{7.3}-\num{8.8}$ & $\num{2.7}$ & $\num{9.0}$ \\
+\hline
+\end{tabular}
+\caption{Propriétés physiques (conductivité thermique $\lambda$, capacité thermique massique $c$, masse volumique $\rho$) des quatre matériaux constituant les tiges. L’acier est un alliage de fer et de carbone ; le laiton un alliage de cuivre et de zinc.}
+\label{tab:donnees}
+\end{table}
+
+
+% \subsection{Caméra thermique}
+
+Un caméra thermique est un capteur optique analysant le rayonnement émis par un corps. Un caméra thermique est sensible aux infrarouges, et permet donc de mesurer avec précision des températures proches de la température ambiante.
+\begin{protocole}
+\todo Montrer que le pic d’émission du rayonnement thermique émis par un corps noir à température ambiante est situé dans l’infrarouge (IR) moyen (longueur d’onde entre $\SI{3}{\micro m}$ et $\SI{50}{\micro m}$).
+\end{protocole}
+%
+% La composition spectrale du rayonnement thermique dépend de la température, mais aussi du corps, qui n’est pas un corps noir dans la réalité ! On introduit l’\imp{émissivité} d’un corps $\epsilon$ telle que le flux surfacique spectral du corps vaut $\phi = \epsilon \phi_0$,
+% où $\phi_0$ désigne le flux du corps noir à la même température.
+%
+% \begin{protocole}
+% \item L'émissivité d'un métal varie beaucoup selon sa méthode d'usinage. Par exemple, on a $\epsilon \simeq \num{0.05}$ pour du cuivre poli et $\epsilon \simeq \num{0.8}$ pour du cuivre oxydé. Par contre, $\epsilon \simeq \num{0.95}$ pour le caoutchouc. Expliquer l'intérêt de coller un ruban de scotch noir sur les tiges métalliques.
+% \end{protocole}
+%
+% %Pour le scotch noir collé sur, l’émissivité vaut $\epsilon=\num{0.97}$ et est quasi-constante dans le domaine IR.
+%
+% \begin{remarque}
+% Vous pouvez vérifier la valeur de l'émissivité utilisée par la caméra en appuyant sur Menu (F1) $\rightarrow$ Target (flèches) $\rightarrow$ Emissivity (flèches).
+% \end{remarque}
+
+\subsection{Régime permanent de l’ailette}
+
+Nous étudierons uniquement le régime permanent (stationnaire) de la diffusion thermique dans les tiges métalliques.
+
+% \subsection{Profil théorique de température}
+
+On modélise une tige par un cylindre homogène de longueur $L=\SI{1}{m}$ et de rayon $a = \SI{12}{mm} \ll L$. Le problème est alors unidimensionnel. On note $T(x)$ la température à l’abscisse $x$ le long de la tige. Soit $h$ le coefficient conducto-convectif et $T_a$ la température de l’air.
+\begin{protocole}
+% \item  En effectuant un bilan thermique sur une épaisseur $\d x$ de l’ailette, montrer que la température vérifie l’équation
+
+% \begin{equation}
+% \ddm{T}{x}{2} = \frac{T(x)-T_a}{\delta^2}, \qquad
+%  \delta=\sqrt{\frac{a\lambda}{2h}}.
+% \end{equation}
+%  %Commenter la dépendance de $\delta$ en $R$, $\lambda$ et $h$.
+%  %Pour $h \simeq \SI{50}{SI}$.
+% Pour quels matériaux l'hypothèse $\delta \ll L$ est la mieux vérifiée ?
+% % On étudiera uniquement ces tiges par la suite.
+
+% \sol{
+%
+% }
+\todo
+La cuve impose une température $T(x=0)=T_0$ en bas de la tige. Dans l'hypothèse d'une tige semi-infinie, la température de la tige à son extrémité libre vaut celle de l’air ambiant, soit $T(x=\infty)=T_a$. On rappelle que le profil de température s'écrit
+\begin{equation}\label{eq:profil}
+T(x) = T_a + (T_0-T_a)\,e^{-x/\delta}, \Avec \delta=\sqrt{\frac{a\lambda}{2h}}.
+\end{equation}
+Si vous ne vous souvenez plus d'où vient ce résultat, reprendre le TD et le TP associés. Le coefficient de conducto-convection n'est pas connu, mais en ordre de grandeur on a $h \sim
+ \SI{50}{W.m^{-2}.K^{-1}}$. En déduire un ordre de grandeur pour $\delta$ pour le cuivre.
+
+\sol{
+Le bilan thermique donne
+\begin{multline*}
+j_q(x)s\d t-j_q(x+\d x)s\d t - 2h \pi a \d x (T(x)-T_0) =  0\\
+= -s\d t\lambda(\dd{T}{x}(x)-\dd{T}{x}(x+\d x)) -  h \pi d \d x (T(x)-T_0)\\
+= s\d t \lambda \d x\left[\ddm{T}{x}{2} - \frac{2\pi a  h}{s \lambda} \right].
+\end{multline*}
+Avec $s=\pi a^2$ la section, on trouve bien $\delta=\sqrt{\frac{a \lambda}{2h}}$.
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+Matériau & Acier & Laiton & Aluminium & Cuivre \\
+\hline
+$\delta~(\SI{}{cm})$ & $8$ & $12$ & $15$ & $22$ \\
+\hline
+\end{tabular}
+\end{center}
+Voir exo TD.
+}
+
+\end{protocole}
+
+% \subsection{Étude expérimentale}
+
+Nous réalisons maintenant l'analyse expérimentale.
+\begin{protocole}
+\item  Faire un schéma du dispositif expérimental.
+\sol{
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%\begin{figure}[h!]
+%%\centering
+%%\includegraphics[height=6cm]{Figures/cooler.jpg}\hspace{1cm}
+%\begin{center}
+%\includegraphics[scale=1]{exp.pdf}
+%\end{center}
+%%\caption{(a) Une ailette de refroidissement commerciale (avec son ventilateur). (b) Dispositif expérimentale pour l’étude d’une ailette.}
+%%\label{fig:exp}
+%%\end{figure}
+%%%%%%%%%%%%%%
+%Bien penser à surélever
+Penser à placer les tiges par conductivité croissante : de gauche à droite : acier, laiton, aluminium, cuivre.
+}
+
+\item Prendre une image infrarouge en appuyant sur le bouton F2 puis enregistrer avec F3. Mesurer la température de l'air $T_a$ en utilisant le curseur (Menu $\rightarrow$ Display $\rightarrow$ Cursor $\rightarrow$ Point). Rétablir le curseur sur le paramètre None.  Sortir la carte micro-SD et la connecter à votre PC.
+\item Ouvrir l'image avec le logiciel \texttt{CamReport}. On obtient une image similaire à la \Fig{cam_th}.
+%Vérifier pour quelles tiges l'hypothèse $\delta \ll L$ semble vérifiée.
+Tracer une ligne sur une des tiges (Relevé $\rightarrow$ Ligne). Sur la ligne, faire Clic droit $\rightarrow$ Enregistrer les températures au format CSV.
+
+%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.3\textwidth]{IR.png}
+\caption{Image infrarouge des quatre tiges métalliques (de gauche à droite : acier, laiton, aluminium, cuivre). Le barreau tout à droite est de hauteur $H$ connue et sert d’étalon de longueur.}
+\label{fig:cam_th}
+\end{figure}
+%%%%%%%%%%%%%%
+
+\item Nous avons besoin d'une échelle sur l'image pour convertir les pixels en distance. Pour cela, une barre épaisse de hauteur connue $H$ a été placée parallèlement aux tiges. Tracer une ligne sur la toute la longueur de cette barre (Relevé $\rightarrow$ Ligne), puis tracer le graphe de distribution de température (Relevé $\rightarrow$ Graphe de distribution). Compter le nombre total de pixels $N$, puis calculer la taille $p=\frac{H}{N}$ d'un pixel.
+\item Ouvrir le fichier CSV et copier la colonne contenant les températures. Ouvrir le logiciel \texttt{Regressi} et faites Nouveau $\rightarrow$ Presse-papier. Définir la variable température $T$, d'unité $\SI{}{\dC}$. Créer ensuite la variable position $x= p\times i$ en $\SI{}{cm}$ dans Grandeur $\rightarrow$ Tableau $\rightarrow$ Ajouter $\rightarrow$ Fonction.
+
+\item Dans l’onglet Grandeur $\rightarrow$ Tableau, cliquer sur la colonne indiquant la température $T$. Ajouter une incertitude-type sur $T$ (justifier la valeur choisie), puis l’afficher dans le tableau en cliquant sur Incertitudes.
+
+\item Tracer le profil de température $T(x)$ (Graphe $\rightarrow$ Coordonnées). On obtient un profil similaire à la \Fig{profil_T}. Modéliser le profil par la fonction exponentielle de l'\Eq{profil}, en prenant pour $T_a$ la température de l'air mesurée et pour $T_0$ la température du premier pixel en $x=0$. En déduire $\delta$ avec son incertitude-type.
+
+%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.48\textwidth]{T_vs_x.pdf}
+\caption{Profil de température mesuré sur l’aluminium. Une régression exponentielle donne $T(x)=T_a+(T_0-T_a)e^{-x/\delta}$ avec $\delta = \SI{14\pm0.2}{cm}$, où la température de l'air a été mesurée à $T_a = \SI{19}{\dC}$.}
+\label{fig:profil_T}
+\end{figure}
+%%%%%%%%%%%%%
+
+\item Refaire tout ce travail pour un tige fait d'un autre matériau, et pour toutes les autres tiges si le temps le permet. 
+
+
+
+
+%\item Lorsque la droite est correctement positionnée, cliquer dessus avec le bouton droit
+%de la souris et sélectionner Distribution. Une courbe $T(x)$ apparaît avec en abscisse
+%des numéros de pixel.
+%
+%\item Cliquer sur la courbe avec le bouton droit de la souris et sélectionner Exporter donnée puis enregistrer dans votre répertoire au format .csv.
+%\item Ouvrir ce fichier .csv avec \texttt{OpenOffice} et le mettre en forme pour pouvoir l’ouvrir avec \texttt{Regressi} : supprimer les lignes d’en-tête inutiles et donner un nom adapté à
+%chaque colonne. Enregistrer et fermer.
+%\item Ouvrir enfin le fichier .csv mis forme avec \texttt{Regressi}.
+%\item Créer une nouvelle grandeur calculée permettant de convertir l’abscisse en pixels
+%fournie par \texttt{RayCam} en longueur. Déterminer le
+%facteur d’échelle connaissant le nombre de points de mesure et la longueur mesurée $L$ de
+%l’ailette. On obtient alors une courbe similaire à la \Fig{profil_T}.
+
+%
+%\item Mesurer $T_0$ indépendamment (avec un thermomètre par exemple). Effectuer une régression affine de $\ln(T-T_0)$ en fonction de $x$, en ajoutant les \imp{incertitudes} associées à $T$ et $x$. Commenter et en déduire la valeur expérimentale de $\delta$ puis de $h$.
+%\sol{
+%Typiquement, $\delta \simeq \SI{20}{mm}$.
+%}
+
+\end{protocole}
+% \subsection{Analyse des résultats}
+Il nous reste à comparer les valeurs expérimentales de $\delta$ aux valeurs attendues.
+Le problème est que le coefficient conducto-convectif $h$ n’est pas bien connu. On suppose alors qu’une des conductivités thermiques est connue, par exemple celle du cuivre $\lambda_{\rm Cu}$, et on détermine les autres conductivités thermiques à partir des valeurs mesurées de $\delta$.
+% Nous proposons donc deux façons d’analyser nos résultats.
+\begin{protocole}
+% \item \underline{Première analyse} : on suppose la conductivité thermique $\lambda$ connue et on en déduit $h$ à partir de la valeur mesurée de $\delta$. Estimer $h$ à partir d’une de vos mesures. Comparer à la valeur de $h$ obtenue avec les tiges faites d’un autre matériau.
+%
+% \sol{
+% Pour l’aluminium, de distance caractéristique  $\delta = \SI{14\pm0.2}{cm}$, on trouve $h\sim \SI{50}{W.m^{-2}.K^{-1}}$.
+% }
+\item
+% \underline{Deuxième analyse} :
+  Montrer que pour un matériau de conductivité thermique $\lambda$ et de distance caractéristique $\delta$, on a
+% \begin{equation}
+$\lambda = \lambda_{\rm Cu}\left(\delta/\delta_{\rm Cu}\right)^2.$
+% \end{equation}
+Ce rapport est indépendant de $h$, qu’il n’est donc pas nécessaire de connaître !
+En utilisant la valeur tabulée de $\lambda_{\rm Cu}$ et les valeurs mesurées de $\delta$ et $\delta_{\rm Cu}$, calculer la conductivité thermique $\lambda$ du matériau choisi. Comparer à la valeur tabulée.
+\end{protocole}
+
+%
+% \section{Régime transitoire de l’ailette}
+% %
+% %\subsection{Profil théorique de température}
+%
+% %On suppose toujours que le problème est unidimensionnel.
+% Maintenant, on enlève les tiges, puis on laisse circuler l’eau chaude dans la cuve jusqu’à ce que la cuve ait atteint l’équilibre thermique et soit à la température de l’eau. On note alors $T_0$ la température de la cuve. À l’instant $t=0$, on place les tiges dans leurs emplacements. On note $T(x,t)$ la température à l’abscisse $x$ et à l’instant~$t$. On note $\kappa$ la diffusivité thermique du matériau.
+% \begin{protocole}
+% \item Rappeler l’expression de la diffusivité thermique $\kappa$ en fonction de la conductivité thermique $\lambda$, de la masse volumique $\rho$, et de la capacité calorifique massique $c$. Calculer $\kappa$ à partir des données du \Tab{donnees} pour les quatre tiges.
+% \sol{
+% $\kappa = \frac{\lambda}{\rho c}$.
+%
+% \begin{center}
+% \renewcommand{\arraystretch}{1.2}
+% \begin{tabular}{|c|c|c|c|c|}
+% \hline
+% Matériau & Acier & Laiton & Aluminium & Cuivre \\
+% \hline
+% $\kappa~(\SI{e-6}{m^2.s^{-1}})$ & $\num{14}$ & $\num{44}$ & $\num{83}$ & $\num{111}$ \\
+% \hline
+% \end{tabular}
+% \end{center}
+% }
+% \item  En effectuant un bilan thermique en régime transitoire sur un tronçon de tige d’épaisseur $\d x$, montrer que la température vérifie l’équation
+% \begin{equation}
+% \dr{T}{t} = \kappa \left[ \drm{T}{x}{2} - \frac{T(x)-T_a}{\delta^2}\right].
+% \end{equation}
+% Préciser les conditions aux limites et la condition initiale.
+%
+% \item Enregistrer plusieurs images à intervalles réguliers (toutes les $\SI{5}{min}$ par exemple). Montrer à l’aide d’une régression que l’évolution de la température en un point $x$ quelconque proche de l’extrémité chaude de la tige est compatible avec une loi de la forme
+% \begin{equation}
+% T(x,t) = T_a + (T_0-T_a)\,e^{-t/\tau}.
+% \end{equation}
+% Mesurer $\tau$. Proposer une expression de $\tau$ en fonction de $\kappa$ et $\delta$ à partir d’une analyse dimensionnelle ? Cette expression est-elle compatible avec votre valeur mesurée de $\tau$ ?
+% \sol{Temps caractéristique $\tau \simeq \frac{\delta^2}{\kappa}$.}
+%
+% \end{protocole}
+
+% displayname : Induction
+% \input{/home/eb/Dropbox/texmf/tex/latex/Preambles/TP.sty}%$
+% \begin{document}
+% \Entete[TP][Freinage magnétique dans un tube conducteur][
+% ]{9}
+
+% \matos{
+% %
+% }
+
+
+
+\section{Freinage inductif d'un aimant}
+
+On reproduit expérimentalement le problème de la chute d'un aimant dans un tube conducteur étudié en TD.
+
+\subsection{Étude théorique qualitative}
+
+% Le schéma de principe de l'expérience est représenté sur la Fig.~\ref{fig:chute}. On lâche un aimant (de type néodyme-fer-bore par exemple) dans un tube conducteur en cuivre de longueur $L=\SI{50}{cm}$. On mesure un temps de chute $\tau \simeq \SI{10}{s}$, alors que le temps de chute attendu pour une chute libre serait de $\sqrt{2L/g} \simeq \SI{0.1}{s}$. Ni les frottements solides contre la paroi interne du tube, ni les frottements fluides de l'air ne peuvent expliquer cet écart, car ils seraient identiques dans un tube non conducteur de même rayon, pour lequel le temps de chute est similaire à celui obtenu pour une chute libre. Du reste, on observe en suivant la trajectoire de l'aimant dans le tube, que son mouvement n'est pas uniformément accéléré : il atteint une vitesse limite dès les premiers instants de sa chute. L'existence d'une vitesse limite indique qu'une force compense le poids de l'aimant: il s'agit de la force de freinage magnétique qu'exerce le tube conducteur sur l'aimant.
+La Fig.~\ref{fig:chute} schématise le principe de l'expérience. On lâche un aimant sans vitesse initiale dans un tube en cuivre de longueur $L\simeq\SI{50}{cm}$.
+
+\begin{protocole}
+  \item Mesurer le temps de chute $T$ de l'aimant avec un chronomètre. Comparer au temps de chute libre de l'aimant $T_{\rm lib}$, c'est-à-dire au temps de chute de l'aimant s'il n'était soumis qu'à son poids. Conclure à l'existence d'une force de freinage qui s'ajoute au poids.
+\sol{
+Le temps de chute mesuré est en général bien supérieur à la seconde, alors que pour une chute libre on aurait $T_{\rm lib} = \sqrt{2L/g} \simeq \SI{0.3}{s}$ (avec $g$ l'accélération de la pesanteur). Ni les frottements solides secs contre la paroi interne du tube, ni les frottements fluides de l'air ne peuvent expliquer cet écart, car il serait presque identique dans un tube non conducteur de même rayon, pour lequel le temps de chute est cohérent avec une chute libre. Du reste, on observe que le mouvement n'est pas uniformément accéléré. L'aimant atteint une vitesse limite dès les premiers instants de sa chute : la force de freinage magnétique que le tube conducteur exerce sur l'aimant compense son poids.
+}
+\end{protocole}
+
+%%%% SCHEMA CHUTE %%%%%
+\begin{figure}[t!]
+\centering
+% \sousfigure{Figures/chute_pdf.pdf}{fig:chute1}{height=7.0cm}
+    % {Figures/chute2_pdf.pdf}{fig:chute2}{height=7.0cm}
+\caption{Un aimant de moment magnétique $\vec{\mathcal{M}}$, orienté vers le haut, chute à la vitesse $\vec{v}$ dans un tube conducteur. (a) L'aimant s'approche de l'anneau. (b) L'aimant s'élèoigne de l'anneau.}
+\label{fig:chute}
+\end{figure}
+
+% \begin{protocole}
+%   \item  Considérons un anneau du tube conducteur, de hauteur $\d{z}$, orienté dans le sens direct par rapport à $\vec{e_z}$. L'anneau est situé soit au-dessus de l'aimant (\Fig{chute1}), soit au-dessous (\Fig{chute2}). Montrer à partir de la loi de Lenz que le champ magnétique produit par les courants induits dans le tube freinent l'aimant dans les deux cas.
+%
+%   \sol{(a) Lorsque l'aimant s'en approche, le flux magnétique (positif) à travers l'anneau augmente. Le courant induit circule dans le sens indirect d'après la loi de Lenz ($\mathrm{d}^2 i<0$). (b) Lorsque l'aimant s'en éloigne, le flux magnétique (positif) décroît. Le courant induit circule donc dans le sens direct ($\mathrm{d}^2 i >0$). Une interprétation en termes de pôles magnétiques de l'aimant et de la boucle de courant explique le freinage de l'aimant dans les deux cas.
+%   }
+% \end{protocole}
+
+\subsection{Étude théorique quantitative}
+
+Nous avons motré en TD que dans l'hypothèse d'un tube de faible épaisseur et dans l'hypothèse d'un champ magnétique dipolaire, la force de freinage magnétique est de la forme
+$$
+\F = -\alpha \Vec{v},  \qquad \text{avec} \qquad \alpha = \dfrac{45 \mu_{0}^{2}\sigma w \mathcal{M}^{2}}{64 D^{4}}.
+$$
+On a défini $\sigma$ la conductivité électrique, $w$ l'épaisseur de la paroi du tube, $\mc{M}$ le moment magnétique de l'aimant, et $D$ le diamètre interne du tube.
+%
+% \begin{protocole}
+%   % \item Commencer la dépendance de $\alpha$ en les paramètres $w$, $\mc{M}$, $\sigma$ et $D$.
+%   % \sol{
+%   % Plus la conductivité $\sigma$ est grande et le tube épais, et plus le champ magnétique est fort dans le tube (donc plus $\mathcal{M}$ est grand et $D$ faible), plus l'intensité des courants est élevée, et le freinage efficace.
+%   % }
+% \end{protocole}
+
+\begin{protocole}
+\todo  En appliquant le PFD à l'aimant dans le référentiel galiléen du laboratoire, et en supposant que l'aimant ne frotte pas contre le tube, montrer que
+l'aimant atteint une vitesse limite $v_{\rm lim}$ d'expression
+$$
+v_\mathrm{lim}=\dfrac{mg}{\alpha},
+$$
+en un temps $\tau$ dont on déterminera l'expression. Quelle est l'ordre de grandeur attendu pour $\alpha$, $v_{\rm lim}$ et $\tau$ ? On donne pour le cuivre pur, $\sigma_\mathrm{Cu}=\SI{5.96e7}{S.m^{-1}}$, et pour l’aluminium pur, $\sigma_\mathrm{Al}=\SI{3.77e7}{S.m^{-1}}$.
+
+\sol{
+\begin{equation**}
+    m\dd{v}{t}=mg - \alpha v,
+\end{equation}
+dont la solution s'écrit $v(t) = v_\mathrm{lim} (1-e^{-t/\tau})$. La vitesse limite vaut
+\begin{equation*} \label{eq:vlim}
+v_\mathrm{lim}=\dfrac{mg}{\alpha},
+\end{equation*}
+et s'atteint au bout d'un temps caractéristique $\tau = m/\alpha$. L'Éq.~\eqref{eq:vlim} est valable quelle que soit la géométrie du tube et de l'aimant, tant que le champ magnétique produit par les courants de Foucault est négligeable devant celui de l'aimant.
+
+
+Nous pouvons estimer $v_\mathrm{lim}$ et $\tau$ à partir de l'\'Eq.~\eqref{eq:force_dipole}, correspondant au modèle dipolaire. Pour un aimant de moment magnétique $\mathcal{M}\simeq\SI{0.7}{A.m^2}$ et de masse $m\simeq\SI{6}{g}$, chutant dans un tube en cuivre de hauteur
+%$L=\SI{0.5}{m}$
+$L=\SI{50}{cm}$, de rayon $R\simeq\SI{0.6}{cm}$ et de conductivité $\sigma \simeq \SI{6e7}{S.m^{-1}}$, on trouve $v_\mathrm{lim} \simeq \SI{3}{cm.s^{-1}}$ et $\tau \simeq \SI{4}{ms}$. Cette valeur de la vitesse limite est cohérente avec le temps de chute
+$T_{\rm lib} = L/v_\mathrm{lim} \simeq \SI{17}{s}$
+observé pour un lâcher sans vitesse initiale. Le régime transitoire est extrêmement bref et n'est pas observable dans notre expérience. En réalité, la durée $\tau$ du régime transitoire est légèrement plus élevée suite aux effets de bord à l'entrée du tube, mais reste du même ordre de grandeur.
+}
+% ston aboutit\footnote{La poussée d'Archimède et les frottements fluides sont négligeables dans notre cas.} à l'équation d'évolution de la vitesse de l'aimant :
+\end{protocole}
+
+\subsection{Étude expérimentale}
+
+% \subsection{Mesure inductive de position}
+\label{sec:fluxmetre}
+
+Nous proposons de disposer une série de bobines autour du tube pour repérer le passage de l'aimant à des positions données, comme illustré sur la Fig.~\ref{fig:schema_manip}. Nous commençons par étudier le signal électrique aux bornes d'une seule bobine.
+% Les sondes que nous utilisons consistent en un bobinage de cuivre de rayon $r_0$, enroulé $N$ fois, et d'épaisseur et de largeur négligeables.
+
+\begin{protocole}
+\item On suppose qu'un aimant passe à hauteur de la bobine à l'instant $t=0$. Représenter l'allure attendu du flux magnétique $\Phi(t)$ et de la force électromotrice $e(t)$ pour des temps négatifs et positifs. Expliquer quelle loi physique entre en jeu. Réaliser l'expérience en laissant tombant l'aimant à travers une bobine reliée à un oscilloscope, et comparer qualitativement la courbe mesurée de $e(t)$  à celle attendue.
+\sol{
+Induction.
+
+%%%% COURBE FLUX DIPOLAIRE %%%%%
+\begin{figure}[H]
+ \centering
+ \includegraphics[scale=1]{fem_vs_t2.pdf}
+ \caption{Courbes théoriques de f.é.m. $e$ aux bornes de la sonde (ligne continue bleue) et de flux magnétique $\Phi=-\int_{-\infty}^t e(t') \d{t'}$ (ligne tiretée rouge) en fonction du temps~$t$, pour un aimant dipolaire de moment magnétique $\mathcal{M}$ chutant à vitesse constante~$v$. Les grandeurs sont adimensionnées, avec $t_0=r_0/v$ et $\Phi_0 = \mu_0 N \mathcal{M}/2r_0$, où $N$ est le nombre de spires de la sonde, de rayon $r_0$.}
+ \label{fig:courbe_flux}
+ \end{figure}
+}
+\item Sur \texttt{LatisPro}, acquérir le signal $e(t)$. On justifiera le choix des paramètres d'acquisition (calibre, durée, période d’échantillonnage). Comparer qualitativement à la courbe attendue.
+
+\item On souhaite ensuite calculer le flux magnétique $\Phi(t)$ par intégration du signal $e(t)$. Pour cela, retirer la valeur moyenne du signal d’acquisition en calculant $\text{Y=Moy(V1)}$ puis $\text{V2=V1-Y}$ dans la feuille de calcul. Calculer l’intégrale de $V2$ dans l’onglet traitement $\rightarrow$ calcul spécifique. Comparer qualitativement la courbe obtenue à celle attendue.
+
+
+\item Déterminer la valeur maximale du flux magnétique $\Phi_0$ à partir de la courbe expérimentale. Justifier que l’expression suivante du flux magnétique maximal par analyse dimensionnelle,
+$
+\Phi_0 \simeq \frac{\mu_0 N \mc{M}}{d},
+$
+où $d$ désigne le diamètre moyen de la bobine et $N \sim \SI{200}{}$ son nombre de spires. En déduire l’ordre de grandeur du moment magnétique $\mc{M}$, et comparer à la valeur attendue $\mathcal{M}=\SI{1.7}{A.m^2}$.
+
+\sol{
+On trouve $\Phi_0 = \SI{1e-2}{V.s}=\SI{1e-2}{W}=\SI{1e-2}{T.m^2}$. On en déduit avec $d \sim \SI{30}{mm}$.
+$$
+\mc{M} \sim \frac{\Phi_0 d}{\mu_0 N} \sim \SI{1}{A.m^2}.
+$$
+}
+\end{protocole}
+
+On dispose plusieurs bobines le long du tube conducteur, maintenu verticalement par des pinces. Ces bobines sont toutes branchées en série et les bornes de cette association sont reliées à un oscilloscope.
+%Un temps d'acquisition inférieur à $\SI{10}{ms}$ est suffisant pour un repérage précis du passage de l'aimant.
+
+\begin{protocole}
+\item Lâcher l'aimant sans vitesse initiale à travers le tube conducteur. Interpréter le signal visible à l'oscilloscope ou sur une carte d'aquisition. On justifiera le choix des paramètres d'acquisition. Que se passe-t-il si les bobines sont très proches les unes des autres ?
+
+% \item Proposer un protocole pour déterminer la loi horaire $z(t)$ de la chute de l’aimant.
+\end{protocole}
+
+
+% \subsection{Détermination de la loi horaire de chute} \label{sec:protocole_chute}
+
+
+Le dispositif expérimental est représenté sur la Fig.~\ref{fig:schema_manip}. Nous utilisons un aimant cylindrique de composition Nd$_2$Fe$_{14}$B, aimanté dans la direction de son axe de symétrie, de moment magnétique $\mathcal{M}=\SI{1.7}{A.m^2}$.
+%Ces valeurs de moment magnétique et de masse donnent une vitesse limite de chute de l'ordre de $\SI{10}{cm.s^{-1}}$, pour un tube d'environ $\SI{15}{mm}$ de diamètre.
+
+
+%%%% PRINCIPE EXP %%%%
+\begin{figure}[t!]
+\centering
+\includegraphics[scale=0.95]{chute_aimant2.pdf}
+\caption{Schéma du dispositif expérimental. Un aimant cylindrique tombe dans un tube conducteur creux, entouré d'un ensemble de fluxmètres connectés en série. La f.é.m. $e$ s'annule à chaque passage de l'aimant dans le plan d’une sonde, ce qui permet de repérer son altitude à plusieurs instants.
+% et de déterminer sa vitesse limite de chute.
+}
+\label{fig:schema_manip}
+\end{figure}
+
+
+\begin{protocole}
+  \item Mesurer la masse $m$ de l'aimant, l'épaisseur $w$ de la paroi du tube, et le diamètre interne $D$ du tube. Expliquer à chaque fois le protocole adopté.
+\item Mesurer les positions $z_i$ des bobines selon un axe vertical.
+Lancer l'acquisition, puis lâcher l'aimant dans l'axe du tube sans vitesse initiale.
+\item Pour chaque acquisition, mesurer sur le signal enregistré les instants $t_i$ de passage de l'aimant à hauteur de chaque bobine. Effectuer une régression affine de $z$ en fonction de $t$, et montrer que l'aimant a atteint une vitesse limite. En déduire  que la force de freinage inductif est bien proportionnelle à la vitesse, et donc de la forme $\F = -\alpha \Vec{v}$.
+\sol{
+%%%% RESULTATS %%%
+\begin{figure}[H]
+    \centering
+    \sousfigure{signal_fluxmetre.pdf}{fig:signal}{scale=0.95}{z_vs_t.pdf}{fig:existence_vitesse_limite}{scale=0.99}
+    \caption{(a) Acquisition de la tension aux bornes de sept sondes branchées en série (ligne continue bleue). Les zéros ascendants du graphe (disques noirs) marquent le passage de l'aimant dans le plan de chaque sonde. Chaque f.é.m. a une amplitude différente car les sondes n'ont pas le même nombre de spires.
+    %Les amplitudes des différentes f.é.m. sont différentes car les sondes n'ont pas le même nombre de spires.
+    (b)~Distance de chute $z$ par rapport au haut du tube en fonction du temps $t$ pour les trois tubes étudiés, et ajustements affines associés. Les résultats sont donnés dans le Tab.~\ref{tab:propriétés_tubes}.
+    }
+\end{figure}
+
+}
+\end{protocole}
+% est bien atteinte.
+
+% \subsection{Mesure de la conductivité électrique}
+
+On se propose enfin de déduire la valeur de la conductivité électrique $\sigma$ à partir des mesurer ci-dessus.
+\begin{protocole}
+  \item À partir de la régression précédente, déterminer la vitesse limite de chute $v_{\rm lim}$, avec incertitudes.
+  \sol{
+  On trouve par exemple les résultats suivants.
+  %%%% TABLEAU CARACTERISTIQUES TUBES %%%%
+  \renewcommand{\arraystretch}{1.2}
+   \begin{table}[b!]
+   \centering
+   \begin{tabular}{c|c|c|c}
+    Tube & $R$~($\SI{}{mm}$) & $\sigma$~($\SI{e7}{\siemens\per\meter}$) & $v_\mathrm{lim}$~(\SI{}{\centi\meter\per\second}) \\ \hline \hline
+  1 (Alliage cuivre) & $\SI{6.45(10)}{}$ & \SI{5.16(5)}{} &   $\SI{6.36(3)}{}$ \\
+  2 (Alliage cuivre) & $\SI{7.60(10)}{}$ & \SI{5.16(5)}{} &  $\SI{11.35(6)}{}$  \\
+  3 (Aluminium pur) & $\SI{7.60(10)}{}$ & \SI{3.77}{} & $\SI{15.54(13)}{}$  \\
+   \end{tabular}
+   \vspace*{-0.25cm}
+  \caption{Propriétés des tubes étudiés dans cette expérience : rayon moyen~$R$, conductivité électrique $\sigma$ et vitesse limite de chute mesurée $v_\mathrm{lim}$, en l'absence de masselotte. Les trois tubes sont d'épaisseur $w=\SI{1.0(1)}{mm}$. La conductivité de l'aluminium pur est tabulée~\cite{haynes2014crc}, celle de l'alliage de cuivre est estimée à partir du rapport des vitesses limites des tubes 2 et 3, moyennées sur quatre réalisations de l'expérience. Les propriétés de l'aimant sont données en Sec.~\ref{sec:protocole_chute}.}
+   \label{tab:propriétés_tubes}
+  \end{table}
+  }
+  \item  En déduire la conductivité électrique $\sigma$ du matériau constituant le tube. Comparer à la valeur attendue pour le cuivre pur, $\sigma_\mathrm{Cu}=\SI{5.96e7}{S.m^{-1}}$, ou de l’aluminium pur, $\sigma_\mathrm{Al}=\SI{3.77e7}{S.m^{-1}}$.
+\end{protocole}
+
+
+
+%
+% \section{Expériences avancées} \label{sec:resultats_chute}
+%
+%
+% \subsection{Influence de la masse de l’aimant}
+%
+%
+% Le coefficient de freinage magnétique $\alpha$ dépend des propriétés magnétiques de l’aimant et des propriétés électriques et géométriques du tube, mais pas de la masse $m$ de l’aimant. Il s’ensuit que la vitesse limite $v_{\rm lim}$ est proportionnelle au poids de l’aimant, et donc à la masse $m$ de l'aimant.
+%
+% \begin{protocole}
+%   \item Réaliser des acquisitions de tensions induite aux bornes de l’association série des bobines pour plusieurs masses $m$ de l’aimant en le lestant avec des masselottes et de la patafix.
+%   \item Effectuer un ajustement affine de $v_{\rm lim}$ en  fonction de $m$, et montrer cette loi de proportionnalité. On discutera des incertitudes et du khi-deux réduit.
+%   \sol{
+%   D'après l'\'Eq.~\eqref{eq:vlim}, la vitesse limite de chute $v_\mathrm{lim}$ est proportionnelle à la masse $m$ de l'aimant, tout autre paramètre étant fixé. Pour vérifier cette dépendance, nous réalisons l'expérience de chute avec le tube 1, en ajoutant une masselotte sur l'aimant à chaque répétition, comme décrit dans la Sec.~\ref{sec:protocole_chute}. Les résultats sont présentés en Fig.~\ref{fig:var_m}. Un ajustement affine $v_\mathrm{lim} = a m + b$ donne $a=\SI{10.4(3)}{m.s^{-1}.kg^{-1}}$ et $b=\SI{0(2)e-3}{m.s^{-1}}$, qui est compatible avec zéro. Le $\chi^2$ réduit vaut $\SI{0.7}{}$ et est proche de l'unité.
+%   Le modèle linéaire est bien vérifié, ce qui confirme que la force est proportionnelle à $v$.
+%
+%   %%%% vlim vs m %%%
+%   \begin{figure}[H]
+%       \centering
+%       \includegraphics{var_m.pdf}
+%       \caption{Vitesse limite $v_{\lim}$ de chute de l'aimant en fonction de sa masse $m$, à moment magnétique fixé, pour le tube 1. La droite bleue représente l'ajustement affine $v_\mathrm{lim} = a m + b$ où $a=\SI{10.4(3)}{m.s^{-1}.kg^{-1}}$ et $b=\SI{0(2)e-3}{m.s^{-1}}$.}
+%       \label{fig:var_m}
+%   \end{figure}
+%
+%
+%   La pente attendue est $g/\alpha$, où $\alpha$ dépend de la conductivité électrique du tube et du profil de champ magnétique. La conductivité a été déterminée en Sec.~\ref{sec:estimation_tube} indépendamment du profil du champ généré par l'aimant, et l'intensité de la pesanteur est prise égale à $g=\SI{9.81}{m.s^{-2}}$. Dans l'approximation dipolaire, et pour un tube d'épaisseur nulle, la pente vaut $g/\alpha = \SI{8.3(10)}{m.s^{-1}.kg^{-1}}$, en désaccord avec la valeur mesurée. Le modèle de l'aimant cylindrique, que l'on prenne ou non en compte l'épaisseur du tube, prévoit $g/\alpha = \SI{11.1(6)}{m.s^{-1}.kg^{-1}}$, ce qui est compatible avec la valeur mesurée. Le calcul numérique d'un profil réaliste de champ magnétique permet %d'interpréter quantitativement les vitesses de chute, et
+%   d'aller au-delà de la vérification de la linéarité de $v_\mathrm{lim}$ avec la masse de l'aimant~$m$ en rendant compte quantitativement de la pente. L'interprétation de cette expérience est compliquée dans notre cas par les dimensions de l'aimant : plusieurs modèles plus simples pour le champ magnétique existent pour des rapports d'aspect extrêmes, mais celui de l'aimant que nous avons utilisé est proche de $1$, et le recours à un modèle numérique s'avère nécessaire.
+%   }
+% \end{protocole}
+%
+%
+% \subsection{Influence du moment magnétique de l’aimant}
+%
+% L’aimant dont vous disposez est formé de deux aimants plus petits accollés. Vous pouvez dont séparer cette aimant en deux.
+% \begin{protocole}
+%   \item Soit $M$ l’aimantation du matériau constituant l’aimant et $\rho$ sa masse volumique. Comment s’écrit le moment magnétique $\mc{M}$ en fonction de $M$, $\rho$ et $m$ ? En déduire que la dépendance de la vitesse limite $v_{\rm lim}$ en fonction de $\mc{M}$ pour un \emph{matériau donné} (c’est-à-dire à $\rho$ et $M$ fixé).
+%   \item Réprendre l’expérience avec un aimant simple, de masse et de moment magnétique moitié de l'aimant initial. Comparer la vitesse limite attendue à celle mesurée.
+% \end{protocole}
+%
+%
+% \subsection{Influence du diamètre du tube}
+%
+% % En faisant varier le rayon du tube, toutes choses égales par ailleurs, nous pouvons tester quel modèle pour le champ magnétique produit par l'aimant permet de reproduire quantitativement les données expérimentales. Pour les tubes $1$ et $2$, si l'on note $v_i$ la vitesse limite de chute dans le tube $i$ de rayon $R_i$, nous mesurons expérimentalement (Tab.~\ref{tab:propriétés_tubes}) un rapport
+% En faisant varier le diamètre $D$ du tube, toutes choses étant égales par ailleurs, nous pouvons vérifier la dépendance du coefficient de freinage $\alpha$ en le paramètre $D$.
+% % tester quel modèle du champ magnétique produit par l'aimant reproduit quantitativement les données. Pour les tubes $1$ et $2$, nous mesurons un rapport
+% \begin{protocole}
+%   \item Calculer le rapport $\frac{v_{\mathrm{lim},2}}{v_{\mathrm{lim},1}}$ pour deux tubes faits d'un même matériau, de même épaisseur, mais de diamètres $D_1$ et $D_2$ différents.
+%   \item Mesurer les vitesses limites $v_{\mathrm{lim},2}$ et $v_{\mathrm{lim},1}$ et calculer leur rapport. Comparer à la valeur attendue. Qu'est-ce qui pourraît expliquer cet écart ?
+%   \sol{
+%
+%   En faisant varier le rayon du tube, toutes choses étant égales par ailleurs, nous pouvons tester quel modèle du champ magnétique produit par l'aimant reproduit quantitativement les données. Pour les tubes $1$ et $2$, nous mesurons un rapport
+%
+%   \begin{equation}\label{eq:rapport_v1v2}
+%   \dfrac{v_{\mathrm{lim},2}}{v_{\mathrm{lim},1}} = \SI{1.78(2)}{},
+%   \end{equation}
+%   selon les données du Tab.~\ref{tab:propriétés_tubes}. Dans l'approximation dipolaire, pour des tubes d'épaisseur négligeable devant leurs rayons, les Éq.~\eqref{eq:force_dipole} et~\eqref{eq:vlim} prédisent $v_{\mathrm{lim},2}^{\rm att}/v_{\mathrm{lim},1}^{\rm att} =(R_2/R_1)^4=\SI{1.93(16)}{}$, ce qui est tout juste compatible avec notre mesure, mais peu concluant au vu de l'incertitude élevée qui affecte la valeur attendue. Sans aucune approximation sur l'aimant ou le tube, c'est-à-dire en intégrant numériquement l'expression de la force de freinage de l'\'Eq.~\eqref{eq:force_tot} (Comp.~\ref{sec:code_chute}), nous trouvons $v_{\mathrm{lim},2}^{\mathrm{att}}/ v_{\mathrm{lim},1}^{\mathrm{att}} = \SI{1.79(8)}{}$, en bien meilleur accord avec la valeur mesurée. L'incertitude sur $\alpha^\mathrm{att}$ est estimée en utilisant la formule de propagation des incertitudes, où les dérivées partielles sont estimées numériquement à partir de l'\'Eq.~\eqref{eq:force_tot}. L'incertitude élevée sur le rapport des vitesses tient à la forte dépendance du champ en $r$, $h$ (la taille de l'aimant), et plus particulièrement en $R$ (le rayon moyen du tube). En conclusion, l'hypothèse d'un champ dipolaire n'est pas valable en pratique.
+%
+%   Toujours en considérant le champ réel d'un aimant cylindrique, mais en négligeant cette fois-ci l'épaisseur des tubes devant leurs rayons, le coefficient de freinage s'obtient en intégrant l'\'Eq.~\eqref{eq:force_epaisseur} sur $z$ à rayon $\rho=R$ fixé. Ce modèle prédit $v_{\mathrm{lim},2}^{\mathrm{att}}/ v_{\mathrm{lim},1}^{\mathrm{att}} = \SI{1.78(8)}{}$, là aussi en excellent accord avec la valeur mesurée.
+%   }
+% \end{protocole}
+% %
+% \begin{equation}\label{eq:rapport_v1v2}
+% \dfrac{v_{\mathrm{lim},2}}{v_{\mathrm{lim},1}} = \SI{1.78(2)}{},
+% \end{equation}
+% selon les données du Tab.~\ref{tab:propriétés_tubes}.
+% % Pour des tubes d'épaisseur négligeable devant leurs rayons moyens, et dans l'approximation dipolaire, les Éq.~\eqref{eq:force_dipole} et~\eqref{eq:vlim} prédisent $v_{\mathrm{lim},2}/v_{\mathrm{lim},2} = (R_2/R_1)^4=\SI{1.93(16)}{}$, ce qui est incompatible avec notre mesure. Sans faire aucune approximation sur l'aimant ou le tube, c'est-à-dire en intégrant numériquement l'expression complète de la force de freinage de l'\'Eq.~\eqref{eq:force_tot} (voir le Comp.~\ref{sec:code}), nous trouvons un rapport $v_{\mathrm{lim},2}^{\mathrm{att}}/ v_{\mathrm{lim},1}^{\mathrm{att}} = \SI{1.79(8)}{}$, en excellent accord avec la valeur mesurée. L'incertitude élevée sur le rapport des vitesses tient à la forte dépendance du champ en $r$, $h$ (la taille de l'aimant), et plus particulièrement en $R$ (le rayon moyen du tube). En conclusion, l'hypothèse d'un champ dipolaire n'est pas valable en pratique. Comme on peut le voir sur la Fig.~\ref{fig:profil_Brho}, le profil de champ magnétique en fonction de $z$ pour $\rho=R_1$ fixé, dans le cas d'un aimant cylindrique, s'écarte significativement du champ dipolaire.
+% Dans l'approximation dipolaire, pour des tubes d'épaisseur négligeable devant leurs rayons, les Éq.~\eqref{eq:force_dipole} et~\eqref{eq:vlim} prédisent $v_{\mathrm{lim},2}^{\rm att}/v_{\mathrm{lim},1}^{\rm att} =(R_2/R_1)^4=\SI{1.93(16)}{}$, ce qui est tout juste compatible avec notre mesure, mais peu concluant au vu de l'incertitude élevée qui affecte la valeur attendue. Sans aucune approximation sur l'aimant ou le tube, c'est-à-dire en intégrant numériquement l'expression de la force de freinage de l'\'Eq.~\eqref{eq:force_tot} (Comp.~\ref{sec:code}), nous trouvons $v_{\mathrm{lim},2}^{\mathrm{att}}/ v_{\mathrm{lim},1}^{\mathrm{att}} = \SI{1.79(8)}{}$, en bien meilleur accord avec la valeur mesurée.
+% %
+% L'incertitude sur $\alpha^\mathrm{att}$ est estimée en utilisant la formule de propagation des incertitudes, où les dérivées partielles sont estimées numériquement à partir de l'\'Eq.~\eqref{eq:force_tot}.
+% %
+% %$(\partial \alpha / \partial x) \Delta x$ pour chaque paramètre $x$ dont dépend $\alpha$, et en sommant quadratiquement chaque contribution.
+% %
+% L'incertitude élevée sur le rapport des vitesses tient à la forte dépendance du champ en $r$, $h$ (la taille de l'aimant), et plus particulièrement en $R$ (le rayon moyen du tube). En conclusion, l'hypothèse d'un champ dipolaire n'est pas valable en pratique.
+%
+% % En supposant seulement que les tubes sont de faible épaisseur, il faut intégrer numériquement l'\'Eq.~\eqref{eq:force_epaisseur} du coefficient de freinage (intégration sur $z$ à rayon $\rho=R_i$ fixé). Ce modèle prédit $v_{\mathrm{lim},2}^{\mathrm{att}}/ v_{\mathrm{lim},1}^{\mathrm{att}} = \SI{1.78(8)}{}$, là aussi en excellent accord avec la valeur mesurée. L'écart avec le modèle complet (valeur précédente) est inférieur aux incertitudes. Ainsi, le modèle du tube d'épaisseur négligeable est une très bonne approximation de la réalité si on effectue l'intégration au rayon moyen du tube, et non au rayon interne.
+% Toujours en considérant le champ réel d'un aimant cylindrique, mais en négligeant cette fois-ci l'épaisseur des tubes devant leurs rayons, le coefficient de freinage s'obtient en intégrant l'\'Eq.~\eqref{eq:force_epaisseur} sur $z$ à rayon $\rho=R$ fixé. Ce modèle prédit $v_{\mathrm{lim},2}^{\mathrm{att}}/ v_{\mathrm{lim},1}^{\mathrm{att}} = \SI{1.78(8)}{}$, là aussi en excellent accord avec la valeur mesurée.
+% \begin{remarque}
+% L’intégration au rayon moyen du tube (plutôt qu'au rayon interne ou externe) rend l’approximation du tube de faible épaisseur bien meilleure, car le choix d’un intervalle d’intégration centré en $\rho$ permet d’annuler l’erreur au premier ordre en $w/R$.
+% %L'approximation du tube de faible épaisseur est très bonne si l'on effectue l'intégration au rayon moyen du tube : le choix d'un intervalle d'intégration en $\rho$ centré permet d'annuler l'erreur au premier ordre en $w/R$. Cette approximation est cependant beaucoup moins bonne si l'on prend les rayons interne ou externe.
+% \end{remarque}
+% L'écart avec le modèle complet (valeur précédente) est inférieur aux incertitudes.
+
+
+\end{document}
+
+
+\end{document}

@@ -1,0 +1,30 @@
+\begin{tikzpicture}
+\draw (0,0) -- (10,0);
+\draw (0,4) -- (10,4);
+\foreach \k in {0,1,...,10}
+		\draw (\k,4.25)  node {+};
+\foreach \k in {0,1,...,10}
+		\draw  (\k,-0.25) node {-};
+
+\draw [dashed] (0,2) -- (10,2);
+\draw[|->,thick] (0,2) -- (1,2);
+\draw (0.5,2) node [above] {\large $\mathbf{v_{0}}$};
+
+\draw [thick, dotted,domain=0:10,samples=200] plot (\x,{\x^2/75+2});
+\draw [->] (9.5,2) arc  (-5:17:3);
+\draw (10,2.6) node {\large$\beta$};
+.
+
+\draw [<->, thick] (0,-0.75) -- (10,-0.75);
+\draw (5,-0.75) node [below] {\large $l$};
+\draw [<->, thick] (-0.5,0) -- (-0.5,4);
+\draw (-0.5,2) node [left] {\large $d$};
+\draw [->, thick] (8,1.2) -- (8,0.2);
+\draw (8,0.7) node [right] {\large $\mathbf{E}$};
+
+\draw [->] (0,0.2) -- (0,1.2);
+\draw (0,1.2) node [right] {$\mathbf{e_{y}}$};
+\draw [->] (0,0.2) -- (1,0.2);
+\draw (1,0.2) node [right] {$\mathbf{e_{x}}$};
+
+\end{tikzpicture}

@@ -1,0 +1,16 @@
+\begin{tikzpicture}[yscale=0.6, xscale=1.5]
+\draw [->, >=stealth] (1,-1) --++ (4,0) node[below right]{$V$}; 
+\draw [->, >=stealth] (1,-1) --++ (0,7) node[above left]{$P$};
+\draw[ultra thick,domain=1.75:3.9, samples=100] plot ({\x},{1});
+\draw[ultra thick,domain=1.42:2.4, samples=100] plot ({\x},{4});
+\draw[ultra thick,domain=2.35:3.9, samples=100] plot ({\x},{20/\x^1.4-2});
+\draw[ultra thick,domain=1.435:1.77, samples=100] plot ({\x},{20/\x^1.4-8});
+%\draw[domain=2:4.5, samples=100] plot ({\x},{20/\x^1.4-2}) node[below]{$isoS$};
+%\draw[domain=1.3:1.9, samples=100] plot ({\x},{20/\x^1.4-8}) node[below]{$isoS$};
+%\draw[domain=0:4.4, samples=100] plot ({\x},{1}) node[right]{$isoP$};
+%\draw[domain=0:2.9, samples=100] plot ({\x},{4}) node[right]{$isoP$};
+\draw (1.75,1) node[below left]{$D$};
+\draw (1.42,4) node[above left]{$C$};
+\draw (3.9,1) node[below right]{$A$};
+\draw (2.4,4) node[above right]{$B$};
+\end{tikzpicture}

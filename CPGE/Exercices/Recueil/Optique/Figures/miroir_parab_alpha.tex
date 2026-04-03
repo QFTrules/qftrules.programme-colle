@@ -1,0 +1,16 @@
+% !TEX root = /home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Optique/Figures/miroir_parab_alpha.tex
+\input{tikz.tex}
+\begin{document}
+\begin{tikzpicture}
+    \draw[->] (-2,0) -- (2,0) node[right] {$x$};
+    \draw[->] (0,-1) -- (0,3) ;
+    \draw[domain=-1.5:1.5,smooth,variable=\x,JoliRouge] plot ({\x},{\x*\x});
+    \draw[<->] (1,0) -- ++(0,1) node[midway,right] {$e(x)$};
+    \def\a{60}
+    \draw (1,1) -- ++ (\a:1) --++(\a:-2.5);
+    \draw[->] (0.8,0) arc(0:\a:0.4) node[midway,above right] {\color{JoliBleu}$\alpha$};
+    \draw[<->] (0.4,-0.2) -- ++(0.6,0) node[midway,below] {$y$};
+    % \foreach \x in {-1.5,-1.4,...,1.5}
+    %   \draw (\x,{\x*\x}) -- ++(-90:0.2);
+  \end{tikzpicture}
+\end{document}

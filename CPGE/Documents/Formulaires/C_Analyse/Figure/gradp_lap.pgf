@@ -1,0 +1,25 @@
+﻿\begin{tikzpicture}[>=latex]
+
+\newcommand{\gradp}[2]{\draw[->,JoliRouge,ultra thick]  #1 -- ++ #2 ;}
+\newcommand{\gradpp}[2]{\draw[<-,JoliBleu,ultra thick]  #1 -- ++ #2 ;}
+\node at (0,0) {\includegraphics[scale=0.5]{p_map.png}};
+\gradp{(-2,1.3) coordinate (A)}{(60:1)  node[below=25,fill=white,inner sep=0pt] {\Large $\Grad{p}$}}
+%\draw (A) ++ (55:0.15) -- ++ (145:0.15) -- ++ (235:0.15);
+\gradp{(-2.7,2.45) coordinate (B)}{(2:1)  }
+%\draw (B) ++ (2:0.15) -- ++ (92:0.15) -- ++ (182:0.15);
+\gradp{(-0.35,1.8) coordinate (C)}{(154:1)}
+%\draw (C) ++ (154:0.15) -- ++ (244:0.15) -- ++ (334:0.15);
+\gradp{(-2.8,3.4) coordinate (D)}{(-30:1)}
+\gradp{(-0.35,2.7) coordinate (E)}{(190:1)}
+
+\begin{scope}[shift={(4.9,-5)}]
+\gradpp{(-2,1.2) coordinate (A)}{(60:1)  }
+%\draw (A) ++ (55:0.15) -- ++ (145:0.15) -- ++ (235:0.15);
+\gradpp{(-2.6,2.45) coordinate (B)}{(2:1)  }
+%\draw (B) ++ (2:0.15) -- ++ (92:0.15) -- ++ (182:0.15);
+\gradpp{(-0.5,1.8) coordinate (C)}{(154:1)}
+%\draw (C) ++ (154:0.15) -- ++ (244:0.15) -- ++ (334:0.15);
+\gradpp{(-2.5,3.3) coordinate (D)}{(-30:1)}
+\gradpp{(-0.4,2.9) coordinate (E)}{(200:1) node[above right=10,fill=white,inner sep=0pt] {\Large $\Grad{p}$}}
+\end{scope}
+\end{tikzpicture}

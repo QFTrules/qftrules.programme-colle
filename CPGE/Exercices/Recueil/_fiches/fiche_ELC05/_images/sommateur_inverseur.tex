@@ -1,0 +1,16 @@
+﻿ \begin{tikzpicture}
+				\ctikzset{tripoles/en amp/input height=0.45}
+				\draw (0,0) node [en amp](A){}
+(A.+) --++(0, -1) node [eground](masse){}
+(A.-) --++(0,1) coordinate(tmp) to [R= \(R\)] (tmp-|A.out)--(A.out)
+(A.-) to [short, *-*] ++(-1, 0) coordinate(tmp) to [R = \(R\), -*] ++(-2, 0) node (E2){}
+(tmp) --++(0, 1) to [R, l_=\(R\)] ++(-2, 0) to [short, -*] ++(-1, 0) node (E1){};
+\draw (A.out) to [short, *-*] ++(1,0) node (S){}; 
+\coordinate (masseS) at (masse-|S);
+\coordinate (masseE1) at (masse-|E1);
+\coordinate (masseE2) at (masse-|E2);
+\draw [latex-] (E1) --(masseE1)   node [midway, left] {\(v_1\)};
+\draw [latex-] (E2) --(masseE2)   node [midway, left] {\(v_2\)};
+\draw [latex-] (S) --(masseS) node[midway, right] {\(v_s\)};
+\draw (masseE1) node [eground]{} (masseS)node[eground]{} (masseE2) node [eground]{};
+			\end{tikzpicture}

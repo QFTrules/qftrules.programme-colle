@@ -1,0 +1,14 @@
+\shorthandoff{:!}
+\begin{circuitikz} 
+%\filldraw [fill=white,draw=black] (0,1.5) circle (0.5cm);
+%\draw (0,0) to[vsource, v=$E$] (0,2);
+%\draw (0,2) to[cspst=$K$] (0,4) to[R, i>^=i] (3,4);
+%\draw (3,4) to [C, l^=$C$] (3,0) -- (0,0);
+%\draw [->] (2.4,1) -- (2.4,3) node [midway, left] {$u_C(t)$};
+
+\draw (0,0) to[vsource, v=$E$] (0,2.5);
+\draw (0,2.5) to[cspst=$K$] (2,2.5) to[R,l=$R$, i>^=i] (4,2.5);
+\draw (4,2.5) to [C, l^=$C$] (4,0) -- (0,0);
+\draw [->] (3.4,0.5) -- (3.4,2) node [midway, left] {$u_C(t)$};
+\end{circuitikz}
+\shorthandon{:!}

@@ -1,0 +1,26 @@
+\input{/home/eb/Dropbox/texmf/tex/latex/Preambles/tikz.tex}
+\begin{document}
+\begin{tikzpicture}[line width = 0.6pt, xscale = 2, yscale = 1.3, scale=2.5,>=stealth]
+
+		\begin{scope}[xshift = 1.5cm, yshift = -4.9cm]
+			\draw [->] (-1.3,0) -- (1.3,0) node [right] () {$e$};
+			\draw [black] (0.5,0.025) --++ (0,-0.05) node[below]{$5$};
+\draw [black] (0,0.025) --++ (0,-0.05) node[below]{$0$};
+\draw [black] (-0.5,0.025) --++ (0,-0.05) node[below]{$-5$};
+\draw [black] (1,0.025) --++ (0,-0.05) node[below]{$-10$};
+\draw [black] (-1,0.025) --++ (0,-0.05) node[below]{$10$};
+			\draw [->] (0,0) -- (0, 1) node [above] {$I(e)$};
+			\draw [thick,JoliRouge] plot [variable = \x, domain=-1.3:1.3, samples = 1000](\x, {0.4*(1+0.8*cos(\x*360)*cos(\x*360*20))}) ;
+			% small period lambda_moy/2
+			\draw[>-<] (-0.5, 0.75) -- ++ (0.1, 0) node [midway, above] {$\frac{\lmoy}{2}$} ;
+			%annulation period lc
+			\draw[<->] (-0.25, -0.2) -- ++ (0.5, 0) node [midway, below] {$\frac{\lc}{2}$} ;
+
+			% envelop : cosine and - cosine with period lc/2
+			\draw[thick, dashed,JoliVert] plot [variable = \x, domain=-1.3:1.3, samples = 1000](\x, {0.4*(1+0.8*cos(\x*360))}) ;
+			\draw[thick, dashed,JoliVert] plot [variable = \x, domain=-1.3:1.3, samples = 1000](\x, {0.4*(1-0.8*cos(\x*360))}) ;
+			%\draw[<->] (-0.5, -0.1) --(0.5, -0.1) node [midway, below] {$l_c$} ;
+		\end{scope}
+
+\end{tikzpicture}
+\end{document}

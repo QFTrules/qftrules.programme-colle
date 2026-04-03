@@ -1,0 +1,250 @@
+\input{formulaire.sty}
+\begin{document}
+\Entete[formu][B]{}
+% displayname : Système de coordonnées
+
+Dans toute la suite on considère un référentiel $(\mathcal{R})$ d'origine $O$. On s'intéresse au repérage d'un point $M$ par rapport à cette origine. Excepté pour les coordonnées cartésiennes, les formules ne sont pas à connaître par cœur mais plutôt à savoir retrouver rapidement.
+
+\section{Système de coordonnées cartésien}
+
+\parag{Définition}
+On munit $\Rcal$ d'un repère. Pour cela, on attache à l'origine $O$ une base de l'espace physique formée de trois vecteurs fixes $(\ex,\ey,\ez)$. Cette base, appelé  \imp{base cartésienne}, est \imp{orthonormale} :
+$$
+\ex \cdot \ex=\ey \cdot \ey=\ez \cdot \ez=1 \Et  \ex \cdot \ey=\ex \cdot \ez=\ey \cdot \ez=0,
+$$
+et \imp{directe} :
+$$
+\ex \wedge \ey=\ez, \quad \ey \wedge \ez=\ex  \Et \ez \wedge \ex=\ey.
+$$
+ La décomposition du vecteur position $\Vec{OM}$ dans la base cartésienne définit les coordonnées cartésiennes.
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=0.7\columnwidth]{cartesian}
+  \caption{Repérage d'un point $M$ par les coordonnées cartésiennes $(x,y,z)$ et la base cartésienne fixe $(\ex,\ey,\ez)$.}
+  \label{fig:cart}
+\end{figure}
+
+\begin{definition}[Coordonnées cartésiennes]\label{def:cart}
+On appelle coordonnées cartésiennes le triplet de réels $(x, y, z)$ tel que
+ $$
+ \Vec{O M}=x \ex+y \ey+z \ez
+ $$
+\end{definition}
+
+
+\parag{Vecteurs cinématiques}
+Pour décrire le mouvement d'un point matériel, on utilise couramment le déplacement élémentaire $ \d\Vec{O M}$, la vitesse  $\Vec{v}=\dd{\Vec{OM}}{t}$ et l'accélération $\Vec{a}=\dd{\Vec{v}}{t}=\ddd{\Vec{OM}}{t}$. En coordonnées cartésiennes :
+\begin{align*}
+ \d\Vec{O M}& =\d x \ex+\d y \ey+\d z \ez \tag{déplacement élémentaire} \\
+\Vec{v}&=\dot{x} \ex+\dot{y} \ey+\dot{z} \ez \tag{vitesse} \\
+\Vec{a}&=\ddot{x} \ex+\ddot{y} \ey+\ddot{z} \ez \tag{accélération}
+\end{align*}
+
+% $$
+% x=\Vec{O M} \cdot \ex, \quad y=\Vec{O M} \cdot \ey \quad \text { et } \quad z=\Vec{O M} \cdot \ez .
+% $$
+%
+% Les vecteurs $\ex, \ey$ et $\ez$ étant fixes dans $(\mathcal{R})$, un  s'écrit
+
+
+\parag{Surfaces et volumes} Le vecteur surface élémentaire $\dS = \d S \Vec{n}$ s’obtient en multipliant les composantes de $\d\Vec{O M}$ orthogonales à $\Vec{n}$, i.e.
+\begin{equation*}
+\dS = \d x \,\d y \,\ez \text{ ou } \dS = \d y \,\d z \,\ex \text{ ou } \dS = \d z \,\d x \,\ey.
+\end{equation*}
+Un élément de volume cubique s’écrit
+$
+\d V=\d x \,\d y\, \d z.
+$
+% Par intégration, on obtient les propriétés suivantes d'un pavé de côtés $a$, $b$ et $c$.
+
+\begin{fig}[]
+  \centering
+  \includegraphics[scale=1]{aires_cartesien}
+%   \begin{tabular}{|c|c|}
+%     \hline
+% Surface & Volume \\
+% \hline
+% $S=ab$ & $V=abc$ \\
+% \hline
+%   \end{tabular}
+  \capt{Surfaces d'un élément cartésien (pavé élémentaire).}
+\end{fig}
+
+
+% \begin{fig}[]
+%   \centering
+%   \includegraphics[width=0.3\textwidth]{pave}
+%   \begin{tabular}{|c|c|}
+%     \hline
+% Surface & Volume \\
+% \hline
+% $S=ab$ & $V=abc$ \\
+% \hline
+%   \end{tabular}
+%   \capt{Surface et volume d'un pavé.}
+% \end{fig}
+% Les vecteurs vitesse $\Vec{v}=\frac{\d \Vec{O M}}{\d t}$ et accélération $\Vec{a}=\frac{\d \Vec{v}}{\d t}$ sont
+
+\section{Système de coordonnées cylindrique}
+
+
+
+\begin{definition}[Coordonnées cylindriques]\label{def:cyl}
+On appelle coordonnées polaires le couple $(r, \theta)$ tel que
+$$
+x = r \cos \theta, \qquad y  = r \sin \theta \qquad (\text{rayon}~r, \text{angle}~\theta),
+$$
+avec $r\in [0,+\infty[$ et $\theta \in [0,2\pi]$.
+
+On appelle coordonnées cylindriques le triplet $(r,\theta,z)$.
+\end{definition}
+On définit alors la base
+polaire $(\er,\et)$, qui est orthonormale, par
+% $$
+% \ex \cdot \ex=\ey \cdot \ey=\ez \cdot \ez=1 \Et  \ex \cdot \ey=\ex \cdot \ez=\ey \cdot \ez=0,
+% $$
+% et directe :
+% $$
+% \ex \wedge \ey=\ez, \quad \ey \wedge \ez=\ex  \Et \ez \wedge \ex=\ey.
+% $$
+% Elle est définit par
+$$
+\er = \cos \theta \,\ex +  \sin \theta \,\ey, \quad \et = -\sin \theta \,\ex + \cos \theta \,\ey,
+$$
+On appelle \imp{base cylindrique} la base orthonormale directe $(\er,\et,\ez)$.
+
+\begin{theorem}[Vecteur position en cylindriques]\label{form:}
+  Le vecteur position s’écrit dans la base cylindrique
+  $$
+  \Vec{O M} = r \er + z \ez.
+  $$
+\end{theorem}
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=0.7\columnwidth]{cylindrical_1}
+  \caption{Repérage d'un point $M$ par les coordonnées cartésiennes $(x,y,z)$ et la base locale cylindrique $(\er,\et,\ez)$. On a également représenté la base polaire $(\er,\et)$ qui permet de repérer le projeté orthogonal de $M$ dans le plan $(x,y)$.}
+  \label{fig:cart}
+\end{figure}
+
+\begin{prop}[Base locale]\label{prop:}
+La base polaire $(\er,\et)$ est une base \imp{locale}. Elle n’est pas fixe, contrairement à la base cartésienne, mais dépend de l’angle $\theta$.
+\end{prop}
+%
+% Les vecteurs $\Vec{e_{r}}$ et $\Vec{e_{\theta}}$ ne sont pas fixes dans $(\mathcal{R}):$ ils dépendent de $\theta$ par
+La dépendance en $\theta$ est donnée par
+$\displaystyle
+\frac{\d \Vec{e_{r}}}{\d \theta}=\Vec{e_{\theta}} \text { et } \displaystyle\frac{\d \Vec{e_{\theta}}}{\d \theta}=-\Vec{e_{r}}.
+$
+
+% donc leurs dérivées temporelles sont non nulles
+%
+% $$
+% \dot{\Vec{e_{r}}}=\dot{\theta} \Vec{e_{\theta}} \quad \text { et } \quad \dot{\Vec{e_{\theta}}}=-\dot{\theta} \Vec{e_{r}}
+% $$
+
+
+\parag{Vecteurs cinématiques}
+ En coordonnées cylindriques :
+\begin{align*}
+\d \Vec{O M}&=\d r \,\Vec{e_{r}}+r \d \theta\, \Vec{e_{\theta}}+\d z\, \ez \tag{déplacement élémentaire} \\
+\Vec{v}&=\dot{r} \Vec{e_{r}}+r \dot{\theta} \Vec{e_{\theta}}+\dot{z} \ez \tag{vitesse} \\
+\Vec{a}&=\left(\ddot{r}-r \dot{\theta}^{2}\right) \Vec{e_{r}}+\left(r \ddot{\theta}+2 \dot{r} \dot{\theta}\right) \Vec{e_{\theta}}+\ddot{z} \ez  \tag{accélération}
+\end{align*}
+
+%
+% et un déplacement infinitésimal s'écrit
+%
+% $$
+% \d \Vec{O M}=\d r \Vec{e_{r}}+r \d \theta \Vec{e_{\theta}}+\d z \ez
+% $$
+
+\parag{Éléments différentiels} L’élément de surface s’écrit
+\begin{equation*}
+\dS = r \d \theta \d z \,\er  \text{ ou }  \dS = \d r \d z \,\et \text{ ou } \dS = r \d r \d \theta \,\ez.
+\end{equation*}
+L’élément de volume s’écrit
+$
+\d V=r \d r \d \theta \d z.
+$
+
+\begin{fig}[]
+  \centering
+  \includegraphics[scale=1]{aires_cylindrique_bis}
+%   \begin{tabular}{|c|c|}
+%     \hline
+% Surface & Volume \\
+% \hline
+% $S=ab$ & $V=abc$ \\
+% \hline
+%   \end{tabular}
+  \capt{Surfaces d'un élément cylindrique.}
+\end{fig}
+
+
+\section{Système de coordonnées sphérique}
+
+\begin{definition}[Coordonnées sphériques]\label{def:cyl}
+On appelle coordonnées polaires le triplet $(r, \theta, \varphi)$ tel que
+$$
+x = r \cos \theta \sin \vphi, \qquad y  = r \sin \theta \sin \vphi, \qquad z = r \cos \vphi,
+$$
+avec $r\in [0,+\infty[$, $\theta \in[0 ; \pi]$ et $\varphi \in[0 ; 2 \pi]$. On appelle
+$r$ le rayon, $\theta$ la colatitude, et $\vphi$ l'azimut.
+
+\end{definition}
+Attention, les symboles $r$ et $\theta$ ne représentent pas la même grandeur que pour les coordonnées cylindriques !
+On définit la base
+\imp{sphérique} $(\er,\et,\ep)$ associée, qui est orthonormée directe. La définition précise est compliquée ; on retiendra que le vecteur associé à une variable (par exemple $\er$) indique dans quelle direction le point $M$ se déplace lorsque la variable diminue ou augmente (par exemple le rayon $r$).
+
+\begin{theorem}[Vecteur position en sphériques]\label{form:}
+  Le vecteur position s’écrit dans la base sphérique
+  $$
+  \Vec{O M} = r \er.
+  $$
+\end{theorem}
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=0.6\columnwidth]{spherical}
+  \caption{Repérage d'un point $M$ par les coordonnées sphériques $(r,\theta,\vphi)$ et la base locale sphérique $(\er,\et,\ep)$.}
+  \label{fig:cart}
+\end{figure}
+
+\begin{prop}[Base locale]\label{prop:}
+La base sphérique $(\er,\et,\ep)$ est une base \imp{locale}. Elle n’est pas fixe, contrairement à la base cartésienne, mais dépend des angles $\theta$ et $\vphi$.
+\end{prop}
+
+\parag{Vecteurs cinématiques}
+ En coordonnées sphériques :
+\begin{align*}
+\d \Vec{O M}&=\d r \,\Vec{e_{r}}+r \d \theta\, \Vec{e_{\theta}}+ r \sin \theta \d \vphi, \ep \tag{déplacement élémentaire} \\
+\Vec{v}&=\dot{r} \Vec{e_{r}}+r \dot{\theta} \Vec{e_{\theta}}+r \sin \theta \dot{\vphi} \ep \tag{vitesse}
+% \\
+% \Vec{a}&=\left(\ddot{r}-r \dot{\theta}^{2}\right) \Vec{e_{r}}+\left(r \ddot{\theta}+2 \dot{r} \dot{\theta}\right) \Vec{e_{\theta}}+\ddot{z} \ez  \tag{accélération}
+\end{align*}
+
+\parag{Éléments différentiels} L’élément de surface s’écrit
+\begin{equation*}
+\dS = r^2 \sin \theta \d \theta \d \vphi \,\er  \text{ ou }  \dS = r \sin \theta \d r \d \vphi \,\et \text{ ou } \dS = r \d r \d \theta \,\ep.
+\end{equation*}
+L’élément de volume s’écrit
+$
+\d V=r^2 \sin \theta \d r \d \theta \d \vphi.
+$
+
+\begin{fig}[]
+  \centering
+  \includegraphics[scale=1]{aires_spherique_bis}
+%   \begin{tabular}{|c|c|}
+%     \hline
+% Surface & Volume \\
+% \hline
+% $S=ab$ & $V=abc$ \\
+% \hline
+%   \end{tabular}
+  \capt{Surfaces d'un élément sphérique.}
+\end{fig}
+
+\end{document}

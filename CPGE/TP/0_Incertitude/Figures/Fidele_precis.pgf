@@ -1,0 +1,73 @@
+﻿\begin{tikzpicture}
+
+% Axes
+\draw [-stealth] (-3,-1) -- +(11,0);
+\draw (2.5,-1.5) node {Pr\' ecision}; 
+
+\draw [-stealth] (-3,-1) -- +(0,6);
+\node at (-3.5,2) [rotate=90] {Justesse}; 
+
+\draw [-stealth,dashed] (-3,-1) -- +(11,6);
+\node at (7,4.8) [rotate=30] {Fid\' elit\' e}; 
+
+\begin{scope}[shift={(-0.5,3.5)}]
+	\draw (-2,0) node[right] {(i)};
+	\draw [JoliRouge] (0,0) node {$\boldsymbol{+}$}; 
+	\draw [JoliJaune,thick, dashed] (0,0) circle [radius=0.75];
+	\draw [JoliBleu,thick] (20:0.7) node {\Large$\boldsymbol{\times}$};
+	\draw [JoliBleu,thick, fill] (65:-0.4) node {\Large$\boldsymbol{\times}$};
+	\draw [JoliBleu,thick, fill] (-60:1) node {\Large$\boldsymbol{\times}$};
+	\draw [JoliBleu,thick, fill] (120:0.65) node {\Large$\boldsymbol{\times}$};
+% 	\draw [JoliBleu,thick, fill] (20:0.7) circle [radius=3pt];
+% 	\draw [JoliBleu,thick, fill] (65:-0.4) circle [radius=3pt];
+% 	\draw [JoliBleu,thick, fill] (-60:1) circle [radius=3pt];
+% 	\draw [JoliBleu,thick, fill] (120:0.65) circle [radius=3pt];
+\end{scope}
+
+\begin{scope}[shift={(-2,-0.5)}]
+	\draw (-0.5,1) node[right] {(ii)};
+	\draw [JoliRouge] (0.5,0) node {$\boldsymbol{+}$}; 
+	\begin{scope}[shift={(2,1)}]
+		\draw [JoliJaune,thick, dashed] (0,0) circle [radius=0.75];
+		\draw [JoliBleu,thick, fill] (160:0.7) node {\Large$\boldsymbol{\times}$};
+		\draw [JoliBleu,thick, fill] (45:0.2) node {\Large$\boldsymbol{\times}$};
+		\draw [JoliBleu,thick, fill] (-100:0.65) node {\Large$\boldsymbol{\times}$};
+		\draw [JoliBleu,thick, fill] (-20:0.75) node {\Large$\boldsymbol{\times}$};
+% 		\draw [JoliBleu,thick, fill] (160:0.7) circle [radius=3pt];
+% 		\draw [JoliBleu,thick, fill] (45:0.2) circle [radius=3pt];
+% 		\draw [JoliBleu,thick, fill] (-100:0.65) circle [radius=3pt];
+% 		\draw [JoliBleu,thick, fill] (-20:0.75) circle [radius=3pt];
+	\end{scope}
+\end{scope}
+
+\begin{scope}[shift={(7,0)}]
+	\draw (-3.5,0.5) node[right] {(iii)};
+	\draw [JoliRouge] (-2,0) node {$\boldsymbol{+}$}; 
+	\begin{scope}[shift={(-1,1)}]
+		\draw [JoliJaune,thick, dashed] (0,0) circle [radius=0.3];
+		\draw [JoliBleu,thick, fill] (190:0.1) node {\Large$\boldsymbol{\times}$};
+		\draw [JoliBleu,thick, fill] (35:0.35) node {\Large$\boldsymbol{\times}$};
+		\draw [JoliBleu,thick, fill] (-10:0.2) node {\Large$\boldsymbol{\times}$};
+		\draw [JoliBleu,thick, fill] (-100:0.4) node {\Large$\boldsymbol{\times}$};
+% 		\draw [JoliBleu,thick, fill] (190:0.1) circle [radius=3pt];
+% 		\draw [JoliBleu,thick, fill] (35:0.35) circle [radius=3pt];
+% 		\draw [JoliBleu,thick, fill] (-10:0.2) circle [radius=3pt];
+% 		\draw [JoliBleu,thick, fill] (-100:0.4) circle [radius=3pt];
+	\end{scope}
+\end{scope}
+
+\begin{scope}[shift={(5.5,4)}]
+	\draw (-2,-0.5) node[right] {(iv)};
+	\draw [JoliRouge] (0,0) node {$\boldsymbol{+}$}; 
+	\draw [JoliJaune,thick, dashed] (0,0) circle [radius=0.3];
+	\draw [JoliBleu,thick, fill] (170:0.2) node {\Large$\boldsymbol{\times}$};
+	\draw [JoliBleu,thick, fill] (50:0.3) node {\Large$\boldsymbol{\times}$};
+	\draw [JoliBleu,thick, fill] (-30:0.2) node {\Large$\boldsymbol{\times}$};
+	\draw [JoliBleu,thick, fill] (-130:0.4) node {\Large$\boldsymbol{\times}$};
+% 	\draw [JoliBleu,thick, fill] (170:0.2) circle [radius=3pt];
+% 	\draw [JoliBleu,thick, fill] (50:0.3) circle [radius=3pt];
+% 	\draw [JoliBleu,thick, fill] (-30:0.2) circle [radius=3pt];
+% 	\draw [JoliBleu,thick, fill] (-130:0.4) circle [radius=3pt];
+\end{scope}
+
+\end{tikzpicture}

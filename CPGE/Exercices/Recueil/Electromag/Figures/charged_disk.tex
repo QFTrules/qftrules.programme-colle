@@ -1,0 +1,41 @@
+% disk charged uniformely
+\input{tikz.tex}
+\usepackage{tikz-3dplot}
+\begin{document}
+% \begin{tikzpicture}
+
+\tdplotsetmaincoords{60}{120}
+\begin{tikzpicture}[tdplot_main_coords,scale=4]
+
+\tdplotsetcoord{P}{1}{0}{0}
+\tdplotsetcoord{Q}{1}{90}{0}
+\tdplotsetcoord{R}{1}{45}{45}
+
+\draw[->] (0,0,0) -- (1,0,0) node[below right]{$\ex$};
+\draw[->] (0,0,0) -- (0,1,0) node[below left]{$\ey$};
+
+% disk of radius R in the (x,y) plane
+\def\a{0.2}
+\def\R{0.5}
+\def\N{10}
+\fill[gray,opacity=0.5,draw=black,draw opacity=1] plot[domain=0:360,smooth] ({\R*cos(\x)},{\R*sin(\x)},0);
+% empty disk of radius a 
+\fill[white,draw=black] plot[domain=0:360,smooth] ({\a*cos(\x)},{\a*sin(\x)},0);
+\draw[->] (0,0,0) -- (0,0,1) node[above]{$\ez$};
+% radius R of disk
+\draw[<->,JoliBleu] (0,0,0) -- (\R,0,0) node[midway,above left]{\contour{white}{$b$}};
+% inner radius a
+\draw[<->,JoliBleu] (0,0,0) -- (0,\a,0) node[midway,above]{\contour{white}{$a$}};
+% point M above along z axis
+\def\z{0.5}
+\draw (0,0,\z) node[right=0.2]{$\rm M$};
+% bullet
+% vector field E(M)
+\draw[vecteur,thick,JoliRouge] (0,0,\z) -- ++ (0,0,0.3) node[midway,left]{$\Vec{E}(\rm M)$};
+\draw[fill=black] (0,0,\z) node{\tiny $\bullet$};
+
+% \end{tikzpicture}
+
+
+\end{tikzpicture}
+\end{document}

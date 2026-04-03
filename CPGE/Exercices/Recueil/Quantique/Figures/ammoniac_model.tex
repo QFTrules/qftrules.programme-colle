@@ -1,0 +1,19 @@
+\input{tikz.tex}
+\begin{document}
+\begin{tikzpicture}
+    % axe x
+    \def\b{0.75}
+    \def\a{1.25}
+    \draw[->] (-3,0) -- (3,0) node[right] {$x$};
+    % axe y du potentiel V(x)
+    \draw[->] (0,-0.5) -- (0,3) node[above] {$V(x)$};
+    % potentiel double puits rectangulaire
+    \draw[thick,JoliBleu] (-2,3) -- ++ (0,-3) -- ++ (\a,0) -- ++ (0,1) -- ++ (2*\b,0) -- ++ (0,-1) -- ++ (\a,0) -- ++ (0,3);
+    % width a of each well
+    \draw[<->,JoliRouge] (-2,-0.2) -- ++ (\a,0) node[midway,below] {$a$};
+    % height of the barrier
+    \draw[<->,JoliRouge] (0,0) -- ++ (0,1) node[midway,right] {$V_0$};
+    % width of the barrier
+    \draw[<->,JoliRouge] (-\b,1.1) -- ++ (2*\b,0) node[midway,above] {\contour{white}{$2b$}};
+\end{tikzpicture}
+\end{document}

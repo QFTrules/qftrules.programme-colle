@@ -1,0 +1,8 @@
+﻿\begin{tikzpicture}
+\node at (0,0) {
+\includegraphics[scale=1]{c_t=2h_line.JPG}
+};
+\draw[JoliJaune,dashed,very thick] (-2.42,0.65) --++(4.8,2.8);
+\draw[JoliJaune,very thick] (-0.75,-0.95) --++(0.3,0.3);
+\draw[JoliJaune,very thick] (-0.75,-0.65) --++(0.3,-0.3);
+\end{tikzpicture}

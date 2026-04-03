@@ -1,0 +1,23 @@
+% !TEX encoding = UTF-8 Unicode
+% J.Roussel
+% MAJ : 2017-09-04
+%-------------------------------------------
+\documentclass[11pt]{article}
+\input{../styles_ondes}
+
+\begin{document}
+	
+
+	\begin{tikzpicture}
+		\draw[->] (-0.2,0)--(0,0)node[black]{•}node[below left,black]{\footnotesize O}--(7,0) node[right] {Re};
+		\draw[->] (0,-0.2)--(0,2) node[above] {Im};
+		\draw[blue,thick,densely dashed](0,0)--(0:5);
+		\draw[->,blue,thick](0,0)--++(0:1)node[midway,above]{\footnotesize $\underline{s_1}$};
+		\draw[->,blue,thick](0:1)--++(0:1)node[midway,above]{\footnotesize $\underline{s_2}$};
+		\draw[->,blue,thick](0:4)--++(0:1)node[midway,above]{\footnotesize $\underline{s_N}$};
+		% \draw (0:.75)arc(0:0:.75);
+		% \draw (10:.75)node[right]{\footnotesize $\varphi$};		
+	\end{tikzpicture}
+
+
+\end{document}

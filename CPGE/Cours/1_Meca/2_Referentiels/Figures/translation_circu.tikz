@@ -1,0 +1,36 @@
+\input{/home/eb/Dropbox/texmf/tex/latex/Preambles/tikz.tex}
+\begin{document}
+
+%=============================================================
+% 2015-07-08	Exemples de mouvement de translation.
+%============================================================
+\begin{tikzpicture} [scale=0.8,x={(-0.353cm,-0.353cm)}, y={(1cm,0cm)}, z={(0cm,1cm)},>=latex, inner sep=2pt, outer sep=2pt, axis/.style={thin,gray}, vecteur/.style={->,thick,color=black,smooth},]
+\colorlet{darkblue}{blue!50!black};
+\begin{scope}[xshift=8cm]%%% Translation circulaire %%%
+\coordinate (O) at (0, 0, 0);
+\coordinate (O') at (3,1,3);
+\coordinate (O'') at (1,3,3);
+\coordinate (A) at (1,-1,0);
+% \draw[axis] (O) -- ++(5, 0, 0)--++(-7,0,0) ;
+% \draw[axis] (O) -- +(0,  5, 0) ;
+% \draw[axis] (O) -- +(0,  0,   5.5) ;
+% \shade(O) --++(5,0,0)--++(0,5,0)--++(-5,0,0)--cycle;
+% \shade(O) --++(0,0,5)--++(5,0,0)--++(0,0,-5)--cycle;
+% \shade(O) --++(0,0,5)--++(0,5,0)--++(0,0,-5)--cycle;
+\draw[vecteur] (O) node[left]{O}-- ++(1,0,0);
+\draw[vecteur] (O)-- ++(0,1,0);
+\draw[vecteur] (O)-- ++(0,0,1) node[right]{$\mathcal{R}$};
+\draw[vecteur] (O') node[left]{O'}-- ++(1,0,0);
+\draw[vecteur] (O')-- ++(0,1,0);
+\draw[vecteur] (O')-- ++(0,0,1) node[right]{$\mathcal{R}'$};
+\draw[vecteur] (O'') node[left]{O'}-- ++(1,0,0);
+\draw[vecteur] (O'')-- ++(0,1,0);
+\draw[vecteur] (O'')-- ++(0,0,1) node[right]{$\mathcal{R}'$};
+\draw[dashed, color=darkblue] (1,1,3) circle(2);
+% \draw (6,2.5,0) node{Translation  circulaire};
+\end{scope}
+\end{tikzpicture}
+
+
+
+\end{document}

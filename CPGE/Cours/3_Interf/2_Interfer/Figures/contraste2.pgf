@@ -1,0 +1,119 @@
+﻿	\begin{tikzpicture}[]
+\begin{axis}[
+		name=plot3,
+	%	title={\footnotesize $\gamma=0,5$},	
+		width=5cm, 
+		height=3cm,
+		xmin=-12, xmax=12,
+		ymin=0,ymax=2.5,
+		samples=50,
+		axis lines=middle,
+		inner axis line style={=>},
+		xlabel={\footnotesize $\Delta\varphi$},
+		ylabel={\footnotesize $I$},
+		xlabel style={anchor=west},
+		ylabel style={anchor=south},
+		xtick=\empty,
+		ytick={1},
+		yticklabels={},
+		grid=major,
+		]
+	   \addplot[domain=-12:12,samples=200]{1+.5*cos(deg(x))};
+	\end{axis}
+	\begin{axis}[
+		name=plot4,
+		at={($(plot3.south)+(0,-2mm)$)},
+		anchor=north,	
+	   colormap/blackwhite,
+	   point meta min=0,
+	   point meta max=2,
+	   view={0}{90},		%vue de dessus
+	   width=5cm, height=2cm,	%je ne sais pas trop
+	   xmin=-12, xmax=12,
+	   ymin=0, ymax=2, 		%les limites des axes
+	   samples=50,			%le nombre d'echantillons
+	   hide axis]			%cache les axes
+	   \addplot3[domain=-12:12, surf,shader=interp]{1+.5*cos(deg(x))};
+	\end{axis}
+
+	\end{tikzpicture}samples=50,			%le nombre d'echantillons
+	   hide axis]			%cache les axes
+	   \addplot3[domain=-12:12, surf,shader=interp]{1+.5*cos(deg(x))};
+	\end{axis}
+
+	\end{tikzpicture}title={\footnotesize $\gamma=0,5$},	
+		width=5cm, 
+		height=3cm,
+		xmin=-12, xmax=12,
+		ymin=0,ymax=2.5,
+		samples=50,
+		axis lines=middle,
+		inner axis line style={=>},
+		xlabel={\footnotesize $\phi$},
+		ylabel={\footnotesize $I$},
+		xlabel style={anchor=south},
+		ylabel style={anchor=west},
+		xtick=\empty,
+		ytick={1},
+		yticklabels={},
+		grid=major,
+		]
+	   \addplot[domain=-12:12,samples=200]{1+.5*cos(deg(x))};
+	\end{axis}
+	\begin{axis}[
+		name=plot4,at={($(plot3.south)+(0,-2mm)$)},anchor=north,	
+	   colormap/blackwhite,
+	   point meta min=0,
+	   point meta max=2,
+	   view={0}{90},		%vue de dessus
+	   width=5cm, height=2cm,	%je ne sais pas trop
+	   xmin=-12, xmax=12,
+	   ymin=0, ymax=2, 		%les limites des axes
+	   samples=50,			%le nombre d'echantillons
+	   hide axis]			%cache les axes
+	   \addplot3[domain=-12:12, surf,shader=interp]{1+.5*cos(deg(x))};
+	\end{axis}
+	\begin{axis}[
+		name=plot5,
+		at={($(plot3.east)+(10mm,0)$)},	
+		anchor=west,
+		title={\footnotesize $\gamma=0,15$},	
+		width=5cm, 
+		height=3cm,
+		xmin=-12, xmax=12,
+		ymin=0,ymax=2.5,
+		samples=50,
+		axis lines=middle,
+		inner axis line style={=>},
+		xlabel={\footnotesize $\phi$},
+		ylabel={\footnotesize $I$},
+		xlabel style={anchor=south},
+		ylabel style={anchor=west},
+		xtick=\empty,
+		ytick={1},
+		yticklabels={},
+		grid=major,
+		]
+	   \addplot[domain=-12:12,samples=200]{1+.15*cos(deg(x))};
+	\end{axis}
+	\begin{axis}[
+		name=plot6,at={($(plot5.south)+(0,-2mm)$)},anchor=north,	
+	   colormap/blackwhite,
+	   point meta min=0,
+	   point meta max=2,
+	   view={0}{90},		%vue de dessus
+	   width=5cm, height=2cm,	%je ne sais pas trop
+	   xmin=-12, xmax=12,
+	   ymin=0, ymax=2, 		%les limites des axes
+	   samples=50,			%le nombre d'echantillons
+	   hide axis]			%cache les axes
+	   \addplot3[domain=-12:12, surf,shader=interp]{1+.15*cos(deg(x))};
+	\end{axis}
+	\end{tikzpicture}
+
+
+	\end{axis}
+	\end{tikzpicture}
+
+
+\end{document}

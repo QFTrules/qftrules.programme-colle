@@ -1,0 +1,10 @@
+\shorthandoff{:!} %règle un problème de compatibilité avec babel
+\begin{circuitikz}[straight voltages,scale=0.9]
+\begin{scope}
+\draw (-1,0) to[vsource,V=$\SI{6}{V}$] (-1,3) -- (1.5,3) to[C,l=$3C$,v<=$U_3$] (1.5,0) -- (-1,0);
+\draw (1.5,3) to[C,l=$2C$,v<=$U_2$] (3.5,3) to[R,l=$R$] (5.5,3);
+\draw (5.5,0) to[vsource,V=$\SI{12}{V}$] (5.5,3) -- (8,3) to[C,l=$C$,v<=$U_1$] (8,0) -- (1.5,0);
+\end{scope}
+
+\end{circuitikz}
+\shorthandon{:!}

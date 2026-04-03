@@ -1,0 +1,307 @@
+% Date : ??/??/2022
+% Version : 1
+% Auteur : Christopher Vautrin 
+% Relu : 
+% Relecteur : 
+
+% ------------------------------------------------------------ %
+% ----------------------  Fiche THM04  ----------------------- %
+% Thème : Thermodynamique
+% Classes : ???
+% ------------------------------------------------------------ %
+
+
+
+% ======================================================= % 
+% ============== Gestion de la compilation ============== %
+% ======================================================= % 
+\ifdefined\mainIsLoaded\else
+\RequirePackage{import}
+\subimport{../../}{_preambule_CdE_PC}
+\begin{document}
+\fi
+% ======================================================= % 
+% ======================================================= % 
+
+
+
+
+
+
+% ============================================================================ %
+%                            FICHE D'ENTRAÎNEMENT                              %
+% ============================================================================ %
+% ======================= Métadonnées sur la fiche =========================== %
+\titreFicheEntrainement		{Statique des fluides}
+\grandTheme					{Thermodynamique}
+\numeroFiche				{THM04}
+\uniqueID					{WZhaxEInvkq} % une chaîne de caractères (a-z, A-Z) aléatoire de 10 caractères.
+\nombreColonnesReponses		{2} % 1, 2, 3, etc.
+% ============================================================================ %
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\debutFicheEntrainement                                                                      %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+% --------------------------------------------------------------------- %
+%                              Prérequis                                %
+%                             (facultatif)                              %
+% --------------------------------------------------------------------- %
+% ================== Métadonnées sur le prérequis ===================== %
+\avecPrerequis{Y} % Y ou N
+% ===================================================================== %
+\begin{prerequis}
+Coordonnées cartésiennes, cylindriques et sphériques ; équations différentielles simples ; séparation de variables et intégration ; projection de forces.
+\end{prerequis}
+% --------------------------------------------------------------------- %
+
+
+
+
+
+
+% •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••• %
+% •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••• %
+\sectionFicheEntrainement{\'Echelle mésoscopique}
+% •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••• %
+% •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••• %
+
+
+
+
+% ********************************************************************* %
+%                           ENTRAÎNEMENT                                % 
+% ********************************************************************* %
+% ================ Métadonnées sur l'entraînement ===================== %
+
+\titreEntrainementFacultatif	{\'Echelle mésoscopique d'un gaz parfait}
+\hauteurLargeurCadreReponse		{8mm}{7cm}
+\dureeResolutionFacultative		{1} % 1, 2, 3 ou 4
+\typeEntrainement				{} % Newton ou QCM ou AN ou vide (exercice "normal")
+\nombreColonnesQuestions		{1} % vide, 1, 2, 3, etc.
+\avecPlusieursQuestions			{Y} % Y ou N
+\initialisationEntrainement
+% ===================================================================== %
+
+On considère un échantillon mésoscopique de gaz contenant $N=10^8$ particules à la pression $p=10^5$ Pa et à la température $T=300$ K. On donne la constante des gaz parfait $R=\SI{8,314}{J.K^{-1}.mol^{-1}}$. \\
+
+% =============================================================================== %
+\debutEntrainement
+% =============================================================================== %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+
+\begin{enonce}
+Exprimer le nombre de particules d'un gaz parfait en fonction de sa quantité de matière et du nombre d'Avogadro $N_A=\SI{6,02e23}{mol^{-1}}$.
+\end{enonce}
+
+\reponse{$N=nN_A$}
+
+%\begin{corrige}
+%\end{corrige}
+
+% ************************************** %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+A partir de l’équation d'état des gaz parfaits, calculer la longueur caractéristique de l'échantillon $L=V^{1/3}$.
+\end{enonce}
+
+\reponse{$L=\left( \dfrac{NRT}{pN_A}\right)^{1/3}=\SI{1}{\mu m}$}
+
+%\begin{corrige}
+%\end{corrige}
+
+% ************************************** %
+
+
+% =============================================================================== %
+\finEntrainement
+% =============================================================================== %
+
+
+
+
+
+
+
+
+
+
+% ********************************************************************* %
+%                           ENTRAÎNEMENT                                % 
+% ********************************************************************* %
+% ================ Métadonnées sur l'entraînement ===================== %
+
+\titreEntrainementFacultatif	{\'Echelle mésoscopique d'un liquide}
+\hauteurLargeurCadreReponse		{8mm}{7cm}
+\dureeResolutionFacultative		{1} % 1, 2, 3 ou 4
+\typeEntrainement				{} % Newton ou QCM ou AN ou vide (exercice "normal")
+\nombreColonnesQuestions		{1} % vide, 1, 2, 3, etc.
+\avecPlusieursQuestions			{Y} % Y ou N
+\initialisationEntrainement
+% ===================================================================== %
+
+On considère un échantillon mésoscopique liquide de masse volumique $\mu=\SI{1e3}{kg.m^{-3}}$ contenant $N=10^8$ particules.
+
+% =============================================================================== %
+\debutEntrainement
+% =============================================================================== %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+
+\begin{enonce}
+Exprimer le nombre de particules d'un liquide en fonction de sa masse, du nombre d'Avogadro et de sa masse molaire $M$.
+\end{enonce}
+
+\reponse{$m=\dfrac{NM}{N_A}$}
+
+%\begin{corrige}
+%\end{corrige}
+
+% ************************************** %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+Calculer la longueur caractéristique de l'échantillon $L=V^{1/3}$. On prendra $M=\SI{18}{g.mol^{-1}}$
+\end{enonce}
+
+\reponse{$L=\left( \dfrac{NM}{N_A\mu}\right)^{1/3}=\SI{100}{nm}$}
+
+%\begin{corrige}
+%\end{corrige}
+
+% ************************************** %
+
+
+% =============================================================================== %
+\finEntrainement
+% =============================================================================== %
+
+
+
+
+
+\newpage
+
+
+
+% •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••• %
+% •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••• %
+\sectionFicheEntrainement{\'Equation de la statique des fluides}
+% •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••• %
+% •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••• %
+
+
+
+
+% ********************************************************************* %
+%                           ENTRAÎNEMENT                                % 
+% ********************************************************************* %
+% ================ Métadonnées sur l'entraînement ===================== %
+
+\titreEntrainementFacultatif	{Musculation sur le gradient}
+\hauteurLargeurCadreReponse		{8mm}{7cm}
+\dureeResolutionFacultative		{1} % 1, 2, 3 ou 4
+\typeEntrainement				{} % Newton ou QCM ou AN ou vide (exercice "normal")
+\nombreColonnesQuestions		{1} % vide, 1, 2, 3, etc.
+\avecPlusieursQuestions			{Y} % Y ou N
+\initialisationEntrainement
+% ===================================================================== %
+
+On donne l'expression du gradient en coordonnées cartésiennes : 
+
+$$\vv{\text{Grad}}(p)=\diffp{p}{x}\vv{u_x}+\diffp{p}{y}\vv{u_y}+\diffp{p}{z}\vv{u_z}$$
+
+% =============================================================================== %
+\debutEntrainement
+% =============================================================================== %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+
+\begin{enonce}
+On considère un champ de pression de la forme : $p(x,y,z)=p_0+Az$, avec $p_0$ et $A$ des constantes. Calculer son gradient.
+\end{enonce}
+
+\reponse{$\vv{\text{Grad}}(p)=A\vv{u_z}$}
+
+%\begin{corrige}
+%\end{corrige}
+
+% ************************************** %
+
+
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+
+\begin{enonce}
+On considère un champ de pression de la forme : $p(x,y,z)=Bxy^2+C\text{exp}(2z)$, avec $B$ et $C$ des constantes. Calculer son gradient.
+\end{enonce}
+
+\reponse{$\vv{\text{Grad}}(p)=By^2\vv{u_x}+2Bxy\vv{u_y}+2C\text{exp}(2z)$}
+
+%\begin{corrige}
+%\end{corrige}
+
+% ************************************** %
+
+
+% =============================================================================== %
+\finEntrainement
+% =============================================================================== %
+
+
+
+
+
+
+
+
+
+
+% ---------------------------------------------------------------------------- %
+%                       Affichage des réponses mélangées                       %
+% ---------------------------------------------------------------------------- %
+\afficheReponsesMelangees
+% ---------------------------------------------------------------------------- %
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\finFicheEntrainement                                                                        %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% ======================================================= % 
+% ============== Gestion de la compilation ============== %
+% ======================================================= % 
+\ifdefined\mainIsLoaded\else
+\printReponsesEtCorriges
+\end{document}\fi
+% ======================================================= % 
+% ======================================================= % 

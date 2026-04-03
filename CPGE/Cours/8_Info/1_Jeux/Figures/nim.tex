@@ -1,0 +1,68 @@
+\input{/home/eb/Dropbox/texmf/tex/latex/Preambles/tikz.tex}
+\begin{document}
+\begin{tikzpicture}[xscale=1,scale=1]
+\usetikzlibrary{shadows.blur}
+\usetikzlibrary{shapes.symbols}
+\newcommand{\filsquare}[1]{
+\begin{scope}[shift={#1}]
+	\fill[gray!70!white, opacity=1,rounded corners=1pt] (0,0) circle(0.2);
+\end{scope}
+}
+
+\foreach \x in {0,1,...,8}
+	\foreach \y in {0}
+		\fill[blur shadow={shadow blur steps=10},fill=white,draw=black,rounded corners=1pt] (0.5*\x,-\y) circle(0.2);
+\filsquare{(4,0)}
+\filsquare{(3.5,0)}
+\filsquare{(3,0)}
+
+\node at (5,0) {$\Rightarrow$};
+\node at (2,-1) {\small ($J_1$)};
+
+\begin{scope}[xshift=6cm]
+\foreach \x in {0,1,...,5}
+	\foreach \y in {0}
+		\fill[blur shadow={shadow blur steps=10},fill=white,draw=black,rounded corners=1pt] (0.5*\x,-\y) circle(0.2);
+\filsquare{(2.5,0)}
+\filsquare{(2,0)}
+
+
+\node at (1.25,-1) {\small ($J_2$)};
+
+\end{scope}
+\node at (9.25,0) {$\Rightarrow$};
+
+\begin{scope}[xshift=10cm]
+\foreach \x in {0,1,...,3}
+	\foreach \y in {0}
+		\fill[blur shadow={shadow blur steps=10},fill=white,draw=black,rounded corners=1pt] (0.5*\x,-\y) circle(0.2);
+\node at (0.75,-1) {\small ($J_1$)};
+\filsquare{(1.5,0)}
+\end{scope}
+
+\node at (12.25,0) {$\Rightarrow$};
+
+\begin{scope}[xshift=13cm]
+% \node[white] at (1.2,0) {A};
+\foreach \x in {0,1,...,2}
+	\foreach \y in {0}
+		\fill[blur shadow={shadow blur steps=10},fill=white,draw=black,rounded corners=1pt] (0.5*\x,-\y) circle(0.2);
+\node at (0.5,-1) {\small ($J_2$)};
+\filsquare{(0,0)}
+\filsquare{(0.5,0)}
+\filsquare{(1,0)}
+\end{scope}
+
+\node at (14.75,0) {$\Rightarrow$};
+
+\begin{scope}[xshift=16cm]
+\node[white] at (0.5,0) {A};
+% \foreach \x in {0}
+	% \foreach \y in {0}
+		% \fill[blur shadow={shadow blur steps=10},fill=white,draw=black,rounded corners=1pt] (0.5*\x,-\y) circle(0.2);
+% \filsquare{(0,0)}
+\end{scope}
+
+
+\end{tikzpicture}
+\end{document}

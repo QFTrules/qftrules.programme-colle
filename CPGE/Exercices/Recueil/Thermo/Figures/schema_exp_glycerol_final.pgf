@@ -1,0 +1,117 @@
+﻿\begin{tikzpicture}[x={(0.866cm,0.5cm)}, y={(0.866cm,-0.5cm)}, z={(0cm,1cm)}, scale=0.8,
+    %Option for nice arrows
+    >=stealth, %
+    inner sep=0pt, outer sep=2pt,%
+    axis/.style={->},
+    wave/.style={thick,color=#1,smooth},
+    screen/.style={fill=white, opacity=1},
+	 interface/.style={thin, draw=black, fill=blue!10!white, draw opacity=1, opacity=0.25},
+	 water/.style={thin, draw=white, top color=blue!10!white,  bottom color=blue!30!gray, 	opacity=0.35},
+	glycerol/.style={thin, draw=gray, bottom color=blue!90!gray,  top color=blue!10!gray, 	opacity=0.3},
+]
+    % Colors
+    \colorlet{darkgreen}{green!50!black}
+    \colorlet{lightgreen}{green!80!black}
+    \colorlet{darkred}{red!50!black}
+    \colorlet{lightred}{JoliVert}
+
+    %screen
+    \draw[screen]   (10, -1.85,  -1.5) -- (10, -1.85,   1.5)  %Polarizing filter
+        node[black, opacity=1] [above=3, sloped,midway] {~~~~~\'ecran} -- (10, 3.15, 1.5) -- (10, 3.15, -1.5) -- cycle;
+
+    % Frame
+    \coordinate (O) at (9	, -0.7, -0.2);
+   % \draw[axis] (O) -- +(2, 0,   0) node [right] {x};
+    \draw[axis] (O) -- +(0,  4.2, 0) node [right] {$X$};
+
+	%back rays 
+	\def\larg{10}
+	\shade[draw = white, opacity=0.1, draw opacity=1, left color=lightred, right color=lightred!0!white] ($(0,0,1) +(5,0.5,0.7)$) --++ (4,0.5*4/5,0.7*4/5) --++ (0,2,-2.4)  --++(-5,-0.5*4/5,0.7*2.05);-- cycle ; 
+	\draw[lightred] ($(0,0,1) +(5,0.5,0.7)$) --++ (4,0.5*4/5,0.7*4/5); 
+	\draw[lightred] ($(0,0,1) + (5,0.5,0.7) + (4,0.5*4/5,0.7*4/5) + (0,2,-2.4)$) --++ (-5,-0.5*4/5,0.7*2.05); 
+	\fill[draw =lightred, fill=white] plot [domain=0:2, samples=200] (9, {0.89 + \x}, {2.24 - 1.185*\x - 1.3*exp(-(\x-0.8)^2*\larg)});
+	\draw[dashed,lightred] plot [domain=0.25:1.45, samples=200] (9, {0.89 + \x}, {2.24 - 1.185*\x});
+	%\draw[lightred] (5.2,1,1) -- (9,0.89+0.7,2.24-1.185*0.7-1.3);
+
+	%transverse ray on the rear face
+	\draw[lightred,opacity=0.7] (5.2,0.5,1.7) --++ (0,1*1.05,-1.4*1.05); 
+
+	%axis z
+	 \draw[opacity=0.5] ($(O)  + (0,2.3,0)$) -- +(0,  0,   2.2);
+	 \draw[axis, opacity=1] ($(O)  + (0,2.3,2.2)$) -- +(0,  0,   0.1) node [below right=0.05, text opacity=1] {$Z$};
+
+    %cuve
+    \begin{scope}[thick]
+			\draw[->,>=stealth] (6.1,0,-1.5) --++ (0,0,3.75)  node[above] {$z$};
+	%white canvas
+			\fill[opacity=0.3, white]  (6,  -2, -1.5) -- (6.2, -2,-1.5) -- (6.2,  2,-1.5) -- (6.2, -2, 1.5)  -- (6.2,  2, 1.5) -- (6.2,-2, -1.5) -- (6.2, -2, 0)  -- (6.2,-2, 1.5) -- (6.2, 2, 1.5)  --( 6.2, 2, -1.5)
+                -- (6.2, 2, -1.5) -- (6.2,  -2, -1.5); % rear face
+			\fill[opacity=0.3,white] (6,-2,-1.5) -- (6,-2,1.5)  -- (6, 2, 1.5) -- (6, 2, -1.5) -- cycle; % front face
+		%real face
+			\draw[opacity=0.5]  (6,  -2, -1.5) -- (6.2, -2,-1.5);
+          \draw[opacity=1] (6,   2, -1.5) -- (6.2,  2,-1.5);
+          \draw[opacity=1]  (6,  -2,  1.5) -- (6.2, -2, 1.5);
+          \draw[opacity=1]  (6,   2,  1.5) -- (6.2,  2, 1.5);
+          \draw[opacity=0.5] (6.2,-2, -1.5) -- (6.2, -2, 0);
+		 	\draw[opacity=1]  (6.2, -2, 0) -- (6.2,-2, 1.5);
+			\draw[opacity=1] (6.2, -2, 1.5)  -- (6.2, 2, 1.5) ;
+			\draw[opacity=1]  (6.2, 2, 1.5) --( 6.2, 2, -1.5);
+			\draw[opacity=0.5] ( 6.2, 2, -1.5)
+                -- (6.2, 2, -1.5) -- (6.2,  -2, -1.5); % rear face
+
+			\fill[interface] (6,-2,0) -- (6,2,0) -- (6.2,2,0) -- (6.2,-2,0) -- cycle;
+			%water with glycerol
+			\shade[glycerol] (6,-2,0) -- (6,2,0) --++ (0,0,-1.5) --++(0,-4,0) -- cycle;
+			\shade[glycerol] (6,2,0) -- ++(0.2,0,0) --++ (0,0,-1.5) --++(-0.2,0,0) -- cycle;
+			%clean water
+			\fill[interface] (6,-2,1) -- (6,2,1) -- (6.2,2,1) -- (6.2,-2,1) -- cycle;
+			\shade[water] (6,-2,0) -- (6,2,0) --++ (0,0,1) --++(0,-4,0) -- cycle;
+			\shade[water] (6,2,0) -- ++(0.2,0,0) --++ (0,0,1) --++(-0.2,0,0) -- cycle;
+
+	       \draw (6,-2,-1.5) -- (6,-2,1.5) node [above=3, sloped, midway]{~~~~~~~cuve}
+                -- (6, 2, 1.5) -- (6, 2, -1.5) -- cycle; % front face
+    \end{scope}
+
+	%front rays
+	%\draw[lightred, opacity=1] ($(0,0,1) +(5,0.5,0.7)$) --++ (0,1,-1.4); 
+	\shade[draw = white, opacity=0.25, draw opacity=0, left color=lightred, right color=lightred!30!white] (0,0,1) --++ (5,0.5,0.7) --++ (0,1,-1.4) -- cycle ; 
+	\draw[lightred] (0,0,1) --++ (5,0.5,0.7);
+	\draw[lightred,opacity=0.6] (5,0.5,1.7) --++ (0,1,-1.4); 
+	\draw[lightred] (5,1.5,0.3)  -- (0,0,1);
+
+	%lens
+	\begin{scope}[yshift=1cm]
+	\draw[axis] (0,-0.6,0) -- ++(0,1.3,0);
+	%\draw[->,>=stealth] (0,-1,-1) -- ++(0,2,2);
+	\draw[densely dashed] (0,-0.6,0) arc [start angle=-120, end angle=-150, radius=1.55] node[midway, left]{$\varphi$};
+	%white canvas
+	\begin{scope}[xshift=-0.16cm, yshift=-0.13cm]
+	\node[cylinder, draw=white, top color=white!80!gray, bottom color=white, fill opacity=1, shape aspect=0.01, rotate=28, text opacity=0, xscale=0.5] {ABC};
+\end{scope}
+	\node[cylinder, draw, top color=white!80!gray, bottom color=white, fill opacity=0.7, shape aspect=.7, rotate=23, text opacity=0] {ABC};
+	\end{scope}
+
+	%laser beam
+	\draw[lightred] (-2.5,-0.0,1.35) -- (0.05,0,1);
+
+	%laser
+	\begin{scope}[xshift=-2.5cm, yshift=-0cm]
+	%white canvas
+	\node[cylinder, draw =white, fill=white, fill opacity=1, shape aspect=.7, rotate=201, text opacity=0, scale=1.2] {ABC};
+	\node[cylinder, draw, top color=gray, bottom color=black, fill opacity=0.5, shape aspect=.5, rotate=201, text opacity=0, scale=1.2] {ABC};
+	\node[above=15, left=-7, rotate=0] at (-8.65,-8,-0.3) {laser};
+	\end{scope}
+
+	%annotations
+	\draw[densely dotted] (5.1,3,0) -- ++(0,1,0) node[below right, align=left] {eau riche\\ en glyc\'erol};
+	\draw[densely dotted] (5.1,3,1.5) -- ++(0,1,0) node[below right, align=left] {eau pauvre\\ en glyc\'erol};
+	\node at (3,0.6,0) {faisceau};
+	%\draw[densely dotted] (1.5,-1.5,0.1) --++(0,0,1.3) node[above]{lentille};
+	\node at (0,0,0.3) {lentille};
+	\draw[<->,>=stealth] (6.2,-2,1.6) --++ (3.6,0.3,0) node[midway,above] {$L~$};
+	\draw[<->,>=stealth] (1.6,-2.3,-0.5) --++ (4.8,0.5,0) node[midway,above] {$L_{\rm c}~~$};
+	\draw[densely dashed] (10,0.2,-0.8) -- ++ (0,0.45,0); 
+	\draw[densely dashed] (10,0.2,0.3) -- ++ (0,0.45,0); 
+	\draw[<->] (10,0.2,-0.8) --++(0,0,1.1) node[midway,left]{$h(t)$};
+	\draw[<->] (10,0.9,-0.75) --++(0,0,0.8) node[midway,right=0.12]{$\delta(X,t)$};
+\end{tikzpicture}

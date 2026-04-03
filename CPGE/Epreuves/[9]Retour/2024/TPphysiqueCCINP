@@ -1,0 +1,14 @@
+Bonsoir, voici un résumé de mon TP aux concours.
+- Une mise en contexte (pour ma part le besoin d'un filtre passe bande pour écouter des dauphins ) qui permet de choisir entre 3 montages à base d'Ali, je devais donc trouver lequel était le passe bande parmi les 3 en étudiant les fonctions de transfert qui étaient données
+
+- Réaliser le montage en choisissant judicieusement R et C 
+
+- Tracer la caractéristique du montage (méthode donnée) : relever la tension de sortie ou le gain pour différentes fréquences , tracer la caractéristique. Question supplémentaire : le signal est-il modifié ? Comment?
+
+- Mesurer le dephasage induit par le montage 
+
+Matériel : plaquettes avec ALI déja branché à l'alim, oscillo bien plus poussés que les nôtres mais avec fonctionnement similaire, GBF simple d'utilisation, PowerPoint explicatif pour la plaquette et l'ALI 
+
+Logiciels : Regressi, latispro, excel et quitpro (plus sûr du nom du dernier)
+
+Bonne soirée 

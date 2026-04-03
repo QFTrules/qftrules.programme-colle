@@ -1,0 +1,1068 @@
+% !TEX root = /home/eb/.vscode/extensions/qftrules.programme-colle/tmp/Exercice.tex
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][TD]{Modèle du condensateur plan idéal}
+  \Notions{\item Condensateur \task Théorème de Gauss \task Géométrie plane}
+  Un condensateur est un composant capable de stocker des charges électriques. Il est composé de deux armatures conductrices en regard séparées par un milieu isolant. Un condensateur plan possède deux armatures planes de surface $S$ séparées d'une distance $d$. On représente ci-dessous les lignes de champ dans un condensateur plan idéal.
+  %%%%%%%%%%%%%%%%%%%%%
+  \begin{fig}
+  \centering
+  % \subfigure[]{\label{fig:C2}
+  % \includegraphics[height=5cm]{capacitors2.pdf}
+  % }
+  % \hspace{2cm}
+  % \subfigure[]{\label{fig:C1}
+  \includegraphics[height=5cm]{capacitors1.pdf}
+  % }
+  % \caption{Condensateur plan idéal. Les armatures sont infinies et uniformément chargées, de chargées opposées $+Q$ et $-Q$. Les lignes de champ sont parfaitement rectilignes et parallèles.}
+  % \label{fig:capa}
+\end{fig}
+  %%%%%%%%%%%%%
+
+\begin{quest}
+  \item  Rappeler les deux hypothèses du modèle du condensateur plan idéal.
+\sol{  Dans le modèle du condensateur plan idéal,
+  \begin{liste}
+  \item on néglige les \imp{effets de bord} (la déviation des lignes de champ au voisinage du bord des armatures). Cette approximation est valable lorsque la distance $d$ entre les armatures de surface~$S$ est négligeable devant leur taille, soit $d \ll  \sqrt{S}$. Cela revient à supposer les armatures infinies ;
+  \item  on suppose que les armatures sont \imp{uniformément} chargées. Comme le composant entier est électriquement neutre, les armatures sont de charges opposées $\pm Q$ avec $Q=\sigma S$ où $\sigma$ désigne la densité surfacique de charge.
+  \end{liste}
+}
+
+\end{quest}
+
+  Pour déterminer le champ électrique créé par un condensateur plan idéal, nous utilisons le théorème de superposition. Ce champ est égal à la somme du champ $\Vec{E}_+$ créé par l’armature chargée positivement et du champ  $\Vec{E}_-$ créé par l’armature chargée négativement.
+\begin{quest}
+  \item  En étudiant les invariances et symétries, puis en appliquant le théorème de Gauss, déterminer l'expression du champ électrique $\Vec{E}_-$ créé par l’armature chargée négativement.
+\sol{  Considérons une plaque infinie uniformément chargée de normale $\ez$.
+
+  Invariances : la distribution de charge est invariante par translation suivant $\ex$ et $\ey$, et donc $\Vec{E}= \Vec{E}(z)$. Symétries : les plans $(M,\ex,\ez)$ et  $(M,\ey,\ez)$ sont plans de symétrie, donc $\Vec{E} = E_z(z) \ez$. De plus, l’inversion $z \mapsto -z$ doit préserver l’orientation du champ, et donc $E_z(-z)=-E_z(z)$.
+
+  On prend comme surface de Gauss un cylindre $\mc{S}$ d’axe $(Oz)$ traversant la plaque, de surface latérale $\mc{S}_{\rm lat}$ et bordé des surfaces $\mc{S}_1$ au-dessus et $\mc{S}_2$ au-dessous. Les surfaces $\mc{S}_1$ et $\mc{S}_2$ sont des surfaces quelconques d’aire $S$ placées aux altitudes $z>0$ et $-z<0$. Le flux a pour expression
+  \begin{equation}
+  \oint_\mc{S} \Vec{E} \cdot \d S = \int_{\mc{S}_1} \Vec{E} \cdot \d S + \int_{\mc{S}_2} \Vec{E} \cdot \d S = E_z(z) S\, \ez \cdot \ez + E_z(-z) S\, \ez \cdot (-\ez)  = 2\times S E_z(z).
+  \end{equation}
+  Le théorème de Gauss nous donne, avec $q_{\rm int} = S \sigma$,
+  \begin{equation}
+  2 S E_z(z) = \frac{S \sigma}{\varepsilon_0}\quad \Rightarrow \quad E_z(z) = \frac{\sigma}{2\varepsilon_0}.
+  \end{equation}
+  Ainsi, le champ créé par une plaque plane infinie de normale $\vv{e_z}$ uniformément chargée de densité surfacique $\sigma$, est donné par
+  % \begin{equation}
+  \eqbox{
+    \vv{E}(M)=\pm\frac{\sigma}{2\varepsilon_0}\,\vv{e_z},
+  }
+  % \end{equation}
+  avec le signe $+$ si $z>0$ et le signe $-$ si $z<0$. Le champ est discontinu en $z=0$.
+}
+
+\item Déterminer $\Vec{E}_-$ par analogie. En déduire le champ électrique total $\E$ entre les armatures du condensateur. Que vaut-il en dehors des armatures ?
+
+\sol{Le champ créé par l’armature chargée positivement placée en $z=-d/2$ vaut
+  \begin{equation}
+  \vv{E}_{+}= \begin{cases}
+   +\frac{\sigma}{2\varepsilon_0}\vv{e_z} \quad\text{si}\quad z>-\frac{d}{2}, \\
+   -\frac{\sigma}{2\varepsilon_0}\vv{e_z} \quad\text{si}\quad z<-\frac{d}{2}.
+   \end{cases}
+   \end{equation}
+   %%%%%%%%%%%%%%%%%%%%%
+  %  \begin{figure}[b!]
+  \begin{fig}[label]
+    \centering
+    %  \includegraphics[width=0.8\textwidth]{champ_condensateur.pdf}
+    %\capt{}
+    \centering
+    \capt{Illustration du calcul du champ d'un condensateur modélisé par la superposition de deux plaques infinies uniformément chargées et de charges opposées. Le champ électrostatique est représenté en bleu.}
+  \end{fig}
+    %  \end{figure}
+   %%%%%%%%%%%%%%%%%%%%%%%%%
+  De même, le champ créé par l’armature chargée négativement placée en $z=d/2$ vaut
+  \begin{equation}
+  \vv{E}_{-}= \begin{cases}
+   -\frac{\sigma}{2\varepsilon_0}\vv{e_z}\quad\text{si}\quad z>\frac{d}{2},\\
+   +\frac{\sigma}{2\varepsilon_0}\vv{e_z} \quad\text{si}\quad z<\frac{d}{2}.
+   \end{cases}
+   \end{equation}
+   Le champ créé par l'ensemble du condensateur est $\Vec{E} = \Vec{E}_+ + \Vec{E}_-$, soit
+  % \begin{equation}
+  \eqbox{
+    \vv{E}= \begin{cases}
+      0 \quad\text{si}\quad \abs{z}>\frac{d}{2}, \\
+      \frac{\sigma}{\varepsilon_0}\vv{e_z}\quad\text{si}\quad \abs{z}<\frac{d}{2}.
+      \end{cases}
+    }
+  %  \end{equation}
+    Le champ électrostatique créé par un condensateur plan idéal est nul en dehors des armatures et vaut
+     $\frac{\sigma}{\varepsilon_0}\ez$ entre les armatures.
+}
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][3]{Dipôle moléculaire}
+Une molécule d’eau est assimilée à un dipôle électrostatique de moment dipolaire $\Vec{p} = p \,\ez$ fixe en $O$. On rappelle que le potentiel créé par un dipôle est de la forme $V(r,\theta) = k \frac{\cos \theta}{r^2}$ en coordonnées sphériques.
+
+\begin{quest}
+  \question Déterminer $k$ en fonction de $p$ et $\epz$ par analyse dimensionnelle.
+  \question  Un ion chlorure de masse $m$ est lâché au point $M_0$ tel que $\Vec{OM_0} = r_0 \ez$  avec une vitesse initiale $\Vec{v}_0 = v_0 \et$ orthoradiale. On repère son mouvement par ses coordonnées $(r,\theta)$ dans le plan $(\Vec{OM_0},\Vec{v}_0)$. Écrire les équations du mouvement.
+
+  \textsc{Données :} $
+\grad f = \dr{f}{r} \er + \frac{1}{r}\dr{f}{\theta} \et + \frac{1}{r \sin \theta}\dr{f}{\vphi} \ep
+  $
+  \question Montrer que
+  $
+\dd{r\dot{r}}{t} =  v_0^2 - \frac{2ek}{m r_0^2},
+  $
+  et en déduire $r(t)$.
+  \question On se place à température $T$. Cela signifie que l’énergie cinétique des molécules est de l’ordre de $\kB T$, où $\kB$ est la constante de Boltzmann. À quelle condition sur $v_0$ l’ion est-il solvaté par l’eau ?
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][colle]{Molécules apolaires}
+  \Notions{\item Dipôle électrostatique \task Moment dipolaire}
+  Quelles molécules ne présentent \imp{pas} de moment dipolaire  : $\mathrm{CO}_2, \mathrm{NH}_3, \mathrm{AlCl}_3, \mathrm{PCl}_5$ ?  Justifier.
+
+  \sol{
+     Pour déterminer si une molécule est apolaire, on peut dans un premier temps déterminer les plans de symétrie de la molécule. Les barycentres des charges négatives et positives sont forcément situés sur le plan de symétrie de la molécule. Si la molécule présente plusieurs plans de symétrie dont l'intersection est un point, appelé centre de symétrie, alors les barycentres sont forcément confondus et le moment dipolaire nul. Cette situation se présente pour $\mathrm{CO}_2, \mathrm{AlCl}_3$ et $\mathrm{PCl}_5$. 
+     
+     
+     
+     Le dioxyde de carbone est une molécule linéaire (type AX2) qui présente un plan de symétrie perpendiculaire à la molécule et une infinité de plans contenant la molécule. La molécule de CO$_2$ est donc \udl{apolaire}.
+
+     \begin{fig}[label]
+      \centering
+      \includegraphics[width=0.3\columnwidth]{CO2.png}
+      %\capt{}
+     \end{fig}
+
+     Le trichlorure d'aluminium est plane et forme un triangle équilatéral (type AX3). La molécule présente 3 plans de symétrie perpendiculaire à la molécule en plus du plan de la molécule. La molécule de $\mathrm{AlCl}_3$
+     est donc \udl{apolaire}.
+
+     \begin{fig}[label]
+      \centering
+      \includegraphics[width=0.3\columnwidth]{AlCl3.png}
+      %\capt{}
+     \end{fig}
+
+     Le penta-chlorule de phosphore à la forme d'une bi-pyramide à base trigonale (AX5). La molécule présente les mêmes plans de symétrie qu' $\mathrm{AlCl}_3$. La molécule de $\mathrm{PCl}_5$ est donc \udl{apolaire}.
+
+     \begin{fig}[label]
+      \centering
+      \includegraphics[width=0.3\columnwidth]{PCl5.png}
+      %\capt{}
+     \end{fig}
+  }
+  \sol{
+     La molécule d'ammoniac en forme de pyramide trigonale présente 3 plans de symétrie dont l'intersection est une ligne qui passe par N. Elle n'est donc pas nécessairement apolaire. En fait, l'atome d'azote étant plus électronégatif que les atomes d'hydrogène, il déplace le barycentre des charges négatives vers lui. Chaque liaison N-H présente un moment dipolaire dont la somme vectoriel donne un vecteur non nul. La molécule est donc \udl{polaire}.
+
+     \begin{fig}[label]
+      \centering
+      \includegraphics[width=0.3\columnwidth]{NH3.png}
+      %\capt{}
+     \end{fig}
+
+     Quant au méthanal, la molécule ne présente que deux plans de symétrie : l'un contenant la molécule, l'autre perpendiculaire à ce dernier. les barycentres des charges négatives et positives se trouvent à leur intersection c'est-à-dire le long de la liaison $C=0$. Le barycentre des charges négative est plus près de l'oxygène qui est l'élément le plus électronégatif ce qui induit un moment dipolaire orienté de O vers le groupement $\mathrm{CH}_2$. La molécule de $\mathrm{COH}_2$ est donc \udl{polaire}.
+
+     \begin{fig}[label]
+      \centering
+      \includegraphics[width=0.3\columnwidth]{OCH2.png}
+      %\capt{}
+     \end{fig}
+  }
+  \end{exo}
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \begin{exo}[PC][1][colle]{Distribution de trois charges}
+  \Notions{\item Dipôle électrostatique \task Moment dipolaire}
+    Trois ions sont disposées aux sommets d'un triangle équilatéral de côté $a=10^{-10} \mathrm{~m}$. Ces ions portent les charges $+\textstyle\frac{e}{3}$, $+\textstyle\frac{e}{3}$ et $-\textstyle\frac{2e}{3}$ avec $e=1,6 \cdot 10^{-19} \mathrm{C}$ la charge élémentaire.
+  
+    \begin{quest}
+      \item Quel est le moment dipolaire électrique $\Vec{p}$ de la distribution de charges ? On donnera sa direction, son sens et sa norme. Quelle molécule pourrait-on assimiler à cette distribution de charges ? 
+  
+      \item Dessiner, dans le plan du triangle, l'allure des lignes de champ électrique et des équipotentielles que produit ce système de trois charges, d'abord pour $r \simeq a$, puis pour $r \gg a$. Indiquer les plans de symétrie et d'antisymétrie. 
+  
+    \end{quest}
+    \begin{fig}[label]
+      \centering
+      % \includegraphics[width=0.35\columnwidth]{2024_01_26_580c4eb3d2b0fd596da3g-1}
+      %\capt{}
+    \end{fig}
+  
+  \end{exo}
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \begin{exo}[PC][1][colle]{Molécule H$_2$O}
+  La molécule $\mathrm{H}_2 \mathrm{O}$ présente un moment dipolaire total de 1,82 D. Les liaisons $\mathrm{OH}$ mesurent 96 pm et forment un angle $\alpha=104^{\circ}$. En admettant qu'on peut assimiler chaque atome à une charge ponctuelle, déterminer la valeur de ces charges qui correspondent à un tel moment.
+  Donnée : Le debye (symbole D) vaut environ $\frac{1}{3} 10^{-29}$ C.m
+  \end{exo}
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][2][TD]{Capacité linéique d’un câble coaxial}
+  \Notions{\item Condensateur \task Théorème de Gauss \task Géométrie cylindrique}
+Un câble coaxial est un canal de transmission de l’information, encore couramment utilisé aujourd’hui pour la réception de signaux de télévision ou la transmission sur de courtes distances. On modélise un câble coaxial par deux cylindres conducteurs concentriques de rayons $R_1<R_2$ séparés par du vide. L’âme (cylindre intérieur) est densité surfacique de charge $\sigma_1$, et la gaine (cylindre extérieur) de densité $\sigma_2$. On considère une longueur $h$ de câble, et on néglige les effets de bord. Le potentiel est porté à $V_1$ sur l’âme et à $V_2<V_1$ sur la gaine.
+
+\begin{center}
+\includegraphics[scale=0.5]{coax.png}
+\end{center}
+\begin{quest}
+
+\item Les surfaces de l’âme et de la gaine portent des charges opposées. Montrer que $R_1\sigma_1=-R_2\sigma_2$.
+
+\sol{
+La charge comprise sur l'armature $1$ (âme) sur une portion de longueur $h$ vaut $Q_1=2\pi R_1 h \sigma_1$. La charge comprise sur l'armature $2$ (gaine) sur une portion de longueur $h$ vaut $Q_2=2\pi R_2 h \sigma_2$. Les conducteurs d’un condensateur sont en influence totale, ce qui implique que l’âme et la gaine portent des charges opposées, soit $Q_1=-Q_2$. En simplifiant par $h$, on en déduit 
+\eqbox{
+R_1\sigma_1=-R_2\sigma_2.
+}
+}
+
+\item Analyser les symétries et invariances du champ électrostatique~$\Vec{E}(M)$.
+
+\sol{
+  \begin{itemize}
+    \item \udl{Symétries} : les plans $(M,\er,\ez)$ et $(M,\er,\et)$ sont des plans de symétrie. Comme $\E(M)$ appartient à tout plan de symétrie $\Pi_S(M)$ contenant $\rm M$, on en déduit la direction du champ,
+    \eqbox{
+    \Vec{E}(M) = E_r(M) \,\er.
+    }
+    \item \udl{Invariances} : translation selon $(Oz)$ et rotation autour de l’axe $(Oz)$.
+    Les composantes cylindriques du champ électrostatiques sont donc indépendantes des coordonnées cylindriques $z$ et $\theta$, soit
+    \eqbox{
+    \Vec{E}(M) = E_r(r) \,\er.
+    }
+  \end{itemize}
+}
+
+
+\item Appliquer le théorème de Gauss pour déterminer $\Vec{E}(M)$ entre l’âme et la gaine. En déduire la tension entre l’âme et la gaine $U_{12}=V_1-V_2$.
+
+\sol{
+  \begin{itemize}
+    \item \udl{Surface de Gauss} : cylindre $S$ de rayon $r$ et hauteur $h$ centré sur l’axe du câble coaxial. On décompose $S = S_{\rm bas} \cup S_{\rm haut} \cup S_{\rm lat}$, avec $S_{\rm bas}$ et $S_{\rm haut}$ les bases du cylindre et $S_{\rm lat}$ sa surface latérale.
+    \item \udl{Calcul du flux} : Le flux vaut
+    $$
+    \oiint_S \Vec{E} \cdot \Vec{\d S} = \iint_{S_{\rm lat}} \Vec{E} \cdot \Vec{\d S} + \iint_{S_{\rm bas}} \Vec{E} \cdot \Vec{\d S} + \iint_{S_{\rm haut}} \Vec{E} \cdot \Vec{\d S} = \iint_{S_{\rm lat}} \Vec{E} \cdot \Vec{\d S} = E_r(r) S_{\rm lat} = 2\pi r h E_r(r) .
+    $$
+    \item \udl{Théorème de Gauss} : Le théorème de Gauss donne
+    $$
+     \oiint_S \Vec{E} \cdot \Vec{\d S} = \frac{q_{\rm int}}{\varepsilon_0},
+     $$
+     avec $q_{\rm int} = 2 \pi R_1 h \sigma_1$ la charge intérieure à la surface de Gauss,  pour $R_1<r<R_2$. On en déduit
+     $$
+2 \pi r h E_r(r) = \frac{2 \pi R_1 h \sigma_1}{\varepsilon_0} \quad \Rightarrow \quad E_r(r) = \frac{R_1 \sigma_1}{\varepsilon_0 r}.
+     $$
+  \end{itemize}
+Le champ électrostatique entre l’âme et la gaine s’écrit donc
+\eqbox{
+\Vec{E}(M) = \frac{R_1 \sigma_1}{\varepsilon_0 r} \,\er.
+}
+La tension s’obtient en calculant la circulation du champ électrostatique le long d’une ligne de champ $\mc{C}$, soit
+$$
+U_{12} = \int_1^2 \Vec{E} \cdot \Vec{\d \ell} = \int_{R_1}^{R_2} E_r(r) \d r = 
+\frac{R_1 \sigma_1}{\varepsilon_0} \int_{R_1}^{R_2}  \frac{\d r}{r} = \frac{R_1 \sigma_1}{\varepsilon_0} \left[\ln(r)\right]_{R_1}^{R_2},
+$$
+d’où l’on tire 
+\eqbox{
+ U_{12} =  \frac{R_1 \sigma_1}{\varepsilon_0} \ln\left( \frac{R_2}{R_1} \right).
+}
+}
+
+\item On rappelle que la capacité électrique $C$ est défini par $Q_1 = CU_{12}$, ou $Q_1$ désigne la charge stockée sur l’âme. Déterminer la capacité linéique $\Gamma = \frac{C}{h}$ du câble coaxial. Application numérique pour $R_1 = \SI{1}{mm}$ et $R_2 = \SI{2.5}{mm}$.
+
+\sol{
+Avec $Q=2\pi R_1 \sigma_1 h$, on trouve
+% $$
+\eqbox{
+  \Gamma = \frac{2\pi \varepsilon_0}{\ln(R_2/R_1)} = \SI{60.6}{pF.m^{-1}}.
+  }
+% $$
+}
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][2][TD]{Condensateur sphérique}
+  \Notions{\item Condensateur \task Théorème de Gauss \task Géométrie sphérique}
+
+On considère une condensateur composé de deux armatures sphériques de rayons $R_1<R_2$ et portées aux potentiels $V_1$ et $V_2$. Ces deux armatures sont chargées uniformément en surface avec une densité $\sigma_1$ et $\sigma_2$. Les armatures sont séparées par du vide, de permittivité diélectrique $\varepsilon_0$.
+
+\begin{fig}[label]
+  \centering
+  \includegraphics[width=0.3\columnwidth]{capacitors_sphere}
+  %\capt{}
+\end{fig}
+
+\begin{quest}
+
+\item Les surfaces des armatures en regard portent des charges opposées $\pm Q$. En déduire que $R_1^2\sigma_1=-R_2^2\sigma_2$.
+
+\sol{
+  La charge comprise sur l'armature $1$ (âme) sur vaut $Q_1=4\ pi R_1^2 \sigma_1$. La charge comprise sur l'armature $2$ (gaine) sur une portion de longueur $h$ vaut $Q_2=4\pi R_2^2 \sigma_2$. Comme $Q_1=-Q_2$, on a $R_1^2\sigma_1=-R_2^2\sigma_2$.
+}
+
+\item Analyser les invariances et symétries du champ électrostatique~$\Vec{E}(M)$ pour $R_1<r<R$.
+
+\sol{
+  \udl{Invariances} : rotation autour de tout axe passant par O : $\Vec{E} = \Vec{E}(r)$.\\ 
+
+  \udl{Symétries} : plan de symétrie $(M,\er,\et)$ et $(M,\er,\ep)$ donc
+  \eqbox{
+  \Vec{E} = E_r(r) \er.
+  }
+}
+
+
+\item Appliquer le théorème de Gauss pour déterminer le champ $\Vec{E}(M)$ entre les armatures. En déduire la tension $U=V_1-V_2$ en fonction de  $\sigma_1$, $R_1$, $R_2$, et $\veps_0$.
+
+% \sol{
+%   \udl{Surface de Gauss} : sphère de rayon $R_1<r<R_2$.\\ 
+%   \udl{Flux} :
+%   $$
+%   \oint_S \Vec{E} \cdot \Vec{\d S} = 24\pi r^2 E_r(r).
+%   $$
+%   \udl{Théorème de Gauss} :
+%   $$
+%   \oint_S \Vec{E} \cdot \Vec{\d S} = \frac{q_{\rm int}}{\varepsilon_0} = \frac{Q}{\varepsilon_0}.
+
+% $$
+% Et donc $E_r(r)= \frac{Q}{4\pi r^2 \varepsilon_0}$ et 
+% \eqbox{
+% \E(M) =  \frac{Q}{4\pi r^2 \varepsilon_0}\er.
+% }
+% La tension s’obtient en calculant la circulation
+% $$
+% U = \int \Vec{E} \cdot \Vec{\d \ell} = \int_{R_1}^{R_2} E_r(r) \d r = \frac{Q}{4\pi \varepsilon_0} \int_{R_1}^{R_2} \frac{\d r}{r^2} = \frac{Q}{4\pi \varepsilon_0} \left(\frac{1}{R_1} - \frac{1}{R_2}\right).
+% $$
+% }
+
+\item Déterminer la capacité électrique $C$, définie par $Q = CU$, ou ici $Q$ est la charge positive stockée sur l’armature intérieure $1$.
+
+\sol{
+  Avec $Q= 4\pi \varepsilon_0 \left(\frac{1}{R_1} - \frac{1}{R_2}\right)^{-1} U$, on trouve
+  \eqbox{
+  C = 4\pi \varepsilon_0 \left(\frac{1}{R_1} - \frac{1}{R_2}\right)^{-1}.
+  }
+}
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][3][TD]{Le modèle atomique de Thomson}
+  \Notions{\item Théorème de Gauss \task Géométrie sphérique \task Dipôle induit \task Énergie d'un dipôle}
+  Dans le modèle atomique proposé par J. J. \textsc{Thomson} en 1904, l'atome d'hydrogène est modélisé par une boule de centre $\rm O$, de rayon $a$, et de charge totale $+e$ uniformément répartie en volume. Au sein de cette boule chargée positivement se déplace un électron ponctuel de charge $-e$ à une distance $r$.
+  \begin{fig}[label]
+    \centering
+    \includegraphics[width=0.3\columnwidth]{atom_thompson.pdf}
+    %\capt{}
+  \end{fig}
+  \begin{quest}
+  \item Par étude des invariances et symétries de la distribution de charge, montrer que le champ électrostatique produit par la boule, sans inclure l'électron, est de la forme $\Vec{E}(M) = E(r) \er$.
+  \sol{
+  Distribution de charge à symétrie sphérique, donc 
+  \eqbox{
+  \Vec{E}(M) = E(r) \er.
+  }
+  }
+  \item Déterminer $E(r)$ à l'intérieur $r<a$ de la boule par application du théorème de Gauss.
+  \sol{
+  Surface de Gauss $\Surf = \{\text{sphère de rayon } r\}$. Soit $\rho$ la charge volumique. Le théorème de Gauss donne 
+  $$
+    \displaystyle\oiint_\Surf \Vec{E} \cdot \dS = 4\pi r^2 E(r) = \frac{q_{\rm int}}{\varepsilon_0} = \frac{4\pi r^3 \rho}{3\varepsilon_0} = \frac{e}{\varepsilon_0} \left( \frac{r}{a} \right)^3.
+  $$
+  On en déduit 
+  \eqbox{
+  E(r) = \frac{e \,r}{4\pi \varepsilon_0 a^3}.
+  }
+  }
+  \item Montrer que la force électrostatique subie par l'électron s'apparente à une force de rappel d'un ressort $\Vec{F} = - k \Vec{r}$, dont on déterminera la raideur $k$.  Quelle est la valeur du moment dipolaire de l'atome ?
+  \sol{
+  La force électrostatique s'écrit 
+  $$
+    \Vec{F} = -e \Vec{E} = -\frac{e^2 r}{4\pi \varepsilon_0 a^3} \er = -  k \Vec{r},
+  $$
+  avec 
+  \eqbox{
+  k = \frac{e^2}{4\pi \varepsilon_0 a^3}.
+  }
+  La position moyenne de l'électron est l'origine $\rm O$ du repère. Comme le barycentre des charges négative et positive sont confondus, le moment dipolaire est nul.
+  }
+\end{quest}
+Un champ extérieur $\vv{E_0}$ est maintenant appliqué à cet atome, le centre $\rm O$ de l'atome étant supposé immobile. 
+\bonus{
+  \begin{quest}
+    \item Que vaut la force totale subie par l'électron si sa distance vérifie toujours $r<a$ ? Quel est sa position moyenne $\rm N$. Montrer en particulier que le moment dipolaire est de la forme 
+    \begin{equation}
+      \Vec{p} = \alpha \varepsilon_0 \vv{E_0},
+    \end{equation}
+     où l’on exprimera la polarisabilité $\alpha$ de l'atome. Estimer $\alpha$ pour un rayon atomique $a\simeq\SI{5e-11}{m}$.
+
+     \sol{
+     La force totale s'écrit ici $\Vec{F} = - k \Vec{r} - e \Vec{E}_0$. L'équilibre des forces donne la position moyenne $\rm N$, de vecteur
+     $$
+    \Vec{r}_{\rm N} = -\frac{e}{k} \Vec{E}_0.
+     $$
+     Comme le barycentre des charges positives est en $\rm O$, le moment dipolaire électrique s'écrit 
+     $$
+      \Vec{p} = e \Vec{NO} = - e \Vec{r}_{\rm N} = \frac{e^2}{k} \Vec{E}_0 = \frac4\pi a^3 \epz \E_0 =  \alpha \varepsilon_0 \Vec{E}_0,
+     $$
+     avec 
+     \eqbox{
+     \alpha = 4\pi a^3.
+     }
+     En ordre de grandeur, on trouve $\alpha \simeq \SI{e-30}{m^3}$.
+     }
+     \bonus{
+  \item Pour quelle intensité $E_0$ du champ appliqué aura-t-on l'ionisation de cet atome ? Commenter sachant que l'énergie du niveau fondamental de l'atome d'hydrogène vaut l’énergie de Rydberg ${\rm Ry} = \SI{13.6}{eV}$.
+  \sol{
+  On a ionisation lorsque l'électron sort de la boule chargée, soit pour 
+  $$
+    r_N = a.
+  $$
+  On trouve alors 
+  \eqbox{
+  E_0 = \frac{ka}{e} = \frac{e}{4\pi \varepsilon_0 a^2} \simeq \SI{e9}{V.m^{-1}}.
+  }
+  L'énergie associée s'obtient par 
+  $$
+    \Epot = -\Vec{p}\cdot \Vec{E}_0 = -\alpha \epz E_0^2 \simeq \SI{e-21}{J} = \SI{1}{eV}.
+  $$
+  }
+}
+\end{quest}
+}
+  \end{exo}
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][3][TD]{Équilibre d'un dipôle dans un champ extérieur}
+  \Notions{\item Problème à résoudre \task Dipôle électrostatique}
+  Un dipôle électrostatique rigide de moment dipolaire $\Vec{p}$ est placé dans un potentiel électrostatique $V(x,y) = ax^3 + b(y-x)$, avec $a>0$ et $b>0$ deux constantes. Déterminer l’orientation et la position des points d’équilibre du dipôle. Discuter de leur stabilité. Quelle distribution de charge produit ce potentiel ?
+
+  \sol{
+  \udl{Stratégie de résolution}
+  \begin{enumerate}
+    \item Calculer $\Vec{E}(x) = - \grad V$. 
+    \item Calculer $\Epot(x) = -\Vec{p} \cdot \Vec{E} = -pE$ en supposant que $\Vec{p}$ et $\Vec{E}$ sont alignés. 
+    \item Résoudre $\dd{\Epot}{x}(x_{\rm eq})=0$ pour déterminer les positions d'équilibre $x_{\rm eq}$.
+    \item Calculer $\Vec{E}(x_{\rm eq})$ pour déterminer l'orientation d'équilibre.
+    \item Déterminer le signe de $\ddd{\Epot}{x}(x_{\rm eq})$ pour discuter de la stabilité.
+  \end{enumerate}
+  }
+\sol{
+\udl{Résolution}
+  \begin{enumerate}
+    \item Le champ électrostatique s'écrit
+    $$
+    \Vec{E} = -\grad V = - \dr{V}{x} \ex  - \dr{V}{y} \ey,
+    $$
+    soit 
+    \eqbox{
+    \E  = \left(-3ax^2 + b\right)\ex - b\ey.
+    }
+    \item L'énergie d'interaction vaut, en supposant que $\Vec{p}$ et $\Vec{E}$ ont alignés,
+    $$
+    \Epot = -\Vec{p} \cdot \Vec{E} = -pE,
+    $$
+    soit 
+    \eqbox{
+    \Epot(x)  = - p \sqrt{\left(3ax^2 - b\right)^2 + b^2}.
+    }
+    \item Les positions d'équilibre vérifient 
+    $$
+    0 = \dd{\Epot}{x}(x_{\rm eq}) = -\frac{p}{2}\frac{6ax_{\rm eq}\left(3ax_{\rm eq}^2 - b\right)}{\sqrt{\left(3ax_{\rm eq}^2 - b\right)^2 + b^2}},
+    $$
+    soit 
+    % $$
+    \eqbox{
+      \left\{
+        \begin{array}{l}
+          x_{\rm eq} = 0, \text{ ou }\\
+          x_{\rm eq} = \pm \sqrt{\frac{b}{3a}}.
+        \end{array}
+        \right.
+      }
+    Notons $x_0$ et $x_{\pm}$ ces positions.
+    \item Le champ électrostatique en ces points vaut
+    $$
+    \left\{
+      \begin{array}{l}
+        \Vec{E}(x_0) = b(\ex-\ey),\\[0.5mm]
+        \Vec{E}(x_{\pm}) = - b\ey.
+      \end{array}
+      \right.
+    $$
+    Notons $\theta$ l'angle entre $\Vec{p}$ et l'axe $(Ox)$.
+    L'orientation du moment dipolaire en ces positions d'équilibre vaut 
+    \eqbox{
+    \left\{
+      \begin{array}{l}
+        \theta(x_0) = -\frac{\pi}{4},\\[3mm]
+        \theta(x_{\pm}) = -\frac{\pi}{2}.
+      \end{array}
+      \right.
+    }
+    \item L'énergie potentielle aux points d'équilibre est négative $\Epot(x_{\rm eq}) <0 $. On a aussi
+    $$ 
+    \dd{\Epot}{x} = -\frac{p}{2}\frac{6ax\left(3ax^2 - b\right)}{\sqrt{\left(3ax^2 - b\right)^2 + b^2}}, = -\frac{p^2}{2}\frac{6ax\left(3ax^2 - b\right)^2}{\Epot}.
+    $$ 
+    La dérivée seconde aux points d'équilibre vaut donc, puisque $\dd{\Epot}{x}(x_{\rm eq}) = 0$,
+    $$
+    \ddd{\Epot}{x}(x_{\rm eq}) = -\frac{p^2}{\Epot} \dd{}{x} \left( 6ax\left(3ax^2 - b\right) \right),
+    $$
+    qui est de même signe que $\dd{}{x}\left( 6ax\left(3ax^2 - b\right) \right)$. On trouve 
+    $$
+    \dd{}{x}\left( 6ax\left(3ax^2 - b\right) \right) = 6a(3ax^2 - b) + 36 a^2x^2.
+    $$
+    On trouve donc 
+    $$
+      \left\{
+        \begin{array}{l}
+          \ddd{\Epot}{x}(x_0) < 0,\\[5mm]
+          \ddd{\Epot}{x}(x_{\pm}) > 0.
+        \end{array}
+        \right.
+    $$
+    En conclusion,
+    \eqbox{
+    \left\{
+      \begin{array}{l}
+        x_0 \text{ est instable,}\\
+        x_{\pm} \text{ sont stables.}
+      \end{array}
+    \right.
+    }
+    % On a 
+    % $$
+    %   \ddd{\Epot}{x} = -\frac{p}{2}\frac{\left( 6a(3ax^2-b) + 12a^2x^2 \right)\left( \left(3ax_{\rm eq}^2 - b\right)^2 + b^2  \right)- 18a^2x_{\rm eq}^2\left(3ax_{\rm eq}^2 - b\right)^2 }{\left( \left(3ax_{\rm eq}^2 - b\right)^2 + b^2 \right)^{3/2}}
+    % $$
+    % Nous pouvons remarquer la relation suivante :
+    % $$
+    %   \ddd{\Epot^2}{x} = \dd{}{x}\left( 2 \Epot \dd{\Epot}{x} \right)  = 2 \left( \dd{\Epot}{x} \right)^2 + 2 \Epot \ddd{\Epot}{x}.
+    % $$
+    % Aux positions d'équilibre, nous avons donc 
+    % $$
+    % \ddd{\Epot}{x} = \frac{1}{2\Epot} \ddd{\Epot^2}{x} (x_{\rm eq}). 
+    % $$
+    % Or 
+    % $$
+    % \ddd{\Epot^2}{x} = \ddd{}{x} \left( p^2 \left(3ax^2 - b\right)^2 + b^2 \right)
+    % $$
+  \end{enumerate}
+  }
+% Quatre charges positives identiques $q$ sont fixées aux sommets d'un carré de centre $O$ et de côté $a\sqrt{2}$. Sur l'axe $\vv{e_x}$ orthogonal au plan du carré et passant par $O$, un dipôle rigide $\vv{p}=p\,\vv{e_x}$ avec $p>0$ glisse librement.
+% %\begin{figure}[h!]
+% %\centering
+% % \begin{center}
+% \begin{fig}[label]
+%   \centering
+%   \includegraphics[width=0.4\textwidth]{carre_moment_dip.pdf}
+%   %\capt{}
+% \end{fig}
+% % \end{center}
+% %\end{figure}
+
+% Déterminer la ou les position(s) d'équilibre de ce dipôle dans le champ des quatre charges, et discuter de leur stabilité.
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+  
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \begin{exo}[PC][1][colle]{Molécule HCl}
+  La molécule $\mathrm{HCl}$ possède un moment dipolaire $p=3,43 \cdot 10^{-30} \mathrm{C} . \mathrm{m}$. La liaison mesure $a=126 \mathrm{pm}$.
+  \begin{quest}
+    \item Calculer la distance séparant les barycentres des charges. Comparer à la longueur de liaison.
+    \item Si l'atome le plus électronégatif capturait un électron de valence, quelle serait le moment dipolaire?
+  \end{quest}
+  \end{exo}
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \begin{exo}[PC][1][TD]{Énergie d'un dipôle électrostatique dans un champ coulombien}
+    \Notions{\item Charge ponctuelle \task Dipôle électrostatique \task Énergie électrostatique}
+  On considère une molécule de taille caractéristique $a$ de moment dipolaire $\Vec{p}$ en interaction avec une charge ponctuelle $q$ située à la distance $r \gg a$ de la molécule. On rappelle que le potentiel créé loin d'un dipôle s'écrit
+  \begin{equation}
+    V_{\rm{d}}=\frac{\Vec{p} \cdot \er}{4 \pi \epz r^2}.
+  \end{equation}
+  \begin{quest}
+    \item Déterminer l'énergie de cette interaction en considérant que la charge est plongée dans le potentiel créé par le dipôle.\, Proposer un ordre de grandeur pour $r \sim \SI{1}{\micro m}$.
+    \sol{
+      Disons que la molécule est en $\mathrm{O} $ et la charge en  $\mathrm{M} $. Dans la première approche on écrit : 
+      \eqbox{
+        \Epot=q V_{\text {d}}(M)=\frac{q \Vec{p} \cdot \er}{4 \pi \epsilon_0 r^2}.
+      }
+
+    }
+    \item Déterminer l'énergie de cette interaction en considérant que la molécule est plongée dans le champ électrique créé par la charge ponctuelle. Commenter.
+    \sol{
+      Dans la seconde approche, on a 
+      $$
+      \Epot = - \Vec{p} \cdot \Eext.
+      $$
+      avec $\Eext(M)$ le champ créé en $\rm O$ par la charge ponctuelle $q$ située en $\rm M$, soit
+      $$
+      \Eext = - \frac{q}{4\pi\epz r^2} \er,
+      $$
+      car $\Vec{MO} = -\Vec{OM} = - r\er$. On retrouve 
+      \eqbox{
+        \Epot = - \Vec{p} \cdot \Eext = \frac{q\,\Vec{p} \cdot \er}{4 \pi \epz r^2}.
+      }
+    } 
+  \end{quest}
+  \end{exo}
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][2][TD]{Énergie réticulaire}
+  \Notions{\item Énergie électrostatique \task Distribution discrète}
+On étudie un cristal ionique unidimensionnel infini constitué de $N$ cations et $N$ anions alternativement disposés le long d'un axe. On note $r$ la distance entre deux ions voisins et $\pm e$ leur charge.
+
+
+\begin{quest}
+  \item	
+  Montrer que l'énergie d'interaction électrostatique du cristal s'écrit
+  
+  % $$
+  \begin{equation}
+    \Etot_{\rm int}=-\frac{M e^2 N }{4 \pi \epsilon_0 r},
+  \end{equation}
+  % $$
+  où $M$ est la constante de Madelung du cristal, à exprimer.
+
+  \sol{
+    \eqbox{
+    M =  2\ln 2.
+    }
+  }
+  
+  \item Pour tenir compte de la répulsion entre deux ions, il faut ajouter l'énergie $U=b \exp \left(-r / r_0\right)$ avec $b$ et $r_0$ des paramètres caractéristiques des ions. En considérant la répulsion entre plus proches voisins uniquement, calculer alors l'énergie d'interaction totale du cristal.
+  \sol{
+    Dans ce cristal de $2 N$ particules il y a $2 N-1$ paires de voisins en interaction. Il faut donc ajouter à l'énergie électrostatique le terme lié aux répulsons :
+
+$$
+\mathscr{E}_{\mathrm{p}}(r)=\mathscr{E}_{\mathrm{p}}^{\text {elec }}+(2 N-1) U \simeq \frac{-2 N e^2}{4 \pi \epsilon_0 r} \ln 2+2 N b \exp \left(-r / r_0\right)
+$$
+  }
+  \item Montrer que l'on peut rendre compte de la stabilité du cristal. Déterminer l'équation que vérifie la distance d'équilibre $a$.
+  \sol{
+Cette énergie présente un minimum correspondant à l'équilibre stable du cristal. Lorsque  $r=a$. On a
+$\frac{\mathrm{d} \mathscr{E}_{\mathrm{p}}}{\mathrm{~d} r}=0 \quad \text { soit } \quad \frac{\ln 2 e^2}{4 \pi \epsilon_0 a^2}=\frac{b}{r_0} e^{-a / r_0}$
+  }
+  \item L'énergie réticulaire $\Etot_R$ est l'énergie qu'il faut fournir à une mole d'ions pour dissocier le cristal en ses constituants gazeux. Montrer que l'expression de l'énergie réticulaire $\Etot_R$ vérifie la loi de Born-Mayer 
+  % \eqbox{
+  \begin{equation}
+    \Etot_R=\frac{M N_{\mathrm{A}} e^2}{4 \pi \epsilon_0 a}\left(1-\frac{r_0}{a}\right).
+  \end{equation}
+  \AN~pour BaO, pour lequel $a=\SI{2.76}{\angstrom}$ et $r_0=\SI{0.22}{\angstrom}$.
+  % }
+  \sol{
+    L'énergie du cristal correspondant à son état d'équilibre vaut
+
+$$
+\mathscr{E}_{\min }=\mathscr{E}_{\mathrm{p}}(\alpha)=\frac{-2 N e^2 \ln 2}{4 \pi \epsilon_0 \alpha}\left(1-\frac{r_0}{a}\right)
+$$
+
+
+Finalement l'énergie réticulaire étant l'énergie qu'il faut fournir pour éloigner les ions à l'infini les uns des autres, on trouve
+
+$$
+U_R=\mathscr{E}_{\mathrm{p}}(r \rightarrow \infty)-\mathscr{E}_{\min }=\frac{2 \ln 2 N_{\mathrm{A}} e^2}{4 \pi \epsilon_0 a}\left(1-\frac{r_0}{\alpha}\right)
+$$
+
+
+Expression dans laquelle on a remplacé $N$ par $N_{\mathrm{A}}$, le nombre d'Avogadro.
+
+On trouve numériquement 
+\eqbox{
+\Etot_R=\SI{3053}{kJ.mol^{-1}} = \SI{31.7}{eV.atom^{-1}}.
+}
+  }
+\end{quest}
+\textsc{Donnée} :$ \displaystyle\sum_{i=0}^\infty \frac{(-1)^{i}}{i+1}=\ln 2.$
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][devoir]{Énergie d'ionisation}
+Un système de charges créé le potentiel suivant à symétrie sphérique $V(r)=\frac{q}{4\pi\varepsilon_0 r}\left(1+\frac{r}{a}\right)\exp\left(-\frac{2r}{a}\right)$ avec $q,a>0$.
+\begin{quest}
+\item Calculer $Q(r)$ la charge comprise dans la sphère de rayon $r$.
+\item Caractériser la distribution de charges correspondant à ce potentiel. On pourra notamment déterminer $\rho(r)$.
+\item Définir puis exprimer l'énergie de liaison de ce système.
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \begin{exo}[PC][3][TD]{Solvatation de l'ion zinc II}
+    \Notions{\item Dipôle électrostatique \task Énergie électrostatique}
+L'ion $\mathrm{Zn}^{2+}$ forme un complexe en présence d'ammoniac $\left(\mathrm{NH}_{3}\right)_{\mathrm{aq}}$ de formule 
+$
+\left[\mathrm{Zn}\left(\mathrm{NH}_3\right)_4\right]^{2+}.
+$
+La géométrie de ce complexe est tétraédrique : l'ion $\mathrm{Zn}^{2+}$ est au centre d'un cube et les quatre molécules d'ammoniac occupent 4 des 8 sommets du cube.
+
+\begin{fig}[label]
+  \centering
+  \includegraphics[width=0.25\columnwidth]{complexe_Zn_NH3.pdf}
+  %\capt{}
+\end{fig}
+On rappelle que le champ créé par un dipôle électrostatique s'écrit
+\begin{equation}
+  \Vec{E}_{\text {d}}=\frac{3\left(\Vec{p} \cdot \er\right) \er-\Vec{p}}{4 \pi \epsilon_0 r^3}.
+\end{equation}
+\begin{quest}
+  \item	
+   La molécule d'ammoniac possède un moment dipolaire. Expliquer pourquoi.
+
+   \sol{
+    La molécule $\mathrm{NH}_3$ est de forme pyramidale (du type $\mathrm{AX}_3 \mathrm{E}$). L'élément azote étant plus électronégatif que l'élément hydrogène, les liaisons N-H sont polarisées. Le barycentre des charges négatives ne coincide pas avec le barycentre des charges positives, c'est pourquoi la molécule présente un moment dipolaire.
+   }
+  \item On note $r$ la distance qui sépare le centre du cube et les huit sommets, et $a$ la distance entre deux molécules d'ammoniac. Établir la relation entre $r$ et $a$. En déduire l'angle $\alpha$ que font deux dipôles entre eux.
+  \sol{
+  Appelons b l'arête du cube et faisons une figure.
+  \begin{fig}[label]
+    \centering
+    \includegraphics[width=0.5\columnwidth]{tetraedrique.png}
+    %\capt{}
+  \end{fig}
+  La diagonale d'un carré est $\sqrt{2}$ fois plus grande que son arête. Aussi on a $a=b \sqrt{2}$. Si l'on raisonne dans le rectangle ACDF , le théorème de Pythagore donne :
+
+$$
+a^2+b^2=(2 r)^2 \quad \text { soit } \quad a=2 \sqrt{2 / 3} r
+$$
+
+
+Le triangle OAC est isocèle et son angle au sommet $\alpha$ est donné par
+
+% $$
+\eqbox{
+  \sin \frac{\alpha}{2}=\frac{a}{2 r}=\sqrt{2 / 3} \quad \text { d'où } \quad \alpha=109^{\circ} 23^{\prime}.
+  }
+% $$
+
+}
+
+  \item 
+   Exprimer l'énergie d'interaction $\mathscr{E}_{p 1}$ entre l'ion $\mathrm{Zn}^{2+}$ et une molécule d'ammoniac. Montrer que
+  \begin{equation}
+    \mathscr{E}_{\mathrm{p} 1}=-\frac{p e}{2 \pi \epsilon_0 r^2}.
+  \end{equation}
+
+où $p$ est la norme du moment dipolaire de l'ammoniac et $e$ la charge élémentaire.
+\sol{
+  L'énergie potentielle de l'ion $\mathrm{Zn}^{2+}$ soumis au potentiel d'une molécule d'ammoniac vaut
+
+  $$
+  \Epot_{1}=q_{\mathrm{Zn}^{2+}} V \quad \text { avec } \quad V=\frac{\vec{p} \cdot \er}{4 \pi \epsilon_0 r^2}
+  $$
+  
+  
+  Ici, les moment dipolaires son orientés selon les diagonales du cube de sorte que $\vec{p} \cdot \er=-p$. Par ailleurs $q_{\mathrm{Zn}^{2+}}=2 e$, aussi on trouve bien
+  
+  % $$
+  \eqbox{
+    \Epot_{1}=-\frac{p e}{2 \pi \epsilon_0 r^2}
+    }
+  % $$
+  
+}
+
+\item Exprimer l'énergie d'interaction $\mathscr{E}_{p 2}$ entre deux molécules d'ammoniac. Montrer que
+
+% $$equa
+\begin{equation}
+  \mathscr{E}_{\mathrm{p} 2}=\frac{p^2}{4 \pi \epsilon_0 a^3}\left[3 \sin ^2 \frac{\alpha}{2}+\cos \alpha\right].
+\end{equation}
+  % $$
+
+  \sol{
+    Il s'agit là d'une interaction dipôle-dipôle : un dipôle rigide interagit avec le champ électrique créé par un autre dipole. Appelons $\Vec{p}_1$ et $\Vec{p}_2$ les moments dipolaires de deux molécules $\mathrm{NH}_3$ voisins. Le dipôle 1 présente une énergie d'interaction
+
+    $$
+    \mathscr{E}_{\mathrm{p} 2}=-\Vec{p}_1 \cdot \overrightarrow{E_2}(1)
+    $$
+    
+    
+    Le champ $\overrightarrow{E_2}(1)$ est le champ créé par le dipôle 2 en 1 . Son expression est donnée par
+    
+    $$
+    \overrightarrow{E_2}(1)=\frac{1}{4 \pi \epsilon_0 a^3}\left[3\left(\Vec{p}_2 \cdot \er\right) \er-\Vec{p}_2\right]
+    $$
+    
+    où $\er$ est orienté du dipôle 2 vers le dipôle 1 . On a donc
+    
+    $$
+    \mathscr{E}_{\mathrm{p} 2}=-\frac{1}{4 \pi \epsilon_0 a^3}\left[3\left(\Vec{p}_2 \cdot \er\right)\left(\Vec{p}_1 \cdot \er\right)-\Vec{p}_2 \cdot \Vec{p}_1\right]
+    $$
+    
+    
+    Sachant que $\Vec{p}_2 \cdot \Vec{p}_1=p^2 \cos \alpha, \Vec{p}_2 \cdot \er=p \sin \alpha / 2$ et $\Vec{p}_1 \cdot \er=-p \sin \alpha / 2$, on obtient le résultat
+    
+    % $$
+    \eqbox{
+      \mathscr{E}_{\mathrm{p} 2}=\frac{p^2}{4 \pi \epsilon_0 a^3}\left[3 \sin ^2 \frac{\alpha}{2}+\cos \alpha\right].
+      }
+    % $$
+    
+  }
+\item Exprimer l'énergie potentielle électrostatique du complexe en fonction de $\mathscr{E}_{p 1}$ et $\mathscr{E}_{p 2}$. Faire l'application numérique. On donne $p=\SI{1,49}{D}$ et $a = \SI{1.1}{nm}$. On donnera le résultat en eV.
+\sol{
+  Numériquement, on a
+
+  $$
+  a=1 \mathrm{~nm} \quad r=0,61 \mathrm{~nm} \quad \text { et } \quad p=4,97 \cdot 10^{-30} \text { C.m }
+  $$
+  
+  ce qui donne
+  
+  $$
+  \mathscr{E}_{\mathrm{p} 1}=-0,24 \mathrm{eV} \quad \text { et } \quad \mathscr{E}_{\mathrm{p} 2}=2,3 \mathrm{meV}
+  $$
+  
+  
+  Lion zinc est entouré de 4 molécules $\mathrm{NH}_3$ et il y a 6 couples $\mathrm{NH}_3-\mathrm{NH}_3$ en interaction. Par conséquent, l'énergie de l'ion complexe $\left[\mathrm{Zn}\left(\mathrm{NH}_3\right)_4\right]^{2+}$ vaut
+  
+  % $$
+  \eqbox{
+    \mathscr{E}_{\mathrm{p}}=4 \mathscr{E}_{\mathrm{p} 1}+6 \mathscr{E}_{\mathrm{p} 2}=-0,94 \mathrm{eV}
+    }
+  % $$
+  
+}
+
+% Donnée : en chimie on utilise le debye (D) comme unité du moment dipolaire. On a $1 \mathrm{D}=$ $\frac{1}{3} \cdot 10^{-29} \mathrm{C} . \mathrm{m}$
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \begin{exo}[PC][1][colle]{Une charge et un cerceau}
+  Soit un cerceau de centre $\mathrm{O}$, de rayon ${R}$, portant la densité linéique de charge $\lambda$. On place une charge $-q$ en un point $\mathrm{A}$ à une distance ${d}$ du centre du cerceau. On définit un axe ${Oz}$ d'origine $\mathrm{O}$, centre du cerceau, et dirigé dans le sens de $\Vec{O A}$. Le point $\mathrm{M}$ au niveau duquel nous allons calculer le potentiel est situé sur cet axe.
+  Enfin, on sait que la distance $d$ est du même ordre de grandeur que le rayon ${R}$ du cerceau et que l'origine des potentiels est pris à l'infini.
+  \begin{quest}
+    \item Faire un schéma de la situation.
+    \item Quelle doit être la densité linéique de charge $\lambda$ pour que la charge totale portée par le cerceau soit égale à $+{q}$ ?
+    \item Calculer le potentiel créé par l'ensemble du cerceau et de la charge, en tout point $\mathrm{M}$ de l'axe $\mathrm{Oz}$.
+    \item Montrer que lorsque le point $\mathrm{M}$ est suffisamment éloigné de l'ensemble chargé, on peut assimiler l'ensemble du cerceau et de la charge à un dipôle électrostatique de moment dipolaire $\Vec{p}$.
+    Exprimer ce moment en fonction de ${R}$, $q$ et ${d}$.
+  \end{quest}
+    \textsc{Données} :
+    \begin{liste}
+      \item
+      champ électrique créé par un cerceau sur son axe ${Oz}: \E(M)=\frac{\lambda R z}{2 \epz \left(R^2+z^2\right)^{3/2}} \ez$;
+      \item expression du gradient en coordonnées cylindriques :
+      $
+      \grad f=\frac{\partial f}{\partial r} \er+\frac{1}{r} \frac{\partial f}{\partial \theta} \et+\frac{\partial f}{\partial z} \ez;
+      $
+      % \item potentiel créé par un dipôle électrostatique centré en $O$, en un point $M$ :
+      % $$
+      % V(M)=\frac{\Vec{p} \cdot \Vec{r}}{4 \pi \epz r^3}.
+      % $$
+    \end{liste}
+  \end{exo}
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][2][devoir]{Le gecko}
+  Le gecko est un petit lézard capable de se déplacer à des vitesses de plusieurs mètres par seconde
+  sur les murs ou les plafonds de pratiquement toutes natures, dans presque toutes les conditions. Des
+  expériences menées en 2002 par l’équipe de l’américain Kellar Autumn ont montré que la
+  spectaculaire faculté d’adhésion de l’animal est uniquement due à des forces de Van der Waals.
+  L’adhésion est possible grâce à l’anatomie particulière des coussinets des doigts du lézard. Ces
+  derniers sont recouverts de poils microscopiques, les sétules, ramifiés en des centaines de branches
+  terminées par une spatule pouvant s’approcher à quelques nanomètres de la surface de contact.
+
+  \subsubsection{Interactions entre molécules polaires}
+  On considère une molécule polaire située dans le vide, modélisée par un dipôle électrique rigide de moment dipolaire électrique permanent
+$\Vec{p}_1 = p_1 \ez$. Le dipôle, centré en un point O, est constitué de deux charges ponctuelles opposées, $+ q$ et $-q$ (avec $q > 0$ ), situées sur l’axe ($Oz$) aux points
+respectifs P et N distants de $a$ = PN (\Fig{gecko}). On repère tout point M de l’espace par ses coordonnées sphériques $( r , \theta , \vphi ) $ dans le repère $( O , \er , \et , \ep )$.
+
+\begin{fig}
+  \centering
+  \begin{subfig}[gecko][0.49]
+    \includegraphics[height=6cm]{dipole_gecko.png}
+  \end{subfig}\hfill
+  \begin{subfig}[molec][0.2]
+  \includegraphics[height=6cm]{molec_gecko.png}
+\end{subfig}
+  \capt{(a) Dipôle électrique centré en un point O. (b) Interaction entre deux molécules polaires.}
+\end{fig}
+
+\begin{quest}
+  \question  Expliquer, en prenant l’exemple de la molécule de chlorure d’hydrogène (HCl), l’origine du moment dipolaire permanent de certaines molécules. Donner l’expression en fonction de $a$ et $q$ du moment dipolaire électrique $\Vec{p}_1$ de la molécule polaire.
+  \sol{
+  La polarité des molécule vient essentiellement des différences d'électronégativités entre les atomes. Dans HCl, le chlore étant plus électronégatif, il déforme le nuage électronique en attirant les électrons vers lui. Il en résulte une charge négative sur Cl et une charge positive sur H, donc un moment dipolaire (orienté de Cl vers H).
+
+  Par définition du moment dipolaire, on a ici $\resm{\vv p_1=qa\ez}$.
+  }
+
+  \question Établir l’expression du potentiel électrostatique $V_1 ( M )$ créé en M par la molécule polaire dans le cadre de l’approximation dipolaire qu’on explicitera. On donnera le résultat en fonction de $p_1$, $\epz$ et des coordonnées sphériques du point M.
+
+  \sol{
+  D'après le principe de superposition, le potentiel électrostatique total est la somme de celui créé par la charge en $P$ et celui créé par celle en $N$. D'après la formule de \bsc{Coulomb}, on a :
+
+  $$V_1(M)=V_P(M)+V_N(M)=\frac{q}{4\pi\varepsilon_0 PM}-\frac{q}{4\pi\varepsilon_0 NM}$$
+
+  Or dans l'approximation dipolaire, $a\ll r$ donc on peut écrire, au premier ordre en $\frac a r$ :
+
+  $$
+  PM^2=(\vv{PO}+\vv{OM})^2=PO^2+OM^2+2\vv{PO}\cdot\vv{OM}=\frac{a^2}{4}+r^2-2r\frac{a}{2} \cos\theta\simeq r^2-2r\frac{a}{2} \cos\theta
+  $$
+  Toujours au premier ordre, on en déduit : $PM=\sqrt{r^2-2r\frac a 2 \cos\theta}\simeq r\left(1-\frac{a}{2r}\cos\theta\right)$
+
+  De même : $NM\simeq r\left(1+\frac{a}{2r}\cos\theta\right)$. On a alors :
+
+  $$
+  V_1(M)=\frac{q}{4\pi\varepsilon_0 r\left(1-\frac{a}{2r}\cos\theta\right)}-\frac{q}{4\pi\varepsilon_0 r\left(1+\frac{a}{2r}\cos\theta\right)}\simeq\frac{q}{4\pi\varepsilon_0 r}\left(1+\frac{a}{2r}\cos\theta-1+\frac{a}{2r}\cos\theta\right)
+  $$
+  $\res{V_1(M)=\frac{q}{4\pi\varepsilon_0 r}\frac{a}{r}\cos\theta=\frac{p_1\cos\theta}{4\pi\varepsilon_0 r^2}}$
+}
+\question En déduire que le champ électrostatique $\E_1 ( M )$ créé en M par la molécule polaire s’écrit en coordonnées sphériques :
+\begin{equation}
+  \E_1(M) = \frac{p_1}{4\pi \epz r^3}\left(2\cos(\theta)\er + \sin(\theta)\et \right).
+\end{equation}
+
+  \textsc{Données :} $\grad f = \dr{f}{r}\er + \frac{1}{r}\dr{f}{\theta} \et + \frac{1}{r \sin \theta}\dr{f}{\vphi} \ep$.
+\sol{
+D'après le cours, $\vv E_1(M)=-\vv{\textrm{grad}} V_1(M)$, donc avec le formulaire de l'énoncé :
+
+$$\vv E_1(M)=-\dpart{V_1}{r}\er-\frac{1}{r}\dpart{V_1}{\theta}\et$$
+
+On obtient donc : $\resm{\E_1(M)=+\frac{p_1\cos\theta}{2\pi\varepsilon_0 r^3} \er+\frac 1 r\frac{p_1 \sin\theta}{4\pi\varepsilon_0 r^2} \et}$ qui correspond au résultat attendu.
+}
+\end{quest}
+Une seconde molécule polaire, modélisée par un dipôle rigide de moment dipolaire électrique
+permanent $\Vec{p}_2$ , est située au point M sur l’axe ($Oz$) à la distance $r$ fixe du point O. À un instant donné, son moment dipolaire forme un angle $\alpha$ avec cet axe (\Fig{molec}). Dans ces conditions, la molécule plongée dans le champ
+dû à l’autre molécule située au point O subit un couple de forces de moment : $\Vec{\Gamma}= \Vec{p}_2 \pv \E_1 ( M ) $. On rappelle l’expression de l’énergie
+potentielle d’interaction des deux molécules : $\mc{E}_{12} = - \Vec{p}_2\ps\E_1 ( M )$.
+
+% \begin{fig}[molec]
+%   \centering
+%   \includegraphics[width=0.15\textwidth]{molec_gecko.png}
+  % \capt{Interaction entre deux molécules polaires.}
+% \end{fig}
+
+\begin{quest}
+  \question Quel est l’effet du couple de forces subi par la molécule fixée au point M ? Justifier l’orientation de son moment dipolaire électrique lorsqu’elle est en équilibre stable.
+  \sol{
+  Deux possibilités de raisonnement :
+  \begin{itemize}
+  \item Avec le couple $ \Gamma=-p_2E_1(M)\sin\alpha$ par rapport à l'axe de rotation. A l'équilibre, ce couple est nul, donc les positions d'équilibre sont en $\alpha=0$ et $\alpha=\pi$. Or si on perturbe le système d'un petit angle $\varepsilon>0$ au voisinage de $\alpha=0$, le couple est négatif et ramène donc le dipôle vers la position d'équilibre $\alpha=0$ qui est donc stable. Par contre, au voisinage de $\alpha=\pi$, $ \Gamma=-p_2E_1(M)\sin(\pi+\varepsilon)=+p_2E_1(M)\sin\varepsilon>0$ : le couple entraine le dipôle encore plus loin, cet équilibre est instable.
+  \item Par l'énergie potentielle $\mathcal E_{12}=-\dfrac{p_1p_2}{2\pi\varepsilon_0r^3}\cos\alpha$. Si on trace $\mathcal E_{12}$ en fonction de $\alpha$, on constate aisément que le minimum est en $\alpha=0$ qui correspond donc à une position d'équilibre stable.
+  \end{itemize}
+  Dans tous les cas, le couple tend à aligner les 2 dipôles (position $\alpha=0$).
+
+  }
+\end{quest}
+
+Les deux molécules sont supposées identiques, de moments dipolaires électriques de même valeur
+$p_1 = p_2 = p = \SI{1}{D}$.
+
+\begin{quest}
+  \question  Estimer l’énergie potentielle d’interaction des deux molécules, distantes de $r = \SI{0.5}{nm}$ , en
+supposant leurs moments dipolaires électriques alignés. Comparer cette énergie à l’énergie
+d’agitation thermique qui est de l’ordre de $\kB T$ où $\kB=\SI{1.38e-23}{J.K^{-1}}$ est la constante de Boltzmann, à la température ambiante $T = \SI{293}{K}$. Conclure.
+
+\sol{
+Pour $\alpha=0$, on a $\mathcal E_{12}=-\dfrac{p^2
+}{2\pi\varepsilon_0r^3}$.
+
+\AN $\mathcal E_{12}=-1,6.10^{-21}$ J et $k_BT =4,0.10^{-21}$ J
+
+L'énergie d'agitation thermique est suffisante pour que les dipôles soient mobiles et ne restent pas alignés en permanence.
+}
+
+\question Du fait de l’agitation thermique, on doit considérer l’énergie potentielle d’interaction moyenne entre deux dipôles situés à une distance $r$ dont les orientations relatives sont
+sujettes à des variations aléatoires. À température suffisamment élevée, on montre que cette
+énergie potentielle d’interaction moyenne est de la forme $\moy{\mc{E}_{12}}=-\frac{C_K}{r^6}$ où
+\begin{equation}
+  C_K = \frac{1}{\kB T}\left(\frac{p^2}{2\pi \epz} \right)^2.
+\end{equation}
+Donner un ordre de grandeur de $C_K$ à la température ambiante $T = \SI{293}{K}$. Vérifier que la force $\F_{1/2}$ qui dérive de cette énergie potentielle est attractive. On rappelle que $\F_{1/2} = - \grad \moy{\mc{E}_{12}}$.
+\sol{
+\AN $C_K\sim10^{-77}$ $\SI{}{J.m^{6}}$.
+
+La force correspondante est $\resm{\vv{F}_{12}=-\vv{\textrm{grad}}\left\langle\mathcal E_{12}\right\rangle=-\dfrac{6 C_K}{r^7}\ur}$. Cette force est orientée selon $-\ur$ donc elle est attractive.
+}
+\end{quest}
+
+\subsubsection{Calcul de la force d’adhérence du gecko au plafond}
+
+La force, calculée à la question précédente, correspond à une interaction de Van der Waals entre
+molécules polaires. Si on considère maintenant deux plans infinis parallèles, distants de $D$ et
+séparant chacun un milieu solide (\Fig{force}), on montre en prenant en compte l’ensemble des
+interactions de Van der Waals que la force surfacique entre les deux milieux s’écrit : $f ( D ) = \frac{A}{6\pi D^3}$. La constante $A$, appelée constante de Hamaker, dépend de la nature des interactions de Van der
+Waals et des densités moléculaires des deux solides en interaction.
+
+\begin{fig}[force]
+  \centering
+  \includegraphics[width=0.35\textwidth]{milieu_gecko.png}
+  \capt{Modélisation d’un gecko sur un mur.}
+\end{fig}
+
+\begin{quest}
+  \question  Vérifier que la constante de Hamaker $A$ est homogène à une énergie.
+  \sol{
+  Une force surfacique est une pression, donc $A=6\pi D^3.f(D)$ est une pression multipliée par un volume : c'est donc bien une énergie (cf $H=U+PV$ par exemple).
+  }
+
+  \question Un gecko de masse $m = \SI{50}{g}$ est suspendu par ses quatre pattes au plafond. Le gecko possède au total 6 millions de sétules, comportant chacune en moyenne 500 spatules. En modélisant
+une spatule par une surface carrée de $\SI{0.2}{\micro m}$ de côté située à une distance $D = \SI{1}{nm}$ du
+plafond, estimer le pourcentage de sétules utilisées par le gecko pour soutenir sa masse. On
+prendra $A = \SI{e-19}{J}$ et on négligera tout effet de bord.
+
+Sachant que l’équipe de Kellar Autumn a constaté qu’un gecko de $\SI{50}{g}$ utilise à son
+maximum d’adhérence uniquement $\SI{0.04}{\%}$ de ses sétules pour soutenir sa masse, peut-on bien
+imputer les facultés d’adhérence du gecko aux interactions de Van der Waals ? Pourquoi le
+gecko mobilise-t-il certainement davantage de sétules pour assurer son adhérence ?
+\sol{
+On applique le principe fondamental de la statique au gecko, soumis à son poids et à force d'adhérence. Cette dernière doit donc (en norme) compenser le poids. Si on note $x$ le pourcentage de sétules utilisées, $N=500\times 6.10^6$ le nombre total de sétules et $S=\ell^2$ la surface de contact, on peut écrire :
+
+$$mg=xN . \frac{A}{6\pi D^3}\ell^2\Rightarrow \resm{x=\frac{mg}{N \frac{A}{6\pi D^3} \ell^2}}$$
+
+\AN $x=8.10^{-4}=0,08\%$
+
+On obtient le bon ordre de grandeur, ce qui pourrait valider l'hypothèse. Mais il manque un facteur 2 : si le gecko n'utilise que 0,04\% de ses sétules, notre calcul semble montrer qu'il ne supporterait pas son poids. Il y a donc sans doute un autre effet (mais le calcul est assez approximatif).
+% Qu'est-ce qui était attendu dans cette fin de question ?...
+}
+
+\question À un instant pris pour origine, on suppose que le gecko lâche le plafond et chute de $\SI{10}{cm}$
+avant de se rattraper à l’aide d’une patte à une surface verticale. Sachant que l’équipe de
+Kellar Autumn a pu mesurer une force de cisaillement (opposée au glissement) de l’ordre de
+$\SI{10}{N}$ par patte, estimer la distance que doit parcourir le gecko lorsque sa patte est en contact
+avec le mur pour s’arrêter. On supposera qu’il mobilise $\SI{50}{\%}$ de la capacité de cisaillement
+maximale de sa patte.
+
+\emph{Cette question fait appel à une démarche de résolution de problème. Il est notamment attendu
+de préciser chaque notation introduite, de présenter de façon claire les hypothèses retenues,
+de mener de bout en bout un calcul littéral, puis d’effectuer l’application numérique attendue.}
+
+\sol{
+Le mouvement se décompose en 2 phases :
+\begin{itemize}
+\item La première phase est une chute libre sur une hauteur $h=10$ cm. En négligeant les frottements de l'air, on peut exploiter la conservation de l'énergie mécanique entre le moment du lâcher (sans vitesse initiale) et le moment où le gecko se rattrape, ce qui donne la vitesse atteinte au début du freinage :
+$$\frac 1 2 m v_0^2+mgz_f=0+mgz_i\Rightarrow \resm{v_0=\sqrt{2gh}}$$
+
+\item Durant la phase de freinage, on peut reprendre le même principe, mais l'énergie mécanique n'est plus conservée. Le travail de la force d'adhérence (de norme $F=5$ N si le gecko n'utilise que la moitié de l'adhérence maximale) s'écrit $W=-Fd$ où $d$ est la distance de freinage. On a donc :
+$$-\frac{1}{2} m v_0^2-mgd=-F d \Rightarrow \resm{d=\frac{m v_0^2}{2(F-mg)}=\frac{mgh}{F-mg}}$$
+
+\AN $d\simeq 11$ cm.
+\end{itemize}
+}
+
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+

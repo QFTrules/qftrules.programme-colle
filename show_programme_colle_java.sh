@@ -1,5 +1,7 @@
 #!/bin/bash
 
+cpgePath=$1
+
 # colors
 RED="\033[1;31m"
 GREEN="\033[1;32m"
@@ -22,18 +24,19 @@ tocName="_PC_Phy_colle.toc"
 printf "Programme de colle du $NextMonday au $NextFriday :\n"
 
 # change directory
-cd ~/Dropbox/.latex/Commands/
-ProgColle="ProgrammeColle.tex"
+# cd ~/Dropbox/.latex/Commands/
+cd ./tmp/
+# ProgColle="~/Dropbox/.latex/Commands/ProgrammeColle.tex"
 # create list of files to parse
-find ~/Dropbox/CPGE/Physique/Cours/ \( -name "*.tex" ! -name "*TD*" ! -name "*Fig*" ! -name "*Doc*" \) | sort > list_cours.txt
+find $cpgePath/Cours/ \( -name "*.tex" ! -name "*TD*" ! -name "*Fig*" ! -name "*Doc*" \) | sort > list_cours.txt
 # echo "List of Cours files printed in list_cours.txt"
-find ~/Dropbox/CPGE/Physique/TD/ -name "*TD*.tex" | sort > list_TD.txt
+find $cpgePath/TD/ -name "*TD*.tex" | sort > list_TD.txt
 # echo "List of TD files printed in list_TD.txt"
-find ~/Dropbox/CPGE/Physique/Devoirs/DM -name "*.tex" | sort > list_DM.txt
+find $cpgePath/Devoirs/DM/ -name "*.tex" | sort > list_DM.txt
 # echo "List of DM files printed in list_DM.txt"
-find ~/Dropbox/CPGE/Physique/Devoirs/DS/ -name "*.tex" | sort > list_DS.txt
+find $cpgePath/Devoirs/DS/ -name "*.tex" | sort > list_DS.txt
 # echo "List of DS files printed in list_DS.txt"
-find ~/Dropbox/CPGE/Physique/TP/ -name "*.tex" | sort > list_TP.txt
+find $cpgePath/Devoirs/TP/ -name "*.tex" | sort > list_TP.txt
 # echo "List of TP files printed in list_TP.txt"
 
 # fetch program in all lecture files
@@ -58,7 +61,7 @@ echo -e " : "
 
 # fetch program in all TD files
 # echo -e "    ${RED}TD${END} :"
-echo "\TD" >> $ProgColle
+# echo "\TD" >> $ProgColle
 echo -e "    TD : "
 if [ -s list_TD.txt ]; then
   for fichier in $(cat list_TD.txt)
@@ -82,7 +85,7 @@ echo -e " : "
 
 # fetch program in all DM files
 # echo -e "    ${RED}DM${END} :"
-echo "\DM" >> $ProgColle
+# echo "\DM" >> $ProgColle
 echo -e "    DM : "
 if [ -s list_DM.txt ]; then
   for fichier in $(cat list_DM.txt)
@@ -105,7 +108,7 @@ echo -e " : "
 
 # fetch program in all DS files
 # echo -e "    ${RED}DS${END} :"
-echo "\DS" >> $ProgColle
+# echo "\DS" >> $ProgColle
 echo -e "    DS : "
 if [ -s list_DS.txt ]; then
   for fichier in $(cat list_DS.txt)
@@ -128,7 +131,7 @@ echo -e " : "
 
 # fetch program in all TP files
 # echo -e "    ${RED}TP${END} :"
-echo "\TP" >> $ProgColle
+# echo "\TP" >> $ProgColle
 echo -e "    TP : "
 if [ -s list_TP.txt ]; then
   for fichier in $(cat list_TP.txt)
@@ -146,3 +149,5 @@ if [ -s list_TP.txt ]; then
 else
 :
 fi
+
+# rm list_cours.txt list_TD.txt list_DM.txt list_DS.txt list_TP.txt

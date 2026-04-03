@@ -1,4 +1,7 @@
 // The module 'vscode' contains the VS Code extensibility API
+
+// import { tmpdir } from 'os';
+
 // Import the module and reference it with the alias vscode in your code below
 var vscode = require('vscode');
 var child_process = require('child_process');
@@ -176,6 +179,8 @@ function activate(context) {
 	const programmeBalise = vscode.workspace.getConfiguration('programme-colle').get('programmeBalise');
 	const exoenvi = vscode.workspace.getConfiguration('banque-exercices').get('exerciceEnvironment');
 	const explorerCommand = vscode.workspace.getConfiguration('banque-exercices').get('explorerCommand');
+	const cpgePath = vscode.workspace.getConfiguration('programme-colle').get('cpgePath');
+	const mdPath = vscode.workspace.getConfiguration('programme-colle').get('mdPath');
 	// const mathpixCommand = vscode.workspace.getConfiguration('mathpix-pdf').get('mpxCommand');
 	// const texPath = vscode.workspace.getConfiguration('mathpix-pdf').get('texPath');
 	// const texArchives = vscode.workspace.getConfiguration('mathpix-pdf').get('texArchives');
@@ -468,7 +473,8 @@ function activate(context) {
 
 	// commande pour compiler le programme de colle depuis title view : programme de colle
 	let compile = vscode.commands.registerCommand('programme.compile', function () {
-		const programme_colle_file = child_process.execSync('bash ' + __dirname + '/build_programme_colle.sh ' + collePath + ' ' + styPath + ' ' + pythonCommand + ' ' + __dirname).toString();
+
+		const programme_colle_file = child_process.execSync('bash ' + __dirname + '/build_programme_colle.sh ' + __dirname + ' ' + collePath + ' ' + styPath + ' ' + pythonCommand + ' '  + cpgePath + ' ' + mdPath).toString();
 		vscode.window.showInformationMessage(programme_colle_file  + ' compilé avec succès', { timeout: 1 });
 		vscode.commands.executeCommand('vscode.open', vscode.Uri.file(path.join(collePath.trim(),programme_colle_file.trim())), { viewColumn: vscode.ViewColumn.Two });
 	});

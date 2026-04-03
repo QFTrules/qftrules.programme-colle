@@ -1,0 +1,22 @@
+% !TEX root = /home/eb/Dropbox/CPGE/Physique/Cours/[5]Electromg/[1]Electrostat/Figures/surf_charge.tex
+\input{tikz.tex}
+\begin{document}
+\begin{tikzpicture}
+    \draw[thick] (-2,0) -- (2,0) -- (2.5,1) -- (-1.5,1) -- cycle;
+    \fill[thick,JoliBleu] (-1,0.25) -- (-0.75,0.25) -- ++ (0.25,0.25) -- ++ (-0.25,0) -- cycle node[midway, above=0.2, black] {$P$};
+    % \foreach \x in {-2.5,-2,...,2.5}
+    % \draw[fill=red] (\x,0) circle (0.1);
+    
+    \coordinate (M) at (0.75,1.25); % Coordinates of point M
+    \coordinate (P) at (-0.75,0.375); % Coordinates of point P
+    
+    \node[below right] at (P) {$\mathrm{d} S$};
+    \draw[densely dashed] (P) -- (M);
+    %  node[midway, above] {$\vec{r}$}; % Vector \(\vec{r}\) from P to M
+    \draw[->, JoliRouge] (M) -- ++($0.5*(M)-0.5*(P)$) node[right] {$\vec{E}$}; % Electric field vector \(\vec{E}\) at point M
+    \draw (M) node{$\bullet$} node[above left] {$M$}; % Point M
+    
+    % \draw[ultra thick, JoliVert] (-1.5,0) -- (-1.5,1) -- (1.5,1) -- (1.5,0) node[midway, above=0.2, black] {$\mathrm{d}S$};
+    
+\end{tikzpicture}
+\end{document}

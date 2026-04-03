@@ -1,0 +1,38 @@
+\begin{tikzpicture}[scale=0.5]
+\draw[dotted] (3.,5.2)-- (-3.,5.2) -- (-6.,0.003847577293368154) -- (-3.,-5.192304845413266) -- (3.,-5.1923048454132665) -- (6.,0.003847577293363269) -- cycle;
+\draw [line width=1.5pt ,shorten  >= 10pt,shorten <= 10pt] (3.,5.2)-- (-3.,5.2);
+\draw [line width=1.5pt ,shorten  >= 10pt,shorten <= 10pt] (-3.,5.2)-- (-6.,0.003847577293368154);
+\draw [line width=1.5pt ,shorten  >= 10pt,shorten <= 10pt] (-6.,0.003847577293368154)-- (-3.,-5.192304845413266);
+\draw [line width=1.5pt ,shorten  >= 10pt,shorten <= 10pt] (-3.,-5.192304845413266)-- (3.,-5.1923048454132665);
+\draw [line width=1.5pt ,shorten  >= 10pt,shorten <= 10pt] (3.,-5.1923048454132665)-- (6.,0.003847577293363269);
+\draw [line width=1.5pt ,shorten  >= 10pt,shorten <= 10pt] (6.,0.003847577293363269)-- (3.,5.2);
+\draw [dotted] (-3.,5.2)-- (-12.358363052016974,5.2);
+\draw [dotted] (-3.,-5.192304845413266)-- (-12.358363052016973,-5.192304845413264);
+
+\draw [dotted] (1.149407725685258,8.405319843207577)-- (3.,5.2);
+\draw [dotted] (-6.,0.003847577293368154)-- (-7.850592274314743,3.209167420500946);
+
+\draw [dotted] (-6.,0.003847577293368154)-- (-8.222546728328725,-3.8457162783679655);
+\draw [dotted] (3.,-5.1923048454132665)-- (0.7774532716712734,-9.041868701074597);
+
+\draw [-{Stealth[length=5mm, width=3mm]},shorten  >= 3pt,shorten <= 3pt] (-12,-5.2)-- (-12,5.2);
+\draw [-{Stealth[length=5mm, width=3mm]},shorten  >= 3pt,shorten <= 3pt] (-7.850592274314743,3.209167420500946)-- (1.149407725685258,8.405319843207577);
+\draw [{Stealth[length=5mm, width=3mm]}-,shorten  >= 3pt,shorten <= 3pt] (0.7774532716712734,-9.041868701074597)-- (-8.222546728328725,-3.8457162783679655);
+%\begin{scriptsize}
+\draw[] (-12,0.6884434507276773) node[left,text width=2cm]{$\Delta V = \SI{5}{V}$};
+\draw[] (-3.1073695195600006,7.6285763253301235) node[text width=2cm] {$\Delta V = \SI{2}{V}$};
+\draw[] (-4.719525031507313,-6.8) node[text width=2cm] {$\Delta V = \SI{6}{V}$};
+%\end{scriptsize}
+
+
+\draw (1,2) node[]{$\boldsymbol{\times}$} node[right]{$M$};
+
+\begin{scope}[shift={(-1,-1)},scale=2]
+\draw[-latex] (0,0) -- +(1,0) node[right]{$\vv{e_x}$};
+\draw[-latex] (0,0) -- +(0,1) node[right]{$\vv{e_y}$};
+\filldraw[fill=white,draw=black] circle(2pt) node[below left]{$\vv{e_z}$};
+\fill[] (0,0) circle(1.2pt);
+\end{scope}
+
+
+\end{tikzpicture} 

@@ -1,0 +1,1520 @@
+% !TEX root = /home/eb/.vscode/extensions/qftrules.programme-colle/tmp/Exercice.tex
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][2][TD]{Analyse spectrale des transformations de Lorentz}
+  \Notions{\item Transformations de Lorentz \task Rapidité}
+La transformation de Lorentz $\Lambda : (ct,x) \mapsto (ct’,x’)$ est une application linéaire de l’espace vectorielle $\R^2$ dans $\R^2$. On se propose de déterminer les propriétés de cette application linéaire.
+\begin{quest}
+  \item	Rappeler la représentation matricielle de l’application linéaire $\Lambda$ dans la base canonique de $\R^2$.
+  \item Montrer que les vecteurs propres de $\Lambda$ sont $e_- = (1,1)$ et $e_+ = (1,-1)$ et sont associés aux valeurs propres $\lambda_\pm = \gamma(1\pm\beta)$. Les espaces propres associés sont appelés directions lumière. Pourquoi ? Faire le lien avec  l’invariance de $c$.
+  \sol{
+  
+Les espaces propres de $\Lambda$ sont Vect$(1,1)$ et Vect$(1,-1)$, ce qui correspond aux directions lumières $x=\pm ct$, en accord avec l’invariance de $c$.
+En effet, on a 
+\begin{equation}
+  \left(\begin{array}{cc}\gamma & -\beta \gamma \\ -\beta \gamma & \gamma\end{array}\right) \begin{pmatrix}1\\1\end{pmatrix} = \begin{pmatrix}\gamma-\beta \gamma \\ -\beta \gamma + \gamma\end{pmatrix} = \gamma(1-\beta) \begin{pmatrix}1\\1\end{pmatrix},
+\end{equation}
+et 
+\begin{equation}
+  \left(\begin{array}{cc}\gamma & -\beta \gamma \\ -\beta \gamma & \gamma\end{array}\right) \begin{pmatrix}1\\-1\end{pmatrix} = \begin{pmatrix}\gamma+\beta \gamma \\ \beta \gamma + \gamma\end{pmatrix} = \gamma(1+\beta) \begin{pmatrix}1\\-1\end{pmatrix}.
+\end{equation}
+
+  }
+  \item Montrer qu’il existe $\psi \in ]-\infty,+\infty[$ tel que $\lambda_\pm = e^{\pm\psi}$. En déduire l’expression de $\beta$ et $\gamma$, ainsi que la représentation matricielle de $\Lambda$ dans la base canonique, en fonction de $\psi$.
+  \sol{
+    Les valeurs propres associées sont respectivement $\gamma(1\pm \beta) > 0$. En posant $\gamma(1+\beta) = e^{\psi}$ avec $\psi \in ]-\infty, +\infty[$, on voit que $\gamma(1-\beta) = \gamma^2(1-\beta^2)/\gamma(1+\beta) = 1/\gamma(1+\beta) = e^{-\psi}$.
+  }
+\end{quest}
+
+
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][devoir]{Émission d'un électron par un noyau radioactif (8 points)}
+Un noyau radioactif se déplace à la vitesse $\Vec{u}=u \ex$, avec $u=\num{0,1}c$, par rapport au référentiel $\Rcal$ du laboratoire. Il émet un électron dont la vitesse par rapport au noyau est $\Vec{v}^{\prime}$, de norme $v^{\prime}=\num{0,8}c$.
+\begin{quest}
+  \item	Rappeler la formule de composition des vitesses relativistes, pour la vitesse colinéaire au boost $\Vec{v}_\parallel$, et pour la vitesse orthogonale au boost $\Vec{v}_\perp$.
+  \sol{
+  La loi de composition des vitesses relativistes entre deux référentiels inertiels $\Rcal$ et $\Rcal'$, en mouvement relatif à la vitesse $\Vec{\vboost}$, est donnée par
+  % $$
+  \eqbox{
+    \Vec{v}^{\prime}_\parallel = \frac{\Vec{v}_\parallel - \Vec{\vboost}}{1-\frac{\Vec{v} \cdot \Vec{\vboost}}{c^2}}, \Rar 
+    \Vec{v}_\parallel = \frac{\Vec{v}^{\prime}_\parallel + \Vec{\vboost}}{1+\frac{\Vec{v}^{\prime} \cdot \Vec{\vboost}}{c^2}
+    }
+  }
+    % $$
+  pour la composante parallèle au boost, et
+  % $$
+  \eqbox{
+  \Vec{v}^{\prime}_\perp = \frac{\Vec{v}_\perp}{\gboost \left(1-\frac{\Vec{v} \cdot \Vec{\vboost}}{c^2}\right)}, 
+  \Rar 
+  \Vec{v}_\perp = \frac{\Vec{v}^{\prime}_\perp}{\gboost \left(1+\frac{\Vec{v}^{\prime} \cdot \Vec{\vboost}}{c^2}\right)}
+    }
+  % $$
+  pour la composante orthogonale.
+  }
+\end{quest}
+Quelle est la vitesse $\Vec{v}$ de l'électron dans le référentiel du laboratoire $\Rcal$, dans les trois cas suivants:
+\begin{quest}
+  \item $\Vec{v}^{\prime}$ et $\Vec{u}$ ont même direction et même sens ?
+  \sol{
+  Soit $\Rcal’$ le référentiel du noyau, en translation rectiligne uniforme à la vitesse $\Vec{u} = u \ex$ par rapport à $\Rcal$. La vitesse de l’électron dans $\Rcal’$ s’écrit ici $\Vec{v}’ = v’\ex$ avec $v’=\num{0.8}c$. On a donc, en utilisant la loi de composition pour la vitesse parallèle au boost,
+  $$
+  v = \frac{v’+u}{1+\frac{v’u}{c^2}} = \frac{0,8c+0,1c}{1+0,08} = \frac{0,9c}{1,08},
+  $$
+  soit 
+  \eqbox{
+  v=  0,833c.
+  }
+  }
+  \item $\Vec{v}^{\prime}$ et $\Vec{u}$ ont même direction et des sens contraires?
+  \sol{
+  On utilise la même relation avec cette fois-ci $\Vec{v}’ = - v’ \ex$ et $v’=0,8c$, soit
+  $$
+  v = \frac{-0,8c+0,1c}{1-0,08} = \frac{-0,7c}{0,92},
+  $$
+  soit 
+  \eqbox{
+  v=  -0,761c.
+  }
+  }
+  \item $\Vec{v}^{\prime}$ et $\Vec{u}$ sont orthogonaux ?
+  \sol{
+  On utilise cette fois-ci la loi de composition pour la vitesse orthogonale au boost, avec par exemple $\Vec{v}’ = v’ \ey$ et $v’=0,8c$. On note $\Vec{v} = v_x \ex + \Vec{v}_y \ey$. Le facteur de Lorentz du boost vaut 
+  % \eqbox{
+  $$
+  \gboost = \frac{1}{\sqrt{1-\frac{u^2}{c^2}}} = \frac{1}{\sqrt{1-0,01}} = \frac{1}{\sqrt{0,99}} \simeq \num{1,005}.
+  $$
+  % }
+  On en déduit
+  $$
+  v_y = \frac{0,8c}{\gboost \left(1-\frac{0,1c \cdot 0,8c}{c^2}\right)} = \frac{0,8c}{\gboost \left(1-0\right)} \simeq \num{0.8}c
+  $$
+  et
+  $$
+  v_x = \frac{0,1c}{1+\frac{0,8c \cdot 0,1c}{c^2}} = \frac{0,1c}{1+0,08} = \frac{0,1c}{1,08} \simeq \num{0,1}c.
+  $$
+  On en déduit 
+  \eqbox{
+    \Vec{v } \simeq \num{0,1}c \ex + \num{0,8}c \ey.
+  }
+  % soit 
+  % \eqbox{
+  %   v \simeq {0,8c}
+  % }
+  }
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][devoir]{Cinématique relativiste (8 points)}
+Répondez aux questions en quelques phrases. On pourra s'appuyer sur des calculs simples et des diagrammes d'espace-temps.
+\begin{quest}
+  \QR { Définissez la notion de simultanéité en relativité restreinte. La simultanéité est-elle relative ou absolue? Justifier.
+  }{
+    \begin{enumerate}
+      \item Deux événements $E_1$ et $E_2$ sont dits simultanés dans un référentiel inertiel $\Rcal$ s'ils ont le même temps dans ce référentiel, c'est-à-dire si \fbox{$t_1 = t_2$.}
+      \item En relativité restreinte, la simultanéité est \fbox{relative}.
+      
+      Deux événements distincts $E_1$ et $E_2$ simultanés dans $\Rcal$ ($t_1=t_2$) ne sont pas simultanés dans un autre référentiel inertiel $\Rcal'$ en mouvement relatif par rapport à $\Rcal$ ($t_1' \neq t_2'$). 
+      
+      \item \udl{Démonstration} : la transformation de Lorentz pour le temps donne 
+      $$
+      c\Delta t' = -\beta \gamma \Delta x.
+      $$
+    \end{enumerate}
+    \begin{fig}[label]
+      \centering
+      \includegraphics[scale=1.5]{simul.pdf}
+      %\capt{}
+    \end{fig}
+  }
+
+  \QR{	
+   Définissez la notion de durée propre et de durée impropre. Quel relation mathématique existe-t-il entre les deux? La démontrer.
+  }{
+  \begin{enumerate}
+    \item \udl{Définitions}.
+    
+    La \fbox{durée propre} $\Tp$ est la durée mesurée par une horloge au repos. 
+    
+    La \fbox{durée impropre} $T$ est la durée mesurée par une horloge en mouvement.
+    
+  \item La relation entre les deux est donnée par la formule de dilatation du temps :
+    \eqbox{
+      T = \gamma \Tp,
+      }
+      où $\gamma = \frac{1}{\sqrt{1 - \frac{v^2}{c^2}}}$ est le facteur de Lorentz.
+      
+      \item \udl{Démonstration}. On peut démontrer cette relation à partir des transformations de Lorentz. Considérons deux événements $E_1$ et $E_2$ se produisant au même endroit dans le référentiel $\Rcal$ (où l'horloge est en mouvement), donc $\Delta x = 0$. La transformation de Lorentz pour le temps donne :
+      $$
+  c\Delta t' = \gamma (c\Delta t - \beta \Delta x) = \gamma c\Delta t,
+  $$
+  d'où $\Delta t' = \gamma \Delta t$. Ici, $\Delta t'$ est la durée impropre (mesurée dans le référentiel où les événements ne sont pas colocalisés) et $\Delta t$ est la durée propre (mesurée dans le référentiel où les événements sont colocalisés).
+\end{enumerate}
+  \begin{fig}[label]
+    \centering
+    \includegraphics[scale=1.5]{dilat_temps_simple.pdf}
+    %\capt{}
+  \end{fig}
+  }
+   
+    \QR{
+    Donner deux exemples d'effets liés à la propagation de la lumière. Quelle propriété graphique vérifie la ligne d'univers d'un photon dans un diagramme d'espace-temps? Illustrer cette propriété sur un des deux exemples d'effets cités.
+    }{
+    Les effets liés à la propagation de la lumière incluent :
+     \begin{itemize}
+      \item L'effet \udl{Doppler-Fizeau} : le décalage en fréquence de la lumière perçue par un observateur en mouvement par rapport à la source lumineuse.
+      \item La \udl{longueur apparente} d'un objet en mouvement : un objet en mouvement rapide peut apparaître plus court ou plus long.
+      \item La \udl{rotation apparente} d'un objet en mouvement rapide (effet Terrell-Penrose).
+      \item L'\udl{aberration lumineuse} : le changement apparent de la direction d'une source lumineuse en raison du mouvement de l'observateur.
+      \item La \udl{vitesse apparente} de la lumière : la vitesse d'un objet sur une succession de photographie peut être supérieure à $c$ dans certains référentiels en mouvement.
+      \item L'\udl{anisotropie de l'émission lumineuse} d'une source.
+     \end{itemize}
+     Tous ces effets s'expliquent en raison de la vitesse finie de propagation de la lumière : la ligne d'univers d'un photon dans un diagramme d'espace-temps est un un segment de droite d'équation $x = \pm ct$, c'est-à-dire un \fbox{segment de bissectrice}. On représente ci-dessous le diagramme d'espace-temps $(ct,x)$ illustrant l'effet Doppler-Fizeau.
+     \begin{fig}[label]
+      \centering
+      \includegraphics[scale=1.5]{doppler.pdf}
+      %\capt{}
+     \end{fig}
+      }
+
+    \QR{ Donner la loi de composition des vitesses d'un point $\rm M$ dans deux référentiels inertiels $\Rcal$ et $\Rcal'$ en mouvement relatif à la vitesse $\Vec{\vboost}$. Indiquer les grandes lignes de la démonstration.
+    }{
+    La loi de composition des vitesses relativistes entre deux référentiels inertiels $\Rcal$ et $\Rcal'$, en mouvement relatif à la vitesse $\Vec{\vboost}$, est donnée par
+    % $$
+    \eqbox{
+      \Vec{v}^{\prime}_\parallel = \frac{\Vec{v}_\parallel - \Vec{\vboost}}{1-\frac{\Vec{v} \cdot \Vec{\vboost}}{c^2}}, 
+      }
+    % $$
+    et 
+    % $$
+    \eqbox{
+      \Vec{v}^{\prime}_\perp = \frac{\Vec{v}_\perp}{\gboost \left(1-\frac{\Vec{v} \cdot \Vec{\vboost}}{c^2}\right)}.
+      }
+    % $$
+    }
+  \end{quest}
+  \end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][colle]{Le train d’Einstein}
+  \begin{quest}
+    \item Trois personnes se trouvent dans un train qui se déplace par rapport au référentiel terrestre $R$ à la vitesse $\vec{v}=v \vec{e}_z$. L'une $T$ est en tete du train, une autre $M$ au milieu, la troisième $Q$ est en queue de train. La longueur du train mesurée par ces personnes est $L$. A l'instant où $M$ passe devant un observateur $O$ de $R$, il recoit simultanément les signaux émis par $T$ et $Q$.
+     \begin{enumerate}
+      \item 
+     Trouver les coordonnées des événements $E_1$ cémission en $T>$ et $E_2$ <émission en $Q>$ dans $R$ et dans $R^{\prime}$ lié au train, sachant que les coordonnées de l'événement = réception en $M>$ dans $R$ et dans $R^{\prime}$ sont nulles.
+      \item Evaluer la durée de l'intervalle $E_1-E_2$. Calculer linvariant de cet intervalle.
+    \end{enumerate}
+\item Le train précédent entre dans un tunnel rectiligne de longueur $\ell$ pour un observateur de $R$ telle que $\ell=L / \gamma$ avec $\gamma=1 / \sqrt{1-v^2 / c^2}$.
+\begin{enumerate}
+  \item En adoptant comme événement origine l'événement \& la tête du train sort du tunnel $>$, érrire dans $R$ et dans $R^{\prime}$ les coordonnées de l'événement < la queue du train entre dans le tunnel ?
+  \item Montrer que la phrase $<$ le train est contenu dans le tunnel $>$ a un sens dans $R$ à un instant que l'on déterminera. Retrouver ce résultat à l'aide de la contraction des longueurs.
+  \item L'observateur de $R^{\prime}$ peut-il faire un raisonnement analogue?
+\end{enumerate}
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][devoir]{Un voyage spatial mouvementé (10 points)}
+  Un voyageur spatial prend bord dans une fusée qui se déplace par rapport à la Terre, que l’on suppose immobile dans l’espace. Un collègue resté sur Terre observe le mouvement : on note $\Rcal$ son référentiel, supposé inertiel, muni d’un repère spatio-temporel $(O,ct,x,y,z)$, et $\Rcal'$ le référentiel lié à la fusée, muni d’un repère 
+  spatio-temporel $(O',ct',x',y',z')$. Dans un premier temps, la fusée s’éloigne de la Terre à la vitesse constante $v=\beta c$ avec $\beta=\num{0.5}$, dans la direction $(Ox)$. On suppose que les origines spatio-temporelles de $\Rcal$ et $\Rcal^\prime$ coincident, i.e. $O=O'$ lorsque $t=0$ et $t^\prime=0$.
+  \begin{quest}
+    \item	Représenter un diagramme d’espace-temps $(ct,x)$, et construire à l’échelle les axes $(ct',x')$ liés à la fusée $\Rcal'$, en justifiant le raisonnement. Que vaut numériquement le facteur de Lorentz $\gamma$ ?
+    \sol{
+      Voici le diagramme d'espace-temps :
+    \begin{fig}[label]
+      \centering
+      \includegraphics[scale=1]{E_exo_voyage.pdf}
+      %\capt{}
+    \end{fig}
+    Pour le tracer, on remarque que $\beta=\num{0.5}$ : les axes $ct’$ et $x’$ s’écartent d’un carreau par rapport aux axes $ct$ et $x$, respectivement, après avoir parcouru deux carreaux suivant ces mêmes axes. Le facteur de Lorentz vaut 
+    \eqbox{
+      \gamma = \frac{1}{\sqrt{1-\beta^2}} = \frac{2}{\sqrt{3}}.
+    }
+    }
+  
+    \item Le voyageur spatial croise la Lune, située à une distance $d=\SI{1.2}{seconde-lumière}$ de la Terre. On notera $L$ l’événement associé. L’observateur terrestre $\Rcal$ observe qu’au même instant, un éclair frappe son laboratoire sur Terre. On notera $E$ cet événement. 
+    
+    Représenter ces deux événements sur le diagramme d’espace-temps, en expliquant votre démarche, et représenter la ligne de simultanéité de $E$ pour le voyageur $\Rcal^\prime$. Le voyageur spatial observe-t-il l’éclair avant, au même moment, ou après avoir croisé la Lune ?
+
+    \sol{
+    L’événement $L$ appartient à la ligne d’univers de la fusée, donc à l’axe $ct’$, et est situé à une distance $x_L=d$ de l’origine. L’événement $E$ est simultané à $L$ pour $\Rcal$ et se passe sur Terre, donc appartient à l’axe $ct$ et à la même ligne horizontale que $L$.
+    En exprimant toutes les distances en second-lumière, on obtient le diagramme suivant :
+    \begin{fig}[label]
+      \centering
+      \includegraphics[scale=1]{E_exo_voyage_EL.pdf}
+      %\capt{}
+    \end{fig}
+    La coordonnée $ct_E’$ de l’événement $E$ dans $\Rcal^\prime$ s’obtient en traçant la droite passant par $E$ et parallèle à l’axe $x’$, et en lisant l’intersection avec l’axe $ct’$. On voit graphiquement que $ct_E’>ct_L’$, et donc l’éclair est \boxed{postérieur} au croisement de la Lune pour $\Rcal’$.
+    }
+    \item Exprimer les coordonnées de $L$ et $E$ dans $\Rcal$, notées $(ct_L,x_L)$ et $(ct_E,x_E)$, en fonction de $d$ et $\beta$. À partir des  transformations de Lorentz,
+    déterminer les coordonnées spatio-temporelles de $L$ et $E$ dans $\Rcal^\prime$. Montrer en particulier que 
+    \begin{equation}
+      t_L = \gamma t_L’.
+    \end{equation} 
+    À quel phénomène physique cette formule est-elle associée ?
+    En déduire la durée $t_E'-t_L'$ séparant les événements $L$ et $E$ pour le voyageur spatial $\Rcal'$. \AN ?
+    
+    \sol{
+    Les coordonnées de $L$ et $E$ dans $\Rcal$ s’obtiennent par leurs définitions, et valent
+    \eqbox{
+      \begin{aligned}
+        ct_L &= \frac{d}{\beta}, & x_L &= d, \\
+        ct_E &= \frac{d}{\beta}, & x_E &= 0.
+      \end{aligned}
+    }
+    Les coordonnées dans $\Rcal^\prime$ s’obtiennent par les transformations de Lorentz, qui s’écrivent 
+    $$
+    \left\{
+    \begin{aligned}
+      ct' &= \gamma(ct-\beta x), \\
+      x' &= \gamma(x-\beta ct).
+    \end{aligned}
+    \right.
+    $$
+    On obtient donc 
+    % \eqbox{
+    $$
+      \begin{aligned}
+        ct_L’ &= \gamma(ct_L-\beta x_L) = \frac{\gamma d}{\beta}(1-\beta^2), & x_L’ &= \gamma(x_L-\beta ct_L), \\
+        ct_E’ &= \gamma(ct_E-\beta x_E), & x_E’ &= \gamma(x_E-\beta ct_E),
+      \end{aligned}
+    $$
+    soit 
+    \eqbox{
+      \begin{aligned}
+        ct_L’ &= \frac{d}{\gamma \beta}, & x_L’ &= 0, \\
+        ct_E’ &= \frac{d}{\beta}, & x_E’ &= -\gamma{d}.
+      \end{aligned}
+    }
+    On voit en particulier que 
+    \eqbox{
+    t_L = \gamma t_L’,
+    }
+    qui correspond à la formule de dilatation des durées. L’application numérique donne $t_L = \frac{d}{c\beta} = \SI{2.4}{s}$, puis $t_L’ = \frac{t_L}{\gamma} = \SI{2.1}{s}$. On peut remarquer aussi au passage que la relation $x_E’ = -\gamma d = -\gamma x_L$ correspond à la contraction des longueurs, mais cela est moins évident à interpréter.
+    }
+    \item Le voyageur spatial $\Rcal'$ émet un photon en direction de la Terre à l’instant où il croise la Lune, d'événement $L$, afin d’indiquer la progression de son trajet à son collègue sur Terre. Représenter la ligne d'univers de ce photon sur le diagramme d’espace-temps, et placer l'événement $R$ associé à la réception de ce photon sur Terre, en justifiant. 
+    
+    Montrer que l'observateur terrestre $\Rcal$ reçoit le photon à l'instant
+    \begin{equation}
+      t_R = t_L’ \sqrt{\frac{{1 +\beta}}{1 - \beta}}.
+    \end{equation}
+    À quel phénomène physique cette formule est-elle associée ? \AN ? 
+    \sol{
+      La ligne d’univers est un segment bissecteur du diagramme d’espace-temps partant de $L$ et dirigé vers la gauche (vers l’origine). 
+    L’événement $R$ appartient à l’axe $ct$ puisqu’il est localisé sur Terre. 
+    \begin{fig}[label]
+      \centering
+      \includegraphics[scale=1]{E_exo_voyage_photon.pdf}
+      %\capt{}
+    \end{fig}
+    On peut trouver $t_R$ de la façon suivante. Comme le triangle $REL$ est isocèle en $E$, on a $c(t_R-t_E) = d$, soit $ct_R = ct_E + d = \frac{d}{\beta}(1+\beta) = \gamma c t_L’ (1+\beta)$, d’où la formule donnée,
+    \eqbox{
+      t_R = t_L’ \sqrt{\frac{{1 +\beta}}{1 - \beta}}.
+    }
+    Il s’agit de l’effet Doppler-Fizeau longitudinal. L’application numérique donne $t_R = \SI{3.6}{s}$.
+    }
+    \item  La fusée est de longueur propre $a_0=\SI{20}{m}$. Sur un diagramme d’espace-temps séparé, muni des axes $(ct,x)$ et $(ct',x')$, placer les événements $A_1$ : \guill{mesure de la position $x_1=0$ de l'arrière de la fusée à l'instant $t=0$}, pris comme origine du repère et $A_2$ : \guill{mesure de la position $x_2$ de l'avant de la fusée à l'instant $t=0$}. 
+    Justifier que la grandeur $a=x_2$ représente la longueur de la fusée dans $\Rcal$. 
+    
+    On définit l'événement $A_3$ simultané à $A_1$ pour $\Rcal'$ et qui appartient à la ligne d'univers de l'avant de la fusée. Placer cet événement sur le nouveau diagramme d’espace-temps, et justifier que la grandeur $a_0 = x_3’$ représente la longueur de la fusée dans $\Rcal'$. À partir des transformations de Lorentz, montrer que dans le référentiel $\Rcal$, la fusée est de longueur 
+    \begin{equation}
+      a = \frac{a_0}{\gamma}.
+    \end{equation}
+    À quel phénomène physique cette formule est-elle associée ? \AN ? 
+
+    \sol{
+      Voici le diagramme d’espace-temps :
+    \begin{fig}[label]
+      \centering
+      \includegraphics[scale=1]{E_exo_voyage_longueur.pdf}
+      %\capt{}
+    \end{fig}
+    La grandeur $a=x_2=x_2-x_1$ représente la distance séparant les événements $A_1$ et $A_2$, qui sont attachés aux extrémités de la fusée, et simultané dans $\Rcal$ : il s’agit bien de la longueur de la fusée dans $\Rcal$, par définition.
+
+    Exprimons les coordonnées de $A_3$ dans $\Rcal’$ et $\Rcal$. On a  
+    $$
+    \left\{
+    \begin{aligned}
+      ct_3’ &= 0, \\
+      x_3’ &= a_0.
+    \end{aligned}
+    \right.
+    $$
+    Par transformation de Lorentz inverse, on trouve 
+    $$
+    \left\{
+    \begin{aligned}
+      ct_3 &= \gamma (ct_3’ + \beta x_3) = \gamma \beta a_0, \\
+      x_3 &= \gamma(x_3’+\beta ct_3’) = \gamma a_0.
+    \end{aligned}
+    \right.
+    $$
+De plus, comme $A_3$ appartient à la ligne d’univers de l’avant de la fusée, on a $x_3-x_2 = v(t_3-t_2) = \beta c t_3 = \gamma \beta^2 a_0$. On trouve donc $a = x_2 = x_3 - \gamma \beta^2 a_0 = \gamma a_0(1-\beta^2)$, soit 
+\eqbox{
+  a = \frac{a_0}{\gamma}.
+} 
+L’application numérique donne $a=\SI{17.3}{m}$.
+    }
+    % \item Au cours de son voyage spatial, elle traverse un astéroïde creux de longueur propre $b_0 = \SI{19}{m}$, immobile dans l’espace. Sur un diagramme d’espace-temps séparé, muni des axes $(ct,x)$ et $(ct',x')$, représenter les lignes d'univers de l'avant $A_1$ et de l'arrière $A_2$ de la fusée, de l'avant $B_1$ et de l'arrière $B_2$ de l'astéroïde, et placer les événements $E_1$ : \guill{l’avant de la fusée entre dans l’astéroïde}, et $E_2$ : \guill{l’arrière de la fusée sort de l’astéroïde}. Montrer en s’appuyant sur ce diagramme d’espace-temps que dans le référentiel $\Rcal$ de l’astéroïde, la fusée est de longueur 
+    % \begin{equation}
+    %   a = \frac{a_0}{\gamma}.
+    % \end{equation}
+    % \AN ? Pour l’observateur sur Terre, existe-t-il un instant où la fusée est entièrement contenue dans l’astéroïde ?
+  \end{quest}
+  
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][2][TD]{Aberration lumineuse}
+  \Notions{\item Propagation de la lumière}
+  L’aberration est la différence entre les directions d’incidence d’un même rayon lumineux perçues par deux observateurs en mouvement relatif. L'aberration des étoiles a été expliquée pour la première fois par J. \textsc{Bradley} en 1728 (dans un cadre non relativiste bien sûr), après avoir observé l'étoile $\gamma$ Draconis. Tout comme l’effet Doppler, il ne s’agit pas d’un effet purement relativiste, car elle traduit surtout le caractère fini de la vitesse de propagation d’un signal, ainsi que le montre l’exemple du piéton qui marche sous la pluie : la pluie tombant verticalement par rapport au sol, le piéton doit incliner son parapluie vers l’avant s’il ne veut pas être mouillé.
+
+
+\begin{fig}[aberration]
+  \centering
+  \begin{subfig}[label][0.48]
+    \includegraphics[width=\columnwidth]{aberration.pdf}
+  \end{subfig}
+  \begin{subfig}[label][0.48]
+    \includegraphics[width=\textwidth]{aberration_E.pdf}
+  \end{subfig}
+  \capt{(a) Mouvement du photon dans le réfrentiel $\Rcal$ lié à la Terre. (b) Mouvement du photon dans le référentiel $\Rcal'$ lié à l'étoile.}
+\end{fig}
+Soit $\Rcal$ le référentiel lié  à un observatoire sur Terre, et $\Rcal'$ le référentiel lié à l'étoile émettrice, tous deux supposés inertiels. On suppose que $\Rcal'$ se déplace à une vitesse $\Vec{\vboost} = - u \, \ex$ par rapport à $\Rcal$. On souhaite relier l'angle $\theta$ que fait le rayon lumineux dans $\Rcal$ et l'angle $\theta'$ que fait le rayon lumineux dans $\Rcal'$, définis sur la \Fig{aberration}, dans un cadre relativiste.
+
+\begin{quest}
+  \item	Déterminer la vitesse $\Vec{v}'$ du photon dans $\Rcal'$, en fonction de la vitesse $\Vec{v}$ du photon dans $\Rcal$. En déduire une relation entre  les $\theta$ et $\theta'$.
+  \sol{
+    La vitesse $\Vec{v}'$ s'obtient par un boost de Lorentz de vitesse $\Vec{\vboost} = -u \ex$. On en déduit, d'après la formule de composition des vitesses, que 
+\begin{equation*}
+  v_x' = \frac{v_x + u}{1 +\frac{v_x u}{c^2}}.
+\end{equation*}
+On sait que le photon se déplace avec une vitesse de norme $v=v'=c$ dans les deux référentiels. On a donc
+\begin{equation*}
+  v_x = -c \, \cos \theta, \quad v_x' = -c \, \cos \theta'.
+\end{equation*}
+En notant $\beta = \frac{u}{c}$, on trouve la relation attendue
+% \begin{equation}
+\eqbox{
+  \cos \theta =   \frac{\cos \theta' - \beta}{1-\beta \cos \theta'}.
+  }
+% \end{equation}
+Cette formule a été obtenue par A. \textsc{Einstein} en 1905 dans son article fondateur. 
+
+
+
+\udl{Remarque} : on peut obtenir la relation inverse en changeant simplement le signe de $\bboost$ :
+  \eqbox{
+  \cos \theta' =   \frac{\cos \theta + \beta}{1+\beta \cos \theta}.
+  }
+}
+% \end{remarque}
+\end{quest}
+Lorsque la lumière provient d'une étoile situé dans l'axe des pôles de l'écliptique, la direction de propagation de la lumière est perpendiculaire au déplacement de l'étoile et $\theta' = \textstyle\frac{\pi}{2}$.
+On note $\alpha = \textstyle\frac{\pi}{2}-\theta$ l'angle de la lumière vue depuis la Terre par rapport à la perpendiculaire au plan de l'écliptique.
+\begin{quest}
+  \item	
+  Montrer que pour $\alpha \ll 1$, on a $\alpha \simeq -\beta$.
+  \AN~sachant que la Terre se déplace à une vitesse $u=\SI{30}{km.s^{-1}}$ dans le plan de l'écliptique ? Comparer $\alpha$ à l'angle de parallaxe $\alpha_{\rm p}$ pour l'étoile la plus proche, Proxima Centauri, situé à une distance $d=\SI{4.24}{al}$. 
+  \sol{
+    \begin{enumerate}
+      \item Pour $\alpha \ll 1$, on a $\cos \theta = \sin \alpha \simeq \alpha$ et donc
+      % $$
+      \eqbox{
+        \alpha \simeq - \beta = -\SI{1.0e-4}{rad} = -\SI{21}{\arcsecond}.
+        }
+        On voit donc que si $\beta >0$ (la Terre s'approche de l'étoile), alors $\alpha <0$ (l'étoile est vue décalée par rapport à la perpendiculaire au plan de l'écliptique suivant sont sens de déplacement).
+      % $$
+      \item Soit $d_{TS} = \SI{1.5e11}{m}$ la distance Terre-Soleil. L'angle de parallaxe $\theta$ est donné par
+      \eqbox{
+      \alpha_{\rm p} \simeq \frac{d_{TS}}{d} = \SI{3.7e-6}{rad} = \SI{0.77}{\arcsecond},
+      }
+      L'effet de l'aberration est donc beaucoup plus important que l'effet de la parallaxe ! Pour mesurer la position des étoiles proches avec la méthode de la parallaxe, il faut corriger l'effet de l'aberration lumineuse.
+    \end{enumerate}
+  }
+\end{quest}
+
+\textsc{Données} : $1 \mathrm{~al} = \SI{9.5e15}{m}$, $\SI{1}{^\circ} = \SI{60}{'} = \SI{3600}{''}$.
+
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][TD]{Mesure de distance dans l'univers}
+  \Notions{\item Effet Doppler longitudinal}
+  On observe une galaxie lointaine dont les onde lumineuses sont fortement décalées vers le rouge par effet Doppler. La raie Lyman $\alpha$ de l'hydrogène, de longueur d'onde dans le laboratoire $\lambda_0=126 \mathrm{~nm}$, est observée à la longueur d'onde $\lambda=270 \mathrm{~nm}$. On suppose que ce décalage dû au seul déplacement longitudinal de l'objet émetteur par rapport à la Terre.
+  \begin{quest}
+    \item	Déterminer le redshift défini par $z = \frac{\lambda - \lambda_0}{\lambda_0}$.
+    Rappeler l'expression de la fréquence $\nu$ décalée par effet Doppler longitudinal. En déduire l'expression de la vitesse d'éloignement de la galaxie $v$ en fonction du redshift $z$. \AN~?
+    \sol{
+      Le redshift vaut ici 
+      \eqbox{
+      z = \frac{\lambda - \lambda_0}{\lambda_0}  = \num{1.14}.
+      }
+    La fréquence mesurée par le récepteur dans l'effet Doppler longitudinal vérifie 
+    $$
+    \nu = \nu_0 \sqrt{\frac{1 + \beta}{1 - \beta}},
+    $$
+    avec $\beta >0$ si l'objet s'approche et $\beta <0$ si l'objet s'éloigne. Or la relation de dispersion dans le vide est $\lambda = \frac{c}{\nu}$, on a donc pour la longueur d'onde 
+    $$
+    \lambda = \lambda_0 \sqrt{\frac{1 - \beta}{1 + \beta}} \Rar z +1 =  \sqrt{\frac{1 - \beta}{1 + \beta}} \Rar \beta = \frac{1-(z+1)^2}{1+(z+1)^2} = -\num{0.64}.
+    $$
+    On en déduit la vitesse d'éloignement de la galaxie 
+    \eqbox{
+    v = -\beta c = \SI{1.9e8}{m.s^{-1}}.
+    }
+    }
+    % \itemEn admettant que ce décalage est dû au seul déplacement longitudinal de l'objet émetteur par rapport à la Terre, calculer la vitesse de cet objet et trouver le sens de son déplacement.
+    \item En raison de l'expansion de l'univers, la vitesse d'éloignement des objets $v$ est proportionnelle à leur distance $D$ suivant la loi de Hubble $v = H_0 D$, avec $H_0 = \SI{70}{km.s^{-1}.Mpc^{-1}}$.
+     En déduire la distance~$D$ de la galaxie observée. Que vaut l'âge $\tau$ de la galaxie en supposant que la constante de Hubble $H_0$ a la même valeur depuis le Big Bang ?
+     \sol{
+      La distance de la galaxie est donnée par
+      \eqbox{
+      D = \frac{v}{H_0} = \SI{3.3e5}{Mpc} = \SI{1.0e28}{m}.
+      }
+      La distance $x(t)$ de la galaxie à l'instant $t$ vérifie 
+      $$
+      x(t) = \frac{v(t)}{H_0} = \frac{1}{H_0} \dd{x}{t}(t) \Rar x(t) = x_0\, e^{H_0 t}.
+      $$
+      L'âge de la galaxie est donc
+      \eqbox{
+        \tau = \frac{1}{H_0} \ln \left(\frac{D}{x_0}\right).
+      }
+      La valeur de $x_0$ n'est pas bien définie, ici, car peu de temps après le big bang, l'expansion de l'univers était très rapide. On peut considérer la distance initiale $x_0$ est de l'ordre de la taille d'une galaxie, soit $x_0 \simeq \SI{e5}{a.l} \simeq  \SI{9.5E17}{m}$, soit 
+      \eqbox{
+      \tau = \SI{323}{Ga} !
+      }
+      En réalité, la vitesse de récession des galaxies était plus grande par le passé qu'aujourd'hui, et non l'inverse, et donc l'âge de la galaxie est donc plus faible. En supposant la vitesse de récession des galaxies constante, on peut estimer l'âge de l'univers à 
+      \eqbox{
+      t \simeq \frac{1}{H_0}  = \SI{13.8}{Ga}.
+      }
+     }
+    %  \begin{remarque}
+      
+    %  \end{remarque}
+  \end{quest}
+  \textsc{Données} : 
+   $1 \mathrm{~Mpc} = \SI{3,1e22}{m}$.
+% \itemQuelle valeur de la vitesse aurait-on obtenu à l'aide d'une théorie newtonienne ? Commenter.
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][2][TD]{Paradoxe de la règle et du trou}
+  \Notions{\item Contraction des longueurs \task Diagramme d’espace-temps}
+Dans le référentiel du laboratoire noté $\Rcal$, muni du repère $(O x y z)$, on considère une plaque horizontale, parallèle au plan $(O x y)$, percée d'un trou circulaire de diamètre propre $2L_0’$ et animée d'un mouvement de translation uniforme avec une vitesse $v$ orientée selon $(O z)$, vers les $z$ positifs. À l'origine des temps $t=0$, le centre du trou coincide avec l'origine du repère $O$.
+
+Dans ce référentiel, une règle, de longueur propre $2L_0’$, est animée d'un mouvement de translation uniforme avec une vitesse $u$ orientée selon $(Ox)$ dans le sens des $x$ positifs et telle que $\gamma_u=2$. A l'instant $t=0$, le milieu de la règle coincide avec l'origine du repère $O$.
+\begin{quest}
+  \item Pouvez-vous dire si, pour un observateur immobile dans $\Rcal$, la règle passe au travers du trou? En vous aidant de schémas, décrire la situation pour $t<0, t=0$ et $t>0$.
+  \sol{
+    Voici la situation pour $t<0$ dans $\Rcal$.
+  \begin{fig}[label]
+    \centering
+    \includegraphics[width=0.7\columnwidth]{regle_trou.png}
+    %\capt{}
+  \end{fig}
+  Dans le référentiel $\Rcal$ de l'observateur immobile, la règle est de longueur $2L_0'/\gamma_u = L_0'$, tandis que le trou est de diamètre $2L_0'$. La règle peut donc passer dans le trou en $t=0$.
+  }
+  \item On considère le référentiel $\Rcal^{\prime}$, référentiel propre de la règle, défini à l'aide du repère $\left(O^{\prime} x^{\prime} y^{\prime} z^{\prime}\right)$ dont les axes sont parallèles à ceux du repère ($O x y z$) et tel que $O$ et $O^{\prime}$ coincident à $t=0$. Reprendre le raisonnement précédent et montrer que, si l'on raisonne de façon simpliste en terme de contraction des longueurs, l'on peut aboutir à un paradoxe apparent.
+  \sol{
+  Dans le référentiel $\Rcal'$, la règle est immobile, de longueur $2L_0'$, et le trou se déplace à la vitesse $-u$ vers les x négatifs, suivant la direction de plaque (et a la vitesse $v$ vers les $z$ positifs, mais cela n'affecte pas le diamètre du trou). Le diamètre du trou vaut donc $2L_0'/\gamma_u = L_0'$, et donc la règle ne peut donc pas passer par le trou ! C'est le paradoxe apparent.
+  }
+  \item En étudiant le mouvement des deux extrémités du trou dans le référentiel $\Rcal^{\prime}$, montrer que le paradoxe peut être levé. Décrire, en vous aidant de schémas, ce qui se passe pour $t^{\prime}<0, t^{\prime}=0$ et $t^{\prime}>0$ (on choisira judicieusement les instants $t^{\prime}<0$ et $t^{\prime}>0$).
+  \sol{
+  Représentons un diagramme d’espace-temps pour $\Rcal$, dans les coordonnées spatio-temporelles ($ct,x$). Soit $E_1$ l’événement où l’extrémité $A_r$ (arrière) de la règle croise l’extrémité $A_t$ (arrière) du trou, et $E_2$ l’événement où l’extrémité $B_r$ (avant) de la règle croise l’extrémité $B_t$ (avant) du trou. Remarquons qu’un facteur de Lorentz $\gamma_u=2 $ correspond à une vitesse adimensionnée $\beta = \num{0.85}$, et donc les axes $ct’$ et $x’$ liés à la règle en mouvement sont très inclinés !
+  \begin{fig}[label]
+    \centering
+    \includegraphics[width=0.7\columnwidth]{regle_trou.pdf}
+    %\capt{}
+  \end{fig}
+  On voit sur le diagramme que la règle est bien deux fois plus courte que le trou dans $\Rcal$, et y passe donc sans problème, mais qu'elle est deux fois plus longue que le trou dans son référentiel propre $\Rcal'$, et qu'elle passe tout aussi bien par le trou. Elle prend simplement beaucoup plus de temps dans $\Rcal'$ pour traverser le trou, au vu des coordonnées $t'$ des événements $E_1$ et $E_2$. C'est possible car le trou est soit légèrement au-dessous de la règle (première phase du mouvement), sous légèrement au-dessus (deuxième phase).
+  }
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][2][TD]{Train dans un tunnel}
+  \Notions{\item Contraction des longueurs \task Diagramme d’espace-temps}
+Un train, de longueur propre $\ell_0'=100 \mathrm{~m}$ pour un passager du train $\Rcal^{\prime}$, est animé d'une vitesse $v=\num{0,6} c$ par rapport au référentiel inertiel du sol $\Rcal$ dans la direction $(Ox)$. Ce train entre dans un tunnel rectiligne, de longueur propre $L_0$ pour un observateur dans $\Rcal$.
+%  telle que $L=l / \gamma_e, \gamma_e$ étant le facteur relativiste $\left(1-u^2 / c^2\right)^{-1 / 2}$.
+\begin{quest}
+  \item Quelle est la longueur $\ell$ du train pour un observateur dans $\Rcal$ ? Quelle est la longueur $L'$ du tunnel pour un passager du train dans $\Rcal^{\prime}$ ? Justifier.
+  \sol{
+  On a par contraction des longueurs
+  \eqbox{
+    \ell = \frac{\ell_0'}{\gamma}, L' = \frac{L_0}{\gamma}.
+  }
+  }
+  \item On suppose que les longueurs propres vérifient $\ell_0' = \gamma L_0$. Évaluer numériquement $\ell$, $L_0$ et $L'$. 
+  \sol{
+  On a donc ici $\ell = L_0$ et $L' = \frac{\ell_0'}{\gamma^2}$. Le train et le tunnel ont mêmes longueurs pour un observateur au sol dans $\Rcal$. L'application numérique donne 
+  \eqbox{
+    \gamma = 1,25, \ell = L_0 = \SI{80}{m}, L' = \SI{64}{m}.
+  }
+  }
+  \item En adoptant comme événement origine l'événement $E_1$ : «la tête du train sort du tunnel », écrire, dans $\Rcal$ et $\Rcal^{\prime}$, les coordonnées de l'événement $E_2$ : « la queue du train entre dans le tunnel ». Représenter ces événements dans un diagramme d'espace-temps, ainsi que les lignes d'univers de l'avant  et de l'arrière  du train et du tunnel. 
+  \sol{
+  Les coordonnées de l'événement $E_2$ sont $E_2(t_2',x_2'=-L')$ dans $\Rcal'$ et $E_2(t_2,x_2 = -L_0)$ dans $\Rcal$. On trouve les instants avec les transformations de Lorentz. On a 
+  $$
+  x_2' = \gamma(x_2 - \beta ct_2) \Rar t_2=0.
+  $$
+  et 
+  $$
+  ct_2' =  \gamma(ct_2- \beta x_2) = \beta L'.
+  $$
+  On a donc 
+  \eqbox{
+  E_2 = (ct_2' = \beta L', x_2' = -L') = (ct_2 = 0, x_2 = -L_0).
+  }
+  }
+  \item Montrer que la phrase « le train est contenu dans le tunnel », à un instant que l'on précisera, a un sens dans $\Rcal$. A-t-elle un sens dans $\Rcal'$ ? Justifier.
+  \sol{
+     Pour $\Rcal$, les événements 1 et 2 sont simultanés et la longueur du train vaut $\ell$ : le  train est donc contenu dans le tunnel à l'instant $t_2=0$. Notons que, dans $\mathcal{R}^{\prime}$, les événements 1 et 2 ne sont pas simultanés  car $t_2^{\prime}>0$ : la tête du train sort du tunnel avant que la queue n'y entre, et le train n'est jamais contenu dans le tunnel.
+  }
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][3][TD]{Vitesses supraluminiques}
+  \Notions{\item Propagation de la lumière \task Vitesse apparente}
+    Des mouvements relativistes macroscopiques sont fréquemment observés en astrophysique, notamment sous la forme de jets. Il peut arriver que la vitesse apparente des jets asptrophysiques soit supérieure à $c$, et l'on souhaite expliquer ce phénomène. La \Fig{jet_relat} montre la progression sur plusieurs années de structures (nodules) dans le jet émis par le noyau de la galaxie M87. Sur le plan du ciel, la vitesse angulaire observée des nodules $\epsilon$ est de l'ordre de $\omega=\num{0.024}^{\prime \prime}$ par an. 
+    
+    \begin{fig}[jet_relat]
+      \centering
+      \includegraphics[scale=1.5]{supralum.png}
+      \capt{Éjection de nodules. L'axe des abscisses correspond à l'axe $(Ox)$. L'axe des ordonnées correspond à l'autre axe du plan du ciel $(Oz)$. Plusieurs clichés à des dates différentes sont superposés. [Biretta, Sparks, $\&$ Macchetto 1999 The Astrophysical Journal 520 621].}
+    \end{fig}
+  
+    \begin{quest}
+      \item	Connaissant la distance de M87 à la Terre, $D=52$ millions d'années-lumière, déterminer la vitesse apparente $\vapp$ des nodules $\epsilon$ et la comparer à $c$. Y a-t-il contradiction avec la relativité restreinte ?
+      \sol{
+      \eqbox{
+      \vapp = D\omega \simeq 6c.
+      }
+      }
+      % en déduit une vitesse de déplacement $V_{\mathrm{app}}=D \omega \simeq 6 c$ ! Il n'y a cependant pas de contradiction
+    \end{quest}
+    Supposons que les nodules se déplacent à la vitesse $v$ constante dans le référentiel $\Rcal$ de l'observateur, situé à l'origine O à grande distance des nodules. Notons $(Oy)$ la ligne de visée, $(Ox)$ l'axe perpendiculaire à $(Oy)$ qui suit le mouvement apparent du nodule, et $\theta$ l'angle entre la trajectoire du nodule et la ligne de visée. Notons $E_1$ et $E_2$ deux événements successifs d'émission d'un photon par le nodule, et $R_1$ et $R_2$ les événements de réception de ce photon par l'observateur. 
+    % Montrer que la vitesse apparente $\vapp$ est donnée par :
+    \begin{quest}
+      \item Représenter la situation dans le plan du mouvement $(Oxy)$. Représenter l'image que l'observateur a du plan du ciel $(Oxz)$.
+      \item Représenter la situation dans un diagramme d'espace-temps $(ct,x)$ lié à $\Rcal$.
+      % \sol{
+      % Les événements d'émission et de réception ont pour coordonnées dans $\Rcal$ : $E_1(ct_1=0,x_1=0)$, $E_2(ct_2=0,x_2=v\Delta t)$, $R_1(ct_1=D,x_1=0)$, $R_2(ct_2=D,x_2=v\Delta t)$.
+      % }
+      \item Déterminer les temps de réception $t_1^R$ et $t_2^R$ en fonction des temps d'émission $t_1^E$ et $t_2^E$ et des distances $y_1^E$ et $y_2^E$ aux moments d'émission. Relier $y_2^E$ à $y_1^E$, $v$, $\theta$, et aux temps d'émission. En déduire $t_2^R-t_1^R$, durée entre les deux réceptions.
+      \sol{
+      Les temps de réception s'obtiennent à partir des temps de réception par  
+      % \eqbox{
+      $$
+      t_1^R = t_1^E + \frac{y_1^E}{c}, \quad t_2^R = t_2^E + \frac{y_2^E}{c}.
+      $$
+      % }
+      Or la distance $d_2$ vaut 
+      $$
+      d_2 = d_1 - v(t_2^E - t_1^E)\cos \theta,
+      $$
+      car la distance longitudinale parcourue par le photon est $v(t_2^E - t_1^E)\cos \theta$.
+      On en déduit 
+      \eqbox{
+      t_2^R - t_1^R = \frac{v\sin\theta}{c}(t_2^E - t_1^E).
+      }
+      }
+      \item Déterminer $x_2^R-x_1^R$, distance transverse à la ligne de visée entre les deux réceptions. Définir la vitesse apparente $\vapp$ en fonction de $x_2^R-x_1^R$ et $t_2^R-t_1^R$, puis montrer que 
+      \begin{equation}
+        \vapp = \frac{v\sin\theta}{1 - \beta \cos \theta}.
+      \end{equation}
+  
+      \sol{
+      La distance transverse parcourue vaut $x_2^R - x_1^R = v\sin\theta(t_2^E - t_1^E)$. La vitesse apparente est donc 
+      \eqbox{
+      \vapp = \frac{x_2^R - x_1^R}{t_2^R - t_1^R} = \frac{v\sin\theta}{1 - \beta \cos \theta}.
+      }
+  
+      }
+      \item 
+      Représenter la fonction $\beta_{\rm app}(\theta)$ définie par $\vapp = c\beta_{\rm app}$ pour plusieurs valeurs de $\beta$. Montrer graphiquement que $\beta_{\rm app} \geq 1$ pour un certain intervalle de $\theta$. Montrer que la fonction $\beta_{\rm app}(\theta)$ est maximale pour $\cos \theta = \beta$, et en déduire l'expression du maximum $\beta_{\rm app}^{\rm max}$. Montrer que $\beta \geq \num{0.986}$ pour les nodules $\epsilon$ de la galaxie M87.
+      \sol{
+        
+        \begin{center}
+          \begin{tikzpicture}
+            \begin{axis}[
+              xlabel={$\theta$},
+              ylabel={$\beta_{\rm app}(\theta)$},
+              domain=0.01:pi/2,
+              samples=100,
+              xtick={0, pi/4, pi/2},
+              xticklabels={$0$, $\frac{\pi}{4}$, $\frac{\pi}{2}$},
+              ymax=3,
+              ]
+              \addplot[blue] {0.9*sin(deg(x))/(1-0.9*cos(deg(x)))};
+            \end{axis}
+          \end{tikzpicture}
+        \end{center}
+        La fonction s'écrit 
+        \eqbox{
+        \beta_{\rm app}(\theta) = \frac{\vapp}{c} = \frac{\beta\sin\theta}{1 - \beta \cos \theta}.
+        }
+        Elle est maximale lorsque
+        $$
+        \dd{\beta_{\rm app}}{\theta} = 0 = \frac{\beta\cos\theta}{1 - \beta \cos \theta} - \frac{\beta^2\sin^2\theta}{(1 - \beta \cos \theta)^2} = \frac{\beta(\cos\theta - \beta)}{(1 - \beta \cos \theta)^2} = 0, 
+         \quad \text{soit} \quad \cos \theta = \beta.
+        $$
+        Le maximum vaut alors 
+        \eqbox{
+        \beta_{\rm app}^{\rm max} = \frac{\beta}{\sqrt{1 - \beta^2}}.
+        }
+        La vitesse adimensionnée apparente du nodule vaut $\beta_{\rm app} \simeq 6 \leq \beta_{\rm app}^{\rm max}$, soit 
+        $$
+        \beta^2 \geq 36 ({1 - \beta^2}) \Rar \beta^2 \geq \frac{36}{37} \Rar \boxed{\beta \geq \num{0.986}.}
+        $$
+      }
+    \end{quest} 
+  \end{exo}
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][2][TD]{Mouvement d’une fusée uniformément accélérée (version cours)}
+  \Notions{\item Quadri-vitesse \task Quadri-accélération \task Temps propre}
+  %Soit un point matériel en mouvement dont la quadri-vitesse $\vmu$ a les composantes suivantes exprimées en fonction du temps propre $\tau$ :
+% $$
+% \vmu^0=c \cosh (\omega \tau), \quad \vmu^1=c \sinh (\omega \tau), \quad \vmu^2=0, \quad \vmu^3=0.
+% $$
+% Nous montrons dans cet exercice que le mouvement correspondant est uniformément accéléré.
+  Considérons une fusée ayant un mouvement rectiligne accéléré par rapport à un référentiel inertiel $\Rcal$, par exemple la Terre. Sa vitesse à un instant $t$ est portée par $\ex$ et notée $v(t)$. On donne l'expression de la quadri-vitesse en fonction du temps propre $\tau$, 
+  % $$
+  \begin{equation}
+    \vmu^0=c \cosh (\omega \tau), \quad \vmu^1=c \sinh (\omega \tau), \quad \vmu^2=0, \quad \vmu^3=0.
+  \end{equation}
+% $$
+% 
+  \begin{quest}
+    \item  Vérifier explicitement que $\vmu^\mu \vmu_\mu=c^2$. 
+    \sol{On a 
+    \eqbox{
+      \vmu^\mu \vmu_\mu = c^2 \cosh^2(\omega \tau) - c^2 \sinh^2(\omega \tau) = c^2.
+    }
+    }
+  
+    \item Déterminer le facteur de Lorentz $\gamma$, la vitesse $\beta$ et la rapidité $\psi$. En déduire la loi horaire $t(\tau)$.
+    \sol{
+      On a $\vmu^0 = c \gamma = c \cosh (\omega \tau)$, et donc 
+    \eqbox{
+    \gamma = \cosh (\omega \tau).
+    }
+    La vitesse $\beta$ s'obtient par la relation $\gamma = \frac{1}{\sqrt{1-\beta^2}}$, ou bien par
+    $
+    \vmu^1 = \gamma v^1 = \gamma \beta c = c \sinh (\omega \tau),
+    $
+    soit 
+    \eqbox{
+      \beta = \tanh (\omega \tau).
+    }
+    La rapidité $\psi$ est donnée par $\beta = \tanh \psi$, soit 
+    \eqbox{
+      \psi = \omega \tau.
+    }
+    On en déduit le temps $t$ pour l'observateur inertiel $\Rcal$ par l'\Eq{temps_propre} :
+    $$
+    t = \int_0^t \d t = \int_0^t \gamma \d \tau = \int_0^t \cosh (\omega \tau) \d \tau = \frac{1}{\omega} \sinh (\omega \tau).
+    $$
+    On a donc la relation 
+    \eqbox{
+    \omega t = \sinh (\omega \tau).
+    }
+    On a donc aussi 
+    \eqbox{
+    \gamma(t) = \sqrt{1+(\omega t)^2}. 
+    }
+    
+    En fonction du temps $t$, on trouve 
+    \eqbox{
+      \beta(t) = \frac{\omega t}{\sqrt{1+(\omega t)^2}}.
+    }
+    }
+    \item  Déterminer les lois horaires du mouvement $x(\tau)$ puis $x(t)$. Représenter la trajectoire de la particule ainsi que la quadri-vitesse $\vmu$ et la quadri-accélération $\amu$ dans un diagramme d'espace-temps $(ct,x)$, et interpréter.
+    \sol{
+      On trouve les équivalents $v^1(t) \underset{\tau \rightarrow 0}{\sim} \omega t$ à l'instant initial et $v^1(t) \underset{\tau \rightarrow \infty}{\sim} c$ aux grands temps.
+      La loi horaire $x(\tau)$ s'obtient en intégrant $\vmu^1$ par rapport à $\tau$. On suppose que $x(\tau=0)=0$ comme condition initiale, soit
+      $$
+      x(\tau) = \int_0^\tau  \vmu^1 d\tau = \int_0^\tau c \sinh (\omega \tau) d\tau = \frac{c}{\omega} \left[ \cosh(\omega \tau) -1 \right].
+      $$
+      En fonction du temps $t$ de l'observateur inertiel $\Rcal$, on trouve 
+      \eqbox{
+        x(t) = \frac{c}{\omega} \left[ \sqrt{1+(\omega t)^2}  -1 \right].
+      }
+      Il s'agit de l'équation d'une \fbox{hyberbole}. Les équivalents donnent $x(t) \underset{\tau \rightarrow 0}{\sim} \frac{c\omega}{2}t^2$ à l'instant initial et $x(t) \underset{\tau \rightarrow \infty}{\sim} c t$ aux grands temps. On remarque que la trajectoire est parabolique aux faibles vitesses, dans la limite newtonienne.
+  
+    }
+    \item	Que vaut la quadri-accélération  $\amu_p$ dans le référentiel propre ? En déduire la quadri-accélération $\amu$ puis l'accélération $a$ dans le référentiel $\Rcal$. Que vaut $\amu^\mu \amu_\mu$ ?
+    \sol{
+      Comme $\vmu$ est exprimée directement en fonction du temps $\tau$, les composantes de la quadri-accélération s'obtiennent simplement par dérivation de la quadri-vitesse par rapport à $\tau$, soit 
+   % $$
+   \eqbox{
+     \amu^0 =  \dd{\vmu^0}{\tau} = c \omega \sinh(\omega \tau), \quad \amu^1 = \dd{\vmu^1}{\tau} = c \omega \cosh(\omega \tau).
+     }
+     La norme de la quadri-accélération vérifie 
+     $$
+     \amu^\mu \amu_\mu = c^2 \omega^2 \cosh^2(\omega \tau) - c^2 \omega^2 \sinh^2(\omega \tau) = -c^2 \omega^2 = \cte.
+     $$
+     Il s'agit bien d'un mouvement \fbox{uniformément accéléré}. L'accélération propre vaut $\ap = \omega c \ex$. 
+     L'accélération dans $\Rcal$, de composante $a^1$, s'obtient par
+     $$
+    a^1 = \gamma^{-2}\left[ \amu^1-\amu^0 \beta \right] =  \cosh (\omega \tau)^{-2} \left[ c \omega \cosh(\omega \tau) - c \omega \sinh(\omega \tau) \tanh(\omega \tau) \right],
+     $$
+     soit 
+     \eqbox{
+      a^1(\tau) = \frac{c \omega^2}{\cosh (\omega \tau)^3}.
+     }
+     En fonction du temps $t$, on obtient 
+     \eqbox{
+     a^1(t) = \frac{c\omega}{\left[ 1+ (\omega t)^2 \right]^{3/2}}.
+     }
+     L'accélération est constante et vaut $c\omega$ initialement, puis décroît en $t^{-3}$ aux grands temps.
+   }
+  
+    \item Combien de temps s'écoule-t-il dans la fusée et sur Terre pour atteindre les astres suivants avec une accélération propre de $1g$ : Proxima du Centaure à $\num{4.25}$ années-lumière, le centre de la galaxie à $\SI{30e3}{al}$ années-lumière, les limites de l'univers observable à environ $\SI{4.6e10}{al}$ ?
+  \end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][colle]{Centrifugeuse à photons}
+Dans le référentiel du laboratoire, un plateau circulaire, de rayon $\rho$, tourne à la vitesse angulaire $\omega$ autour d'un axe passant par son centre. Une source de photons $S$ et un détecteur $D$ sont situés à la périphérie, dans deux directions faisant un angle $\theta$ à partir du centre du disque.
+Figure/centrifugeuse-eps-goprypxtapd-to- pdfs émet un photon, dans une direction telle qu'il soit reçu par $D$ à un instant $t>0$. On ne cherchera à déterminer ni cette direction, ni cet instant. $S$ et $D$ sont supposés relativistes et on note $\gamma_s$ et $\gamma_d$ les facteurs de Lorentz respectifs.
+\begin{quest}
+  \item À $t=0$, on se place dans le référentiel galiléen dont l'origine est en $S$, animé d'un mouvement de translation uniforme à la vitesse $\vec{v}_s$ (vitesse de $S$ à cet instant). Ce référentiel est dit tangent au mouvement de $S$ à cet instant. La lumière émise par $S$ a pour longueur d'onde $\lambda_s$ et pour vecteur d'onde $\vec{k}_s$ dans ce référentiel. Quelle relation existe-t-il à cet instant entre $\lambda_s, \widetilde{U}_s$ quadri-vitesse de $S$ et $\widetilde{P}_s$ quadri-impulsion du photon?
+  \item Que vaut le produit scalaire $\widetilde{U}_s \cdot \widetilde{P}_s$ dans le référentiel du laboratoire? On désignera par $\lambda$ la longueur d'onde du photon et par $\vec{k}$ son vecteur d'onde dans ce référentiel.
+  \item On se place dans le référentiel tangent au mouvement de $D$ au moment de la détection. Dans ce référentiel, on désigne par $\lambda_d$ la longueur d'onde du photon, $\vec{k}_d$ le vecteur d'onde du photon, $\widetilde{U}_d$ la quadri-vitesse de $D$ et $\widetilde{P}_d$ la quadri-impulsion du photon. Que vaut le produit scalaire $\widetilde{U}_d, \widetilde{P}_d$ dans ce référentiel ? dans le référentiel du laboratoire? En déduire une relation entre $\lambda_s$ et $\lambda_d$.
+\end{quest}
+  
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][colle]{Aberration des étoiles fixes au zénith}
+L'étoile $\gamma$ de la constellation du dragon est supposée immobile dans le référentiel $(\mathcal{R})$ de Copernic. On supposera de plus qu'elle est à l'infini dans la direction du zénith précisé par l'axe $O y$ et que l'orbite terrestre est dans le plan $O x z$.
+\begin{quest}
+  \item Dans le référentiel $\left.\mathcal{R}^{\prime}\right)$ de la terre, trouver l'angle sous lequel on observe une telle étoile à partir du zénith. Quelle est sa trajectoire apparente au cours de l'année?
+  \item Comparer les résultats classique et relativiste. La relativité amène-t-elle une correction décelable par deux pointages de l'étoile à six mois d'intervalle?
+  \item Comparer les résultats classique et relativiste obtenus pour la valeur de la vitesse de la lumière dans le référentiel terrestre.
+  \item Retrouver les résultats relativistes à partir des règles de transformation du quadrivecteur d'onde $(\omega / c, \vec{k})$.
+\end{quest}
+  
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][appli]{Événements non causaux}
+  \Notions{\item Intervalle d’espace-temps \task Simultanéité}
+  \hauteurLargeurCadreReponse{8mm}{\textwidth}
+  Soit un référentiel inertiel $\Rcal$ muni d’un repère spatio-temporel $(ct,x)$.
+Deux événements $E_1$ et $E_2$ ont pour coordonnées spatio-temporelles respectives : 
+\begin{equation}
+  x_1=3 \mathrm{~m}, \quad t_1=10 \mathrm{~ns} \quad \text{ et }\quad x_2=6 \mathrm{~m}, \quad t_2=5 \mathrm{~ns}.
+\end{equation}
+% \begin{quest}
+  % \item	
+  \begin{enonce}
+    Calculer l'intervalle d’espace-temps  entre ces deux événements. 
+
+  \end{enonce}
+
+  % \sol{
+  \begin{corrige}
+    
+    L'intervalle entre les deux événements est :
+    $$
+    \Delta s^2=c^2\left(t_2-t_1\right)^2-\left(x_2-x_1\right)^2=(1,5-3)^2-(6-3)^2,
+    $$
+    soit 
+    \eqbox{
+      \Delta s^2= -\SI{6,75}{m^2}
+      }
+      Comme $\Delta s^2>0$, ces deux événements n'ont \fbox{pas de relation de causalité}. Il existe un référentiel dans lequel ces événements sont simultanés.
+    \end{corrige}
+    % }
+    % \item  
+
+Existe-t-il un référentiel dans lequel ces deux événements sont simultanés ? 
+
+    \begin{enonce}
+    Le cas échéant, quelle est la vitesse $v$ du référentiel $\Rcal^{\prime}$ dans lequel ces deux événements sont simultanés ?
+
+    \end{enonce}
+    % \sol{
+    \begin{corrige}
+      
+      Dans un référentiel $\Rcal^{\prime}$, ces deux événements sont simultanés si :
+      $$
+    \begin{gathered}
+      c t_1^{\prime}=c t_2^{\prime} \text { avec } c t_1^{\prime}=\gamma\left(c t_1-\beta x_1\right) \text { et } c t_2^{\prime}=\gamma\left(c t_2-\beta x_2\right) 
+    \end{gathered}
+    $$
+    On trouve
+    $$\beta=\frac{c\left(t_2-t_1\right)}{x_2-x_1}=\frac{-1,5}{3}=-\frac{1}{2} ,$$
+    soit 
+    \eqbox{
+      v=-\frac{c}{2}.
+      }
+    \end{corrige}
+
+
+  % }
+  % \item
+  \begin{enonce}
+    % À quel instant $t^{\prime}$ de $\Rcal^{\prime}$ ces événements se produisent-ils simultanément?
+    Le cas échéant, à quel instant~$t^{\prime}$ de $\Rcal^{\prime}$ ces événements se produisent-ils simultanément?
+
+  \end{enonce}
+
+
+  % \sol{
+  \begin{corrige}
+    
+    L’instant $t^{\prime}$ de $\Rcal^{\prime}$ pour lequel ces événements se produisent simultanément est tel que :
+    $$
+    c t^{\prime}=\gamma\left(c t_1-\beta x_1\right)=1,155\left(3+\frac{3}{2}\right) \approx 5,20 \mathrm{~m} \quad \text { car } \quad \gamma=(1-0,25)^{-1 / 2}=1,155
+    $$
+    
+    On en déduit 
+    \eqbox{
+    t^{\prime}=17,33 \mathrm{~ns}.
+    }
+  \end{corrige}
+  % }
+% \end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][appli]{Composition des vitesses}
+  \Notions{\item Composition des vitesses}
+  % \pourcentageDeLaPartieAGauche{1}
+  % \initialisationPartieGauche
+  \hauteurLargeurCadreReponse{8mm}{\textwidth}
+   Dans chacune des situations suivantes, calculer la vitesse relative de l’objet $M_2$ par rapport à l’objet~$M_1$ connaissant les vitesses absolues $\Vec{v_1}$ et $\Vec{v_2}$ de $M_1$ et $M_2$ dans un référentiel inertiel $\Rcal$.
+
+
+% \debutEntrainement
+  % ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+  \begin{enonce}
+  	Deux galaxies de vitesses $v_1 = -v_2 = \num{0.8}c$ par rapport à la Terre dans des directions opposées.
+    
+  \end{enonce}
+
+  % \reponse{$\left|r\sin(\theta)\right|$}
+
+  \begin{corrige}
+    Soit $\Rcal$ le référentiel inertiel lié à la Terre, et
+   $\Rcal'$ le référentiel inertiel lié à $M_1$, en mouvement à la vitesse d'entraînement $\Vec{\vboost} = \Vec{v_1} = v_1 \ex$ dans $\Rcal$. La vitesse relative de $M_2$ par rapport à $M_1$ est donc la vitesse $\Vec{v_2}' = v_2'\, \ex$ de $M_2$ dans $\Rcal'$. D'après les formules de composition des vitesses colinéaire au boost, on a
+    $$
+    v_2' = \frac{v_2 - v_1}{1 - \frac{v_1 v_2}{c^2}} =
+    v_2' = \frac{-\num{0,8} c - \num{0,8} c}{1 - \frac{0,8 c \times (-0,8 c)}{c^2}} = \frac{-\num{1,6} c}{1 + \num{0,64}},
+    $$
+    soit 
+    \eqbox{
+     v_2'= -\num{0,976} c.
+    }
+    
+%     D'après les formules de transformation des vitesses :
+% $$
+% v_{2 / 3}=\frac{v_{2 / 1}-v_{3 / 1}}{1-v_{2 / 1} v_{3 / 1} / c^2}=\frac{0,8 c-(-0,8 c)}{1-0,8 \times(-0,8)}=c \frac{1,6}{1,64}=0,976 c
+% $$
+  \end{corrige}
+  % ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+  \begin{enonce}
+  	Un photon et un électron de vitesse $v_2=\num{0.8}c$ se déplaçant dans deux directions transverses.
+      
+  \end{enonce}
+
+  % \reponse{$r\sin(\theta)  \left(\cos(\varphi) \ex+\sin(\varphi) \ey\right)$}
+
+  \begin{corrige}
+    Soit $\Rcal$ le référentiel inertiel du laboratoire, dans lequel le photon se déplace à la vitesse $\Vec{v_2} = c \ey$, et l'électron se déplace à la vitesse $\Vec{\vboost} = \Vec{v_1} = v_1 \ex = \num{0,8} c \ex$. 
+    
+    Soit $\Rcal'$ le référentiel inertiel lié à l'électron $M_1$, en mouvement à la vitesse d'entraînement $\Vec{\vboost} = \Vec{v_1} = v_1 \ex$ dans $\Rcal$. 
+    
+    La vitesse relative du photon par rapport à l'électron est donc la vitesse $\Vec{v_2}' = v_x' \ex + v_y' \ey$ de $M_2$ dans $\Rcal'$. D'après les formules de transformation des vilesses, on a, puisque $\beta_c=0,8$ et $\gamma_c=1,67$ :
+$$
+v_x^{\prime}=\frac{-v_1}{1-c \ey \cdot v_1 \ex / c^2} = \frac{-\num{0,8} c}{1-0},
+$$
+soit 
+\eqbox{
+v_x' = -\num{0,8} c.
+}
+De plus,
+$$
+ v_y^{\prime}=\frac{c}{\gamma \left(1-c \ey \cdot v_1 \ex  / c^2\right)},
+$$
+soit 
+\eqbox{
+v_y' = \num{0,6} c.
+}
+Donc, la direction de la vitesse du photon par rapport à $\Rcal^{\prime}$ fait l'angle $\theta^{\prime}=\arctan (-0,6 / 0,8)=-37^{\circ}$, avec l'axe $O x$.
+2. On vérifie évidemment que la norme de la vitesse est $c: c\left(0,8^2+0,6^2\right)^{1 / 2}=c$
+  \end{corrige}
+  
+  
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][3][TD]{Anisotropie de l'émission lumineuse d'une source}
+  \Notions{\item Propagation de la lumière \task Aberration lumineuse}
+  Un étoile parfaitement sphérique et homogène, lié au référentiel $\Rcal'$, émet de la lumière de façon équivalente dans toutes les directions : l'émission est isotrope. D'après le phénomène d'aberration lumineuse, la lumière émise par une étoile se déplaçant à la vitesse $\vboost$ dans la direction $z$ par rapport au référentiel terrestre $\Rcal$, est inclinée différemment dans $\Rcal$ et dans $\Rcal'$. Les angles d'inclinaison par rapport l'axe $(Oz)$ dans les référentiels $\Rcal$ et $\Rcal'$, notés respectivement $\theta$ et $\theta'$, sont liés par les relations 
+  \begin{equation}\label{eq:abberation}
+    \cos \theta =   \frac{\cos \theta' + \bboost}{1 +\bboost \cos \theta'} \Leftrightarrow \cos \theta' = \frac{\cos \theta - \bboost}{1 -\bboost \cos \theta},
+  \end{equation}
+  où $\bboost >0$ si l'étoile se déplace dans la direction $+z$.
+  En raison de ce changement d'inclinaison, l'émission de l'étoile n'apparaît pas isotrope dans $\Rcal$. Soit $\d \Omega = \sin \theta \d \theta \d \varphi$ un élément d'angle solide, et $\d \mc{P}$ la puissance lumineuse émise par l'étoile dans cet élément d'angle solide. On appelle luminance, notée $L(\theta,\vphi)$, la puissance lumineuse émise par unité d'angle solide dans la direction $\Vec{n}(\theta,\vphi)$, soit
+\begin{equation}
+  L(\theta,\vphi) = \dd{\mc{P}}{\Omega} .
+\end{equation}  
+Les angles $(\theta,\vphi)$ associés aux coordonnées sphériques sont définies sur la \Fig{solid_angle}a.
+\begin{fig}[label]
+  \centering
+  \begin{subfig}[solid_angle][0.45]
+    \includegraphics[width=\columnwidth]{solid_angle.pdf}
+  \end{subfig}
+  \begin{subfig}[Langle][0.45]
+    \includegraphics[width=1.1\columnwidth]{Langle.pdf}
+  \end{subfig}
+  %\capt{}
+\end{fig}
+%  observé dans le référentiel terrestre $\Rcal$, et $\d \Omega'= \sin \theta' \d \theta' \d \varphi'$ un élément d'angle solide observé dans le référentiel de l'étoile $\Rcal'$.
+  \begin{quest}
+    \item	Que dire de la luminance $L'(\theta',\vphi')$ émise dans le référentiel de l'étoile $\Rcal'$ ? L'exprimer en fonction de la puissance totale $\mc{P}$ émise par l'étoile.
+    \sol{
+    La luminance de l'étoile $L'(\theta',\vphi')$ dans le référentiel de l'étoile $\Rcal'$ est indépendante des angles $\theta'$ et $\vphi'$, car l'émission est isotrope, soit
+    \eqbox{
+    L'(\theta',\vphi') = \dd{\mc{P}}{\Omega'} = \frac{\mc{P}}{4\pi}.
+    }
+    }
+    \item Montrer que la luminance $L(\theta,\vphi)$ émise du point de vue du référentiel terrestre $\Rcal$ est donnée par 
+    
+    \begin{equation}
+      L(\theta,\vphi) = \frac{\mc{P}}{4\pi\gboost^2(1 -\bboost \cos \theta)^2}.
+    \end{equation}
+\sol{
+On a 
+$$
+L(\theta,\vphi)  = \dd{\mc{P}}{\Omega} = \dd{\mc{P}}{\Omega'} \dd{\Omega'}{\Omega} = \frac{\mc{P}}{4\pi} \frac{\sin \theta' \d \theta'}{\sin \theta \d \theta} = \frac{\mc{P}}{4\pi} \frac{\d \cos \theta'}{\d \cos \theta}
+$$
+En notant $x=\cos \theta$, on trouve in dérivant l'\Eq{abberation}, 
+$$
+\frac{\d \cos \theta'}{\d \cos \theta} = \dd{}{x} \left(  \frac{x + \bboost}{1+\bboost x}  \right) = \frac{1-\bboost^2}{(1+\bboost x)^2} = \frac{1}{\gboost^2 (1+\bboost \cos \theta)^2},
+$$
+d'où l'on tire 
+\eqbox{
+L(\theta,\vphi) = \frac{\mc{P}}{4\pi\gboost^2(1-\bboost \cos \theta)^2}.
+}
+
+}
+
+    \item On représente la luminance $L(\theta,\vphi)$ en fonction de l'angle $\theta$ pour $\bboost = \num{0,5}$ sur la \Fig{Langle}b, pour une luminance moyenne $\mc{P}/4\pi=\SI{1}{W}$. Que dire de la luminance dans la direction de déplacement de l'étoile ? Dans la direction opposée à celle de déplacement de l'étoile ? Interpréter en traçant la direction des rayons lumineux sur un schéma. 
+    \item Réciproquement, comment voit-on la sphère céleste dans une fusée se déplaçant à une vitesse proche de $c$. Sous quel angle $\theta_0$ les pôles nord et sud de la sphère céleste apparaissent-ils depuis la fusée ? 
+  \end{quest}  
+% 2. Le graphe donnant $\cos \theta$ en fonction de $\theta^*$, lorsque que $u / c=0,5$, est représenté sur la figure S4.1a. Cetre courbe passe par 0 pour $\theta^*=2 \pi / 3$.
+% Lorsque $u / c \ll 1$, la courbe passe par 0 pour $\theta^*=\pi / 2$.
+% Lorsque $u / c \approx 1$, la courbe se réduit à la droite $\cos \theta=1$. Le rayonnement se produit uniquement vers l'avant à $\boldsymbol{\theta}=\Vec{0}$.
+% 3. On a :
+% $$
+% \frac{\mathrm{d} N}{\mathrm{~d} \boldsymbol{\Omega}}=\frac{\mathrm{d} N}{\mathrm{~d} \Omega^*} \frac{\mathrm{d} \Omega^*}{\mathrm{~d} \Omega}=\frac{N}{4 \pi} \frac{\sin \theta^* \mathrm{~d} \theta^*}{\sin \theta \mathrm{d} \theta}
+% $$
+% car :
+% $$
+% \frac{\mathrm{d} N}{\mathrm{~d} \Omega^*}=\frac{N}{4 \pi} \text { ct } \mathrm{d} \Omega=2 \pi \sin \theta \mathrm{d} \theta \text { puisque } \Omega=2 \pi(1-\cos \theta)
+% $$
+
+% En différemtiant la formule de la question 1 , on trouve :
+% $$
+% \frac{\sin \theta^* \mathrm{~d} \theta^*}{\sin \theta \mathrm{d} \theta}=\frac{1-u^2 / c^2}{(1-u \cos \theta / c)^2} \text { ct } \mathrm{d} N=\frac{N}{4 \pi} \frac{\mathrm{d} \Omega}{\gamma^2(1-u \cos \theta / c)^2}
+% $$
+% 4. Comme $\boldsymbol{\gamma}=2,294$, la fonction $f(\theta)$ s'écrit de façon prócise :
+% $$
+% f(\theta)=\frac{1}{5,263(1-0,9 \cos \theta)^2}
+% $$
+
+% Le rayomement est donc très directionnel : we de l'avant, la source paraît très intense alors que, vue de l'arrière, clle semble peu intense (Fig. S4.1b).
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][TD]{Désintégration des muons produits en haute atmosphère}
+  \Notions{\item Dilatation des durées}
+Un muon $\mu^{ \pm}$ se désintègre en libérant un électron $e^-$ ou un positron $e^+$ et deux neutrinos $\nu$  selon :
+$$
+\mu^{ \pm} \rightarrow e^{ \pm}+2 \nu.
+$$
+La durée de vie des muons a pu être mesurée au repos et vaut $\tau_0=\SI{2.210e-6}{s}$.
+On peut observer sur Terre des muons produits par l'absorption atmosphérique des rayons cosmiques à l'altitude de 20 km. Leur vitesse mesurée sur terre est $v \simeq \SI{0,995}{c}$ et leurs trajectoires sont presque verticales en provenance de la haute atmosphère.
+\begin{quest}
+  \item Évaluer la durée de vie du muon pour un observateur terrestre.
+  \sol{
+    Soit $\Rcal$ le référentiel terrestre, et $\Rcal'$ le référentiel propre du muon, tous deux supposés inertiels. D'après la formule de dilatation des durées, la durée de vie du muon dans $\Rcal$ vaut
+    $$
+    \tau = \gamma \tau_0,
+    $$
+    soit 
+    \eqbox{
+    \tau = \SI{2.213e-5}{s}.
+    }
+  }
+  \item Calculer la distance moyenne parcourue par le muon avant désintégration.
+  \sol{
+    Dans le référentiel terrestre, la distance moyenne parcourue par le muon avant désintégration est
+    $$
+    D = v \tau,
+    $$
+    soit 
+    \eqbox{
+    D = \SI{6,605}{km}.
+    }
+  }
+\end{quest}
+La loi de désintégration radioactive avec le temps $t$ est
+% $$
+\begin{equation}
+  n=n_0 \exp (-t / \tau),
+\end{equation}
+% $$
+où $n$ est le nombre de muons restants, $n_0$ leur nombre initial et $\tau$ leur durée de vie. 
+  \begin{quest}
+  \item Si l'on compte 560 muons à l'heure à $\SI{20}{km}$ d’altitude, combien y en a-t-il au niveau de la mer ?
+\sol{
+  Soit $d=\SI{2}{km}$ l'altitude telle que $n_0=\SI{560}{muons.s^{-1}}$. Alors 
+  $$
+  n_{\rm mer} = n_0 e^{-t/\tau} = n_0 e^{-d/D},
+  $$
+  soit 
+  \eqbox{
+  n_{\rm mer} = \SI{27}{muons.s^{-1}}.
+  }
+}
+\item Reprendre les deux questions précédentes dans le cadre de l'approximation newtonienne. Conclure.
+\sol{
+  Dans le cadre de l'approximation newtonienne, on a
+  $$
+  \tau_{\rm newt} = \tau_0 = \SI{2.210e-6}{s},
+  $$
+  soit 
+  \eqbox{
+  D_{\rm newt} = v \tau_{\rm newt} = \SI{660}{m}.
+  }
+  Le nombre de muons au niveau de la mer serait alors
+  $$
+  n_{\rm mer, newt} = n_0 e^{-d/D_{\rm newt}},
+  $$
+  soit
+  \eqbox{
+   n_{\rm mer, newt} = \SI{3}{muons.s^{-1}}.
+    }
+  L'approximation newtonienne conduit à une valeur de $n_{\rm mer}$ très inférieure à la valeur expérimentale. La relativité restreinte est donc validbe par l'observation des muons au niveau de la mer.
+}
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][colle]{Correction de la relativité restreinte du système GPS}
+Le Global Positionning System permet de se localiser sur la surface de la Terre à partir de signaux spatiaux d'holorges en orbites circulaires. Le GPS (bientôt complété par le système européen Galileo) est constitué de 31 satellites groupés par 4 sur des trajectoires circulaires à 20200 km du centre terrestre. 
+% Les satellites d'un groupe occupent des plans inclinés à $55 \hat{\mathrm{A}}^{\circ}$ de l'équateur, chaque satellite d'un groupe est séparé de $60 \hat{A}^{\circ}$ de ces voisins. Leur vitesse est de $v_s=(G M / r)^{1 / 2} \approx 3,88 \mathrm{~km} / \mathrm{s}$ $r=R_{\text {orbite }}+R_T=20200+6400 \mathrm{~km}$. Leur révolution dure 12 h et ils émettent des signaux de fréquence $f=1,57542 \mathrm{GHz}\left(\lambda \approx 19 \mathrm{~cm}\right.$ ), avec un éclairement de $30 \times 10^{-15} \mathrm{~W} / \mathrm{m}^2$.
+
+\begin{quest}
+  \item	
+  Si $D_1$ et $D_2$ sont les distances $S_1 R$ et $S_2 R$ qui séparent deux des 4 satellites du récepteur $R$ et si $t_1$ et $t_2$ sont les instants indiqués par les horloges synchronisées transportées par les satellites $S_1$ et $S_2$ lors de l'émission des signaux, montrer que, en notant $t_r$ le temps donné par l'horloge au récepteur :
+  \begin{equation}
+  D_1-D_2=c\left(t_2-t_1\right)
+  \end{equation}
+  \sol{
+  
+    $$
+    D_1=c\left(t_r-t_1\right) \quad \text { et } \quad D_2=c\left(t_r-t_2\right) \quad \Rightarrow \quad D_1-D_2=c\left(t_2-t_1\right)
+    $$
+    
+    On en déduit donc $D_1-D_2$, ce qui situe $R$ sur l'une des deux nappes d'un hyperboloïde de révolution dont les deux foyers sont occupés par les satellites. En combinant les mesures de 3 autres couples du même groupe, on parvient à localiser R.
+    }
+    \item Quelle doit être la précision $\Delta t$ sur la mesure de l’instant d’émission pour obtenir une précision de 1 m sur la localisation du récepteur ?
+\sol{
+
+  La localisation du récepteur exige que les instants d'émission soient connus avec une excellente précision. En effet, une erreur maximale de 1 m sur $D_1$ ou $D_2$ exige des précisions sur le temps de $\Delta \mathrm{t}$ :
+  $$
+  \Delta t=\frac{\Delta D}{c}=1 / 3 \times 10^8=3,3^{-9} \mathrm{~s} \quad \Rightarrow \quad \Delta t=3,3 \mathrm{~ns}
+  $$
+  }
+    \item	Comparer à l'erreur que l'on commettrait en ignorant l'effet de dilatation du temps des horloges mobiles à bord des satellites.
+    \sol{
+      : calculons l'erreur relative associée :
+      $$
+      \frac{T_p-T}{T}=\gamma^{-1}-1 \approx-\frac{v^2}{2 c^2} \Rightarrow \frac{T_p-T}{T}=-\frac{1}{2}\left(\frac{3,88}{3 \times 10^5}\right)^2=-0,83 \times 10^{-10}
+      $$
+      Sur les durées d'intégration usuels de satellite à station (ca. 1 min ), l'erreur serait de 5 ns $(1,5 \mathrm{~m}$ au sol $)$.
+
+      }
+\end{quest}
+
+
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][devoir]{Ombre portée d'une tige inclinée en mouvement (12 points)}
+\Enonce{
+Une tige opaque, de longueur propre $L_0$, d’extrémités $\rm A$ et $\rm B$, est inclinée d'un angle $\theta^{\prime}$ par rapport à l’axe $(O x^{\prime})$ du référentiel~$\Rcal^{\prime}$ dans lequel elle est fixe. Elle se déplace avec une vitesse $\Vec{v} = v \, \ex$ par rapport au référentiel du laboratoire $\Rcal$. Un film photographique fixe dans $\Rcal$ est parallèle à l’axe $(Ox)=(Ox’)$. Une lampe flash lointaine émet une impulsion lumineuse plane dont les rayons sont parallèles à l’axe $(Oy)$, perpendiculaire à l’axe $(Ox$).
+
+\begin{fig}[label]
+  \centering
+  \includegraphics[scale=1.1]{tige_inclinee.pdf}
+  \capt{Schéma de la situation dans le référentiel du laboratoire $\Rcal$ à l'instant initial $t=t'=0$.}
+\end{fig}
+}
+
+\begin{quest}
+  \QR{	L’événement $E_1 :$ \guill{interception de l’impulsion lumineuse en B} est pris comme origine spatio-temporelle. Déterminer les coordonnées spatio-temporelles $(ct_2,y_2)$ dans $\Rcal$ et $(x_2’,y_2’)$ dans $\Rcal’$ de l’événement $E_2 :$ \guill{interception de l’impulsion lumineuse en A}.
+  }{
+    \begin{enumerate}
+      \item Dans $\Rcal'$, la tige est immobile, de longueur $L_0$ et fait un angle $\theta'$ avec l'axe $(Ox')$. Par projection, on trouve donc les coordonnées de l'extrémité $A$, ce qui donne
+      \eqbox{
+      E_2(ct_2',x_2'= -\Lp \cos \theta',y_2'=- \Lp \sin\theta').
+      }
+      \item Dans $\Rcal$, la coordonnée $y_2=y_2'$ est inchangée puisque le boost s'effectue suivant l'axe transverse $(Ox)$. De plus, les photons parcourent une distance $c t_2 = -y_2$ dans la direction $(Oy)$ pour atteindre l'extrémité $A$. On trouve donc 
+      \eqbox{
+      E_2(ct_2=\Lp \sin \theta',x_2,y_2 = -\Lp \sin \theta' ).
+      }
+    \end{enumerate}
+  }
+  
+  \QR{ Représenter les événements $E_1$ et $E_2$ dans des diagrammes d’espace-temps $(ct,y)$ et $(ct,x)$. On représentera également les axes $(ct',x')$. Justifier que la coordonnée $x_2$ de $E_2$ dans $\Rcal$ donne la longueur $\ell$ de l’ombre portée de la tige sur le film photographique.
+  }{
+    \begin{enumerate}
+      \item Dans le diagramme d'espace-temps $(ct,y)$, les lignes d'univers des extrémités A et B sont verticales. L'ensemble des photons du flash est représenté par un segment de bissectrice joignant les projections des événements $E_1$ et $E_2$ dans ce diagramme. 
+      \begin{fig}[label]
+        \centering
+        \includegraphics[scale=1]{tige_ombre_y.pdf}
+        \capt{Diagramme d'espace-temps ($ct,y$).}
+      \end{fig}
+      \item Dans le diagramme d'espace-temps $(ct,x)$, la ligne d'univers des photons est une droite verticale, d'équation $x=\cte$. L'ensemble des photons dont les lignes d'univers entrent $E_1$ et $E_2$ est intercepté par la tige, produisant une ombre sur le film photographique. On en déduit que $|x_2|=\ell$ nous donne la longueur de l'ombre voulue. 
+        \begin{fig}[label]
+        \centering
+        \includegraphics[scale=1]{tige_ombre_x.pdf}
+        \capt{Diagramme d'espace-temps ($ct,x$).}
+      \end{fig}
+    \end{enumerate}
+  }
+  \QR{ Montrer que cette longueur a pour expression 
+\begin{equation}
+  \ell = L\left|\beta\gamma \sin \theta^{\prime} - {\cos \theta^{\prime}}\right|,
+\end{equation}
+où $L$ est la longueur impropre de la tige mesurée dans le référentiel du laboratoire $\Rcal$.
+}{
+  La coordonnée $x_2$ s'obtient par les transformations de Lorentz,
+  $$
+  x_2' = \gamma(-\beta c t_2 + x_2),
+  $$
+  soit 
+  $$
+  x_2 = \frac{x_2'}{\gamma} + \beta c t_2 = - \frac{\Lp \cos \theta'}{\gamma} + \beta c\Lp \sin \theta' = \frac{\Lp}{\gamma}\left(\beta \gamma \sin \theta' - \cos \theta'\right).
+  $$
+  Or $L = \frac{\Lp}{\gamma}$ représente la longueur impropre de la règle, mesurée dans $\Rcal$, ce qui montre la relation annoncée,
+  \eqbox{
+  \ell = |x_2| = L \left|\beta \gamma \sin \theta' - \cos \theta'\right|.
+  }
+}
+
+\QR{ Commenter les situations particulières   $\theta^{\prime}=\pi / 2$ et $\theta^{\prime}=0$. En déduire une méthode pour mesurer $L$.
+}{
+  \begin{enumerate}
+    \item Lorsque $\theta'=\pi/2$, la règle est normale à la direction de déplacement. La longueur de son ombre vaut 
+    % $$
+    \eqbox{
+      \ell = L \beta \gamma = \beta \Lp = v  t_0, 
+      }
+    % $$
+    où $t_0 = \Lp/c$ est la durée que met un photon pour parcourir la longueur de la règle dans $\Rcal'$. L'ombre est donc égale à la distance parcouru par la règle pendant le trajet des photons entre les extrémités A et B. Lorsque la règle est immobile, $v=0$ et $\ell=0$, comme il se doit.
+    \item Lorsque $\theta'=0$, la règle est colinéaire à la direction de déplacement. La longueur de l'ombre portée vaut
+    % $$
+    \eqbox{
+      \ell = L ;
+      }
+    elle est donc égale à la longueur impropre. On peut donc mesurer une longueur impropre à partir d'une photographie dans ces conditions. 
+    % $$
+  \end{enumerate}
+}
+
+\QR{ Peut-on avoir $\ell=0$ ? Montrer que la tige pointe alors dans la direction des photons dans $\Rcal’$.
+}{
+  On peut avoir $\ell=0$ (absence d'ombre). Il suffit pour cela que 
+  $$
+  \beta \gamma \sin \theta' = \cos \theta',
+  $$
+  soit 
+  \eqbox{
+  \cotan\,\theta' = \beta \gamma.
+  }
+  On peut montrer que cette direction correspond précisément à la direction des photons dans $\Rcal'$. Dans le référentiel de la tige, les photons se déplacent suivant l'axe de la tige, ce qui explique qu'un ne soit intercepté et que l'ombre est donc absente. En effet, la vitesse d'un photon dans $\Rcal$ vaut $\Vec{c} = c_x \ex + c_y \ey$ avec $c_x=0$ et $c_y=-c$. D'après la formule de composition, la vitesse dans $\Rcal'$ vaut donc $\Vec{c}' = c_x' \ex' + c_y' \ey'$ avec
+  $$
+  c_x' = \frac{c_x - v}{1-\beta c_x /c} = -v,
+  $$
+  et 
+  $$
+  c_y' = \frac{c_y}{\gamma(1-\beta c_x /c)} = -\frac{c}{\gamma}.
+  $$
+  On en déduit que les photons font un angle $\vphi'$ avec l'axe $(Ox')$ tel que 
+  $$
+  \cotan \, \vphi' = \frac{c_x}{c_y} = \beta \gamma = \cotan\, \theta',
+  $$  
+  soit 
+  \eqbox{
+  \vphi'=\theta'.
+  }
+}
+
+\QR{ Déterminer l’angle $\theta$ que fait la tige dans le référentiel du laboratoire $\Rcal$.
+}{
+Il nous faut déteminer les longueurs $L_x$ et $L_y$ de la tige suivant les axes $(Ox)$ et $(Oy)$ dans $\Rcal$. Un boost de Lorentz suivant $x$ laisse inchangé les coordonnées $y$. On a donc 
+$$
+L_y = L_y' = \Lp \sin \theta'.
+$$
+Le boost de Lorentz contracte les longueurs suivant la direction $x$. On a donc 
+$$
+L_x = \frac{L_x'}{\gamma} = \frac{\Lp \cos \theta'}{\gamma}.
+$$
+On en déduit que 
+$$
+\tan \theta = \frac{L_y}{L_x} ,
+$$
+soit 
+\eqbox{
+\tan \theta  = \gamma \,{\tan\theta'}.
+}
+L'angle est supérieur dans $\Rcal$.
+}
+
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][colle]{Transformation des angles}
+  Il convient d'attacher une attention particulière à la transformation des angles. En effet, le calcul n'est pas le même suivant qu'on cherche à décrire la transformation d'angles qui définissent la forme des objets, ou d'angles en tant que direction du mouvement d'un objet par rapport à un système d'axes. Dans tous les cas, il convient de revenir à la définition des angles en fonction des variables cinématiques et appliquer les lois de transformation de ces variables.
+
+Dans le cas d'objets en mouvement, considérons, par exemple, une équerre liée au référentiel $\Rcal^{\prime}$, dont un des côtés de l'angle droit est parallèle à l'axe $O^{\prime} x^{\prime}$,
+Il convient d'attacher une attention particulière à la transformation des angles. En effet, le calcul n'est pas le même suivant qu'on cherche à décrire la transformation d'angles qui définissent la forme des objets, ou d'angles en tant que direction du mouvement d'un objet par rapport à un système d'axes. Dans tous les cas, il convient de revenir à la définition des angles en fonction des variables cinématiques et appliquer les lois de transformation de ces variables.
+
+Dans le cas d'objets en mouvement, considérons, par exemple, une équerre liée au référentiel $\Rcal^{\prime}$, dont un des côtés de l'angle droit est parallèle à l'axe $O^{\prime} x^{\prime}$,
+  
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][colle]{Loi de Descartes}
+  Un photon se déplaçant dans le plan $O x y$ du référentiel $\Rcal$ se réfléchit sur un miroir immobile dans le référentiel $\Rcal^{\prime}$, placé perpendiculairement à l'axe $O^{\prime} x^{\prime}$. Donner le lien entre les angles d'incidence et de réflexion mesurés par un observateur du référentiel $\Rcal$.  
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \begin{exo}[PC][1][devoir]{Vaisseau spatial (12 points)}
+Un vaisseau spatial est soumis à une accélération constante par rapport à la Terre, qui vaut $a_p=6 \mathrm{~m} \cdot \mathrm{~s}^{-2}$ dans la direction $x$, mesurée par les instruments de bord, à partir d'un point de l'espace et d'un instant pris comme origines. On note $v(t)$ la vitesse du vaisseau.
+
+\begin{quest}
+ \item On rappelle l'expression générale de la quadri-accélération,
+ \begin{equation}
+  \amu = \gamma \dd{\gamma}{t}(c,\Vec{v}) + \gamma^2 (0,\Vec{a}).
+ \end{equation}
+ Que vaut la quadri-accélération $\Gamma_p$ du vaisseau dans son référentiel propre $\Rcal_p$ ?
+
+ \sol{
+  Dans le référentiel propre du vaisseau, la quadri-accélération vaut
+  \eqbox{
+  \Gamma_p = (0,a_p,0,0).
+  }
+ }
+ \item À partir des transformations de Lorentz, déterminer l'expression de la quadri-accélération $\Gamma$ du vaisseau dans le référentiel géocentrique $\Rcal$ en fonction de $\beta=\frac{v}{c}$, $\gamma=(1-\beta^2)^{-1/2}$ et $a_p$.
+ \sol{
+  La quadri-accélération dans le référentiel géocentrique s'obtient par un boost de vitesse $-v$ dans la direction $x$,
+  $$
+\left\{ 
+\begin{array}{l}
+ \amu^0 = \gamma \left(0- \beta a_p \right) \\
+  \amu^1 = \gamma \left(a_p - \beta 0 \right) 
+\end{array}
+\right.
+$$
+soit 
+\eqbox{
+\amu = \gamma \left(-\beta a_p, a_p, 0, 0 \right).
+ }
+ }
+ \item En déduire l'expression de $\dd{\gamma}{t}$. Déterminer $\gamma(t)$ par séparation des variables et intégration. 
+ \sol{
+  On a 
+  $$
+  \dd{\gamma}{t} = \frac{\amu^0}{\gamma c} = -\frac{\beta a_p}{c}
+  $$
+  On en déduit 
+  $$
+  \frac{\gamma \d\gamma}{\sqrt{\gamma^2-1}} = -\frac{a_p \d t}{c} \Rar \sqrt{\gamma^2-1} = -\frac{a_p t}{c}.
+  $$
+  On en déduit 
+  \eqbox{
+  \gamma(t) = \sqrt{1+\left(\frac{a_p t}{c}\right)^2}.
+  }
+ }
+  \item Rappeler la relation entre le temps de l'observateur terrestre $t$ et le temps propre $\tau$ mesuré à bord du vaisseau. Montrer que 
+  \begin{equation}
+    \tau = \frac{c}{a_p} \ln\left[\left(\frac{a_p t}{c}\right) + \sqrt{1+\left(\frac{a_p t}{c}\right)^2}\right].
+  \end{equation}
+
+  \sol{
+  La relation entre le temps propre et le temps de l'observateur est donnée par
+  $$
+  \tau = \int_0^t \frac{\d t}{\gamma} = \int_0^t \frac{\d t}{\sqrt{1+(a_p t/c)^2}} = \frac{c}{a_p} \int_0^u \frac{\d u}{\sqrt{1+u^2}} = \frac{c}{a_p} \ln\left(u + \sqrt{1+u^2}\right),
+  $$
+  d’où le résultat,
+  \eqbox{
+  \tau = \frac{c}{a_p} \ln\left[\left(\frac{a_p t}{c}\right) + \sqrt{1+\left(\frac{a_p t}{c}\right)^2}\right].
+  }
+
+  }
+  \item Exprimer alors la fonction $\beta(\tau)$ puis la position $x(\tau)$. 
+  \sol{
+    On peut obtenir la fonction $\beta(t)$ d’abord. On a 
+    $$
+    \beta = \sqrt{1-\gamma^{-2}} = \frac{a_p t/c}{\sqrt{1+\left(\frac{a_p t}{c}\right)^2}}.
+    $$
+On voit que le temps propre vérifie aussi
+$$
+\frac{a_p \tau}{c} = \ln(\beta \gamma + \gamma) \Rar \gamma(1+\beta) = \sqrt{\frac{1+\beta}{1-\beta}} = \exp(a_p \tau/c),
+$$
+% $$
+% \tau = \frac{c}{a_p} \ln\left[\left(\frac{a_p t}{c}\right) + \gamma\right] \Rar \frac{c}{a_p}\gamma = \frac{c}{a_p}\exp\left(\frac{a_p \tau}{c}\right) - t.
+% $$
+% En dérivant par rapport au temps $t$, on trouve 
+% $$
+% \frac{c}{a_p}\dd{\gamma}{t} = -\beta =  \exp\left(\frac{a_p \tau}{c}\right) \dd{\tau}{t} -  1 = \exp\left(\frac{a_p \tau}{c}\right) \frac{1}{\gamma} - 1  =  \exp\left(\frac{a_p \tau}{c}\right) \sqrt{1-\beta^2} -1,
+% $$
+% soit
+% $$
+% (1-\beta)^2 =  \exp\left(\frac{2a_p \tau}{c}\right) (1-\beta^2)  \Rar \frac{1-\beta}{1+\beta} = \exp\left(\frac{2a_p \tau}{c}\right),
+% $$
+d’où l’on tire
+\eqbox{
+\beta(\tau) = \frac{1-\exp\left(\frac{-2a_p \tau}{c}\right) }{1 +\exp\left(\frac{-2a_p \tau}{c}\right) } = \tanh(a_p\tau/c).
+}
+La distance s’obtient ensuite en intégrant par rapport à $t$, soit 
+$$
+x = c \int_0^t \beta(t) \d t = \frac{c^2}{a_p} \int_0^u \frac{u\d u}{\sqrt{1+u^2}} = \frac{c^2}{a_p} \left( \sqrt{1+u^2} -1\right) = \frac{c^2}{a_p} (\gamma-1),
+$$
+soit 
+\eqbox{
+x(\tau)  = \frac{c^2}{a_p} \left( \cosh(a_p\tau/c) -1 \right).
+}
+  }
+  \item Au pout de combien de temps le vaisseau atteint-il le centre de la galaxie situé à $\SI{30 000}{al}$ ? Quelle durée s'est écoulée dans le référentiel terrestre ?
+  \sol{
+    L'application numérique donne ici le temps caractéristique $T = c/a_p \simeq \SI{3.05e7}{s}$, soit entre $11$ et $12$ mois. En supposant que le temps nécessaire pour effectuer le voyage est grand devant ce temps caractéristique, on a alors $\tau \simeq T \ln(2t/T)$ et donc $x(t) \simeq ct$, soit $t \simeq x/c$.   
+    % On rappelle que $\SI{1}{al} =  \SI{9.46e15}{m}$.
+     \begin{center}
+      \begin{tabular}{|c|c|c|c|}
+        \hline
+        Destination & Distance $x$ & Temps $t$ dans $\Rcal$ & Temps propre $\tau$ \\
+        \hline
+        % Proxima du Centaure & $\num{4.25}$ al & $\num{4.25}$ années & $\SI{2.1}{}$ années \\
+        Centre de la galaxie & $\SI{30e3}{al}$ & $\SI{30e3}{}$ années & $\SI{10.7}{}$ années \\
+        % Limites de l'univers observable & $\SI{4.6e10}{al}$ & $\SI{4.6e10}{}$ années & $\SI{24.5}{}$ années \\
+        \hline
+      \end{tabular}
+        \end{center}
+  }
+\end{quest}
+
+\textsc{Données} : $\int \frac{\d u}{2\sqrt{u-1}} = \sqrt{u-1}$; $\int \frac{\d u}{\sqrt{1+u^2}} = \ln\left(u+\sqrt{1+u^2}\right)$; $\SI{1}{al} = \SI{9,461e15}{m}$.
+  \end{exo}
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][TD]{Expérience de Fizeau}
+  \Notions{\item Composition des vitesses \task Propagation de la lumière}
+  En 1851, H. \textsc{Fizeau} réalise une expérience d’interférométrie pour mesurer la célérité de la lumière dans un milieu transparent en mouvement afin de tester l’hypothèse d’entraînement de l’éther.
+    On considère le dispositif ci-dessous, où la source lumineuse est monochromatique de longueur d'onde dans le vide $\lambda$. L'amplitude du rayon incident est divisé en deux au passage d'une lame semi-réfléchissante ($\mathcal{L}$). Les deux tubes horizontaux sont de même longueur $L$, de sorte que la distance des trajets lumineux $[1]$ et $[2]$ est identique. Dans chacun des tubes circule de l'eau à une vitesse $v$, mais dans des sens de parcours opposés. Le trajet $[1]$ est parcouru dans le sens opposé à celui de l'eau, tandis que le trajet $[2]$ est parcouru dans le même sens que l'eau. 
+    
+    
+    %%% FIGURE : %%%%
+    %\begin{figure}[h!]
+    %\centering
+    \begin{fig}[fizeau]
+      \centering
+      \includegraphics[width=0.7\textwidth]{fizeau.png}
+      % \capt{}
+    \end{fig}
+    % \begin{center}
+    % \includegraphics[width=0.6\textwidth]{fizeau.png}
+    % \end{center}
+    %\caption{}
+    %\label{fig:fizeau}
+    %\end{figure}
+    %%%%%%%%%%%%%
+    On souhaite étudier l'interférence lumineuse sur l'écran dans un cadre relativiste.  
+    \begin{quest}
+    \item On rappelle que la vitesse de la lumière dans l'eau  dans son référentiel propre vaut $c/n$, avec $n$ l'indice de réfraction. Déterminer $v_1$ et $v_2$ en fonction de $v$, $c$ et $n$ à partir des lois de composition des vitesses.
+    \sol{
+    La loi de composition donne 
+    \eqbox{
+    v_1 = \dfrac{c/n-v}{1-v/nc}, \quad v_2 = \dfrac{c/n+v}{1+v/nc}.
+    }
+    }
+    \item En déduire une expression simplifée de l'ordre d'interférence $p$ en fonction de $\beta$. \AN ? Comparer à la valeur obtenue en utilisant la loi de composition des vitesses newtonienne,
+    \begin{equation}
+        p \simeq \frac{4L}{\lambda} \beta  n^2.
+    \end{equation}
+    \sol{
+    On obtient 
+    $$
+    \Delta t = 2L\left( \frac{1}{v_1}-\frac{1}{v_2} \right) = 2L \frac{(c/n+v)(1-v/nc) - (c/n-v)(1+v/nc)}{c^2/n^2-v^2} = 2L \frac{2(v-v/n^2)}{c^2/n^2-v^2} = 4Lv\frac{n^2-1}{c^2-v^2}.
+    $$
+    On en déduit,
+    $$
+    p =  \frac{c \Delta t}{\lambda} = \frac{4 L cv(n^2-1)}{\lambda(c^2-v^2)} = \frac{4 L \beta (n^2-1)}{\lambda(1-\beta^2)} 
+    $$
+    soit avec $\beta \ll 1$,
+    \eqbox{
+    p \simeq \frac{4 L}{\lambda}\beta(n^2-1) \simeq \num{0.17}.
+    }
+    }
+  \end{quest}
+  
+  \end{exo}
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+  

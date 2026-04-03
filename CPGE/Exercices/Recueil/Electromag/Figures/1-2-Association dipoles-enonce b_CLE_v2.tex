@@ -1,0 +1,13 @@
+\input{tikz.tex}
+\begin{document}
+\begin{tikzpicture}[scale=2]
+% \begin{circuitikz}
+		\draw (0,0) node {$\bullet$} node [above left] {$A$};
+		\draw(0,0)--(0.5,0)--(0.5,0.5) to [R, l=$R$] (2.5,0.5) -- (2.5,0)-- (3,0);	
+		\draw (0.5,0)--(0.5,-0.5) to [L, l_=$L$] (2.5,-0.5) -- (2.5,0.5);	
+	    \draw (3,0) node {$\bullet$} node [above right] {$B$};
+	    %\draw (0,0.7) node [above left] {montage $b$};
+% \end{circuitikz} 
+\end{tikzpicture} 
+% \shorthandon{:!}
+\end{document}

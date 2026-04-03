@@ -1,0 +1,37 @@
+\begin{tikzpicture}
+
+\draw[thick] (0,0) -- (0,8);
+\draw (0,8) node [above] {$(M_{1})$}; 
+
+\draw[thick] (3,0) -- (3,8);
+\draw (3,8) node [above] {$(M_{2})$}; 
+
+\draw [<->] (0.1,0.2) -- (2.9,0.2);
+\draw (1.5,0.2) node [below] {\large$e$};
+
+\draw[-latex] (-1.5,0.5) -- (-0.75,0.75);\draw(-0.75,0.75) -- (0,1);
+
+\foreach \x in {0,1,2}
+{\draw[-latex] (0,1+2*\x) -- (1.5,1.5+2*\x);\draw (1.5,1.5+2*\x) -- (3,2+2*\x);
+\draw[-latex] (3,2+2*\x) -- (4.5,2.5+2*\x);\draw (4.5,2.5+2*\x) -- (6,3+2*\x);
+\draw[-latex] (3,2+2*\x) -- (1.5,2.5+2*\x);\draw (1.5,2.5+2*\x) -- (0,3+2*\x);
+\draw [-latex] (0,3+2*\x) -- (-0.75,3.25+2*\x); \draw  (-0.75,3.25+2*\x) -- (-1.5,3.5+2*\x);)
+\draw [-latex] (6,3+2*\x) -- (7,3.75+\x); \draw  (7,3.75+\x) -- (8,4.5);
+}
+
+\draw [angle 90-angle 90,thick] (6,0) -- (6,8);
+\draw [ultra thick] (8,1) -- (8,7);
+\draw (8,1) node [below] {\'Ecran}; 
+
+\draw[dashed] (0,1) -- (-1.5,1);
+\draw (-1.2,1) arc (160:206:0.5);
+\draw (-1.5,0.75) node {\Large $\theta$};
+\draw (-1,0.25) node {\Large $\psi_{\mathrm{inc}}$};
+
+\draw (4.75,2.1) node {\Large $\psi_{\mathrm{0}}$};
+\draw (4.75,4.1) node {\Large $\psi_{\mathrm{1}}$};
+\draw (4.75,6.1) node {\Large $\psi_{\mathrm{2}}$};
+
+\draw (1.5,7.5) node {\Large ...};\draw (4.5,7.5) node {\Large ...};
+
+\end{tikzpicture}

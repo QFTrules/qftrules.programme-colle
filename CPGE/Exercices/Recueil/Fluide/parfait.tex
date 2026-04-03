@@ -1,0 +1,2013 @@
+% !TEX root = /home/eb/.vscode/extensions/qftrules.programme-colle/tmp/Exercice.tex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][colle]{Écoulement sous la couverture d’un livre}
+  On souhaite décrire l’écoulement d’air sous la couverture d’un livre qui se ferme sous l’effet de la pesanteur. On note $\alpha(t)$ l’angle que forme la couverture du livre par rapport à l’horizontale. On suppose l’écoulement irrotationnel, parfait, incompressible.
+
+  \begin{fig}[label]
+    \centering
+    \includegraphics[width=0.5\columnwidth]{diedre.pdf}
+    %\capt{}
+  \end{fig}
+On considère pour commencer que la couverture du livre est immobile, d’angle constant $\alpha$.
+% et on suppose l’écoulement stationnaire.
+  \begin{quest}
+    \item	On cherche un potentiel des vitesses de la forme $\phi(r,\theta) = A r^n \cos(n\theta)$ en coordonnées polaires, avec $n$ une constante. Montrer que ce potentiel des vitesses est compatible avec la nature de l’écoulement.
+    \sol{
+      L’écoulement est irrotationnel et incompressible, donc l’écoulement doit vérifier l’équation de Laplace,
+      $$
+      \Delta \phi = 0.
+      $$
+      Avec le potentiel choisi, on a bien 
+      $$
+      \Delta \phi = \frac{1}{r}\dr{}{r}\left( r\dr{\phi}{r} \right) + \frac{1}{r^2} \ddr{\phi}{\theta} = A n^2 r^{n-2} \cos(n\theta) - An^2 r^{n-2} \cos(n\theta) = 0.
+      $$
+    }
+    \item Déterminer $n$ pour que ce potentiel des vitesses soit compatible avec les conditions aux limites. 
+    \sol{
+      Le champ des vitesses s’écrit 
+      $$
+      \Vec{v} =  \grad \phi = \dr{\phi}{r} \er  + \frac{1}{r} \dr{\phi}{\theta} \et = A nr^{n-1} \cos(n\theta) \er -  A n r^{n-1} \sin(n \theta) \et.
+      $$
+      La vitesse normale aux plaques doit être nulle,
+      soit 
+      $$
+      v_\theta(r,0) = 0 = A n r^{n-1} \sin(0), 
+      $$
+      et 
+      $$
+      v_\theta(r,\alpha) = 0 = A n r^{n-1} \sin(n \alpha),
+      $$
+      soit 
+      \eqbox{
+      n = \frac{\pi}{\alpha}.
+      }
+      Le champ des vitesses a donc pour expression 
+      \eqbox{
+      \Vec{v}(M) = \frac{A\pi}{\alpha}r^{\frac{\pi}{\alpha}-1} \left[ \cos\left(\pi \frac{\theta}{\alpha}\right) \er + \sin\left(\pi \frac{\theta}{\alpha}\right) \et\right].
+      }
+      La norme de la vitesse en un point $M$ est donc constante égale à 
+      $$
+      v(M) = \frac{A\pi}{\alpha} r^{\frac{\pi}{\alpha}-1}.
+      $$
+    }
+      \item Que vaut le champ de pression $p(M)$ en tout point ?
+      \sol{
+        On utilise la relation de Bernoulli pour un écoulement parfait, irrotationnel, incompressible, stationnaire.
+$$
+p_0 + \frac{1}{2} \rho v^2 = p(M) + \frac{1}{2} \rho v^2(M),
+$$
+et donc 
+\eqbox{
+p(M) = p_0.
+}
+    }
+  \end{quest}
+On suppose maintenant que l’angle de la couverture $\alpha(t)$ dépend du temps.
+\begin{quest}
+  \item	Quelles sont les nouvelles conditions aux limites ? En cherchant un potentiel des vitesses de la même forme que précédemment, déterminer la valeur de $n$ et l’expression complète du champ des vitesses.
+  \sol{
+    On a cette fois-ci 
+    $$
+    v_\theta(r,\alpha(t),t) = r \dot{\alpha}(t) = -A(t) n r^{n-1} \sin(n\alpha(t)),
+    $$
+    soit 
+    \eqbox{
+    n=2,
+    }
+    et 
+    $$
+    A(t) = -\frac{\dot{\alpha}(t)}{2\sin(2\alpha(t))}.
+    $$
+    Le champ des vitesses vaut donc 
+    \eqbox{
+    \Vec{v}_{\rm mob}(M,t) = \frac{r\dot{\alpha}}{\sin(2\alpha)}\left( - \cos(2\theta) \er + \sin(2\theta) \et \right) = - \frac{r\dot{\alpha}}{\sin(2\alpha)} \left( \cos(\theta) \ex - \cos(3\theta) \ey \right).
+    }
+    Sa norme vaut 
+    $$
+    v_{\rm mob} = \frac{r|\dot{\alpha}|}{\sin(2\alpha)}.
+    $$
+    Le potentiel des vitesses vaut 
+    $$
+    \phi_{\rm mob}(r,\theta,t) = - \frac{r^2 \dot{\alpha}}{2\sin(2\alpha)} \cos(2\theta).
+    $$
+    }
+    % \item Justifier qu’en superposant le champ des vitesses trouvé ci-dessus à celui obtenu pour une plaque immobile, le champ des vitesses est encore solution du problème. En déduire l’expression générale du champ des vitesses, ainsi que la norme carrée de la vitesse.
+    % \sol{
+    %   Le champ des vitesses pour la plaque immobile s’écrit 
+    %   $$
+    % \Vec{v}(M)_{\rm im} = \frac{A}{\alpha} r^{\frac{\pi}{\alpha}-1} \left[ \cos(\pi \frac{\theta}{\alpha}) \er + \sin(\pi \frac{\theta}{\alpha}) \et\right].
+    %   $$
+    %   Le champ des vitesses total est donc
+    %   % $$
+    %   \eqbox{
+    %     \Vec{v_{\rm tot}}(M,t) = \Vec{v}(M)_{\rm im} + \Vec{v}_{\rm mob}(M,t) = \frac{A}{\alpha} r^{\frac{\pi}{\alpha}-1} \left[ \cos(\pi \frac{\theta}{\alpha}) \er + \sin(\pi \frac{\theta}{\alpha}) \et\right] - \frac{r\dot{\alpha}}{\sin(2\alpha)}\left( \cos(2\theta) \er - \sin(2\theta) \et \right).
+    %     }
+    %     % $$
+    %   La norme carrée de la vitesse vaut 
+    %   $$
+    %   v_{\rm tot}^2 = v_{\rm im}^2 + v_{\rm mob}^2 + 2 \Vec{v}_{\rm im} \cdot \Vec{v}_{\rm mob},
+    %   $$
+    %   soit 
+    % \eqbox{
+    %      v_{\rm tot}^2 =
+    %   \left( \frac{A}{\alpha} \right)^2 r^{2\left(\frac{\pi}{\alpha}-1\right)} + \frac{r^2 \dot{\alpha}^2}{\sin^2(2\alpha)} - 2 \frac{A}{\alpha} \frac{r^{\frac{\pi}{\alpha}} \dot{\alpha}}{\sin(2\alpha)} \cos(\theta(\pi/\alpha - 2)).
+    %   }
+    %   Le potentiel total des vitesses vaut 
+    %   $$
+    %   \phi_{\rm tot}(r,\theta,t) = A r^{\frac{\pi}{\alpha}} \cos\left(\pi \frac{\theta}{\alpha}\right) - \frac{r^2 \dot{\alpha}}{2\sin(2\alpha)} \cos(2\theta).
+    %   $$
+    % }
+    \item On admet que la relation de Bernoulli se généralise aux écoulements instationnaires sous la forme
+    \begin{equation}
+\dr{\phi}{t} + \frac{1}{2} v^2 + \frac{p}{\rho} = \cte.
+    \end{equation}
+    Déterminer la pression $p(M,t)$ s’exerçant sous la couverture du livre.
+    \sol{
+    Considérons un point $\rm A$ de l’écoulement sur l’axe horizontal, où la pression vaut $p_0$, et un point $\rm B$ sous la couverture du livre. On a
+    $$
+    p_0 + \frac{1}{2} \rho v_{\rm A}^2 + \rho \dr{\phi_A}{t} = p(B,t) + \frac{1}{2} \rho v_{\rm B}^2 + \rho \dr{\phi_{\rm B}}{t},
+    $$
+    soit 
+    $$
+    p(B,t) = p_0 + \rho \left( \dr{\phi_A}{t} - \dr{\phi_{\rm B}}{t} \right) = p_0 
+    % + \frac{1}{2} - 2 \frac{A}{\alpha} \frac{r^{\frac{\pi}{\alpha}}\dot{\alpha}}{\sin(2\alpha)} \rho \left(  1  -  \cos(\pi - 2\alpha) \right) + 
+ + \rho r^2 \left( \frac{\ddot{\alpha}}{2\sin(2\alpha)} - \frac{\cos(2\alpha)\dot{\alpha}^2}{\sin(2\alpha)^2} \right)(\cos(2\alpha)-1),
+    $$
+    soit 
+    \eqbox{
+    p(M,t) = p_0 - \rho r^2 \left( \frac{\ddot{\alpha}}{4}\tan(\alpha) - \frac{\dot{\alpha}^2}{4} (1-\tan(\alpha)^2)\right).
+    }
+    }
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{exo}[PC][3][oral]{Chute de la couverture d'un livre}
+  On observe la chute libre de la couverture rigide d'un livre lâchée sans vitesse initiale (figure a). On mesure ci-dessous la vitesse angulaire de chute en fonction du temps (figure b). Expliquer.
+  \begin{fig}[label]
+    \centering
+    \begin{subfig}[label][0.35]
+      \includegraphics[height=3.7cm]{livre_chute.jpeg}
+    \end{subfig}
+    \begin{subfig}[label][0.62]
+      \includegraphics[height=3.7cm]{chute_livre_data.jpeg}
+    \end{subfig}
+    %\capt{}
+  \end{fig}
+  \sol{
+  \begin{liste}
+    \item[\encircle{S}] Les données du problème sont le temps $t$, la vitesse angulaire $\omega(t)$ et la vitesse initiale $v_0=0$. On peut introduire les variables et paramètres : angle $\alpha(t)$, longueur $L$ de la couverture, masse $m$ de la couverture, moment d'inertie $J$ de la couverture, accélération de la pesanteur $g$.
+    \item[\encircle{A}] Cadre d’étude : mécanique du solide. Hypothèses : chute libre dans le vide, couverture homogène. Théorèmes connues : PFD, TMC, conservation de l’énergie mécanique. Stratégie de résolution : écrire le TMC au centre de masse $G$, calculer le moment du poids par rapport à la reliure $O$, en déduire l’accélération angulaire $\dot{\omega}(t) = \ddot{\alpha}(t)$.
+    \item[\encircle{R}] Le TMC scalaire par rapport à l’axe $(Oz)$ de la reliure donne 
+    $$
+    \dd{L_z}{t} = J\ddot{\theta} = M_z(\Vec{P}) = -OG \cos \alpha \times m g = -\frac{L}{2} \cos \alpha \times m g,
+    $$
+    soit 
+    % $$
+    \eqbox{
+      \dot{\omega} = - \frac{mg}{2J} \cos \alpha. 
+    }
+    % $$
+    Le graphe attendu de la vitesse angulaire (valeur absolue) est le suivant. 
+    \item[\encircle{V}] On ne peut pas expliquer la décroissance continue de la vitesse angulaire après le maximum. Il faut prendre le déplacement de l’air en compte ! Une analyse plus poussée est nécessaire.
+  \end{liste}
+  }
+  \sol{
+  \begin{liste}
+    \item[\encircle{A}] Système : {air entre le couverture et le livre}. Cadre de l’étude : dynamique des écoulements parfaits. Hypothèse : écoulement incompressible, transitoire (non stationnaire !), rotationnel a priori. Théorèmes connus : équation d’Euler, loi de Bernoulli (à généraliser au cas transitoire), conservation du débit volumique. Nouveaux paramètres : masse volumique $\rho$ (que l’on peut supposer constante), champ de pression $p(r,\theta,t)$, champ des vitesses $\Vec{v}(r,\theta,t)$.
+  \end{liste}
+  }
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][devoir]{Le tube de Pitot}
+  Le tube de Pitot est un des nombreux capteurs qui équipent l'avion. Il permet la mesure de la vitesse de l'avion, donnée essentielle à sa bonne conduite. Il s'agit d'un tube très fin (moins de $5 \mathrm{~mm}^{2}$ de surface) qui est placé parallèlement à la direction de l'écoulement de l'air (\Fig{pitot}). Ce tube possède deux ouvertures en $F$ et $G$. L'ouverture en $F$ est la prise dite de pression totale et celle en $G$ est la prise dite de pression statique. On mesure la différence de pression de l'air entre les deux tubes 1 et 2 avec un manomètre différentiel, ce qui permet d'obtenir la vitesse $v_{\infty}$ de l'écoulement.
+  \begin{fig}[pitot]
+    \centering
+    \includegraphics[width=0.4\textwidth]{2023_11_08_92f046a700805e4eaca0g-1}
+    \capt{Tube de Pitot.}
+  \end{fig}
+
+On considère que l'air est un fluide parfait, homogène, incompressible, de masse volumique $\rho_{\infty}$ et en écoulement stationnaire. On rappelle que les effets de la gravité sur l'air sont négligés. Loin du tube l'air a une pression $P_{\infty}$ et une vitesse $v_{\infty}$.
+\begin{quest}
+  \item Représenter l'allure de la ligne de courant qui aboutit en $F$ et l'allure de la ligne de courant qui longe le tube et passe à proximité de $G$.
+  
+  \item Déterminer, en fonction de $P_{\infty}, \rho_{\infty}$, et $v_{\infty}$, les expressions de la vitesse $v_{F}$ et de la pression $P_{F}$ du fluide en $F$ ainsi que la vitesse $v_{G}$ et la pression $P_{G}$ du fluide en $G$.
+  
+  \item Dans le manomètre, il y a un liquide de masse volumique $\rho_{l}$. On mesure une différence d'altitude $h$ entre les deux surfaces du liquide. Déterminer l'expression de la différence de pression, $P_{H}-P_{I}$, entre ces deux surfaces.
+  
+  \item Déduire des questions précédentes l'expression de la vitesse de l'écoulement $v_{\infty}$ de l'air en fonction de $\rho_{l}, \rho_{\infty}, g$ et $h$. Comment évolue $h$ lorsque la vitesse de l'air augmente ?
+\end{quest}
+
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][colle]{La cavitation}
+Si la dépression dans l'étranglement d'une conduite est suffisamment importante pour que la pression devienne inférieure à la pression de vapeur saturante, des bulles de vapeur peuvent se former dans le liquide en écoulement. Ce phénomène de cavitation peut avoir des effets particulièrement dommageables sur les pièces mécaniques (pompes et moteurs thermiques en particulier).
+
+Estimer pour quel rapport d'étranglement $r = S_1/S_2$ le phénomène de cavitation apparaît dans une conduite de débit volumique ${{\DV}} = \SI{3}{L.s^{-1}}$. On donne $p_{\rm sat} = \SI{31.7}{mbar}$ pour l'eau à $\SI{25}{\dC}$.
+\sol{
+$p_0 - p_{\rm sat}  = \rho\dfrac{v_{1}^{2}}{2}\left(r^{2}-1\right) = $
+}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][2][TD]{Problème de robinets}
+  \Notions{\item Relation de Bernoulli \task Débit volumique \task Torricelli}
+  Une baignoire de volume $V=96 \mathrm{~L}$ se remplit en $\tau_{1}=8\,\mathrm{min}$, robinet ouvert et bonde fermée. Elle se vide en $\tau_{2}=12\,\mathrm{min}$, bonde ouverte et robinet fermé. On se propose de répondre à la question suivante :  \emph{En combien de temps la baignoire se remplit-elle complètement si la bonde et le robinet sont ouverts ?}
+\begin{fig}[]
+  \centering
+  \includegraphics[width=0.5\columnwidth]{2023_10_11_e0b3d6ffc7f03dae9839g-1}
+  % \capt{Schéma de la baignoire}
+\end{fig}
+
+  \begin{quest}
+    \item Un étudiant donne la réponse suivante :
+  \emph{Le robinet débite $96 / 8=12 \mathrm{~L} / \mathrm{min}$, la bonde $96 / 12=8 \mathrm{~L} / \mathrm{min}$. Bonde et robinet ouverts, le débit sera égal à $12-8=4 \mathrm{~L} / \mathrm{min}$, il faudra donc $96 / 4=24\, \mathrm{min}$ pour que la baignoire se remplisse.}
+  Expliquer en quoi le raisonnement précédent est faux.
+  \sol{
+    On ne peut pas appliquer une simple règle de trois car le débit de vidange n'est pas constant. Notamment, le débit de vidange dépend du niveau d'eau : il sera donc différent lorsque l'on ouvre le robinet.
+  }
+\end{quest}
+Traitons le problème en supposant que la baignoire est un récipient cylindrique de section $S$ et de hauteur $H$. La bonde ouverte fait naître un orifice de section $s \ll S$. À l'instant $t=0$ on ouvre robinet et bonde, la baignoire étant vide.
+\begin{quest}
+    \item
+  Exprimer le débit volumique ${{\DV}}_1$ sortant par le robinet en fonction de $\tau_{1}$ et $V=SH$. Faire l'application numérique.
+\sol{Le débit d'eau sortant du robinet est constant et égal à
+$$
+{{\DV}}_1=S H / \tau_1=12 \mathrm{~L} \cdot \mathrm{mn}^{-1}
+$$
+}
+
+    \item Supposons qu'à l'instant $t$, le niveau d'eau dans la baignoire soit $z(t)$. À partir de la formule de Torricelli, trouver le débit volumique ${\DV}_2$ sortant par la bonde.
+     \sol{
+      En appliquant la relation de Bernoulli entre un point de la surface libre (de vitesse négligeable) et un point de l'orifice on obtient $\textstyle\frac{1}{2} \mu v^2=\mu g z$ d'où la formule de Torricelli
+      $$
+      v=\sqrt{2 g z} \Rightarrow {{\DV}}_2=s \sqrt{2 g z(t)}
+      $$
+    }
+
+    \item En traduisant la conservation de la masse, montrer que le niveau d'eau vérifie l'équation différentielle
+  \begin{equation}
+    \dot{z}(t)=\frac{1}{S}\left( {{\DV}}_1-s \sqrt{2 g z(t)} \right).
+  \end{equation}
+  % Commenter.
+
+  \sol{
+    La masse d'eau contenue dans la baignoire vaut $m(t)=\mu S z(t)$. La conservation de la masse se traduit par
+$$
+\frac{\mathrm{d} m}{\mathrm{~d} t}=\mu\left(Q_{V 1}-Q_{V 2}\right)
+$$
+d'où
+$$
+\dot{z}(t)=\frac{1}{S}\left(Q_{V 1}-s \sqrt{2 g z(t)}\right)
+$$
+$\dot{z}>0$ donc $z$ croît : la baignoire déborde au bout d'un certain temps.
+
+  }
+
+    \item Définissons $z_{\infty}$ tel que ${{{\DV}}}_1=s \sqrt{2 g z_{\infty}}$. Exprimer $\tau_2$ puis calculer $z_{\infty}/H$. Conclusion ?
+    
+    \sol{
+    Indication : Exprimer $\tau_{2}$ en fonction de $s, S, g$ et $H$ en intégrant l'équation (3.1) dans le cas où le robinet est fermé, puis éliminez $s$ dans la définition de $z_{\infty}$.
+    Que représente $z_{\infty}$ ?
+    Montrer que
+    $
+    z_{\infty}=H\left(\frac{\tau_{2}}{2 \tau_{1}}\right)^{2}.
+    $
+
+    Lorsque $Q_{V 1}=s \sqrt{2 g z}, \dot{z}=0$ : le niveau d'eau se stabilise à la valeur
+$$
+z_{\infty}=\frac{Q_{V 1}{ }^2}{2 g s^2}=\frac{V^2}{2 g s^2 \tau_1^2}
+$$
+
+Dans ce cas, la baignoire ne se remplit que partiellement si $z_{\infty}<H$.
+
+
+    $\tau_2$ représente le temps de vidange, robinet fermé. On obtient ce temps en intégrant l'équation précédente avec $Q_{V1}=0$ :
+    $$
+    \dot{z}(t)=-\frac{s}{S} \sqrt{2 g z(t)} \quad \Rightarrow \quad 2 \sqrt{z}=2 \sqrt{H}-\frac{s}{S} \sqrt{2 g} t
+    $$
+    
+    Lorsque $z=0, t=\tau_2$ d'où
+    $$
+    s^2=\frac{2 H S^2}{g \tau_2^2} \quad \Longrightarrow \quad z_{\infty}=H\left(\frac{\tau_2}{2 \tau_1}\right)^2
+    $$
+    $z_{\infty}=0,56 H$. La baignoire ne se remplit que partiellement (un peu plus de la moitié).
+    L'équation différentielle peut se réécrire
+    $$
+    \dot{z}=\frac{1}{S}\left(s \sqrt{2 g z_{\infty}}-s \sqrt{2 g z}\right)=\frac{2 \sqrt{H}}{\tau_2}\left(\sqrt{z_{\infty}}-\sqrt{z}\right)
+    $$
+    }
+      % \item Calculer $z_{\infty} / H$ et répondre à la question initiale.
+
+      % \item Au bout de combien de temps la baignoire se remplit si $\tau_{1}=4 \min$ et $\tau_{2}=12\,\mathrm{min}$ ?
+
+  \end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][oral]{Camion de pompier}
+Un réservoir de véhicule de pompiers de longueur $L=\SI{95}{cm}$ selon $(Ox)$ et de hauteur $H=\SI{80}{cm}$ selon $(Oz)$ est rempli jusqu'à une hauteur $h=\SI{65}{cm}$. La pression à la surface est maintenue à la pression atmosphérique $p_0=\SI{1}{bar}$ et l'eau a une masse volumique $\rho=10^3 \mathrm{~kg} \cdot \mathrm{m}^{-3}$ supposée constante.
+\begin{quest}
+\item Donner l'équivalent volumique des force de pression, retrouver l'équation de la statique des fluides et en déduire le profil de pression $p(z)$.
+\item Calculer la force de pression s'exerçant sur la face latérale. Faire l'application numérique.
+\item Le camion démarre avec une accélération $\vec{a}=a \ex$. Déterminer l'équation $z(x)$ de la surface.
+% \item Trouver $Z$ pour que $D_v=3 \mathrm{~L} / \mathrm{s}$
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][2][oral]{Hauteur d'un jet d'eau}%{1}
+Un jet d'eau sort d'une buse verticale avec une vitesse $v_0\,\ez$ uniforme de norme $v_0 = \SI{2}{m.s^{-1}}$ dans la section de sortie confondue avec le disque de rayon $a$ centré en un point $O$ pris comme origine de l'espace. Le champ de pesanteur $\Vec{g}=-g\,\ez$ est uniforme, d'intensité $g=\SI{9.8}{m.s^{-2}}$.
+%L'écoulement est supposé parfait, stationnaire, incompressible et homogène de masse volumique $\rho$.
+\begin{center}
+\includegraphics[width=0.3\columnwidth]{jet_eau.pdf}
+\end{center}
+\noindent En précisant les hypothèses, estimer quelle hauteur atteint le jet d'eau.
+%Pour quelle valeur d'altitude $z$ le profil diverge-t-il ? Application numérique pour $v_0 = \SI{2}{m.s^{-1}}$.
+
+\sol{
+
+\begin{liste}
+  \item[\encircle{S}] 
+  \begin{itemize}
+    \item \textsc{Données du problème} : la vitesse initiale $v_0 = \SI{2}{m.s^{-1}}$, l'intensité de la pesanteur $g = \SI{9.8}{m.s^{-2}}$, et le rayon $a$ de la section initiale. D'autres données importantes sont probablement la masse volumique de l'eau $\rho = \SI{e3}{kg.m^{-3}}$, et la pression atmosphérique $p_0 = \SI{1}{bar}$.
+    \item \textsc{Schéma} : le schéma est déjà fourni et semble indiquer que le rayon du jet $R(z)$ joue également un rôle important.
+    \item \textsc{Paramètre à déterminer} : hauteur $h$ du jet d’eau. 
+  \end{itemize}  
+\end{liste}
+}
+\sol{
+  \begin{liste}
+  \item[\encircle{A}] 
+  \begin{itemize}
+    \item \textsc{Cadre de l’étude} : il s'agit d'un problème de dynamique des fluides. 
+    \item \textsc{Hypothèses} : en première approximation, il est légitime de supposer l'écoulement parfait, car la viscosité n’est pas le moteur de l’écoulement. Nous supposerons aussi l'écoulement stationnaire, et incompressible, de sorte à pouvoir utiliser les lois usuels des écoulements parfaits (conservation du débit et Bernoulli). On peut proposer un champ des vitesses de la forme $\Vec{v}(M)=v_{r}(r,z)\,\er+v_{z}(z)\,\ez$ en coordonnées cylindriques, avec $v_r\ll v_z$ pour la partie où le jet n'est pas trop évasé.
+    \item \textsc{Analyse dimensionnelle} : supposons que la hauteur $h$ dépende seulement de $v_0$, $g$, et $\rho$. On a alors 
+    $$
+  h \sim v_0^\alpha g^\beta \rho^\gamma.
+  $$
+  La dimension de $h$ est alors 
+  $$
+  [h] = L = [v_0]^\alpha [g]^\beta [\rho]^\gamma = (L\cdot T^{-1})^{\alpha} (L\cdot T^{-2})^{\beta} (M\cdot L^{-3})^{\gamma} = L^{\alpha+\beta - 3\gamma} M^{\gamma} T^{-\alpha-2\beta}.
+  $$
+  On en déduit $\alpha = 2$, $\beta = -1$, et $\gamma = 0$. Donc 
+  \eqbox{
+    h \sim \frac{v_0^2}{g}. 
+  }
+\item \textsc{Analyse semi-quantitative} :
+  On peut trouver le préfacteur numérique par analogie avec le problème de la vidange. Dans un fluide parfait, si l'on ne tient pas compte de la pression, chaque particule de fluide évolue dans le champ de pesanteur comme un point matériel. On peut donc considérer que chaque particule subit une chute libre. C'est d'ailleurs cohérent avec la loi de Torricelli, qui donne $v_B = \sqrt{2gh}$ ! Même si la loi de Torricelli s'applique a priori dans un problème légèrement différent, la loi de la chute libre s'applique probablement ici aussi, de sorte que $v_0 = \sqrt{2gh}$, ce qui donne 
+
+  \eqbox{
+    h = \frac{v_0^2}{2g} = \SI{20}{cm}.
+  }
+  
+  \item \textsc{Analyse quantitative} : on peut maintenant proposer un argument quantitatif pour confirmer notre résultat. On définit pour cela une stratégie de résolution.
+  \begin{enumerate}
+    \item Appliquer Bernoulli sur une ligne de courant au bord du jet pour trouver la fonction $v_z(z)$. 
+    \item Optionnel : appliquer la conservation de ${{\DV}}$ pour trouver le rayon $R(z)$ en fonction de $v_z(z)$.
+    \item Étudier les fonctions $v_z(z)$ ou $R(z)$ pour trouver $h$.
+  \end{enumerate} 
+\end{itemize}
+\end{liste}
+  }
+  \sol{
+    \begin{liste}
+      \item[\encircle{R}] 
+      \begin{itemize}
+        \item 
+        On applique la loi de Bernoulli le long d'une ligne de courant  $A$-$B$ sur la surface libre du jet :
+        $$
+        \frac{1}{2} \rho v_A^2 + p_A + \rho g z_A = \frac{1}{2} \rho v_B^2 + p_B + \rho g z_B.
+        $$
+        On en déduit comme $v_A \simeq v_z(z)$ et $p_A = p_B = p_0$ que
+        $\frac{1}{2}\rho v_z^2  + \rho g z = \frac{1}{2}\rho v_0^2 $. Ainsi, on a 
+        \eqbox{
+        v_z(z) = \sqrt{v_0^2 - 2gz}.
+        }
+        \item La conservation du débit volumique donne ${{\DV}} = v_z(z) S(z) = \pi R(z)^2 v_z(z) = \pi a^2 v_0$, et donc
+        \eqbox{
+        R(z)
+        = a  \left(1-\frac{2gz}{v_0^2} \right)^{1/4}.
+        }
+        \item Le jet atteint sa hauteur maximale lorsque $v_z(h)=0$, soit 
+        \eqbox{
+        h  = \frac{v_0^2}{2g} = \SI{20}{cm}.
+        }
+        On remarque que $R(z)$ diverge en $z=h$.
+      \end{itemize}
+    \end{liste}
+  }
+  \sol{
+    \begin{liste}
+  \item[\encircle{V}] On retrouve la même expression qu'avec l'argument semi-quantitatif, ce qui est encourageant ! L'ordre de grandeur semble tout à fait raisonnable si l'on compare aux situations de la vie courante.
+\end{liste}
+
+}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][3][TD]{Profil d'un jet d'eau}%{1}
+  \Notions{\item Relation de Bernoulli \task Débit volumique}
+  Un jet d'eau sort d'une buse verticale avec une vitesse $v_0\,\vec{e}_z$ uniforme dans la section de sortie confondue avec le disque de rayon $a$ centré en un point $O$ pris comme origine de l'espace. Le champ de pesanteur $\vec{g}=-g\,\vec{e}_z$ est uniforme.
+  %L'écoulement est supposé parfait, stationnaire, incompressible et homogène de masse volumique $\rho$.
+  Dans le domaine où le jet n'est pas trop évasé, l'écoulement est décrit en coordonnées cylindriques par le champ des vitesses $\vec{v}(M)=v_{r}(r,z)\,\vec{e}_r+v_{z}(z)\,\vec{e}_z$ avec $v_r\ll v_z$.
+  \begin{center}
+  \includegraphics[width=0.2\columnwidth]{jet_eau.pdf}
+  \end{center}
+  \noindent En précisant les hypothèses, déterminer le profil $R(z)$ de la surface libre du jet.
+  %Pour quelle valeur d'altitude $z$ le profil diverge-t-il ? Application numérique pour $v_0 = \SI{2}{m.s^{-1}}$.
+  
+  \sol{
+  Bernoulli sur la surface : $\frac{1}{2}\rho v_z^2 + p_0 + \rho g z = \frac{1}{2}\rho v_0^2 + p_0 $. Donc $v_z^2 = v_0^2 - 2gz$. De plus, on a ${{\DV}} = v_z(z) S(z) = \pi R(z)^2 v_z(z) = \pi R_0^2 v_0$ par conservation du débit volumique. Donc $R(z) = R_0 \sqrt{\frac{v_0}{v_z}}$. Donc
+  $$
+  R(z) = R_0 \left(\frac{v_0^2}{v_0^2-2gz} \right)^{1/4} = R_0  \left(1-\frac{2gz}{v_0^2} \right)^{1/4}
+  $$
+  Divergence si $z = \frac{v_0^2}{2g} = \SI{20}{cm}$.
+  }
+  \end{exo}
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][devoir]{Étude de quelques appareils hydrauliques}
+
+\emph{Dans toute cette partie, on suppose l'écoulement parfait et le fluide homogène.}
+\subsubsection{Sonde de Pitot}
+
+Dans une conduite de large section, on produit un courant d’air
+uniforme de vitesse $v$ grâce à un ventilateur ; la pression dans la conduite
+est $p_0$. On détermine la vitesse $v$ à l’aide d’une sonde de Pitot,
+dont le schéma de principe est donné ci-dessous.
+
+\begin{fig}
+\includegraphics[width=0.3\textwidth]{pitot_bis.pdf}
+\end{fig}
+Un baromètre à colonne d'eau liquide permet de mesurer la différence de pression entre l'amont et l'aval du tube de Pitot.
+On suppose l'écoulement stationnaire.
+On donne : masse volumique de l’air : $\rho_a = \SI{1.2}{kg.m^{-3}}$ ; masse volumique de l’eau : $\rho_e = \SI{e3}{kg.m^{-3}}$ ; intensité de la pesanteur $g= \SI{9.8}{m.s^{-2}}$ ; hauteur de la dénivellation $h = \SI{12}{cm}$.
+
+\begin{quest}
+\item Reproduire le schéma du tube de Pitot en représentant l'allure des lignes de courant au voisinage de la partie haute de l'appareil.
+\item À l'aide de la relation de Bernoulli, exprimer la pression $p_B$ en $B$ en fonction de la vitesse $v$ de l'écoulement.
+\sol{
+$p_B -p_0 = \frac{\rho_a v^2}{2}$
+}
+\item Exprimer la dénivellation $h$ de la colonne d'eau liquide en fonction de $p_B$ et des autres données du problème. À partir des données numériques, calculer la vitesse $v$ de l'écoulement.
+\sol{
+$p_B-p_0 = \rho_e g h$. Donc $v = \sqrt{\frac{2 \rho_e g h}{\rho_a}} = \SI{42.6}{m.s^{-1}}$.
+}
+\end{quest}
+
+
+
+\subsubsection{La clepsydre}
+
+Un récipient à symétrie cylindrique est initialement rempli, sur une
+hauteur $h_0$, d’un liquide de masse volumique $\rho$. Le
+liquide s’écoule par une ouverture de section $s$ à la base du récipient. Le récipient est de rayon $R(h)$ à la hauteur $h$.
+L'écoulement est supposé de plus stationnaire et irrotationnel.
+
+\begin{fig}
+\includegraphics[width=0.3\textwidth]{clepsydre.png}
+\end{fig}
+
+\begin{quest}
+\item La section $s$ est négligeable devant la section $S$ de la surface libre.  Que dire de la vitesse de la surface libre du fluide par rapport à  la vitesse $v$ d’écoulement au niveau de l'ouverture ?
+\sol{
+Débit volumique conservé donc $sv = Sv_A$ et donc $v_A \ll v$.
+}
+\item Exprimer alors la vitesse $v$  en fonction de la hauteur $h$.
+\sol{
+Bernoulli en tout point du fluide : $\frac{\rho v^2}{2} + p_0 = p_0 + \rho g h $ et donc $v = \sqrt{2gh}$.
+}
+\item Que vaut le volume $\d V$ du fluide compris dans une épaisseur $\d h$ au niveau de la surface libre ? En calculant le débit volumique ${{\DV}}$ de deux façons, déterminer une équation différentielle définissant l’évolution de la hauteur $h(t)$ au cours du temps.
+\sol{
+$\d V = \pi R^2 \d h$ et donc
+${{\DV}} = - \dd{V}{t} = -\pi R^2 \dd{h}{t} = s v = s \sqrt{2gh}$, d'où
+$$
+\dd{h}{t} = - \frac{s\sqrt{2gh}}{\pi R^2}
+$$
+}
+\item Quelle devrait être la relation $R(h)$ entre le rayon $R$ du vase et la hauteur $h$ pour que $h(t)$ soit une
+fonction affine du temps ? Expliquer le fonctionnement d'une clepsydre.
+\sol{
+On doit avoir $\sqrt{h}/R^2=\cte$, soit $R(h) = A h^{1/4}$ avec $A$ une constante.
+}
+\item À quelle condition est-il légitime de supposer cet écoulement stationnaire ?
+
+\sol{
+On compare les accélérations locales et convective en dessous de la clepsydre.
+$$
+\norme{\dr{\Vec{v}}{t}} \sim \frac{v}{\tau} \sim \frac{v v_A}{h_0}
+$$
+$$
+  \norme{(\Vec{v}\cdot \grad \Vec{v}) \Vec{v}} \sim \frac{v^2}{h_0}
+$$
+Donc le rapport vaut
+$$
+  \frac{\norme{\dr{\Vec{v}}{t}} }{\norme{(\Vec{v}\cdot \grad \Vec{v}) \Vec{v}}} \sim \frac{v_A}{v} \sim \frac{s}{S}.
+$$
+Il faut $s \ll S$.
+}
+
+%\item Reprendre le calcul en tenant compte de la vitesse du fluide à la surface libre.
+\end{quest}
+
+\subsubsection{Le tube en U}
+Un volume $V=\SI{20}{mL}$ d'eau remplit un tube en U de section constante $S=\SI{1}{cm^2}$.
+On note $h(t)=z_B(t)-z_A(t)$ la dénivellation entre les branches droite et gauche.
+%On suppose l'écoulement parfait, incompressible, homogène.
+On note $x$ l'abscisse curviligne définie le long du tube, en suivant la ligne pointillée,
+L'écoulement est décrit par un champ des vitesses de la forme $\vv{v}(M,t)=v(x,t)\vv{T}$
+uniforme sur une section du tube, où $\vv{T}$ désigne le vecteur unitaire tangent.
+On note $L$ la longueur totale de fluide dans le tube, c'est-à-dire la longueur de la ligne pointillée ci-dessous.
+\begin{center}
+\includegraphics[width=0.22\textwidth]{tube_U.pdf}
+\end{center}
+
+\begin{quest}
+  \item Calculer numériquement $L$.
+  \sol{
+  \eqbox{
+    L=\frac{V}{S}=\SI{20}{cm}
+  }  
+  }
+  \item Montrer que la vitesse $v(x,t)$ ne dépend pas de $x$ en réalité.
+  \sol{
+  Le liquide est \fbox{incompressible} et donc le débit volumique ${{\DV}}(x,t) = v(x,t)S$ ne dépend pas de $x$, et donc $v$ non plus.
+  }
+\item Justifier que l'écoulement est irrotationnel.
+Montrer ensuite que l'écoulement est bien décrit par un potentiel des vitesses de la forme $\phi(x,t) = v(t) x$.
+\sol{
+On trouve  $\rot \Vec{v} = \Vec{0}$ donc l'écoulement est irrotationnel. Il existe un potentiel des vitesses tel que $\Vec{v} = \grad \phi = v(t) \Vec{T}$. En négligeant la courbure du tube, on peut assimiler $x$ à une variable cartésienne, et donc $\Vec{T} = \ex$ et donc  $\dr{\vphi}{x} = v(t)$ estime
+\eqbox{
+  \phi(x,t) = v(t) x.
+}
+}
+\item Relier la vitesse $v(t)$ à la dénivellation $h(t)$.
+\sol{
+La dénivellation est reliée à la vitesse par $v(t) = v_A(t) = \dd{z_A}{t}$. Or $\dd{z_B}{t} = -\dd{z_B}{t}$ et donc $\dot{h}(t)=2v(t)$, soit 
+\eqbox{
+v(t) = \frac{1}{2} \dd{h}{t}.
+}
+}
+\item On admet que la relation de Bernoulli se généralise aux écoulements non stationnaires comme
+$$
+\rho \dr{\phi}{t} + \frac{\rho v^2}{2} + p + \rho g z = \cte.
+$$
+En appliquant cette relation entre les points $A$ et $B$, établir l'équation différentielle à laquelle obéit la dénivellation $h(t)$
+et déterminer la période $T_0$ des oscillations. Application numérique.
+\sol{
+On a
+$$
+  \rho x_A \dd{v}{t} + \frac{\rho v^2}{2} + \rho g z_A = \rho x_B \dd{v}{t} + \frac{\rho v^2}{2} + \rho g z_B \Rightarrow  L \dd{v}{t} + g h = 0.
+$$
+Or $v(t) = \frac{1}{2}\dd{h}{t}$ et donc
+$$
+  \ddm{h}{t}{2} + \underbrace{\frac{2 g}{L}}_{\omega_0^2} h = 0.
+$$
+On obtient l'équation d'un OH :
+\eqbox{
+  \ddm{h}{t}{2} + \omega_0^2 h = 0,
+}
+avec lu pulsation propre $\omega_0 = \sqrt{\frac{2g}{L}} = \SI{9.9}{rad.s^{-1}}$ puis $T_0=\frac{2\pi}{\omega_0} = \SI{0.63}{s}$.
+}
+\end{quest}
+
+\end{exo}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][TD]{Le tube en U}
+  Un volume $V=\SI{20}{mL}$ d'eau remplit un tube en U de section constante $S=\SI{1}{cm^2}$.
+  On note $h(t)=z_B(t)-z_A(t)$ la dénivellation entre les branches droite et gauche.
+  %On suppose l'écoulement parfait, incompressible, homogène.
+  On note $x$ l'abscisse curviligne définie le long du tube, en suivant la ligne pointillée ci-dessous.
+  L'écoulement est décrit par un champ des vitesses de la forme $\vv{v}(M,t)=v(x,t)\vv{t}$
+  uniforme sur une section du tube, où $\vv{t}$ désigne le vecteur unitaire tangent.
+  On note $L$ la longueur totale de fluide dans le tube.
+  \begin{center}
+  \includegraphics[width=0.22\columnwidth]{tube_U.pdf}
+  \end{center}
+  
+  \begin{quest}
+    \item Calculer numériquement $L$.
+    \sol{
+    \eqbox{
+      L=\frac{V}{S}=\SI{20}{cm}
+    }  
+    }
+    \item Montrer que la vitesse $v(x,t)$ ne dépend pas de $x$.
+    \sol{
+    Le liquide est \fbox{incompressible} et donc le débit volumique ${{\DV}}(x,t) = v(x,t)S$ ne dépend pas de $x$, et donc $v$ non plus.
+    }
+  \item Montrer que le champ des vitesses dérive d'un potentiel des vitesses d'expression $\phi(x,t) = v(t) x$.
+  \sol{
+  On trouve  $\rot \Vec{v} = \Vec{0}$ donc l'écoulement est irrotationnel. Il existe un potentiel des vitesses tel que $\Vec{v} = \grad \phi = v(t) \Vec{T}$. En négligeant la courbure du tube, on peut assimiler $x$ à une variable cartésienne, et donc $\Vec{T} = \ex$ et donc  $\dr{\vphi}{x} = v(t)$ estime
+  \eqbox{
+    \phi(x,t) = v(t) x.
+  }
+  }
+  \item Relier la vitesse $v(t)$ à la dénivellation $h(t)$.
+  \sol{
+  La dénivellation est reliée à la vitesse par $v(t) = v_A(t) = \dd{z_A}{t}$. Or $\dd{z_B}{t} = -\dd{z_B}{t}$ et donc $\dot{h}(t)=2v(t)$, soit 
+  \eqbox{
+  v(t) = \frac{1}{2} \dd{h}{t}.
+  }
+  }
+  \item On admet que la relation de Bernoulli se généralise aux écoulements non stationnaires comme
+  $$
+  \rho \dr{\phi}{t} + \frac{\rho v^2}{2} + p + \rho g z = \cte.
+  $$
+  En appliquant cette relation entre les points $A$ et $B$, établir l'équation différentielle à laquelle obéit la dénivellation $h(t)$
+  et déterminer la période $T_0$ des oscillations. \AN.
+  \sol{
+  On a
+  $$
+    \rho x_A \dd{v}{t} + \frac{\rho v^2}{2} + \rho g z_A = \rho x_B \dd{v}{t} + \frac{\rho v^2}{2} + \rho g z_B \Rightarrow  L \dd{v}{t} + g h = 0.
+  $$
+  Or $v(t) = \frac{1}{2}\dd{h}{t}$ et donc
+  $$
+    \ddm{h}{t}{2} + \underbrace{\frac{2 g}{L}}_{\omega_0^2} h = 0.
+  $$
+  On obtient l'équation d'un OH :
+  \eqbox{
+    \ddm{h}{t}{2} + \omega_0^2 h = 0,
+  }
+  avec lu pulsation propre $\omega_0 = \sqrt{\frac{2g}{L}} = \SI{9.9}{rad.s^{-1}}$ puis $T_0=\frac{2\pi}{\omega_0} = \SI{0.63}{s}$.
+  }
+  \end{quest}
+  
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][3][oral]{Détermination de la densité d'une pastèque}
+	Déterminer la densité de la pastèque ci-dessous.
+\begin{fig}[pasteque]
+	\centering
+	\includegraphics[width=0.5\columnwidth]{pasteque.png}
+	\capt{Photographie d'une pastèque flottant dans une bassine d'eau.}
+\end{fig}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][2][TD]{Les vents géostrophiques}
+  \Notions{\item Statique des fluides \task Force de Coriolis}
+  \Annale[Physique PC]{X}{2002}
+On étudie la dynamique des mouvements atmosphériques dans le référentiel terrestre $\RT$, supposé non galiléen. Le référentiel géocentrique $\RG$ est supposé galiléen. Les masses d'air évoluent dans le champ de pesanteur terrestre $\Vec{g}$. Un cyclone est une zone de basse pression atmosphérique autour de laquelle les masses d'air tournent. On souhaite expliquer le sens de rotation des cyclones, tel que celui observé sur la photographie du cyclone Idai de 2019 ci-dessous [Wikipedia]. 
+\begin{fig}[cyclone]
+  \centering
+  \includegraphics[width=0.4\textwidth]{cyclone_ex}
+  % \capt{}
+\end{fig}
+\begin{quest}
+  \item Décrire le mouvement de $\RT$ par rapport à $\RG$ en s'appuyant sur un schéma. Définir une base cartésienne attachée au référentiel terrestre.
+  \sol{
+    Voir cours sur la dynamique dans le référentiel terrestre.
+    \begin{center}
+      \includegraphics[width=0.5\textwidth]{ref_terrestre_3}
+    \end{center}
+  }
+  % \item Déterminer l'expression de la force volumique de Coriolis $\Vec{f_{\rm c}}$ dans un fluide de masse volumique $\rho$. Pourquoi ne discute-t-on pas de la force d'entraînement ?
+  \item Quel(s) phénomène(s) physique(s) est à l'origine des mouvements verticaux de masse d'air ? 
+  \sol{
+  Les déplacements verticaux sont induits par les différences de température. L'air à basse altitude est plus chaud, car le sol est chauffé par le soleil, tandis que l'air est plus froid à haute altitude. Les reliefs influent également sur les mouvements des masses d'air.
+  }
+\end{quest}
+Dans la suite, on s'intéressera uniquement aux mouvements horizontaux des masses d'air. Une particule de fluide, de vitesse $\vRp = v_x \ex + v_y \ey$ dans $\RT$, se déplace suffisamment lentement aux grandes échelles pour pouvoir appliquer la loi de la statique des fluides. Les vents vérifiant cette condition sont appelés \emph{vents géostrophiques}.
+\begin{quest}
+  \item Montrer par un schéma que dans
+l’hémisphère nord, une masse d'air en mouvement est
+déviée vers sa droite, alors que qu'elle est déviée vers la gauche dans
+l’hémisphère~sud.
+%Commenter alors la phrase de la p.3 : \emph{En raison de cette différence du sens de rotation, tout corps en mouvement sera dévié vers la droite dans l'hémisphère Nord et vers la gauche dans l'hémisphère Sud.}
+
+\sol{
+    On utilise la règle de la main droite pour prédire le sens de $\Fc$.
+\begin{fig}[label]
+    \centering
+    \begin{subfig}[label][0.45]
+        \includegraphics[width=\columnwidth]{./deviation_droite.pdf}
+    \end{subfig}
+    \begin{subfig}[label][0.45]
+        \includegraphics[width=\columnwidth]{./deviation_gauche.pdf}
+    \end{subfig}
+    \capt{(a) Déviation vers la droite dans l'hémisphère nord. (b) Déviation vers la gauche dans l'hémisphère sud.}
+\end{fig}
+}
+
+\item Écrire la loi de la statique des fluides. Avec un minimum de calcul, justifier que les vents géostrophiques se déplacent le long des isobares.
+\sol{
+  L'équation de la \udl{statique des fluides} dans $\RT$ non galiléen donne 
+  $$
+  \grad p = \rho \Vec{g} + \Vec{f}_{\rm C}.
+  $$
+  En projection sur l'horizontale, il reste
+  $$
+  \grad p  =  2 \rho \Vec{v} \pv \Vec{\Omega}_{\rm T}.
+  $$
+  Considérons un élément infinitésimal $\dl$ de la trajectoire d'un vent géostrophique. On a $$\dl \cdot \grad p = \d p = 2 \rho \dl \cdot (\Vec{v} \pv \Vec{\Omega}_{\rm T}).$$ Or $\dl$ est colinéaire à $\Vec{v}$, donc $\dl \cdot (\Vec{v} \pv \Vec{\Omega}_{\rm T}) = 0$. Donc 
+  \eqbox{
+  \d p = 0.
+  } La pression $p$ est constante le long de la trajectoire d'un vent géostrophique, c'est-à-dire que les vents géostrophiques se déplacent le long des isobares.
+}
+
+  \item En déduire, en s'aidant d'un schéma, que les masses d'air tournent dans le sens direct autour d'un cyclone, aussi appelé dépression (zone de pression $p$ faible) dans l'hémisphère nord.  Qu'en est-il dans l'hémisphère sud ? Qu'en est-t-il pour un anticyclone (zone de pression $p$ élevée) ? Le cyclone Idai de la photographie a-t-il été observé dans l'hémisphère nord ou sud ?
+\sol{
+  Pour une dépression, le gradient de pression est dirigé vers l'extérieur de la masse d'air. La force de Coriolis est de même sens que le gradient de pression, et fait dévier la masse d'air vers la droite dans l'hémisphère nord. La masse d'air tourne donc dans le sens direct autour de la dépression.
+  \begin{center}
+    \includegraphics[width=0.3\textwidth]{depression.png}
+  \end{center}
+}
+
+  \item Projeter la loi de la statique des fluides et en déduire l'équation des vents géostrophiques, qui relie la pression $p$ au champ aux composantes de la vitesse $v_x$ et $v_y$.
+  \sol{
+    La force d'inertie d'entraînement contribue au poids, qui est vertical et non n'apparaît pas dans une projection horizontale. Avec $\Vec{\Omega}_{\rm T} = \Omega(\cos \lambda \ey + \sin \lambda \ez)$, la force de Coriolis s'écrit
+    $$
+    \Vec{f}_{\rm C} = 2\rho \Vec{v} \pv \Vec{\Omega}_{\rm T} = 2 \rho \Omega  (v_x \ex + v_y \ey) \pv (\cos \lambda \ey + \sin \lambda \ez) = \frac{4\pi\rho}{T}(v_x \cos \lambda\, \ez - v_x \sin \lambda\, \ey + v_y \sin \lambda\,\ex) ,
+    $$
+    La projection sur l'horizontale de la loi de la statique des fluides donne alors  
+    $$\grad p = \Vec{f}_{\rm C}  = 2\rho \Omega (-v_x \ey + v_y \ex).$$
+    On peut récrire cette équation sous la forme 
+    \eqbox{
+    \left\{
+      \begin{array}{l}
+        \displaystyle\dr{p}{x} = +2\rho \Omega v_y, \\[3mm]
+        \displaystyle\dr{p}{y} = -2\rho \Omega v_x.
+      \end{array}
+    \right.
+    }
+  }
+\end{quest}
+
+
+
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][2][TD]{Force de portance d'une aile d'avion}
+  \Notions{\item Loi de Bernoulli \task Loi de Venturi}
+  La forme des ailes d'avion est choisie de sorte à engendrer une force de portance maximale. On représente ci-dessous l'écoulement autour d'une aile d'avion, supposé parfait, incompressible, et stationnaire. Les lignes de courant représentées sont régulièrement espacées loin de l'aile, où la vitesse de l'air vaut $v_{\infty}$.
+  \begin{fig}[label]
+    \centering
+    \includegraphics[width=0.6\columnwidth]{aile_avion.png}
+    %\capt{}
+  \end{fig}
+  \begin{quest}
+    \item	En analysant les lignes de courant, justifier que la vitesse de l'air est plus grande au-dessus du bord d'attaque de l'aile (extrados) qu'en dessous du bord d'attaque (intrados).
+    \sol{
+    L'écoulement étant incompressible, le débit volumique $\DV$ est conservé le long d'un tube de courant. En notant $\ell$ la largeur entre deux lignes de courant et $e$ la profondeur du tube de courant dans la direction perpendiculaire au plan de la figure, on a $\DV \simeq ve\ell \simeq \cte$. Plus les lignes de courant sont reserrées ($\ell$ petit) et plus la vitesse $v$ est grande. On en conclut que la vitesse est plus grande au niveau de l'extrados que de l'intrados, soit 
+    \eqbox{
+      v_{\rm e} > v_{\rm i}.
+    }
+    }
+    \item On note $v_{\rm i}$ la vitesse au niveau de l'intrados et $v_{\rm e}$ la vitesse au niveau de l'extrados. Estimer numériquement $v_{\rm e}$ et $v_{\rm i}$ à partir de la figure en fonction de $v_{\infty}$.
+    \sol{
+    En mesant la largeur $\ell$ entre les lignes de courant, on trouve, au niveau du bord d'attaque,
+    \eqbox{
+      v_{\rm e} \simeq \SI{1.3}{}v_{\infty} \quad \text{et} \quad v_{\rm i} \simeq \SI{}{}v_{\infty}.
+    }
+    }
+    \item En déduire que la pression $p_{\rm e}$ est plus faible au-dessus du bord d'attaque de l'aile que la pression $p_{\rm  i}$ en dessous. Conclure sur l'existence d'une force de portance qui permet à l'avion de se sustenter.
+    \sol{
+    D'après la relation de Bernoulli, on trouve à altitude $z$ constante,
+    $$
+    p_{\rm e} + \frac{1}{2}\rho v_{\rm e}^2 = p_{\infty} + \frac{1}{2}\rho v_{\infty}^2 =
+    p_{\rm i} + \frac{1}{2}\rho v_{\rm i}^2.
+    $$
+    On retrouve la propriété de l'effet Venturi,
+    \eqbox{
+      p_{\rm e} - p_{\rm i} = \frac{1}{2}\rho (v_{\rm i}^2 - v_{\rm e}^2) < 0.
+    }
+    En intégrant sur toute la section $\Surf$ de l'aile, la résultante des forces de pression conduite donc à une force de portance $\Vec{F}_{\rm p}$ dirigée vers le haut.
+    }
+    \item Estimer la force de portance~$F_{\rm p}$ qui s'exerce sur une aile de surface alaire $S=\SI{845}{m^2}$ pour un Airbus A380 de $\SI{300}{t}$ volant à $\SI{950}{km.h^{-1}}$. Commenter.
+    \sol{
+    On trouve numériquement 
+    $$
+    p_{\rm e} - p_{\rm i} \simeq \frac{1}{2}\rho (v_{\rm i}^2 - v_{\rm e}^2) \simeq \num{0.3} \rho v_{\infty}^2 \simeq \SI{1}{bar}. 
+    $$
+    La force de portance vaut donc 
+    \eqbox{
+      F_{\rm p} \simeq (p_{\rm e} - p_{\rm i}) S \simeq \SI{2e7}{N}.
+    }
+    On peut comparer au poids de l'avion $P = mg = \SI{3e6}{N}$. On voit que 
+    \eqbox{
+      {F_{\rm p}} > P
+    }
+    La force de portance permet bien à l'avion de se sustenter. En réalité, la portance est sur-estimée car les rapports de vitesse sont inversées au niveau du bord de fuite. Il faudrait considérer les vitesses moyennées sur toute la section de l'aile.
+    }
+
+  \end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][2][TD]{La clepsydre}
+  \Notions{\item Relation de bernoulli \task Débit volumique \task Stationnarité approchée}
+  \Annale[Physique BCPST]{G2E}{2007}
+  \Annale[Composition de physique]{Agrégation spéciale}{2023}
+  La clepsydre est un instrument de mesure du temps inventé en Égypte dans l'antiquité et perfectionné par les Grecs vers 270 avant notre ère. Un récipient à symétrie cylindrique est initialement rempli d’un liquide de masse volumique constante $\rho$ sur une
+  hauteur $h_0$. Le  liquide s’écoule par une ouverture de section $s$ à la base du récipient sous l'effet de la pesanteur, d'intensité $g$. Le récipient est de rayon $R(h)$ à la hauteur $h$.
+  De plus, l'écoulement est supposé parfait, incompressible, et stationnaire.
+
+  \begin{fig}
+    % \includegraphics[width=0.3\textwidth]{clepsydre.png}
+    \includegraphics[scale=1]{clepsydre.pdf}
+  \end{fig}
+
+  \begin{quest}
+  \item La section de l'ouverture $s$ est supposée négligeable devant la section de la surface libre  $S$. Que dire de la vitesse de la surface libre $v_A$ par rapport à la vitesse d’écoulement au niveau de l'ouverture $v_B$ ? Cette hypothèse est-elle justifiée sur toute la durée de l'écoulement ?
+  \sol{
+  L’écoulement est incompressible (car la masse volumique $\rho$ est constante) donc le
+  \imp{débit volumique est conservé} le long d'un tube de courant. Comme la vitesse est uniforme sur une section, on trouve ${{\DV}} = sv_B = Sv_A$ et donc
+  \eqbox{v_A = \frac{s}{S} v_B \ll v_B.}
+  Cette hypothèse n'est plus justifiée lorsque le vase est presque vide, car alors $S \simeq s$.
+  }
+  \item Montrer sous cette hypothèse que la vitesse au niveau de l'ouverture $v_B$ vérifie la formule de Torricelli 
+  \begin{equation}
+    v_B = \sqrt{2gh}.
+  \end{equation}
+  \sol{
+  On applique la relation de \imp{Bernoulli} entre un point $A$ de la surface libre et un point $B$ de l’ouverture.
+\udl{Hypothèses} :
+écoulement parfait, stationnaire, incompressible. Le long de la ligne de courant AB, on a
+$$
+\frac{p_A}{\rho} + \frac{v_A^2}{2} + g z_A = \frac{p_B}{\rho} + \frac{v_B^2}{2} + g z_B,
+$$
+soit  $\frac{\rho v_B^2}{2} + p_0 \simeq p_0 + \rho g h $ car $v_A \ll v_B$ et donc
+\eqbox{v_B = \sqrt{2gh}.}
+  }
+  \bonus{
+    Comment est reliée la vitesse de la surface libre $v_A$ à la fonction $h(t)$ ? Si le rayon $R$ de la clepsydre était constant, quelle équation différentielle vérifierait $h(t)$ ? La résoudre. Cette configuration est-elle pratique pour mesurer le temps écoulé ?
+  \sol{Par définition, la vitesse de la surface libre vaut $v_A = -\dd{h}{t}$ en valeur absolue. La relation de conservation du débit volumique donne $sv_B = Sv_A$ et donc $v_A = \frac{s}{S} v_B = \frac{s}{\pi R^2} \sqrt{2gh}$. Si $R$ est constant, on a
+  \eqbox{
+    \dd{h}{t} + \frac{s \sqrt{2g}}{\pi R^2} \sqrt{h} = 0
+  } 
+  L'intégration donne $2\sqrt{h(t)} - 2\sqrt{h_0} = \frac{s \sqrt{2g}}{\pi R^2}  t $, soit 
+  \eqbox{
+  h(t) = h_0\left(1-\frac{t}{\tau}\right)^2  \quad \text{avec} \quad \tau = \frac{\pi R^2}{s} \sqrt{\frac{2h_0}{g}}.
+  }
+   Cette configuration n'est pas pratique pour mesurer le temps écoulé, car la hauteur d'eau $h(t)$ n'est pas une fonction affine du temps.
+  }
+  }
+  \item Pour réaliser une horloge hydraulique, on souhaite que la vitesse de la surface libre $v_A$ soit constante. Que vaut alors la fonction $h(t)$ ? Expliquer alors le fonctionnement de la clepsydre. Que vaut le temps de vidange $\tau$ ? Quelle doit être le profil $R(h)$ du vase, qui donne le rayon $R$ à la hauteur $h$ ? 
+  \bonus{Que doit valoir le rayon $r$ de l'ouverture pour une clepsydre de hauteur $h_0 = \SI{15}{cm}$ et de rayon maximal $R_0 = \SI{25}{cm}$, si l'on souhaite que la hauteur de liquide baisse de $\SI{1}{cm}$ toutes les minutes ?}
+  \sol{
+  Pour réaliser une horloge hydraulique, on doit avoir $v_A = -\dd{h}{t} = \cte$, et donc $h(t) = h_0-v_At$ est une fonction affine du temps. Le temps de vidange vaut alors $\tau = \frac{h_0}{v_A}$. Si $v_A$ est constant, on a $s \sqrt{2gh} = \pi R^2 v_A$ et donc le profil du vase doit vérifier 
+  \eqbox{
+    R(h) = r \left(  \frac{2gh}{v_A^2}\right)^{1/4},
+  }
+  où $s=\pi r^2$ et $r$ est le rayon de l'ouverture. Pour une clepsydre entièrement remplie d'eau de hauteur $h_0 = \SI{15}{cm}$, de rayon maximal $R_0 = \SI{25}{cm}$, et de vitesse de vidange $v_A = \SI{1}{cm.min^{-1}} = \SI{1.7e-4}{m.s^{-1}}$ :
+  \eqbox{
+  r = R_0\left(  \frac{v_A^2}{2gh_0}\right)^{1/4} = \SI{2.5}{mm}.
+  }
+  }
+  % \item Reprendre la question précédente sans supposer que $v_A \ll v_B$.
+  % \sol{
+  
+  %   Sans supposer que $v_A \ll v_B$, la formule de Torricelli est modifiée en 
+  %   $$
+  %   v_B = \frac{\sqrt{2gh}}{1-(s/S)^2}.
+  %   $$
+  %   La conservation du débit volumique donne alors $s \frac{\sqrt{2gh}}{1-(s/S)^2} = S v_A$, et donc
+  %   $$
+  %   -x^2 v_A -x \sqrt{2gh} + v_A = 0,
+  %   $$
+  %   avec $x=s/S$. La racine positive vaut $x = \frac{\sqrt{2gh}}{2} \left(1+\sqrt{1+4v_A^2/2gh}\right) = s/(\pi R^2)$, et donc 
+  %   \eqbox{
+  %   R(h) = R_0 \left(1-\sqrt{1-4v_A^2/2gh}\right)^{1/4}.
+  %   }
+  %   }
+  \bonus{
+  \item À quelle condition est-il légitime de supposer cet écoulement stationnaire ?
+
+  \sol{
+  On compare les accélérations locale et convective au niveau de l’ouverture de la clepsydre.
+  $$
+  \norme{\dr{\Vec{v}}{t}} \sim \frac{v}{\tau} \sim \frac{v v_A}{h_0},
+  $$
+  où $\tau \sim \frac{h_0}{v_A}$ est le temps typique de variation de la vitesse. De plus,
+  $$
+    \norme{(\Vec{v}\cdot \grad \Vec{v}) \Vec{v}} \sim \frac{v^2}{h_0}
+  $$
+  Donc le rapport vaut
+  $$
+    \frac{\norme{\dr{\Vec{v}}{t}} }{\norme{(\Vec{v}\cdot \grad \Vec{v}) \Vec{v}}} \sim \frac{v_A}{v} \sim \frac{s}{S}.
+  $$
+  Il faut donc
+  \eqbox{s \ll S.}
+  }
+  }
+  %\item Reprendre le calcul en tenant compte de la vitesse du fluide à la surface libre.
+  \end{quest}
+
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][colle]{Écoulement autour d'un cylindre}
+  Un écoulement supposé incompressible, permanent et uniforme est caractérisé par le champ des vitesses $\Vec{v}=v_{0}\,\ex$ loin d'un cylindre d'axe $(Oz)$ et de rayon $a$ placé dans l'écoulement.
+  %\begin{figure}[h!]
+  %\centering
+  \begin{center}
+  \includegraphics[width=0.8\textwidth]{colles_cylindre.png}
+  \end{center}
+  %\end{figure}
+  \begin{quest}
+  \item On suppose le cylindre fixe. Déterminer les conditions aux limites pour ce champ de vitesse, puis trouver l'expression du champ des vitesses autour de ce cylindre en superposant à la vitesse uniforme à l'infini, un champ crée par un dipôle source-puits de la forme $\Vec{v}_{\rm{dip}}=\frac{p}{2\pi r^2}\left(\cos\theta\Vec{e_r}+\sin\theta\Vec{e_\theta}\right)$.
+  \item On suppose maintenant que le cylindre est en rotation autour de son axe fixe à la vitesse angulaire $\Omega$. Trouver l'expression du champ des vitesses autour de ce cylindre en superposant, au champ de vitesse obtenu précédemment un champ de type vortex de la forme $\Vec{v}_{\rm{vtx}}=\frac{C\Omega}{r}\Vec{e_\theta}$. Préciser les points d'arrêt.
+  \end{quest}
+  \end{exo}
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  
+
+  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PSI][1][TD]{Le débitmètre}
+  \Notions{\item Relation de bernoulli \task Conservation du débit}
+  % \noindent
+% \begin{minipage}{0.68\textwidth}
+On considère un fluide qui s'écoule dans une canalisation horizontale, représentée ci-dessous.
+L'écoulement est supposé homogène, permanent, parfait et incompressible.
+% \begin{center}
+%   % \includegraphics[scale=0.5]{debit.png}
+% \end{center}
+%
+\begin{center}
+  \includegraphics[scale=1]{debitmetre.pdf}
+\end{center}
+\begin{quest}
+\item En appliquant la relation de bernoulli, déterminer la différence de pression $p_{1}-p_{2}$ entre l'entrée et la sortie du débitmètre.
+
+\sol{
+Avant d'appliquer le théorème de Bernoulli, il faut bien regarder si toutes les hypothèses sont bien vérifiées. Ici, on a un écoulement permanent, incompressible, homogène et parfait. On peut donc appliquer le théorème de Bernoulli entre les points $1$ et $2$, le long d’une ligne de courant horizontale :
+$$
+  p_1 + \frac{1}{2}\rho v_1^2 = p_2 + \frac{1}{2}\rho v_2^2.
+  $$
+  On en déduit 
+  \eqbox{
+  p_1-p_2 = \frac{1}{2}\rho \left(v_2^2-v_1^2\right).
+  }
+}
+\item Justifier pourquoi le débit volumique est conservé. Exprimer $p_1-p_2$ en fonction de la vitesse $v_1$ uniquement.
+
+\sol{
+L’écoulement est \boxed{incompressible}, donc le débit volumique ${{\DV}}=vS$ est conservé.
+On en déduit que $v_1 S_1 = v_2S_2$ et donc $v_2 = v_1 \frac{S_1}{S_2}$, d’où l’on tire 
+\eqbox{
+  p_1-p_2 = \frac{1}{2}\rho v_1^2 \left(\left(\frac{S_1}{S_2}\right)^2-1\right).
+}
+}
+
+\end{quest}
+% \end{minipage}\hfill
+% \begin{minipage}{0.29\textwidth}
+
+% \end{minipage}
+% \caption{Birds}
+
+
+\begin{quest}
+\item On note $p_0$ la pression atmosphérique, qui règne au niveau de la surface libre du liquide. Soit $h$ la différence de hauteurs du liquide entre l'amont et l'aval. Déterminer $v_1$ en fonction de $h$, $g$ et des surfaces $S_1$ et $S_2$, puis en déduire l'expression du débit volumique ${{\DV}}$.
+
+\sol{
+La loi de la statique fluide donne $p_1-p_2=\rho g h$ d'où $v_1 = \sqrt{\dfrac{2 g h}{(S_1/S_2)^2-1}}$ puis ${{\DV}}=S_1v_1$, soit 
+\eqbox{
+{{\DV}} = S_1 \sqrt{\frac{2 g h}{\left(\frac{S_1}{S_2}\right)^2-1}}.
+}
+}
+
+\item Si $S_2 < S_1$, comparer les pressions à l'entrée et à la sortie de la canalisation. Quel nom donne-t-on à cet effet ?
+
+\sol{
+  On voit que si $S_2 < S_1$, \fbox{$p_2<p_1$} donc un rétrécissement du conduit induit une dépression. Il s’agit de \fbox{l’effet Venturi}.
+}
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1]{Vidange d'un tube coudé}
+Un tuyau fixe coudé de section $s=\cte$ est constitué de deux portions de même longueur $L$, l'une horizontale et l'autre verticale. Le tuyau est initialement rempli d'eau, de masse volumique constante $\rho$. À l'instant $t=0$, on ouvre les deux bouchons. L'écoulement est supposé parfait, et le champ de pesanteur $\vec{g}=-g\,\vec{e}_z$ est uniforme.
+\begin{center}
+\includegraphics[width=0.32\textwidth]{vidange_coude.pdf}
+\end{center}
+\begin{quest}
+\item Modéliser l'écoulement dans chaque portion de tube. Peut-on utiliser le théorème de Bernoulli ? Justifier.
+\item Déterminer l'équation différentielle vérifiée par la hauteur d'eau $h(t)$ dans le tube vertical.
+\item En déduire la vitesse d'éjection de l'eau au moment où le tube vertical est vide. Indication: $\frac{h}{L+h}=1-\frac{L}{L+h}$.
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][devoir]{Effet de masse entraînée -- étude complète}
+  \Enonce{
+Lorsqu'une bulle de champagne sphérique de rayon $a(t)$ et de centre B migre vers la surface libre, elle subit de la part du liquide environnant des forces qui ne peuvent pas être modélisées uniquement par une poussée d'Archimède et une force de frottement fluide car sa vitesse $U(t)$ et son rayon $a(t)$ dépendent du temps. On adopte le modèle suivant:
+\begin{itemize}
+\item le référentiel $(\mathcal{R}_{\rm{O}})$ associé au repère $(\text{O}xyz)$ du verre dans lequel la vitesse de la bulle est $U(t)\,\vec{e}_z$ est galiléen;
+\item on étudie le mouvement du champagne liquide autour de la bulle dans le référentiel barycentrique $(\mathcal{R}_{\rm{B}})$ associé au repère $(\text{B}xyz)$. On note $\vec{v}(M,t)$ le champ des vitesses dans le référentiel $(\mathcal{R}_{\rm{B}})$ où $M$ est repéré en sphériques par $(r,\theta,\varphi)$ de centre B;
+\item l'écoulement du champagne autour de la bulle est supposé parfait et on néglige la pesanteur, il est aussi supposé incompressible et irrotationnel, décrit par le potentiel des vitesses $\phi(M,t)$ tel que $\vec{v}=\grad{\phi}$, et on cherche un potentiel des vitesses selon
+\begin{equation}
+\phi=\frac{\alpha(t)}{r}+\frac{\beta(t)\cos\theta}{r^2}+\gamma(t)\,r\cos\theta.
+\end{equation}
+\end{itemize}
+  }
+\begin{quest}
+\QR {Exprimer les composantes $v_r$, $v_\theta$, $v_\varphi$ du champ des vitesses en fonction de $\alpha$, $\beta$, $\gamma$, $r$, $\theta$.}
+{ On utilise la définition du potentiel des vitesses,
+$$\Vec{v} = \Grad{\phi},$$ soit
+\eqbox{
+  \left\{\displaystyle
+    \begin{array}{ll}
+      v_r & = \dr{\phi}{r} =  -\frac{\alpha(t)}{r^2} - \frac{2\beta(t) \cos\theta}{r^3} -U\cos\theta, \\
+      v_\theta & = \frac{1}{r} \dr{\phi}{\theta} = -\frac{\beta(t) \sin(\theta)}{r^3} +U \sin\theta, \\
+      v_\varphi & = \frac{1}{r\sin\theta} \dr{\phi}{\varphi}  = 0.
+    \end{array}
+    \right.
+    }
+}
+
+\QR {En exploitant le fait que loin de la bulle de gaz, le champagne est au repos dans le référentiel $(\mathcal{R}_{\rm{O}})$ lié au verre, exprimer $\gamma(t)$ en fonction de $U(t)$.}
+{
+  Le champ de vitesse de l’écoulement vaut $-U\ez$ à l’infini, et donc par continuité de la vitesse, 
+  $$\phi(r=\infty)= -Uz = -Ur\cos\theta,$$ ce qui donne le coefficient
+  \eqbox{
+    \gamma(t)=-U(t).
+    }
+}
+
+
+\QR {Sur la bulle, la condition aux limites s'écrit $v_r(r=a(t),\theta)=\dot{a}(t)$; en revanche il n'y a aucune condition sur la composante $v_\theta$ car l'écoulement est supposé parfait. En déduire les expressions de $\alpha$ et $\beta$ en fonction de $a(t)$, $\dot{a}(t)$ et $U(t)$. Vérifier alors qu'à la surface de la bulle en $r=a(t)$, on a
+% \eqbox{
+\begin{equation}
+  v^2=\dot{a}^2(t)+\dfrac{9}{4}U^2(t)\sin^2(\theta).
+\end{equation}}
+{
+  Dans un écoulement, la vitesse normale est continue au niveau d’une paroi imperméable, et donc 
+$$v_r(r=a(t),\theta)=\dot{a}(t)$$
+ est égale à la vitesse de déplacement de la paroi de la bulle. Aucune condition ne porte sur la composante $v_\theta$, car l'écoulement est supposé parfait. Or
+ $$v_r(r=a(t),\theta)= \frac{\alpha(t)}{a^2} - \frac{2\beta(t) \cos\theta}{a^3} -U(t)\cos\theta = \frac{\alpha(t)}{a^2}  - \cos\theta\left[ \frac{2\beta(t) }{a^3} +U(t) \right] = \dot{a}(t) \,\forall \theta.$$ 
+ Cette condition impose donc
+ \eqbox{
+ \alpha(t) = \dot{a}(t) a^2 \quad \text{et} \quad \beta(t) = -\frac{a^3}{2}U(t).
+ }
+ Le champ des vitesses a donc pour expression 
+ $$
+  \Vec{v}(r,\theta) = \dot{a}(t) \frac{a^2}{r^2} \er + U(t)\cos\theta \left[\frac{a^3 }{r^3} - 1 \right]\er + U(t) \sin\theta \left[-\frac{a^3 }{2 r^3} +  1 \right] \et.
+ $$
+ On calcule ensuite la norme carrée de la vitesse en $r=a(t)$,
+ $$
+ v^2 = v_r(r=a(t))^2 + v_\theta(r=a(t))^2 = \dot{a}^2(t) + U^2(t) \sin^2( \theta) \left[-\frac{a^3 }{2 a^3} +  1 \right]^2.
+  $$
+  On a bien 
+  \eqbox{
+    v^2=\dot{a}^2(t)+\dfrac{9}{4}U^2(t)\sin^2(\theta).
+  }
+}
+
+
+\QR {Quelle est l'expression de la force volumique d'inertie dans le référentiel $(\mathcal{R}_{\rm{B}})$ lié à la bulle ? Montrer que cette force dérive d'une énergie potentielle volumique dont on donnera l'expression.}
+ {Pour une particule fluide de masse $\d m$, la force d’entrainement s’écrit
+$$ \d \Fe = -\d m \Vec{a}_e = -\d m \dot{U}(t) \ez = -\rho \d V \dot{U}(t) \ez,$$  soit $\Vec{f}_{\rm \! e} = -\rho \dot{U}(t) \ez = -\Grad{e_{\rm p}}$ avec l’énergie potentielle volumique
+\eqbox{
+  e_{\rm p} = \rho \dot{U}(t) z = \rho \dot{U}(t) r \cos\theta.
+}
+}
+\QR {Montrer que la grandeur
+$p+\rho \dot{U}r\cos\theta+\dfrac{1}{2}\rho v^{2}+\rho\dfrac{\partial \phi}{\partial t}$
+prend la même valeur en tout point de l'espace.}
+{
+  On souhaite ici généraliser la relation de Bernoulli aux écoulements instationnaires en présence d’une force d’inertie à la place de la pesanteur. On part de l’équation d’Euler dans le référentiel $(\mathcal{R}_{\rm{B}})$,
+  $$\dr{\Vec{v}}{t} + (\Vec{v}\cdot \Grad)\Vec{v} = -\frac{1}{\rho} \Grad{p}  - \dot{U}(t) \ez.$$
+  En utilisant l’expression de la force d’inertie d’entrainement, on a
+  $$\dr{\Vec{v}}{t} + (\Vec{v}\cdot \Grad)\Vec{v} = -\frac{1}{\rho} \Grad{p} + \Vec{g} + \frac{1}{\rho} \Grad{e_{\rm p}}.$$
+  Or l’écoulement est supposé irrotationnel, donc on peut utiliser l’identité vectorielle
+  $$(\Vec{v}\cdot \Grad)\Vec{v} = \Grad{\left(\frac{v^2}{2}\right)} - \Vec{v} \wedge (\rot{\Vec{v}}) = \Grad{\left(\frac{v^2}{2}\right)}.$$
+  De plus, on a $\dr{\Vec{v}}{t} = \Grad{\left(\dr{\phi}{t}\right)}$. On en déduit
+  $$\Grad{\left(\dr{\phi}{t} + \frac{v^2}{2} + \frac{p}{\rho} + \frac{e_{\rm p}}{\rho}  \right)} = \Vec{0},$$ soit
+  \eqbox{
+    p+\rho \dot{U}r\cos\theta+\dfrac{1}{2}\rho v^{2}+\rho\dfrac{\partial \phi}{\partial t} = f(t),
+  }
+  où $f$ est une fonction du temps uniquement.
+}
+
+\QR {En exploitant les résultats précédents, on montre (travail non demandé) que la pression en un point de la surface de la bulle est de la forme
+\begin{equation}
+p=h(t)+\frac{\cos\theta}{a^2}\dd{}{t}\left(\frac{\rho a^3 U}{2}\right)-\frac{9}{8}\rho U^2\sin^2\theta,
+\end{equation}
+où $h(t)$ et une fonction du temps qu'il n'est pas nécessaire d'expliciter. On cherche l'expression de la résultante des forces de pression $\vec{F}$ subies par la bulle.}{
+  % En exercice, voici comment démontrer cette équation. On considère une ligne de courant qui part d’un point $\rm A$ sur la bulle et qui se termine en un point $\rm B$ à l’infini sur l’axe $(Oy)$. On applique la relation de Bernoulli généralisée entre les points $\rm A$ et $\rm B$,
+  % $$p_A + \rho \dot{U} r_A \cos\theta_A + \frac{1}{2}\rho v_A^2 + \rho \dr{\phi_A}{t} = p_B + \rho \dot{U} r_B \cos\theta_B + \frac{1}{2}\rho v_B^2 + \rho \dr{\phi_B}{t}.$$
+  % À l’infini, le fluide est au repos dans le référentiel $(\mathcal{R}_{\rm{O}})$, donc $p_B = p_0$ (pression atmosphérique), $v_B=U$, et $\phi_B = $. On en déduit
+}
+\begin{enumerate}
+\QR {En utilisant par exemple la correspondance entre les coordonnées cartésiennes et sphériques, montrer que $\vec{F}$ est seulement portée par $\vec{e}_z$.}
+{
+La force de pression s’obtient par intégration sur la surface $S$ de la bulle,
+$$\Vec{F} = \iint_S p(M) \dS = a^2(t)  \iint_S p(M) \sin \theta \d \theta \d \vphi \,\er.
+$$
+La projection sur l’axe $(Ox)$ donne 
+$$
+F_x = \Vec{F} \cdot \ex =  a^2(t)  \iint_S p(M) \sin \theta \d \theta \d \vphi \,(\sin\theta \cos\varphi) \propto \int_0^{2\pi} \cos\varphi \, \d \varphi = 0.
+$$
+De même, on trouve $F_y=0$ et donc
+\eqbox{
+  \Vec{F} = F_z \ez.
+  }
+
+}
+
+\QR {Calculer $F_z$.}
+{
+La force de pression s’obtient par intégration sur la surface $S$ de la bulle,
+\begin{multline*}
+F_z = a^2(t) \iint_S p(M)  \sin \theta \d \theta \d \varphi \cos \theta = 2\pi a^2(t) \int_0^\pi p(M)  \sin \theta \cos \theta  \d \theta \\ = 2\pi a^2(t) h(t) \underbrace{\int_0^\pi \sin \theta \cos(\theta) \d \theta }_{0} +  \pi R^3 \rho \dot{U} (t) \underbrace{\int_0^\pi \sin \theta \cos^2(\theta) \d \theta }_{-\int_1^{-1} u^2 \d u = \frac{2}{3}}  \\ -\frac{9}{4}\rho R^2 U(t)^2  \underbrace{\int_0^\pi \sin^3(\theta) \cos(\theta) \d \theta}_{0},
+\end{multline*}
+soit 
+\eqbox{
+ F_z  = \frac{2}{3}\pi a^3 \rho {\dot{U}(t)}.
+}
+On a donc $K=\frac{1}{2}$ pour la sphère. Pour le cylindre, $K=1$.
+}
+
+\QR {Vérifier que cette force peut s'interpréter comme la variation de quantité de mouvement par unité de temps d'un système fictif que l'on précisera. Commenter.}
+{
+  On peut mettre la résultante de cette force sous la forme
+  $$
+    \Vec{F} = K \dd{}{t}\left( m_{\rm f} \Vec{U} \right),
+  $$
+  où $m_{\rm f} = \rho \frac{4}{3}\pi a^3$ est la masse du fluide déplacé par la bulle, et $K$ est une facteur géométrique qui vaut $K=\frac{1}{2}$ pour une sphère. Cette force peut donc s’interpréter comme la variation de quantité de mouvement par unité de temps d’un système fictif constitué par la masse de fluide déplacée par la bulle, multipliée par un facteur géométrique $K$. Cela traduit le fait que la bulle doit entraîner une partie du fluide environnant pour se déplacer, ce qui augmente sa masse inerte d’une quantité $K m_{\rm f}$.
+}
+\end{enumerate}
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][devoir]{La circulation sanguine}%{2}
+  % \Annale[Physique PC]{E3A}{2022}
+  \Enonce{
+\includegraphics{CCP2017pg_0002.pdf}
+\includegraphics{CCP2017pg_0003.pdf}
+
+\includegraphics{CCP2017pg_0004.pdf}
+  }
+
+\subsection{Généralités}
+\begin{quest}
+\QR {Calculer le volume de sang qui circule chaque minute dans le système vasculaire. Vérifier qu'il correspond, environ, aux cinq litres de sang contenus dans un corps adulte.}
+{
+Le volume de sang mis en circulation chaque seconde est de $80$ cm$^{3}$, donc chaque minute un volume de  $60 \times 80 = 4800$ cm$^{3}$ = $4.8$ L, proche de $5$ L, circule dans le corps d'un adulte.
+}
+\QR {En considérant que le côté droit du cœur développe une puissance mécanique de $\SI{0.2}{W}$, vérifier que la puissance mécanique massique totale du cœur est de $\SI{5}{W.kg^{-1}}$. On pourra notamment s'appuyer sur une analyse dimensionnelle.}
+{
+La puissance mécanique de la partie droite, pour faire circuler le sang dans les poumons, est $P_{d}=0.2$ W d'après l'énoncé. La partie gauche développe quant à elle un travail (de force de pression) $W=p.\Delta V=16.10^3*80.10^{-6}\approx 1,3$ J en une seconde pour envoyer le sang dans le corps, ce qui correspond à une puissance $P_{g}=1,3$ W. La puissance totale est donc $P_{tot}=1,48$ W. Si on divise par la masse du c\oe ur ($m=0,3$ kg), on obtient une puissance massique de 5 W.kg$^{-1}$, ce qui correspond à la valeur indiquée.
+
+}
+\QR {En physiologie, on estime qu'environ $\SI{10}{\%}$ de l'énergie reçue par un muscle est convertie en travail mécanique. À quoi peuvent correspondre les $\SI{90}{\%}$ restants ?}
+{
+Les $90$ \% d'énergie restants servent à alimenter le muscle, c'est à dire à maintenir/développer les tissus qui le constituent, et à permettre leur fonctionnement. Une partie est également dissipée sous forme thermique, pour maintenir le corps à 37\degres C.
+
+}
+\QR {Préciser la relation reliant le nombre de vaisseaux $N$ à leur rayon $a$. Cette relation correspond à la loi expérimentale de Murray.}
+{
+D'après le figure $2$, on peut extraire la dépendance $\mathrm{log} (N) = 10 + p \times \mathrm{log} (a)$ avec $p= -\dfrac{10}{3.74}$, pente de la droite représentative des données. Cette expression peut se réécrire $\mathrm{log}\left( \dfrac{N}{a^{p}}\right) = 10$. On obtient ainsi:
+\resm{N=10^{10}a^{-10/3.74}}
+}
+\QR {Estimer la vitesse moyenne du sang dans l'artère aorte.}
+{
+Le débit volumique $D_{v}$ s'exprime selon $D_{v}=v_{\mathrm{moy}}S_{\mathrm{artère}}$ dans l'artère aorte. Avec $D_{v}=80.10^{-6}$ m$^{3}$.s$^{-1}$ et  $S_{\mathrm{artère}}=\pi a^{2}$:
+\resm{v_{\mathrm{moy}}=\dfrac{D_{v}}{S_{\mathrm{artère}}}=\dfrac{80.10^{-6}}{\pi \times (5.10^{-3})^{2}} = 1.0 \mathrm{m.s}^{-1}}
+
+}
+\end{quest}
+
+\subsection{Loi de Poiseuille}
+\Enonce{
+On considère l'écoulement stationnaire d'un fluide incompressible de masse volumique $\rho$ et de viscosité $\eta$ dans un tuyau cylindrique immobile dans le référentiel d'étude galiléen, centré sur l'axe horizontal $(Ax)$ de vecteur unitaire $\ex$, de section circulaire de rayon $a$ et de longueur $L$. Nous sommes alors en présence d'un écoulement de Poiseuille cylindrique. La pression à l'entrée du tube est $p(x=0)=p_A$ et $p(x=L)=p_B$ à la sortie. Le champ des vitesses est de la forme $\Vec{v}(M) = v(r)\ex$. Par ailleurs, un élément de fluide limité par ne partie du cylindre d'axe $(Ax)$ et de rayon $r$, de surface latérale $\Sigma(r)$  est soumis de la part du fluide situé entre les rayons $r$ et $a$ à la force de viscosité $\Vec{F} = \eta \dd{v}{r} \Sigma(r) \ex$. On négligera les effets de pesanteur.
+
+\begin{fig}
+\includegraphics[scale=0.3]{poiseuille.png}
+\capt{Loi de Poiseuille pour un tube cylindrique.}
+\end{fig}
+}
+
+\begin{quest}
+  \QR {Pourquoi choisit-on des pressions en entrée et en sortie différentes pour décrire l'écoulement.}
+  {
+  L'introduction de pressions différentes en $A$ et $B$ est cohérent avec une bonne description de l'effet du cœur, qui en imposant une différence de pression, met le sang en mouvement.
+
+  }
+  \QR {L'équation locale de la dynamique, ou équation de Navier-Stokes, pour les fluides incompressibles, est
+  $$
+  \rho \dr{\Vec{v}}{t} + \rho (\Vec{v} \p \grad) \Vec{v} = \Vec{f}_{\rm vol} - \grad p + \eta \Delta \Vec{v}.
+  $$
+  Donner la signification des différents termes de cette équation.}
+  {
+  \begin{enumerate}
+  \item[$\bullet$] $\rho \dfrac{\partial \overrightarrow{v}}{\partial t}$: accélération volumique locale d'une particule de fluide. Elle traduit le changement de vitesse d'une particule de fluide, dû au caractère non stationnaire de l'écoulement.
+  \item[$\bullet$] $\rho \left( \overrightarrow{v}. \overrightarrow{\mathrm{grad}}\right)  \overrightarrow{v}$: accélération volumique convective d'une particule de fluide. Ce terme traduit la variation de vitesse de la particule de fluide induite par une inhomogénéité spatiale du champ des vitesses.
+  \item[$\bullet$] $- \overrightarrow{\mathrm{grad}} p$: résultante volumique des forces de pressions exercées par le fluide.
+  \item[$\bullet$] $\eta \Delta \overrightarrow{v}$: résultante volumique des forces de viscosité.
+  \item[$\bullet$] $\overrightarrow{f}_{\mathrm{vol}}$: autres forces volumiques (par exemple la contribution du poids).
+  \end{enumerate}
+  }
+
+  \QR {À quelle condition l'écoulement peut-il être considéré comme laminaire ? Tester cette condition pour l'écoulement dans l'artère aorte en considérant une viscosité dynamique de $\SI{e-3}{Pa.s}$ et une masse volumique de $\SI{e3}{kg.m^{-3}}$.Commenter.}
+  {L'écoulement est considéré laminaire si le nombre de \textsc{Reynolds} $Re=\dfrac{Lv\rho}{\eta}$ est inférieur à $1$. Ici, $L=a=5.10^{-3}$ m, $v \sim 1 $ m.s$^{-1}$, $\rho=10^{3}$ kg.m$^{-3}$ et $\eta=10^{-3}$ Pa.s, d'où:
+  L'écoulement est considéré laminaire si le nombre de \textsc{Reynolds} $Re=\dfrac{Lv\rho}{\eta}$ est inférieur à $1$. Ici, $L=a=5.10^{-3}$ m, $v \sim 1 $ m.s$^{-1}$, $\rho=10^{3}$ kg.m$^{-3}$ et $\eta=10^{-3}$ Pa.s, d'où:
+  \eqbox{Re=\dfrac{5.10^{-3} \times 1 \times 10^{3} }{10^{-3}}=5.10^{3} \gg 1}
+
+  L'écoulement du sang ne peut pas être considéré comme laminaire (on considère en général qu'il faut $Re\lesssim 2000$) dans l'artère aorte. Il faut noter que ce résultat n'est pas du tout généralisable à l'ensemble du système sanguin, constitué de manière très majoritaire de vaisseaux bien plus petits (tableau 1), pour lesquels le nombre de \textsc{Reynolds} est bien plus faible, ce qui peut justifier la suite de l'étude.
+
+  }
+
+  \QR {D'après les premiers éléments descriptifs de l'écoulement de Poiseuille cylindrique, simplifier l'équation de Navier-Stokes.}
+  {
+  On peut se placer en coordonnées cylindriques $(r, \theta, x)$. On a:
+  \begin{itemize}
+  \item $\overrightarrow{v}$ ne dépend pas de $t$, donc $\dfrac{\partial \overrightarrow{v}}{\partial t} = \overrightarrow{0}$
+  \item $\left(\overrightarrow{v}.\overrightarrow{\mathrm{grad}} \right) \overrightarrow{v} = \left( v_{r}\dfrac{\partial}{\partial r} + \dfrac{v_{\theta}}{r}\dfrac{\partial}{\partial \theta} + v_{x} \dfrac{\partial }{\partial x}\right)\overrightarrow{v}=v_{x} \dfrac{\partial \overrightarrow{v} }{\partial x}=\overrightarrow{0}$
+  \item $\overrightarrow{f}_{vol}=\overrightarrow{0}$ car tout autre force que la résultante des forces de pression et de viscosité est négligée
+  \end{itemize}
+  Ainsi, l'équation de \textsc{Navier-Stokes} se réécrit de manière simplifiée selon:
+  \eqbox{\overrightarrow{\mathrm{grad}}p=\eta \Delta \overrightarrow{v}}
+
+  \emph{Remarque : l'expression du gradient en cylindrique manque dans l'énoncé pour calculer le terme convectif. Cependant, l'énoncé impose une forme d'écoulement particulière, en cisaillement : $\vv v(M)=v(r)\ex$. C'est donc, de fait, un écoulement laminaire, pour lequel le terme convectif peut être négligé (il est en fait même nul, ce qui est un peu contradictoire avec la valeur du nombre de \textsc{Reynolds} trouvé...).}
+  }
+\end{quest}
+
+\Enonce{
+Pour définir la loi d'évolution $v(r)$, il faut préciser le terme $\eta \Delta \Vec{v}$. Pour cela, il nous faut retrouver la densité volumique des forces de viscosité en calculant la résultante des forces de viscosité sur une particule de fluide possédant la forme suivante.
+
+\begin{fig}
+\includegraphics[scale=0.3]{part_fluide.png}
+\capt{Particule de fluide.}
+\end{fig}
+}
+
+\begin{quest}
+  \QR {Déterminer les expressions de la force de viscosité $\Vec{\d F}_+$ appliquée sur la face supérieure de la surface latérale $\Sigma(r+\d r)$ et de la force de viscosité $\Vec{\d F}_-$ appliquée sur la face supérieure de la surface latérale $\Sigma(r)$. Montrer que la résultante des forces de viscosité qui s'exercent sur la particule de fluide est donc : $\Vec{\d F}_{\rm visc} = \eta \dd{}{r}\pa{r\dd{v}{r}} \d \theta\d x \d r \ex$. En déduire la densité volumique des forces de viscosité $\Vec{f}_{\rm visc}$.}
+  {
+  On a:
+  \begin{align*}
+  d\overrightarrow{F}_{+} &=\eta \dfrac{dv}{dr}(r+dr) \Sigma(r+dr) \overrightarrow{e}_{x}\\
+  d\overrightarrow{F}_{-} &=-\eta \dfrac{dv}{dr}(r) \Sigma(r) \overrightarrow{e}_{x}
+  \end{align*}
+  d'où
+  \begin{equation*}
+  d\overrightarrow{F}_{visc}=d\overrightarrow{F}_{+}+d\overrightarrow{F}_{-}=\eta \left[ \dfrac{dv}{dr}(r+dr) \Sigma(r+dr) - \dfrac{dv}{dr}(r) \Sigma(r)\right] \overrightarrow{e}_{x}=\eta \dfrac{d}{dr}\left[ \dfrac{dv}{dr}(r)\Sigma(r) \right] dr \overrightarrow{e}_{x}
+  \end{equation*}
+  or $\Sigma(r)=rd\theta dx$, d'où: $d\overrightarrow{F}_{visc}=\eta \dfrac{d}{dr}\left[ \dfrac{dv}{dr}(r)r \right] dr d\theta dx \overrightarrow{e}_{x}$. Or le volume de la tranche de fluide prise entre les rayons $r$ et $r+dr$ est $d\tau = r d\theta dr dx $, d'où l'expression de la force volumique de viscosité:
+  \eqbox{\overrightarrow{f}_{v,visc}=\dfrac{d\overrightarrow{F}_{visc}}{d\tau}=\dfrac{\eta}{r} \dfrac{d}{dr} \left\lbrace r\dfrac{dv}{dr} \right\rbrace \overrightarrow{e}_{x}}
+
+  }
+  \QR {La pression dépend-elle de la variable $\theta $ ? Projeter l'équation de Navier-Stokes et montrer que  le champ de pression est égal à $p(x) = p_A - (p_A-p_B)x/L$ et que $v(r) = \frac{p_A-p_B}{4\eta L}(a^2-r^2)$.}
+  {
+  La pression ne dépend pas de la variable $\theta$ car il y a une invariance par rotation autour de l'axe
+  $\overrightarrow{e}_{x}$, donc $\overrightarrow{\mathrm{grad}} p = \dfrac{\partial p}{\partial x} \overrightarrow{e}_{x}$. En reprenant l'équation de la question Q8, on aboutit à:
+  \begin{equation*}
+  \dfrac{\partial p}{\partial x} \overrightarrow{e}_{x} = \eta \Delta \overrightarrow{v}
+  \end{equation*}
+  soit d'après la question 10:
+  \begin{equation*}
+  \dfrac{\partial p}{\partial x} \overrightarrow{e}_{x} = \dfrac{\eta}{r} \dfrac{d}{dr} \left\lbrace r\dfrac{dv}{dr}(r) \right\rbrace \overrightarrow{e}_{x}
+  \end{equation*}
+  Les termes respectivement à droite et à gauche de l'égalité ne dépendent pas de la même variable ($x$ et $r$ respectivement). La seule solution possible est que chacun de ces deux termes soit égal à une même constante $A$ ce qui induit
+  \begin{align}
+  \dfrac{dp}{dx}&=A \\
+  \dfrac{\eta}{r}\dfrac{d}{dr}\left( r \dfrac{dv}{dr}\right)&=A
+  \end{align}
+  D'après l'équation (1), $A$ correspond au taux d'accroissement de la pression par unité de longueur et s'exprime donc d'après les données selon $A=\dfrac{P_{B}-P_{A}}{L}$. On en déduit avec $P(x=0)=P_{A}$ et $P(x=L)=P_{B}$:
+  \resm{P(x)=P_{A}+\dfrac{P_{B}-P_{A}}{L}x}
+  L'équation (2) conduit quant à elle successivement à:
+  \begin{align*}
+  \dfrac{d}{dr}\left( r \dfrac{dv}{dr}\right)&=\dfrac{A}{\eta}r\\
+  r \dfrac{dv}{dr}&=\dfrac{A}{2\eta}r^{2}+B\\
+  \dfrac{dv}{dr}&=\dfrac{A}{2\eta}r+\dfrac{B}{r}\\
+  v(r)&=\dfrac{A}{4\eta}r^{2}+B\mathrm{ln}(r)+C
+  \end{align*}
+  $B$ ne peut être que nul sinon $v(r)$ diverge quand $r\rightarrow 0$, ce qui est absurde. De plus, l'écoulement est visqueux, donc la composante tangentielle du champ des vitesses s'annule sur les parois, soit $v(r=a)=0$ ce qui entraîne $C=-\dfrac{A}{4\eta} a^{2}$. Ainsi, $v(r)=\dfrac{A}{4\eta}\left( r^{2}-a^{2}\right) $, soit en reprenant l'expression de $A$:
+  \eqbox{v(r)=\dfrac{P_{A}-P_{B}}{4\eta L}\left( a^{2}-r^{2}\right)}
+  }
+
+  \QR {Donner l'expression du débit volumique $D_v$ de cet écoulement. En expliquant l'analogie avec la résistance électrique, montrer que la résistance hydraulique du tuyau vaut $R_H = \frac{8 \eta L}{\pi a^4}$.}
+  {
+  Le débit volumique s'exprime comme $D_{v}=\iint_{\mathrm{section}}\overrightarrow{v}.d\overrightarrow{S}$
+  ("section" désigne ici la section du vaisseau). On a $\overrightarrow{v}=v(r)\overrightarrow{e}_{x}$ et $d\overrightarrow{S}=rd\theta dr \overrightarrow{e}_{x}$, ainsi:
+  \begin{align*}
+  D_{v}&=\int_{r=0}^{a} \int_{\theta=0}^{2\pi}v(r) rd\theta dr \\
+  &=2\pi\dfrac{\left( P_{A}-P_{B} \right)}{4\eta L} \int_{r=0}^{a} \left( a^{2}r -r^{3} \right) dr\\
+  &=\dfrac{\left( P_{A}-P_{B} \right)\pi}{2\eta L}  \left( a^{2}\dfrac{a^{2}}{2} - \dfrac{a^{4}}{4} \right)
+  \end{align*}
+  soit
+  \eqbox{D_{v}=\dfrac{\left( P_{A}-P_{B} \right)\pi a^{4}}{8\eta L} }
+
+  En électrocinétique, la tension $U$ pour un conducteur ohmique vérifie $U=V_{A}-V_{B}=R_{\mathrm{élec}}i$, où $i$ est un débit de charge. Par analogie on peut poser ici $P_{A}-P_{B}=R_{\mathrm{H}}D_{v}$, d'où:
+  \eqbox{R_{H}=\dfrac{P_{A}-P_{B}}{D_{v}}=\dfrac{8\eta L}{\pi a^{4}}}
+  }
+  \QR {Justifier l'expression de la résistance hydraulique de l'ensemble du système vasculaire $R_{\rm tot}$.}
+  {
+  La figure 3 permet de constater que le système sanguin correspond à une association de résistances hydrauliques en série et en parallèle, et plus précisément à un système de ($N_{a}$ artères en parallèle, chacune de résistance $R_{a}$) mis en série avec un système de ($N_{c}$ artères en parallèle, chacune de résistance $R_{c}$). On a ainsi $R_{\mathrm{tot}}=\dfrac{R_{a}}{N_{a}}+\dfrac{R_{c}}{N_{c}}$ avec $R_{a}=\dfrac{8\eta L_{a}}{\pi r_{a}^{4}}$ et $R_{c}=\dfrac{8\eta L_{c}}{\pi r_{c}^{4}}$. Soit:
+  \eqbox{R_{\mathrm{tot}}=\dfrac{8\eta}{\pi}\left\lbrace \dfrac{L_{a}}{N_{a}r_{a}^{4}} + \dfrac{L_{c}}{N_{c}r_{c}^{4}} \right\rbrace}
+  ce qui correspond bien à l'expression donnée dans l'énoncé.
+
+  }
+\end{quest}
+
+\subsection{La loi de Murray}
+\Enonce{
+On suppose que l'organisme dispose d'un volume $V_0$ donné de tissus pour réaliser les parois du système vasculaire et que l'épaisseur $e$ d'un vaisseau est proportionnelle à son rayon extérieur $r$ : $e=\alpha r$ avec $\alpha \ll 1$.
+}
+\begin{quest}
+  \QR {Exprimer $V_0$ en fonction de $N_a$, $L_a$, $r_a$, $N_c$, $L_c$, $r_c$ et $\alpha$. En exprimant que le système circulatoire se construit en utilisant une quanttité minimale et donc un volume $V_0$ minimal de tissus, déterminer $\dd{r_c}{r_a}$ en fonction de $N_a$, $L_a$, $r_a$, $N_c$, $L_c$, $r_c$.}
+  {
+  On a tout d'abord $V_{0}=N_{a}V_{a}+N_{c}V_{c}$ avec $V_{a}$, $V_{c}$, volumes de tissu dû aux parois des artères et des capillaires respectivement. $V_{a}$ correspond donc au volume compris entre deux cylindres de même axe, de longueur $L_{a}$ et de rayons respectifs $r_{a}$ et $r_{a}+e$. Ainsi $V_{a}\sim 2\pi r_{a}eL_{a}=2\pi\alpha r^{2}_{a}L_{a}$ (dans la mesure où $e<<r_{a}$). De même $V_{c}\sim 2\pi\alpha r^{2}_{c}L_{c}$, soit:
+  \eqbox{V_{0}=2\pi \alpha\left\lbrace N_{a}L_{a}r^{2}_{a}+N_{c}L_{c}r^{2}_{c} \right\rbrace }
+
+  Différencions l'expression ci-dessus, soit $dV_{0}=2\pi\alpha\left\lbrace  2N_{a}L_{a}r_{a}dr_{a} + 2N_{c}L_{c}r_{c}dr_{c} \right\rbrace$. On cherche un minimum de $V_{0}$, qui se traduit par $dV_{0}$, de sorte que:
+  \eqbox{\dfrac{dr_{c}}{dr_{a}}=- \dfrac{N_{a}L_{a}}{N_{c}L_{c}}\dfrac{r_{a}}{r_{c}}}
+  }
+  \QR {Le corps se construit aussi de façon à minimiser la résistance hydraulique totale $R_{\rm tot}$ du système circulatoire. Montrer que cela entraîne une relation entre $N_a$, $r_a$, $N_c$ et $r_c$ que l'on identifiera comme étant la loi de Murray théorique.}
+  {
+  Une minimisation de la résistance totale correspond de même à $dR_{\mathrm{tot}}=0$ soit $\dfrac{8\eta}{\pi}\left\lbrace \dfrac{L_{a}}{N_{a}} \dfrac{(-4)}{r_{a}^{5}} dr_{a} + \dfrac{L_{c}}{N_{c}} \dfrac{(-4)}{r_{c}^{5}} dr_{c} \right\rbrace =0$ d'où:
+ \begin{center}
+ $\dfrac{dr_{c}}{dr_{a}}=-\dfrac{N_{c}L_{a}}{N_{a}L_{c}} \left( \dfrac{r_{c}}{r_{a}} \right)^{5}$
+ \end{center}
+ En utilisant maintenant le résultat obtenu à la question précédente, on aboutit à:
+ \eqbox{\dfrac{N_{c}}{N_{a}}=\left( \dfrac{r_{a}}{r_{c}}\right)^{3}}
+  }
+
+  \QR {Proposer des interprétations à l'écart à la loi de Murray théorique et la loi expérimentale obtenue à la question 4. Toute démarche construite, même inachevée, développant une réflexion physique sur les limites de la modélisation, sera prise en compte dans l'évaluation.}
+  {
+  \textcolor{red}{Cette question est très ouverte et nous proposons ici une possibilité, sans doute parmi d'autres interprétations possibles. Pour plus de détails sur la question on peut se reporter à \url{https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2695432/} } \\
+  Ici, on trouve donc la dépendance $N \propto a^{-3}$ alors qu'on a $N \propto a^{-2.7}$ d'après la question Q4. Le nombre de vaisseaux sanguins réel semble plus élevé que celui attendu en théorie. Les hypothèses du modèle permettant d'aboutir au résultat de le question pourraient donc être reconsidérés, par exemple:
+  \begin{itemize}
+  \item le rôle de la pesanteur a été négligé alors qu'elle a bien sûr un effet;
+  \item la résistance a été calculée en considérant uniquement une géométrie cylindrique. Cette géométrie n'est pas rigoureusement représentative de la réalité, les vaisseaux se coudent, n'ont pas des sections uniformes... De même, $\alpha$ n'est certainement pas uniforme dans tout le système. Pour les petits vaisseaux par exemple, la membrane pourra représenter une plus grande proportion car on atteint la taille minimum des cellules qui la compose (typiquement, une cellule est de l'ordre du micron) ;
+  \item le caractère non newtonien supposé du sang dans les calculs menés auparavant est sans doute discutable
+  \item comme $Re>>1$, l'écoulement n'est sans doute pas un simple écoulement de cisaillement.
+  \end{itemize}
+  En particulier, on peut supposer assez raisonnablement qu'en raison de la géométrie réelle, la résistance totale $R_{H}$ est plus élevée que celle que nous proposons. Or nous avons vu $R_{H}=\frac{P_{A}-P_{B}}{D_{v}}$. La différence de pression $P_{A}-P_{B}$ est fixée par le c\oe ur. Une augmentation de $R_{H}$ se traduit donc par une diminution de $D_{v}$. pour "compenser" cet effet, un nombre plus élevé de vaisseaux permettrait de maintenir un débit en sang suffisant pour alimenter tous les tissus.
+  }
+\end{quest}
+
+\end{exo}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][2][devoir]{Effet de masse ajoutée}%{2}
+Lorsqu'une bulle de champagne sphérique de rayon $R$ constant et de centre O migre vers la surface libre, elle subit du fait de son accélération une force de la part du liquide qui s’ajoute à la poussée d’Archimède et la force de frottement fluide. On étudie le mouvement du champagne liquide autour de la bulle dans le référentiel $\mathcal{R}_{\rm{b}}$ de la bulle. La bulle monte à la vitesse $U(t)\ez$ dans le référentiel du verre, où l'on a introduit un axe~$\ez$ vertical ascendant. L’écoulement est repéré par les coordonnées sphériques $(r,\theta,\varphi)$ de centre O. Il est supposé parfait, incompressible et irrotationnel, et la pesanteur est négligée. On cherche un potentiel des vitesses  de la forme
+\begin{equation*}
+\Phi(r,\theta,t)=\frac{\alpha(t)}{r}+\frac{\beta(t)\cos\theta}{r^2}+\gamma(t)\,r\cos\theta.
+\end{equation*}
+\begin{quest}
+\item Justifier que le champ des vitesses loin de la bulle doit valoir $-U(t)\ez$. En déduire l'expression de $\gamma(t)$. Exprimer les composantes $v_r$, $v_\theta$, $v_\varphi$ du champ des vitesses en fonction de $\alpha(t)$, $\beta(t)$, $U(t)$, $r$, et $\theta$. On donne l'expression du gradient en coordonnées sphériques :
+$$
+\Grad \Phi = \dr{\Phi}{r} \er + \frac{1}{r} \dr{\Phi}{\theta} \et + \frac{1}{r\sin\theta} \dr{\Phi}{\varphi} \ep.
+$$
+
+\sol{Le champ de vitesse de l’écoulement vaut $-U\ez$ à l’infini, et donc $\phi(r=\infty)= -Uz = -Ur\cos\theta$, soit $\gamma(t)=-U(t)$. On utilise ensuite que $\Vec{v} = \Grad{\phi}$, soit
+$$
+\left\{
+\begin{array}{ll}
+v_r & = \dr{\phi}{r} =  -\frac{\alpha(t)}{r^2} - \frac{2\beta(t) \cos\theta}{r^3} -U\cos\theta \\
+v_\theta & = \frac{1}{r} \dr{\phi}{\theta} = -\frac{\beta(t) \sin(\theta)}{r^3} +U \sin\theta \\
+v_\varphi & = \frac{1}{r\sin\theta} \dr{\phi}{\varphi}  = 0
+\end{array}
+\right.
+$$
+}
+
+%\item En exploitant le fait que loin de la bulle de gaz, le champagne est au repos dans le référentiel $(\mathcal{R}_{\rm{O}})$ lié au verre, exprimer $\gamma(t)$ en fonction de $U(t)$.
+
+\item Quelle est la condition aux limites qui porte sur le champ des vitesses sur la bulle ? En déduire les expressions de $\alpha(t)$ et $\beta(t)$. Vérifier alors que
+la norme de la vitesse à la surface de la bulle vaut $v(r=R)=\textstyle\frac{3}{2}U(t)\sin \theta$.
+
+\sol{
+On a
+$$v_r(r=R,\theta)=0$$
+ mais aucune condition sur la composante $v_\theta$ car l'écoulement est supposé parfait. Or
+ $v_r(r=R,\theta)= \frac{\alpha(t)}{R^2} - \frac{2\beta(t) \cos\theta}{R^3} -U(t)\cos\theta$ pour tout $\theta$, ce qui impose
+ $\alpha(t) = 0
+ $ et  $\beta(t) = -\frac{R^3}{2}U(t)$. Donc
+ $$
+ \norme{\vec{v}(r=R)} = v_\theta(r=R) = -\frac{\beta(t) \sin(\theta)}{R^2} + U(t) R \sin\theta =  \frac{R}{2} U(t) \sin(\theta) + U(t) R \sin\theta = \frac{3}{2}U(t)\sin \theta.
+ $$
+}
+
+
+\item Le référentiel $\mathcal{R}_{\rm{b}}$ lié à la bulle  est en translation rectiligne par rapport au référentiel du verre. Quelle est l'expression de la force d'inertie d’entraînement volumique $\Vec{f}_{\rm \! e}$ que subit une particule fluide de masse volumique $\rho$ dans le référentiel non galiléen $\mathcal{R}_{\rm{b}}$?  Montrer que cette force dérive d'une énergie potentielle volumique $e_p$ dont on donnera l'expression en fonction de $\rho$, $r,\theta$ et $\dot{U}(t)$.
+
+\sol{Pour une particule fluide de masse $\d m$, on a 
+$\d \Fe = -\d m \Vec{a}_e = -\d m \dot{U}(t) \ez = -\rho \d V \dot{U}(t) \ez$ soit $\Vec{f}_{\rm \! e} = -\rho \dot{U}(t) \ez = -\Grad{e_{\rm p}}$ avec
+\eqbox{
+  e_{\rm p} = \rho \dot{U}(t) z = \rho \dot{U}(t) r \cos\theta.
+}
+}
+
+
+%\item Montrer que la grandeur
+%$p+\rho \dot{U}r\cos\theta+\dfrac{1}{2}\rho v^{2}+\rho\dfrac{\partial \phi}{\partial t}$
+%prend la même valeur en tout point de l'espace; c'est donc une fonction du temps qu'on note $f(t)$.
+
+\item La relation de Bernoulli généralisée aux écoulements dépendant du temps indique que la grandeur
+$$p+e_p+\dfrac{1}{2}\rho v^{2}+\rho\dfrac{\partial \Phi}{\partial t}$$
+prend la même valeur en tout point de l'écoulement. En considérant un point $A$ à la surface de la bulle et un point $B$ loin de la bulle, montrer que la pression à la surface de la bulle vaut
+% $p+\rho \dot{U}r\cos\theta+\dfrac{1}{2}\rho v^{2}+\rho\dfrac{\partial \phi}{\partial t}$
+% prend la même valeur en tout point de l'espace; c'est donc une fonction du temps qu'on note $f(t)$.
+% \end{quest}
+% On peut montrer en utilisant  que la pression en un point de la surface de la bulle est de la forme
+\begin{equation*}
+p(\theta,t)= \frac{R}{2} \rho \,\dot{U} (t) \cos(\theta) -\frac{9}{8}\rho\, U(t)^2\sin^2(\theta),
+\end{equation*}
+à une fonction du temps près.
+ \item  On cherche l'expression de la résultante des forces de pression $\vec{F}$ subies par la bulle. On admettra que cette force est portée par $\ez$.
+Calculer $F_z$ et montrer que cette force se met sous la forme
+$$\Vec{F} = -K m_{\rm f} \Vec{a},$$
+où $\Vec{a}=\dot{U}(t)\ez$ est l’accélération de la bulle par rapport au fluide, $m_{\rm f}=\rho V$ est la masse de fluide déplacé avec $V$ le volume de la bulle, et $K$ un facteur numérique à déterminer. On rappelle l'expression du vecteur surface élémentaire en coordonnées sphériques  $\dS = r^2 \sin \theta \d \theta \d \varphi \er$.
+
+\sol{
+La force de pression s’obtient par intégration sur la surface $S$ de la bulle,
+\begin{multline*}
+F_z = \int_S p(M) \dS \cdot \ez = \int_S p(M) (R^2 \sin \theta \d \theta \d \varphi) \cos \theta = 2\pi R^2 \int_0^\pi p(M)  \sin \theta \cos \theta  \d \theta \\ = \pi R^3 \rho \dot{U} (t) \underbrace{\int_0^\pi \sin \theta \cos^2(\theta) \d \theta }_{-\int_1^{-1} u^2 \d u = \frac{2}{3}}  -\frac{9}{4}\rho R^2 U(t)^2  \underbrace{\int_0^\pi \sin^3(\theta) \cos(\theta) \d \theta}_{0} \\
+ = \underbrace{\frac{1}{2}}_{K}\rho \underbrace{\left(\frac{4}{3}\pi R^3\right)}_{V} \underbrace{\dot{U}(t)}_{a(t)}.
+\end{multline*}
+On a donc $K=\frac{1}{2}$ pour la sphère. Pour le cylindre, $K=1$.
+}
+
+\end{quest}
+%%%%%%%%%%%
+\noindent
+$\begin{array}{llll}
+\textsc{Données :~} &
+\displaystyle \int_0^\pi \sin (\theta) \cos^2(\theta) \d \theta = \frac{2}{3}; & \int_0^\pi \sin^3(\theta) \cos(\theta) \d \theta = 0.
+\end{array}
+$
+%%%%%%%%%%%%
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][3][TD]{Écoulement potentiel autour d'une sphère}
+  \Notions{\item Potentiel des vitesses \task Conditions aux limites}
+  \Annale[Hydrodynamique Physique]{Hulin, Guyon, Petit}{EDP Sciences}
+On considère une sphère de rayon $R$ placée dans un écoulement initialement uniforme, c'est-à-dire dont le champ de vitesse est indépendant du point $M$. La présence de la sphère perturbe alors l’écoulement. Lorsque $M$ est à l'infini, la vitesse est celle de l’écoulement uniforme, et vaut $U\ex$. On se place dans le référentiel lié à la sphère, où l'écoulement est stationnaire.
+
+\begin{center}
+\includegraphics[scale=1]{fluid_dynamics_laminar_2.pdf}
+\end{center}
+%, et on repère $M$ par ses coordonnées sphériques $(r,\theta,\varphi)$.
+On souhaite déterminer le champ de vitesse $\Vec{v}(M)$ en tout point $M$ autour de la sphère.
+% l'écoulement étant perturbé par la présence de la sphère.
+\begin{quest}
+\item Justifier qu’on puisse limiter l’étude de l’écoulement à un plan comprenant l’axe $(Ox)$, et que dans ce plan le champ de vitesse est de la forme
+\begin{equation*}
+\Vec{v}(M)=v_{r}(r,\theta)\er+v_{\theta}(r,\theta)\et,
+\end{equation*}
+en coordonnées polaires.
+\sol{
+Le plan de la feuille, de normale $\Vec{e_\varphi}$, est un plan de symétrie de l'écoulement, donc $v_{\varphi}=0$.
+De plus, l'écoulement est invariant par rotation autour de l'axe~$(Ox)$, donc $\Vec{v}(M)$ ne dépend pas de $\varphi$.
+Le champ des vitesses est donc de la forme donnée par l'énoncé.
+}
+\end{quest}
+
+Pour simplifier, supposons l'écoulement irrotationnel et incompressible : le potentiel des vitesses vérifie $\Delta \phi=0$. Cette équation étant linéaire, toute combinaison linéaire de solutions est solution. On se propose de chercher la solution en superposant :
+\begin{liste}
+  \item un potentiel $\phi_{\rm u} =  Ux$ correspondant au champ de vitesse uniforme à l’infini ;
+  \item un potentiel source de la forme $\phi_{\rm c} = \frac{a}{r}$ avec $a$ une constante ;
+  \item un potentiel dipolaire de la forme $\phi_{\rm d} = \frac{b\cos\theta}{r^2}$ avec $b$ une constante.
+\end{liste}
+
+\begin{quest}
+  \item Vérifier explicitement que chacun de ces potentiels ci-dessus satisfait à l’équation de Laplace.
+\item  Déterminer $\phi_u$ en fonction de $U$, $r$ et $\theta$. En déduire l’expression du potentiel total $\phi = \phi_u + \phi_c + \phi_d$, et du champ de vitesse $\Vec{v}(M)$, en fonction de $U$, $r$ et $\theta$ et des constantes $a$ et $b$.
+\sol{
+\begin{liste}
+\item le potentiel $\phi_{\rm u}$ correspondant au champ de vitesse uniforme à l'infini $U\ex$. $ = \Grad{\phi_{\rm u}}$, qui s'écrit donc 
+\eqbox{
+  \phi_{\rm u} = U x = U r\cos\theta ;
+}
+\item un potentiel correspondant au champ de vitesse créé par une source centré à l'origine, qui est analogue au potentiel électrostatique créé par une charge ponctuelle, soit $\phi_{\rm c} = \frac{a}{r}$ avec $a$ une constante ;
+\item un potentiel dipolaire de la forme $\phi_{\rm d} = \frac{b\cos\theta}{r^2}$ avec $b$ une constante.
+\end{liste}
+La vitesse $\Vec{v}$ a donc l'expression suivante avec $\phi = \phi_{\rm u} + \phi_{\rm c} + \phi_{\rm d}$,
+\eqbox{
+  \Vec{v}(M)=\frac{\partial \phi}{\partial r}\er+\frac{1}{r}\frac{\partial \phi}{\partial \theta}\et
+  =\left(U\cos\theta-\frac{a}{r^2}-\frac{2b\cos\theta}{r^3}\right)\er+\left(-U\sin\theta -\frac{b\sin\theta}{r^3}\right)\et.
+}
+}
+
+%\begin{figure}[t!]
+%\centering
+%\sousfigure{ecoulement_sphere.pdf}{}{0.48}{ecoulement_sphere_zoom.pdf}{}{0.48}
+%\caption{Champ des vitesses obtenu pour l'écoulement irrotationnel et incompressible autour d'une sphère, avec $U=R=1$. On remarque que l'écoulement est très peu perturbé lorsqu'on s'éloigne de l'obstacle pour des distances de l'ordre de la taille typique de l'obstacle (diamètre de la sphère). Proche de l'obstacle en revanche, l'écoulement est perturbé. En A, $r=R$ et $\theta=\pi$ d'où $\vec{v}(A)=0$ (point d'arrêt). En B, $r=R$ et $\theta=\pi/2$, la vitesse est purement tangentielle à la sphère et maximale, elle vaut $-\frac{3}{2}U\ex$ dans le référentiel lié à la sphère (donc $+\frac{3}{2}U\ex$ dans le référentiel du laboratoire).}
+%\label{fig:écoulement_sphère}
+%\end{figure}
+\item On suppose l’écoulement parfait. Déterminer les constantes $a$ et $b$ à partir des conditions aux limites.
+
+\sol{Pour déterminer les constantes $\beta$ et$ \gamma$, il reste à préciser les conditions aux limites.
+On doit d'une part retrouver à l'infini l'écoulement non perturbé par la sphère, soit
+\begin{equation}
+\lim_{r\rightarrow\infty}\Vec{v}(r,\theta)=U\,\ex=U\cos\theta\,\er-U\sin\theta\,\et,
+\end{equation}
+ce qui est bien vérifié. D'autre part, au niveau du contact entre le fluide et la sphère, la vitesse normale doit s'annuler puisque la sphère est immobile, soit
+%\begin{equation}
+%\Vec{v}_{\rm{fluide}}(M\in\mathrm{paroi})\cdot\Vec{\d S}=\Vec{v}_{\rm{paroi}}(M\in\mathrm{paroi})\cdot\Vec{\d S}.
+%\end{equation}
+\begin{equation}
+\Vec{v}(M \in \text{contact})\cdot\Vec{n} = 0.
+\end{equation}
+On en déduit $0 = v_{r}(r=R,\theta)= U\cos\theta-\frac{a}{R^2}-\frac{c\cos\theta}{R^3} = -\frac{a}{R^2} + \cos \theta (U--\frac{c}{R^3})$ pour tout $\theta$, et donc 
+\eqbox{
+\beta=0 \text{ et } c=\frac{UR^3}{2}.
+}
+}
+\item En déduire l’expression du champ de vitesse $\Vec{v}(M)$ en fonction de $U$, $r$ et $\theta$. Tracer l’allure des lignes de courant et identifier des points d'arrêt.
+\sol{Finalement, on trouve
+% \eqbox{
+%   \Vec{v}(M)=U\left(1-\frac{R^3}{r^3}\right)\cos\theta\,\er-U\left(1+\frac{R^3}{2r^3}\right)\sin\theta\,\et.
+% }
+\begin{fig}
+\includegraphics[scale=0.5]{ecoulement_sphere.pdf}
+\end{fig}
+}
+\sol{
+  \begin{fig}
+\includegraphics[scale=0.5]{ecoulement_sphere_zoom.pdf}
+\capt{Champ des vitesses obtenu pour l'écoulement irrotationnel et incompressible autour d'une sphère, avec $U=R=1$. On remarque que l'écoulement est très peu perturbé lorsqu'on s'éloigne de l'obstacle pour des distances de l'ordre de la taille typique de l'obstacle (diamètre de la sphère). Proche de l'obstacle en revanche, l'écoulement est perturbé. En A, $r=R$ et $\theta=\pi$ d'où $\vec{v}(A)=0$ (point d'arrêt). En B, $r=R$ et $\theta=\pi/2$, la vitesse est purement tangentielle à la sphère et maximale, elle vaut $-\frac{3}{2}U\ex$ dans le référentiel lié à la sphère (donc $+\frac{3}{2}U\ex$ dans le référentiel du laboratoire).}
+\end{fig}
+}
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][TD]{Interprétation énergétique de la relation de Bernoulli}
+  \Notions{\item Relation de bernoulli \task Équation d'Euler}
+On  considère un écoulement parfait, stationnaire d’un fluide homogène. Le fluide est soumis à une force volumique conservative $\Vec{f_{\rm ext}} = - \grad e_p$ où $e_p$ désigne l’énergie potentielle volumique.
+% % Le fluide est soumis à une force extérieure conservative, de résultante volumique $\Vec{f} = - \Grad{e_p}$, qui dérive d’une énergie potentielle volumique $e_p$.
+% On note $\phi(M,t)$ le potentiel des vitesses.
+
+\begin{quest}
+
+  \item Que vaut $e_p$ pour la pesanteur ? En déduire comment est modifiée la relation de Bernoulli lorsque la pesanteur est remplacée par une force conservative quelconque $\Vec{f_{\rm ext}}$.
+
+\item Interpréter la relation de Bernoulli en termes énergétiques.
+
+%\item Comment cette relation est-elle modifiée si l’écoulement n’est pas irrotationnel ?
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][2][TD]{Relation de Bernoulli généralisée}
+  \Notions{\item Relation de bernoulli \task Écoulement instationnaire}
+On se propose de généraliser la relation de Bernoulli aux écoulements parfait et irrotationnel d’un fluide homogène, mais dépendant du temps. Le fluide est soumis à la pesanteur.
+% Le fluide est soumis à une force extérieure conservative, de résultante volumique $\Vec{f} = - \Grad{e_p}$, qui dérive d’une énergie potentielle volumique $e_p$.
+On note $\phi(M,t)$ le potentiel des vitesses.
+
+\begin{quest}
+  \item Écrire l’équation d’Euler dans cette situation.
+% \item Appliquer le PFD à une particule fluide pour trouver l’équation d’Euler.
+%\begin{equation}
+%\rho\left[ \dfrac{\partial \vec{v}}{\partial t}+(\vv{v}\cdot\Grad{})\vv{v}\right]=-\grad{(p + e\-p)}.
+%\end{equation}
+
+% \sol{
+% Appliquons le PFD à une particule de fluide de masse $\rho\,\d V$ dans un référentiel galiléen. Cette particule de fluide est caractérisée par son accélération $\frac{\D\Vec{v}}{\D t}$. Elle est soumise aux forces pressantes de résultante $-\grad{p}\,\d V$ et  à des actions extérieures de résultante $\Vec{f}\d V$. Nous supposerons pour simplifier que ces actions extérieures se résument à la force de pesanteur $\rho \Vec{g} \d V$. Il vient
+% \begin{equation*}
+% \rho\,\d V\frac{\D\vv{v}}{\D t}=-\grad{p}\,\d V+\rho \Vec{g} \,\d V.
+% \end{equation*}
+% En simplifiant par $\d V$ et en explicitant l'accélération particulaire on obtient
+% \begin{equation*}
+% \rho\left[ \dr{\Vec{v}}{t}+(\vv{v}\cdot \grad) \Vec{v}\right]=-\grad p + \rho
+%  \Vec{g}.
+% \end{equation*}
+% }
+
+\item Montrer que la grandeur
+$$
+\rho\dfrac{\partial \phi}{\partial t} + \dfrac{1}{2}\rho v^{2} + p+ \rho g z
+$$
+ne dépend pas du point $M$ dans le fluide (elle est fonction du temps uniquement).
+
+\sol{Comme $\Vec{v} = \Grad{\phi}$, on a
+\begin{align*}
+% \tag{potentiel}
+-\grad{p}+\rho \Vec{g} = -\grad{p + \rho g z} = \rho \dr{\Vec{v}}{t} +
+\rho(\vv{v}\cdot\Grad{})\vv{v} & = \rho \,\dr{}{t}\Grad{\phi} +  \rho(\vv{v}\cdot\Grad{})\vv{v} \\
+% \tag{formule d’analyse} 
+& = \rho \, \grad{\left(\dr{\phi}{t} + \frac{v^2}{2}\right)}\\
+% \tag{$\rho$ constant}
+& =  \grad{\left(\rho \dr{\phi}{t}  + \frac{1}{2}\rho v^2\right)}
+\end{align*}
+et donc 
+% \eqbox{
+% \Grad{}\left(\rho\dr{\phi}{t} + \dfrac{1}{2}\rho v^{2} + p + \rho g z\right) = \Vec{0}.
+% }
+d’où le résultat.
+}
+
+%\item Comment cette relation est-elle modifiée si l’écoulement n’est pas irrotationnel ?
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][devoir]{Effet Magnus}%{1}
+Un objet en rotation sur lui-même modifie l'écoulement du fluide autour de lui, qui en retour engendre une force qui permet de modifier la trajectoire de l'objet. C'est ce qui est par exemple utilisé au tennis ou au ping-pong pour les coups coupés (liftés) ou encore les coups slicés. C'est aussi ce qui est à l'origine des trajectoires si particulières des ballons enroulés au football. Pour une illustration spectaculaire avec un ballon de basket, voir par exemple \url{https://youtu.be/2OSrvzNW9FE}.
+
+Cet effet porte le nom d'effet Magnus, qui historiquement est l'effet observé sur un cylindre en rotation. On se propose ici d'étudier cet effet dans le référentiel lié au cylindre, où l'écoulement est stationnaire et supposé parfait. Le vecteur rotation du cylindre est $\vec{\Omega}=\Omega\,\vec{e}_z$, et en l'absence du cylindre l'écoulement du fluide est uniforme avec $\vec{v}(M)=v_0\,\vec{e}_x$. On admet qu'autour du cylindre en rotation, le champ des vitesses bidimensionnel décrivant l'écoulement se met sous la forme suivante en coordonnées polaires
+\begin{equation}
+ \vec{v}(M)=\left(A-\frac{B}{r^2}\right)\cos\theta\,\vec{e}_r+\left[\frac{a^2\Omega}{r}-\left(A+\frac{B}{r^2}\right)\sin\theta\right]\vec{e}_\theta.
+ \end{equation}
+\begin{quest}
+\item À partir des conditions aux limites vérifiées par ce champ de vitesses pour $r\rightarrow a$ et pour $r\rightarrow \infty$, déduire les expressions des constantes $A$ et $B$ en fonction de $v_0$ et $a$, où $v_0$ désigne la vitesse uniforme de l'écoulement en l'absence du cylindre tournant.
+\sol{
+Conditions aux limites d'un écoulement parfait : continuité de la vitesse radiale, donc
+$$
+v_r(r=a,\theta) = 0 \Rightarrow (A - \frac{B}{a^2})\cos \theta = 0 \Rar B=a^2A.
+$$
+De plus, le profil de vitesse doit se raccorder à l'écoulement uniforme à l'infini, donc
+$$
+\Vec{v}(r=+\infty) = v_0 \ex = A \cos \theta \er- A \sin \theta\et = A \ex \Rar A = v_0.
+$$
+On en déduit 
+\eqbox{
+\Vec{v}(M) = v_0\left(1-\frac{a^2}{r^2}\right)\cos\theta\,\vec{e}_r+v_0\left[\frac{a^2\Omega}{v_0r}-\left(1+\frac{a^2}{r^2}\right)\sin\theta\right]\vec{e}_\theta.
+}
+}
+\item Déterminer selon les valeurs du paramètre $\textstyle\frac{a\Omega}{v_0}$ le nombre et la position des points d'arrêt. En déduire l'allure des lignes de courant autour du cylindre et les représenter ci-dessous.
+\begin{center}
+\includegraphics[scale=0.46]{ecoulement_magnus.pdf}
+\end{center}
+\sol{
+  On pose $\frac{a\Omega}{v_0} = \alpha$. Ce paramètre représente le rapport entre la vitesse de la surface du cylindre en rotation et la vitesse de l'écoulement uniforme. On a alors 
+$$
+\Vec{v}(M) = v_0\left(1-\frac{a^2}{r^2}\right)\cos\theta\,\vec{e}_r+v_0\left[\alpha\frac{a}{r}-\left(1+\frac{a^2}{r^2}\right)\sin\theta\right]\vec{e}_\theta.
+$$
+Un point d'arrêt $P$ est tel que $\Vec{v}(P) = \Vec{0}$, ce qui impose :
+$$
+\begin{cases}
+  \left(1-\frac{a^2}{r^2}\right)\cos\theta = 0 \\
+\alpha\frac{a}{r}-\left(1+\frac{a^2}{r^2}\right)\sin\theta = 0 
+\end{cases} \Rar 
+\begin{cases}
+  r = a \text{ ou } \theta=\pm\frac{\pi}{2}\\
+\alpha = \left( \frac{a}{r} + \frac{r}{a} \right)\sin\theta 
+\end{cases} \Rar 
+\begin{cases}
+  r = a \text{ ou } \theta=\pm\frac{\pi}{2}\\
+\frac{\alpha}{2} = \sin\theta \text{ ou } \alpha = \pm \left( \frac{a}{r} + \frac{r}{a} \right).
+\end{cases}
+$$
+Or la fonction $x \mapsto x+\frac{1}{x}$ est de minimum égal à $2$. En conclusion,
+\begin{liste}
+  \item Si \fbox{$|\alpha|<2$}, il existe deux points d'arrêt symétriques sur le cylindre d'angle $\theta$ et $\pi-\theta$ avec
+  \eqbox{
+  \theta = \arcsin\left(\frac{\alpha}{2}\right).
+  }
+  \item Si \fbox{$|\alpha|=2$}, il existe un point d'arrêt sur le cylindre sur l'axe $y$. soit en haut si $\alpha >0$ (le cylindre tourne dans le sens direct), soit en bas si $\alpha <0$ (le cylindre tourne dans le sens indirect).
+  \item Si \fbox{$|\alpha|>2$}, il existe un point d'arrêt dans le fluide sur l'axe $y$ à une distance 
+  \eqbox{
+  r = \frac{a}{2}\left( \sqrt{\alpha^2-4}-\abs{\alpha} \right),
+  }
+  soit en haut si $\alpha >0$ (le cylindre tourne dans le sens direct), soit en bas si $\alpha <0$ (le cylindre tourne dans le sens indirect).
+\end{liste}
+}
+\item On admet qu'on peut utiliser le théorème de Bernoulli dans le cas présent. En l'appliquant entre un point à l'infini et un point à la surface du cylindre, en déduire l'expression de la pression $P$ en un point de la couche fluide en contact avec la surface du cylindre en fonction de $\rho$, $v_0$, $a$, $\Omega$, $\theta$ et $P_{\infty}$.
+\sol{
+On applique le théorème de Bernoulli entre un point à l'infini et un point à la surface du cylindre, soit
+$$
+P_{\infty} + \frac{1}{2}\rho v_0^2 = P(\theta) + \frac{1}{2}\rho v(r=a)^2,
+$$
+d'où l'on tire 
+$$
+P(\theta) = P_{\infty} + \frac{1}{2}\rho v_0^2 - \frac{1}{2}\rho v_0^2\left(\alpha-2\sin\theta\right)^2,
+$$
+soit 
+\eqbox{
+  P(\theta) =  P_{\infty} + \frac{1}{2}\rho v_0^2\left(1-\alpha^2+4\alpha \sin\theta - 4 \sin^2 \theta \right).
+}
+}
+\item Déterminer la force verticale $\vec{F}_{\rm{M}}$, dite force de Magnus, exercée par le fluide sur une portion de longueur $h$ du cylindre en fonction de $\rho$, $v_0$, $a$, $\Omega$ et $h$. On rappelle que $\textstyle\int_{0}^{2\pi}\sin^{3}\theta\,\der\theta=0$.
+
+Mettre cette force sous la forme $\vec{F}_{\rm{M}}=\beta \vec{v}_0\pv\vec{\Omega}$ et exprimer la constante $\beta$ en fonction des paramètres du problème. Donner une explication qualitative de l'effet Magnus.
+\end{quest}
+\sol{
+On a $\vec{F}_{\rm{M}} = F_{\rm M} \ey $ avec 
+$$
+F_{\rm M} = \vec{F}_{\rm{M}} \cdot \ey = \iint_S p(M) \dS \cdot \ey = h \int_0^{2\pi} p(\theta) a \d \theta \er \cdot \ey = ha \int_0^{2\pi} \d p(\theta) \sin \theta \d \theta,
+$$
+soit 
+\begin{align*}
+  F_{\rm M} & = ha \int_0^{2\pi} \left( P_{\infty} + \frac{1}{2}\rho v_0^2\left(1-\alpha^2 + 4\alpha \sin\theta - 4 \sin^2 \theta\right) \right) \sin \theta \d \theta \\ 
+  & = ha \int_0^{2\pi} \left(P_{\infty} +  \frac{1}{2}\rho v_0^2\left(1-\alpha^2\right)\right) \sin \theta \d \theta + ha \int_0^{2\pi} 2 \rho v_0^2 \alpha \sin^2\theta \d \theta - ha \int_0^{2\pi} 2\rho v_0^2 \sin^3\theta \d \theta, \\
+\end{align*}
+soit 
+\eqbox{
+  F_{\rm M}  = 2 ha \pi \alpha \rho v_0^2 =  2 \rho \pi a^2 h \Omega v_0.
+}
+On peut mettre la force sous la forme 
+\eqbox{
+  \vec{F}_{\rm{M}}= 2 m_{\rm f} \vec{v}_0\pv\vec{\Omega},
+}
+où $m_{\rm f} = \rho \pi a^2 h$ est la masse du fluide déplacé par le cylindre. 
+% On peut interpréter cette force comme une force de Coriolis.
+%  que ressentirait le fluide déplacé par le cylindre dans le référentiel non galiléen lié au cylindre en rotation lorsque celui-ci 
+}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][2][colle]{L'effet Magnus}%{1}
+  \Enonce{
+  Un objet en rotation sur lui-même modifie l'écoulement du fluide autour de lui.
+  La résultante du champ de pression engendre alors une force qui modifie la trajectoire de l'objet.  Cet effet porte le nom d'effet Magnus.
+  On se propose ici d'étudier l'effet Magnus sur un cylindre en rotation en mouvement uniforme par rapport à l’air immobile. Dans le référentiel galiléen $(\Rcal)$ lié au centre du cylindre, en translation par rapport au référentiel du laboratoire, l'écoulement est stationnaire et supposé parfait. Le cylindre est de rayon $a$, de vecteur rotation $\Vec{\Omega}=\Omega\,\vec{e}_z$, et loin du cylindre l'écoulement du fluide est uniforme de champ des vitesses $\vec{v}(M)=U\vec{e}_x$. On admet qu'autour du cylindre en rotation, le champ des vitesses bidimensionnel dans le plan $(x,y)$  se met sous la forme suivante en coordonnées polaires
+  \begin{equation}
+   \vec{v}(M)=\left(A-\frac{B}{r^2}\right)\cos\theta\,\vec{e}_r+\left[\frac{a^2\Omega}{r}-\left(A+\frac{B}{r^2}\right)\sin\theta\right]\vec{e}_\theta.
+   \end{equation}
+  }
+  \begin{quest}
+  % \item Interpréter les constantes $A$, $B$ et $a$ en indiquant le profil de vitesse $\Vec{v}_{\! A}$, $\Vec{v}_{\! B}$ et $\Vec{v}_{\! \Omega}$ associé. Montrer que l'écoulement associé a chacun des profils de vitesse est irrotationnel et incompressible, et déterminer le potentiel des vitesses $\phi$ associé.
+  \QR {À partir des conditions aux limites vérifiées par ce champ de vitesses pour $r\rightarrow a$ et pour $r\rightarrow \infty$, déduire les expressions des constantes $A$ et $B$ en fonction de $U$ et $a$.}
+  {
+  Conditions aux limites d'un écoulement parfait : continuité de la vitesse radiale, donc
+  $$
+  v_r(r=a,\theta) = 0 \Rightarrow \left( A - \frac{B}{a^2} \right)\cos \theta = 0 \Rar B=a^2A.
+  $$
+  De plus, le profil de vitesse doit se raccorder à l'écoulement uniforme à l'infini, donc
+  $$
+  \Vec{v}(r=+\infty) = U \ex = A \cos \theta \er- A \sin \theta\et = A \ex \Rar A = A.
+  $$
+  On en déduit 
+  \eqbox{
+  \Vec{v}(M) = U\left(1-\frac{a^2}{r^2}\right)\cos\theta\,\vec{e}_r+U\left[\frac{a^2\Omega}{Ur}-\left(1+\frac{a^2}{r^2}\right)\sin\theta\right]\vec{e}_\theta.
+  }
+  \udl{Remarque} : La vitesse sur la paroi du cylindre vaut 
+  $$
+    \Vec{v}(r=a) = \left(a\Omega-2U\sin\theta\right)\vec{e}_\theta.
+  $$
+  On voit donc qu’il y a glissement du fluide sur la paroi du cylindre a une vitesse relative $-2U \sin \theta$, ce qui n’est pas gênant puisque la vitesse tangentielle n’est pas continue dans un écoulement parfait.
+  }
+  \QR {Déterminer selon les valeurs du paramètre $\textstyle\frac{a\Omega}{U}$ le nombre et la position des points d'arrêt. Représenter l'allure des lignes de courant autour du cylindre.}
+  % \begin{center}
+  % \includegraphics[scale=0.46]{ecoulement_magnus.pdf}
+  % \end{center}
+  {
+    Posons 
+    $$\frac{a\Omega}{U} = \alpha.$$ 
+    Le paramètre $\alpha$ représente le rapport entre la vitesse de la surface du cylindre en rotation et la vitesse de l'écoulement uniforme. On a alors 
+  $$
+  \Vec{v}(M) = U\left(1-\frac{a^2}{r^2}\right)\cos\theta\,\vec{e}_r+U\left[\alpha\frac{a}{r}-\left(1+\frac{a^2}{r^2}\right)\sin\theta\right]\vec{e}_\theta.
+  $$
+  Un point d'arrêt $P$ est un point de vitesse nul, soit 
+  \eqbox{
+  \Vec{v}(P) = \Vec{0},
+  }
+  ce qui impose :
+  $$
+  \begin{cases}
+    \left(1-\frac{a^2}{r^2}\right)\cos\theta = 0 \\
+  \alpha\frac{a}{r}-\left(1+\frac{a^2}{r^2}\right)\sin\theta = 0 
+  \end{cases} \Rar 
+  \begin{cases}
+    r = a \text{ ou } \theta=\pm\frac{\pi}{2}\\
+  \alpha = \left( \frac{a}{r} + \frac{r}{a} \right)\sin\theta 
+  \end{cases},
+  $$
+  soit 
+  $$
+    \begin{cases}
+    r = a \text{ et } \frac{\alpha}{2} = \sin\theta  \\
+    \text{ou} & \\ 
+    \theta= \pm\frac{\pi}{2}
+  \text{ et } \alpha = \pm \left( \frac{a}{r} + \frac{r}{a} \right).
+  \end{cases}
+  $$
+  Or la fonction $x \mapsto x+\frac{1}{x}$ est de minimum égal à $2$. En conclusion,
+  \begin{enumerate}
+    \item Si \fbox{$|\alpha|<2$}, il existe deux points d'arrêt symétriques sur le cylindre d'angle $\theta$ et $\pi-\theta$ avec
+    \eqbox{
+    \theta = \arcsin\left(\frac{\alpha}{2}\right).
+    }
+    \item Si \fbox{$|\alpha|=2$}, il existe un point d'arrêt sur le cylindre sur l'axe $y$. soit en haut si $\alpha >0$ (le cylindre tourne dans le sens direct), soit en bas si $\alpha <0$ (le cylindre tourne dans le sens indirect).
+    \item Si \fbox{$|\alpha|>2$}, il existe un point d'arrêt dans le fluide sur l'axe $y$ à une distance 
+    \eqbox{
+    r = \frac{a}{2}\left( \sqrt{\alpha^2-4}-\abs{\alpha} \right),
+    }
+    soit en haut si $\alpha >0$ (le cylindre tourne dans le sens direct), soit en bas si $\alpha <0$ (le cylindre tourne dans le sens indirect). Ce point n’est pas sur la paroi du cylindre mais en plein milieu de l’écoulement !
+  \end{enumerate}
+  % include video mp4 called magnus.mp4
+
+
+  }
+  \QR {On admet qu'on peut utiliser le théorème de Bernoulli dans le cas présent. En l'appliquant entre un point à l'infini et un point à la surface du cylindre, en déduire l'expression de la pression $p$ en un point de la couche fluide en contact avec la surface du cylindre en fonction de $\rho$, $U$, $a$, $\Omega$, $\theta$ et $p_{\infty}$.}
+  {
+  On applique le théorème de Bernoulli entre un point à l'infini et un point à la surface du cylindre, soit
+  $$
+  p_{\infty} + \frac{1}{2}\rho U^2 = p(\theta) + \frac{1}{2}\rho v(r=a)^2,
+  $$
+  d'où l'on tire 
+  $$
+  p(\theta) = p_{\infty} + \frac{1}{2}\rho U^2 - \frac{1}{2}\rho U^2\left(\alpha-2\sin\theta\right)^2,
+  $$
+  soit 
+  \eqbox{
+    p(\theta) =  p_{\infty} + \frac{1}{2}\rho U^2\left(1-\alpha^2+4\alpha \sin\theta - 4 \sin^2 \theta \right).
+  }
+  }
+  \QR {Déterminer la résultante des forces de pression $\Vec{F}_{\rm{M}}$, dite force de Magnus, exercée par le fluide sur une portion de longueur $h$ du cylindre en fonction de $\rho$, $U$, $a$, $\Omega$ et $h$. On rappelle que $\textstyle\int_{0}^{2\pi}\sin^{3}\theta\,\der\theta=0$.
+  
+  Mettre cette force sous la forme $\vec{F}_{\rm{M}}=\beta \Vec{U}\pv\vec{\Omega}$ et exprimer la constante $\beta$ en fonction des paramètres du problème. Donner une explication qualitative de l'effet Magnus.}
+  {
+  On a $\vec{F}_{\rm{M}} = F_{\rm M} \ey $ avec 
+  $$
+  F_{\rm M} = \vec{F}_{\rm{M}} \cdot \ey = \iint_S p(M) \dS \cdot \ey = h \int_0^{2\pi} p(\theta) a \d \theta \, \er \cdot \ey = ha \int_0^{2\pi} p(\theta) \sin \theta \d \theta,
+  $$
+  soit 
+  \begin{align*}
+    F_{\rm M} & = ha \int_0^{2\pi} \left( P_{\infty} + \frac{1}{2}\rho U^2\left(1-\alpha^2 + 4\alpha \sin\theta - 4 \sin^2 \theta\right) \right) \sin \theta \d \theta \\ 
+    & = ha \int_0^{2\pi} \left(P_{\infty} +  \frac{1}{2}\rho U^2\left(1-\alpha^2\right)\right) \sin \theta \d \theta + ha \int_0^{2\pi} 2 \rho U^2 \alpha \sin^2\theta \d \theta - ha \int_0^{2\pi} 2\rho U^2 \sin^3\theta \d \theta, \\
+  \end{align*}
+  soit 
+  \eqbox{
+    F_{\rm M}  = 2 ha \pi \alpha \rho U^2 =  2 \rho \pi a^2 h \Omega U.
+  }
+  On peut mettre la force sous la forme 
+  \eqbox{
+    \vec{F}_{\rm{M}}= 2 m_{\rm f} \,\vec{U}\pv\vec{\Omega},
+  }
+  où $m_{\rm f} = \rho \pi a^2 h$ est la masse du fluide déplacé par le cylindre. On peut interpréter cette force comme la force de Coriolis que subit le volume de fluide déplacé dans le référentiel tournant du cylindre en rotation.
+  %  que ressentirait le fluide déplacé par le cylindre dans le référentiel non galiléen lié au cylindre en rotation lorsque celui-ci 
+  }
+  \end{quest}
+  \end{exo}
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][2][oral]{Oscillation d’un liquide dans un tube en U}
+De l'eau remplit un tube en forme de U. On note $h(t)$ la dénivellation entre les branches droite et gauche du tube. Le liquide s'écoule librement à partir de l'instant $t=0$, où la dénivellation vaut $h_0$. Déterminer l'évolution de la dénivellation $h(t)$.
+% Par définition, $s_A=0$ et où $A$ et $B$ désignent deux points de la surface libre du liquide. $s_B=L$, et donc $SL$ désigne le volume total de liquide dans le tube.
+%\begin{figure}[h!]
+%\centering
+\begin{center}
+\includegraphics[width=0.22\textwidth]{tube_U.pdf}
+\end{center}
+%\end{figure}
+%\begin{quest}
+%\item Montrer que $v(s,t)$ ne dépend en fait pas de $s$, et l'exprimer en fonction de $h(t)$.
+
+
+
+\sol{
+  On suppose l'écoulement parfait, incompressible, homogène. L'écoulement est décrit par un champ des vitesses $\vv{v}(M,t)=v(s,t)\vv{T}$ uniforme dans la section du tube, où $s$ désigne l'abscisse curviligne, et $\vv{T}$ le vecteur unitaire tangent.
+
+Le liquide est incompressible et donc le débit volumique ${{\DV}}(s,t) = v(s,t)S$ ne dépend pas de $s$, et donc $v$ non plus. La dénivellation est reliée à la vitesse par $v(t) = v_A(t) = \dd{z_A}{t}$. Or $\dd{z_B}{t} = -\dd{z_B}{t}$ et donc $\dot{h}(t)=2v(t)$.
+
+
+
+}
+%\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1]{Vidange d'un réservoir}
+  \Notions{\item Relation de bernoulli \task Débit volumique \task Torricelli}
+%\begin{wrapfigure}{r}{0.3\textwidth}
+%\begin{center}
+%\includegraphics[scale=1]{vidange.pdf}
+%\end{center}
+%\end{wrapfigure}
+On considère un réservoir cylindrique rempli d’eau, de masse volumique $\rho$, représenté à gauche ci-dessous. La surface libre de l’eau donne sur l'atmosphère, de pression $p_0$, et la sortie en B est ouverte. On note $d_1$ le diamètre du récipient et $d_2$ celui de l’orifice circulaire. On suppose un régime quasi-stationnaire atteint (la hauteur d’eau varie dans le temps mais la colonne d’eau est à l’équilibre mécanique).
+%\begin{figure}[h!]
+%\centering
+
+\begin{center}
+\includegraphics[scale=1]{vidange.pdf}\hspace{1.5cm}
+\includegraphics[scale=1]{vidange_mariotte.pdf}
+\end{center}
+
+%\end{figure}
+\begin{quest}
+\item En explicitant les hypothèses faites, déterminer une condition sur les diamètres $d_1$ et $d_2$ pour que $v_A$ n'excède pas 1\% de $v_B$.  Exprimer alors $v_B$ en fonction de la hauteur d’eau $h(t)$.
+
+\sol{
+L’écoulement est supposé parfait, stationnaire, incompressible et homogène.  L’incompressibilité assure la conservation du débit volumique, soit $v_A \pi d_1^2/4 = v_B \pi d_2^2/4$ et donc
+$$
+\frac{v_A}{v_B} = \left(\frac{d_2}{d_1}\right)^2 \leq \num{0.01} \Rightarrow \boxed{d_2 \leq \num{0.1}d_1}.
+$$
+
+On applique ensuite la relation de Bernoulli,
+$
+p_0 + \rho g h(t) + \frac{\rho}{2} v_A^2 \simeq p_0 + \rho g h(t)  = p_0 + \frac{\rho}{2} v_B^2
+$, et donc
+\eqbox{
+v_B = \sqrt{2 g h(t)}.
+}
+}
+
+\item On note $S_1$ et $S_2$ les sections du récipient et de l’orifice, respectivement. Trouver l'équation différentielle vérifiée par $h(t)$.
+
+\sol{
+Par définition du débit volumique,
+$
+{{\DV}} = \frac{\d V}{\d t} = v_B S_2
+$,
+avec $S_2 = \pi d_2^2/4$ la section de l’orifice et $V = h(t)S_1$ le volume d’eau dans le récipient au-dessus de l’orifice.
+Donc,
+$$
+S_1 \dd{h}{t} = -S_2 \sqrt{2 g h} \Rightarrow \boxed{\dd{h}{t} = -\frac{S_2}{S_1} \sqrt{2 g h}.}
+$$
+}
+
+\item Résoudre cette équation et déterminer le temps de vidange $\tau$. Application numérique pour $d_1=20\,d_2$ et $h_{0}=\SI{40}{cm}$.
+
+\sol{
+On a $\frac{\d h}{\sqrt{h}} = -\frac{S_2}{S_1} \sqrt{2 g} \d t$ et donc en intégrant entre $0$ et $t$,
+$$
+2\sqrt{h(t)} - 2\sqrt{h_0} = -\frac{S_2}{S_1} \sqrt{2 g} t \Rightarrow  \sqrt{h(t)} = \sqrt{h_0} - \frac{S_2}{S_1} \sqrt{\frac{ g}{2}} t.
+$$
+Le temps de vidange correspond à $h(\tau) = 0$, soit
+\eqbox{
+  \tau = \left(\frac{d_1}{d_2}\right)^2 \sqrt{\frac{2h_0}{ g}}  = \SI{114}{s}.
+  }
+}
+
+\item Qu’est-ce qui change si l’on utilise le dispositif de la figure de droite ?
+
+\sol{
+Ce dispositif se nomme vase de Mariotte. On impose au bas du tube la pression $p_0$. Le débit est donc constant tant que le niveau de l’eau est au-dessus du bas de tube.
+ La hauteur $h$ doit être remplacée par la hauteur $H$ entre les points B et C.
+ La relation de Bernoulli donne alors \fbox{$v_B = \sqrt{2gH}$}, qui est constant.
+}
+
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1]{Un peu de physique du sport}
+\begin{quest}
+\item Un parachutiste avec son équipement a une masse totale $m=\SI{120}{kg}$. Le coefficient de traînée du parachute ouvert vaut 1,2 et son diamètre est de \SI{6}{m}.
+\begin{enumerate}
+\item Déterminer la vitesse limite de descente du parachutiste.
+\item Le parachutiste doit se poser sur l'aéroport de La Paz en Bolivie, situé à \SI{4200}{m} d'altitude. Peut-il garder le même parachute ?
+\end{enumerate}
+\item En athlétisme, un record de sprint ne peut être validé que si le vent favorable est inférieur à \SI{7,2}{km.h^{-1}}. De quel facteur la force de traînée que l'air exerce sur un coureur de \SI{100}{m} est-elle réduite si celui-ci bénéficie d'un vent favorable de \SI{7,2}{km.h^{-1}} ? Commenter.
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1]{Écoulement autour d'une sphère}
+La Fig.~\ref{fig:ecoul} présente deux photographies de l'écoulement d'air autour d'une sphère.
+\begin{quest}
+	\item On suppose l'écoulement parfait, stationnaire, incompressible et irrotationnel. Soit $R$ le rayon de la sphère, $\Phi$ le potentiel des vitesses, dont on justifiera l'existence. Le potentiel est cherché sous la forme $\Phi(r,\theta) = Ar \cos \theta + \frac{B \cos \theta}{r^2}$ où $r$ est le rayon par rapport au centre de la sphère et $\theta$ la colatitude par rapport à la direction $\vec{e_z}$ de l'écoulement. Déterminer $A$, $B$ et le champ de vitesse $\vec{v} = \frac{\partial \Phi}{\partial r} \vec{e_r} + \frac{1}{r}\frac{\partial \Phi}{\partial \theta}  \vec{e_{\theta}}$.
+	\item Laquelle des deux situations montrées sur la Fig.~\ref{fig:ecoul} est la mieux décrite par le champ de vitesse calculé en question $1$? Quelle est la valeur du Reynolds associée? Commenter. Comment qualifie-t-on l'écoulement de la Fig.~\ref{fig:turbu}?
+\end{quest}
+\vspace{4cm}
+%\begin{figure}[b!]
+\begin{center}
+%\subfigure[$Re \sim 0.1$]{
+\begin{tikzpicture}
+\draw[->,>=latex] (0,-0.2) --++(5.13,0) node[right]{$z$};
+\includegraphics[height=3.5cm]{ecoulement.jpeg};
+\end{tikzpicture}
+%\hspace{0cm}
+%}\hspace{1cm}
+%\subfigure[$Re \sim 10^5$]{\label{fig:turbu}
+\begin{tikzpicture}
+\draw[->,>=latex] (0,-0.2) --++(4.7,0) node[right]{$z$};
+\includegraphics[height=3.5cm]{ecoulement2.jpeg};
+\end{tikzpicture}
+%}
+%\caption{Écoulements autour d'une sphère pour deux nombres de Reynolds $Re$. Les traînées blanches visualisent les lignes de courant. L'écoulement loin de la sphère est parallèle et se fait de la gauche vers la droite. Le champ de vitesse à l'infini est donc $\vec{v_0} = v_0 \vec{e_z}$.}
+%\label{fig:ecoul}
+\end{center}
+%\end{figure}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

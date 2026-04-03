@@ -1,0 +1,70 @@
+﻿\begin{tikzpicture}
+
+%propriétés sondes
+\def\r{1};
+\def\e{1};
+\def\N{20};
+
+%fil de mesure
+\draw[very thick] ($(360*\N:\r+\e)  + (-0.005,0)$).. controls (2,3) and (3,0) .. (5,2);
+\draw (5,2) .. controls (5.1,2.1) and (5.2,2.3) .. (4.8,2.4);
+\draw (5,2) .. controls (5.1,2.1) and (5.3,2.3) .. (5.5,2.1);
+
+%bobinage
+\fill[gray!10!white, draw=black] circle(\r+\e);
+\draw[copper, thick] plot[domain=0:360*\N, samples=2000] (\x:\r+\x\e/360/\N);
+\fill[white, draw=black]  circle(\r);
+\shade[bottom color=copper, top color=black] ($(360*\N:\r+\e) + (-0.005,-0.1)$) --++(0.02,0)  --++ (0.005,0.5) --++(-0.025,0) --cycle;
+
+%annotations
+\draw[>-<,>=stealth] (-\r-0.1-\e,0) -- (-\r+0.1,0) node [left=1.2] {$r_2-r_1$};
+\draw[->,>=stealth] (0,0) -- (200:\r) node[right=0.32] {$r_1$};
+\draw circle(0.12) node{\tiny$\bullet$} node[right=0.05] {$z$};
+\draw (-20:\r+\e) -- (3,{-(\r+\e)*sin(20)}) node[right] {bobinage};
+\draw (2,0.7) -- (3,0.7) node[right] {fils de mesure};
+
+\end{tikzpicture} .. controls (25.5758,42.8214) and
+    (28.1292,42.4719) .. (30.6636,42.5820) .. controls (32.2651,42.6515) and
+    (33.8641,42.9025) .. (35.4639,42.8012) .. controls (38.1421,42.6317) and
+    (40.7294,41.4442) .. (42.6644,39.5849) .. controls (43.3479,38.9281) and
+    (43.9535,38.1903) .. (44.4645,37.3919);
+
+
+
+  \path[draw=black,fill=cff0000,opacity=0.000,line join=miter,line cap=butt,miter
+    limit=4.00,line width=0.000pt] (37.7023,73.0412) .. controls (38.3043,72.4113)
+    and (38.6060,71.5062) .. (38.5024,70.6410) .. controls (38.4242,69.9883) and
+    (38.1132,69.3547) .. (37.6023,68.9409) .. controls (37.1838,68.6020) and
+    (36.6404,68.4209) .. (36.1022,68.4409);
+
+
+%petits fils au bout
+  \path[draw=black,line width=0.1pt] 
+(44.4645,37.3919) .. controls (45.0302,36.6705) and
+    (45.2223,35.6714) .. (44.9645,34.7917) .. controls (44.8221,34.3058) and
+    (44.5496,33.8588) .. (44.1830,33.5096) .. controls (43.8164,33.1605) and
+    (43.3566,32.9101) .. (42.8644,32.7915);
+
+  \path[draw=black,line width=0.1pt] 
+(44.4645,37.3919) .. controls (44.9170,36.7260) and
+    (45.4564,36.1192) .. (46.0646,35.5917) .. controls (46.6458,35.0876) and
+    (47.3111,34.6467) .. (48.0647,34.4917) .. controls (48.4592,34.4105) and
+    (48.8703,34.4105) .. (49.2648,34.4917);
+
+% copper wires
+\def\w{0.0055};
+\begin{scope}[draw=copper,opacity=0.8,line width=0.15pt,rotate=10,xshift=31,yshift=46]
+     \draw plot[domain=32:50,variable=\t,smooth,samples=750] ({\t r}: {\w*\t*\t} and {0.8*\w*\t*\t} ) ;
+\end{scope}
+
+
+%cercle extérieur du fluxmètre
+  \path[draw=JoliGris,miter limit=4.00,line width=0.3pt]
+    (27.9017,62.2098) ellipse (0.3836cm and 0.3145cm);
+
+%cercle intérieur du fluxmètre
+  \path[draw=JoliGris,miter limit=4.00,line width=0.3pt]
+    (27.9017,63.3092) ellipse (0.17cm and 0.128cm);
+
+
+\end{tikzpicture}

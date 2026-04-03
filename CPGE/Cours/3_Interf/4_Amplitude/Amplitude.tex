@@ -1,0 +1,607 @@
+% displayname : Division d'amplitude
+\documentclass[12pt,fancy]{cours}
+\usepackage{lscape}
+\usepackage{adjustbox}
+\Chapit{3}{4}
+\begin{document}
+\maketitre{
+Dans ce chapitre, nous allons étudier un autre dispositif interférométrique dit à division d'amplitude, pour lequel un même rayon est séparé en deux après transmission et réflexion partielles sur une lame.
+Les interféromètres à division d'amplitude s'affranchissent du problème de cohérence spatiale, mais au prix de la localisation des interférences dans une certaine région de l'espace, conduisant à un réglage plus complexe de l'appareil.
+ Dans le cadre du programme, nous étudions l'interféromètre de Michelson (prix Nobel en 1907). Nous supposerons que la source est monchromatique, et nous étudierons le montage en lumière blanche en TP uniquement.
+}
+{
+\item Cours Signaux 2 - 0
+\item Document de cours Signaux 2 - 1 à 3
+\item TD Signaux 2
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+ \section{L'interféromètre de Michelson}
+
+ \subsection{Généralités}
+ L’interféromètre de Michelson est un dispositif à \imp{division d’amplitude} inventé par Albert A. Michelson en 1881. Il a été utilisé notamment pour la célèbre expérience de Michelson-Morley (1887) qui a mis en évidence l'inexistence de l'éther luminifère, et plus récemment dans les détecteurs d'ondes gravitationnelles LIGO et VIRGO. D’autres dispositifs à division d’amplitude existent, comme les interféromètres de Fabry-Pérot ou de Mach-Zehnder, mais leur étude ne figure pas au programme.
+ \begin{definition}[Interféromètre à division d’amplitude]
+  Un interféromètre à \imp{division d’amplitude} opère une \imp{division énergétique} du faisceau : un même rayon incident est divisé en deux faisceaux par une lame partiellement réfléchissante.
+ \end{definition}
+
+ \udl{Hypothèse} : dans toute la suite, nous supposerons que la source $\rm S$ est \imp{monchromatique}. Nous étudierons l'interféromètre en lumière blanche dans les \refTP{7} et \refTP{8}.
+
+ Pour diviser énergétiquement un faisceau, les interféromètres à division d'amplitude ont recours à une lame partiellement réfléchissante non absorbante, appelée \imp{séparatrice}. Tout interféromètre à division d'amplitude comprend donc le dispositif de la \Fig{division_amplitude}.
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=1.3]{division_energie.pdf}
+  \caption{Principe de la division d'amplitude. Un faisceau incident est divisé en deux faisceaux secondaires par une lame semi-réfléchissante. Les faisceaux secondaires interfèrent entre eux en sortie de l'interféromètre.}
+  \label{fig:division_amplitude}
+\end{figure}
+
+La lame réfléchissante est caractérisé par ses \imp{coefficients de réflexion} $\udl{r}$ et de \imp{transmission} $\udl{t}$ en amplitude, ainsi que les coefficients de réflexion $R$ et de transmission $T$ en intensité.
+\begin{definition}[Coefficients de réflexion et de transmission en amplitude]
+  Les vibrations lumineuses des rayons réfléchi et transmis par une lame \imp{non absorbante}, vérifient 
+  $$
+  \udl{\vib}_{\rm r} = \udl{r} \, \udl{\vib}_{\rm i} \quad \text{et} \quad \udl{\vib}_{\rm t} = \udl{t} \, \udl{\vib}_{\rm i},
+  $$
+  où $\udl{r}$ et $\udl{t}$ sont respectivement les \imp{coefficients de réflexion} et de \imp{transmission} en amplitude de la lame.
+\end{definition}
+On définit également les coefficients de réflexion et de transmission en intensité par
+\eqbox{
+R  = |\udl{r}|^2 \quad \text{et} \quad T = |\udl{t}|^2.
+}
+La conservation de l'énergie impose alors 
+\eqbox{
+R + T = 1.
+}
+  \subsection{Présentation simplifiée}
+L'interféromètre de Michelson réalise une \imp{division d'amplitude} en séparant un faisceau incident en deux faisceaux d'égales intensités qui interfèrent entre eux. Il s'agit donc d'interférences à \imp{deux ondes}. Les éléments constitutifs de l'interféromètre sont représentés sur la \Fig{schema_michelson_simplifié}.
+
+
+\begin{figure}[H]
+ \centering
+ \includegraphics[width=0.8\textwidth]{schema_michelson_simplifie.pdf}
+ \caption{Schéma simplifié de l'interféromètre de Michelson. Une séparatrice $\Surf$ divise un faisceau en deux faisceaux secondaires, qui sont réfléchis sur les miroirs $(\mc{M}_1)$ et $(\mc{M}_2)$ puis recombiné en sortie. D'après \emph{Physique Expérimentale}, Collectif Jolidon (2021).}
+ \label{fig:schema_michelson_simplifié}
+ \end{figure}
+
+\begin{liste}
+  \item L'interféromètre comporte deux voies, appelées \important{bras}, numérotées $1$ et $2$.
+  \item Au bout de chacun des bras se trouve des \imp{miroirs} $(\mc{M}_1)$ et $(\mc{M}_2)$ qui réfléchissent les faisceaux $1$ et~$2$. Le miroir $(\mc{M}_1)$ est fixe, tandis que le miroir $(\mc{M}_2)$ est mobile.
+  \item  Le faisceau incident est séparé par une lame de verre appelée \important{séparatrice} ($\mathcal{S}$), orientée suivant la bissectrice des deux bras. La séparatrice est supposée semi-réfléchissante, les coefficients de réflexion et de transmission en intensité vérifient 
+  \eqbox{
+R = T = \frac{1}{2}.
+  }
+  Les rayons transmis et réfléchis sont donc d’intensité moitié. Les faisceaux réfléchis se recombinent sur la séparatrice et interférent en sortie de l'interféromètre.
+\end{liste}
+
+
+
+%  placé à $\SI{45}{\degree}$ par rapport aux miroirs. (Fig.~\ref{fig:schema_michelson_simplifié}).
+
+% On suppose que la séparatrice est infiniment mince et n'introduit donc pas de différence de marche.
+\noindent
+ Pour introduire une différence de marche  entre les deux voies, on peut donc :
+\begin{enumerate}
+\item soit translater le miroir mobile $(\mathcal{M}_2)$ avec la vis micrométrique (T) (le miroir $(\mathcal{M}_1)$ est fixe). On dit que l'interféromètre de Michelson est en configuration \imp{lame d'air} (Sec.~\ref{sec:lame_air}) ;
+\item soit créer un angle entre les miroirs avec les vis de réglages grossier (G$_1$), (G$_2$), et fin (F$_1$), (F$_2$). On dit que l'interféromètre de Michelson est en configuration \imp{coin d'air} (Sec.~\ref{sec:coin_air}).
+\end{enumerate}
+
+
+
+% \begin{theorem}[Configurations de l'interféromètre de Michelson]\label{form:}
+%   L'interféromètre de Michelson peut être réglé en configuration 
+%   \begin{liste}
+%     \item \imp{lame d'air} : les miroir $(\mathcal{M}_1)$ et $(\mathcal{M}_2)$ sont perpendiculaires ;
+%     \item \imp{coin d'air} : les deux miroirs $(\mathcal{M}_1)$ et $(\mathcal{M}_2)$ sont mobiles.
+% \end{theorem}
+
+ \begin{remarquetech}
+ Un interféromètre de Michelson coûte plusieurs milliers d'euros. Vous l'utiliserez en TP, par conséquent il est indispensable de le manipuler avec une grande précaution. Le coût de l'interféromètre est en grande partie dû à la fabrication des miroirs et des lames semi-réfléchissantes, dont la planéité doit être garantie à au moins $\lambda/10$ soit \SI{50}{nm} dans le visible. Il est donc FORMELLEMENT INTERDIT de toucher les miroirs ou les lames séparatrice et compensatrice avec quoi que ce soit !
+ \end{remarquetech}
+
+
+ \subsection{Rôle de la compensatrice}
+ \parag{Problème de la séparatrice}
+La lame séparatrice ($\Surf$) est d'épaisseur non nulle et introduit donc une différence de marche supplémentaire $\delta_{(\Surf)}$ entre les faisceaux $2$ et $1$. En effet, d'après la \Fig{S_seule}, 
+\begin{liste}
+  \item le faisceau $1$ traverse $1$ épaisseur de verre ;
+  \item le faisceau $2$ traverse $3$ épaisseurs de verre.
+\end{liste}
+Notons $\ell$ l’épaisseur de verre traversée.
+La différence de marche vaut donc 
+$\delta_{(\Surf)} = 3n\ell-n\ell=2n\ell$, soit 
+\begin{equation}
+  \delta_{(\Surf)}(\lambda) = 2n(\lambda)\ell.
+\end{equation}
+La différence de marche dépend de la longueur d’onde à cause de dispersion du verre, ce qui a pour effet délétère d’altérer la figure d’interférences en lumière polychromatique.
+
+
+\begin{figure}[H]
+ \centering
+ \subfigure[]{\label{fig:S_seule}
+ \includegraphics[width=0.45\textwidth]{S_seule.pdf}
+ }\hfill
+ \subfigure[]{\label{fig:S_C}
+ \includegraphics[width=0.45\textwidth]{S_C.pdf}
+ }
+%  \includegraphics[width=0.45\textwidth]{role_compensatrice.pdf}
+ \caption{Rôle de la compensatrice. (a) Sans compensatrice, le rayon $1$ subit une traversée de lame de verre, et le rayon $2$ en subit $3$. La différence de marche introduite par la séparatrice  $\delta_{\Surf}(\lambda) = 2n(\lambda)\ell$ dépend de la longueur d’onde. (b) Avec compensatrice, les rayons $1$ et $2$ subissent chacun $4$ traversées de lame de verre. La différence de marche introduite par le système séparatrice-compensatrice vaut donc $\delta_{ (\mathcal{S}+\mathcal{C})} = 0,~ \forall \lambda$ .}
+ \label{fig:role_compensatrice}
+ \end{figure}
+
+\parag{Solution apportée par la compensatrice}
+C'est pourquoi l'interféromètre comporte également une lame \imp{compensatrice} $(\mc{C})$ de \imp{même épaisseur} que la séparatrice $(\Surf)$ sur le trajet des rayons lumineux. Plusieurs configurations existent. Dans la configuration de la \Fig{S_C}, les rayons 1 et 2 traversent tous deux $4$ épaisseurs de verre. La différence de marche introduite par le système $(\Surf+\mc{C})$ vaut donc 
+% \begin{equation}
+\eqbox[]{
+  \delta_{(\Surf+\mc{C})} =  0,~\forall \lambda.
+  }
+% \end{equation}
+qui est indépendant de la longueur d'onde.
+
+
+
+ \begin{prop}[Rôle de la compensatrice]\label{prop:}
+   La lame \important{compensatrice} $(\mathcal{C})$ permet de compenser la différence de marche introduite par la lame séparatrice $(\Surf)$, qui dépend de la longueur d’onde, ce qui altérerait la figure d'interférences en lumière polychromatique.
+    % à cause de la dispersion du verre.
+   % Grâce à elle, les faisceaux secondaires
+ \end{prop}
+
+
+ \section{Configuration en lame d'air}
+
+ \label{sec:lame_air}
+ \subsection{Description}
+
+
+ \parag{Principe du réglage}
+ Considérons une source $\rm S$ \imp{ponctuelle et monochromatique}. Pour simplifier l'analyse du trajet de la lumière suivi dans chaque voie, nous pouvons introduire un certain nombre lde constructions auxiliaires. 
+ Le trajet des rayons réels et fictifs est représenté en Fig.~\ref{fig:michelson_LA}.
+
+%  introduisons $(\mathcal{M}'_2)$ le symétrique de $(\mathcal{M}_2)$ par rapport à $(\mathcal{S})$.
+
+ % Raisonner avec $(\mathcal{M}'_2)$ plutôt que $(\mathcal{M}_2)$ ne modifie pas le chemin optique mais simplifie considérablement les calculs, comme nous allons le voir.
+
+ \begin{liste}
+  \item \fbox{$\Sp$} : source fictive symétrique de la source réelle $\rm S$ par rapport à la séparatrice $(\Surf)$.
+  \item \fbox{$(\mc{M}_2')$} : miroir fictif symétrique du miroir réel $(\mc{M}_2)$ par rapport à la séparatrice $(\Surf)$.
+  \item \fbox{$\Su$ et $\Sd$} : sources fictives symétriques de $\Sp$ par rapport aux miroirs $(\mc{M}_1)$ et $(\mc{M}_2')$ respectivement.
+    % Le miroir $(\mathcal{M}_2)$ est remplacé par un miroir fictif $(\mathcal{M}'_2)$ symétrique de $(\mathcal{M}_2)$ par rapport à la séparatrice. On note $e$ la distance entre les miroirs $(\mathcal{M}_1)$ et $(\mathcal{M}'_2)$. La région de l’espace située entre $(\mathcal{M}_1)$ et $(\mathcal{M}'_2)$ est appelée \imp{lame d'air}. La distance $e$ est l’épaisseur de la lame d'air.
+  % \item La source $\Sp$ est remplacée par deux sources fictives $\Su$ et $\Sd$ symétriques de $\Sp$ par rapport à $(\mathcal{M}_1)$ et $(\mathcal{M}'_2)$ respectivement. 
+ \end{liste}
+
+\begin{figure}[H]
+  \centering
+    \subfigure[]{\label{fig:lame_P_infini}
+  \includegraphics[scale=0.35]{michelson_S'.pdf}
+  }
+  \hfill
+  \subfigure[]{\label{fig:lame_P_fini}
+  \includegraphics[scale=0.35]{michelson_M2'.pdf}
+  }
+    \hfill
+  \subfigure[]{\label{fig:lame_P_fini}
+  \includegraphics[scale=0.35]{michelson_S12.pdf}
+  }
+  % \subfigure[]{\label{fig:lame_P_infini}
+  % \includegraphics[height=12cm]{michelson_lame_air.pdf}
+  % }
+  % \hfill
+  % \subfigure[]{\label{fig:lame_P_fini}
+  % \includegraphics[height=12cm]{michelson_lame_air_loc.pdf}
+  % }
+  \caption{Méthode de construction des éléments auxiliaires en configuration lame d'air. (a). Le rayon incident est partiellement réfléchi par la séparatrice vers la voie $1$ (point noir). Le rayon $1$ semble provenir de la source fictive $\Sp$ (en vert), symétrique de $\rm S$ par rapport à la séparatrice. (b) Le rayon $2$ est partiellement réfléchi par la séparatrice avant de sortir de l'interféromètre. Le rayon $2$ semble provenir du miroir fictif $(\mathcal{M}'_2)$ (en vert), symétrique de $(\mathcal{M}_2)$ par rapport à la séparatrice. $(\mc{M}_1)$ et $(\mc{M}_2')$ sont parallèles et séparés par une zone appelée lame d'air, d'épaisseur $e$. (c) Les rayons $1$ et $2$ sont réfléchis par les miroirs $(\mc{M}_1)$ et $(\mc{M}_2')$. Par symétrie, les rayons qui interfèrent à l'infini semblent provenir de deux sources fictives $\Su$ et $\Sd$ (en vert), symétriques de $\Sp$ par rapport à $(\mc{M}_1)$ et $(\mc{M}_2')$ respectivement.}
+  \label{fig:michelson_LA}
+  \end{figure}
+ %
+ % Sur l'interféromètre, cela signifie que le trajet de la lumière est plus long dans un bras (la voie 1 sur le schéma) que dans l'autre.
+
+%  Pour simplifier la construction des rayons, nous définissons des éléments fictifs images d’éléments réels par la séparatrice.
+
+
+ \begin{definition}[Configuration lame d'air]\label{form:}
+  En réglage \important{lame d'air},  $(\mathcal{M}_1)$ et  $(\mathcal{M}'_2)$ sont \imp{parallèles} et distants d'une épaisseur $e$.
+ \end{definition}
+
+% Introduisons la source fictive $S'$, symétrique de la source $S$ par rapport à la séparatrice (Fig.~\ref{fig:michelson_LA}). Comme la symétrie miroir ne modifie pas le chemin optique, tout se passe comme si des rayons issus de la source fictive $\Sp$ ignorent la séparatrice et se réfléchissent soit sur $(\mathcal{M}_1)$, soit sur le miroir fictif $(\mathcal{M}'_2)$. Par symétrie miroir, si on note $\Su$ et $\Sd$ les symétriques de $\Sp$ par rapport à $(\mathcal{M}_1)$ et $(\mathcal{M}'_2)$, tout se passe comme si les rayons qui interfèrent en $P$
+% provenaient de ces deux sources fictives $\Su$ et $\Sd$, distantes de $2e$.
+
+Ces deux sources fictives sont cohérentes, puisqu'elles sont obtenues à partir de la même source  $\Sp$, et peuvent donc donner lieu à des interférences. On obtient donc le schéma équivalent en lame d'air, représenté sur le schéma de droite en Fig.~\ref{fig:michelson_LA}.
+
+
+
+ \parag{Localisation des interférences} Observons les interférences en un point $\rm P$ de l'espace. 
+%  Deux situations peuvent se rencontrer.
+ \begin{liste}
+  \item \udl{Si $\rm P$ est à l'infini} : les rayons qui interfèrent en $\rm P$ sont parallèles et donc issus d'un même rayon incident sur la séparatrice (\Fig{lame_P_infini}). L'interféromètre réalise bien une division d'amplitude. Lorsque la source est étendue, les rayons qui interférent en $\rm P$ proviennent de la même source élémentaire $\rm S$, et sont donc cohérents : la figure d'interférence est donc bien contrastée. 
+  % On dit que les interférences sont \imp{localisées à l'infini}. 
+  \item \udl{Si $\rm P$ est à distance finie} : les rayons qui interfèrent en $\rm P$ ne sont pas parallèles et sont donc issus de deux rayons incidents différents. On réalise donc une division du front d’onde, et le même problème de cohérence spatial que les trous de Young surgit : avec une source étendue, les rayons qui interférent en $\rm P$ proviennent de sources élémentaires différentes, et sont donc incohérents. 
+  % Les interférences se brouillent. 
+ \end{liste}
+ Pour pouvoir utiliser une source étendue et ainsi observer une figure d'interférences lumineuse, il faut observer les interférences à l'infini. On dit que les interférences sont \imp{localisées} à l'infini.
+%  Sur le schéma de la \Fig{michelson_LA}, nous avons représenté $P$ à l'infini, car les rayons sont parallèles en sortie. Les rayons secondaires sont alors issus du même rayon incident provenant de $\Sp$. Mais si $P$ est à distance finie des miroirs, les rayons se superposant en $P$ ne sont pas parallèles, et donc sont issus de deux rayons incidents différents. On tombe sur le même problème qu'avec les trous d'Young : avec un source étendue, les interférences se brouillent. Pour pouvoir utiliser une source étendue et ainsi observer une figure d'interférences lumineuse, il faut observer les interférences à l'infini.
+
+ \begin{prop}[Localisation des interférences en lame d'air]\label{prop:}
+ Les interférences observées avec un interféromètre de Michelson en configuration \imp{lame d'air} éclairé par une \imp{source étendue} sont \imp{localisées à l'infini}.
+ \end{prop}
+
+ En pratique, pour observer la figure d'interférences à distance finie on place un écran dans le plan focal image d'une lentille convergente  $(\mathcal{L}_2)$ située en sortie de l'interféromètre, comme indiqué en Fig.~\ref{fig:image_LA}.
+
+
+ \parag{Condition d'éclairage}
+
+ De même, pour observer le plus de franges possibles, on cherchera à ce que l'angle d'incidence $\theta$ varie de façon importante. Pour ce faire, on place une lentille fortement convergente en entrée de l'interféromètre et on fait l'image de la source sur les miroirs. On note $(\mathcal{L}_1)$ la lentille d'entrée.
+
+ \begin{prop}[Éclairage en lame d'air]\label{prop:}
+  On éclaire l'interféromètre de Michelson en lame d'air avec un faisceau \imp{convergent sur les miroirs}.
+ \end{prop}
+
+
+ \begin{figure}[H]
+  \centering
+  \subfigure[]{\label{fig:}
+  \includegraphics[height=0.3\textwidth]{lame_air_image.pdf}
+  }\hspace{2cm}
+  \subfigure[]{\label{fig:}
+  \includegraphics[height=0.3\textwidth]{lame_air_source.pdf}
+  }
+  \caption{(a) Pour observer la figure d'interférences à distance finie on place un écran dans le plan focal image d'une lentille convergente située en sortie de l'interféromètre. On observe alors des anneau sur un écran. (a) On éclaire l'interféromètre avec un faisceau convergent sur les miroirs pour maximiser la variation de l'angle d'incidence $\theta$.}
+  \label{fig:image_LA}
+  \end{figure}
+
+
+\subsection{Figure d'interférences}
+
+ \parag{Calcul de la différence de marche}
+Il existe deux méthodes classiques pour obtenir l'expression de la différence de marche. La méthode la plus rapide consiste à raisonner sur les sources secondaires.
+% On raisonne soit avec les miroirs, soit avec les sources secondaires (Fig.~\ref{fig:michelson_LA}).
+ Pour simplifier, on se place dans l'air d'indice $n \simeq 1$, puis on généralisera le résultat à tout milieu THI.
+
+\begin{figure}[h!]
+ \centering
+ \includegraphics[scale=0.5]{delta_lame_air_calcul.pdf}
+ \caption{En configuration lame d'air, l'interféromètre de Michelson est équivalent à deux rayons émis par les sources secondaires $\rm\Su$ et $\rm\Sd$ construites précédemment. Le calcul de la différence de marche donne $\delta=\opt{\Su H}=2e\cos \theta$.}
+ \label{fig:différence_marche_LA}
+ \end{figure}
+
+ \begin{demo}
+ La différence de marche $\delta(P)$ entre les rayons $1$ et $2$ en un point $\rm P$ de l'espace est donnée par la différence de chemin optique entre les deux sources secondaires $\rm\Su$ et $\rm\Sd$ (Fig.~\ref{fig:différence_marche_LA}). On a 
+\begin{align}
+  \delta(P) &= \opt{\Su P}-\opt{\Sd P} = \opt{\Su H} + \opt{HP} - \opt{\Sd P} = \opt{\Su H},
+\end{align}
+car $\vphi(H) = \vphi(\Sd)$. Par géométrie, on trouve 
+\eqbox{
+\delta(P) = \Su\Sd \cos\theta = 2e\cos \theta.
+} 
+
+
+ \end{demo}
+
+% \begin{liste}
+%   \item \emph{Avec les miroirs} : voir Fig.~\ref{fig:différence_marche_LA} (gauche).
+%   \begin{align}
+%    \delta(P) & =\opt{\Sp P}-\opt{\Sp P}=\opt{AC}+\opt{CD}-\opt{AB}\\
+%    &=\frac{2e}{\cos \theta}-AD\sin \theta=\frac{2e}{\cos \theta}-2e\tan \theta \sin \theta\\
+%    &=\frac{2e}{\cos \theta}\left[1-\sin^2 \theta\right]=2e\cos \theta.
+%  \end{align}
+%    \item \emph{Avec les sources secondaires} : voir Fig.~\ref{fig:différence_marche_LA} (droite) :
+%     $\delta(P)=\opt{\Su H}=2e\cos \theta$.
+% \end{liste}
+Comme $\delta(P)$ ne dépend que de l'angle d'incidence $\theta$, les franges en lame d'air sont dites d'\important{égale inclinaison}. La figure d'interférences est invariante par rotation autour de l'axe optique $(Oz)$ orthogonal au miroir $(\mc{M}_1)$ ; elle est donc formée d’\important{anneaux}.
+
+\begin{theorem}[Différence de marche en configuration lame d'air]\label{form:}
+La différence de marche induite par une lame d'air d'épaisseur $e$ éclairée sous incidence $\theta$ vaut
+$$
+\delta = 2ne\cos \theta.
+$$
+La figure d'interférences est formée de franges d'égale inclinaison, donc d'\imp{anneaux}.
+\end{theorem}
+
+
+\begin{remarque}
+Si le parallélisme entre la séparatrice et la compensatrice n'est pas parfait, il en résulte une différence de marche supplémentaire qui dépend de l'angle d'incidence et qui rend les anneaux elliptiques.
+\end{remarque}
+%
+% \parag{Observation de la figure d'interférences}
+%
+% Dans le cas d'une source \emph{ponctuelle}, les interférences sont observables quelle que soit la position de l'écran: elles ne sont \emph{pas localisées}.
+%
+% Pour observer des interférences plus lumineuses, on utilise une source étendue. Nous l'avons mentionné en introduction, dans le cas des interféromètres à division d'amplitude, on observe dans tout l'espace un brouillage de la figure d'interférences à cause de la perte de cohérence spatiale \textit{sauf} dans une région de l'espace appelée surface de localisation.
+%
+% On admettra le résultat suivant (théorème de localisation), valable pour tout interféromètre à division d'amplitude: la \important{surface de localisation} correspond au lieu d'intersection des rayons émergents originellement issus d'un même rayon incident émis par la source. Dans le cas de lames à faces parallèles (Michelson réglé en lame d'air), les anneaux d'interférences sont \important{localisés à l'infini}. Pour les observer à distance finie on placera l'écran dans le plan focal image d'une lentille convergente située en sortie de l'interféromètre.
+%
+% De même, pour observer le plus d'anneaux possibles, autrement dit le plus grand nombre d'ordres d'interférences, on cherchera à ce que l'angle d'incidence $i$ varie de façon importante. Pour ce faire, on place une lentille fortement convergente en entrée de l'interféromètre et on fait l'image de la source sur les miroirs.
+
+
+
+ \parag{Rayon des anneaux}
+Le centre des franges correspond à l’angle $\theta=0$. La différence de marche y vaut $\delta=2e$, et l'ordre d'interférences est alors maximal, d’expression
+\eqbox[]{
+p_0 = \frac{2e}{\lambda_0},
+}
+\udl{Hypothèse} : Supposons qu'on observe le maximum d'intensité d'une frange brillante au centre, soit $p_0 \in \mathbb{Z}$.
+Déterminons alors le rayon $R_m$ du $m^{\rm e}$ anneau.
+
+\begin{demo}
+Soit $R_{m}$ le rayon du $m^{\rm e}$ anneau en partant du centre et $p_m$ l'ordre d'interférences correspondant. Supposons qu'on observe le maximum d'intensité d'une frange brillante au centre ($p_0$ entier). Alors $p_{m}=p_{0}-m$ et donc
+\begin{equation}
+  \frac{2e}{\lambda_0}\cos(\theta_m)=\frac{2e}{\lambda_0}-m.
+  \end{equation}
+  Dans les conditions de Gauss ($\theta_m \ll 1$) on a $\cos \theta_m\simeq 1-\theta_{m}^2/2$ d'où
+\begin{equation}\label{eq:delta_LA}
+  \theta_{m}=\sqrt{\frac{m\lambda_0}{e}}.
+ \end{equation}
+ En plaçant une lentille mince convergente de distance focale $f'$ en sortie de l'interféromètre (Fig.~\ref{fig:image_LA}), le $m^{\rm e}$ anneau sur l'écran est de rayon $R_{m}=f'\tan \theta_{m} \simeq f' \theta_m$. En généralisant à un milieu d'indice de réfraction $n$, on remplace $\lambda_0$ par $\lambda$, et l’on obtient 
+ \eqbox{
+  R_{m}=f'\sqrt{\frac{m\lambda}{e}}.
+ }
+\end{demo}
+
+\begin{theorem}[Rayon des anneaux]\label{form:anneaux}
+Le rayon du $m^{\rm e}$ anneau observé dans le plan focal image d'une lentille de focale $f'$ vaut
+\begin{equation*}
+R_{m}=f'\sqrt{\frac{m\lambda}{e}}.
+\end{equation*}
+\end{theorem}
+
+L'allure de la figure d'interférences est représentée en Fig.~\ref{fig:anneaux_michelson}.
+% \noindent Puisque $R_{m}=R_1\sqrt{m}$, plus on s'éloigne du centre et plus les anneaux se resserrent.
+
+
+
+ \parag{Allure de la figure d'interférences}
+ Que se passe-t-il lorsqu'on fait varier l'épaisseur de la lame d'air ? Nous pouvons prédire deux effets.
+ \begin{enumerate}
+  \item À numéro d'anneaux \fbox{$m$ fixé}.
+  
+  D'après la \Formu{anneaux}, $R_m$ est une fonction décroissante de $e$. Si $e$ diminue, $R_m$ augmente : les anneaux sont de plus en plus gros, et de moins en moins nombreux. Si $e$ augmente, $R_m$ diminue : les anneaux sont de plus en plus resserrés, et de plus en plus nombreux.
+
+  \item À ordre d'interférences \fbox{$p_m$ fixé}.
+  
+  D'après l'\Eq{delta_LA}, $\cos \theta_m$ est une fonction décroissante de $e$. Si $e$ diminue, $\cos \theta_m$ augmente et donc $\theta_m$ diminue : les anneaux rentrent vers le centre. Si $e$ augmente, $\cos \theta_m$ diminue et donc $\theta_m$ augmente : les anneaux s'éloignent du centre.
+ \end{enumerate} 
+ 
+%  À ordre d'interférences $p$ donné, si $e$ diminue alors $\cos \theta$ augmente et donc $\theta$ diminue. Puisque $R_{\rm{m}} = f'\tan \theta_{\rm{m}}$, cela signifie que $R_{\rm{m}}$ diminue.
+% \begin{liste}
+%   \item En diminuant l'épaisseur $e$ de la lame d'air, les anneaux rentrent vers le centre, sont de plus en plus grands, et de moins en moins nombreux.
+%     \item En augmentant l'épaisseur $e$ de la lame d'air, les anneaux s'éloignent du centre, sont de plus en plus resserrés, et de plus en plus nombreux.
+% \end{liste}
+ Lorsque $e=0$, on a $\delta=0$ pour tout angle $\theta$ : on observe un éclairement uniforme sur l'écran, appelé \important{teinte plate}. Les miroirs $(\mathcal{M}_1)$ et $(\mathcal{M}'_2)$ sont alors confondus, et la configuration est appelée \important{contact optique}.
+
+ \begin{definition}[Contact optique]\label{def:contact_optique}
+  Le \imp{contact optique} correspond à la configuration lame d'air d'épaisseur $e=0$ nulle.
+ \end{definition}
+
+\begin{figure}[h!]
+    \def\hei{5cm}
+ \centering
+%  \includegraphics[width=0.8\textwidth]{anneaux_michelson.pdf}
+\subfigure[]{\label{fig:}
+  \includegraphics[height=\hei]{anneau_3.png}
+}
+\subfigure[]{\label{fig:}
+  \includegraphics[height=\hei]{anneau_2.png}
+}
+\subfigure[]{\label{fig:}
+  \includegraphics[height=\hei]{anneau_1.png}
+}
+ \caption{Simulation de la figure d'interférences en configuration lame d'air obtenue avec un laser He-Ne. L'épaisseur $e$ de la lame d'air décroît de la gauche vers la droite. On pourra consulter l'animation disponible à l'adresse \href{https://femto-physique.fr/simulations/interference-egale-inclinaison.php}{https://femto-physique.fr/simulations/interference-egale-inclinaison.php.}}
+ \label{fig:anneaux_michelson}
+ \end{figure}
+
+\section{Configuration en coin d'air}
+\label{sec:coin_air}
+
+\subsection{Description}
+
+ \parag{Principe du réglage}
+Il s'agit du cas où $(\mathcal{M}_1)$ et $(\mathcal{M}'_2)$ sont à équidistances de la séparatrice ($e=0$) et font un \imp{angle $\alpha$} entre eux. Le schéma équivalent est représenté en Fig.~\ref{fig:michelson_CA}.
+
+\begin{definition}[Configuration coin d'air]\label{form:}
+ En réglage \important{coin d'air}, $(\mathcal{M}_1)$ et $(\mathcal{M}'_2)$ se \imp{croisent} avec un angle $\alpha$, appelé angle de coin d'air.
+\end{definition}
+
+% \begin{figure}[h!]
+%  \centering
+%  \includegraphics[width=0.9\textwidth]{michelson_coin_air3.pdf}
+%  \caption{Schéma réel et schéma équivalent d'un interféromètre de Michelson dans une configuration coin d'air.}
+%  \label{fig:michelson_CA}
+%  \end{figure}
+
+\begin{figure}[H]
+  \centering
+    \subfigure[]{\label{fig:lame_P_infini}
+  \includegraphics[scale=0.35]{coin_S'.pdf}
+  }
+  \hfill
+  \subfigure[]{\label{fig:lame_P_fini}
+  \includegraphics[scale=0.35]{coin_M2'.pdf}
+  }
+    \hfill
+  \subfigure[]{\label{fig:lame_P_fini}
+  \includegraphics[scale=0.35]{coin_S12.pdf}
+  }
+  % \subfigure[]{\label{fig:lame_P_infini}
+  % \includegraphics[height=12cm]{michelson_lame_air.pdf}
+  % }
+  % \hfill
+  % \subfigure[]{\label{fig:lame_P_fini}
+  % \includegraphics[height=12cm]{michelson_lame_air_loc.pdf}
+  % }
+  \caption{Méthode de construction des éléments auxiliaires en configuration coin d'air (a).Source fictive $\Sp$. (b) Miroir fictif $(\mathcal{M}'_2)$. (c) Sources fictives $\Su$ et $\Sd$.}
+  \label{fig:michelson_CA}
+  \end{figure}
+
+En pratique, pour se placer dans ce réglage, on passe d'abord en lame d'air puis on réduit l'épaisseur de la lame jusqu'à atteindre la teinte plate, où $e=\delta=0$. On modifie alors l'angle d'un miroir à l'aide des vis de réglage. Attention, on ne peut observer les franges que si $\delta\leq \ell_{\rm{c}}$ (longueur de cohérence temporelle de la source). Pour cela on cherche à se placer proche de l'arête du coin d'air où $x\simeq 0$ (voir l'expression de la différence de marche en Sec.~\ref{subsec:figure_interfs_CA}).
+
+\parag{Localisation des interférences}
+On observe expérimentalement qu'avec une source étendue, la figure d'interférences est brouillée dans tout le champ d'interférences sauf au voisinage des miroirs, là où se croisent les rayons $1$ et $2$.
+\begin{prop}[Localisation des interférences en coin d'air]\label{prop:}
+  En configuration coin d'air, la figure d'interférences est \imp{localisée au voisinage des miroirs}.
+\end{prop}
+Pour l'observer, il faut donc placer une lentille en sortie de sorte à faire l'image du miroir fixe $(\mc{M}_1)$ sur un écran. 
+% En particulier, il faut vérifier la condition $D>4f'$ où $D$ est la distance écran-miroir afin d’observer l'image sur l'écran! Pour limiter l'encombrement il faut donc prendre une courte focale.
+%En entrée de l'interféromètre, on cherchera à se placer en incidence quasi-normale, et donc à placer la source au foyer objet d'une lentille convergente.
+
+% \begin{figure}[H]
+%   \centering
+%   \includegraphics[scale=1.4]{franges_rect.pdf}
+%   \caption{Observation des franges d'égale épaisseur en configuration coin d'air. Si l'interféromètre est éclairé avec une source étendue, les interférences sont localisées sur les miroirs. Il faut donc faire l'image du miroir fixe $(\mc{M}_1)$ sur un écran avec une lentille pour les observer.}
+%   \label{}
+% \end{figure}
+
+
+
+
+\begin{prop}[Éclairage en coin d'air]\label{prop:}
+  En configuration  \imp{coin d'air}, on éclaire l'interféromètre de Michelson en incidence \imp{normale}.
+\end{prop}
+On peut pour cela éclairer un diaphragme dans le plan focal objet d'une lentille convergent.
+
+
+\subsection{Figure d'interférences}
+\label{subsec:figure_interfs_CA}
+
+%\parag{Différence de marche}
+
+Dans le cadre du programme, l'expression de la différence de marche  est admise. Notons que $x=0$ correspond à l'intersection de $(\mc{M}_1)$ et  $(\mc{M}_2')$. Notons $x$ est l'abscisse le long du miroir fixe $(\mc{M}_1)$. La différence de marche vaut $\delta=2\alpha x$. On observe sur l'écran des \important{franges rectilignes} ($\delta=\text{cte}\Rightarrow x=\text{cte}$) que l'on qualifie de franges d'\important{égale épaisseur}.
+\begin{theorem}[Différence de marche en configuration coin d'air]\label{form:}
+La \imp{différence de marche} en coin d'air d'angle $\alpha \ll 1$ éclairé en incidence normale vaut
+$$
+  \delta\simeq 2n\alpha x.
+$$
+ La figure d'interférences est formée de franges d'égale épaisseur, donc de \imp{franges rectilignes}.
+\end{theorem}
+\noindent 
+ L'interfrange $i$, qui est la distance constante séparant les franges, vérifie $\delta(x+i) = \delta(x) + \lambda$, soit $2\alpha i = \lambda$. On en déduit l'expression de l'interfrange en coin d'air.
+ \begin{theorem}[Interfrange en coin d'air]
+  L'\imp{interfrange} observé sur les miroirs en configuration \imp{coin d'air} d'angle $\alpha \ll 1$ vaut 
+  \[
+    i=\frac{\lambda}{2\alpha}.
+  \]
+ \end{theorem}
+% \begin{equation}
+  % \eqbox{
+  %   i=\frac{\lambda}{2\alpha}.
+  % }
+% \end{equation}
+Les franges sont d'autant plus resserrées que $\alpha$ est grand.
+
+\begin{figure}[H]
+    \def\hei{5cm}
+ \centering
+%  \includegraphics[width=0.8\textwidth]{anneaux_michelson.pdf}
+\subfigure[]{\label{fig:}
+  \includegraphics[height=\hei]{franges_2.png}
+}
+\subfigure[]{\label{fig:}
+  \includegraphics[height=\hei]{franges_1.png}
+}
+\subfigure[]{\label{fig:}
+  \includegraphics[height=\hei]{franges_0.png}
+}
+ \caption{Simulation de la figure d'interférences en configuration coin d'air obtenue avec un laser He-Ne. L'angle $\alpha$ du coin d'air décroît de la gauche vers la droite. On pourra consulter l'animation disponible à l'adresse \href{https://femto-physique.fr/simulations/interference-coin-air.php}{https://femto-physique.fr/simulations/interference-coin-air.php}}
+ \label{fig:anneaux_michelson}
+ \end{figure}
+
+
+Ce réglage en coin d'air rappelle les fentes de Young par certains aspects:
+\begin{liste}
+\item les franges sont rectilignes, ce qui provient du fait que les sources secondaires fictives sont approximativement côte à côte par rapport à l'écran.
+%  (et non pas l'une derrière l'autre comme en lame d'air), autrement dit que l'on observe l'hyperboloïde de révolution dans un plan parallèle à l'axe des foyers S$_1$S$_2$ (voir le Complément~\ref{comp:hyperboloide});
+\item les franges sont régulièrement espacées.
+\end{liste}
+% Mais attention, l'interféromètre de Michelson est à division d'amplitude, et non pas à division du front d'onde. La différence notable est donc liée à l'effet de la cohérence spatiale lorsqu'on utilise une source étendue qui localise les interférences.
+%
+% Dans le dispositif de Michelson réglé en coin d'air, on n'observe pas de perte de contraste en utilisant une source étendue au niveau de la surface de localisation.
+\medskip
+Quelques applications classiques de l'interféromètre de Michelson (écart d'un doublet et détermination de la longueur de cohérence en lame d'air; analyse d'un défaut en coin d'air) seront traitées en TD et en TP.
+
+
+
+\section{Bilan}
+\subsection{Applications de l'interféromètre de Michelson}
+
+% L'interféromètre de Michelson existe depuis plus d'un siècle, mais il est toujours utilisé aujourd'hui. Il a par exemple été utilisé dans les détecteurs d'ondes gravitationnelles LIGO et VIRGO, capables de mesurer la différence de marche de la lumière entre deux bras de plus de \SI{3}{km} causée par la contraction des longueurs due à la coalescence de trous noirs supermassifs très éloignés.
+
+% Il existe également d'autres dispositifs interférentiels à division d'amplitude, notamment l'interféromètre de Fabry-Perot, qui permet des mesures spectroscopiques extrêmement précises (sa finesse $\mathcal{F}$ étant bien supérieure à celle d'un interféromètre de Michelson qui vaut $\mathcal{F}=2$), mais leur étude détaillée ne figure pas au programme.
+
+L'interféromètre de Michelson permet de mesurer des chemins optiques avec une très grande précision. Il est donc utilisé dans de nombreuses applications fondamentales et industrielles.
+% \begin{enumerate}
+  % \item \udl{Spectroscopie}. 
+  \parag{Spectroscopie}
+  En faisant défiler les franges d'interférences en configuration lame d'air, on peut déterminer les propriétés spectrales et géométriques d'une source lumineuse inconnue, telle que la largeur d'une raie, l'écart entre un doublet de raie, le diamètre angulaire, voire même le spectre complet de la source (interférométrie de Fourier). L'interféromètre de Michelson est ainsi très utilisé dans le domaine de l'interférométrie stellaire, pour étudier les propriétés spectrales des étoiles. A. \textsc{Michelson} développe ainsi en 1920 le premier interféromètre stellaire, qui lui permet de mesurer le diamètre apparent de l'étoile supergéante Bételgeuse.
+
+  % \item \udl{Métrologie}.
+  \parag{Métrologie}
+  A. \textsc{Michelson} fut le premier à mesurer avec précision la longueur du mètre étalon en 1879, en la comparant à la longueur d'onde de la raie rouge du cadmium. Aujourd'hui, l'interféromètre de Michelson est encore utilisé pour des mesures de haute précision en métrologie, par exemple pour le déplacement très précis de machines en configuration lame d'air. En configuration coin d'air, il ne permet pas d'atteindre des différences de marche élevé, mais la perte de cohérence en lumière blanche peut être mise à profit pour des mesures de variation infimes d'épaisseur optique. Il peut alors servir au contrôle de la planéité des surfaces, ou encore à la mesure de l'épaisseur d'une couche mince, ou des fluctuations d'indice de réfraction dans un milieu.
+
+  % \begin{fig}[label]
+  %   \centering
+  %   \includegraphics[width=0.7\columnwidth]{}
+  %   %\capt{}
+  % \end{fig}
+% \end{enumerate}
+\subsection{Tableau récapitulatif}
+% \rotatebox{90}{
+\begin{table}[h!]
+  \centering
+
+  
+\begin{adjustbox}{angle=90}
+     \centering
+  % requires \usepackage{array} in the preamble for 'm' column specifier
+  \begin{tabular}{|>{\centering\arraybackslash}m{2.7cm}|>{\centering\arraybackslash}m{5cm}|>{\centering\arraybackslash}m{3cm}|>{\centering\arraybackslash}m{5cm}|>{\centering\arraybackslash}m{3.5cm}|}
+    \hline 
+    \textsc{Configuration}
+  & Éclairage (entrée) & Localisation (source étendue) & Observation (sortie) & Type de franges \\
+  \hline\hline
+  \textsc{Lame d'air} 
+   & $(\mathcal{L}_1)$ fait l'image de S sur $(\mathcal{M}_2)$ 
+    & à l'infini &
+    l'écran est dans le plan focal image de $(\mathcal{L}_2)$ &
+     rayon $$R_{m}=f'\displaystyle\sqrt{\frac{m\lambda}{e}}$$ \\
+    Épaisseur $e$   & \includegraphics[scale=0.35]{lame_air_source.pdf}  & & \includegraphics[scale=0.35]{lame_air_image.pdf}  & \includegraphics[height=0.2\textwidth]{interf_lame.png} \\
+  \hline
+  \textsc{Coin d'air}  
+   & S est dans le plan focal objet de $(\mathcal{L}_1)$  
+   & au voisinage des miroirs
+   & $(\mathcal{L}_2)$ fait l'image de $(\mathcal{M}_1)$ sur l'écran
+   & interfrange $$i=\displaystyle\frac{\lambda}{2\alpha}$$ \\
+   Angle $\alpha$  & \includegraphics[scale=0.35]{coin_air_source.pdf}  & &  \includegraphics[scale=0.35]{coin_air_image.pdf} & \includegraphics[height=0.2\textwidth]{interf_coin.png}  \\
+  \hline 
+  \end{tabular}
+
+% \begin{table}[H]
+%   \centering
+% \begin{tabular}{|c|c|c|}
+%   \hline 
+%   Configuration
+%  & Lame d'air & Coin d'air \\
+% \hline\hline
+% Caractéristique & Épaisseur $e$ & Angle $\alpha$ \\
+% \hline 
+% Éclairage & $(\mathcal{L}_1)$ fait l'image & S est dans le plan focal \\
+% (entrée) & de S sur $(\mathcal{M}_2)$  & objet de $(\mathcal{L}_1)$\\
+% &\includegraphics[height=0.2\textwidth]{lame_air_source.pdf}&\includegraphics[height=0.2\textwidth]{coin_air_source.pdf}\\ \hline
+% Localisation & à l'infini & au voisinage des miroirs\\
+% (source étendue) &&\\
+% &&\\ \hline
+% Observation & l'écran est dans le plan  & $(\mathcal{L}_2)$ fait l'image de $(\mathcal{M}_1)$ \\
+% (sortie) & focal image de $(\mathcal{L}_2)$  & sur l'écran\\
+% & \includegraphics[height=0.2\textwidth]{lame_air_image.pdf}&\includegraphics[height=0.178\textwidth]{coin_air_image.pdf}\\ \hline
+% Type de franges & anneaux centrés sur  & rectilignes, parallèles\\
+% & la normale au miroir & à l'arête du coin d'air \\
+% &\includegraphics[height=0.178\textwidth]{interf_lame.png}&
+% \includegraphics[height=0.178\textwidth]{interf_coin.png}\\ 
+% & rayon $R_{m}=f'\displaystyle\sqrt{\frac{m\lambda}{e}}$  & interfrange $i=\displaystyle\frac{\lambda}{2\alpha}$ \\ &&\\
+% \hline 
+% \end{tabular}
+% \caption{Tableau récapitulatif pour les deux configurations : éclairage en entrée, localisation et observation de la figure d'interférences en sortie, forme de la figure d'interférences.}
+% \label{}
+% \end{table}
+% }
+\end{adjustbox}
+  \caption{Tableau récapitulatif pour les deux configurations : éclairage en entrée, localisation et observation de la figure d'interférences en sortie, forme de la figure d'interférences.}
+\end{table}
+
+
+\end{document}

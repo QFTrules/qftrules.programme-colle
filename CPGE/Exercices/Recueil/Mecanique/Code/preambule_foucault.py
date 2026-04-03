@@ -1,0 +1,21 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+""" PARAMÈTRES PHYSIQUES """
+g     = 9.81            # accélération de la pesanteur
+Tsid  = 100             # jour sidéral
+Omega = 2*np.pi/Tsid    # vecteur rotation terrestre
+lat   = 45/180*np.pi    # latitude
+L     = 3               # longueur du pendule
+
+a       = Omega*np.sin(lat)         # pulsation auxiliaire
+omega0  = np.sqrt(g/L)              # pulsation du pendule
+T0      = 2*np.pi/omega0            # période du pendule
+omega   = np.sqrt(a**2 + omega0**2) # pulsation rotation du plan
+T       = 2*np.pi/omega             # période rotation du plan
+
+""" PARAMÈTRES PROGRAMME """
+N    = 10                        # nombre de périodes de tracé
+x0   = 0.5                       # conditions initiales avec vy0 = 0
+tmax = N*T0                      # temps maximale de tracé
+t    = np.linspace(0,tmax,100*N) # tableau des dates de tracé

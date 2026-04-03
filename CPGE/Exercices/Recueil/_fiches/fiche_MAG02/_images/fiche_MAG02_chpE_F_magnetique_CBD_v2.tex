@@ -1,0 +1,43 @@
+\begin{tikzpicture}
+
+
+\begin{scope}[shift={(4,0)}]
+\filldraw[fill=white,draw=black] (0.25,0.25) circle(3pt) node[below left]{$\vv{B}$};
+\fill[] (0.25,0.25) circle(1.2pt);
+\draw[-latex] (0,1) -- +(1.5,0) node[midway,above]{$\vv{v}$};
+\draw (0.75,2) node[draw]{$q<0$};
+\draw (0.75,-0.75) node[draw,circle,text width=1em,text centered]{a};
+\end{scope}
+
+
+\begin{scope}[shift={(8,0)}]
+\draw[-latex] (0,0) -- +(40:1.5) node[right]{$\vv{v}$};
+\draw[dotted] (0,0) -- +(1.5,0);
+\draw[-stealth] (1,0)  arc(0:40:1) node[right,midway]{$\alpha$};
+\draw[-latex, ultra thick] (0,0) -- +(0,1.25) node[left, midway]{$\vv{B}$};
+\draw (0.75,2) node[draw]{$q>0$};
+\draw (0.75,-0.75) node[draw,circle,text width=1em,text centered]{b};
+\end{scope}
+
+\begin{scope}[shift={(12,0)}]
+\draw[dotted] (0,0) -- +(0,1.5);
+\draw[-latex] (0,0) -- +(60:1.5) node[midway,right]{$\vv{v}$};
+\draw[-stealth] (0,1)  arc(90:60:1) node[above,midway]{$\alpha$};
+\filldraw[fill=white,draw=black] (0,0) circle(3 pt) node[left, xshift=-1mm]{$\vv{B}$};
+\draw (0,0) node[]{$\times$};
+\draw (0.25,2) node[draw]{$q>0$};
+\draw (0.5,-0.75) node[draw,circle,text width=1em,text centered]{c};
+\end{scope}
+
+
+
+\begin{scope}[shift={(8.25,-3)}, scale=0.7]%[scale=1]
+\draw[-latex] (0,0) -- +(1,0) node[right]{$\vv{e_x}$};
+\draw[-latex] (0,0) -- +(0,1) node[right]{$\vv{e_y}$};
+\filldraw[fill=white,draw=black] circle(3pt) node[below left]{$\vv{e_z}$};
+\fill[] (0,0) circle(1.5pt);
+\draw[-stealth] (20:1.75) arc(20:60:1.75) node[midway,right]{$+$};
+\end{scope}
+
+
+\end{tikzpicture}

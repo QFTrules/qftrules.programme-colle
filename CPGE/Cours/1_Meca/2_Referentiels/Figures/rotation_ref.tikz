@@ -1,0 +1,32 @@
+\input{/home/eb/Dropbox/texmf/tex/latex/Preambles/tikz.tex}
+\begin{document}
+
+%=============================================================
+% 2015-07-08	Référentiel en rotation par rapport à un axe fixe
+%============================================================
+\begin{tikzpicture} [scale=0.8,x={(-0.353cm,-0.353cm)}, y={(1cm,0cm)}, z={(0cm,1cm)},>=latex, inner sep=2pt, outer sep=2pt, axis/.style={thin,gray}, vecteur/.style={->,thick,color=black,smooth},]
+	\colorlet{darkblue}{blue!50!black};
+	\def\angTheta{30};
+	\coordinate (O) at (0, 0, 0);
+	\coordinate (O') at (3,3.5,2);
+	\coordinate (O'A) at ({cos(\angTheta)},{sin(\angTheta)},0);
+	\coordinate (O'B) at ({-sin(\angTheta)},{cos(\angTheta)},0);
+	% \draw[axis] (O) -- ++(5, 0, 0)--++(-7,0,0) ;
+	% \draw[axis] (O) -- +(0,  5, 0) ;
+	% \draw[axis] (O) -- +(0,  0,  4.5) ;
+	% \shade(O) --++(5,0,0)--++(0,5,0)--++(-5,0,0)--cycle;
+	% \shade(O) --++(0,0,4)--++(5,0,0)--++(0,0,-4)--cycle;
+	% \shade(O) --++(0,0,4)--++(0,5,0)--++(0,0,-4)--cycle;
+	\draw[vecteur] (O) node[left]{O}-- ++(1,0,0);
+	\draw[vecteur] (O)-- ++(0,1,0);
+	\draw[vecteur] (O)-- ++(0,0,1) node[right]{$\mathcal{R}$};
+	\draw[vecteur] (O') node[left]{O'}-- ++(O'A);
+	\draw[vecteur] (O')-- ++(O'B);
+	\draw[vecteur] (O')-- ++(0,0,1) node[right]{$\mathcal{R}'$};
+	\draw[dashed] (O')-- ++(0,0,3) node[below right]{$(\Delta)$};
+	\draw[color=darkblue,->] (O')++(O'A) arc(30:250:1) node[above ]{$\Omega$};
+	\draw[dashed, color=darkblue] (O') circle(1);
+\end{tikzpicture}
+
+
+\end{document}

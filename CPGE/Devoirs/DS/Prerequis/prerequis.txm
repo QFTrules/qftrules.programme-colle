@@ -1,0 +1,83 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{lmodern}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+
+%%% COLORS %%%
+%\usepackage{color}
+\usepackage{xcolor}
+
+\definecolor{linkcolor}{rgb}{0,0,0.6}
+\definecolor{cornellred}{rgb}{0.7, 0.11, 0.11}
+\definecolor{darkcyan}{rgb}{0.0, 0.55, 0.55}
+\definecolor{coolblack}{rgb}{0.0, 0.18, 0.39}
+\definecolor{tealblue}{rgb}{0.21, 0.46, 0.53}
+\definecolor{darkgreen}{rgb}{0.0, 0.2, 0.13}
+\definecolor{asparagus}{rgb}{0.53, 0.66, 0.42}
+\definecolor{brickred}{rgb}{0.8, 0.25, 0.33}
+\definecolor{JoliBleu}{rgb}{0,0.55,0.55}
+\definecolor{JoliVert}{rgb}{0.15,0.6,0}
+\definecolor{JoliRouge}{rgb}{0.86,0.08,0}
+\definecolor{JoliJaune}{rgb}{1,0.75,0}
+\definecolor{JoliGris}{rgb}{0.52,0.52,0.51}
+\definecolor{mypink1}{rgb}{1, 0.2, 0.6}
+\colorlet{mdtRed}{red!70!black}
+\definecolor{blueryb}{rgb}{0.01,0.28,1.0}
+\definecolor{bluegray}{rgb}{0.4,0.6 0.8}
+\definecolor{lightgray}{gray}{0.85}
+\definecolor{greenblue}{rgb}{0,0.5,0.3}
+\definecolor{slateblue}{rgb}{0,0.1,0.35}
+\definecolor{lightblue}{rgb}{0.95,0.95,1}
+
+\newcommand{\JRouge}[1]{\textcolor{JoliRouge} {#1}}
+\newcommand{\JVert}[1]{\textcolor{JoliVert} {#1}}
+\newcommand{\JBleu}[1]{\textcolor{JoliBleu} {#1}}
+\newcommand{\lcl}[1]{\textcolor{JoliRouge}{#1}}
+
+\begin{document}
+
+
+
+\begin{center}
+\Large \textsc{Prérequis}
+\end{center}
+
+En \JRouge{rouge} : ce qui est vu en cours de dictionnaire/programmation dynamique.
+
+\section{Algorithmique pour la théorie des jeux}
+
+\subsection{Jeux à deux joueurs}
+\begin{enumerate}
+\item \underline{Graphes} (notion de sommets, d'arcs, de chemin, de graphe biparti, de graphe orienté) : modélisation d'un jeu par un graphe.
+\item \underline{\JRouge{Dictionnaire}} (type dictionnaire sous python) : représentation d'un graphe par un dictionnaire sous python (clé = sommet, valeur = sommets reliés par un arc).
+\end{enumerate}
+
+\subsection{Algorithme min-max}
+\begin{enumerate}
+\item \underline{Arbre} (notion de nœud, de racine) : arbre de jeu comme graphe acyclique connexe, recherche du meilleur coup à jouer à partir d'un nœud.
+\end{enumerate}
+
+\section{Algorithmique pour l'intelligence artificielle}
+
+\subsection{Apprentissage supervisé}
+
+\begin{enumerate}
+\item \underline{Recherche d'un maximum} : recherche d'un maximum parmi le groupe de plus proches voisins.% d'un élément.
+\item  \underline{\JRouge{Algorithme glouton}} : algorithme de recherche du plus proche voisin comme algorithme glouton.
+\item \underline{\JRouge{Complexité}} (complexité constante pour un dictionnaire).
+\item \underline{Bibliothèque \texttt{random}} (python).
+\end{enumerate}
+
+Les algorithmes gloutons et la complexité sont juste évoquées, ce ne sont pas des notions indispensables.
+
+\subsection{Apprentissage non supervisé}
+Pas vraiment de notion d'algorithmique, essentiellement les structures et syntaxes de base sous python (définition \emph{def}, boucle \emph{for}, condition \emph{if}, liste, \emph{range}, etc.), comme pour toutes les sous-sections précédentes.
+
+\end{document}

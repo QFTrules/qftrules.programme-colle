@@ -1,0 +1,8 @@
+﻿\begin{tikzpicture}[>=latex]
+
+\draw[shading=ball,left color=copper,right color=copper!50!gray] (0,0) rectangle ++(0.1,5);
+\draw[shading=ball,left color=gray,right color=gray!50!white] (-0.5,0) rectangle ++(0.1,5);
+\draw[shading=ball,left color=goldenrod,right color=goldenrod!50!gray] (-1,0) rectangle ++(0.1,5);
+\draw[shading=ball,left color=gray!50!black,right color=gray!50!gray] (-1.5,0) rectangle ++(0.1,5);
+\fill[shading=ball,draw=black,draw opacity=0.5,rounded corners=5pt,top color=gray,bottom color =black!50!gray, fill opacity=0.5] (-2,0) rectangle ++(2.5,-1);
+\end{tikzpicture}

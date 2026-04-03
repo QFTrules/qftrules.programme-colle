@@ -1,0 +1,26 @@
+\shorthandoff{:!}
+\begin{tikzpicture}
+
+\draw (0,0) coordinate (O) -- ++ (0.5,0) to[L=$L$] ++ (0.5,0) coordinate (A);
+\draw[white] (O) -- ++ (0,-1.5) -- ++ (2,0) coordinate (B);
+
+\draw (A) -- ++ (1.5,0) coordinate (D) to[R=$R$] ++ (0,-1.5) -- (B);
+
+\draw (O) to[battery1] ++(0,-1.5) coordinate (R) node[ground]{};
+
+\draw (R) -- (B);
+
+\draw[<-,>=stealth]  ($(D)+(0.75,0)$) node[below right]{$V_{\rm i}$} -- ++ (0,-1.5) coordinate (G);
+\draw[<-,>=stealth]  ($(O)+(-0.5,0)$) node[left]{$V_{\rm e}$} -- ++ (0,-1.5) coordinate (H);
+
+\draw (D) to[short, i=${i=0}$] ++ (3,0) coordinate (E);
+
+\draw (E) -- ++ (0,0.5) -- ++ (1.5,0) node[midway,below=5] {suiveur} -- ++ (0,-1) -- ++ (-1.5,0) -- cycle;
+
+\draw (7,0) -- ++ (0.5,0) to[R=$R$] ++ (2,0) coordinate (Dp) to[C=$C$] ++ (0,-1.5) node[ground] {};
+
+\draw[<-,>=stealth]  ($(Dp)+(1,0)$) node[right]{$V_{\rm s}$} -- ++ (0,-1.5) coordinate (H);
+
+
+
+\end{tikzpicture}

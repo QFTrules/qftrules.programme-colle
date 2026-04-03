@@ -1,0 +1,50 @@
+% displayname :
+% !TEX root = /home/eb/Dropbox/CPGE/Physique/Cours/[5]Electromg/[2]ExempleElec/Doc/Docvdw.tex
+\input{/home/eb/Dropbox/texmf/tex/latex/Preambles/TD.sty}
+\begin{document}
+\EnteteDoc{5}{2}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%% EXERCICE %%%
+\begin{doc}{Les forces de Van der Waals et le Gecko}
+%\begin{quest}
+\item Quelles sont les trois types d'interactions de type Van der Waals ? De quelles natures sont ces interactions ?
+
+\sol{
+Un cadre de référence est un référentiel. Voir cours.
+}
+
+\item Pourquoi l'interaction de Keesom dépend-elle de la température ?
+
+\sol{
+Un référentiel inertiel est un référentiel dans lequel la 2e loi le Newton est valide.
+}
+
+\item À partir des ordres de grandeur d'énergie donnés, et en estimant la distance typique entre molécules, donner l'ordre de grandeur des forces de Van der Waals.
+
+\sol{
+Il s'agit de la force d'inertie d'entraînement, qui est axifuge lors d'une rotation uniforme.
+Le ballon se déplace dans le référentiel du lanceur sur le carrousel dans une direction non colinéaire au vecteur rotation, et subit donc aussi la force de Coriolis.
+}
+
+\item Dans la partie 2.3, pourquoi passe-t-on d'une force en $1/r^7$ en une force en $1/r^3$ lorsque deux plans s'attirent ?
+
+\sol{
+On utilise la règle de la main droite.
+%Dans la phrase de la p.3, l'auteur parle de la droite et de la gauche par rapport à un observateur qui observe le mouvement sur une carte.
+}
+
+\item Expliquer et vérifier les calculs de la partie 2.3.
+\sol{
+La force d'inertie d'entraînement contribue au poids, qui est vertical et non n'apparaît pas dans une projection horizontale. Avec $\Vec{\Omega}_{\rm T} = \Omega(\cos \phi \ey + \sin \phi \ez)$, la force de Coriolis s'écrit
+$$
+\Vec{f}_{\rm C} = 2\rho \Vec{v} \pv \Vec{\Omega}_{\rm T} = 2 \rho \Omega  (v_x \ex + v_y \ey) \pv (\cos \phi \ey + \sin \phi \ez) = \frac{4\pi\rho}{T}(v_x \cos \phi\, \ez - v_x \sin \phi\, \ey + v_y \sin \phi\,\ex) ,
+$$
+soit $\Vec{f}_{\rm C}  = \rho f(-v_x \ey + v_y \ex) + \text{composante verticale},$
+avec $f = \frac{4\pi \sin \phi}{T}$.
+}
+
+\end{doc}
+\end{document}

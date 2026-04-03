@@ -1,0 +1,23 @@
+\def\iangle{25} % Angle of the inclined plane
+\def\down{-90}
+\def\arcr{20pt} % Radius of the arc used to indicate angles
+
+\begin{tikzpicture}[
+    force/.style={->,>=latex,draw=\JRLblue,very thick,nodes={\JRLblue}},
+    axis/.style={->,>=stealth},
+    M/.style={rectangle,draw,fill=gray,minimum size=0.5cm,thin},
+    m/.style={rectangle,draw=black,fill=lightgray,minimum size=0.3cm,thin},
+    plane/.style={draw=\JRLblueC,fill=\JRLblueC},
+]
+\draw[plane] (0,-1) coordinate (base)--coordinate[pos=0.5] (mid) ++(\iangle:3) coordinate (top)|- (base) -- cycle;
+\draw[\couleurFoncee] (0,-1)--++(\iangle:3);
+\path (mid) node[M,rotate=\iangle,yshift=0.25cm] (M) {};
+\draw [force,rotate=\iangle] (mid) -- ++(0,1) node [right, xshift=1mm, yshift=1mm] {$\vv{N}$};
+ \draw[->,>=stealth] (base)++(\arcr,0) arc (0:\iangle:\arcr);
+ \path (base)++(\iangle*0.5:\arcr+5pt) node{$\alpha$};
+ \draw [force] ($(mid)+(-0.15,0.22)$) -- ++(0,-1) node [above right] {$\vv{P}$};
+ \draw [axis,rotate=\iangle,yshift=0.5cm, xshift=0.5cm](-1.5,-0.5) -- ++(1,0) node [right] {$\vv{e_x}$}; 
+ \draw [axis,rotate=\iangle,yshift=0.5cm, xshift=0.5cm](-1.5,-0.5) -- ++(0,1) node [left] {$\vv{e_y}$};
+ \coordinate (O) at($(mid)+(-0.15,0.22)$) {} ;
+ \draw[fill, \JRLblue]  (O) circle (2pt) ;
+\end{tikzpicture}

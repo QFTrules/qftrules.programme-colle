@@ -1,0 +1,13 @@
+\shorthandoff{:!} %règle un problème de compatibilité avec babel
+\begin{tikzpicture}[scale=0.45]
+\begin{circuitikz}
+
+\draw (0,2) to [R, l=$\underline{Z}_1$] (2.5,2);
+\draw (2.5,2) to [R, l_=$\underline{Z}_2$] (2.5,0);
+\draw (2.5,0) -- (0,0);
+\draw[->,>=stealth]  (3,0) -- (3,2) node[right, midway] {$u_s$};
+% utilisation de la librairie arrow
+\draw[->,>=stealth] (-0.2,0) -- (-0.2,2) node[left, midway] {$u_e$};
+\end{circuitikz}  
+\end{tikzpicture} 
+\shorthandon{:!}

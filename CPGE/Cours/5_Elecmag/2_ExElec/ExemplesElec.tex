@@ -1,0 +1,890 @@
+% displayname : Exemples de champs électrostatiques
+\documentclass[12pt,fancy]{cours}
+\Chapit{5}{2}
+\begin{document}
+\maketitre[***]{
+Nous poursuivons l'étude de l'électrostatique avec quelques exemples classiques: une distribution de charges en géométrie plane avec le condensateur plan, puis une distribution sphérique avec une boule uniformément chargée, et enfin le dipôle électrostatique et son application aux interactions ions-molécules. Nous verrons aussi une analogie entre l'électrostatique et la gravitation en TD.
+}{
+  \item 
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\section{Le condensateur plan idéal}
+
+
+\subsection{Modèle et champ électrostatique}
+
+
+\parag{Modèle du condensateur plan idéal}
+% \begin{definition}[Condensateur]\label{def:}
+  Un \imp{condensateur} est un composant capable de stocker des charges électriques. 
+% \end{definition}
+Un condensateur est composé de deux armatures conductrices  $\mc{C}_1$ et $\mc{C}_2$ en influence totale, i.e. telle que toutes les lignes de champ de $\mc{C}_1$ convergent vers $\mc{C}_2$. En conséquence, le théorème de Gauss impose que les armatures portent des charges opposées, notées $\pm Q$. Les armatures sont séparées par un milieu isolant : le vide ou un milieu diélectrique. Un condensateur \imp{plan} possède deux armatures planes. Dans le modèle du condensateur plan idéal, on suppose
+\begin{enumerate}
+\item  les \imp{effets de bord} négligeables : pas de déviation des lignes de champ au bord des armatures. 
+
+\begin{remarque}
+  Cette approximation est valable lorsque la distance $d$ entre les armatures de surface~$S$ est négligeable devant leur taille, soit $d \ll  \sqrt{S}$. Cela revient à supposer les armatures infinies.
+\end{remarque}
+\item  la distribution de charge \imp{uniforme}.
+
+\begin{remarque}
+Dans un conducteur à l’équilibre, la charge est répartie en surface. La répartition n’est pas uniforme en générale, car la densité est plus important là où la courbure est grande, mais pour un plan infini, la distribution est bien uniforme. Les armatures sont donc de charges $\pm Q=\pm\sigma S$ où $\sigma$ désigne la densité surfacique de charge.
+\end{remarque}
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[h!]
+\centering
+\subfigure[]{\label{fig:C2}
+\includegraphics[height=5.5cm]{capacitors2.pdf}
+}
+\hspace{2cm}
+\subfigure[]{\label{fig:C1}
+\includegraphics[height=5.5cm]{capacitors1.pdf}
+}
+
+\caption{(a) Carte de champ d'un condensateur plan réel. Les lignes de champ sont déviées aux bords des armatures. (b) Condensateur plan idéal. Les armatures sont infinies et uniformément chargées, de chargées opposées $+Q$ et $-Q$, et séparées d'une distance $d$. Les lignes de champ sont parfaitement rectilignes et parallèles.}
+\label{fig:capa}
+\end{figure}
+%%%%%%%%%%%%%
+
+\begin{definition}[Condensateur plan idéal]\label{def:}
+  Un \imp{condensateur plan idéal} est un composant constitué de deux armatures planes infinies, uniformément chargées et de charges opposées $\pm Q$.
+\end{definition}
+Commençons par déterminer le champ électrostatique créé par un plan infini uniformément chargée.
+
+\parag{Champ créé par un plan infini uniformément chargé} Considérons une plaque infinie uniformément chargée par une densité surfacique $\sigma$, de normale $\ez$, comprise dans le plan $(Oxy)$. Appliquons le théorème de Gauss suivant la méthode vue dans le \refChap{5}{1}.
+\begin{enumerate}
+  \item \udl{Symétries et invariances}. 
+  
+  \begin{itemize}
+    \item Symétries. On identifie deux plans de symétrie de la distribution de charge,
+    $$
+\Pi_1 = (O,\ex,\ez) \quad \text{et} \quad  \Pi_2 = (O,\ey,\ez).
+$$
+    Donc $\Vec{E}(M) \in \Pi_1 \cap \Pi_2$, soit $\E(M) = E_z(M) \ez$.
+    \item Invariances.
+    La distribution de charge est invariante par translation suivant $(Ox)$ et $(Oy)$, et donc
+    \begin{equation}
+      \E(M) = E_z(z)\ez.
+    \end{equation}
+    \item Parité.
+    De plus, le plan $(O,\ex,\ey)$ est un plan de symétrie de la distribution de charge, ce qui implique que  la fonction $E_z(z)$ est impaire, soit
+    \begin{equation}
+      E_z(-z)=-E_z(z).
+    \end{equation}
+  \end{itemize}
+  \item \udl{Théorème de Gauss}.  On prend comme surface de Gauss un cylindre $\Surf = \Surf_1 \cup \Surf_{\rm lat} \cup \Surf_2$ d’axe $(Oz)$ traversant la plaque, de surface latérale $\Surf_{\rm lat}$ et bordé des surfaces $\Surf_1$ au-dessus et $\Surf_2$ au-dessous. Les surfaces $\Surf_1$ et $\Surf_2$ sont des surfaces quelconques identiques d’aire $S$ placées aux altitudes $z>0$ et $-z<0$. Le flux a pour expression
+  \begin{equation}
+    \begin{split}
+      \oiint_\Surf \Vec{E} \cdot \dS = \iint_{\Surf_1} \Vec{E} \cdot \dS + \iint_{\Surf_2} \Vec{E} \cdot \dS = 
+      \iint_{\Surf_1} E(z) \d S - \iint_{\Surf_2} E( - z) \d S \\ = (E(z) - E(-z))S = 2S E(z).
+    \end{split}
+\end{equation}
+Le théorème de Gauss nous donne, avec la charge intérieure $q_{\rm int} = S \sigma$, que
+\begin{equation}
+  \oiint_\Surf \Vec{E} \cdot \d S = \frac{q_{\rm int}}{\epz} \Rar 2 S E(z) = \frac{S \sigma}{\varepsilon_0}\quad \Rightarrow \quad E(z) = \frac{\sigma}{2\varepsilon_0}.
+\end{equation}
+\end{enumerate}
+Ainsi, le champ créé par une plaque plane infinie s'écrit
+% \begin{equation}
+\eqbox{
+  \vv{E}(M)=\pm\frac{\sigma}{2\varepsilon_0}\,\vv{e_z},
+  }
+% \end{equation}
+avec le signe $+$ si $z>0$ et le signe $-$ si $z<0$.
+
+\begin{remarque}
+  Le champ $E(z)$ est discontinu en $z=0$.
+  Cette discontinuité non physique est due à la modélisation, et apparaît en tout point d'une distribution ponctuelle, linéique et surfacique de charge. Si on considère la surface plane comme la limite d'un plan d'épaisseur $e$ et de charge volumique $\rho$, le champ est continu en tout point de l'espace.
+\end{remarque}
+
+\parag{Champ entre les plaques du condensateur plan} 
+Utilisons le théorème de superposition pour déterminer le champ $\Vec{E}$ créé par le condensateur plan :
+\begin{equation}
+\Vec{E}=\Vec{E}_+ + \Vec{E}_- 
+\end{equation}
+où  $\Vec{E}_+$ est le champ créé par l’armature positive et  $\Vec{E}_-$ celui créé par l’armature négative. Il suffit donc déterminer le champ créé par une armature infinie uniformément chargée.
+Le champ créé par l’armature chargée positivement placée en $z=-d/2$ vaut
+\begin{equation}
+\vv{E}_{+}= \begin{cases}
+ +\frac{\sigma}{2\varepsilon_0}\vv{e_z} \quad\text{si}\quad z>-\frac{d}{2}, \\
+ -\frac{\sigma}{2\varepsilon_0}\vv{e_z} \quad\text{si}\quad z<-\frac{d}{2}.
+ \end{cases}
+ \end{equation}
+ %%%%%%%%%%%%%%%%%%%%%
+ \begin{figure}[H]
+ \centering
+ \includegraphics[width=0.8\textwidth]{champ_condensateur.pdf}
+ \caption{Illustration du calcul du champ d'un condensateur modélisé par la superposition de deux plaques infinies uniformément chargées et de charges opposées. Le champ électrostatique est représenté en bleu.}
+ \end{figure}
+ %%%%%%%%%%%%%%%%%%%%%%%%%
+De même, le champ créé par l’armature chargée négativement placée en $z=d/2$ vaut
+\begin{equation}
+\vv{E}_{-}= \begin{cases}
+ -\frac{\sigma}{2\varepsilon_0}\vv{e_z}\quad\text{si}\quad z>\frac{d}{2},\\
+ +\frac{\sigma}{2\varepsilon_0}\vv{e_z} \quad\text{si}\quad z<\frac{d}{2}.
+ \end{cases}
+ \end{equation}
+ Le champ créé par l'ensemble du condensateur est $\Vec{E} = \Vec{E}_+ + \Vec{E}_-$, soit
+\begin{equation}
+\vv{E}= \begin{cases}
+ 0 \quad\text{si}\quad \abs{z}>\frac{d}{2}, \\
+ \frac{\sigma}{\varepsilon_0}\vv{e_z}\quad\text{si}\quad \abs{z}<\frac{d}{2}.
+ \end{cases}
+ \end{equation}
+ \begin{prop}[Champ du condensateur plan idéal]\label{prop:}
+  Le champ électrostatique créé par un \imp{condensateur plan idéal} entre les armatures vaut 
+  \begin{equation*}
+    % \left\{
+    % \begin{aligned}
+    % & \Vec{0} & \text{ en dehors des armatures ;} \\
+    \E(M) =  \frac{\sigma}{\varepsilon_0}\ez,
+    % \end{aligned}
+    % \right.
+  \end{equation*}
+  et est nul en dehors des armatures.
+  % \begin{align*}
+  %    \Vec{0} & \text{ en dehors des armatures ;} \\
+  %    \frac{\sigma}{\varepsilon_0}\ez & \text{ entre les armatures.}
+  % \end{align*} 
+ \end{prop}
+
+
+\begin{remarque}
+ Pour ne pas faire d'erreur de signe sur l'orientation du champ, se rappeler que $\dive{\vv{E}}=\rho/\varepsilon_0$ donc le champ électrique fuit les charges positives et converge vers les charges négatives.
+ \end{remarque}
+\subsection{Capacité et énergie électriques d'un condensateur}
+
+\begin{methode}[Déterminer une capacité électrique]
+  \item	Définir et représenter une \imp{ligne de champ} reliant les armatures $1$ et $2$.
+  \item Calculer la \imp{tension} $U_{12} = \int_{1}^{2}\E\cdot\dl$ avec
+  \begin{liste}
+    \item $\dl = \d z \,\ez$ suivant un axe,
+    \item $\dl = \d r \,\er$ suivant un rayon,
+    \item $\dl = r \d \theta \,\et$ suivant un arc.
+  \end{liste}
+  \item Déterminer la \imp{capacité} $C$ telle que la charge sur l'armature $1$ vaut $Q_1 = C U_{12}$.
+\end{methode}
+
+\parag{Capacité électrique} Déterminons maintenant la tension entre les armatures.
+La différence de potentiel sur une ligne de champ reliant les armatures $A$ (positive) et $B$ (négative) du condensateur s'écrit
+\begin{equation}
+U_{AB}=V_{A}-V_{B}=-\int_{A}^{B}\d V=\int_{A}^{B}\vv{E}\cdot\vv{\d l}=\int_{A}^{B}\left(\frac{\sigma}{\varepsilon_0}\vv{e_z}\right)\cdot \left(\d z\,\vv{e_z}\right)=\frac{\sigma d}{\varepsilon_0}.
+\end{equation}
+Or $Q=\sigma S$ et donc $U_{AB}=\frac{Qd}{\varepsilon_0 S}$. On voit que $U_{AB}$ et $Q$ sont proportionnels.
+\begin{definition}[Capacité électrique]\label{def:}
+  
+  Soit $Q_1$ la charge de l’armature $1$. La \imp{capacité électrique} $C$ (en $\SI{}{F.m^{-1}}$) est définie par
+  \begin{equation*}
+    Q_1=C U_{12}.
+  \end{equation*}
+\end{definition}
+ On en déduit que la capacité du condensateur plan idéal a l'expression 
+% \begin{theorem}[Capacité du condensateur plan idéal]
+  % \begin{equation*}
+    \eqbox[capacité_condo]{
+      C=\frac{\varepsilon_0 S}{d}.
+      }
+% \end{equation*}
+% \end{theorem}
+
+% \begin{remarque}
+%Dans la suite on redéfinit la tension de sorte que $Q=CU$ (autrement dit on pose $-U=U_{AB}$). La définition $U=Q/C$ indique que si on soumet les deux plaques à un champ électrique de façon à faire apparaître entre elles une différence de potentiel, ces plaques se mettent à se charger avec une charge $\pm Q$. Elles accumulent donc des charges électriques (respectivement positives et négatives), qui pourront ensuite débiter dans un circuit.
+% À $U$ fixé, plus $C$ est grand et plus la charge accumulée sur chaque plaque $Q$ est grande, d'où le nom de capacité donné à $C$. Il s'agit du principe de n'importe quel accumulateur: piles ou batteries. C'est aussi exactement ce qu'il se passe lorsque vous \textit{rechargez} la batterie de votre téléphone grâce à la tension fournie par la prise du secteur.
+% \end{remarque}
+% Sachant que $\varepsilon_0\sim\SI{e-11}{F.m^{-1}}$, même pour des plaques très proches ($d\sim\SI{1}#{\micro\meter}$) et de surface $S\sim\SI{1}{cm^2}$, on trouve  $C \sim \SI{100}{nF}$.
+
+% \begin{experience}[Capteur de niveau d'eau capacitif]\label{exp:}
+  %   On peut réaliser un capteur de niveau d'eau capacitif en utilisant la dépendance de $C$ en la permittivité relative $\veps_r$ et la surface $S$. Considérons une cuve plane de longueur $a$, de hauteur $b$, et d'épaisseur $e$, sur les flancs de laquelle sont déposés deux feuilles d'aluminium de surface $S=ab$ qui jouent le rôle d'armatures. La cuve est partiellement remplie d'eau jusqu'à une hauteur $h$. Alors les condensateurs formées par le couche d'air et la couche d'eau respectivement sont disposés en parallèle, et donc
+  %   $$
+  % C = C_{\rm air} + C_{\rm eau} = \frac{\epz}{e}a(b-h) + \frac{\epz \veps_r}{e}ah = C_0 + \frac{a}{e}\epz(\veps_r-1)h,
+  %   $$
+  %   où l'on a assimilé l'air au vide de permittivité $1$. La capacité totale est donc une fonction affine de la hauteur d'eau $h$, voir \Fig{C_vs_h}.
+  % \begin{figure}[H]
+    %   \centering
+    %   % \begin{minipage}{0.6\textwidth}
+      %   \subfigure[]{\label{fig:C_vs_h}
+      %   \includegraphics[width=0.6\textwidth]{C_vs_h_grosse_cuve.pdf}
+      %   }
+      %   % \end{minipage}
+      % % Test
+      % % \begin{minipage}{0.38\textwidth}
+        %   % \end{minipage}
+        %   \caption{}
+        %   \label{fig:}
+        % \end{figure}
+        % \end{experience}
+
+        \begin{experience}{Le condensateur d'Æpinus}\label{exp:}
+          On peut vérifier expérimentalement l'\Eq{capacité_condo} pour la capacité électrique du condensateur plan idéal. Le condensateur plan utilisée dans l'expérience, appelée condensateur d'Æpinus, est constitué de deux armatures circulaires de diamètre $D=\SI{175}{mm}$. Une régression affine $C= a/d+b$ est effectuée sur les données ci-dessous, avec $a=\SI{0.26(5)}{pF.m}$. 
+          %  et donc de surface $S=\SI{0.024}{m^2}$.
+          \begin{fig}[label]
+            \centering
+            \includegraphics[width=0.6\columnwidth]{C_vs_unsurd.pdf}
+            %\capt{}
+          \end{fig}
+          Comparer la pente $a$ mesurée à la valeur attendue et conclure.
+\end{experience}
+\examplesol{
+La valeur attendue est 
+\eqbox{
+a = \epz S = \frac{\epz \pi D^2}{4} = \SI{0.21}{pF.m}.
+}
+L'accord est bon. L'ordonnée à l'origine $b$ provient de la capacité parasite du montage et des effets de bord.
+}
+Pour augmenter la capacité d'un condensateur, on peut insérer entre les deux armatures un matériau \imp{diélectrique}. Il s'agit d'un matériau isolant, mais qui peut se polariser (voir Sec.~\ref{sec:dipole}) en présence d'un champ extérieur. Un diélectrique permet d’augmenter la permittivité diélectrique $\varepsilon = \varepsilon_0 \varepsilon_r$ d’un facteur $\varepsilon_r>1$, appelé coefficient diélectrique relatif.  L'expression de la capacité du condensateur plan devient  alors
+\begin{equation}
+C=\frac{\varepsilon_0\varepsilon_r S}{d}.
+\end{equation}
+% Par exemple, l’eau possède une permittivité de $\varepsilon_r = 78.5$.
+
+\begin{table}[h!]
+  \centering
+  % \usepackage{array}
+  \begin{tabular}{|c|c|c|c|c|c|c|c|} \hline Matériau & Vide & Air & Paraffine & Huile & Porcelaine &  Glycérine & Eau pure \\ \hline
+  Permittivité relative $\varepsilon_r$ & 1 & \num{1.0006} & 3 & 4 & 6 & 56 & 81 \\ \hline
+  \end{tabular}
+  
+  \caption{Valeurs numériques de la permittivité relative de quelques matériaux.}
+  \label{}
+  
+\end{table}
+
+\parag{Énergie électrique stockée} Pour terminer, exprimons l'énergie électrique stockée dans le condensateur.
+%  Pour cela, nous raisonnerons de deux façons : en terme électrocinétique, et en terme électrostatique.
+La puissance électrique consommée par un dipôle s'écrit $P=UI$, où nous notons $U=U_{AB}$ pour simplifier. Or $Q=CU$ pour le condensateur, et donc l’intensité du courant vaut $I=\dd{Q}{t} = C\frac{\d U}{\d t}$. On peut ainsi écrire $P=\frac{\d}{\d t}\left(\frac{1}{2}CU^2\right) = \dd{\mc{E}}{t}$ et identifier l'énergie stockée dans le condensateur à
+\eqbox[]{
+  \mc{E}_{C}=\frac{1}{2}CU^2.
+  }
+  % % La force électrostatique de Coulomb est conservative : elle dérive d'une énergie potentielle. Celle-ci s’obtient en calculant le travail élémentaire sur une charge d’épreuve $q$,
+  % \begin{equation}
+    % \label{eq:travail_ES}
+    % \begin{split}
+      % \delta W=\vv{F}\cdot\vv{\d l}=q\vv{E}\cdot\vv{\d l}=-q\d V = -\d(qV)=-\d \mc{E}_{\rm{pot}}
+      % \end{split}
+      % \end{equation}
+% avec l’\imp{énergie potentielle électrostatique}
+% \begin{equation}
+% \mc{E}_{\rm{pot}}=qV+\cte.
+% \end{equation}
+% L’énergie potentielle stockée par les deux armatures vaut donc $\mc{E}_C = QV_A-QV_B = QU = \frac{1}{2}CU^2$, en accord avec le raisonnement précédent.
+Or $U=Ed$ et $C=\frac{\varepsilon_0 S}{d}$, si bien que l'énergie stockée dans le condensateur plan s’écrit
+\begin{equation}
+\mc{E}_C=\left(\frac{1}{2}\varepsilon_0 E^2\right)\times Sd.
+\end{equation}
+La quantité $\Vol=Sd$ représente le volume du condensateur, et donc le facteur $\frac{1}{2}\varepsilon_0 E^2$ représente la \imp{densité volumique d'énergie} stockée sous forme électrique dans le condensateur. Cette expression est en réalité très générale : en tout point $M$ de champ $\Vec{E}(M)$ est stockée cette énergie volumique.
+\begin{theorem}[Densité volumique d’énergie électrique]
+\begin{equation*}
+e_E = \frac{1}{2}\varepsilon_0 E^2
+\end{equation*}
+\end{theorem}
+
+
+
+
+
+\section{Le dipôle électrostatique}
+Il s'agit d'une application capitale pas seulement en physique mais aussi en chimie et en biologie.
+
+\label{sec:dipole}
+\subsection{Modélisation}
+
+Considérons un doublet de charges ponctuelles opposées $+q$ et $-q$ distantes de $d$. On souhaite pouvoir étudier le potentiel et le champ électrostatiques engendrés par ce doublet sans se préoccuper de sa structure interne, autrement dit à grande distance $r \gg d$.
+\begin{definition}[Dipôle électrostatique]
+Un \imp{dipôle électrostatique} est un doublet de charges ponctuelles opposées séparées d'une distance $d$ négligeable. Un dipôle est étudié à grande distance $r \gg d$ : il s’agit de l’\imp{approximation dipolaire}.
+\end{definition}
+\begin{figure}[h!]
+  \centering
+  \includegraphics[scale=0.8]{dipole_ES.pdf}
+  \caption{Doublet de charges opposées $\pm q$ aux points $\rm N$ et $\rm P$, séparées de $d$.}
+\end{figure}
+La charge globale d’un dipôle électrostatique est \imp{nulle}. Le dipôle électrostatique n’est dont pas caractérisé par sa charge, mais par une autre grandeur. Les charges opposées sont de valeur absolue $q$ et séparées du vecteur $d\,\ex$, nous définissons dont le moment dipolaire 
+\begin{equation}
+\Vec{p} = qd \ex.
+\end{equation}
+Généralisons à une distribution discrète de charges $\{q_i\}$ placées aux points ${\rm M}_i$ et de charge totale nulle $Q = \sum_i q_i = 0$. Soit $\rm O$ une origine du repère. On définit le moment dipolaire comme 
+\begin{equation}
+  \Vec{p} = \sum_i q_i \Vec{OM_i}.
+\end{equation}
+On peut représenter cette distribution de charge par un doublet de la façon suivante. Soit $q_i^+$ l’ensemble des charges positives, de barycentre $\rm P$ ; soit $q_i^-$ l’ensemble des charges négatives, de barycentre $\rm N$, et soit $q=\sum_iq_i^+ = - \sum_i q_i^-$ la charge du doublet. On a alors 
+\begin{equation}
+  \Vec{p} = \sum_i q_i \Vec{OM_i} = \sum_i q_i^+ \Vec{OM_i} + \sum_i q_i^- \Vec{OM_i} = q \Vec{OP} - q \Vec{ON} = q \Vec{NP}.
+\end{equation}
+% le doublet apparaît comme une distribution de charge globale nulle ; on s’attend donc à ce que le potentiel électrostatique décroisse rapidement.
+%
+%Dans toute cette partie, nous étudierons le champ créé par ce dipôle à des distances $r\gg d$.
+%  Par extension, on qualifie aussi de dipôle une distribution de charge globalement neutre, où le barycentre des charges positives noté $P$ et le barycentre des charges négatives noté $N$ sont distants de $d$.
+
+
+% \noindent Tout dipôle électrostatique est caractérisé par son \imp{moment dipolaire}.
+% $\vv{p}$ défini par
+\begin{theorem}[Moment dipolaire]\label{form:dip}
+Le \imp{moment dipolaire} d’une distribution discrète de charges $\{q_i\}$ placées aux points ${\rm P}_i$, associée à une doublet de charges $\pm q$ de barycentres $\rm P$ (charges positives) et $\rm N$ (charges négatives), vaut
+\begin{equation*}
+\vv{p}\, = \sum_i q_i \,\Vec{OP_i} =\,  q \vv{NP}.
+\end{equation*}
+\end{theorem}
+\noindent
+Le moment dipolaire s’exprime en \imp{debye}, de symbole D, avec
+\begin{equation}
+\SI{1}{D}\simeq\SI{3,3e-30}{C.m}.
+\end{equation}
+On donne ci-dessous les moments dipolaires de quelques molécules.
+\begin{table}[h!]
+  \centering
+  \begin{tabular}{|c|c|c|c|c|c|c|c|} \hline Molécule & $\rm{HCl}$ & $\rm{H_2O}$ & $\rm{NH_3}$ & $\rm{CH_4}$ & $\rm{CO_2}$ & $\rm{O_2}$ & $\rm{H_2}$ \\ \hline
+  Moment dipolaire (\SI{}{D}) & 1,03 & 1,83 & 1,47 & 0 & 0 & 0 & 0 \\ \hline
+  \end{tabular}
+  \caption{Moments dipolaires de quelques molécules.}
+  \label{tab:p}
+\end{table}
+
+\begin{exemple}{Moment dipolaire de l'eau}
+  Déterminer le moment dipolaire $\Vec{p}$ de la molécule d'eau H$_2$O, sachant que la charge fractionnaire des atomes d'hydrogène vaut $q=\num{0,33}\,e$, la longueur des liaisons $a=\SI{96}{pm}$, et l'angle $\alpha =\SI{105}{\degree}$.
+  \begin{fig}[label]
+    \centering
+    \includegraphics[width=0.3\columnwidth]{eau}
+    %\capt{}
+  \end{fig}
+\end{exemple}
+\examplesol{
+  Le barycentre des charges négatives pris comme origine $\rm N = \rm O$. Le barycentre des charges positives est à une distance $d = a \cos(\alpha/2) = \SI{58}{pm}$ de $\rm O$ sur l'axe $(Oy)$, soit $ \Vec{NP} = - d \ey.$
+   Le moment dipolaire vaut $\Vec{p} = 2q \Vec{NP} = - 2q d \ey$, soit $\Vec{p} = - p \ey$ avec
+  \eqbox{
+ p=\SI{1.83}{D}.
+    }
+}
+
+% \begin{remarque}
+% Dans tout ce chapitre, $\vv{p}$ désigne le moment dipolaire, pas la quantité de mouvement !
+% En cas de doute, faire une analyse dimensionnelle rapide.
+% \end{remarque}
+
+\subsection{Potentiel et champ dipolaires}
+%Dans cette partie, nous allons établir l'expression du champ et du potentiel créé par un dipôle à grande distance. C'est l'approximation dipolaire: nous allons supposer que l'on observe le champ créé à une distance $r$ grande devant les dimensions du dipôle $d$,
+Nous déterminons le champ et le potentiel électrostatiques dipolaires, i.e le champ $\E_{\rm d}$ et le potentiel $V_{\rm d}$ créés par un dipôle électrostatique. Pour ce faire, nous pouvons calculer le potentiel $V(M)$ produit par un doublet de charges ponctuelles dans l’approximation dipolaire $d \ll r$.
+
+\parag{Calcul de potentiel}
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.35\textwidth]{approx_dipolaire.pdf}
+\end{figure}
+
+Comme les charges ponctuelles, on peut utiliser l'expression du champ coulombien et le théorème de superposition pour écrire
+\begin{equation}
+\label{eq:potentiel_non_simplifié_dip}
+V(M)= V_+(M) + V_-(M) =  \frac{q}{4\pi\varepsilon_0}\left(\frac{1}{PM}-\frac{1}{NM}\right).
+\end{equation}
+Il reste à exprimer $1/PM$ et $1/NM$ en fonction de $r$, $d$ et $\theta$.
+\begin{equation}
+\begin{split}
+PM^2&=\left(\vv{PO}+\vv{OM}\right)^2=PO^2+OM^2+2\vv{PO}\cdot\vv{OM}\\
+&=\left(\frac{d}{2}\right)^2+r^2+2\left(-\frac{d}{2}\,\vv{e_z}\right)\cdot r\vv{e_r}=\frac{d^2}{4}+r^2-rd\cos\theta\simeq r^2\left(1-\frac{d}{r}\cos\theta\right).
+\end{split}
+\end{equation}
+%où dans la dernière égalité nous nous sommes restreints au premier ordre non nul en $d/r$ conformément à l'approximation dipolaire. Enfin,
+Ainsi,
+\begin{equation}
+\begin{split}
+\label{eq:1/PM}
+\frac{1}{PM}&=\left(PM^2\right)^{-1/2}=\left[r^2\left(1-\frac{d}{r}\cos\theta\right)\right]^{-1/2}\simeq\frac{1}{r}\left(1+\frac{d}{2r}\cos\theta\right)
+\end{split}
+\end{equation}
+%où dans la dernière égalité nous avons effectué un développement limité (toujours au premier ordre).
+Exactement de la même manière, on montre que
+\begin{equation}
+\label{eq:1/NM}
+\frac{1}{NM}=\frac{1}{r}\left(1-\frac{d}{2r}\cos\theta\right),
+\end{equation}
+et on peut alors substituer les résultats \eqref{eq:1/PM} et \eqref{eq:1/NM} dans l'expression \eqref{eq:potentiel_non_simplifié_dip} du potentiel. En remarquant que $p=qd$, il vient
+\begin{equation}\label{eq:Vdipo}
+V(M)=\frac{p\cos\theta}{4\pi\varepsilon_0 r^2}.
+\end{equation}
+%Ce dernier résultat est à retenir et à savoir retrouver rapidement.
+
+\parag{Calcul du champ} On pourrait déterminer le champ à partir de l'expression coulombienne
+\begin{equation}
+\vv{E}(M)=\frac{q}{4\pi\varepsilon_0}\left(\frac{\vv{PM}}{PM^3}-\frac{\vv{NM}}{NM^3}\right),
+\end{equation}
+mais c’est assez calculatoire. Il est plus simple de dériver l'expression du potentiel. En effet
+\begin{equation}
+\begin{cases}
+E_r=-\dfrac{\partial V}{\partial r}=\dfrac{1}{4\pi\varepsilon_0}\dfrac{2p\cos\theta}{r^3},\\[10pt]
+E_\theta=-\dfrac{1}{r}\dfrac{\partial V}{\partial \theta}= \dfrac{1}{4\pi\varepsilon_0}\dfrac{p\sin\theta}{r^3},\\[10pt]
+E_\varphi=-\dfrac{1}{r\sin\theta}\dfrac{\partial V}{\partial \varphi}=0.
+\end{cases}
+\end{equation}
+Et donc sous forme compacte
+\begin{equation}
+\label{eq:champ_E_dipolaire}
+\vv{E}(M)=\frac{p}{4\pi\varepsilon_0 r^3}\,(2\cos\theta\,\er+\sin\theta\,\et).
+\end{equation}
+
+\parag{Expressions indépendantes du système de coordonnées}
+Il est préférable d'exprimer le potentiel et le champ de manière indépendante du système de coordonnées.
+%Cela s'avère utile lorsqu'on analyse un ensemble de dipôles.
+Avec $p\cos\theta=\vv{p}\cdot\vv{e_r}=\frac{\vv{p}\cdot\vv{r}}{r}$, on a
+\begin{theorem}[Potentiel dipolaire]
+\begin{equation*}
+V_{\rm dip}(M)=\frac{\vv{p}\cdot\vv{r}}{4\pi\varepsilon_0 r^3}
+\end{equation*}
+\end{theorem}
+Pour le champ, on utilise $\vv{p}=p\,\vv{e_z}=p\,(\cos\theta\,\vv{e_r}-\sin\theta\,\vv{e_\theta})$, soit
+\begin{theorem}[Champ dipolaire]
+\begin{equation*}
+\vv{E}_{\rm dip}(M)=\frac{3(\vv{p}\cdot\vv{r})\,\vv{r}-r^2\vv{p}}{4\pi\varepsilon_0 r^5}.
+\end{equation*}
+\end{theorem}
+
+
+\subsection{Carte du champ dipolaire}
+
+
+%\begin{wrapfigure}{r}{0.3\textwidth}
+
+%\end{wrapfigure}
+
+Le champ et le potentiel dipolaires possède les propriétés suivantes. Comme tout plan contenant les charges est plan de symétrie, les lignes de champ passant par un point de ce plan sont comprises dans le plan. On peut donc se contenter de représenter une coupe de la carte de champ d’angle azimutal $\varphi = \cte$ dans les coordonnées sphériques $(r,\theta,\vphi$), comme sur la \Fig{comparison_champ_exact_champ_dipolaire}.
+
+\parag{Comparaison avec le doublet de charge}  On remarquera que les deux cartes de champ sont équivalentes, sauf dans la région très proche des charges où l'approximation dipolaire $r\gg d$ n'est plus satisfaite.
+\begin{figure}[H]
+\centering
+\begin{subfig}[label][0.45]
+  \includegraphics[width=\textwidth, angle=180]{doublet}
+\end{subfig}\hfill
+\begin{subfig}[label][0.45]
+  \includegraphics[width=\textwidth, angle=-90]{dipole_field}
+\end{subfig}
+% \includegraphics[width=0.8\textwidth]{champ_dipole.pdf}
+\caption{(a) À gauche, le champ exact créé par un doublet de charges ponctuelles opposées. (b) À droite, le champ dipolaire, qui s'obtient à partir du champ du doublet de charges dans l'approximation dipolaire $r\gg d$.}
+\label{fig:comparison_champ_exact_champ_dipolaire}
+\end{figure}
+
+\parag{Propriétés du champ dipolaire} Voici quelques propriétés du champ dipolaire.
+\begin{enumerate}
+
+\item
+\udl{Intensité}. Le potentiel et le champ dipolaires décroissent \imp{plus rapidement} avec la distance $r$ que le potentiel et le champ coulombiens. Les effets du dipôle se font donc ressentir à moins grande distance que ceux des charges ponctuelles seules.
+\begin{center}
+\renewcommand{\arraystretch}{2}
+\begin{tabular}{|c|c|c|}
+\hline
+& $V(r)$ & $E(r)$ \\
+\hline
+Coulombien  & $\dfrac{1}{r}$ &  $\dfrac{1}{r^2}$\\
+\hline
+ Dipolaire & $\dfrac{1}{r^2}$ &  $\dfrac{1}{r^3}$  \\
+ \hline
+\end{tabular}
+\end{center}
+\item \udl{Symétrie}. La carte de champ dipolaire possède un plan d'antisymétrie orthogonal à l'axe du dipôle,
+\begin{equation}
+\Pi_{\rm A}\, = (O, \ex, \ey).
+\end{equation}
+La carte de champ dipolaire possède aussi une infinité de plans de symétrie,
+\begin{equation}
+\Pi_{\rm S} = (O, \er, \ez).
+\end{equation}
+En effet, tout plan passant par l'axe du dipôle est plan de symétrie.
+
+\item \udl{Équipotentielles}. Dans un plan $\vphi = \cte$, les surfaces équipotentielles ont pour équation en polaire,
+% \begin{equation}
+\eqbox[]{
+  r(\theta) = r_0 \sqrt{|\cos \theta|}.
+  }
+  \begin{demo}
+  En effet, $V(M) = \cte$ implique que $\frac{p\cos\theta}{4\pi\varepsilon_0 r^2} = \cte$, soit $r(\theta) = r_0 \sqrt{|\cos \theta|}$.
+  \end{demo}
+% \end{equation}
+\item \udl{Lignes de champ}. Dans un plan $\vphi = \cte$, les lignes de champ ont pour équation en polaire,
+% \begin{equation}
+\eqbox[]{
+  r =r_0 \sin^2(\theta).
+  }
+  \begin{demo}
+  elles sont définies par $\Vec{E} \pv \Vec{\d \ell} = 0$, soit $\frac{\d r}{E_r} = \frac{r \d \theta}{E_\theta} \Rightarrow \frac{\d r}{r} = \frac{2 \cos \theta\, \d \theta}{\sin \theta}$ et donc par intégration, $\ln(r/r_0) = \ln(\sin^2\theta)$ et donc
+  \end{demo}
+%  \end{equation}
+\end{enumerate}
+\subsection{Actions d'un champ électrostatique sur un dipôle}
+
+\begin{danger}
+  On ne s'intéresse plus ici au champ produit par le dipôle, mais à l'action d'un champ extérieur $\Vec{E}_{\rm ext}$ sur ce dipôle.
+\end{danger}
+% On s’intéresse maintenant non pas au champ $\Vec{E}_{\rm dip}$ produit par un dipôle, mais à l’action d’un champ extérieur $\Vec{E}$ sur ce dipôle.
+\parag{Force}
+\label{subsec:résultante}
+Supposons pour commencer que le champ extérieur $\Vec{E}_0$ est uniforme.
+\begin{prop}\label{prop:}
+  Les forces subies par dipôle dans un champ électrostatique \imp{uniforme} sont de résultante  \imp{nulle}.
+\end{prop}
+\begin{demo}
+La résultante de la force électrostatique s’exerçant sur le dipôle  vaut
+$
+\vv{F}=q\vv{E}_{\rm ext}(P)-q\vv{E}_{\rm ext}(N)=q(\Vec{E}_0-\Vec{E}_0),
+$
+soit 
+\eqbox{
+\Vec{F} = \Vec{0}.
+}
+\end{demo}
+% En revanche, si le champ extérieur $\Eext$ varie sur une distance typique petite ou similaire à la taille~$d$ du dipôle, la résultante $\vv{F}$ n’est pas nulle.
+Si le champ électrostatique n'est pas uniforme, la résultante des forces sur le dipôle n'est pas nulle.
+% Faisons un développement limité d’une composante quelconque de cette force, par exemple selon $\vv{e_x}$ :
+% \begin{align}
+% \begin{split}
+% F_x\simeq q\left[E_x(\vv{r})+\frac{1}{2}\vv{d}\cdot\grad{E_x}\right]-q\left[E_x(\vv{r})-\frac{1}{2}\vv{d}\cdot\grad{E_x}\right]& = q\Vec{d} \cdot\grad{E_x}\\ & =\vv{p}\cdot\grad{E_x}.
+% \end{split}
+% \end{align}
+% En généralisant aux autres coordonnées, on obtient alors l'expression suivante.
+
+\begin{theorem}[Force subie par un dipôle]\label{form:Fdip}
+\begin{equation*}
+\vv{F}=(\vv{p}\cdot\grad{})\Eext
+\end{equation*}
+\end{theorem}
+
+\begin{demo}
+ Sans perte de généralité, supposons que le dipôle est placé à l'origine $\rm O$ du repère, et alignons le dipôle selon $(Ox)$. En modélisant le dipôle par un doublet de charges, les barycentres des charges sont alors situés en ${\rm P}(-d/2,0,0)$ et ${\rm N}(+d/2,0,0)$. La résultante des forces vaut 
+\begin{equation}
+  \begin{split}
+    \vv{F}=q\Eext(P)-q\Eext(N) & = q \Eext(x = -d/2,y = 0,z = 0)- q \Eext(x = +d/2,y = 0, z= 0 )
+  \end{split}
+\end{equation}
+Effectuons un développement limité de $\Eext$ au voisinage de l'origine $\rm O$ :
+\begin{equation}
+  \begin{split}
+    \vv{F} =  q \Eext(O) + \frac{qd}{2}\dr{\Eext}{x}(O) - q \Eext(O) + \frac{qd}{2} \dr{\Eext}{x}(O) + O(d^2) 
+     = q d\dr{\Eext}{x}(O) + O(d^2)
+  \end{split}
+\end{equation}
+En généralisant à une orientation quelconque du dipôle, on trouve alors $\vv{F}=(\vv{p}\cdot\grad{})\Eext(O) + O(d^2)$. Dans l'approximation dipolaire, $d \rightarrow 0$ à $p=qd$ constant, et le terme d'ordre supérieur disparaît, et donc 
+\eqbox[]{
+\vv{F}=(\vv{p}\cdot\grad{})\Eext(O).
+}
+\end{demo}
+
+Si un dipôle est aligné (même direction et même sens) avec le champ appliqué, la force tend à entraîner le dipôle le long de la ligne de champ vers une région de champ intense. Ainsi, les dipôles électrostatiques sont \imp{attirés vers les champs forts} (régions où les lignes de champ sont resserrées sur une carte de champ).
+
+
+\parag{Moment}
+ Exprimons la résultante des moments $\Vec{\Gamma}$ de la force électrostatique subie par un dipôle.
+%On écrit donc plus simplement sans ambiguïté
+\begin{theorem}[Moment subi par un dipôle]
+\begin{equation*}
+\vv{\Gamma}=\vv{p}\pv\Eext
+\end{equation*}
+\end{theorem}
+
+\begin{demo}
+Le moment en un point $A$ quelconque qui s'exerce sur le dipôle s'écrit 
+\begin{equation}
+\begin{split}
+\vv{\Gamma}_A=\vv{AP}\pv q\vv{E}_{\rm ext}(P)-\vv{AN}\pv q\vv{E}_{\rm ext}(N)\simeq q\left(\vv{AP}-\vv{AN}\right)\pv \vv{E}_{\rm ext}(O) + O(d) =  q\vv{NP}\pv\vv{E}_{\rm ext} + O(d),
+\end{split}
+\end{equation}
+en supposant le champ quasi uniforme sur la taille du dipôle. Dans l'approximation dipolaire, $d \rightarrow 0$ à $p=qd$ constant, et seul le terme d'ordre zéro survit, soit
+
+\eqbox[]{
+\vv{\Gamma}_A=\vv{p}\pv\Eext(O).
+}
+% \end{equation}
+À l'ordre dominant, nous voyons que l'expression du moment ne dépend pas du point  origine $A$ ! Il n'est donc pas nécessaire de préciser le point d'application du moment.
+\end{demo}
+Le moment s'annule lorsque le dipôle est aligné avec le champ appliqué, et il est maximal lorsque le dipôle est perpendiculaire au champ appliqué. Ainsi, un dipôle électrostatique tend à s'\imp{aligner suivant les lignes de champ}.
+%\begin{remarque}
+%Et si le champ est inhomogène ? En général, la contribution due à une faible non-uniformité du champ est masquée par le terme d'ordre zéro donné ci-dessus.
+%\end{remarque}
+\parag{Énergie d'interaction}
+La résultante des forces subie par un dipôle  \imp{rigide} est conservative.
+\begin{theorem}[Énergie potentielle d'un dipôle rigide]
+\begin{equation*}
+  \Epot =-\vv{p}\cdot\Eext
+  \end{equation*}
+\end{theorem}
+\begin{demo}
+ Un dipôle rigide vérifie \eqbox[]{
+\vv{p} = \cte.
+ }
+On peut alors simplifier la \Formu{Fdip}. Comme $\vv{p}$ est uniforme, une formule vectorielle d’analyse donne
+\begin{equation}
+\grad{(\vv{p}\cdot\vv{E})}=(\vv{p}\cdot\grad{})\vv{E}+\vv{p}\pv\,\rot{\vv{E}}.
+\end{equation}
+Or $\rot{\vv{E}}=0$ d'après l'équation de Maxwell-Faraday en électrostatique. La force est alors conservative, d'expression 
+% $$
+\begin{equation}
+  \Vec{F} = (\vv{p}\cdot\grad{})\vv{E} = \grad{(\vv{p}\cdot\vv{E})}.
+\end{equation}
+% $$
+L’énergie potentielle électrostatique a donc pour expression
+\eqbox[]{
+\Epot = -\vv{p}\cdot\Eext.
+}
+\end{demo}
+\noindent Cette énergie est minimale lorsque $\vv{p}$ et $\vv{E}_{\rm ext}$ sont colinéaires, de même sens, et que le champ est maximal (équilibre stable). Elle est maximale lorsque $\vv{p}$ et $\vv{E}_{\rm ext}$ sont colinéaires, de sens opposés, et que le champ est minimal (équilibre instable). On retrouve donc les conditions d'équilibre données par le moment.
+
+\begin{methode}[Étudier un dipôle rigide dans un champ électrostatique]
+  \item	Déterminer la \imp{position} d'équilibre du dipôle.
+  \begin{itemize}
+    \item Graphiquement : le dipôle se déplace vers les champs forts (lignes de champs resserrées).
+    \item Analytiquement : déterminer l'extremum de $\Etot_{\rm pot} = - p E$ et analyser la stabilité.
+  \end{itemize}
+  \item	Déterminer l'\imp{orientation} d'équilibre du dipôle.
+  \begin{itemize}
+    \item Graphiquement : le dipôle s'oriente selon les lignes de champ.
+    \item Analytiquement : déterminer l'orientation de $\E_{\rm ext}$ aux positions d'équilibre.
+  \end{itemize}
+\end{methode}
+
+% \parag{Conclusion} Lorsqu'on place un dipôle dans un champ électrostatique, que se passe-t-il ?
+% \begin{liste}
+% \item Le dipôle tend à s'aligner avec le champ appliqué (il s’oriente selon les lignes de champ). En effet, le moment $\vv{\Gamma}=\vv{p}\pv\vv{E}$ fait tourner le dipôle jusqu'à ce que $\vv{p}$ et $\vv{E}$ soient colinéaires.
+% \item Le dipôle se déplace le long des lignes de champ vers les zones de champ fort (là où se resserrent les lignes de champ). En effet,  l’inhomogénéité du champ crée une force $\vv{F}=(\vv{p}\cdot\grad{})\vv{E}$, ou de façon équivalente pour un dipôle rigide, l’énergie $E_{\rm{pot}}=-\vv{p}\cdot\vv{E}$ est minimale là où le champ est maximal.
+% \end{liste}
+
+\section{Application aux interactions moléculaires}
+
+% \docu{Les forces de Van der Waals
+% et le Gecko}{Julien Beutier}{CultureSciencesChimie, 2014}
+
+
+\subsection{Molécules polaires et apolaires}
+Parmi les édifices atomiques, on distingue les ions, qui possèdent une charge globale $Q$, et les atomes ou molécules, dont la charge globale $Q=0$ est nulle.
+En raison des différences d'électronégativité entre atomes, les molécules peuvent toutefois présenter ou non un moment dipolaire.
+% \begin{liste}
+  \oneitem[.]{Molécules polaires} On peut les modéliser par un \imp{dipôle permanent}, i.e. par un dipôle électrostatique rigide de moment~$\Vec{p}$ non nul, même en l'absence de champ extérieur. C’est le cas des molécules de chlorure d’hydrogène ${\rm HCl}$, d’eau ${\rm H}_2{\rm O}$, d’ammoniac ${\rm NH}_3$, etc, voir \Fig{polaire}. Les petites molécules ont un moment de l’ordre de $p\simeq \SI{1}{D}$.
+\begin{figure}[H]
+\centering
+\subfigure[]{\label{fig:}
+\includegraphics[scale=0.4]{HCl}
+}\hspace{1cm}
+\subfigure[]{\label{fig:}
+\includegraphics[scale=0.4]{H2O}
+}\hspace{1cm}
+\subfigure[]{\label{fig:}
+\includegraphics[scale=0.4]{NH3}
+}
+\caption{Exemples de molécules polaires. (a) Chlorure d'hydrogène. (b) Eau. (c) Ammoniac. La charge partielle est notée $\delta$ en chimie, et dépend de la différence d'électronégativité entre les atomes.
+% pouvant être modélisées par des dipôles électrostatiques.
+\label{fig:polaire}
+}
+\end{figure}
+    
+  % Les molécules polaires sont souvent dites \imp{hydrophiles} car elles se dissolvent dans l’eau.
+\oneitem[.]{Molécules apolaires} 
+Elles ne possèdent pas de moment dipolaire en l'absence de champ extérieur. C’est le cas des molécules diatomiques homonucléaires (H$_2$, O$_2$, N$_2$, etc.) ou des molécules qui possèdent un centre de symétrie (CH$_4$, CO$_2$, etc.) voir \Fig{apolaire}. Les molécules apolaires peuvent toutefois se polariser en présence d'un champ électrostatique extérieur, suivant le mécanisme décrit sur la \Fig{polarisation}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=1]{polarisation_atome.pdf}
+  \caption{(a) Un atome est constitué d'un noyau de charge positive $+Ze$ et d'un nuage électronique de charge négative $-Ze$. En l'absence de champ électrostatique, les barycentres des charges positives et négatives coïncide, et donc l'atome ne possède pas de moment dipolaire (b) Un moment dipolaire est induit dans un champ extérieur $\Eext$. }
+  \label{fig:polarisation}
+  \end{figure}
+
+
+ On modélise les molécules apolaires par un \imp{dipole induit}, dont le moment dipolaire $\Vec{p}$ est proportionnel au champ extérieur $\Eext$.
+
+\begin{definition}[Dipôle induit]\label{def:}
+  Le moment d'un \imp{dipôle induit} est proportionnel au champ extérieur, soit
+  \begin{equation*}
+    \vv{p}=\alpha\,\varepsilon_0\vv{E}_{\rm ext},
+  \end{equation*}
+  où la \imp{polarisabilité} $\alpha \simeq \SI{e-30}{m^3}$ est de l'ordre du volume atomique.
+\end{definition}
+%  Les molécules apolaires sont souvent dites \imp{hydrophobes} car elles ne se dissolvent pas dans l’eau.
+
+\begin{figure}[H]
+  \centering
+  \subfigure[]{\label{fig:}
+  \includegraphics[scale=0.4]{Ar}
+  }
+  \hspace{1cm}
+  \subfigure[]{\label{fig:}
+  \includegraphics[scale=0.4]{Cl2}
+  }
+  \hspace{1cm}
+  \subfigure[]{\label{fig:}
+  \includegraphics[scale=0.4]{CO2}
+  }
+  \hspace{1cm}
+  \subfigure[]{\label{fig:}
+  \includegraphics[scale=0.4]{CH4}
+  }
+  \caption{Exemples d’édifices atomiques apolaires. (a) Atome d’argon. (b) Les molécules diatomiques homonucléaires, comme H$_2$, sont apolaires, car aucun atome n'est plus électronégatif qu'un autre : il n'existe pas de charges partielles. Les molécules centro-symétriques, comme les molécules (b) CO$_2$, ou (c) CH$_4$, possèdent des charges partielles, mais les barycentres des charges positives et négatives coïncident : ces molécules sont apolaires. Elles peuvent toutefois posséder un moment électrique d'ordre supérieur (quadrupolaire par exemple).
+  }
+  \label{fig:apolaire}
+\end{figure}
+
+
+\subsection{Interaction de van der Waals}
+
+\begin{definition}[Interaction de van der Waals]\label{def:}
+  Les interactions de \imp{van der Waals} désignent l'ensemble des interactions électrostatiques de type dipôle-dipôle entre atomes ou molécules. 
+\end{definition}
+L’énergie d’interaction entre deux dipôles de moments $\Vec{p}_1$ et $\Vec{p}_2$ séparés d’une distance $r$ s’écrit
+\begin{equation}
+  \mc{E}_{\rm vdW} = -\Vec{p}_1 \cdot\Vec{E}_2 \sim -\frac{\Vec{p}_1 \cdot \Vec{p}_2}{4\pi\varepsilon_0 r^3}.
+\end{equation}
+En fonction de la nature des molécules (polaire ou apolaire), et donc de la nature des dipôles (permanents ou induits), on distingue trois types d'interactions de van der Waals.
+
+\begin{enumerate}
+  \item Interaction de \imp{Keesom}, i.e. de type \imp{dipôle permanent-dipôle permanent}. Les moments dipolaires $\Vec{p}_1$ et $\Vec{p}_2$ sont donc de norme constante. En moyennant sur toutes les orientations possibles à l’équilibre thermodynamique, on trouve que l’énergie d’interaction a pour expression
+  \eqbox{
+    \mc{E}_{\rm K} \propto - \frac{1}{\kB T}\left( \frac{p_1 p_2}{\varepsilon_0} \right)^2 \frac{1}{r^6}.
+  }
+  \item Interaction de \imp{Debye}, i.e. de type \imp{dipôle permanent-dipôle induit}. Le moment dipolaire $\Vec{p}_1$ est de norme constante mais $\Vec{p}_2 = \alpha_2 \varepsilon_0 \Vec{E}_1$ est induit par le champ produit par le dipôle permanent. On trouve alors une énergie d’interaction de la forme
+  \eqbox{
+    \mc{E}_{\rm D} \propto -  \frac{p_1^2 \alpha_2}{\varepsilon_0} \frac{1}{r^6}.
+  }
+  \item Interaction de \imp{London}, i.e. de type \imp{dipôle induit-dipôle induit}. Les fluctuations du nuage électronique de la molécule $1$ engendre un moment dipolaire instantané $\Vec{p}_1(t)$ non nul, qui en retour induit un moment dipolaire $\Vec{p}_2 = \alpha_2 \epz \E_1$ sur la molécule $2$. En moyennant sur les fluctuations, on trouve une énergie d’interaction de la forme
+  \eqbox{
+    \mc{E}_{\rm L} \propto - \frac{\alpha_1 \alpha_2}{r^6}.
+  }
+\end{enumerate}
+
+\begin{theorem}[Énergie de van der Waals]\label{form:}
+  L’énergie d’interaction de van der Waals totale (Keesom, Debye et London) est de la forme
+  \begin{equation*}
+    \mc{E}_{\rm vdW} = \mc{E}_{\rm K} + \mc{E}_{\rm D} + \mc{E}_{\rm L} = -\frac{C}{r^6}.
+  \end{equation*}
+
+\end{theorem}
+Quelques ordres de grandeur sont donnés dans le \Tab{vdW}.
+\begin{table}[H]
+  \centering
+  \begin{tabular}{|c|c|c|c|c|c|}
+    \hline
+    Interaction & Espèce & $\rm Ar$ & ${\rm Cl}_2$ & ${\rm HCl}$ & ${\rm H}_2{\rm O}$ \\
+    \hline
+    Keesom & $\mc{E}_{\rm K}$ ($\SI{}{kJ.mol^{-1}}$) & $0$ & $0$ & \num{3.3} & \num{36.3} \\ 
+    \hline
+    London & $\mc{E}_{\rm L}$ ($\SI{}{kJ.mol^{-1}}$) & \num{8.5} & \num{49.5} & \num{16.8} & \num{9.0} \\
+    \hline
+  \end{tabular}
+  \caption{Ordres de grandeur des interactions de van der Waals entre molécules identiques de différentes espèces chimiques : énergie de Keesom $\mc{E}_{\rm K}$ et London $\mc{E}_{\rm L}$, en $\SI{}{kJ.mol^{-1}}$. L’énergie de Debye $\mc{E}_{\rm D}$ n’est jamais prédominante. On remarque que l’énergie de London est souvent prédominante, même pour certaines molécules polaires comme ${\rm HCl}$.}
+  \label{tab:vdW}
+\end{table}
+
+
+
+\subsection{Solvatation}
+Que se passe-t-il lorsqu'on dissout un sel ionique (par exemple Na$^{+}$, Cl$^{-}$) dans un solvant polaire comme l'eau ? En première approximation, les ions se comportent comme des charges ponctuelles. Or le champ créé par une charge ponctuelle fuit le centre si $q>0$ ou converge vers lui si $q<0$. Ainsi, les molécules d'eau s'orientent selon les lignes de champ et sont attirées vers les zones de champ intense, c’est-à-dire vers l’ion. Les molécules d'eau entourent alors l'ion et écrantent sa charge: c'est le phénomène de \imp{solvatation}.
+
+\begin{figure}[h!]
+ \centering
+ \includegraphics[width=0.7\textwidth]{solvatation.pdf}
+ \caption{Écrantage de la charge d'un ion (cation  à gauche, anion à droite) par solvatation.}
+ \end{figure}
+
+
+
+\section{Énergie de constitution du noyau atomique}
+
+Modélisons le noyau atomique par une boule (sphère pleine) uniformément chargée.  Nous souhaitons déterminer l’énergie électrostatique contenue dans cette boule.
+
+\subsection{Énergie électrostatique d'une distribution discrète}
+
+\parag{Énergie potentielle électrostatique d'une charge ponctuelle}
+Soit une distribution de charges statiques $\mc{D}$ qui engendre un champ électrostatique extérieur $\E_{\rm ext}(M)$. La force électrostatique subie par une charge ponctuelle $q$ placée en $\rm M$ est $\vv{F}_{\rm \mc{D} \rightarrow q}=q\E_{\rm ext}(M)$. Le travail élémentaire $\delta W$ effectué par cette force pour déplacer la charge ponctuelle d'une distance $\d \vv{\ell}$ est
+\begin{equation}
+\delta W = \vv{F}_{\rm \mc{D} \rightarrow q} \cdot \d \vv{\ell} = q \E_{\rm ext}(M) \cdot \d \vv{\ell} = - q \, \Grad{V_{\rm ext}(M)} \cdot \d \vv{\ell} = - q \,\d V_{\rm ext}(M) = -\d {\Etot_e}.
+\end{equation}
+On voit que la force électrostatique est conservative, et on peut définir une énergie potentielle électrostatique $\Epot_e$ associée à la charge ponctuelle $q$ dans le champ électrostatique créé par la distribution de charges $\mc{D}$. 
+
+\begin{prop}[Énergie potentielle électrostatique]\label{prop:}
+  La \imp{force électrostatique} exercée sur une charge ponctuelle $q$ est \imp{conservative}. Elle dérive d'une énergie potentielle électrostatique $\Etot_e$ donnée par
+\begin{equation*}
+  \Etot_e = q V_{\rm ext},
+\end{equation*} 
+où $V_{\rm ext}$ est le potentiel électrostatique extérieur subi par la charge.
+\end{prop}
+
+Dans le cas particulier où la distribution de charges $\mc{D}$ est constituée d'une charge ponctuelle $q_O$ placée en ${\rm O}$, le potentiel électrostatique extérieur en un point $\rm M$ est $V_{\rm ext}(M) = \frac{q_O}{4\pi\varepsilon_0 OM}$. L'énergie potentielle électrostatique de la charge ponctuelle $q$ placée en $\rm M$ s'écrit alors
+% \begin{equation}
+\eqbox[charge]{
+  \Etot_e = \frac{q q_O}{4\pi\varepsilon_0 OM}.
+  }
+% \end{equation}
+
+\parag{Énergie d'interaction d'un ensemble de charges ponctuelles}
+Considérons maintenant un ensemble de $N$ charges ponctuelles $q_i$ placées en des points $M_i$ ($i=1,\ldots,N$). L'énergie électrostatique totale de ce système est la somme des énergies potentielles électrostatiques de chaque charge $q_i$ dans le champ créé par les autres charges, d'expression 
+\begin{equation}
+  V_i = \sum_{\substack{j\neq i}}\frac{q_j}{4\pi\varepsilon_0 r_{ij}},
+\end{equation}
+où $r_{ij}=M_i M_j$ est la distance entre les charges $q_i$ et $q_j$. 
+On doit donc éviter de compter deux fois l'énergie d'interaction entre deux charges $q_i$ et $q_j$.
+\begin{theorem}[Énergie d'interaction d'un système de charges]
+  \begin{equation}
+  \Etot_{\rm int} = \frac{1}{2} \sum_{i = 1}^N q_i V_i =  \sum_{i = 1}^{N} \sum_{j < i}^{N} \frac{q_i q_j}{4\pi\varepsilon_0 r_{ij}}.
+  \end{equation}
+\end{theorem}
+
+\subsection{Énergie électrostatique d'une distribution continue}
+
+\begin{definition}
+On appelle \imp{énergie de constitution} l’énergie qu'un opérateur extérieur doit fournir pour constituer le système en amenant les charges de l'infini (où le champ est nul).
+\end{definition}
+
+\parag{Analyse dimensionnelle}
+% de charge $Q$ et de rayon $R$.
+
+%\parag{Énergie de constitution}
+Procédons par
+par analyse dimensionnelle. Les variables du problème sont $\varepsilon_0$, la charge $Q$ du noyau et son rayon~$R$. Cherchons une relation de la forme
+\begin{equation}\label{eq:homog}
+E_{\rm{const}}\propto Q^{a}R^{b}\varepsilon_0^{c},
+\end{equation}
+où $a,b,c$ sont trois réels à déterminer. On dispose de quatre unités indépendantes, que sont le mètre~$\SI{}{m}$, le kilagramme $\SI{}{kg}$, la seconde $s$, et le Coulomb $
+\SI{}{C}$ (on pourraît aussi utiliser l’ampère $\SI{}{A}=\SI{}{C.s^{-1}}$ , qui est une unité fondamentale du système SI, à la place du Coulomb). Par analyse dimensionnelle\footnote{Le plus simple pour l'unité SI de $\varepsilon_0$ est sans doute de repartir de la force de Coulomb et en utilisant que $\SI{1}{C}=\SI{1}{A.s}$ (l'intensité est un débit de charges).}
+\begin{equation}\label{eq:dim}
+[R]=\SI{}{m}, \quad
+[Q]=\SI{}{C}, \quad
+[\varepsilon_0]=\SI{}{kg^{-1}.m^{-3}.s^{2}.C^2}, \quad
+[E_{\rm{const}}]=\SI{}{kg.m^{2}.s^{-2}}.
+   \end{equation}
+En combinant les \Eq{homog} et \Eq{dim}, on trouve $[E_{\rm{const}}] \propto \SI{}{kg^{-c}.m^{b-3c}.C^{a+2c}.s^{2c}}$. On en déduit donc $c=-1$, $a=2$ et $b=-1$, soit
+%À cause de la masse, on voit que $\varepsilon_0$ doit intervenir à la puissance $-1$, donc $c=-1$. Pour que le coefficient avec les distances convienne, il faut alors que $R$ intervienne aussi à la puissance $-1$ donc $b=-1$. Finalement pour éliminer l'intensité il reste à choisir $a=2$, et on vérifie que le coefficient pour le temps convient. Finalement,
+\eqbox[]{
+  E_{\rm{const}}\propto\frac{Q^2}{\varepsilon_0 R}.
+}
+Il ne reste plus qu'à déterminer le préfacteur numérique.
+
+\parag{Calcul par le principe des travaux virtuels}
+Pour déterminer le préfacteur numérique, on doit recourir à un calcul exact. Supposons que l'on construit la sphère chargée infiniment lentement, par couches successives de rayon $r$ et d'épaisseur $\d r$, en amenant les charges depuis l'infini une par une. À tout instant, les charges sont supposées en équilibre d'une part avec les charges déjà présentes dans la boule et d'autre part avec l'opérateur extérieur.
+% qui construit la sphère en déplaçant les charges.
+Une boule de rayon $r$ créé un potentiel à sa surface
+\begin{equation}
+V(r)=\frac{q(r)}{4\pi\varepsilon_0 r}=\frac{\rho\times \frac{4\pi}{3} r^3}{4\pi\varepsilon_0 r}=\frac{\rho r^2}{3\varepsilon_0},
+ \end{equation}
+avec le choix de la constante $V(\infty)=0$. Pour amener une coquille sphérique élémentaire de charge $\d q=\rho\,\d \Vol = \rho\times 4\pi r^2\d r$ depuis l'infini, l’opérateur fournit un travail élémentaire $\delta W$ qui compense le travail exercé par la boule chargée, soit
+\begin{equation}
+\delta W = -\int_\infty^r \Vec{\d F}_{\rm Coul}\cdot\Vec{\d \ell} = -\d q \int_\infty^r \Vec{E} \cdot\Vec{\d \ell}   = \d q \int_\infty^r \d V =
+\d q\,V(r)=\frac{4\pi \rho^2 r^4 \d r}{3\varepsilon_0}
+\end{equation}
+Il reste à intégrer ce travail élémentaire de $r=0$ à $R$. La boule étant de charge totale $Q=\rho\times\frac{4\pi}{3}R^3$,
+\begin{equation}
+E_{\rm{const}}= \int_0^R \delta W = \int_{0}^{R}\frac{4\pi \rho^2 r^4 \d r}{3\varepsilon_0}=\frac{4\pi\rho^2 R^5}{15\varepsilon_0}, 
+\end{equation}
+soit
+\eqbox[]{
+  E_{\rm{const}}= \JRouge{\frac{3}{5}}\frac{Q^2}{4 \pi \varepsilon_0 R}.
+}
+
+\parag{Application au noyau atomique}
+Pour appliquer le résultat précédent au noyau, on modélise un noyau quelconque $^{A}_{Z}X$ contenant $A$ nucléons et $Z$ protons par une boule homogène de charge totale $Q=Ze$ et de de rayon $R=R_0 A^{1/3}$ où $R_{0}\simeq \SI{1,3e-15}{m}$. On en déduit
+\begin{equation}
+E_{\rm{const}}=\frac{3}{5}\frac{Z^2e^2}{4\pi\varepsilon_0 R_{0}A^{1/3}}
+\end{equation}
+Pour l'isotope le plus abondant du fer, $^{56}_{24}\rm{Fe}$, on a
+$
+E_{\rm{const}}\simeq \SI{1,6e-11}{J}\sim \SI{100}{MeV}.
+$
+Cette quantité étant positive, l’ensemble des $Z$ protons et $A-Z$ neutrons est plus stable avec les nucléons séparés à l’infini que sous forme de noyau ! C’est logique : les protons sont tous de charge positive, et donc se repoussent d’autant plus qu’ils sont proches. Si le noyau est stable, c'est grâce à l'existence d’une autre force : l'\important{interaction forte}, qui est beaucoup plus intense aux échelles nucléaires.
+
+
+
+\end{document}

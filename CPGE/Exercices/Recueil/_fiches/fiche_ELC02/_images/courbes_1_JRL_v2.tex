@@ -1,0 +1,63 @@
+\def\E{4}
+\def\ttau{0.015}
+\def\RR{1333.3}
+\begin{tikzpicture}[
+	trait1/.style={very thick,smooth,samples=50,draw=\JRLorange},
+	trait2/.style={very thick,smooth,samples=50,draw=\JRLgreen},
+	trait3/.style={very thick,smooth,samples=50,draw=\JRLblue},
+	]
+    \begin{axis}[
+		title={courbe 1},
+		every axis title/.style={above,at={(0.5,1)}},
+		width=60mm,
+		name=plot1,
+		grid=both,
+		ylabel near ticks,
+		xlabel near ticks,
+		scaled x ticks=false,
+		xlabel={$t$~[ms]},ylabel={grandeur~[mA ou V]},
+		xmin=-0,xmax=0.08,ymin=0,ymax=4.5,
+		ytick={1,2,3,4},
+		xtick={.01,.02,.03,.04,.05,.06,.07,.08},
+		xticklabels={10,20,30,40,50,60,70,80},
+		]
+		\addplot[trait1,domain=0:0.08] {1000*\E / \RR*(exp(-x / \ttau ))}; % *1000 pour avoir des mA
+	\end{axis}
+	\begin{axis}[
+		title={courbe 2},
+		every axis title/.style={above,at={(0.5,1)}},
+		width=60mm,
+		name=plot2,at={($(plot1.east)+(1cm,0)$)},anchor=west,
+		grid=both,
+		ylabel near ticks,
+		xlabel near ticks,
+		scaled x ticks=false,
+		xlabel={$t$~[ms]},
+		xmin=-0,xmax=0.08,ymin=0,ymax=4.5,
+		ytick={1,2,3,4},
+		xtick={.01,.02,.03,.04,.05,.06,.07,.08},
+		xticklabels={10,20,30,40,50,60,70,80},
+		]
+		\addplot[trait2,domain=0:0.08] {\E*(1.0 - exp(-x / \ttau) ) };
+	\end{axis}
+	\begin{axis}[
+		title={courbe 3},
+		every axis title/.style={above,at={(0.5,1)}},
+		width=60mm,
+		name=plot3,at={($(plot2.east)+(1cm,0)$)},anchor=west,
+		grid=major,
+		grid=both,
+		ylabel near ticks,
+		xlabel near ticks,
+		scaled x ticks=false,
+		xlabel={$t$~[ms]},
+		xmin=-0,xmax=0.08,ymin=0,ymax=4.5,
+		ytick={1,2,3,4},
+		xtick={.01,.02,.03,.04,.05,.06,.07,.08},
+		xticklabels={10,20,30,40,50,60,70,80},
+		]
+	    \addplot[trait3,domain=0:0.08] {\E*(1-0.5*exp(-x / \ttau))};
+	\end{axis}
+
+\end{tikzpicture}
+

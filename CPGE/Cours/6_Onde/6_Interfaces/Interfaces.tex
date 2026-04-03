@@ -1,0 +1,478 @@
+% displayname : Interfaces
+\documentclass[12pt,fancy]{cours}%$
+\Chapit{6}{6}
+\begin{document}
+\maketitre{
+Nous nous intéressons au comportement d'une onde au voisinage d'une interface entre deux milieux. Nous étudierons ainsi less effets de rélfexion et de transmission. Les résultats obtenus se généralisent à tout type d'onde, mais nous nous focaliserons sur deux exemples : les ondes acoustiques dans les fluides d'une part, et les ondes électromagnétiques d'autre part.
+}{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ProgrammeColle
+
+\section{Intefaces acoustiques}
+Pour étudier un cas relativement simple, nous allons considérer une onde acoustique plane et progressive qui rencontre un dioptre en incidence normale.
+
+\subsection{Position du problème}
+% \parag{Conditions aux limites}
+On considère une séparation entre deux fluides par un dioptre assimilé au plan $z=0$. Supposons que :
+\begin{enumerate}[label=\boxed{\rm H\arabic*}]
+  \item Le dioptre est de \imp{masse nulle}.
+  \begin{remarque}
+    Par exemple on peut étudier la séparation entre l'air et l'eau, mais on ne considère pas le cas où deux milieux sont séparés par une surface massive telle qu'une vitre.
+  \end{remarque}
+  \item L'onde est une \imp{OPPH} en \imp{incidence normale} sur le dioptre.
+\end{enumerate}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.65\textwidth]{dioptre_acoustique.pdf}
+\caption{Transmission et réflexion d'une onde plane progressive incidente sur un dioptre en incidence normale. On note $Z$ l'impédance acoustique du milieu incident et $Z'$ celle du milieu dans lequel il y a transmission.}
+\end{figure}
+
+ On note avec un prime les grandeurs dans le milieu où l'onde est transmise : surpression $p_1'$, vitesse $v_1'$, impédance $Z'$,  et sans prime les grandeurs dans le milieu où l'onde est incidente : surpression $p_1$, vitesse $v_1$, impédance $Z$. 
+
+
+\begin{prop}[Conditions aux limites d'un dioptre acoustique]\label{prop:}
+La pression et la vitesse sont continues à l'interface $z=0$ entre deux fluides, soit
+$$
+p_1(z=0^-,t) = p_1(z=0^+,t), \qquad \Vec{v_1}(z=0^-,t) = \Vec{v_1}(z=0^+,t).
+$$
+\end{prop}
+
+\begin{demo}
+  \begin{enumerate}
+    \item En appliquant le PFD au dioptre, de masse nulle, on en déduit que les forces de pression s'équilibrent à l'interface,
+    \eqbox{
+p_1(z=0^-,t) = p_1(z=0^+,t).
+    }
+    \item Les deux milieux ne peuvent pas s'interpénétrer, ce qui impose également la continuité de la vitesse tangentielle à l'interface. Comme l'onde se déplace suivant la direction $z$, on a simplement,
+    \eqbox{
+\Vec{v_1}(z=0^-,t) = \Vec{v_1}(z=0^+,t).
+    }
+  \end{enumerate}
+\end{demo}
+
+% Dans toute la suite, on cherche à caractériser les propriétés de l'onde réfléchie et de l'onde transmise en fonction de celles de l'onde incidente.
+En plus de l'onde incidente et de l'onde transmise, il doit se former une onde réfléchie. En effet, comme $p_1$ et $v_1$ sont continues à l'interface, le rapport $p_1/v_1$ est aussi continu. Or ce rapport se réduit à l'impédance acoustique $Z$ dans chaque milieu si dans celui-ci ne se propage qu'une OPPH vers les $z$ croissants, alors que $Z$ et $Z'$ diffèrent en général. Il doit donc exister une onde qui se propage vers les $z$ décroissants dans le milieu incident.
+
+\subsection{Coefficients en amplitude}
+\parag{Expression des vitesses et des surpressions}
+Traduisons les conditions en vitesse et en surpression dans chaque domaine. On tire profit de la linéarité de l'équation d'onde pour passer en notation complexe. Dans le milieu incident l'onde incidente se superpose avec l'onde réfléchie donc
+\begin{equation}
+\begin{cases}
+\underline{v_1}=\underline{A_{\rm{i}}}\e^{i(\omega t- kz)} + \underline{A_{\rm{r}}}\e^{i(\omega t+kz)},\\
+\underline{p_1}=Z\underline{A_{\rm{i}}}\e^{i(\omega t-kz)} \JRouge{-}Z \underline{A_{\rm{r}}}\e^{i(\omega t+kz)},
+\end{cases}
+\end{equation}
+Attention au signe $-$ dans l'expression de la surpression réfléchie ! Repartir de l'équation d'Euler en cas de doute. Dans le milieu où l'onde est transmise, on a
+\begin{equation}
+\begin{cases}
+\underline{v_1}'=\underline{A_{\rm{t}}}\e^{i(\omega t-k'z)},\\
+\underline{p_1}'=Z'\underline{A_{\rm{t}}}\e^{i(\omega t-k'z)}.
+\end{cases}
+\end{equation}
+On peut relier les amplitudes complexes des ondes réfléchie et transmise à l'amplitude complexe de l'onde incidente en définissant les coefficients de réflexion et de transmission en amplitude pour les vitesses.
+\begin{definition}[Coefficients en amplitude pour la vitesse]\label{def:}
+On définit les coefficients de réflexion et de transmission en amplitude pour la vitesse par
+\begin{equation*}
+\udl{r}_{v}=\frac{\underline{A_{\rm{r}}}}{\underline{A_{\rm{i}}}}, \qquad
+\udl{t}_{v}=\frac{\underline{A_{\rm{t}}}}{\underline{A_{\rm{i}}}}.
+\end{equation*}
+\end{definition}
+\parag{Expression de coefficients}
+On se place maintenant sur l'interface, placée en $z=0$. Les conditions au limites imposent
+\begin{equation}
+	\underline{v_{1}}(0 ,t)=\underline{v_{1}}'(0 ,t) \text{ et } \underline{p_1}(0,t)=\underline{p_1}'(0,t), \forall t.
+\end{equation}  On a donc une relation entre les amplitudes complexes des ondes incidente, réfléchie, et transmise,
+\begin{equation}
+\begin{cases}
+\underline{A_{\rm{i}}}+\underline{A_{\rm{r}}}=\underline{A_{\rm{t}}},\\
+Z(\underline{A_{\rm{i}}}-\underline{A_{\rm{r}}})=Z'\underline{A_{\rm{t}}}.
+\end{cases}
+\end{equation}
+On trouve alors le coefficient de réflexion en amplitude pour les vitesses comme
+% \begin{equation}
+\eqbox[rv]{
+	\udl{r}_{v}=\frac{\underline{A_{\rm{r}}}}{\underline{A_{\rm{i}}}}=\frac{Z-Z'}{Z+Z'}
+	}
+% \end{equation}
+et celui de transmission en amplitude pour les vitesses comme
+% \begin{equation}
+\eqbox[tv]{
+	\udl{t}_{v}=\frac{\underline{A_{\rm{t}}}}{\underline{A_{\rm{i}}}}=\frac{2Z}{Z+Z'}.
+	}
+% \end{equation}
+\begin{exemple}{Coefficients en surpression}
+  \begin{quest}
+    \item	Définir les coefficients de réflexion et de transmission en amplitude pour les surpressions.
+    \item Les calculer.
+  \end{quest}
+  \examplesol{
+    \begin{quest}
+      \item	On définit les coefficients de réflexion et de transmission en amplitude pour les surpressions par
+\begin{equation*}
+\udl{r}_{p}=\frac{-Z\underline{A_{\rm{r}}}}{Z\underline{A_{\rm{i}}}}, \qquad 
+\udl{t}_{p}=\frac{Z'\underline{A_{\rm{t}}}}{Z\underline{A_{\rm{i}}}}.
+\end{equation*}
+      \item En utilisant les expressions de $\udl{r}_v$ et $\udl{t}_v$, on trouve
+\begin{equation*}
+\udl{r}_{p}=-\udl{r}_v=\frac{Z'-Z}{Z+Z'}, \qquad \udl{t}_{p}=\frac{Z'}{Z}\udl{t}_v=\frac{2Z'}{Z+Z'}.
+\end{equation*}
+    \end{quest}
+  }
+\end{exemple}
+
+% \begin{remarque}
+% 	Attention, l'expression est différente si on souhaite évaluer les coefficients en pression. Dans ce cas on a
+% 	\begin{equation}
+% 		\udl{r}_{p}=\frac{-Z\underline{A_{\rm{r}}}}{Z\underline{A_{\rm{i}}}}=-r_{v}\qquad\text{et}\qquad \udl{t}_{p}=\frac{Z'\underline{A_{\rm{t}}}}{Z\underline{A_{\rm{i}}}}=\frac{2Z'}{Z+Z'}=\frac{Z'}{Z}t_{\rm{v}}.
+% 	\end{equation}
+% 	Il n'est pas utile de retenir ces expressions mais il faut savoir les retrouver très rapidement.
+% \end{remarque}
+%On remarquera que passer des coefficients de vitesse à ceux en pression revient à échanger le rôle de $Z$ et celui de $Z'$.
+
+\subsection{Coefficients en puissance}
+Il est parfois plus intéressant de calculer les coefficients de réflexion et de transmission en puissance, pour interpréter énergétiquement l'intensité sonore réfléchie ou transmise. Ces coefficients s'établissent donc à partir du vecteur densité d'énergie acoustique, dont la norme représente la puissance acoustique. On a établi au \refChap{6}{2} que pour une OPPH, la puissance acoustique se met sous la forme
+\begin{equation}
+\moy{R}=\frac{1}{2}Z A^2.
+\end{equation}
+On pourra donc écrire pour chacune des ondes incidente, réfléchie, et transmise,
+\begin{equation}
+\begin{cases}
+\moy{R_i}=\frac{1}{2}Z A_{\rm{i}}^2 \quad (\text{incidente}), \\
+\moy{R_r}=\frac{1}{2}Z A_{\rm{r}}^2 \quad (\text{réfléchie}), \\
+\moy{R_t}=\frac{1}{2}Z' A_{\rm{t}}^2 \quad (\text{transmise}),
+\end{cases}
+\end{equation}
+et donc on définit le coefficient de réflexion en puissance par
+% \begin{equation}
+\eqbox[]{
+  R=\frac{\moy{R_r}}{\moy{R_i}}=\frac{A_{\rm{r}}^2}{A_{\rm{i}}^2}=\left(\frac{Z-Z'}{Z+Z'}\right)^2=r^2
+  }
+% \end{equation}
+et le coefficient de transmission en puissance par
+% \begin{equation}
+\eqbox[]{
+  T=\frac{\moy{R_t}}{\moy{R_i}}=\frac{Z' A_{\rm{t}}^2}{Z A_{\rm{i}}^2}=\frac{4ZZ'}{(Z+Z')^2}.
+  }
+% \end{equation}
+
+\begin{prop}[Conservation de la puissance acoustique]\label{prop:}
+  Les coefficients de réflexion et de transmission en puissance vérifient la relation
+$$
+R+T=1.
+$$
+\end{prop}
+
+
+Pour comprendre ce qu'il se passe au niveau de l'interface, il est intéressant de tracer $R$ et $T$ en fonction du rapport $Z'/Z$ (Fig.~\ref{fig:R_T}).
+Pour avoir une transmission maximale des ondes à l'interface entre deux milieux ($T = 1$), il faut typiquement avoir $Z' = Z$. On dit alors que les impédances sont adaptées.
+\begin{prop}[Adaptation d'impédance]\label{prop:}
+Il y a \imp{adaptation d'impédance}, i.e. transmission maximale de puissance vers le milieu transmis, pour
+$$
+Z' = Z.
+$$
+\end{prop}
+%Lorsque cela n'est pas le cas, une adaptation d'impédance est nécessaire pour transmettre les ondes sonores.
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.55\textwidth]{coeff_R_T.pdf}
+\caption{Allure des coefficients $R$ et $T$ en fonction du rapport $Z'/Z$ en échelle semi-logarithmique. La conservation de l'énergie impose $R+T=1$.
+%  À partir des expressions de $Z$ et $Z'$ on peut montrer que $R=T=1/2$ lorsque $Z'/Z=3-2\sqrt{2}\simeq \num{0,17}$.
+}
+\label{fig:R_T}
+\end{figure}
+
+
+\begin{exemple}{Interface air-eau}
+	On donne $Z=\SI{4,1e2}{kg.m^{-2}.s^{-1}}$ pour l'air, $Z'=\SI{1,5e6}{kg.m^{-2}.s^{-1}}$ pour l'eau.
+  \begin{quest}
+    \item	
+    Évaluer le coefficient de transmission en puissance $T$ entre ces deux milieux. 
+    \item En déduire l'atténuation en dB et expliquer pourquoi sous l'eau, les ondes sonores extérieures paraissent considérablement atténuées.
+  \end{quest}
+  \examplesol{
+    \begin{quest}
+      \item	En utilisant les expressions de $R$ et $T$, on trouve $R\simeq 0,999$ et 
+      \eqbox{
+T\simeq \num{1e-3}.
+      }
+   \item L'atténuation en dB d'une onde sonore provenant de l'air dans l'eau vaut  par définition 
+   \eqbox{
+   10 \log(T) \simeq \SI{-30}{dB}.
+   }
+  C'est une atténuation considérable ! Les ondes sonores sont très atténuées lorsqu'elles passent de l'air à l'eau.
+    \end{quest}
+  }
+\end{exemple}
+%
+% \clearpage
+% \begin{subappendices}
+% \section{Les types d'ondes}
+% Attention à ne pas se mélanger entre tous les types d'onde et les différentes modélisations.
+% \begin{itemize}
+% \item[$\bullet$] Une onde est dite plane si à tout instant $t$, les surfaces équiphases sont des plans perpendiculaires à une direction \important{fixe} appelée la direction de propagation. Sur une surface équiphase, l'onde est dans le même état vibratoire. Cela signifie que l'état vibratoire de l'onde ne dépend que d'\important{une seule variable cartésienne} (et du temps). Si on choisit cette direction comme étant $\vv{e_x}$, alors quelle que soit la dimension de l'espace, on peut toujours écrire l'onde comme $f(\vv{r},t)=f(x,t)$ avec éventuellement $s$ une grandeur vectorielle. Les plans d'onde sont les plans à $x=\cte$.
+%
+% \begin{remarque}
+% Si l'onde n'est pas plane, par exemple si elle est sphérique, il n'existe \important{pas} de direction de propagation. En effet, le vecteur $\vv{e_r}$ n'est pas fixe (ce n'est pas un vecteur directeur d'une base cartésienne).
+%
+% Dans les milieux isotropes sans absorption, la direction de propagation s'identifie à celle du vecteur d'onde $\vv{k}$. Mais ce n'est pas toujours le cas, en particulier dans les milieux absorbants ou anisotropes.
+% \end{remarque}
+%
+% Une onde qui s'écrirait sous la forme $f(\vv{r},t)=f(x,y,t)$ ou encore $f(r,t)$ n'est pas plane.
+%
+% \item[$\bullet$] Une onde plane progressive se met sous la forme générale $f(x-ct)$ si elle se propage selon les $x$ croissants et $g(x+ct)$ si elle se propage selon les $x$ décroissants (aussi appelée onde régressive).
+%
+% Voici un exemple d'onde qui est plane, mais pas progressive: $f(\vv{r},t)=a(x)f(x-ct)$. On pourrait aussi citer l'onde stationnaire $f(\vv{r},t)=g(x)f(t)$ qui est plane mais pas progressive.
+% \item[$\bullet$] Un cas particulier est celui de l'onde plane progressive harmonique (ou monochromatique), abrégé en OPPH. Dans ce cas la fonction est sinusoïdale, de sorte que l'onde se met sous la forme $A\cos(k(x-ct)+\varphi)$ ou encore $A\cos(kx-\omega t+\varphi)$.
+%
+% \begin{remarque}
+% Bien vérifier que l'onde soit harmonique pour pouvoir définir un nombre d'onde $k=\frac{2\pi}{\lambda}$. Si on souhaite de plus dire que la direction de propagation est donnée par $\vv{k}$ (voir la remarque ci-dessus), bien veiller à ce que l'onde soit une OPPH.
+% \end{remarque}
+% Il faut bien noter que l'OPPH est doublement périodique: elle possède une période temporelle $T=\frac{2\pi}{\omega}=\frac{1}{f}$ et une période spatiale $\lambda=\frac{2\pi}{k}$. Si l'onde est de plus solution de l'équation de d'Alembert, alors ces deux périodes sont reliées par la relation de dispersion qui s'écrit $\lambda=cT$ ou de façon équivalente $k=\frac{\omega}{c}$.
+% %À chaque fois que l'on recherche une relation de dispersion, il faut donc toujours considérer des OPPH.
+%
+% Ce qui fait tout l'intérêt des ondes harmoniques, c'est que d'après la théorie de Fourier, tout signal (toute onde) peut se décomposer comme une combinaison linéaire d'ondes harmoniques. Lorsque l'équation d'onde est linéaire, il suffit alors de comprendre comment se propage une onde harmonique puis avec le théorème de superposition on comprend comment se propage n'importe quel signal (onde) en le reconstruisant comme somme d'ondes harmoniques.
+% \end{itemize}
+%
+% \end{subappendices}
+
+
+\section{Interfaces électromagnétiques}
+Nous terminons ce chapitre par l'étude de la réflexion et de la transmission d'une onde électromagnétique à l'interface entre deux milieux. Nous considérerons uniquement des OPPH généralisées en incidence normale.
+Le raisonnement est analogue à celui sur les ondes acoustiques dans les fluides.
+% où nous avions défini les coefficients de réflexion en amplitude et en puissance.
+\subsection{Position du problème}
+
+\parag{Indice optique complexe}
+On considère une OPPH$^{\star}$ $\udl{\Vec{E}_i} = \Vec{\udl{E_{0i}}}\, e^{i(\omega t - \udl{k}  z)}$ en incidence normale sur un dioptre, i.e. à l'interface $z=0$  entre deux milieux (Fig.~\ref{fig:reflexion_dioptre}). L’onde est donc de vecteur d’onde complexe $\Vec{\udl{k}} = \udl{k} \,\ez$ où la fonction $\udl{k}(\omega)$ est donnée par la relation de dispersion. Par analogie avec l’optique géométrique, on associe à un milieu linéaire homogène isotrope un indice optique complexe.
+
+\begin{definition}[Indice optique complexe]\label{def:}
+On définit l’\imp{indice optique complexe} $\udl{n}(\omega)$ par
+\begin{equation*}
+ \udl{k}(\omega)=\udl{n}(\omega)\frac{\omega}{c}.
+\end{equation*}
+L’indice optique complexe $\udl{n}(\omega)$ dépend de la pulsation dans un milieu dispersif.
+\end{definition}
+
+ \begin{figure}[h!]
+\centering
+\includegraphics[width=0.4\textwidth]{interface_milieu_R_T.pdf}
+\caption{Transmission et réflexion d'une OPPH sur un dioptre en incidence normale.}
+\label{fig:reflexion_dioptre}
+\end{figure}
+
+% Dans la suite il sera pratique de définir l'\important{indice optique} dans chaque milieu, noté $\udl{n}_{1,2}$, tel que
+% \begin{equation}
+%  \udl{k}_{1,2}(\omega)=\frac{\omega}{c}\udl{n}_{1,2}(\omega)
+%  \end{equation}
+De même que le vecteur d'onde complexe se met sous la forme $\udl{k} = k'+ik''$, on peut écrire
+ \begin{equation}
+   \udl{n}= n' - in'',
+ \end{equation}
+ où $n'=\frac{c}{v_{\varphi}}$ est appelé \important{indice de réfraction} et $n''=\frac{c}{\delta\omega}$ est l'\important{indice d'absorption}.
+
+\parag{Relations de passage des ondes électromagnétiques}
+Lorsque l'onde incidente $i$ qui se propage dans un milieu d'indice $\udl{n}_1$ frappe le dioptre, elle donne naissance à une onde réfléchie $r$ et une onde transmise $t$ dans le milieu d'indice $\udl{n}_2$. Les vecteurs d'onde des ondes incidente, réfléchie, et transmise sont respectivement $\Vec{\udl{k}}_i = \udl{k}_1 \ez$, $\Vec{\udl{k}}_r = -\udl{k}_1 \ez$, et $\Vec{\udl{k}_t} = \udl{k}_2 \ez$, avec $\udl{k}_1 = \udl{n}_1 \frac{\omega}{c}$ et $\udl{k}_2 = \udl{n}_2 \frac{\omega}{c}$.
+En supposant les ondes polarisées rectilignement, les champs électriques se mettent sous la forme générale
+\begin{equation}
+\begin{cases}
+\vv{\udl{E}}_{\rm{i}}(z,t)=\udl{E}_{0\rm{i}}\,\e^{i(\omega t-\udl{k}_1 z)}\vv{e_x} \quad \text{(incidente)},\\
+\vv{\udl{E}}_{\rm{r}}(z,t)=\udl{E}_{0\rm{r}}\,\e^{i(\omega t+\udl{k}_1 z)}\vv{e_x}\quad \text{(réfléchie)}, \\
+\vv{\udl{E}}_{\rm{t}}(z,t)=\udl{E}_{0\rm{t}}\,\e^{i(\omega t-\udl{k}_2 z)}\vv{e_x} \quad \text{(transmise)}.
+\end{cases}
+\end{equation}
+On détermine les champs magnétiques grâce aux relations de structure,
+\begin{equation}
+\begin{cases}
+\vv{\udl{B}}_{\rm{i}}(z,t)=\frac{\vv{\udl{k}}_{\rm{i}}}{\omega} \pv\vv{\udl{E}}_{\rm{i}} =\udl{n}_1\frac{\udl{E}_{0\rm{i}}}{c}\,\e^{i(\omega t-\udl{k}_1 z)}\vv{e_y}, \\[1mm]
+\vv{\udl{B}}_{\rm{r}}(z,t)=\frac{\vv{\udl{k}}_{\rm{r}}}{\omega} \pv\vv{\udl{E}}_{\rm{r}}=-\udl{n}_1\frac{ \udl{E}_{0\rm{r}}}{c}\,\e^{i(\omega t+\udl{k}_1 z)}\vv{e_y}, \\[1mm]
+\vv{\udl{B}}_{\rm{t}}(z,t)=\frac{\vv{\udl{k}}_{\rm{t}}}{\omega} \pv\vv{\udl{E}}_{\rm{t}}=\udl{n}_2 \frac{\udl{E}_{0\rm{t}}}{c}\,\e^{i(\omega t-\udl{k}_2 z)}\vv{e_y}.
+\end{cases}
+\end{equation}
+
+On admet que les champs électrique et magnétique  sont continus à l'interface $z=0$, ce qui donne les relations de passage suivantes.
+
+\begin{prop}[Conditions aux limites d'un dioptre électromagnétique]\label{prop:}
+  Le champ électromagnétique est continu à l'interface en \imp{incidence normale}, soit
+  $$
+  % \boxed{  
+    \begin{cases}
+      \vv{\udl{E}}_{\rm{i}}(0,t)+\vv{\udl{E}}_{\rm{r}}(0,t)=\vv{\udl{E}}_{\rm{t}}(0,t),\\
+      \vv{\udl{B}}_{\rm{i}}(0,t)+\vv{\udl{B}}_{\rm{r}}(0,t)=\vv{\udl{B}}_{\rm{t}}(0,t).
+    \end{cases}
+    % }ç
+    $$
+\end{prop}
+% \begin{equation}
+% \end{equation}
+% On en déduit les \imp{relations} de passages suivantes.
+
+% \begin{theorem}[Relations de passage en incidence normale]\label{form:passage}
+  % Le champ électromagnétique est continu à l'interface, soit
+% \begin{equation*}
+On peut récrire ces expressions de continuité en fonction des amplitudes complexes,
+\eqbox[]{
+  \left\{
+    \begin{array}{ll}
+      \udl{E}_{0\rm{i}}+\udl{E}_{0\rm{r}} & =\udl{E}_{0\rm{t}},\\
+      \udl{n}_1\left(\udl{E}_{0\rm{i}}-\udl{E}_{0\rm{r}}\right) & =\udl{n}_2\,\udl{E}_{0\rm{t}}\,  \\
+    \end{array}\right.
+    }
+    % \end{equation}
+% \end{theorem}
+
+
+\subsection{Coefficients de réflexion et de transmission}
+\begin{definition}[Coefficients du champ électrique]\label{def:}
+  Les coefficients de réflexion et de transmission en amplitude pour le champ électrique sont définis par
+  \begin{equation}
+  \udl{r}_{E}=\dfrac{\udl{E}_{0\rm{r}}}{\udl{E}_{0\rm{i}}}, \qquad
+  %=\dfrac{\udl{n}_1-\udl{n}_2}{\udl{n}_1+\udl{n}_2},\\[3mm]
+  \udl{t}_{E}=\dfrac{\udl{E}_{0\rm{t}}}{\udl{E}_{0\rm{i}}}.
+  %=\dfrac{2\udl{n}_1}{\udl{n}_1+\udl{n}_2}.
+  \end{equation}
+\end{definition}
+Les relations de passage en incidence normale donnent alors
+% \begin{equation}
+% \begin{cases}
+  \eqbox[]{
+    \udl{r_{E}}
+    %=\dfrac{\udl{E}_{0\rm{r}}}{\udl{E}_{0\rm{i}}}
+    =\dfrac{\udl{n}_1-\udl{n}_2}{\udl{n}_1+\udl{n}_2}, \quad 
+    \udl{t_{E}}
+    %=\dfrac{\udl{E}_{0\rm{t}}}{\udl{E}_{0\rm{i}}}
+    =\dfrac{2\udl{n}_1}{\udl{n}_1+\udl{n}_2}.
+    }
+% \end{cases}
+% \end{equation}
+On peut faire de même avec le champ magnétique et on trouve alors
+\begin{equation}
+\begin{cases}
+\udl{r_{B}}=\dfrac{\udl{B}_{0\rm{r}}}{\udl{B}_{0\rm{i}}}=-\udl{r_{E}}=\dfrac{\udl{n}_2-\udl{n}_1}{\udl{n}_1+\udl{n}_2},\\[2mm]
+\udl{t_{B}}=\dfrac{\udl{B}_{0\rm{t}}}{\udl{B}_{0\rm{i}}}=\dfrac{\udl{n}_2}{\udl{n}_1}\udl{t_{E}}=\dfrac{2\udl{n}_2}{\udl{n}_1+\udl{n}_2}.
+\end{cases}
+\end{equation}
+\begin{remarque}
+On notera la similitude des expressions précédentes avec les coefficients en vitesse et en pression de l'onde acoustique. Cette similitude n'est pas un hasard: $\vv{E}$ et $\vv{B}$ sont aussi des grandeurs duales, que l'on peut relier par une impédance électromagnétique dans le cas des ondes planes progressives.
+\end{remarque}
+
+
+\begin{exemple}{Coefficients en puissance}
+  On définit les coefficients de réflexion et de transmission en puissance par $R = \frac{\avg{\Pi_{\rm{r}}}}{\avg{\Pi_{\rm{i}}}}$ et $T = \frac{\avg{\Pi_{\rm{t}}}}{\avg{\Pi_{\rm{i}}}}$ où $\Pi$ est la norme du vecteur de Poynting. 
+  % \begin{quest}
+    % \item	
+    Déterminer $R$ et $T$ en fonction de $\udl{r}_E$, $\udl{t}_E$ et des indices optiques.
+    % \item Justifier et vérifier que ces coefficients doivent vérifier $R+T=1$.
+  % \end{quest}
+  \examplesol{
+    % \begin{quest}
+      % \item	
+      On détermine les vecteur de Poynting incident, réfléchi, et transmis. Les vecteurs de Poynting moyens valent 
+      $$
+  \moy{\Poy_i} = \frac{1}{\mu_0}\moy{\E_{\rm{i}}\pv\B_{\rm{i}}} = \frac{\re\,\udl{n}_1}{\mu_0 c}\abs{\udl{E}_{0\rm{i}}}^2\ez,
+  $$
+    $$
+  \moy{\Poy_r} = \frac{1}{\mu_0}\moy{\E_{\rm{r}}\pv\B_{\rm{r}}} = -\frac{\re\,\udl{n}_1}{\mu_0 c}\abs{\udl{E}_{0\rm{r}}}^2\ez,
+  $$
+    $$
+  \moy{\Poy_t} = \frac{1}{\mu_0}\moy{\E_{\rm{t}}\pv\B_{\rm{t}}} = \frac{\re\,\udl{n}_2}{\mu_0 c}\abs{\udl{E}_{0\rm{t}}}^2\ez.
+  $$
+    On trouve alors
+    %  \begin{equation}
+    \eqbox{
+      % \begin{cases}
+      R=\dfrac{\avg{\Pi_{\rm{r}}}}{\avg{\Pi_{\rm{i}}}}=\abs{\udl{r_E}}^2, \quad
+      T=\dfrac{\avg{\Pi_{\rm{t}}}}{\avg{\Pi_{\rm{i}}}} = \dfrac{n_2'}{n_1'}  \abs{\udl{t_E}}^2 .
+      % \end{cases}
+      }
+      % \end{equation}
+    %   \item On calcule $R+T$ à partir des expressions précédentes et on trouve
+    %   % \begin{equation*}
+    %   $$
+    %     R+T = \abs{\udl{r_E}}^2 + \dfrac{n_2'}{n_1'}  \abs{\udl{t_E}}^2 = \frac{|\udl{n}_1 - \udl{n}_2|^2}{|\udl{n}_1 + \udl{n}_2|^2} + \frac{n_2'}{n_1'} \frac{4|\udl{n}_1|^2}{|\udl{n}_1 + \udl{n}_2|^2} = \frac{(n_1'-n_2')^2 + (n_1''-n_2'')^2 + 4 n_1' n_2' + 4 n_1'' n_2''}{|\udl{n}_1 + \udl{n}_2|^2} = 1.
+    %     $$
+    %   % \end{equation*}
+    %   Cette relation est une conséquence de la conservation de l'énergie électromagnétique à l'interface.
+    % \end{quest}
+  }
+\end{exemple}
+
+
+\subsection{Relations de passage des milieux conducteurs}
+\parag{Interface vide-plasma}
+Le milieu 1 est le vide d’indice $\udl{n}_1=1$ ; le milieu 2 est un plasma, dont la relation de dispersion donne
+\begin{equation}
+  \udl{k}_2^2=\frac{\omega^2-\omega_{\rm{p}}^2}{c^2}.
+\end{equation}
+L'expression de l'indice optique du plasma $\udl{n}_2$ dépend du régime de fréquence étudié.
+
+\begin{liste}
+\item Si \fbox{$\omega>\omega_{\rm{p}}$}, alors $\udl{k}_2=\frac{1}{c}\sqrt{\omega^2-\omega_{\rm{p}}^2}$  est réel et $\udl{n}_2= \frac{c \udl{k}_2}{\omega} =  n_2'$ s'identifie à l'indice de réfraction
+
+% \begin{equation}
+  \eqbox{
+ n_2'= \sqrt{1-\left(\frac{\omega_{\rm{p}}}{\omega}\right)^2}.
+    }
+% \end{equation}
+Il y a propagation avec dispersion sans atténuation. L'indice de réfraction est $n_2' < 1$ contrairement au cas des milieux diélectriques. Les coefficients de réflexion et de transmission pour le champ électrique sont réels et valent
+% \begin{equation}
+% r_{E}=\frac{1-\sqrt{1-\left(\frac{\omega_{\rm{p}}}{\omega}\right)^2}}{1+\sqrt{1-\left(\frac{\omega_{\rm{p}}}{\omega}\right)^2}}\quad\text{et}\quad t_{E}=\frac{2}{1+\sqrt{1-\left(\frac{\omega_{\rm{p}}}{\omega}\right)^2}}.
+% \end{equation}
+\begin{equation}
+  r_{E}=\frac{1- n_2'}{1 + n_2'}\quad\text{et}\quad t_{E}=\frac{2}{1+n_2'}.
+  \end{equation}
+On en déduit les coefficients en puissance
+\begin{equation}
+R=\left(\frac{1- n_2'}{1 + n_2'}\right)^2\quad \text{et}\quad T=\frac{4n_2'}{\left(1+n_2'\right)^2}.
+\end{equation}
+On vérifie bien que $R+T=1$ en vertu de la conservation de l'énergie.
+\item Si \fbox{$\omega<\omega_{\rm{p}}$} alors $\udl{k}_2=\frac{i}{c}\sqrt{\omega_{\rm{p}}^2-\omega^2}$ est imaginaire pur et donc  $\udl{n}_2=n_2'-i\,n_2''$ avec $n_2'=0$ et 
+% \begin{equation}
+  \eqbox{
+    n_2''=\sqrt{\left(\frac{\omega_{\rm{p}}}{\omega}\right)^2-1}.
+  }
+% \end{equation}
+Il y a atténuation sans propagation, les ondes sont évanescentes. Les coefficients de réflexion et de transmission pour le champ électrique sont complexes et valent
+\begin{equation}
+\udl{r_{E}}=\frac{1-in_2''}{1+in_2''} = e^{- 2i\theta_E}\quad\text{et}\quad \udl{t_{E}}=\frac{2}{1+in_2''} = \frac{2\omega}{\omega_p}e^{-i\theta_E},
+\end{equation}
+où $\theta_E = \arctan n_2''$.
+On en déduit les coefficients en puissance
+% \begin{equation}
+  \eqbox{
+    R=1\quad\text{et}\quad T=0.
+  }
+% \end{equation}
+On voit qu'aucune énergie n'est transmise au plasma et que toute l’énergie est réfléchie.
+\begin{prop}\label{prop:}
+  Le plasma se comporte comme un \imp{miroir parfait} à basse fréquence $\omega < \omega_p$.
+\end{prop}
+\end{liste}
+
+
+%, comme nous l'avions mentionné en Sec.~\ref{subsec:plasma_BF}.
+% \begin{remarquetech}
+% Nous reverrons le même phénomène en mécanique quantique lors de la réflexion sur une marche de potentiel (voir TD25 exercice 4).
+% \end{remarquetech}
+
+\parag{Interface vide-métal}
+Le milieu 1 est le vide, d’indice $n_1=1$, et milieu 2 est un plasma. Le vecteur d’onde incident vaut donc $k_1=\frac{\omega}{c}$. Le régime de haute fréquence pour le métal, où $\omega\tau\gg 1$, est équivalent au régime du plasma étudié précédemment.
+%(avec deux sous-cas selon si $\omega<\omega_{\rm{p}}$ ou $\omega>\omega_{\rm{p}}$).
+Dans la suite on se limite donc au régime basse fréquence, où $\omega\tau\ll 1$. Nous avons vu dans ce cas que la relation de dispersion s’écrit $\udl{k}_2=\frac{1-i}{\delta}$ où $\delta=\sqrt{\frac{2}{\mu_0\sigma_0\omega}}$ est l’épaisseur de peau. On en déduit l’indice optique complexe
+\begin{equation}
+  \udl{n}_2=(1-i)\frac{c}{\omega\delta} =  (1-i)c\sqrt{\frac{\mu_0 \epz}{2\omega}}.
+\end{equation}
+Un cas limite intéressant est celui du \imp{conducteur parfait}.
+\begin{definition}[Conducteur parfait]\label{def:}
+Un \imp{conducteur parfait} est un conducteur ohmique pour lequel $\sigma_0\to\infty$.
+\end{definition}
+Pour un conducteur parfait, $\delta\to 0$, t donc $\abs{\udl{n}_2}\gg 1$. On en déduit que
+\begin{equation}
+\udl{r_{E}}=\frac{1-\udl{n}_2}{1+\udl{n}_2}\simeq -1\quad\text{et}\quad \udl{t_{E}}=\frac{2}{1+\udl{n}_2}\simeq 0.
+\end{equation}
+Le conducteur parfait \imp{réfléchit} complètement le champ électrique incident et le champ réfléchi est en \imp{opposition de phase} avec le champ incident. Le fait que $\udl{t_{E}}\simeq 0$ traduit le fait que le métal se comporte comme un blindage électromagnétique: le champ incident ne pénètre pas dans le volume du métal.
+
+\end{document}

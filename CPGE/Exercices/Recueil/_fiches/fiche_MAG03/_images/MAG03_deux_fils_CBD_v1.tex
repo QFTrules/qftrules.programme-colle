@@ -1,0 +1,18 @@
+\begin{tikzpicture}[>=stealth,scale=1]
+\small
+\draw[dashed, ->] (0,-1)--(0,1.5)node[above left]{$z$};
+\draw[dashed,->] (-3,0)--(3,0)node[below]{$x$};
+\fill[white] circle(0.1);
+\draw (0,0)node{$\otimes$}node[above left]{$y$};
+\draw[ultra thick, \blueOrBlack] (-1,0)--(-1,1.5);
+\draw[ultra thick, \blueOrBlack, ->] (-1,1)--(-1,1.5)node[left]{$I$};
+\draw[ultra thick, \blueOrBlack, ->] (1,1.5)--(1,1)node[right]{$I$};
+\draw[ultra thick, \blueOrBlack] (1,0)--(1,1.5);
+\draw (0,0)node[below right]{$\ptO$};
+\draw[ultra thick, dotted, \blueOrBlack] (-1,-1)node[below left, black]{fil 1}--(-1,0);
+\draw[ultra thick, dotted, \blueOrBlack,->] (-1,-0.8)--(-1,-0.6)node[left]{$I$};
+\draw[ultra thick, dotted, \blueOrBlack] (1,0)--(1,-1)node[below right, black]{fil 2};
+\draw[ultra thick, dotted, \blueOrBlack, ->] (1,-0.6)--(1,-0.8)node[right]{$I$};
+\draw[<->] (-1,1)--(0,1)node[below, midway]{$a$};
+\draw[<->] (0,1)--(1,1)node[below, midway]{$a$};
+\end{tikzpicture}

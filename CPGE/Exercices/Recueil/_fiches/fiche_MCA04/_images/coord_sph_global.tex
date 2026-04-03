@@ -1,0 +1,79 @@
+
+\documentclass{standalone}
+\RequirePackage{esvect}
+
+\usepackage{tikz} % la base
+\usetikzlibrary{calc,through,backgrounds}
+
+% Si la compilation de ce fichier échoue avec l'erreur
+%	! Package xkeyval Error: `babel' undefined in families `MT',
+% commentez la ligne suivante.
+\usepackage[babel=true,kerning=true]{microtype} % pour resoudre un
+                                % probleme de compatibilite entre
+                                % [francais]{babel} et TikZ/PGF.
+\usepackage{aeguill}   % Pour forcer une police vectorielle
+\pagestyle{empty} % On veut le dessin seul
+\begin{document}
+
+\begin{tikzpicture}[scale=1.5]
+
+%% Les valeurs utiles
+
+\input{coord_sph_valeurs.tex}
+
+\clip  (-3.1,-0.7) rectangle (3.5,3.5);
+
+%% Les axes
+
+\draw [->] (O) -- (0,0,3)  node [left] {$x$} ;
+\draw [->] (O) -- (3.2,0,0)  node [above] {$y$} ;
+\draw [->] (O) -- (0,3.2,0)  node [right] {$z$} ;
+
+% Le cercle
+
+\draw (O) circle (3) ;
+
+\filldraw [thick, fill=gray] (O) -- (O1) node [pos=0.5,left] {$r\cos\theta$} 
+		-- (M) 		
+		-- (P) -- (O) 
+		;
+
+\coordinate (Mi) at ($ 0.5*(P) + 0.5*(O)$);
+\coordinate (Mib) at ($ (Mi) + (-0.2,-0.2) $);
+
+\draw [<-] (Mi) -- (Mib)
+		node [below=-3pt] {$ r\sin\theta$} ;
+
+% Position des points principaux
+%  \filldraw[black] (M) circle(1pt) node [left] {$M$} ;
+  \filldraw[black] (O1)circle(1pt) node [left] {$\mathrm{H}$} ;
+  \filldraw[black] (P) circle(1pt) node [below] {$\mathrm{P}$} ;
+
+%% Les lignes d'angles
+  \draw [ultra thick,-latex] (O) -- (M) node [pos=0.5,below] {$\quad r$};
+
+
+%% Les ellipses des construction
+    
+  \ELLIPSEUN
+%  \ELLIPSEDEUX
+  \ELLIPSETROIS
+%  \ELLIPSEQUATRE
+
+%% Vecteurs
+\VER
+\VETHETA
+\VEPHI
+
+%  \draw (0,-3) -- (0,3) ;
+
+%% Angles
+
+\THETA
+\PHI
+
+
+\end{tikzpicture}
+
+\end{document}
+

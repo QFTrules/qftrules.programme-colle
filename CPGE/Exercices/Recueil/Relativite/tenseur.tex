@@ -1,0 +1,37 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][colle]{Les tenseurs}
+    
+    On rappelle que, $\left(e_\mu\right)_{\mu=0, \ldots, 3}$ étant une base de l'espace-temps, la métrique $g$ est donnée par le produit scalaire de ces vecteurs i.e.
+    $$
+    g_{\mu \nu}=\left(e_\mu \cdot e_\nu\right) .
+    $$
+$V$ étant un vecteur, ses coordonnées contravariantes $V^\mu$ et covariantes $V_\mu$ sont telles que
+$$
+V=V^\mu e_\mu, \quad V_\mu=\left(V \cdot e_\mu\right) .
+$$
+\begin{quest}
+    \item Montrer que l'on a : $V_\mu=g_{\mu \nu} V^\nu$.
+    \item $U$ et $V$ étant deux vecteurs, exprimer leur produit scalaire en fonction de $U^\mu$ ou $U_\mu$ et $V^\mu$ ou $V_\mu$.
+\item X désigne le quadrivecteur position et on rappelle que $\partial_\mu \equiv \frac{\partial}{\partial X^\mu}$.
+\begin{enumerate}
+    \item Exprimer alors $\partial^\mu X^\nu, \partial_\mu X^\nu, \partial^\mu X_\nu, \partial_\mu X_\nu$ en fonction de la métrique $g$ ou/et du symbole de Kronecker $\delta_\nu^\mu$.
+    \item $A$ et $B$ étant deux vecteurs, on rappelle que $\partial_\mu\left(A^\nu B^\rho\right)=\left(\partial_\mu A^\nu\right) B^\rho+A^\nu\left(\partial_\mu B^\rho\right)$. Que vaut alors $\partial_\mu\left(X^2\right)$ ? Et $\partial_\mu\left(X^\mu X^\nu\right)$ ?
+\end{enumerate}
+    \item $\Omega$ est un vecteur (fonction de X ) solution de l'équation
+    $$
+    \partial^\rho \partial_\rho \Omega^\mu-\partial^\mu \partial_\nu \Omega^\nu=0 .
+    $$
+    
+    Montrer que $\Omega^\mu+\partial^\mu \Lambda$, où $\Lambda$ est une fonction quelconque de $X$, est solution de la même équation.
+\item $A$ est un tenseur d'ordre 2 antisymétrique i.e. $A_{\mu \nu}=-A_{\nu \mu}$. De même $S$ est un tenseur d'ordre 2 symétrique i.e. $S_{\mu \nu}=S_{\nu \mu}$.
+\begin{enumerate}
+    \item Montrer que l'on a aussi $A^{\mu \nu}=-A^{\nu \mu}$ et $S^{\mu \nu}=S^{\nu \mu}$.
+    \item Montrer que $A^{\mu \nu} S_{\mu \nu}=0$.
+\end{enumerate}
+\item Soient $A$ un vecteur et $F$ un tenseur d'ordre 2 défini par $F^{\mu \nu} \equiv \partial^\mu A^\nu-\partial^\nu A^\mu$. Montrer alors que
+$$
+\partial^\alpha F^{\beta \gamma}+\partial^\beta F^{\gamma \alpha}+\partial^\gamma F^{\alpha \beta}=0 .
+$$
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

@@ -1,0 +1,31 @@
+% Electromagnetic wave - colored
+\input{tikz.tex}
+\colorlet{xcol}{blue!70!black}
+\colorlet{vcol}{green!60!black}
+\tikzstyle{vvec}=[->,vcol,very thick,line cap=round]
+\tikzstyle{rope}=[brown!20!black,double=brown!70!black,double distance=1,line width=0.3] %very thick
+\def\wave#1#2{
+  ({(#1-0.22)*\xmax},0) to[out=0,in=180,looseness=0.6] (#1*\xmax,#2*\ymax)
+  to[out=0,in=180,looseness=0.6]++ (0.22*\xmax,#2*-\ymax)
+}
+%\def\waveR#1{
+%  ({(#1-0.22)*\xmax},0) to[out=0,in=180,looseness=0.6] (#1*\xmax,-\ymax)
+%  to[out=0,in=180,looseness=0.6]++ (0.22*\xmax,\ymax)
+%}
+\begin{document}
+\def\xmax{3.0}
+\def\ymax{0.8}
+\begin{tikzpicture}
+\def\xL{-0.5}
+\def\xR{0.5}
+\coordinate (L) at (\xL*\xmax,\ymax);
+\coordinate (R) at (\xR*\xmax,\ymax);
+\node[above=-2] at (L) {$f(x-ct)$};
+\node[above=-2] at (R) {$g(x+ct)$};
+\draw[rope] %very thick,xcol]
+  (-\xmax,0) -- \wave{\xL}{1} -- \wave{\xR}{1} -- (\xmax,0);
+\draw[vvec] (L)++(-65:0.5*\ymax) --++ (0.17*\xmax,0) node[right=-2] {$c$};
+\draw[vvec] (R)++(-115:0.5*\ymax) --++ (-0.17*\xmax,0) node[left=-2] {$c$};
+% \node[right,scale=0.9] at (-1.35*\xmax,0.6*\ymax) {$t=0$};
+\end{tikzpicture}
+\end{document}

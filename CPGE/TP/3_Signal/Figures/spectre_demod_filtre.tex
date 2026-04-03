@@ -1,0 +1,24 @@
+\input{tikz.tex}
+\begin{document}
+\begin{tikzpicture}
+
+\draw[axe] (0,0) -- ++ (5,0) node[right] {fréquence};
+\draw[axe] (0,0) -- ++ (0,3) node[above] {amplitude};
+
+\draw[dashed,JoliRouge] (0,2.5) node[left] {filtrage} -- ++ (1,0) -- ++(2.5,-2.5) ;
+
+\draw[thick,JoliVert] (2,0)   -- ++ (0,2) coordinate (C) node[midway,right] {$f+\delta f$};
+\draw[decorate,decoration={brace,amplitude=5pt,raise=4pt},yshift=0pt,JoliVert]
+(1.4,2) -- (2.1,2) node[midway,yshift=0.6cm]{$s_E,s_R$};
+\draw[thick,JoliVert] (1.5,0)   -- ++ (0,2) coordinate (C) node[midway,left] {$f$};
+
+
+\draw[thick,JoliBleu] (4,0) node[below=0.1] {$~~~~2f+\delta f$}  -- ++ (0,2) coordinate (A) node[above] {$s_X$};
+% \draw[thick,JoliBleu] (3,0) node[above=0.3] {$2f_{\rm p}-f~~~~$}  -- ++ (0,0.5) coordinate (D);
+\draw[thick,JoliRouge] (0.5,0) node[below=0.1] {$\delta f$}  -- ++ (0,2) coordinate (B) node[above] {$s_X,s_d$};
+
+% \draw[ultra thick,JoliBleu] (0,0) node[below=0.1] {$0$}  -- ++ (0,2) coordinate (C);
+
+
+\end{tikzpicture}
+\end{document}

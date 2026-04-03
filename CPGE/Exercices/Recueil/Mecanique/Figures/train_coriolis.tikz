@@ -1,0 +1,18 @@
+\input{/home/eb/Dropbox/texmf/tex/latex/Preambles/tikz.tex}
+\begin{document}
+\begin{tikzpicture}
+
+\def\l{1.5}
+\draw[] (0,0) rectangle ++(\l,\l*1);
+\def\r{0.2}
+\draw (\r,-\r) circle(\r);
+\draw (\l-\r,-\r) circle(\r);
+% \bull[below=0.1]{(0.5*\l,0.5*\l)}{$G$};
+\vecout[JoliRouge]{0.5*\l,0.5*\l} node[left=0.1] {$\Vec{v}$};
+\draw[JoliVert,->] (0.5*\l,0.5*\l) -- ++ (0,1) node[above] {$\Vec{\Omega}_{\RT/\RG}$};
+\draw[JoliBleu,->] (0.5*\l,0.5*\l) -- ++ (1,0) node[above] {$\Fc$};\
+\draw[->] (-1,-1) -- ++ (4,0) node[right] {$x$};
+\draw[->] (-1,-1) -- ++ (0,3) node[above] {$z$};
+
+\end{tikzpicture}
+\end{document}

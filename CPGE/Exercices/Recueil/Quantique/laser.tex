@@ -1,0 +1,366 @@
+% !TEX root = /home/eb/.vscode/extensions/qftrules.programme-colle/tmp/Exercice.tex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][colle]{Autour du laser Hélium-Néon}
+  \begin{quest}
+    \item Citer les différents constituants d'un laser à gaz.
+    \item Qu'appelle-t-on émission stimulée? Quelle est sa caractéristique principale? Citer les trois types de transitions possibles entre deux niveaux d'énergie $\varepsilon_1$ et $\varepsilon_2\left(\varepsilon_2>\varepsilon_1\right)$.
+    \item Un gaz d'atomes en équilibre avec un thermostat de température $T$, obéit à la loi de Boltzmann : la population $N$ d'un niveau d'énergie atomique $\varepsilon$ s'écrit
+    $$
+N=\mathrm{C}^{\text {te }} \mathrm{e}^{-\varepsilon / k_{\mathrm{B}} T} \quad \text { avec } \quad k_{\mathrm{B}}=1,38 \times 10^{-23} \mathrm{JK}^{-1}
+$$
+
+Calculer le rapport $N_2 / N_1$ des populations des niveaux $\varepsilon_2$ et $\varepsilon_1$ correspondant aux niveaux $5 \mathrm{~s}$ et $3 \mathrm{p}$ du néon. On donne $\varepsilon_2-\varepsilon_1=1,96 \mathrm{eV}$ et $T=300 \mathrm{~K}$.
+\item En général, une onde se propageant suivant une direction $\mathrm{O} z$ dans un milieu à deux niveaux d'énergie s'amortit exponentiellement. Son intensité suit la loi
+$$
+I=I_0 \mathrm{e}^{-\alpha \mathrm{z}} \quad \text { avec } \quad \alpha \text { proportionnel à }\left(N_1-N_2\right)
+$$
+
+Expliquer comment, dans un laser à gaz, le milieu gazeux peut produire une amplification de l'intensité de l'onde.
+\item Dans un laser Hélium-Néon, l'émission correspond à la transition entre les niveaux $5 \mathrm{~s}$ et $3 \mathrm{p}$ des atomes de néon. Calculer la fréquence laser $v_0$ et la longueur d'onde correspondante $\lambda_0$. Dans quel domaine spectral ce laser émet-il?
+
+On considère un laser Hélium-Néon dans lequel la cavité est constituée de deux miroirs plans $\mathbf{M}$ et $\mathbf{M}^{\prime}$ séparés de la distance $L=20,0 \mathrm{~cm}$. Le miroir $\mathrm{M}$ est parfaitement réfléchissant alors que $\mathrm{M}^{\prime}$ présente un pouvoir de réflexion $R=99,6 \%$. Lindice de réfraction du milieu amplificateur est égal à 1 .
+\item Énoncer la condition de résonance de la cavité. En déduire les fréquences des modes propres de la cavité ainsi que l'intervalle spectral libre $\Delta v$ correspondant à l'écart fréquentiel entre deux modes propres successifs.
+\item En notant $\tau$ le temps mis par la lumière pour faire un aller-retour dans la cavité, on peut montrer que la largeur spectral d'un mode laser vaut
+$$
+\delta v_{1 / 2} \simeq \frac{|\ln R|}{2 \pi \tau}
+$$
+
+Calculer $\delta v_{1 / 2}$ et l'écart $\delta \lambda_{1 / 2}$ correspondant.
+\item Un oscillateur excité sur l'une de ses fréquences propres présente une réponse résonante caractérisée par un nombre sans dimension $Q$, appelé facteur de qualité. Il vaut
+$$
+Q=\frac{v_0}{\delta v_{1 / 2}}
+$$
+
+Calculer le facteur de qualité de ce laser Hélium-Néon. Quelle propriété du laser est mise en évidence ici?
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][oral]{Propriétés d'une diode laser}
+  Déterminer les amplitudes des champs électrique et magnétique créés par la diode laser suivante, ainsi que les caractéristiques du faisceau gaussien produit.\\[0.3cm]
+
+Diode laser rouge Classe II @635 nm version sur tige bas profil Ref : 203324.
+Caractéristiques techniques :\\[0.3cm]
+\begin{minipage}{0.49\textwidth}
+  \begin{liste}
+  \item Puissance : 1 mW (classe 2)
+  \item Extrémité : filetée M20
+  % \item Maintien : tige D 10mm - L $130 \mathrm{~mm}$
+  % \item Dimensions tube : diamètre $25 \mathrm{~mm}$ / longueur $90 \mathrm{~mm}$
+  \item Longueur tube : $\SI{90}{mm}$
+  \item Longueur d'onde : $\SI{635}{nm}$
+  \item Type : diode laser
+  \item Diamètre faisceau à $\SI{5}{m}$ : $\SI{9}{mm}$
+  \end{liste}
+\end{minipage}\hfill
+\begin{minipage}{0.49\textwidth}
+  \begin{liste}
+  \item Divergence : $\SI{0.9}{mrad}$
+  \item Diamètre faisceau en sortie : $\SI{1}{mm}$
+  \item Température d'utilisation : 10 à $40^{\circ} \mathrm{C}$
+  \item Polarisation : linéaire
+  \item Transformateur (fourni) : $6$-$9$V DC
+  \end{liste}
+\end{minipage}
+\sol{
+\begin{liste}
+  \item Puissance moyenne surfacique pour une onde sinusoïdale donnée par la moyenne du vecteur de Poynting $\moy{\Pi} = \frac{1}{2}\epz E_0^2$, d'où la puissance $P = \frac{1}{2}\epz E_0^2 \frac{\pi d^2}{4} = \SI{1}{mW}$. L'amplitude du champ électrique
+\eqbox{E_0 = \sqrt{\frac{8P}{\pi\epz d^2}} = \SI{1.7e7}{V.m^{-1}}.}
+
+  \item
+  Angle de divergence $\theta = \frac{\lambda}{\pi w_0} = \SI{0.9}{mrad}$, donc col $w_0 = \frac{\lambda}{\pi \theta} = \SI{0.2}{mm}$. Longueur de Rayleigh $z_R = \frac{\pi w_0^2}{\lambda} = \SI{25}{cm}$. Le diamètre du faisceau à $D=\SI{5}{m}$ est $d \simeq 2D\theta = \SI{9}{mm}$
+\end{liste}
+}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][2][TD]{Laser à rubis}
+  \Notions{\item Coefficients d'Einstein \task Interaction lumière-matière \task Trois niveaux}
+  Le laser à rubis fut le premier laser mis au point, conçu par T. \textsc{Maiman} en 1960. Il s’agit d’un laser à impulsion dont le milieu amplificateur est constitué de rubis, qui est un cristal d’alumine Al$_2$O$_3$ dopé aux ions chrome Cr$^{3+}$ ; ces ions sont responsables de la couleur rouge caractéristique du rubis. 
+  
+  L'émission laser fait intervenir $3$ états des ions Cr$^{3+}$, d'énergies $E_1<E_2<E_3$, représentés sur la \Fig{laser_rubis}. Le niveau fondamental $1$ et le niveau métastable $2$ sont responsables de l’émission laser, et associés aux coefficients d’Einstein $A = \SI{1.0e3}{s^{-1}}$ pour l'émission spontanée et $B$ pour les processus stimulés. Le niveau excité $3$ est peuplé par pompage optique au moyen de flashs lumineux, de taux $\Gamma$ (en $s^{-1})$, et se désexcite spontanément de façon non radiative, avec une durée de vie moyenne $\tau = \SI{50}{ns}$. On note $u(\omega)$ la densité d'énergie volumique du rayonnement à la pulsation laser $\omega$, de longueur d’onde $\lambda = \SI{694}{nm}$.
+
+  \begin{fig}[laser_rubis]
+    \centering
+    \includegraphics[scale=1.2]{laser_rubis.pdf}
+    % \capt{Diagramme énergétique des ions Cr$^{3+}$.}
+  \end{fig}
+
+% Les populations des atomes sont notées respectivement $n_1, n_2$ et $n_3$. On réalise un pompage optique entre les niveaux $E_1$ et $E_3$ à l’aide de flashs électriques. Le nombre d'atomes excités par unité de temps par le pompage optique est noté $\Gamma n_1$. On suppose que la désexcitation du niveau 3 vers le niveau 2 est non radiative (vibration du cristal) et que le temps de vie moyen dans le niveau 3 vaut $\tau \simeq \SI{e-8}{s}$. L'émission laser correspond à la transition du niveau 2 vers le niveau 1.
+% \begin{fig}[]
+%   \centering
+%   \includegraphics[width=0.5\textwidth]{laser3.png}
+%   % \capt{}
+% \end{fig}
+%  On utilisera les coefficients d'Einstein $A$ et $B$ pour rendre compte des phénomènes d'émission spontanée d’une part, et d’émission stimulée et d'absorption d’autre part. 
+
+ % donnée par la loi de Planck.
+
+\begin{quest}
+\item Établir l'équation d'évolution des populations atomiques $n_1(t)$, $n_2(t)$ et $n_3(t)$, i.e. du nombre d'atomes de chrome par unité de volume dans les états $1$, $2$ et $3$ respectivement.
+\sol{
+$$
+\dd{n_1}{t} = -\Gamma n_1 + B u(\omega) (n_2-n_1) + A n_2,
+$$
+$$
+\dd{n_2}{t} = \frac{n_3}{\tau} - B u(\omega) (n_2-n_1) - A n_2,
+$$
+$$
+\dd{n_3}{t} = \Gamma n_1 - \frac{n_3}{\tau}
+$$
+}
+\item Montrer que la quantité $n_{\rm tot} = n_1+n_2+n_3$ est une constante. Estimer $n_{\rm tot}$ sachant que le rubis est constitué à $\num{0.05}\%$ en masse d’ions Cr$^{3+}$, et que la masse volumique du rubis est $\rho = \SI{4.0}{g.cm^{-3}}$.
+\sol{
+En sommant les trois équations précédentes, on trouve que
+\eqbox{\dd{n_1}{t}  + \dd{n_2}{t}  + \dd{n_3}{t}  = \dd{n_{\rm tot}}{t} = 0.}
+
+% Connaissant les masses molaires des constituants du rubis, on trouve que la masse molaire du rubis vaut $M \simeq M({\rm Al}_2{\rm O}_3) \simeq \SI{102}{g.mol^{-1}}$. Le nombre d'atomes de rubis par unité de volume vaut donc 
+% $$n_{\rm Al_2O_3} = \frac{\rho}{M} N_A \simeq \SI{2.4e22}{cm^{-3}}.$$ Le nombre d'ions Cr$^{3+}$ par unité de volume est donc 
+% \eqbox{
+  % n_{\rm tot} \simeq \num{5e-5} n_{\rm Al_2O_3} \simeq \SI{1.2e19}{cm^{-3}}.
+  % }
+  La masse volumique d’ions Cr$^{3+}$ dans le rubis vaut $\rho_{\rm Cr} = \num{0.0005} \rho = \SI{2.0e-3}{g.cm^{-3}}$. La masse molaire de Cr$^{3+}$ est $M_{\rm Cr} = \SI{52}{g.mol^{-1}}$. Le nombre d'ions Cr$^{3+}$ par unité de volume vaut donc
+  \eqbox{
+    n_{\rm tot} = \frac{\rho_{\rm Cr}}{M_{\rm Cr}} N_A \simeq \SI{2.3e19}{cm^{-3}}.
+  }
+
+
+}
+\item On pose $\Delta n=n_2-n_1$ l’écart de population. En régime stationnaire, exprimer $\Delta n$ en fonction de $n_3$. En déduire une condition nécessaire pour réaliser l'inversion de population.
+\sol{
+En régime stationnaire, on peut écrire un système d'équations linéaires en $n_1$, $n_2$ et $n_3$ :
+$$
+\begin{cases}
+  0 = -\Gamma n_1 + B u(\omega) (n_2-n_1) + A n_2 , \\
+  0 = \frac{n_3}{\tau} - B u(\omega) (n_2-n_1) - A n_2, \\
+  0  = \Gamma n_1 - \frac{n_3}{\tau}.
+\end{cases}
+$$
+On en déduit que $n_1 = \frac{n_3}{\Gamma \tau}$ puis la 1ere équation donne 
+$$
+0 = -\Gamma n_1 + B u(\omega) (n_2-n_1) + A n_2 = 0 = (A-\Gamma) n_1 + (B u(\omega) + A) \Delta n.
+$$
+ Ainsi,
+ \eqbox{\Delta n = \frac{\Gamma - A}{A+Bu(\omega) }n_1 = \frac{\Gamma - A}{A+Bu(\omega) } \frac{n_3}{\Gamma \tau}}
+% \eqbox{\Delta n = n_2-n_1 =\frac{n_3}{\tau}\left( \frac{1}{B u(\omega) + A} - \frac{1}{\Gamma}  \right).}
+% \sol{
+% }
+% \item 
+On veut $\Delta n >0$, soit $\Gamma > A$. Or $\Gamma$ est le taux de pompage et $A$ le taux d'émission spontanée. Il faut donc pomper plus vite que les atomes n'émettent aléatoirement pour inverser la population. On voit que aussi que plus les transitions non radiatives sont rapides ($\tau$ petit), meilleure est l'inversion de population.
+}
+\item Estimer la puissance moyenne nécessaire $P_{\rm pomp}$ fourni par pompage optique pour atteindre l'inversion de population, sachant que le volume du rubis est $V = \SI{1}{cm^3}$ et que $E_3 - E_1 = \SI{2.3}{eV}$.
+\sol{
+  À la limite de l'inversion de population, on a $\Gamma = A = \SI{1.0e3}{s^{-1}}$. Le nombre d'atomes excités par unité de temps est donc $A n_1 V$. On voit que dans ce cas, $\Gamma \tau \ll 1$, et donc $n_3 \ll n_1$. Comme $n_2=n_1$ à la limite de l’inversion de population, on trouve $n_1 \simeq \frac{n_{\rm tot}}{2}$. La puissance moyenne nécessaire pour atteindre l'inversion de population vaut donc
+  \eqbox{
+    P_{\rm pomp} = \frac{A n_{\rm tot} V}{2} (E_3 - E_1) \simeq \SI{2.2}{kW}.
+  }
+}
+\end{quest}
+
+\textsc{Données} : Masses molaires : $M(Al) = \SI{27}{g.mol^{-1}}$, $M(O) = \SI{16}{g.mol^{-1}}$, $M(Cr) = \SI{52}{g.mol^{-1}}$. Constante d'Avogadro : $N_A = \SI{6.02e23}{mol^{-1}}$.
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][2][TD]{Laser à trois niveaux}
+  \Notions{\item Coefficients d'Einstein \task \task Pompage optique \task Trois niveaux}
+  Le laser hélium-néon émet dans le rouge à la longueur d’onde $\lambda = \SI{632.8}{nm}$. 
+    Les atomes de néon possèdent trois niveaux d'énergies : un niveau fondamental d’énergie $E_0$, et deux niveaux excités d’énergies $E_1$ et $E_2$, avec $E_0<E_1<E_2$. Les populations atomiques sont notées respectivement $n_0, n_1$ et $n_2$.  L'émission laser provient de la transition entre les niveaux 1 et $2$.
+    
+    On réalise un pompage optique entre les niveaux $0$ et $2$ en excitant les atomes d’hélium par des décharges électriques. Les atomes d’hélium transfèrent ensuite leur énergie aux atomes de néon par collision. On note $\Gamma$ le taux de pompage, et on assimile les populations de He et Ne aux niveaux $0$ et $2$.
+    
+    On suppose que la désexcitation du niveau 2 vers le niveau 1 donne l’émission laser, tandis que la transition du niveau 1 au niveau 0 est non radiative (collision). Le temps de vie moyen dans le niveau 1 est noté $\tau$. L'émission laser correspond à la transition du niveau 1 vers le niveau 0.
+    
+    On utilisera les coefficients d'Einstein $A$ et $B$ pour rendre compte des phénomènes d'émission spontanée d’une part, et d’émission stimulée et d'absorption d’autre part, entre les niveaux $1$ et $2$. On note $u(\omega)$ la densité volumique d'énergie  du rayonnement monochromatique à la pulsation laser $\omega$.
+    % donnée par la loi de Planck.
+    \begin{fig}[label]
+      \centering
+      \includegraphics[scale=1]{laser_HeNe.pdf}
+      %\capt{}
+    \end{fig}
+
+\begin{quest}
+\item Établir l'équation d'évolution de chaque niveau.
+\sol{
+  $$
+  \left\{  
+  \begin{aligned}
+    \dd{n_0}{t} & = -\Gamma n_0 + \frac{n_1}{\tau}, \\
+    \dd{n_1}{t} & = -\frac{n_1}{\tau} + B u(\omega) (n_2-n_1) + A n_2, \\
+    \dd{n_2}{t} & = \Gamma n_0 -B u(\omega) (n_2-n_1) - A n_2.
+  \end{aligned}
+  \right.
+  $$
+
+}
+\item Montrer que $n_1+n_2+n_3$ est une constante, notée $n$.
+\sol{
+En sommant les trois équations précédentes, on trouve que
+\eqbox{\dd{n_0}{t}  + \dd{n_1}{t}  + \dd{n_2}{t}  = \dd{n}{t} = 0.}
+}
+\item  On pose $\Delta n=n_2-n_1$. En régime stationnaire, exprimer $\Delta n$ en fonction de $n_0$.
+\sol{
+En régime stationnaire, on peut écrire un système d'équations linéaires en $n_1$, $n_2$ et $n_3$ :
+$$
+\begin{cases}
+  0 = -\Gamma n_0 + \frac{n_1}{\tau}, \\
+  0 = -\frac{n_1}{\tau} + B u(\omega) (n_2-n_1) + A n_2, \\
+  0  = \Gamma n_0 -B u(\omega) (n_2-n_1) - A n_2.
+\end{cases}
+$$
+On en déduit que $n_1 = n_0 \Gamma \tau$ puis la 3e équation donne 
+$$
+0 = \Gamma n_0 - B u(\omega) (n_2-n_1) - A n_2 = 0 = \Gamma n_0 - A n_1 - [A+B u(\omega) ] \Delta n.
+$$
+ Ainsi,
+ \eqbox{\Delta n = \frac{\Gamma(1 - A\tau)}{A+Bu(\omega)}n_0.}
+% \eqbox{\Delta n = n_2-n_1 =\frac{n_3}{\tau}\left( \frac{1}{B u(\omega) + A} - \frac{1}{\Gamma}  \right).}
+}
+\item En déduire une condition nécessaire pour réaliser l'inversion de population.
+\sol{
+  La grandeur $A+B u(\omega)$ représente le taux d'émission total depuis le niveau $2$. On veut $\Delta n >0$, soit $$A \tau < 1.$$ La désexcitation mon radiative vers le niveau fondamental doit donc être plus rapide que l'émission spontanée vers le niveau $1$.
+  Ici il n'y a pas d'effet de seuil sur le taux de pompage optique $\Gamma$, contrairement au laser au rubi. L'inversion de population est proportionnelle au pompage :  plus $\Gamma$ est grand, plus l'inversion de population est importante.
+
+}
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][2][TD]{LIDAR}
+  \Notions{\item Faisceau gaussien}
+Le LIDAR (\textit{Light Detection and Ranging}) est un instrument de mesure de distance par l'analyse des propriétés d'un rayonnement laser. Cette technique permet de sonder l'atmosphère sur quelques kilomètres d'altitude.
+\begin{quest}
+\item On envisage d'utiliser un laser YAG de longueur d'onde $\lambda_0=\SI{1,06}{\micro\meter}$ et de waist $w_0=\SI{0,40}{mm}$. Situer ce rayonnement dans le spectre électromagnétique.
+\item Déterminer la divergence angulaire et la longueur de Rayleigh de ce faisceau. Déterminer la largeur du faisceau à \SI{1500}{m} d'altitude en négligeant tout phénomène d'absorption et de diffusion atmosphérique. Expliquer pourquoi il faut collimater le faisceau pour l'application recherchée.
+\item Ce faisceau arrive sur un système afocal constitué d'une lentille divergente de focale $-\SI{20}{mm}$ placée à \SI{150}{mm} du waist du faisceau incident, et d'une lentille convergente de focale \SI{200}{mm}.
+\begin{enumerate}
+\item Faire un schéma du dispositif optique en faisant apparaître les foyers objet et image de chaque lentille. Quelle distance sépare les deux lentilles ? Pourquoi la première lentille est-elle choisie divergente ?
+\item Caractériser le faisceau gaussien émergent (waist, longueur de Rayleigh, divergence angulaire).
+\item Calculer la largeur du faisceau à \SI{1500}{m} d'altitude et commenter.
+\end{enumerate}
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][TD]{Phénoménologie des pertes dans un laser}
+  \Notions{\item Coefficients d'Einstein \task Pompage optique \task Deux niveaux \task Pertes}
+Un laser est modélisé par un système à deux niveaux atomiques d'énergies $E_1$ et $E_2>E_1$. Soit $n_1$ et $n_2$ les densités volumiques d'atomes dans chaque niveau et $\vphi$ le flux surfacique lumineux, i.e. la densité de courant en photons. Les probabilités d'absorption et d'émission stimulée par atome et par unité de temps sont toutes deux égales à $\sigma \vphi$, où $\sigma >0$ est une constante.
+%\begin{center}
+%\input{2niveaux.pgf}
+%\end{center}
+
+\begin{quest}
+\item Définir l'absorption et l'émission stimulée. Justifier que les variations de populations vérifient
+\begin{equation}
+\left. \frac{\mathrm{d} n_1}{\mathrm{d} t}\right|_{\text{abs}} = -\sigma \vphi n_1
+\quad
+\text{et}
+\quad
+\left.\frac{\mathrm{d} n_1}{\mathrm{d} t}\right|_{\text{sti}}  = \sigma \vphi n_2.
+\end{equation}
+\sol{
+Pour ce qui est des unités : $\vphi = \text{(densité de photons)} \times \text{(vitesse d'un photon)}$ = $\text{(nombre de photons)}$/ $\text{(temps)}$ / $\text{(surface)} $ en $\SI{}{m^{-2}.s^{-1}}$. Donc $\sigma$ est une surface (en $\SI{}{m^2}$) : c'est ce qu'on appelle la section efficace de collision.
+
+Tout est dans l'énoncé, il suffit de justifier le signe. Absorption = transition de $1$ vers $2$, donc $n_1$ diminue et $\left. \frac{\mathrm{d} n_1}{\mathrm{d} t}\right|_{\text{abs}}<0$. Émission = transition de $2$ vers $1$, donc $n_1$ augmente et $\left.\frac{\mathrm{d} n_1}{\mathrm{d} t}\right|_{\text{sti}}  >0$.
+}
+\item L'émission spontanée est négligée. Les photons se déplacent tous à la célérité $c$ dans la même direction. Montrer que la loi d'évolution de la densité de courant de photons est
+\begin{equation}
+  \label{eq:vphi_gain}
+\frac{\mathrm{d} \vphi}{\mathrm{d} t} = \sigma c \Delta n \,\vphi
+\end{equation}
+avec $\Delta n=n_2-n_1$.
+Pour un système à l'équilibre thermodynamique à la température $T$, que vaut le rapport $n_2/n_1$? Que dire alors sur la variation de $\vphi$ au cours du temps ?
+\sol{
+Soit $n_\gamma$ la densité en photon. On a alors $\vphi = n_\gamma c$, donc
+$$
+\dd{\vphi}{t} = c \dd{n_\gamma}{t}.
+$$
+Or chaque transition de $2$ vers $1$ conduisent à la création d'un photon, et donc
+$$
+\dd{\vphi}{t} = c \dd{n_1}{t} = c \left( \left. \frac{\mathrm{d} n_1}{\mathrm{d} t}\right|_{\text{abs}}  \left.\frac{\mathrm{d} n_1}{\mathrm{d} t}\right|_{\text{sti}}  \right) = \sigma c \vphi (n_2-n_1).
+$$
+
+À l'équilibre thermodynamique, le rapport $n_2/n_1$ est donné par le facteur de Boltzmann
+$$
+\frac{n_2}{n_1} = e^{-(E_2-E_1)/k_B T} < 1.
+$$
+}
+
+\item Une partie du faisceau traverse les miroirs de sorte que la cavité subit des pertes $\mathrm{d} \vphi|_{\text{cav}} = - K\vphi \mathrm{d}t$. Montrer que l’\Eq{vphi_gain} est modifiée en
+\begin{equation}
+\frac{\mathrm{d} \vphi}{\mathrm{d} t} = -K \vphi + \sigma c \Delta n \vphi .
+\end{equation}
+À quelle condition sur $\Delta n$ a-t-on une émission laser?
+\sol{
+IL suffit d'ajouter le terme $-K\vphi$. Dimension : $[K] = T^{-1}$ est l'inverse du temps caractéristique de transmission de l'intensité lumineuse à travers le miroir de sortie.
+On a émission laser si $\dd{\vphi}{t}>0$ soit
+$$
+-K \vphi + \sigma c \Delta n \vphi > 0 \Rar \Delta n > \frac{K}{\sigma c}.
+$$
+Cette condition est encore plus contraignante.
+}
+\end{quest}
+Pour qu'un laser puisse fonctionner, il est nécessaire d'inverser les populations atomiques. L'inversion peut être réalisée par pompage optique, qui est modélisé par les termes source $\mathrm{d} n_2|_{\text{pomp}} = \lambda_2 \mathrm{d}t$ et $\mathrm{d} n_1|_{\text{pomp}} = \lambda_1 \mathrm{d}t$. L'émission spontanée vers un état de plus basse énergie est également prise en compte par des termes de pertes $\mathrm{d} n_1|_{\text{spon}} = -\gamma n_1 \mathrm{d}t$ et $\mathrm{d} n_2|_{\text{spon}} = -\gamma n_2 \mathrm{d}t$.
+\begin{quest}
+  \item Trouver l'équation différentielle vérifiée par $\Delta n$.
+% Montrer que $\Delta n$ vérifie l'équation différentielle
+% \begin{equation}
+% \frac{\mathrm{d} \Delta n}{\mathrm{d} t} = -\gamma(\Delta n-\Delta n_0) - 2\sigma \vphi \Delta n,
+% \end{equation}
+% où l'on donnera l'expression de la constante $\Delta n_0$. Interpréter.
+\sol{
+Attention, ici le nombre d'atomes dans $1$ ou $2$, $n_1+n_2$ n'est plus constant en raison du pompage optique ! Ce pompage passe en pratique par la désexcitation d'un niveau d'énergie $E_3>E_2$ vers l'état $E_2$.
+
+On a
+$$
+\frac{\mathrm{d} n_1}{\mathrm{d} t}  = \left. \frac{\mathrm{d} n_1}{\mathrm{d} t}\right|_{\text{abs}}  + \left. \frac{\mathrm{d} n_1}{\mathrm{d} t}\right|_{\text{sti}}  + \left. \frac{\mathrm{d} n_1}{\mathrm{d} t}\right|_{\text{pomp}}  + \left. \frac{\mathrm{d} n_1}{\mathrm{d} t}\right|_{\text{spon}}  =  -\sigma \vphi n_1 + \sigma \vphi n_2 + \lambda_1 - \gamma n_1 = \sigma \vphi \Delta n + \lambda_1 - \gamma n_1.
+$$
+De même,
+$$
+\frac{\mathrm{d} n_2}{\mathrm{d} t}  = \left. \frac{\mathrm{d} n_2}{\mathrm{d} t}\right|_{\text{abs}}  + \left. \frac{\mathrm{d} n_2}{\mathrm{d} t}\right|_{\text{sti}}  + \left. \frac{\mathrm{d} n_1}{\mathrm{d} t}\right|_{\text{pomp}}  + \left. \frac{\mathrm{d} n_2}{\mathrm{d} t}\right|_{\text{spon}}  =  \sigma \vphi n_2 - \sigma \vphi n_1 + \lambda_2 - \gamma n_2 = -\sigma \vphi \Delta n + \lambda_2 - \gamma n_2.
+$$
+En prenant la différence, on obtient
+$$
+\dd{\Delta n}{t} = -2\sigma \vphi \Delta n - \gamma \Delta n +  \lambda_2- \lambda_1,
+$$
+donc $\Delta n_0 = \frac{\lambda_2-\lambda_1}{\gamma}$. En pratique, on cherche à pomper vers l'état $2$ et donc $\lambda_2 \gg \lambda_1$, soit $\Delta n_0 >0$. En régime stationnaire, on doit avoir
+$$
+\begin{cases}
+ 0 & = -K \vphi + \sigma c \Delta n \vphi \\
+ 0 & = -\gamma(\Delta n-\Delta n_0) - 2\sigma \vphi \Delta n \\
+\end{cases}
+\Rar
+\begin{cases}
+ \Delta n  & = \frac{K}{\sigma c}\\
+  \vphi & = \frac{\gamma}{2 \sigma}(\frac{\Delta n_0}{\Delta n}-1) = \frac{c}{2 K}(\lambda_2-\lambda_1) - \frac{\gamma}{2\sigma}.\\
+\end{cases}
+$$
+Ce flux à un sens (est positif) si $\Delta n_0 > \Delta n$, autrement dit si le pompage $\lambda_2$ est suffisamment grand par rapport aux pertes $K$.
+}
+
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][colle]{Laser à deux niveaux}
+  On considère un milieu amplificateur à deux niveaux $E_1$ (niveau fondamental) et $E_2$ (niveau excité). On appelle $n_1$ et $n_2$ les populations des deux niveaux. On cherche à réaliser une inversion de population en soumettant ce système à un flux de photons accordés sur la transition. 
+  % On note $n$ le nombre de ces photons.
+% Données : rappel des relations d'Einstein :
+% - Probabilité par unité de temps pour l'émission spontanée : $B$
+% - Probabilité par unité de temps pour une absorption ou une émission induite (stimulée) : An
+\begin{quest}
+  \item	
+  Établir les équations d'évolution des populations des niveaux 1 et 2.
+  \item 
+  En déduire la population $n_2$ en régime permanent. 
+  % Est-il possible de produire une inversion de population?
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

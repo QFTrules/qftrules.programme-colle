@@ -1,0 +1,155 @@
+\documentclass[12pt]{article}
+ 
+\usepackage[margin=1in]{geometry} 
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[autolanguage]{numprint}
+\usepackage{lmodern}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{cases}
+\usepackage{mathrsfs}
+\usepackage{textcomp}
+\usepackage{stmaryrd}
+\usepackage{moreverb}
+\usepackage{listings}
+\usepackage{color}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage{graphicx}
+\usepackage{fancyvrb}  % Pour le verbatim
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\usepackage{esint}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{lipsum}
+\usepackage{chngcntr}
+\usepackage{changepage}
+\usepackage{pdfpages}
+\usepackage[shortlabels]{enumitem}
+\usepackage{dsfont}
+\usepackage{nicefrac}
+\usepackage{csquotes}
+\usepackage[version=4]{mhchem}
+\usepackage{cancel}
+\usepackage{eurosym}
+
+\usepackage{siunitx}
+\sisetup{
+    inter-unit-product = \ensuremath{{}\!\cdot\!{}},
+    detect-all,
+    separate-uncertainty = true,
+    exponent-product = \times,
+    space-before-unit = true,
+    output-decimal-marker = {,},
+    multi-part-units = brackets,
+    range-phrase = --,
+    % allow-number-unit-breaks,
+    list-final-separator = { et },
+    list-pair-separator = { et },
+    abbreviations
+}
+
+\input{../Template/Commandes.sty}
+\begin{document}
+ 
+% --------------------------------------------------------------
+%                         Start here
+% --------------------------------------------------------------
+
+\lhead{PC Théophile Gautier}
+%\chead{L.Villa}
+\rhead{Révision des écrits}
+
+\paragraph{Généralités}
+\begin{enumerate}
+\item Pour CCP Physique, les coefficients sont les suivants: Physique (15), Maths (14), Chimie (8), IPT (8), Français (9), Anglais (4). Pour CCP Chimie, on permute les coefficients de la physique et de la chimie. 
+\item Avant Centrale, vous disposez d'une \textbf{vingtaine} de jours de révisions. Partons sur une base de travail de 8h par jour (4h le matin, 4h l'après-midi, sieste recommandée entre les deux). Cela peut paraître peu vu la quantité de choses à revoir, \textbf{mais}:
+\begin{itemize}
+\item[$\bullet$] le plus gros du travail est derrière vous, quoiqu'il arrive vous ne rattraperez pas deux ans de travail en deux semaines: révision $\neq$ apprentissage;
+\item[$\bullet$] il est préférable de travailler 8h efficacement que 12h inefficacement;
+\item[$\bullet$] les révisions durent plusieurs semaines, et je vous \textbf{déconseille très fortement} de travailler plus de 8h par jour, car arriver épuisé aux concours est la pire des stratégies possibles. Vous pouvez travailler moins, mais moins de 6h risque de compromettre significativement les révisions de certaines parties ou matières. 
+\end{itemize}
+\item Je vous \textbf{propose} le découpage horaire suivant si vous travaillez sur 8h: Physique (2h15), Maths (2h15), Chimie (1h30), IPT (1h), Français (30min), Anglais (30min). 
+%En quantité je laisse moins à l'IPT qu'à la chimie car en plus de l'informatique il y a aussi la partie de modélisation que vous révisez en travaillant la physique-chimie. 
+Pour le français, vous avez normalement déjà fourni le travail pour l'écrit pendant l'année. Attention à ne pas négliger les matières littéraires, le coefficient cumulé de l'anglais et du français étant proche de celui des maths.  
+\item Je vous propose ci-dessous un programme de révision minimal (PCSI puis PC) décomposé par thème et en 2 parties: les connaissances de base ($\star$), et celles d'approfondissement ($\star\star$). Si vous n'étiez pas dans le \textbf{premier tiers} de classe au concours blanc, concentrez-vous sur les connaissances de base.
+\end{enumerate}
+
+\paragraph{Outils de calcul à maîtriser.} 
+Théorème de Thalès (2 configurations). Solutions des équations différentielles de la forme $y'+ay=f(x)$ et $y''+ay'+by=f(x)$. Nombres complexes (calcul d'un module, d'un argument). Développement limités à l'ordre 2 de $(1+\varepsilon)^\alpha$, $\cos(\varepsilon)$, $\sin(\varepsilon)$, $\ln(1+\varepsilon)$. Projection d'un vecteur sur une base. Produit scalaire et produit vectoriel. Périmètre d'un cercle ($2\pi r$), surface du disque $(\pi r^2$), aire de la sphère ($4\pi r^2$), volume de la boule $(\frac{4}{3}\pi r^3)$ et du cylindre $(\pi r^2 h)$. Expression du gradient, de la divergence et du rotationnel en cartésiennes à partir de $\vec{\nabla}$. Théorème de Stokes et de Green-Ostrogradski.
+
+\paragraph{Les trois règles fondamentales.} 
+\begin{enumerate}
+\item Rendre une copie soignée, où les résultats sont encadrés. 
+\item Un vecteur n'est jamais égal à un scalaire. 
+\item Les termes dans une équation doivent être homogènes, les applications numériques exprimées avec un nombre cohérent de chiffres significatifs et avec une unité. 
+\end{enumerate}
+Dans les dernières minutes d'une épreuve, relire ce que vous avez fait pour respecter ces critères. Il est essentiel de faire bonne impression au correcteur.  
+
+\clearpage
+\paragraph{L'essentiel du programme de PCSI}
+\begin{enumerate}
+\medskip
+\item Électrocinétique.
+\item[$\star$] Loi des nœuds, loi des mailles, impédances $\underline{Z}_{L}=jL\omega$ et $\underline{Z}_{C}=\frac{1}{jC\omega}$ en lien avec les notations réelles $u_{L}=L\frac{\d i}{\d t}$ et $i_{C}=C\frac{\d u_C}{\d t}$, circuit équivalent en haute et basse fréquence (type de filtre), loi des nœuds en terme de potentiel et diviseur de tension, association série/parallèle, diagramme de Bode. RLC-série: régimes et résonances en fonction du facteur de qualité.  
+\item[$\star\star$] Amplificateur opérationnel (régime linéaire et saturé). Théorème de Millman.
+\medskip
+\item Mécanique.
+\item[$\star$] Définition d'un référentiel (galiléen). Lois de Newton, équations horaires, équation de la trajectoire. Coordonnées cylindriques et expression de $\vec{v}$ et $\vec{a}$. Mouvement circulaire uniforme. Expression de la tension d'un ressort, de la force de gravitation entre deux points matériels et de leur énergie potentielle. Translation et rotation d'un solide autour d'un axe fixe, moment d'inertie. Théorème du moment cinétique, moment d'une force. Théorèmes énergétiques (énergie cinétique, énergie mécanique). Lois de Coulomb du frottement de glissement. Force de Lorentz et mouvement d'une particule dans un champ $(\vec{E},\vec{B})$. Forces centrales, lois de Kepler. 
+\item[$\star\star$] Satellites géostationnaires, vitesse de libération, étude énergétique pour un mouvement elliptique à partir de l'énergie potentielle effective.  
+\medskip
+\item Optique géométrique.
+\item[$\star$] Relations de conjugaison de Descartes et Newton. Tracé des rayons pour une lentille mince (convergente et divergente). Foyers objet et image. Système afocal. Lunette astronomique.
+\item[$\star\star$] Prisme. Fibre optique.
+\medskip
+\item Thermodynamique.
+\item[$\star$] Transformations élémentaires (isochore, isotherme, isobare, adiabatique, réversible). Travail des forces de pression. Premier et second principe. Lois de Joule. Modèle du gaz parfait et de la phase condensée incompressible indilatable. Loi de Laplace. Machines thermiques dithermes (rendement et théorème de Carnot). Diagrammes thermodynamiques (revu aussi en PC). Transition de phase liquide-vapeur. 
+\item[$\star\star$] Théorie cinétique des gaz (pression cinétique, température cinétique, libre parcours moyen). Passage du gaz parfait au gaz réel. Changements d'état du corps pur. Modèle de l'atmosphère isotherme. Poussée d'Archimède. 
+\medskip
+\item Induction.
+\item[$\star$] Circuit mobile dans un champ magnétique stationnaire: rails de Laplace. Circuit fixe dans un champ magnétique variable. Loi de Lenz-Faraday. Auto-induction. Étude énergétique du haut-parleur électrodynamique.
+\item[$\star\star$] Inductance mutuelle. Principe du transformateur. 
+\end{enumerate}
+
+\clearpage
+\paragraph{L'essentiel du programme de PC\\}
+Pour plus de simplicité, je présente les choses essentielles dans l'ordre des polycopiés. Vous pouvez réviser dans l'ordre que vous voulez. Il ne faut pas se contenter de lire le cours mais bien d'être actif et de \textbf{refaire les calculs et raisonnements} à partir d'une feuille blanche. 
+\smallskip
+\begin{enumerate}
+\item Mécanique
+\item[$\star$] Loi de composition galiléenne des vitesses. Référentiels non galiléens: forces d'inerties et expressions pour une translation et une rotation autour d'un axe fixe. PFD, TMC, théorèmes énergétiques en référentiel non galiléen. Dynamique du véhicule à roue. Différence entre pesanteur et attraction gravitationnelle. Déviation vers l'Est. 
+\item[$\star\star$] Énergétique du véhicule à roue dans le référentiel terrestre et le référentiel du véhicule. Pendule de Foucault. Force de Coriolis et mouvements atmosphériques. Théorie statique des marées. 
+\medskip
+\item Optique
+\item[$\star$] Modèle scalaire de la lumière (hypothèses, chemin optique, surface d'onde, théorème de Malus, intensité lumineuse, différence de marche, ordre d'interférences). Interférences lumineuses (3 conditions d'interférences, contraste, formule de Fresnel). Longueur de cohérence temporelle et expression $l_{\rm{c}}\sim\frac{\lambda^2}{\Delta\lambda}$. Critère d'interférences $\delta<l_{\rm{c}}$ et interprétation par le modèle des trains d'onde. Division du front d'onde et dispositif de Young: retrouver l'expression de $\delta$, en déduire l'intensité et l'interfrange. Modifications du dispositif (translation $\parallel$ ou $\perp$ aux trous). Élargissement de la source et cohérence spatiale (critère $\Delta p>\frac{1}{2})$. Division d'amplitude et interféromètre de Michelson (présentation des éléments de l'interféromètre). Configuration lame d'air (calcul de $\delta$, rayon des anneaux d'égale inclinaison, conditions d'éclairage et d'observation). Contact optique. Configuration coin d'air (franges rectilignes d'égales épaisseur, conditions d'éclairage et d'observation). Interaction lumière-matière (absorption, émission stimulée, émission spontanée). Analogie entre le laser et l'oscillateur à pont de Wien (ampli+filtre). Propriétés du faisceau laser (profil gaussien, waist et longueur de Rayleigh, modèle cône-cylindre). 
+\item[$\star\star$] Interférences à $N$ ondes. Notion sur les sources lumineuses. Interférences en lumière blanche: blanc d'ordre supérieur, teintes de Newton et spectre cannelé. Localisation des interférences. Interféromètre de Fabry-Perot. Transformation du faisceau laser par une lentille.
+\medskip
+\item Phénomènes diffusifs.
+\item[$\star$] Diffusion de particules (flux, courant, bilan de particules et équation de conservation, loi de Fick, équation de diffusion, analyse en ordres de grandeur $\tau=\frac{\delta^2}{D}$). Diffusion thermique (flux, courant, bilan d'énergie et premier principe, loi de Fourier, équation de la chaleur, conditions aux limites). Solution en régime (quasi-)stationnaire et analogie électrique: résistance thermique. Solution en régime sinusoïdal (onde atténuée et effet de cave).
+\item[$\star\star$] Modèle microscopique probabiliste de la diffusion de particules. Principe de la résolution générale en posant $u=\frac{x}{\sqrt{Dt}}$ avec la fonction $\mathrm{erf}(u)$. Création d'entropie liée à l'irréversibilité de la diffusion thermique. Notions sur le rayonnement du corps noir, modèle de l'effet de serre. 
+\medskip
+\item Mécanique des fluides. 
+\item[$\star$] Particule de fluide et échelle mésoscopique. Ligne de courant $\vec{v}\pv\vec{\d l}=0$. Expression de l'accélération particulaire en cartésiennes. Débit volumique, débit massique, conservation de la masse. Écoulements particuliers (stationnaire, incompressible, tourbillonnaire, potentiel). Exemples de la tornade et de la sphère. Équation d'Euler, équation de Bernoulli et exemples: effet Venturi, tube de Pitot, vidange. Expression de la force surfacique tangentielle de cisaillement d'un fluide newtonien $\frac{\d \vec{F}}{\d S}=\eta\frac{\partial v_x}{\partial y}\vec{e}_x$ et équivalent volumique $\frac{\d \vec{F}}{\d V}=\eta\Delta\vec{v}$. Équation de Navier-Stokes. Nombre de Reynolds $\frac{LU\rho}{\eta}$ et interprétation. Expression de la force de traînée selon le nombre de Reynolds. Écoulement de Couette plan et de Couette cylindrique. Bilan sur un système ouvert fixe et sur un système fermé mobile. Écriture des théorèmes fondamentaux pour les systèmes fermés. Expression du premier principe industriel. 
+\item[$\star\star$] Interprétation de la divergence à partir de la variation de volume d'une particule de fluide. Interprétation du rotationnel à partir de la mise en rotation d'une particule de fluide. Notion de couche limite visqueuse. 
+\medskip
+\item Électrostatique et magnétostatique.
+\item[$\star$] Force et potentiel coulombien entre deux charges ponctuelles. Énergie potentielle électrostatique $qV$ (penser à l'électron-volt !). Symétries et invariances d'un vrai-vecteur $\vec{E}$. Théorème de Gauss. Analogie gravitationnelle. Exemple du fil infini, de la plaque infinie et du condensateur plan. 
+Symétries et invariances d'un pseudo-vecteur $\vec{B}$. Théorème d'Ampère. Exemple du fil infini. Champ à l'extérieur et à l'intérieur un solénoïde. 
+\item[$\star\star$] Lecture et interprétation d'une carte de champ. Modèle électrostatique du noyau atomique. Dipôles électrostatiques et magnétostatiques. Modèle planétaire de l'hydrogène et relation $\mc{\vec{M}}=\gamma\vec{L}$. Magnéton de Bohr et notions sur l'aimantation de la matière. Énergie stockée dans un condensateur $\frac{1}{2}CU^2=\frac{1}{2}\varepsilon_0 E^2\times V$, énergie stockée dans une bobine $\frac{1}{2}LI^2=\frac{1}{2\mu_0}B^2\times V$. 
+\medskip
+\item Électromagnétisme (régimes variables et lentement variables).
+\item[$\star$] Équations de Maxwell locales puis intégrales en utilisant Stokes et Green-Ostrogradski. Importance du courant de déplacement dans la conservation de la charge. Équation locale de Poynting et effet Joule. Régime de l'ARQS magnétique et simplification des équations de Maxwell (à bien distinguer du régime statique!). Définition d'un métal. Modèle de Drude. Loi d'Ohm. Neutralité d'un métal. Résistance électrique dans l'ARQS. Force de Laplace sur un conducteur. 
+\item[$\star\star$] Interpréter le courant de déplacement dans le cas du condensateur plan. Analyse des symétries en régime variable. Effet Hall. 
+\medskip
+\item Ondes.
+\item[$\star$] Ondes mécaniques sur une corde vibrante horizontale (hypothèse et détermination de l'équation d'onde). Ondes acoustiques longitudinales dans un solide (modèle discret de la chaîne de ressorts, passage à la limite continue, lien avec les paramètres macroscopiques avec la loi de Hooke). Types d'ondes (onde progressive, OPPH, onde stationnaire). Modes propres d'une corde libre, quantification. Oscillations forcées de la corde de Melde. Ondes acoustiques dans les fluides (linéarisation des équations d'Euler et de conservation de la masse, évolution isentropique et relation $\rho_1=\rho_0\chi_S P_1$, découplage et obtention de l'équation de propagation). Vitesse du son $\sqrt{\frac{\gamma RT}{M}}$ pour un gaz parfait. Impédance acoustique. Coefficients de réflexion et de transmission en amplitude et en énergie (à partir du vecteur de Poynting) à l'interface avec un dioptre. Équation de propagation du champ électromagnétique dans le vide. Réécriture des équations de Maxwell en notation complexe. Structure de l'OPPH dans le vide. Vecteur de Poynting, lien avec l'énergie volumique du champ $||\vec{\Pi}||=c\times u_{\rm{em}}$. Ondes EM dans un plasma dilué (relation constitutive et équation d'onde de Klein-Gordon, relation de dispersion et analyse des comportements $\omega<\omega_{\rm{p}}$ et $\omega>\omega_{\rm{p}}$). Idem pour le métal avec un régime supplémentaire à basse fréquence $\omega\ll \frac{1}{\tau}$ (ARQS). Associer la forme complexe de $\underline{k}$ à des phénomènes de propagation ou d'atténuation de l'onde. Calculer les vitesses de phase et vitesse de groupe d'un paquet d'onde à partir de la relation de dispersion. Coefficients de transmission et réflexion à une interface en fonction de l'indice.  
+\item[$\star\star$] Solution de d'Alembert avec une onde sphérique. Champ proche et champ lointain pour l'onde acoustique. Bilan d'énergie acoustique, notion de décibels. Polarisation des ondes lumineuses. Interprétation corpusculaire du rayonnement et notion de photon. Analyse énergétique de la propagation d'une onde EM dans un plasma et dans un métal selon le régime de fréquence. Expliquer la propagation d'un paquet d'onde à partir d'une décomposition d'onde porteuse et d'onde enveloppe. 
+\medskip
+\item Mécanique quantique.
+\item[$\star$] Interpréter la dualité onde-corpuscule à partir d'une expérience d'interférences. Interpréter la fonction d'onde comme une amplitude complexe de probabilité. Densité linéique de probabilité et condition de normalisation. Inégalité de Heisenberg. Équation de Schrödinger. Expression des états stationnaires $\psi(x,t)=\varphi(x)\e^{-iEt/\hbar}$ comme des états d'énergie $E$ fixée. Équation de Schrödinger indépendante du temps. Particule libre et relation de dispersion $\hbar\omega=\frac{\hbar^2 k^2}{2m}$. Vitesse de phase et vitesse de groupe d'un paquet d'onde libre. Courant de probabilité $j_x=\rho\times v_{\rm{g}}$. Résoudre l'équation de Schrödinger stationnaire par morceaux et déterminer les constantes d'intégration à partir des conditions aux limites. Puits infini. Barrière de potentiel. Associer le confinement d'une particule à la quantification du vecteur d'onde et à une énergie de point zéro de la forme $\frac{\hbar^2}{mL^2}$. Hypothèse de la barrière épaisse et variation exponentielle du coefficient de transmission $T\sim\e^{-2L/\delta}$. 
+\item[$\star\star$] Faire le lien entre la fonction d'onde et les orbitales atomiques. Étude du puits fini. Expliquer pourquoi le passage d'un puits de potentiel infini à un puits fini conduit à des ondes évanescentes dans les régions I et III et à un élargissement effectif de la largeur du puits par l'inégalité de Heisenberg.  Microscopie à effet tunnel, modèle de radioactivité alpha de Gamow. 
+\end{enumerate}
+
+\end{document}

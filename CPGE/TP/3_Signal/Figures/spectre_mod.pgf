@@ -1,0 +1,14 @@
+﻿\begin{tikzpicture}
+
+\draw[ax] (0,0) -- ++ (5,0) node[right] {fréquence};
+\draw[ax] (0,0) -- ++ (0,3) node[above] {amplitude};
+
+\draw[thick,blue] (2,0)  -- ++ (0,2);
+
+
+\draw[thick,JoliVert] (2.7,0) node[below=2] {$f_{\rm p}+f$}  -- ++ (0,1) coordinate (A);
+\draw[thick,JoliVert] (1.3,0) node[below=2] {$f_{\rm p}-f$}  -- ++ (0,1) coordinate (B);
+
+\draw[JoliVert,dashed] (B) -- ++ (-1.3,0) node[left] {$\frac{kA_{\rm i}A_{\rm p}}{2}$};
+
+\end{tikzpicture}

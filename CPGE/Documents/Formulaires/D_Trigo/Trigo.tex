@@ -1,0 +1,121 @@
+\input{formulaire.sty}
+\begin{document}
+\Entete[formu][D]{}
+% displayname : Trigonométrie
+
+\section{Fonctions trigonométriques}
+
+\subsection{Définitions}
+
+Toutes le formules de trigonométrie se retrouvent à partir de l'exponentielle complexe et des règles de calcul sur les puissances. Il faut impérativement savoir que ces formules existent et savoir les retrouver rapidement.
+
+\begin{theorem}[Formule d'Euler]\label{form:}
+        $$
+        e^{i x}=\cos x+i \sin x 
+        $$
+\end{theorem}
+On en déduit les formules suivantes :
+$$
+\cos (x)=\re(e^{ix}) = \frac{e^{i x}+e^{-i x}}{2} \quad \text { et } \quad \sin (x)=\im(e^{ix}) = \frac{e^{i x}-e^{-i x}}{2 i}
+$$
+Le lien entre les fonctions trigonométriques et les fonctions exponentielles est très utilisé dans la représentation complexe de signaux harmoniques, ce qui intervient dans tous les domaines de la physique lorsque les équations ont linéaires.
+En appliquant le théorème de Pythagore sur le cercle de rayon unité, on trouve
+$$\cos ^{2}(x)+\sin ^{2}(x)=1$$
+
+% \subsection{Autres fonctions trigonométriques}
+On définit aussi les fonctions tangente (tan), cotangente (cot), sécante (sec) et cosécante (csc) par : 
+$$
+\tan x = \frac{\sin x}{\cos x}, \qquad \cot x = \frac{\cos x}{\sin x}, \qquad \sec x = \frac{1}{\cos x}, \qquad \csc x = \frac{1}{\sin x}.
+$$
+
+
+
+\subsection{Fonctions de la somme}
+
+$
+\begin{aligned} 
+   & \cos (a+b)  =\cos (a) \cos (b)-\sin (a) \sin (b)\\ 
+   & \sin (a+b)  =\cos (a) \sin (b)+\sin (a) \cos (b) \\ 
+   & \tan (a+b)  =\frac{\tan (a)+\tan (b)}{1-\tan (a) \tan (b)} \\
+   & \cos (2 a)  =\cos ^{2}(a)-\sin ^{2}(a)=2 \cos ^{2}(a)-1=1-2 \sin ^{2}(a)\\
+%    =\frac{1-\tan ^{2}(a)}{1+\tan ^{2}(a)}  \\
+   & \sin (2 a)  =2 \sin (a) \cos (a) =\frac{2 \tan (a)}{1+\tan ^{2}(a)}\\
+   & \tan (2 a)  = \frac{2 \tan (a)}{1-\tan ^{2}(a)}\\
+\end{aligned}
+$
+
+\subsection{Produits des fonctions}
+
+$
+\begin{aligned} 
+   & \cos (a) \cos (b)= \frac{1}{2} \left[\cos (a-b)+\cos (a+b)\right]\\ 
+   & \sin (a) \sin (b)= \frac{1}{2}\left[\cos (a-b)-\cos (a+b) \right] \\ 
+   &  \sin (a) \cos (b)= \frac{1}{2}\left[ \sin (a-b)+\sin (a+b) \right] \\
+\end{aligned}
+$
+
+\subsection{Somme des fonctions}
+$
+\begin{aligned}
+\cos (p)+\cos (q) & =2 \cos \left(\frac{p+q}{2}\right) \cos \left(\frac{p-q}{2}\right) \\
+\sin (p)+\sin (q) & =2 \sin \left(\frac{p+q}{2}\right) \cos \left(\frac{p-q}{2}\right) \\
+\cos (p)-\cos (q) & =-2 \sin \left(\frac{p+q}{2}\right) \sin \left(\frac{p-q}{2}\right)
+\end{aligned}
+$
+
+\section{Fonctions hyperboliques}
+
+\subsection{Définitions}
+
+En trigonométrie hyperbolique, on suit la même démarche, mais les fonctions sont définies à partir de l'exponentielle réelle.
+
+\begin{theorem}[Formule d'Euler hyperbolique]\label{form:}
+        $$
+        e^{x}=\cosh x+\sinh x 
+        $$
+\end{theorem}
+On définit les fonctions hyperboliques cosinus hyperbolique (ch) et sinus hyperbolique (sh) par :
+$$
+\cosh(x)=\frac{e^{x}+e^{-x}}{2} \quad \text { et } \quad \sinh(x)=\frac{e^{x}-e^{-x}}{2}
+$$
+On définit les fonctions hyperboliques tangente (th), cotangente (coth), sécante (sech) et cosécante (csch) par :
+
+$$\cosh^{2}(x)-\sinh^{2}(x)=1$$
+
+\subsection{Fonctions de la somme}
+
+$
+\begin{aligned} 
+   & \cosh(a+b)=\cosh(a) \cosh(b)+\sinh(a) \sinh(b)\\ 
+   & \sinh(a+b)=\cosh(a) \sinh(b)+\sinh(a) \cosh(b) \\ 
+   & \tanh(a+b)=\frac{\tanh(a)+\tanh(b)}{1+\tanh(a) \tanh(b)} \\
+   & \cosh(2 a)=\cosh^{2}(a)+\sinh^{2}(a)=2 \cosh^{2}(a)-1=1+2 \sinh^{2}(a)\\
+%    =\frac{1+\tanh^{2}(a)}{1-\tanh^{2}(a)}  \\
+   & \sinh(2 a)=2 \sinh(a) \cosh(a) = \frac{2 \tanh(a)}{1-\tanh^{2}(a)} \\
+   & \tanh(2 a)=\frac{2 \tanh(a)}{1+\tanh^{2}(a)} \\
+\end{aligned}
+$
+
+\subsection{Produits des fonctions}
+
+$
+\begin{aligned} 
+& \cosh (a) \cosh (b)= \frac{1}{2} \left[ \cosh (a+b) + \cosh (a-b) \right]\\ 
+& \sinh (a) \sinh (b)= \frac{1}{2}\left[ \cosh (a+b) - \cosh (a-b) \right] \\ 
+&  \sinh (a) \cosh (b)= \frac{1}{2}\left[ \sinh (a+b) + \sinh (a-b) \right] \\
+\end{aligned}
+$
+
+
+
+\subsection{Somme des fonctions}
+
+$
+\begin{aligned}
+\cosh (p)+\cosh (q) & =2 \cosh \left(\frac{p+q}{2}\right) \cosh \left(\frac{p-q}{2}\right) \\
+\sinh (p)+\sinh (q) & =2 \sinh \left(\frac{p+q}{2}\right) \cosh \left(\frac{p-q}{2}\right) \\
+\cosh (p)-\cosh (q) & =2 \sinh \left(\frac{p+q}{2}\right) \sinh \left(\frac{p-q}{2}\right)
+\end{aligned}
+$
+
+\end{document}

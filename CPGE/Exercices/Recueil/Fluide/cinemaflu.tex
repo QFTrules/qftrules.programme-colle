@@ -1,0 +1,762 @@
+% !TEX root = /home/eb/.vscode/extensions/qftrules.programme-colle/tmp/Exercice.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][devoir]{Cinématique des fluides}
+	Pour chacun des champs de vitesse suivants, l'écoulement est-il stationnaire ? Incompressible ? Irrotationnel ? Que peut-on dire du débit massique ? Du débit volumique ? Le cas échéant, déterminer l'expression du potentiel des vitesses. Déterminer l'équation des lignes de courant et les représenter.
+	\begin{quest}
+		\item $\Vec{v}(x,y) = kx \ex - ky \ey$.
+		\item $\Vec{v}(r) = \frac{\Gamma}{2\pi r} \et$ en coordonnées polaires.
+		\item $\Vec{v}(r) = A r \er$ en coordonnées polaires.
+	\end{quest}
+	%%%%%%%%%%%
+\vspace{0.5cm}
+% \noindent
+% $\begin{array}{lll}
+\textsc{Données :} Opérateurs en coordonnées polaires :
+\begin{liste}
+  \item Divergence  :  $\Dive{\Vec{v}}(r,\theta) = \frac{1}{r}\dr{}{r}(rv_r) + \frac{1}{r}\dr{v_\theta}{\theta}$ ;
+  \item Gradient  :  $\Grad{\phi(r,\theta)} = \dr{\phi}{r} \, \er + \frac{1}{r}\dr{\phi}{\theta} \, \et$ ;
+  \item Rotationnel :  $\Rot{\Vec{v}(r,\theta)} = \frac{1}{r}\left(\dr{}{r}(rv_\theta)-\dr{v_r}{\theta}\right) \ez$.
+\end{liste}
+%%%%%%%%%%%%
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][devoir]{Mécanique des fluides}
+	Pour chacun des champs de vitesse suivants, l'écoulement est-il stationnaire ? Incompressible ? Irrotationnel ? 
+	% Que peut-on dire du débit massique ? Du débit volumique ? 
+	Le cas échéant, déterminer l'expression du potentiel des vitesses. Déterminer l'équation des lignes de courant et les représenter.
+	\begin{quest}
+		\item $\Vec{v}(x,y) = kx \ex - ky \ey$.
+		\sol{
+			$k$ est homogène à l’inverse d’un temps. L’écoulement est :
+			\begin{liste}
+				\item \fbox{Stationnaire} car $\Vec{v}(\Vec{r},t)$ est indépendant de $t$.
+				\item  \fbox{Incompressible} car $\dive \Vec{v} = \dr{v_x}{x} + \dr{v_y}{y} = k - k = 0$. 
+				%  Les particules de fluide ne changent pas de volume au cours de l’écoulement.
+			\item  \fbox{irrotationnel} car $\rot \Vec{v} = (\dr{v_y}{x}- \dr{v_x}{y})\ez = \Vec{0}$.
+				% Les particules de fluide ne tournent pas au cours de l’écoulement. Elles sont simplement translatées.
+				 La vitesse dérive donc d’un potentiel, $\Vec{v} = \grad \phi$. On a alors
+				$$
+			\begin{cases}
+			+k x & = \dr{\phi}{x} \\[0.5cm]
+			-k y & = \dr{\phi}{y}
+			\end{cases} \Rar \boxed{\phi(x,y) = \cte + \frac{k}{2}(x^2-y^2)}.
+				$$
+			\end{liste}
+		}
+		\sol{
+			Les lignes de courant sont données par l’équation
+$$
+\Vec{v} \pv \Vec{\d\ell} = \Vec{0}.
+$$
+En cartésiennes,
+$\frac{\d x}{v_x} = \frac{\d y}{v_y}$, soit
+$$
+-\frac{\d x}{kx} = \frac{\d y}{k y} \Rar \frac{\d y}{y} = - \frac{\d x}{x} \Rar \ln y = - \ln x + \cte.
+$$
+Donc
+\eqbox{y= \frac{a}{x},}
+avec $a$ une constante. Ce sont des branches d'hyperboles. On a représenté ci-dessous les lignes de courant (en rouge), l’évolution d’une particule de fluide (carré noir) et l’accélération particulaire (en vert).
+		}
+		\sol{
+\begin{fig}[]
+	\centering
+	\includegraphics[width=0.6\textwidth]{ligne_courant_diedre.pdf}
+	% \capt{}
+\end{fig}
+		}
+		\item $\Vec{v}(r) = \frac{\Gamma}{2\pi r} \et$ en coordonnées polaires.
+		\sol{
+			$\Gamma$ a pour unité $\SI{}{m^2.s^{-1}}$. L’écoulement est :
+			\begin{liste}
+				\item \fbox{Stationnaire} car $\Vec{v}(\Vec{r},t)$ est indépendant de $t$.
+				\item  \fbox{Incompressible} car $\dive \Vec{v} = \frac{1}{r}\dr{}{r}(rv_r) + \frac{1}{r}\dr{v_\theta}{\theta} =\frac{1}{r}\dr{v_\theta}{\theta} = 0$.  
+				% Les particules de fluide ne change pas de volume au cours de l’écoulement.
+			\item  \fbox{irrotationnel} car $\frac{1}{r}\left(\dr{}{r}(rv_\theta)-\dr{v_r}{\theta}\right) \ez = \frac{1}{r}\dr{}{r}(\frac{\Gamma}{2\pi}) \ez = \Vec{0}$ sauf à l'origine en $r=0$.
+				La vitesse dérive donc d’un potentiel, $\Vec{v} = \grad \phi$. On a alors
+				$$
+			\begin{cases}
+			0 & = \dr{\phi}{r} \\[0.5cm]
+			\frac{\Gamma}{2\pi r} & =\frac{1}{r} \dr{\phi}{\theta}
+			\end{cases} \Rar \boxed{\phi(\theta) = \frac{\Gamma \theta}{2\pi} + \cte.}
+				$$
+			\end{liste}
+			La vitesse est orthoradiale donc une ligne de courant est une courbe portée par $\et$ : il s'agit d'un \fbox{cercle}, d'équation $r=\cte$.
+		}
+	\end{quest}
+	%%%%%%%%%%%
+\vspace{0.5cm}
+% \noindent
+% $\begin{array}{lll}
+\textsc{Données :} Opérateurs en coordonnées polaires :
+\begin{liste}
+  \item Divergence  :  $\Dive{\Vec{v}}(r,\theta) = \frac{1}{r}\dr{}{r}(rv_r) + \frac{1}{r}\dr{v_\theta}{\theta}$ ;
+  \item Gradient  :  $\Grad{\phi(r,\theta)} = \dr{\phi}{r} \, \er + \frac{1}{r}\dr{\phi}{\theta} \, \et$ ;
+  \item Rotationnel :  $\Rot{\Vec{v}(r,\theta)} = \frac{1}{r}\left(\dr{}{r}(rv_\theta)-\dr{v_r}{\theta}\right) \ez$.
+\end{liste}
+%%%%%%%%%%%%
+
+On considère un écoulement parfait stationnaire et incompressible dans la conduite ci-dessous.
+\begin{fig}[]
+	\centering
+	\includegraphics[width=0.4\textwidth]{venturi.pdf}
+	% \capt{}
+\end{fig}
+\begin{quest}
+	\item Que peut-on dire du débit volumique ? En déduire une inégalité sur $v_1$ et $v_2$.
+	\sol{
+		Voir cours.
+	}
+	\item À partir de la relation de Bernoulli, déterminer l'expression de la différence de pression $p_2-p_1$. Commentaire ?
+	\sol{
+		Voir cours.
+	}
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][devoir]{Propriétés d’écoulement}
+	Pour chacun des champs de vitesse suivants, l'écoulement est-il stationnaire ? Incompressible ? Irrotationnel ? Que peut-on dire du débit massique ? Du débit volumique ? Le cas échéant, déterminer l'expression du potentiel des vitesses. Déterminer l'équation des lignes de courant et les représenter. Calculer l’accélération particulaire.
+	\begin{quest}
+		\item $\Vec{v}(x,y) = \Omega y \ex - \Omega x \ey$.
+		\item $\Vec{v}(x,y,t) = e^{-t/\tau}(A-By^2) \ex$.
+		\item $\Vec{v}(\theta) = A r \cos(\theta) \er$ en coordonnées polaires.
+		\item $\Vec{v}(r) = \frac{A}{r} \er$ en coordonnées sphériques.
+		\item $\Vec{v}(r) = \frac{A}{r} \er + \frac{B}{r} \et$ en coordonnées polaires.
+		\item  $\Vec{v}(\theta) = U + \frac{A}{r} \cos(\theta) \er$ en coordonnées polaires.
+	\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][appli]{Calcul de rotationnel}
+	Pour chacun des champs de vitesse suivants, calculer le rotationnel.
+\hauteurLargeurCadreReponse{8mm}{0.8\textwidth}
+\begin{enonce}
+	$\Vec{v}(x,y) = -kx \ex + ky \ey$.
+\end{enonce}
+\sol{
+	$\rot \Vec{v} = \left(\dr{v_y}{x}- \dr{v_x}{y}\right)\ez = (k-k)\ez = \Vec{0}$.
+}
+\begin{enonce}
+	$\Vec{v}(r) = \frac{\Gamma}{2\pi r} \et$ en coordonnées polaires.
+\end{enonce}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][appli]{Calcul d’accélération particulaire}
+	\Notions{\item Accélération particulaire \task Accélération locale \task Accélération convective}
+	\hauteurLargeurCadreReponse{8mm}{0.8\textwidth}
+Rappeler la définition de l'accélération particulaire. Pour chacun des champs de vitesse ci-dessous, calculer l'accélération locale, l'accélération convective, et l'accélération particulaire.
+
+
+\textsc{Données} : $(\Vec{v}\ps\grad) \Vec{v} = \grad(\textstyle\frac{v^2}{2}) + (\rot \Vec{v}) \pv \Vec{v}$.
+% \begin{quest}
+	% \item 
+
+	\begin{enonce}
+		$\Vec{v}(x,y)=-kx\,\ex+ky\,\ey$ en coordonnées cartésiennes, avec $k$ une constante.\hfill
+
+	\end{enonce}
+	\sol{
+	$$
+	\Dt{\Vec{v}} = \dr{\Vec{v}}{t} + (\Vec{v}\ps\grad) \Vec{v} = \left( -kx\dr{}{x} + ky\dr{}{y} \right) (-kx\,\ex+ky\,\ey) = k^2x \ex  + k^2 y \ey.
+	$$
+	On en déduit
+	\eqbox{\Dt{\Vec{v}} = k^2 \Vec{r}. }
+	On voit que l’accélération particulaire, qui représente l’accélération des particules de fluide, est colinéaire au vecteur position $\Vec{r}$ par rapport à l’origine coin du dièdre.
+	}
+	% \item
+
+
+	\begin{enonce}
+		$\Vec{v}(x,t)= v_0\, e^{-a(x-ct)}\,\ex$ en coordonnées cartésiennes, avec $v_0$, $a$ et $c$ des constantes.\hfill 
+
+	\end{enonce}
+	\sol{
+		On a
+		$$
+		\Dt{\Vec{v}} = \dr{\Vec{v}}{t} + (\Vec{v}\ps\grad) \Vec{v} = -\frac{1}{\tau} v_0\, e^{-x/\ell-t/\tau}\,\ex - \frac{v_0^2}{\ell}\, e^{-2x/\ell-2t/\tau}\,\ex 
+		$$
+		
+	}
+
+	\begin{enonce}
+		$\Vec{v}(r,t)=\frac{A t}{2\pi r}\,\er$ en coordonnées polaires, avec $A$ une constante.\hfill 
+
+	\end{enonce}
+	% \item 
+		\sol{
+	Attention, l’expression de la dérivée convective n’est pas donnée en coordonnées polaires ! Il faut donc passer par la formule d’analyse vectorielle donnant la dérivée convective $\Vec{v} \ps \grad \Vec{v} = \frac{1}{2}\grad(v^2) + \Rot{\Vec{v}}\wedge\Vec{v}$. Or le rotationnel vaut 
+	$$
+	\rot \Vec{v} = \frac{1}{r}\dr{}{r}(rv_\theta)\ez = \frac{1}{r}\dr{}{r}\left(\frac{\Gamma}{2\pi}\right)\ez = \Vec{0}.
+	$$
+	Ainsi
+		$$
+		\Dt{\Vec{v}} = \dr{\Vec{v}}{t} + (\Vec{v}\ps\grad) \Vec{v} = \Vec{v} \ps \grad \Vec{v} = \frac{1}{2}\grad(v^2) = \frac{1}{2}\grad(\frac{\Gamma^2}{4\pi^2r^2}) = - \frac{\Gamma}{4\pi^2r^3} \er. 
+		$$
+		On en déduit
+		\eqbox{\Dt{\Vec{v}} =  - \frac{\Gamma}{4\pi^2r^3} \er. 
+		}
+		% On voit que l’accélération particulaire, qui représente l’accélération des particules de fluide, est colinéaire au vecteur position $\Vec{r}$ par rapport au coin du dièdre.
+		}
+	% \item 
+
+% \end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][TD]{Réflexion sur les écoulements incompressibles}
+	\Notions{\item Écoulements incompressibles}
+On se propose de réfléchir à la notion d'incompressibilité.
+% pour retravailler les notions du cours.
+\begin{quest}
+	\item Un fluide incompressible, aussi appelé fluide homogène, est une fluide dont la masse volumique $\rho$ est une constante. Quelle différence voyez-vous avec un écoulement incompressible ?
+	\sol{
+	Un \emph{fluide} est incompressible lorsque $\rho$ est une constante dans tout le fluide, alors qu'un \emph{écoulement} est incompressible lorsque $\rho$ est une constante en suivant une particule de fluide. Donc
+  \begin{equation*}
+    \begin{cases}
+      \rho=\cte \Rightarrow \frac{\mathrm{D}\rho}{\mathrm{D}t}=0 &\quad\text{mais}\quad  \frac{\mathrm{D}\rho}{\mathrm{D}t}=0  \nRightarrow \rho=\cte. \\
+      \text{fluide incompressible} \Rightarrow \text{écoulement incompressible} &\quad\text{mais}\quad  \text{écoulement incompressible} \nRightarrow \text{fluide incompressible}.
+     \end{cases}
+  \end{equation*}
+	}
+	\item Rappeler l'équation locale de conservation de la masse. En s'aidant du \refFormu{B}, et en s'appuyant sur un schéma, indiquer si une particule de fluide se contracte, se dilate ou évolue à volume constant en fonction du signe de $\dive \Vec{v}$. 
+	% On pourra raisonner sur  Représenter à chaque fois l'évolution d'une particule de fluide sur un schéma.
+	\sol{
+	De façon générale, le signe de $\dive \Vec{v}$ donne une information sur l'évolution du volume des particules de fluide. En effet, d'après  l'\Eq{alternative_conserv_masse},
+	\begin{liste}
+	  \item Si $\dive \Vec{v} < 0$, $\Dt{\rho} > 0$ donc $\rho$ augmente et le volume diminue : la particule de fluide se contracte ;
+	  \item Si $\dive \Vec{v} = 0$,  $\Dt{\rho} = 0$ donc $\rho$ est constant : la particule de fluide est de volume constant ;
+	  \item Si $\dive \Vec{v} > 0$, $\Dt{\rho} < 0$ donc $\rho$ diminue et le volume augmente : la particule de fluide se dilate.
+	\end{liste}
+	}
+	\item Que peut-on dire du potentiel des vitesses $\phi$ dans un écoulement   irrotationnel et incompressible ? 
+	% Les potentiels de vitesse suivants correspondent-ils à un écoulement incompressible : $\phi(x,y) = \frac{1}{2}k(x^2 - y^2)$, $\phi(r)=\frac{1}{2}kr^2$, $\phi(r) = Ar$ ?
+	\sol{
+	On a $\dive \Vec{v} = \Vec{0}$ et $\Vec{v} = \grad \phi $ donc
+	\eqbox{\dive \grad \phi = \Delta \phi = 0}.
+	}
+
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1]{Caractériser un écoulement}
+\begin{quest}
+\item On considère un écoulement dont le champ eulérien des vitesses est donné par $\vec{v}(M,t)=-\Omega\,y\,\vec{e_x}+\Omega\,x\,\vec{e_y}+v_{0}\,\vec{e_z}$.
+\begin{quest}
+\item L'écoulement est-il stationnaire ? Incompressible ? Irrotationnel ?
+\item Déterminer l'accélération particulaire.
+\end{quest}
+\item L'écoulement d'un fluide est caractérisé par le champ des vitesses $\vec{v}(M)=\frac{\Delta p\,(e^2-4z^2)}{8\eta L}\vec{e}_x$. Déterminer la dimension physique de la constante $\eta$, puis évaluer le débit volumique entre deux plaques en $z=\pm \frac{e}{2}$ et pour une profondeur $h$ selon $\vec{e}_y$.
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][2][TD]{Écoulement dans les capillaires sanguins}
+		\Notions{\item Écoulements particuliers \task Ligne de courant \task Débit volumique }
+L'écoulement dans un capillaire sanguin, assimilé à un cylindre de rayon $R=\SI{0.5}{mm}$ d’axe $(Oz)$, est bien décrit par un profil de vitesse de la forme $\vec{v}(M)=A(R^2-r^2)\ez$ en coordonnées cylindriques $(r,\theta,z$), avec $A$ une constante.
+%On assimile le sang à un liquide de masse volumique $\rho$ constante.
+\begin{quest}
+\item L'écoulement est-il stationnaire ? Incompressible ? Irrotationnel ?  Que peut-on dire du débit massique ? Du débit volumique ?
+\sol{
+Stationnaire car $\Vec{v}$ indépendant de $t$. On en déduit que le débit massique $\Dm$ se conserve. Incompressible car $\Dive{\Vec{v}} = \dr{v_z}{z} = 0$.  On en déduit que le débit volumique $\DV$ se conserve aussi. Pas irrotationnel car $\Rot{\Vec{v}} = -\dr{v_z}{r}\et = -2Ar$.
+}
+\item Représenter les lignes de courant. Représenter le profil de vitesse le long d'une coupe du capillaire.
+\sol{
+$\Vec{v}$ est toujours orienté selon $z$, donc les lignes de courant sont des droites parallèles à l’axe $(Oz)$.
+
+}
+\item Calculer le débit volumique. Application numérique sachant que la vitesse au centre du capillaire vaut $v_0 \sim \SI{0.3}{m.s^{-1}}$.
+On suppose qu’un capillaire de rayon $R_1$ se divise en deux capillaires plus petits de rayons $R_2$ et $R_3$. Quelle est la relation entre $R_1$, $R_2$ et $R_3$ ?
+\sol{
+$\DV = \int v_z r \d r \d \theta = 2\pi A \int_0^R (R^2-r^2)r\d r = 2 \pi A (\frac{R^4}{2} - \frac{R^4}{4}) = \frac{\pi A R^4}{2}$. Comme $v_0 = A R^2$, on trouve $\DV = \frac{\pi v_0 R^2}{2} \sim \SI{e-7}{m^3.s^{-1}}$. Par conservation du débit, $R_1^4 = R_2^4 + R_3^4$.
+}
+
+% \item Que vaut l'accélération particulaire ?
+% \sol{
+% $$\Vec{a} = \Dt{\Vec{v}} = \dr{\Vec{v}}{t} + (\Vec{v}\cdot\Grad{})\Vec{v} = (\Vec{v}\cdot\Grad{})\Vec{v} = v_z \dr{\Vec{v}}{z} = \Vec{0}.
+% $$
+% Les particules de fluide ne sont pas accélérées. Comme les lignes de courant sont des droites, les particules de fluide ont donc un mouvement rectiligne uniforme. Par contre, comme le rotationnel est non nul, les particules de fluide tournent sur elles-mêmes au cours de l’écoulement.
+% }
+\end{quest}
+
+% %%%%%%%%%%%
+%\noindent
+%$\begin{array}{lll}
+%\textsc{Données :}
+%& \text{Divergence en coordonnées cylindriques} & :  \Dive{\Vec{v}} = \dr{v_r}{r} + \frac{1}{r}\dr{v_\theta}{\theta} + \dr{v_z}{z}. \\
+%\end{array}
+%$
+%%%%%%%%%%%%%
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][3]{Bilan de masse dans un écoulement sur plan incliné}
+		\Notions{\item Bilan de masse \task Débit volumique}
+L'écoulement d'une mince couche de fluide visqueux sur un plan d'axe $(Ox)$ incliné d'un angle~$\alpha$ par rapport à l'horizontal est caractérisé par la hauteur de fluide $h(x,t)$.
+Le fluide est soumis à la pesanteur et est homogène de masse volumique $\rho$. La couche de fluide est de largeur $e$ dans la direction orthogonale au plan de la feuille.
+
+\begin{fig}[plan]
+	\includegraphics[width=0.3\textwidth]{plan_incline.png}
+\end{fig}
+
+On admet que le débit volumique s'écrit
+$$
+\DV= A \,e \sin(\alpha) h^3,
+$$
+avec $A$ une constante. $\DV(x,t)$ dépend donc de l'abscisse $x$ et du temps $t$ au travers de $h(x,t)$.
+\begin{quest}
+\item Par analyse dimensionnelle, déterminer la dimension de la constante $A$. Commenter la dépendance de $\DV$ en l'angle $\alpha$ et en la largeur $e$.
+\sol{
+$[\DV] = L^3 \cdot T^{-1} = [A] L^4$ donc $[A]=L^{-1} \cdot T^{-1}$.
+}
+\item On souhaite effectuer un bilan de masse sur un tronçon de fluide d'épaisseur élémentaire $\d x$, de largeur $e$, et de hauteurs $h(x,t)$ en entrée et $h(x + \d x,t)$ en sortie.
+Montrer que la variation $\d m$ de la masse contenue dans ce tronçon entre les instants voisins $t$ et $t+ \d t$ s'écrit au premier ordre
+$$
+\d m = \rho e \dr{h}{t} \d x \d t.
+$$
+\sol{
+Par définition de la variation de masse, on a $\d m = \delta m(t+ \d t) - \delta m(t)$, où $\delta m(t)$ est la masse du tronçon élémentaire de fluide. Or $\delta m(t) = \rho \delta V(t) = \rho e h(x,t) \d x$, d’où
+$$
+\dm = \rho e \d x \left[ h(x,t + \d t)  - h(x,t) \right] \simeq \rho e \d x \dr{h}{t}(x,t) \d t.
+$$
+
+}
+\item En écrivant que $\d m = \delta m_e - \delta m_s$ est égal à la masse $\delta m_e$ entrante en $x$  moins la masse $\delta m_s$ sortante en $x + \d x$, montrer d'autre part que
+$$
+	\d m = - \rho \dr{\DV}{x} \d x \d t.
+$$
+\sol{
+La masse élémentaire traversant une section $S$ pendant un temps $\d t$ vaut $\delta m_S = Q_m \d t$. Donc $\delta m_e = Q_m(x,t)\d t  = \rho Q_V(x,t)\d t$ et $\delta m_s =  \rho Q_V(x+\d x,t)\d t$. Ainsi,
+$$
+\d m =\delta m_e - \delta m_s =  \rho \left[Q_V(x,t) - Q_V(x+\d x,t)\right]\d t = -\rho \dr{\DV}{x} \d x \d t.
+$$
+}
+
+\item On note $h_0$ la hauteur moyenne de la couche de fluide. On suppose que $h(x,t)$ varie peu par rapport à la hauteur $h_0$. Montrer que la conservation de la masse impose que la hauteur $h(x,t)$
+vérifie l'équation approchée
+$$
+	\dr{h}{t} + v_0 \dr{h}{x} = 0
+$$
+où l'on donnera l'expression de la vitesse moyenne $v_0$. Commenter cette équation.
+\sol{
+En combinant les deux expressions de $\d m$, on trouve
+$$
+-\rho \dr{\DV}{x} \d x \d t = \rho e \d x \dr{h}{t}(x,t) \d t \Rightarrow \dr{h}{t} + \frac{1}{e} \dr{\DV}{x} = 0 = \dr{h}{t} + A \sin(\alpha) \dr{h^3}{x} = \dr{h}{t} + 3 A \sin(\alpha) h^2 \dr{h}{x}.
+$$
+Comme $h(x,t)-h_0 \ll h(x,t)$, on peut approximer $h^2$ par $h_0^2$ dans le facteur en face de $\dr{h}{x}$. On obtient alors
+$$
+\dr{h}{t} + v_0 \dr{h}{x} = 0
+$$
+avec $v_0 = 3 A \sin(\alpha) h_0^2$ une constante homogène à une vitesse. Des solutions possibles sont de la forme $h(x,t) = f(x-v_0 t)$. Ce sont des ondes à la surface du liquide, qui se déplacent à la célérité $v_0$.
+}
+\end{quest}
+
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][colle]{Le solide de Rankine}
+		\Notions{\item Écoulements particuliers \task Ligne de courant \task Accélération particulaire}
+On considère l'écoulement bidimensionnel autour d'un solide de Rankine d’axe $(Ox)$, modélisé par le champ des vitesses :
+$$
+\Vec{v} = U \ex + \frac{Q}{2\pi r}\er,
+$$
+où $r$ représente la distance à l’origine dans le plan $(x,y)$. 
+\begin{quest}
+	\item	Interpréter physiquement les termes $U$ et $Q$. Quelle est la dimension physique de $Q$ ? Exprimer la vitesse dans la base polaire $(\er,\et)$ uniquement.
+	\item L'écoulement est-il stationnaire ? Incompressible ? Irrotationnel ? Que peut-on dire du débit massique ? Du débit volumique ? Le cas échéant, déterminer l'expression du potentiel des vitesses. 
+	% \item On admet que l'équation des lignes de courant $r(\theta)$ s’obtient par $\frac{\d r}{v_r} = \frac{r \d \theta}{v_\theta}$. Les déterminer et les représenter.
+	\item Déterminer le point de stagnation $P_0$, i.e. le point tel que $\Vec{v}(P_0) = \Vec{0}$.
+	%  Connaissant l'équation des lignes de courant, déterminer l'équation polaire du solide de Rankine $r(\theta)$.
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][2][TD]{Le vortex de Rankine}
+		\Notions{\item Écoulements particuliers \task Ligne de courant \task Accélération particulaire}
+Une tornade est bien modélisée par un vortex dit de Rankine, de profil de vitesse
+$$
+v_\theta(r) =
+\left\{
+\begin{array}{ll}
+\frac{\Gamma}{2\pi} \frac{r}{a^2} & \text{ si } r \leq a, \\[4mm]
+\frac{\Gamma}{2\pi} \frac{1}{r} & \text{ si } r \geq a,
+\end{array}
+\right.
+$$
+en coordonnées cylindriques $(r,\theta,z)$, les autres composantes étant nulles.
+%On assimile le sang à un liquide de masse volumique $\rho$ constante.
+\begin{quest}
+\item Dans chacune des régions $r \leq a$ et $r \geq a$, dire si l'écoulement est : stationnaire ? Incompressible ? Irrotationnel ?
+  Peut-on définir un potentiel des vitesses $\phi$, et si oui quelle est son expression ?
+\sol{
+Stationnaire car $\Vec{v}$ indépendant de $t$. Incompressible car $\Dive{\Vec{v}} = \frac{1}{r}\dr{v_\theta}{\theta} = 0$. Irrotationnel à l’extérieur mais pas à l’intérieur car $\Rot{\Vec{v}} = \frac{1}{r}\dr{}{r}\left(r v_\theta\right) \ez = \Vec{0}$ si $r \geq a$ et $\frac{\Gamma}{\pi a^2}\ez$. À l’extérieur, le potentiel des vitesses est défini et est tel que $\Vec{v} =  \Grad{\phi} = \frac{1}{r}\dr{\phi}{\theta} \et = \frac{\Gamma}{2 \pi}\frac{1}{r} \et $ soit $\phi(\theta) = \Gamma\frac{\theta}{2\pi}$.
+}
+\item Représenter les lignes de courant ainsi que le profil de vitesse $v_\theta(r)$ sur un schéma.
+
+\sol{
+$\Vec{v}$ est toujours orienté selon $\et$, donc les lignes de courant sont des cercles, d’équation $r=\cte$. Les lignes équipotentielles sont des rayons, d’équation $\theta = \cte$.
+
+}
+\item Que vaut l'accélération particulaire pour $r\geq a$? Interpréter.
+\sol{
+$$
+\Vec{a} = \Dt{\Vec{v}} = \dr{\Vec{v}}{t} + (\Vec{v}\cdot\Grad{})\Vec{v} = (\Vec{v}\cdot\Grad{})\Vec{v} = \Grad{\left(\frac{v^2}{2}\right)} = \Grad{\left(\frac{\Gamma^2}{4\pi^2 r^2}\right)} = -\frac{\Gamma^2}{2\pi^2 r^3} \er.
+$$
+Les particules de fluide sont accélérées vers le centre, ce qui est cohérent avec une trajectoire circulaire. On peut même remarquer que l’accélération particulaire a pour expression $
+\Vec{a} = -\frac{v_\theta^2}{r} \er,
+$ en accord avec le mouvement circulaire uniforme vu en mécanique du point.
+}
+\end{quest}
+
+% %%%%%%%%%%%
+%\noindent
+%$\begin{array}{lll}
+%\textsc{Données :}
+%& \text{Divergence en coordonnées cylindriques} & :  \Dive{\Vec{v}} = \dr{v_r}{r} + \frac{1}{r}\dr{v_\theta}{\theta} + \dr{v_z}{z}. \\
+%\end{array}
+%$
+%%%%%%%%%%%%%
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1]{Bosse d'un fluide sur un plan incliné}
+Lorsqu'un fluide visqueux de masse volumique constante $\rho$ s'écoule sur un plan incliné d'angle $\alpha$ suffisamment élevé, il forme une couche mince dont l'épaisseur $e(x,t)$ varie lentement avec $x$ et $t$. Le débit volumique à travers une section de profondeur $L$ selon $\vec{e}_y$ vaut alors $D_{V}(x,t)=\dfrac{gL\sin(\alpha)\,e^{3}(x,t)}{3\nu}$.
+\begin{quest}
+\item Déterminer la dimension physique de la constante $\nu$.
+\item En réalisant un bilan de masse sur un système que l'on précisera, montrer que $L\frac{\partial e}{\partial t}+\frac{\partial D_V}{\partial x}=0$.
+\item En déduire l'équation aux dérivées partielles à laquelle satisfait l'épaisseur $e(x,t)$. Sans la résoudre explicitement, en déduire qualitativement comment évolue la bosse de fluide représentée ci-dessous.
+\begin{center}
+\includegraphics[width=0.3\textwidth]{fluide_plan_incline.pdf}
+\end{center}
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PT][1][TD]{Équilibre d'une montgolfière}
+\begin{quest}
+
+	\item Écrire le bilan des forces que subit la montgolfière. On fera intervenir la masse volumique de l'air à l'altitude $z_0$, notée $\rho(z_0)$.
+
+	\sol{
+
+ La montgolfière est soumise à son propre poids et à la poussée d'Archimède. Le principe fondamental de la dynamique à la position d'équilibre projeté sur l'axe
+  vertical $Oz$ donne
+
+  \begin{equation*}
+   0 = - mg + \rho(z_{0}) V g \label{eq:pfd1}
+  \end{equation*}
+  où $\rho(z_{0})$ est la masse volumique de l'air à l'altitude $z_{0}$.}
+
+
+	\item Déterminer le profil de la masse volumique de l'air $\rho(z)$.
+
+	\sol{
+	Il faut donc calculer la dépendance de $\rho$ en $z$ pour calculer $z_{0}$. On utilise pour cela
+  la loi fondamentale de l'hydrostatique, projetée sur l'axe $Oz$
+
+  \begin{equation*}
+   \mathrm{dp} = - \rho g \mathrm{dz} \label{eq:hydro}
+  \end{equation*}
+  avec $p$ la pression de l'air. En notant $M$ la masse molaire de l'air et $R$ la constante des gaz parfaits, l'approximation du gaz parfait donne
+
+  \begin{equation*}
+   \rho = \frac{pM}{RT}
+  \end{equation*}
+
+  En réinjectant dans l'\'Equation \eqref{eq:hydro}, on obtient
+
+  \begin{eqnarray*}
+   \dfrac{\mathrm{dp}}{p} & = & - \dfrac{gM}{RT} \, \mathrm{dz} \\
+   \mathrm{i.e.} \qquad p(z) & = & p_{0} \, e^{-gMz/RT} \\
+   \mathrm{i.e.} \qquad  \rho(z) & = & \dfrac{p_{0}M}{RT} \, e^{-gMz/RT}
+  \end{eqnarray*}
+  où $p_{0}$ est la pression à la surface de la Terre. Distance typique $H=RT/Mg \simeq 8\,$km }
+
+	\item En déduire l'expression de $z_0$. Application numérique pour $V=10^3\,{\rm m}^3$ et $m=2\,$tonnes.
+
+ \sol{On obtient
+
+  \begin{equation*}
+   z_{0} = \frac{RT}{gM} \ln\left(\frac{mRT}{p_0MV}\right)
+  \end{equation*}
+  En considérant que l'air est constitué à 80\% de diazote et à 20\% de dioxygène, que $p_{0} = 1 \ \mathrm{bar}$, \\ $V = 1000 \ \mathrm{m^{3}}$, $m = 2000 \  \mathrm{kg}$ et
+  $T = 275 \ \mathrm{K}$, une application numérique donne $z_{0} \sim 1000 \ \mathrm{m} $.
+ }
+
+ \item Étudier les faibles oscillations du ballon autour de sa position d'équilibre. Que vaut la pulsation $\omega_0$ du mouvement d'oscillation ?
+
+\sol{
+On se place proche de la position d'équilibre à une altitude $z = z_{0} + \varepsilon$. Le principe fondamental de la dynamique donne alors
+
+  \begin{equation*}
+   m \ddot{\varepsilon} = -mg + Vg \dfrac{p_{0}M}{RT} \, e^{-gM(z_{0}+\varepsilon)/RT}
+  \end{equation*}
+
+  On fait alors un développement limité au premier ordre de l'exponentiel pour $\varepsilon \longrightarrow 0$ en introduisant la valeur de $z_{0}$.
+
+  \begin{equation*}
+    \ddot{\varepsilon} + \left(\frac{g M}{RT}\right)^{2} \frac{p_{0}V}{m} \, \varepsilon = 0
+  \end{equation*}
+  On obtient donc l'équation d'un oscillateur harmonique. Pulsation $\omega_0 = p_0V/(mH^2) \simeq 7.8\cdot10^{-4}\,$rad$\cdot$s$^{-1}$
+  }
+
+  \item Mêmes questions pour un profil linéaire de température $T(z)=T_0(1-\alpha z)$.
+
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][TD]{Le tourbillon}
+	\Notions{\item Écoulements particuliers \task Ligne de courant}
+On considère un écoulement bidimensionnel dans un tourbillon modélisé par le champ des vitesses 
+\begin{equation}
+\Vec{v}(r) = \frac{\Gamma}{2\pi r}\,\et,
+\end{equation}
+exprimé en coordonnées polaires $(r,\theta$), avec $\Gamma>0$ une constante.
+\begin{quest}
+\item Préciser la dimension physique de $\Gamma$. L'écoulement est-il stationnaire ? incompressible? irrotationnel? Le cas échéant, déterminer l’expression du potentiel des vitesses $\phi$.
+\sol{
+$\Gamma$ a pour unité $\SI{}{m^2.s^{-1}}$. L’écoulement est :
+\begin{liste}
+	\item \imp{Stationnaire} car $\Vec{v}(\Vec{r},t)$ est indépendant de $t$.
+	\item  \imp{Incompressible} car $\dive \Vec{v} = \frac{1}{r}\dr{}{r}(rv_r) + \frac{1}{r}\dr{v_\theta}{\theta} =\frac{1}{r}\dr{v_\theta}{\theta} = 0$.  Les particules de fluide ne change pas de volume au cours de l’écoulement.
+\item  \imp{irrotationnel} (potentiel) car $\frac{1}{r}\left(\dr{}{r}(rv_\theta)-\dr{v_r}{\theta}\right) \ez = \frac{1}{r}\dr{}{r}(\frac{\Gamma}{2\pi}) \ez = \Vec{0}$ sauf à l'origine en $r=0$.
+	La vitesse dérive donc d’un potentiel, $\Vec{v} = \grad \phi$. On a alors
+	$$
+\begin{cases}
+0 = \dr{\phi}{r} \\
+\frac{\Gamma}{2\pi r} =\frac{1}{r} \dr{\phi}{\theta}
+\end{cases} \Rar \phi(\theta) = \frac{\Gamma \theta}{2\pi} + \cte.
+	$$
+\end{liste}
+
+}
+% \item Calculer l'accélération particulaire.
+% \sol{
+% $$
+% \Dt{\Vec{v}} = \dr{\Vec{v}}{t} + (\Vec{v}\ps\grad) \Vec{v} = \left( -kx\dr{}{x} + ky\dr{}{y} \right) (-kx\,\ex+ky\,\ey) = k^2x \ex  + k^2 y \ey.
+% $$
+% On en déduit
+% \eqbox{\Dt{\Vec{v}} = k^2 \Vec{r}. }
+% On voit que l’accélération particulaire, qui représente l’accélération des particules de fluide, est colinéaire au vecteur position $\r$ est proportionnel à la distance $\r$ à l’origine (coin du dièdre).
+% }
+\item Représenter les lignes de courant et l'évolution d’une particule de fluide dans l'écoulement.
+\sol{
+La vitesse est orthoradiale donc une ligne de courant est une courbe portée par $\et$ : il s'agit d'une cercle, d'équation $r=\cte$.
+% \eqbox{y= \frac{a}{x},}
+
+% \begin{fig}[]
+% 	\centering
+% 	\includegraphics[width=0.6\textwidth]{ligne_courant_diedre.pdf}
+% 	% \capt{}
+% \end{fig}
+}
+\item Déterminer l'accélération particulaire en se servant de la relation $(\Vec{v}\ps\grad) \Vec{v} = \grad(\frac{v^2}{2}) + \rot \Vec{v} \pv \Vec{v}$. 
+% Interpréter.
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][TD]{La source et le puits}
+		\Notions{\item Écoulements particuliers \task Ligne de courant}
+On considère un écoulement bidimensionnel modélisé par le champ des vitesses
+\begin{equation}
+\Vec{v}(r) = \frac{Q}{2\pi r}\,\er,
+\end{equation}
+exprimé en coordonnées polaires ($r,\theta$), avec $Q$ une constante.
+\begin{quest}
+\item Préciser la dimension physique de $Q$. L'écoulement est-il stationnaire ? incompressible? irrotationnel? Le cas échéant, déterminer l’expression du potentiel des vitesses $\phi$.
+\sol{
+$Q$ a pour unité $\SI{}{m^2.s^{-1}}$ et représente un débit volumique. L’écoulement est :
+\begin{liste}
+	\item \fbox{stationnaire} car $\Vec{v}(\Vec{r},t)$ est indépendant de $t$.
+	\item  \fbox{incompressible} car $\dive \Vec{v} = \frac{1}{r}\dr{}{r}(rv_r) + \frac{1}{r}\dr{v_\theta}{\theta} = \frac{1}{r}\dr{}{r}(\frac{Q}{2\pi}) = 0$ sauf à l'origine en $r=0$. Les particules de fluide ne change pas de volume au cours de l’écoulement.
+\item  \fbox{irrotationnel} (potentiel) car $\frac{1}{r}\left(\dr{}{r}(rv_\theta)-\dr{v_r}{\theta}\right) \ez  = \Vec{0}$.
+	La vitesse dérive donc d’un potentiel, $\Vec{v} = \grad \phi$. On a alors
+	$$
+\begin{cases}
+\frac{Q}{2\pi r} = \dr{\phi}{r} \\
+0 =\frac{1}{r} \dr{\phi}{\theta}
+\end{cases} \Rar 
+\boxed{\phi(r) = \frac{\Gamma}{2\pi} \ln \left(\frac{r}{r_0} \right) + \cte}.
+	$$
+\end{liste}
+
+}
+% \item Calculer l'accélération particulaire.
+% \sol{
+% $$
+% \Dt{\Vec{v}} = \dr{\Vec{v}}{t} + (\Vec{v}\ps\grad) \Vec{v} = \left( -kx\dr{}{x} + ky\dr{}{y} \right) (-kx\,\ex+ky\,\ey) = k^2x \ex  + k^2 y \ey.
+% $$
+% On en déduit
+% \eqbox{\Dt{\Vec{v}} = k^2 \Vec{r}. }
+% On voit que l’accélération particulaire, qui représente l’accélération des particules de fluide, est colinéaire au vecteur position $\r$ est proportionnel à la distance $\r$ à l’origine (coin du dièdre).
+% }
+\item Déterminer et représenter les lignes de courant en fonction du signe de $Q$. Interpréter cet écoulement. Représenter l'évolution d’une particule de fluide.
+\sol{
+La vitesse est radiale donc une ligne de courant est une courbe portée par $\er$ : il s'agit d'une demi-droite partant de l'origine, d'équation \fbox{$\theta=\cte$}.
+% \eqbox{y= \frac{a}{x},}
+
+% \begin{fig}[]
+% 	\centering
+% 	\includegraphics[width=0.6\textwidth]{ligne_courant_diedre.pdf}
+% 	% \capt{}
+% \end{fig}
+}
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][colle]{Écoulement dipolaire}
+		\Notions{\item Écoulements particuliers \task Ligne de courant}
+On considère un écoulement bidimensionnel modélisé par le champ des vitesses suivant 
+$$\Vec{v}(r)=\frac{p}{2\pi r^2}\left( \cos \theta \,\er + \sin \theta \,\et \right),$$  en coordonnées polaires $(r,\theta)$, avec $p$ une constante.
+\begin{quest}
+	\item	Préciser la dimension physique de $p$. L'écoulement est-il stationnaire ? incompressible? irrotationnel? Le cas échéant, déterminer l’expression du potentiel des vitesses $\phi$.
+	\sol{
+$p$ a pour unité $\SI{}{m^3.s^{-1}}$ et représente un débit volumique. L’écoulement est :
+
+\begin{liste}
+	\item \fbox{stationnaire} car $\Vec{v}(\Vec{r},t)$ est indépendant de $t$.
+	\item \fbox{incompressible} car $\dive \Vec{v} = \frac{1}{r}\dr{}{r}(rv_r) + \frac{1}{r}\dr{v_\theta}{\theta} = \frac{1}{r}\dr{}{r}(\frac{p \cos \theta}{2\pi r}) + \frac{1}{r}\dr{}{\theta}\left( \frac{p \sin \theta}{2\pi r^2} \right) = 0$ sauf à l'origine en $r=0$. Les particules de fluide ne change pas de volume au cours de l’écoulement.
+	\item \fbox{irrotationnel} (potentiel) car $\frac{1}{r}\left(\dr{}{r}(rv_\theta)-\dr{v_r}{\theta}\right) \ez  = \frac{1}{r} \left( \dr{}{r} \left( \frac{p \sin \theta}{2\pi r} \right) - \dr{}{\theta} \left( \frac{p \cos \theta}{2\pi r^2} \right) \right) \ez = \Vec{0}$.
+	\item La vitesse dérive donc d’un potentiel, $\Vec{v} = \grad \phi$. On a alors
+	$$
+	\begin{cases}
+	\frac{p}{2\pi r^2} \cos \theta = \dr{\phi}{r} \\[0.5cm]
+	 \frac{p}{2\pi r^2} \sin \theta =\frac{1}{r} \dr{\phi}{\theta}
+	\end{cases} \Rar \boxed{\phi(r,\theta) = -\frac{p \cos \theta}{2\pi r}+ \cte}.
+	$$
+	\end{liste}
+	}
+	\item Déterminer et représenter les lignes de courant en fonction du signe de $p$. Interpréter cet écoulement. Représenter l'évolution d’une particule de fluide.
+	\sol{
+		L'équation des lignes de courant s'obtient par $\Vec{v} \pv \Vec{\d\ell} = \Vec{0}$, soit
+		$$
+		\frac{p}{2\pi r^2} \left(\cos \theta \,\er + \sin \theta \,\et\right) \pv \left(\d r \er + r \d \theta \et\right) = \Vec{0} \Rar 
+		\frac{p}{2\pi r^2} \cos \theta \d r -
+		\frac{p}{2\pi r} \sin \theta \d \theta = 0
+		\Rar 
+		\frac{\d r}{r} = \tan \theta \d \theta.
+		$$
+	ce qui s'intègre en $\ln r = \ln |\cos \theta| + \cte$, soit
+	\eqbox{
+		r = a |\cos \theta|
+	}
+	avec $a$ une constante.
+
+	}
+	\item Calculer l'accélération particulaire. On pourra s’aider de l’expression suivante de l’accélération convective :  $\textstyle(\Vec{v}\ps\grad) \Vec{v} = \grad(\frac{v^2}{2}) + (\rot \Vec{v}) \pv \Vec{v}$. 
+	% Interpréter.
+	\sol{
+		$$
+		(\Vec{v}\ps\grad) \Vec{v} = \grad(\frac{v^2}{2}) + \rot \Vec{v} \pv \Vec{v} = \grad(\frac{v^2}{2}) = 
+		\grad(\frac{p^2}{8\pi^2 r^4}) = -\frac{p^2}{4\pi^2 r^5} \er.
+		$$
+		L'accélération particulaire est donc centripète.  
+		\begin{fig}[label]
+			\centering
+			\includegraphics[width=0.7\columnwidth]{ligne_courant_dipole.pdf}
+			%\capt{}
+		\end{fig}
+		
+	
+	}
+\end{quest}
+%%%%%%%%%%%
+\noindent
+$\begin{array}{lll}
+\textsc{Données : } &
+\displaystyle \Grad f = \dr{f}{r} \er + \frac{1}{r} \dr{f}{\theta} \et 
+; & \Rot{\Vec{v}} = \frac{1}{r} \left[ \dr{(r v_\theta)}{r} - \dr{v_r}{\theta}\right] \ez;  \\ 
+& \Dive{\Vec{v}} = \frac{1}{r} \dr{(r v_r)}{r} + \frac{1}{r} \dr{v_\theta}{\theta}.  &\\
+\end{array}
+$
+%%%%%%%%%%%%
+	
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][TD]{Écoulement dans un dièdre droit}
+		\Notions{\item Écoulements particuliers \task Ligne de courant}
+On considère un écoulement bidimensionnel dans un dièdre droit modélisé par le champ des vitesses 
+\begin{equation}
+\Vec{v}(x,y)=-kx\,\ex+ky\,\ey,
+\end{equation}
+exprimé en coordonnées cartésiennes $(x,y)$, avec $k>0$ une constante.
+\begin{quest}
+\item Préciser la dimension physique de $k$. L'écoulement est-il stationnaire ? incompressible? irrotationnel? Le cas échéant, déterminer l’expression du potentiel des vitesses.
+\sol{
+$k$ est homogène à l’inverse d’un temps. L’écoulement est :
+\begin{liste}
+	\item \imp{Stationnaire} car $\Vec{v}(\Vec{r},t)$ est indépendant de $t$.
+	\item  \imp{Incompressible} car $\dive \Vec{v} = \dr{v_x}{x} + \dr{v_y}{y} = -k + k = 0$.  Les particules de fluide ne change pas de volume au cours de l’écoulement.
+\item  \imp{irrotationnel} (potentiel) car $\rot \Vec{v} = \Vec{0}$.
+	Les particules de fluide ne tournent pas au cours de l’écoulement. Elles sont simplement translatées. La vitesse dérive donc d’un potentiel, $\Vec{v} = \grad \phi$. On a alors
+	$$
+\begin{cases}
+- k x = \dr{\phi}{x} \\
+k y = \dr{\phi}{y}
+\end{cases} \Rar \phi(x,y) = \phi_0 + \frac{k}{2}(y^2-x^2).
+	$$
+\end{liste}
+
+}
+% \item Calculer l'accélération particulaire.
+% \sol{
+% $$
+% \Dt{\Vec{v}} = \dr{\Vec{v}}{t} + (\Vec{v}\ps\grad) \Vec{v} = \left( -kx\dr{}{x} + ky\dr{}{y} \right) (-kx\,\ex+ky\,\ey) = k^2x \ex  + k^2 y \ey.
+% $$
+% On en déduit
+% \eqbox{\Dt{\Vec{v}} = k^2 \Vec{r}. }
+% On voit que l’accélération particulaire, qui représente l’accélération des particules de fluide, est colinéaire au vecteur position $\r$ est proportionnel à la distance $\r$ à l’origine (coin du dièdre).
+% }
+\item 
+% Déterminer les lignes de courant.
+On admet que les lignes de courant ont pour équation $y = \frac{a}{x}$, avec $a$ une constante.
+ Représenter quelques lignes de courant dans le quadrant $(x>0,y>0)$ en précisant le sens de l’écoulement et l’emplacement de l’obstacle. Représenter l'évolution d’une particule de fluide.
+\sol{
+Les lignes de courant sont données par l’équation
+$$
+\Vec{v} \pv \Vec{\d\ell} = \Vec{0}.
+$$
+En cartésiennes,
+$\frac{\d x}{v_x} = \frac{\d y}{v_y}$, soit
+$$
+-\frac{\d x}{kx} = \frac{\d y}{k y} \Rar \frac{\d y}{y} = - \frac{\d x}{x} \Rar \ln y = - \ln x + \cte.
+$$
+Donc
+\eqbox{y= \frac{a}{x},}
+avec $a$ une constante. Ce sont des branches d'hyperboles. On a représenté ci-dessous les lignes de courant (en rouge), l’évolution d’une particule de fluide (carré noir) et l’accélération particulaire (en vert).
+
+\begin{fig}[]
+	\centering
+	\includegraphics[width=0.6\textwidth]{ligne_courant_diedre.pdf}
+	% \capt{}
+\end{fig}
+}
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

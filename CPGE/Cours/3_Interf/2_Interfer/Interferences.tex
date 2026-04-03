@@ -1,0 +1,736 @@
+% displayname : Interférences lumineuses
+\documentclass[12pt,fancy]{cours}
+\Chapit{3}{2}
+\begin{document}
+\maketitre{
+Dans le cadre de l'optique scalaire, la nature ondulatoire de la lumière a des conséquences pratiques importantes. Les rayons lumineux n'étant pas indépendants, ils peuvent interférer entre eux. Dans ce chapitre, nous discutons des conditions pour observer des interférences et des propriétés générales de ce phénomène, sans se préoccuper du dispositif qui permet de produire ces interférences.
+}
+{
+\item Cours Signaux 2 - 0
+\item Document de cours Signaux 2 - 1 à 3
+\item TD Signaux 2
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Notion d’interférences lumineuses}
+
+\subsection{Définition}
+\begin{experience}{Interférences avec le dispositif de Michelson}\label{exp:}
+  Observons l'écran en sortie d'un interféromètre de Michelson.
+  \begin{liste}
+    \item Lorsque seul le bras $1$  est occulté, on observe une tache lumineuse uniforme sur l'écran.
+    \item Lorsque seul le bras $2$ est occulté, on observe la même tache lumineuse uniforme.
+  \end{liste}
+  Que se passe-t-il lorsque les deux bras sont découverts ? Contrairement à ce qu'on pourrait penser, la superposition des deux lumières de chaque bras, de même intensité, ne donne pas une lumière uniforme deux fois intense sur l'écran, soit 
+\begin{equation}
+\text{lumière}+\text{lumière} \neq 2\times\text{lumière}.
+\end{equation}
+On observe des régions plus brillantes qu'attendu ($
+\text{lumière}+\text{lumière} =4\times\text{lumière}$), alternées de régions obscures ($\text{lumière}+\text{lumière} =0$).  Ce résultat étonnant ne peut se comprendre que dans le cadre d'une théorie  ondulatoire de la lumière, comme le modèle scalaire de la lumière.
+\end{experience}
+
+
+\begin{definition}[Interférences]\label{def:interferences}
+Lorsque l'intensité résultant de la superposition de plusieurs ondes n'est pas égale à la somme des intensités prises individuellement, on dit que les ondes \important{interfèrent} entre elles.
+\end{definition}
+\noindent Deux ondes ne peuvent interférer que si elles \important{cohérentes}. Discutons des conditions nécessaires pour que deux ondes soient cohérentes.
+
+\subsection{Conditions d'interférences}
+%On distingue trois conditions d'interférences.
+%Dans le cadre du modèle scalaire de la lumière, seuls les deux dernières présentées dans cette section sont à connaître.
+
+% \parag{Condition sur la polarisation}
+% %Sortons temporairement du cadre du modèle scalaire de la lumière.
+% Une onde lumineuse est une vibration du champ électromagnétique %$(\vv{E},\vv{B})$
+% dont la propagation est dictée par les équations de Maxwell (que nous discuterons plus tard en électromagnétisme).
+% Ces équations sont \important{linéaires} en les champs, et donc obéissent au \important{principe de superposition}. Ainsi, le champ électrique $\E$ issu de la propagation de deux ondes par des voies $1$ et $2$, de champs électriques respectifs $\E_1$ et $\E_2$, est la somme 
+% \begin{equation}
+%   \vv{E}(\vv{r},t)=\vv{E_1}(\vv{r},t)+\vv{E_2}(\vv{r},t).
+% \end{equation}
+% Le principe de superposition s
+% L'intensité résultante s'évalue en développant le carré du champ électrique et en prenant la moyenne temporelle,
+% \begin{equation}
+% \begin{split}
+% I(\vv{r})&=\avg{\norme{\vv{E_1}(\vv{r},t)}^2}+\avg{\norme{\vv{E_2}(\vv{r},t)}^2}+2\avg{\vv{E}_1(\vv{r},t)\cdot\vv{E}_2(\vv{r},t)}\\
+% &=I_{1}(\vv{r})+I_{2}(\vv{r})+\JRouge{2\avg{\vv{E}_1(\vv{r},t)\cdot\vv{E}_2(\vv{r},t)}}
+% \end{split}
+% \end{equation}
+% Les deux premiers termes correspondent à la somme des intensités des ondes lumineuses prises individuellement. La présence du terme supplémentaire (en rouge) explique l'existence d'interférences. Lorsque les vecteurs $\vv{E}_1$ et $\vv{E}_2$ sont orthogonaux, le produit scalaire et donc le terme d'interférences sont nuls.
+% %Lorsque les sources émettrices sont polarisées orthogonalement et dans ce cas on n'observe pas d'interférences.
+% \begin{prop}[$1^{\rm ere}$ condition d'interférences]\label{prop:ortho}
+% Les polarisations des ondes doivent être non orthogonales.
+% \end{prop}
+% %\begin{equation*}\boxed{
+% %\begin{split}
+% %1^{\rm{ère}}~\text{condition d'interférences:}~~&\vv{E_1}(\vv{r},t)\cdot\vv{E_2}(\vv{r},t)\neq 0\\
+% %&\text{(polarisation des ondes non orthogonales)}.
+% %\end{split}}
+% %\end{equation*}
+% \noindent Dans le cadre du modèle \imp{scalaire} de la lumière, on supposera toujours cette condition vérifiée, et on prendra pour la vibration lumineuse $\vib(M,t)$ la composante $E_i$ du champ électrique
+% % que les polarisations des ondes sont non orthogonales et on repasse dans le cadre du modèle scalaire de la lumière.
+Considérons deux vibrations lumineuses $\vib_1(M,t)$ et $\vib_2(M,t)$ se propageant dans le même milieu, se déplaçant suivant deux rayons lumineux $1$ et $2$. Ces deux ondes peuvent se recouvrir en un même point M. Nous verrons en électromagnétisme que la vibration lumineuse vérifie une équation de propagation \imp{linéaire} dans les MHI ; la vibration résultante en ce point M est alors donnée par le \imp{principe de superposition} :
+\eqbox{
+\vib(M,t)=\vib_1(M,t)+\vib_2(M,t).
+}
+On peut généraliser ce résultat à un nombre quelconque d'onde.
+\begin{prop}[Principe de superposition]\label{prop:}
+  Les ondes lumineuses vérifient le \imp{principe de superposition} : la vibration lumineuse résultant d'une superposition est la somme des vibrations lumineuses individuelles, soit
+  $$
+  \vib(M,t) = \sum_i \vib_i(M,t).
+  $$
+\end{prop}
+Dans la suite, nous raisonnons sur deux ondes \imp{monochromatiques} de pulsations respectives $\omega_1$ et $\omega_2$,
+% \begin{equation}
+\eqbox{
+  \left\{
+    \begin{aligned}
+      \vib_1(M,t)&=A_{1}(M)\cos(\omega_1 t+\varphi_1(M)),\\
+      \vib_2(M,t)&=A_{2}(M)\cos(\omega_2 t+\varphi_2(M)).
+    \end{aligned}
+    \right.
+    % \vib(M,t)=A_{1}(M)\cos(\omega_1 t+\varphi_1(M))+A_{2}(M)\cos(\omega_2 t+\varphi_2(M)).
+  }
+    % \end{equation}
+Déterminons l'intensité lumineuse et les conditions pour observer des interférences.
+
+\begin{fig}[label]
+  \centering
+  \begin{subfig}[label][0.48]
+    \includegraphics[scale=1]{interf_general.pdf}
+  \end{subfig}
+  \begin{subfig}[interf_pratique][0.48]
+    \includegraphics[scale=1]{interf_pratique.pdf}
+  \end{subfig}
+  \capt{(a) Deux ondes lumineuses monochromatiques de pulsations $\omega_1$ et $\omega_2$ issus de sources quelconques se superposent en un point M. (b) Pour interférer, les deux ondes lumineuses qui se superposent en un point M sont de même fréquence $\omega_1=\omega_2$ et issus d'une même source ponctulle S.}
+\end{fig}
+
+\parag{Accords de fréquence}
+%Nous l'avons déjà dit en Sec.~\ref{sec:intensité_detecteur_moyenne}, le signal lumineux varie extrêmement rapidement par rapport au temps de détection des capteurs, qui ne sont donc sensibles qu'à une moyenne temporelle du signal.
+L'intensité lumineuse a pour expression
+\begin{equation}
+  \begin{split}
+    I(M) = \avg{\vib^2(M,t)} & = \avg{\vib_1^2(M,t)}+\avg{\vib_2^2(M,t)}+\JRouge{2\avg{\vib_1(M,t)\vib_2(M,t)}} \\ 
+    & = I_1(M) + I_2(M) + \JRouge{I_{12}(M)}.
+  \end{split}
+% \begin{split}
+% \vib(M,t)^2&=A_{1}(M)^2\cos^2(\omega_1 t+\varphi_1(M))+A_{2}(M)^2\cos^2(\omega_2 t+\varphi_2(M))\\
+% &\quad+A_1(M) A_2(M)\cos((\omega_1 - \omega_2)t+\varphi_1(M)-\varphi_2(M))\\
+% &\quad+A_1(M) A_2(M)\cos((\omega_1 + \omega_2)t+\varphi_1(M)+\varphi_2(M))
+% \end{split}
+\end{equation}
+On voit que $I(M) \neq I_1(M)+I_2(M)$ en général, en raison de la présence du \imp{terme d'interférences} $I_{12}(M)$. Pour des ondes monochromatiques, ce terme a pour expression,
+\begin{equation}
+  \begin{split}
+    I_{12}(M) &= 2A_1(M) A_2(M)\avg{ \cos(\omega_1 -\varphi_1(M)) \cos(\omega_2 -\varphi_2(M))}. \\ 
+    & = A_1(M) A_2(M)\avg{ \cos((\omega_1 - \omega_2)t+\varphi_1(M)-\varphi_2(M))}  \\ 
+    & + A_1(M) A_2(M)\JVert{\avg{ \cos((\omega_1 + \omega_2)t+\varphi_1(M)+\varphi_2(M))}},
+  \end{split}
+\end{equation}
+d'après la formule trigonométrique $\cos(a)\cos(b)=\frac{1}{2}[\cos(a-b)+\cos(a+b)]$. Or la moyenne temporelle d'un cosinus de pulsation non nulle vaut zéro, et donc le second terme est nul et 
+\begin{equation}
+  I_{12}(M) = A_1(M) A_2(M)\avg{ \cos((\omega_1 - \omega_2)t+\varphi_1(M)-\varphi_2(M))}.
+\end{equation}
+Ce terme est aussi nul, sauf si $\omega_1=\omega_2$. Deux ondes de même pulsation sont dites \imp{synchrones}.
+% En prenant la moyenne temporelle, les cosinus carré donnent $1/2$ tandis que la vibration sinusoïdale à la fréquence $\omega_1+\omega_2$ est nulle sur un nombre entier de périodes, donc
+% \begin{equation}
+% \begin{split}
+% I(M)&=\frac{A_{1}^2}{2}+\frac{A_{2}^2}{2}+A_1 A_2\,\avg{\cos((\omega_1 - \omega_2)t+\varphi_1(M)-\varphi_2(M))}+0.
+% \end{split}
+% \end{equation}
+
+
+%La seule solution est de faire interférer le faisceau issu d'un point source avec lui-même.
+\begin{prop}[$1^{\rm{ere}}$ condition d'interférences]\label{prop:freq}
+%  \begin{center}
+Les deux ondes sont \imp{synchrones}. On a alors 
+  accord de pulsation :
+  $$\omega_1=\omega_2.$$
+% \end{center}
+\end{prop}
+Deux ondes ne peuvent interférer que si elles sont de même fréquence.
+
+% Pour observer des interférences, il faut que la moyenne temporelle sur le temps de réponse $\taur$ du photorécepteur préserve les oscillations du cosinus. Il faut donc que le désaccord en fréquence soit inférieure à la fréquence du capteur, soit
+% $\omega_1-\omega_2=\Delta\omega < \taur^{-1}$.
+
+\begin{exemple}{Observation d'interférences entre deux raies spectrales}
+  Les photorécepteurs actuels les plus rapides ont des temps de réponse de l'ordre de $\tau_r \simeq \SI{e-10}{s}$. 
+  \begin{quest}
+    \item	
+    Comparer la fréquence caractéristique $\nu_r = \tau_r^{-1}$ de ce photorécepteur au désaccord en fréquence $\Delta \nu = \nu_1-\nu_2$ entre les raies jaunes de la vapeur de sodium à $\SI{589.0}{nm}$ et $\SI{589.6}{nm}$. 
+    \item Un photorécepteur peut-il observer l'interférence entre ces deux raies ?  
+  \end{quest}
+  \end{exemple}
+  \examplesol{
+    \begin{quest}
+      \item	On trouve 
+      $$
+      \Delta \nu = \nu_1 - \nu_2 = c \left( \frac{1}{\lambda_1} - \frac{1}{\lambda_2} \right) = \SI{5.2e11}{Hz}
+      $$
+      Or $\nu_r  = \SI{1.0e10}{Hz}$ et donc 
+      \eqbox{
+      \nu_r \ll \Delta \nu.
+      }
+      \item La moyenne temporelle d'un cosinus de fréquence $\Delta \nu$ sur une durée typique de $\tau_r$ est donc nulle. Le photorécepteur ne peut pas observer d'interférences entre les raies du double du sodium.
+    \end{quest}
+  }
+
+% L'exemple précédent montre qu'il n'est pas possible d'observer des interférences lumineuses avec deux longueurs d'onde différentes, même proches. Il faut donc $\omega_1=\omega_2$.  Les ondes doivent être de même fréquence.
+
+\parag{Accords de phase} Pour deux ondes de mêmes pulsations $\omega_1=\omega_2$, le terme d'interférences devient
+ \begin{equation}
+I_{12}(M) = A_1(M) A_2(M)\avg{\cos(\varphi_1(M)-\varphi_2(M))} = A_1(M) A_2(M)\avg{\cos(\Delta\varphi(M))}.,
+\end{equation}
+avec $ \Delta \vphi(M)  = \varphi_1(M)-\varphi_2(M)$ le déphasage.
+Notons $\rm S_1$ et $\rm S_2$ les points sources dont sont issus les rayons se superposant en $\rm M$. On a d'après la formule du déphasage,
+%entre les deux ondes ne soit pas aléatoire. En effet, on rappelle que d'après l'Éq.~\eqref{eq:dephasage_source_point_M}
+\begin{equation}
+\begin{split}
+  \Delta \vphi(M) = 
+&=\frac{\omega}{c}\left[\opt{S_1M}-\opt{S_2M}\right]+\varphi(S_1)-\varphi(S_2)
+=2\pi \frac{\delta(M)}{\lambda_0}+\varphi(S_1)-\varphi(S_2),
+\end{split}
+\end{equation}
+où $\delta(M)=\opt{S_1M}-\opt{S_2M}$, homogène à une longueur, se nomme \imp{différence de marche}.
+\begin{definition}[Différence de marche]\label{def:}
+La différence de marche $\delta(M)$ est la différence de chemin optique entre deux rayons issus de $\rm S_1$ et $\rm S_2$,
+$$
+\delta(M)=\opt{S_1M}-\opt{S_2M}.
+$$
+\end{definition}
+Or les phases $\varphi(S_1)$ et $\varphi(S_2)$ sont des variables aléatoires, en raison du caractère aléatoire des processus d'émission. La fonction $\varphi(S_1)-\varphi(S_2)$ varie donc aléatoirement dans le temps, et moyenne à zéro, sauf si cette fonction est constante (nulle par exemple). Deux ondes de même pulsation et de même phase à l'origine sont dites \imp{cohérentes}. En pratique, il est très difficile de synchroniser en phase deux sources lumineuses indépendantes. La seule solution pour observer des interférences est de superposer deux faisceaux issus d'un \imp{même point source} $S$.
+\begin{prop}[$2^{\rm{ème}}$ condition d'interférences]\label{prop:phase}
+Les deux ondes sont issues d'une même source ponctuelle $\rm S =\rm S_1 = \rm S_2$. On a alors accord de phase :
+$$\varphi(S_1)=\varphi(S_2).$$
+\end{prop}
+Il faut donc obtenir deux sources secondaires à partir d'une même source lumineuse, ou de façon équivalente, faire interférer deux rayons issus d'une même source mais ayant emprunté deux chemins différents, comme illustré sur la \Fig{interf_pratique}. Il existe deux méthodes pour cela.
+\begin{liste}
+\item Diviser géométriquement le faisceau incident (division du \imp{front d'onde}, \refChap{3}{3}).
+\item Diviser énergétiquement le faisceau incident (division d'\imp{amplitude}, \refChap{3}{4}).
+
+\end{liste}
+
+
+\subsection{Formules de superposition}
+
+En cas d’une superposition de deux ondes lumineuses, deux situations peuvent donc se présenter.
+\begin{liste}
+\item Lorsqu’une des deux conditions d'interférences \Prop{phase}, \Prop{freq} n’est \imp{pas} vérifiée, les ondes sont dites \imp{incohérentes}. Les intensités s’ajoutent.
+\begin{theorem}[Additivité des intensités]\label{form:incoh}
+L'intensité résultant de la superposition de deux ondes \imp{incohérentes} est donnée par
+\begin{equation*}
+I(M) = I_{1}(M)+I_{2}(M).
+\end{equation*}
+\end{theorem}
+\item Lorsque les deux ondes vérifient les deux conditions d'interférences \Prop{phase}, \Prop{freq}, elles sont dites \imp{cohérentes}. Dans ce cas, les vibrations lumineuses s’ajoutent. Rappelons que pour une onde monochromatique, l'intensité lumineuse vaut $I = \frac{1}{2}A^2$. Le terme d'interference s'écrit donc aussi 
+% \begin{equation}
+\eqbox[]{
+  I_{12}(M) = A_1(M) A_2(M)\avg{\cos(\Delta\varphi(M))} = 2\sqrt{I_1(M) I_2(M)}\cos(\Delta\varphi(M)),
+  }
+% \end{equation}
+car le déphasage $\Delta\varphi(M)$ est indépendant du temps.
+L'intensité résultante est donnée par la formule dite de \imp{Fresnel}.
+\begin{theorem}[Formule de Fresnel]\label{form:Fresnel}
+L'intensité résultant de la superposition de deux ondes \imp{cohérentes} est donnée par
+\begin{equation*}
+I(M)=I_{1}(M)+I_{2}(M)+2\sqrt{I_1(M) I_2(M)}\cos\left[\Delta\varphi(M)\right].
+\end{equation*}
+Le déphasage entre les deux rayons issus des sources $\rm S_1$ et $\rm S_2$ s'écrit $\Delta\varphi=2\pi\frac{\delta}{\lambda_0}$.
+\end{theorem}
+\begin{remarque}
+  Conformément à la conservation de l'énergie, la \imp{moyenne spatiale} de l'intensité au voisinage d'un point $M$ est bien égale à la somme $I_1(M)+I_2(M)$. Par contre, le terme d'interférences redistribue l'énergie lumineuse dans l'espace, et module ainsi localement l'intensité.
+\end{remarque}
+\end{liste}
+
+\begin{danger}
+  Avant donc de déterminer une intensité lumineuse, il faut \imp{préciser} à chaque fois si les ondes sont cohérentes ou incohérentes, pour justifier de la formule à utiliser.
+\end{danger}
+%\begin{remarque}
+%En pratique, il n'existe pas de source strictement monochromatique. Nous discuterons dans la suite de la conséquence d'une faible polychromaticité sur la figure d'interférences (notion de cohérence temporelle).
+%\end{remarque}
+
+
+\section{Interférences à deux ondes}
+Nous définissons maintenant un certain nombre de notions pour caractériser un phénomène d'interférences. Nous représentons en \Fig{eclair} le profil d'intensité $I$ en fonction du déphasage $\Delta \varphi$ obtenu à partir de la formule de Fresnel \Formu{Fresnel} dans plusieurs situations, comme illustré sur la \Fig{eclair}.
+
+
+
+
+\subsection{Figure d'interférences} 
+
+\parag{Hypothèse}
+Supposons que l'intensité des rayons interférant en $\rm M$ soit \imp{identique et uniforme}, soit 
+% \begin{equation}
+\eqbox{
+  I_1(M)=I_2(M)=I_0.
+  }
+% \end{equation}
+Cette condition est bien vérifiée si la différence de marche $\delta(M)$ est petite devant la distance à la source.\\ 
+
+\parag{Intensité lumineuse}
+La formule de Fresnel donne alors
+\eqbox[]{
+I = 2I_0[1+\cos(\Delta\varphi)].
+}
+Le graphe de la fonction $I(\Delta\varphi)$ est tracé sur la \Fig{co1}. On observe des oscillations de l'intensité ; l'image obtenu sur un écran correspondrait donc à une alternance de franges brillante et sombre.
+\begin{definition}[Figure d'interférences]\label{def:}
+  La \imp{figure d'interférences} est l'image obtenue sur un écran par superposition de deux ondes lumineuses cohérentes. L'\imp{interférogramme} est la fonction $I(\Delta\varphi)$ associée à cette figure d'interférences.
+  \end{definition}
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=1.1]{contraste1.jpg}
+  \caption{Interférogramme (haut) et figure d'interférences (bas) pour deux ondes cohérentes de même intensité.}
+  \label{fig:eclair}
+  \end{figure}
+%%%%%%%%%%%%%
+
+\begin{enumerate}
+  \item \udl{Valeur moyenne}.
+  
+  L'intensité oscille de la valeur moyenne $I_{\rm moy} = I_1+I_2 =2I_0$, qui correspond à l'intensité en l'absence d'interférence. Le terme d'interférence $I_{12} = I-I_{\rm moy}$, et est positif si $I > I_{\rm moy}$ : la frange est brillante ; et négatif si $I < I_{\rm moy}$ : la frange est sombre.
+  \begin{definition}\label{def:}
+    Les interférences sont dites \imp{constructives} si $I > I_{\rm moy}$ ;
+     \imp{destructives} si $I < I_{\rm moy}$.
+  \end{definition}
+
+  \item \udl{Valeurs extrémales}. 
+  
+  L'intensité est de valeur maximale $I_{\rm max} = 4I_0$, et de valeur minimale $I_{\rm min} = 0$. Les maxima sont atteints lorsque $\Delta \vphi = 2\pi m$ avec $m\in\mathbb{N}$, et les minima lorsque $\Delta \vphi = \pi(2m+1)$ avec $m\in\mathbb{N}$. On définit alors l'ordre d'interférence.
+  Les maxima sont donc définis par un ordre d'interférence $p=m$ entier, et les minima par un ordre d'interférence $p=m+\frac{1}{2}$ demi-entier. L'ordre d'interférence donne aussi la position des franges : $p = m$ entier pour une frange brillante, et $p = m+\frac{1}{2}$ demi-entier pour une frange sombre.
+    \begin{definition}[Ordre d'inerférence]\label{def:}
+    L'\imp{ordre d'interférence} $p$ est défini par
+    \begin{equation*}
+      p = \dfrac{\Delta\varphi}{2\pi} = \dfrac{\delta}{\lambda_0}.
+    \end{equation*}
+    Une frange brillante est d'ordre $p$ entier ; une frange sombre d'ordre $p$ demi-entier.
+  \end{definition}
+\end{enumerate}
+
+
+
+
+\subsection{Contraste}
+
+\parag{Hypothèse} Supposons à présent que $I_1$ et $I_2$ diffèrent, mais restent \imp{uniformes}, soient 
+% \begin{equation}
+\eqbox{
+  I_1(M) = I_1, \quad I_2(M) = I_2.
+  }
+% \end{equation}
+
+\parag{Intensité lumineuse}
+
+La formule de Fresnel donne
+\eqbox[]{
+  \label{eq:I_contraste}
+  I = I_1 + I_2+2\sqrt{I_1 I_2}\cos(\Delta\varphi).
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[H]
+  \centering
+  \subfigure[$\Co = 0.5$]{\label{fig:co2}
+  \includegraphics[scale=1]{contraste2.jpg}
+  }
+  \subfigure[$\Co$ quelconque]{\label{fig:co3}
+  \includegraphics[scale=1]{contraste3.jpg}
+  }
+  \caption{Influence du contraste $\Co$ sur la visibilité de la figure d'interférences. La visibilité de la figure d'interférences diminue lorsque le contraste est inférieur à l'unité. \Femto}
+  \label{fig:eclair}
+  \end{figure}
+  %%%%%%%%%%%%%
+
+
+On voit sur les \Fig{co2} et \Fig{co3} que l'écart entre les intensité maximale et minimale est plus faible, et donc la figure d'interférence est moins visible. En particulier, l'intensité minimale n'est plus nulle en général. Pour quantifier la visibilité de la figure d'interférence, on définit le contraste.
+\begin{definition}\label{def:}
+Le \imp{contraste} $\Co \in  [0,1]$ quantifie la visibilité d'une figure d'interference ; il est défini par
+\begin{equation}
+ \Co=\frac{I_{\rm{max}}-I_{\rm{min}}}{I_{\rm{max}}+I_{\rm{min}}}.
+\end{equation}
+\end{definition}
+
+\begin{exemple}{Contraste pour des interférences à deux ondes}
+  Déterminer le contraste $\Co$ pour des interférences à deux ondes d'intensités individuelles $I_1$ et $I_2$.
+\end{exemple}
+\examplesol{
+Dans le cas d'interférences à deux ondes, l'intensité moyenne vaut alors 
+$$I_{\rm moy} = I_1 + I_2 ;$$ l'intensité maximale vaut $$I_{\rm max} = (\sqrt{I_1}+\sqrt{I_2})^2 = I_1 + I_2 + 2 \sqrt{I_1 I_2},$$ et l'intensité minimale $$I_{\rm{min}}=(\sqrt{I_1}-\sqrt{I_2})^2 = I_1 + I_2 - 2 \sqrt{I_1 I_2}.$$ Le contraste a donc pour expression 
+% \begin{equation}
+\eqbox{
+  \Co = \dfrac{2\sqrt{I_1 I_2}}{I_1+I_2}.
+  }
+% \end{equation}
+}
+
+
+
+\begin{remarque}
+  
+  On remarque que l'\Eq{I_contraste} se met sous la forme canonique
+  % \begin{equation}
+  \eqbox{
+    I = I_{\rm moy}\left[1+\Co \cos(\Delta\varphi)\right].
+    }
+  % \end{equation}
+  Il peut être plus efficace de déterminer le contraste en mettant l'expression de l'intensité lumineuse sous cette forme, puis en identifiant le coefficient $\Co$.
+  Le contraste est maximal (égal à $1$) lorsque les ondes sont de même intensité. Lorsque le contraste est nul, les interférences disparaissent : la figure d'interférences devient uniforme.
+\end{remarque}
+
+
+
+
+\section{Interférences à ondes multiples}
+
+Comment est modifiée la figure d'interférences lorsqu'un grand nombre $N$ d'ondes cohérentes se superposent ? Cette revêt une grande importance pratique, parce que certains dispositifs interférométriques (comme le réseau de diffraction, que nous verrons au chapitre suivant) font se superposer un grand nombre d'ondes. De plus, ce modèle permet de comprendre l'effet d'un élargissement de la source (source étendue) sur la figure d'interférences.
+
+\subsection{Notation complexe}
+
+\parag{Vibration lumineuse}
+Pour calculer l'intensité lumineuse issu d'un grand nombre d'ondes monochromatiques, il est plus pratique d'utiliser la notation complexe. Considérons une onde monochromatique de vibration lumineuse $\vib(M,t) = A(M) \cos(\omega t - \vphi(M))$. Nous définissons la vibration lumineuse complexe par la relation 
+\eqbox{
+\vib(M,t) = \re \, \udl{\vib}(M,t). 
+}
+On a donc l'expression suivante.
+\begin{definition}[Vibration lumineuse complexe]
+  Une onde lumineuse monochromatique peut se représenter par la \imp{vibration lumineuse complexe} 
+  $$
+  \udl{\vib}(M,t) = A(M) e^{i(\omega t - \vphi(M))} = \udl{A}(M) e^{i\omega t}.
+  $$
+\end{definition}
+Par linéarité, le principe de superposition s'applique de la même façon aux vibrations complexes. Pour $N$ ondes lumineuses de vibrations complexes $\udl{s}_j(M,t)$, avec $j=1,...,N$, la vibration résultante vaut
+\eqbox{
+\udl{\vib}(M,t) = \sum_{j=1}^N \udl{\vib}_j(M,t).
+}
+
+\parag{Intensité lumineuse}
+L'intensité lumineuse d'une onde monochromatique a été calculée, et vaut 
+$$
+I(M) = \moy{\vib(M,t)^2}_T = \frac{A(M)^2}{2} = \frac{1}{2} \, \udl{\vib}(M,t) \udl{\vib}(M,t)^\star,
+$$
+où nous avons défini le complexe conjugué de la vibration lumineuse,
+$$
+\udl{\vib}(M,t)^\star = A(M) e^{-i(\omega t - \vphi(M))}.
+$$
+Cette relation se généralise à toute superposition d'ondes monochromatiques synchrones.
+\begin{prop}[Intensité lumineuse en notation complexe]\label{prop:}
+  L'intensité lumineuse issue de la superposition d'ondes \imp{monochromatiques synchrones} s'écrit 
+  $$
+I(M) = \frac{1}{2} \, \udl{\vib}(M,t) \udl{\vib}(M,t)^\star.
+  $$
+\end{prop}
+
+
+\subsection{Figure d'interférences}
+
+
+
+\parag{Hypothèses} Soit un ensemble de $N$ ondes lumineuses de vibrations lumineuses $\vib_j(M,t)$, avec $j=1,\ldots,N$, se superposant en un point $\rm M$. Supposons que ces ondes sont :
+\begin{enumerate}
+  \item \imp{monochromatiques synchrones} de pulsation $\omega$ ;
+  %  de vibrations lumineuses complexes
+  % \begin{equation}
+    % \udl{\vib}_j(M,t) = A_j(M)e^{i(\omega t - \varphi_j(M))}.
+  % \end{equation}
+  \item d'\imp{amplitude identique} $A_j(M)=A(M)$ ;
+  \item de \imp{déphasage constant} $\varphi_{j}(M)-\varphi_{j-1}(M)=\varphi$.
+\end{enumerate} 
+Les vibrations lumineuses complexes sont donc données par la relation de récurrence 
+% \begin{equation}
+\eqbox{
+  \underline{\vib}_{j}(M,t)=A(M) e^{i(\omega t - \vphi_j(M))} = \underline{\vib}_{j-1}(M,t)\,\e^{-i\varphi}.
+}
+% \end{equation}
+\parag{Intensité lumineuse}
+La vibration résultante s'obtient par le principe de superposition,
+\begin{equation}
+\underline{\vib}(M,t) =\sum_{j=1}^{N}  \underline{\vib}_{j}(M,t) =\sum_{p=1}^{N}\underline{\vib}_{1}(M,t)\,\e^{-i(j-1)\varphi} = \underline{\vib}_{1}(M,t) \sum_{j = 0}^{N - 1} \left( \e^{- i\varphi} \right)^j.
+\end{equation}
+On obtient la somme partielle d'une série géométrique de raison $e^{-i\vphi}$, ce qui donne 
+\begin{equation}
+  \underline{\vib}(M,t) = \underline{\vib}_{1}(M,t)\frac{1-\e^{-iN\varphi}}{1-\e^{-i\varphi}} = 
+\underline{\vib}_{1}(M,t)\e^{-i(N-1)\varphi/2}\,\frac{\sin(N\varphi/2)}{\sin(\varphi/2)}.
+ \end{equation}
+%  \parag{Intensité lumineuse}
+ On en déduit l'intensité lumineuse par la relation
+ \begin{equation}
+ \label{eq:intensite_normalisee_N_ondes}
+ \begin{split}
+ I(M)&=\frac{1}{2}\avg{\underline{\vib}^{\star}(M,t)\underline{\vib}(M,t)}=\frac{1}{2}\avg{\underline{\vib}_{1}^{\star}(M,t)\underline{\vib}_{1}(M,t)}\frac{\sin^{2}(N\varphi/2)}{\sin^{2}(\varphi/2)}.
+ \end{split}
+ \end{equation}
+ Notons $I_1 = \frac{1}{2}\avg{\underline{\vib}_{1}^{\star}(M,t)\underline{\vib}_{1}(M,t)}$ l'intensité d'une onde individuelle. 
+
+ \begin{theorem}[Interférences à ondes multiples]\label{form:}
+  L’intensité issue de l’interference de $N$ ondes cohérentes de même amplitude et déphasées de $\vphi$ vaut
+  $$
+  I(\vphi)=I_1\frac{\sin^{2}(N\varphi/2)}{\sin^{2}(\varphi/2)}.
+  $$
+ \end{theorem}
+
+\parag{Figure d'interférences}
+ On représente la fonction $I(\vphi)$ pour deux valeurs de $N$ en Fig.~\ref{fig:interf_N_ondes}.
+  % On observe les motifs suivants sur ce graphe.
+ \begin{figure}[H]
+  \centering
+  \includegraphics[scale=1.2]{Nondes.pdf}
+  \caption{Intensité en fonction du déphasage $\varphi$ [Éq.~\eqref{eq:intensite_normalisee_N_ondes}] pour plusieurs valeurs du nombre $N$ d'ondes qui interfèrent. On représente sous chaque figure l'image observée ainsi que l'image inversée, cette dernière permettant de mieux observer les pics secondaires. Les pics principaux sont d'autant plus étroits que $N$ augmente, et on observe un nombre croissant de pics secondaires avec $N$, qui sont d'autant moins lumineux que $N$ est grand.}
+  \label{fig:interf_N_ondes}
+  \end{figure}
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ \begin{liste}
+  \item \udl{Valeur minimale} : l'intensité est nulle lorsque $\sin(N\varphi/2)=0$ et $\sin(\vphi/2)\neq 0$, soit $N\varphi/2 = k\pi$ avec $k$ entier non multiple de $N$. On a donc des \imp{annulations} de l'intensité pour les déphasages 
+  \begin{equation}
+    \vphi = \frac{2k\pi}{N} + 2 m \pi \quad \text{avec} \quad 1\leq k\leq N-1, m \in \mathbb{N}.
+  \end{equation}
+  Entre deux annulations, l'intensité est non nulle : on observe donc des \imp{pics secondaires}.
+  % \item La grandeur $I_{\rm max}=N^2I_1$ représente l'intensité maximale. 
+  % \item Des \imp{pics secondaires} séparés par des \imp{annulations} aux positions $\vphi = 2k\pi/N$ avec $1\leq k\leq N-1$.
+  % \begin{remarque}
+    % En effet, lorsque $\vphi = 2k\pi/N$, on trouve $\sin(N\vphi/2) = \sin(k\pi) = 0$ alors que $\sin(\vphi/2) \neq 0$, et donc $I=0$.
+  % \end{remarque}
+  % \begin{remarque}
+  %   La position de ces pics secondaires est donnée par $\sin(N\varphi/2)=\pm 1$,  soit $\vphi = \frac{\pi}{2}+\frac{2k\pi}{N} + 2 m \pi$ avec $1\leq k\leq N-1, m \in \mathbb{N}.$ Leur hauteur est donnée par $I = I_1/\sin^{2}(\vphi/2) = I_1/\sin^{2}(\frac{\pi}{4}+\frac{k\pi}{N})$.
+  % \end{remarque}
+  \item \udl{Valeur maximale} : l'intensité est maximale lorsque lorsque $\vphi = 2k\pi + \veps$ avec $k$ entier et $\veps \ll 1$ ; on trouve en effet les équivalents $\sin(\vphi/2) \simeq \veps/2$ et $\sin(N\vphi/2) \simeq N\veps/2$, et donc 
+  $
+  \frac{\sin^{2}(N\varphi/2)}{\sin^{2}(\varphi/2)} \simeq  N^2.
+  $
+  On observe donc des \imp{pics principaux} pour les déphasages 
+  \begin{equation}
+    \vphi = 2m\pi \quad \text{avec} \quad m \in \mathbb{N},
+  \end{equation}
+  de hauteur $I_{\rm max} = N^2I_1$.  Les pics sont donc séparés d’un déphasage $\Delta\varphi = 2\pi$ et sont de largeur à la base (séparation entre les deux annulations de part et d’autre) $\delta \vphi = \frac{4\pi}{N}$.
+  % \begin{remarque}
+    % En effet, 
+  % \end{remarque}
+ \end{liste}
+%  une successions  et de largeur $\delta \varphi=\frac{4\pi}{N}$. Ils sont entourés de pics secondaires aux positions $\frac{2\pi p}{N}$ pour $p$ entier. 
+ 
+ Lorsque $N$ augmente, les pics secondaires sont de plus en plus nombreux et faibles, et les pics principaux de plus en plus fins. Pour quantifier la qualité des interférences, on définit la \important{finesse} des pics.
+ \begin{definition}[Finesse]\label{def:}
+  La \imp{finesse} de pics de largeur $\delta \vphi$ espacés de $\Delta \vphi$ est définie par
+  $$\mc{F}=\frac{\Delta\varphi}{\delta\varphi}.$$
+ \end{definition}
+Plus la finesse est élevée, moins les pics principaux risquent de se recouvrir et donc meilleure est la résolution de l'interféromètre (sa capacité à distinguer deux pics principaux). Dans notre modèle d’interférences à $N$ ondes de déphasage constant, on obtient la valeur de la finesse $\mathcal{F}=\frac{2\pi}{4\pi/N}=\frac{N}{2}$. On voit bien que la finesse augmente avec le nombre $N$ d’ondes qui interfèrent. 
+\begin{exemple}{Finesse d'un interféromètre}
+  On considère l'interférences de $N$ ondes de même amplitude et de déphasage constant $\vphi$.
+  \begin{quest}
+    \item	Exprimer la finesse $\mc{F}$ en fonction du nombre $N$ d'ondes.
+    \item Que doit valoir le nombre $N$ d'ondes pour que l'interféromètre puisse résoudre les raies du doublet jaune du sodium, de longueur d'ondes $\lambda_1 =  \SI{589.0}{nm}$ et $\lambda_2 = \SI{589.6}{nm}$ ? 
+  \end{quest}
+\end{exemple}
+\examplesol{}
+% C'est pourquoi les interféromètres à $N$ ondes sont utilisés pour des mesures de longueur de très haute précision.
+% \begin{figure}[h!]
+% \centering
+%% \includegraphics[width=0.8\textwidth]{interf_N_ondes.pdf}
+% \caption{Notations pour la définition de la finesse $\mathcal{F}=\Delta\varphi/\delta\varphi$. Le $\delta\varphi$ indiqué se rapporte à la courbe bleue ($N=4$).}
+% \label{fig:finesse}
+% \end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+ \subsection{Construction de Fresnel}
+La représentation de Fresnel vise à représenter une grandeur complexe quelconque $z=\abs{z}\e^{i\arg{(z)}}$ par un vecteur dans le plan complexe $(\re(z),\im(z))$ dont la longueur est donnée par le module de $z$ et l'angle par rapport à l'axe des abscisses est donné par l'argument de $z$. La superposition de $N$ nodes correspond alors à la mise bout a bout de $N$ vecteurs $\underline{s_1}$, $\underline{s_2}$, ..., $\underline{s_N}$.
+
+On peut utiliser cette représentation pour interpréter la condition d'interférence à $N$ ondes. On représente chaque vibration lumineuse par un vecteur dont le module correspond à l'amplitude de l'onde et l'argument au déphasage $\varphi$ avec l'onde précédente. Il suffit alors d'ajouter les $N$ vecteurs pour obtenir l'amplitude et le déphasage de la vibration résultante.
+
+ \begin{figure}[h!]
+ \centering
+ \includegraphics[width=0.6\textwidth]{fresnel_Imax.pdf}
+ \includegraphics[width=\textwidth]{fresnel_Imin.pdf}
+%  \includegraphics[width=0.8\textwidth]{construction_fresnel.pdf}
+ \caption{Construction de Fresnel pour obtenir l'amplitude de $N$ ondes cohérentes. Sur la figure du dessus, on a représenté le cas où $\vphi=0$, conduisant à des interferences constructives et une intensité maximale. Sur la figure du dessous, on a représenté le cas où $\vphi=\pi$, conduisant à des interferences destructives et une intensité minimale. Sur la figure du dessous, on a représenté le cas où 
+  $\varphi=2\pi/N$, conduisant à des interférences complètement destructives.}
+ \label{fig:fresnel}
+ \end{figure}
+
+On remarque alors qu'on revient à l'origine (vecteur nul, donc de norme nulle et donc intensité lumineuse nulle = interférences complètement destructives) pour $N\varphi=2\pi p$ avec $p\in\mathbb{N}$. On retrouve donc ce qu'on pouvait observer sur la Fig.~\ref{fig:interf_N_ondes}, à savoir qu'il existe une annulation du contraste pour tous les multiples entiers de $2\pi/N$ (et donc d'autant plus d'annulations que $N$ est grand). Si on définit la largeur d'un pic principal $\delta\varphi$ comme étant la variation de phase entre deux annulations successives du contraste, on en déduit que la largeur des pics principaux est donnée par $4\pi/N$ (annulations autour de $\varphi=0$ sont $\pm2\pi/N$ donc une largeur totale $4\pi/N$). C'est aussi ce qu'on pouvait observer sur la Fig.~\ref{fig:interf_N_ondes}, à savoir que la largeur des pics principaux diminue lorsque $N$ augmente.
+
+
+
+\section{Interférences issue d’une source spectrale continue}
+Nous généralisons les résultats précédents à une infinité d’ondes dont les longueurs d’onde sont réparties de façon continue autour d’une longueur d’onde centrale. C’est le cas rencontré avec toutes les sources réelles. Les résultats suivants sont donc d’une grande importance pratique pour les dispositifs interférométriques éclairé en lumière polychromatique. Dans la suite, nous supposons que les ondes polychromatiques qui se superposent en un point $\rm M$ sont issus de deux bras de l’interféromètre, comme représenté sur la \Fig{interf_pratique_poly}.
+
+\begin{figure}[H]
+  \centering
+  \subfigure[]{\label{fig:interf_pratique_poly}
+  \includegraphics{interf_pratique_poly.pdf}
+  }\hspace{1cm}
+  \subfigure[]{\label{fig:D(lambda)}
+  \includegraphics{Dlambda.pdf}
+  }
+  \caption{(a) Interférences entre deux ondes polychromatiques issues d'une même source. (b) Allure typique de la densité spectrale d'énergie $\tilde{D}(\lambda)$ d'une source polychromatique centrée en $\lmoy$ et de largeur spectrale $\Delta \lambda$.}
+  \label{fig:interf_pratique_poly}
+\end{figure}
+
+
+\subsection{Notion de cohérence temporelle} 
+
+\parag{Critère de cohérence temporelle}
+Il est possible de prédire l’existence d’interférences ou non à partir de la notion de cohérence entre deux ondes, en raisonnant sur le recouvrement des trains d'onde (Fig.~\ref{fig:trains_onde_lc}). Considérons une source lumineuse qui émet autour d’une longueur d’onde moyenne $\lmoy$ et de largeur spectrale $\Delta \lambda$ (\Fig{D(lambda)}). Nous avons vu dans le \refChap{3}{1} que la longueur d’un train d’onde est donnée par la \imp{longueur de cohérence temporelle}
+\eqbox[lc]{
+  \lc \simeq \frac{\lmoy^2}{\Delta\lambda}.
+  }
+Suivant la différence de marche $\delta(M)$ séparant les trajets $1$ et $2$, les trains d’onde 
+qui se superposent en $\rm M$ peuvent soit être issus d’un train d’onde identique, soit être issus de trains d’ondes différents (\Fig{trains_onde_lc}). Or, en raison du caractère aléatoire de l’émission spontanée d’un train d’onde, deux trains d’onde différents sont incohérents.
+La comparaison entre $\delta(M)$ et $\lc$ permet donc de savoir si les deux ondes peuvent interférer.
+
+\begin{liste}
+\item \fbox{$\delta(M)\lesssim \lc$} :  deux trains d'onde qui se recouvrent ont la même phase et interfèrent donc constructivement. Les ondes sont \imp{cohérentes} et l’on observe une figure d’interférences bien contrastée.
+
+\item \fbox{$\delta(M)\gtrsim\lc$} : le déphasage entre les trains d'ondes conduit à des interférences destructives. Les ondes sont \imp{incohérentes} et la figure d’interférences est brouillée.
+\end{liste}
+% \begin{remarque}
+% Cela explique la facilité d'obtention des interférences avec un laser: comme celui-ci a une longueur de cohérence temporelle $l_c \sim \SI{30}{cm}$ de l’ordre de grandeur de la taille d’un montage optique, on peut observer les interférences sur une large plage de différence de marche.
+%, ce qui simplifie le réglage.
+% \end{remarque}
+
+%%%%%%%%%%%%%%%%%
+ \begin{figure}[H]
+ \centering
+ \includegraphics[width=\textwidth]{interf_trains_onde_lc.pdf}
+ \caption{Superposition de trains d'onde identiques pour $\delta(M)\lesssim \lc$ (même phase, interférences constructives) puis de trains d'onde différents pour $\delta(M)>\lc$ (phases différentes, interférences destructives). On observe un brouillage progressif puis la disparition de la figure d'interférence.}
+ \label{fig:trains_onde_lc}
+ \end{figure}
+%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{prop}[Critère de cohérence temporelle]\label{prop:}
+  Deux ondes polychromatiques superposées sont
+  $
+  \left\{
+  \begin{array}{ll}
+    \text{cohérentes si } \delta \lesssim  \lc,
+    \\ \text{incohérentes si } \delta \gtrsim \lc.
+  \end{array}
+  \right.
+  $
+\end{prop}
+% Le nombre de franges visibles sur la figure d'interférences vaut donc 
+% $$
+% N_{\rm{f}}\simeq\frac{\lmoy}{\Delta\lambda}.
+% $$
+
+On peut traduire ce critère de cohérence en terme d’ordre d’interférence. L'ordre d'interférence d’une onde de longueur d’onde $\lambda$ est défini par 
+\begin{equation}
+% \eqbox{
+  p=\frac{\delta}{\lambda}.
+  % }
+\end{equation}
+Deux ondes de longueurs d’onde différentes $\lambda_1$ et $\lambda_2$ de même différence de marche $\delta$ ont dont des ordres d’interférences différents $p_1$ et $p_2$ différents. Choisissons $\lambda_1$ et $\lambda_2$ comme étant séparées de l’écart spectral typique $\Delta \lambda$. Lorsque l’écart $\Delta p = p_2-p_1$ est demi-entier, les franges brillantes d’une longueur d’onde se superposent sur les franges sombres de l’autre longueur d’onde, et l’on observe un brouillage. Ce critère s’applique en réalité à toute forme de cohérence.
+%  et l’peut donc reformuler le critère de cohérence sous la forme suivante.
+
+\begin{prop}[Critère de cohérence]\label{prop:}
+  Deux ondes superposées sont cohérentes si et seulement si l’écart d’ordre d’interférence  vérifie
+  % \eqbox{
+$$  \Delta p \leq \frac{1}{2}.
+$$  % }
+\end{prop}
+
+\parag{Nombre de franges visibles}
+On peut utiliser ce critère pour déterminer le nombre de franges visibles dans la figure d’interférences pour une source polychromatique.
+L'ordre d'interférences vaut $p=0$ pour la frange brillante centrale, et $p \simeq \frac{\lc}{\lmoy}$ pour la dernière frange brillante contrastée, à la limite du domaine de cohérence. Pour des ordres d’interférence supérieurs, la figure est brouillée et donc les franges ne sont plus visibles.
+Le nombre de franges visibles depuis le centre de la figure d'interférences vaut donc 
+% \eqbox{
+\begin{equation}
+  N_{\rm{f}}\simeq\frac{\lc}{\lmoy} \simeq \frac{\lmoy}{\Delta\lambda}.
+\end{equation}
+% Dans un interféromètre, deux ondes issues d’une même source sont séparées spatialement puis superposées en vue d’interférer. La longueur de cohérence temporelle donne une estimation du nombre de franges visibles dans le champ d'interférences,
+% \begin{equation}
+  % \end{equation}
+\begin{prop}[Nombre de franges visibles en lumière polychromatique]\label{prop:Nf}
+Le \imp{nombre de franges visibles} depuis le centre de la figure d'interférences est de l'ordre de 
+  $$
+  N_{\rm{f}}\simeq\frac{\lmoy}{\Delta\lambda}.
+  $$
+\end{prop}
+% Plus $N_{\rm{f}}$ est grand, plus l'observation d'interférences est facilitée. Autrement dit, une source quasi monochromatique ($\Delta\lambda\ll\lambda$), c’est-à-dire de grande longueur de cohérence temporelle (train d'onde grand devant la période spatiale de l'onde) facilite l'observation d'interférences.
+
+\begin{exemple}{Nombre de franges visibles pour les sources usuelles}
+  Déterminer le nombre de franges d'interférences visibles pour les sources suivantes. Commenter.
+  \begin{quest}
+    \item	Un laser He-Ne émettant une raie à $\lmoy=\SI{632.8}{nm}$, de largeur spectrale $\Delta\lambda\simeq\SI{e-3}{nm}$.
+    \item Le doublet jaune du sodium à $\lmoy=\SI{589.0}{nm}$, dont l’écart spectral vaut $\Delta\lambda\simeq\SI{0.6}{nm}$.
+    \item La lumière solaire centrée en $\lmoy\simeq\SI{600}{nm}$, de largeur spectrale $\Delta\lambda \simeq \SI{200}{nm}$.
+  \end{quest}
+\end{exemple}
+\examplesol{
+  \begin{quest}
+    \item	 $\lc\simeq \SI{30}{cm}$ et $N_{\rm{f}}\simeq\SI{6e5}{}$.
+    \item $\lc\simeq \SI{3}{mm}$ et $N_{\rm{f}}\simeq\SI{6e3}{}$.
+    \item $\lc\simeq\SI{1}{\micro\meter}$ et $N_{\rm{f}}\simeq\SI{3}{}$.
+  \end{quest}
+}
+
+\subsection{Spectres et interférogrammes}
+Nous avons vu que l’intensité entre deux ondes cohérentes de même intensité $I_{0}$ issues d’une lumière monochromatique de longueur d'onde $\lambda$ est donnée par la formule de Fresnel des interférences,
+\begin{equation}\label{eq:Ilambda}
+I_\lambda =2I_{0}\left[1+\cos\left(\Delta \vphi\right)\right] =2I_{0}\left[1+\cos\left(2\pi\frac{\delta}{\lambda}\right)\right].
+\end{equation}
+Nous souhaitons généraliser ce résultat, en déterminant l’intensité lumineuse $I(\delta)$ résultant des interférences entre deux ondes polychromatiques issues d’une source de densité spectrale $\tilde{D}(\lambda)$.
+
+
+\begin{figure}[H]
+  \centering
+  \subfigure[]{\label{fig:interf_pratique_poly}
+  \includegraphics{interf_pratique_bande.pdf}
+  }\hspace{1cm}
+  \subfigure[]{\label{fig:D(lambda)}
+  \includegraphics{Dlambda_bande.pdf}
+  }
+  \caption{(a) Intensité d'une bande spectrale de la lumière mesurée entre $\lambda$ et $\lambda + \d \lambda$ au niveau de la source $\rm S$ et au niveau du point $\rm M$ où interférent les deux ondes déphasées. (b) Bande spectrale élémentaire entre $\lambda$ et $\lambda + \d \lambda$.}
+  \label{fig:interf_pratique_poly}
+\end{figure}
+
+\begin{enumerate}
+  \item Chaque onde émise par la source entre $\lambda$ et $\lambda + \d \lambda$ est quasi-monochromatique et d’intensité $\tilde{D}(\lambda)\d \lambda$, et se scinde en deux ondes \imp{cohérentes} dans l’interféromètre, qui interfèrent en $\rm M$. D’après l’\Eq{Ilambda}, l’intensité résultant de cette interférence élémentaire vaut
+\begin{equation}
+\d I_\lambda = 2 \tilde{D}(\lambda) \d  \lambda \left[1+\cos\left(2\pi\frac{\delta}{\lambda}\right)\right].
+\end{equation}
+\item Les bandes spectrales émises par la source à des longueurs d’onde différentes sont \imp{incohérentes} entre elles ; l’intensité totale s’obtient donc en sommant les intensités élémentaires, soit 
+$$I(\delta) = \sum_{{\rm bandes }~[\lambda,\lambda+\d \lambda]} \d I_\lambda = \int_{\rm spectre} \d I_\lambda = \int_{0}^{\infty}2\tilde{D}(\lambda)\left[1+\cos\left(2\pi\frac{\delta}{\lambda}\right)\right]\d\lambda.$$
+\end{enumerate}
+% On remarque par ailleurs que l’intensité totale émise par la source lumineuse vaut 
+% $$
+% \begin{equation}
+%   I_{\rm 0} = \int_{0}^{\infty} \tilde{D}(\lambda) \d \lambda.
+% \end{equation}
+
+% $$
+On en déduit l’expression suivante de l’interférogramme d’une source polychromatique.
+\begin{theorem}[Interférogramme d’une source polychromatique]\label{form:interfero}
+L’interférogramme issu de deux ondes émises par une même source de densité spectrale~$\tilde{D}(\lambda)$ vaut
+  $$
+I(\delta)= \int_{0}^{\infty}2\tilde{D}(\lambda)\left[ 1+\cos\left(2\pi\frac{\delta}{\lambda}\right)\right]\d\lambda .
+$$
+%   $$
+% I(\delta)=2I_0\left[ 1 + \int_{0}^{\infty}\frac{\tilde{D}(\lambda)}{I_0}\cos\left(2\pi\frac{\delta}{\lambda}\right)\d\lambda \right].
+% $$
+\end{theorem}
+
+Le graphe de la fonction $I(\delta)$ (intensité en fonction de la différence de marche) est appelé \imp{interférogramme}. La \Formu{interfero} établit un résultat important : l’interférogramme contient l’information complète sur la densité spectrale de la source. L’opération mathématique qui permet d’obtenir $\tilde{D}(\lambda)$ à partir de $I(\delta)$ est la \important{transformée de Fourier inverse}.
+\begin{center}
+  \begin{tikzpicture}
+    \node at (0,0) {$\tilde{D}(\lambda)$};
+    \node at (3,0) {$I(\delta)$};
+    \draw[->,thick,bend left=45,JoliBleu] (0.5,0.2) to node[midway,above] {TF} (2.5,0.2);
+    \draw[<-,thick,bend right=45,JoliRouge] (0.5,0) to node[midway,below] {TF$^{-1}$} (2.5,0);
+  \end{tikzpicture}
+\end{center}
+
+Cette technique de spectroscopie par transformée de Fourier est extrêmement puissante, et est très utilisée en astrophysique pour déterminer le spectre et ainsi la composition chimique des étoiles. Pour construire une intuition autour de la transformée de Fourier, des illustrations sont présentées en Fig.~\ref{fig:spectres_interferogrammes}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{interferogrammes.pdf}
+  \caption{Exemples de spectres et d'interférogrammes associés. L’interférogramme s’obtient par transformation de Fourier de  la densité spectrale. [Adapté de Physique expérimentale, Collectif Jolidon (2021).]}
+  \label{fig:spectres_interferogrammes}
+  \end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\end{document}

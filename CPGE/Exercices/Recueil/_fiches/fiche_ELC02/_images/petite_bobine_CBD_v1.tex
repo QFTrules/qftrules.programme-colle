@@ -1,0 +1,10 @@
+\shorthandoff{:!} %règle un problème de compatibilité avec babel
+\begin{circuitikz}
+\draw (0,0) to[short,*-*,L=$L$,i^=$i$](2,0);
+%\draw[-latex](0,0)--++(8pt,0)node[midway,above]{$i$};
+\draw[latex-,shorten >=10pt,shorten <=10pt](0,-.3)--++(2,0)node[midway,below]{$u$};
+\begin{scope}[shift={(-6,0)}]
+%\node at(0,0) [text width=9cm]{En convention récepteur, une bobine d'inductance $L$ est modélisée par la relation $u=L\diff{i}{t}$};
+\end{scope}
+\end{circuitikz}
+\shorthandon{:!}

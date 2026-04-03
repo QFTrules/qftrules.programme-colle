@@ -1,0 +1,25 @@
+\begin{tikzpicture}
+\draw [tealblue!70,fill = tealblue!70, rounded corners=10 pt] (0,-0.5) -- (0,-5) -- (4,-5) -- (4,-1.5)-- (3.5,-1.5)-- (3.5,-4.5)  -- (0.5,-4.5) -- (0.5,-0.5);
+\draw [tealblue!70,fill = tealblue!70] (3.5,-1.5) -- (2.75,-1.5) -- (2.75,-1) -- (4.75,-1) -- (4.75,-1.5)-- (4,-1.5) -- (4,-2) -- (3.5,-2) -- (3.5,-1.5);
+\draw [thick, rounded corners=10 pt] (0,0) -- (0,-5) -- (4,-5) -- (4,-1.5);
+\draw [thick, rounded corners=10 pt] (0.5,0) -- (0.5,-4.5) -- (3.5,-
+4.5) -- (3.5,-1.5);
+\draw [thick] (3.5,-1.5) -- (2.75,-1.5) -- (2.75,-0.75);
+\draw [thick] (4,-1.5) -- (4.75,-1.5) -- (4.75,-0.75);
+
+\draw [pattern=north east lines, pattern color=black] (-0.5,-1.5) -- (-0.1,-1.1) -- (-0.1,0.1) -- (-0.5,0.5) -- cycle;
+
+\draw [pattern=north east lines, pattern color=black] (1,-1.5) -- (0.6,-1.1) -- (0.6,0.1) -- (1,0.5) -- cycle;
+
+\draw[thick,dotted](0,-0.5) -- (2,-0.5);
+\draw[thick,dotted](0,-1) -- (4.9,-1);
+
+\draw [stealth-stealth] (1.5,-0.5) -- (1.5,-1);
+\draw (1.5,-0.75) node [right] {\Large $h$};
+
+\draw [-latex] (-1,-5) -- (-1,1);
+\draw (-1,1) node [left] {\Large$z$};
+
+\draw (0.25,0) node {\Large$I$};
+\draw (3.75,0) node {\Large$E$};
+\end{tikzpicture}

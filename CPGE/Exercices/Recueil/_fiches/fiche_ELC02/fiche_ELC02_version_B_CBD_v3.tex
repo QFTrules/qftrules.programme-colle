@@ -1,0 +1,2064 @@
+% Date : 01/11/2022
+% Version : 1
+% Auteur : Maxence Miguel-Brebion
+% Relu : 
+% Relecteur : 
+% Harmonisateur: GBU
+% Harmonisateur2: JRL
+
+
+% ------------------------------------------------------------ %
+% ----------------------  Fiche ELC02  ----------------------- %
+% Thème : Étude des circuits électriques II 
+%         (électronique en régime transitoire)
+% Classes : PCSI, PTSI, MPSI, TSI, ... ?
+% ------------------------------------------------------------ %
+
+
+
+% ======================================================= % 
+% ============== Gestion de la compilation ============== %
+% ======================================================= % 
+\ifdefined\mainIsLoaded\else
+  \RequirePackage{import}
+  \subimport{../../}{_preambule_CdE_PC}
+  \begin{document}
+\fi
+% ======================================================= % 
+% ======================================================= % 
+
+
+
+
+% ============================================================================ %
+%                            FICHE D'ENTRAÎNEMENT                              %
+% ============================================================================ %
+% ======================= Métadonnées sur la fiche =========================== %
+\titreFicheEntrainement		{Étude des circuits électriques II}
+\grandTheme					{Électricité}
+\numeroFiche				{ELC02}
+\uniqueID					{zCKqxLdMapy} % une chaîne de caractères (a-z, A-Z) aléatoire de 10 caractères.
+\nombreColonnesReponses		{2} % 1, 2, 3, etc.
+% ============================================================================ %
+
+
+% ===================== Couleurs ======================== %
+% ======================================================= % 
+
+% -----------------------------------%
+% La commande \couleurNBouCouleur prend deux paramètres :
+% #1 est la couleur NB ; #2 est la couleur "en couleur"
+\def\JRLorange{\couleurNBouCouleur{gray}{orange}}
+\def\JRLgreen{\couleurNBouCouleur{gray}{green!70!blue}}
+\def\JRLorangeOrBlack{\couleurNBouCouleur{black}{orange}}
+\def\JRLgreenOrBlack{\couleurNBouCouleur{black}{green!70!blue}}
+\def\JRLblueCC{\couleurNBouCouleur{lightgray!10}{blue!8}}
+\def\JRLblue{\couleurNBouCouleur{black}{blue!75}}
+\def\JRLblueC{\couleurNBouCouleur{lightgray!30}{blue!15}}
+\def\JRLcyan{\couleurNBouCouleur{gray}{cyan}}
+\def\JRLcyanC{\couleurNBouCouleur{lightgray!30}{cyan!10}}
+\def\JRLred{\couleurNBouCouleur{gray}{red!90!green}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\debutFicheEntrainement                                                                      %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+% --------------------------------------------------------------------- %
+%                              Prérequis                                %
+%                             (facultatif)                              %
+% --------------------------------------------------------------------- %
+% ================== Métadonnées sur le prérequis ===================== %
+\avecPrerequis{Y} % Y ou N
+% ===================================================================== %
+\begin{prerequis}
+	La fiche \textbf{Étude des circuits électriques I} et les équations différentielles.
+\end{prerequis}
+% --------------------------------------------------------------------- %
+
+
+
+
+% •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••• % 
+% •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••• % 
+\sectionFicheEntrainement{Bobines}
+% •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••• % 
+% •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••• % 
+
+\bigskip
+
+
+% mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm %
+% 		  Insertion d'une image en regard d'un texte
+% mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm %
+% --------------------------------------------------------- %
+\pourcentageDeLaPartieAGauche   {0.8}
+% --------------------------------------------------------- %
+%                                                           %
+% -------------------- Partie à gauche -------------------- %
+%                                                           %
+                                \initialisationPartieGauche % 
+%                                                           %
+%                                                           %
+En convention récepteur, l'inductance $L$ d'un bobine vérifie l'équation différentielle \minusSmallskip
+\[
+u(t)=L\diff{i(t)}{t}.
+\]
+% --------------------------------------------------------- %
+%                                                           %
+% -------------------- Partie à droite -------------------- %
+%                                                           %
+                                \initialisationPartieDroite %
+%                                                           %
+%                                                           %
+\begin{center}
+\subimport{_images/}{petite_bobine_CBD_v1.tex}
+\end{center}
+% --------------------------------------------------------- %
+                               \finalisationDuPartageDePage %					
+% --------------------------------------------------------- %
+
+
+
+
+
+% ********************************************************************* %
+%                           ENTRAÎNEMENT                                % 
+% ********************************************************************* %
+% ================ Métadonnées sur l'entraînement ===================== %
+
+\pointInterrogation				{Y}
+\titreEntrainementFacultatif	{Bobine ou pas}
+\hauteurLargeurCadreReponse		{6mm}{2.5cm}
+\dureeResolutionFacultative		{1} % 1, 2, 3 ou 4
+\typeEntrainement				{QCM} % Newton ou QCM ou AN ou vide (exercice "normal")
+\basiqueEtTransversal			{Y}
+\nombreColonnesQuestions		{1} % vide, 1, 2, 3, etc.
+\avecPlusieursQuestions			{N} % Y ou N
+\initialisationEntrainement
+% ===================================================================== %
+
+On donne l'évolution de l'intensité $i(t)$ et de la tension $u(t)$ aux bornes d'un dipôle inconnu.
+
+\begin{center}
+\subimport{_images/}{bobine_ou_pas_CBD_v2.tex}
+\end{center}
+
+% ======================================================================== %
+\debutEntrainement
+% ======================================================================== %
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+Ce dipôle inconnu se comporte-t-il comme une bobine ?
+\begin{listeQCM2Colonnes}
+\item oui
+\item non
+\end{listeQCM2Colonnes}
+\end{enonce}
+
+\reponse{\reponseB{}}  
+  
+\begin{corrige}
+L'intensité est une succession de droites. Sa dérivée est donc constante par morceaux (et non définie au niveau de la discontinuité). Si le dipôle se comportait comme une bobine, la tension devrait être constante par morceaux ce qui n'est pas ce que l'on observe. Il ne s'agit donc pas d'une bobine.
+\end{corrige}
+
+% ************************************** %
+
+% ======================================================================== %
+\finEntrainement
+% ======================================================================== %
+
+
+
+% ********************************************************************* %
+%                           ENTRAÎNEMENT                                % 
+% ********************************************************************* %
+% ================ Métadonnées sur l'entraînement ===================== %
+
+\titreEntrainementFacultatif	{Inductances équivalentes}
+\hauteurLargeurCadreReponse		{7mm}{4cm}
+\dureeResolutionFacultative		{2} % 1, 2, 3 ou 4
+\typeEntrainement				{} % Newton ou QCM ou AN ou vide (exercice "normal")
+\basiqueEtTransversal			{Y}
+\nombreColonnesQuestions		{1} % vide, 1, 2, 3, etc.
+\avecPlusieursQuestions			{Y} % Y ou N
+\initialisationEntrainement
+% ===================================================================== %
+
+
+On considère deux bobines d'inductance $L$ et $L'$ regroupées dans les montages suivants : \minusMedskip
+\begin{center}
+\subimport{_images/}{bobine_serie_derivation_JRL.tex}
+\end{center}
+\minusMedskip
+
+% =============================================================================== %
+\debutEntrainement
+% =============================================================================== %
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+Donner la relation entre $u$ et $i$ dans le montage \reponseA
+\end{enonce}
+
+\reponse{$u=L\diff{i}{t}+L'\diff{i}{t}$}
+
+\begin{corrige}
+En vertu de la loi d'additivité des tensions, on a $u=L\diff{i}{t}+L'\diff{i}{t}$.
+\end{corrige}
+
+% ************************************** %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+En déduire l'inductance équivalente du montage \reponseA
+\end{enonce}
+
+\reponse{$L+L'$}
+
+\begin{corrige}
+On peut donc écrire $u=L_\text{eq}\diff{i}{t}$ à condition de poser $L_\text{eq} = L+L'$.
+\end{corrige}
+
+% ************************************** %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+Donner la relation entre $u$ et $i$ dans le montage \reponseB
+\end{enonce}
+
+\reponse{$\diff{i}{t}=\frac{u}{L}+\frac{u}{L'}$}
+
+\begin{corrige}
+En vertu de la loi des n\oe uds, on a $i=i_L+i_{L'}$ ce qui donne après dérivation
+$\diff{i}{t}=\frac{u}{L}+\frac{u}{L'}$.
+\end{corrige}
+
+% ************************************** %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+En déduire l'inductance équivalente du montage \reponseB
+\end{enonce}
+
+\reponse{$\frac{ LL'}{L+L'}$}
+
+\begin{corrige}
+On peut écrire $u=L_\text{eq}\diff{i}{t}$ à  condition de poser 
+\[
+\frac{1}{L_\text{eq}} = \frac{1}{L}+\frac{1}{L'}
+\quad\text{soit}\quad
+L_\text{eq} = \frac{LL'}{L+L'}.
+\]
+\end{corrige}
+
+% ************************************** %
+
+% =============================================================================== %
+\finEntrainement
+% =============================================================================== %
+
+
+
+
+
+% ********************************************************************* %
+%                           ENTRAÎNEMENT                                % 
+% ********************************************************************* %
+% ================ Métadonnées sur l'entraînement ===================== %
+
+\pointExclamation				{Y}
+\titreEntrainementFacultatif	{Simplifions}
+\hauteurLargeurCadreReponse		{6mm}{4cm}
+\dureeResolutionFacultative		{1} % 1, 2, 3 ou 4
+\typeEntrainement				{} % Newton ou QCM ou AN ou vide (exercice "normal")
+\basiqueEtTransversal			{Y}
+\nombreColonnesQuestions		{1} % vide, 1, 2, 3, etc.
+\avecPlusieursQuestions			{N} % Y ou N
+\initialisationEntrainement
+
+On souhaite remplacer les bobines par un dipôle équivalent.
+
+\begin{center}
+\subimport{_images/}{cuircuit1_a_simplifier_CBD_v2.tex}
+\end{center}
+
+% =============================================================================== %
+\debutEntrainement
+% =============================================================================== %
+
+\begin{enonce}
+Déterminer $L_\text{eq}$
+\end{enonce}
+
+\reponse{$L$}
+
+\begin{corrige}
+On commence par regrouper les deux bobines en parallèle. On obtient alors $L_1 = \frac{L\times L}{L+L} = \frac{L}{2}$. Cette bobine se retrouve alors en série avec la première d'où $L_\text{eq} = \frac{L}{2} + \frac{L}{2} = L$.
+\end{corrige}
+
+% =============================================================================== %
+\finEntrainement
+% =============================================================================== %
+
+
+
+\bigskip
+\bigskip
+\bigskip
+
+% •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••• % 
+% •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••• % 
+\sectionFicheEntrainement{Condensateurs}
+% •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••• % 
+% •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••• % 
+
+\bigskip
+
+En convention récepteur, la capacité $C$ d'un condensateur vérifie l'équation différentielle 
+\[
+i(t)=\diff{q(t)}{t}=C\diff{u(t)}{t}.
+\] 
+
+\begin{center}
+\subimport{_images/}{petit_condensateur_CBD_v1.tex}
+\end{center}
+
+
+
+
+% ********************************************************************* %
+%                           ENTRAÎNEMENT                                % 
+% ********************************************************************* %
+% ================ Métadonnées sur l'entraînement ===================== %
+
+\titreEntrainementFacultatif	{Condensateurs équivalents}
+\hauteurLargeurCadreReponse		{8mm}{4cm}
+\dureeResolutionFacultative		{2} % 1, 2, 3 ou 4
+\typeEntrainement				{} % Newton ou QCM ou AN ou vide (exercice "normal")
+\basiqueEtTransversal			{Y}
+\nombreColonnesQuestions		{1} % vide, 1, 2, 3, etc.
+\avecPlusieursQuestions			{Y} % Y ou N
+\initialisationEntrainement
+
+On considère deux condensateurs de capacité $C$ et $C'$ regroupés dans les montages suivants :
+\begin{center}
+\subimport{_images/}{condensateur_serie_derivation_JRL.tex}
+\end{center}
+
+% =============================================================================== %
+\debutEntrainement
+% =============================================================================== %
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+Donner la relation entre $u$ et $i$ dans le montage \reponseA
+\end{enonce}
+
+\reponse{$\diff{u}{t}=\left(\frac{1}{C}+\frac{1}{C'}\right)i$}
+
+\begin{corrige}
+En vertu de la loi d'additivité des tensions, on a $u=u_C+u_{C'}$. Après dérivation par rapport au temps, on obtient $\diff{u}{t}=\left(\frac{1}{C}+\frac{1}{C'}\right)i$.
+\end{corrige}
+
+% ************************************** %
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+En déduire la capacité équivalente du montage \reponseA
+\end{enonce}
+
+\reponse{$\frac{ CC'}{C+C'}$}
+
+\begin{corrige}
+On peut donc écrire $i=C_\text{eq}\diff{u}{t}$ à condition de poser 
+\[
+\frac{1}{C_\text{eq}} = \frac{1}{C}+\frac{1}{C'}
+\quad\text{soit}\quad
+C_\text{eq} = \frac{CC'}{C+C'}.
+\]
+\end{corrige}
+
+% ************************************** %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+Donner la relation entre $u$ et $i$ dans le montage \reponseB
+\end{enonce}
+
+\reponse{$i=(C+C')\diff{u}{t}$}
+
+\begin{corrige}
+En vertu de la loi des n\oe uds, on a $i=i_C+i_{C'}=(C+C')\diff{u}{t}$.
+\end{corrige}
+
+% ************************************** %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+En déduire la capacité équivalente du montage \reponseB
+\end{enonce}
+
+\reponse{$C+C'$}
+
+\begin{corrige}
+On peut écrire $i=C_\text{eq}\diff{u}{t}$ à condition de poser 
+\(C_\text{eq}=C+C'\).
+\end{corrige}
+
+% ************************************** %
+
+% =============================================================================== %
+\finEntrainement
+% =============================================================================== %
+
+
+
+\newpage
+
+
+
+% ********************************************************************* %
+%                           ENTRAÎNEMENT                                % 
+% ********************************************************************* %
+% ================ Métadonnées sur l'entraînement ===================== %
+
+\pointInterrogation				{Y}
+\titreEntrainementFacultatif	{Condensateur ou pas}
+\hauteurLargeurCadreReponse		{6mm}{2.5cm}
+\dureeResolutionFacultative		{1} % 1, 2, 3 ou 4
+\typeEntrainement				{QCM} % Newton ou QCM ou AN ou vide (exercice "normal")
+\basiqueEtTransversal			{Y}
+\nombreColonnesQuestions		{1} % vide, 1, 2, 3, etc.
+\avecPlusieursQuestions			{N} % Y ou N
+\initialisationEntrainement
+% ===================================================================== %
+
+On donne l'évolution de l'intensité $i(t)$ et de la tension $u(t)$ aux bornes d'un dipôle inconnu.
+
+\begin{center}
+\subimport{_images/}{bobine_ou_pas_CBD_v2.tex}
+\end{center}
+
+% =============================================================================== %
+\debutEntrainement
+% =============================================================================== %
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+Ce dipôle inconnu se comporte-t-il comme un condensateur ?
+\begin{listeQCM2Colonnes}
+\item oui
+\item non
+\end{listeQCM2Colonnes}
+\end{enonce}
+
+\reponse{\reponseA{}}   
+ 
+\begin{corrige}
+Si le dipôle est un condensateur alors l'intensité est proportionnelle à la dérivé de la tension. La tension est constituée d'une droite croissante, puis d'une droite décroissante de pente opposée et enfin d'une parabole de type $at^2+bt+c$ avec $a>0$. Si l'on dérive la tension on obtient alors une constante positive, puis une constante opposée et enfin une droite croissante ($at+b$). C'est bien ce que l'on observe.
+
+{\itshape Notez que la tension est continue ce qui est le propre d'un condensateur.}
+\end{corrige}
+
+% ************************************** %
+
+% =============================================================================== %
+\finEntrainement
+% =============================================================================== %
+
+
+
+
+
+
+% ********************************************************************* %
+%                           ENTRAÎNEMENT                                % 
+% ********************************************************************* %
+% ================ Métadonnées sur l'entraînement ===================== %
+
+\pointExclamation				{Y}
+\titreEntrainementFacultatif	{Simplifions}
+\hauteurLargeurCadreReponse		{8mm}{4cm}
+\dureeResolutionFacultative		{1} % 1, 2, 3 ou 4
+\typeEntrainement				{} % Newton ou QCM ou AN ou vide (exercice "normal")
+\basiqueEtTransversal			{Y}
+\nombreColonnesQuestions		{1} % vide, 1, 2, 3, etc.
+\avecPlusieursQuestions			{N} % Y ou N
+\initialisationEntrainement
+
+On considère le montage suivant, constitué de plusieurs condensateurs, d'un générateur et d'un conducteur ohmique. 
+On souhaite remplacer les condensateurs par un dipôle équivalent.
+\begin{center}
+\subimport{_images/}{cuircuit2_a_simplifier_CBD_v2.tex}
+\end{center}
+
+% =============================================================================== %
+\debutEntrainement
+% =============================================================================== %
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+Déterminer $C_\text{eq}$
+\end{enonce}
+
+\reponse{$\frac{C}{2}$}
+
+\begin{corrige}
+On commence par regrouper les deux condensateurs en parallèle. On obtient alors $C_1 = C/2 + C/2 = C$. Ce condensateur se retrouve alors en série avec le premier d'où $C_\text{eq} = \frac{C \times C}{C+C} = C/2$.
+\end{corrige}
+
+% ************************************** %
+
+% =============================================================================== %
+\finEntrainement
+% =============================================================================== %
+
+
+
+
+% •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••• % 
+% •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••• % 
+\sectionFicheEntrainement{Conditions initiales et régime stationnaire}
+% •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••• % 
+% •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••• % 
+
+\medskip
+
+On utilisera dans cette partie les notations suivantes pour une grandeur donnée $x$ :
+\begin{multicols}{3}
+\begin{itemize}
+	\item $x(0^-) = \lim_{ \begin{subarray}{c}{t\to 0}\\[0.5mm]{t<0}\end{subarray} } x(t)$
+	\item $x(0^+) = \lim_{ \begin{subarray}{c}{t\to 0}\\[0.5mm]{t>0}\end{subarray} } x(t)$
+	\item $x(+\infty) =  \lim_{t \to + \infty } x(t)$.
+\end{itemize}  
+\end{multicols}
+
+\minusSmallskip
+
+% ********************************************************************* %
+%                           ENTRAÎNEMENT                                % 
+% ********************************************************************* %
+% ================ Métadonnées sur l'entraînement ===================== %
+
+\titreEntrainementFacultatif	{Condensateurs et bobines en régime stationnaire}
+\hauteurLargeurCadreReponse		{6mm}{1cm}
+\dureeResolutionFacultative		{1} % 1, 2, 3 ou 4
+\typeEntrainement				{Newton} % Newton ou QCM ou AN ou vide (exercice "normal")
+\nombreColonnesQuestions		{1} % vide, 1, 2, 3, etc.
+\avecPlusieursQuestions			{Y} % Y ou N
+\initialisationEntrainement
+% ===================================================================== %
+
+
+En régime stationnaire, toutes les grandeurs électriques sont indépendantes du temps.
+
+% =============================================================================== %
+\debutEntrainement
+% =============================================================================== %
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+Dans ce cas, un condensateur se comporte comme :
+\begin{listeQCM3Colonnes}
+\item un interrupteur fermé
+\item une source de tension
+\item un interrupteur ouvert
+\end{listeQCM3Colonnes}
+\bigskip
+\end{enonce}
+
+\reponse{\reponseC}
+
+\begin{corrige}
+En régime stationnaire, on a $\diff{u_C}{t} = 0$ d'où $i=0$. Cela correspond à la relation constitutive de l'interrupteur ouvert, qui ne laisse pas passer le courant.
+\end{corrige}
+
+% ************************************** %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+Quant à la bobine, elle se comporte comme :
+\begin{listeQCM3Colonnes}
+\item un interrupteur fermé
+\item une source de courant
+\item un interrupteur ouvert
+\end{listeQCM3Colonnes}
+\bigskip
+\end{enonce}
+
+\reponse{\reponseA}
+
+\begin{corrige}
+En régime stationnaire, on a $\diff{i}{t} = 0$ d'où $u_L=0$ ce qui correspond à la relation constitutive de l'interrupteur fermé.
+\end{corrige}
+
+% ************************************** %
+
+% =============================================================================== %
+\finEntrainement
+% =============================================================================== %
+
+
+
+
+% ********************************************************************* %
+%                           ENTRAÎNEMENT                                % 
+% ********************************************************************* %
+% ================ Métadonnées sur l'entraînement ===================== %
+
+\titreEntrainementFacultatif	{Éclairage en régime permanent}
+\hauteurLargeurCadreReponse		{6mm}{2cm}
+\dureeResolutionFacultative		{1} % 1, 2, 3 ou 4
+\typeEntrainement				{QCM} % Newton ou QCM ou AN ou vide (exercice "normal")
+\nombreColonnesQuestions		{1} % vide, 1, 2, 3, etc.
+\avecPlusieursQuestions			{N} % Y ou N
+\initialisationEntrainement
+% ===================================================================== %
+
+% =============================================================================== %
+\debutEntrainement
+% =============================================================================== %
+
+\newcommand\grrsymbol[1]{\shorthandoff{:!} \begin{circuitikz}[transform shape,scale=1,baseline=-3] \draw (0,0) to [#1] (1,0); \end{circuitikz}\shorthandon{:!}}
+
+On considère le circuit constitué de lampes (symbolisées par \grrsymbol{lamp,bipoles/length=.7cm}) que l'on peut assimiler à des résistances qui brillent quand elles sont parcourues par un courant électrique. 
+\begin{center}
+\subimport{_images/}{fiche_ELC02_lampes_energie_JRL.tex}
+\end{center}
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+Le régime permanent étant établi, la ou les ampoules qui brillent sont :
+
+\begin{listeQCM3Colonnes}
+\item l'ampoule A$_1$
+\item l'ampoule A$_2$
+\item l'ampoule A$_3$
+\end{listeQCM3Colonnes}
+\medskip
+\end{enonce}
+
+\reponse{\reponseB{}}  
+  
+\begin{corrige}
+En régime permanent, la bobine se comporte comme un fil et le condensateur
+comme un interrupteur ouvert. L'ampoule A$_1$ est court-circuitée et
+ne brille pas. Le courant dans la branche du condensateur est nul :
+l'ampoule A$_3$ est éteinte. Reste l'ampoule A$_2$ dont la tension à
+ses bornes est $E$: elle brille donc.
+\end{corrige}
+
+% ************************************** %
+
+% =============================================================================== %
+\finEntrainement
+% =============================================================================== %
+
+
+
+% ********************************************************************* %
+%                           ENTRAÎNEMENT                                % 
+% ********************************************************************* %
+% ================ Métadonnées sur l'entraînement ===================== %
+
+\titreEntrainementFacultatif	{Relations de continuité}
+\hauteurLargeurCadreReponse		{6mm}{1.5cm}
+\dureeResolutionFacultative		{2} % 1, 2, 3 ou 4
+\typeEntrainement				{QCM} % Newton ou QCM ou AN ou vide (exercice "normal")
+\nombreColonnesQuestions		{1} % vide, 1, 2, 3, etc.
+\avecPlusieursQuestions			{Y} % Y ou N
+\initialisationEntrainement
+% ===================================================================== %
+
+% =============================================================================== %
+\debutEntrainement
+% =============================================================================== %
+
+\smallskip
+
+{\itshape Dans ce QCM, plusieurs réponses sont possibles pour chaque question.}
+
+\smallskip
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+	Aux bornes de quel(s) dipôle(s) la tension est-elle toujours continue? 
+	\begin{listeQCM2Colonnes}
+	\item une résistance
+	\item une bobine
+	\item un condensateur
+	\item un interrupteur fermé
+	\end{listeQCM2Colonnes}
+\end{enonce}
+
+\reponse{\reponseC{} et \reponseD{}}
+
+\begin{corrige}
+La tension aux bornes du condensateur est toujours continue ; de plus, la tension d'un interrupteur fermé est nulle, donc toujours continue.
+\end{corrige}
+
+% ************************************** %
+
+
+% =============================================================================== %
+\pauseEntrainement
+% =============================================================================== %
+
+\bigskip
+
+On considère les deux circuits (1) et (2) pour lesquels l'opérateur ferme l'interrupteur à l'instant $t=0$. 
+
+On suppose de plus que le condensateur est initialement déchargé.
+\begin{center}
+\subimport{_images/}{circuit_QCM_1_MMB_v3.tex}
+\end{center}
+
+% =============================================================================== %
+\repriseEntrainement
+% =============================================================================== %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+	Quelles sont les grandeurs continues à $t=0$ pour le circuit (1) ?
+	\begin{listeQCM3Colonnes}
+	\item $i$
+	\item $u_L$
+	\item $u_R$
+	\end{listeQCM3Colonnes}
+\end{enonce}
+\reponse{\reponseA{} et \reponseC{}}
+\begin{corrige}
+Du fait de la présence de la bobine, l'intensité $i$ du courant électrique est une grandeur continue. Vu que $u_R=Ri$, c'est aussi le cas de la grandeur $u_R$.
+\end{corrige}
+
+% ************************************** %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+	Quelles sont les grandeurs continues à $t=0$ pour le circuit (2) ?
+	
+	\begin{listeQCM3Colonnes}
+	\item $i$
+	\item $u_C$
+	\item $u_R$
+	\end{listeQCM3Colonnes}
+\end{enonce}
+\reponse{\reponseB{}}
+\begin{corrige}
+Du fait de la présence du condensateur, la tension $u_C$ est une grandeur continue. En revanche $i$ est discontinue : sa valeur passe de $i(0^-)=0$ à $i(0^+)=E/R$. Par conséquent $u_R=Ri$ est également discontinue.
+\end{corrige}
+
+% ************************************** %
+
+\newpage
+
+
+% =============================================================================== %
+\pauseEntrainement
+% =============================================================================== %
+
+On considère à présent les deux circuits (3) et (4) pour lesquels l'opérateur ferme l'interrupteur à l'instant $t=0$. On suppose de plus que les condensateurs sont initialement déchargés.
+\begin{center}
+\subimport{_images/}{circuit_QCM_2_MMB_v2.tex}
+\end{center}
+
+
+% =============================================================================== %
+\repriseEntrainement
+% =============================================================================== %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+	Quelles sont les grandeurs continues à $t=0$ pour le circuit (3) ?
+	
+	\begin{listeQCM4Colonnes}
+	\item $i$
+	\item $u_L$
+	\item $u_R$
+	\item $u_C$
+	\end{listeQCM4Colonnes}
+\end{enonce}
+
+\reponse{\reponseA{}, \reponseC{} et \reponseD{}}
+
+\begin{corrige}
+Le courant $i$ circulant à travers une bobine est continu. On en déduit que $u_R = Ri$ est aussi continu. De plus, la tension $u_C$, aux bornes du condensateur est aussi continue. Seule la tension aux bornes de la bobine peut présenter une discontinuité.
+\end{corrige}
+
+% ************************************** %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+	Quelles sont les grandeurs continues à $t=0$ pour le circuit (4) ?
+	
+	\begin{listeQCM4Colonnes}
+	\item $i$
+	\item $i_1$
+	\item $u$
+	\item $u_L$
+	\end{listeQCM4Colonnes}
+\end{enonce}
+
+\reponse{\reponseA{}, \reponseB{} et \reponseC{}}
+
+\begin{corrigeNewpage}
+Les courants $i$ et $i_2$ sont continus car ces courants traversent une bobine. Ainsi, d'après la loi des nœuds, le courant $i_1$ l'est également. 
+\par
+La tension $u$ est celle aux bornes du condensateur donc continue (la présence de la bobine en parallèle n'y change rien). Finalement, la tension $u_L$ ne l'est pas car $u_L(0^-) = 0$ (régime stationnaire) et $u_L(0^+) = E$ (loi des mailles).
+\end{corrigeNewpage}
+
+% ************************************** %
+
+% =============================================================================== %
+\finEntrainement
+% =============================================================================== %
+
+
+
+
+
+
+% ********************************************************************* %
+%                           ENTRAÎNEMENT                                % 
+% ********************************************************************* %
+% ================ Métadonnées sur l'entraînement ===================== %
+
+\titreEntrainementFacultatif	{Conditions initiales pour circuits du premier ordre}
+\hauteurLargeurCadreReponse		{6mm}{2cm}
+\dureeResolutionFacultative		{3} % 1, 2, 3 ou 4
+\typeEntrainement				{} % Newton ou QCM ou AN ou vide (exercice "normal")
+\nombreColonnesQuestions		{1} % vide, 1, 2, 3, etc.
+\avecPlusieursQuestions			{Y} % Y ou N
+\initialisationEntrainement
+% ===================================================================== %
+
+On considère trois circuits constitués de générateurs de tension de fém constante $E$, de conducteurs de résistance $R$ ainsi que de condensateurs de capacité $C$ et d'une bobine d'inductance~$L$.
+\par
+L'interrupteur K est ouvert pour $t<0$ et fermé pour $t>0$. 
+
+Tous les condensateurs sont initialement déchargés. \minusMedskip
+\begin{center}
+\subimport{_images/}{circuit_CI_1_MMB_v2.tex}
+\end{center}
+
+% =============================================================================== %
+\debutEntrainement
+% =============================================================================== %
+
+On considère dans un premier temps le circuit (1). 
+
+\begin{multicols}{2}
+\begin{enonce}
+Exprimer $i(0^+)$
+\end{enonce}
+
+\reponse{0}
+
+\begin{corrige}
+À $t=0^-$, l'interrupteur K est ouvert donc $i(0^-) = 0$. De plus, ce courant circulant dans une bobine, il est continu, d'où finalement $i(0^+) = i(0^-) = 0$.
+\end{corrige}
+
+% ************************************** %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+Exprimer $u_L(0^+)$
+\end{enonce}
+
+\reponse{$E$}
+
+\begin{corrige}
+La tension $u_L$ n'est pas nécessairement une grandeur continue, il convient alors d'appliquer la loi des mailles à l'instant $t=0^+$ d'où $E = Ri(0^+) + u_L(0^+)$.
+\par
+De plus, on a par continuité du courant (bobine dans la branche) $i(0^-) = i(0^+) = 0$ car K est initialement ouvert.
+\par
+On en déduit finalement que $u_L(0^+) = E - R \times 0 = E$.
+\end{corrige}
+\end{multicols}
+
+% ************************************** %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+\medskip
+On considère à présent le circuit (2). \minusSmallskip
+
+\begin{enonce}
+Exprimer $i(0^+)$
+\end{enonce}
+
+\reponse{$\frac{E}{R}$}
+
+\begin{corrige}
+Le courant $i$ n'est pas nécessairement une grandeur continue car il n'y a pas de bobine dans la branche. On applique alors la loi des mailles à l'instant $t=0^+$ d'où $E = Ri(0^+) + u_C(0^+)$.
+\par
+Or, on a  $u_C(0^+) = u_C(0^-)$ (continuité de la tension aux bornes du condensateur) puis $u_C(0^+) = 0$ car ce dernier est initialement déchargé. On en déduit finalement que $i(0^+) = E/R$.
+\end{corrige}
+
+
+% ************************************** %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+\medskip
+On considère finalement le circuit (3). 
+
+\begin{multicols}{2}
+\begin{enonce}
+Exprimer $u_R(0^+)$
+\end{enonce}
+
+\reponse{$E$}
+
+\begin{corrige}
+La tension $u_R$ n'est pas nécessairement continue. On applique alors la loi des mailles (maille de gauche) à l'instant $t=0^+$ d'où $E = u_R(0^+) + u(0^+)$.
+\par
+Or, la tension $u$ est à la fois celle du résistor mais aussi du condensateur car ces dipôles sont placés en parallèle. On en déduit que $u(0^+) = u(0^-)$ (continuité de la tension aux bornes du condensateur) puis $u(0^+) = 0$ car ce dernier est initialement déchargé d'où finalement $u_R(0^+) = E$.
+\end{corrige}
+
+% ************************************** %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+En déduire $i_1(0^+)$
+\end{enonce}
+
+\reponse{$\frac{E}{R}$}
+
+\begin{corrige}
+On applique la loi des nœuds à l'instant $t=0^+$ d'où $i(0^+) = i_1(0^+)+ i_2(0^+)$. 
+
+De plus, on a $i_2(0^+) = u(0^+)/R = 0$ et $i(0^+)=u_R(0^+)/R = E/R$ d'après la question précédente. 
+On en déduit finalement que $i_1(0^+) = E/R$. 
+\end{corrige}
+\end{multicols}
+
+% ************************************** %
+
+% =============================================================================== %
+\finEntrainement
+% =============================================================================== %
+
+
+\newpage
+
+
+% ********************************************************************* %
+%                           ENTRAÎNEMENT                                % 
+% ********************************************************************* %
+% ================ Métadonnées sur l'entraînement ===================== %
+
+\titreEntrainementFacultatif	{Circuit à deux mailles}
+\hauteurLargeurCadreReponse		{8mm}{2cm}
+\dureeResolutionFacultative		{2} % 1, 2, 3 ou 4
+\typeEntrainement				{} % Newton ou QCM ou AN ou vide (exercice "normal")
+\nombreColonnesQuestions		{1} % vide, 1, 2, 3, etc.
+\avecPlusieursQuestions			{Y} % Y ou N
+\initialisationEntrainement
+% ===================================================================== %
+
+
+Le circuit suivant, constitué de deux mailles indépendantes, est alimenté par un générateur de tension de fém $E$ constante.
+
+\begin{center}
+\subimport{_images/}{circuit_CI_3_MMB_v1.tex}
+\end{center}
+
+Pour ce circuit, on considère de plus que :
+\begin{itemize}
+	\item l'interrupteur $K$ est ouvert pour $t<0$ et fermé pour $t>0$ ;
+	\item le condensateur est initialement déchargé.
+\end{itemize}
+Exprimer :
+
+% =============================================================================== %
+\debutEntrainement
+% =============================================================================== %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+$u(0^+)$
+\end{enonce}
+
+\reponse{0}
+
+\begin{corrige}
+La tension $u$ aux bornes du condensateur est continue. De plus, on a $u(0^-) = 0$ car le condensateur est initialement déchargé. On en déduit que $u(0^+)=0$.
+\end{corrige}
+
+% ************************************** %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+$\diff{u}{t}(0^+)$
+\end{enonce}
+
+\reponse{0}
+
+\begin{corrige}
+Pour le condensateur, on a à l'instant $t=0^+$, $i_1(0^+) = C \diff{u}{t}(0^+)$. Il convient alors de trouver l'expression de ce courant.
+\par
+La loi des nœuds indique que $i(0^+) = i_1(0^+) + i_2(0^+)$. Or, on a $i(0^+) = i(0^-) = 0$ par continuité du courant circulant dans la bobine, et du fait de l'ouverture de $K$ pour $t<0$. De plus, on a $i_2(0^+) = 2u(0^+)/R = 0$. On en déduit que $i_1(0^+)=0$ et donc que $\diff{u}{t}(0^+) = 0$.
+\end{corrige}
+
+% ************************************** %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+$i(+\infty)$
+\end{enonce}
+
+\reponse{$\frac{2E}{3R}$}
+
+\begin{corrige}
+En régime stationnaire, le condensateur se comporte comme un interrupteur ouvert et la bobine comme un fil. La loi des mailles indique alors $E = Ri(+\infty) + \frac{R}{2}i(+\infty)$ d'où au final $i(+\infty) = \frac{2E}{3R}$. Ce résultat aurait aussi pu être obtenu à l'aide d'un schéma équivalent.
+\end{corrige}
+
+% ************************************** %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+$u(+\infty)$
+\end{enonce}
+
+\reponse{$\frac{1}{3}E$}
+
+\begin{corrigeNewpage}
+En régime stationnaire, le condensateur se comporte comme un interrupteur ouvert et la bobine comme un fil. On observe alors un pont diviseur de tension formé par les deux résistors restants. 
+
+On en déduit $u (+\infty)= \frac{R/2}{R+R/2}E = \frac{1}{3}E$.
+\end{corrigeNewpage}
+
+% ************************************** %
+
+
+% =============================================================================== %
+\finEntrainement
+% =============================================================================== %
+
+
+
+% •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••• % 
+% •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••• % 
+\sectionFicheEntrainement{Circuits du premier ordre}
+% •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••• % 
+% •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••• % 
+
+\bigskip
+
+On dit qu'un circuit est \emph{du premier ordre} quand il est régi par une équation différentielle qui se met sous la forme canonique suivante : 
+\[
+\diff{x(t)}{t} + \frac{1}{\tau} x(t) = f(t) \tag{$\ast$}
+\]
+où $\tau$ est la constante de temps représentative de la durée du régime transitoire.
+
+Quand l'équation différentielle est écrite comme dans ($\ast$), on dit qu'elle est \emph{sous forme canonique}.
+
+
+
+% ********************************************************************* %
+%                           ENTRAÎNEMENT                                % 
+% ********************************************************************* %
+% ================ Métadonnées sur l'entraînement ===================== %
+
+\titreEntrainementFacultatif	{Constantes de temps}
+\hauteurLargeurCadreReponse		{8mm}{3cm}
+\dureeResolutionFacultative		{1} % 1, 2, 3 ou 4
+\typeEntrainement				{Newton} % Newton ou QCM ou AN ou vide (exercice "normal")
+\basiqueEtTransversal			{Y}
+\nombreColonnesQuestions		{1} % vide, 1, 2, 3, etc.
+\avecPlusieursQuestions			{Y} % Y ou N
+\initialisationEntrainement
+% ===================================================================== %
+
+On donne des exemples d'équations différentielles régissant des grandeurs électriques d'un circuit. 
+
+Dans chaque cas, déterminer l'expression de la constante de temps $\tau$.
+
+
+% =============================================================================== %
+\debutEntrainement
+% =============================================================================== %
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+$L\diff{i(t)}{t}  =E- Ri(t)$
+\end{enonce}
+
+\reponse{$\frac{L}{R}$}
+
+\begin{corrige}
+On écrit l'équation sous sa forme canonique : $\diff{i}{t} + \frac{R}{L} i = \frac{E}{L}$. Ainsi, on 
+identifie $\tau = L/R$.
+\end{corrige}
+
+% ************************************** %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+$RC\diff{u_C(t)}{t}  =E- 2u_C(t)$
+\end{enonce}
+
+\reponse{$\frac{RC}{2}$}
+
+\begin{corrige}
+De la même manière, l'équation mise sous forme canonique est $\diff{u_C}{t} + \frac{2}{RC} i = \frac{E}{RC}$, d'où $\tau =\frac{RC}{2}$.
+\end{corrige}
+
+% ************************************** %
+
+% =============================================================================== %
+\finEntrainement
+% =============================================================================== %
+
+
+\newpage
+
+
+
+% ********************************************************************* %
+%                           ENTRAÎNEMENT                                % 
+% ********************************************************************* %
+% ================ Métadonnées sur l'entraînement ===================== %
+
+\titreEntrainementFacultatif	{Des mises en équations}
+\hauteurLargeurCadreReponse		{10mm}{6.5cm}
+\dureeResolutionFacultative		{3} % 1, 2, 3 ou 4
+\typeEntrainement				{} % Newton ou QCM ou AN ou vide (exercice "normal")
+\nombreColonnesQuestions		{1} % vide, 1, 2, 3, etc.
+\avecPlusieursQuestions			{Y} % Y ou N
+\initialisationEntrainement
+% ===================================================================== %
+
+
+On cherche à obtenir l'équation différentielle qui régit le comportement d'une grandeur électrique dans chacun des circuits suivants. 
+
+Cette équation devra être donnée sous forme canonique.
+
+\begin{center}
+\subimport{_images/}{circuit_ED_1_MMB_v3.tex}
+\end{center}
+
+% =============================================================================== %
+\debutEntrainement
+% =============================================================================== %
+
+On considère le circuit (1). 
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+À partir de la loi des mailles, 
+déterminer l'équation différentielle vérifiée par $i(t)$  
+ 
+\end{enonce}
+
+\reponse{$\diff{i}{t} + \frac{R}{L} i  = \frac{E}{L}$}
+
+\begin{corrige}
+Le circuit ne peut être simplifié davantage. Il convient alors d'appliquer la loi des mailles $E= Ri + L \diff{i}{t}$ puis de mettre cette équation sous la forme canonique $\diff{i}{t} + \frac{R}{L} i  = \frac{E}{L}$.
+\end{corrige}
+
+% ************************************** %
+
+\bigskip
+On considère maintenant le circuit (2). Déterminer : \minusMedskip
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+l'équation différentielle vérifiée par $u_C(t)$
+\end{enonce}
+
+\reponse{$\diff{u_C}{t} + \frac{1}{RC} u_C = \frac{1}{RC}E$}
+
+\begin{corrige}
+Le circuit ne peut être simplifié davantage. Il convient alors d'appliquer la loi des mailles $E= Ri + u_C$. L'équation constitutive du condensateur indique $i = C \diff{u_C}{t}$ d'où en combinant avec la loi des mailles 
+\[
+E = RC \diff{u_C}{t} + u_C.
+\]
+On en déduit sa forme canonique $\diff{u_C}{t} + \frac{1}{RC} u_C = \frac{1}{RC}E$.
+\end{corrige}
+
+% ************************************** %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+l'équation différentielle pour le courant $i(t)$ 
+\end{enonce}
+
+\reponse{$\diff{i(t)}{t} + \frac{1}{RC} i(t) =0$}
+
+\begin{corrige}
+La loi des mailles indique que $E= Ri + u_C$. Cette fois-ci, il faut garder $i$ et remplacer $u_C$. Cependant, la relation constitutive du condensateur fait apparaître la dérivée temporelle de cette tension. 
+\par
+Il convient alors de dériver l'équation obtenue à l'aide de la loi des mailles et d'écrire $R \diff{i}{t} +\diff{u_C}{t} = 0 $. Finalement, on obtient $\diff{i}{t} + \frac{1}{RC} i = 0$.
+\end{corrige}
+
+% ************************************** %
+
+
+\bigskip
+On considère enfin le circuit (3) qui comporte deux mailles. En appliquant la loi des nœuds au point N, déterminer :
+\minusSmallskip
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+la relation entre le courant $i(t)$, la tension $u(t)$ et $\diff{u(t)}{t}$ 
+\end{enonce}
+
+\reponse{$i = \frac{u}{R} + C \diff{u}{t}$}
+
+\begin{corrige}
+Le circuit comporte deux mailles indépendantes mais ne peut pas être simplifié. Il convient alors de faire particulièrement attention aux indices et variables utilisées pour les différents courants et tensions.
+\par
+La loi des nœuds indique que $i=i_1+i_2$ avec $i_2 = u/R$ et $i_1 =C \diff{u}{t}$. On obtient alors en combinant ces résultats l'équation $i = \frac{u}{R} + C \diff{u}{t}$.
+\end{corrige}
+
+% ************************************** %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+En déduire l'équation différentielle pour la tension $u(t)$
+\end{enonce}
+
+\reponse{$\diff{u}{t} + \frac{2}{RC} u = \frac{E}{RC}$}
+
+\begin{corrige}
+La loi des nœuds ayant déjà été appliquée, il convient d'appliquer la loi des mailles pour la petite maille de gauche ; on en déduit $E = Ri + u$. On combine alors ce résultat avec celui de la question précédente pour obtenir que $E = u + RC \diff{u}{t} + u$ et au final $\diff{u}{t} + \frac{2}{RC} u = \frac{E}{RC}$.
+\end{corrige}
+
+% ************************************** %
+
+
+% =============================================================================== %
+\finEntrainement
+% =============================================================================== %
+
+
+
+% ********************************************************************* %
+%                           ENTRAÎNEMENT                                % 
+% ********************************************************************* %
+% ================ Métadonnées sur l'entraînement ===================== %
+
+\pointExclamation				{Y}
+\titreEntrainementFacultatif	{Allez, on s'entraîne}
+\hauteurLargeurCadreReponse		{8mm}{6cm}
+\dureeResolutionFacultative		{3} % 1, 2, 3 ou 4
+\typeEntrainement				{Newton} % Newton ou QCM ou AN ou vide (exercice "normal")
+\basiqueEtTransversal			{Y}
+\nombreColonnesQuestions		{1} % vide, 1, 2, 3, etc.
+\avecPlusieursQuestions			{Y} % Y ou N
+\initialisationEntrainement
+% ===================================================================== %
+
+
+{\itshape N'oubliez pas d'exprimer une solution particulière avant d'appliquer les conditions initiales !}
+
+\smallskip
+
+% =============================================================================== %
+\debutEntrainement
+% =============================================================================== %
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+Résoudre $\diff{u_C(t)}{t} + \frac{1}{\tau} u_C(t) = \frac{E}{\tau}$ \quad avec $u_C(0)=0$
+\end{enonce}
+
+\reponse{$u_C(t)=E\left(1-\eEuler^{-t/\tau} \right)$}
+
+\begin{corrige}
+Cherchons une solution particulière constante. On trouve $u_\text{p}=E$. La solution générale est donc de la forme $A\eEuler^{-t/\tau}+E$. La condition initiale donne $u_C(0)=0=A+E$ soit $A=-E$. Finalement, $u_C(t)=E\left(1-\eEuler^{-t/\tau} \right)$.
+\end{corrige}
+
+% ************************************** %
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+Résoudre $\diff{i(t)}{t} + \frac{1}{\tau} i(t) = 0$ \quad avec $i(0)=\frac{E}{R}$
+\end{enonce}
+
+\reponse{$i(t)=\frac{E}{R}\,\eEuler^{-t/\tau}$}
+
+\begin{corrige}
+Ici, l'équation différentielle est homogène (sans second membre). La solution est de la forme  $A\eEuler^{-t/\tau}$. La condition initiale donne $i(0)=E/R=A$. Finalement, $i(t)=\frac{E}{R}\,\eEuler^{-t/\tau}$.
+\end{corrige}
+
+% ************************************** %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+Résoudre $\diff{u(t)}{t} + \frac{1}{\tau} u(t) = \frac{E}{2\tau}$ \quad avec $u(0)=\frac{E}{2}$
+\end{enonce}
+
+\reponse{$u_C(t)=\frac12E$}
+
+\begin{corrigeNewpage}
+Cherchons une solution particulière constante. On trouve $u_\text{p}=\frac12 E$. La solution générale est donc de la forme $A\eEuler^{-t/\tau}+\frac12 E$. La condition initiale donne $u(0)=\frac12 E=A+\frac12 E$ soit $A=0$. Finalement, $u_C(t)=\frac12E$.
+\end{corrigeNewpage}
+
+% ************************************** %
+
+% =============================================================================== %
+\finEntrainement
+% =============================================================================== %
+
+
+
+\newpage
+
+
+% ********************************************************************* %
+%                           ENTRAÎNEMENT                                % 
+% ********************************************************************* %
+% ================ Métadonnées sur l'entraînement ===================== %
+
+\titreEntrainementFacultatif	{Analyse de courbes}
+\hauteurLargeurCadreReponse		{6mm}{2.5cm}
+\dureeResolutionFacultative		{1} % 1, 2, 3 ou 4
+\typeEntrainement				{AN} % Newton ou QCM ou AN ou vide (exercice "normal")
+\basiqueEtTransversal			{Y}
+\nombreColonnesQuestions		{1} % vide, 1, 2, 3, etc.
+\avecPlusieursQuestions			{Y} % Y ou N
+\initialisationEntrainement
+
+Les graphes ci-dessous représentent l'évolution de trois grandeurs au cours du temps : 
+\begin{itemize}
+\item deux tensions $u_1(t)$ et $u_2(t)$ ;
+\item une intensité $i(t)$. 
+\end{itemize}
+
+\begin{center}
+\subimport{_images/}{courbes_1_CBD_v3.tex}
+\end{center}
+
+\medskip
+
+% =============================================================================== %
+\debutEntrainement
+% =============================================================================== %
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+On a 
+\[
+u_1(t)=E_1\left(1-\eEuler^{-t/\tau}\right).
+\] 
+Quelle est la courbe correspondante ?
+\begin{listeQCM3Colonnes}
+\item courbe 1
+\item courbe 2
+\item courbe 3
+\end{listeQCM3Colonnes}
+\medskip
+\end{enonce}
+
+\reponse{\reponseB}
+
+% ************************************** %
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+On a 
+\[
+u_2(t)=E_2\left(1 - \frac{\eEuler^{-t/\tau}}{2} \right).
+\]
+ Quelle est la courbe correspondante ?
+\begin{listeQCM3Colonnes}
+\item courbe 1
+\item courbe 2
+\item courbe 3
+\end{listeQCM3Colonnes}
+\medskip
+\end{enonce}
+
+\reponse{\reponseC}
+
+% ************************************** %
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+On a 
+\[
+i(t)=\frac{E_1}{R}\,\eEuler^{-t/\tau}.
+\]
+ Quelle est la courbe correspondante ?
+\begin{listeQCM3Colonnes}
+\item courbe 1
+\item courbe 2
+\item courbe 3
+\end{listeQCM3Colonnes}
+\medskip
+\end{enonce}
+
+\reponse{\reponseA}
+
+% ************************************** %
+
+Déterminer les valeurs numériques de : 
+
+%\begin{multicols}{3}
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+$E_1$
+\end{enonce}
+
+\reponse{\SI{4}{V}}
+
+\begin{corrige}
+La courbe $2$, associée à l'expression de $u_1$, possède une asymptote horizontale d'expression $u_1(+\infty) = E_1$. On en déduit $E_1 = \SI{4}{V}$ par lecture graphique.
+\end{corrige}
+
+% ************************************** %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+$E_2$
+\end{enonce}
+
+\reponse{\SI{4}{V}}
+
+\begin{corrige}
+La courbe $3$, associée à l'expression de $u_2$, possède une valeur initiale $u_2(0^+) = \frac12 E_2$. On en déduit $E_2 = \SI{4}{V}$ par lecture graphique.
+On peut vérifier que l'asymptote donne $u_2(+\infty)=E_2=\SI{4}{V}$.
+\end{corrige}
+
+% ************************************** %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+$R$
+\end{enonce}
+
+\reponse{\SI{1.3}{\kilo \ohm}}
+
+\begin{corrige}
+La courbe $1$, associée à l'expression de $i(t)$, a pour ordonnée à l'instant initial $i(0^+) = \SI{3}{mA} = \frac{E_1}{R}$ donc on a $R = E_1/i(0^+)\simeq\SI{1.3}{\kilo \ohm}$.
+\end{corrige}
+
+% ************************************** %
+
+%\end{multicols}
+
+% =============================================================================== %
+\finEntrainement
+% =============================================================================== %
+
+
+
+\newpage
+
+
+
+% •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••• % 
+% •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••• % 
+\sectionFicheEntrainement{Circuits du second ordre}
+% •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••• % 
+% •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••• % 
+
+
+
+% ********************************************************************* %
+%                           ENTRAÎNEMENT                                % 
+% ********************************************************************* %
+% ================ Métadonnées sur l'entraînement ===================== %
+
+\titreEntrainementFacultatif	{Équation canonique}
+\hauteurLargeurCadreReponse		{8mm}{3cm}
+\dureeResolutionFacultative		{1} % 1, 2, 3 ou 4
+\typeEntrainement				{Newton} % Newton ou QCM ou AN ou vide (exercice "normal")
+\basiqueEtTransversal			{Y}
+\nombreColonnesQuestions		{1} % vide, 1, 2, 3, etc.
+\avecPlusieursQuestions			{Y} % Y ou N
+\initialisationEntrainement
+% ===================================================================== %
+
+
+De nombreux circuits du second-ordre sont en fait des oscillateurs dont l'équation canonique est de la forme 
+\[
+\diff[2]{x(t)}{t} + \frac{\omega_0}{Q} \diff{x(t)}{t} + \omega_0^2\, x(t) =f(t),
+\]
+où \(\omega_0\) est appelée \emph{pulsation propre} et $Q$ \emph{facteur de qualité}.
+
+% =============================================================================== %
+\debutEntrainement
+% =============================================================================== %
+
+Donner la dimension de :
+
+\begin{multicols}{2}
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+$\omega_0$
+\end{enonce}
+
+\reponse{$[\omega_0] = T^{-1}$}
+
+\begin{corrige}
+On a dans le membre de gauche de l'équation d'ordre 2 : $\left[\diff[2]{x}{t}\right] = \left[ \omega_0^2 \right] \left[ x\right] $ donc $[x] T^{-2} = \left[ \omega_0^2 \right] [x]$. Finalement, on a $[\omega_0] = T^{-1}$.
+\end{corrige}
+
+% ************************************** %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+$Q$
+\end{enonce}
+
+\reponse{$Q$ est sans dimension}
+
+\begin{corrige}
+On a dans le membre de gauche de l'équation d'ordre 2 : $\left[\diff[2]{x}{t}\right] = \left[\frac{ \omega_0}{Q}\right] \left[ \diff{x}{t} \right] $ donc $[x]T^{-2} = T^{-1} \frac{[x]}{\left[Q\right]T}$. Finalement, on a $[Q] = 1$ ; donc,  $Q$ est sans dimension.
+\end{corrige}
+
+% ************************************** %
+
+\end{multicols}
+
+
+
+\bigskip
+
+On considère l'équation $RC\diff[2]{i(t)}{t} + \diff{i(t)}{t} + \frac{R}{L} i(t) = 0 $. Exprimer :
+
+\bigskip
+
+\begin{multicols}{2}
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+$\omega_0$
+\end{enonce}
+
+\reponse{$\frac{1}{\sqrt{LC}}$}
+
+% ************************************** %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+$Q$
+\end{enonce}
+
+\reponse{$R \sqrt{\frac{C}{L}}$}
+
+% ************************************** %
+
+\end{multicols}
+
+% =============================================================================== %
+\finEntrainement
+% =============================================================================== %
+
+
+
+
+
+% ********************************************************************* %
+%                           ENTRAÎNEMENT                                % 
+% ********************************************************************* %
+% ================ Métadonnées sur l'entraînement ===================== %
+
+\titreEntrainementFacultatif	{Mise en équation}
+\hauteurLargeurCadreReponse		{8mm}{8cm}
+\dureeResolutionFacultative		{3} % 1, 2, 3 ou 4
+\typeEntrainement				{} % Newton ou QCM ou AN ou vide (exercice "normal")
+\nombreColonnesQuestions		{1} % vide, 1, 2, 3, etc.
+\avecPlusieursQuestions			{Y} % Y ou N
+\initialisationEntrainement
+% ===================================================================== %
+
+
+On considère les deux circuits suivants, pour lesquels les fém des générateurs de tension $E$ sont constantes.
+\begin{center}
+\subimport{_images/}{circuit_ED_2_JRL_v1.tex}
+\end{center}
+
+% =============================================================================== %
+\debutEntrainement
+% =============================================================================== %
+
+À l'aide de la loi des mailles et des n\oe uds, établir l'équation différentielle vérifiée par la tension $u$ : 
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+Dans le montage 1
+\end{enonce}
+
+\reponse{$ \diff[2]{u}{t} + \frac{R}{L} \diff{u}{t} + \frac{1}{LC} u  = \frac{E}{LC}$}
+
+\begin{corrige}
+La loi des mailles indique que $E = R i + u + L \diff{i}{t}$. De plus, la relation constitutive du condensateur donne que $i = C \diff{u}{t}$. On en déduit que
+\[
+E = RC \diff{u}{t} + u + LC \diff[2]{u}{t}
+\quad\text{soit}\quad
+\diff[2]{u}{t} + \frac{R}{L} \diff{u}{t} + \frac{1}{LC} u  = \frac{E}{LC}.
+\]
+\end{corrige}
+
+% ************************************** %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+Dans le montage 2
+\end{enonce}
+
+\reponse{ $\diff[2]{u}{t} +  \frac{1}{RC}\diff{u}{t}  + \frac{1}{LC}u = 0$}
+
+\begin{corrige}
+La loi des nœuds donne $i = i_1 + i_2$. Cependant, la relation constitutive de la bobine fait intervenir $\diff{i_2}{t}$. On dérive alors la loi des nœuds puis on la combine avec les relations constitutives des deux dipôles de droite pour obtenir $\diff{i}{t} = C \diff[2]{u}{t} + \frac{u}{L}$.
+\par
+La loi des mailles (petite maille de gauche) indique ensuite que $E = Ri + u$. On dérive cette relation pour faire apparaître la dérivée temporelle du courant puis on combine avec l'expression de cette dernière. D'où 
+\[
+0 = RC \diff[2]{u}{t} + \frac{R}{L}u + \diff{u}{t}.
+\]
+On en déduit finalement son expression canonique $  \diff[2]{u}{t} +  \frac{1}{RC}\diff{u}{t}  + \frac{1}{LC}u = 0$.
+\end{corrige}
+
+% ************************************** %
+
+
+% =============================================================================== %
+\finEntrainement
+% =============================================================================== %
+
+
+
+
+% ********************************************************************* %
+%                           ENTRAÎNEMENT                                % 
+% ********************************************************************* %
+% ================ Métadonnées sur l'entraînement ===================== %
+
+\titreEntrainementFacultatif	{Équations type \glm{oscillateur harmonique}}
+\hauteurLargeurCadreReponse		{8mm}{5.5cm}
+\dureeResolutionFacultative		{2} % 1, 2, 3 ou 4
+\typeEntrainement				{Newton} % Newton ou QCM ou AN ou vide (exercice "normal")
+\basiqueEtTransversal			{Y}
+\nombreColonnesQuestions		{1} % vide, 1, 2, 3, etc.
+\avecPlusieursQuestions			{Y} % Y ou N
+\initialisationEntrainement
+
+% =============================================================================== %
+\debutEntrainement
+% =============================================================================== %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+Résoudre $\diff[2]{u_C(t)}{t} + \omega_0^2\, (u_C(t)-E) = 0\quad\text{avec } 
+\begin{cases}
+u_C(0) = 0 \\
+\diff{u_C}{t}(0) = 0
+\end{cases}$
+\end{enonce}
+
+\reponse{$E \times (1 - \cos(\omega_0 t))$}
+
+\begin{corrige}
+Cherchons une solution particulière constante (comme le second membre). On trouve $u_\text{p}=E$. La solution générale est de la forme $A\cos(\omega_0t+\varphi)+E$. Les conditions initiales donnent
+\[
+\begin{cases}
+u_C(0) 	&=A\cos(\varphi)+E=0\\
+\diff{u_C}{t}(0)  &=-A\omega_0\sin(\varphi)= 0
+\end{cases}
+\quad\text{soit}\quad
+\begin{cases}
+\varphi =0\\
+A =-E.
+\end{cases}
+\]
+On en déduit que $u_C(t) = E (1 - \cos(\omega_0 t))$.
+\end{corrige}
+
+% ************************************** %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+Résoudre $\diff[2]{i(t)}{t} + \omega_0^2 \, i(t) = 0\quad\text{avec }
+\begin{cases}
+i(0) = 0 \\
+\diff{i}{t}(0) = \frac{E}{L}
+\end{cases}$
+\end{enonce}
+
+\reponse{$\frac{E}{L\omega_0} \sin(\omega_0 t)$}
+
+\begin{corrige}
+La solution est de la forme $A\cos(\omega_0t+\varphi)=a\cos(\omega_0t)+b\sin(\omega_0t)$. Appliquons les conditions initiales :
+\[
+\begin{cases}
+i(0) 	&=a=0\\
+\diff{i}{t}(0)  &=b\omega_0=\frac{E}{L}
+\end{cases}
+\quad\text{soit}\quad
+\begin{cases}
+a =0\\
+b =\frac{E}{L\omega_0}.
+\end{cases}
+\]
+On en déduit que $i(t) =\frac{E}{L\omega_0}\sin(\omega_0 t)$.
+\end{corrige}
+
+% ************************************** %
+
+
+% =============================================================================== %
+\finEntrainement
+% =============================================================================== %
+
+
+
+
+
+% ********************************************************************* %
+%                           ENTRAÎNEMENT                                % 
+% ********************************************************************* %
+% ================ Métadonnées sur l'entraînement ===================== %
+
+\titreEntrainementFacultatif	{Réponses d'un circuit du second-ordre}
+\hauteurLargeurCadreReponse		{6mm}{2.5cm}
+\dureeResolutionFacultative		{1} % 1, 2, 3 ou 4
+\typeEntrainement				{AN} % Newton ou QCM ou AN ou vide (exercice "normal")
+\nombreColonnesQuestions		{1} % vide, 1, 2, 3, etc.
+\avecPlusieursQuestions			{Y} % Y ou N
+\initialisationEntrainement
+
+Les graphes ci-dessous représentent l'évolution de trois tensions $u_1(t)$, $u_2(t)$, et $u_3(t)$ au cours du temps. 
+
+Toutes ces grandeurs évoluent suivant une équation différentielle du type 
+\[
+\diff[2]{x(t)}{t} + \frac{\omega_0}{Q} \diff{x(t)}{t} + \omega_0^2\, x(t) =\mathrm{C^{te}}.
+\]
+
+\subimport{_images/}{courbes_2_CBD_v2.tex}
+
+
+% =============================================================================== %
+\debutEntrainement
+% =============================================================================== %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+Quelle courbe est associée au plus grand facteur de qualité $Q$ ?
+\begin{listeQCM3Colonnes}
+\item courbe 1
+\item courbe 2
+\item courbe 3
+\end{listeQCM3Colonnes}
+\end{enonce}
+\reponse{\reponseB}
+\begin{corrige}
+Le facteur de qualité est inférieur à $1/2$ pour la courbe 3. De plus, il est sensiblement égal au nombre d'oscillations observables dans le cas du régime pseudo-périodique. On observe environ dix oscillations pour la courbe~2 et six pour la courbe~1. La courbe~2 possède donc le facteur de qualité le plus grand.
+\end{corrige}
+
+% ************************************** %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+On a 
+\[
+u_1(t)=a\eEuler^{-t/\tau_1}-b\eEuler^{-t/\tau_2}.
+\]
+ Quelle est la courbe correspondante ?
+\begin{listeQCM3Colonnes}
+\item courbe 1
+\item courbe 2
+\item courbe 3
+\end{listeQCM3Colonnes}
+\end{enonce}
+\reponse{\reponseC}
+\begin{corrige}
+La fonction $u_1(t)$ ne contient pas de grandeurs circulaires ($\cos(\omega t)$ ou $\sin(\omega t)$) et évolue de $u_1(0)=a-b$ vers $u_1(+\infty)=0$. Cela correspond à la courbe~3.
+\end{corrige}
+
+% ************************************** %
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+On a 
+\[
+u_2(t)=E\sin(\Omega t)\,\eEuler^{-t/\tau}.
+\] Quelle est la courbe correspondante ?
+\begin{listeQCM3Colonnes}
+\item courbe 1
+\item courbe 2
+\item courbe 3
+\end{listeQCM3Colonnes}
+\end{enonce}
+\reponse{\reponseB}
+\begin{corrige}
+La tension $u_2(t)$ présente des oscillations amorties et tend vers zéro lorsque $t$ tend vers l'infini. Seule la courbe 2 vérifie ces propriétés.
+\end{corrige}
+
+% ************************************** %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+On a 
+\[
+u_3(t)=E\left[1 - \left(\cos(\Omega' t)+a\sin(\Omega't)\right)\eEuler^{-t/\tau'}\right].
+\]
+ Quelle est la courbe correspondante ?
+\begin{listeQCM3Colonnes}
+\item courbe 1
+\item courbe 2
+\item courbe 3
+\end{listeQCM3Colonnes}
+\end{enonce}
+
+\reponse{\reponseA}
+
+\begin{corrige}
+On a $\lim_{t \to + \infty } u_3(t)=E$. Seule la courbe 1 présente une asymptote horizontale d'ordonnée non nulle.
+\end{corrige}
+
+% ************************************** %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+Déterminer la valeur numérique de la pseudo-pulsation $\Omega$ qui intervient dans $u_2(t)$
+
+\end{enonce}
+
+\reponse{\SI{1.2e3}{rad.s^{-1}}}
+
+\begin{corrige}
+On détermine la pseudo période $T$ en mesurant la durée correspondant à 10 oscillations : $10T \simeq \SI{52}{ms}$ d'où $T\simeq\SI{5.2}{ms}$. On en déduit $\Omega = 2\pi/T \simeq \SI{1.2e3}{rad.s^{-1}}$.
+\end{corrige}
+
+% ************************************** %
+
+
+% =============================================================================== %
+\finEntrainement
+% =============================================================================== %
+
+
+
+
+
+
+% ---------------------------------------------------------------------------- %
+%                       Affichage des réponses mélangées                       %
+% ---------------------------------------------------------------------------- %
+\afficheReponsesMelangees
+% ---------------------------------------------------------------------------- %
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\finFicheEntrainement                                                                        %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% ======================================================= % 
+% ============== Gestion de la compilation ============== %
+% ======================================================= % 
+\ifdefined\mainIsLoaded\else
+\printReponsesEtCorriges
+\end{document}\fi
+% ======================================================= % 
+% ======================================================= % 

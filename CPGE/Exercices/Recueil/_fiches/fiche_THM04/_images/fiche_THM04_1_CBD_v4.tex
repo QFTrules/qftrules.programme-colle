@@ -1,0 +1,18 @@
+\begin{tikzpicture} [
+	scale=\ratioScaleImage,
+	%font=\footnotesize,
+    vecteur/.style={-latex,thick},
+    liquide/.style={fill=\JRLblueC,very thin,draw=\JRLblueF},
+	]
+%	\shadedraw[color=gray,top color=white,bottom color=gray] (-2.5,5.6)--++(0,-5.6)--++(5,0)--++(0,5.6)--cycle;
+	\draw[liquide] (-2.5,5.6)--++(0,-5.6)--++(5,0)--++(0,5.6)--cycle;
+	\draw[line width=1pt] (-2.5,6.7)--++(0,-6.7)--++(5,0)--++(0,6.7);
+	\draw[vecteur] (-3,3.5)--++(0,-2.5) node[pos=0.5,left]{$\vv{g}$};
+	\draw[|<->|,shift={(-1,0)}](0,5.6)--++(0,-5.6) node[midway, left]{$h_{0}$};
+	\draw (-.6,2)node{•}node[right]{\small M$(x,y,z)$};
+	\draw[->,>=latex,shift={(3.1,0)}](0,0)node[above right=1pt]{O}--++(0,6.7)node[right]{$z$};
+	\draw[->,>=latex,shift={(3.1,0)}](0,0)--++(1,0)node[right]{$y$};
+	\draw[shift={(3.1,0)}](0,0)node[fill=white,inner sep=0]{$\odot$}node[below=2pt]{$x$};
+%	\draw[-] (0,5)--++(0,1) node[above]{liquide ($\rho$)};
+	\node[pin={[pin distance=12mm,]20:liquide $(\rho)$}] at (1.5,3){};
+\end{tikzpicture}

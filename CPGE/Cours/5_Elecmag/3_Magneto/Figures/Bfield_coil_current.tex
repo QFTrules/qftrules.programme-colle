@@ -1,0 +1,32 @@
+\documentclass[border=3pt,tikz]{standalone}
+\usepackage{tikz}
+\usepackage{auto-pst-pdf}
+\usepackage{pst-magneticfield}
+\usepackage[outline]{contour} % glow around text
+\usetikzlibrary{calc}
+\tikzset{>=latex} % for LaTeX arrow head
+\usetikzlibrary{decorations.pathreplacing}
+\usepackage{xcolor}
+\colorlet{Bcol}{violet!90}
+\colorlet{Ncol}{red!60}
+\colorlet{Scol}{blue!60}
+\tikzstyle{north}=[thick,top color=red!60,bottom color=red!90,shading angle=20]
+\tikzstyle{south}=[thick,top color=blue!60,bottom color=blue!90,shading angle=20]
+\contourlength{1.5pt}
+
+
+\begin{document}
+\def\xmax{7}
+\def\ymax{7}
+\def\H{1}
+\def\W{0.45}
+\psset{unit=0.5}
+\begin{tikzpicture}
+\clip (0,0) rectangle (\xmax,\ymax);
+\begin{pspicture*}[](-\xmax,-\ymax)(\xmax,\ymax)
+\psmagneticfield[linecolor={[HTML]{000099}},N=1,R=2,drawSelf=True](-\xmax,-\ymax)(\xmax,\ymax)
+% \psframe*[linecolor={[HTML]{3399FF}}](-7,-8)(7,-7)
+% \rput(0,-7.5){[\Cadre{\textcolor{white}{nL=8}},N=1,R=2]}
+\end{pspicture*}
+\end{tikzpicture}
+\end{document}

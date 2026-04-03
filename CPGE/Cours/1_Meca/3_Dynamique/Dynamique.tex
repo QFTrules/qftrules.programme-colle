@@ -1,0 +1,508 @@
+% displayname : Dynamique du point
+\documentclass[12pt,fancy]{cours}
+\Chapit{1}{3}
+\begin{document}
+\maketitre[***]{
+Dans ce chapitre, nous nous intéressons aux causes qui régissent le mouvement des objets, c'est-à-dire à leur dynamique. Nous rappelons les théorèmes fondamentaux de la mécanique (principe fondamental de la dynamique, théorème du moment cinétique, théorème de l'énergie cinétique et de l'énergie mécanique), qui sont valables dans un référentiel galiléen. Grâce au chapitre précédent, nous savons passer d'un référentiel à un autre ; en particulier, nous pouvons déterminer la dynamique dans un référentiel non galiléen $\Rcal'$ connaissant celle dans un référentiel galiléen $\Rcal$. Nous pouvons donc généraliser les théorèmes fondamentaux de la mécanique aux référentiels non galiléens.
+}
+{
+\item Cours Mécanique 2, 3 et 5 - 0
+\item Documents de cours Mécanique 2 - 1 à 3
+\item TD Mécanique 1, 3 et 5
+}
+
+
+
+\section{\acro{PFD}}
+
+Dans toute la suite, nous supposons que le référentiel absolu $\Rcal$ est \imp{galiléen}. Le référentiel relatif $\Rcal'$ est soit en translation, soit en rotation uniforme autour d'un axe fixe par rapport à $\Rcal$, et n'est pas galiléen dans le cas général.
+
+\subsection{Énoncé}
+% Considérons deux référentiels $\Rg$ (qui est galiléen) et $\Rcal$ (qui est quelconque).
+Soit un point matériel $M$ de masse $m$ soumis à des forces %extérieure
+de résultante $\F$. Le \ac{PFD} appliqué au point $M$ énonce que dans le référentiel galiléen $\Rcal$, on a
+\begin{equation}
+m\aR(M)=\F.
+\end{equation}
+Comment déterminer le mouvement de $M$ directement dans le référentiel non galiléen $\Rcal'$ ?
+%\begin{theorem}[\ac{PFD}]\label{form:}
+%L'accélération du point $M$ de masse $m$ vérifie dans un référentiel $\Rg$ galiléen
+%\begin{equation*}
+%m\aRef{\Rg}(M)=\F.
+%\end{equation*}
+%\end{theorem}
+On peut ramener le calcul de l'accélération dans $\Rcal'$ à celui de l'accélération de ce même point $M$ dans $\Rcal$ grâce à la loi de composition des accélérations,
+\begin{equation}
+\aR(M) = \aRp(M) + \ae + \aC.
+\end{equation}
+% où les accélérations d'entraînement $\ae$ et de Coriolis $\aC$ décrivent le mouvement relatif de $\Rcal$ dans $\Rg$.
+% \begin{remarque}
+% Si $\Rcal$ est en translation rectiligne uniforme par rapport à $\Rg$, alors $\ae=\Vec{0}$ et $\aC=\Vec{0}$. Mais alors~$\Rcal$ est aussi galiléen en vertu du principe d'inertie : le PFD s'écrit bien de la même manière dans tous les référentiels galiléens.
+% \end{remarque}
+% que l'on rappelle ici.  Ainsi, la relation fondamentale de la dynamique dans un référentiel $\mc{R}$ quelconque est reliée à celle dans un référentiel galiléen $\mc{R_{\text{g}}}$ par
+%\begin{equation}
+%m\,\Vec{a}(M)_{\mc{R_{\text{g}}}}=m\left[\aR(M)+\Vec{a_{\rm{e}}}(M)_{\mc{R/R_{\rm{g}}}}+\Vec{a_{\rm{c}}}(M)_{\mc{R/R_{\rm{g}}}}\right]=\F.
+%\end{equation}
+Il est donc possible d'utiliser le \ac{PFD} dans un référentiel non galiléen $\Rcal$ en l'écrivant sous la forme
+\begin{equation}
+%\begin{split}
+m\aRp(M)  = m\aR(M)-m\,\ae -m\,\aC = \F+\Fe+\Fc.
+%\\
+%&=\F+\Fe+\Fc
+%\end{split}
+\end{equation}
+Nous avons défini les grandeurs $\Fe$ et $\Fc$ appelés forces d'inertie.
+\begin{definition}[Forces d'inertie]\label{def:}
+Pour un point matériel $M$ de masse $m$, on définit les forces dites d'\imp{inertie} :
+ % d'\imp{entraînement} $\Fe=-m\,\ae$ et  \imp{Coriolis} $\Fc=-m\,\aC$.
+  % \begin{liste}
+  % \item
+  $$
+  \begin{cases}
+    \text{d'\imp{entraînement}} & \Fe=-m\,\ae, \\
+
+    \text{de \imp{Coriolis}} & \Fc=-m\,\aC.
+  \end{cases}
+  $$
+  % \item
+  % \end{liste}
+\end{definition}
+
+\begin{danger}
+  Attention au signe moins dans les expressions des forces d'inertie en fonction des accélérations !
+\end{danger}
+On les qualifie également de pseudo-forces, dans la mesure où
+% car ces forces ne sont pas présentes dans un référentiel galiléen, et donc s'annulent par changement de référentiel. Autrement dit, c
+ces forces ne résultent pas de l'interaction du pont matériel avec un champ ou un autre système, mais du mouvement relatif de~$\Rcal'$ par rapport au référentiel galiléen $\Rcal$. Bien que ces forces soient « fictives », elles ont un effet bien réel sur le mouvement du point matériel dans $\Rcal'$.
+%: leur effet n'est qu'une illusion liée au référentiel d'étude. Elles ne résultent donc pas d'interactions fondamentales comme les forces usuelles, qui elles restent présentes dans un référentiel galiléen. On les qualifie tout de même de pseudo-forces car tout se passe comme si elles agissaient sur le mouvement (en tout cas lorsque le référentiel d'étude est non galiléen).
+
+\begin{theorem}[\ac{PFD} en référentiel non galiléen]\label{form:PFD}
+L'accélération du point $M$ de masse $m$ dans un référentiel $\Rcal$ \imp{non galiléen} vérifie
+\begin{equation*}
+m\aRp(M)=\F + \Fe +\Fc.
+\end{equation*}
+%où $\Fe$ et $\Fc$ sont les forces d'inertie d'entraînement et de Coriolis calculées à partir du mouvement de $\Rcal$ par rapport à un référentiel galiléen $\Rg$.
+\end{theorem}
+
+%\parag{Méthode}
+\subsection{Méthode}
+
+Comment étudier un mouvement dans un référentiel non galiléen $\Rcal'$?
+
+\begin{liste}
+\item  On traite le problème dans le référentiel galiléen $\Rcal$ (donc sans forces d'inertie), on obtient l'équation du mouvement puis on utilise les formules de changement de référentiel pour décrire le mouvement dans le référentiel non galiléen. Cette approche est technique et vivement déconseillée.
+\item On traite directement le problème dans le référentiel non galiléen $\Rcal'$ en \imp{incluant les forces d'inertie} dans le bilan des forces. Cette approche est préférable et c'est celle qu'on attend de vous.
+% dans les exercices.
+\end{liste}
+Voici les expressions des forces d'inertie à retenir.
+
+\begin{theorem}[Expressions des forces d'inertie]\label{form:inertie_rota}
+%Si $\Vec{\Omega}_{\Rcal/\Rg}=\Omega \Vec{u}$ désigne le vecteur rotation (constant) de
+%Lorsque $\Rcal$ est en rotation uniforme autour d'un axe fixe par rapport à $\Rg$, la
+% Force d'inertie d'entraînement :% correspond à la force \imp{axifuge}
+\begin{liste}
+  \item Lorsque $\Rcal'$ est en \imp{translation} par rapport à $\Rcal$ :
+  $
+  \begin{cases}
+\Fe = -m \aR(O'), \\
+\Fc = \Vec{0}.
+  \end{cases}
+  $
+  \item Lorsque $\Rcal'$ est en \imp{rotation uniforme} par rapport à $\Rcal$ :
+  $
+  \begin{cases}
+\Fe = m \,\Omega^2 \Vec{HM}. \\
+\Fc = 2m \vRp(M) \pv \OR.
+  \end{cases}
+  $
+\end{liste}
+% \begin{equation*}
+% \Fe = m \,\Omega^2\Vec{HM}.
+% \end{equation*}
+% Force de Coriolis :
+% \begin{equation*}
+% \Fc = -2m \Vec{\Omega}_{\Rcal/\Rg} \pv \vR(M).
+% \end{equation*}
+\end{theorem}
+
+Dans le cas d'une rotation uniforme autour d'un axe fixe, l'expression $\Fe = m \,\Omega^2 \Vec{HM}$ est appelée force \imp{axifuge}. C'est la « force centrifuge » du langage commun. La force de Coriolis $\Fc = 2m \vRp(M) \pv \OR$ est \imp{nulle} dans les trois cas suivants :
+\begin{liste}
+  \item lorsque $\Rcal'$ est en translation ($\OR = \Vec{0}$) ;
+  \item lorsque $M$ est immobile dans $\Rcal'$ ($\vRp(M) = \Vec{0}$) ;
+  \item lorsque $M$ se déplace dans $\Rcal'$ suivant l'axe de rotation $(\Delta)$ ($\vRp(M)$ et $\OR$ colinéaires).
+\end{liste}
+
+\begin{methode}[PFD dans un référentiel non galiléen]
+  \item Définir un référentiel \imp{galiléen} $\Rcal$ adapté (terrestre, géocentrique, de Copernic).
+  \item Définir un référentiel \imp{relatif} $\Rcal'$ adapté (lié à un objet en mouvement en général).
+  \item Indiquer le \imp{mouvement} de $\Rcal'$ par rapport à $\Rcal$ (translation ou rotation uniforme).
+  \item Faire le bilan des forces s'appliquant sur $M$ en incluant les \imp{forces d'inertie} $\Fe$ et $\Fc$.
+  \item Écrire le PFD : $m\aRp(M) = \F + \Fe + \Fc$ puis projeter dans la base $(\ex',\ey',\ez')$ et résoudre.
+\end{methode}
+
+% \vspace{1em}
+\begin{exemple}{Pendule à l'équilibre dans un train}
+  \begin{minipage}{0.64\textwidth}
+    Un wagon se déplace avec une accélération constante $\Vec{a} = a\,\ex$ par rapport au sol.
+     % Soit $\Rcal$ le référentiel lié au wagon en mouvement.
+     Un pendule simple d'extrémité $M$ de masse $m$ et de longueur~$\ell$ pend au plafond du wagon en un point d'attache $O'$. Déterminer l'angle d'équilibre du pendule $\theta_0$.
+  \end{minipage}\hspace{-0.1cm}
+  \begin{minipage}{0.35\textwidth}
+    \begin{center}
+    \includegraphics[scale=1.1]{wagon.pdf}
+    \end{center}
+  \end{minipage}
+\end{exemple}
+\examplesol{
+\begin{figure}[H]
+  \centering
+  \includegraphics{wagon_soluce.pdf}
+  % \caption{}
+  % \label{fig:wagon_soluce}
+\end{figure}
+\begin{enumerate}
+  \item Référentiel $\Rcal$ terrestre, lié au sol, supposé galiléen. Base cartésienne $(\ex,\ey)$ attachée en O.
+  \item Référentiel $\Rcal'$ lié au wagon, non galiléen. Base cartésienne $(\ex'=\ex,\ey'=\ey)$ attachée en O' et polaire $(\er,\et)$ attachée en M.
+  \item $\Rcal'$ est en translation par rapport à $\Rcal$ à l'accélération $\aR(O') = \Vec{a} = a\,\ex$.
+  \item Bilan des forces : poids $\Vec{P} = m \Vec{g} = - m g \ey$, tension du fil $\Vec{T} = -T\er = T\cos \theta \,\ey - T \sin \theta \,\ex$, force d'inertie d'entraînement $\Fe = - m \aR(O') = - m a \ex$.
+  \item Le PFD à l'équilibre donne
+  \begin{equation*}
+  \Vec{P} + \Vec{T} + \Fe = \Vec{0} \Rightarrow \left\{
+  \begin{array}{cc}
+  -m a - T \sin \theta_0 & =0, \\
+  -mg +  T \cos \theta_0 & =0.
+  \end{array}\right.
+\end{equation*}
+  On en tire 
+  \eqbox{
+  \tan \theta_0 = -a/g.
+  }
+\end{enumerate}
+}
+
+\begin{exemple}{Système masse-ressort en rotation}
+  \begin{minipage}{0.59\textwidth}
+    On considère une masse $m$ assimilée à un point matériel $M$ se déplaçant sans frottement le long d'une tige. Cette tige tourne autour de l'axe vertical $(Oz)$ du référentiel terrestre supposé galiléen avec une vitesse angulaire constante $\Omega$. La masse est accrochée à un ressort de raideur $k$ et de longueur à vide $l_0$, l'autre extrémité étant fixée à l'origine $O$. Nous notons $\ell(t)=OM$ la longueur du ressort.
+  \end{minipage}
+  \begin{minipage}{0.39\textwidth}
+    \begin{center}
+      \includegraphics[scale=0.6]{masse_ressort_ref.pdf}
+    \end{center}
+  \end{minipage}
+À partir du PFD, déterminer l'équation du mouvement de $M$ le long de la tige.
+
+
+\end{exemple}
+\examplesol{
+\begin{enumerate}
+  \item Soit $\Rcal$ le référentiel du laboratoire, supposé galiléen, de base $(\ex,\ey,\ez)$.
+  \item Soit $\Rcal'$ le référentiel lié à la tige, non galiléen, de base $(\ex',\ey',\ez'=\ez)$.
+  \item $\Rcal'$ est en rotation uniforme autour de l'axe $(Oz)$ par rapport à $\Rcal$, de vecteur rotation $\OR = \Omega \ez$.
+  \item Bilan des forces : le poids $\Vec{P}=-mg\ez'$, la force de rappel du ressort $\Vec{F}=-k(\ell-l_0)\ex'$, la réaction normale de la tige $\Vec{R}=R_{y'}\ey'+R_{z'}\ez'$. Il n'y a pas de réaction tangentielle de la tige (suivant $\ex'$) en l'absence de frottement.  Les forces d'inertie en présence sont :
+   la force axifuge $\Fe = m\omega^2 \ell \ex'$ et la force de Coriolis $\Fc = 2m \vRp(M)\pv\OR  = 2m \dot{\ell} \ex' \pv \Omega \ez = -2m\Omega \dot{\ell} \ey'$.
+   \item On projette le PFD selon $\ex'$ pour éliminer la réaction du support,
+  %  \begin{equation*}
+  \eqbox{
+    m\ddot{\ell}\, \ex' = \Vec{P} + \Vec{F} + \Vec{R} + \Fe + \Fc  \Rightarrow
+    m\ddot{\ell} = -k(\ell-l_0) + m\omega^2 \ell.
+    }
+%  \end{equation*}
+   Avec $\omega_0 = \sqrt{\frac{k}{m}}$, l'équation du mouvement est
+    $$\ddot{\ell}+\left(\omega_0^2-\Omega^2\right)\ell=\dfrac{k}{m}l_0.$$
+\end{enumerate}
+\udl{Remarque :} La réaction verticale  $R_{z'}$ compense le poids $-mg$, tandis que la réaction orthoradiale $R_{y'}$ compense la force de Coriolis $-2m\Omega \dot{\ell}$. Comme la bille est astreinte à coulisser le long de la tige, la force axifuge affecte le mouvement mais pas la force de Coriolis. On verra en TD que lorsque $\Omega < \omega_0$ (rotation lente), le mouvement est sinusoïdal, mais lorsque $\Omega > \omega_0$ (rotation forte), le mouvement diverge.
+
+}
+
+\begin{experience}[Mesurer une force d'inertie]{Bille roulant sur un plateau tournant}\label{exp:plateau_tournant}
+\begin{figure}[H]
+  \centering
+  % \subfigure[]{\label{fig:}
+  \begin{minipage}{0.6\textwidth}
+    \includegraphics[width=.95\textwidth]{rest.pdf}
+  \end{minipage}
+  \begin{minipage}{0.39\textwidth}
+    (a)~Mouvement d'une bille sur un plateau immobile dans le référentiel $\Rcal$ du laboratoire.
+  \end{minipage}
+  % }
+
+  \begin{minipage}{0.6\textwidth}
+    \includegraphics[width=.95\textwidth]{trigo.pdf}
+  \end{minipage}
+  \begin{minipage}{0.39\textwidth}
+    (b)~Mouvement d'une bille sur un plateau tournant dans le référentiel $\Rcal$ du laboratoire. Le plateau tourne à une vitesse angulaire $\Vec{\Omega}_{\Rcal'/\Rcal} = \Omega \ez$ avec $\Omega >0$ (sens trigonométrique).
+  \end{minipage}
+
+  \begin{minipage}{0.6\textwidth}
+    \includegraphics[width=.95\textwidth]{horaire.pdf}
+  \end{minipage}
+  \begin{minipage}{0.39\textwidth}
+    (c)~Mouvement d'une bille sur un plateau tournant dans le référentiel $\Rcal$ du laboratoire. Le plateau tourne à une vitesse angulaire $\Vec{\Omega}_{\Rcal'/\Rcal} = \Omega \ez$ avec $\Omega < 0$ (sens horaire).
+  \end{minipage}
+  \caption{Illustration de la force de Coriolis sur un plateau tournant.}
+  \label{fig:}
+\end{figure}
+\end{experience}
+
+\section{\acro{TMC}}
+
+
+\subsection{Énoncé}
+
+Le moment cinétique du point matériel $M$ de masse $m$ par rapport au point $O$ est défini par
+\begin{equation}\label{eq:Lo}
+\Vec{L}_{O}(M)_{\Rcal}=\Vec{OM}\pv m\vR(M).
+\end{equation}
+Dans un référentiel galiléen $\Rcal$, on rappelle que le TMC s'écrit
+\begin{equation}
+\dR{\Vec{L}_{O}(M)_{\Rcal}}{t}{\Rg}=\Vec{\mc{M}_{O}}(\F).
+\end{equation}
+On peut montrer simplement que le TMC se généralise dans un référentiel non galiléen $\Rcal'$ en incluant le moment des forces d'inertie. Il faut par contre appliquer le TMC en un point fixe dans $\Rcal'$, typiquement en l'origine O'.
+
+\begin{theorem}[\ac{TMC} en référentiel non galiléen]\label{form:TMC}
+Dans un référentiel $\Rcal$ \imp{non galiléen}, le moment cinétique du point $M$ par rapport à $O$ vérifie
+\begin{equation*}
+\dR{\Vec{L}_{O'}(M)_{\Rcal'}}{t}{\Rcal'}=\Vec{\mc{M}_{O'}}(\F) + \Vec{\mc{M}_{O'}}(\Fe) + \Vec{\mc{M}_{O'}}(\Fc).
+\end{equation*}
+\end{theorem}
+
+\begin{remarque}
+Rappelons qu'il existe des forces dont la résultante est nulle, mais dont le moment par rapport à un axe n'est pas nul. Le moment associé se nomme alors \imp{couple} (homogène à des \SI{}{N.m}); ce couple intervient dans le TMC. Les exemples les plus courants sont celui du couple moteur  $\Gamma>0$ qui entraîne un bras articulé; ou encore le couple résistant $-\alpha\dot{\theta}$ issu de frottements linéaires.
+\end{remarque}
+
+Dans le cas d'un point matériel $M$ en rotation autour d'un axe fixe $\Delta$ passant par $O$, il est avantageux de projeter le TMC sur l'axe de rotation. Si $\Vec{u}_\Delta$ désigne le vecteur directeur (unitaire) de $\Delta$, le moment cinétique scalaire vaut
+\begin{equation}
+  L_\Delta = \Vec{L}_{O'}(M)_\Rcal \cdot\Vec{u}_\Delta = m r^2 \dot{\theta}.
+\end{equation}
+où $r=O'M$ et l'angle $\theta$ repère la rotation de $M$ autour de l'axe $(\Delta)$. Les moments scalaires sont définis de façon similaire par $\mc{M}_\Delta(\Vec{F}) = \Vec{\mc{M}_{O}}(\F) \cdot \Vec{u}_\Delta$. Le TMC scalaire s'écrit alors
+\begin{equation}
+\dR{L_{\Delta}(M)}{t}{\Rcal'}=\mc{M}_{\Delta}(\F) + \mc{M}_{\Delta}(\Fe) + \mc{M}_{\Delta}(\Fc).
+\end{equation}
+
+
+\subsection{Méthode}
+
+Quand faut-il préférer le TMC au PFD ? Le TMC s'utilise lorsque que le point matériel est en rotation autour d'un axe, et permet alors d'arriver rapidement à l'équation du mouvement. Le PFD conduit également à l'équation du mouvement dans cette situation, mais requiert davantage de calculs que le TMC scalaire. Par contre, le PFD permet de déterminer les forces de contact (réaction du support ou tension du fil), ce qui ne permet pas le TMC.
+
+
+\begin{exemple}{Retour sur le pendule dans un train}
+  \begin{minipage}{0.64\textwidth}
+    Peut-on retrouver l'équation du mouvement du pendule à partir du TMC ? Si oui, déterminer l'équation du mouvement sur $\theta(t)$.
+  \end{minipage}\hspace{-0.1cm}
+  \begin{minipage}{0.35\textwidth}
+    \begin{fig}
+      \centering
+      \includegraphics[scale=1.1]{wagon.pdf}
+    \end{fig}
+  \end{minipage}
+\end{exemple}
+\examplesol{
+\begin{figure}[H]
+  \centering
+  \includegraphics{wagon_soluce.pdf}
+  % \caption{}
+  % \label{fig:wagon_soluce}
+\end{figure}
+\begin{enumerate}
+  \item Référentiel $\Rcal$ terrestre, lié au sol, supposé galiléen. Base cartésienne $(\ex,\ey)$ attachée en O.
+  \item Référentiel $\Rcal'$ lié au wagon, non galiléen. Base cartésienne $(\ex'=\ex,\ey'=\ey)$ attachée en O' et polaire $(\er,\et)$ attachée en M.
+  \item $\Rcal'$ est en translation par rapport à $\Rcal$ à l'accélération $\aR(O') = \Vec{a} = a\,\ex$.
+  \item Bilan des moments scalaires suivant l'axe $(\Delta=Oy')$ avec la méthode du bras de levier : moment du poids $\mc{M}_{\Delta}(\Vec{P}) = - m g \times \ell \sin \theta$, moment de la tension du fil $\mc{M}_{\Delta}(\Vec{T}) = 0$, moment de la force d'inertie d'entraînement $\mc{M}_\Delta(\Fe) = ma \times \ell \cos \theta $.
+  \item Le TMC scalaire donne
+  \begin{equation*}
+  m \ell^2 \ddot{\theta} = - m g \times \ell \sin \theta  + ma \times R \cos \theta \Rightarrow \ddot{\theta} + \frac{g}{\ell} \sin \theta = \frac{a}{\ell} \cos \theta.
+\end{equation*}
+  % On en tire $\tan \theta_0 = -a/g$.
+  % définie sur la \Fig{wagon_soluce}.
+\end{enumerate}
+}
+
+\begin{exemple}{Retour sur le système masse-ressort en rotation}
+  \begin{minipage}{0.59\textwidth}
+    Peut-on retrouver l'équation du mouvement de $M$ le long de la tige à partir du TMC ? Si oui, déterminer l'équation du mouvement sur $\ell(t)$.
+  \end{minipage}
+  \begin{minipage}{0.39\textwidth}
+    \begin{fig}[]
+      \centering
+      \includegraphics[scale=0.6]{masse_ressort_ref.pdf}
+      % \capt{}
+    \end{fig}
+  \end{minipage}
+\end{exemple}
+% \examplesol{
+% % Non car la masse $M$ n'effectue pas de mouvement de rotation dans le référentiel $\Rcal'$ lié à la tige ! Le moment cinétique de $M$ par rapport à $O'$ dans le référentiel $\Rcal'$ est nul.
+% }
+
+\section{Approche énergétique}
+L'approche énergétique est très pratique lorsque le mouvement possède \imp{un seul degré de liberté}, ou lorsqu'il n'y a \imp{pas de dissipation}, car alors l'énergie mécanique est conservée.
+
+\subsection{\acro{TEC}}
+
+Le TEC se générale tout comme le PFD et le TMC en incluant le travail des forces d'inertie dans les travaux des forces. Le travail élémentaire d'une force $\Vec{F}$ dans un référentiel $\Rcal$ d'origine O est défini par
+\begin{equation}
+  \delta W(\F) = \F \cdot \d \Vec{OM}~\text{(en J)}.
+\end{equation}
+Dans un référentiel $\Rcal$ galiléen, le théorème de l'énergie cinétique (TEC) s'écrit
+\begin{equation}
+  \d E_{\rm c, \Rcal} = \delta W(\F),
+\end{equation}
+où $E_{\rm c, \Rcal} = \frac{1}{2} m v_{\Rcal}^2$ désigne l'énergie cinétique du point matériel $M$. Dans un référentiel non galiléen $\Rcal'$, une simplification s'opère car la force de Coriolis $\Fc = 2m \vRp(M) \pv \OR$ est orthogonale à $\vRp(M)$, si bien que
+%\begin{equation}
+$\delta W(\Fc) = 0$.
+%\end{equation}
+% \begin{prop}\label{prop:}
+La force de Coriolis ne \imp{travaille pas}. On en déduit le théorème de l'énergie cinétique (TEC) en référentiel non galiléen.
+\begin{theorem}[TEC en référentiel non galiléen]\label{form:TEC}
+Dans un référentiel $\Rcal'$ \imp{non galiléen}, la variation élémentaire d'énergie cinétique
+% $E_{\rm c, \Rcal'} = \frac{1}{2} m v_{\Rcal'}^2$
+vérifie
+\begin{equation*}
+\d E_{\rm c, \Rcal'} = \delta W(\F)+\delta W(\Fe).
+\end{equation*}
+\end{theorem}
+
+  En divisant par $\d t$ on obtient de façon équivalente le théorème de la puissance cinétique (TPC)
+\begin{equation}
+ \frac{\d E_{\rm{c},\Rcal'}}{\d t}=P(\F)+P(\Fe),
+\end{equation}
+avec $P(\F) = \F \cdot \vRp(M)$ (en $\SI{}{W}$).
+Le théorème de la puissance cinétique est utile lorsqu'on cherche un équation différentielle, ou qu'on donne directement l'expression d'une puissance dans le problème.
+
+ \subsection{Théorème de l'énergie mécanique (TEM)}
+ \label{sec:raisonnement_energetique_pour_theta_eq}
+
+\parag{Énergie potentielle axifuge} Rappelons la définition d'une force conservative.
+
+%\subsection{Forces conservatives}
+\begin{definition}[Force conservative]\label{def:}
+Une force $\Vec{F}$ est dite \imp{conservative} s'il existe une énergie potentielle $E_p(M)$ telle que
+$$\delta W(\F) = -\d E_{\rm{p}} \Leftrightarrow \F = - \grad{E_{\rm{p}}}.$$
+\end{definition}
+La relation locale $\F = - \grad{E_{\rm{p}}}$ découle de la définition du gradient, car
+\begin{equation}
+  \delta W(\F) = \F \cdot \d  \Vec{OM} = -\d E_{\rm{p}} = - \grad E_{\rm p} \cdot \d  \Vec{OM}
+\end{equation}
+pour tout déplacement élémentaire $\Vec{OM}$.
+Pour une force conservative, le travail $W_{A\rightarrow B}(\F) = \int_A^B \delta W(\F)$ fourni à un point matériel $M$ ne dépend pas de la trajectoire pour aller de la position $A$ à la position $B$, car alors
+
+ \begin{equation}
+  W_{A\rightarrow B}(\F) = E_{\rm p}(A) - E_{\rm p}(B).
+ \end{equation}
+
+Une question naturelle serait de savoir si la force d'inertie d'entraînement est conservative. La réponse est \imp{non} en général, mais \imp{oui} dans le cas particulier
+d'une \imp{rotation uniforme} par rapport à un axe fixe. En effet, on a alors
+ % : en notant $r=HM$ la distance à l'axe,
+\begin{equation}
+\begin{split}
+\delta W(\Fe) = m\Omega^2 r \,\er \cdot\d \Vec{OM} = m\Omega^2 r \d r  = \d\left(\frac{1}{2}m\Omega^2\right) = -\d E_{\rm p, axi},
+\end{split}
+\end{equation}
+avec $E_{\rm p, axi}=-\frac{1}{2}m\Omega^2 r^2$ à une constante près.
+%\end{liste}
+
+\parag{Énoncé du théorème}
+
+Il est intéressant de séparer la contribution des forces conservatives (qui dérivent d'une énergie potentielle) du reste des forces, de façon à regrouper les énergies cinétique et potentielle. La somme de ces deux énergies est appelée énergie mécanique, d'expression
+\begin{equation}
+E_{\rm{m}} = E_{\rm{c}} + E_{\rm p,tot}.
+\end{equation}
+où $E_{\rm p,tot}$ inclut éventuellement l'énergie potentielle axifuge.
+ On obtient alors le théorème de l'énergie mécanique (TEM) en référentiel non galiléen.
+ % , que nous énonçons dans les situations où la force d'inertie d'entraînement est conservative.
+ \begin{theorem}[TEM en référentiel non galiléen]\label{form:TEM}
+Dans un référentiel $\Rcal'$ non galiléen, la variation d'énergie mécanique $E_{\rm m, \Rcal'} = E_{\rm{c},\Rcal'} + E_{\rm p,\Rcal'}$  vérifie
+\begin{equation*}
+\d E_{\rm m, \Rcal'} = \delta W(\F_{\rm \!nc}),
+\end{equation*}
+où $\F_{\rm \!nc}$ désigne la résultante des forces \imp{non conservatives}. Si $\Rcal'$ est en \imp{rotation uniforme} par rapport à un axe fixe, alors $E_{\rm p,\Rcal'}$ inclut l'énergie l'\imp{énergie potentielle axifuge} $E_{\rm p, axi}=-\frac{1}{2}m\Omega^2 r^2$.
+% Elle inclut
+\end{theorem}
+
+\noindent Le théorème s'écrit également sous forme de puissance (théorème de la puissance mécanique),
+  \begin{equation}
+ \frac{\left.\d E_{\rm{m},\Rcal'}\right.}{\d t}=P(\F_{\rm \!nc}).
+\end{equation}
+En l'absence de forces non conservatives, l'énergie mécanique est conservée : $E_{\rm m,\Rcal'} = \cte$.
+
+\begin{exemple}{Retour sur le système masse-ressort en rotation}
+  \begin{minipage}{0.59\textwidth}
+    Retrouver l'équation du mouvement du point matériel M le long de la tige à partir de la conservation de l'énergie en l'absence de frottement.
+  \end{minipage}
+  \begin{minipage}{0.39\textwidth}
+    \begin{center}
+      \includegraphics[scale=0.6]{masse_ressort_ref.pdf}
+    \end{center}
+  \end{minipage}
+\end{exemple}
+\examplesol{
+\begin{enumerate}
+  \item Soit $\Rcal$ le référentiel du laboratoire, supposé galiléen, de base $(\ex,\ey,\ez)$.
+  \item Soit $\Rcal'$ le référentiel lié à la tige, non galiléen, de base $(\ex',\ey',\ez'=\ez)$.
+  \item $\Rcal'$ est en rotation uniforme autour de l'axe $(Oz)$ par rapport à $\Rcal$, de vecteur rotation $\OR = \Omega \ez$.
+  \item Bilan des énergies : énergie cinétique $E_{c,\Rcal'} = \frac{1}{2} m v_{\Rcal'}^2 = \frac{1}{2} m \dot{\ell}^2$ énergie potentielle du ressort $E_{p,F} = \frac{1}{2}k(\ell-l_0)^2$, énergie potentielle axifuge $E_{\rm p, axi} = -\frac{1}{2}m\Omega^2 \ell^2$.
+  L'énergie potentielle de pesanteur est constante et la réaction normale de la tige $\Vec{R}$ ne travaille pas.
+  \item La conservation de l'énergie mécanique en l'absence de frottement donne
+   % la force axifuge $\Fe = m\omega^2 \ell \ex'$ et la force de Coriolis $\Fc = 2m \vRp(M)\pv\OR  = 2m \dot{\ell} \ex' \pv \Omega \ez = -2m\Omega \dot{\ell} \ey'$.
+   % \item On projette le PFD selon $\ex'$ pour éliminer la réaction du support,
+   \begin{equation*}
+   E_{\rm m,\Rcal'} = \frac{1}{2} m \dot{\ell}^2 + \frac{1}{2}k(\ell-l_0)^2 -\frac{1}{2}m\Omega^2 \ell^2 = \cte.
+ \end{equation*}
+ En dérivant par rapport au temps, on retrouve l'équation du mouvement.
+\end{enumerate}
+}
+
+\begin{experience}[Mesurer une force d'inertie]{Perle sur un cerceau en rotation}\label{exp:}
+  Une perle, assimilée à un point matériel M, est assujettie à se déplacer le long d'un cerceau de rayon $R$  en rotation uniforme à la vitesse angulaire $\omega$ autour de l'axe vertical $(Oz)$. On se place dans le référentiel lié au cerceau $\Rcal_{\rm{C}}$ de repère $(C,\ex,\ey,\ez)$ et de base polaire $(\er,\et)$. Le référentiel $\Rcal_{\rm{C}}$ n'est pas galiléen, mais le référentiel du laboratoire $\Rcal$ est supposé l'être. On note $\theta$ l'angle entre la verticale et le vecteur position de la perle.
+  \begin{fig}[label]
+    \centering
+    % \begin{subfig}[label][0.48]
+      \includegraphics[width=0.5\textwidth]{perle_cerceau.pdf}
+    % \end{subfig}
+    % \begin{subfig}[label][0.48]
+      % \includegraphics[width=\textwidth]{perle_cerceau_bilan_des_forces.pdf}
+    % \end{subfig}
+  \end{fig}
+    % \capt{}
+    \begin{quest}
+      \item	La force d'inertie d'entraînement $\Fe$ est-elle conservative ici ? Si oui, exprimer l'énergie potentielle $E_{\rm p,axi}$ associée.
+      \item  Déterminer l'énergie potentielle totale $E_{\rm p,\Rcal_{\rm C}}$. En déduire l'angle $\theta$ correspondant aux positions d'équilibres de la perle, et analyser leur stabilité en fonction de la vitesse angulaire $\omega$.
+    \end{quest}
+  \end{experience}
+  \examplesol{
+    \begin{quest}
+      \item	Le référentiel $\Rcal_{\rm{C}}$ est en rotation uniforme par rapport à $\Rcal$ autour de l'axe $(Oz)$, donc la force d'inertie d'entraînement est conservative. L'énergie potentielle associée est 
+      \eqbox{
+        E_{\rm p, axi} = -\frac{1}{2}m\omega^2 r^2.
+      }
+      \item L'énergie potentielle totale, en prenant en compte la pesanteur, s'écrit 
+      $$
+      E_{\rm p,\Rcal_{\rm C}} = -mgz -\frac{1}{2}m\omega^2 r^2  = -mgR\cos\theta -\frac{1}{2}m\omega^2 R^2\sin^2\theta.
+      $$
+      Les positions d'équilibre $\theta_{\rm eq}$ sont obtenues en annulant la dérivée de $E_{\rm p,\Rcal_{\rm C}}$ par rapport à $\theta$, soit 
+      $$
+      \frac{\d E_{\rm p,\Rcal_{\rm C}}}{\d \theta}(\theta_{\rm eq}) = mgR\sin\theta_{\rm eq} - m\omega^2 R^2\cos\theta_{\rm eq}\sin\theta_{\rm eq} = mR^2 \sin\theta_{\rm eq}\left(\omega_0^2 -  \omega^2 \cos \theta_{\rm eq} \right) = 0,
+      $$
+      où $\omega_0^2 = g/R$.
+      Les positions d'équilibres vérifient soit $\sin \theta_{\rm eq} = 0$, soit $\omega^2 = \omega_0^2 \cos \theta_{\rm eq}$, et donc 
+      \eqbox{
+        \theta_{\rm eq} = \begin{cases}
+          \theta_0 = 0, \text{ ou }\\
+          \theta_\pm = \pm \arccos\left(\frac{\omega^2}{\omega_0^2}\right).
+        \end{cases}      
+      }
+      La stabilité des positions d'équilibre est déterminée par la dérivée seconde de $E_{\rm p,\Rcal_{\rm C}}$ par rapport à $\theta$. On trouve 
+      $$
+        \ddd{E_{\rm p,\Rcal_{\rm C}}}{\theta}(\theta_{\rm eq}) = mgR\cos\theta_{\rm eq} - m\omega^2 R^2(\cos^2\theta_{\rm eq} - \sin^2\theta_{\rm eq}).
+      $$
+      On trouve 
+      $$
+      \ddd{E_{\rm p,\Rcal_{\rm C}}}{\theta}(\theta_0) = mgR - m\omega^2 R^2  = m R^2(\omega_0^2-\omega^2).
+      $$
+      La position  verticale $\theta_0$ est donc stable si la vitesse angulaire est nulle ou inférieure à $\omega_0$. Elle est instable sinon. Pour les positions $\theta_\pm$, on trouve
+      % $$
+      % \ddd{E_{\rm p,\Rcal_{\rm C}}}{\theta}(\theta_\pm) = mgR\cos\theta_\pm - m\omega^2 R^2(\cos^2\theta_\pm - \sin^2\theta_\pm) = m R^2(\omega_0^2-\omega^2\cos\theta_\pm).
+      % $$
+    \end{quest}
+  }
+
+\end{document}

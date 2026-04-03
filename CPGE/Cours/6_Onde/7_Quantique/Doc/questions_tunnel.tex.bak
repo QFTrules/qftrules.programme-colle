@@ -1,0 +1,104 @@
+\documentclass[12pt]{article}
+ 
+\usepackage[margin=1in]{geometry} 
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[autolanguage]{numprint}
+\usepackage{lmodern}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{cases}
+\usepackage{mathrsfs}
+\usepackage{textcomp}
+\usepackage{stmaryrd}
+\usepackage{moreverb}
+\usepackage{listings}
+\usepackage{color}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage{graphicx}
+\usepackage{fancyvrb}  % Pour le verbatim
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\usepackage{esint}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{lipsum}
+\usepackage{chngcntr}
+\usepackage{changepage}
+\usepackage{pdfpages}
+\usepackage[shortlabels]{enumitem}
+\usepackage{dsfont}
+\usepackage{nicefrac}
+\usepackage{csquotes}
+\usepackage[version=4]{mhchem}
+\usepackage{cancel}
+\usepackage{eurosym}
+
+\usepackage{siunitx}
+\sisetup{
+    inter-unit-product = \ensuremath{{}\!\cdot\!{}},
+    detect-all,
+    separate-uncertainty = true,
+    exponent-product = \times,
+    space-before-unit = true,
+    output-decimal-marker = {,},
+    multi-part-units = brackets,
+    range-phrase = --,
+    % allow-number-unit-breaks,
+    list-final-separator = { et },
+    list-pair-separator = { et },
+    abbreviations
+}
+
+\input{../../Template/Commandes.sty}
+\begin{document}
+ 
+% --------------------------------------------------------------
+%                         Start here
+% --------------------------------------------------------------
+
+\lhead{PC Théophile Gautier}
+%\chead{L.Villa}
+\rhead{Étude documentaire: applications de l'effet tunnel}
+
+\paragraph{Microscopie à effet tunnel}
+\begin{enumerate}
+\item Citer deux autres exemples en physique où il peut exister une onde évanescente. 
+\item Par un calcul d'ordre de grandeur, justifier la phrase du texte: \textit{l'effet tunnel n'est possible que dans le domaine microscopique, pour des particules extrêmement légères et de très faibles barrières de potentiel}.
+\item Que représente la couche d'air qui sépare la pointe conductrice de l'échantillon ?
+\item Pourquoi est-il important que \textit{la pointe ne comporte que quelques atomes à son extrémité} ? 
+\end{enumerate}
+
+\paragraph{Modèle de Gamow de la radioactivité alpha}
+\begin{enumerate}
+\item En s'aidant du tableau périodique des éléments, écrire la réaction de désintégration $\alpha$ d'un noyau de radium 226. 
+\item À partir des masses des noyaux (on rappelle que la masse d'un nucléon vaut environ \SI{1,6e-27}{kg}), en déduire l'énergie libérée par cette transformation nucléaire sous la forme $E=\Delta m \times c^2$ (relation d'Einstein). La calculer d'abord en \SI{}{J} puis en \SI{}{MeV}. Pourquoi cette énergie correspond-elle à l'énergie cinétique de la particule $\alpha$? 
+\item On suppose le noyau de radium sphérique, de rayon $R=r_{0}A^{1/3}$ avec $r_0=\SI{1,2e-15}{m}$. En déduire une estimation de $R$ pour le noyau de radium. 
+\item À l'aide du tableau ci-dessous, vérifier la loi de Geiger-Nuttal. En gardant les valeurs numériques de $\tau_{1/2}$ en \SI{}{s} et celles de $E$ en \SI{}{MeV}, en déduire une estimation des constantes $A$ et $B$ par une régression linéaire (avec Python ou à la calculatrice).
+
+\begin{center}
+\begin{tabular}{c|c|c}
+Noyau & $\tau_{1/2}$ (\SI{}{s}) & $E$ (\SI{}{MeV}) \\[1mm]
+\hline\hline
+\\[-4mm]
+$^{212}_{83}\text{Bi}$ & \SI{4,0e4}{} & \SI{6,2}{} \\ [1mm]
+$^{212}_{84}\text{Po}$ & \SI{3,0e-7}{} & \SI{9,0}{} \\ [1mm]
+$^{215}_{85}\text{At}$ & \SI{1,0e-4}{} & \SI{8,1}{} \\ [1mm]
+$^{222}_{86}\text{Ra}$ & \SI{3,3e5}{} & \SI{5,6}{} \\ 
+\end{tabular} 
+\qquad
+\begin{tabular}{c|c|c}
+Noyau & $\tau_{1/2}$ (\SI{}{s}) & $E$ (\SI{}{MeV}) \\[1mm]
+\hline\hline
+\\[-4mm]
+$^{226}_{88}\text{Ra}$ & \SI{5,4e10}{} & \SI{4,9}{} \\ [1mm]
+$^{232}_{90}\text{Th}$ & \SI{4,4e17}{} & \SI{4,0}{} \\ [1mm]
+$^{236}_{92}\text{U}$ & \SI{7,2e14}{} & \SI{4,4}{} \\ [1mm]
+$^{242}_{96}\text{Cm}$ & \SI{1,4e7}{} & \SI{6,2}{} \\ 
+\end{tabular} 
+\end{center}
+\item Estimer la demi-vie du radium 226 prédite par le modèle de Gamow et comparer à la valeur expérimentale figurant dans le tableau ci-dessus. Commenter. 
+\end{enumerate}
+
+\end{document}

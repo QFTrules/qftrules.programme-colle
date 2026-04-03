@@ -1,0 +1,43 @@
+\shorthandoff{:!} %règle un problème de compatibilité avec babel
+%
+\begin{tikzpicture}[scale=0.65,rotate=0]
+	% Dimensions du repere
+	\def\xlrg{12} \def\ylrg{5}
+	%
+	% Tracé de l'axe log base 10
+	\foreach \ee in{0,1}{
+	\foreach \x in {1,2,...,10} {
+		\draw[very thin,color=gray!45] ({\xlrg/2*ln(\x*10^\ee)/ln(10)-\xlrg},0)--({\xlrg/2*ln(\x*10^\ee)/ln(10)-\xlrg},-\ylrg);
+	};
+};
+	%tracé de la légende pour les puissances de 10
+	\foreach \ee in{0,1}{
+		\foreach \x in {10}
+		{\draw[thin,color=black]({\xlrg/2*ln(\x^(\ee+1))/ln(10)-\xlrg},-\ylrg)--({\xlrg/2*ln(\x^(\ee+1))/ln(10)-\xlrg},0) node [above] {\scriptsize $10^{\ee}$};
+		};
+	};
+	%\node at (-\xlrg,-\ylrg-0.35) {\scriptsize $10^{-2}$};
+	% Grille lineaire
+	\draw [xstep=\xlrg,ystep=.2,gray,very thin] (-\xlrg,-\ylrg) grid (0,0); 
+	\foreach \ee in{-8,-6,-4,...,0}{\draw [color=black](0,{-\ylrg+\ee*5/10+5})(-\xlrg,{-\ylrg+\ee*5/10+5}) node [left] {\scriptsize $\ee$};
+};
+	\draw [xstep=\xlrg,ystep=1,color=black] (-\xlrg,-\ylrg) grid (0,0); 
+	%
+	% Légende des axes
+	\draw[->,>=stealth] (-\xlrg,0) -- (0.5,0) node[right] {$x=\frac{\omega}{\omega_0}$};
+	\draw[->,>=stealth] (-\xlrg,-\ylrg) -- (-\xlrg,0.5) node[above] {$G_{dB}$};
+
+
+%% représentation du gain
+	\foreach \ee in{0}{
+		\draw [thick ,domain=1:1.75,samples=200] plot
+		({\xlrg/2*ln(\x*10^\ee)/ln(10)-\xlrg/2},{5*(-2-10*ln((1+2^2*(\x*10^\ee-1/(\x*10^\ee))^2))/ln(10))/10});
+		0};
+%
+	\foreach \ee in{-1}{
+		\draw [thick ,domain=5.8:10,samples=100] plot
+	({\xlrg/2*ln(\x*10^\ee)/ln(10)-\xlrg/2},{5*(-2-10*ln((1+2^2*(\x*10^\ee-1/(\x*10^\ee))^2))/ln(10))/10});
+		0	};
+
+\end{tikzpicture}
+\shorthandon{:!}

@@ -1,0 +1,592 @@
+% displayname : Référentiel terrestre
+\documentclass[12pt,fancy]{cours}
+\Chapit{1}{4}
+\begin{document}
+\maketitre[***]{
+Dans le chapitre précédent, nous avons toujours supposé le référentiel terrestre galiléen dans nos exemples. Nous mettons maintenant en évidence des manifestations du caractère non galiléen du référentiel terrestre $\mathcal{R}_{\rm T}$. Certaines résultent du mouvement de rotation de la Terre autour de l'axe Nord-Sud dans le référentiel géocentrique $\mathcal{R}_{\rm G}$, qui peut alors être considéré comme galiléen : différence entre pesanteur et gravitation, déviation vers l'est, mouvements atmosphériques, etc.  D'autres manifestations proviennent du caractère non galiléen du référentiel géocentrique $\mathcal{R}_{\rm G}$, qui est en translation par rapport au référentiel de Copernic~$\mathcal{R}_{\rm C}$. Ce mouvement est à l'origine des marées océaniques.
+%À cause de la rotation de la Terre sur elle-même, des écarts au caractère galiléen du référentiel terrestre (interprétés par l'effet des pseudo-forces d'inertie d'entraînement et de Coriolis) peuvent être observés (distinction poids/gravitation, déviation vers l'Est etc.). Dans un second temps, nous abordons à l'aide d'une approche documentaire le fait que le référentiel géocentrique $\mathcal{R}_{\rm{G}}$ ne soit pas galiléen, puisque la Terre décrit une translation quasi-circulaire dans le plan de l'écliptique par rapport au référentiel de Copernic. Il en résulte un terme gravitationnel différentiel (dit de marée) entre un point situé à la surface de la Terre et son centre, responsable des marées océaniques.
+}
+{
+\item Cours Mécanique 2, 3 et 5 - 0, Statique des fluides - 0
+\item Documents de cours Mécanique 2 - 1 à 3
+\item TD Mécanique 1, 3 et 5, Statique des fluides
+}
+
+
+
+\section{Mouvement du référentiel terrestre $\RT$ dans le référentiel géocentrique $\RG$}
+%Dans toute cette partie, on étudie le mouvement dans le référentiel terrestre $\mathcal{R}_{\rm{T}}$ par rapport au référentiel géocentrique $\mathcal{R}_{\rm{G}}$ que l'on supposera galiléen (ce qui revient à négliger le terme de marée, qui sera abordé en Sec.~\ref{sec:étude_marées}). Ceci revient à négliger le mouvement quasi-circulaire de la Terre autour du Soleil, et donc à considérer des échelles de temps négligeables devant l'année.\footnote{En revanche on s'autorise à étudier des mouvements sur une durée de l'ordre de la journée, puisqu'on veut mettre en évidence le caractère non galiléen du référentiel terrestre dû à la rotation de la Terre sur elle-même. Ce sera le cas du pendule de Foucault par exemple.}
+
+
+
+\subsection{Effet de la force d'entraînement : pesanteur ou gravitation ?}
+\label{sec:pesanteur_gravité}
+
+\parag{Position du problème}
+Nous supposons souvent au laboratoire que le référentiel terrestre $\RT$ est galiléen, ce qui est une approximation. Nous allons voir différents effets liés au caractère non galiléen de $\RT$. Dans cette section, nous supposons que le référentiel géocentrique $\Rcal = \RG$ est galiléen, tandis que le référentiel $\Rcal' = \RT$ est non galiléen en raison la rotation de la Terre sur elle-même, dont la période est le jour sidéral $T_{\rm s}=\SI{23}{h}\,\SI{56}{min}$.
+
+% . Cette approximation est pertinente lorsqu'on étudie des mouvements sur une durée négligeable devant une année, mais pouvant être de l'ordre du .
+\begin{prop}\label{prop:}
+  Le référentiel terrestre $\RT$ est en \imp{rotation uniforme} autour de l'axe Nord-Sud par rapport au référentiel géocentrique $\RG$ à la vitesse angulaire
+  \begin{equation*}
+  \Omega=\dfrac{2\pi}{T_{\rm{s}}} = \SI{7.3e-5}{rad.s^{-1}}.
+\end{equation*}
+\end{prop}
+
+% Il est donc non galiléen.
+Nous orientons l'axe $(Oz_G)$ du référentiel géocentrique $\RG$ suivant l'axe de rotation de la Terre, de sorte que le vecteur rotation s'écrive $\vv{\Omega}_{\RT/\RG}=\Omega \Vec{e}_{\!z_G}$, voir \Fig{réf_terrestre_géocetrique}. Le mouvement d'un point matériel $M$ de masse $m$ situé à la surface de la Terre est donc affecté par deux forces d'inertie :
+\begin{liste}
+  \item la force d'entraînement $\Fe$, qui intervient dans la pesanteur (\Sec{pesanteur_gravité}).
+  \item la force de Coriolis $\Fc$, qui intervient dans divers phénomènes comme la déviation vers l'est (\Sec{dev_est}) et la dynamique atmosphérique (\Sec{atmos}).
+\end{liste}
+ 
+Dans cette section nous choisissons comme repère du référentiel terrestre $\RT$ l'origine $T$ comme centre de la Terre tandis que les axes $(Oz_G)$ et $(Oz)$ sont confondus, comme sur les \Fig{réf_terrestre_géocetrique} et \Fig{poids_gravité}.
+ % axifuge et la force de Coriolis ; la première contribue à la pesanteur en plus de la force de gravitation terrestre, tandis que la seconde est responsable de la déviation vers l'est et des mouvements atmosphériques à grande échelle.
+Avec ce choix des axes, le vecteur rotation $\vv{\Omega}_{\RT/\RG}$ est donné par
+\eqbox{
+  \vv{\Omega}_{\RT/\RG} = \Omega \ez.
+}
+\begin{figure}[H]
+  \centering
+  {\hfill
+  \subfigure[]{\label{fig:réf_terrestre_géocetrique}
+  \includegraphics[width=0.4\textwidth]{ref_terrestre_3.pdf}}\hfill
+  \subfigure[]{\label{fig:poids_gravité}
+  \includegraphics[scale=1.1]{poids_2.pdf}}\hfill}
+  \caption{(a) Le référentiel terrestre $\mathcal{R}_{\rm{T}}$ est centré sur un point $M$ à la surface de la Terre. Il décrit en première approximation une rotation uniforme à la vitesse angulaire $\Omega$ autour d'un axe incliné de \SI{23}{\degree} par rapport au plan de l'écliptique (celui de l'orbite terrestre autour du Soleil). Le référentiel terrestre $\mathcal{R}_{\rm{T}}$ est à distinguer du référentiel géocentrique $\RG$, centré sur le centre de la Terre $T$, qui a des axes fixes par rapport au référentiel de Copernic. (b) Notations pour la distinction entre le poids et la force d'attraction gravitationnelle. Attention l'angle $\alpha$ est considérablement exagéré pour la visibilité du schéma.}
+  \end{figure}
+  
+\parag{Notion de pesanteur}
+
+
+%\parag{Champ de pesanteur}
+% \parag{Définition de la pesanteur}
+Soit $H$ le projeté orthogonal du point $M$ sur l'axe de rotation de la Terre, et $\vv{\mathcal{G}}_{\rm{T}}(M)$ le champ gravitationnel de la Terre en $M$. Imaginons le point matériel $M$ en chute libre, et laissons pour l'instant de côté la force de Coriolis. La force d'entraînement a pour expression $\Fe = m\Omega^2\vv{HM}$. Le PFD appliqué à $M$ s'écrit dans le référentiel terrestre,
+\begin{equation}
+ m\aRef{\RT}(M)= \F_{\rm\!G} + \Fe = m\vv{\mathcal{G}}_{\rm{T}}(M)+m\Omega^2\vv{HM} = m \Vec{g}(M).
+ \end{equation}
+\begin{definition}[Champ de pesanteur]\label{def:g}
+On appelle \imp{champ de pesanteur} le champ vectoriel fonction de la position 
+\begin{equation*}
+\vv{g}(M)=\vv{\mathcal{G}}_{\rm{T}}(M)+\Omega^2\vv{HM},
+\end{equation*}
+somme 
+du champ gravitationnel terrestre $\vv{\mathcal{G}}_{\rm{T}}(M)$ et de l'accélération axifuge $\Omega^2 \Vec{HM}$.
+\end{definition}
+\noindent On définit alors le \imp{poids} d'un objet comme la force exercée par le champ de pesanteur,
+% \begin{equation}
+\eqbox[]{
+  \vv{P}=m\vv{g}(M).
+  }
+% \end{equation}
+Dans le poids d'un objet, on tient déjà compte de la force d'inertie d'entraînement, et donc (en partie) du caractère non galiléen du référentiel terrestre ! Cette contribution est plutôt faible en comparaison du terme gravitationnel, mais a plusieurs effets importants. La force d'entrainement modifie :
+\begin{liste}
+  \item la \imp{norme} du champ de pesanteur, $g(M)$. Comme la distance $HM$ dépend de la latitude $\lambda$, le champ de pesanteur $g(M)$ en dépend également.
+  \item la \imp{direction} du champ de pesanteur $\Vec{g}(M)$. En effet, les vecteurs $\Vec{\mc{G}_T}(M)$ et $\Omega^2\Vec{HM}$ ne sont pas colinéaires.
+\end{liste} 
+On définit la \imp{verticale} comme la direction donnée par un fil à plomb tendu à la surface de la Terre, i.e. la direction du vecteur $\Vec{g}(M)$. La verticale ne passe donc pas par le centre T de la Terre !
+% La contribution inertielle ne modifie pas seulement la norme du champ de pesanteur, mais aussi sa direction. La verticale au point $M$, définie comme 
+
+
+\begin{exemple}{Propriétés du champ de pesanteur terrestre}
+  On assimile la Terre à une boule homogène de masse $M_{\rm T}$ et de rayon $R_{\rm T}$.
+\begin{quest}
+  \item Déterminer le rapport sans dimension $a = \frac{\Omega^2 R_T}{G_T}$. En déduire comment se comparent les ordres de grandeur du champ de gravitation $\vv{\mathcal{G}}_{\rm{T}}$ et de l'accélération axifuge $\Omega^2\vv{HM}$. 
+  \item À quelle latitude $\lambda$ la pesanteur est-elle la plus forte ? la plus faible ? Le montrer qualitativement, puis quantitativement en déterminant le champ de pesanteur $g(\lambda)$ en fonction de la latitude $\lambda$.
+  \item En utilisant la loi des sinus $\frac{\sin \alpha}{a} = \frac{\sin \beta}{b}$, estimer l'angle $\alpha$ entre la verticale en $M$ et la direction radiale, qui pointe vers le centre T de la Terre, en fonction de $\lambda$. \AN.
+\end{quest}
+\end{exemple}
+\examplesol{
+\setcounter{quest}{0}
+\begin{quest}
+  \item
+% \parag{Ordre de grandeur et dépendance avec la latitude}
+ En ordre de grandeur, nous avons
+$\mathcal{G}_{\rm{T}} \simeq \frac{GM_{\rm T}}{R_{\rm T}^2} \simeq \SI{9.8}{m.s^{-2}}$
+pour le champ de gravitation, et
+$\Omega^2 HM \leq \Omega^2 R_{\rm T} \simeq \SI{3e-2}{m.s^{-2}}$
+pour l'accélération axifuge. Le rapport entre ces deux termes vaut donc au maximum
+\eqbox{a = \frac{\Omega^2 R_{\rm T}}{\mathcal{G}_{\rm{T}}} = \frac{\Omega^2 R_T^3}{G M_T} \sim \SI{3e-3}{}.}
+\item La force d'entrainement est nulle au pôle ($\lambda = \SI{90}{°}$) est maximale de sens opposé à $\Vec{\mc{G}_T}$ à l'équateur ($\lambda = \SI{0}{°}$). À l'ordre dominant, seule la composante verticale de l'accélération axifuge modifie le champ de pesanteur, d'où l'on tire 
+$$
+g(M) \simeq \mathcal{G}_{\rm{T}} - \Omega^2 HM \cos \lambda = \mathcal{G}_{\rm{T}} - \Omega^2 R_{\rm T} \cos ^2\lambda  = \mathcal{G}_{\rm{T}} \left(1 - a \cos^2\lambda\right).
+$$
+En définissant $g_e = g(\lambda=\SI{0}{°}) = \mathcal{G}_{\rm{T}} (1 - a) = \SI{9.78}{m.s^{-2}}$ le champ à l'équateur, on trouve 
+\eqbox{
+g(\lambda) = g_e \left(1 + a \sin^2\lambda\right).
+}
+Cette fonction est représentée ci-dessous.
+\begin{fig}[]
+  \centering
+  \includegraphics[scale=1]{gravity.pdf}
+  % \caption{Évolution de l'accélération de la pesanteur $g$ avec la latitude.}
+  % \label{fig:lat}
+  \end{fig}
+  %%%%%%%%%%%%%
+\item On peut estimer l'angle $\alpha$ entre la verticale et la direction qui pointe vers le centre de la Terre (\Fig{poids_gravité}). La loi des sinus donne
+\begin{equation}
+\frac{mg}{\sin\lambda}=\frac{m\Omega^2 HM}{\sin\alpha} \qquad\Rightarrow\qquad \sin\alpha = \frac{R_{\rm{T}}\Omega^2\cos\lambda\sin\lambda}{g} \simeq a \cos\lambda\sin\lambda
+\end{equation}
+Comme $\alpha \ll 1$, on peut simplifier en 
+\eqbox{
+\alpha \simeq a \cos\lambda\sin\lambda.
+}
+Pour $\lambda=\SI{45}{\degree}$, on obtient $\alpha\simeq \SI{0.5}{\degree}$.
+\end{quest}
+}
+%\parag{Dépendance avec la latitude}
+
+\parag{Variations locales du champ de pesanteur}
+La \imp{gravimétrie} est la discipline qui étude la mesure locale du champ de pesanteur.
+Pour les mesures précises du champ de pesanteur local, il faut aussi tenir compte d'autres effets.
+\begin{liste}
+  \item La Terre n'est ni sphérique, ni homogène. En effet, la Terre est aplatie aux pôles et renflée à l'équateur : la différence de rayon entre le pôle et l'équateur est d'environ \SI{21}{km}. La Terre peut en première approximation être modélisée par un ellipsoïde de révolution, d'axe Nord-Sud, de rayon 
+  \begin{equation}
+    r(\lambda) = R_{\rm T}({1 - b \sin^2\lambda}),
+  \end{equation}
+  où $R_{\rm T} = \SI{6.37e6}{m}$ est le rayon équatorial, et $b = 1/298$ est le paramètre d'aplatissement. Une des causes de cet \imp{aplatissement} est précisément la force d'entraînement, qui tend à éloigner la roche du centre de la Terre au niveau de l'équateur.
+  \item La \imp{topographie} de la Terre influe aussi sur le champ de pesanteur. Par exemple, la présence de montagnes modifie légèrement la norme et la direction de la verticale. Un ordre de grandeur de cette variation est de $1/2000$ sur la norme et $\SI{10}{''}$ sur la direction.
+\end{liste}
+% la non-sphéricité de la Terre : le champ gravitationnel est plus intense aux pôles car la Terre y est aplatie d'environ \SI{21}{km}. Les irrégularités de la surface de la Terre et les inégalités dans la distribution de masse à l'intérieur de la Terre conduisent aussi à des variations locales du champ de pesanteur ; la gravimétrie est la discipline qui étudie ces variations. 
+% L'évolution de l'intensité de la pesanteur $g=\norm{\Vec{g}(M)}$ en fonction de la latitude $\lambda$ est représentée sur la \Fig{lat}.
+
+
+
+\docu{La naissance de la gravimétrie}{BUP}{Vol. 105, février 2011}{P. \textsc{Deparis} et H. \textsc{Legros}}.
+
+\subsection{Effet de la force de Coriolis : déviation vers l'Est}
+\label{sec:dev_est}
+
+% La pesanteur ne prend pas en compte l'accélération de Coriolis, qui dépend de la vitesse et non de la position. La force de Coriolis a un effet observable sur la dynamique dans le référentiel terrestre sur des échelles de temps ou de distance suffisamment grandes.
+\parag{Position du problème}
+Intéressons-nous maintenant à l'effet de la force de Coriolis sur un objet en chute libre. Pour ce problème nous choisissons un autre repère pour le référentiel terrestre $\RT$, représenté sur la \Fig{deviation_est}. Nous négligeons pour simplifier la déviation entre la verticale et la direction radiale, qui pointe vers le centre de la Terre.
+% et notons $(Oz)$ cette direction commune.
+ La base cartésienne $(O,\ex,\ey,\ez)$ de $\RT$ est alors choisie telle que l'origine O soit à la surface de la Terre et :
+\begin{liste}
+  \item $\ex$ est horizontal (tangent par rapport à la surface terrestre) et pointe vers le sud ;
+  \item $\ey$ est horizontal (tangent par rapport à la surface terrestre) et pointe vers l'est ;
+  \item $\ez$ est vertical (normal par rapport à la surface terrestre).
+\end{liste}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{coriolis.pdf}
+  \caption{Un objet de masse $m$ est lâché sans vitesse initiale du haut d'une tour de hauteur $h$. On représente aussi le repère cartésien utile pour l'étude: $\ex$ est dirigé vers le Sud, $\ey$ vers l'Est et $\ez$ selon la verticale ascendante en $M$.}
+  \label{fig:deviation_est}
+  \end{figure}
+Étudions la chute libre d'un point matériel $M$ situé à la latitude $\lambda$ dans le référentiel terrestre. Avec ce choix de base, $\RT$ est en mouvement de rotation uniforme autour de l'axe nord-sud, de vecteur rotation 
+% \begin{equation}
+\eqbox[]{
+  \vv{\Omega}_{\RT/\RG} = \Omega (- \cos \lambda \ex + \sin \lambda \ez).
+  }
+% \end{equation}
+% suivant la méthode vue au chapitre précédent.
+
+% \begin{enumerate}
+  % \item Soit $\RG$ le référentiel géocentrique, supposé galiléen.
+  % \item Soit $\RT$ le référentiel terrestre, défini sur la \Fig{deviation_est}.
+   
+
+
+
+  
+  \parag{Étude qualitative du mouvement}
+  Il est possible de prédire la direction de la force de Coriolis et donc la direction de la déviation de la chute libre. Pour cela, représentons l'objet en chute libre, à la vitesse quasi-verticale $\Vec{v} \sim -v \ez$ avec $v>0$. Les vecteurs vitesse et rotation sont représentés sur la \Fig{deviation_est} dans le plan $(x,z)$. La force de Coriolis est de même direction et sens que $\Vec{v} \pv \OR$, i.e. suivant $+\ey$. On en déduit que l'objet est dévié vers l'est. Le raisonnement est valable dans les deux hémisphères.
+
+  \begin{prop}[Déviation vers l'est]\label{prop:}
+    Un objet en \imp{chute libre} sur Terre est dévié par la force de Coriolis vers l'\imp{est} quelque soit l'hémisphère.
+  \end{prop}
+  \begin{fig}[deviation_est]
+    \centering
+    \begin{subfig}[label][0.4]
+      \includegraphics[width=\linewidth]{deviation_est_nord.pdf}
+    \end{subfig}\hfill
+    \begin{subfig}[label][0.4]
+      \includegraphics[width=\linewidth]{deviation_est_sud.pdf}
+    \end{subfig}
+    \capt{Déviation vers l'est. (a) Dans l'hémisphère nord. (b) Dans l'hémisphère sud.}
+  \end{fig}
+
+  \parag{Étude quantitative du mouvement}
+  Le bilan des forces comprend :
+  \begin{liste}
+    \item le poids $\Vec{P} = m \Vec{g} = - m g \ez$, qui inclut la force de gravitation et la force d'entrainement !
+    \item la force de Coriolis
+    \begin{equation}
+    \Fc = 2m\vRef{\RT}(M)\pv\vv{\Omega}_{\RT/\RG} =  2m \begin{pmatrix}
+      \dot{x} \\
+      \dot{y} \\
+      \dot{z}
+    \end{pmatrix}\pv \begin{pmatrix}
+      -\Omega\cos\lambda \\
+      0 \\
+      \Omega\sin\lambda
+    \end{pmatrix} = 2m\Omega\begin{pmatrix}
+      \sin\lambda \, \dot{y} \\
+      -\sin\lambda \, \dot{x} -\cos\lambda \, \dot{z} \\
+      \cos\lambda \, \dot{y}
+    \end{pmatrix}.
+    \end{equation}
+  \end{liste}  
+ Le PFD appliqué à l'objet dans $\RT$ donne $m\aRef{\RT}(M)= \Vec{P} + \Fc$, ce qui donne les équations du mouvement
+%  \boxed{
+\begin{subequations}
+  % \begin{gather}
+% \begin{equation}
+  \label{eq:système_exact_déviation_est}
+  % $$\left\{
+    \begin{align}[left=\empheqlbrace]
+    \ddot{x}&=+2\Omega\sin\lambda\,\dot{y},\label{eq:x}\\
+    \ddot{y}&=\JRouge{-2\Omega\sin\lambda\,\dot{x}}-2 \Omega\cos\lambda\,\dot{z},\label{eq:y}\\
+    \ddot{z}&=-g+\JRouge{2\Omega\cos\lambda\,\dot{y}}.\label{eq:z}
+  \end{align}
+  % \right.
+% \end{equation}
+% \end{gather}
+\end{subequations}
+%  }
+% \end{enumerate}
+% On munit l'espace d'un repère cartésien $(x,y,z)$ comme représenté sur la Fig.~\ref{fig:deviation_est}. Le PFD appliqué au point $M$ dans le référentiel terrestre donne, en supposant le champ de pesanteur uniforme,
+
+
+% \parag{Équation approchée de la trajectoire}
+Ce système d'équations couplées est difficile à résoudre exactement, mais on peut trouver une solution approchée. On s'attend en effet à ce que l'effet de la force de Coriolis soit faible. On commence donc par résoudre l'équation en l'absence de force de Coriolis, i.e. c'est-à-dire en négligeant $2\Omega \cos \lambda \,\dot{y} \ll g$ dans l'\Eq{z}. On suppose qu'on lâche l'objet sans vitesse initiale du haut d'une tour de hauteur $h$, ce qui donne
+
+% $\Omega \dot{y}$ soit petit devant $g$. On a donc en première approximation $\ddot{z}=-g$, ce qui donne
+\begin{equation}\label{eq:zddot}
+  \ddot{z} \simeq -g \Rar \dot{z}(t) \simeq -gt \Rar \boxed{z(t) \simeq -\frac{1}{2}gt^{2} + h.}
+\end{equation}
+Il s'agit de l'équation de la chute libre. On néglige ensuite $2\Omega\sin\lambda\,\dot{x}\ll 2 \Omega\cos\lambda\,\dot{z}$ dans l'\Eq{y}, ce qui est légitime car $\dot{x} \ll \dot{z}$.
+On a alors
+\begin{equation}\label{eq:ydev}
+  \ddot{y} \simeq -2\Omega \cos\lambda\,\dot{z} \simeq 2\Omega \cos\lambda\,gt \Rar \dot{y}(t) \simeq \Omega\cos\lambda\, gt^2 \Rar
+\boxed{y(t) \simeq \frac{\Omega}{3}\cos\lambda\, gt^{3}.}
+\end{equation}
+On constate que $y(t)>0$ pour toute latitude $\lambda$, ce qui correspond à une \imp{déviation vers l'Est}.
+\begin{remarque}
+  Aux pôles, $\cos \lambda = 0$, mais alors $\dot{x}=0$ et $\dot{y}=0$ en l'absence de vitesse initiale, et donc l'\Eq{ydev} reste valable.
+\end{remarque}
+
+\begin{exemple}{Expérience de \textsc{Reich}}
+En 1833, F. \textsc{Reich} observa une déviation horizontale au point de chute $d=\SI{2.8}{cm}$ pour des boules lachées dans un puits de profondeur $h=\SI{158}{m}$ à une latitude $\lambda=\SI{45}{\degree}$. Confronter cette mesure aux résultats de l'\Eq{ydev}.
+% puis Hall en 1902 et Flammarion en 1903 avec des expériences plus précises).
+\end{exemple}
+\examplesol{
+Connaissant le temps de chute $t_{\rm{c}}\simeq\sqrt{2h/g}$, on en déduit la déviation horizontale au point de chute
+\begin{equation}
+ d = y(t_{\rm{c}})\simeq \frac{\Omega}{3}\cos\lambda\, g\left(\frac{2h}{g}\right)^{3/2} \Rar \boxed{d = \frac{2\Omega}{2} \sqrt{\frac{2h^3}{g}}\cos \lambda.}
+ \end{equation}
+ On trouve $d_{\rm attendu} = \SI{3.2}{cm}$.
+La valeur attendue est cohérente avec la valeur mesurée.
+% On observe donc une déviation vers l'Est quel que soit l'hémisphère. Cette déviation est faible (on trouve $y(t_{\rm{c}})\simeq\SI{1.4}{cm}$ pour $h=\SI{100}{m}$ avec $\lambda=\SI{45}{\degree}$) mais mesurable (
+}
+
+\begin{methode}[Étudier le mouvement dans le référentiel terrestre]
+  \item	Définir le référentiel géocentrique $\RG$, supposé galiléen.
+  \item	Définir le référentiel terrestre $\RT$, non galiléen, et le vecteur rotation $\Vec{\Omega}_{\rm \RT/\RG}$ de la Terre :
+  % On pourra définir deux points de vue :
+  \begin{liste}
+    \item point de vue \imp{local} : origine O à la surface de la Terre, avec  $\ez$ vertical ; ou...
+    \item point de vue \imp{global} : origine T au centre de la Terre, avec $\ez$ suivant l'axe nord-sud.
+  \end{liste}
+  \item Bilan des forces : poids $\Vec{P}$ (gravitation $\F_{\!g}$ $+$ force axifuge $\Fe$) et force de Coriolis $\Fc$.
+  \item Prédire le sens de la force de Coriolis sur un schéma local.
+  \item Utiliser le PFD, TMC ou TEM pour déterminer l'équation du mouvement.
+\end{methode}
+
+% \subsection{Dynamique de l'atmosphère}
+% \label{sec:atmos}
+
+% \parag{Équilibre d'un fluide}
+% Dans un fluide, on distingue deux types de forces : les forces dont l'origine est extérieure au fluide comme la pesanteur ; et les forces de contact entre particules de fluide que l'on appelle forces internes. À l'équilibre, les forces internes sont proportionnelles à la surface sur laquelle elles s'exercent et orientées perpendiculairement à la surface sur laquelle elles s'exercent.
+% \begin{equation}
+%  \Vec{\d F} = -p(M)\,\dS,
+% \end{equation}
+% où $\Vec{\d S}$ représente le vecteur élément de surface dirigé vers l'extérieur de la particule de fluide par convention. Le coefficient de proportionnalité $p(M)$ s'appelle la \imp{pression} hydrodynamique. Vous avez vu en statique des fluides que cette la résultante de ces force pressantes peut être représenté par une force volumique
+% \begin{equation}
+% \Vec{f_{\rm p}} = -\Grad p.
+% \end{equation}
+% L'équilibre des forces $\Vec{0}=\Vec{f_{\rm p}} + \Vec{f}$ dans un fluide au repos conduit à l'équation de la statique des fluides.
+% \begin{theorem}[Équation fondamentale de la statique des fluides]\label{form:stat_flu}
+% La pression $p$ d'un fluide \imp{au repos} soumis à des forces volumiques extérieures de résultante $\Vec{f}$ vérifie
+% \begin{equation*}
+% \Grad p = \Vec{f}.
+% \end{equation*}
+% % \begin{equation*}
+% % \Vec{0} = -\Grad p + \Vec{f}.
+% % \end{equation*}
+% \end{theorem}
+
+
+% De même que le PFD, l'équation de la statique des fluides s'applique dans un référentiel non galiléen, pourvu que l'on ajoute les forces d'inertie. Dans le cadre du programme, seule la démonstration de l'expression de la force d'inertie d'entraînement volumique est à connaître.
+% \begin{methode}[Déterminer l'expression d'une force d'inertie volumique]
+%   \item Écrire l'expression de la force exercée sur une particule de fluide de masse élémentaire $\d m$.
+%   \item Diviser par le volume $\d V$ pour faire apparaître la masse volumique $\rho$.
+% \end{methode}
+
+% Raisonnons sur une particule de fluide de masse $\d m$  et de volume $\d V$ situé au point $M$ dans un référentiel $\Rcal'$ non galiléen. Le fluide est de masse volumique $\rho(M)$ en ce point. La force d'inertie d'entraînement qui agit sur cette particule a pour expression
+% \begin{equation}
+% \Vec{\d F_{\rm e}} = -\d m\, \ae = -\rho(M) \ae \d V.
+% \end{equation}
+% On identifie en facteur de $\d V$ l'expression recherchée de la force volumique d'inertie d'entraînement.
+
+% \begin{theorem}\label{form:}
+% La force d'\imp{inertie d'entraînement volumique} dans un fluide de masse volumique $\rho$ s'écrit
+% \begin{equation*}
+% \Vec{f_{\rm e}} = -\rho \,\Vec{a_{\rm e}}.
+% \end{equation*}
+% \end{theorem}
+
+
+% \begin{exemple}{Le vase en rotation}
+% \begin{minipage}{0.59\textwidth}
+% On met en rotation à la vitesse angulaire $\omega$ un vase contenant un liquide soumis au champ de pesanteur terrestre $\Vec{g}$. En raisonnant dans le référentiel $\Rcal'$ lié au vase tournant, déterminer l'équation de la surface libre du liquide.\\
+
+% \textsc{Données} : $\Grad p = \dr{p}{r} \er + \frac{1}{r}\dr{p}{\theta} \et +  \dr{p}{z} \ez $.
+% On pourra s'aider du Formulaire B pour résoudre les équations aux dérivées partielles.
+% \end{minipage}
+%   \begin{minipage}{0.39\textwidth}
+%     \includegraphics{vase_rotation.pdf}
+%   \end{minipage}
+% \end{exemple}
+% \examplesol{
+% Soit $\Rcal$ le référentiel du laboratoire, supposé galiléen. Soit $\Rcal'$ le référentiel lié au réservoir tournant, auquel on attache une base cylindrique $(\er,\et,\ez)$. $\Rcal'$ est en rotation uniforme autour de l'axe $(Oz)$ fixe dans $\Rcal$, de vecteur rotation $\OR = \omega \ez$. Le liquide est au repos dans $\Rcal'$ et soumis aux forces volumiques extérieures : poids volumique $\Vec{f_{\rm g}} = -\rho g \ez$ et force axifuge $\Vec{f_{\rm e}} = \rho \omega^2 r \er$. L'équation fondamentale de la statique des fluides donne
+% $$
+% \Grad p = \dr{p}{r} \er + \frac{1}{r}\dr{p}{\theta} \et +  \dr{p}{z} \ez	  = - \rho g \ez + \rho\omega^2 r \er \Rar
+% \begin{cases}
+%   \dr{p}{z} & = - \rho g,\\
+%    \frac{1}{r}\dr{p}{\theta}  & = 0,\\
+% \dr{p}{r} & = \rho\omega^2 r,
+% \end{cases}
+% $$
+% et donc $p(r,z)$ est indépendant de $\theta$.
+% La projection selon $\ez$ donne l'expression classique de la pression hydrostatique :
+% $
+% p(z,r) = f(r) - \rho g z,
+% $
+% où ici $f(r)$ est une fonction de $r$. En injectant cette expression dans la projection selon $\er$, on trouve
+% $$
+% \dfrac{\partial p}{\partial r}  = f'(r) = \rho\omega^2 r \Rightarrow f(r) = A + \dfrac{1}{2}\rho \omega^2 r^2.
+% $$
+% La constante $A$ s'obtient par exemple à partir de la condition aux limites $p(0,h) = A- \rho g h = p_0$, où $h$ est la hauteur de liquide au niveau de l'axe, ce qui donne $A = p_0 + \rho g h$ et $p(r,z) = p_0 + \dfrac{1}{2}\rho \omega^2 r^2 + \rho g (h-z)$.
+% La surface libre du liquide vérifie $p(r,z) = p_0$, ce qui entraîne
+% \eqbox{z=h + \frac{\omega^2}{2g} r^2.}
+% Il s'agit d'une paraboloïde de révolution d'axe $(Oz)$.
+% }
+
+
+%  \parag{Mouvements atmosphériques} Dans l'atmosphère, les masses nuageuses sont essentiellement à l'équilibre mécanique selon la verticale puisque le poids est compensé par la variation de pression avec l'altitude. En revanche, les masses nuageuses en mouvement subissent des forces horizontales : d'une part la force de Coriolis, et d'autre part la force pressante dirigée des hautes vers les basses pressions (opposée au gradient de pression). Considérons une zone de dépression locale, où les forces de pressions attirent les masses d'air vers le centre. Si la force de Coriolis est suffisamment forte (il faut une grande masse d'air et un vent violent), les masses d'air s'enroulent et créent un tourbillon stable: un cyclone. Dans l'hémisphère Nord, où la force de Coriolis dévie la trajectoire vers la droite dans le sens du mouvement, le cyclone tourne dans le sens antihoraire autour de la dépression (Fig.~\ref{fig:coriolis_cyclones}). Dans le cas d'une zone de surpression, il se forme un anticyclone, qui tourne (toujours dans l'hémisphère Nord) dans le sens opposé, c'est-à-dire horaire. Dans l'hémisphère Sud, tous les sens de rotation sont inversés, parce que la force de Coriolis dévie vers la gauche. \\
+
+% \docu{Aller en ligne droite sur une planète qui tourne : la force de Coriolis}{Pêches et Océans, Canada}{}{D. \textsc{Gilbert}}
+
+% \begin{figure}[H]
+%   \centering
+%   \subfigure[]{
+%   \includegraphics[width=0.52\textwidth]{cyclone.pdf}}
+%   \subfigure[]{
+%   \includegraphics[width=0.39\textwidth]{cyclone_sally2020_USA.png}
+%   }
+%   \caption{(a) Sens de rotation antihoraire d'un cyclone autour d'une dépression dans l'hémisphère Nord. [Tiré de femto-physique.fr]. (b) Image satellite du cyclone Sally (2020) proche de la Floride (États-Unis) [Wikipédia].}
+%   \label{fig:coriolis_cyclones}
+% \end{figure}
+
+
+
+
+\section{Mouvement du référentiel géocentrique $\RG$ dans le référentiel de Copernic $\RC$}
+ \label{sec:étude_marées}
+  Nous proposons une explication simple du phénomène des \imp{marées}, fondée sur une théorie statique. On modélise la Terre par une boule solide dont la surface est uniformément recouverte par une couronne d'eau au repos. %Nous allons aussi négliger la rotation de la Terre sur elle-même.
+
+\docu{Les forces de marées}{Pour la Science}{extrait d'un cours de l'ENSTA Bretagne}{G. Roullet}
+ % \subsection{Théorie statique des marées}
+
+
+\subsection{Forces de marée}
+
+\parag{Définition}
+Étudions le mouvement d'une masse ponctuelle $m$ en un point M de la surface de la Terre dans le référentiel géocentrique $\RG$, d'origine le centre de la Terre T. Cette fois-ci, ce référentiel est supposé \imp{non galiléen} en raison de son mouvement de \imp{translation} elliptique par rapport au référentiel de Copernic $\RC$.
+Les forces d'inertie se réduisent à la force d'inertie d'entraînement d'expression
+% \begin{equation}
+\eqbox[]{
+  \Fe = -m\Vec{a}_{\RC}(T).
+  }
+  % Nous souhaitons l'accélération $\Vec{a}_{\RC}(T)$ puis déterminer la résultante des forces s'exerçant sur M. 
+
+  Ce mouvement de translation provient des forces gravitationnelles exercées par les autres astres du système solaire, voir \Fig{RC}. Notons $\Vec{\mc{G}}_{i}$ le champ gravitationnel produit par un astre $i$ du système solaire (Soleil, Lune, planète, etc.). et $\Vec{F}_{\! \rm g}$ la force gravitationnelle.
+    Le PFD appliqué à la \imp{Terre} de centre T et de masse $M_{\rm T}$ dans $\RC$ \imp{galiléen} permet d'exprimer l'accélération d'entraînement
+    \begin{equation}
+      M_{\rm T} \Vec{a}_{\RC}(T) = \Vec{F}_{{\rm g, tot}} = M_{\rm T} \sum_{i}\vv{\mc{G}}_{i}(T) \Rightarrow   \Vec{a}_{\RC}(T)
+       = \sum_{i}\vv{\mc{G}}_{i}(T).
+    \end{equation}
+
+    \begin{figure}[H]
+      \centering
+      \includegraphics[scale=1]{referentiels_RC.pdf}
+      \caption{Mouvement de translation elliptique du référentiel géocentrique $\RG$, d'origine le centre T de la Terre, par rapport au référentiel de Copernic $\RC$, d'origine le centre C du système solaire.}
+      \label{fig:RC}
+    \end{figure}
+    \begin{prop}[Mouvement de $\RG$ par rapport à $\RC$]\label{prop:}
+  Le référentiel géocentrique $\RG$ est en \imp{translation elliptique} par rapport à $\RC$ à une accélération
+  $$\Vec{a}_{\RC}(T) = \sum_{\rm{astres~} i} \vv{\mc{G}}_{i}(T).$$
+\end{prop}
+
+Le point matériel M est soumis à l'ensemble du champ de gravitation des astres $i$, et au champ de gravitation de la Terre $\Vec{\mc{G}}_{\rm T}$. Le PFD appliqué au \imp{point $M$} dans le référentiel \imp{non galiléen $\RG$} donne
+%Cette masse n'est soumise qu'aux forces gravitationnelles et aux pseudo-forces d'inertie. Le PFD s'écrit
+\begin{equation}
+\label{eq:mvt_terre_Rg}
+m\vv{a}_{\RG}(M)=m\vv{\mathcal{G}}_{\rm{T}}(M)+ m \sum_{i}\vv{\mc{G}}_{i}(M) + \Fe = m\vv{\mathcal{G}}_{\rm{T}}(M)+ m \sum_{i}\vv{\mc{G}}_{i}(M) - m\Vec{a}_{\RC}(T).
+\end{equation}
+En substituant l'expression de l'accélération $\Vec{a}_{\RC}(T)$ de l'\Eq{mvt_terre_Rg}, on trouve
+\begin{equation}
+\label{eq:marre}
+m\vv{a}_{\RG}(M)= m\vv{\mathcal{G}}_{\rm{T}}(M)+ \JRouge{m \sum_{i}\left[ \vv{\mc{G}}_{i}(M) - \vv{\mc{G}}_{i}(T) \right]}.
+\end{equation}
+Le terme de champ différentiel (en rouge) est dû à la présence des astres et est appelée \imp{force de marée}.
+\begin{theorem}[Forces de marée]\label{form:}
+  La résultante dans $\RG$ de l'action gravitationnelle des astres sur un point M de masse $m$ au voisinage de la Terre est appelé \imp{force de marée}  $
+\Vec{F}_{\rm{m}} = m \Vec{C}_{\rm{m}}(M)$, où le champ de marée est d'expression
+$$
+\Vec{C}_{\rm{m}}(M)  =\sum_{\rm{astres~} i}\left[ \vv{\mc{G}}_{i}(M) - \vv{\mc{G}}_{i}(T) \right].
+$$
+\end{theorem}
+
+\parag{Propriétés du champ de marée}
+D'après le théorème de Newton, le champ gravitationnel produit par un astre \imp{sphérique homogène} de centre C$_i$ et de masse $M_i$ est le même que celui  produit par un point ponctuel de masse $M_i$ situé en C$_i$. Il a donc pour expression 
+\begin{equation}
+  \Vec{\mc{G}}_i(M) = -GM_i\,\frac{\Vec{C_iM}}{C_iM^3}.
+\end{equation}
+On en déduit sous cette hypothèse l'expression du champ de marée 
+\eqbox[]{
+  % \begin{equation}
+  \Vec{C}_{\rm{m}}(M)\, = -G\sum_{\rm{astres~} i}M_i\left[\frac{\Vec{C_iM}}{C_iM^3} - \frac{\Vec{C_iT}}{C_iT^3}\right].
+  % \end{equation}
+  }
+La direction du champ de marée s'obtient par construction graphique, comme sur la \Fig{marées_terme_grav_différentiel} sur l'exemple de la Lune. Nous avons représenté le champ de marée en quatre points particuliers.
+\begin{liste}
+  \item Au zénith $\rm Z$ et au nadir $\rm N$, alignés avec $\rm T$ et $\rm L$ le champ de marée est colinéaire à l'axe Terre-Lune $(TL)$, et dirigé vers l'extérieur de la Terre.
+  \item Aux points transverses $\rm A$ et $\rm B$, le champ de marée est en très bonne approximation perpendiculaire à l'axe $(TL)$, et dirigé vers l'intérieur de la Terre.
+\end{liste}
+
+Estimons l'ordre de grandeur du champ de marée. Soit~$R_{\rm T}$ le rayon terrestre et $D_i=C_iM = \norme{\Vec{C_i M}}$ la distance de la Terre à l'astre $i$. 
+%  par un développement limité au $1^{\rm er}$ ordre. 
+Soit $\rm M$ un point aligné avec le centre $\rm T$ de la Terre et le centre ${\rm C}_i$ de l'astre, par exemple le zénith $\rm Z$.  Alors on peut estimer la norme du champ marée en écrivant
+\begin{equation}
+\label{eq:terme_de_marée_DL}
+\begin{split}
+ C_{{\rm m}, i}(Z) = \norm{\vv{\mathcal{G}}_{i}(Z)-\vv{\mathcal{G}}_{i}(T)} =\frac{GM_i}{(D_i-R_{\rm{T}})^2}-\frac{GM_i}{D_i^2}=\frac{GM_i}{D_i^2}\left[\frac{1}{(1-\frac{R_{\rm{T}}}{D_i})^2}-1\right] \\ \simeq \frac{GM_i}{D_i^2}\left(1- 2\frac{R_{\rm{T}}}{D_i}-1\right)
+\end{split}
+\end{equation}
+par un DL en $R_{\rm{T}}/D_i$ à l'ordre $1$. En effet, l'astre le plus proche est la Lune, pour laquelle le rapport des distances vaut $R_{\rm{T}}/D_{\rm L} \simeq 1/60$.
+ On trouve un ordre de grandeur du champ de marée zénithal de l'astre $i$, 
+\eqbox{
+  C_{{\rm m}, i}(Z)  \simeq \frac{2G M_i R_{\rm{T}}}{D_i^3}.
+}
+
+\begin{figure}[H]
+  \centering
+  \subfigure[]{\label{fig:}
+  \includegraphics[scale=0.9]{marees_Gi.pdf}
+  }\hfill
+  \subfigure[]{\label{fig:}
+  \includegraphics[scale=0.9]{marees_deltaGi.pdf}
+  }
+  \caption{(a) Champ gravitationnel local $\Vec{\mc{G}}_L$ créé par la Lune (flèches rouges) en différents points de la Terre : zénith Z, nadir N, points transverses A et B. (b) Champ de marée, i.e. champ gravitationnel différentiel entre un point $\rm M$ et le centre de la Terre~$\rm T$ (flèches vertes). La force de marée étire la Terre dans la direction de l'astre et la comprime dans la direction transverse, formant ainsi deux bourrelets océaniques au zénith et au nadir. Le cercle pointillé représente la surface des océans s'il n'y avait pas de forces de marée.}
+  \label{fig:marées_terme_grav_différentiel}
+  \end{figure}
+
+\noindent Quelques ordres de grandeurs des champs de marées zénithaux $C_{{\rm m}, i}(Z)$ sont indiqués dans le Tab.~\ref{tab:champ_grav_astres}. On remarque que les deux contributions principales sont de loin celles de la \imp{Lune} en premier lieu, et du \imp{Soleil} ensuite.
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|l||c|c|c|c|}
+\hline
+Astre $i$   & Soleil & Lune & Jupiter & Mars \\
+\hline
+\hline
+$M_i$ ($\SI{}{kg}$) & $\SI{2e30}{}$ & $\SI{7e22}{}$ & $\SI{2e27}{}$ & $\SI{6e23}{}$ \\
+\hline
+$D_i$ ($\SI{}{m}$) & $\SI{1e11}{}$ & $\SI{4e8}{}$ & $\SI{6e11}{}$ & $\SI{8e10}{}$ \\
+\hline
+$\mathcal{G}_{i}(T)$ ($\SI{}{m.s^{-2}}$) & $\SI{1e-2}{}$ & $\SI{3e-5}{}$ & $\SI{4e-7}{}$ & $\SI{6e-9}{}$ \\
+\hline
+$C_{{\rm m}, i}(Z)$ ($\SI{}{m.s^{-2}}$) & \JBleu{$\SI{5e-7}{}$} & \JBleu{$\SI{1e-6}{}$} & $\SI{8e-12}{}$ & $\SI{1e-12}{}$ \\
+\hline
+\end{tabular}
+\caption{Masse $M$, distance à la Terre $D$, champ gravitationnel $\mathcal{G}(T)$ et champ différentiel de marée zénithal $C_{{\rm m}, i}(Z)$ de quelques astres $i$ du système solaire. On donne $G = \SI{6.67e-11}{SI}$ pour la constante universelle de la gravitation. La Lune a une influence double de celle du Soleil sur les marées, les autres influences étant négligeables.}
+\label{tab:champ_grav_astres}
+\end{table}
+
+\begin{remarque}
+Même si les marées proviennent du caractère non galiléen de $\RG$, il ne s'agit pas d'une force d'inertie. La force de marée est la somme d'une \guill{vraie} force (la force de gravitation des astres) et d'une force d'inertie (la force d'inertie d'entraînement). De plus, même si l'effet le plus visible des marées est l'existence des marées océaniques, la force de marée est de même intensité pour $\SI{1}{kg}$ d'eau et $\SI{1}{kg}$ de roche ! La croûte terrestre se déplace aussi sous l'effet des marées, mais beaucoup moins que les océans.
+\end{remarque}
+
+%Or puisqu'on néglige la rotation de la Terre sur elle-même et que $\mathcal{R}_{\rm{G}}$ est en translation par rapport à $\mathcal{R}_{\rm{C}}$, on peut réécrire l'accélération d'entraînement à l'aide de la formule de changement de référentiel comme $\vv{a_{\rm{e}}}(P)_{\mathcal{R}_{\rm{G}}}=\vv{a_{\rm{e}}}(T)_{\mathcal{R}_{\rm{c}}}$ et celle de Coriolis comme $\vv{a_{\rm{c}}}(P)_{\mathcal{R}_{\rm{G}}}=0$. Or l'accélération du centre de la Terre par rapport au référentiel de Copernic s'exprime simplement en appliquant le PFD à la Terre dans le référentiel de Copernic
+%\begin{equation}
+%M_{\rm{T}}\,\vv{a_{\rm{e}}}(T)_{\mathcal{R}_{\rm{C}}} = M_{\rm{T}}\sum_{i}\vv{\mathcal{G}}_i(T),
+%\end{equation}
+%où la somme sur $i$ ne contient pas l'attraction gravitationnelle de la Terre (puisqu'on fait le bilan des forces extérieures au système!).
+%Finalement on peut mettre l'Éq.~\eqref{eq:mvt_terre_Rg} sous la forme
+%\begin{equation}
+%m\vv{a}(P)_{\mathcal{R}_{\rm{G}}}=m\vv{\mathcal{G}}_{\rm{T}}(P)+m\sum_{i}\left[\vv{\mathcal{G}}_{i}(P)-\vv{\mathcal{G}}_{i}(T)\right].
+%\end{equation}
+
+
+
+
+%Les ordres de grandeur donnés en Tab.~\ref{tab:champ_grav_astres} montrent que le terme différentiel de marée le plus important est dû à la Lune, mais même pour celle-ci, cet effet est de 7 ordres de grandeurs plus faible que le champ gravitationnel créé par la Terre au point $P$, qui vaut environ $\mathcal{G}_{\rm{T}}(P)\simeq\SI{10}{m.s^{-2}}$. Ceci justifie de négliger le rôle des autres astres dans le bilan des forces.
+
+\subsection{Les marées océaniques}
+
+
+L'effet le plus notable des forces de marée est son influence sur les océans, conduisant au phénomène des  \imp{marées océaniques}. On voit la Fig.~\ref{fig:marées_terme_grav_différentiel} que le champ différentiel de marée tend à étirer la Terre dans la direction de l'astre attracteur et à la comprimer dans la direction transverse. Les océans se déforment sous ces forces de marée, formant ainsi deux \imp{bourrelets océaniques} aux antipodes dans l'axe Terre-Lune. En conséquence, la hauteur d'eau de l'océan varie selon plusieurs périodicités suivant l'échelle de temps, comme présentes sur les graphes de la \Fig{maree_periode}. Cette \imp{théorie statique des marées} permet d'expliquer qualitativement les variations de hauteur d'eau observées.
+
+\begin{figure}[H]
+  \centering
+  \subfigure[]{\label{fig:marre}
+  \includegraphics[height=5cm]{maree_jour.jpg}
+  }
+  \subfigure[]{\label{fig:marnage}
+  \includegraphics[height=5cm]{maree_mois.png}
+  }
+  \caption{(a) Variation de la hauteur de l'océan à Saint-Malo le $1^{\rm er}$ juin 2019. (b) Variation de l'amplitude de marée à Saint-Malo en juin et juillet 2019. On observe des marées de vives-eaux lorsque la Lune est pleine ou nouvelle, et des marées de mortes-eaux lorsqu'elle est en quartier.}
+  \label{fig:maree_periode}
+\end{figure}
+\begin{liste}
+\item \Fig{marre} : on observe environ \imp{deux marées} (hautes et basses) par jour ($\SI{24}{h}$) dans la plupart des régions du globe en raison de la rotation de la Terre par rapport aux bourrelets océaniques : la marée est \imp{semi-diurne}. En effet, la Lune est quasi-immobile
+sur quelques heures dans $\RG$, donc les bourrelets océaniques au zénith $\rm Z$ et au nadir $\rm N$ également, tandis que $\RT$ effectue un tour complet dans $\RG$ en $\SI{24}{h}$. Un point donné de d'océan passe donc deux fois par un bourrelet océanique en une rotation de la Terre. 
+
+\begin{remarque}
+  Les marées se décalent de $\SI{50}{min}$ tous les jours en raison de la révolution de la Lune autour de la Terre en $T_L = \SI{27,3}{jours}$. En un jour, les bourrelets avancent donc d'une fraction $T_s/T_L \simeq 1/27$ de tour.
+\end{remarque}
+
+\item \Fig{marnage} : on observe deux marées de \imp{vives-eaux} (amplitude de marée, ou marnage, important) et deux marées de \imp{mortes-eaux} (amplitude de marée faible) par lunaison ($\SI{29.5}{jours}$), en raison de l'influence de Soleil. Lors de la pleine lune ou de la nouvelle lune, les contributions des bourrelets solaires et lunaires s'ajoutent et la marée est importante. Lors d'un quartier de lune, les contributions des bourrelets solaires et lunaires se compensent partiellement, et la marée est faible.
+\begin{remarque}
+  Comme le champ de marée horizontal $C_{{\rm m},i}(A)$ est plus petit que le champ de marée zénithal $C_{{\rm m},i}(Z)$ d'un $2$, on voit que $C_{{\rm m},L}(A) \simeq C_{{\rm m},S}(Z)$, et donc les forces de marée se compensent dans la direction au zénith du Soleil lorsque la Lune est en quadrature.
+\end{remarque}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth]{marees_vive_morte.pdf}
+  \caption{(a) Lorsque la Lune et le Soleil sont alignés avec la Terre (pleine lune et nouvelle lune), les champs de marées s'ajoutent et le marnage est importante : ce sont les marées de vives eaux. Lorsque la Lune est transverse à l'axe Terre-Soleil (premier et dernier quartier), les champs de marées se compensent partiellement et le marnage est faible : on parle de marées de mortes-eaux. Le champ de marée dû au Soleil (flèches oranges) contribue pour environ moitié moins que celui dû à la Lune (flèches vertes).}
+  \label{fig:marées_vives_mortes_eaux}
+  \end{figure}
+   %%%%%%%%%%%%%%%%%%%%%%%
+
+%, on parle de marées de vives eaux. Mais au cours de la rotation de la Lune autour de la Terre, l'axe Terre-Lune peut devenir orthogonal à l'axe Terre-Soleil et les effets de marées se compensent partiellement: on parle des marées de mortes eaux (Fig.~\ref{fig:marées_vives_mortes_eaux}).
+%
+\item Dans certaines régions du globe, il existe aussi une composante diurne
+\item D'autres effets statiques interviennent. On observe une variation de l'amplitude des marées au fil des mois  parce que l'amplitude dépend aussi de la distance Terre-Lune $D_L$. Or, la trajectoire de la Lune dans le référentiel terrestre est une ellipse de périgée $\SI{356000}{km}$ et d'apogée $\SI{406000}{km}$, soit une variation de distance d’amplitude $\Delta D_L = \SI{5e4}{km}$. Comme la force de marée est proportionnelle à $D_L^{-3}$, l'amplitude des marées varie de $3\frac{\Delta D_L}{D_L} \simeq \SI{4}{\%}$.
+
+
+% Cette distance intervient au cube dans l'expression de la force de marée de sorte que l'influence de sa variation est importante sur l'amplitude observée des marées.
+%%
+%\item Enfin si on observe un décalage des marées au fil des jours, c'est parce que la Lune tourne autour de la Terre en 27 jours et 7 heures environ. Il en résulte un décalage de l'horaire des marées de 24h/27.3 ce qui fait environ \SI{50}{min} (ou \SI{25}{min} entre deux marées hautes successives).
+\end{liste}
+
+
+
+
+%
+% \subsection{Théorie dynamique des marées}
+% La théorie statique des marées donnée précédemment permet de comprendre qualitativement le phénomène observé des marées, mais elle ne permet pas de rendre compte quantitativement des observations expérimentales. En particulier, le décalage temporel des marées n'est pas de \SI{50}{min}, d'abord parce que le Soleil joue aussi un rôle dans le décalage temporel mais surtout parce qu'il faut un certain temps pour déplacer une masse d'eau aussi importante que l'océan. La prise en compte du temps de réponse de l'océan par rapport au temps caractéristique de l'excitation créée par le terme de marée est essentielle. De plus, l'amplitude des marées dépend de la géométrie de la côte qui agit comme un oscillateur et qui peut entrer en résonance pour produire des marées plus importantes. C'est pourquoi les marées en mer Méditerranée sont nulles (à cause de la présence du détroit de Gibraltar), alors que celles de la baie du Mont-Saint-Michel atteignent couramment des dénivellations d'une dizaine de mètres.
+
+\end{document}

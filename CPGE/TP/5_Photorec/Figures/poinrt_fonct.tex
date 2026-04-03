@@ -1,0 +1,30 @@
+﻿
+\input{tikz.tex}
+\begin{document}
+
+\begin{tikzpicture}[scale=1.2]
+    
+% caractéristique courant-tension de la photodiode pour divers flux lumineux
+    % \draw (0,0) rectangle (1.5,1) coordinate (A) node[midway] {photodiode};
+        
+        % axes
+        \draw[->] (-3,0) -- ++(6,0) node[right] {$U$ (V)};
+        \draw[->] (0,-1) -- (0,3) node[above] {$I$ (mA)};
+        
+        % courbes
+        % \draw[thick,JoliBleu] plot[smooth,samples=200,domain=-3:2.5] (\x,{0.2*(exp(\x)-0)})  ;
+        \draw[thick,JoliVert] plot[smooth,samples=200,domain=-3:2.5] (\x,{0.2*(exp(\x)-2)}) node[above] {$I_{\rm d}(U)$} ;
+        % \draw[thick,JoliRouge] plot[smooth,samples=200,domain=-3:2.5] (\x,{0.2*(exp(\x)-4)}) coordinate (A) ;
+        % \draw[->,thick] (A) ++ (-0.5,0) -- ++(0,-1.5) node[above right] {$~\Phi \nearrow$};
+
+        % draw loi des mailles
+        \draw[thick,JoliRouge] (-3,0.5) -- ++(5,-1) node[right] {$(E-U)/R$} ;
+        
+        % point de fonctionnement
+        \draw[fill=black] (0.23,-0.15) circle(1.5pt) node[above right] {};
+
+        % photocourant 
+        % \draw[dashed] (-3,-0.8) -- ++(3,0) node[right] {$-I_{\rm ph}(\Phi)$};
+        % \node at (2,0.5) {photocourant};
+\end{tikzpicture}
+\end{document}

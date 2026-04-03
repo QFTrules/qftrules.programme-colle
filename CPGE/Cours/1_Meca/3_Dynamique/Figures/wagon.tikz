@@ -1,0 +1,22 @@
+\input{/home/eb/Dropbox/texmf/tex/latex/Preambles/tikz.tex}
+\begin{document}
+\begin{tikzpicture}
+\def\l{2*1.618}
+\def\dev{0.4}
+\def\r{0.3}
+\def\angle{180+45}
+\draw (0,0) rectangle ++(\l,2*1);
+\draw (\dev,-\r) circle(\r);
+\draw (\l-\dev,-\r) circle(\r);
+\draw (-1,-2*\r) -- ++ (\l+2,0);
+\foreach \x in {-1,-0.8,...,4}
+  \draw (\x,-2*\r) -- ++ (-0.1,-0.1);
+\fill (0.5*\l,2) coordinate (O') circle(0.05) node[above=0.1] {O'};
+\draw[dashed] (O') -- ++ (0,-2);
+\draw (O') -- ++ (\angle:1.5) coordinate (M);
+\fill (M) circle(0.05) node[below=0.1] {M};
+\draw[->,JoliRouge] ($(O') + (0,-1)$) arc(180+90:\angle:1) node[midway,below] {$\theta$};
+\draw[vecteur,JoliVert] (\l,1) -- ++ (1,0) node[right] {$\Vec{a}$};
+
+\end{tikzpicture}
+\end{document}

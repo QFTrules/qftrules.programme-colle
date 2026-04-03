@@ -1,0 +1,5 @@
+﻿\begin{circuitikz}[straight voltages]
+\draw  (0,0) to[D,i=$i_d$,v_<=$u_d$] (2,0) -| (2, 0) ;
+\end{circuitikz}, -1)
+4 (T.B1) to[pD] ($(T.B1)+(2,0)$) -| (3.5, -1)
+5 ;\end{circuitikz}

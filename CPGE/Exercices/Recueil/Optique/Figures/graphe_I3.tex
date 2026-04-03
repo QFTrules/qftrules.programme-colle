@@ -1,0 +1,15 @@
+% !TEX root = /home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Optique/Figures/graphe_I3.tex
+\input{tikz.tex}
+\begin{document}
+\begin{tikzpicture}
+  \draw[->] (0,0) -- (2*pi+0.5,0) node[right] {$\vphi$};
+  \draw[->] (0,0) -- (0,4.5) node[above] {$I$};
+  \draw[domain=0:2*pi, samples=100, blue, thick] plot (\x, {0.3*3 + 0.3*4*cos(deg(\x)) + 0.3*2*cos(deg(2*\x))});
+  \foreach \x/\xtext in {0/0, 0.6666*pi/\frac{2}{3}\pi, pi/\pi, 1.33333*pi/\frac{4}{3}\pi, 2*pi/2\pi} {
+    \draw (\x,0) -- (\x,-0.1) node[below] {$\xtext$};
+  }
+  \foreach \y in {1,9} {
+    \draw (0,0.3*\y) -- (-0.1,0.3*\y) node[left] {$\y I_0$};
+  }
+\end{tikzpicture}
+\end{document}

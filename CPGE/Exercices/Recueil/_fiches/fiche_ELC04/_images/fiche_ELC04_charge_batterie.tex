@@ -1,0 +1,11 @@
+\shorthandoff{:!}
+\begin{circuitikz}[scale=0.8]
+\draw (0,0) to[vsource, v=$E$] (0,2) to [R=$R$] (0,4) to[short, i=$I$] (3,4)
+to[R=$r$] (3,2) to[vsource, v<=$e$] (3,0) -- (0,0);
+\draw [dashed] (-1.1,-0.5) -- (-1.1,4.5) -- (1,4.5) -- (1,-0.5) -- (-1,-0.5);
+\draw [dashed] (2,-0.5) -- (2,4.5) -- (4,4.5) -- (4,-0.5) -- (2,-0.5);
+\draw (0,-1) node{Chargeur};
+\draw (3,-1) node{Batterie};
+\draw [->] (1.5,0.25) --node[right]{$U$} (1.5,3.75);
+\end{circuitikz}
+\shorthandon{:!}

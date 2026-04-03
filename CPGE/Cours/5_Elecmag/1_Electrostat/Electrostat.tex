@@ -1,0 +1,996 @@
+% displayname : Électrostatique
+\documentclass[12pt,fancy]{cours}
+\Chapit{5}{1}
+\begin{document}
+\maketitre{
+Il existe quatre interactions fondamentales : la force gravitationnelle domine aux échelles cosmiques (étoiles, galaxies), et les forces nucléaires faibles et fortes dominent aux échelles subatomiques (noyau atomique). Aux échelles intermédiaires, la matière est façonné par l'interaction électromagnétique. L'électromagnétisme ne se limite pas aux phénomènes électriques et magnétiques, ni même à l'optique (la lumière étant une onde électromagnétique), mais gouvernent les interactions entre atomes et molécules (chimie, biologie). Dans ce chapitre, nous commençons par considérer l'effet d'un champ électrique seul et indépendant du temps, dont la source est la charge électrique.
+%Avant de discuter ce qu'est le champ électrostatique et ses conséquences, nous commençons par discuter de ce qui le créé, à savoir les charges électriques.
+}
+{
+\item Cours d'Électrocinétique 1 - 0 (charge électrique)
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\section{Source du champ électrostatique}
+
+En l'an 600 avant notre ère, les savants grecs, tel \textsc{Thalès}, rapportait déjà que l'ambre jaune, une résine naturelle, avait la capacité d'attirer des objets légers, comme les cheveux ou les fétus de paille, lorsqu'il était frotté vigoureusement avec une fourrure. C'est d'ailleurs à partir du mot grec \emph{êlektron}, qui signifie ambre, que le terme \guill{électricité} a été créé. Ce phénomène d'électrisation par frottement, appelé triboélectricité, est facilement observable dans la vie quotidienne. Parfois, une forte électrisation peut même produire des étincelles, comme lorsqu'on enlève rapidement un pull en laine (à condition d'être dans une pièce sombre pour les voir). L'éclair lors d'un orage est un phénomène impressionnant d'électricité statique qui a longtemps été redouté par les hommes. Il a fallu attendre B. \textsc{Franklin} en 1752 pour identifier la nature électrique de ce phénomène. C'est également B. \textsc{Franklin} qui trouva une solution aux dégâts causés par la foudre, en inventant le paratonnerre.
+
+\begin{fig}[label]
+  \centering
+  \def\hei{0.2\columnwidth}
+  \includegraphics[height=\hei]{ambre.png}\hfill
+  \includegraphics[height=\hei]{Foudre.jpeg}\hfill
+  \includegraphics[height=\hei]{charge_rod.pdf}
+  \capt{(a) Les termes \guill{électrique}, \guill{électricité} et \guill{électron} viennent du grec \emph{êlectron}, qui désigne l’ambre jaune. (b) La foudre est un phénomène électrique longtemps redouté. (c) Un tube de verre frotté contre un tissu acquiert une charge électrique, ce qui lui permet d'attirer de petits objects.}
+\end{fig}
+\subsection{Charge électrique}
+
+\begin{definition}[Charge électrique]\label{def:}
+La \imp{charge électrique}, notée $q$, d’unité le coulomb (C), est une grandeur scalaire algébrique qui décrit l'état d'électrisation de la matière.
+\end{definition}
+% La \imp{charge électrique}, notée $q$ et exprimée en Coulomb (C), est une grandeur scalaire qui décrit l'état d'électrisation de la matière.
+\begin{remarque}
+La charge électrique est une grandeur \imp{algébrique} : elle peut être positive ou négative ! 
+\end{remarque} 
+ 
+ À l’échelle microscopique, la charge électrique est une propriété fondamentale des particules élémentaires. Elle détermine leur comportement vis-a-vis de l'interaction électromagnétique.
+À cet égard, elle joue le même rôle que la masse pour l'interaction gravitationnelle. On donne ci-dessous quelques valeurs de charge électriques de particules subatomiques.
+
+% \usepackage{array}
+\begin{table}[h]
+\centering
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+Particule &
+Électron & Proton & Neutron & Alpha \\
+\hline
+Charge (symbolique) & 
+$-e$ & $+e$ & $0$ & $+2e$ \\
+\hline
+Charge (en coulomb) &
+$-1.6 \times 10^{-19}$ C & $1.6 \times 10^{-19}$ C & $0$ & $3.2 \times 10^{-19}$ C \\
+\hline
+\end{tabular}
+\caption{Charges électriques de quelques particules subatomiques. Une particule alpha désigne un noyau d'hélium~4, qui est donc constitué de deux protons et deux neutrons.}
+\end{table}
+
+La matière ordinaire est constitué exclusivement d’électrons, de protons et de neutrons. Or la charge électrique est une grandeur \imp{additive} : la charge électrique totale du corps est égale à la somme de la charge électrique de tous les constituants d’un corps. En conséquence, la charge électrique est \imp{quantifiée} : elle ne peut prendre que des valeurs multiples de la \imp{charge élémentaire} $e\simeq\SI{1,6e-19}{C}.$
+
+\begin{prop}[Charge électrique]\label{prop:}
+  La charge électrique est une grandeur \imp{additive} et \imp{quantifiée}, multiple de la \imp{charge élémentaire} 
+  \begin{equation*}
+  e\simeq\SI{1,6e-19}{C}.
+  \end{equation*}
+\end{prop}
+\begin{remarque}
+  Depuis 2018, la charge élémentaire $e$ est une constante fondamentale : elle est fixée à une valeur exacte et n’est donc pas affectée d’incertitudes comme une grandeur expérimentale (elle est définie à partir d’autres constantes comme la constante de Planck, la célérité de la lumière, etc.). 
+\end{remarque}
+% Par exemple, l’électron est de charge électrique $-e$, le proton de charge $+e$, le neutron de charge $0$, et les particules $\alpha$ (noyau d’hélium 4) de charge $+2e$. 
+
+
+%
+% Ainsi pour un corps libre quelconque on a $q=Ze$, avec $Z\in\mathbb{Z}$ un entier positif, négatif, ou nul.
+
+\subsection{Champ et potentiel électrostatiques d'un charge ponctuelle}
+\label{subsec:coulomb_champ_electrostat}
+
+\parag{Loi de Coulomb} Comme une particule élémentaire est un objet ponctuel, on parlera par abus de langage de \imp{charge ponctuelle} pour désigner une particule chargée. Nous commençons par étudier l’interaction entre deux charges ponctuelles. Considérons deux charges ponctuelles : une charge source $q_O$ placée en l’origine~$O$ ; une charge d’épreuve  $q_M$ placée en un point courant $M$. On suppose ces charges \imp{fixes}, i.e. immobiles dans le référentiel d’étude. On note $\er$ le vecteur unitaire dirigé de $O$ vers~$M$, et $\Vec{OM}=\Vec{r} = r \,\er$ le vecteur position. On observe expérimentalement que ces deux charges ponctuelles :
+\begin{liste}
+  \item interagissent d’autant plus fortement que la distance $r$ qui les sépare est petite;
+\item interagissent d’autant plus fortement que leurs charges $q_0$ et $q_M$ sont grandes en valeur absolue;
+\item s’attirent si leurs charges sont de signes opposés, et se repoussent si elles sont de signes contraires.
+\end{liste}
+
+%%%%%%%%%%%%%%%%%%%
+\begin{figure}[H]
+  \centering
+  \subfigure[]{\label{fig:}
+  \includegraphics[width=0.3\textwidth]{coulomb.pdf}
+  }
+  \hspace{1cm}
+  \subfigure[]{\label{fig:exp_coul}
+  \includegraphics[width=0.3\textwidth]{coulomp_exp.pdf}
+  }
+  \caption{(b) Notations pour la loi de Coulomb. (a) Expérience historique de Coulomb. }
+  \label{fig:coulomb}
+  \end{figure}
+  %%%%%%%%%%%%%%%%%
+Une façon de vérifier d'illustrer ces propriétés est de réaliser l'expérience de Coulomb, expliquée en \Fig{exp_coul}. Dans cette expérience, proposée par C.-A. \textsc{Coulomb} en 1785, la force électrostatique est mesurée entre deux charges ponctuelles, dont l'une est attachée à l'extrémité d'une barre suspendu par un fil de torsion. Les mesures de C.-A. \textsc{Coulomb} l'on amené à proposer la loi quantitative suivante. 
+\begin{theorem}[Loi de Coulomb]\label{form:}
+  La force exercée par une charge ponctuelle $q_O$ sur une charge d’épreuve $q_M$ est donnée par 
+  $$\vv{F}_{\rm C}=\frac{q_O q_M}{4\pi\varepsilon_0 r^2}\,\vv{e_r},$$
+  où $\varepsilon_0\simeq\SI{8,85e-12}{F.m^{-1}}$ est une constante fondamentale : la \imp{permittivité diélectrique du vide}. 
+\end{theorem}
+% On remarque effectivement que :
+% \begin{liste}
+% \item plus le produit $q_0q_M$ est grand, plus la force est grande;
+% \item la force est attractive (orientée suivant $-\er$) si $q_O q_M<0$, et répulsive dans le cas contraire.
+% \end{liste}
+\parag{Le champ électrostatique}
+La force de Coulomb peut se mettre sous la forme
+\begin{equation}
+\vv{F}_{\rm C}=q_M \vv{E}(M),\qquad\text{où}\qquad \vv{E}(M)=\frac{q_O}{4\pi\varepsilon_0 r^2}\,\vv{e_r}.
+\end{equation}
+dépend de la charge à l’origine $q_O$ et du point courant $M$, mais pas de la charge d’épreuve $q_M$. La grandeur $\vv{E}(M)$ est donc un champ vectoriel créé dans tout l’espace par la charge source $q_O$. On peut généraliser cette définition à toute distribution de charge $\mc{D}$
+
+\begin{definition}[Champ électrostatique]
+Le \imp{champ électrostatique} créé par une distribution de charge $\mc{D}$ est le champ vectoriel $\vv{E}(M)$ (en volt par mètre, $\SI{}{V.m^{-1}}$) tel que la force exercée par $\mc{D}$ sur une charge d’épreuve $q_M$ au point $\rm M$ s’écrive
+\begin{equation*}
+\vv{F}_{\mc{D}\rightarrow q_M}=q_M \vv{E}(M).
+\end{equation*}
+\end{definition}
+
+\begin{prop}[Champ électrostatique créé par une charge ponctuelle]\label{prop:}
+Le champ électrostatique créé par une charge \imp{ponctuelle} $q_O$ en l’origine $O$ est donné par,
+\begin{equation*}
+\vv{E}(M)=\frac{q_O}{4\pi\varepsilon_0 r^2}\,\vv{e_r} = \frac{q_O}{4\pi\varepsilon_0}\,\frac{\Vec{OM}}{OM^3}.
+\end{equation*}
+\end{prop}
+
+\begin{remarque}
+  Le caractère \guill{électro-} vient de ce que le champ électrostatique est créé par des charges électriques.  
+  Le caractère \guill{-statique} vient de ce que les charges électriques sont fixes. 
+  
+\end{remarque}
+Donnons quelques ordres de grandeur de force et de champ électrostatiques. On pourra retenir pour cela  que
+\begin{equation}
+\frac{1}{4\pi\varepsilon_0}\sim \SI{e10}{SI}.
+\end{equation}
+L'amplitude du champ électrique de la lumière solaire est de $\SI{e3}{V.m^{-1}}$, et celle nécessaire à l'ionisation de l'air (pour l'apparition d'un arc électrique) de $\SI{e6}{V.m^{-1}}$.
+\begin{exemple}{Forces électrostatiques dans l’atome d’hydrogène} 
+  \begin{quest}
+    \item Estimer la norme du champ électrostatique créé par un proton d’un atome d’hydrogène et ressenti par l'électron, situé à une distance $r\sim\SI{e-10}{m}$.
+    \item Estimer le rapport des forces électrostatique et gravitationnelle entre l'électron et le proton d'un atome d’hydrogène. On donne $G = \SI{6,67e-11}{m^{3}.kg^{-1}.s^{-2}}$.
+  \end{quest}
+\end{exemple}
+\examplesol{
+\begin{quest}
+\item Le champ électrostatique créé par le proton et ressenti par l’électron d’un atome d’hydrogène, distant de $r\sim\SI{e-10}{m}$, vaut
+\eqbox{
+  E \sim \frac{10^{10}\times 10^{-19}}{(10^{-10})^{2}}\sim \SI{e11}{V.m^{-1}}. 
+}
+  Ce champ électrostatique très intense explique la cohésion des atomes.
+\item La force gravitationnelle ne joue-t-elle pas aussi un rôle dans la cohésion d'un atome ? Sachant qu’un électron est de masse $m_e\simeq\SI{9,11e-31}{kg}$ et un proton de masse $m_p\simeq\SI{1,67e-27}{kg}$, le rapport des forces électrostatique et gravitationnelle entre ces deux particules vaut
+\eqbox{
+  \frac{||\vv{F_e}||}{||\vv{F_g}||}=\dfrac{\frac{e^2}{4\pi\varepsilon_0 r^2}}{\frac{\mathcal{G}m_e m_p}{r^2}}=\frac{e^2}{4\pi\varepsilon_0 \mc{G}m_{e}m_p}\simeq \SI{2e39}{}.
+}
+À l'échelle atomique, l'interaction gravitationnelle est donc complètement négligeable devant l'interaction électromagnétique.
+\end{quest}
+}
+
+
+
+\parag{Potentiel électrostatique}
+Le champ électrostatique $\vv{E}(M)$ créé par une charge $q$ peut s’écrire
+\begin{equation}
+\vv{E}(M) = \frac{q}{4\pi\varepsilon_0 r^2}\,\vv{e_r} = -\frac{q}{4\pi\varepsilon_0 } \frac{\d(1/r)}{\d r}\,\er = -\frac{q}{4\pi\varepsilon_0}\, \Grad{\left(\frac{1}{r}\right)}.
+\end{equation}
+Le champ électrostatique dérive donc d'un potentiel scalaire $V(M)$ : on a  $\vv{E}=-\Grad{V}$, avec
+\begin{equation}\label{eq:V_ponct}
+V(M)=\frac{q}{4\pi\varepsilon_0 r}.
+\end{equation}
+On peut généraliser cette propriété à toute distribution de charge $\mc{D}$ en utilisant le principe de superposition.
+\begin{definition}[Potentiel électrostatique]
+On appelle \imp{potentiel électrostatique} le champ scalaire $V(M)$ (en volt, $\SI{}{V}$) tel que
+\begin{equation*}
+\vv{E}(M)=-\grad{V(M)}.
+\end{equation*}
+\end{definition}
+
+
+\begin{prop}[Potentiel électrostatique créé par une charge ponctuelle]\label{prop:}
+  Le potentiel électrostatique créé par une charge \imp{ponctuelle} $q_O$ en l’origine $O$ est donné par
+  \begin{equation*}
+  V(M) = \frac{q_O}{4\pi\varepsilon_0 r}.
+  \end{equation*}
+  \end{prop}
+
+  
+Le potentiel est défini à une constante additive près, car changer $V$ en $V+\cte$ ne modifie pas $\Grad{V}$, et donc $\Vec{E}$.
+L’expression \Eq{V_ponct} du potentiel s’applique à une charge ponctuelle, mais le principe de superposition permet de généraliser l’existence de ce potentiel électrostatique à toute distribution de charge.
+
+\begin{exemple}{Potentiel électrostatique dans l’atome d’hydrogène} 
+     Estimer le potentiel électrostatique créé par un proton à une distance $r\sim\SI{e-10}{m}$.
+\end{exemple}
+
+
+\subsection{Généralisation aux distributions de charges}
+
+\parag{Distribution discrète de charge}
+% La charge électrique est une grandeur \important{additive}: la charge électrique d'un corps est égale à la somme des charges des éléments qui constituent ce corps, soit
+% \begin{equation}
+% q_{\rm{tot}}=\sum_{i}q_i.
+% \end{equation}
+Les équations de Maxwell, qui régissent l’électromagnétisme, sont linéaires. Ainsi, les champs et les potentiels électrostatiques créés par des distributions de charge indépendantes s’additionnent : c’est le \imp{principe de superposition}. Soit $\Vec{E}_i(M)$ le champ électrostatique créé par une charge ponctuelle $q_i$ placé en $\rm P_i$. Le champ électrostatique total $\Vec{E}(M)$ créé par la distribution \imp{discrète} de charges ponctuelles $\{q_i, i=1,...,N\}$ vaut donc
+\begin{equation}
+  \boxed{
+ \vv{E}(M)=\sum_{i = 1}^N \Vec{E}_i(M)} =  \frac{1}{4\pi\varepsilon_0}\sum_iq_i \frac{\vv{P_i M} }{ P_iM^3}=  \frac{1}{4\pi\varepsilon_0}\sum_i\frac{q_i}{ r_i^2}\,\vv{u_i},
+\end{equation}
+où $\Vec{P_iM} = r_i \Vec{u_i}$ et $ \Vec{u_i}$ est unitaire. La même relation s'applique au potentiel électrostatique,
+\begin{equation}
+  \boxed{
+  V(M)=\sum_{i = 1}^N V_i(M)} = \sum_i \frac{q_i}{4\pi\varepsilon_0 r_i}.
+\end{equation}
+
+\parag{Distribution continue de charge}
+À l’échelle mésoscopique ou macroscopique, le caractère ponctuel des charges ne se voit pas : la répartition de charges apparaît comme lisse, continue : c'est l’équivalent de l'approximation des milieux continus en mécanique des fluides. Prenons un élément de charge infinitésimal $\d q$ centré en un point $\rm P$. Le champ et le potentiel créés par cette charge élémentaire sont donnés par
+\begin{equation}
+\label{eq:champE_distrib_continue}
+\d \Vec{E} = \frac{\d q}{4\pi\varepsilon_0} \frac{\Vec{PM}}{PM^3} \qquad \text{ et } \qquad \d V = \frac{\d q}{4\pi\varepsilon_0}\frac{1}{PM}.
+\end{equation}
+Les champ et potentiel totaux s'obtiennent par intégration sur la distribution de charge.
+\begin{prop}[Champ et potentiel d'une distribution continu]\label{prop:}
+  Les champ et potentiel électrostatiques créés par une distribution continue de charges $\mc{D}$ s'écrivent
+  $$
+  \vv{E}(M) = \int_{\mc{D}}\frac{\d q}{4\pi\varepsilon_0 } \frac{\Vec{PM}}{PM^3} \qquad \text{et} \qquad V(M)=\int_{\mc{D}}\frac{\d q }{4\pi\varepsilon_0}\frac{1}{PM}.
+  $$
+\end{prop}
+Le calcul exact de l'intégrale dépend de la façon dont on modélise la distribution de charge $\mc{D}$. Il existe trois modèles pour décrire la distribution $\mc{D}$.
+% \begin{definition}
+% On décrit un corps chargé par une\footnote{J'utilise la notation $\mathcal{V}$ car $V$ est  traditionnellement réservé au potentiel électrostatique.} 
+% \end{definition}
+% \noindent
+% La charge totale s’obtient alors par intégration sur le volume $\mathcal{V}$ du corps chargé,
+% \begin{equation}
+%  q_{\rm{tot}}=\iiint_{\mathcal{V}}\d q=\iiint_{\mc{V}}\rho(P)\,\d \mathcal{V}.
+%  \end{equation}
+% De la même façon, le champ électrostatique s’obtient d’après le principe de superposition par
+% \begin{equation}
+% \label{eq:champE_distrib_continue}
+% \d \Vec{E} = \frac{\d q}{4\pi\varepsilon_0} \frac{\Vec{PM}}{PM^3} \Rar 
+% \vv{E}(M) = \iiint_{P\in\mc{V}}\frac{\rho(P)\d\mc{V}}{4\pi\varepsilon_0 } \frac{\Vec{PM}}{PM^3}.
+% \end{equation}
+
+\begin{figure}[h!]
+\centering
+\subfigure[]{\label{fig:}
+\includegraphics[scale=0.45]{distrib_volumique.png}
+}
+\subfigure[]{\label{fig:}
+\includegraphics[scale=1.1]{surf_charge.pdf}
+}
+\subfigure[]{\label{fig:}
+\includegraphics[scale=1.1]{line_charge.pdf}
+}
+\caption{(a) Distribution volumique de charge, de densité volumique $\rho(P)$. (b) Distribution surfacique de charge, de densité surfacique $\sigma(P)$. (c) Distribution linéique de charge, de densité linéique $\lambda(P)$.}
+\end{figure}
+
+% Il est parfois pertinent d’introduire des distributions de charge \imp{surfacique} ou \imp{linéique}. Ces distributions servent à modéliser des objets chargés que l’on peut associer à une surface ou à une ligne.
+\begin{enumerate}
+  \item  La \imp{densité volumique} de charges $\rho(P)$ (en $\SI{}{C.m^{-3}}$) est telle que la charge contenue dans un volume mésoscopique $\d \mathcal{V}$ vaut 
+  \eqbox[]{
+    \d q=\rho(P)\,\d \mathcal{V}.
+  }
+  \item
+  La \imp{densité surfacique} de charge $\sigma(P)$ (en $\SI{}{C.m^{-2}}$) est telle que la charge contenue dans une surface mésoscopique $\d S$ vaut 
+  \eqbox{
+    \d q=\sigma(P)\,\d S.
+  }
+  \item 
+  La \imp{densité linéique} de charge $\lambda(P)$ (en $\SI{}{C.m^{-1}}$) vérifie que la charge contenue dans un segment mésoscopique $\d \ell$ vaut 
+  \eqbox{
+    \d q=\lambda(P)\,\d \ell.
+  }
+\end{enumerate}
+%  La densité surfacique permet de décrire une distribution de charge de densité volumique $\rho$ répartie dans une petite épaisseur $a$ au voisinage de la surface, avec $\sigma \simeq \rho a$. 
+
+% La densité surfacique permet de décrire une distribution de charge de densité volumique $\rho$ répartie dans un fil de petite section $s$, avec $\lambda \simeq \rho s$.
+\begin{exemple}{Distribution linéique d’un cylindre chargé}
+  Un cylindre de section circulaire de rayon $a$ est chargé uniformément en volume par une densité volumique de charge $\rho$. Loin du cylindre, on peut assimiler la distribution de charge à une distribution linéique de charge. Que vaut la densité linéique de charge $\lambda$ en fonction de $\rho$ et $a$ ?
+\end{exemple}
+\examplesol{
+  La charge élémentaire contenue dans un tronçon de longueur $\d \ell$ vaut $\d q = \rho \d \mathcal{V} = \rho \pi a^2 \d \ell = \lambda \d \ell$, d’où l’on trouve
+  \eqbox{\lambda=\rho\pi a^2.} 
+}
+
+% \subsection{Potentiel électrostatique}
+% Le champ électrostatique $\vv{E}(M)$ créé par une charge ponctuelle $q$ peut s’écrire
+% \begin{equation}
+% \vv{E}(M) = \frac{q}{4\pi\varepsilon_0 r^2}\,\vv{e_r} = -\frac{q}{4\pi\varepsilon_0 } \frac{\d(1/r)}{\d r}\,\er = -\frac{q}{4\pi\varepsilon_0}\, \Grad{\left(\frac{1}{r}\right)}.
+% \end{equation}
+% Le champ électrostatique dérive donc d'un potentiel scalaire $V(M)$ tel que  $\vv{E}=-\Grad{V}$, avec
+% \begin{equation}\label{eq:V_ponct}
+% V(M)=\frac{q}{4\pi\varepsilon_0 r} + \cte.
+% \end{equation}
+% On choisit traditionnellement la constante de sorte que $V(M)$ s’annule à l'infini, soit ici $\cte=0$.
+% On peut généraliser cette propriété à toute distribution de charge en utilisant le principe de superposition.
+% \begin{definition}[Potentiel électrostatique]
+% On appelle \imp{potentiel électrostatique} le potentiel scalaire $V(M)$ (en volt, $\SI{}{V}$) tel que
+% \begin{equation*}
+% \vv{E}(M)=-\grad{V(M)}.
+% \end{equation*}
+% \end{definition}
+
+
+% \begin{prop}[Potentiel électrostatique créé par une charge ponctuelle]\label{prop:}
+%   Le potentiel électrostatique créé par une charge \imp{ponctuelle} $q_O$ en l’origine $O$ est donné par
+%   \begin{equation*}
+%   V(M) = \frac{q_O}{4\pi\varepsilon_0 r}.
+%   \end{equation*}
+%   \end{prop}
+
+  
+% Le potentiel est défini à une constante additive près, car changer $V$ en $V+\cte$ ne modifie pas $\Grad{V}$, et donc $\Vec{E}$.
+% L’expression \Eq{V_ponct} du potentiel s’applique à une charge ponctuelle, mais le principe de superposition permet de généraliser l’existence de ce potentiel électrostatique à toute distribution de charge.
+
+% %La constante du potentiel est prise nulle ici afin que $V(r\rightarrow\infty)=0$. En réalité la relation $\vv{E}=-\grad{V}$ n'est pas seulement valable pour le champ créé par une particule ponctuelle, mais elle est générale en électrostatique comme nous le verrons en Sec.~\ref{subsec:éqs_Maxwell} puisqu'il s'agit d'une conséquence de l'équation de Maxwell-Faraday.
+% % L’expression du potentiel électrostatique se généralise à une distribution volumique de charge :
+% % \begin{equation}
+% % \label{eq:potentiel_distrib_continue}
+% % V(M)=\iiint_{P\in\mc{V}}\frac{\rho(P)\,\d \mc{V}}{4\pi\varepsilon_0 PM},
+% % \end{equation}
+% % où même à d’autres distributions en utilisant que $\d q \sim \rho \d \mc{V} \sim \sigma \d S \sim \lambda \d \ell$.
+% \begin{remarque}
+  
+%   Rappelons qu’en électrocinétique, une tension $U$ correspond à une différence de potentiel $U=V_2-V_1$. Par définition du gradient, la variation du potentiel le long d’un segment infinitésimal $\d \ell$ vaut
+%   \begin{equation}
+%     \d V=\grad{V}\cdot\vv{\d l}=-\vv{E}\cdot\vv{\d l}.
+%   \end{equation}
+% \end{remarque}
+%	Nous allons utiliser cette dernière relation dans le prochain paragraphe.
+
+%\subsection{Énergie potentielle électrostatique}
+%La force électrostatique est conservative c'est-à-dire qu'elle dérive d'une énergie potentielle. D'après les résultats précédents et la définition du travail élémentaire d'une force on a en effet par exemple pour une charge ponctuelle $q_M$
+%\begin{equation}
+%\label{eq:travail_ES}
+%\begin{split}
+%\delta W=\vv{F}\cdot\vv{\d l}=q_{M}\vv{E}\cdot\vv{\d l}=-q_{M}\d V = -\d(q_{M}V).
+%\end{split}
+%\end{equation}
+%On obtient effectivement que $\delta W=-\d E_{\rm{pot}}$ avec
+%\begin{equation}
+%E_{\rm{pot}}=q_{M}V+\cte.
+%\end{equation}
+
+\section{Topographie du champ électrostatique}
+
+
+Vous connaissez déjà un autre champ vectoriel : le champ des vitesses en cinématique des fluides ! Les notions de ligne, tube et carte de champ que nous avons défini alors s’appliquent de la même manière à l’électrostatique. Dans cette partie, nous expliquons comment représenter un champ électrostatique graphiquement par une carte de champ, et réciproquement comment lire une carte de champ pour en tirer des informations sur le champ électrostatique.
+
+\subsection{Ligne et tube de champ}
+
+% Les \imp{lignes de champ} électrostatiques sont les courbes en tout point tangentes et de même sens que le vecteur champ électrostatique $\Vec{E}(M)$.
+%Autrement dit ce sont les  eulérien $\Vec{v}(M,t)$. Elles sont définies mathématiquement par
+\begin{definition}[Ligne de champ électrostatique]\label{def:}
+  Une \imp{ligne de champ électrostatique} est une courbe orientée tangente et de même sens en tout point $\rm M$ que le vecteur champ électrostatique $\Vec{E}(M)$.
+\end{definition}
+% \begin{prop}\label{prop:}
+% Les lignes de champ vérifient, avec $\Vec{\d l}$ le vecteur déplacement élémentaire,
+% \begin{equation*}
+% \Vec{E}\pv \Vec{\d l}=0.
+% \end{equation*}
+% \end{prop}
+% \noindent En coordonnées cartésiennes, les lignes de champ ont donc pour équation
+% \begin{equation}
+% \begin{split}
+% \dfrac{\mathrm{d}x}{E_{x}}=\dfrac{\mathrm{d}y}{E_{y}}=\dfrac{\mathrm{d}z}{E_{z}}.
+% \end{split}
+% \end{equation}
+%\begin{remarque}
+%En coordonnées cylindriques et sphériques on obtient respectivement
+%\begin{equation}
+%\begin{split}
+%\dfrac{\mathrm{d}r}{v_{r}}=\dfrac{r\,\mathrm{d}\theta}{v_{\theta}}=\dfrac{\mathrm{d}z}{v_{z}}\qquad\text{et}\qquad \dfrac{\mathrm{d}r}{v_{r}}=\dfrac{r\,\mathrm{d}\theta}{v_{\theta}}=\dfrac{r\sin\theta\,\mathrm{d}\varphi}{v_{\varphi}}.
+%\end{split}
+%\end{equation}
+%\end{remarque}
+% \begin{exemple}{Lignes de champ créés par une charge ponctuelle}
+% Le champ électrostatique créé par une charge ponctuelle est de la forme $\Vec{E}(M) = E_r(r) \er$. Par définition, les lignes de champ sont donc radiales (dirigées suivant le vecteur radial $\er$).
+
+% \end{exemple}
+
+Les lignes de champ électrostatique vérifient les propriétés suivantes. Deux de ces propriétés sont communes à tous les champs vectoriels, tandis que les deux autres sont spécifiques au champ électrostatique.
+
+\noindent\udl{Propriétés communes}
+\medskip
+\begin{enumerate}
+  \item Les lignes de champ sont \important{continues} et ne peuvent \important{pas se couper}.
+  
+  \begin{preuve}
+    Le champ électrostatique $\Vec{E}(M)$ a une norme et une orientation bien défini en un point $M$ donné. Les lignes de champ sont donc continues, sauf en un point où le champ est nul. De plus, le champ électrostatique ne subit pas de discontinuité au voisinage d'un distribution volumique de charge (mais il peut en présenter à la traversée d'un distribution surfacique, linéique, ou ponctuelle).
+  \end{preuve}
+
+  \item Dans le vide, plus les lignes de champ sont \imp{resserrées}, plus le champ est \imp{intense}.
+  
+  \begin{preuve}
+    Ce résultat découle des propriétés de l'opérateur divergence. Il est analogue à la conservation du débit volumique en mécanique des fluides. Cette propriété n'est vraie que dans un espace vide de charges, d'après l'équation de Maxwell-Gauss que nous verrons en \Sec{éqs_Maxwell}.
+  \end{preuve}
+\end{enumerate}
+
+\noindent\udl{Propriétés spécifiques}
+\medskip
+\setcounter{enumi}{2}
+\begin{enumerate}
+  \item Les lignes de champ électrostatiques \imp{divergent} des charges \encircle{$+$} et \imp{convergent} vers les charges \encircle{$-$}.
+   \begin{preuve}
+    Ce résultat découle aussi de l'équation de Maxwell-Gauss que nous verrons en \Sec{éqs_Maxwell}.
+  \end{preuve}
+
+  \item Les lignes de champ électrostatiques  ne se \important{referment pas} sur elles-mêmes.
+  
+  \begin{preuve}
+    Ce résultat découle du caractère conservatif de la circulation de $\vv{E}(M)$, que nous verrons en \Sec{integr}.
+  \end{preuve}
+\end{enumerate}
+On appelle aussi \imp{tube de champ} un ensemble de lignes de champ qui s'appuient sur un contour fermé. Lorsqu’un tube de champ s’évase, l’intensité du champ électrostatique diminue ; lorsqu’il se resserre, l’intensité du champ électrostatique augmente.
+
+%La représentation des surfaces équipotentielles est intéressante d'un point de vue énergétique car il s'agit des surfaces sur lesquelles on peut déplacer une charge (sans l'accélérer) sans travail (si $\d V=0$ alors $\delta W=0$ d'après l'Éq.~\eqref{eq:travail_ES}).
+%On représente en Fig.~\ref{fig:cartes_de_champ} des cartes de champs électrostatiques obtenues numériquement en supposant les charges ponctuelles.
+%
+%
+
+
+
+\subsection{Surface équipotentielle}
+
+\begin{definition}[Surface équipotentielle]
+Une  \imp{surface équipotentielle} est une surface $S$ où le potentiel électrostatique est constant, soit
+\begin{equation*}
+V(M\in S) = \cte.
+\end{equation*}
+\end{definition}
+\noindent Les lignes de champ donnent également une information sur le potentiel.
+\begin{enumerate}
+  \item Les lignes de champ sont \important{orthogonales} aux surfaces équipotentielles.
+  
+  \begin{preuve}
+    Le long d’une surface équipotentielle, on a $
+ 0=\d V=\grad{V}\cdot\vv{\d l}=-\vv{E}\cdot\vv{\d l} $, soit
+$\vv{E}\perp\vv{\d l}$.
+  \end{preuve}
+
+  \item Les lignes de champ sont orientées selon les \important{potentiels décroissants}.
+  
+  \begin{preuve}
+    La variation du potentiel le long d’une ligne de champ vaut $\d V = -\vv{E}\cdot\vv{\d l} = -E\d \ell < 0$ avec $E>0$ la norme du champ, car $\Vec{E}$ et $\dl$ sont de même sens le long d'une ligne de champ. 
+  \end{preuve}
+\end{enumerate}
+
+\subsection{Exemples de cartes de champ}
+
+Un \imp{carte de champ} est la représentation graphique d’un ensemble de lignes de champ, éventuellement accompagnée de surfaces équipotentielles. Nous représentons quelques cartes de champ produites par une charge ponctuelle (\Fig{1q}) ou deux charges ponctuelles (\Fig{2q}).
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%
+ \begin{figure}[h!]
+\centering
+\subfigure[]{\label{fig:1qpos}
+\includegraphics[height=0.3\textwidth]{1qpos.pdf}
+}
+\subfigure[]{\label{fig:1qpos}
+\includegraphics[height=0.3\textwidth]{1qneg.pdf}
+}
+\caption{Lignes de champ (en orange) et équipotentielles (en bleu) du champ électrostatique créé par une charge ponctuelle (a) positive $+q$ et (b) négative $-q$. Les équipotentielles sont toutes séparées d’une même tension $\Delta V$. Comme le champ croît vers le centre, les lignes de champ et les équipotentielles sont plus resserrées.
+}
+\label{fig:1q}
+\end{figure}
+%%%%%%%%%%%%%%%%
+\begin{figure}[h!]
+\centering
+\subfigure[]{\label{fig:qpos_equi}
+\includegraphics[height=0.3\textwidth]{qpos_equi.pdf}
+}
+\subfigure[]{\label{fig:qneg_equi}
+\includegraphics[height=0.3\textwidth]{qneg_equi.pdf}
+}
+\subfigure[]{\label{fig:3qneg}
+\includegraphics[height=0.3\textwidth]{3qneg.pdf}
+}
+
+\caption{Cartes de champ dans un plan $(x,y)$ pour (a) deux charges positives $+q$, (b) deux charges opposées $+q$ et $-q$, et (c) pour une charge $+2q$ et une charge $-q$.}
+\label{fig:2q}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Symétries et invariances du champ électrostatique}
+\label{sec:topographie_symétrie_invariances}
+
+Dans le cas général, le champ électrostatique possède $3$ composantes qui chacune peuvent dépendre de $3$ coordonnées spatiales ; par exemple en coordonnées cartésiennes
+\begin{equation}
+\vv{E}=E_x(x,y,z)\,\vv{e_x}+E_y(x,y,z)\,\vv{e_y}+E_z(x,y,z)\,\vv{e_z}.
+\end{equation}
+Cela fait $9$ dépendances fonctionnelles à déterminer !
+On souhaiterait pouvoir prédire si le champ ne dépend pas de certaines variables (analyse des invariances du champ) ou ne possède pas certaines composantes (analyse des symétries du champ). L’intérêt de cette approche est double.
+\begin{liste}
+\item D’un point de vue conceptuel, elle permet d’obtenir des informations sans pour autant connaître les lois de l’électrostatique (que nous verrons en \Sec{lois}).
+\item D’un point de vue pratique, elle permet d’économiser beaucoup de calculs lorsque la distribution de charge possède de nombreuses symétries.
+\end{liste}
+%  L’idée derrière cette analyse vient d’un principe très général, le \imp{principe de Curie} : « Les invariances et symétries des causes se retrouvent dans les effets ».
+% En électrostatique, les causes sont la distribution de charge, et les effets le champ ou le potentiel électrostatique. En réalité, ce beau principe n’a que peu de ; ce sont les propriétés mathématiques des équations de l’électrostatique qui sont à l’origine des propriétés d’invariances et de symétrie que nous présentons ci-après.
+
+\begin{prop}[Principe de Curie]\label{prop:curie}
+  Le champ électrostatique $\vv{E}(M)$ et le potentiel $V(M)$ possède les mêmes symétries et invariances que la distribution de charge $\mc{D}$ qui leur donne naissance.
+  \end{prop}
+
+
+\subsection{Symétries du champ électrostatique}
+
+On appelle \imp{symétrie} d’une distribution de charge toute transformation miroir par rapport à un plan $\Pi$ qui transforme la distribution de charge en une distribution identique (plan de symétrie) ou opposée (plan d’antisymétrie). 
+% \begin{definition}[Symétries]\label{def:}
+%   Soit $\rm P$ en point et $\rm P'$ son symétrique par rapport à une plan $\Pi$. Une distribution volumique de charge vérifie
+% \begin{equation}
+% \left\{ 
+% \begin{array}{l}
+% \rho(P)=\rho(P')\quad\text{pour un plan de symétrie } \Pi_{\rm S},\\
+% \rho(P)=-\rho(P')\quad\text{pour un plan d'antisymétrie } \Pi_{\rm A}.
+% \end{array}
+% \right.
+% \end{equation}
+% \end{definition}
+
+\begin{definition}[Symétries]\label{def:}
+  Soit $\mc{D}$ une distribution de charge, $\Pi$ un plan de l'espace, et $\mc{D}'$ l'image miroir de $\mc{D}$ par rapport à $\Pi$. On dit que
+   $\Pi$ est un plan :
+\begin{equation*}
+\left\{ 
+\begin{array}{l}
+  \text{de \imp{symétrie} si }\mc{D}'\text{ est identique à }\mc{D},\\ 
+  \text{d'\imp{antisymétrie} si }\mc{D}'\text{ est opposée à }\mc{D}.
+\end{array}
+\right.
+\end{equation*}
+\end{definition}
+
+
+\begin{exemple}{Plans de symétries et d'antisymétrie}
+  Pour chaque distribution de charge ci-dessous, indiquer si le plan $\Pi$ est un plan de symétrie, d'antisymétrie, ou sans symétrie particulière.
+  \begin{fig}[label]
+    \centering
+    \def\hei{0.18}
+    \begin{subfig}[label][\hei]
+      \includegraphics[height=1.1\columnwidth]{plan_antisym_2charges.pdf}
+    \end{subfig}
+    \begin{subfig}[label][\hei]
+      \includegraphics[height=1.1\columnwidth]{plan_sym_2charges.pdf}
+    \end{subfig}
+    \begin{subfig}[label][\hei]
+      \includegraphics[height=1.1\columnwidth]{plan_2charge_sanssym}
+    \end{subfig}
+    \begin{subfig}[label][\hei]
+      \includegraphics[height=1.1\columnwidth]{plan_sym_fil}
+    \end{subfig}
+    \begin{subfig}[label][\hei]
+      \includegraphics[height=1.1\columnwidth]{electric_field_sphere}
+    \end{subfig}
+    \capt{Exemples de distributions de charges et de plans de symétrie ou d'antisymétrie. (a) Deux charges ponctulles de signes opposés, (b) deux charges ponctuelles de même signe, (c) trois charge ponctuelles positives, (d) un fil chargé infini, (e) une sphère chargée.}
+  \end{fig}
+\end{exemple}
+\examplesol{
+  (a) $\Pi=\Pi_{\rm A}$ plan d'antisymétrie, (b) $\Pi=\Pi_{\rm S}$ plan de symétrie, (c) $\Pi$ sans symétrie, (d) $\Pi=\Pi_{\rm S}$ plan de symétrie, (e) $\Pi=\Pi_{\rm S}$ plan de symétrie.
+}
+En vertu du principe de Curie, les symétries de la distribution de charges $\mc{D}$ se retrouvent sur le champ électrostatique $\Vec{E}(M)$. En pratique, les plans de symétries et d'antisymétrie permettent de déterminer la \imp{direction} du champ électrostatique. En s'appuyant sur la Fig.~\ref{fig:sym_antisym}, nous pouvons en déduire les propriétés suivantes.
+
+
+\begin{enumerate}
+\item Le champ électrostatique $\Vec{E}(M)$ appartient à tout plan de symétrie $\Pi_{\rm S}(M)$ de la distribution de charges contenant le point courant $M$.
+% , soit $\Vec{E}(M) \in \Pi_{\rm S}(M)$.
+
+\begin{preuve}
+  Pour l'exemple, modélisons la distribution de charge par une distribution volumique de densité volumique $\rho(P)$. Soient et $\rm P$ et $\rm P'$ deux points symétriques par rapport au plan de symétrie $\Pi_{\rm S}(M)$. Alors $\rho(P)=\rho(P')$. Or le champ produit par la charge en $P$ est proportionnel à $\rho(P) \Vec{PM}$, et celui produit par la charge en $P'$ est proportionnel à $\rho(P') \Vec{P'M} = \rho(P) \Vec{P'M}$. Le champ résultant est donc porté par $\Vec{PM} + \Vec{P'M} \in \Pi_{\rm S}(M)$. Le raisonnement s'applique à tout point $\rm P$ de la distribution.
+\end{preuve}
+\item Le champ électrostatique $\Vec{E}(M)$ est orthogonal à tout plan d'antisymétrie $\Pi_{\rm AS}(M)$ de la distribution de charges contenant le point courant $M$.
+
+ \begin{preuve}
+  Pour l'exemple, modélisons la distribution de charge par une distribution volumique de densité volumique $\rho(P)$. Soient et $\rm P$ et $\rm P'$ deux points symétriques par rapport au plan d'antisymétrie $\Pi_{\rm A}(M)$. Alors $\rho(P)=-\rho(P')$. Or le champ produit par la charge en $P$ est proportionnel à $\rho(P) \Vec{PM}$, et celui produit par la charge en $P'$ est proportionnel à $\rho(P') \Vec{P'M} = -\rho(P) \Vec{P'M}$. Le champ résultant est donc porté par $\Vec{PM} - \Vec{P'M} \perp \Pi_{\rm A}(M)$. Le raisonnement s'applique à tout point $\rm P$ de la distribution.
+\end{preuve}
+% , soit $\Vec{E}(M) \perp \Pi_{\rm AS}(M)$.
+\end{enumerate}
+\begin{prop}[Symétries du champ électrostatique]\label{prop:}
+  Soit $\Pi_{\rm S}(M)$ un plan de symétrie et $\Pi_{\rm A}(M)$ un plan d'antisymétrie de la distribution de charges. Alors
+  \begin{equation*}
+    \Vec{E}(M) \in \Pi_{\rm S}(M) \quad\text{et}\quad \Vec{E}(M) \perp \Pi_{\rm A}(M).
+  \end{equation*}
+
+\end{prop}
+
+
+%%%%%%%%%%%%%%%%%%%
+\begin{figure}[H]
+  \centering
+  \subfigure[]{\label{fig:}
+  \includegraphics[height=0.35\textwidth]{sym_rho.png}
+  }\hspace{1.5cm}
+  \subfigure[]{\label{fig:}
+  \includegraphics[height=0.35\textwidth]{antisym_rho.png}
+  }
+  % \includegraphics[width=0.7\textwidth]{sym_antisym.pdf}
+  \caption{Le champ électrostatique $\vec{E}(M)$ : (a) appartient aux plans de symétrie $\Pi_{\rm S}(M)$ de la distribution de charges, et (b) est orthogonal à un plan d'antisymétrie de la distribution de charges $\Pi_{\rm A}(M)$.}
+  \label{fig:sym_antisym}
+  \end{figure}
+  %%%%%%%%%%%%%%%%%%%
+
+
+
+On appelle \imp{symétrie} d’une distribution de charge toute transformation miroir qui transforme la distribution de charge en la distribution identique (plan de symétrie) ou la distribution opposée (plan d’antisymétrie).
+%
+%L'étude des symétries permet de limiter le nombre de \important{composantes} dont dépendent les champs. Dans le meilleur des cas (si les symétries de la distribution de charges sont suffisantes), on peut alors déterminer la direction du vecteur $\vv{E}$.
+%On cherche à repérer des plans de symétrie ou d'antisymétrie de la distribution de charges.
+Le champ $\vv{E}$ étant un vecteur au sens strict du terme (il ne dépend pas de l’orientation de l’espace), 
+
+
+
+\begin{exemple}{Le fil infini uniformément chargé}
+  Déterminer la direction du champ électrostatique $\vv{E}(M)$ créé par un fil infini uniformément chargé selon $(Oz)$ en utilisant les symétries de la distribution de charges. On pourra introduire la base locale cylindrique $(\er,\et,\ez)$ attachée au point courant $\rm M$.
+  %%%%%%%%%%%%%%
+\begin{fig}[fil_infini]
+  \centering
+  \includegraphics[width=0.3\textwidth]{fil_infini.pdf}
+  % \capt{Plans de symétrie (en vert) de la distribution de charges d'un fil infini dirigé selon $\vec{e}_z$. Le champ électrostatique appartient à l'intersection des plans, et est donc dirigé selon $\vec{e}_r$.}
+  \end{fig}
+  %%%%%%%%%%%%%%%%%%%
+\end{exemple}
+\examplesol{
+  Veillez à mieux choisir des plans qui comprennent le point courant $M$ ! On peut repérer deux plans de symétrie, comme indiqué sur la \Fig{fil_infini} : le plan $(M,\vv{e_r},\vv{e_z})$ et le plan $(M,\vv{e_r},\vv{e_\theta})$. Donc $\vv{E}(M)$ appartient à l'intersection de ces deux plans, c'est-à-dire
+% \begin{equation}
+\eqbox{
+  \vv{E}(M)=E_r(M)\,\vv{e_r}.
+  }
+% \end{equation}
+% D'après l'étude des invariances réalisée précédemment, $E_r(M)=E_r(r)$ et donc pour le fil infini,
+% \begin{equation}
+% \vv{E}(M)=E_r(r)\,\vv{e_r}.
+% \end{equation}
+}
+
+
+\subsection{Invariances du champ et du potentiel}
+
+
+On appelle \imp{invariance} d'une distribution de charge $\mc{D}$ une transformation de \imp{translation} ou de \imp{rotation} qui laisse la distribution inchangée. Voici les invariances usuelles d'une distribution de charges.
+\begin{liste}
+\item Invariance par \imp{translation} d'abscisse $x$ selon un axe $(Ox)$.
+\item Invariance par \imp{rotation} d'angle $\theta$ autour d'un axe $(Oz)$.
+\end{liste}
+On peut combiner plusieurs de ces transformations pour obtenir des invariances plus complexes. 
+\begin{liste}
+\item Symétrie \imp{cylindrique}.
+
+Invariance par translation de coordonnée $z$ selon $(Oz)$ et par rotation d'angle $\theta$ autour de $(Oz)$.
+\item Symétrie \imp{sphérique}.
+
+Invariance par rotation autour de tout axe passant par l’origine $O$, d'angles $\theta$ et $\varphi$.
+\end{liste}
+
+\begin{exemple}{Invariances de distributions de charge}
+  Déterminer de quelles coordonnées dépendent ou ne dépendent pas a priori la densité de charge des distributions suivantes.
+  \begin{fig}[label]
+    \centering
+    \begin{subfig}[label][0.22]
+      \includegraphics[height=1.1\columnwidth]{charge_axes.pdf}
+    \end{subfig}
+    \begin{subfig}[label][0.22]
+      \includegraphics[height=1.1\columnwidth]{fil_axes}
+    \end{subfig}
+    \begin{subfig}[label][0.22]
+      \includegraphics[height=1.1\columnwidth]{plan_axes}
+    \end{subfig}
+    %\capt{}
+  \end{fig}
+\end{exemple}
+\examplesol{
+  \begin{enumerate}[label=(\alph*)]
+    \item Charge $q$. Dans les coordonnées sphériques, la distribution de charge est invariante par rotation autour de tout axe passant par $O$. Donc elle ne dépend que de $r$, et pas de $\theta$ ni de $\varphi$, dans les coordonnées sphériques $(r,\theta,\varphi)$.
+    \item Fil infini uniformément chargé de densité linéique $\lambda(z)$ dans les coordonnées cylindriques. La distribution de charge est invariante par translation selon $(Oz)$ et par rotation autour de $(Oz)$. Donc la densité linéique ne dépend pas de $z$, 
+    \eqbox{
+      \lambda(\barred{z})=\lambda.
+    }
+    La distribution de charge est aussi invariante par rotation autour de $(Oz)$, donc elle ne dépend pas de $\theta$.
+    \item Plan infini uniformément chargé de densité surfacique $\sigma(x,y)$ dans les coordonnées cartésiennes. La distribution de charge est invariante par translation selon $(Ox)$ et $(Oy)$. Donc elle ne dépend pas de $x$ et $y$, 
+    \eqbox{
+      \sigma(\barred{x},\barred{y})=\sigma.
+    }
+   
+  \end{enumerate}
+}
+
+En vertu du principe de Curie, les invariances de la distribution de charges se retrouvent sur le champ électrostatique $\Vec{E}(M)$ et le potentiel $V(M)$.
+L'étude des invariances permet de limiter le nombre de \important{coordonnées} dont dépendent les composantes du champ électrostatique et le potentiel électrostatique. 
+
+%\begin{exemple}
+%Dans le premier cas ci-dessus, les composantes de $\vv{E}$, à savoir $E_{x}$, $E_y$ et $E_z$, ne dépendent pas de $x$. Dans le dernier cas, où la distribution de charges possède une symétrie sphérique, alors cette invariance permet d'écrire que $\vv{E}(r,\theta,\varphi)=\vv{E}(r)$.
+%\end{exemple}
+
+\begin{prop}[Invariance du champ et du potentiel électrostatiques]\label{prop:}
+  Si une distribution de charge $\mc{D}$ est invariante par
+  \begin{equation*}
+    \left\{
+    \begin{array}{l}
+      \text{\imp{translation} selon un axe $(Oz)$ : } \Vec{E}(M) \text{ et } V(M)  \text{ sont indépendants de $z$}, \\
+      \text{\imp{rotation} autour de $(Oz)$ : } E_r(M), E_\theta(M), E_z(M) \text{ et } V(M) \text{ sont indépendants de }\theta.\\
+    \end{array}
+    \right.
+  \end{equation*}
+\end{prop}
+
+\begin{exemple}{Fil infini uniformément chargé}
+Considérons une distribution linéique uniforme de charges assimilée à un fil infini selon $(Oz)$. On note $\lambda(z)$ la densité linéique de charge. On rappelle que l'étude des symétries indique que le champ est de la forme $\Vec{E}(M) = E_r(M)\er$. Déterminer la dépendance les coordonnées cylindriques $(r,\theta,\vphi$) du champ radial $E_r(M)$ et du potentiel $V(M)$.
+\end{exemple}
+\examplesol{
+  Le fil étant infini et la distribution uniforme, la distribution de charge est invariante par translation selon $(Oz)$.
+Ainsi, $\vv{E}(M)$ et~$V(M)$ ne dépendent pas de la coordonnée $z$, soit
+\begin{equation}
+\vv{E}=E_r(r,\theta,\barred{z})\er, \qquad \text{et} \qquad V(r,\theta,\barred{z}).
+\end{equation}
+De plus, la distribution de charges est invariante par rotation d'angle $\theta$ autour de l'axe $(Oz)$, et donc
+\begin{equation}
+\vv{E}=E_r(r,\barred{\theta})\vv{e_r}, \qquad \text{et} \qquad V(r,\barred{\theta}).
+\end{equation}
+En conclusion, $\Vec{E}(r)$ et $V(r)$ ne dépendent que de $r$. On écrit le résultat sous la forme 
+$$
+  \boxed{\Vec{E}(M) = E_r(r)\er}, \qquad \text{et} \qquad \boxed{V(M) = V(r)}.
+$$
+}
+
+
+\begin{methode}[Invariances et symétries]
+  \item Les \imp{symétries} de la distribution de charges déterminent la \imp{direction} de $\vv{E}(M)$.
+  \begin{liste}
+    \item Plan de symétrie : $\Vec{E}(M) \in \Pi_{\rm S}(M)$.
+    \item Plan d'antisymétrie : $\Vec{E}(M) \perp \Pi_{\rm AS}(M)$.
+  \end{liste}
+  \item	Les \imp{invariances} de la distribution de charges déterminent la \imp{dépendance} de $\vv{E}(M)$ et $V(M)$.
+   \begin{liste}
+    \item Translation :  les composantes de  $\Vec{E}(M)$ et $V(M)$ ne dépendent pas de $x$, $y$ ou $z$.
+    \item Rotation : les composantes de $\Vec{E}(M)$ et $V(M)$ ne dépendent pas de $\theta$ ou $\varphi$. 
+  \end{liste}
+\end{methode}
+
+
+%\subsection{Le champ électrique est un vrai vecteur}
+%Nous distinguons en physique les vrais vecteurs et les pseudo-vecteurs. Un vrai vecteur est un vecteur qui ne dépend pas de la règle d'orientation de l'espace (règle de la main droite). C'est par exemple le cas du vecteur position $\vv{r}$ et de ses dérivées (vitesse $\vv{v}$, accélération $\vv{a}$ et donc force $\vv{F}$ d'après la loi de Newton). D'après la loi de Coulomb, on peut en déduire que le champ électrique $\vv{E}$ est un vrai vecteur.
+%
+%Mais il existe aussi des pseudo-vecteurs, dont l'orientation dépend de celle choisie pour orienter l'espace. C'est le cas de toutes les grandeurs vectorielles définies comme produits vectoriels de vrais vecteurs, par exemple le moment d'une force $\vv{r}\pv\vv{F}$ est un pseudo-vecteur.
+%\begin{remarque}
+%De façon générale, prendre un produit vectoriel revient à changer un vrai vecteur en pseudo-vecteur et réciproquement. Schématiquement,
+%\begin{equation}
+%\begin{split}
+%&\text{vrai}\pv\text{vrai}=\text{pseudo}\\
+%&\text{vrai}\pv\text{pseudo}=\text{vrai}\\
+%&\text{pseudo}\pv\text{pseudo}=\text{pseudo}.
+%\end{split}
+%\end{equation}
+%\end{remarque}
+%L'exemple que nous rencontrerons bientôt est celui du champ magnétique $\vv{B}$. En effet, d'après l'expression de la force magnétique de Lorentz $\vv{F}=q\vv{v}\pv\vv{B}$. Or $\vv{F}$ et $\vv{v}$ sont des vrais vecteurs, d'où on déduit que $\vv{B}$ est un pseudo-vecteur.
+
+%\clearpage
+
+
+
+\section{Lois de l’électrostatique}
+\label{sec:lois}
+A priori, il est possible de calculer le champ $\vv{E}$ et le potentiel $V$ à partir de la seule loi de Coulomb, en utilisant les expressions intégrales Éq.~\eqref{eq:champE_distrib_continue} et \eqref{eq:potentiel_distrib_continue}. Le problème est que le calcul direct en utilisant ces équations est extrêmement difficile ! Il est donc préférable d'utiliser les lois de l’électrostatique qui portent sur le champ $\Vec{E}$ ou le potentiel $V$, surtout lorsque la distribution de charges possède des symétries. Les lois de l’électrostatique peuvent se formuler de manière locale (avec des opérateurs vectoriels) ou intégrale (avec des flux ou des circulations).
+
+\subsection{Formulation locale}
+\label{sec:éqs_Maxwell}
+
+\parag{Équations de Maxwell de l’électrostatique}
+Le champ électrostatique est un cas particulier du champ électrique $\vv{E}$, qui obéit aux équations de Maxwell. En statique, les équations de Maxwell qui portent sur le champ $\Vec{E}$ ont la forme suivante.
+
+\begin{theorem}[Équations de Maxwell de l’électrostatique]
+\begin{equation*}
+\Dive{\vv{E}}=\frac{\rho}{\varepsilon_0} \text{ (Maxwell-Gauss)}, \qquad
+\Rot{\vv{E}}=0 \text{ (Maxwell-Faraday)}.
+\end{equation*}
+\end{theorem}
+\begin{liste}
+  \item
+  L'équation de \imp{Maxwell-Gauss} $\Dive{\vv{E}}=\frac{\rho}{\varepsilon_0}$ traduit le fait que  les charges électriques sont les sources du champ électrostatique. Cette équation fait apparaître la permittivité diélectrique du vide~$\varepsilon_0$. 
+  \item L'équation de \imp{Maxwell-Faraday} $\rot{\vv{E}}=0$ assure l’existence du potentiel~$V$, tel que $\vv{E}=-\grad{V}$. Un champ électrostatique est donc analogue à un champ de vitesse dans un écoulement irrotationnel ; le potentiel électrostatique est analogue (à un signe près) au potentiel des vitesses.
+\end{liste}
+  
+  
+\begin{remarque}
+L'équation de Maxwell-Gauss est inchangée en régime dépendant du temps. En revanche, l'équation de Maxwell-Faraday est modifiée de sorte qu'en régime dépendant du temps le champ électrique ne dérive plus d'un potentiel scalaire. En régime variable, nous retrouverons les résultats du chapitre d'induction électromagnétique de PCSI.
+\end{remarque}
+
+\parag{Équation de Poisson}
+Il est possible de combiner les deux équations de Maxwell de l'électrostatique en une seule équation portant sur le potentiel électrostatique $V$. En insérant $\vv{E}=-\grad{V}$ dans l'équation de Maxwell-Gauss, il vient
+\begin{equation}
+\dive{(-\grad{V})}=\frac{\rho}{\varepsilon_0},
+\end{equation}
+ce qui donne l’\imp{équation de Poisson}
+\eqbox[Poisson]{
+\Delta V+\frac{\rho}{\varepsilon_0}=0.
+}
+Cette équation est appelée équation de Poisson. Dans le vide, $\rho=0$ et l’équation de Poisson se réduit à l’\imp{équation de Laplace},
+% \begin{equation}
+\eqbox[Laplace]{
+  \Delta V =0.
+  }
+% \end{equation}
+%, et fait intervenir le Laplacien scalaire du potentiel électrostatique $\Delta V$.
+% L’intérêt de cette équation est qu’il est permet de déterminer le potentiel électr
+
+\subsection{Formulation intégrale}
+\label{sec:integr}
+
+\parag{Théorème de Gauss}
+L’équation de Maxwell-Gauss fait intervenir une divergence : en utilisant le théorème de Green-Ostrogradski, on peut donc relier le flux du champ électrostatique aux sources. Soit une \imp{surface fermée} $S$ dont le vecteur normale orienté vers l'extérieur en tout point est noté $\Vec{n}_{\rm ext}$. Soit $\Vec{\d S}= \d S \Vec{n}_{\rm ext}$ un élément infinitésimal de surface orienté.
+En calculant le flux de $\Vec{E}$ à travers une surface fermée $S$ entourant un volume $\mc{V}$, il vient
+\begin{equation}
+\oiint_{S}\vv{E}\cdot\vv{\d S} = \iiint_{\mc{V}}\dive{\vv{E}}\,\d\mc{V} =\frac{1}{\varepsilon_0}\iiint_{\mc{V}}\rho\,\d\mc{V}=\frac{q_{\rm{int}}}{\varepsilon_0}
+\end{equation}
+où $q_{\rm{int}}$ désigne la charge enfermée dans le volume $\mc{V}$.
+\begin{theorem}[Théorème de Gauss]
+\begin{equation*}
+\oiint_{S}\vv{E}\cdot\vv{\d S}=\frac{q_{\rm{int}}}{\varepsilon_0}.
+\end{equation*}
+\end{theorem}
+\noindent Rappelons que $\vv{\d S}=\d S\,\vv{n_{\rm{ext}}}$ est orientée vers l'extérieur de la surface, comme illustré sur la \Fig{surfaces_th_Gauss}. Attention, le théorème de Gauss est utilisable en pratique que si la distribution de charges possède un minimum de symétries !
+%\begin{remarque}
+%Attention, bien que
+%Ce théorème est valable tant que les charges sont fixes dans le volume défini par l'intérieur de la surface.
+%\end{remarque}
+
+%%%%%%%%%%%%%%%%%
+% \begin{figure}[h!]
+% \centering
+% \includegraphics[width=0.24\textwidth]{surface_th_Gauss.pdf}
+% \caption{Les surfaces $S_1$ et $S_2$ contiennent toutes les deux la même charge, disons $+q$. Dans ce cas, d'après le théorème de Gauss, $\oiint_{S_1}\vec{E}\cdot\d\vec{S}=\frac{q}{\varepsilon_0}=\oiint_{S_2}\vec{E}\cdot\d\vec{S}$. En revanche, il paraît assez clair que le choix de la surface $S_1$ va conduire à un calcul plus simple de l'intégrale, et donc du flux. La surface $S_3$ quand à elle ne contient pas de charge, ainsi toujours d'après le théorème de Gauss le flux du champ électrique qui la traverse est nul $\oiint_{S_3}\vec{E}\cdot\d\vec{S}=0$.}
+% \label{fig:surfaces_th_Gauss}
+% \end{figure}
+\begin{figure}[h!]
+\centering
+\subfigure[]{
+\includegraphics[width=0.4\textwidth]{gauss.pdf}
+}
+\subfigure[]{
+ \includegraphics[scale=1.5]{tikz_propE_10.pdf}
+ }
+ \caption{(a) La surface $S$ contient la  charge $+q_{\rm int}$. Le théorème de Gauss donne alors $\oiint_{S}\vec{E}\cdot\d\vec{S}=\frac{q_{\rm int}}{\varepsilon_0}$.
+% En revanche, il paraît assez clair que le choix de la surface $S_1$ va conduire à un calcul plus simple de l'intégrale, et donc du flux. La surface $S_3$ quand à elle ne contient pas de charge, ainsi toujours d'après le théorème de Gauss le flux du champ électrique qui la traverse est nul $\oiint_{S_3}\vec{E}\cdot\d\vec{S}=0$.
+(b) Le champ électrostatique est à circulation conservative.
+}
+\label{fig:surfaces_th_Gauss}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%
+
+%Ce théorème relie donc le flux sortant du champ $\vv{E}$ sur une surface fermée orientée vers l'extérieur à la charge emprisonnée dans le volume qui délimite l'intérieur de la surface (Fig.~\ref{fig:surfaces_th_Gauss}). Il s'agit d'une formulation intégrale de l'équation locale de Maxwell-Gauss.
+
+\begin{methode}[Appliquer le théorème de Gauss]
+  \item	Définir et représenter une \imp{surface fermée} $S$ qui respecte les symétries du problème : le vecteur normal $\Vec{n}_{\rm ext}$ des faces de $S$ doit être :
+  \begin{liste}
+    \item soit orthogonal à $\vv{E}$ (flux nul) ;
+    \item soit colinéaire à $\vv{E}$ (flux facile à calculer).
+  \end{liste}
+  \item Calculer le \imp{flux} total de $\vv{E}$ à travers $S$ en décomposant le calcul du flux sur chaque face.
+  \item Appliquer le \imp{théorème de Gauss} et calculer la charge intérieure $q_{\rm int}$.
+  \item En déduire le champ électrostatique $\vv{E}(M)$.
+\end{methode}
+
+\begin{exemple}{Le fil infini uniformément chargé}
+D'après l'étude des symétries et des invariances, nous avons vu que $\vv{E}(M)=E_{r}(r)\vv{e_r}$. Appliquer le théorème de Gauss pour déterminer la fonction $E_r(r)$. En déduire le potentiel électrostatique $V(r)$.
+
+\end{exemple}
+\examplesol{
+\begin{enumerate}
+  \item \udl{Choix de la surface de Gauss} passant par le point courant $M$. On utilise les coordonnées cylindriques $(r,\theta,z)$.
+  Le champ étant selon $\vv{e_r}$, il est préférable de choisir une surface de Gauss dont les faces sont 
+  \begin{liste}
+    \item soit de normale à $\er$ (le flux élémentaire vaut alors simplement $E_r(r)\d S$),
+    \item soit colinéaire à $\er$ (le flux élémentaire vaut alors zéro). 
+  \end{liste}
+    Le champ ne dépendant que de $r$, il est préférable de choisir des faces de rayon $r$ fixé, de sorte que le champ $E_r(r)$ soit uniforme sur cette face. La surface de Gauss idéale est donc le cylindre représenté ci-dessous, 
+  \eqbox{
+  S = \{\text{cylindre}, \text{axe } $(Oz)$, \text{rayon } $r$, \text{hauteur } $h$\} = S_{\rm lat} \cup S_{\rm haut} \cup S_{\rm bas}.
+  }
+  
+  %%%%%%%%%%%
+  \begin{fig}[cylindre]
+\centering
+\includegraphics[width=0.3\textwidth]{fil_infini_gauss.pdf}
+% \capt{Surface de Gauss (cylindre orange) utile au calcul du champ créé par un fil infini uniformément chargé de densité linéique de charges $\lambda$.}
+\end{fig}
+%%%%%%%%%%%%%%%%%%
+\item \udl{Calcul du flux} sur la surface de Gauss, soit ici
+\begin{align*}
+\oiint_{S}\vv{E}\cdot\vv{\d S}  = \oiint_{S_{\rm lat}}\vv{E}\cdot\vv{\d S} + \underbrace{\oiint_{S_{\rm haut}}\vv{E}\cdot\vv{\d S}}_{0} +\underbrace{ \oiint_{S_{\rm bas}}\vv{E}\cdot\vv{\d S}}_{0}\,  =
+\int_{0}^{2\pi}\d\theta \int_{0}^{h}\d z\,r E_{r}(r)\,
+\end{align*}
+soit 
+\eqbox{
+  \oiint_{S}\vv{E}\cdot\vv{\d S}  = 2\pi h r E_{r}(r)
+}
+\item \udl{Théorème de Gauss} : on a 
+\eqbox{
+  \oiint_{S}\vv{E}\cdot\vv{\d S}  = \frac{q_{\rm int}}{\varepsilon_0}.
+}
+La charge intérieure vaut ici $q_{\rm int} = \lambda h$, soit
+\begin{equation}
+  2\pi h r E_{r}(r) = \frac{\lambda h}{\varepsilon_0} \quad\Rightarrow\quad E_r(r)  = \frac{\lambda}{2\pi\varepsilon_0 r}.
+\end{equation}
+\item 
+On en déduit le champ électrostatique, que l'on présente sous forme vectorielle,
+\eqbox{
+  \vv{E}(M) = \frac{\lambda}{2\pi\varepsilon_0 r}\,\vv{e_r}.
+}
+
+On peut déterminer le potentiel électrostatique par la relation $\Vec{E} = -\grad{V} = - \dd{V}{r}\, \er$, et donc 
+\eqbox{
+  V(r) =  -\frac{\lambda}{2\pi\varepsilon_0} \ln\left( \frac{r}{r_0} \right),
+}
+où $r_0$ est une constante arbitraire.
+\end{enumerate}
+
+}
+
+\begin{exemple}{Retrouver le champ coulombien}
+On considère une charge fixe, de charge $q$ placée à l'origine $O$ du repère. Précédemment nous avions supposé la charge ponctuelle, mais ici modélisons la plus précisément par une sphère uniformément chargée de rayon $R$. Calculer le champ électrique en un point $M$ de l'espace situé à la distance $r>R$ du centre de la sphère chargée (Fig.~\ref{fig:gauss_sphere}).
+
+\begin{fig}[gauss_sphere]
+\centering
+\includegraphics[width=0.35\textwidth]{coord_spheriques_gauss.pdf}
+\capt{Calcul du champ électrostatique produit au point $M$ situé à une distance $r>R$ d'une sphère de rayon $R$ uniformément chargée. La sphère de Gauss n'est pas représentée pour ne pas surcharger la figure, mais seulement indiquée par les traits pointillés en orange.}
+\end{fig}
+
+\end{exemple}
+\examplesol{
+
+L'invariance sphérique permet d'affirmer que les composantes du champ en un point $M$ de coordonnées $(r,\theta,\varphi)$ ne dépendent que de $r$. De plus, les plans $(M,\vv{e_r},\vv{e_\theta})$ et $(M,\vv{e_r},\vv{e_\varphi})$ sont des plans de symétrie de la distribution de charges, donc $\vv{E}$ appartient à l'intersection de ces plans, selon $\vv{e_r}$. Finalement, le champ électrostatique émis est de la forme $\vv{E}=E(r)\vv{e_r}$. Utilisons alors le théorème de Gauss, en prenant pour surface une sphère de rayon $r$. L'élément de surface en sphérique dirigé selon $\vv{e_r}$ s'écrit $\d S=r^2\sin\theta\d\theta\d\varphi$. Ainsi nous avons
+\begin{equation}
+\iint_{S(r)}\vv{E}\cdot\vv{\d S}=E(r)r^2\int_{0}^{\pi}\sin\theta\,\d\theta\int_{0}^{2\pi}\d\varphi=4\pi r^2 E(r)=\frac{q}{\varepsilon_0}.
+\end{equation}
+On peut alors conclure que 
+\eqbox{
+  \vv{E}(M)=\frac{q}{4\pi \varepsilon_0 r^2}\,\vv{e_r}.
+  }
+   Autrement dit, pour le champ créé à l'extérieur de la sphère, tout se passe comme si la sphère était ponctuelle placée à l'origine et de charge $q$.
+
+}
+
+
+\parag{Circulation et tension}
+\label{subsec:circulation}
+Soit $\Gamma$ un chemin continu reliant deux points $A$ et $B$, alors on définit la circulation du champ électrique le long de $\Gamma$ par la quantité suivante:
+\begin{equation}
+\mc{C}_{AB}=\int_{A}^{B}\vv{E}\cdot\vv{\d l}
+\end{equation}
+%D'après l'Éq.~\eqref{eq:travail_ES}, cette grandeur représente aussi le travail par unité de charge électrique à fournir à une charge pour la déplacer d'un point $A$ à un point $B$, sans l'accélérer (régime statique).
+D'après les résultats précédents, on peut réécrire cette quantité comme
+%si on choisit pour contour $\Gamma$ un chemin reliant $A$ et $B$, on a
+\begin{equation}
+\mc{C}_{AB}=-\int_{A}^{B}\d V=V_{A}-V_{B}.
+\end{equation}
+Autrement dit, la circulation correspond aussi à la différence de potentiel électrostatique entre $A$ et $B$ et elle ne dépend en fait pas du chemin suivi $\Gamma$ mais seulement du point de départ $A$ et du point d'arrivée $B$. La différence de potentiel $V_A-V_B$ est plus généralement appelée tension électrique, notée $u_{AB}$.
+%
+Utilisons le théorème de Stokes pour calculer la circulation sur un contour fermé du champ électrostatique.
+\begin{equation}
+\mc{C}_{\bigcirc}=\oint_{\Gamma} \vv{E}\cdot\vv{\d l}=\iint_{S(\Gamma)}\rot{\vv{E}}\cdot\vv{\d S}
+\end{equation}
+et donc en utilisant l'équation de Maxwell-Faraday en statique, on en déduit que
+\begin{equation}
+\mc{C}_{\bigcirc}=-\oint_{\Gamma}\d V = 0.
+\end{equation}
+\begin{prop}\label{prop:GAMMA_convers}
+Le champ électrostatique est à \imp{circulation conservative} : pour tout contour fermé $\Gamma$,
+\begin{equation*}
+\oint_{\Gamma} \vv{E}\cdot\vv{\d l} = 0.
+\end{equation*}
+\end{prop}
+
+% \begin{figure}[h!]
+%   \centering
+%   \includegraphics[scale=1.5]{tikz_propE_10.pdf}
+%   \caption{Théorème de Stokes.}
+%   \label{fig:stokes}
+% \end{figure}
+
+On retrouve un résultat évident: sur un lacet fermé, la circulation du champ électrique, c'est-à-dire la tension, est nulle. Le fait que la somme des tensions sur une boucle fermée est nulle est une loi que vous utilisez depuis longtemps en électricité dans l'approximation des régimes quasi-stationnaires: c'est la loi des mailles.
+
+\begin{remarque}
+  
+  De plus, cette propriété indique que les lignes de champ électrostatique ne peuvent pas être fermée. En effet, en supposant par l’absurde l’existence d’une ligne de champ fermée~$\Gamma$, ou aurait $\oint_{\Gamma} \vv{E}\cdot\vv{\d l}  = 0$ d’après la \Prop{GAMMA_convers}. Sauf qu’en paramétrant $\Gamma$ par une abscisse curviligne $s$, on aurait que $\oint_{\Gamma} \vv{E}\cdot\vv{\d l} = \int \norme{\Vec{E}}\d s>0$, car il s’agit de l’intégrale d’une fonction positive non identiquement nulle.
+\end{remarque}
+
+\begin{figure}[h!]
+  \begin{center}
+  \includegraphics[scale=0.9]{methode.pdf}
+  \end{center}
+  \caption{Méthode de résolution d’un problème d’électrostatique. Les flèches en gras indiquent la méthode à privilégier.}
+  \label{tab:methE}
+\end{figure}
+
+
+
+\end{document}

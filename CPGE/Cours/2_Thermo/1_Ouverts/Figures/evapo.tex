@@ -1,0 +1,17 @@
+﻿
+\input{tikz.tex}
+\begin{document}
+    
+\begin{tikzpicture}[>=latex,scale=0.6]
+    \draw[->] (0,0) node[above=0.15] {$~~~~~h_1$}  -- ++ (0.75,0) coordinate (A); \draw (A) -- ++ (0.75,0) coordinate (B);
+    \draw (B) -- ++ (0,1) -- ++ (4,0) -- ++ (0,-1) coordinate (C) -- ++ (0,-1) -- ++ (-4,0) -- cycle;
+    \draw[->] (C) -- ++ (1,0) coordinate (D);
+    \draw (D) -- ++ (0.5,0)  node[above=0.15] {$h_2>h_1~$} ;
+    \draw (B)  -- ++ (0.5,0) -- ++ (0.25,0.5) -- ++ (0.5,-1) -- ++ (0.5,1) -- ++ (0.5,-1) -- ++ (0.5,1) -- ++ (0.5,-1) -- ++  (0.25,0.5) --  (C);
+
+    \coordinate (O) at (1,2.2);
+    \begin{scope}[rotate=-45]
+        \fill[opacity=0.25,JoliBleu,draw=JoliBleu,draw opacity=1,line width=1pt] (O)  node[above left, opacity=1] {$q$}  -- ++ (1,0) -- ++(0,-0.25) -- ++ (0.5,0.5)-- ++ (-0.5,0.5) -- ++ (0,-0.25) -- ++ (-1,0) -- cycle;
+    \end{scope}
+\end{tikzpicture}
+\end{document}

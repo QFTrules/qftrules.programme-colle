@@ -1,0 +1,17 @@
+\begin{tikzpicture}[>=stealth, scale=1] 
+%\draw (-2.5,-1.5)--(-2.5,1.5);
+%\draw (1,-1.5)--(1,1.5);
+%\draw (-2.5,1.5)--(1,1.5);
+%\draw (-2.5,-1.5)--(1,-1.5);
+\draw[gray, ultra thick, fill = lightgray] (-2.5,-1.5)   --(1,-1.5) node[below, black] {\scriptsize solenoïde} --(1,1.5) -- (-2.5,1.5)  -- cycle;
+\draw[->, dashed] (-3,0)--(3,0)node[above]{$z$};
+
+\draw[->] (-2.8,0) --(-2.8,1.5)node[left, midway]{$R$};
+\draw[thick, densely dotted] (-2.5,1.5)--(2.5,0)node{$\bullet$}node[below]{$\ptM$};
+\draw[thick, densely dotted] (1,1.5)--(2.5,0);
+\draw (-0.75,0)node{$\bullet$}node[below]{$\ptO$};
+\draw (-2.5,0)node[below left]{$-\dfrac{\ell}{2}$};
+\draw (1,0)node[below right]{$\dfrac{\ell}{2}$};
+\draw[->] (-1,0)arc(180:165:4)node[left, midway]{$\alpha_{\text{min}}$};
+\draw[->] (1.8,0)arc(180:133:0.7)node[left]{$\alpha_{\text{max}}$};
+\end{tikzpicture} 

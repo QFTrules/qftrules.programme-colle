@@ -1,0 +1,32 @@
+\def\longueurVecteurs{1.75}
+\def\interSpace{0.5}
+\def\interSpaceY{2}
+
+\begin{tikzpicture}
+  \tikzstyle{fleche}=[->,>=stealth];
+  \draw [fleche] (0,0) -- (\longueurVecteurs,0) node [above] {$\vv{e_x}$};
+  \draw [fleche] (0,0) -- (0,\longueurVecteurs) node [right] {$\vv{e_y}$}; 
+  \draw [fleche, very thick,\JRLblue] (0,0) -- (25:\longueurVecteurs) node [right] {$\vv{a}$};
+  \draw [fleche] (\longueurVecteurs/2,0) arc (0:25:\longueurVecteurs/2) node [midway,right] {$\alpha$}; 
+  
+  \begin{scope}[xshift=3.75cm]
+    \draw [fleche] (0,0) -- (\longueurVecteurs,0) node [above] {$\vv{e_x}$};
+    \draw [fleche] (0,0) -- (0,\longueurVecteurs) node [right] {$\vv{e_y}$}; 
+    \draw [fleche, very thick,\JRLblue] (0,0) -- (65:\longueurVecteurs) node [right] {$\vv{b}$};
+    \draw [fleche] (0,\longueurVecteurs/2) arc (90:65:\longueurVecteurs/2) node [midway,above] {$\alpha$};     
+  \end{scope}
+  
+  \begin{scope}[xshift=7.5cm]
+    \draw [fleche] (0,0) -- (\longueurVecteurs,0) node [above] {$\vv{e_x}$};
+    \draw [fleche] (0,0) -- (0,\longueurVecteurs) node [right] {$\vv{e_y}$}; 
+    \draw [fleche, very thick,\JRLblue] (0,0) -- (-25:\longueurVecteurs) node [right] {$\vv{c}$};
+    \draw [fleche] (\longueurVecteurs/2,0) arc (0:-25:\longueurVecteurs/2) node [midway,right] {$\alpha$};     
+  \end{scope}
+  
+  \begin{scope}[xshift=11.5cm]
+    \draw [fleche] (0,0) -- (\longueurVecteurs,0) node [above] {$\vv{e_x}$};
+    \draw [fleche] (0,0) -- (0,\longueurVecteurs) node [right] {$\vv{e_y}$}; 
+    \draw  [fleche, very thick,\JRLblue] (0,0) -- (115:\longueurVecteurs) node [left, xshift=1mm] {$\vv{d}$};
+    \draw [fleche] (0,\longueurVecteurs/2) arc (90:115:\longueurVecteurs/2) node [midway,above] {$\alpha$};     
+  \end{scope}
+\end{tikzpicture}

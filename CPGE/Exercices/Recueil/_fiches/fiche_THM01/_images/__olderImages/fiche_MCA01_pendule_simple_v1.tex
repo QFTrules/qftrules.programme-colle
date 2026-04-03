@@ -1,0 +1,34 @@
+\def\iangle{-60} % Angle of the inclined plane
+\def\down{-90}
+\def\arcr{0.5cm} % Radius of the arc used to indicate angles
+
+\begin{tikzpicture}[
+    force/.style={>=latex,draw=blue,fill=blue},
+    base/.style={>=latex},
+    axis/.style={densely dashed,font=\small},
+    M/.style={rectangle,draw,fill=lightgray,minimum size=0.5cm,thin},
+    m/.style={rectangle,draw=black,fill=lightgray,minimum size=0.3cm,thin},
+    plane/.style={draw=black,fill=blue!10},
+    string/.style={draw=red, thick},
+    pulley/.style={thick},
+]
+
+    \draw [ultra thick] (-1,0) -- (1,0) ;%node [midway, above] {$O$};
+    \draw [axis,->] (0,0) -- (0,-3) node [left] {$x$};
+    
+    \draw (0,0) coordinate (base) -- coordinate[pos=0.5] (mid)++(\iangle:3) coordinate (M) node {$\bullet$} node [left] {$M$}; 
+    \draw [->,base, thick] (M) -- ++(\iangle:1) node [xshift = 2.5mm, yshift = 1mm] {$\vv{e_r}$};
+    \draw [->,base, thick] (M) -- ++(30:1) node [xshift = 1.5mm, yshift = -2mm] {$\vv{e_\theta}$};
+    \draw (mid) node [right] {$\ell$};
+    
+    \draw[->] (base)++(0,-\arcr) arc (-90:\iangle:\arcr);
+    \path (base)++(\iangle-15:\arcr+5pt) node {$\theta$};
+    
+    \draw[->,force, thick] (M) -- ++(0,-1) node [below] {$\vv{P}$};
+    \draw[->,force, thick] (M) -- ++(180+\iangle:1) node [right] {$\vv{T}$};
+    
+    
+    \coordinate (O) at (4, 0) {};
+    \draw [->,axis] (O) -- ++(1,0) node [below] {$\vv{e_y}$};
+    \draw [->,axis] (O) --++ (0,-1) node [left] {$\vv{e_x}$};
+\end{tikzpicture}

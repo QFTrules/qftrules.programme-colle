@@ -1,0 +1,26 @@
+﻿\begin{tikzpicture}
+\definecolor{azure}{rgb}{0.0, 0.5, 1.0}
+\definecolor{bluegray}{rgb}{0.4, 0.6, 0.8}
+\begin{axis}[
+    symbolic x coords={Majoritaire, cyan, azur, blue, bluegray},
+        ylabel = {Nombre de points},
+        xlabel = {Voisins},
+	     xtick=data]
+    \addplot[ybar,fill=red] coordinates {
+        (Majoritaire,10)
+    };
+\addplot[ybar,fill=cyan] coordinates {
+        (cyan,6)
+    };
+\addplot[ybar,fill=azure] coordinates {
+        (azur,5)
+    };
+\addplot[ybar,fill=bluegray] coordinates {
+        (blue,1)
+    };
+\addplot[ybar,fill=bluegray] coordinates {
+        (blue,4)
+    };
+
+\end{axis}
+\end{tikzpicture}

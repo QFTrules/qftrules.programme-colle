@@ -1,0 +1,50 @@
+% Fentes de Young
+\input{TP.sty}
+\begin{document}
+\Entete[TPblanc]{O1}
+
+\matos{
+\item Laser vert de longueur d'onde connue $\lambda_0 = \SI{532}{nm}$.
+\item Laser rouge de longueur d'onde inconnue $\lambda_1$.
+\item Capteur lumineux (photodiode).
+\item Voltmètre.
+\item Régressi, python.
+}
+
+\section{Préparation (\SI{45}{min})}
+
+\begin{protocole}
+\item Proposer un schéma explicatif du montage de Fraunhofer des fentes de Young éclairés par une lampe spectrale à vapeur de sodium. On notera $D$ la distance entre la fente source et l’écran, $a$ la distance séparant les deux fentes de Young, $d$ le diamètre de chaque fente, et $\theta$ l’angle que fait le rayon interférant en $M$ avec l’axe optique.
+
+\item On note $\lambda = \SI{589}{nm}$ la longueur d'onde de la lampe spectrale et $I_0$ une constante homogène à une intensité lumineuse. On donne l'expression de l'intensité lumineuse $I(\theta)$ en point $M$ de l'écran repéré par l'angle $\theta$,
+\begin{equation}
+  I(\theta) = \frac{I_0}{2} \left[1 + \cos\left( 2\pi \frac{a}{\lambda} \theta\right)\right] \left[ \frac{\sin (\pi \frac{d}{\lambda} \theta)}{\pi \frac{d}{\lambda} \theta} \right]^2,
+\end{equation}
+\begin{enumerate}
+  \item Identifier dans l'expression ci-dessus le facteur provenant de l'interférences entre les deux fentes, et le facteur provenant de la diffraction par chaque fente. Justifier.
+  \item Représenter le graphe du terme d'interférences en fonction de $\theta$ pour $a=\SI{200}{\mu m}$. On pourra tracer l'allure du graphe à la main.
+  \item Représenter le graphe de la fonction $I(\theta)$ en fonction de $\theta$ pour $a=\SI{200}{\mu m}$ et $d=\SI{20}{\mu m}$. On pourra tracer l'allure du graphe à la main.
+\end{enumerate}
+
+\item Comment modifier le schéma précédent si la source lumineuse est un laser ? Proposer le schéma associé.
+\end{protocole}
+
+
+\section{Manipulation (\SI{2}{h}\SI{15}{min})}
+
+% Dans la suite, on utilisera le montage %de Fraunhofer, représenté en
+% de la \Fig{fraunhofer}. Nous montrons dans cette section que l’élargissement de la fente source (perte de cohérence spatiale) et du spectre de la source (perte de cohérence temporelle) conduisent à une perte de contraste de la figure d’interférences.
+On dispose d'un laser vert de longueur d'onde connue $\lambda_0 = \SI{532}{nm}$, d'un capteur lumineux (photodiode) dont la position est ajustable suivant un axe transverse. On souhaite déterminer la longueur d'onde inconnue $\lambda_1$ d'un laser rouge.
+
+% \subsection{Cohérence temporelle}
+\begin{protocole}
+\item Réaliser le montage de Fraunhofer avec le laser vert et observer la figure d'interférences sur l'écran.
+\item Déterminer expérimentalement l'espacement $a$ entre les fentes de Young et le diamètre $d$ des fentes. On donne l'expression de l'interfrange 
+\begin{equation}
+  i = \frac{D \lambda}{a}.
+\end{equation}  
+\item En déduire la longueur d'onde $\lambda_1$ du laser rouge, avec incertitudes.
+\end{protocole}
+
+
+\end{document}

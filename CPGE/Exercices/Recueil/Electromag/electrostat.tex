@@ -1,0 +1,1657 @@
+% !TEX root = /home/eb/.vscode/extensions/qftrules.programme-colle/tmp/Exercice.tex
+\renewcommand{\pathtofiche}{\pathtoexos/_fiches/fiche_MAG01/_images/}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][3][devoir]{Profil de densité de charges dans une jonction PN}
+  \Annale[Physique PSI]{CCINP}{2009}
+  \Enonce{
+  Une jonction PN désigne une interface entre deux semi-conducteurs de natures différentes. Au voisinage de la jonction, dans une région dite \guill{zone de charge d'espace}, le matériau acquiert une distribution de charge électrique non nulle que l'on se propose d'étudier. Les propriétés qui en résultent sont à la base de la caractéristique des diodes, des transistors et de tous les circuits intégrés. On suppose que la densité volumique de charge $\rho$ autour d'une jonction en silicium située dans le plan $x=0$ a l'allure suivante :
+  $$
+  \left\{
+  \begin{array}{ll}
+    \mathrm{Si} & x<-L_1 \quad \rho_c=0. \\
+    \mathrm{Si} & -L_1<x<0 \quad \rho_c=\rho_1<0. \\
+    \mathrm{Si} & 0<x<L_2 \quad \rho_c=\rho_2>0. \\
+    \mathrm{Si} & L_2<x \quad \rho_c=0.
+    \end{array}
+  \right.
+  $$
+  \begin{fig}[label]
+    \centering
+    \includegraphics[width=0.5\columnwidth]{jonction_PN.png}
+    %\capt{}
+  \end{fig}
+  }
+  
+  \begin{quest}
+    \QR	{On modélise le silicium par un matériau diélectrique de permittivité relative $\veps_r$. Les lois de l'électrostatique s'appliquent à condition de remplacer $\varepsilon_0$ par $\varepsilon=\varepsilon_0  \varepsilon_r$. Sachant que la distribution de charges est globalement neutre, établir la relation vérifiée par $L_1, L_2, \rho_1$ et $\rho_2$.}
+    {
+      L'ensemble est \udl{électriquement neutre}. Sur une section transverse $S$ du matériau,
+      $$
+        Q_{\rm tot}=0 \Leftrightarrow \int_{-\infty}^{+\infty} \rho(x) S \d x=0 \Leftrightarrow  \int_{-L_{1}}^{0} \rho_{1} \d x + \int_{0}^{L_{2}} \rho_{2} \d x=0,
+      $$
+      soit 
+      \eqbox{
+      \rho_1 L_1+\rho_2 L_2=0.
+      }
+    }
+    \QR {On admettra que, en dehors de la zone de charge d'espace, le champ électrique est nul en tout point d'abscisse $x$ telle que $x<-L_1$ et $x>L_2$. Rappeler l'équation de Maxwell - Gauss où l'on remplacera $\varepsilon_0$ par $\varepsilon=\varepsilon_0 \varepsilon_r$. Déterminer alors le champ électrique en tout point $M$ appartenant à la zone de charge d'espace $\left(-L_1<x<L_2\right)$ sachant que le champ électrique est continu pour une distribution volumique de charge.. On distinguera entre les diverses régions de l'espace suivant les valeurs de $x$. Représenter graphiquement l'allure de la composante selon $x$ du champ électrique en fonction de $x$.}
+    {
+      L'équation de \udl{Maxwell-Gauss} donne : 
+      
+    $$\dive \E=\frac{\rho_{c}}{\varepsilon} \Rightarrow \dd{E}{x}=\frac{\rho_{c}}{\varepsilon}
+    $$
+
+      En intégrant dans les différentes zones et en écrivant la continuité de \(E\), on arrive à :
+      
+      \begin{center}
+      \begin{tabular}{|c|c|c|c|}
+      \hline
+      \(x<-L_{1}\) & \(0>x>-L_{1}\) & \(0<x<L_{2}\) & \(x>L_{2}\) \\[5mm]
+      \hline 
+      \(E=0\) & \(E=\dfrac{\rho_{1}}{\varepsilon}\left(x+L_{1}\right)\) & \(E=\dfrac{\rho_{2}}{\varepsilon}\left(x-L_{2}\right)\) & \(E=0\) \\[5mm]
+      \hline
+      \end{tabular}
+      \end{center}
+
+
+Le graphe de la fonction $E(x)$ est donné ci-dessous.
+\begin{fig}[label]
+  \centering
+  \includegraphics[width=0.5\columnwidth]{2025_01_27_42affc1900b13d456e30g-2(1)}
+  %\capt{}
+\end{fig}
+    }
+    \QR {
+    En déduire l'expression du potentiel électrostatique $V$ dans les différentes régions de l'espace sachant que le potentiel électrique est continu pour une distribution volumique de charge. On choisira l'origine des potentiels dans le plan $x=0$.
+    Représenter graphiquement $V$ en fonction de $x$.}
+  {
+    Par définition du potentiel scalaire, on a 
+    
+    $$\E =E(x) \ex = - \Grad{V} = - \dd{V}{x} \ex \Rightarrow \dd{V}{x} = - E(x).$$
+
+    On intègre en choisissant pour origine des potentiels \(V(x=0)=0\), tout en utilisant la continuité du potentiel en $x=L_1$ et $x=L_2$. On trouve 
+    \begin{enumerate}
+      \item Pour \(x\leq -L_{1}\) :
+      $$V(x)=\cte = V(-L_1).$$
+      \item Pour \(-L_{1}\leq x  \leq 0 \) :
+      $$V(x)=V(0) + \int_{0}^{x} -\frac{\rho_1}{\varepsilon} (x'+L_1) \d x' = - \frac{\rho_1}{\varepsilon} \left( \frac{x^2}{2} + L_1 x \right).$$
+      La continuité du potentiel en \(x=-L_1\) donne alors 
+      $$ V(-L_1) = - \frac{\rho_1}{\varepsilon} \left( \frac{L_1^2}{2} - L_1^2 \right) = \frac{\rho_1}{2 \varepsilon} L_1^2.$$
+      \item Pour \(0 \leq x \leq L_{2}\) :
+      $$V(x)=V(0) + \int_{0}^{x} -\frac{\rho_2}{\varepsilon} (x'-L_2) \d x' = - \frac{\rho_2}{\varepsilon} \left( \frac{x^2}{2} - L_2 x \right).$$
+      \item Pour \(x \geq L_{2}\) :
+      $$V(x)=\cte = V(L_2) = - \frac{\rho_2}{\varepsilon} \left( \frac{L_2^2}{2} - L_2^2 \right) = \frac{\rho_2}{2 \varepsilon} L_2^2.$$
+    \end{enumerate}
+    
+    \begin{center}
+    \begin{tabular}{|c|c|c|c|}
+    \hline
+    \(x<-L_{1}\) & \(0>x>-L_{1}\) & \(0<x<L_{2}\) & \(x>L_{2}\)   \\
+    \hline
+    \(V=\frac{\rho_{1}}{2 \varepsilon} L_{1}^{2}\) & \(V=-\frac{\rho_{1}}{\varepsilon}\left(\frac{x^{2}}{2}+L_{1} x\right)\) & \(V=-\frac{\rho_{2}}{\varepsilon}\left(\frac{x^{2}}{2}-L_{2} x\right)\) & \(V=\frac{\rho_{2}}{2 \varepsilon} L_{2}^{2}\)   \\
+    \hline
+    \end{tabular}
+  \end{center}
+  % \begin{fig}[label]
+  %   \centering
+  %   \includegraphics[width=0.5\columnwidth]{2025_01_27_42affc1900b13d456e30g-2}
+  %   %\capt{}
+  % \end{fig}
+  }
+  
+  
+  
+    \QR {Donner l'expression de la différence de potentiel $V_0=V\left(L_2\right)-V\left(-L_1\right)$ entre deux points situés de part et d'autre de la zone de charge d'espace en fonction de $\rho_1, L_1, L_2$ et $\varepsilon$.}
+    {
+      On trouve 
+      \eqbox{
+        V_{0} =\frac{\rho_{2} L_{2}^{2}}{2 \varepsilon} -\frac{\rho_{1} L_{1}^{2}}{2 \varepsilon}.
+      }
+
+
+    }
+  \end{quest}
+
+  \Enonce{
+  La région $(x>0)$ est du silicium dopé au phosphore à raison de $N_2=1,6 \cdot 10^{21}$ atomes $\mathrm{P}$ par $\mathrm{m}^3$, tandis que la région $(x<0)$ est du silicium dopé au bore avec un nombre d'atomes B par unité de volume $N_1 \gg N_2$. Dans la zone de charge d'espace, chaque atome de phosphore est ionisé en $\mathrm{P}^{+}$, tandis que les électrons ainsi libérés sont captés par les atomes de bore, qui se transforment ainsi en ion $\mathrm{B}^{-}$.
+  }
+
+  \begin{quest}
+  
+    \QR {
+    Exprimer $\rho_1$ et $\rho_2$ en fonction de la charge électrique élémentaire $e$, $N_1$ et $N_2$. Comparer $L_1$ à $L_2$ avec la condition $N_1 \gg N_2$. En déduire l'expression, en fonction de $L_2$, de la largeur totale de la zone de charge d'espace, que l'on appellera $\delta$.}
+  {
+      On a immédiatement  
+      \eqbox{
+      \rho_{1} =- e N_{1} \quad \text{et} \quad \rho_{2} =e N_{2}.
+      }
+    Or \(\rho_{1} L_{1} +\rho_{2} L_{2} =0\), soit \(N_{2} L_{2} =N_{1} L_{1}\).
+    Si \(N_{1} \gg N_{2}\) alors \(L_{1} \ll L_{2}\). La largeur de la ZCE est 
+    \eqbox{
+      \delta =L_{1} +L_{2} \approx L_{2}.
+    }
+    }
+
+    \QR {Le système ainsi constitué est une diode à jonction dont la tension seuil est voisine de $V_0$. En déduire une expression approchée de la largeur $\delta$ de la zone de charge d'espace en fonction de $\varepsilon, V_0, e$ et $N_2$.
+    On donne : $V_0=\SI{0,3}{V}$,  $\veps=\SI{1,4e-10}{F.m^{-1}}$ et $e=\SI{1,6e-19}{C}$.
+    Calculer numériquement $\delta$.}
+      {
+      On a
+      $$V_{0}=\frac{\rho_{2} L_{2}{ }^{2}}{2 \varepsilon}-\frac{\rho_{1} L_{1}{ }^{2}}{2 \varepsilon}=\frac{\rho_{2} L_{2} L_{2} \overbrace{-\rho_{1} L_{1}}^{=\rho_{2} L_{2}}}{2 \varepsilon}=\rho_{2} L_{2} \frac{L_{2}+L_{1}}{2 \varepsilon} \approx \rho_{2} \frac{L_{2}^{2}}{2 \varepsilon}=e N_{2} \frac{\delta^{2}}{2 \varepsilon},$$
+      d'où 
+      \eqbox{
+        \delta =\sqrt{\frac{2\varepsilon V_{0}}{e N_{2}}} =\SI{0,57}{\micro m}.
+      }
+    }
+  \end{quest}
+  \end{exo}
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  
+  % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  % \begin{exo}[PC][1][devoir]{Étude de l'électrosphère}
+  %   % \includegraphics[width=0.92\textwidth]{electrosphere_1.pdf}
+  %   % \newpage
+  %   % \includegraphics[width=0.92\textwidth]{electrosphere_2.pdf}
+  %   \sol{
+  %     13) Tout plan contenant le point $\mathrm{O}$ est un plan de symétrie de la distribution de charge.
+  %     Au point $M$, le vecteur champ électrique qui est un vecteur axial (vrai vecteur) appartient à l'intersection des plans contenant $\mathrm{O}$ et $\mathrm{M}$; il est donc suivant le vecteur $\overrightarrow{\mathrm{OM}}$, c'est-à-dire suivant $\overrightarrow{\mathrm{e}_{\mathrm{r}}}$, premier vecteur de base des sphériques. Il s'écrit ainsi : $\overrightarrow{\mathrm{E}}=\mathrm{E}(\mathrm{r}, \theta, \varphi) \overrightarrow{\mathrm{e}_{\mathrm{r}}}$
+  %     Par ailleurs, il y a invariance de E par rapport aux coordonnées $\theta$ et $\varphi$, donc: $\overrightarrow{\mathrm{E}}=\mathrm{E}(\mathrm{r}) \overrightarrow{\mathrm{e}_{\mathrm{r}}}$.\\
+  
+  %     14) a) On applique le théorème de Gauss à une sphère de rayon $\mathrm{r}$ passant par $\mathrm{M}$ (entre les armatures) OOoù on calcule le champ. La charge intérieure est donc celle de l'armature intérieure, soit Q. Le flux du champ électrique à travers cette sphère vaut $E(r) .4 \pi r^2$.
+  %     Le théorème de Gauss s'écrit donc : $\mathrm{E}(\mathrm{r}) .4 \pi \mathrm{r}^2=\mathrm{Q} / \varepsilon_0$ soit : $\overrightarrow{\mathrm{E}}(\mathrm{r})=\frac{\mathrm{Q}}{4 \pi \varepsilon_0 \mathrm{r}^2} \overrightarrow{\mathrm{e}_{\mathrm{r}}}$.\\
+  
+  %     b) Il faut calculer la circulation du champ sur un chemin entre les armatures intérieure et extérieure de deux façons : $\int_1^2 \overrightarrow{\text { E}} . \mathrm{d} \overrightarrow{\mathrm{l}}=\int_1^2-\overrightarrow{\operatorname{grad}} \mathrm{V} . \mathrm{d} \overrightarrow{\mathrm{l}}=\int_1^2(-\mathrm{dV})=\mathrm{V}_1-\mathrm{V}_2$
+  %     et $\int_1^2 \overrightarrow{\mathrm{E}} \cdot \mathrm{d} \overrightarrow{\mathrm{l}}=\int_1^2 \frac{\mathrm{Q}}{4 \pi \varepsilon_0 \mathrm{r}^2} \overrightarrow{\mathrm{e}_{\mathrm{r}}} \cdot \mathrm{d} \overrightarrow{\mathrm{l}}=\int_1^2 \frac{\mathrm{Q}}{4 \pi \varepsilon_0 \mathrm{r}^2} \mathrm{dr}=\frac{\mathrm{Q}}{4 \pi \varepsilon_0}\left(\frac{1}{R_1}-\frac{1}{R_2}\right)$.
+  %     L'égalité donne : $\frac{\mathrm{Q}}{4 \pi \varepsilon_0}\left(\frac{1}{\mathrm{R}_1}-\frac{1}{\mathrm{R}_2}\right)=\mathrm{V}_1-\mathrm{V}_2$.\\
+  
+  %  c) Par définition de $\mathrm{C}: \mathrm{Q}=\mathrm{C}\left(\mathrm{V}_1-\mathrm{V}_2\right)$; on déduit de $\left.\mathbf{b}\right): \mathrm{C}=\frac{4 \pi \varepsilon_0}{\left(\frac{1}{\mathrm{R}_1}-\frac{1}{\mathrm{R}_2}\right)}$.\\
+  
+  %  15) Si $Q>0$, le champ électrique est radial vers l'extérieur et crée un vecteur densité de courant dans le même sens : \\
+  
+  % 16) On reprend la formule du $14 \mathrm{c}$ ) avec $\mathrm{R}_1=6370 \mathrm{~km}, \mathrm{R}_2=6370+80 \mathrm{~km}$, ce qui donne : $\underline{C}=57,1 \mathrm{mF}$.\\
+  
+  % 17) En prenant $\mathrm{E}=110 \mathrm{~V} / \mathrm{m}$ (valeur moyenne par beau temps sensiblement constante dans
+  % l'électrosphère sur $80 \mathrm{~km}$ ) on obtient: $\mathrm{U}=\mathrm{V}_1-\mathrm{V}_2 \approx \mathrm{E} \cdot \mathrm{e}=110.80000=8,8 \mathrm{MV}$.
+  % L'énergie stockée est alors : $W=\frac{1}{2} \mathrm{CU}^2=220 \mathrm{GJ}$.\\
+  
+  % 18) En sens inverse : par beau temps, il est radial vers l'intérieur (du + vers le - comme sur la figure 1 de l'énoncé), et par temps d'orage, de la terre vers le nuage (encore du $+$ vers le $-$ comme sur la figure 3 ).\\
+  
+  % 19) a) L'éclair correspond à un claquage diélectrique interne au nuage. Un coup de foudre concerne sans doute plutôt la Terre (même si le vocabulaire n'est pas toujours absolu).\\
+  
+  
+  % b) Non : elle peut descendre ou monter, suivant le signe des charges mises en jeu au niveau de la terre lors de la décharge avec le nuage.\\
+  
+  
+  % 20) Le champ vaut $20 \mathrm{kV} / \mathrm{m}$ sur une épaisseur de $2000 \mathrm{~m}$ entre terre et nuage, soit une différence de potentiel de : $\mathrm{U}=20000.2000=40 \mathrm{MV}$\\
+  
+  % 21) La charge mise en jeu vaut environ (en supposant le courant constant) :
+  % $\mathrm{Q} \approx \mathrm{I} . \Delta \mathrm{t}=50000.10^{-2}=500 \mathrm{C}$.
+  % L'énergie véhiculée vaut alors : W=Q.U=500. $40 \cdot 10^6=20 \mathrm{GJ}$
+  % Cette énergie ne mérite pas d'être récupérée. En effet, ce serait extrêmement compliqué pour une énergie somme toute modeste (20 GJ est l'énergie délivrée par une tranche de centrale nucléaire de $1 \mathrm{GW}$ pendant 20 secondes seulement).
+  
+  % }
+  % \end{exo}
+  % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \begin{exo}[PC][2][devoir]{Résolution numérique de l’équation de Poisson}
+    \Annale[Physique PC]{CCINP}{2017}
+    \Enonce{
+    En électrostatique, le potentiel électrostatique $V$ est reliée à la densité volumique de charge électrique~$\rho$ par l’équation dite de Poisson :
+      \begin{equation}\label{eq:poisson}
+    \Delta V + \frac{\rho}{\veps_0} = 0,
+  \end{equation}
+  où $\epz$ est une constante appelée permittivité diélectrique du vide, et $\Delta$ désigne le laplacien scalaire.
+    }
+
+  \subsection{Analyse}
+  \begin{quest}
+    \QR{	 Citer plusieurs situations physiques en dehors de l’électrostatique pour lesquelles il existe une
+  équation analogue.
+}{
+  Dans le cadre de la \fbox{diffusion thermique ou de particules}, en régime stationnaire, on peut écrire une équation similaire avec la température ou la densité particulaire faisant intervenir les termes de production (ou d’annihilation)
+  }
+  \end{quest}
+\Enonce{
+   On veut résoudre l’équation de Poisson dans une portion de plan $\mc{P}$ carrée de côté $L$. On pose :
+  \begin{equation}
+    X=x/L, \quad Y=y/L.
+  \end{equation}
+}
+  \begin{quest}
+    \QR{ Montrer qu’on peut écrire l’\Eq{poisson} sous la forme suivante :
+  \begin{equation}
+    \ddr{V}{X}(X,Y) +\ddr{V}{Y}(X,Y) + \tilde{\rho}(X,Y) =0
+  \end{equation}
+  où la fonction $\tilde{\rho}(X, Y)$ sera exprimée en fonction de $\rho$, $L$ et $\veps_0$.
+  }{
+    À deux dimensions, l'équation de Poisson devient $$\frac{\partial^2 V}{\partial x^2}+\frac{\partial^2 V}{\partial y^2}+\frac{\varrho}{\varepsilon_0}=0.$$ Or $x=L X$, et $y=L Y,$ soit $$\quad \frac{1}{L^2} \frac{\partial^2 V}{\partial X^2}+\frac{1}{L^2} \frac{\partial^2 V}{\partial Y^2}+\frac{\varrho}{\varepsilon_0}=0$$ et donc on a l'équation demandée avec
+    % $$\frac{\partial^2 V}{\partial X^2}+\frac{\partial^2 V}{\partial Y^2}+\frac{\varrho L^2}{\varepsilon_0}=0,$$ soit
+    \eqbox{
+      \tilde{\varrho}(X, Y)=\frac{\varrho(X, Y) L^2}{\varepsilon_0}.
+      }
+  }
+    \end{quest}
+
+  \subsection{Discrétisation}
+
+Pour résoudre numériquement l'équation de Poisson, on utilise un maillage de $\mathcal{P}$, de pas spatial $h=1 / N$, et on discrétise les dérivées partielles en les remplaçant par des différences entre les valeurs de $V$ aux différents nœuds du maillage. 
+% La \Fig{maillage} représente le maillage de $\mathcal{P}$ pour $N=5$.
+
+  \begin{quest}
+    \QR{	En faisant un développement limité à l'ordre 2 autour du point de coordonnées ( $X_i, Y_j$ ), montrer qu'on peut exprimer la valeur de $\frac{\partial^2 V}{\partial X^2}+\frac{\partial^2 V}{\partial Y^2}$ en ce point sous la forme suivante :
+
+% $$
+\begin{equation}
+  \frac{\partial^2 V}{\partial X^2}+\frac{\partial^2 V}{\partial Y^2}=\frac{V\left(X_i+h, Y_j\right)+V\left(X_i-h, Y_j\right)+V\left(X_i, Y_j+h\right)+V\left(X_i, Y_j-h\right)-4 V\left(X_i, Y_j\right)}{h^2}+O(h) .
+\end{equation}
+  % $$
+}{
+Effectuons un développement limité à l'ordre 2 en $h$ de $V$ autour de ( $X_i, Y_j$ ):
+
+$$
+V\left(X_i+h, Y_j\right)=V\left(X_i, Y_j\right)+h \frac{\partial V}{\partial X}\left(X_i, Y_j\right)+\frac{h^2}{2} \frac{\partial^2 V}{\partial X^2}\left(X_i, Y_i\right)+O\left(h^3\right) \text { ainsi que, }
+$$
+
+$$
+V\left(X_i-h, Y_j\right)=V\left(X_i, Y_j\right)-h \frac{\partial V}{\partial X}\left(X_i, Y_j\right)+\frac{(-h)^2}{2} \frac{\partial^2 V}{\partial X^2}\left(X_i, Y_i\right)+O\left(h^3\right) .
+$$
+
+
+En faisant la somme de ces deux expressions, on fait disparaître les termes du premier ordre: $V\left(X_i+h, Y_j\right)+V\left(X_i-h, Y_j\right)=2 V\left(X_i, Y_j\right)+h^2 \frac{\partial^2 V}{\partial X^2}\left(X_i, Y_j\right)+O\left(h^3\right)$.
+Un calcul similaire autour de $Y_i$ donne :
+
+$$
+V\left(X_i, Y_j+h\right)+V\left(X_i, Y_j-h\right)=2 V\left(X_i, Y_j\right)+h^2 \frac{\partial^2 V}{\partial Y^2}\left(X_i, Y_j\right)+O\left(h^3\right)
+$$
+
+
+En effectuant à nouveau une somme de ces deux expressions et en isolant les termes en $V\left(X_i, Y_j\right)$, en remarquant en particulier que $\frac{O\left(h^3\right)}{h^2}=O(h)$, on obtient l'expression demandée:
+
+\begin{equation}
+  \boxed{%
+    \begin{aligned}
+      \frac{\partial^2 V}{\partial X^2} +\frac{\partial^2 V}{\partial Y^2}
+      &=\frac{V\left(X_i +h, Y_j\right) +V\left(X_i -h, Y_j\right)}{h^2}\\
+      &\quad +\frac{V\left(X_i, Y_j +h\right) +V\left(X_i, Y_j -h\right) - 4 V\left(X_i, Y_j\right)}{h^2}+ O(h)
+    \end{aligned}%
+  }
+\end{equation}
+}
+
+\QR{ Comme $X_i=i h$ et $Y_j=j h$, on note désormais $V(i, j)$ le potentiel $V\left(X_i, Y_j\right)$ en un point $\left(X_i, Y_j\right)$ du maillage. Montrer alors qu'on peut écrire l'équation de Poisson sous la forme suivante :
+
+% $$
+\begin{equation}\label{eq:poisson_discret}
+  V(i+1, j)+V(i-1, j)+V(i, j+1)+V(i, j-1)-4 V(i, j)+\rho^{\prime}(i, j)= 0,
+\end{equation}
+% $$
+où $\rho^{\prime}(i, j)$ est une fonction à définir en fonction de $\rho, L, \varepsilon_0$ et $h$.
+}{
+  En reportant l'expression précédente dans l'équation de Q3, en omettant $O(h)$, en multipliant tout par $h^2$ et avec les changements de notations suggérés :
+  $$
+  V(i+1, j)+V(i-1, j)+V(i, j+1)+V(i, j-1)-4 V(i, j)+h^2 \varrho^{\prime}(i, j)=0,
+  $$
+  soit
+  \eqbox{
+    \varrho^{\prime}=h^2 \tilde{\varrho}=\frac{h^2 L^2}{\varepsilon_0} \varrho .
+    }
+}
+  \end{quest}
+
+  \subsection{Résolution}
+
+\Enonce{
+  \parag{Prélude mathématique}
+La fonction $\rho^{\prime}(i, j)$ étant connue, on montre en mathématiques que la solution de l'équation de Poisson est unique si on fixe les conditions aux limites sur la frontière $\mathcal{F}$ du domaine $\mathcal{P}$. Ces conditions sont essentiellement de deux types :
+\begin{itemize}
+  \item 
+ on impose le potentiel $V$ en tout point $\operatorname{de} \mathcal{F}$ (conditions de Dirichlet) ;
+  \item on impose une condition sur les dérivées partielles de $V$ en tout point de $\mathcal{F}$ (conditions de Neumann).
+\end{itemize}
+Dans ce problème, on ne considère que des conditions de Dirichlet.
+La frontière $\mathcal{F}$ contient naturellement les points du bord de $\mathcal{P}$ (donc appartenant aux quatre côtés du carré), mais elle peut aussi contenir certains points à l'intérieur de $\mathcal{P}$ où le potentiel est fixé en raison de la présence d'électrodes.
+L'ensemble des points de coordonnées ($i, j$) est donc composé de deux sous-ensembles :
+\begin{itemize}
+  \item 
+  ceux dont le potentiel est connu, appartenant à la frontière $\mathcal{F}$ ;
+  \item ceux dont le potentiel est inconnu, appartenant à $\mathcal{P}$ mais pas à $\mathcal{F}$.
+\end{itemize}
+
+\parag{Méthode de Jacobi}
+On peut récrire l'\Eq{poisson_discret} comme
+
+% $$
+\begin{equation}\label{eq:poisson_discret_2}
+  V(i, j)=\frac{1}{4}\left[V(i+1, j)+V(i-1, j)+V(i, j+1)+V(i, j-1)+\rho^{\prime \prime}(i, j)\right]
+\end{equation}
+% $$
+
+
+La résolution s'effectue alors en deux étapes.
+\begin{itemize}
+  \item 
+  Initialisation. On fixe la valeur initiale  $V_0(i, j)$ du potentiel suivant le point considéré.
+  \begin{enumerate}
+    \item 
+     Pour un point de $\mathcal{F}$, la valeur  est celle imposée physiquement (bords et électrodes).
+    \item Pour un point de potentiel inconnu, la valeur est choisie arbitrairement, en général nulle.
+  \end{enumerate}
+  \item Itérations. 
+  On calcule une nouvelle valeur $V_1(i, j)$ des potentiels :
+  \begin{enumerate}
+    \item pour les points de $\mc{F}$, $V_1(i,j) = V_0(i,j)$ est inchangé ;
+    \item pour les points de $\mathcal{P} \backslash \mathcal{F}$, $V_1(i,j)$ est obtenu en appliquant l'\Eq{poisson_discret_2}.
+  \end{enumerate}
+  Le processus est répété jusqu'à obtenir des valeurs du potentiel quasiment stables. En notant $k$ le nombre d'itérations, on a donc pour le point de coordonnées ($i, j$) n'appartenant pas à la frontière :
+  
+  % $$
+  \begin{equation}
+    V_{k+1}(i, j)=\frac{1}{4}\left[V_k(i+1, j)+V_k(i-1, j)+V_k(i, j+1)+V_k(i, j-1)+\rho^{\prime }(i, j)\right]
+  \end{equation}
+\end{itemize}
+% $$
+
+
+La convergence de la méthode est vérifiée à l'aide du coefficient de convergence $e_k$, défini par :
+
+% $$
+\begin{equation}\label{eq:convergence}
+  e_k=\frac{1}{N} \sqrt{\sum_{i, j}\left[V_{k+1}(i, j)-V_k(i, j)\right]^2}
+\end{equation}
+% $$
+
+
+Le calcul est stoppé au bout de $k$ itérations quand $e_k$ deviendra inférieur à un seuil de convergence $\varepsilon$ fixé arbitrairement. Le critère de convergence est donc $e_k < \veps$.
+
+\parag{Implémentation informatique}
+On utilise la bibliothèque \texttt{numpy}, qui permet une utilisation simple des tableaux de flottants à deux dimensions ; un aide-mémoire est disponible en fin de sujet.
+
+Le chargement des bibliothèques classiques est assuré par les lignes suivantes :
+% \begin{minted}{python}
+%  # importation des bibliothèques
+%  import numpy as np
+%  import matplotlib.pyplot as plt
+%  import math
+% \end{minted}
+}
+
+On supposera que les tableaux \texttt{numpy} suivants, utilisés comme arguments dans les fonctions à définir dans les questions qui suivent, ont pour signification :
+\begin{itemize}
+  \item 
+  \texttt{V[i,j]}, pour $(i, j) \in \llbracket 0 \ldots N \rrbracket^2$ : tableau courant du potentiel en un point de $\mathcal{P}$,
+  \item \texttt{rhos[i,j]}, pour $(i, j) \in \llbracket 0 \ldots N \rrbracket^2$ : tableau contenant la densité de charge $\rho^{\prime }$ en un point de $\mathcal{P}$,
+  \item \texttt{frontiere[i,j]}, pour $(i, j) \in \llbracket 0 \ldots N \rrbracket^2$ : tableau de booléens indiquant si le point de coordonnées $(i, j)$ appartient ou non à $\mathcal{F}$. En particulier, tous les points du bord du domaine seront tels que \texttt{frontiere[i,j]==True}.
+\end{itemize}
+% }
+
+\begin{quest}
+  \QR{ Écrire la fonction \texttt{nouveau\_potentiel(V, rhos, frontiere, i, j)} retournant la nouvelle valeur du potentiel au point $(i, j) \in \llbracket 0 \ldots N \rrbracket^2$ selon l'\Eq{poisson_discret_2}.
+  }{
+    \inputminted{python}{\pathtoexos/Electromag/Code/nouveau_potentiel.py}
+  }
+  \QR{ Montrer que pour modifier toutes les valeurs contenues dans \texttt{V[i, j]} pendant une itération, il est nécessaire de disposer d'une copie de ce tableau.  On rappelle que l'attribut shape permet de récupérer les dimensions d'un tableau \texttt{numpy}.
+  }{
+    Pour calculer la nouvelle valeur de $V(i, j)$, on a besoin de l'ancienne valeur de $V(i-1, j)$, mais du fait de la boucle sur i dont l'itération précédente aura modifié cette dernière, ce n'est pas possible sans faire une copie du tableau: il faut modifier uniquement l'original mais laisser cette copie inchangée pour utiliser les valeurs initiales lors de chaque itération de la boucle. C'est la même chose pour l'itération sur l'indice j.
+
+À la fin de toutes les itérations, comme on a modifié le tableau original, il n'y a rien de plus à faire, la copie étant une variable locale qui va disparaître à la fin de l'appel à la fonction.
+  }
+\QR{  Écrire la fonction \texttt{itere\_J(V, rhos, frontiere)} modifiant la totalité du tableau \texttt{V[i, j]} lors d'une seule itération et retournant l'erreur calculée conformément à l'\Eq{convergence}.
+}{
+  \inputminted{python}{\pathtoexos/Electromag/Code/itere_j.py}
+  \inputminted{python}{\pathtoexos/Electromag/Code/itere_j2.py}
+}
+\QR{ Écrire la fonction \texttt{poisson(f\_iter, V, rhos, frontiere, eps)} ayant pour premier argument une fonction du même type que celle définie à la question précédente, pour dernier argument \texttt{eps} le seuil arbitraire de convergence $\varepsilon$ et dont le rôle est de modifier le tableau des potentiels \texttt{V[i, j]} jusqu'à convergence.
+}{
+  \inputminted{python}{\pathtoexos/Electromag/Code/poisson.py}
+}
+\end{quest}
+
+  \end{exo}
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \begin{exo}[PC][1][devoir]{Autour de l’équation de Poisson}
+  
+    Ce problème s’intéresse à la résolution numérique de quelques problèmes d’électrostatique.
+  
+    \subsubsection{Équation de Poisson}
+  
+    % \parag{Établissement de l’équation}
+  
+  \begin{quest}
+    \item  Rappeler l’équation de Maxwell-Gauss ainsi que la relation entre le champ $\Vec{E}$ et le potentiel
+  électrostatique $V$. En déduire l’équation de Poisson
+  \begin{equation}
+    \Delta V + \frac{\rho}{\veps_0} = 0
+  \end{equation}
+  Préciser les noms et les unités usuelles de $\rho$ et $\veps_0$ .
+  
+  \sol{
+  Maxwell-Gauss $\dive \E = \frac{\rho}{\epz}$ donne avec $\E=-\grad V$ l'équation de Laplace
+  $$
+  \Delta V + \frac{\rho}{\veps_0} = 0.
+  $$
+  $\rho$ est la densité volumique de charge (en $\SI{}{C.m^{-3}}$) et $\epz$ la permittivité diélectrique du vide (en $\SI{}{F.m^{-1}}$).
+  }
+  
+  \item  Citer plusieurs situations physiques en dehors de l’électrostatique pour lesquelles il existe une
+  équation analogue.
+  \sol{
+  Dans le cadre de la diffusion thermique ou de particules, en régime stationnaire, on peut écrire une équation similaire avec la température ou la densité particulaire faisant intervenir les termes de production (ou d’annihilation)
+  }
+  \end{quest}
+  
+  % \parag{Équation adimensionnée pour un problème plan}
+  On veut résoudre l’équation de Poisson dans une portion de plan P carrée de côté L. On pose :
+  \begin{equation}
+    X=x/L, Y=y/L.
+  \end{equation}
+  \begin{quest}
+    \item Montrer qu’on peut écrire l’équation sous la forme suivante :
+  \begin{equation}
+    \ddr{V}{X}(X,Y) +\ddr{V}{Y}(X,Y) + \rho’(X,Y) =0
+  \end{equation}
+  où $\rho’(X, Y)$ sera exprimé en fonction de $\rho$, $L$ et $\veps_0$.
+  \end{quest}
+  
+  \sol{
+  À 2 dimensions, on a
+  $$
+  \ddd{V}{x} + \ddd{V}{y} + \frac{\rho}{\veps_0} = 0.
+  $$
+  En adimensionnant (pour effectuer une résolution numérique ensuite), on trouve $\rho' = \frac{\rho L^2}{\epz}$.
+  }
+  
+  \subsubsection{Étude de cas : fil cylindrique chargé uniformément}
+  On considère dans le vide un fil cylindrique infini d’axe $z$ et de rayon $R$, portant une charge volumique
+  constante $\rho$.
+  
+  \begin{quest}
+    \item  En se plaçant en coordonnées cylindriques d’axe $z$, montrer par des considérations de symétrie
+  et d’invariance que le champ $\Vec{E} = E(r) \er$. En déduire la forme des surfaces équipotentielles.
+  \sol{
+  La distribution est à symétrie cylindrique, donc invariance par rotation autour de et translation selon $(Oz)$. Tous les plans générés par $\er$ sont des plans de symétrie, donc $\Vec{E} = E(r) \er$.
+  }
+  \item  En appliquant le théorème de Gauss, calculer le champ $\Vec{E}$ dans tout l’espace. Tracer rapidement
+  l’allure de $E(r)$ en fonction de $r$.
+  \sol{
+  \udl{Surface de Gauss} : $\mc{S} = $ cylindre de hauteur $h$ et rayon $r$ d'axe $(Oz)$.
+  
+  \udl{Flux} :
+  $$
+  \oiint_S \E \ps \Vec{\d S} = E(r) 2\pi r h.
+  $$
+  \udl{Théorème de Gauss}
+  $$
+  E(r) 2\pi r h = \frac{q_{\rm int}}{\epz} = \left\{\begin{array}{cc}\frac{\rho \pi r^2 h}{\epz}  &\text{ si } r<R\\ \frac{\rho \pi R^2 h}{\epz}&\text{ si } r<R\end{array}\right..
+  $$
+  Donc
+  $$
+  \E = \syst{\frac{\rho r}{2 \epz}\er & \text{ si } r<R}
+            {\frac{\rho R^2}{2 r \epz}\er & \text{ si } r>R}
+  $$
+  }
+  
+  \item On donne : $\veps_0 = \SI{8.85e-12}{F.m^{-1}}$, $\rho = \SI{1.00e-5}{C.m^{-3}}$, $R = \SI{5.00}{cm}$. Calculer la valeur
+  maximale de la norme du champ électrique, ainsi que la valeur pour $r = 2R$.
+  \sol{
+  Le champ est maximal pour $r=R$ et vaut $E(R) = \SI{28.2e3}{V.m^{-1}}$. En $r=2R$, sa valeur est moitié moindre, soit $E(2R) = \SI{14.1e3}{V.m^{-1}}$.
+  }
+  \end{quest}
+  
+  Une résolution numérique (méthode de Gauss-Seidel adaptative, qu’on n’étudiera pas) mène à la \Fig{V_num_1}, où on a tracé un réseau de courbes
+  équipotentielles, le potentiel $V$ et la composante $E_x$ du champ le long de l’axe de symétrie défini par
+  $y = L/2$.
+  
+  % \begin{fig}[V_num_1]
+  %   \centering
+  %   \includegraphics[width=0.9\textwidth]{V_num_1.png}
+  %   \capt{}
+  % \end{fig}
+  
+  \begin{quest}
+    \item   Commenter le plus complètement possible ces résultats ; on veillera, en particulier, à les com-
+  parer au modèle théorique (allure des courbes, valeurs numériques ...).
+  
+  \sol{
+  Au vu de la déformation des équipotentielles au bord de la boîte, la résolution numérique a été faite en imposant des conditions aux limites à la distance $2R$ du centre du cylindre : le calcul numérique doit donc s’éloigner defaçon sensible de ce qui est prévu pour un cylindre infini seul. On peut toutefois faire les remarques suivantes.
+  \begin{itemize}
+    \item Les équipotentielles proches du cylindre restent circulaires. Elles perdent leur allure circulaire uniquement au voisinage de la frontière carrée.
+    \item À l’intérieur du cylindre, le champ électrique suit une loi linéaire, ce qui est prévu par l’équation de Maxwell-Gauss (avec $\rho=\cte$).
+    \item Le champ électrique au centre du cylindre a une composante calculée sur l’axe $(Ox)$ quasiment nulle. C’est ce qui est prévu par la théorie (infinité de plans de symétrie différents passant par ce centre qui impose donc un champ nul). Cela correspond aussi au maximum de $V(x,y=L/2)$.
+    \item La composante selon l’axe Ox du champ électrique a une valeur maximale relevée sur le graphe de l’ordre de $\SI{28}{kV.m^{-1}}$, ce qui correspond plutôt bien à la valeur évaluée dans la question précédente, et ce même si la situation physique n’est pas tout à fait la même on reste au voisinage du cylindre et l’effet de la boite carrée ne se fait pas encore trop sentir.
+    \item En  $r=2R$, la composante du champ électrique sur le même axe est voisine de $\SI{18}{kV.m^{-1}}$ : elle est sensiblement différente de celle évaluée pour le cylindre seul ($\SI{14}{kV.m^{-1}}$). Dans ce cas l’effet de la frontière à laquelle on impose le potentiel nul se fait sentir.
+  \end{itemize}
+  }
+  \end{quest}
+  
+  Une autre résolution est effectuée, avec une répartition de charges dans le cylindre différente de la
+  précédente, utilisant la même valeur de la densité volumique $\rho = \SI{e-5}{C.m^{-3}}$. Elle mène aux courbes
+  de la \Fig{V_num_2}.
+  
+  % \begin{fig}[V_num_2]
+  %   \centering
+  %   \includegraphics[width=0.9\textwidth]{V_num_2.png}
+  %   \capt{}
+  % \end{fig}
+  
+  \begin{quest}
+    \item  Déduire de ces courbes la répartition de charges dans le cylindre dans cette deuxième situation.
+  Calculer le champ électrique en tout point pour cette répartition de charges dans le cas d’un
+  cylindre infini seul dans l’espace.
+  On vérifiera que la valeur maximale du champ électrique calculée à l’aide de cette modélisation
+  est compatible avec celle déduite de la \Fig{V_num_2}.
+  
+  \sol{
+  Le champ est nul à une distance inférieure à $R_1=R/2$ du centre: il n’y a donc pas de charges dans cette zone. En dehors de cette zone, l’évolution de $\E$ semble être comparable à celle de la répartition précédente. On peut en déduire la répartition de charges suivante:
+  \begin{itemize}
+    \item si $r<R_1$, $\rho=0$;
+    \item si $R_1<r<R$, $\rho = \cte \neq 0$;
+    \item si $r>R$, $\rho=0$.
+  \end{itemize}
+  
+  La surface de Gauss est la même que dans la question Q17 et le flux de  est toujours, si  est la hauteur du cylindre considéré dans la surface de Gauss.Il faut juste maintenant envisager 3 cas pour le calcul de la charge intérieure:
+  \begin{itemize}
+    \item si $r<R_1$,  $\E = \Vec{0}$.
+    \item si $R_1<r<R$, $q_{\rm int} = \rho \pi h (r^2-R_1^2)$ et donc $\E = \frac{\rho}{2 \epz r } \left(r^2-\frac{R^2}{4} \right)\er. $
+    \item si $r>R$, $q_{\rm int} = \frac{3}{4}\rho \pi h R^2$ et donc $\E = \frac{3 \rho R^2}{8 \epz r}\er. $
+  \end{itemize}
+  La valeur maximale vaut $E(R) = \frac{3 \rho R}{8 \epz}=\SI{21}{kV.m^{-1}}$.
+  }
+  
+  \end{quest}
+  
+  
+  \section{Mesure capacitive du givre}
+  Divers accidents d’avions ont été liés à la formation de givre sur les sondes Pitot conduisant ainsi à
+  une perte des indications de vitesse. Dans cette sous-partie on se propose d’étudier deux moyens de
+  mesure du givre.
+  
+  On considère un condensateur plan constitué de deux armatures $A_1$ et $A_2$, parallèles, de surface $S$,
+  placées dans de l’air de permittivité $\veps_0$, uniformément chargées en surface et perpendiculaires à
+  l’axe ($Oz$) de vecteur unitaire associé $\ez$ (\Fig{capa}). L’armature $A_1$ possède une densité
+  superficielle de charges positives $+\sigma$ et l’armature $A_2$ une densité superficielle de charges négatives
+  $-\sigma$. Ces armatures sont séparées d’une distance $e$. Les dimensions des armatures sont importantes
+  par rapport à la distance e qui les sépare.
+  
+  % \begin{fig}[capa]
+  %   \centering
+  %   \includegraphics[width=0.7\textwidth]{capaCCP.png}
+  %   \capt{Schéma d’un condensateur plan.}
+  % \end{fig}
+  
+  \begin{quest}
+    \item  Montrer que le champ électrique entre les armatures a pour expression $\Vec{E} = -\frac{\sigma}{\veps_0}\ez$.
+    \sol{
+  \begin{liste}
+   \item \udl{Méthode 1} : Cours.
+   \item \udl{Méthode 2} : On applique le théorème de Gauss au condensateur directement (sans passer par les plaques). Par invariance et symétrie, $\E(M) = E(z)\ez$. On prend pour surface de Gauss un cylindre d'axe $(Oz)$ et de section $S$. Une des sections est située à l'altitude $z$ entre les armatures. L'autre est située en dehors des armatures, où le champ est nul. Alors
+   $$
+  \oint \E\ps\dS = S E(z) = \frac{\sigma S}{\epz},
+   $$
+   d'où $\E = \frac{\sigma}{\epz} \ez$.
+  \end{liste}
+  }
+  \end{quest}
+  
+  On admet que la capacité d’un condensateur plan placé dans un milieu diélectrique de permittivité
+  relative $\veps_r$ est obtenue en remplaçant, dans l’expression de la capacité $C$ obtenue à la question
+  précédente, $\veps_0$ par $\veps_0 \veps_r$.
+  
+  \begin{quest}
+    \item   La permittivité relative de la glace est $\veps_r = 80$, celle de l’air est égale à $1$. Il est possible de détecter la présence de glace en utilisant des jeux d’électrodes de différentes tailles et de
+  différents espacements. En vous appuyant sur le schéma de principe de la \Fig{avion}, expliquer
+  qualitativement le principe de cette mesure dite capacitive. Justifier la nécessité d’utiliser
+  plusieurs capteurs de tailles différentes.
+  \sol{
+  \udl{Modèle}:
+  Supposons pour simplifier que la capacité a la même expression pour les condensateurs sur l'aile d'avion que pour une condensateur plan idéal. Soit $S$ la surface des armatures. La distance effective $e$ entre les armatures est la longueur moyenne $2\pi d$ des lignes de champ, où $d$ est la séparation entre les deux armatures le long de l’aile.
+  
+  Supposons qu'il existe une couche de glace d'épaisseur effective $h$ sur l'aile, soit d'épaisseur effective totale $2h$ entre les armatures.
+  
+  \udl{Capacité}:
+  Le champ créé dans la glace vaut $E_g=\frac{\sigma}{\veps_r \epz}$ et celui dans l'air vaut $E_a=\frac{\sigma}{\epz}$. En supposant que les lignes de champ
+   Donc la tension entre les armatures vaut
+  
+  $$
+  U = 2hE_g +(e-2h)E_a = \frac{e\sigma}{\epz} - \frac{2h\sigma }{\epz}\left(1-\frac{1}{\veps_r} \right) = \frac{Q}{C}
+  $$
+  avec $Q=\sigma S$. Donc la capacité vaut
+  $$
+  C = \frac{S \epz}{e - 2h\left(1-\frac{1}{\veps_r} \right)}.
+  $$
+  
+  \udl{Comparaison à la réalité} :
+  Numériquement, $1-\frac{1}{\veps_r} \simeq \frac{79}{80}$.
+  \begin{itemize}
+    \item Pour $h \ll e$, on a  $C \simeq \frac{S \epz}{e}\left(1+\frac{79h}{40e} \right)  = C_a + \frac{79\epz}{80} \frac{S}{e^2} h$, où $C_a$ est la capacité en l’absence de glace. C’est une fonction affine, en accord avec les graphes. Dans cette limite, l’épaisseur effective $h$ s’identifie à l’épaisseur réelle de glace. On voit sur les graphes que la pente est la même pour les trois condensateurs, ce qui est logique puisqu'on s'attend à ce que l'épaisseur effective $e$ varie comme $\sqrt{S}$. C’est logique car la séparation $d$ entre les armatures vérifie alors $S \propto d^2$ : les séparation entre les armatures est contrainte par (et donc proportionnelle à) leur taille.
+    \item Pour $h$ grand, l’épaisseur réelle de glace $\rightarrow \infty$ et donc l’épaisseur effective $h$ tend vers $e/2$. Alors $C$ atteint un plateau de valeur $C_\infty = \veps_r C_a = \frac{\veps \epz S}{e}$, qui est $80$ fois plus grande que $C_a$. C’est pour cela que l’ordonnée à l’origine vaut $\simeq 0$ sur les graphes. Cette valeur est proportionnelle à la surface $S$, en accord avec les graphes.
+  \end{itemize}
+  
+  %
+  % Épaisseur effective $h_{\rm eff}(h) \rightarrow e/2 $ quand $h\rightarrow \infty$ et
+  }
+  
+  % \begin{fig}[avion]
+  %   \centering
+  %   \includegraphics[width=0.9\textwidth]{mesure_capa_avion.png}
+  %   \capt{Mesure capacitive du givre.}
+  % \end{fig}
+  \end{quest}
+  
+  \end{exo}
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][appli]{Calcul de flux}
+  \Notions{\item Flux du champ électrostatique \task Intégrales de surface}
+
+Calculer le flux des champs électriques $\Vec{E}_1(M)$ et $\Vec{E}_2(M)$ à travers les surfaces \emph{ouvertes} $S$ suivantes.
+
+\begin{minipage}{0.82\textwidth}
+  \begin{quest}
+    \item  $\E_1(M) = E_0\, \ex$ et $\E_2(M) = E_0 \frac{y}{a}\, \ex$ à travers un carré de côtés $a$ (suivant $y$ et $z$) :
+     \sol{
+      $$\Phi_1 = \iint_S  \E_1 \cdot \dS = \int_0^a \int_0^a E_0 \d y \d z,$$
+      soit
+      \eqbox{
+      \Phi_1 =
+      E_0a^2.
+      }
+      
+      et $$\Phi_2 = \iint_S  \E_2 \cdot \dS = \frac{E_0}{a} a\int_0^a y \d y,  $$
+      soit 
+      \eqbox{
+      \Phi_2 = E_0a^2/2.
+      } 
+      }
+  \end{quest}
+\end{minipage}
+\begin{minipage}{0.1\textwidth}
+  \includegraphics{plane.pdf}
+\end{minipage}
+
+\begin{minipage}{0.82\textwidth}
+  \begin{quest}
+    \item  $\E_1(M) = E_0\, \ex$ et $\E_2(M) = E_0 \frac{y}{a}\, \ex$ à travers ce carré incliné incliné d'un angle $\theta$ :
+      \sol{
+      $$\Phi_1 = \iint_S  \E_1 \cdot \dS = \iint_S E_0 \ex \cdot (\cos \theta \ex + \sin \theta \ey) \dS = \cos \theta E_0 \iint_S  \d S,$$
+      soit 
+      \eqbox{
+       \Phi_1 = E_0a^2\cos\theta.
+      }
+      et $\Phi_2 = \iint_S  \E_2 \cdot \dS = \frac{E_0}{a} a\cos\theta\int_0^b z \d z $,
+      soit 
+      \eqbox{
+      \Phi_2 =  E_0\cos\theta\, a^2/2
+      }
+    }
+  \end{quest}
+\end{minipage}
+\begin{minipage}{0.1\textwidth}
+  \includegraphics{plane_tilted.pdf}
+\end{minipage}
+
+
+\begin{minipage}{0.79\textwidth}
+  \begin{quest}
+    \item  $\E_1(M) = E_0\, \er$ et $\E_2(M) = E_0 \cos \theta\, \er$ à travers une paroi cylindrique de hauteur $h$ et rayon $R$ :
+    \sol{
+      $\Phi_1 = \iint_S  \E_1 \cdot \dS = E_0 2\pi Rh$ et $\Phi_2 = \iint_S  \E_2 \cdot \dS = E_0 Rh \int_0^{2\pi} \cos\theta \d\theta = 0$. 
+    }
+  \end{quest}
+\end{minipage}
+\begin{minipage}{0.1\textwidth}
+  \includegraphics{flux_induction_cylindre.pdf}
+\end{minipage}
+
+Calculer le flux du champ électrique $\Vec{E}(M)$ à travers les surfaces \emph{fermées} $S$ suivantes, en décomposant si besoin la surface fermée $S$ en plusieurs surfaces ouvertes.
+
+\begin{minipage}{0.79\textwidth}
+  \begin{quest}
+    \item  $\E(M) = \pm E_0\, \ez$ à travers le cylindre de hauteur $h$ et rayon $R$ suivant, où le signe $+$ ($-$) s'applique au sommet (à la base) du cylindre :
+    \sol{
+      $$\Phi = \iint_{\rm haut}  \E \cdot \dS + \iint_{\rm bas}  \E \cdot \dS + \iint_{\rm lat} \E \cdot \dS = 2 \iint_{\rm haut}  \E \cdot \dS,$$
+      car 
+      $$\iint_{\rm lat} \E \cdot \dS=0.$$
+      On en déduit 
+      \eqbox{
+      \Phi = 2E_0 \pi R^2.  
+      }
+    }
+  \end{quest}
+\end{minipage}
+\begin{minipage}{0.1\textwidth}
+  \includegraphics{flux_gauss_cylindre.pdf}
+\end{minipage}
+
+\begin{minipage}{0.59\textwidth}
+  \begin{quest}
+    \item  $\E(M) = E_0\, \er$ à travers la sphère de rayon $R$ suivante :
+    \sol{
+      $$\Phi = \iint_{\rm sphère}  \E \cdot \dS = \iint_{\rm sphère} E_0 \er \cdot dS \er = E_0 \iint_{\rm sphère} dS = E_0 S,$$ 
+      soit
+      \eqbox{
+      \Phi = E_0 4 \pi R^2.
+      }
+    }
+  \end{quest}
+\end{minipage}
+\begin{minipage}{0.1\textwidth}
+  \includegraphics{gauss_sphere.pdf}
+\end{minipage}
+
+
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][appli]{Calcul de tension à partir du champ électrostatique}
+  \Notions{\item Potentiel électrostatique \task Tension \task Champ électrostatique}
+\hauteurLargeurCadreReponse{7mm}{11cm}
+\Annale[Cahier d'entrainement de physique, Classes prépas PC/PC*]{Collectif}{Dunod}
+Un condensateur produit un champ $\vv{E} = E(x)\vv{e_x}$ entre ses deux armatures positionnées en $x = 0$ et $x = d$. Justifier que la différence de potentiels entre les armatures est liée au champ de telle manière que \vspace{-1mm}
+\begin{equation}
+  V(0) - V(d) = \int_{0}^{d} E(x) \d{}x.\vspace{-1mm}
+\end{equation}
+On considère que l'armature en $x=d$ est la masse du circuit, son potentiel est donc considéré comme nul.
+Exprimer la différence de potentiel $V(0)-V(d)$ pour les différentes formes de champ $E(x)$.
+
+  \begin{enonce}
+  	$E(x) = E_0 \left( 1 - \frac{x}{d} \right)$
+  \end{enonce}
+  \begin{corrige}
+  On a $V(0) = \int_{0}^{d} E_0 \left( 1 - \frac{x}{d} \right) \d{}x = E_0 \left[ -\frac{d}{2}\left( 1 - \frac{x}{d} \right)^2  \right]^{d}_{0} = \frac{1}{2}E_0d$.
+  \end{corrige}
+
+  \begin{enonce}
+  	$E(x) = E_0 \left( 1 - \frac{x}{d} \right)^2$
+  \end{enonce}
+  \begin{corrige}
+  On a $V(0) = \int_{0}^{d} E_0 \left( 1 - \frac{x}{d} \right)^2 \d{}x = E_0 \left[ -\frac{d}{3}\left( 1 - \frac{x}{d} \right)^3  \right]^{d}_{0} = \frac{1}{3}E_0d$.
+  \end{corrige}
+
+  \begin{enonce}
+  	$E(x) = E_0 \sin\left( \frac{3\pi}{2}\frac{x}{d} \right)$
+  \end{enonce}
+  \begin{corrige}
+  On a $V(0) = \int_{0}^{d} E_0 \sin\left( \frac{3\pi}{2}\frac{x}{d} \right) \d{}x = E_0 \left[ -\frac{2d}{3\pi}\cos\left( \frac{3\pi}{2}\frac{x}{d} \right)  \right]^{d}_{0} = \frac{2}{3\pi}E_0d$.
+  \end{corrige}
+
+  \begin{enonce}
+  	$E(x) = E_0 \left( 1 - \e^{-x/d} \right)$
+  \end{enonce}
+  \begin{corrige}
+    On a $V(0) = \int_{0}^{d} E_0 \left( 1 - \e^{-x/d} \right) \d{}x =
+    E_0 \Big[ x  \Big]^{d}_{0} - E_0 \Big[ -d\e^{-x/d}  \Big]^{d}_{0} = E_0d\e^{-1}$.
+  \end{corrige}
+
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][appli]{Charge d'un cylindre}
+  \hauteurLargeurCadreReponse		{7mm}{8cm}
+   % \dureeResolutionFacultative		{4} % 1, 2, 3 ou 4
+  % \typeEntrainement				{} % Newton ou QCM ou AN ou vide (exercice "normal")
+  % \basiqueEtTransversal			{Y}
+  % \nombreColonnesQuestions		{1} % vide, 1, 2, 3, etc.
+  % \avecPlusieursQuestions			{Y} % Y ou N
+  % \initialisationEntrainement
+  % --------------------------------------------------------- %
+  \pourcentageDeLaPartieAGauche   {0.55}
+                                  \initialisationPartieGauche %
+  %                                                           %
+  %                                                           %
+  On souhaite déterminer la charge électrique totale $Q$ contenue dans un cylindre de rayon $R$, de hauteur $h$ et de densité de charges $\rho\left(r,\theta,z\right)$.
+  Pour ce faire on doit intégrer la densité de charges sur tout le cylindre $\mathcal{C}$.
+
+  Comme on peut le voir sur la figure ci-contre, le volume d'intégration élémentaire est
+  $$
+  \d{}V=r \, \d{}r \, \d{} \theta \, \d{} z
+  $$
+  avec pour un cylindre $r \in \left[ 0,\,R\right]$, $\theta \in \left[ 0,\,2\pi\right]$ et $z \in \left[ 0,\,h\right]$.
+
+  Ainsi, on a \vspace{-1.5mm}
+  $$
+  Q = \int_{0}^{h} \int_{0}^{2\pi} \int_{0}^{R} \rho\left(r,\theta,z\right) r \, \d{}r \, \d{} \theta \, \d{} z.
+  $$
+
+
+                                  \initialisationPartieDroite %
+  %                                                           %
+  % %                                                           %
+  \begin{center}
+  	% \subimport{\pathtofiche}{fiche_MAG01_figure_integration_cylindrique_CBD_v2.tex}
+      \includegraphics{flux_induction_cylindre.pdf}
+  \end{center}
+  % --------------------------------------------------------- %
+                                 \finalisationDuPartageDePage %
+  % --------------------------------------------------------- %
+
+  Exprimer la charge électrique totale $Q$ contenue dans le cylindre en fonction de son rayon $R$ et de sa hauteur $h$ pour les différentes densités de charges suivantes.
+
+  \begin{enonce}
+  	$\rho\left(r,\theta,z\right) = 3$
+  \end{enonce}
+
+  \begin{corrige}
+  On calcule
+  \begin{align*}
+  	Q &= \int_{0}^{h} \int_{0}^{2\pi} \int_{0}^{R} 3 r
+  	\d{}r \d{} \theta \d{} z
+  	= 3 \int_{0}^{h} \d{} z \int_{0}^{2\pi} \d{} \theta \int_{0}^{R} r \d{}r
+  	= 3 \Big[ z \Big]^{h}_{0}\times \Big[ \theta \Big]^{2\pi}_{0} \times \Big[ \frac{r^2}{2} \Big]^{R}_{0}\\
+  	&= 3 \left( h -0 \right) \left( 2\pi - 0 \right) \left( \frac{R^2}{2} - 0 \right)
+  	= 3\pi R^2h.
+  \end{align*}
+  \end{corrige}
+
+  \begin{enonce}
+  	$\rho\left(r,\theta,z\right) = 2\left(\frac{r}{R}\right)^3$
+  \end{enonce}
+
+  \begin{corrige}
+  On calcule
+  	\begin{align*}
+  		Q &= 2\int_{0}^{h} \d{} z \int_{0}^{2\pi} \d{} \theta  \int_{0}^{R} \left( \frac{r}{R} \right)^3 r \d{}r
+  		= 2 \times h \times 2\pi \int^{R}_{0} \frac{r^4}{R^3} \d{}r \\
+  		&= 4\pi h \left[ \frac{1}{5} \frac{r^5}{R^3} \right]^{R}_{0}
+  		= 4\pi h \left( \frac{1}{5} \frac{R^5}{R^3} - \frac{1}{5} \frac{0}{R^3} \right)
+  		= \frac{4}{5}\pi R^2h.
+  	\end{align*}
+  \end{corrige}
+
+  \begin{enonce}
+  	$\rho\left(r,\theta,z\right) = 2\left(\frac{r}{R}\right)^3\left(\frac{z}{h}\right)^2\sin\left(\frac{\theta}{2}\right)$
+  \end{enonce}
+
+  \begin{corrige}
+  On calcule
+  	\begin{align*}
+  		Q &= 2\int_{0}^{h} \left( \frac{z}{h} \right)^{2} \d{} z \int_{0}^{2\pi} \sin \left( \frac{\theta}{2} \right) \d{} \theta  \int_{0}^{R} \left( \frac{r}{R} \right)^3 r \d{}r
+  		= 2 \times \frac{1}{5}R^2 \left[ \frac{1}{3}\frac{z^3}{h^2} \right]^{h}_{0} \left[ -2 \cos \frac{\theta}{2} \right]^{2\pi}_{0}\\
+  		&= \frac{2}{5}R^2 \left( \frac{1}{3}\frac{h^3}{h^2} - \frac{1}{3}\frac{0}{h^2} \right) \left( -2\cos \pi + 2 \cos 0 \right)
+  		= \frac{2}{5}R^2 \times \frac{1}{3} h \times 4 = \frac{8}{15}R^2h.
+  	\end{align*}
+  \end{corrige}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][2][devoir]{Distribution de charges en carré}
+  \Notions{\item Problème à résoudre \task Calcul direct de champ électrostatique \task Symétries}
+
+On considère les deux distributions de charges ponctuelles suivantes, où les charges (positives en rouge, négatives en bleu) sont disposées sur les coins d'un carré de côté $a$.
+%\begin{figure}[h!]
+%\centering
+% \begin{center}
+\begin{fig}[label]
+  \centering
+  \includegraphics[width=0.6\columnwidth]{charges_carre.pdf}
+  %\capt{}
+\end{fig}
+% \end{center}
+%\end{figure}
+
+\noindent Dans chaque cas, analyser les symétries de la distribution de charge, et déterminer le champ et le potentiel électrostatiques au point $\rm O$ situé au centre du carré.
+
+\sol{
+
+\udl{Figure de gauche}.
+
+Les plans $(O,\ex,\ey)$, $(O,\ex,\ez)$ et $(O,\ey,\ez)$ sont des plans de symétrie. $\E$ appartient à l’intersection de ces plans, donc
+$$
+\E(O) = \Vec{0}.
+$$
+
+\udl{Figure de droite}.
+
+Les plans $(O,\ex,\ey)$ et $(O,\ex,\ez)$ sont des plans de symétrie. $\E$ appartient à l’intersection de ces plans, donc $\E(O) = E(O) \ex$. Cela est cohérent avec la présence d’un plan d’antisymétrie $(O,\ey,\ez)$.
+
+Par superposition, nous avons $\E(O) = \E_A + \E_B + \E_C + \E_D = 2E(\Vec{u}_A + \Vec{u}_B) $ où $E$ désigne la norme du champ créé par une seule des charges et $\Vec{u}_A \ps \ex = \Vec{u}_B \ps \ex = \cos( \SI{45}{\degres} ) = \frac{\sqrt{2}}{2}$. Donc
+$
+\E(O) = 2 \sqrt{2} E \ex.
+$
+Or
+$$
+E =  \frac{e}{4\pi \epz r^2},
+$$
+où $r=a/2 \times \frac{2}{\sqrt{2}} = \frac{a}{\sqrt{2}}$ désigne la distance entre $O$ et les coins du carré. In fine,
+$$
+\E(O) = \frac{\sqrt{2} e}{\pi \epz a^2} \ex.
+$$
+
+}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][TD]{Analyse détaillée de cartes de champ}
+  \Notions{\item Problème à résoudre \task Calcul direct de champ électrostatique}
+
+On considère deux cartes de champ (a) et (b) produites par deux charges ponctuelles (points noirs) notées $q_1$ (à gauche) et $q_2$ (à droite). Dans chacun des cas, donner le signe des charges $q_1$ et $q_2$, et déterminer qualitativement puis quantitativement le rapport $q_1/q_2$.
+\begin{fig}[exemple_carte_charges]
+  \hspace{1cm}
+  \begin{subfig}[label][0.3]
+    \includegraphics[height=1.1\columnwidth]{exemple_cartes_E1.jpg}
+  \end{subfig}\hspace{2.5cm}
+  \begin{subfig}[label][0.3]
+    \includegraphics[height=1.1\columnwidth]{exemple_cartes_E2.jpg}
+  \end{subfig}\hfill
+  % \capt{}
+\end{fig}
+\sol{
+Le champ $\E$ part des charges $+$ et convergent vers les charges $-$, donc $q_1<0$ et $q_2>0$ sur la figure 1, tandis que $q_1>0$ et $q_2>0$ sur la figure 2. On voit sur chaque figure un point $P$ où les lignes de champ semblent se croiser ; cela n'est possible que si le champ est nul $\E=\Vec{0}$. Or $\E \propto \frac{q}{r^2}$ avec $q$ la charge et $r$ la distance à la charge. On mesure les distances $PM_1$ et $PM_2$ sur chaque figure, puis on en déduit le rapport $\frac{q_2}{q_1}$
+sachant que
+$$
+\frac{q_1}{PM_1^2} + \frac{q_2}{PM_2^2} = 0
+$$
+}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \setcounter{Exercise}{10}
+
+
+
+% \setcounter{Exercise}{3}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][2][oral]{Distribution de charges en triangle}
+On considère les distributions de charges ponctuelles suivantes, où les charges élémentaires (positives en rouge, négatives en bleu) sont disposées sur les coins d'un triangle équilatéral de côté $a = \SI{0.1}{nm}$.
+%\begin{figure}[h!]
+%\centering
+% \begin{center}
+\begin{fig}[label]
+  \centering
+  \includegraphics[width=0.7\columnwidth]{charges_tri.pdf}
+  %\capt{}
+\end{fig}
+% \end{center}
+%\end{figure}
+
+\noindent Dans chaque cas, déterminer le champ et le potentiel électrostatiques au centre $O$ du triangle.
+
+\sol{
+\begin{itemize}
+
+\item Triangle +++. Le raisonnement est similaire mais cette fois-ci  $\Vec{E_3} = -E \ey$ et donc $\Vec{E}_O = \Vec{0}$ par symétrie.
+
+\item Triangle ++-. Par superposition, le champ $\Vec{E}_O$ à l’origine est la somme des champs $\Vec{E}_1$, $\Vec{E}_2$, $\Vec{E}_3$ créés par les trois charges (idem pour le potentiel).
+\begin{center}
+\includegraphics[width=0.45\textwidth]{champ_tri_E.png}
+\includegraphics[width=0.45\textwidth]{champ_tri_alpha.png}
+\end{center}
+Soit $E$ la norme des trois champs individuels (par symétrie seule l’orientation diffère). On a alors $E_{1y}=E_{2y} = E \sin \alpha$ et donc $\Vec{E}_1 + \Vec{E}_2 = 2E \sin \alpha \, \ey$. Comme $\Vec{E_3} = E \ey$, on trouve comme $\sin \alpha = \frac{1}{2}$
+$$
+\Vec{E}_O = E(1+2\sin \alpha)\ey = 2E \ey.
+$$
+Il reste à trouver $E$. On a d’après la loi de Coulomb
+$$
+E = \frac{1}{4\pi\varepsilon_0} \frac{e}{r^2}.
+$$
+
+\begin{center}
+\includegraphics[width=0.45\textwidth]{trigo.png}
+\end{center}
+Or on a $\cos \alpha = \frac{a/2}{r} = \frac{\sqrt{3}}{2}$ d’où $r = \frac{a}{\sqrt{3}}$. In fine, on trouve
+$$
+\Vec{E}_O = \frac{1}{2\pi\varepsilon_0} \frac{e}{r^2} \,\ey =  \frac{3}{2\pi\varepsilon_0} \frac{e}{a^2} \,\ey.
+$$
+
+
+\end{itemize}
+
+}
+
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][TD]{Analyse de cartes de champ}
+Les cartes de champ suivantes peuvent-elles représenter un champ électrostatique ? On justifiera la réponse et on indiquera dans chaque cas les caractéristiques éventuelles des sources du champ.
+%\begin{figure}[h!]
+%\centering
+% \begin{center}
+\begin{fig}[label]
+  \centering
+  \includegraphics[height=4cm]{electric_field_image_charge_plane.pdf}
+  \hfill\includegraphics[height=4cm]{magnetic_field_loop.pdf}
+  %\capt{}
+\end{fig}
+% \end{center}
+%\end{figure}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][2][TD]{Couche plane infinie}%{1}
+  \Notions{\item Champ électrique \task Théorème de Gauss}
+  On cherche à déterminer le champ et le potentiel électrostatique créé par une couche plane infinie définie dans le plan $z=\cte$, en un point $\rm M$ quelconque.
+% \begin{quest}
+% \item Dans un premier temps o
+On considère que la couche plane infinie est d’épaisseur $e$ selon $(Oz)$, donc située entre $z=-\textstyle\frac{e}{2}$ et $z=\textstyle\frac{e}{2}$. La couche épaisse est uniformément chargée, de densité volumique de charge $\rho$.
+\begin{quest}
+  \item Faire un schéma de la situation. À l'aide des invariances et des symétries, simplifier l'expression du champ $\vv{E}$. Justifier que $E_z(z)$ est une fonction impaire de $z$.
+  \sol{
+    \begin{enumerate}
+       
+      \item \udl{Symétries} : On identifie deux plans de symétrie,
+      $$
+      \Pi_1(M) = (M,\ex,\ez) \quad \text{et} \quad \Pi_2(M) = (M,\ey,\ez).
+      $$
+     Or $\E(M) \in \Pi_S(M)$ pour tout plan de symétrie $\Pi_S(M)$, donc $\E(M) \in \Pi_1(M) \cap \Pi_2(M) = (Oz)$. Ainsi
+      \eqbox{
+        \Vec{E}(M) = E_z(M) \ez.
+        }
+      \item \udl{Invariances} : translation selon $(Ox)$ et $(Oy)$ : $E_z(M) = E_z(z)$. On en déduit 
+      \eqbox{
+        \Vec{E}(M) = E_z(z) \ez.
+        }
+      
+        \item \udl{Parité} : $E_z(z)$ est une fonction \fbox{impaire} car $(O,\ex,\ey)$ est un plan de symétrie. Autrement dit,
+        \eqbox{
+          E_z(-z) = -E_z(z).
+        }
+      \end{enumerate}
+        }
+  \item En choisissant une surface de Gauss appropriée, déterminer le champ électrostatique en distinguant les cas $\abs{z}<\frac{e}{2}$ et $\abs{z}>\frac{e}{2}$.
+  \sol{
+    \begin{enumerate}
+      \item 
+      \udl{Surface de Gauss} : cylindre $S=S_1 \cup S_2 \cup S_{\rm lat}$ de rayon $r$ et hauteur $2z$, centré en O.
+      
+      \item \udl{Flux} : $$\oiint_S \Vec{E} \cdot \d \Vec{S} = \iint_{S_1} \Vec{E} \cdot \d \Vec{S} + \iint_{S_2} \Vec{E} \cdot \d \Vec{S} + \iint_{S_{\rm lat}} \Vec{E} \cdot \d \Vec{S} = S_1 E_z(z) - S_2 E_z(-z) + 0 = 2S_1E_z(z).$$
+      
+      \item udl{Théorème de Gauss} :
+      $$
+  \oiint_S \Vec{E} \cdot \d \Vec{S} = 2S_1E_z(z) = \frac{q_{\rm int}}{\epz}.
+  $$
+  Deux cas 
+  $$
+  \begin{cases}
+  \text{Pour } \abs{z}<\frac{e}{2}, \quad q_{\rm int} = \rho S_1 2z \quad \Rightarrow \quad E_z(z) = \frac{\rho z}{\epz} \\
+  \text{Pour } \abs{z}>\frac{e}{2}, \quad q_{\rm int} = \rho S_1 e \quad \Rightarrow \quad E_z(z) = \frac{\rho e}{2\epz} \\
+  \end{cases}
+  $$
+  On retrouve le case du plan infini chargé en surface en définissant la densité surfacique $\sigma = \rho e$. On en conclut
+  \eqbox{
+    \Vec{E}(M) = \begin{cases}
+      \frac{\rho z}{\epz} \ez & \text{si} \quad \abs{z}<\frac{e}{2} \\
+      \frac{\sigma}{2\epz} \ez & \text{si} \quad \abs{z}>\frac{e}{2}
+    \end{cases}
+    }
+  \end{enumerate}
+    }
+    \item En déduire l'expression du potentiel $V(M)$ dans tout l'espace avec $V(z=0)=0$.
+    \sol{
+      Le potentiel s'obtient par la définition $$\Vec{E} = -\grad{V} = -\dd{V}{z} \ez,$$ donc 
+      $$
+  \begin{cases}
+  \text{Pour } \abs{z}<\frac{e}{2}, \quad V(z) = -\frac{\rho z^2}{2\epz} + A \\
+  \text{Pour } \abs{z}>\frac{e}{2}, \quad V(z) = -\frac{\sigma |z|}{2\epz} + B \\
+  \end{cases}
+  $$
+  avec $A=V(z=0)=0$ et $B=\frac{\sigma e}{4\epz}$ par continuité de $V$ en $z=\pm\frac{e}{2}$. Ainsi,
+  \eqbox{
+    V(z) = \begin{cases}
+      -\frac{\rho z^2}{2\epz} & \text{si} \quad \abs{z}<\frac{e}{2} \\
+      -\frac{\sigma |z|}{2\epz} + \frac{\sigma e}{4\epz} & \text{si} \quad \abs{z}>\frac{e}{2}
+    \end{cases}
+  }
+
+}
+\end{quest}
+% \item Dans un second temps on considère la nappe infiniment fine, chargée donc uniquement en surface par une densité surfacique $\sigma$ supposée uniforme.
+% En menant la même étude que précédemment, déterminer le champ et le potentiel créé par cette surface en tout point $M$ de l'espace.
+% \end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][TD]{Cylindre infini}
+  \Notions{\item Champ électrostatique \task Théorème de Gauss}
+  Un cylindre plein infini d'axe ($Oz$) et de rayon $R$ est chargé par une densité volumique uniforme $\rho$.
+  \begin{fig}[label]
+    \centering
+    \includegraphics{flux_cylindre_charge.pdf}
+    %\capt{}
+  \end{fig}
+\begin{quest}
+\item Analyser les invariances et symétries du champ électrostatique~$\Vec{E}(M)$.
+
+\sol{
+  \begin{enumerate}
+    \item 
+    \udl{Symétries} : On identifie deux plans de symétrie,
+    $$
+    \Pi_1(M) = (M,\er,\ez) \quad \text{et} \quad \Pi_2(M) = (M,\et,\ez).
+    $$
+   Or $\E(M) \in \Pi_S(M)$ pour tout plan de symétrie $\Pi_S(M)$, donc $\E(M) \in \Pi_1(M) \cap \Pi_2(M)$. Ainsi, 
+   \eqbox{
+      \Vec{E}(M) = E_r(M) \er.
+   }
+   \udl{Invariances} : On distingue deux invariances : 
+   \begin{itemize}
+    \item translation selon $(Oz)$ : $E_r(M) = E_r(r,\theta)$,
+    \item rotation selon $(Oz)$ : $E_r(M) = E_r(r)$.
+   \end{itemize}
+   On en déduit
+   \eqbox{
+    \Vec{E}(M) = E_r(r) \er.
+   }
+  \end{enumerate}
+
+
+}
+
+
+\item Appliquer le théorème de Gauss pour en déduire $\Vec{E}$ à l’intérieur puis à l’extérieur du cylindre.
+\sol{
+  \begin{enumerate}
+    \item 
+    \udl{Surface de Gauss} : $$S = \{ \text{cylindre, axe } (Oz), \text{ rayon } r \text{, hauteur } h \} = S_1 \cup S_2 \cup S_{\rm lat}.$$ 
+    \item \udl{Flux} : le flux du champ électrique à travers la surface de Gauss est
+    $$
+    \oiint_S \Vec{E} \cdot \Vec{\d S} = \iint_{S_1} \Vec{E} \cdot \Vec{\d S}  + \iint_{S_2} \Vec{E} \cdot \Vec{\d S}  + \iint_{S_{\rm lat}} \Vec{E} \cdot \Vec{\d S} =  2\pi r h E_r(r) = \frac{q_{\int}}{\varepsilon_0}.
+    $$
+    \item \udl{Charge intérieure}. Le théorème de Gauss affirme que 
+    $$
+    \oiint_S \Vec{E} \cdot \Vec{\d S} = \frac{q_{\rm int}}{\varepsilon_0}.
+    $$
+    Deux cas se présentent :
+    \begin{itemize}
+      \item Pour $r<R$, $q_{\rm int} = \rho \pi r^2 h$ et $E_r(r) = \frac{\rho r}{2 \varepsilon_0} $.
+      \item Pour $r>R$, $q_{\rm int} = \rho \pi R^2 h$ et $E_r(r) = \frac{\rho R^2}{2 \varepsilon_0 r} $.
+    \end{itemize}
+    \item \udl{Champ électrostatique}. On en déduit
+    \eqbox{
+      \Vec{E}(r) = \begin{cases}
+        \frac{\rho r}{2 \varepsilon_0} \er & \text{si } r<R \\
+        \frac{\rho R^2}{2 \varepsilon_0 r} \er & \text{si } r>R
+      \end{cases}
+    }
+  \end{enumerate}
+    }
+\item En déduire le potentiel électrostatique $V$. Que choisir pour l’origine des potentiels ?
+\sol{
+$\Vec{E} = - \grad{V} = - \dd{V}{r} \er$.
+\begin{itemize}
+\item Pour $r<R$, $\dd{V}{r} = -\frac{\rho r}{2 \veps_0} $ donc $V(r) = A-\frac{\rho r^2}{2\veps_0}$ avec $A$ une constante.
+\item Pour $r>R$, $\dd{V}{r} = -\frac{\rho R^2}{2 \varepsilon_0 r}  $ donc $V(r) = B-\frac{\rho R^2}{2\veps_0} \ln\left(\frac{r}{R}\right)$ avec $B$ une constante.
+\end{itemize}
+On peut choisir $V(r=0)=0=A$ puis imposer la continuité de $V$ en $R$, soit $V(r=R^+)=B=-\frac{\rho R^2}{2\veps_0}$.
+}
+\item Reprendre les questions précédentes  dans le cas où le cylindre est creux et chargé en surface par la densité surfacique uniforme $\sigma$.
+\sol{
+Même surface de Gauss.
+\begin{itemize}
+\item Pour $r<R$, $q_{\rm int} = 0$ et $\Vec{E} = \Vec{0}$.
+\item Pour $r>R$, $q_{\rm int} = 2 \pi R h \sigma$ et $\Vec{E} = \frac{\sigma}{\varepsilon_0} \frac{R}{r} \er$.
+\end{itemize}
+On en déduit le potentiel $V(r<R)=\cte = 0$ par exemple et $V(r>R) = -\frac{\sigma}{\veps_0} R \ln\left(\frac{r}{R}\right)$.
+}
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][3][TD]{Électrolyte entre les plaques d'un condensateur}
+  \Notions{\item Potentiel électrostatique \task Équation de Poisson \task Facteur de Boltzmann}
+  Les armatures d'un condensateur plan, portées aux potentiels $U$ et $-U$, sont assimilées à des plans infinis d'équation $x=a$ et $x=-a$ respectivement. Soit $V(x)$ le potentiel électrostatique au point d'abscisse~$x$. On introduit entre les armatures un électrolyte constitué d'une quantité égale de cations et d'anions, de charges individuelles respectives $+e$ et $-e$. En l'absence de potentiel, les anions et les cations ont la même densité particulaire $n_0$. L'ensemble étant à l'équilibre à la température $T$, la densité volumique des particules de charges $q$ en présence du potentiel $V$ vaut $n=n_0\exp(-qV/k_{\rm{B}}T)$ où $k_{\rm{B}}$, est la constante de Boltzmann.
+
+\begin{quest}
+  \item Exprimer la densité volumique totale de charge $\rho$ en fonction de $n$ puis du potentiel $V$.
+  \sol{
+    La charge volumique d'une asseméblée de charges $q_i$ de densité particulaires $n_i$ vaut
+    $$
+  \rho = \sum_i q_i n_i.
+    $$
+    Pour deux espèces de charges opposées, on a donc
+    $$
+  \rho = e(n_+ - n_-).
+  $$
+  La densité volumique des cations et des anions à l'équilibre est donnée par la loi de Boltzmann,
+  $$
+  n(E) = n_0 \exp\left(-\frac{E}{k_{\rm{B}}T}\right).
+  $$
+  Or l'énergie électrostatique d'une particule  de charge $q$ dans un potentiel $V$ vaut $E=qV$. On en déduit
+  $$
+  n_{\pm} = n_0 \exp\left(\mp \frac{eV}{k_{\rm{B}}T}\right).
+  $$
+  On simplifiant l'expression de $\rho$, on trouve,
+  \eqbox{
+  \rho = -2 e n_0 \sinh\left( \frac{eV}{\kB T} \right).
+  }
+}
+\item Établir l'équation différentielle vérifiée par la fonction $V(x)$.
+\sol{
+L'équation vérifiée par le potentiel électrostatique est donnée par l'équation de Poisson,
+$$
+\Delta V + \frac{\rho}{\veps_0} = 0.
+$$
+En remplaçant $\rho$ par son expression en fonction de $V$, on obtient une équation fermée sur la fonction $V(x)$ :
+\eqbox{
+  \ddm{V}{x}{2} - \frac{2en_0}{\veps_0}  \sinh\left(\frac{eV}{\kB T}\right) = 0.
+  }
+}
+\item Que devient-elle si l'on suppose $eV\ll k_{\rm{B}}T$ ? Déterminer la fonction $V(x)$ sous cette hypothèse, en se servant de la continuité du potentiel. On fera apparaître une longueur caractéristique $\delta$ que l'on exprimera en fonction de $k_{\rm{B}}$, $T$, $\varepsilon_0$, $n_0$ et $e$. \AN~pour $n_0 \simeq \SI{e23}{m^{-3}}$.
+\sol{
+  \begin{itemize}
+    \item 
+    \udl{Hypothèse}.
+    La limite $eV\ll k_{\rm{B}}T$ permet de linéariser l'équation de Poisson. Cette hypothèse est valable à haute température, lorsque l'agitation thermique domine. En ordre de grandeur, on a 
+    $$
+  \kB T \simeq \SI{4.1e-21}{J}.
+  $$
+  dans les conditions ambiantes, et 
+  $$
+  e V \simeq \SI{1.6e-19}{J},
+  $$
+  pour un ion soumis à un potentiel de $\SI{1}{V}$. Cette hypothèse n'est donc \emph{pas vérifiée} en pratique !
+\item
+  \udl{Résolution de l'équation différentielle}. L'équation de Poisson linéarisée s'écrit
+  $$
+  \ddm{V}{x}{2} - \frac{2e^2n_0}{\veps_0 \kB T}V = 0.
+  $$
+On voit apparaître une longueur caractéristique 
+\eqbox{
+\delta = \sqrt{\frac{\veps_0 \kB T}{2e^2n_0}} \simeq \SI{2}{nm}.
+}
+
+On peut chercher une solution impaire sous la forme $V(x) = A \sinh(x/\delta)$. Les conditions aux limites imposent alors $V(a)=A \sinh(a/\delta) = A \sinh \beta = U$ avec $\beta=a/\delta$, soit $A = U/\sinh \beta$.
+On en déduit la solution
+\eqbox{
+  V(x) = U \frac{\sinh(\beta x/a)}{\sinh \beta }.
+  }
+\end{itemize}
+}
+\item On représente ci-dessous l'allure de la courbe $V(x)$ pour plusieurs valeurs de $\alpha=\delta/a$. Commenter.
+\end{quest}
+%\begin{figure}[h!]
+%\centering
+\begin{center}
+  \includegraphics[width=0.6\columnwidth]{electrolyte.pdf}
+\end{center}
+\sol{
+  On peut distinguer deux régimes.
+\begin{itemize}
+  \item Si $\alpha \gg 1 \Leftrightarrow \udl{\beta \ll 1}$, $V(x) \simeq U \frac{\beta x/a}{\beta},$ soit 
+  \eqbox{
+ V(x) \simeq U \frac{x}{a}.
+  }
+  On obtient une fonction linéaire.
+  \item Si $\alpha \ll 1 \Leftrightarrow \udl{\beta \gg 1}$, on a, sauf pour $x$ proche de zéro, $V(x) \simeq \pm U \frac{e^{\beta |x|/a}}{e^{\beta}},$ soit 
+  \eqbox{
+  V(x) \simeq \pm U \left( e^{-\frac{a-|x|}{a}}\right)^\beta.
+  }
+  On obtient une fonction exponentielle, sauf au voisinage de l'origine.
+\end{itemize}
+}
+%\end{figure}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][3]{Équivalence de deux distributions et champ dipolaire}
+
+
+  \Enonce{
+On cherche à déterminer le champ électrostatique créé par une distribution de charge surfacique non uniforme $\sigma=\sigma_0\cos\theta$ sur une sphère de centre $O$ et de rayon $R$ (figure de gauche). La figure de droite représente deux boules de rayon $R$, de centres respectifs $O_{+}$ et $O_{-}$ d'abscisses $+a/2$ et $-a/2$ sur l'axe $(Oz)$ chargées uniformément par une densité volumique $\rho_0$ et $-\rho_0$ respectivement.
+%\begin{figure}[h!]
+%\centering
+\begin{center}
+\includegraphics[width=0.65\textwidth]{equivalence_distrib.pdf}
+\end{center}
+  }
+
+%\end{figure}
+\begin{quest}
+\QR { Montrer que la distribution surfacique de gauche peut être obtenue comme la limite de la distribution volumique de droite si $a\rightarrow 0$ et $\rho_0=\sigma_0 a$.}
+{
+Soit une surface élémentaire $\d S$ sur la sphère centrée en $O_-$. Soit un volume élémentaire de base $\d S$ porté par le vecteur unitaire $\Vec{n}$ normal à la sphère et pointant vers $O_-$. En translatant cette sphère du vecteur $\Vec{O_- O_+}$, on délimite une portion de l'espace chargée de volume $\d V = (\d S \Vec{n}) \cdot \Vec{O_- O_+} = a \cos\theta \d S$.
+La correspondance entre les distributions surfacique et volumique s'écrit (pour la portion chargée positivement par exemple)
+$$
+\d q = \rho_0 \d V = \rho_0 a \cos\theta \d S  = \sigma \d S = \sigma_0 \cos \theta \d S,
+$$
+et donc les distributions sont équivalentes pour 
+\eqbox{
+  \rho_0 a = \sigma_0.
+}
+}
+
+\QR {En utilisant l'équivalence précédente, déterminer le champ et le potentiel créé par la distribution surfacique à l'intérieur (avec $V=0$ en $0$).}
+{
+  Déterminons le champ $\Vec{E}=E(r)\er$ créé à l'intérieur d'une boule de densité volumique de charge uniforme $\rho$.
+  \begin{itemize}
+    \item Surface de Gauss : boule de rayon $r<R$ centrée en $O$.
+    \item Théorème de Gauss : $\int_S \Vec{E} \cdot \d S = 4\pi r^2 E(r) = \frac{q_{\rm int}}{\veps_0} = \frac{4\pi r^3 \rho}{3\veps_0}$.
+  \end{itemize}
+  Donc
+  $$
+\Vec{E} = \frac{\rho r}{3\veps_0} \er = \frac{\rho}{3\veps_0} \Vec{OM}.
+  $$
+En utilisant le principe de superposition,
+$$
+\Vec{E}_{\rm tot} = \Vec{E}_- + \Vec{E}_+ =  -\frac{\rho_0}{3\veps_0} \Vec{O_- M} +\frac{\rho_0}{3\veps_0} \Vec{O_+ M} = \frac{\rho_0}{3\veps_0} \Vec{O_+O_-} = -\frac{\rho_0 a}{3\veps_0} \ez,
+$$
+soit 
+\eqbox{
+ \E_{\rm tot} = -\frac{\sigma_0}{3\veps_0}\ez.
+}
+
+Le potentiel vérifie
+$$
+-\dd{V}{z} \ez = -\frac{\sigma_0}{3\veps_0}\ez
+$$
+soit 
+\eqbox{
+ V(z) =  \frac{\sigma_0 z}{3\veps_0}.
+}
+}
+
+\QR {Faire de même à l'extérieur de la sphère.}
+{
+À l'extérieur de la sphère, $q_{\rm int} = (4/3)\pi R^3 \rho$ et donc
+$$
+\Vec{E} = \frac{\rho R^3}{3 r^2 \veps_0} \er = \frac{\rho R^3}{3\veps_0} \frac{\Vec{OM}}{OM^3}.
+$$
+On a
+% $$
+\eqbox{
+  \Vec{E}_{\rm tot} = \frac{\rho_0 R^3}{3\veps_0} \left(\frac{\Vec{O_+M}}{O_+M^3} - \frac{\Vec{O_-M}}{O_-M^3} \right)
+  }
+}
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][TD]{Cavité souterraine}
+On modélise la Terre par une boule de rayon $R_{\rm{T}}$ de centre $O_{\rm{T}}$ de densité volumique de masse uniforme $\rho$. On considère qu'il existe à une profondeur $h$ sous la surface une cavité sphérique vide de rayon $R_{\rm{c}}$ de centre $O_{\rm{c}}$.
+%\begin{figure}[h!]
+%\centering
+% \begin{center}
+% \includegraphics[width=0.8\textwidth]{cavite.pdf}
+% \end{center}
+%\end{figure}
+\begin{quest}
+\item Déterminer l'expression générale du champ dans la cavité en fonction notamment de $\vv{O_{\rm{T}}O_{\rm{c}}}$ (voir figure de gauche ci-dessus).
+\item On cherche à simplifier l'expression précédente en supposant la cavité peu profonde et de taille restreinte par rapport au rayon terrestre ($h,R_{\rm{c}}\ll R_{\rm{T}}$), ce qui permet de négliger localement la courbure de la Terre (voir figure de droite ci-dessus). Déterminer l'expression de l'anomalie gravimétrique $\Delta g_z$ selon la verticale causée par la présence de la cavité en un point $P$ quelconque à la surface de la Terre. Expliquer pourquoi la mesure précise de $\Delta g_z$ est utile pour la prospection souterraine.
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PT][2][TD]{Potentiel de Yukawa}
+  \Notions{\item Charge électrique \task Potentiel électrostatique}
+
+Nous souhaitons déterminer la distribution volumique de charges $\rho$ qui crée en tout point $M$ de l'espace un potentiel électrostatique de la forme :
+\begin{equation}
+ V(r) = \frac{q}{4\pi r \varepsilon_{0}}\,e^{-r/a},
+\end{equation}
+où $r$ est la distance à l'origine, $q = \SI{1.6e-19}{C}$ la charge élémentaire et $a=10^{-10}$ m une distance.% (le rayon de Bohr).
+
+\begin{quest}
+ \item Déterminer le champ électrostatique $\Vec{E}(M)$ en tout point $M$ de l'espace. Représenter les lignes de champ et les équipotentielles dans un plan qui contient l'origine $O$.
+
+ \sol{
+ $\displaystyle \Vec{E}(\Vec{r}) = - \Grad{V}(\Vec{r}) = \frac{q}{4\pi\varepsilon_{0}}e^{-r/a}\left(\frac{1}{r^{2}}+\frac{1}{ar}\right)\Vec{e}_{r}.$
+ }
+
+ \item À partir des propriétés d'invariance du potentiel électrostatique, déterminer de quels variables dépend la distribution de charge $\rho(M)$.
+
+ \item En déduire la charge $Q(R)$ contenue dans une boule de centre $O$ et de rayon $R$.
+ \'Etudier les cas limites $R \rightarrow +\infty$ et $R \rightarrow 0$. Quelles conclusions peut-on en tirer ?
+ \sol{
+ On applique le théorème de Gauss sur la sphère $S$ de rayon $r$ : $\displaystyle \oiint_{S}\Vec{E}(r)\cdot\Vec{\mathrm{d}S} = \frac{Q(r)}{\varepsilon_{0}}$. Ainsi
+        \begin{equation}
+            Q(r) = qre^{-r/a}\left(\frac{1}{r}+\frac{1}{a}\right).
+        \end{equation}
+        $Q(r) \underset{r\rightarrow +\infty}{\longrightarrow} 0$ et $Q(r) \underset{r\rightarrow 0} {\longrightarrow} q$. Il y a une charge ponctuelle positive en l'origine, et l'espace est occupé par une charge négative.
+ }
+
+ \item En exprimant de deux façons différentes la charge comprise dans une coquille sphérique de rayons $r$ et $r+\d r$, déterminer la densité de charge volumique $\rho(M)$. 
+ \item La distribution de charges étudiée peut être prise comme modèle de l'atome d'hydrogène. Qu'en pensez-vous ? Vérifier que l'expression de $\rho(M)$ obtenue est cohérente avec l'équation de Maxwell-Gauss.
+
+ \sol{
+	  Considérons le système constitué de l'espace compris entre les sphères de rayon $r$ $r+\mathrm{d}r$. La charge totale contenue dans un tel système est $\mathrm{d}Q = Q(r+\mathrm{d}r)-Q(r) = \dd{Q}{r}\mathrm{d}r = \rho(r)4\pi r^{2}\mathrm{d}r$. Donc
+        \begin{equation}
+        \rho(r) = \frac{1}{4\pi r^{2}}\dd{Q}{r} = \frac{1}{4\pi ra^{2}}e^{-r/a}.
+        \end{equation}
+ }
+
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][3][colle]{Champ électrostatique créé par un disque chargé}
+  \Notions{\item Calcul direct de potentiel électrique \task Champ électrostatique \task Théorème de Gauss} 
+  Sur le plan O$xy$, on considère une distribution de charges de densité surfacique uniforme~$\sigma$, comprise entre les cercles de centre $\rm O$ et de rayons $a$ et $b$ (avec $a<b$). Soit $\rm M$ un point de l'axe $(Oz)$ perpendiculaire au plan de charges $(Oxy)$. On souhaite déterminer le champ électrostatique $\Vec E(M)$ proche de l'axe $(Oz)$.
+% \begin{fig}[label]
+%   \centering
+%   \includegraphics[width=0.35\columnwidth]{charged_disk}
+%   %\capt{}
+% \end{fig}
+
+
+\begin{quest}
+\question Calcul du champ vertical sur l'axe.
+\begin{enumerate}[label=\alph*)]
+\question On désigne par $V(z)$ le potentiel électrostatique en tout point $M$ de l'axe $Oz$. Déterminer que le potentiel $\d V(z)$ produit  par une couronne infinitésimale chargée de rayon $a<r<b$ et d'épaisseur $\d r$.
+
+\question En déduire que
+\begin{equation}
+V(z) = \frac{\sigma}{2\epsilon_0}\left(\sqrt{b^2+z^2}-\sqrt{a^2+z^2}\right)
+\end{equation}
+\question Justifier que le champ électrostatique sur l'axe est de la forme $\Vec E (z) = E_z(z) \ez$. Déterminer $E_z(z)$.
+
+\sol{
+On peut justifier cette forme de $\E$ sans même connaitre le potentiel. On rappelle qu'on ne calcule le champ que SUR L'AXE ici, et $\E(z)$ ne dépend que de $z$ sur l'axe par définition. Tout plan passant par l'axe et généré par $\ez$ est un plan de symétrie, donc $\E$ est porté par $\ez$.
+
+$\Vec E = -\Vec \nabla V $ donne $E_z(z) = -\d V/\d z = -\dfrac{\sigma z}{2\epsilon_0}\left( \dfrac{1}{\sqrt{b^2+z^2}}-\dfrac{1}{\sqrt{a^2+z^2}}\right)$.
+}
+\question Représenter le graphe de $E_z(z)$ fonction de $z$ à $b$ fixé et pour différentes valeurs de $a$. Commenter les résultats obtenus. Que devient le champ si $b \rightarrow \infty$ ?
+
+\sol{
+\begin{fig}[]
+  \centering
+  \includegraphics[scale=1]{E_disque.pdf}
+  % \capt{}
+\end{fig}
+}
+\end{enumerate}
+\question Calcul du champ radial proche de l'axe. On souhaite déterminer la composante radiale $E_r(r,z)$ du champ électrostatique près de l'axe O$z$. On suppose ici que $a=0$ (disque plein).
+
+\begin{enumerate}[label=\alph*)]
+  \question  On considère un cylindre centré en O, de hauteur $2h$ et de rayon $r$. On choisit un rayon $r$ très petit devant $b$. Justifier que le champ vertical $E_z(z)$ est à peu près uniforme sur le haut et le bas du cylindre, et donner son expression.
+
+\sol{
+On simplifie l'expression d'avant pour $a=0$. Le champ axial est peu modifié lorsqu'on s'écarte peu de l'axe, i.e pour $r\ll b$.
+$$E_z(z) =  \dfrac{\sigma}{2\epsilon_0} - \dfrac{\sigma z}{2\epsilon_0} \dfrac{1}{\sqrt{b^2+z^2}} $$
+}
+
+\question Appliquer le théorème de Gauss sur ce cylindre et en déduire
+\begin{equation}
+\int_0^h E_r(r,z) \d z = \dfrac{\sigma}{4\epsilon_0} \dfrac{rh}{\sqrt{b^2+h^2}} .
+\end{equation}
+
+\sol{
+On a $2 \times \pi r^2 E_z(h) + 2 \times 2\pi r \int_0^h E_r(r,z) \d z  = \dfrac{\pi r^2 \sigma}{\varepsilon_0}$ donc
+$$
+\int_0^h E_r(r,z) \d z   \dfrac{r \sigma}{4\varepsilon_0} - \dfrac{r}{2} E_z(h) = \dfrac{\sigma}{4\epsilon_0} \dfrac{rh}{\sqrt{b^2+h^2}}
+$$
+}
+
+\question En déduire l'expression de $E_r(r,z)$ pour $r \ll b$ par dérivation.
+
+\sol{
+On dérive l’intégrale par rapport à $h$. On trouve
+$$E_r(r,z) \simeq \dfrac{\sigma}{4\epsilon_0} \left( \dfrac{r}{\sqrt{b^2+z^2}} - \dfrac{rz^2}{(b^2+z^2)^{3/2}} \right) = \dfrac{\sigma}{4\epsilon_0} \dfrac{r b^2}{(b^2+z^2)^{3/2}} $$
+}
+\end{enumerate}
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][3][TD]{Champ électrostatique d'un disque chargé}
+  \Notions{\item Calcul direct de potentiel électrique \task Champ électrostatique \task Théorème de Gauss} 
+  Sur le plan O$xy$, on considère une distribution de charges de densité surfacique uniforme $\sigma$, comprise entre les cercles de centre O et de rayons $a$ et $b$ (avec $a<b$). Soit $M$ un point de l'axe O$z$ perpendiculaire au plan de charges O$xy$. On souhaite déterminer le champ électrostatique $\Vec E(M)$ proche de l'axe O$z$.
+\begin{fig}[label]
+  \centering
+  \includegraphics[width=0.35\columnwidth]{charged_disk}
+  %\capt{}
+\end{fig}
+
+
+\begin{quest}
+\question Calcul du champ vertical sur l'axe.
+\begin{enumerate}[label=\alph*)]
+\question On désigne par $V(z)$ le potentiel électrostatique en tout point $M$ de l'axe $Oz$. Montrer que la contribution d'une couronne infinitésimale de rayon $a<r<b$ et d'épaisseur $\d r$ au potentiel s'écrit
+\begin{equation}
+\d V(z) = \dfrac{\sigma r \d r}{2 \varepsilon_0 \sqrt{r^2+z^2}}
+\end{equation}
+
+\question En déduire que
+\begin{equation}
+V(z) = \frac{\sigma}{2\epsilon_0}\left(\sqrt{b^2+z^2}-\sqrt{a^2+z^2}\right)
+\end{equation}
+\question Justifier par analyse des symétries que le champ électrostatique sur l'axe est de la forme $\Vec E (z) = E_z(z) \ez$. Déterminer $E_z(z)$ à partir du potentiel.
+
+\sol{
+On peut justifier cette forme de $\E$ sans même connaitre le potentiel. On rappelle qu'on ne calcule le champ que SUR L'AXE ici, et $\E(z)$ ne dépend que de $z$ sur l'axe par définition. Tout plan passant par l'axe et généré par $\ez$ est un plan de symétrie, donc $\E$ est porté par $\ez$.
+
+$\Vec E = -\Vec \nabla V $ donne $E_z(z) = -\d V/\d z = -\dfrac{\sigma z}{2\epsilon_0}\left( \dfrac{1}{\sqrt{b^2+z^2}}-\dfrac{1}{\sqrt{a^2+z^2}}\right)$.
+}
+\question Représenter le graphe de $E_z(z)$ fonction de $z$ à $b$ fixé et pour différentes valeurs de $a$. Commenter les résultats obtenus. Que devient le champ si $b \rightarrow \infty$ ?
+
+\sol{
+\begin{fig}[]
+  \centering
+  \includegraphics[scale=1]{E_disque.pdf}
+  % \capt{}
+\end{fig}
+}
+\end{enumerate}
+\question Calcul du champ radial proche de l'axe. On souhaite déterminer la composante radiale $E_r(r,z)$ du champ électrostatique près de l'axe O$z$. On suppose ici que $a=0$ (disque plein).
+
+\begin{enumerate}[label=\alph*)]
+  \question  On considère un cylindre centré en O, de hauteur $2h$ et de rayon $r$. On choisit un rayon $r$ très petit devant $b$. Justifier que le champ vertical $E_z(z)$ est à peu près uniforme sur le haut et le bas du cylindre, et donner son expression.
+
+\sol{
+On simplifie l'expression d'avant pour $a=0$. Le champ axial est peu modifié lorsqu'on s'écarte peu de l'axe, i.e pour $r\ll b$.
+$$E_z(z) =  \dfrac{\sigma}{2\epsilon_0} - \dfrac{\sigma z}{2\epsilon_0} \dfrac{1}{\sqrt{b^2+z^2}} $$
+}
+
+\question Appliquer le théorème de Gauss sur ce cylindre et en déduire
+\begin{equation}
+\int_0^h E_r(r,z) \d z = \dfrac{\sigma}{4\epsilon_0} \dfrac{rh}{\sqrt{b^2+h^2}} .
+\end{equation}
+
+\sol{
+On a $2 \times \pi r^2 E_z(h) + 2 \times 2\pi r \int_0^h E_r(r,z) \d z  = \dfrac{\pi r^2 \sigma}{\varepsilon_0}$ donc
+$$
+\int_0^h E_r(r,z) \d z   \dfrac{r \sigma}{4\varepsilon_0} - \dfrac{r}{2} E_z(h) = \dfrac{\sigma}{4\epsilon_0} \dfrac{rh}{\sqrt{b^2+h^2}}
+$$
+}
+
+\question En déduire l'expression de $E_r(r,z)$ pour $r \ll b$ par dérivation.
+
+\sol{
+On dérive l’intégrale par rapport à $h$. On trouve
+$$E_r(r,z) \simeq \dfrac{\sigma}{4\epsilon_0} \left( \dfrac{r}{\sqrt{b^2+z^2}} - \dfrac{rz^2}{(b^2+z^2)^{3/2}} \right) = \dfrac{\sigma}{4\epsilon_0} \dfrac{r b^2}{(b^2+z^2)^{3/2}} $$
+}
+\end{enumerate}
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][TD]{Distribution de charge à partir du champ}
+Un champ électrostatique à symétrie cylindrique est de la forme $\vv{E}=Ar\,\vv{e_r}$ si $r<a$ et $\vv{E}=\frac{B}{r}\,\vv{e_r}$ si $r>a$. Déterminer la distribution de charges qui créé ce champ, puis le potentiel associé en supposant que $V(r=0)=0$.
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][2][TD]{Analogie avec le champ gravitationnel}
+  \Notions{\item Loi de Coulomb \task Loi de la gravitation \task Théorème de Gauss}
+Dans cette exercice, nous allons voir que plusieurs résultats de l'électrostatique se généralisent à la gravitation. En effet, considérons deux masses ponctuelles, disons $m_O$ placée en $\rm O$, et $m$ placée en~$\rm M$. On note $\vv{OM}=r\,\er$ le vecteur position et $G=\SI{6,67e-11}{m^3.kg^{-1}.s^{-2}}$ la constante de gravitation. Ces particules sont aussi de charges $q_O$ et $q$ respectivement.
+
+\begin{quest}
+\item Écrire la force coulombienne et la force gravitationnel s’exerçant entre ces deux corps. Commenter la dépendance en $r$. Définir un champ gravitationnel $\Vec{\mc{G}}(M)$ par analogie avec la champ électrostatique~$\Vec{E}(M)$. Compléter le tableau d’analogie suivant.
+\begin{center}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{|l|l|l|l|l|}
+\hline
+\textsc{Électrostatique} & Champ $\Vec{E}$ & Charge $q$ & Charge volumique $\rho$ & Permittivité du vide $\varepsilon_0$ \\
+\hline \textsc{Gravitation} & & & &  \\
+\hline
+\end{tabular}
+\end{center}
+
+
+\sol{
+ $\vv{F}_{m_O\rightarrow m}=\frac{-G m m_O}{r^2}\vv{e_r}=m\vv{G}_{O}(M)\quad\text{avec}\quad \vv{G}_{O}(M)=\frac{-\mc{G}m_0}{r^2}\vv{e_r},$
+ \begin{equation*}
+\begin{cases}
+\frac{1}{4\pi\varepsilon_0}\leftrightarrow -G \\
+q_{\rm{int}}\leftrightarrow m_{\rm{int}} \\
+\vv{E}\leftrightarrow \vv{G}.
+\end{cases}
+\end{equation*}
+}
+
+\item Écrire deux équations locales de la gravitation qui portent sur $\Vec{\mc{G}}$. Définir un potentiel gravitationnel $\Phi$ et déterminer l’équation vérifiée par $\Phi$.
+\sol{
+Il est également possible d'écrire des équations locales pour le champ gravitationnel, sous la forme
+ \begin{equation}
+ \begin{cases}
+ \Dive{\,\vv{G}}=-4\pi\mc{G}\rho_{\rm m}\\
+ \rot{\vv{G}}=0,
+ \end{cases}
+ \end{equation}
+ et de définir par exemple un potentiel gravitationnel $\Phi$ tel que $\vv{G}=-\grad{\Phi}$, avec $\Delta \Phi = 4\pi\mc{G}\rho_{\rm m}$.
+ }
+
+\item Énoncer le \guill{théorème de Gauss gravitationnel}. Dans Star Trek apparaissent des sphères de Dyson, qui sont des sphères creuses homogènes de masse totale $M$, de rayon $R$ et d'épaisseur négligeable. Déterminer le champ gravitationnel $\Vec{\mc{G}}(M)$ à l’intérieur et à l’extérieur d’une sphère de Dyson.
+
+\sol{
+\begin{equation}
+\oiint_{S}\vv{G}\cdot\vv{\d S}=-4\pi\mc{G}m_{\rm{int}},
+\end{equation}
+Comme la distribution de charge est invariante par rotation, $\Vec{G}(M)$ également et donc $\Vec{G}(M) = G(r)\Vec{u_r}$. Le théorème de Gauss se simplifie en
+$$
+4\pi r^2 G(M)=  -4\pi \mathcal{G}M_{\rm int}.
+$$
+
+\begin{itemize}
+\item Si $r<R$, $M_{\rm int}=0$ et donc
+$$
+\Vec{G}(r<R) = \Vec{0}.
+$$
+Les influences gravitationnelles de la sphère se compensent à l'intérieur !
+\item Si $r>R$, $M_{\rm int}=M$ et donc
+$$
+\Vec{G}(r>R) = -\dfrac{\mathcal{G}M}{r^2}\Vec{u_{r}}.
+$$
+Le champ à l'extérieur de la sphère est celui d'un corps ponctuelle à l'origine de même masse.
+\end{itemize}
+}
+
+\item Quelles sont les limites de cette analogie ? 
+
+\sol{ La différence principale entre le champ électrostatique et le champ gravitationnel est qu'il n'existe pas de masse négative dans le cas gravitationnel. Par exemple dans l'analyse des symétries pour calculer le champ ($\vv{G}$, comme $\vv{E}$, ne dépend pas de l’orientation de l’espace), il n'existe donc jamais de plan d'antisymétrie. Attention aussi aux ordres de grandeurs qui sont très différents: la force gravitationnelle agit principalement à très grande échelle (sur des objets très massifs). Aux petites et moyennes échelles, la force électromagnétique est dominante.
+
+}
+
+\end{quest}
+
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

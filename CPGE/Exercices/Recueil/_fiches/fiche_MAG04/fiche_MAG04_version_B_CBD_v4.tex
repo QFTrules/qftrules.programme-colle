@@ -1,0 +1,1780 @@
+% Date : 14/03/2023
+% Version : version B 2
+% Auteur : MHG
+% Relu : 
+% Relecteur : CBD
+
+% ------------------------------------------------------------ %
+% ----------------------  Fiche MAG04  ----------------------- %
+% Thème : Induction
+% Classes : PCSI,MPSI
+% ------------------------------------------------------------ %
+
+
+
+% ======================================================= % 
+% ============== Gestion de la compilation ============== %
+% ======================================================= % 
+\ifdefined\mainIsLoaded\else
+\RequirePackage{import}
+\subimport{../../}{_preambule_CdE_PC}
+\begin{document}
+\fi
+% ======================================================= % 
+% ======================================================= % 
+
+
+
+
+
+
+% ============================================================================ %
+%                            FICHE D'ENTRAÎNEMENT                              %
+% ============================================================================ %
+% ======================= Métadonnées sur la fiche =========================== %
+\titreFicheEntrainement		{Induction}
+\grandTheme					{Électromagnétisme}
+\numeroFiche				{MAG04}
+\uniqueID					{WZhaxFInvkq} % une chaîne de caractères (a-z, A-Z) aléatoire de 10 caractères.
+\nombreColonnesReponses		{2} % 1, 2, 3, etc.
+% ============================================================================ %
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\debutFicheEntrainement                                                                      %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+% --------------------------------------------------------------------- %
+%                              Prérequis                                %
+%                             (facultatif)                              %
+% --------------------------------------------------------------------- %
+% ================== Métadonnées sur le prérequis ===================== %
+\avecPrerequis{Y} % Y ou N
+% ===================================================================== %
+\begin{prerequis}
+	Flux magnétique. Loi de Lenz. Force de Laplace.
+\end{prerequis}
+% --------------------------------------------------------------------- %
+
+
+
+
+
+
+% •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••• %
+% •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••• %
+\sectionFicheEntrainement{Autour du flux d'un champ magnétique}
+% •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••• %
+% •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••• %
+
+
+
+
+
+
+
+% ********************************************************************* %
+%                           ENTRAÎNEMENT                                % 
+% ********************************************************************* %
+% ================ Métadonnées sur l'entraînement ===================== %
+
+\titreEntrainementFacultatif	{Flux propre d'un solénoïde}
+\hauteurLargeurCadreReponse		{6mm}{2.5cm}
+\dureeResolutionFacultative		{2} % 1, 2, 3 ou 4
+\typeEntrainement				{Newton} % Newton ou QCM ou AN ou vide (exercice "normal")
+\basiqueEtTransversal			{Y}
+\nombreColonnesQuestions		{1} % vide, 1, 2, 3, etc.
+\avecPlusieursQuestions			{Y} % Y ou N
+\initialisationEntrainement
+% ===================================================================== %
+
+
+
+On forme une bobine en enroulant du fil de cuivre d'épaisseur $e$ sur un cylindre de rayon $R$ et de longueur $\ell$ en une seule couche de $N$ spires jointives. 
+
+Le champ magnétique créé par un solénoïde infini est:
+\[
+\vv{B}=\mu_{0}ni \vv{e_z}
+\]
+où $\mu_{0}$ est la perméabilité du vide, $i$ le courant parcourant et $n=\dfrac{N}{\ell}$ le nombre de spires par unité de longueur. 
+
+\begin{center}
+\subimport{_images/}{fiche_MAG04_solenoide_flux_CBD_v2.tex}
+\end{center}
+
+Le flux propre dans cette bobine est 
+\(
+\phi_{\text{tot}}=NBS
+\)
+où $S$ est la surface d'une spire.
+
+\bigskip
+
+% =============================================================================== %
+\debutEntrainement
+% =============================================================================== %
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+Par combien est multiplié le flux propre à travers la bobine lorsque l'on double: 
+
+
+% ************************************** %
+\begin{enonce}
+l'intensité du courant
+\end{enonce}
+\reponse{$ \times 2 $}
+\begin{corrige}
+Le flux du champ magnétique à travers une spire est $\varphi_{1}=BS=\pi R^{2}B$.
+Le flux total à travers la bobine est donc 
+\[
+\varphi_{\text{tot}}=N\varphi_{1}=\dfrac{\mu_{0}\pi R^{2}N^{2}}{\ell}i.
+\]
+On retrouve l'expression de l'inductance $L$ de la bobine en fonction de ses caractéristiques géométriques:
+\[
+\varphi_{\text{tot}}=Li \ssi L=\dfrac{\mu_{0}\pi R^{2}N^{2}}{\ell}.
+\]
+Si on double le courant, on double donc le flux.
+\end{corrige}
+% ************************************** %
+
+
+% ************************************** %
+\begin{enonce}
+la longueur du solénoïde (fil de même épaisseur)
+\end{enonce}
+\reponse{$ \times 2 $}
+\begin{corrige}
+En doublant la longueur du solénoïde, en gardant les spires jointives et le fil de même épaisseur, on double alors la longueur $\ell$ et le nombre de spires $N$ : on double alors le flux.
+\end{corrige}
+% ************************************** %
+
+
+% ************************************** %
+\begin{enonce}
+l'épaisseur du fil (la longueur de fil restant la même)
+\end{enonce}
+\reponse{$ \times 1/2 $}
+\begin{corrige}
+Le fil est deux fois plus épais mais de même longueur : on a toujours $N$ spires mais réparties sur une longueur $2\ell$ au lieu de $\ell$.
+Le flux propre est donc divisé par deux.
+\end{corrige}
+% ************************************** %
+
+% ************************************** %
+\begin{enonce}
+le rayon de la bobine (la longueur de fil restant la même)
+\end{enonce}
+\reponse{$ \times 2 $}
+\begin{corrige}
+Si on double le rayon des spires en gardant la longueur de fil identique, le nombre de spires dans la bobine diminue. En effet, en notant $\ell_{\text{fil}}$ la longueur du fil, on trouve: $\ell_{\text{fil}}=2\pi NR=2\pi N'\left(2R\right)\ssi N'=N/2$ en notant $N'$ le nouveau nombre de spires.
+La longueur de la bobine est également divisée par 2.
+
+Le flux total devient alors :
+\[
+\varphi'_{\text{tot}}=\dfrac{\mu_{0}\pi\left(2R\right)^{2}\left(N/2\right)^{2}}{\left(\ell/2\right)}i=2\dfrac{\mu_{0}\pi R^{2}N^{2}}{\ell}i=2\varphi{}_{\text{tot}}.
+\]
+ Le flux total est donc multiplié par deux.
+\end{corrige}
+% ************************************** %
+
+% =============================================================================== %
+\finEntrainement
+% =============================================================================== %
+
+
+
+
+
+\newpage
+
+
+
+
+
+
+
+
+% ********************************************************************* %
+%                           ENTRAÎNEMENT                                % 
+% ********************************************************************* %
+% ================ Métadonnées sur l'entraînement ===================== %
+
+\titreEntrainementFacultatif	{Flux dans des circuits orientés}
+\hauteurLargeurCadreReponse		{7mm}{1.5cm}
+\dureeResolutionFacultative		{2} % 1, 2, 3 ou 4
+\typeEntrainement				{QCM} % Newton ou QCM ou AN ou vide (exercice "normal")
+\nombreColonnesQuestions		{1} % vide, 1, 2, 3, etc.
+\avecPlusieursQuestions			{Y} % Y ou N
+\initialisationEntrainement
+% ===================================================================== %
+
+Des boucles de différentes formes mais toutes de même surface $S=a^{2}$ sont placées proches d'un fil infini parcourt par un courant $I$. 
+On peut montrer que le champ produit par un
+fil infini est de la forme $\vv{B}\left(r\right)=\dfrac{\mu_{0}I}{2\pi r}\vv{e_{\theta}}$
+dans le repère cylindrique (avec $Oz$ confondu avec le fil).
+
+
+\begin{center}
+\subimport{_images/}{fiche_MAG04_flux_circuit_ferme_CBD_v2.tex}
+\end{center}
+
+\minusMedskip
+
+% =============================================================================== %
+\debutEntrainement
+% =============================================================================== %
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+Quels flux sont négatifs?
+	
+	\begin{listeQCM5Colonnes}
+	\item $\phi_\ptA$
+	\item $\phi_\ptB$
+	\item $\phi_\ptC$
+	\item $\phi_\ptD$
+	\item Aucun
+	\end{listeQCM5Colonnes}
+
+\bigskip
+\end{enonce}
+
+\reponse{\reponseA{} et \reponseB{}}
+
+\begin{corrige}
+D'après la règle de la main droite, le pouce étant dans le sens du courant, en enroulant la main on trouve que le champ magnétique sort de la feuille au niveau des circuits. De plus, en enroulant la main droite dans le sens de l'orientation de chaque circuit on peut déterminer le sens du vecteur surface par le sens du pouce, ainsi les spires A et B ont un vecteur surface vers la feuille et les spires C et D ont un vecteur surface qui sort de la feuille. Comme le flux est donné par $\phi\big(\vv{B}\big)=\iint_{S}\vv{B}\cdot\vv{\d{}S}$, celui-ci sera négatif si le vecteur surface et le vecteur champ magnétique présentent des sens opposés.
+\end{corrige}
+
+% ************************************** %
+
+
+\begin{multicols}{2}
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+A-t-on $\va{\phi_\ptA} > \va{\phi_\ptB}$ ?	
+	\begin{listeQCM1Colonne}
+	\item Oui
+	\item Non
+	\end{listeQCM1Colonne}
+\end{enonce}
+
+\reponse{Oui}
+
+\begin{corrigeNewpage}
+On rappelle que le flux du champ magnétique à travers une surface
+orientée $S$ vaut $\phi\left(\vv{B}\right)=\iint_{S}\vv{B}\cdot\vv{\d{} S}$. 
+
+Sans tenir compte de l'orientation des surfaces, le flux sera d'autant
+plus important dans le circuit que celui est proche du fil car le
+champ magnétique produit par un fil infini est une fonction décroissante
+de la distance au fil. On a donc $\va{\phi_\ptA} > \va{\phi_\ptB}$.
+\end{corrigeNewpage}
+
+% ************************************** %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+A-t-on $\va{\phi_\ptC} > \va{\phi_\ptD}$ ?
+	
+	\begin{listeQCM1Colonne}
+	\item Oui
+	\item Non
+	\end{listeQCM1Colonne}
+
+
+\end{enonce}
+
+\reponse{Non}
+
+\begin{corrige}
+D'après la même justification que la question précédente, on a $\va{\phi_\ptD} > \va{\phi_\ptC}$.
+\end{corrige}
+
+% ************************************** %
+
+\end{multicols}
+
+
+
+% =============================================================================== %
+\finEntrainement
+% =============================================================================== %
+
+
+
+
+
+
+
+
+
+
+% ********************************************************************* %
+%                           ENTRAÎNEMENT                                % 
+% ********************************************************************* %
+% ================ Métadonnées sur l'entraînement ===================== %
+
+\titreEntrainementFacultatif	{Flux dans des polyèdres (1)}
+\hauteurLargeurCadreReponse		{8mm}{2.5cm}
+\dureeResolutionFacultative		{3} % 1, 2, 3 ou 4
+\typeEntrainement				{} % Newton ou QCM ou AN ou vide (exercice "normal")
+\nombreColonnesQuestions		{2} % vide, 1, 2, 3, etc.
+\avecPlusieursQuestions			{Y} % Y ou N
+\initialisationEntrainement
+% ===================================================================== %
+
+
+Soit le polyèdre ci-dessous placé dans un champ magnétique uniforme $\vv{B} = B\vv{e_y}$.
+Déterminer les expressions des flux magnétiques sortant à travers les différentes surfaces de ce polyèdre.
+
+\minusSmallskip
+
+\begin{center}
+\subimport{_images/}{fiche_MAG04_flux_prisme_1_CBD_v2.tex}
+\end{center}
+
+\minusBigskip
+
+
+% =============================================================================== %
+\debutEntrainement
+% =============================================================================== %
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+$\phi \big(\vv{B} \big)$ pour $\ptA\ptB\ptC$ =
+\end{enonce}
+\reponse{$0$}%
+\begin{corrige}
+On oriente toutes les surfaces vers l'extérieur du volume. Ainsi, pour la surface $\ptA\ptA'\ptB'\ptB$ le vecteur normal s'écrit $\vv{S}_{\ptA\ptA'\ptB'\ptB}=-ab\vv{e_{x}}$.
+On rappelle que le flux du champ magnétique à travers une surface est: $\phi=\iint_{S}\vv{B}\cdot\vv{\d{}S}$.
+
+Le flux à travers la surface $\ptA\ptB\ptC$ est nul car la surface est orthogonale au champ magnétique.
+\end{corrige}
+
+% ************************************** %
+
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+$\phi \big(\vv{B} \big)$ pour $\ptA'\ptC'\ptB'$ =
+\end{enonce}
+\reponse{$0$}%
+\begin{corrige}
+Le flux à travers la surface $\ptA'\ptC'\ptB'$ est nul car la surface est orthogonale au champ magnétique.
+\end{corrige}
+
+% ************************************** %
+
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+$\phi \big(\vv{B} \big)$ pour $\ptA\ptA'\ptB'\ptB$ =
+\end{enonce}
+\reponse{$0$}%
+\begin{corrige}
+Le flux à travers la surface $\ptA\ptA'\ptB'\ptB$ est nul car la surface est orthogonale au champ magnétique.
+\end{corrige}
+
+% ************************************** %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+$\phi \big(\vv{B} \big)$ pour $\ptA'\ptA\ptC\ptC'$ =
+\end{enonce}
+\reponse{$-Bac$}%
+\begin{corrige}
+Le flux au travers de $\ptA\ptC\ptC'\ptA'$ vaut $-Bac$.
+\end{corrige}
+
+% ************************************** %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+$\phi \big(\vv{B} \big)$ pour $\ptC\ptB\ptB'\ptC'$ =
+\end{enonce}
+\reponse{$Bac$}%
+
+\begin{corrige}
+Le flux au travers de $\ptB\ptB'\ptC'\ptC$ vaut $Bac$ car le champ magnétique est à flux conservatif : la somme des flux sortant d'une surface fermée est nulle.
+\end{corrige}
+
+% ************************************** %
+
+% =============================================================================== %
+\finEntrainement
+% =============================================================================== %
+
+
+
+
+
+
+% ********************************************************************* %
+%                           ENTRAÎNEMENT                                % 
+% ********************************************************************* %
+% ================ Métadonnées sur l'entraînement ===================== %
+
+\titreEntrainementFacultatif	{Flux dans des polyèdres (2)}
+\hauteurLargeurCadreReponse		{8mm}{2.3cm}
+\dureeResolutionFacultative		{3} % 1, 2, 3 ou 4
+\typeEntrainement				{} % Newton ou QCM ou AN ou vide (exercice "normal")
+\nombreColonnesQuestions		{2} % vide, 1, 2, 3, etc.
+\avecPlusieursQuestions			{Y} % Y ou N
+\initialisationEntrainement
+% ===================================================================== %
+
+Soit le polyèdre ci-dessous placé dans un champ magnétique uniforme $\vv{B} = B\vv{e_z}$.
+Déterminer les expressions des flux magnétiques sortant à travers les différentes surfaces de ce polyèdre.
+
+\begin{center}
+\subimport{_images/}{fiche_MAG04_flux_prisme_2_CBD_v2.tex}
+\end{center}
+
+% =============================================================================== %
+\debutEntrainement
+% =============================================================================== %
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+$\phi \big(\vv{B} \big)$ pour $\ptA\ptB\ptC\ptD$ =
+\end{enonce}
+\reponse{$-Ba^2$}
+
+\begin{corrige}
+Le flux sortant de la surface $\ptA\ptB\ptC\ptD$ vaut $-Ba^{2}$ car le champ est uniforme sur cette surface.
+\end{corrige}
+
+% ************************************** %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+$\phi \big(\vv{B} \big)_\text{tot}$ =
+\end{enonce}
+\reponse{$0$}
+
+\begin{corrige}
+Comme le champ magnétique est à flux conservatif, le flux total sortant est nul.
+\end{corrige}
+
+% ************************************** %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+$\phi \big(\vv{B} \big)$ pour $\ptA\ptD\ptE$ =
+\end{enonce}
+\reponse{$\frac{Ba^2}{4}$}
+
+\begin{corrige}
+Comme le champ magnétique est à flux conservatif, le flux total sortant est nul. De plus, par symétrie, les flux sur les surfaces $\ptA\ptD\ptE$, $\ptD\ptC\ptE$, $\ptC\ptB\ptE$ et $\ptB\ptA\ptE$ sont identiques. Ainsi, ces flux valent $\dfrac{Ba^{2}}{4}$.
+\end{corrige}
+
+% ************************************** %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+$\phi \big(\vv{B} \big)$ pour $\ptD\ptC\ptE$ =
+\end{enonce}
+\reponse{$\frac{Ba^2}{4}$}
+
+\begin{corrige}
+Comme le champ magnétique est à flux conservatif, le flux total sortant est nul. De plus, par symétrie, les flux sur les surfaces $\ptA\ptD\ptE$, $\ptD\ptC\ptE$, $\ptC\ptB\ptE$ et $\ptB\ptA\ptE$ sont identiques. Ainsi, ces flux valent $\dfrac{Ba^{2}}{4}$.
+\end{corrige}
+
+% ************************************** %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+$\phi \big(\vv{B} \big)$ pour $\ptC\ptB\ptE$ =
+\end{enonce}
+\reponse{$\frac{Ba^2}{4}$}
+
+\begin{corrige}
+Comme le champ magnétique est à flux conservatif, le flux total sortant est nul. De plus, par symétrie, les flux sur les surfaces $\ptA\ptD\ptE$, $\ptD\ptC\ptE$, $\ptC\ptB\ptE$ et $\ptB\ptA\ptE$ sont identiques. Ainsi, ces flux valent $\dfrac{Ba^{2}}{4}$.
+\end{corrige}
+
+% ************************************** %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+$\phi \big(\vv{B} \big)$ pour $\ptB\ptA\ptE$ =
+\end{enonce}
+\reponse{$\frac{Ba^2}{4}$}%
+
+\begin{corrige}
+Comme le champ magnétique est à flux conservatif, le flux total sortant est nul. De plus, par symétrie, les flux sur les surfaces $\ptA\ptD\ptE$, $\ptD\ptC\ptE$, $\ptC\ptB\ptE$ et $\ptB\ptA\ptE$ sont identiques. Ainsi, ces flux valent $\dfrac{Ba^{2}}{4}$.
+\end{corrige}
+
+% ************************************** %
+
+% =============================================================================== %
+\finEntrainement
+% =============================================================================== %
+
+
+
+
+
+
+% ********************************************************************* %
+%                           ENTRAÎNEMENT                                % 
+% ********************************************************************* %
+% ================ Métadonnées sur l'entraînement ===================== %
+
+\titreEntrainementFacultatif	{Flux dans des polyèdres (3)}
+\hauteurLargeurCadreReponse		{8mm}{2.3cm}
+\dureeResolutionFacultative		{2} % 1, 2, 3 ou 4
+\typeEntrainement				{} % Newton ou QCM ou AN ou vide (exercice "normal")
+\nombreColonnesQuestions		{2} % vide, 1, 2, 3, etc.
+\avecPlusieursQuestions			{Y} % Y ou N
+\initialisationEntrainement
+% ===================================================================== %
+
+Soit le polyèdre ci-dessous placé dans un champ magnétique uniforme $\vv{B} = B\vv{e_z}$.
+Déterminer les expressions des flux magnétiques sortant à travers les différentes surfaces de ce polyèdre.
+
+\begin{center}
+\subimport{_images/}{fiche_MAG04_flux_prisme_3_CBD_v2.tex}
+\end{center}
+
+% =============================================================================== %
+\debutEntrainement
+% =============================================================================== %
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+\begin{enonce}
+$\phi \big(\vv{B} \big)$ pour $\ptA\ptB\ptC\ptD$ =
+\end{enonce}
+\reponse{$-Bab$}%
+
+\begin{corrige}
+Le champ $\vv{B}$ étant orthogonal à la surface $\ptA\ptB\ptC\ptD$, son flux y vaut $-Bab$.
+\end{corrige}
+
+% ************************************** %
+
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+$\phi \big(\vv{B} \big)$ pour $\ptB\ptA\ptA'\ptB'$ =
+\end{enonce}
+\reponse{$0$}
+
+\begin{corrigeNewpage}
+Le flux du champ magnétique est nul sur la surface $\ptB\ptA\ptA'\ptB'$ car $\vv{B}$ est inclus dans ce plan.
+\end{corrigeNewpage}
+
+% ************************************** %
+
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+\begin{enonce}
+$\phi \big(\vv{B} \big)$ pour $\ptC\ptC'\ptD'\ptD$ =
+\end{enonce}
+\reponse{$0$}
+
+\begin{corrige}
+Le flux du champ magnétique est nul sur la surface $\ptC\ptC'\ptD'\ptD$ car $\vv{B}$ est inclus dans ce plan.
+\end{corrige}
+
+% ************************************** %
+
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+\begin{enonce}
+$\phi \big(\vv{B} \big)$ pour $\ptA\ptD\ptD'\ptA'$ =
+\end{enonce}
+\reponse{$0$}
+
+\begin{corrige}
+Le flux du champ magnétique est nul sur la surface $\ptA\ptD\ptD'\ptA'$ car $\vv{B}$ est inclus dans ce plan.
+\end{corrige}
+
+% ************************************** %
+
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+\begin{enonce}
+$\phi \big(\vv{B} \big)$ pour $\ptA'\ptD'\ptC'\ptB'$ =
+\end{enonce}
+\reponse{$Ba^2$}
+
+\begin{corrige}
+Le champ $\vv{B}$ étant orthogonal à la surface $\ptA'\ptD'\ptC'\ptB'$, son flux y vaut $Ba^{2}$.
+\end{corrige}
+
+% ************************************** %
+
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+\begin{enonce}
+$\phi \big(\vv{B} \big)$ pour $\ptC\ptB\ptB'\ptC'$ =
+\end{enonce}
+\reponse{$Ba(b-a)$}
+
+\begin{corrige}
+En exploitant la conservation du flux magnétique, on en déduit donc que le flux sortant de la surface $\ptC\ptB\ptB'\ptC'$ vaut $Bab-Ba^{2}=Ba\left(b-a\right)$.
+\end{corrige}
+
+% ************************************** %
+
+% =============================================================================== %
+\finEntrainement
+% =============================================================================== %
+
+
+
+
+
+
+% •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••• %
+% •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••• %
+\sectionFicheEntrainement{Loi de Lenz-Faraday}
+% •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••• %
+% •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••• %
+
+
+
+% ********************************************************************* %
+%                           ENTRAÎNEMENT                                % 
+% ********************************************************************* %
+% ================ Métadonnées sur l'entraînement ===================== %
+\titreEntrainementFacultatif	{Boucles imbriquées}
+\hauteurLargeurCadreReponse		{8mm}{1.5cm}
+\dureeResolutionFacultative		{1} % 1, 2, 3 ou 4
+\typeEntrainement				{QCM} % Newton ou QCM ou AN ou vide (exercice "normal")
+\nombreColonnesQuestions		{1} % vide, 1, 2, 3, etc.
+\avecPlusieursQuestions			{N} % Y ou N
+\initialisationEntrainement
+% ===================================================================== %
+
+
+% =============================================================================== %
+\debutEntrainement
+% =============================================================================== %
+
+\begin{enonce}
+Deux boucles circulaires  se trouvent dans le même plan. 
+
+Si
+le courant $i(t)$ dans la boucle externe est dans le sens trigonométrique
+et augmente avec le temps, que vaut le courant induit dans la boucle
+interne? 
+
+% mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm %
+% 		  Insertion d'une image en regard d'un texte
+% mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm %
+% --------------------------------------------------------- %
+\pourcentageDeLaPartieAGauche   {0.30}
+% --------------------------------------------------------- %
+%                                                           %
+% -------------------- Partie à gauche -------------------- %
+%                                                           %
+                                \initialisationPartieGauche % 
+%                                                           %
+%            
+\vspace{0.25 cm}                                               %
+\begin{center}
+\subimport{_images/}{fiche_MAG04_boucles.tex}
+\end{center}
+
+\smallskip
+
+% --------------------------------------------------------- %
+%                                                           %
+% -------------------- Partie à droite -------------------- %
+%                                                           %
+                                \initialisationPartieDroite %
+%                                                           %
+%                                                           %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+	\vspace{-0.25 cm} 
+	
+	\begin{listeQCM1Colonne}
+	\item Il n'y a pas de courant induit.
+	\item Le courant induit est dans le sens des aiguilles d'une montre. 
+	\item Le courant induit est antihoraire. 
+	\item La direction du courant induit dépend des dimensions des boucles.
+	\end{listeQCM1Colonne}
+
+
+
+% --------------------------------------------------------- %
+                               \finalisationDuPartageDePage %					
+% --------------------------------------------------------- %
+
+
+\end{enonce}
+
+\reponse{\reponseB{}}
+
+\begin{corrige}
+	Avec un courant positif, le champ magnétique produit par la boucle externe est sortant de la feuille. Comme le courant augmente, le flux également. Le champ magnétique induit par les effets inductifs est opposé aux causes qui lui ont donné naissance: il sera rentrant dans la feuille. Le courant est donc dans le sens horaire.
+\end{corrige}
+
+% ************************************** %
+
+% =============================================================================== %
+\finEntrainement
+% =============================================================================== %
+
+
+
+
+
+
+
+
+
+% ********************************************************************* %
+%                           ENTRAÎNEMENT                                % 
+% ********************************************************************* %
+% ================ Métadonnées sur l'entraînement ===================== %
+
+\titreEntrainementFacultatif	{Signe du courant induit (1)}
+\hauteurLargeurCadreReponse		{8mm}{2cm}
+\dureeResolutionFacultative		{1} % 1, 2, 3 ou 4
+\typeEntrainement				{Newton} % Newton ou QCM ou AN ou vide (exercice "normal")
+\nombreColonnesQuestions		{3} % vide, 1, 2, 3, etc.
+\avecPlusieursQuestions			{Y} % Y ou N
+\initialisationEntrainement
+% ===================================================================== %
+
+Dans chacun des circuits ci-dessous, la spire circulaire et/ou l'aimant sont déplacés dans le sens indiqué par la double flèche. Le courant apparaissant dans la spire pendant le déplacement est noté $i$.
+
+\begin{center}
+\subimport{_images/}{fiche_MAG04_aimant_induction_CBD_v2.tex}
+\end{center}
+
+Pour chacune des situations schématisées ci-dessus, dire si on a $i>0$ ou si on a $i<0$. 
+
+% =============================================================================== %
+\debutEntrainement
+% =============================================================================== %
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+% a)
+\begin{enonce}
+\end{enonce}
+\reponse{$i>0$}
+\begin{corrige}
+Rappelons que pour un aimant droit, le champ sort par le Nord: les
+lignes de champ sont orientées du Nord vers le Sud.
+
+La première étape consiste à  déterminer le sens de variation du champ magnétique vu par la spire au cours du déplacement. On déduit alors de la loi de Lenz le sens du champ magnétique induit $\vv{B}_{ind}$, qui tend à  atténuer les variations de $\vv{B}$. On détermine ensuite par la règle de la main droite le sens réel du courant dans la spire. Enfin, par comparaison entre le sens réel du courant et le sens $i>0$ indiqué sur la figure on en déduit le signe de $i$.
+
+Le champ magnétique créé par l'aimant droit est orienté vers la gauche  au niveau la spire. Il augmente dans la spire avec le déplacement de l'aimant. Le champ induit va s'opposer à cette augmentation: il sera orienté vers la droite.
+Le courant $i_a >0$.
+\end{corrige}
+
+% b)
+\begin{enonce}
+\end{enonce}
+\reponse{$i<0$}
+\begin{corrige}
+La physique est identique à la situation précédente, seule change la convention sur le sens positif du courant: on
+déduit immédiatement $i_b< 0$.
+\end{corrige}
+
+% c)
+\begin{enonce}
+\end{enonce}
+\reponse{$i>0$}
+\begin{corrige}
+Le champ magnétique est orienté vers la droite au niveau de la spire. Il diminue avec le déplacement de l'aimant. Le champ induit va s'opposer à cette variation: il sera orienté vers la droite également.
+Le courant $i_c >0$.
+\end{corrige}
+
+% d)
+\begin{enonce}
+\end{enonce}
+\reponse{$i<0$}
+\begin{corrige}
+Les variations de champ vues par la spire sont les mêmes qu'à la question a), le sens réel du courant induit est donc
+le même.  Comme le sens choisi positif du courant est opposé, alors $i_d < 0$.
+\end{corrige}
+
+% e)
+\begin{enonce}
+\end{enonce}
+\reponse{$i<0$}
+\begin{corrige}
+Les variations de champ vues par la spire sont les mêmes qu'à la question c), le sens réel du courant induit est donc
+le même.  Comme le sens choisi positif du courant est opposé, alors $i_e < 0$.
+\end{corrige}
+
+% f)
+\begin{enonce}
+\end{enonce}
+\reponse{$i<0$}
+\begin{corrige}
+Le déplacement de la spire renforce l'effet du déplacement de l'aimant. Cette fois, le champ vu par la spire diminue
+au cours du mouvement, le champ induit a donc tendance à le renforcer. On a donc $i_f < 0$.
+\end{corrige}
+
+
+% ************************************** %
+
+% =============================================================================== %
+\finEntrainement
+% =============================================================================== %
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+
+
+
+
+% ********************************************************************* %
+%                           ENTRAÎNEMENT                                % 
+% ********************************************************************* %
+% ================ Métadonnées sur l'entraînement ===================== %
+
+\titreEntrainementFacultatif	{Signe du courant induit (2)}
+\hauteurLargeurCadreReponse		{8mm}{6cm}
+\dureeResolutionFacultative		{2} % 1, 2, 3 ou 4
+\typeEntrainement				{} % Newton ou QCM ou AN ou vide (exercice "normal")
+\nombreColonnesQuestions		{1} % vide, 1, 2, 3, etc.
+\avecPlusieursQuestions			{Y} % Y ou N
+\initialisationEntrainement
+% ===================================================================== %
+
+
+
+Des spires circulaires, orientées, perpendiculaires au plan de la figure,
+nommées  $(A)$, $(B)$ et $(C)$ sont placées dans une zone de l'espace où règne un champ magnétique (voir figure ci-dessous). Pour chacune d'elles, on veut prévoir par des considérations
+physiques le signe du courant $i$ lorsque les
+spires sont déplacées (les déplacements sont indiqués par les flèches
+pointillées).
+
+\begin{center}
+\subimport{_images/}{fiche_MAG04_prevoir_sens_courant_CBD_v3.tex}
+\end{center}
+
+Pour chaque mouvement considéré, établir si \glm{le flux diminue}, si \glm{le flux augmente} ou si \glm{le flux ne varie pas}.
+
+% =============================================================================== %
+\debutEntrainement
+% =============================================================================== %
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+mouvement $(A)$
+\end{enonce}
+\reponse{le flux diminue}
+\begin{corrige}
+La spire est initialement orthogonale aux lignes de champ et la surface
+est orientée dans le sens des lignes de champ: le flux est maximal. 
+Dans la configuration finale, le flux du champ magnétique dans la
+spire est nul.
+Le flux diminue donc.
+\end{corrige}
+
+% ************************************** %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+mouvement $(B)$
+\end{enonce}
+\reponse{le flux ne varie pas}
+\begin{corrige}
+La spire est initialement orthogonale aux lignes de champ et la surface
+est orientée dans le sens opposé au champ magnétique: le flux est
+minimal. 
+
+La configuration finale est identique à la configuration initiale:
+le flux est le même. 
+\end{corrige}
+
+% ************************************** %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+mouvement $(C)$
+\end{enonce}
+\reponse{le flux diminue}
+\begin{corrige}
+La spire est initialement orthogonale aux lignes de champ et la surface
+est orientée dans le sens des lignes de champ: le flux est maximal. 
+
+La configuration finale est similaire à la configuration initiale
+mais le flux est moins grand car le nombre de lignes de champ interceptées
+est inférieur.
+Le flux diminue donc.
+\end{corrige}
+
+% ************************************** %
+
+
+% =============================================================================== %
+\pauseEntrainement
+% =============================================================================== %
+
+\medskip
+
+Pour chaque mouvement considéré, en déduire si $i>0$, si $i<0$ ou si $i=0$.
+
+\hauteurLargeurCadreReponse		{8mm}{2cm}
+
+
+% =============================================================================== %
+\repriseEntrainement
+% =============================================================================== %
+
+\begin{multicols}{3}
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+$(A)$
+\end{enonce}
+\reponse{$i>0$}
+\begin{corrige}
+Le courant circulant dans la spire va produire un champ magnétique
+tel qu'il s'oppose à la diminution du flux: le courant sera donc positif. On a $i_{(A)}>0$.
+\end{corrige}
+
+% ************************************** %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+$(B)$
+\end{enonce}
+\reponse{$i=0$}
+\begin{corrige}
+Il n'y a pas de variation de flux, donc pas d'induction : on a $i_{(B)}=0$.
+\end{corrige}
+
+% ************************************** %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+$(C)$
+\end{enonce}
+\reponse{$i>0$}
+\begin{corrige}
+Le courant circulant dans la spire va produire un champ magnétique
+afin de compenser la diminution du flux: le courant sera donc positif. On a $i_{(C)}>0$.
+\end{corrige}
+
+% ************************************** %
+
+\end{multicols}
+
+% =============================================================================== %
+\finEntrainement
+% =============================================================================== %
+
+
+
+
+
+
+% ********************************************************************* %
+%                           ENTRAÎNEMENT                                % 
+% ********************************************************************* %
+% ================ Métadonnées sur l'entraînement ===================== %
+
+\titreEntrainementFacultatif	{Calcul de fém avec champ magnétique variable}
+\hauteurLargeurCadreReponse		{9mm}{5cm}
+\dureeResolutionFacultative		{2} % 1, 2, 3 ou 4
+\typeEntrainement				{} % Newton ou QCM ou AN ou vide (exercice "normal")
+\basiqueEtTransversal {Y}
+\nombreColonnesQuestions		{1} % vide, 1, 2, 3, etc.
+\avecPlusieursQuestions			{Y} % Y ou N
+\initialisationEntrainement
+% ===================================================================== %
+
+
+On plonge une spire de surface $S(t)$ dans une zone où règne un champ magnétique $B(t)$. 
+Déterminer la force électromotrice $e=-\dfrac{\d{}\Phi}{\d{}t}$ induite pour les flux suivants :
+
+% =============================================================================== %
+\debutEntrainement
+% =============================================================================== %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+$\Phi_{1}=B_{0}S_{0}\cos\left(\omega t+\varphi\right)$
+\end{enonce}
+
+\reponse{$B_{0}S_{0}\omega\sin\left(\omega t+\varphi\right)$}%
+
+% ************************************** %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+$\Phi_{2}=B_{0}S_{0}\times \Big(1+\frac{t}{\tau}\Big)\exp^{-\frac{t}{\tau}}$
+\end{enonce}
+
+\reponse{$B_{0}S_{0}\dfrac{t}{\tau^{2}}e^{-t/\tau}$}%
+
+% ************************************** %
+
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+$\Phi_{3}=B_{0}\left(1-\cos(2\omega t)\right)S_{0}\sin^{2}(\omega t)$
+\end{enonce}
+
+\reponse{$-8B_{0}S_{0}\omega\cos(\omega t)\sin^{3}(\omega t)$}
+
+\begin{corrige}
+On peut réécrire le flux sous la forme suivante:
+$\Phi_{3}=2B_{0}S_{0}\sin^{4}(\omega t)$ ; d'où  $e_{3}=-8B_{0}S_{0}\omega\cos(\omega t)\sin^{3}(\omega t)$.
+\end{corrige}
+
+% ************************************** %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+$\Phi_{4}=B_{0}\cos(\omega t)S_{0}\sin(3\omega t)$
+\end{enonce}
+
+\reponse{$-B_{0}S_{0}\omega\left[2\cos(4\omega t)+\cos(2\omega t)\right]$}
+
+\begin{corrige}
+De même, on commence par linéariser l'expression. On a $\Phi_{4}=\frac{B_{0}S_{0}}{2}\left[\sin(4\omega t)+\sin(2\omega t)\right]$.
+Puis, on dérive et on trouve : $e_{4}=-B_{0}S_{0}\omega\left[2\cos(4\omega t)+\cos(2\omega t)\right]$.
+\end{corrige}
+
+% ************************************** %
+
+% =============================================================================== %
+\finEntrainement
+% =============================================================================== %
+
+
+
+\newpage
+
+
+
+
+
+
+% •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••• %
+% •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••• %
+\sectionFicheEntrainement{Force de Laplace}
+% •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••• %
+% •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••• %
+
+
+
+
+% ********************************************************************* %
+%                           ENTRAÎNEMENT                                % 
+% ********************************************************************* %
+% ================ Métadonnées sur l'entraînement ===================== %
+\titreEntrainementFacultatif	{Rails de Laplace}
+\hauteurLargeurCadreReponse		{10mm}{3cm}
+\dureeResolutionFacultative		{1} % 1, 2, 3 ou 4
+\typeEntrainement				{Newton} % Newton ou QCM ou AN ou vide (exercice "normal")
+\nombreColonnesQuestions		{1} % vide, 1, 2, 3, etc.
+\avecPlusieursQuestions			{Y} % Y ou N
+\initialisationEntrainement
+% ===================================================================== %
+
+% =============================================================================== %
+\debutEntrainement
+% =============================================================================== %
+
+%On considère l’expérience des rails de Laplace. 
+Une tige métallique de longueur $\ptM\ptN=d$, de masse $m$ est parcourue par un courant d'intensité constante~$I$ et est lancée avec une vitesse initiale $\vv{v_0}=v_0\vv{e_x}$. À la position $x=0$ la tige entre dans une zone où règne un champ magnétique uniforme $\vv{B}=-B\vv{e_y}$. On néglige les frottements et tout phénomène d'induction.
+
+\begin{center}
+\subimport{_images/}{fiche_MAG04_rails_CBD_v2.tex}
+\end{center}
+
+
+Exprimer : 
+
+\minusSmallskip
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+\begin{enonce}
+La force de Laplace $\vv{F}$ qui s'exerce sur la tige en fonction de $B$, $d$ et $I$
+\end{enonce}
+
+\reponse{$-IBd\vv{e_x}$}
+
+\begin{corrige}
+La force de Laplace se calcule par $\vv{F}=\int_\ptM^\ptN I\vv{\d{}\ell}\land\vv{B}$, soit $\vv{F}=\int_\ptM^\ptN -I\d{}z\vv{e_z}\land-B\vv{e_y} = -IBd\vv{e_x}$.
+\end{corrige}
+% ************************************** %
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+\begin{enonce}
+La norme $v(t)$ de la vitesse en fonction du temps
+\end{enonce}
+
+\reponse{$-\frac{IBd}{m}t+v_0$}
+
+\begin{corrige}
+La force de Laplace est constante. Par application du principe fondamental de la dynamique en projection sur $\vv{e_x}$, on a :
+\[
+m\frac{\d{}v(t)}{\d{}t}=-IBd.
+\]
+En intégrant (avec la condition initiale), on trouve $v(t)=-\frac{IBd}{m}t+v_0$.
+\end{corrige}
+% ************************************** %
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+\begin{enonce}
+La distance d'arrêt $D$ depuis la position initiale en fonction de $v_0$, $B$, $I$, $m$ et $d$
+\end{enonce}
+
+\reponse{$\frac{mv_0^2}{2IBd}$}
+
+\begin{corrige}
+Par application du théorème de l'énergie cinétique entre le point $x=0$ et le point d'arrêt $x=D$, on a :
+\[
+\Delta E_c=0-\frac{1}{2}mv_0^2=\int_{x=0}^{x=D}\vv{F}\cdot\vv{\d{}\ell}=\int_{x=0}^{x=D}-IBd\vv{e_x}\cdot\d{}x\vv{e_x}=-IBdD.
+\]
+On en déduit : $D=\frac{mv_0^2}{2IBd}$.
+\end{corrige}
+% ************************************** %
+
+% =============================================================================== %
+\finEntrainement
+% =============================================================================== %
+
+
+
+
+
+
+
+
+% ********************************************************************* %
+%                           ENTRAÎNEMENT                                % 
+% ********************************************************************* %
+% ================ Métadonnées sur l'entraînement ===================== %
+
+\titreEntrainementFacultatif	{Résultante des forces de Laplace}
+\hauteurLargeurCadreReponse		{10mm}{5cm}
+\dureeResolutionFacultative		{2} % 1, 2, 3 ou 4
+\typeEntrainement				{} % Newton ou QCM ou AN ou vide (exercice "normal")
+\nombreColonnesQuestions		{2} % vide, 1, 2, 3, etc.
+\avecPlusieursQuestions			{Y} % Y ou N
+\initialisationEntrainement
+% ===================================================================== %
+
+% mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm %
+% 		  Insertion d'une image en regard d'un texte
+% mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm %
+% --------------------------------------------------------- %
+\pourcentageDeLaPartieAGauche   {0.6}
+% --------------------------------------------------------- %
+%                                                           %
+% -------------------- Partie à gauche -------------------- %
+%                                                           %
+                                \initialisationPartieGauche % 
+%                                                           %
+%            
+
+On considère un cadre triangulaire parcouru par un courant 
+d'intensité $I$.  Les trois côtés du cadre ont le même longueur notée $a$. On plonge ce cadre dans un champ magnétique
+extérieur orienté suivant la direction $\vv{e_z}$ : $ \vv{B}=B\vv{e_{z}}$.
+
+On rappelle qu'un élément de longueur $\d{}\ell$, parcouru par un courant d'intensité $I$ placé dans un champ magnétique extérieur $\vv{B}$ est soumis à la force élémentaire, appelée \emph{force de Laplace} : 
+\[
+\d{} \vv{f}=I\vv{\d{}\ell}\land\vv{B}.
+\]
+
+
+% --------------------------------------------------------- %
+%                                                           %
+% -------------------- Partie à droite -------------------- %
+%                                                           %
+                                \initialisationPartieDroite %
+%                                                           %
+%                                                           %
+\begin{center}
+\subimport{_images/}{fiche_MAG04_resultante_laplace_01_CBD_v3.tex}
+\end{center}
+% --------------------------------------------------------- %
+                               \finalisationDuPartageDePage %					
+% --------------------------------------------------------- %
+
+
+
+\smallskip
+
+Exprimer les forces de Laplace sur chaque côté de ce cadre :
+
+\smallskip
+
+
+% =============================================================================== %
+\debutEntrainement
+% =============================================================================== %
+
+
+% ************************************** %
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+$\vv{F}_{L,\ptA\ptB}=$
+\end{enonce}
+\reponse{$-IaB\vv{e_{y}}$} 
+
+\begin{corrige}
+Il s'agit de calculer le produit vectoriel sur chaque segment, le vecteur $\vv{\d{}\ell}$ étant le long du segment. Chaque force de Laplace s'exerce au milieu de chaque segment et la règle de la main droite indique qu'elle est orthogonale au segment dirigé vers l'extérieur du triangle. Le triangle est équilatéral et comporte donc trois angles de $\SI{60}{\degres}$ ce qui amène aux projections sur $\vv{e_x}$ et $\vv{e_y}$. D'où les résultats.
+\end{corrige}
+
+% ************************************** %
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+$\vv{F}_{L,\ptB\ptC}=$
+\end{enonce}
+\reponse{$IaB\left(\frac{\sqrt{3}}{2}\vv{e_x}+\frac{1}{2}\vv{e_y}\right)$} 
+
+
+% ************************************** %
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+$\vv{F}_{L,\ptC\ptA}=$
+\end{enonce}
+\reponse{$IaB\left(-\frac{\sqrt{3}}{2}\vv{e_x}+\frac{1}{2}\vv{e_y}\right)$} 
+
+% ************************************** %
+
+
+% =============================================================================== %
+\pauseEntrainement
+% =============================================================================== %
+
+
+
+\nombreColonnesQuestions		{1} % vide, 1, 2, 3, etc.
+
+\smallskip
+
+Que vaut la résultante de ces forces?
+
+\minusSmallskip
+
+% =============================================================================== %
+\repriseEntrainement
+% =============================================================================== %
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+$\vv{F}_{L,\text{tot}} =$
+\end{enonce}
+\reponse{$\vv{0}$} 
+
+\begin{corrigeNewpage}
+Le champ magnétique étant uniforme, la résultante des forces de Laplace
+sur le circuit fermé est nulle :
+\[
+\vv{F}_{L,\text{tot}} = \oint_{\mathcal{C}}\left(I\vv{\d{}\ell}\land\vv{B}\right)=I\left(\oint_{\mathcal{C}}\vv{\d{}\ell}\right)\land\vv{B}=\vv{0}.
+\]
+\end{corrigeNewpage}
+
+% ************************************** %
+
+% =============================================================================== %
+\finEntrainement
+% =============================================================================== %
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+
+
+
+% ********************************************************************* %
+%                           ENTRAÎNEMENT                                % 
+% ********************************************************************* %
+% ================ Métadonnées sur l'entraînement ===================== %
+
+\titreEntrainementFacultatif	{Couple des forces de Laplace}
+\hauteurLargeurCadreReponse		{10mm}{5cm}
+\dureeResolutionFacultative		{3} % 1, 2, 3 ou 4
+\typeEntrainement				{} % Newton ou QCM ou AN ou vide (exercice "normal")
+\nombreColonnesQuestions		{1} % vide, 1, 2, 3, etc.
+\avecPlusieursQuestions			{Y} % Y ou N
+\initialisationEntrainement
+% ===================================================================== %
+
+On considère un cadre carré parcouru par un courant d'intensité $I$. On plonge ce cadre dans un champ magnétique
+extérieur orienté suivant la direction $\vv{e_y}$: $ \vv{B}=B\vv{e_{y}}$.
+
+
+\begin{center}
+\subimport{_images/}{fiche_MAG04_resultante_laplace_02_CBD_v3.tex}
+\end{center}
+
+
+Exprimer les forces de Laplace sur chaque côté de ce cadre :
+
+\debutEntrainement
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+$\vv{F}_{L,\ptA\ptB}=$
+\end{enonce}
+\reponse{$IaB\vv{e_{z}}$} 
+
+% ************************************** %
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+
+\begin{enonce}
+$\vv{F}_{L,\ptB\ptC}=$
+\end{enonce}
+\reponse{$\vv{0}$} 
+
+% ************************************** %
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+\begin{enonce}
+$\vv{F}_{L,\ptC\ptD}=$
+\end{enonce}
+\reponse{$-IaB\vv{e_{z}}$} 
+
+% ************************************** %
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+\begin{enonce}
+$\vv{F}_{L,\ptD\ptA}=$
+\end{enonce}
+\reponse{$\vv{0}$} 
+
+% ************************************** %
+
+% =============================================================================== %
+\pauseEntrainement
+% =============================================================================== %
+
+\nombreColonnesQuestions		{1} % vide, 1, 2, 3, etc.
+
+\bigskip
+Que vaut la résultante de ces forces?
+\minusMedskip
+
+% =============================================================================== %
+\repriseEntrainement
+% =============================================================================== %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+$\vv{F}_{L,\text{tot}}=$
+\end{enonce}
+\reponse{$\vv{0}$} 
+
+% ************************************** %
+
+
+% =============================================================================== %
+\pauseEntrainement
+% =============================================================================== %
+
+\bigskip
+Calculer le moment des forces de Laplace par rapport au point $\ptO$. 
+\minusMedskip
+
+
+% =============================================================================== %
+\repriseEntrainement
+% =============================================================================== %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+$\vv{\mathcal{M}}_{\ptO}\big(\vv{F}_{L,\text{tot}}\big)=$
+\end{enonce}
+\reponse{$-Ia^{2}B\vv{e_{x}}$} 
+
+% ************************************** %
+
+% =============================================================================== %
+\pauseEntrainement
+% =============================================================================== %
+
+\medskip
+
+\textit{On rappelle qu'un dipôle magnétique peut se caractériser par son moment magnétique $\vv{m}=I\vv{S}$. En présence d'un champ magnétique extérieur, le dipôle magnétique subit un couple $\vv{\Gamma}=\vv{m}\land\vv{B}$.}
+
+Exprimer $\vv{m}$ et $\vv{\Gamma}$. 
+
+% =============================================================================== %
+\repriseEntrainement
+% =============================================================================== %
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+$\vv{m}=$
+\end{enonce}
+\reponse{$Ia^2\vv{e_z}$} 
+
+% ************************************** %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+$\vv{\Gamma}=$
+\end{enonce}
+\reponse{$-Ia^{2}B\vv{e_{x}}$} 
+
+
+\begin{corrige}
+Dans ce cas, les forces de Laplace sont nulles sur les segments $\ptB\ptC$
+et $\ptD\ptA$ ($\vv{\d{}\ell}$ et $\vv{B}$ sont colinéaires).
+Les seules forces sont alors:
+\[
+\vv{F}_{\ptA\ptB}=IaB\vv{e_{z}}\quad\vv{F}_{\ptC\ptD}=-IaB\vv{e_{z}}.
+\]
+Le couple est alors $\vv{\Gamma}=-Ia^{2}B\vv{e_{x}}$.
+\end{corrige}
+
+% ************************************** %
+
+% =============================================================================== %
+\finEntrainement
+% =============================================================================== %
+
+
+\newpage
+
+
+
+% ********************************************************************* %
+%                           ENTRAÎNEMENT                                % 
+% ********************************************************************* %
+% ================ Métadonnées sur l'entraînement ===================== %
+\titreEntrainementFacultatif	{Équilibre d'un cadre}
+\hauteurLargeurCadreReponse		{8mm}{3cm}
+\dureeResolutionFacultative		{3} % 1, 2, 3 ou 4
+\typeEntrainement				{} % Newton ou QCM ou AN ou vide (exercice "normal")
+\nombreColonnesQuestions		{1} % vide, 1, 2, 3, etc.
+\avecPlusieursQuestions			{Y} % Y ou N
+\basiqueEtTransversal {N}
+\initialisationEntrainement
+% ===================================================================== %
+
+% =============================================================================== %
+\debutEntrainement
+% =============================================================================== %
+
+
+
+% mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm %
+% 		  Insertion d'une image en regard d'un texte
+% mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm %
+% --------------------------------------------------------- %
+\pourcentageDeLaPartieAGauche   {0.35}
+% --------------------------------------------------------- %
+%                                                           %
+% -------------------- Partie à gauche -------------------- %
+%                                                           %
+                                \initialisationPartieGauche % 
+%                                                           %
+%     
+Un cadre conducteur, de forme rectangulaire, de longueur $b$ et largeur $a$ peut tourner sans frottement autour de l’axe $\Delta$. 
+
+La masse totale du cadre est $m$. 
+
+Un dispositif, non représenté sur la figure, impose une intensité du courant $i$ constante dans le cadre.
+
+
+% --------------------------------------------------------- %
+%                                                           %
+% -------------------- Partie à droite -------------------- %
+%                                                           %
+                                \initialisationPartieDroite %
+%                                                           %
+%                                                           %
+
+\begin{center}
+\subimport{_images/}{fiche_MAG04_cadre_CBD_v2.tex}
+\end{center}
+
+% --------------------------------------------------------- %
+                               \finalisationDuPartageDePage %					
+% --------------------------------------------------------- %
+
+
+Exprimer : 
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+\begin{enonce}
+le moment magnétique $\vv{m}$ en fonction de $a$, $b$ et $i$
+\end{enonce}
+
+\reponse{$iab\vv{e_\theta}$}
+
+\begin{corrige}
+Dans la base cylindrique telle que $\vv{e_z}=\vv{e_\Delta}$, le moment magnétique est porté par $\vv{e_\theta}$ et sa norme est $m=iS=iab$.
+\end{corrige}
+% ************************************** %
+
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+\begin{enonce}
+le couple magnétique $\Gamma_\Delta$ projeté sur l'axe $\Delta$ en fonction de $a$, $b$, $i$, $B$ et $\theta$
+\end{enonce}
+
+\reponse{$iabB\cos\theta$}
+
+\begin{corrige}
+Par définition le couple magnétique se calcule par $\vv{\Gamma}=\vv{m}\land\vv{B}$. Le calcul du produit vectoriel amène à $\vv{\Gamma}=iabB\cos\theta\vv{e_z}$. Comme $\vv{e_z}=\vv{e_\Delta}$, la projection sur l'axe $\Delta$ donne donc $\Gamma_\Delta=iabB\cos\theta$.
+\end{corrige}
+% ************************************** %
+
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+le moment du poids par rapport à l'axe $\Delta$ en fonction de $a$, $m$, $g$, et $\theta$
+\end{enonce}
+
+\reponse{$-\frac{a}{2}mg\sin\theta$}
+
+\begin{corrige}
+Dans la base cylindrique, le poids s'exprime $\vv{P}=mg\left(\cos\theta\vv{e_r}-\sin\theta\vv{e_\theta}\right)$. On considère qu'il s'applique au barycentre des masses du cadre, soit en son plein centre que l'on notera $\ptG$. Son moment par rapport à l'axe $\Delta$ se calcule par $\mathcal{M}_\Delta(\vv{P})=\left(\vv{\ptO\ptG}\land\vv{P}\right)\cdot\vv{e_\Delta}$ avec $\ptO$ un point sur l'axe $\Delta$. D'où, $\mathcal{M}_\Delta(\vv{P})=\left(a/2\vv{e_r}\land\vv{P}\right)\cdot\vv{e_\Delta}=-\frac{a}{2}mg\sin\theta$.
+\end{corrige}
+% ************************************** %
+
+
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+\begin{enonce}
+la position d'équilibre $\theta_\text{eq}$ en fonction de $B$, $m$, $g$, $b$ et $i$
+\end{enonce}
+
+\reponse{$\arctan\left(\frac{2ibB}{mg}\right)$}
+
+\begin{corrige}
+À l'équilibre la somme des moments des forces par rapport à l'axe $\Delta$ est nulle. Ainsi, on a 
+\[
+\Gamma_\Delta+\mathcal{M}_\Delta(\vv{P})=0.
+\]
+D'où $iabB\cos\theta_\text{eq}-\frac{a}{2}mg\sin\theta_\text{eq}=0$, ce qui amène à isoler $\tan\theta_\text{eq}=\frac{2ibB}{mg}$, soit finalement $\theta_\text{eq}=\arctan\left(\frac{2ibB}{mg}\right)$.
+\end{corrige}
+% ************************************** %
+
+% =============================================================================== %
+\finEntrainement
+% =============================================================================== %
+
+
+
+% ---------------------------------------------------------------------------- %
+%                       Affichage des réponses mélangées                       %
+% ---------------------------------------------------------------------------- %
+\afficheReponsesMelangees
+% ---------------------------------------------------------------------------- %
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\finFicheEntrainement                                                                        %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% ======================================================= % 
+% ============== Gestion de la compilation ============== %
+% ======================================================= % 
+\ifdefined\mainIsLoaded\else
+\printReponsesEtCorriges
+\end{document}\fi
+% ======================================================= % 
+% ======================================================= % 

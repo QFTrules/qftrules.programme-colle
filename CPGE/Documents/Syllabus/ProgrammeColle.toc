@@ -1,0 +1,91 @@
+\babel@toc {french}{}
+\contentsline {chapter}{\numberline {1}\ChapitName {5}{1} }{4}{chapter.1}%
+\contentsline {subsection}{\numberline {$\bullet $}Source du champ électrostatique}{4}{subsection.1.0.1}%
+\contentsline {subsubsection}{Charge électrique}{4}{section*.2}%
+\contentsline {subsubsection}{Champ et potentiel électrostatiques d'un charge ponctuelle}{4}{section*.3}%
+\contentsline {paragraph}{Loi de Coulomb}{4}{section*.4}%
+\contentsline {paragraph}{Le champ électrostatique}{4}{section*.5}%
+\contentsline {paragraph}{\textit {Exemple : Forces électrostatiques dans l’atome d’hydrogène} }{4}{section*.6}%
+\contentsline {paragraph}{Potentiel électrostatique}{4}{section*.7}%
+\contentsline {paragraph}{\textit {Exemple : Potentiel électrostatique dans l’atome d’hydrogène} }{4}{section*.8}%
+\contentsline {subsubsection}{Généralisation aux distributions de charges}{4}{section*.9}%
+\contentsline {paragraph}{Distribution discrète de charge}{4}{section*.10}%
+\contentsline {paragraph}{Distribution continue de charge}{4}{section*.11}%
+\contentsline {paragraph}{\textit {Exemple : Distribution linéique d’un cylindre chargé}}{4}{section*.12}%
+\contentsline {subsection}{\numberline {$\bullet $}Topographie du champ électrostatique}{4}{subsection.1.0.2}%
+\contentsline {subsubsection}{Ligne et tube de champ}{4}{section*.13}%
+\contentsline {subsubsection}{Surface équipotentielle}{4}{section*.14}%
+\contentsline {subsubsection}{Exemples de cartes de champ}{4}{section*.15}%
+\contentsline {subsection}{\numberline {$\bullet $}Symétries et invariances du champ électrostatique}{4}{subsection.1.0.3}%
+\contentsline {subsubsection}{Symétries du champ électrostatique}{4}{section*.16}%
+\contentsline {paragraph}{\textit {Exemple : Plans de symétries et d'antisymétrie}}{4}{section*.17}%
+\contentsline {paragraph}{\textit {Exemple : Le fil infini uniformément chargé}}{4}{section*.18}%
+\contentsline {subsubsection}{Invariances du champ et du potentiel}{5}{section*.19}%
+\contentsline {paragraph}{\textit {Exemple : Invariances de distributions de charge}}{5}{section*.20}%
+\contentsline {paragraph}{\textit {Exemple : Fil infini uniformément chargé}}{5}{section*.21}%
+\contentsline {subsection}{\numberline {$\bullet $}Lois de l’électrostatique}{5}{subsection.1.0.4}%
+\contentsline {subsubsection}{Formulation locale}{5}{section*.22}%
+\contentsline {paragraph}{Équations de Maxwell de l’électrostatique}{5}{section*.23}%
+\contentsline {paragraph}{Équation de Poisson}{5}{section*.24}%
+\contentsline {subsubsection}{Formulation intégrale}{5}{section*.25}%
+\contentsline {paragraph}{Théorème de Gauss}{5}{section*.26}%
+\contentsline {paragraph}{\textit {Exemple : Le fil infini uniformément chargé}}{5}{section*.27}%
+\contentsline {paragraph}{\textit {Exemple : Retrouver le champ coulombien}}{5}{section*.28}%
+\contentsline {paragraph}{Circulation et tension}{5}{section*.29}%
+\contentsline {chapter}{\numberline {2}\ChapitName {5}{2} }{6}{chapter.2}%
+\contentsline {subsection}{\numberline {$\bullet $}Le condensateur plan idéal}{6}{subsection.2.0.1}%
+\contentsline {subsubsection}{Modèle et champ électrostatique}{6}{section*.30}%
+\contentsline {paragraph}{Modèle du condensateur plan idéal}{6}{section*.31}%
+\contentsline {paragraph}{Champ créé par un plan infini uniformément chargé}{6}{section*.32}%
+\contentsline {paragraph}{Champ entre les plaques du condensateur plan}{6}{section*.33}%
+\contentsline {subsubsection}{Capacité et énergie électriques d'un condensateur}{6}{section*.34}%
+\contentsline {paragraph}{Capacité électrique}{6}{section*.35}%
+\contentsline {paragraph}{Énergie électrique stockée}{6}{section*.36}%
+\contentsline {subsection}{\numberline {$\bullet $}Le dipôle électrostatique}{6}{subsection.2.0.2}%
+\contentsline {subsubsection}{Modélisation}{6}{section*.37}%
+\contentsline {paragraph}{\textit {Exemple : Moment dipolaire de l'eau}}{6}{section*.38}%
+\contentsline {subsubsection}{Potentiel et champ dipolaires}{6}{section*.39}%
+\contentsline {paragraph}{Calcul de potentiel}{6}{section*.40}%
+\contentsline {paragraph}{Calcul du champ}{6}{section*.41}%
+\contentsline {paragraph}{Expressions indépendantes du système de coordonnées}{6}{section*.42}%
+\contentsline {subsubsection}{Carte du champ dipolaire}{6}{section*.43}%
+\contentsline {subsubsection}{Actions d'un champ électrostatique sur un dipôle}{6}{section*.44}%
+\contentsline {paragraph}{Force}{6}{section*.45}%
+\contentsline {paragraph}{Moment}{6}{section*.46}%
+\contentsline {paragraph}{Énergie d'interaction}{6}{section*.47}%
+\contentsline {paragraph}{Conclusion}{7}{section*.48}%
+\contentsline {subsection}{\numberline {$\bullet $}Application aux interactions moléculaires}{7}{subsection.2.0.3}%
+\contentsline {subsubsection}{Molécules polaires et apolaires}{7}{section*.49}%
+\contentsline {subsubsection}{Interaction de van der Waals}{7}{section*.50}%
+\contentsline {subsubsection}{Solvatation}{7}{section*.51}%
+\contentsline {subsection}{\numberline {$\bullet $}Énergie de constitution du noyau atomique}{7}{subsection.2.0.4}%
+\contentsline {subsubsection}{Énergie électrostatique d'une distribution discrète}{7}{section*.52}%
+\contentsline {paragraph}{Énergie potentielle électrostatique d'une charge ponctuelle}{7}{section*.53}%
+\contentsline {paragraph}{Énergie d'interaction d'un ensemble de charges ponctuelles}{7}{section*.54}%
+\contentsline {subsubsection}{Énergie électrostatique d'une distribution continue}{7}{section*.55}%
+\contentsline {paragraph}{Analyse dimensionnelle}{7}{section*.56}%
+\contentsline {paragraph}{Calcul par le principe des travaux virtuels}{7}{section*.57}%
+\contentsline {paragraph}{Application au noyau atomique}{7}{section*.58}%
+\contentsline {section}{\numberline {2.1}Travaux Dirigés}{8}{section.2.1}%
+\contentsline {subsection}{\numberline {$\bullet $}\ChapitName {5}{1}}{8}{subsection.2.1.1}%
+\contentsline {subsubsection}{Calcul de tension à partir du champ électrostatique}{8}{section*.59}%
+\contentsline {subsubsection}{Calcul de flux}{8}{section*.60}%
+\contentsline {subsubsection}{Charge d'un cylindre}{8}{section*.61}%
+\contentsline {subsubsection}{Couche plane infinie}{8}{section*.62}%
+\contentsline {subsubsection}{Cylindre infini}{8}{section*.63}%
+\contentsline {subsubsection}{Analogie avec le champ gravitationnel}{8}{section*.64}%
+\contentsline {subsubsection}{Potentiel de Yukawa}{8}{section*.65}%
+\contentsline {subsubsection}{Distribution de charges en carré}{8}{section*.66}%
+\contentsline {subsection}{\numberline {$\bullet $}\ChapitName {5}{2}}{8}{subsection.2.1.2}%
+\contentsline {subsubsection}{Molécules apolaires}{8}{section*.67}%
+\contentsline {subsubsection}{Modèle du condensateur plan idéal}{8}{section*.68}%
+\contentsline {subsubsection}{Distribution de trois charges}{8}{section*.69}%
+\contentsline {subsubsection}{Capacité linéique d’un câble coaxial}{8}{section*.70}%
+\contentsline {subsubsection}{Condensateur sphérique}{8}{section*.71}%
+\contentsline {subsubsection}{Équilibre d'un dipôle dans un champ extérieur}{8}{section*.72}%
+\contentsline {section}{\numberline {2.2}Devoir Maison}{8}{section.2.2}%
+\contentsline {subsection}{\numberline {$\bullet $}Profil de densité de charges dans une jonction PN}{8}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {$\bullet $}Équivalence de deux distributions et champ dipolaire}{8}{subsection.2.2.2}%
+\contentsline {section}{\numberline {2.3}Devoir Surveillé}{8}{section.2.3}%
+\contentsline {section}{\numberline {2.4}Travaux Pratiques}{8}{section.2.4}%
+\contentsfinish 

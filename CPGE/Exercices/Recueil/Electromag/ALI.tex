@@ -1,0 +1,284 @@
+% !TEX root = /home/eb/.vscode/extensions/qftrules.programme-colle/tmp/Exercice.tex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][oral]{Intégrateur différentiel}
+	Exprimer dans le domaine fréquentiel puis temporel la relation entre la tension de sortie et les deux tensions d'entrée du montage. Les deux résistances $R$ et les deux capacités $C$ sont identiques.
+	\begin{fig}[]
+		\centering
+		\includegraphics[width=0.4\textwidth]{integrateur_diff.png}
+		% \capt{}
+	\end{fig}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PCSI]{Pseudo-intégrateur}
+%\begin{figure}[h!]
+%\centering
+\begin{center}
+\includegraphics[width=0.35\textwidth]{pseudo_int.pdf}
+\end{center}
+%\end{figure}
+\begin{quest}
+\item Déterminer sans calcul la nature de ce filtre.
+\item Déterminer la fonction de transfert du filtre $\underline{H}(\omega)$.
+\item En déduire son gain maximal et sa bande passante.
+\item Montrer que ce montage se comporte comme un intégrateur dans un certain régime de fréquence que l'on précisera.
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PCSI]{Déphaseur}
+%\begin{figure}[h!]
+%\centering
+\begin{center}
+\includegraphics[width=0.45\textwidth]{dephaseur.pdf}
+\end{center}
+%\end{figure}
+\begin{quest}
+\item Déterminer la fonction de transfert du filtre $\underline{H}(\omega)$. On posera $x=\frac{\omega}{\omega_0}$ en précisant l'expression choisie de $\omega_0$.
+\item Tracer le diagramme de Bode asymptotique du circuit.
+\item Déterminer à quoi peut servir un tel montage.
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PCSI]{Plus ou moins?}
+%\begin{figure}[h!]
+%\centering
+\begin{center}
+\includegraphics[width=0.45\textwidth]{sommateur.pdf}
+\qquad
+\includegraphics[width=0.45\textwidth]{soustracteur.pdf}
+\end{center}
+%\end{figure}
+\begin{quest}
+\item Déterminer l'expression de $v_{\rm{s}}$ en fonction de $v_1$ et $v_2$, et en déduire l'opération réalisée par chaque montage.
+\item On remplace maintenant chaque résistance $R'$ sur le montage de droite par un condensateur de capacité $C$. Établir alors la relation entre $\frac{\d v_{\rm{s}}}{\d t}$ et $v_2-v_1$. En déduire l'opération réalisée.
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PSI][2][TD]{Oscillateur à pont de Wien}
+On considère l'oscillateur à pont de Wien, représenté par le circuit suivant.
+%%% FIGURE %%%
+%\begin{figure}[h!]
+%\centering
+\begin{center}
+\includegraphics[width=0.5\textwidth]{Wien.png}
+\end{center}
+%\caption{Oscillateur à pont de Wien. L'oscsillateur se compose d'un bloc d'amplification et d'un filtre de Wien.}
+%\label{fig:Wien}
+%\end{figure}
+%%%%%%%%%%
+On s'intéresse pour commencer au filtre de Wien en sortie ouverte. Soit $V_{\rm ef}$ la tension d'entrée et $V_{\rm sf}$ la tension de sortie.
+
+\begin{quest}
+	\item Sans calcul, étudier le comportement haute et basse fréquence du circuit à pont de Wien. En déduire qu'il s'agit d'un filtre passe-bande.
+
+	\sol{	}
+
+	\item Déterminer la fonction de transfert $H(\omega) = V_{\rm sf}/V_{\rm ef}$ de ce filtre, que l'on mettra sous forme canonique. Calculer la pulsation caractéristique $\omega_0$  pour $R=1\,$k$\Omega$ et $C=10\,$nF.
+
+	\sol{$H(\omega)=H_0/(1+jQ(x-1/x))$ avec $H_0=1/3$, $\omega_0=1/RC$ et $Q=1/3$.}
+
+	\vspace{0.5cm}
+	On considère ensuite le bloc amplificateur en circuit ouvert.
+
+	\item S'agit-il d'un amplificateur inverseur ou non-inverseur ? Que vaut le gain $A$ du filtre ?
+	\sol{ $A(\omega)=1+R_2/R_1$}
+
+	\vspace{0.5cm}
+	On boucle ensuite le filtre de Wien sur l'amplificateur comme illustré sur la figure.
+
+	\item Rappeler le critère de Barkhausen qui permet d'observer des oscillations de la tension $V_{\rm ef}$. En déduire la valeur de la pulsation des oscillations, ainsi que la valeur du gain $A$.
+
+	\sol{$\omega_0$ et $A=1/H_0=3$}
+
+	\item Déterminer l'équation d'évolution temporelle de $V_{\rm ef}(t)$. Étudier la stabilité du montage en fonction de la valeur du gain $A$.
+
+	\sol{$\dfrac{\d^2 v}{\d t^2}+(3-A)\dfrac{\d v}{\d t} + \omega_0^2 v=0$}
+
+	\item Qu'est-ce qui fixe l'amplitude de la tension $V_{\rm ef}(t)$ une fois le régime permanent atteint ? Quelle est alors la valeur de $V_{\rm sf}$ ?
+
+	\sol{Saturation de l'ALI. $V_{\rm sf} \simeq 15/3=5\,$V.}
+
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PSI][2][TD]{Oscillateurs à relaxation}
+
+On considère le circuit électrique suivant.
+
+%%% FIGURE %%%
+%\begin{figure}[h!]
+%\centering
+\begin{center}
+\includegraphics[scale=0.5]{oscillateur.png}
+\end{center}
+%\caption{Oscillateur à relaxation}
+%\label{fig:}
+%\end{figure}
+%%%%%%%%%%
+
+\begin{quest}
+	\item Quel opération réalise chacun des deux blocs du circuit ?
+
+	\sol{Amplificateur inverseur, intégrateur.}
+%
+
+	\item Décrire l'effet de la saturation de l'ALI. En déduire l'évolution temporelle et la nature du signal en sortie $v_{s2}(t)$. Quelle est la période $T$ du signal ?
+
+	\sol{Créneau, $V_{\rm sat}$, $T=4R_1R_2C/R_2$.}
+
+	\item Quelle est la forme, l'amplitude et la période du signal $v_{s1}(t)$ ?
+
+	\sol{Triangle, $R_1 V_{\rm sat}/R_2$, même période.}
+
+	\vspace{1cm}
+	On considère maintenant le montage suivant, appelé multivibrateur astable.
+
+%%% FIGURE %%%
+%\begin{figure}[h!]
+%\centering
+\begin{center}
+\includegraphics[scale=0.5]{multivib.png}
+\end{center}
+%\caption{Multivibrateur astable.}
+%\label{fig:}
+%\end{figure}
+%%%%%%%%%%
+
+\item Identifier deux blocs principaux sur le circuit électrique. Quels opérations réalisent-t-ils ? Déterminer la tension seuil à l'entrée du comparateur à hystérésis $V_0$.
+
+\sol{$V_0 = V_{\rm sat}R_1/(R_1+R_2)$}
+
+\item Combien de temps $T_+$ met la tension $v_{s1}(t)$ pour passer de $-V_0$ à $+V_0$ ? En déduire la nature et la période $T$ du signal en sortie $v_{s2}(t)$.
+
+\sol{Branches d'exponentielles, $T=2RC\ln(1+2R_1/R_2)$}
+
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PT][2][TD]{Quelques montages à ALI}
+
+On considère le circuit électrique suivant.
+
+
+%%% FIGURE %%%
+%\begin{figure}[h!]
+%\centering
+\begin{center}
+\includegraphics[scale=0.5]{montageALI.png}
+\end{center}
+%\caption{Montage à ALI}
+%\label{fig:2}
+%\end{figure}
+%%%%%%%%%%
+
+On suppose l'ALI idéal et considère le régime linéaire uniquement.
+
+\begin{quest}
+	\item Que valent l'impédance d'entrée $Z_e$ et le gain statique $\mu$ d'un ALI idéal ? En déduire les courants d'entrée~$I_\pm$ et la différence de tension $\varepsilon = V_+-V_-$ pour un ALI idéal.
+
+	\sol{$Z_e=\infty$, $\mu= \infty$, $I_\pm=0$ et $\varepsilon=0$}
+
+	\item Déterminer la fonction de transfert $H=v_S/v_E$. Comment ce nomme ce montage ?
+
+	\sol{
+	Millman en A : $v_A \left( \dfrac{1}{R_1} + \dfrac{1}{R_2} \right) = \dfrac{v_S}{R_2}$ puis condition idéalité $v_A=v_E$ d'où $H=\dfrac{v_S}{v_E} = 1+\dfrac{R_2}{R_1}$. Amplificateur non-inverseur.
+	}
+
+\vspace{0.5cm}
+{On remplace la résistance $R_2$ par un condensateur de capacité $C$. De plus, on impose maintenant la tension d'entrée $v_E$ aux bornes de $R_1$, et met la borne $+$ de l'ALI à la masse.}
+
+\item Représenter le nouveau circuit électrique.
+
+\sol{
+%%% FIGURE %%%
+\includegraphics[scale=0.5]{montageALI2.png}
+%%%%%%%%%%
+}
+
+\item Déterminer la fonction de transfert en régime sinusoïdal puis l'équation différentielle qui régit l'évolution de $v_S(t)$. Comment se nomme ce montage ?
+
+\sol{
+Millman : $v_A \left( \dfrac{1}{R} + jC\omega \right) = \dfrac{v_E}{R} + v_sjC\omega$ puis $v_A = 0$ d'où $H=-1/jRC\omega$ et $\dfrac{\d v_S}{\d t} = - \dfrac{v_E}{RC}$. Montage intégrateur.
+}
+
+\item Résoudre l'équation d'évolution pour une tension d'entrée constante avec pour condition initiale $v_S(t=0)=0$. Au bout de combien de temps l'expression ci-dessus n'est plus valable pour un ALI réel, et que se passe-t-il alors ? On donne $R=10\,{\rm k}\Omega$, $C = 33\,{\rm nF}$ et $v_E=5\,{\rm V}$.
+
+\sol{
+$v_S(t)= v_E t/RC$ et saturation à $v_{\rm sat} \simeq 15\,{\rm V}$ à partir d'un temps $\tau=RCv_{\rm sat}/v_E = 1\,{\rm ms}$.
+}
+
+On considère ensuite le circuit électrique suivant. L'ALI est supposé idéal, de sorte que $E=0$ sur le schéma.
+
+
+%%% FIGURE %%%
+%\begin{figure}[h!]
+%\centering
+\begin{center}
+\includegraphics[scale=0.5]{sommateur.png}
+\end{center}
+%\caption{Montage à ALI}
+%\label{fig:3}
+%\end{figure}
+%%%%%%%%%%
+
+\item Déterminer la tension en sortie $v_S$. Quelle opération réalise ce montage ?
+
+\sol{
+$v_1+v_2=2R_1i$ et $v_s=(R_1+R_2)i$ d'où $v_s = \dfrac{1}{2}\left(1+\dfrac{R 2}{R 1}\right)(v_1+v_2)$. Montage sommateur.
+}
+
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[MPSI][1][colle]{Fitrage et démodulation d'amplitude}
+On considère ici le signal
+\begin{equation}
+x(t) = \sin (2\pi f_1t) + \sin (2\pi f_2 t)
+\end{equation}
+avec $f_1 = \SI{1}{kHz}$ et $f_2 = \SI{50}{kHz}$.
+
+ \begin{quest}
+  \item Représenter l'allure de ce signal en fonction de temps, ainsi que son spectre de Fourier.
+  \sol{
+
+\includegraphics[width=0.7\textwidth]{signal.png}
+  }
+
+  \item On envoie ce signal dans un filtre passe-bas d'ordre $1$, de gain unité et de fréquence de coupure $f_0=\SI{10}{kHz}$. Donner l’expression de la fonction de transfert $H(f)$. Représenter le diagramme de Bode en amplitude de ce filtre.
+
+\sol{
+$$
+H = \dfrac{1}{1+2\pi f/f_0}.
+$$
+}
+
+\item Soit $s(t)$ le signal de en sortie du filtre. Que vaut la composante spectrale du signal de sortie à la fréquence $f$, notée $s_f$, en fonction de $x_f$ et de $H(f)$ ? Calculer la norme et la phase des composantes spectrales du signal de sortie pour $f=f_1$ et $f=f_2$.
+
+\item À l'aide d'un multiplieur, on produit le signal
+\begin{equation}
+y(t) = x(t)\sin (2\pi f_1t).
+\end{equation}
+Représenter le spectre de Fourier de ce signal. Que valent les composantes spectrales du signal en sortie du filtre $s(t)$ ? Représenter les signaux $y(t)$ et  $s(t)$.
+
+\textsc{Données} : $\sin(a)\sin(b) = \dfrac{1}{2}\cos(a-b) - \dfrac{1}{2}\cos(a+b)$.
+
+  \end{quest}
+
+
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

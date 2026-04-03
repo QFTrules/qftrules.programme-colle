@@ -1,0 +1,1711 @@
+% Date : 22/02/2023
+% Version : 8
+% Auteur : MHG
+% Relu : 
+% Relecteur : 
+
+% ------------------------------------------------------------ %
+% ----------------------  Fiche CHI01  ----------------------- %
+% Thème : Fondamentaux de la chimie des solutions
+% Classes : Toutes les classes de sup
+% ------------------------------------------------------------ %
+
+% ======================================================= % 
+% ============== Gestion de la compilation ============== %
+% ======================================================= % 
+\ifdefined\mainIsLoaded\else
+\RequirePackage{import}
+\subimport{../../}{_preambule_CdE_PC}
+\begin{document}
+\fi
+% ======================================================= % 
+% ======================================================= % 
+
+% ============================================================================ %
+%                            FICHE D'ENTRAÎNEMENT                              %
+% ============================================================================ %
+% ======================= Métadonnées sur la fiche =========================== %
+\titreFicheEntrainement		{Fondamentaux de la chimie des solutions}
+\grandTheme					{Chimie}
+\numeroFiche				{CHI01}
+\uniqueID					{nTsDbSykZiK} % une chaîne de caractères (a-z, A-Z) aléatoire de 10 caractères.
+\nombreColonnesReponses		{2} % 1, 2, 3, etc.
+% ============================================================================ %
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\debutFicheEntrainement                                                                      %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% --------------------------------------------------------------------- %
+%                              Prérequis                                %
+%                             (facultatif)                              %
+% --------------------------------------------------------------------- %
+% ================== Métadonnées sur le prérequis ===================== %
+\avecPrerequis{Y} % Y ou N
+% ===================================================================== %
+\begin{prerequis}
+Pour cette fiche, on utilisera les masses molaires des éléments suivants :
+		\begin{center}
+%			\footnotesize
+			\begin{tabular}{@{} |l|ccccc| @{}}
+			\hline&&&&&\\[-3.5mm]
+			\textbf{Élément}							&	H	&	C	&	O	&	 F	&	Ca	\\[1mm]
+			\textbf{Masse molaire} (en \si{g.mol^{-1}})	& 1		&	12	&	16	&	19	&	40 \\ %\hline
+			 											& $M_\textrm{H}$	&	$M_\textrm{C}$	&	$M_\textrm{O}$	&	$M_\textrm{F}$	&	$M_\textrm{Ca}$ \\ \hline
+			\end{tabular}		
+		\end{center}
+\minusSmallskip
+On rappelle la masse volumique de l'eau : $\rho_{\textrm{H}_2\textrm{O}}=\SI{1,0e3}{k\gram\per\cubic\meter}$
+	
+\constantesUtiles
+	\begin{listeConstantes}
+		\item nombre d'Avogadro : $\mathcal{N}_A=\SI{6,02e23}{\per\mol}$
+	\end{listeConstantes}
+\end{prerequis}
+% --------------------------------------------------------------------- %
+
+\minusMedskip
+
+
+
+
+
+% •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••• %
+\sectionFicheEntrainement{Avant toute chose}
+% •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••• %
+
+
+% ********************************************************************* %
+%                           ENTRAÎNEMENT                                % 
+% ********************************************************************* %
+% ================ Métadonnées sur l'entraînement ===================== %
+
+\titreEntrainementFacultatif	{Morceau de sucre}
+\hauteurLargeurCadreReponse		{7mm}{4cm}
+\dureeResolutionFacultative		{1} % 1, 2, 3 ou 4
+\typeEntrainement				{AN} % Newton ou QCM ou AN ou vide (exercice "normal")
+\nombreColonnesQuestions		{1} % vide, 1, 2, 3, etc.
+\avecPlusieursQuestions			{Y} % Y ou N
+\initialisationEntrainement
+% ===================================================================== %
+
+
+% =============================================================================== %
+\debutEntrainement
+% =============================================================================== %
+
+Un morceau de sucre est un corps pur qui contient \SI{6,0}{\gram} de saccharose $\textrm{C}_{12}\textrm{H}_{22}\textrm{O}_{11}$. Calculer : 
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+La quantité de matière $n$ de saccharose dans le morceau de sucre
+\end{enonce}
+
+\reponse{$\SI{18}{m\mole}$}
+
+\begin{corrige}
+Par définition, on a
+\[
+n=\frac{m}{M}=\frac{\SI{6}{\gram}}{12\times \SI{12}{g.mol^{-1}}+22\times\SI{1}{g.mol^{-1}}+11\times\SI{16}{g.mol^{-1}}}.
+\]
+L'application numérique donne $n=\SI{18e-3}{\mole}$.
+\end{corrige}
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+Le nombre $N$ de molécules de saccharose dans le morceau de sucre
+\end{enonce}
+
+\reponse{$\SI{1,1e22}{}$}
+
+\begin{corrige}
+On a :
+\[
+N=n\times\mathcal{N}_A=\SI{18e-3}{mol}\times\SI{6,02e23}{\per\mol}.
+\]
+L'application numérique donne $N=\SI{1,1e22}{}$.
+\end{corrige}
+
+% ************************************** %
+
+% =============================================================================== %
+\finEntrainement
+% =============================================================================== %
+
+
+\minusMedskip
+
+% ********************************************************************* %
+%                           ENTRAÎNEMENT                                % 
+% ********************************************************************* %
+% ================ Métadonnées sur l'entraînement ===================== %
+
+\titreEntrainementFacultatif	{Atomes de carbone dans le diamant}
+\hauteurLargeurCadreReponse		{7mm}{4cm}
+\dureeResolutionFacultative		{2} % 1, 2, 3 ou 4
+\typeEntrainement				{AN} % Newton ou QCM ou AN ou vide (exercice "normal")
+\nombreColonnesQuestions		{1} % vide, 1, 2, 3, etc.
+\avecPlusieursQuestions			{Y} % Y ou N
+\initialisationEntrainement
+% ===================================================================== %
+
+
+% =============================================================================== %
+\debutEntrainement
+% =============================================================================== %
+
+Le diamant est un cristal contenant uniquement des atomes de carbone de masse molaire $M=\SI{12}{\gram\per\mol}$. Sa valeur est évaluée par sa masse en carats. Un carat est équivalent à $\SI{200}{mg}$. Le plus gros diamant jamais découvert l'a été en 1905 avec une masse de \np{3106} carats. Calculer : 
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+La masse $m$ d'atomes de carbone contenue dans ce diamant
+\end{enonce}
+
+\reponse{$\SI{621}{\gram}$}
+
+\begin{corrige}
+On peut écrire $m=\np{3106}\times\SI{200e-3}{g}=\SI{621}{\gram}$.
+\end{corrige}
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+La quantité de matière $n$ d'atomes de carbone dans ce diamant
+\end{enonce}
+
+\reponse{$\SI{51,8}{\mole}$}
+
+\begin{corrige}
+On a $n=\frac{\SI{621}{\gram}}{\SI{12}{g.mol^{-1}}}=\SI{51,8}{\mole}$.
+\end{corrige}
+
+% ************************************** %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+Le nombre $N$ d'atomes de carbone dans ce diamant
+\end{enonce}
+
+\reponse{$\SI{3,12e25}{}$}
+
+\begin{corrige}
+Par définition, on a 
+\[
+N=n\times\mathcal{N}_A=\SI{51,8}{\mole}\times\SI{6,02e23}{\per\mol}.
+\]
+L'application numérique donne $N=\SI{3,12e25}{}$.
+\end{corrige}
+
+% ************************************** %
+
+% =============================================================================== %
+\finEntrainement
+% =============================================================================== %
+
+\minusMedskip
+
+
+
+
+
+
+% ********************************************************************* %
+%                           ENTRAÎNEMENT                                % 
+% ********************************************************************* %
+% ================ Métadonnées sur l'entraînement ===================== %
+
+\titreEntrainementFacultatif	{Un verre d'eau à la mer}
+\hauteurLargeurCadreReponse		{7mm}{4cm}
+\dureeResolutionFacultative		{2} % 1, 2, 3 ou 4
+\typeEntrainement				{} % Newton ou QCM ou AN ou vide (exercice "normal")
+\nombreColonnesQuestions		{1} % vide, 1, 2, 3, etc.
+\avecPlusieursQuestions			{Y} % Y ou N
+\initialisationEntrainement
+% ===================================================================== %
+
+
+% =============================================================================== %
+\debutEntrainement
+% =============================================================================== %
+
+On verse un verre d’eau de volume $V=\SI{24,0}{c\liter}$ contenant initialement $N_0$ molécules d'eau dans la mer, et on suppose qu’il est possible d’agiter vigoureusement pour obtenir une répartition homogène de ce verre d’eau dans l’ensemble des mers et océans du globe qui représentent un volume total $V_{\text{tot}}=\SI{1,37e18}{\cubic\meter}$.
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+Calculer $N_0$
+\end{enonce}
+
+\reponse{$\SI{8,01e24}{}$}
+
+\begin{corrige}
+Déjà, \SI{24,0}{c\liter} d'eau pèsent \SI{240}{\gram}, la quantité de matière correspondante est donc 
+\[
+n=\frac{\SI{240}{\gram}}{\SI{18}{g.mol^{-1}}}=\SI{13,3}{\mol}.
+\]
+Il reste à calculer $N_0=n\times\mathcal{N}_A=\SI{13,3}{\mol}\times\SI{6,02e23}{\per\mol}=\SI{8,01e24}{}$.
+\end{corrige}
+
+% ************************************** %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+Calculer le rapport $R=\frac{V}{V_\text{tot}}$
+\end{enonce}
+
+\reponse{$\SI{1,75e-22}{}$}
+
+\begin{corrige}
+Le rapport des volumes est : 
+\[
+R=\frac{\SI{24,0}{c\liter}}{\SI{1,37e18}{\cubic\meter}}=\frac{\SI{2,40e-1}{\liter}}{\SI{1,37e18}{\cubic\meter}}=\frac{\SI{2,40e-4}{\cubic\meter}}{\SI{1,37e18}{\cubic\meter}}=\SI{1,75e-22}{}.
+\]
+\end{corrige}
+
+% ************************************** %
+
+
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+ Si on remplit alors le verre d’eau dans la mer, combien de molécules $N$ du verre initial retrouve-t-on ?
+
+\end{enonce}
+
+\reponse{$\SI{1400}{}$}
+
+\begin{corrige}
+Les $N_0$ molécules d'eau se retrouveront dans l'ensemble du volume $V_{\text{tot}}$, on considère donc qu'on prélève un volume $V=\SI{24}{c\liter}$ dans le volume total. Ainsi, le rapport des volumes nous donnera la proportion $N$ de molécules d'eau prélevées par rapport à $N_0$. 
+
+Ainsi, le nombre $N$ de molécules d'eau initiales présentes dans le verre à la fin est : 
+\[
+N=N_0\times R=\SI{8e24}{}\times \SI{1,75e-22}{}
+%\frac{\SI{2,4e-4}{\cubic\meter}}{\SI{1,37e18}{\cubic\meter}}
+%=\frac{8\times\SI{2,4e2}{}}{\np{1,37}}
+=\SI{1400}{}.
+\]
+\end{corrige}
+
+% ************************************** %
+
+
+% =============================================================================== %
+\finEntrainement
+% =============================================================================== %
+
+
+
+% ********************************************************************* %
+%                           ENTRAÎNEMENT                                % 
+% ********************************************************************* %
+% ================ Métadonnées sur l'entraînement ===================== %
+
+\titreEntrainementFacultatif	{Combat de masses volumiques}
+\hauteurLargeurCadreReponse		{7mm}{5cm}
+\dureeResolutionFacultative		{1} % 1, 2, 3 ou 4
+\typeEntrainement				{AN} % Newton ou QCM ou AN ou vide (exercice "normal")
+\basiqueEtTransversal			{Y}
+\nombreColonnesQuestions		{1} % vide, 1, 2, 3, etc.
+\avecPlusieursQuestions			{N} % Y ou N
+\initialisationEntrainement
+% ===================================================================== %
+
+
+% =============================================================================== %
+\debutEntrainement
+% =============================================================================== %
+
+On considère un morceau de cuivre de \SI{20}{c\cubic\meter} pesant \SI{178}{\gram} et un morceau de fer de \SI{3}{d\cubic \meter} pesant \SI{24}{k \gram}.
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+Qui a la masse volumique la plus élevée ?
+\end{enonce}
+
+\reponse{Le cuivre}
+
+\begin{corrige}
+On rappelle que $\SI{1}{c\cubic\meter}=\SI{1}{m\liter}$ et $\SI{1}{d\cubic\meter}=\SI{1}{\liter}$. On a $\rho_{\text{Cu}}=\frac{m}{V}=\frac{\SI{178}{g}}{\SI{20e-3}{L}}=\SI{8900}{\gram\per\liter}$. De même, on calcule $\rho_{\text{Fe}}=\frac{\SI{24e3}{g}}{\SI{3}{L}}=\SI{8000}{\gram\per\liter}$.
+\end{corrige}
+
+% ************************************** %
+
+% =============================================================================== %
+\finEntrainement
+% =============================================================================== %
+
+
+
+% ********************************************************************* %
+%                           ENTRAÎNEMENT                                % 
+% ********************************************************************* %
+% ================ Métadonnées sur l'entraînement ===================== %
+
+\titreEntrainementFacultatif	{Calcul autour du pH}
+\hauteurLargeurCadreReponse		{7mm}{2cm}
+\dureeResolutionFacultative		{2} % 1, 2, 3 ou 4
+\typeEntrainement				{AN} % Newton ou QCM ou AN ou vide (exercice "normal")
+\nombreColonnesQuestions		{1} % vide, 1, 2, 3, etc.
+\avecPlusieursQuestions			{Y} % Y ou N
+\initialisationEntrainement
+% ===================================================================== %
+
+% =============================================================================== %
+\debutEntrainement
+% =============================================================================== %
+
+Le pH d'une solution aqueuse est défini par $\textrm{pH}=-\log_{10}\left(a_{\textrm{H}_3\textrm{O}^+}\right)=-\log_{10}\left(\frac{[\textrm{H}_3\textrm{O}^+]}{C^{\circ}}\right)$. 
+
+On rappelle que $C^{\circ} = \SI{1}{mol.L^{-1}}$.
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+Calculer le \textrm{pH} d'une solution aqueuse contenant $[\textrm{H}_3\textrm{O}^+]=\SI{0,1}{\mol\per\liter}$
+\end{enonce}
+
+\reponse{$1$}
+
+%\begin{corrige}
+%\end{corrige}
+
+% ************************************** %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+Exprimer puis calculer la concentration en $\textrm{H}_3\textrm{O}^+$ en fonction du \textrm{pH} si celui-ci vaut $7$
+\end{enonce}
+
+\reponse{$[\textrm{H}_3\textrm{O}^+]=10^{-7}\SI{}{\mol\per\liter}$}
+
+%\begin{corrige}
+%\end{corrige}
+
+% =============================================================================== %
+\pauseEntrainement
+% =============================================================================== %
+
+\medskip
+
+On considère une solution dont la concentration en $\textrm{H}_3\textrm{O}^+$ vaut $x$, et on note $\text{pH}_0$ son \textrm{pH}. 
+
+
+% =============================================================================== %
+\repriseEntrainement
+% =============================================================================== %
+
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+Exprimer en fonction de $\textrm{pH}_0$ le \textrm{pH} d'une solution pour laquelle la concentration en $\textrm{H}_3\textrm{O}^+$ a été multipliée par $100$
+\end{enonce}
+
+\reponse{$\text{pH}_0-2$}
+
+\begin{corrigeNewpage}
+On a $\textrm{pH}_0=-\log_{10}(x/C^{\circ})$ et $\textrm{pH}=-\log_{10}(100x/C^{\circ})=-\log_{10}(100)-\log_{10}(x/C^{\circ})=-2+\textrm{pH}_0$.
+\end{corrigeNewpage}
+
+% ************************************** %
+
+% =============================================================================== %
+\finEntrainement
+% =============================================================================== %
+
+
+
+
+
+
+% ********************************************************************* %
+%                           ENTRAÎNEMENT                                % 
+% ********************************************************************* %
+% ================ Métadonnées sur l'entraînement ===================== %
+
+\titreEntrainementFacultatif	{Diagramme de prédominance}
+\hauteurLargeurCadreReponse		{7mm}{4cm}
+\dureeResolutionFacultative		{3} % 1, 2, 3 ou 4
+\typeEntrainement				{Newton} % Newton ou QCM ou AN ou vide (exercice "normal")
+\nombreColonnesQuestions		{1} % vide, 1, 2, 3, etc.
+\avecPlusieursQuestions			{Y} % Y ou N
+\initialisationEntrainement
+% ===================================================================== %
+
+% =============================================================================== %
+\debutEntrainement
+% =============================================================================== %
+
+L’acide malonique, ou acide propanedioïque, de formule $\textrm{HOOC}-\textrm{CH}_2-\textrm{COOH}$ est caractérisé par les constantes $\textrm{pK}_{A1}=\np{2,85}$ et $\textrm{pK}_{A2}=\np{5,80}$. Il sera noté $\textrm{H}_2\textrm{A}$ par la suite. 
+
+On rappelle la constante d'équilibre de l'autoprotolyse de l'eau $K_e=10^{-14}$.
+
+\begin{center}
+\subimport{_images/}{fiche_CHI01_predominance_CBD_v2.tex}
+\end{center}
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+Identifier les valeurs de \reponseX{} et \reponseY{}
+\end{enonce}
+
+\reponse{$\reponseX{}=\np{2,85}$ et $\reponseY{}=\np{5,80}$}
+
+% ************************************** %
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+Identifier les espèces correspondant à \reponseA{}, \reponseB{} et \reponseC{}
+\end{enonce}
+
+\reponse{$\reponseA{}=\textrm{H}_2\textrm{A}$, $\reponseB{}=\textrm{H}\textrm{A}^-$ et $\reponseC{}=\textrm{A}^{2-}$}
+
+% ************************************** %
+
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+Quelle espèce prédomine dans une solution de \textrm{pH} = 4,2 ?
+\end{enonce}
+
+\reponse{$\textrm{H}\textrm{A}^-$}
+
+\begin{corrige}
+Par lecture du diagramme de prédominance, il s'agit directement de l'espèce $\textrm{H}\textrm{A}^-$.
+\end{corrige}
+% ************************************** %
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+Quelle espèce prédomine dans une solution de concentration $[\textrm{H}_3\textrm{O}^+]_\text{éq}=\SI{1,0e-2}{\mole\per\liter}$ en ions oxonium ?
+\end{enonce}
+
+\reponse{$\textrm{H}_2\textrm{A}$}
+
+\begin{corrige}
+Commençons par calculer le \textrm{pH} de la solution. Il vaut $\textrm{pH}=-\log_{10}(\SI{1.0e-2}{})=2$. Une lecture du diagramme de prédominance montre que l'espèce $\textrm{H}_2\textrm{A}$ prédomine.
+\end{corrige}
+% ************************************** %
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+Quelle espèce prédomine dans une solution de concentration $[\textrm{H}\textrm{O}^-]_\text{éq}=\SI{1,0e-5}{\mole\per\liter}$ en ions hydroxyde ?
+\end{enonce}
+
+\reponse{$\textrm{A}^{2-}$}
+
+\begin{corrige}
+On commence par calculer le \textrm{pH} de la solution ; il vaut $\textrm{pH}=-\log_{10}(a(\textrm{H}_3\textrm{O}^+))$. 
+
+Le produit ionique de l'eau est défini par $a(\textrm{H}_3\textrm{O}^+)\times a(\textrm{H}\textrm{O}^-)=K_e$, ainsi il vient $\textrm{pH}=-\log_{10}\left(\frac{K_e}{a(\textrm{H}\textrm{O}^-)}\right)$. 
+
+Donc, on a  $\textrm{pH}=-\log_{10}\left(\frac{\SI{1e-14}{}}{\SI{1,0e-5}{}}\right)=9$.
+Une lecture du diagramme de prédominance à $\textrm{pH}=9$ montre que l'espèce $\textrm{A}^{2-}$ prédomine.
+\end{corrige}
+% ************************************** %
+
+
+
+% =============================================================================== %
+\finEntrainement
+% =============================================================================== %
+
+
+
+
+
+\newpage
+
+
+
+
+% •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••• %
+\sectionFicheEntrainement{Concentrations, Dilutions}
+% •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••• %
+
+
+% ********************************************************************* %
+%                           ENTRAÎNEMENT                                % 
+% ********************************************************************* %
+% ================ Métadonnées sur l'entraînement ===================== %
+\titreEntrainementFacultatif	{Combat de concentrations}
+\hauteurLargeurCadreReponse		{7mm}{3cm}
+\dureeResolutionFacultative		{1} % 1, 2, 3 ou 4
+\typeEntrainement				{Newton} % Newton ou QCM ou AN ou vide (exercice "normal")
+\basiqueEtTransversal			{Y}
+\nombreColonnesQuestions		{1} % vide, 1, 2, 3, etc.
+\avecPlusieursQuestions			{Y} % Y ou N
+\initialisationEntrainement
+% ===================================================================== %
+
+% =============================================================================== %
+\debutEntrainement
+% =============================================================================== %
+
+Qui est le plus concentré ?
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+\SI{8}{\gram} de sel dans \SI{3}{c\liter} d'eau ou \SI{3}{k\gram} de sel dans \SI{1e3}{\liter} d'eau ?
+\end{enonce}
+
+\reponse{Le premier}
+
+\begin{corrige}
+La première concentration en masse du sel est de \SI{267}{\gram\per\liter} ; la deuxième vaut \SI{3}{\gram\per\liter}.
+\end{corrige}
+
+% ************************************** %
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+\SI{3}{\mol} de sucre dans \SI{10}{m\liter} d'eau ou \SI{400}{k\mol} de sucre dans \SI{2}{\cubic\metre} d'eau ?
+\end{enonce}
+
+\reponse{Le premier}
+
+\begin{corrige}
+La première concentration du sucre est de \SI{300}{\mol\per\liter} ; la deuxième vaut \SI{200}{\mol\per\liter}.
+\end{corrige}
+
+% ************************************** %
+
+% =============================================================================== %
+\finEntrainement
+% =============================================================================== %
+
+
+
+
+
+% ********************************************************************* %
+%                           ENTRAÎNEMENT                                % 
+% ********************************************************************* %
+% ================ Métadonnées sur l'entraînement ===================== %
+\titreEntrainementFacultatif	{Du sucre dans votre thé}
+\hauteurLargeurCadreReponse		{7mm}{4cm}
+ \pointInterrogation				{Y}
+\dureeResolutionFacultative		{2} % 1, 2, 3 ou 4
+\typeEntrainement				{Newton} % Newton ou QCM ou AN ou vide (exercice "normal")
+\nombreColonnesQuestions		{1} % vide, 1, 2, 3, etc.
+\avecPlusieursQuestions			{Y} % Y ou N
+\initialisationEntrainement
+% ===================================================================== %
+
+% =============================================================================== %
+\debutEntrainement
+% =============================================================================== %
+
+On prépare \SI{20}{c\liter} de thé sucré en y ajoutant $3$ morceaux de sucre constitués chacun de \SI{6}{\gram} de saccharose de masse molaire $M=\SI{344}{\gram\per\mol}$. Calculer : 
+
+
+% ************************************** %
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+La concentration en masse $C_m$ de saccharose dans le thé
+\end{enonce}
+
+\reponse{$\SI{90}{\gram\per\liter}$}
+
+\begin{corrige}
+La concentration en masse est donnée par $C_m=\frac{3\times \SI{6}{\gram}}{\SI{20e-2}{\liter}}=\SI{90}{\gram\per\liter}$.
+\end{corrige}
+
+% ************************************** %
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+La concentration en quantité de matière $C$ de saccharose dans le thé
+\end{enonce}
+
+\reponse{$\SI{0,26}{\mol\per\liter}$}
+
+\begin{corrige}
+Une analyse dimensionnelle permet de retrouver que $C=\frac{C_m}{M}=\frac{\SI{90}{g}}{\SI{344}{\gram\per\mol}}=\SI{0,26}{\mol\per\liter}$.
+\end{corrige}
+
+% =============================================================================== %
+\finEntrainement
+% =============================================================================== %
+
+
+
+
+
+
+
+% ********************************************************************* %
+%                           ENTRAÎNEMENT                                % 
+% ********************************************************************* %
+% ================ Métadonnées sur l'entraînement ===================== %
+\titreEntrainementFacultatif	{Dilution homogène}
+\hauteurLargeurCadreReponse		{7mm}{4cm}
+\dureeResolutionFacultative		{1} % 1, 2, 3 ou 4
+\typeEntrainement				{QCM} % Newton ou QCM ou AN ou vide (exercice "normal")
+\basiqueEtTransversal			{Y}
+\nombreColonnesQuestions		{1} % vide, 1, 2, 3, etc.
+\avecPlusieursQuestions			{Y} % Y ou N
+\initialisationEntrainement
+% ===================================================================== %
+
+% =============================================================================== %
+\debutEntrainement
+% =============================================================================== %
+On mélange un volume $V_1=\SI{10}{m\liter}$ de solution aqueuse d’ion $\textrm{Fe}^{3+}$ à $C_1=\SI{0,10}{\mole\per\liter}$ et $V_2=\SI{10}{m\liter}$ de solution aqueuse d’ions $\textrm{Sn}^{2+}$ à $C_2=\SI{0,10}{\mole\per\liter}$. 
+
+On souhaite donner la composition du système en $\textrm{Fe}^{3+}$ avant toute réaction.
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+Parmi les formules fausses suivantes, laquelle ou lesquelles ont au moins le mérite d'être homogènes ?
+\begin{listeQCM1Colonne}
+	\item $[\textrm{Fe}^{3+}]_i=\frac{C_1}{V_1}$
+	\item $[\textrm{Fe}^{3+}]_i=C_1V_1$
+	\item $[\textrm{Fe}^{3+}]_i=\frac{C_1}{V_1}(V_1+V_2)$
+	\end{listeQCM1Colonne}		
+\end{enonce}
+
+\reponse{\reponseC{}}
+
+\begin{corrige}
+Une concentration en quantité de matière s'exprime en \SI{}{\mole\per\liter}, seule la dernière proposition est homogène (mais fausse).
+\end{corrige}
+
+% ************************************** %
+
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+Établir l'expression littérale correcte donnant $[\textrm{Fe}^{3+}]_i$ dans le mélange
+\end{enonce}
+
+\reponse{$\frac{C_1V_1}{V_1+V_2}$}
+
+\begin{corrige}
+La concentration de ces ions dans le mélange est donnée par le rapport de la quantité de matière sur le volume total, soit $[\textrm{Fe}^{3+}]_i=\frac{C_1V_1}{V_1+V_2}$.
+\end{corrige}
+
+% ************************************** %
+
+% =============================================================================== %
+\finEntrainement
+% =============================================================================== %
+
+
+
+
+
+% ********************************************************************* %
+%                           ENTRAÎNEMENT                                % 
+% ********************************************************************* %
+% ================ Métadonnées sur l'entraînement ===================== %
+\titreEntrainementFacultatif	{Un café au lait sucré}
+\hauteurLargeurCadreReponse		{7mm}{4cm}
+\dureeResolutionFacultative		{1} % 1, 2, 3 ou 4
+\typeEntrainement				{Newton} % Newton ou QCM ou AN ou vide (exercice "normal")
+\basiqueEtTransversal			{Y}
+\nombreColonnesQuestions		{1} % vide, 1, 2, 3, etc.
+\avecPlusieursQuestions			{Y} % Y ou N
+\initialisationEntrainement
+% ===================================================================== %
+
+% =============================================================================== %
+\debutEntrainement
+% =============================================================================== %
+
+On mélange $\SI{100}{mL}$ de café à la concentration en masse de caféine $C_1=\SI{0,7}{\gram\per\liter}$ avec $\SI{150}{mL}$ de lait sucré à la concentration en masse de sucre $C_2=\SI{40}{\gram\per\liter}$. 
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+\begin{enonce}
+Calculer la concentration finale en masse $C_1'$ en caféine
+\end{enonce}
+
+\reponse{$\SI{0,28}{\gram\per\liter}$}
+
+\begin{corrige}
+La masse $m_1$ de caféine est $m_1=C_1\times V_1= \SI{0,7}{\gram\per\liter} \times\SI{100e-3}{L}=\SI{0,07}{\gram}$. La concentration en masse dans la solution finale de volume $V=V_1+V_2=\SI{250}{m\liter}$ est donc : $C_1'=\frac{m_1}{V}=\frac{\SI{0,07}{g}}{\SI{250e-3}{L}}=\SI{0,28}{\gram\per\liter}$.
+\end{corrige}
+
+% ************************************** %
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+\begin{enonce}
+Calculer la concentration en masse $C_2'$ en sucre dans le mélange obtenu
+\end{enonce}
+
+\reponse{$\SI{24}{\gram\per\liter}$}
+
+\begin{corrige}
+La masse $m_2$ de sucre est $m_2=C_2\times V_2=\SI{40}{\gram\per\liter}\times\SI{150e-3}{L}=\SI{6}{\gram}$. La concentration en masse dans la solution finale de volume $V=V_1+V_2=\SI{250}{m\liter}$ est donc : $C_2'=\frac{m_2}{V}=\frac{\SI{6}{\gram}}{\SI{250e-3}{L}}=\SI{24}{\gram\per\liter}$.
+\end{corrige}
+
+% ************************************** %
+% =============================================================================== %
+\finEntrainement
+% =============================================================================== %
+
+
+
+\newpage
+
+
+% ********************************************************************* %
+%                           ENTRAÎNEMENT                                % 
+% ********************************************************************* %
+% ================ Métadonnées sur l'entraînement ===================== %
+\titreEntrainementFacultatif	{Mélange de solutions}
+\hauteurLargeurCadreReponse		{7mm}{4cm}
+\dureeResolutionFacultative		{1} % 1, 2, 3 ou 4
+\typeEntrainement				{Newton} % Newton ou QCM ou AN ou vide (exercice "normal")
+\basiqueEtTransversal			{Y}
+\nombreColonnesQuestions		{1} % vide, 1, 2, 3, etc.
+\avecPlusieursQuestions			{Y} % Y ou N
+\initialisationEntrainement
+% ===================================================================== %
+
+% =============================================================================== %
+\debutEntrainement
+% =============================================================================== %
+
+On mélange deux bouteilles d'eau sucrée de volumes respectifs $V_1$ et $V_2$ dont les concentrations en mole de sucre sont respectivement $C_1$ et $C_2$. On veut exprimer la concentration en quantité de matière $C$ du sucre dans le mélange en fonction de $V_1$, $V_2$, $C_1$ et $C_2$.
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%\begin{enonce}
+%Parmi les formules (fausses) suivantes, laquelle ou lesquelles ont au moins le mérite d'être homogène ?
+%$$C=\frac{C_1}{V_1+V_2}\quad(1)\qquad C = C_1V_1+C_2V_2\quad(2)\qquad C=\frac{C_1(V_1+V_2)}{C_2V_1}\quad(3)$$
+
+\begin{enonce}
+Parmi les formules fausses suivantes, laquelle ou lesquelles ont au moins le mérite d'être homogènes ?
+\begin{listeQCM1Colonne}
+	\item $C=\frac{C_1}{V_1+V_2}$
+	\item $C = C_1V_1+C_2V_2$
+	\item $C=\frac{C_1(V_1+V_2)}{C_2V_1}$
+	\end{listeQCM1Colonne}		
+\end{enonce}
+
+
+%\end{enonce}
+
+\reponse{Aucune}
+
+\begin{corrige}
+Une concentration en quantité de matière s'exprime en \SI{}{\mole\per\liter}, aucune de ces relations n'est homogène, elles ne peuvent donc pas être correctes.
+\end{corrige}
+
+% ************************************** %
+
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+\begin{enonce}
+Déterminer la formule correcte donnant $C$.
+
+\end{enonce}
+
+\reponse{$\frac{C_1V_1+C_2V_2}{V_1+V_2}$}
+
+\begin{corrigeNewpage}
+Lors du mélange, la quantité de matière se conserve. La quantité de matière totale en sucre est 
+\[
+n=n_1+n_2=C_1V_1+C_2V_2.
+\]
+Le volume total du mélange est $V=V_1+V_2$ (en négligeant la contraction des volumes). La concentration en quantité de matière du mélange en sucre est donc $C=\frac{n}{V}=\frac{C_1V_1+C_2V_2}{V_1+V_2}$.
+\end{corrigeNewpage}
+
+% ************************************** %
+
+% =============================================================================== %
+\finEntrainement
+% =============================================================================== %
+
+
+
+
+
+
+
+
+
+% ********************************************************************* %
+%                           ENTRAÎNEMENT                                % 
+% ********************************************************************* %
+% ================ Métadonnées sur l'entraînement ===================== %
+
+\titreEntrainementFacultatif	{Manipulation de formules}
+\hauteurLargeurCadreReponse		{7mm}{4cm}
+\dureeResolutionFacultative		{2} % 1, 2, 3 ou 4
+\typeEntrainement				{} % Newton ou QCM ou AN ou vide (exercice "normal")
+\basiqueEtTransversal			{Y}
+\nombreColonnesQuestions		{1} % vide, 1, 2, 3, etc.
+\avecPlusieursQuestions			{Y} % Y ou N
+\initialisationEntrainement
+% ===================================================================== %
+
+
+% =============================================================================== %
+\debutEntrainement
+% =============================================================================== %
+
+Soit $C$ la concentration en quantité de matière et $C_m$ la concentration en masse d'un soluté en solution. 
+
+On note $n$, $m$ et $M$ la quantité de matière, la masse et la masse molaire du soluté et $V$ le volume de la solution. 
+
+Exprimer : 
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+$C_m$ en fonction de $n$, $M$ et $V$
+\end{enonce}
+
+\reponse{$\frac{n\times M}{V}$}
+
+\begin{corrige}
+On a $C_m=\frac{m}{V}=\frac{n\times M}{V}$.
+\end{corrige}
+
+% ************************************** %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+La quantité de matière $n$ en fonction de $C_m$, $V$ et $M$
+\end{enonce}
+
+\reponse{$\frac{V\times C_m}{M}$}
+
+\begin{corrige}
+En partant de la relation précédente $C_m=\frac{m}{V}=\frac{n\times M}{V}$, il vient $C_m\times V=n\times M$ puis $\frac{C_m\times V}{M}=n$.
+\end{corrige}
+
+% ************************************** %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+Le volume $V$ en fonction de $M$, $C$ et la masse $m$
+\end{enonce}
+
+\reponse{$V=\frac{m}{C\times M}$}
+
+\begin{corrige}
+On a $C_m=\frac{m}{V}$ et $C_m=M\times C$, ainsi $\frac{m}{V}=M\times C$. Soit alors $m=C\times M\times V$. Finalement, on a $V=\frac{m}{C\times M}$.
+\end{corrige}
+
+% ************************************** %
+
+% =============================================================================== %
+\finEntrainement
+% =============================================================================== %
+
+
+
+
+
+% ********************************************************************* %
+%                           ENTRAÎNEMENT                                % 
+% ********************************************************************* %
+% ================ Métadonnées sur l'entraînement ===================== %
+
+\titreEntrainementFacultatif	{Préparation d'une solution par dilution}
+\hauteurLargeurCadreReponse		{7mm}{5cm}
+\dureeResolutionFacultative		{2} % 1, 2, 3 ou 4
+\typeEntrainement				{Newton} % Newton ou QCM ou AN ou vide (exercice "normal")
+\basiqueEtTransversal			{Y}
+\nombreColonnesQuestions		{1} % vide, 1, 2, 3, etc.
+\avecPlusieursQuestions			{Y} % Y ou N
+\initialisationEntrainement
+% ===================================================================== %
+
+
+% =============================================================================== %
+\debutEntrainement
+% =============================================================================== %
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+On dispose d'une grande quantité d'une solution mère d'acide acétique à la concentration en masse $C=\SI{80}{\gram\per\liter}$. On souhaite préparer \SI{100}{m\liter} d'une solution à la concentration en masse de \SI{20}{\gram\per\liter} par dilution. 
+\minusMedskip
+
+Quel volume $V_i$ de la solution mère doit-on prélever ? 
+\end{enonce}
+
+\reponse{$\SI{25}{m\liter}$}
+
+\begin{corrige}
+Lors d'une dilution, la quantité de matière prélevée à la solution mère est conservée dans la solution fille. Ainsi, on a $CV_i=C_fV_f$ et donc \vspace{-1mm}
+\[
+V_i=\frac{C_fV_f}{C}=\frac{\SI{20}{\gram\per\liter}\times\SI{100e-3}{L}}{\SI{80}{\gram\per\liter}}. \vspace{-1mm}
+\]
+L'application numérique donne $V_i=\SI{25}{m\liter}$.
+\end{corrige}
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\bigskip
+\begin{enonce}
+On prélève \SI{20}{m\liter} d'une solution mère de permanganate de potassium à la concentration en masse $C_m=\SI{40}{\gram\per\liter}$ que l'on verse dans une fiole jaugée de \SI{250}{m\liter} et que l'on complète ensuite jusqu'au trait de jauge avec de l'eau distillée. 
+\minusMedskip
+
+Calculer la concentration en masse $C_f$ de la solution finale.
+\end{enonce}
+
+\reponse{$\SI{3,2}{\gram\per\liter}$}
+
+\begin{corrige}
+La même démarche donne $C_mV_m=C_fV_f$, soit : \vspace{-1mm}
+\[
+C_f=\frac{C_mV_m}{V_f}=\frac{\SI{40}{\gram\per\liter}\times\SI{20e-3}{L}}{\SI{250e-3}{L}}.
+\]
+L'application numérique donne $C_f=\SI{3,2}{\gram\per\liter}$.
+\end{corrige}
+
+% ************************************** %
+
+% =============================================================================== %
+\finEntrainement
+% =============================================================================== %
+
+
+\newpage
+
+
+
+
+% •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••• %
+\sectionFicheEntrainement{Dissolution}
+% •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••• %
+
+\bigskip
+\begin{prerequis}
+On rappelle qu'on dit qu'une solution est saturée lorsque la concentration du soluté correspond à la concentration maximale que l'on peut dissoudre (la solubilité) à cette température. 
+\end{prerequis}
+
+
+
+% ********************************************************************* %
+%                           ENTRAÎNEMENT                                % 
+% ********************************************************************* %
+% ================ Métadonnées sur l'entraînement ===================== %
+
+\titreEntrainementFacultatif	{Dissoudre du sel ou du sucre}
+\hauteurLargeurCadreReponse		{7mm}{4cm}
+\dureeResolutionFacultative		{2} % 1, 2, 3 ou 4
+\typeEntrainement				{AN} % Newton ou QCM ou AN ou vide (exercice "normal")
+\basiqueEtTransversal			{Y}
+\nombreColonnesQuestions		{1} % vide, 1, 2, 3, etc.
+\avecPlusieursQuestions			{Y} % Y ou N
+\initialisationEntrainement
+% ===================================================================== %
+
+
+% =============================================================================== %
+\debutEntrainement
+% =============================================================================== %
+
+Une solution aqueuse saturée en sel a une concentration en masse de sel valant \SI{358}{\gram\per\liter}. Une solution aqueuse saturée en sucre contient \SI{2,00}{k\gram} de sucre par litre de solution.
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+Quelle est la masse de sel contenue dans \SI{20}{m\liter} d'une solution saturée en sel ?
+
+\end{enonce}
+
+\reponse{\SI{7,2}{\gram}}
+
+\begin{corrige}
+Dans \SI{20}{m\liter} d'une solution saturée en sel, on a $m=\SI{358}{\gram\per\liter} \times \SI{20e-3}{L}=\SI{7,2}{\gram}$ de sel.
+\end{corrige}
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+Quelle masse de sucre peut-on dissoudre dans une tasse de \SI{300}{m\liter} ?
+
+\end{enonce}
+
+\reponse{\SI{600}{\gram}}
+
+\begin{corrige}
+Dans \SI{300}{m\liter}, on peut dissoudre $m=\SI{2e3}{\gram}\times\SI{300e-3}{L}=\SI{600}{\gram}$ de sucre.
+\end{corrige}
+
+% ************************************** %
+
+% =============================================================================== %
+\finEntrainement
+% =============================================================================== %
+
+
+
+
+
+
+% ********************************************************************* %
+%                           ENTRAÎNEMENT                                % 
+% ********************************************************************* %
+% ================ Métadonnées sur l'entraînement ===================== %
+
+\titreEntrainementFacultatif	{Saturation du carbonate de potassium}
+\hauteurLargeurCadreReponse		{7mm}{5cm}
+\dureeResolutionFacultative		{2} % 1, 2, 3 ou 4
+\typeEntrainement				{} % Newton ou QCM ou AN ou vide (exercice "normal")
+\basiqueEtTransversal			{Y}
+\nombreColonnesQuestions		{1} % vide, 1, 2, 3, etc.
+\avecPlusieursQuestions			{Y} % Y ou N
+\initialisationEntrainement
+% ===================================================================== %
+
+
+% =============================================================================== %
+\debutEntrainement
+% =============================================================================== %
+
+On peut dissoudre au maximum \SI{1220}{\gram} de carbonate de potassium $\textrm{K}_2\textrm{C}\textrm{O}_3$ dans \SI{1,0}{\liter} d'eau. On indique la masse molaire du carbonate de potassium $M=\SI{138}{\gram\per\mol}$. 
+
+Calculer : 
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+La quantité de matière $n$ de carbonate de potassium dans \SI{250}{m\liter} d'une solution saturée en carbonate de potassium.
+\end{enonce}
+
+\reponse{$\SI{2,2}{\mol}$}
+
+\begin{corrige}
+On a $n=C\times V=\frac{C_m}{M}\times V=\frac{\SI{1220}{\gram}}{\SI{138}{\gram\per\mol}}\times\SI{250e-3}{L}=\SI{2,2}{\mol}$.
+\end{corrige}
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+La quantité de matière $n_1$ en ions potassium $\textrm{K}^+$.
+\end{enonce}
+
+\reponse{$\SI{4,4}{\mol}$}
+
+\begin{corrige}
+La dissolution de $\textrm{K}_2\textrm{C}\textrm{O}_3$ donne deux ions $\textrm{K}^+$. Ainsi, on a $n_1=2\times n=\SI{4,4}{\mol}$.
+\end{corrige}
+
+% ************************************** %
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+La quantité de matière $n_2$ en ions carbonates $\textrm{C}\textrm{O}_3^{2-}$ dans la solution.
+\end{enonce}
+
+\reponse{$\SI{2,2}{\mol}$}
+
+\begin{corrige}
+La dissolution de $\textrm{K}_2\textrm{C}\textrm{O}_3$ donne un ion $\textrm{C}\textrm{O}_3^{2-}$. Ainsi, on a $n_2=n=\SI{2,2}{\mol}$.
+\end{corrige}
+
+% ************************************** %
+
+% =============================================================================== %
+\finEntrainement
+% =============================================================================== %
+
+
+% ********************************************************************* %
+%                           ENTRAÎNEMENT                                % 
+% ********************************************************************* %
+% ================ Métadonnées sur l'entraînement ===================== %
+
+\titreEntrainementFacultatif	{Fluorure de calcium}
+\hauteurLargeurCadreReponse		{7mm}{4cm}
+\dureeResolutionFacultative		{2} % 1, 2, 3 ou 4
+\typeEntrainement				{} % Newton ou QCM ou AN ou vide (exercice "normal")
+\nombreColonnesQuestions		{1} % vide, 1, 2, 3, etc.
+\avecPlusieursQuestions			{Y} % Y ou N
+\initialisationEntrainement
+% ===================================================================== %
+
+
+% =============================================================================== %
+\debutEntrainement
+% =============================================================================== %
+
+On dissout $\SI{10,0}{g}$ de fluorure de calcium $\textrm{Ca}\textrm{F}_2$ dans $\SI{500}{mL}$ d'eau. Calculer :
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+La quantité de matière de fluorure de calcium dissoute.
+\end{enonce}
+
+\reponse{$\SI{0,128}{\mole}$}
+
+\begin{corrige}
+La quantité de matière de fluorure de calcium que l'on a dissoute est $n=\frac{\SI{10}{\gram}}{\SI{78}{\gram\per\mol}}=\SI{0,128}{\mol}$.
+\end{corrige}
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+La quantité de matière en ions calcium $\textrm{Ca}^{2+}$.
+\end{enonce}
+
+\reponse{$\SI{0,128}{\mole}$}
+
+\begin{corrige}
+Une entité $\textrm{Ca}\textrm{F}_2$ libère un ion $\textrm{Ca}^{2+}$. Ainsi, en solution on retrouve $n_{\textrm{Ca}^{2+}}=\SI{0,128}{\mol}$.
+\end{corrige}
+
+% ************************************** %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+La masse en ions fluorures dans la solution.
+\end{enonce}
+
+\reponse{$\SI{4,86}{\gram}$}
+
+\begin{corrige}
+Une entité $\textrm{Ca}\textrm{F}_2$ libère deux ions $\textrm{F}^-$. Ainsi, en solution on retrouve $n_{\textrm{F}^-}=\SI{0,256}{\mol}$. Cela  représente une masse $m_{\textrm{F}^-}=\SI{0,256}{\mol}\times\SI{19}{g.mol^{-1}}=\SI{4,86}{\gram}$.
+\end{corrige}
+
+% ************************************** %
+
+% =============================================================================== %
+\finEntrainement
+% =============================================================================== %
+
+
+
+
+\newpage
+
+
+
+
+
+% •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••• %
+\sectionFicheEntrainement{Autour de la masse volumique}
+% •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••• %
+
+
+\bigskip
+
+
+\begin{prerequis}%[colback=white, arc=0mm, left=1mm, right=1mm, top=1mm, bottom=1mm, boxrule=1pt]
+On rappelle que la densité $d$ d'un liquide correspond au rapport entre sa masse volumique et la masse volumique de l'eau. 
+\end{prerequis}
+
+
+
+
+% ********************************************************************* %
+%                           ENTRAÎNEMENT                                % 
+% ********************************************************************* %
+% ================ Métadonnées sur l'entraînement ===================== %
+
+\titreEntrainementFacultatif	{Le sel}
+\hauteurLargeurCadreReponse		{7mm}{4cm}
+\dureeResolutionFacultative		{2} % 1, 2, 3 ou 4
+\typeEntrainement				{} % Newton ou QCM ou AN ou vide (exercice "normal")
+\basiqueEtTransversal			{Y}
+\nombreColonnesQuestions		{1} % vide, 1, 2, 3, etc.
+\avecPlusieursQuestions			{Y} % Y ou N
+\initialisationEntrainement
+% ===================================================================== %
+
+% =============================================================================== %
+\debutEntrainement
+% =============================================================================== %
+
+On dissout une masse $m=\SI{10}{\gram}$ de sel dans un volume $V=\SI{20}{m\liter}$ d'eau à \SI{25}{\celsius}. La solubilité du sel à cette température est $s=\SI{330}{\gram\per\liter}$. On suppose que cette dissolution s'opère à volume constant.
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+Calculer la masse de sel qui reste sous forme solide
+\end{enonce}
+
+\reponse{$\SI{3,4}{\gram}$}
+
+\begin{corrige}
+La masse maximale que l'on peut dissoudre dans ce volume est 
+\[
+m_\text{max}=s\times V=\SI{330}{\gram\per\liter}\times\SI{20e-3}{L}=\SI{6,6}{\gram}.
+\]
+Sur les \SI{10}{\gram} introduits, il reste donc \SI{3,4}{\gram} non dissous.
+\end{corrige}
+
+% ************************************** %
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+Calculer la densité $d$ de la solution finale
+\end{enonce}
+
+\reponse{$\SI{1,33}{}$}
+
+\begin{corrige}
+La masse volumique de la solution tient compte de la masse du soluté et du solvant (on ne tient pas compte de la masse non dissoute). Ainsi $\rho=\frac{\SI{6,6}{\gram}+\SI{20}{g}}{\SI{20e-3}{L}}=\SI{1,33}{\kg\per\liter}$. La densité est donc $d=\SI{1,33}{}$.
+\end{corrige}
+
+% ************************************** %
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+La densité expérimentale de la solution est $d_{\text{exp}}=\SI{1,35}{}$. \minusBigskip
+
+Le volume de la solution a-t-il diminué ou augmenté lors de la dissolution ?
+\end{enonce}
+
+\reponse{Il a diminué.}
+
+\begin{corrige}
+Comme la densité réelle augmente à masse constante, il s'agit d'une diminution de volume. On parle d'effet de contraction de volume lors d'une dissolution.
+\end{corrige}
+
+% ************************************** %
+
+
+
+% =============================================================================== %
+\finEntrainement
+% =============================================================================== %
+
+
+
+
+
+% ********************************************************************* %
+%                           ENTRAÎNEMENT                                % 
+% ********************************************************************* %
+% ================ Métadonnées sur l'entraînement ===================== %
+
+\titreEntrainementFacultatif	{Densité et température}
+\hauteurLargeurCadreReponse		{5mm}{1.5cm}
+\dureeResolutionFacultative		{1} % 1, 2, 3 ou 4
+\typeEntrainement				{} % Newton ou QCM ou AN ou vide (exercice "normal")
+\nombreColonnesQuestions		{1} % vide, 1, 2, 3, etc.
+\avecPlusieursQuestions			{Y} % Y ou N
+\initialisationEntrainement
+% ===================================================================== %
+
+Le graphe suivant présente l'évolution en fonction de la température de la densité de l'eau pure, de l'huile de tournesol et de l'éthanol. La pression est la pression atmosphérique.
+\vspace{-1.5mm}
+
+\begin{center}
+\subimport{_images/}{fiche_CHI01_densite_CBD_v4.tex}
+\end{center}
+
+\vspace{-4mm}
+
+% =============================================================================== %
+\debutEntrainement
+% =============================================================================== %
+
+
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+À quelle courbe correspond la densité de l'eau pure ?
+\end{enonce}
+
+\reponse{\circleForAnswer{1}}
+
+\begin{corrige}
+La courbe \circleForAnswer{1} car on retrouve l'ordre de grandeur de la densité égale à $1$.
+\end{corrige}
+
+% ************************************** %
+
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+À quelle courbe correspond la densité de l'huile ?	
+\end{enonce}
+
+\reponse{\circleForAnswer{2}}
+
+\begin{corrige}
+La courbe \circleForAnswer{2} car elle présente une densité plus faible que l'eau et peut se retrouver liquide à \SI{230}{\celsius} d'après les températures d'ébullition de l'huile et de l'éthanol dans le tableau.
+\end{corrige}
+% ************************************** %
+
+
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+Retrouver par lecture graphique, la température d'ébullition de l'eau pure.
+\begin{listeQCM4Colonnes}
+	\item \SI{0}{\celsius}
+	\item \SI{50}{\celsius}
+	\item \SI{100}{\celsius}
+	\item \SI{-50}{\celsius}
+	\end{listeQCM4Colonnes}		
+\medskip
+\end{enonce}
+
+\reponse{\reponseC{}}
+
+\begin{corrige}
+L'eau se vaporise à \SI{100}{\celsius} sous pression atmosphérique, cela se confirme par l'arrêt de la courbe de densité du liquide sur le graphe.
+\end{corrige}
+
+% ************************************** %
+
+
+% =============================================================================== %
+\finEntrainement
+% =============================================================================== %
+
+
+
+
+\newpage
+
+
+% •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••• %
+\sectionFicheEntrainement{Titre massique}
+% •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••• %
+
+\bigskip
+
+\begin{prerequis}
+On rappelle que le titre massique $t$ correspond au rapport exprimé en pourcentage de la masse de composé dissous sur la masse de la solution. 
+\end{prerequis}
+
+
+% ********************************************************************* %
+%                           ENTRAÎNEMENT                                % 
+% ********************************************************************* %
+% ================ Métadonnées sur l'entraînement ===================== %
+
+\titreEntrainementFacultatif	{Acide chlorhydrique}
+\hauteurLargeurCadreReponse		{7mm}{4cm}
+\dureeResolutionFacultative		{2} % 1, 2, 3 ou 4
+\typeEntrainement				{Newton} % Newton ou QCM ou AN ou vide (exercice "normal")
+\nombreColonnesQuestions		{1} % vide, 1, 2, 3, etc.
+\avecPlusieursQuestions			{Y} % Y ou N
+\initialisationEntrainement
+% ===================================================================== %
+
+% =============================================================================== %
+\debutEntrainement
+% =============================================================================== %
+
+Une solution d'acide chlorhydrique concentrée possède un titre massique en $\textrm{H}\textrm{Cl}$ de \SI{37}{\percent} pour une densité $d=\SI{1,19}{}$. On donne $M_{\textrm{H}\textrm{Cl}}=\SI{36,5}{\gram\per\mole}$. 
+
+Calculer : 
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+La masse $m$ d'un litre de cette solution
+\end{enonce}
+
+\reponse{$\SI{1,19}{k\gram}$}
+
+\begin{corrige}
+Prenons \SI{1}{\liter} de solution. La densité vaut \SI{1,19}{}. Cette solution pèse donc $m=\SI{1,19}{k\gram}$. 
+\end{corrige}
+% ************************************** %
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+La masse $m_{\textrm{H}\textrm{Cl}}$ d'acide chlorhydrique pur contenu dans ce litre de solution.
+
+\end{enonce}
+
+\reponse{$\SI{0,44}{k\gram}$}
+
+\begin{corrige}
+Cette solution contient $m_{\textrm{H}\textrm{Cl}}=\SI{37}{\percent}\times \np{1,19}\times\SI{1}{kg.L^{-1}} \times\SI{1}{L}=\SI{0,44}{k\gram}$ d'acide pur. 
+\end{corrige}
+
+% ************************************** %
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+La concentration en quantité de matière $C$ en acide chlorhydrique de cette solution.
+
+\end{enonce}
+
+\reponse{$\SI{12}{\mol\per\liter}$}
+
+\begin{corrige}
+La quantité de matière d'acide chlorhydrique pur contenu dans ce litre de solution est 
+\[
+n=\frac{m}{M}=\frac{\SI{0,44e3}{g}}{\SI{36,5}{\gram\per\mole}}=\SI{12}{\mole}.
+\] 
+Ainsi, la concentration en quantité de matière de ce litre de solution est $C=\SI{12}{\mole\per\liter}$.
+\end{corrige}
+
+% ************************************** %
+
+% =============================================================================== %
+\finEntrainement
+% =============================================================================== %
+
+
+
+% ********************************************************************* %
+%                           ENTRAÎNEMENT                                % 
+% ********************************************************************* %
+% ================ Métadonnées sur l'entraînement ===================== %
+
+\titreEntrainementFacultatif	{Acide sulfurique}
+\hauteurLargeurCadreReponse		{7mm}{5cm}
+\dureeResolutionFacultative		{2} % 1, 2, 3 ou 4
+\typeEntrainement				{} % Newton ou QCM ou AN ou vide (exercice "normal")
+\nombreColonnesQuestions		{1} % vide, 1, 2, 3, etc.
+\avecPlusieursQuestions			{N} % Y ou N
+\initialisationEntrainement
+% ===================================================================== %
+
+% =============================================================================== %
+\debutEntrainement
+% =============================================================================== %
+
+Une solution d'acide sulfurique concentrée possède une concentration en quantité de matière $C=\SI{18}{\mol\per\liter}$ en $\textrm{H}_2\textrm{S}\textrm{O}_4$ pour une densité $d=\SI{1,84}{}$. On donne $M_{\textrm{H}_2\textrm{S}\textrm{O}_4}=\SI{98}{\gram\per\mole}$.
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+Calculer le titre massique $t$ en acide sulfurique de cette solution
+\end{enonce}
+
+\reponse{$\SI{96}{\percent}$}
+
+\begin{corrige}
+Prenons \SI{1}{\liter} de solution. Cette solution contient $n=\SI{18}{\mole}$ d'acide pur. Soit une masse en acide $m_\text{acide}=n\times M=\SI{18}{mol}\times\SI{98}{\gram\per\mole}=\SI{1764}{\gram}=\SI{1,764}{k\gram}$. Ce litre de solution présente une densité $d=\SI{1,84}{}$, donc il pèse \SI{1,84}{k\gram}. Ainsi, le titre massique vaut 
+\[
+t=\frac{\np{1,764}}{\np{1,84}}=\SI{96}{\percent}.
+\]
+\end{corrige}
+
+% ************************************** %
+
+% =============================================================================== %
+\finEntrainement
+% =============================================================================== %
+
+
+% ********************************************************************* %
+%                           ENTRAÎNEMENT                                % 
+% ********************************************************************* %
+% ================ Métadonnées sur l'entraînement ===================== %
+
+\titreEntrainementFacultatif	{L'éthanol}
+\hauteurLargeurCadreReponse		{7mm}{3cm}
+\dureeResolutionFacultative		{2} % 1, 2, 3 ou 4
+\typeEntrainement				{QCM} % Newton ou QCM ou AN ou vide (exercice "normal")
+\nombreColonnesQuestions		{1} % vide, 1, 2, 3, etc.
+\avecPlusieursQuestions			{N} % Y ou N
+\initialisationEntrainement
+% ===================================================================== %
+
+% =============================================================================== %
+\debutEntrainement
+% =============================================================================== %
+
+On prépare $V=\SI{10000}{\liter}$ d'éthanol de titre massique $t=\SI{95,4}{\percent}$ par distillation fractionnée. Cette solution possède une densité $d=\SI{0,789}{}$ et on indique que l'éthanol de formule brute $\textrm{C}_2\textrm{H}_6\textrm{O}$ présente une masse molaire $M=\SI{46,07}{\gram\per\mol}$.
+
+
+% ************************************** %
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+	Quelle est la quantité de matière $n$ d'éthanol dans cette solution ?
+	
+	\begin{listeQCM1Colonne}
+	\item \SI{163e3}{\mole}
+	\item \SI{461e3}{\mole}
+	\item \SI{439e3}{\mole}
+	\item \SI{7,53e3}{\mole}
+	\end{listeQCM1Colonne}
+		
+\end{enonce}
+
+\reponse{\reponseA{}}
+
+\begin{corrige}
+La masse de la solution est $m=\rho\times V=\SI{0,789}{}\times\SI{1}{k\gram.L^{-1}}\times\SI{10000}{\liter}=\SI{7890}{k\gram}$. Elle contient \SI{95,4}{\percent} d'éthanol pur, soit une masse 
+\[
+m_{\textrm{Et}\textrm{O}\textrm{H}}=0,954\times\SI{7890}{k\gram}=\SI{7527,06}{k\gram}.
+\]
+Cela représente une quantité de matière 
+\[
+n_{\textrm{Et}\textrm{O}\textrm{H}}=\frac{m}{M}=\frac{\SI{7527,06}{k\gram}}{\SI{46,07e-3}{k\gram.\mol^{-1}}}=\SI{163383}{\mole}=\SI{163}{k\mole}.
+\]
+\end{corrige}
+
+% =============================================================================== %
+\finEntrainement
+% =============================================================================== %
+
+
+
+
+
+
+% ---------------------------------------------------------------------------- %
+%                       Affichage des réponses mélangées                       %
+% ---------------------------------------------------------------------------- %
+\afficheReponsesMelangees
+% ---------------------------------------------------------------------------- %
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\finFicheEntrainement                                                                        %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+% ======================================================= % 
+% ============== Gestion de la compilation ============== %
+% ======================================================= % 
+\ifdefined\mainIsLoaded\else
+\printReponsesEtCorriges
+\end{document}\fi
+% ======================================================= % 
+% ======================================================= % 

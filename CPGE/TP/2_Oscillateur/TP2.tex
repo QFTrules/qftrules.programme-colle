@@ -1,0 +1,432 @@
+% displayname : Oscillateurs
+\input{TP.sty}
+\begin{document}
+\Entete[TP][
+\item Mettre en œuvre divers montages utilisant un
+ALI, les schémas étant donnés.
+\item Réaliser un oscillateur quasi-sinusoïdal et analyser les spectres des
+signaux générés.
+][
+\item TP ALI PCSI.
+\item TP 7 PCSI : Filtres et diagrammes de Bode.
+]{2}
+
+
+% \begin{danger}
+%   Dans ce TP d'électronique, nous allons utiliser un nouveau matériel : les petites plaquettes sur lesquelles on branche les composants nus. Il s'agit du matériel majoritairement utilisé aux oraux des concours. 
+% \end{danger}
+
+On produit des signaux électriques oscillants grâce à des oscillateurs. Nous en étudions deux : l'oscillateur à pont de Wien et le multivibrateur astable. Le premier génère des oscillations quasi-sinusoïdales, tandis que le second peut générer des signaux triangulaires ou créneaux (principe des clignotants de véhicules). Ces deux montages utilise un amplificateur opérationnel: dans le premier, l'amplificateur fonctionne en régime linéaire, alors que dans le second un des deux amplificateurs fonctionne en régime saturé.
+
+\matos{
+\item Petites plaquettes avec composants nus suivants :
+\item 2 résistances de $\SI{1}{k\Omega}$, 2 condensateurs de $\SI{100}{nF}$, 1 résistance de $\SI{2.2}{k\Omega}$, 1 résistance de $\SI{4.7}{k\Omega}$, 1 résistance variable ;
+\item GBF, carte d’acquisition, oscilloscope, LatisPro et Oscillo5.
+\item ALI avec alimentation $ \pm \SI{15}{V}$.
+}
+
+
+\section{L'oscillateur à pont de Wien}
+
+%%%%%%%%%%%%%
+\begin{figure}[t!]
+\centering
+\includegraphics[width=0.4\textwidth]{oscilla.pdf}
+\caption{Un oscillateur auto-entretenu comprend un amplificateur bouclé sur un filtre.  L’ensemble produit un signal $s(t)$ en l'absence d'excitation extérieure.}
+\label{fig:boucle}
+\end{figure}
+%%%%%%%%%%%%%
+
+Un \imp{oscillateur auto-entretenu} est un système physique qui produit un signal $s(t)$ périodique en l'absence d'excitation extérieure. Un oscillateur auto-entretenu est un système \imp{bouclé} comprenant deux parties : un \imp{amplificateur} et un \imp{filtre}, voir \Fig{boucle}.
+
+L’oscillateur à pont de Wien est plus spécifiquement un oscillateur \imp{quasi-sinusoïdal} : le signal électrique qu'il produit est proche d'une sinusoïde.
+Le circuit de l'oscillateur à pont de Wien est représenté sur la \Fig{wien} et comprend deux blocs : un amplificateur non inverseur et un filtre de Wien.
+
+
+\subsection{Étude de l'amplificateur non inverseur}\technique{Utiliser un ALI}
+\parag{Théorie}
+On étudie dans un premier temps l'amplificateur non inverseur seul de la Fig.~\ref{fig:ANI}. L'amplificateur n'est donc pas encore bouclé sur le filtre.
+\begin{figure}[h!]
+\centering
+\subfigure[]{\label{fig:ANI}
+\includegraphics[width=0.2\textwidth]{ampli_NI.pdf}
+}\hfill
+\subfigure[]{\label{fig:filtre}
+\includegraphics[width=0.25\textwidth]{filtre_wien.pdf}
+}
+\caption{(a) Amplificateur non inverseur. (b) Filtre de Wien.}
+\end{figure}
+
+\begin{protocole}
+\todo On suppose que l'ALI est \imp{idéal}. Justifier que l'ALI fonctionne en régime linéaire. Montrer que la fonction de transfert de l'amplificateur vaut
+%  $$
+\begin{equation}\label{eq:ampli_NI}
+  A = \frac{\underline{s}_a}{\underline{e}_a} =1+\frac{R_2}{R_1}.
+\end{equation}
+%  $$
+ \sol{
+Comme l'ALI est idéal, les tensions aux entrées de L'ALI sont égales : $v_+=v_-$, et les courants de polarisation son nuls : $i_+=i_- = 0$. Le pont diviseur de tension donne
+$$
+\frac{\udl{e}}{\udl{s}} = \frac{R_1}{R_1+R_2} \Rar \dfrac{\udl{s}}{\udl{e}} = \dfrac{R_1+R_2}{R_1} = 1+\dfrac{R_2}{R_1}.
+$$
+d'où l'expression du facteur d'amplification,
+\eqbox{
+\udl{A} = 1+\frac{R_2}{R_1}.
+}
+ }
+\end{protocole}
+\parag{Expérience} Câbler le circuit de la \Fig{ANI} avec $R_2 = \SI{47}{k\Omega}$ et $R_1 = \SI{22}{k\Omega}$. Envoyer en entrée $e_a$ une sinusoïde de fréquence $\SI{1}{kHz}$ d’amplitude $\SI{3}{V}$.
+\begin{protocole}
+ \item  Observer l'entrée $e_a(t)$ et la sortie $s_a(t)$ à l'oscilloscope, puis acquérir ces deux signaux sur \texttt{LatisPro} et imprimer les courbes.
+ Que se passe-t-il si l'on augmente trop l’amplitude en entrée ?
+ \sol{
+ En augmentant l'amplitude, on atteint la \fbox{saturation} de l'ALI. 
+ 
+ La tension de sortie sature alors à une amplitude $S = V_{\rm sat} \simeq \SI{13}{V}$.
+ }
+  % \item Déterminer expérimentalement le facteur d’amplification $A$ en mesurant les valeurs efficaces de $e_a(t)$ et de $s_a(t)$ au \imp{voltmètre}, en discutant des incertitudes. Comparer à la valeur attendue de l'\Eq{ampli_NI}.
+  % \sol{
+  % La valeur attendue est de 
+  % \eqbox{
+  % \udl{A}  = \num{3.13}.
+  % }
+  % On peut mesurer les valeurs efficaces $E_{\rm eff}$ et $S_{\rm eff}$ associés à $e(t)$ et $s(t)$. Comme les valeurs efficaces sont proportionnelles aux amplitudes, on aussi $\udl{A} = S_{\rm eff}/E_{\rm eff}$. Voici le protocole pour mesurer $\udl{A}$ avec précision.
+  % \begin{liste}
+  %   \item On mesure $E_{\rm eff}$ et $S_{\rm eff}$ au multimètre pour plusieurs valeurs d'amplitude, avec leurs incertitudes données par la précision du multimètre.
+  %   \item On effectue une régression de $S_{\rm eff}$ en fonction de $E_{\rm eff}$ sur \texttt{Régressi} ou \texttt{python} pour obtenir la pente $\udl{A}$ et son incertitude.
+  % \end{liste}
+  % }
+% \item Tracer l'amplitude de la tension de sortie $S$ en fonction de l'amplitude de la tension d'entrée $E$. Faire une régression affine sur \texttt{Régressi} et en déduire la pente $A$. Comparer à la valeur attendue.
+%\item Et si la fréquence d'entrée est trop importante ? Observer de même à l'oscilloscope et faire un schéma.
+%\item Conclure l'étude en traçant le diagramme de Bode complet (Oscillo5), et commenter le résultat. Comparer en particulier les valeurs du gain attendu et du gain expérimental (en précisant les incertitudes).
+\end{protocole}
+
+\subsection{Étude du filtre de Wien}\technique{Utiliser un filtre passe-bande}\technique{Mesurer une fréquence}
+\parag{Théorie}
+On étudie maintenant le filtre de Wien seul de la Fig.~\ref{fig:filtre}. Le filtre n'est donc pas encore bouclé. 
+\begin{danger}
+  Pour gagner du temps par la suite, \imp{laissez} en place le montage de l’amplificateur non inverseur étudié précédemment sur la plaquette. On le réutilisera plus tard.
+\end{danger}
+% \paragraph{Théorie}
+%\begin{figure}[h!]
+%\centering
+%\includegraphics[width=0.3\textwidth]{filtre_wien.pdf}
+%\caption{Filtre de Wien.}
+%\label{fig:wien}
+%\end{figure}
+
+\begin{protocole}
+\todo En étudiant les comportements haute et basse fréquence du filtre, déterminer sans calcul la nature du filtre de Wien. Montrez que la fonction de transfert du filtre se met sous la forme
+\begin{equation}
+  \underline{H}_{\rm f} =  \frac{\udl{s}_{\rm f}}{\udl{e}_{\rm f}} =  \frac{H_0}{1+jQ\left(\frac{\omega}{\omega_0}-\frac{\omega_0}{\omega}\right)}, 
+\end{equation}
+avec $H_0=1/3$, $Q=1/3$ et $\omega_0=2\pi f_0 =1/RC$. 
+  % Donner les significations de $H_0$, $Q$ et $\omega_0$.
+\sol{
+  \begin{enumerate}
+    \item \udl{Nature du filtre}.
+    \begin{liste}
+      \item
+      Lorsque $\omega \rightarrow 0$, les condensateurs se comportent comme des interrupteurs ouverts. Ainsi aucun courant ne circule, ni dans la branche d'entrée, ni dans la résistance en parallèle, et donc $s=0$.
+      \item Lorsque $\omega \rightarrow \infty$, les condensateurs se comportent comme des fils. Or $s$ correspond alors à la tension aux bornes d'un fil, et donc $s=0$.
+    \end{liste}
+    
+    Le filtre est donc un \fbox{passe-bande}.
+    
+    \item \udl{Fonction de transfert}.
+    
+    
+    Notons $Z_s = R+\frac{1}{jC\omega}$ la résistance de l'association de $R$ et $C$ en série, et $Z_p = \frac{R}{1+jRC\omega}$ la résistance de l'association de $R$ et $C$ en parallèle. La loi du pont diviseur de tension donne
+    $$
+\udl{H} = \frac{\udl{s}_f}{\udl{e}_f} = \frac{Z_p}{Z_s+Z_p} = \frac{R}{R+(\frac{1}{jC\omega}+R)(1+{jRC\omega})} = \frac{R}{3R+jR^2C\omega - j\frac{1}{\omega C}}.
+$$
+d'où l'on tire 
+\eqbox{
+\udl{H} = \frac{1}{3}\frac{1}{1+j\frac{1}{3}\left(\frac{\omega}{1/RC}-\frac{1/RC}{\omega}\right)},
+}
+qui est bien de la forme attendue.
+\end{enumerate}
+
+}
+\todo Tracer le diagramme de Bode attendu pour le gain $G_{\rm dB}$ et la phase $\vphi$. On déterminera le comportement asymptotique aux basses et hautes fréquences, puis on tracera l'allure du diagramme de Bode exact.
+
+\sol{
+  Étudions les comportements basse et haute fréquence.
+  \begin{liste}
+    \item Lorsque $\omega \rightarrow 0$, la fonction de transfert se simplifie en $\udl{H} \sim \frac{H_0}{-jQ\omega_0/\omega}$. Le gain vaut donc $G = 20 \log \abs{\udl{H}} \sim 20 \log(\omega/\omega_0) + \cte$ : on a une pente de $\SI{+20}{dB/décade}$. On voit que $\udl{H} \propto j = e^{j\pi/2}$ à un facteur positif près, donc la phase tend vers $\varphi \sim \pi/2$.
+    \item Lorsque $\omega \rightarrow \infty$, la fonction de transfert se simplifie en $\udl{H} \sim \frac{H_0}{j\omega/\omega_0}$. Le gain vaut donc $G = 20 \log \abs{\udl{H}} \sim -20 \log(\omega/\omega_0) + \cte$ : on a une pente de $\SI{-20}{dB/décade}$. On voit que $\udl{H} \propto -j = e^{-j\pi/2}$ à un facteur positif près, donc la phase tend vers $\varphi \sim -\pi/2$.
+    \item Pour $\omega=\omega_0$, le gain vaut $G = 20 \log(H_0) = -20 \log(3) = -\num{9.5}$ et la phase $\vphi = 0$.
+  \end{liste}
+\begin{center}
+  \includegraphics[scale=1]{gain_passe_bande.pdf}
+  \includegraphics[scale=1]{phi_passe_bande.pdf}
+\end{center}
+}
+
+% \item Réaliser le montage du filtre de Wien en choisissant $R$ et $C$ pour avoir une fréquence propre $f_0$ de l’ordre de $\SI{1.5}{kHz}$. Mesurer $R$ et $C$ précisément et calculer la valeur attendue de $f_0$ avec incertitudes.
+
+\item\label{quest:RC} Quelles valeurs de $R$ et $C$ choisir pour avoir une fréquence propre $f_0$ de l’ordre de $\SI{1.5}{kHz}$ ? Mesurer $R$ et $C$ au multimètre, avec incertitudes, et calculer la valeur attendue de $f_0$, avec incertitudes.
+\begin{danger}
+On se reportera au \refTP{0} pour propager les incertitudes.
+\end{danger}
+
+\sol{
+  On mesure une résistance $R$ et une capacité $C$ au multimètre, avec incertitudes données par la précision du multimètre. On en déduit la fréquence propre $f_0 = 1/2\pi RC$ en utilisant la formule de composition des incertitudes. On trouve par exemple 
+ $C=\SI{100\pm1}{nF}$ et $R =\SI{1.00\pm0.03}{k\Omega}$. La section \guill{Composition des incertitudes} du \refTP{0} nous donne 
+ $$
+  \incert{f_0} = f_0 \sqrt{\left(-\frac{\incert{R}}{R}\right)^2 + \left(-\frac{\incert{C}}{C}\right)^2} = \SI{0.1}{kHz}.
+ $$
+ On en déduit 
+ \eqbox{
+ f_0 = \SI{1.6\pm0.1}{kHz}.
+ }
+ 
+}
+\end{protocole}
+
+\parag{Expérience} Câbler le circuit de la \Fig{filtre} en utilisant les valeurs de $R$ et $C$ déterminées en \Quest{RC}. Envoyer en entrée $e_{\rm f}(t)$ une sinusoïde de fréquence $f$ quelconque et d’amplitude $\SI{3}{V}$.
+\begin{protocole}
+
+\item Mesurer $f_0$ en étudiant le comportement du circuit. Pour cela, visualiser les tensions d'entrée et de sortie sur l'oscilloscope en mode XY ($\textsc{display}\hookrightarrow\textsc{format}$) et faire varier la fréquence $f$ du signal envoyé par le GBF. Expliquer comment repérer lorsque $f=f_0$, et comparer la valeur ainsi mesurée de $f_0$ à la valeur attendue trouvée en \Quest{RC}.
+
+\sol{
+\begin{center}
+\includegraphics[width=0.8\columnwidth]{XY.png}
+\end{center}
+}\sol{
+Dans le mode XY, on représente les entrées $V1$ et $V2$ de l'oscilloscope en abscisse et en ordonnée, donc ici l'entrée $e(t)$ et la sortie $s(t)$. Les fonctions $e(t)$ et $s(t)$ sont sinusoïdales, donc on observe une ellipse. Lorsque $f=f_0$, les tensions $e(t)$ et $s(t)$ sont en phase, et donc l’ellipse se réduit à un \fbox{segment} de pente $H_0=1/3$. On peut estimer l'incertitude sur $f_0$ en estimant sur quelle plage de fréquence la courbe est indistinguable d'un segment.
+On mesure alors 
+\eqbox{
+f_0 = \SI{1.57\pm0.01}{kHz}.
+}
+L'accord avec la valeur attendue est bon.
+}
+\item Tracer expérimentalement le diagramme de Bode en gain et en phase sur \texttt{Oscillo5}. Pour cela, brancher la sortie $1$ verte de la carte d’acquisition sur l’entrée du filtre $e_f$ et sur l’entrée V1 de la carte d’acquisition, et brancher l’entrée V2 sur la sortie $s_f$ du filtre. Mémoriser puis ouvrir avec \texttt{LatisPro} pour comparer au diagramme attendu.
+
+
+%Cliquer sur Bode $\rightarrow$ Déclencher.
+
+%(Pour passer en échelle logarithmique, double-clic gauche sur l'axe des abscisses sous Latis-Pro).
+%\item Pour un filtre du second ordre on rappelle que le facteur de qualité est relié à la largeur de la bande passante $\Delta f$ par $Q=\frac{f_0}{\Delta f}$. Mesurer expérimentalement le facteur de qualité et comparer à la valeur attendue.
+\end{protocole}
+
+% \subsection{Étude de l'oscillateur en boucle ouverte}
+% \parag{Théorie}
+% On branche les deux blocs précédents en reliant l'entrée $e_{\rm a}(t)$ de l'amplificateur sur la sortie $s_{\rm f}(t)$ du filtre, comme sur la Fig.~\ref{fig:boucle_ouverte}. On note $e=s_{\rm f}$ l'entrée du circuit et $s=s_{\rm a}$ la sortie du circuit. 
+% \begin{figure}[h!]
+% \centering
+% \includegraphics[width=0.3\textwidth]{boucle_ouverte.pdf}
+% \caption{Oscillateur de Wien en boucle ouverte.}
+% \label{fig:boucle_ouverte}
+% \end{figure}
+% \begin{protocole}
+% \todo Justifier que la fonction de transfert du circuit de la \Fig{boucle_ouverte}  vaut
+% \begin{equation}
+%   \frac{\underline{s}}{\underline{e}} = A\,  \udl{H}_{\rm f}.
+% \end{equation}
+% \sol{
+% On remarque simplement qu'en boucle ouverte, l'entrée de l'amplificateur est reliée à la sortie du filtre, donc $\udl{e}_a = \udl{s}_f$. On en déduit la fonction de transfert en boucle ouverte,
+% \eqbox{
+%   \frac{\underline{s}_a}{\underline{e}_f} = \frac{\udl{s}_a}{\udl{e}_a} \frac{\udl{s}_f}{\udl{s}_f} = \udl{A} \udl{H}.
+% }
+% }
+% %. En déduire l'équation différentielle vérifiée par $s(t)$.
+% %\item Tracer expérimentalement le diagramme de Bode en gain.
+% \item\label{quest:R2} Pour quelle valeur de la fréquence $f$ le déphasage entre $\underline{s}$ et $\underline{e}$ est nul ?  Une fois cette condition réalisée, que doit valoir le facteur $AH_0$ et la résistance $R_2$ pour que l'entrée et la sortie aient la même amplitude ? 
+%  % de sorte que $\underline{s} = \underline{e}$.
+%  \sol{
+%  Le déphasage est nul lorsque $A\udl{H}$ est réel, donc lorsque $\omega = \omega_0$. Un fois cette condition réalisée, la fonction de transfert se réduit à $AH_0$. On doit avoir $AH_0=1$ pour que $s$ et $e$ aient la même amplitude, soit $A=1+\frac{R_2}{R_1}=3$ et donc 
+%  \eqbox{
+% R_2 = 2 R_1 = \SI{4.4}{k \Omega}.
+%  }
+%  }
+% \end{protocole}
+
+% \parag{Expérience} Câbler le circuit de la \Fig{boucle_ouverte} en utilisant une  boîte de décades de résistance pour $R_2$. Envoyer en entrée $e(t)$ une sinusoïde de fréquence $f$ quelconque et d’amplitude $\SI{3}{V}$.
+
+% \begin{protocole}
+%   \item Déterminer expérimentalement pour quelles valeurs de fréquence $f$ et de résistance $R_2$ le déphasage entre $s(t)$ et $e(t)$ est nul. Comparer aux valeurs attendues trouvées en \Quest{R2}.
+% \end{protocole}
+
+\subsection{Bouclage et étude des oscillations}
+\parag{Théorie}
+On boucle maintenant les deux circuits : l'entrée de l'amplificateur $e_a(t)$ est reliée à la sortie du filtre $s_f(t)$, et l'entrée du filtre $s_a(t)$ est reliée à la sortie de l'amplificateur $s_a(t)$, comme sur la Fig.~\ref{fig:wien}. 
+\begin{danger}
+  Il n'y a plus aucune alimentation extérieure au circuit, à part celle de l'ALI ! Vous pouvez donc retirer le GBF.
+\end{danger}
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=0.35\textwidth]{oscillateur_complet_bis.pdf}
+  \caption{Oscillateur à pont de Wien en boucle fermé.}
+  \label{fig:wien}
+  \end{figure}
+
+\begin{protocole}
+\todo On étudie le régime sinusoïdal. Justifier que $\underline{s} = \underline{e}$ lorsque le circuit est bouclé, et que le circuit vérifie alors la \imp{condition de Barkhausen}
+\eqbox[Barkh]{A \,\underline{H} = 1.}
+En déduire que pour obtenir un régime sinusoïdal, on doit avoir $A=3$. Montrer que le signal produit par l'oscillateur est de pulsation $\omega_0$.
+\sol{
+  \begin{enumerate}
+    \item \udl{Condition de Barkhausen}.
+    Relions $s_f$ et $e_a$ par la pensée. La fonction de transfert dans cette configuration, en boucle ouverte, vaut alors
+    \eqbox{
+      \frac{\underline{s}_a}{\underline{e}_f} = \frac{\udl{s}_a}{\udl{e}_a} \cdot \frac{\udl{s}_f}{\udl{s}_f} = A \udl{H}.
+      }
+      En boucle fermée, on a aussi $\udl{e}_f = \udl{s}_a$. On en déduit la condition de Barkhausen anoncée en \Eq{Barkh}, soit
+      \eqbox{
+        A \udl{H} = 1.
+        }
+        Cette condition n'est valable qu'en régime permanent sinusoïdal. 
+
+    \item \udl{Nature du signal}.
+    Pour que la condition de Barkhausen soit vérifiée, il faut en particulier que le produit $A\udl{H}$ soit réel,~i.e.
+        \eqbox{
+          \omega = \omega_0.
+          }
+          Une fois cette condition réalisée, la fonction de transfert se réduit à $AH_0$. On doit avoir $AH_0=1$, soit $A=1+\frac{R_2}{R_1}=3$ et donc 
+          \eqbox{
+            R_2 = 2 R_1 = \SI{4.4}{k \Omega}.
+            }
+          \end{enumerate}
+}
+\todo\label{quest:tau} On étudie maintenant le régime transitoire. Montrez que l'équation différentielle vérifiée par la sortie $s(t)$ est
+\begin{equation}
+\frac{\d^2 s}{\d t^2} + (3-A)\omega_0 \frac{\d s}{\d t}+\omega_0^2 s = 0.
+\end{equation}
+En déduire la nature des oscillations suivant que $A<3$, $A=3$ ou $A>3$. En pratique, qui se passe-t-il si $A>3$ ? Montrer que pour $A>3$ le signal croît exponentiellement avec un temps caractéristique 
+\begin{equation}\label{eq:tau}
+  \tau =\frac{RC}{R_2/2R_1 - 1}.
+\end{equation}
+\sol{
+  La tension $s(t)$ vérifie l'équation d'un oscillateur amorti de coefficient d'amortissement $\gamma = (3-A)\omega_0$. Le signe de $\gamma$ détermine la nature des oscillations.
+  \begin{itemize}
+    \item Si $A<3$, alors $\gamma>0$ et les oscillations sont \fbox{amorties}.
+    \item Si $A=3$, alors $\gamma=0$ et les oscillations sont \fbox{harmoniques}.
+    \item Si $A>3$, alors $\gamma<0$ et les oscillations sont \fbox{amplifiées}.
+  \end{itemize}
+ Lorsque $A>3$, le régime est instable, et le signal croît exponentiellement avec un temps caractéristique 
+    $$\tau = -\frac{1}{\gamma} = \frac{1}{(A-3)\omega_0},$$
+    soit la formule annoncée  
+    \eqbox{
+      \tau = \frac{RC}{R_2/2R_1 - 1}.
+    }
+    L'amplitude ne croît pas indéfiniment mais est limité par l'ALI en pratique. Nous devons nous placer dans ce régime pour que le circuit produise des oscillations.
+}
+\end{protocole}
+
+\parag{Expérience} Câbler le circuit de la \Fig{wien} en utilisant une boîte de décades de résistance pour $R_2$, de sorte à pouvoir régler la résistance. 
+\begin{protocole}
+%\begin{remarque}
+%Des oscillations quasi-sinusoïdales ne peuvent exister que si le gain de l'amplificateur compense exactement les pertes du filtre. Il s'agit d'une condition nécessaire (non suffisante) à la naissance des oscillations (critère de Barkhausen). Si $k=2$, on obtient un oscillateur harmonique, donc $s(t)=s_{0}\cos(\omega_0 t+\varphi)$ où $\omega_0$ est la fréquence propre d'oscillation du circuit ! Pour un laser, c'est la même chose qui se passe, même si alors il existe plusieurs fréquences propres d'oscillations $\omega_n$ qui définissent les modes du laser.
+%\end{remarque}
+\item En modifiant la valeur de $R_2$, observer le signal $s(t)$ à l’oscilloscope dans les situations $A<3$ et $A>3$. Pour quelles valeurs de $R_2$ et donc de $A$ les oscillations apparaissent-elles ?
+\sol{
+  
+Les oscillations apparaissent pour $A$ très légèrement supérieur à $3$, donc $R_2$ très légèrement supérieur à $\SI{4.4}{k\Omega}$.
+}
+\item Acquérir ces oscillations sur \texttt{LatisPro}, puis calculer le spectre en fréquence de $s(t)$. Imprimer les courbes. Augmenter $R_2$ progressivement. Comment évoluent le signal $s(t)$ et le spectre en fréquence de $s(t)$ ? Cet effet est appelé \imp{distorsion harmonique}.
+\sol{
+Sur l'oscilloscope, on voit que le signal se déforme par rapport à une sinusoïde si $A$ est trop grand. Cela se traduit par l'apparition de fréquences supplémentaires dans le spectre.
+}
+%\item On notera bien que le système bouclé n'a pas d'entrée, et en particulier il n'y a pas de GBF pour générer les oscillations à la pulsation $\omega_0$. Expliquer physiquement à partir de quoi naissent les oscillations si $k\simeq 2$ et sur quoi est prélevée l'énergie qui permet de générer ces oscillations.
+%\item Expliquer ce qui limite l'amplitude des oscillations.
+\end{protocole}
+On cherche maintenant à visualiser le démarrage des oscillations.
+% (passage de $k\leqslant 2$ à $k\geqslant 2$), avec deux méthodes:
+\begin{protocole}
+\item Régler $R_2$ de sorte à observer l’apparition la plus lente possible des oscillations. À l'oscilloscope, prendre une base de temps de $\SI{2.5}{ms}$ et régler le seuil de déclenchement légèrement au-dessus de zéro. En mode \textsc{single}, boucler le circuit puis observer le démarrage des oscillations. Estimer le temps caractéristique $\tau$ de la croissance exponentielle des oscillations. Comparer à la valeur attendue trouvée en \Quest{tau}.
+
+
+\sol{
+$\tau = \SI{25}{ms}$
+}
+%\item avec la carte d'acquisition et Latis Pro en adaptant les paramètres d'acquisition et en définissant un seuil de déclenchement.
+\end{protocole}
+
+\section{Le multivibrateur astable\bonus}\technique{Utiliser un ALI}
+Le multivibrateur astable est un autre exemple d'oscillateur. Il comprend un comparateur à hystérésis et un intégrateur (\Fig{astable_complet}).
+
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.45\textwidth]{astable_complet.pdf}
+\caption{Multivibrateur astable.}
+\label{fig:astable_complet}
+\end{figure}
+
+\subsection{Préliminaire: le comparateur à zéro}
+Dans un comparateur à hystérésis, il n'y a pas de rétroaction sur l'entrée $-$ de l'amplificateur opérationnel. L'amplificateur opérationnel se trouve dans le régime non linéaire où $\varepsilon=V_{+}-V_{-}\neq0$. L'amplificateur opérationnel idéal possède alors la caractéristique suivante:
+\begin{equation}
+s=
+\begin{cases}
++V_{\rm{sat}}\quad\text{si} \quad \varepsilon>0\\
+-V_{\rm{sat}}\quad\text{si} \quad \varepsilon<0,
+\end{cases}
+\end{equation}
+où typiquement $V_{\rm{sat}}$ est légèrement inférieur à la tension d'alimentation, $V_{\rm{sat}}\simeq\SI{13}{V}$.
+Un autre montage, plus simple, où le régime de l’amplificateur opérationnel est non linéaire, est le comparateur à zéro de la Fig.~\ref{fig:comparateur_zero}.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.45\textwidth]{comparateur_zero.pdf}
+\caption{Montage et caractéristique du comparateur à zéro.
+%La caractéristique est non linéaire car l’amplificateur opérationnel fonctionne en régime saturé.
+}
+
+\label{fig:comparateur_zero}
+\end{figure}
+
+\begin{protocole}
+\item Ce comparateur peut par exemple être utilisé pour générer un signal créneau à partir d'un signal sinusoïdal. Expliquer pourquoi avec un schéma.
+\end{protocole}
+\subsection{Comparateur à hystérésis}
+\begin{figure}[h!]
+\centering
+\subfigure[]{\label{fig:comp_hyst}
+\includegraphics[width=0.2\textwidth]{astable_hyst.pdf}
+}\hfill
+\subfigure[]{\label{fig:astable_intégrateur}
+\includegraphics[width=0.2\textwidth]{astable_intégrateur.pdf}
+}
+\caption{(a) Comparateur à hystérésis. (b) Intégrateur.}
+\end{figure}
+\begin{protocole}
+\item Analyser le comportement du comparateur à hystérésis de la \Fig{comp_hyst} selon les valeurs de la tension d'entrée $e(t)$ et montrer l'existence de deux tensions de seuil : l'une en sortie est la tension de saturation $\pm V_{\rm sat}$ ; l'autre en entrée est appelé tension de basculement $\pm V_{\rm b}$, à définir. Le comparateur joue-t-il de rôle d'amplificateur ou de filtre ?
+%\begin{remarque}
+%Indication détaillée: relier d'abord avec le théorème de Millman ou la loi des nœuds en terme de potentiel $V_{+}$ avec $e$ et $s$. Puis supposer que $s=+V_{\rm{sat}}$ ($\varepsilon>0$) et déduire que cela est possible tant que $e>-V_{\rm{basc}}$ où l'on précisera l'expression de $V_{\rm{basc}}$ en fonction de $V_{\rm{sat}}$. Enfin supposer que $s=-V_{\rm{sat}}$ ($\varepsilon<0$) et déduire que cela est possible tant que $e<V_{\rm{basc}}$.
+%\end{remarque}
+%\item Câbler le montage et envoyer une tension d'entrée triangulaire de moyenne nulle, d'amplitude crête-à-crête \SI{15}{V} et de fréquence $\SI{1}{kHz}$. Visualiser $e(t)$ et $s(t)$ à l'oscilloscope. Que se passe-t-il si on fait varier l'amplitude de la tension d'entrée ? Faire de même avec une tension sinusoïdale.
+\item Câbler le montage et envoyer une tension sinusoïdale. Tracer la caractéristique $s=f(e)$ à l'oscilloscope et mesurer $\pm V_{\rm{basc}}$ et $\pm V_{\rm{sat}}$. Pourquoi parle-t-on d'\imp{hystérésis}, aussi appelé effet mémoire ?
+\end{protocole}
+
+%\subsection{Intégrateur}
+%\begin{figure}[h!]
+%\centering
+%\includegraphics[width=0.25\textwidth]{astable_intégrateur.pdf}
+%\caption{Intégrateur.}
+%\label{fig:astable_intégrateur}
+%\end{figure}
+\subsection{Intégrateur}
+
+\begin{protocole}
+\item Justifier que le montage de la Fig.~\ref{fig:astable_intégrateur} est un intégrateur (attention cet amplificateur opérationnel fonctionne en régime linéaire: $\varepsilon=0$). Vérifier que cela est bien le cas expérimentalement en envoyant en entrée une faible tension continue.
+%\begin{remarque}
+%Si le temps le permet, expliquer l'intérêt d'ajouter une résistance $R'$ de valeur élevée en parallèle du condensateur. Ce montage est qualifié de pseudo-intégrateur, car il reste intégrateur tant que $R'\gg\abs{\frac{1}{jC\omega}}$. Tracer le diagramme de Bode, calculer sa fonction de transfert et commenter en comparant au montage intégrateur.
+%\end{remarque}
+\end{protocole}
+\subsection{Bouclage et étude de l'oscillateur}
+On réalise maintenant l'oscillateur astable de la Fig.~\ref{fig:comp_hyst} en bouclant le comparateur à hystérésis et l’intégrateur.
+% à la suite les deux blocs précédents et en bouclant le système (la sortie de l'intégrateur devient l'entrée du comparateur à hystérésis).
+\begin{protocole}
+\item Observer simultanément l'évolution de la sortie du comparateur et celle de l'intégrateur. Montrer qu'on peut distinguer deux phases de fonctionnement.
+\item Mesurer la période des oscillations et vérifier qu’elle est donnée par $$T=4\frac{V_{\rm{b}}}{V_{\rm{sat}}}RC=\frac{4R_1 RC}{R_2}.$$
+\sol{
+Indication détaillée: supposer par exemple qu'à l'instant $t=0$, le système bascule de $s=-V_{\rm{sat}}$ ($\varepsilon<0$) à $s=V_{\rm{sat}}$ ($\varepsilon>0$). Puis raisonner comme précédemment en appliquant le théorème de Millman, et justifier que la sortie de l'intégrateur s'écrit comme $-\frac{V_{\rm{sat}}}{RC}t+\frac{R_1}{R_2}V_{\rm{sat}}$. En déduire alors qu'il n'y a pas basculement tant que $t<\frac{2 R_1 RC}{R_2}$ et conclure.
+}
+%\item Mesurer la période des oscillations et comparer à la valeur attendue.
+%\item Pour changer la période, on peut changer la valeur de $C$ (utiliser une boîte de capacité variable). Quel domaine de fréquences le générateur de signaux peut-il décrire ? Que se passe-t-il si on diminue trop la valeur de $C$ ? Expliquer.
+%\item Brancher une diode en sortie et réaliser un clignotant.
+\end{protocole}
+
+\end{document}

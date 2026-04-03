@@ -1,0 +1,702 @@
+% displayname : Ondes électromagnétiques dans les conducteurs
+\documentclass[12pt,fancy]{cours}
+\Chapit{6}{4}
+\begin{document}
+\maketitre{
+Nous allons commencer à étudier des équations de propagation différentes de celle de d'Alembert. Des phénomènes nouveaux vont apparaître, notamment ceux de dispersion et d'absorption de l'onde. Nous continuons sur l'exemple des ondes électromagnétiques, non plus dans le vide mais dans deux types de milieux conducteurs : un conducteur non ohmique (un plasma) et un conducteur ohmique (un métal).
+}{
+  \item 
+}
+
+\ProgrammeColle
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introduction}
+
+\subsection{Milieux conducteurs}
+
+\begin{definition}[Conducteur électrique]\label{def:}
+  Un \imp{conducteur électrique} est un milieu qui permet le passage de porteurs de charge électrique.
+\end{definition}
+
+On distingue plusieurs types de conducteurs électriques : 
+\begin{liste}
+  \item \imp{conducteurs ohmiques} : des porteurs de charge libres se déplacent dans un milieu dense immobile (métal, électrolyte, plasma dense, etc.).
+  \item \imp{conducteurs non ohmiques} : des porteurs de charge libres se déplacent dans un milieu quasi vide (plasma dilué).
+\end{liste}
+
+\begin{figure}[H]
+  \centering
+  \def\hei{4cm}
+  \subfigure[]{\label{fig:}
+    \includegraphics[height=\hei]{copper_wire.jpg}
+  }
+  \subfigure[]{\label{fig:}
+    \includegraphics[height=\hei]{plasma_ball.jpg}
+  }
+  \caption{(a) Conducteur ohmique : un fil de cuivre. (b) Conducteur non ohmique : une sphère de plasma.}
+  \label{fig:}
+\end{figure}
+Nous souhaitons étudier la propagation d'ondes électromagnétiques $(\E,\B)$ dans ces deux types de milieux conducteurs. Nous étudierons plus précisément la propagation d'OPPH généralisées, qui sont les briques de base pour étudier les ondes plus complexes. 
+\begin{definition}[OPPH généralisée]
+  On appelle \imp{OPPH généralisée}, notée OPPH$^\star$, toute onde harmonique dans le temps, i.e de pulsation $\omega$ fixe. Le champ électrique complexe d'une OPPH EM généralisée s'écrit alors
+  \begin{equation}
+    \E*=\E*_0\,\e^{i(\omega t-\udl{k}z)},
+  \end{equation}
+  où $\udl{k} \in \mathbb{C}$ est le vecteur d'onde complexe.
+  
+\end{definition}
+
+Une OPH généralisée impose donc un régime forcé au mouvement des porteurs de charge. Nous verrons que pour tous les conducteurs électriques, cela impose que le mileu reste localement neutre, i.e $\rho=0$.
+\begin{prop}[Électroneutralité locale]\label{prop:}
+  Un conducteur électrique soumis à une OPPH généralisée est \imp{localement neutre}, i.e $\rho=0$.
+\end{prop}
+Le milieu conducteur est donc entièrement déterminé par l'expression du vecteur densité de courant $\j$.
+
+\subsection{Équation de propagation}
+Les équations de Maxwell dans un milieu conducteur localement neutre sont 
+\begin{equation}
+  \begin{array}{ll}
+    \dive \E = \JRouge{0} & \text{(M.G.)},\\
+    \dive \B = 0 & \text{(M.T.)},\\
+  \end{array}
+  \begin{array}{ll}
+    \rot{\E} = -\dr{\B}{t} & \text{(M.F.)},\\
+    \rot{\B} = \JRouge{\mu_0\j} + \mu_0\epz\dr{\E}{t} & \text{(M.A.)}.
+  \end{array}
+\end{equation}
+où les termes en rouge indiquent l'influence du milieu conducteur sur les champs électromagnétiques. On voit que cella le terme $\mu_0 \j$ modifie les équations de Maxwell par rapport au vide. Déterminons l'équation de propagation sur $\E$. On prend le $\rot$ de M.F. et on remplace $\rot{\E}$ par l'équation de M.A. :
+\begin{equation}
+  \rot{\left(\rot{\E}\right)} = -\dr{}{t} \left( \rot \B \right) = -\mu_0\dr{\j}{t}-\frac{1}{c^2}\ddr{\E}{t}.
+\end{equation}
+On utilise une relation d'analyse vectorielle et l'équation de M.G. pour obtenir
+\begin{equation}
+  \dive \left(\rot{\E}\right) = \grad{\left(\dive \E\right)}-\Deltav{E} = -\Deltav{E}.
+\end{equation}
+
+\begin{theorem}[Équation de propagation dans un conducteur]\label{form:propag}
+  L'équation de propagation électrique dans un conducteur localement \imp{neutre} est  
+  $$
+\Deltav{E} - \frac{1}{c^2}\ddr{\E}{t} = \mu_0\dr{\j}{t}.
+  $$
+  \end{theorem}
+
+\begin{remarque}
+  L'équation de propagation pour le champ magnétique est 
+  \begin{equation}
+    \Deltav{B} - \frac{1}{c^2}\ddr{\B}{t} = -\mu_0\,\rot \j.
+  \end{equation}
+\end{remarque}
+  
+\section{Onde électromagnétique dans un plasma dilué}
+
+\subsection{Modèle du plasma dilué}
+
+\begin{definition}[Plasma]\label{def:}
+  Un \imp{plasma} est un \imp{gaz ionisé globalement neutre} : il est constitué de cations et d'électrons libres.
+\end{definition}
+\parag{Hypothèses}
+Les charges libres sont :
+\begin{liste}
+  \item des cations, de masse $M$, de charge $+e$, de densité particulaire $n$.
+  \item des électrons libres, de masse $m$, de charge $-e$, de densité particulaire identique $n$.
+\end{liste}
+  On trouve des plasmas à l'état naturel\footnote{On peut également en créer en laboratoire par exemple avec un confinement par champ magnétique dans le but de générer des réactions de fusion nucléaire (même si dans ce cas le plasma n'est pas dilué).} dans la haute atmosphère ou encore dans l'espace interstellaire.
+Nous effectuons les hypothèses suivantes pour décrire un plasma dilué.
+
+\begin{enumerate}[label=\boxed{\rm H\arabic*}]
+  % \item Les charges libres d'un plasma sont présentes avec la même densité particulaire $n$ pour assurer la \imp{neutralité électrique}, de sorte que $\rho = 0$.
+  \item Le plasma est \imp{dilué}, ce qui permet de négliger la force de frottement résultant des collisions entre charges devant la force électromagnétique. La force phénoménologique de friction présente dans les conducteurs ohmiques est donc absente ici !
+  \item Les cations sont supposées \imp{immobiles} dans le référentiel du laboratoire $\Rcal$, ce qui est légitime car un proton est $\sim\num{2000}$ fois plus lourd qu'un électron, et donc $M\gg m.$
+  \item La composante \imp{magnétique} de la force de Lorentz est négligeable devant la composante électrique, ce qui est valable si la vitesse des électrons vérifie $v \ll c$.
+\end{enumerate}
+
+\begin{figure}[H]
+  \centering
+  \def\hei{3cm}
+  % \includegraphics{interstellar_plasma.jpg}
+  % \includegraphics{ionosphere.jpg}
+  \includegraphics[height=\hei]{flame.jpg}
+  % \includegraphics{metal.jpg}
+  \caption{Une flamme constitue un plasma dilué.}
+  \label{fig:plasmas_exemples}
+\end{figure}
+
+%  Le caractère
+% De plus, , on peut négliger le mouvement des cations devant celui des électrons.
+
+\parag{Relation constitutive et pulsation plasma}
+Le PFD appliqué à un électron du plasma s'écrit
+\begin{equation}
+m \frac{\d\vv{v}}{\d t}=-e\vv{E}
+\end{equation}
+% où nous avons négligé
+
+% \begin{remarque}
+% La justification généralement donnée est que les électrons sont supposés non relativistes et le champ magnétique tel qu'en norme $cB\sim E$ de sorte que $\frac{||\vv{v}\pv\vv{B}||}{||\vv{E}||}\sim\frac{v}{c}\ll 1$.
+% \end{remarque}
+Les cations étant immobiles, seuls les électrons contribuent  au courant, donc $\j= -ne\vv{v}$ et
+\begin{equation}
+ \dr{\j}{t} = - ne \dd{\Vec{v}}{t} = \frac{ne^2}{m}\vv{E}
+ %=\varepsilon_0\omega_{\rm{p}}^2\,\vv{E},
+ \end{equation}
+
+ \begin{exemple}{Oscillations plasma en régime libre}
+Pour interpréter cette relation constitutive, imaginons qu’une perturbation apparaisse dans le plasma en l’absence de champ extérieur. Cette perturbation conduit à l’apparition d’une faible densité de charge $\rho$, qui crée à son tour un champ électrique $\E$. 
+\begin{quest}
+  \item	
+  En partant de l'équation de conservation de la charge, montrer que $\rho(t)$ oscille sinusoïdalement à la pulsation plasma définie par 
+  \begin{equation}
+    \omega_p = \sqrt{\frac{ne^2}{m\varepsilon_0}}.
+  \end{equation} 
+  \item  Estimer $\omega_p$ pour les plasmas du tableau suivant.
+\end{quest}
+\begin{table}[H]
+  \centering
+  \begin{tabular}{|c|c|c|c|c|}
+    \hline
+    Milieu & Plasma interstellaire & Ionosphère & Flame & Métal \\
+    \hline
+    Densité électronique & $n\simeq\SI{e1}{m^{-3}}$ & $n\simeq\SI{e10}{m^{-3}}$ & $n\simeq\SI{e14}{m^{-3}}$ & $n\simeq\SI{e28}{m^{-3}}$ \\
+    \hline
+  \end{tabular}
+  % \caption{}
+  \label{}
+\end{table}
+\examplesol{
+ \begin{quest}
+   \item	
+ En dérivant l’équation de conservation de la charge par rapport au temps, on obtient
+\begin{equation*}
+ \dr{\rho}{t} + \dive \j = 0 \Rar \ddr{\rho}{t} + \dive \left(\dr{\j}{t} \right) = 0,
+\end{equation*}
+ce qui donne en utilisant l’équation constitutive,
+\begin{equation*}
+ \ddr{\rho}{t} + \frac{ne^2}{m} \,\dive \E = 0 \Rar \ddr{\rho}{t} + \frac{ne^2}{m\epz} \rho = 0 ,
+\end{equation*}
+d’après Maxwell-Gauss. On introduit la grandeur
+\eqbox{
+\omega_p = \sqrt{\frac{ne^2}{m\varepsilon_0}},
+}
+homogène à une pulsation, appelée \imp{pulsation plasma}, qui représente la pulsation des oscillations de charge dans un plasma écarté de l’équilibre. En effet, la densité de charge vérifie l'équation d'un OH,
+\eqbox{
+ \ddr{\rho}{t} + \omega_p^2 \rho = 0.
+}
+\item On trouve les valeurs suivantes pour la pulsation plasma.
+%  \begin{table}[H]
+ % {\scriptsize
+ % \centering
+ \begin{center}
+   
+   \begin{tabular}{|c|c|c|c|c|}
+     \hline
+     Milieu & Plasma interstellaire & Ionosphère & Flame & Métal \\
+     \hline
+     Densité électronique & $n\simeq\SI{e1}{m^{-3}}$ & $n\simeq\SI{e10}{m^{-3}}$ & $n\simeq\SI{e14}{m^{-3}}$ & $n\simeq\SI{e28}{m^{-3}}$ \\
+     \hline
+     $\omega_p$ (\SI{}{rad.s^{-1}}) & $\simeq\SI{1,5e3}{}$ & $\simeq\SI{5,6e6}{}$ & $\simeq\SI{2,2e7}{}$ & $\simeq\SI{1,4e16}{}$ \\
+     \hline
+   \end{tabular}
+ \end{center}
+   % \caption{}
+   % \label{}
+   % }
+% \end{table}
+\end{quest}
+}
+\end{exemple}
+
+\begin{theorem}[Relation constitutive du plasma dilué]\label{formu:constit}
+  % La relation constitutive du plasma dilué s'écrit  
+  $$
+\dr{\j}{t}=\epz \omega_p^2 \vv{E}
+  $$
+\end{theorem}
+
+
+\begin{remarque}
+La relation constitutive du plasma s'écrit en notation complexe
+\begin{equation}
+i\omega\underline{\j}=\varepsilon_0\omega_{\rm{p}}^2\,\underline{\vv{E}}\quad\Rightarrow\quad\underline{\j}=\underline{\sigma}\,\underline{\vv{E}}\quad\text{avec}\quad\underline{\sigma}=-i\frac{\varepsilon_0\omega_{\rm{p}}^2}{\omega}.
+\end{equation}
+  On reconnaît une loi d'Ohm généralisée avec une conductivité imaginaire pure !
+\end{remarque}
+
+\subsection{Propagation d’une OPPH}
+
+\parag{Analyse énergétique}
+Nous allons déterminer la puissance moyenne cédée par l'onde électromagnétique aux porteurs de charge du plasma dilué. La puissance volumique est donnée par 
+\begin{equation}
+  p_{\rm vol} = \j \ps \E = \epz \omega_p^2 \j \cdot \dr{\j}{t} = \dr{}{t}\left( \frac{1}{2} \epz \omega_p^2 \j^2 \right).
+\end{equation}
+Soit $T$ la période de l'onde électromagnétique. La puissance moyenne vaut alors
+\begin{equation}
+\moy{p_{\rm vol}} =  \frac{1}{T} \int_0^T p_{\rm vol} \d t =\, \frac{1}{T} \int_0^T \dr{}{t}\left( \frac{1}{2} \epz \omega_p^2 \j^2 \right) \d t = \left[ \frac{1}{2} \epz \omega_p^2 \j^2  \right]_0^T = 0,
+\end{equation}
+puisque $\j$ est périodique de période $T$. Le plasma n'absorbe aucune énergie en moyenne.
+\begin{prop}\label{prop:}
+  Le plasma dilué est un milieu \imp{non absorbant}.
+\end{prop}
+
+
+\parag{Équation d'onde} On remplace $\j$ par son expression dans l'équation de propagation.  Il reste à vérifier la neutralité électrique locale à partir de la loi de conservation de la charge. Lorsque le plasma est soumis à une OPPH généralisée de pulsation $\omega$, l'équation d'oscillation plasma devient
+\begin{equation}
+  \ddr{\rho}{t} + \omega_p^2 \rho = 0 \Rar ( -\omega^2 +\omega_p^2)\udl{\rho} = 0 \Rar \udl{\rho} = 0,
+\end{equation}
+en dehors de la résonance à $\omega=\omega_p$. On a donc bien électroneutralité. Les \Formu{propag} et \Formu{constit} donnent l'équation d'onde suivante.
+% Nous avons vu que dans un plasma dilué, l'équation de M.G. se simplifie en $\dive \E = 0$ car $\rho=0$. Les autres équations de Maxwell sont inchangées. En particulier, l'équation de M.A. ne peut pas se simplifier car l'ARQS magnétique n'est pas valable.
+
+% \begin{exemple}{Non-validité de l'AQRS magnétique}
+% Estimer le rapport des courants de déplacement et de conduction pour une onde radio (pulsation de quelques $\SI{}{MHz}$) dans le plasma de l'ionosphère. En déduire si l'AQRS magnétique est valable.
+
+% \end{exemple}
+% \examplesol{
+%   On évalue le rapport entre courant de déplacement et courant de conduction,
+%   \begin{equation}
+%     \frac{j_d}{j} \sim \frac{\epz \omega E}{\epz \omega_p^2 E/\omega} \sim \left(\frac{\omega_{\rm{p}}}{\omega}\right)^2.
+%     \end{equation}
+%     Or $\omega_p = \SI{5,6e6}{s^{-1}}$ correspond à une fréquence de $\SI{900}{kHz}$, ce qui n’est ni petit, ni grand, devant la fréquence des ondes radio (quelques $\SI{}{MHz}$). L'ARQS magnétique n'est donc \fbox{pas valable}.
+% }
+
+% Pour déterminer l'équation d'onde, on évalue $\rot{(\rot{\vv{E}})}$ d’une part avec l'analyse vectorielle,
+% \begin{equation}
+% \rot{(\rot{\vv{E}})} = \grad{(\dive{\vv{E}})}-\Delta\vv{E}=-\Delta\vv{E}
+% \end{equation}
+% et d’autre part avec l'équation de M.F. puis M.A. et la relation constitutive du plasma,
+% \begin{equation}
+% \rot{(\rot{\vv{E}})} = - \dr{}{t}\rot \B =     -\frac{\partial}{\partial t}\left[\mu_0\vv{j}+\mu_0\varepsilon_0\frac{\partial\vv{E}}{\partial t}\right]=-\mu_0\varepsilon_0\omega_{\rm{p}}^2\vv{E}-\mu_0\varepsilon_0\frac{\partial^2\vv{E}}{\partial t^2}
+% \end{equation}
+% Avec $c^2\varepsilon_0\mu_0=1$ on obtient l'équation suivante.
+
+\begin{theorem}[Équation d’onde dans un plasma dilué]\label{form:}
+  Une onde électromagnétique dans un plasma dilué vérifie l’équation de \imp{Klein-Gordon},
+\begin{equation*}
+\Delta\vv{E}-\frac{1}{c^2}\frac{\partial^2\vv{E}}{\partial t^2}=\frac{\omega_{\rm{p}}^2}{c^2}\vv{E}
+\end{equation*}
+\end{theorem}
+
+\parag{Relation de dispersion}
+On cherche une solution de l’équation d'onde sous forme d’une OPPH généralisé polarisée rectilignement, qui s’écrit en notation complexe $\vv{\underline{E}}=\vv{E}_0\,\e^{i(\omega t-kz)}$.
+\begin{methode}[Établir une relation de dispersion]
+  \item	Écrire l'onde la forme d'une OPPH généralisée $\udl{s}(z,t)=\udl{s}_0 \,\e^{i(\omega t-\udl{k}z)}$ avec $\omega$ réel et $\udl{k}$ complexe.
+  \item Calculer les dérivées spatiales et temporelles de $\udl{s}(z,t)$ en notation complexe.
+  \item Substituer cette solution dans l'équation d'onde et simplifier par $\udl{s}(z,t)$.
+  \item Simplifier l'équation obtenue et obtenir la relation de dispersion $\omega(\udl{k})$.
+\end{methode}
+\begin{enumerate}
+  \item On écrit l'onde sous la forme $\vv{\underline{E}}=\vv{\underline{E_0}}\,\e^{i(\omega t-\udl{k}z)}$.
+  \item On calcule les dérivées spatiales et temporelles de $\vv{\underline{E}}$ en notation complexe. On a 
+  \begin{equation}
+  \Delta\vv{\underline{E}}-\frac{1}{c^2}\frac{\partial^2\vv{\underline{E}}}{\partial t^2}=-k^2\vv{\underline{E}}+\frac{\omega^2}{c^2}\vv{\underline{E}}.
+\end{equation}
+    \item L'équation d'onde donne 
+    \begin{equation}
+      -\udl{k}^2\vv{\underline{E}}+\frac{\omega^2}{c^2}\vv{\underline{E}} =\frac{\omega_{\rm{p}}^2}{c^2}\vv{\underline{E}} \Rar  -k^2+\frac{\omega^2}{c^2} =\frac{\omega_{\rm{p}}^2}{c^2} \omega^2.
+    \end{equation}
+    \item On simplifie et on trouve 
+    \eqbox[]{
+    \omega^2 =   \omega_{\rm{p}}^2 + c^2 \udl{k}^2.
+    }
+\end{enumerate}
+
+  Cette relation  entre $k$ et $\omega$ n’est plus linéaire : on dit que la propagation est \imp{dispersive}.
+  
+  \begin{definition}[Dispersion]\label{def:}
+    On dit qu’il y a \imp{dispersion} lorsque la relation de dispersion $\omega(\udl{k})$ est non linéaire.
+  \end{definition}
+ 
+  
+  On distingue alors deux régimes pour le plasma dilué.
+  \begin{liste}
+    \item Comportement à haute fréquence, pour $\omega > \omega_p$ (\Sec{plasma_HF}).
+    \item Comportement à basse fréquence, pour $\omega < \omega_p$ (\Sec{plasma_BF}).
+  \end{liste}
+  
+\subsection{Comportement à haute fréquence}
+\label{sec:plasma_HF}
+
+% \parag{Propriétés de l'onde}
+Si $\omega>\omega_{\rm{p}}$, on a $\omega^2-\omega_{\rm{p}}^2>0$ et le vecteur d'onde $\udl{k}=k$ est réel et vaut
+\eqbox{
+  k =\pm \frac{\sqrt{\omega^2-\omega_{\rm{p}}^2}}{c}.
+}
+On garde le signe $+$ en supposant la propagation de l'onde suivant les $z$ croissants.
+% (par exemple le plasma occupe la région $z>0$).
+ L'onde réel se met sous donc sous la forme d'une OPPH $\vv{E}=\re\left[  \vv{{E_0}}\,\e^{i(\omega t-kz)} \right] = \vv{E_0}\cos(\omega t-kz)$. Comme le champ électromagnétique ne cède en moyenne aucune énergie au plasma, l'onde électromagnétique est transmise sans atténuation à travers le milieu : le plasma est \important{transparent}.
+
+  \begin{prop}[Plasma haute fréquence]\label{prop:}
+    Pour $\omega > \omega_p$, il y \imp{propagation sans atténuation}. Le champ électrique $\vv{E}=\vv{E_0}\cos(\omega t-kz)$ est une OPPH. Le plasma est \imp{transparent}.
+  \end{prop}
+  
+  \begin{exemple}{Vecteur de Poynting}
+    Déterminer la moyenne du vecteur de Poynting d'une OPPH dans un plasma à haute fréquence.
+    % Même si l'onde ne cède pas son énergie au champ, elle transporte bien une énergie puisqu'en moyenne $\avg{||\vv{\Pi}||}\neq 0$ (à comparer à la remarque suivante dans le régime de basse fréquence). Puisque $k$ est réel, d'après l'équation de Maxwell-Faraday pour une solution du type OPPH on a $\vv{B}=\frac{\vv{k}\pv\vv{E}}{\omega}$. En prenant par exemple $\vv{E}$ de la forme $\vv{E}=E_0\cos(\omega t-kz)\vv{e_x}$ et donc $\vv{k}=k\vv{e_z}$
+    \examplesol{
+      Avec $\Vec{k} = k \ez$, il vient
+      \begin{equation}
+        \vv{B}=\frac{\vv{k}\pv\vv{E}}{\omega}=\frac{E_0 k}{\omega}\cos(\omega t-kz)\ey=\frac{E_0}{c}\sqrt{1-\left(\frac{\omega_{\rm{p}}}{\omega}\right)^2}\cos(\omega t-kz)\ey.
+      \end{equation}
+      En prenant la moyenne temporelle du vecteur de Poynting,
+      \eqbox{
+        \avg{\vv{\Pi}}=\avg{\frac{\vv{E}\pv\vv{B}}{\mu_0}}=\frac{E_0^2}{2\mu_0 c}\sqrt{1-\left(\frac{\omega_{\rm{p}}}{\omega}\right)^2}\vv{e_z}.
+        }
+      Ce vecteur est non nul donc l'onde transporte donc bien de l'énergie lors de la propagation.
+    }
+  \end{exemple}
+      
+      % Physiquement, dans ce régime de haute fréquence, l'onde électromagnétique varie trop rapidement pour exciter les électrons du plasma, qui restent donc immobiles.
+      % Dans ce régime, il y a propagation sans aucune atténuation. Cela peut faire penser au cas de l'équation de d'Alembert mais attention: ici la relation de dispersion est non linéaire, il va y avoir un phénomène de dispersion (voir Sec.~\ref{sec:dispersion}).
+
+      \begin{remarque}
+        À très haute fréquence $\omega \gg \omega_p$, on voit que $\omega \simeq k c$ : on retrouve la relation de dispersion linéaire de l'équation de d'Alembert. Le plasma se comporte alors comme le vide.
+      \end{remarque}
+\subsection{Comportement à basse fréquence}
+\label{sec:plasma_BF}
+
+Si $\omega<\omega_{\rm{p}}$, on a $\omega^2-\omega_{\rm{p}}^2<0$. Mais alors il n’existe pas de valeur de $k$ réelle solution ! Nous pouvons trouver une solution imaginaire pure, qui vaut
+% \begin{equation}
+  \eqbox[]{
+    \udl{k}=\pm i\frac{\sqrt{\omega_{\rm{p}}^2-\omega^2}}{c}=\pm\frac{i}{\delta},
+  }
+% \end{equation}
+où $\delta$ est une distance typique.
+Pour éviter une divergence en $z\rightarrow+\infty$ on choisit la solution avec le signe~$-$. L'onde réelle est alors de la forme $\vv{E}=\vv{E_0}\,\e^{-z/\delta}\cos(\omega t)$. On reconnaît une onde plane \imp{stationnaire atténuée}, de la forme $f(t)g(z)$, où $g(z)$ décroît. Plus spécifiquement, $f(t)$ varie sinusoïdalement et $g(z)$ décroît exponentiellement : l'onde est stationnaire harmonique et atténuée exponentiellement, ce qu'on appelle une onde \imp{évanescente}.
+%   Étudions la propagation de l'énergie dans un plasma à basse fréquence. D'après la relation constitutive, les champs $\vv{E}$ et $\vv{j}$ sont en quadrature de phase. En notation réelle, le courant de conduction s'écrit 
+%  \begin{equation}
+%   \j = \re \udl{\j} = \re \left[  \frac{\epz \omega_p^2}{\omega} \vv{\underline{E_0}}\,\e^{ - z/\delta}\e^{i(\omega t -\frac{\pi}{2})}  \right] = \frac{\epz \omega_p^2}{\omega} \Vec{E_0} \e^{ -z/\delta} \sin(\omega t).
+% \end{equation}
+% La puissance volumique cédé au plasma par l'onde électromagnétique vaut 
+% \begin{equation}
+%   p_{\rm vol} = \j \ps \E = \frac{\epz \omega_p^2 E_0^2}{\omega} \e^{ - 2z/\delta} \sin(\omega t ) \cos(\omega t ).
+% \end{equation}
+% En effectuant une moyenne temporelle, on trouve 
+% \eqbox[]{
+%   \avg{\vv{j}\cdot\vv{E}}=0.
+%   }
+  % (car la moyenne sur un nombre entier de périodes de $\cos(\omega t)\sin(\omega t)=0$).
+  Comme l'onde électromagnétique ne cède aucune énergie au plasma, l'onde incidente n'est ni transmise ni absorbée : elle est donc nécessairement \imp{réfléchie} par le plasma. Le plasma se comporte alors comme un miroir pour les ondes électromagnétiques. Ceci a été utilisé en 1901 par G.Marconi pour réaliser la première communication radio transatlantique entre le Canada et l'Angleterre (prix Nobel en 1909). Sans aucun câble, c'est l'ionosphère qui a joué le rôle de réflecteur pour permettre la transmission de l'onde radio.
+  
+  \begin{prop}[Plasma basse fréquence]\label{prop:}
+    Pour $\omega < \omega_p$, il y a \imp{atténuation sans propagation}. Le champ électrique  $\vv{E}=\vv{E_0}\,\e^{-z/\delta}\cos(\omega t)$ est une onde évanescente. Le plasma agit comme un \imp{miroir parfait}.
+  \end{prop}
+  
+
+  % \begin{exemple}{Vecteur de Poynting}
+  %   Déterminer le vecteur de Poynting d'une OPPH dans un plasma à basse fréquence.
+  %   % Même si l'onde ne cède pas son énergie au champ, elle transporte bien une énergie puisqu'en moyenne $\avg{||\vv{\Pi}||}\neq 0$ (à comparer à la remarque suivante dans le régime de basse fréquence). Puisque $k$ est réel, d'après l'équation de Maxwell-Faraday pour une solution du type OPPH on a $\vv{B}=\frac{\vv{k}\pv\vv{E}}{\omega}$. En prenant par exemple $\vv{E}$ de la forme $\vv{E}=E_0\cos(\omega t-kz)\vv{e_x}$ et donc $\vv{k}=k\vv{e_z}$
+  % \end{exemple}
+  % \examplesol{
+  %   Avec $\Vec{\udl{k}} = \frac{i}{\delta} \,\ez$, il vient
+  %   \begin{equation}
+  %     \vv{B}=\frac{\vv{\udl{k}}\pv\vv{E}}{\omega}=\frac{E_0 k}{\omega}\cos(\omega t-kz)\ey=\frac{E_0}{c}\sqrt{1-\left(\frac{\omega_{\rm{p}}}{\omega}\right)^2}\cos(\omega t-kz)\ey.
+  %   \end{equation}
+  %   En prenant la moyenne temporelle du vecteur de Poynting,
+  %   \eqbox{
+  %     \avg{\vv{\Pi}}=\avg{\frac{\vv{E}\pv\vv{B}}{\mu_0}}=\frac{E_0^2}{2\mu_0 c}\sqrt{1-\left(\frac{\omega_{\rm{p}}}{\omega}\right)^2}\vv{e_z}.
+  %     }
+  %     Ce vecteur est non nul donc l'onde transporte donc bien de l'énergie lors de la propagation.
+  %     }
+      
+
+  \begin{figure}[H]
+    \centering
+    \includegraphics{plasma_k.pdf}
+    \caption{Graphe des parties réelle et imaginaire du vecteur d’onde complexe $\udl{k} = \re \, \udl{k} + i\, \im \, \udl{k}$ en fonction de la pulsation $\omega$ dans un plasma dilué.}
+    \label{fig:}
+  \end{figure}
+  
+
+\section{Onde électromagnétique dans un métal}
+
+\subsection{Modèle de Drude}
+
+\parag{Régime continu}
+Nous étudions dans cette partie les ondes électromagnétiques se propageant dans un conducteur ohmique, comme un métal. Un conducteur ohmique est décrit par le modèle de Drude.
+
+Un métal est modélisé par un ensemble de $n$ électrons de conduction par unité de volume, de masse $m$, de charge électrique $-e$, de densité volumique de charge $\rho_e = - n e$ ; et de cations fixes. Lors de leur mouvement, les électrons de conduction, de vitesse $\Vec{v}(t)$, sont freinés par leur interaction avec les cations du réseau cristallin. On modélise cette action par une force de friction phénoménologique de la forme
+\begin{equation}
+\Vec{F} = -\frac{m}{\tau}\vv{v},
+\end{equation}
+En appliquant le PFD à un électron dans l'ARQS dans un matériau où règne un champ électrique $\E(M,t)$, et en tirant profit de la relation $\j = - ne \Vec{v}$, nous avons obtenu la relation simple, appelée loi d'Ohm locale,
+% \begin{equation}
+  \eqbox[]{
+    \vv{j}=\sigma_0 \vv{E},
+  }
+% \end{equation}
+où $\sigma_0=\frac{ne^2\tau}{m}$ désigne la conductivité en régime continu.
+%
+% \begin{remarque}
+% Dans toute la suite, nous nous intéressons au cas plus général du régime \important{variable}. Nous retrouverons le régime permanent en prenant la limite $\omega\rightarrow 0$. Nous ne négligerons de plus pas systématiquement le courant de déplacement devant le courant de conduction (approximation de basse fréquence uniquement).
+% \end{remarque}
+
+\parag{Régime variable}
+On peut généraliser la loi d'Ohm en régime variable en conservant le terme inertiel,
+\begin{equation}
+ m\dr{\Vec{v}}{t}=-e\vv{E}-\frac{m}{\tau}\vv{v}.
+ \end{equation}
+ Lorsque les électrons sont soumis à une OPPH $\vv{\underline{E}}=\underline{\vv{E_0}}\,\e^{i(\omega t- \underline{\vv{k}}\cdot\vv{r})}$, on peut chercher le champ de vitesse sous une forme similaire $\vv{\underline{v}}=\underline{\vv{v_0}}\,\e^{i(\omega t- \underline{\vv{k}}\cdot\vv{r})}$.
+  Il vient alors
+ \begin{equation}
+ i\omega\vv{\underline{v}}+\frac{1}{\tau}\vv{\underline{v}}=-\frac{e}{m}\vv{\underline{E}}\quad\Rightarrow\quad\vv{\underline{v}}=\frac{-\frac{e\tau}{m}}{1+i\omega \tau}\vv{\underline{E}}
+ \end{equation}
+Avec $\udl{\j}=-ne\vv{\underline{v}}$, on obtient une généralisation de la loi d'Ohm locale en notation complexe.
+\begin{theorem}[Loi d'Ohm en régime variable]\label{form:}
+  Dans un métal, une OemPPH de pulsation $\omega$ engendre une densité de courant complexe
+  \begin{equation*}
+  \udl{\j}=\underline{\sigma}\,\vv{\underline{E}}\quad\text{avec}\quad\underline{\sigma}=\frac{\sigma_0}{1+i\omega \tau}
+\end{equation*}
+la conductivité en régime variable et $\sigma_0 = \frac{ne^2\tau}{m}$ la conductivité en régime continu.
+\end{theorem}
+ La réponse en courant d'un conducteur ohmique est donc de type \imp{passe-bas} d'ordre $1$ avec une pulsation de coupure \fbox{$\omega_c = \textstyle \frac{1}{\tau}\sim\SI{e14}{rad.s^{-1}}$}. On peut étudier cette relation dans deux régimes simplificateurs.
+ \begin{liste}
+  \item À basse fréquence $\omega \tau \ll 1$, la conductivité $\udl{\sigma} = \sigma_0$ est constante. Il s’agit de l’ARQS. Dans ce régime, l'équation de conservation de la charge et M.G. donnent 
+  \begin{equation}
+    \dr{\rho}{t} + \dive{\j} = 0 \Rar  \dr{\rho}{t} + \sigma_0\, \dive{\E} = 0 \Rar  \dr{\rho}{t} + \frac{\sigma_0}{\epz} \rho = 0.
+  \end{equation}
+  En régime libre, la densité de charge retourne à l'équilibre sur un temps typique $\tau_n = \frac{\epz}{\sigma_0}$. La pulsation caractéristique de retour à la neutralité vaut \fbox{$\omega_n = \frac{\sigma_0}{\epz} \sim \SI{e18}{rad.s^{-1}}$} dans un métal.
+  \item À haute fréquence $\omega \tau \gg 1$, la conductivité $\udl{\sigma} = -i\frac{\sigma_0}{\omega \tau}$ est imaginaire pure. Il s’agit du régime plasma. La pulsation caractéristique dans ce régime est la pulsation plasma $\omega_p$, telle que  
+  \begin{equation}
+  \udl{\sigma} = - i \frac{ne^2}{m\omega}\, = - i \epz \frac{\omega_p^2}{\omega}.
+  \end{equation}
+  La pulsation plasma vaut \fbox{$\omega_p = \sqrt{\frac{ne^2}{\epz m}} = \sqrt{\omega_c \,\omega_n} \sim \SI{e16}{rad.s^{-1}}$} dans un métal.
+\end{liste}
+ 
+%  Pour $\omega \tau \ll 1$, le régime de l'ARQS est valable et la conductivité vaut $\sigma_0$ qui est indépendant de la fréquence.
+
+\subsection{Propagation d’une OPPH}
+
+% \parag{Neutralité électrique locale}
+Le modèle de Drude nous donne la densité de courant $\udl{\j} = \udl{\sigma}\, \udl{\E}$
+en régime variable. Pour résoudre complètement les équations de Maxwell, il faut connaître la densité de charge $\udl{\rho}$. L'équation de conservation de la charge $\frac{\partial\rho}{\partial t}+\dive{\vv{j}}=0$ s'écrit pour une OPPH généralisée comme
+\begin{equation}
+  i\omega\underline{\rho}-i\vv{\underline{k}}\cdot\vv{\underline{j}}=0 \Rar  i\omega\underline{\rho}-i\underline{\sigma}\vv{\underline{k}}\cdot\vv{\underline{E}}=0 \Rar   \left(i\omega+\frac{\underline{\sigma}}{\varepsilon_0}\right)\underline{\rho}=0
+\end{equation}
+en utilisant l'équation de M.G. $-i\vv{\underline{k}}\cdot\vv{\underline{E}}=\frac{\underline{\rho}}{\varepsilon_0}$. On voit qu'en régime forcé, la densité de charge est nulle.
+% Cela impose $\underline{\rho}=0$ à toute fréquence.
+\begin{prop}[Neutralité électrique locale]\label{prop:}
+Un conducteur ohmique en régime forcé est localement neutre, soit $\underline{\rho}=0$ à toute fréquence.
+\end{prop}
+
+% \begin{remarque}
+%   En particulier, dans l’ARQS, $\udl{\sigma}= \sigma_0$ et la densité de
+% charge vérifie l’équation différentielle
+% \begin{equation}
+%   \dr{\rho}{t} + \frac{\sigma_0}{\epz} \rho = 0.
+% \end{equation}
+% En réponse à une perturbation, la densité de charge retourne à zéro avec un temps caractéristique $\frac{\epz}{\sigma_0}$. On notera $\omega_n = \frac{\sigma_0}{\epz} \sim \SI{e16}{rad.s^{-1}}$ la pulsation de retour à la neutralité.
+% \end{remarque}
+
+% \parag{Relation de dispersion}
+Les équations de Maxwell dans un métal s'écrivent en notation complexe pour une OPPH généralisée
+\begin{equation}
+\begin{cases}
+-i \udl{\Vec{k}} \ps \udl{\B}=0 \\
+-i \udl{\Vec{k}} \ps \udl{\E}=0 \\
+-i \udl{\Vec{k}} \pv \udl{\E} = -i \omega \udl{\B}\\
+-i \udl{\Vec{k}} \pv \udl{\B} =\mu_0\udl{\sigma} \,\udl{\E} + \frac{i \omega}{c^2} \udl{\E}.
+\end{cases}
+\end{equation}
+En remarquant que $-i \udl{\Vec{k}} \pv \udl{\B} = -i \udl{\Vec{k}} \pv ( \frac{\udl{\Vec{k}}}{\omega} \pv \udl{\E} ) = -i \frac{\udl{k}^2}{\omega} \udl{\E} + (i \udl{\Vec{k}} \ps \udl{\E}) \frac{\udl{\Vec{k}}}{\omega} = -i \frac{\udl{k}^2}{\omega} \E$, on trouve
+\begin{equation}
+  -i \frac{\udl{k}^2}{\omega} \udl{\E} =  \mu_0\udl{\sigma} \,\udl{\E} + \frac{i \omega}{c^2} \udl{\E} \Rar \left( -\underline{k}^2+\frac{\omega^2}{c^2}-\mu_0\underline{\sigma} i\omega\right) \udl{\E} = \Vec{0}
+\end{equation}
+Cela impose la relation de dispersion
+% \begin{equation}
+  \eqbox{
+    \underline{k}^2=\frac{\omega^2}{c^2}\left(1-\frac{i\udl{\sigma}}{\omega\varepsilon_0}\right).
+  }
+% \end{equation}
+% \begin{prop}[Dispersion dans les conducteurs ohmiques]\label{prop:}
+%   La propgation d’une OemPPH dans un conducteur ohmique est \imp{dispersive} puisque $k\neq \frac{\omega}{c}$.
+% \end{prop}
+Cette relation est compliqué. Nous étudierons les OPPH dans les deux régimes simplificateurs $\omega \tau \gg 1$ (régime plasma) $\omega \tau \ll 1$ (ARQS).
+% \end{liste}
+% s séparément les régimes de basse et haute fréquence.
+
+% \subsection{Relation de dispersion}
+% On cherche la condition entre $k$, éventuellement complexe, et $\omega$ pour que l'OPPH$^{\star}$ soit solution de l'équation d'onde. On substitue donc une OPPH$^{\star}$ dans l'équation d'onde et on obtient alors
+% \begin{equation}
+% -\underline{k}^2+\frac{\omega^2}{c^2}=\mu_0\underline{\sigma} i\omega
+% \end{equation}
+% En remplaçant $\underline{\sigma}$ par son expression et en utilisant $\mu_0=\frac
+% {1}{\varepsilon_0 c^2}$ il vient
+% \begin{equation}
+%  \underline{k}^2=\frac{\omega^2}{c^2}\left(1-\frac{i\sigma_0}{\omega\varepsilon_0(1+i\omega\tau)}\right).
+%  \end{equation}
+
+\subsection{Comportement à haute fréquence}
+On se place dans le régime plasma $\omega\tau\gg 1$. Dans ce cas, l’effet de filtrage à haute fréquence domine et la relation de dispersion devient celle du plasma dilué,
+\begin{equation}
+  \underline{k}^2\simeq \frac{\omega^2}{c^2}\left(1-\frac{\omega_p^2}{\omega^2}\right) 
+=\frac{\omega^2-\omega_{\rm{p}}^2}{c^2},
+\end{equation}
+Tous les résultats que nous avons vu pour le plasma s'appliquent alors au métal dans ce régime.
+
+
+\begin{liste}
+  \item Si \fbox{$\omega>\omega_{\rm{p}}$},  l'onde électromagnétique est une OPPH $\E(z,t) = \Vec{E_0} \cos(\omega t -kz)$  car $k$ est réel, mais la propagation est dispersive comme la relation entre $k$ et $\omega$ n'est pas linéaire. Le plasma est transparent.
+    \item Si \fbox{$\omega<\omega_{\rm{p}}$}, l'onde électromagnétique est évanescente, de la forme $\vv{E}=\vv{E_0}\,\e^{-\frac{z}{\delta}}\cos(\omega t)$ car $\udl{k}$ est imaginaire pure. Le plasma agit comme un miroir parfait.
+    % En effet si l'énergie de l'onde n'est ni rayonnée ni absorbée par le milieu, alors par conservation de l'énergie à l'interface c'est qu'elle repart: il y a alors réflexion totale.
+
+\end{liste}
+
+% \begin{prop}[Propagation à haute fréquence $\omega \tau \gg 1$]\label{prop:}
+  
+% \end{prop}
+
+% (car $\avg{\cos(\omega t)\sin(\omega t)}=0$), et donc que l'onde ne rayonne aucune puissance en moyenne.
+
+  \begin{exemple}{Réflexion d'une OemPPH sur un métal}
+ Justifier que les miroirs de salle de bain sont faits en aluminium.
+ \examplesol{
+   % Pour qu'il y ait réflexion totale, il faut que $\omega\gg\SI{e14}{Hz}$ et $\omega<\SI{e16}{Hz}$, ce qui semble assez restrictif. Existe-t-il donc des applications de ce cas, analogue de l'expérience de G.Marconi mais dans un conducteur métallique ?
+
+   % Cela fait bien longtemps que vous en connaissez une, que vous rencontrez tous les jours. C'est exactement sur ce principe que fonctionne un miroir: une couche métallique (généralement de l'aluminium) est recouverte et protégée par un morceau de verre transparent. 
+   Le domaine visible correspond à des pulsations comprises entre \num{2,5e15} et \SI{5e15}{rad.s^{-1}}, ce qui vérifie $\omega \gg \SI{e14}{rad.s^{-1}}$ et $\omega < \SI{e16}{rad^{-1}}$. La lumière visible se propageant dans un métal appartient au régime plasma basse fréquence : elle est réfléchie en quasi-totalité sur la surface métallique, ce qui nous permet de voir notre reflet.
+ }
+  \end{exemple}
+
+\subsection{Comportement à basse fréquence}
+
+\parag{Équation de diffusion}
+Lorsque $\omega\tau\ll 1$, on a $\udl{\sigma} \simeq \sigma_0$ et la relation de dispersion devient
+\begin{equation}
+ \underline{k}^2 \simeq \frac{\omega^2}{c^2}\left(1-i\frac{\sigma_0}{\omega\varepsilon_0}\right) = \frac{\omega^2}{c^2}\left(1-i\frac{\omega_n}{\omega}\right)
+ \end{equation}
+Or l'ARQS dans un métal impose $\omega \ll \omega_c \sim \SI{e14}{rad.s^{-1}} \ll \omega_n \sim \SI{e18}{rad.s^{-1}}$. On peut donc négliger $1$ devant le terme en $\omega_n/\omega$ et on obtient
+\begin{equation}\label{eq:k2}
+\underline{k}^2=\frac{\omega^2}{c^2}\times -i\frac{\sigma_0}{\omega\varepsilon_0} \Rar\, \boxed{\underline{k}^2= -i\mu_0\sigma_0\omega.}
+\end{equation}
+L’équation de propagation s'obtient en multipliant par $\udl{\E}$ et en passant aux notations réelles :
+\begin{equation}
+  \underline{k}^2 \udl{\E} =-i\mu_0\sigma_0 \omega \udl{\E} \Rar 
+  -\Delta\vv{E}=-\mu_0\sigma_0\frac{\partial\vv{E}}{\partial t}.
+\end{equation}
+ On obtient une équation de \imp{diffusion} du champ électrique, de coefficient de diffusion $1/\mu_0\sigma_0$ !
+\begin{theorem}[Équation de propagation dans l’ARQS]\label{form:}
+  Dans l’ARQS, une OemPPH généralisée se propageant dans un métal satisfait à l’équation de \imp{diffusion}
+  \begin{equation*}
+    \Delta\vv{E}=\mu_0\sigma_0\frac{\partial\vv{E}}{\partial t}.
+  \end{equation*}
+\end{theorem}
+
+\begin{exemple}{Équation de propagation dans un conducteur ohmique quelconque}
+  Déterminer l’équation de propagation d’une onde électromagnétique dans l'ARQS dans un conducteur ohmique quelconque, pour lequel l'approximation $\omega \ll \omega_n$ n'est pas valable.
+  \examplesol{
+    On obtient en notation complexe
+    \begin{equation*}
+      -\underline{k}^2+\frac{\omega^2}{c^2} = i\omega\frac{\sigma_0}{\varepsilon_0 c^2} = i\omega \mu_0 \sigma_0 \Rar  \left( -\underline{k}^2+\frac{\omega^2}{c^2} \right) \udl{\E} = i\omega \mu_0 \sigma_0\, \udl{\E}
+    \end{equation*}
+    Dans l’espace réel, cela donne l’équation suivante.
+    % \begin{equation}\label{eq:equa_ARQS}
+      \eqbox{
+        \Delta\vv{E}-\frac{1}{c^2}\frac{\partial^2\vv{E}}{\partial t^2} = \mu_0\sigma_0\frac{\partial\vv{E}}{\partial t}.
+      }
+    % \end{equation}
+    On voit que l’équation d’onde diffère de l’équation de D’Alembert, valable dans le vide, par le terme de droite en rouge. Lorsque l’équation de propagation diffère de l’équation de d’Alembert, la propagation est dite \imp{dispersive}. L'approximation du métal $\omega \ll \omega_n$ revient donc à négliger le terme de propagation du champ $\frac{1}{c^2}\frac{\partial^2\vv{E}}{\partial t^2}$ devant le terme d’amortissement $\mu_0\sigma\frac{\partial\vv{E}}{\partial t}$.
+  }
+\end{exemple}
+
+\parag{Effet de peau} Déterminons les solutions de cette équation de diffusion en OPPH généralisée. 
+ Pour extraire $\underline{k}$ il faut prendre la racine de l'\Eq{k2} en écrivant $-i=\e^{-i\frac{\pi}{2}}$ de sorte que
+\begin{equation}
+\underline{k}=\pm\sqrt{\omega\mu_0\sigma}\,\e^{-i\frac{\pi}{4}}=\pm\frac{1-i}{\delta}\quad\text{où}\quad\delta=\sqrt{\frac{2}{\mu_0\sigma\omega}}.
+\end{equation}
+est homogène à une longueur.
+Supposons qu’une l’OemPPH polarisé rectilignement se propageant selon l’axe $(Oz)$ arrive sur un métal occupant le demi-plan $z>0$. On peut donc poser
+\begin{equation}
+ \vv{\underline{E}}=\Vec{E_0}\,\e^{i(\omega t-\underline{k}z)}=\Vec{E_0}\,\e^{\mp \frac{z}{\delta}}\e^{i(\omega t\mp \frac{z}{\delta})}.
+ \end{equation}
+ On peut rejeter la solution qui diverge en $z\rightarrow+\infty$. En prenant la partie réelle on trouve finalement
+%  \begin{equation}
+  \eqbox[]{
+    \vv{E}(z,t)=\Vec{E_0}\,\e^{-z/\delta}\cos\left(\omega t- \frac{z}{\delta}\right).
+  }
+  % \end{equation}
+  % Remarquons la chose générale suivante: la partie réelle de $\underline{k}$ est associée à la composante propagative de l'onde, tandis que la partie imaginaire de $\underline{k}$ est responsable de l'atténuation de l'onde sur la distance $\delta$.
+
+  \begin{remarque}
+ Cette solution est la même que dans le cas de l'effet de cave discuté en diffusion thermique.
+  \end{remarque}
+
+  Le champ est exponentiellement atténué sur la distance caractéristique $\delta$. L'onde n'est pas stationnaire. Il y a donc \imp{propagation} avec dispersion et \imp{atténuation}. Au delà de quelques $\delta$, le champ électrique est quasi nul dans le métal, ce qui signifie que l’onde se propage sur le bord, ou la \guill{peau} du métal  : c'est l'\imp{effet de peau}. En utilisant les équations de Maxwell, on obtient également que $\vv{B}$ s'atténue exponentiellement à l'intérieur du métal. Le champ n'existe sensiblement qu'au voisinage de la surface: les conducteurs métalliques permettent donc de créer des blindages électromagnétiques.
+
+  \begin{definition}[Épaisseur de peau]\label{def:}
+    On appelle \imp{épaisseur de peau} la distance caractéristique
+    $$
+   \delta = \sqrt{\frac{2}{\mu_0\sigma\omega}}
+    $$
+    sur laquelle le champ électromagnétique s’atténue exponentiellement dans un métal.
+  \end{definition}
+
+
+\parag{Analyse énergétique}
+Déterminons le champ magnétique puis le vecteur de Poynting. L'équation de structure d’une pour une OemPPH s’obtient par M.F., 
+\begin{equation}
+  \vv{\underline{B}}=\frac{\vv{\underline{k}}\pv\vv{\underline{E}}}{\omega}=\frac{1-i}{\delta \omega}\vv{e_z}\pv E_0\e^{-\frac{z}{\delta}}\e^{i(\omega t-\frac{z}{\delta})}\vv{e_x}=\frac{\sqrt{2}E_0}{\delta \omega}\e^{-\frac{z}{\delta}}\e^{i(\omega t-\frac{z}{\delta}-\frac{\pi}{4})}\ey
+  \end{equation}
+sachant que $1-i=\sqrt{2}\,\e^{-i\frac{\pi}{4}}$. En utilisant $\sqrt{2}\cos(\theta-\frac{\pi}{4})=\cos(\theta)+\sin(\theta)$, on obtient le champ réel
+\begin{equation}
+   \vv{B}=\frac{\sqrt{2}E_0}{\omega\delta}\e^{-z /\delta}\cos\left(\omega t-\frac{z}{\delta} -\frac{\pi}{4}\right) \ey = \frac{E_0}{\omega\delta}\e^{-z /\delta}\left[\cos\left(\omega t-\frac{z}{\delta}\right)+\sin\left(\omega t-\frac{z}{\delta}\right)\right]\ey.
+   \end{equation}
+   Le vecteur de Poynting vaut
+   \begin{equation}
+     \Poy = \frac{\E\pv\B}{\mu_0} = \frac{E_0^2}{\omega\delta\mu_0} \e^{-2z /\delta} \cos\left(\omega t-\frac{z}{\delta}\right)\left[\cos\left(\omega t-\frac{z}{\delta}\right)+\sin\left(\omega t-\frac{z}{\delta}\right)\right]\ez.
+   \end{equation}
+   Le deuxième terme en $\cos \cdot \sin$ est de moyenne temporelle nulle. Le premier terme donne
+  \eqbox{
+    \avg{\Poy}=\frac{E_0^2}{2\mu_0\omega\delta} \e^{-2z /\delta} \ez.
+  }
+  L'énergie se propage dans la direction $\ez$ et décroît exponentiellement avec la distance. Cette décroissance traduit l'absorption de l'énergie par les électrons de conduction du métal.
+
+\begin{exemple}{Bilan énergétique de l’effet de peau}
+On rappelle que $\avg{\Pi}$ représente la puissance électromagnétique moyenne traversant une surface unité. Déterminer la puissance volumique moyenne $\avg{p_{\rm vol}}$ perdue par effet Joule, puis la puissance perdue par unité de surface du métal entre la surface et la profondeur $z$. Commenter.
+
+\examplesol{
+
+La puissance moyenne traversant une section unité du métal orthogonal à la direction de propagation vaut
+\begin{equation}
+  \mc{P} = \avg{\Pi}= \frac{E_0^2}{2\mu_0\omega\delta} \e^{-2z /\delta} = \frac{E_0^2}{2\sqrt{2}} \sqrt{\frac{\sigma_0}{\mu_0 \omega}} \e^{-2z /\delta}.
+\end{equation}
+La puissance volumique moyenne perdue par effet Joule vaut $\avg{\j\cdot\vv{E}}=\sigma_0\avg{E^2}=\frac{\sigma_0 E_0^2}{2}\,\e^{-\frac{2z}{\delta}}$. La puissance absorbée entre la surface et la profondeur $z$ par unité de surface vaut
+\begin{equation}
+  \mc{P}_{\rm Joule} = \int_0^z \avg{\vv{j}\cdot\vv{E}} \d z =\, \int_0^z \frac{\sigma_0 E_0^2}{2}\,\e^{-\frac{2z’}{\delta}} \d z’ = \frac{\sigma_0 E_0^2}{2} \frac{\delta}{2} \left(1-\e^{-\frac{2z}{\delta}}\right) = \frac{E_0^2}{2\sqrt{2}} \sqrt{\frac{\sigma_0}{\mu_0 \omega}} \left(1-\e^{-\frac{2z}{\delta}}\right).
+\end{equation}
+La puissance totale $\mc{P} + \mc{P}_{\rm Joule} = \frac{E_0^2}{2\sqrt{2}} \sqrt{\frac{\sigma_0}{\mu_0 \omega}}$ est bien conservée.
+
+}
+\end{exemple}
+
+
+
+
+
+
+\begin{figure}[H]
+  \centering
+  \includegraphics{metal_k.pdf}
+  \caption{Vecteur d'onde complexe $\udl{k}$ fonction de la pulsation $\omega$ (échelle logarithmique) dans un métal. Le régime ARQS correspond à $\omega \ll \omega_c \sim \SI{e14}{rad.s^{-1}}$ : le champ électromagnétique obéit à une équation de diffusion et $\re\,\udl{k} = \im\,\udl{k} \propto \sqrt{\omega}$ : il s'agit de l'effet de peau. Le régime plasma correspond à $\omega \gg \omega_c \sim \SI{e14}{rad.s^{-1}}$. Si $\omega < \omega_p \sim \SI{e16}{rad.s^{-1}}$, on a $\re \,\udl{k} = 0$ et le plasma agit comme un miroir parfait et l'onde est évanescente. Si $\omega > \omega_p \sim \SI{e16}{rad.s^{-1}}$, on a $\im\, \udl{k}= 0$ et le plasma est transparent, l'onde est une OPPH.
+  }
+  \label{fig:}
+\end{figure}
+
+  % Autrement dit l'onde transporte de l'énergie au cours de la propagation (même si cette énergie décroît exponentiellement à cause de l'atténuation). D'autre part à basse fréquence, la conductivité est réelle et indépendante de $\omega$ et donc  Il existe un effet Joule qui a essentiellement lieu en surface du conducteur. Nous avons déjà observé et décrit ce phénomène dans l'exercice du TD20 sur le chauffage par induction.
+
+ 
+
+  %L'onde traverse alors le conducteur sans s'atténuer: le milieu est transparent.
+%
+% \paragraph{Point de vue énergétique}
+%
+% L'étude est rigoureusement identique à celle du plasma à basse fréquence pour $\omega<\omega_{\rm{p}}$. Montrons tout d'abord qu'il y a atténuation de l'onde mais sans absorption d'énergie par le milieu. D'après l'expression de la conductivité, en haute fréquence, $\underline{\sigma}\simeq -i\frac{\sigma_0}{\omega\tau}$ et donc puisque la conductivité complexe est imaginaire pure, $\vv{j}$ et $\vv{E}$ sont en quadrature de phase. On en déduit que $\avg{\vv{j}\cdot\vv{E}}=0$ donc le champ ne transmet en moyenne aucune énergie au milieu.
+%
+% On peut aussi montrer qu'en moyenne l'onde ne rayonne aucune puissance. Pour cela il faut évaluer le vecteur de Poynting. Supposons par exemple que l'onde est polarisée selon $\vv{e_x}$ (elle est transverse électrique, donc forcément orthogonale à $\vv{e_z}$). D'après la relation de structure (équation de Maxwell-Faraday) on a que
+%   \begin{equation}
+%   \omega\vv{\underline{B}}=\vv{\underline{k}}\pv\vv{\underline{E}}=-\frac{i}{\delta}\vv{e_z}\pv E_0\,\e^{-\frac{z}{\delta}}\e^{i\omega t}\vv{e_x}=\frac{E_0}{\delta}\e^{-\frac{z}{\delta}}\e^{i(\omega t-\frac{\pi}{2})}\ey
+%   \end{equation}
+%    et donc en prenant la partie réelle on obtient que
+% \begin{equation}
+%    \vv{B}=\frac{E_0}{\omega\delta}\e^{-\frac{z}{\delta}}\sin(\omega t)\ey
+%    \end{equation}
+%   qui est en quadrature avec $\vv{E}$. On en déduit donc que la valeur moyenne de la norme du vecteur de Poynting est nulle
+
+\end{document}

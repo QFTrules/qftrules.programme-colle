@@ -1,0 +1,89 @@
+\input{/home/eb/Dropbox/texmf/tex/latex/Preambles/tikz.tex}
+\begin{document}
+\contourlength{1.1pt}
+\colorlet{mydarkblue}{blue!40!black}
+\colorlet{myblue}{blue!30}
+\colorlet{myred}{red!65!black}
+\colorlet{vcol}{green!45!black}
+\colorlet{watercol}{blue!80!cyan!10!white}
+\colorlet{darkwatercol}{blue!80!cyan!80!black!30!white}
+\tikzstyle{water}=[draw=mydarkblue,top color=watercol!90,bottom color=watercol!90!black,middle color=watercol!50,shading angle=0]
+\tikzstyle{horizontal water}=[water,
+  top color=watercol!90!black!90,bottom color=watercol!90!black!90,middle color=watercol!80,shading angle=0]
+\tikzstyle{dark water}=[draw=blue!20!black,top color=darkwatercol,bottom color=darkwatercol!80!black,middle color=darkwatercol!40,shading angle=0]
+\tikzstyle{vvec}=[->,very thick,vcol,line cap=round]
+\tikzstyle{force}=[->,myred,very thick,line cap=round]
+\tikzstyle{width}=[{Latex[length=3,width=3]}-{Latex[length=3,width=3]}]
+
+
+% CONTINUITY EQUATION
+\begin{tikzpicture}[xscale=-1]
+  \def\LL{2.0}         % length pipe left
+  \def\LR{1.7}         % length pipe right
+  \def\L{3.0*\LL}      % total length
+  \def\l{\L-\LL-\LR}   % length between pipes
+  \def\xL{0.8*\LL}    % position volume left
+  \def\xR{\L-0.80*\LR} % position volume right
+  \def\lL{0.7*\LR}     % length volume left
+  \def\lR{\lL*\ry/\Ry} % length volume right
+  \def\rx{0.08}        % small pipe horizontal radius left
+  \def\ry{0.32}        % small pipe vertical radius left
+  \def\Rx{0.18}        % big pipe vertical radius right
+  \def\Ry{0.90}        % big pipe vertical radius right
+  \def\v{1.3}          % velocity magnitude
+
+  % WATER
+  \draw[horizontal water]
+    (0,\ry) -- (0,-\ry)  coordinate (A1) --++ (\LL,0) to[out=0,in=180]
+    (\L-\LR,-\Ry) -- (\L,-\Ry) coordinate (A2) arc(-90:90:{\Rx} and \Ry)
+    --++ (-\LR,0)  to[out=180,in=0] (\LL,\ry) -- cycle;
+  \node[below] at (\xL,-\ry) {$S_1$};
+  \node[below] at (\xR,-\Ry) {$S_2$};
+
+  % VOLUMES
+  \draw[dark water,dashed,very thin]
+  (\xL,0) ellipse({\rx} and \ry)
+  (\xR,0) ellipse({\Rx} and \Ry);
+  % \begin{scope}[xscale=-1]
+  \draw[vvec] (\xL,0) --++ (-\v*0.8,0) node[right] {$\Vec{v_1}$};
+  \draw[vvec] (\xR,0) --++ (-\v*\ry/\Ry,0) node[right] {$\Vec{v_2}$};
+  % \end{scope}
+  % \draw[dark water]
+  %   (\xL,\ry) arc(90:-90:{\rx} and \ry) --++ (\lL,0)
+  %             arc(-90:90:{\rx} and \ry) -- cycle;
+  % \draw[dark water]
+  %   (\xR,\Ry) arc(90:-90:{\Rx} and \Ry) --++ (\lR,0)
+  %             arc(-90:90:{\Rx} and \Ry) -- cycle;
+  % \draw[width]
+  %   (\xL,-1.6*\ry) --++ (\lL,0) node[midway,fill=white,inner sep=0] {$\ell_1$};
+  % \draw[width]
+  %   (\xR,-1.15*\Ry) --++ (\lR,0) node[midway,below] {$\ell_2$};
+
+  % CONTAINER
+  \draw[mydarkblue,thick]
+    (0,\ry) -- (0,-\ry) coordinate (A1) --++ (\LL,0) to[out=0,in=180]
+    (\L-\LR,-\Ry) -- (\L,-\Ry) coordinate (A2) arc(-90:90:{\Rx} and \Ry)
+    --++ (-\LR,0)  to[out=180,in=0] (\LL,\ry) -- cycle;
+
+  % air one
+  \fill[white] (4.3,0.88) coordinate (A) rectangle ++(0.2,1) coordinate (B);
+  \draw[water,draw=watercol!90!black] (A) rectangle ++(0.2,0.5) coordinate (C);
+  \draw[mydarkblue,thick] (A) -- ++ (0,1);
+  \draw[mydarkblue,thick] (B) -- ++ (0,-1);
+
+
+  % air two
+  \fill[white] (1.2,0.31) coordinate (A) rectangle ++(0.2,1.58) coordinate (B);
+  \draw[water,draw=watercol!90!black] (A) rectangle ++(0.2,0.5) coordinate (C1);
+  \draw[densely dashed,black] (C1) -- ++ (-0.2,0);
+  \draw[mydarkblue,thick] (A) -- ++ (0,1.58);
+  \draw[mydarkblue,thick] (B) -- ++ (0,-1.58);
+
+  \draw[densely dashed,black] (C) -- ++ (-3.25,0) coordinate (D);
+  \draw[<->] (D) ++ (-0.15,0) -- ++ (0,-0.56) node[midway,right] {$h$};
+
+  \draw[water,thick]
+    (0,0) ellipse({\rx} and \ry);
+
+\end{tikzpicture}
+\end{document}

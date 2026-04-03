@@ -1,0 +1,137 @@
+\input{/home/eb/Dropbox/texmf/tex/latex/Preambles/tikz.tex}
+% \usetikzlibrary{decorations}
+% \pgfkeys{/pgf/decoration/.cd,
+%          start color/.store in =\startcolor,
+%          end color/.store in   =\endcolor
+% }
+% \newcounter{alongline}
+% \pgfdeclaredecoration{sinoidal color change}{initial}{
+%  \state{initial}[width=0pt, next state=line]{\setcounter{alongline}{0}}
+%  \state{line}[width=0.5pt]{%
+%    %\pgfsetarrows{-}%
+%    \stepcounter{alongline}
+%    \pgfmathsetmacro{\x}{100*sin(\thealongline/pi/2)}
+%    % \typeout{\thealongline:\x,\pgfdecoratedpathlength}
+%    \pgfpathmoveto{\pgfpointorigin}%
+%    \pgfpathlineto{\pgfqpoint{.75pt}{0pt}}%
+%    \pgfsetstrokecolor{\endcolor!\x!\startcolor}%
+%    \pgfusepath{stroke}%
+%  }
+%  \state{final}{%
+%    %\pgfsetlinewidth{\pgflinewidth}%
+%    \pgfpathmoveto{\pgfpointorigin}%
+%    %\color{\endcolor!\x!\startcolor}%
+%    \pgfusepath{stroke}%
+%  }
+% }
+\begin{document}
+\begin{tikzpicture}
+\def\l{2.5}
+%
+% \newcommand{\boite}[2]{
+% \begin{scope}[shift={#1}]
+% \fill[rounded corners=10pt,fill=JoliRouge!10!white] (0,0) rectangle (\l,1);
+% \node[align=center] at (0.5*\l,0.5) {#2};
+% \end{scope}
+% }
+%
+% \newcommand{\Boiteb}[2]{
+% \begin{scope}[shift={#1}]
+% \fill[rounded corners=10pt,fill=white,draw=JoliBleu,thick] (-0.1*\l,0) rectangle (1.1*\l,1);
+% \node[align=center] at (0.5*\l,0.5) {#2};
+% \end{scope}
+% }
+%
+% \newcommand{\Boiter}[2]{
+% \begin{scope}[shift={#1}]
+% \fill[rounded corners=10pt,fill=white,draw=JoliRouge,thick] (-0.1*\l,0) rectangle (1.1*\l,1);
+% \node[align=center] at (0.5*\l,0.5) {#2};
+% \end{scope}
+% }
+%
+% \newcommand{\link}[5]{
+% \draw[->,>=latex, #4] ($(#1) + (0.5*\l,0)$) --  ($(#2) + (0.5*\l,1.1)$) node[midway,#5,fill=white,inner sep=3pt]{#3};}
+% \newcommand{\linkl}[5]{
+% \draw[->,>=latex, #4] ($(#1) + (\l,0)$) -- ($(#2) + (0.5*\l,1.1)$) node[midway,#5,fill=white,inner sep=3pt]{#3};}
+% \newcommand{\linkr}[5]{
+% \draw[->,>=latex, #4] ($(#1) + (0,0)$) --  ($(#2) + (0.5*\l,1.1)$) node[midway,#5,fill=white,inner sep=3pt]{#3};}
+
+% \coordinate (P) at (-4,3);
+% \node at (P) {\includegraphics[width=1.5cm]{rho.png}};
+% \node[right=1cm] at (P) {$\d q = \rho \d \mc{V}$};
+% \coordinate (Q) at (1,3);
+% \node at (Q) {\includegraphics[width=1.5cm]{sigma.png}};
+% \node[right=1cm] at (Q) {$\d q = \sigma \d S$};
+% \coordinate (R) at (8,3.5);
+% \node at (R) {\includegraphics[width=6cm]{lambda.png}};
+% \node[right=1cm] at ($(R)+(-2,-0.75)$) {$\d q = \lambda \d \ell$};
+
+\coordinate (A) at (0,0);
+\coordinate (B) at (0,-5);
+% \coordinate (C) at (-4,-3);
+%\node[shift={(0.5*\l,1.5)}] at (A) {\includegraphics[scale=1]{charge.pdf}};
+\boite{(A)}{Courant}
+\boite{(B)}{Invariances \\[-0.1cm]Symétries}
+% \boite{(C)}{Calcul\\[-0.1cm] direct}
+\link{A}{B}{haute symétrie}{ultra thick}{sloped,above=1pt}
+% \linkr{A}{C}{basse symétrie}{}{sloped,above=1pt}
+
+\node[shift={(3.5,3)}] at (B) {\includegraphics[width=3cm]{fil_infini.pdf}};
+% \node[shift={(3.5,0.4)}] at (B) {\includegraphics[width=1.5cm]{sphere.png}};
+% \node[shift={(1,-0.8)}, rotate=90] at (B) {\includegraphics[width=1.2cm]{cylindre.png}};
+% \node[shift={(-1,0.3)}] at (B) {\includegraphics[width=1.5cm]{disque.png}};
+%\node[shift={(-1,1.3)},rotate=80] at (B) {\includegraphics[width=0.5cm]{fil.png}};
+
+% \coordinate (E) at (-2,-6);
+% \coordinate (D) at (-6,-6);
+% \Boiteb{(D)}{$V=${\large$\int\!\!\frac{\d q}{4\pi\varepsilon_0 r}$}}
+% \Boiter{(E)}{$\Vec{E}=${\large$\int\!\!\frac{\d q}{4\pi\varepsilon_0}\frac{\vv{r}}{r^3}$}}
+% \linkr{C}{D}{}{left=1pt,ultra thick}{}
+% \linkl{C}{E}{}{right=1pt}{}
+
+\coordinate (G) at (-3,-8);
+\coordinate (F) at (3,-8);
+\boite{(F)}{Circulation}
+\boite{(G)}{Équations}
+\linkl{B}{F}{forme intégrale}{ultra thick}{sloped,above=1pt}
+\linkr{B}{G}{forme locale}{}{sloped,above=1pt}
+
+% \coordinate (H) at (-6,-11);
+\coordinate (I) at (-3,-11);
+\coordinate (Ibis) at (-3,-14);
+% \Boiteb{(H)}{$\Delta V + \frac{\rho}{\varepsilon_0}=0$}
+\Boiter{(I)}{$\rot{\Vec{B}}=\mu_0 \j$}
+\Boiter{(Ibis)}{$\dive{\B}=\Vec{0}$}
+% \linkr{G}{H}{\textsc{Poisson}}{ultra thick}{}
+\link{G}{I}{\textsc{Maxwell}}{}{}
+
+
+
+\coordinate (J) at (3,-11);
+\coordinate (Jbis) at (3,-14);
+\link{F}{J}{\textsc{Ampère}}{ultra thick}{}
+\Boiter[3]{(J)}{$\oint_{\Gamma}\vv{B}\cdot\vv{\d \ell}=\mu_0 I_{\rm enla}$ }
+\node[shift={(5,0.5)}] at (J) {\includegraphics[scale=0.25]{I_enlace.pdf}};
+
+\draw[densely dashed] ($(J)+(-0.3,0.5)$) -- ++ (-2.95,0);
+
+%\draw[decoration={sinoidal color change,   start color=JoliRouge, end color=JoliBleu},decorate] ($(Ibis)+(-0.25,0.5)$) -- ++ (-7.5,0) coordinate (Z) node[midway,above] {$\Vec{E}=-\Grad{V}$};
+%\draw[JoliBleu,->,>=latex] (Z) -- ++ (0,1);
+
+% \def\bott{-16}
+% \draw[JoliBleu,thick] (-6.25,\bott) -- ++ (0,-0.2) -- ++ (3,0) node[midway,below] {Potentiel} -- ++ (0,0.2) ;
+% \draw[JoliRouge,thick] (-2,\bott) -- ++ (0,-0.2) -- ++ (11.5,0) node[midway,below] {Champ} -- ++ (0,0.2) ;
+
+% \coordinate (N) at (-6,-14);
+% \Boiteb{(N)}{$\Vec{E}=-\Grad{V}$}
+% \draw[densely dashed] ($(N)+(\l+0.25,0.5)$) -- ($(Ibis)+(-0.25,0.5)$);
+\draw[densely dashed] ($(Jbis)+(-0.3,0.5)$) -- ++ (-2.95,0);
+\Boiter[3]{(Jbis)}{$\oiint_{S}\vv{B}\cdot\vv{\d S}=0$}
+\node[shift={(5.5,0.5)}] at (Jbis) {\includegraphics[scale=0.22]{flux_B.pdf}};
+
+
+\coordinate (M) at (3,-16);
+\link{M}{$(Jbis)+(0,-1.1)$}{\textsc{Thompson}}{ultra thick}{above=1pt}
+\boite{(M)}{Flux}
+\end{tikzpicture}
+\end{document}

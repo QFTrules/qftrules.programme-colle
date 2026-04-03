@@ -1,0 +1,25 @@
+\begin{tikzpicture}[scale=0.88,every node/.style={scale=0.84}]
+
+\begin{scope}[scale=1]
+\draw[-latex] (0,0,0) node[below]{$\ptO$} -- (4,0,0)node[right]{$y$};
+\draw[-latex] (0,0,0) node[above right]{$\ptA$} -- (0,2,0)node[above]{$z$};
+\draw[-latex] (0,0,0) -- (0,0,4) node[below]{$x$};
+\draw (0,0,3) node[left]{$\ptC$} -- (3,0,0) node[above right]{$\ptB$} -- (3,1.5,0) node[right]{$\ptB'$} -- (0,1.5,3) node[left]{$\ptC'$} -- cycle;
+\draw (3,1.5,0) -- (0,1.5,0) node[above right]{$\ptA'$} -- (0,1.5,3);
+
+\draw (0,0,1.5) node[left]{$c$};
+\draw (0,0.75,0) node[left]{$a$};
+\draw (1.5,0,0) node[above]{$b$};
+
+\draw[blue,thick,-latex]  (2,0,2) -- +(1,0,0) node[midway,below]{$\vec{B}$};
+
+\draw (2.5,0,6) node[text centered]{Circuit a)};
+\end{scope}
+
+\begin{scope}[shift = {(5,0,0)}]
+\draw (0,1.7) node[right]{$\ptA\ptA'=\ptB\ptB'=\ptC\ptC'=a$};
+\draw (0,1.1) node[right]{$\ptA\ptB=\ptA'\ptB'=b$};
+\draw (0,0.5) node[right]{$\ptA\ptC=\ptA'\ptC'=c$};
+\end{scope}
+
+\end{tikzpicture}

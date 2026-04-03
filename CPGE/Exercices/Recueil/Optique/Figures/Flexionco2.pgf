@@ -1,0 +1,35 @@
+\begin{tikzpicture}
+\draw[-latex] (-3,0) -- (3,0);
+\draw (3,0) node [below] {$\mathbf{e_{x}}$};
+
+\draw[-latex] (0,-1) -- (0,2);
+\draw (0,2) node [below right] {$\mathbf{e_{y}}$};
+
+\draw[bostonuniversityred,thick] (-2,-0.5) -- (0,1);
+\draw[bostonuniversityred,fill=bostonuniversityred] (0,1) circle (2pt);
+\draw[bostonuniversityred,fill=bostonuniversityred] (-2,-0.5) circle (2pt);
+\draw[bostonuniversityred] (0,1) node [above left] {C};
+\draw[bostonuniversityred] (-2,-0.5) node [below left] {O};
+\draw (0,0) node [below left] {G};
+
+\draw[bostonuniversityred,thick] (2,-0.5) -- (0,1);
+\draw[bostonuniversityred,fill=bostonuniversityred] (2,-0.5) circle (2pt);
+\draw[bostonuniversityred] (2,-0.5) node [below right] {O};
+
+\draw[-latex, thick] (0,0) -- (0,1);
+\draw (0,0.35) node [left] {$y_{2}$};
+
+\draw[-latex, thick] (-2,0) -- (-2,-0.5);
+\draw (-2,-0.25) node [left] {$y_{1}$};
+
+\draw[-latex, thick] (2,0) -- (2,-0.5);
+\draw (2,-0.25) node [right] {$y_{1}$};
+
+\draw [dashed] (0,1) -- (2,2.5);
+\draw [-latex] (1,0.25) arc  (-40:35:36pt);
+\draw (1.5,1) node {$\varphi$};
+
+
+
+
+\end{tikzpicture}

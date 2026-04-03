@@ -1,0 +1,34 @@
+\input{tikz.tex}
+\begin{document}
+\pgfdeclareverticalshading{rainbow}{100bp} {color(0bp)=(red); color(25bp)=(red); color(35bp)=(yellow); color(45bp)=(green); color(55bp)=(cyan); color(65bp)=(blue); color(75bp)=(violet); color(100bp)=(violet)}
+\colorlet{color min hsb}[hsb]{red}
+\colorlet{color max hsb}[hsb]{magenta}
+\begin{tikzpicture}[scale=1.5]
+    \foreach \pos in {0,...,100}{
+        \colorlet{my color hsb}[rgb]{color max hsb!\pos!color min hsb}
+        \coordinate (S2) at (0,{-1+\pos/1000});
+        \draw[thick,my color hsb,midarrow,dash pattern=on 0.1cm off 0.1cm on 0.1cm off 0.1cm  on 0.1cm off 0.1cm  on 10cm] (S2)  ..controls ++(1,0) and ++(-1,-1) .. ++(2,0);
+
+        \coordinate (S1) at (0,{0+\pos/1000});
+          \draw[thick,my color hsb,midarrow,dash pattern=on 0.1cm off 0.1cm on 0.1cm off 0.1cm  on 0.1cm off 0.1cm  on 0.1cm off 0.1cm  on 0.1cm off 0.1cm on 10cm] (S1) ..controls ++(1,-1) and ++(-1,1) .. ++(2,-1) coordinate (M);
+    }
+    \coordinate (S2) at (0,{-1+50/1000});
+    \node at (S2) [below,black] {\contour{white}{$\rm S_2$}};
+    \coordinate (S1) at (0,{0+50/1000});
+    \node at (S1) [above,black] {\contour{white}{$\rm S_1$}};
+    % point M
+    \node at (M) [right] {\contour{white}{$\rm M$}};
+    % trajets
+  
+    % \coordinate (S) at (-2,-0.5);
+    % dispositif
+    \draw (0.25,-1.8) arc (-60:60:0.5 and 1.5);
+    \draw (-0.25,-1.8) arc (-120:-240:0.5 and 1.5);
+    % \draw[thick,JoliRouge,midarrow] (S) -- ++ (-15:1.58) coordinate (S1);
+    % \draw[thick,JoliRouge,midarrow] (S) -- ++ (15:1.58) coordinate (S2);
+    % \node at (S) {\small  $\bullet$};
+    % \node at (S) [left=0.2] {$\rm S$};
+    % \fill[JoliRouge,opacity=0.1] (S) -- (S1) -- (S2) -- cycle;
+    \node at (0,0.6) {\contour{white}{dispositif}};
+\end{tikzpicture}
+\end{document}

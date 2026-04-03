@@ -1,0 +1,70 @@
+\documentclass[12pt,fancy]{cours}
+\title{Méthodologie pour la physique}
+\usepackage{wrapfig}
+\begin{document}
+\maketitle
+
+
+\section{Rédaction}
+\subsection{Présentation}
+
+\begin{exemple}{Bonne présentation}
+{ \begin{wrapfigure}{r}{0.35\textwidth}
+        \centering
+        \includegraphics[width=0.4\columnwidth]{Pendulum.pdf}
+    \end{wrapfigure}
+On définit un repère cartésien $(O,x,y)$ comme sur le schéma ci-contre. La base polaire locale en un point $M(r,\theta)$ est donnée par les vecteurs $(\er,\et)$ tels que 
+$$
+\begin{cases}
+\er = \sin \theta\, \ex  -\cos\theta\, \ey,\\
+\et = \cos \theta\, \ex  +\sin\theta\, \ey.
+\end{cases}
+$$
+\vspace{0.25cm}
+
+\udl{Référentiel :}
+    on travaille dans le référentiel $\mathcal{R}$ de la voiture en mouvement, non galiléen, en translation rectiligne d'accélération constante $\Vec{a}(O)_{\mc{\RT}} = a \, \ex$ par rapport au référentiel terrestre, supposé galiléen. 
+    \vspace{0.5cm}
+    
+    \udl{Système} : \{masse $m$\} à l'extrémité $M$ du pendule simple de longueur $L$.
+
+    \vspace{0.5cm}
+\udl{Bilan des actions mécaniques :} les forces réelles sont:
+\begin{liste}
+    \item Le poids  $\Vec{P} = -mg\,\ey$.
+    \item La tension du fil $\Vec{T} = -T \er = -T \sin \theta\, \ex + T \cos\theta\, \ey$.
+\end{liste}
+Les forces d'inertie sont :
+\begin{liste}
+    \item la force d'inertie d'entraînement $\Fe = -ma\, \ex$ ;
+    \item la force de Coriolis, nulle car $\mc{R}$ est en translation.
+\end{liste}
+\vspace{0.5cm}
+}
+   \udl{Principe d'inertie :} le bilan des forces l'équilibre donne 
+   $$\Vec{P} + \Vec{T} + \Fe = \Vec{0},$$
+   soit après projection 
+   $$
+\begin{cases}
+    -ma -T\sin \theta_0=0, \quad(\text{selon } \ex )\\
+    -mg +T\cos\theta_0=0. \quad (\text{selon } \ey )
+\end{cases}
+\Rar 
+\begin{cases}
+    T\cos\theta_0=mg,\\
+    T\sin \theta_0=-ma.	
+\end{cases}
+   $$
+%    $-mg +T\cos\theta_0=0 \Rightarrow T\cos\theta_0=mg$ (selon $\ey$) et $-ma -T\sin \theta_0=0 \Rightarrow T\sin \theta_0=-ma$ (selon $\ex$), ce qui donne
+%     $$
+    Le rapport des deux équations donne $$\tan\theta_0 =  \frac{\sin\theta_0}{\cos\theta_0} =\frac{T\sin\theta_0}{T\cos\theta_0} = \frac{-ma}{mg},$$
+    d'où l'on conclut
+    \eqbox{
+        \tan\theta_0 = -\frac{a}{g}.
+        }
+        \vspace{0.25cm}
+
+        \udl{Commentaire :} on remarque que $\theta_0<0$ si $a>0$, donc le pendule pend vers la gauche si la voiture accélère vers la droite. On retrouve $\theta_0 = 0$ en l'absence d'accélération $a=0$, comme il se doit. On voit que $\theta_0 \xrightarrow{} -\frac{\pi}{2}$ dans la limite d'une accélération $a\xrightarrow{} +\infty$ : le pendule ne peut pas dépasser l'horizontale !
+    \end{exemple}
+
+\end{document}

@@ -1,0 +1,14 @@
+% !TEX root = /home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Fluide/Figures/poiseuille_plan.tex
+\input{tikz.tex}
+\begin{document}
+\begin{tikzpicture}[font=\footnotesize,scale=1]
+    \shade[top color=lightgray,bottom color=lightgray,middle color=white]  (-4,-1)--++(8,0)--++(0,2)--++(-8,0)--cycle;
+    \draw[ultra thick](-4,-1)--++(8,0);
+    \draw[ultra thick](-4,1)--++(8,0);
+    \draw[dashed,->] (-4,0)--++(8.5,0) node[right]{$x$};
+    \draw[|<->|] (-4,1.5)--++(8,0) node[midway, above]{$L$};
+    \draw[|<->|] (-4.1,-1)--++(0,2) node[midway, left]{$h$};
+    \draw[vecteur] (0,0.5)--++(1,0)node[right]{$\Vec{v}(M)$};
+    \draw (0,0.5)node{\scriptsize $\bullet$}node[above=0.1]{M};
+    \end{tikzpicture}
+\end{document}

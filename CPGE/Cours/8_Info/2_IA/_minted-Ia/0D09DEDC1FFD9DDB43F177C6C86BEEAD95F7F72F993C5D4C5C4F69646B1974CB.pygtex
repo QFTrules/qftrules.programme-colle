@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kn}{from}\PYG{+w}{ }\PYG{n+nn}{random}\PYG{+w}{ }\PYG{k+kn}{import} \PYG{n}{sample}
+\PYG{k}{def}\PYG{+w}{ }\PYG{n+nf}{centres}\PYG{p}{(}\PYG{n}{E}\PYG{p}{,} \PYG{n}{k}\PYG{p}{):}
+    \PYG{k}{return} \PYG{n}{sample}\PYG{p}{(}\PYG{n}{E}\PYG{p}{,} \PYG{n}{k}\PYG{p}{)}  \PYG{c+c1}{\PYGZsh{} k éléments distincts de E}
+\end{Verbatim}

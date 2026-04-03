@@ -1,0 +1,13 @@
+﻿\begin{tikzpicture}[scale=0.9]
+	\shadedraw[color=gray,top color=white,bottom color=gray] (-1.5,4)--++(0,-4)--++(5,0)--++(0,4)--cycle;
+	\draw[] (2,4)node[below left]{Fluide};
+	\patate[shift={(0,2.5)}, fill=lightgray,line width=2pt];
+	\draw[vecteur] (-0.1,2.3)--++(-1,0.2) node[above]{$\Vec{\mathrm{d}S}$};
+	\draw[force] (-0.1,2.3)--++(2,-0.4) node[above]{$\Vec{\mathrm{d}F}_{p}$};
+	\node (M) at (0.5,2) {};
+	\node (MM) at (0.5,0.5){};
+	\draw[->] (M) to[out=180,in=180] (MM.west)node[right]{Particule de fluide} ;
+	\draw[lightgray,line width=2pt,shift={(-0.1,2.2)}](0,0)--++(0.04,0.2);
+\end{tikzpicture}.2);
+\end{tikzpicture},2.2)}](0,0)--++(0.04,0.2);
+\end{tikzpicture}

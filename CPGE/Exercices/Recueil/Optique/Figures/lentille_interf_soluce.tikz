@@ -1,0 +1,38 @@
+\input{/home/eb/Dropbox/texmf/tex/latex/Preambles/tikz.tex}
+\begin{document}
+﻿\begin{tikzpicture}[scale=1.2]
+
+\coordinate (C) at (-3,0);
+\coordinate (A) at (1,0);
+\coordinate (Q) at (-1,0);
+\coordinate (O) at (0,0);
+\coordinate (E) at (5,0);
+\coordinate (F) at (-1.5,0);
+\coordinate (F') at (1.5,0);
+\draw[dashed] (F) -- (E);
+
+% L1
+\lens[$\mc{L}$]{(O)}{1}
+
+% fente
+\def\len{6}
+\draw[JoliBleu] (F)  -- (L1) -- ++ (\len,0) coordinate (G1);
+\draw[JoliBleu] (F)  -- (L2) -- ++ (\len,0) coordinate (G2);
+\fill[JoliBleu,opacity=0.1] (L1) -- (L2) -- (G2) -- (G1) -- cycle;
+
+\bull[below]{(F)}{$A=F$}
+% \bull[above=0.1]{(F')}{$F'$}
+\obj[]{(F)}{0.5}
+% \bull[right]{(E)}{$S’$}
+% \img[]{(E)}{-1}r
+
+% \bull[below]{(Q)}{$F$}
+% \bull{(A)}{$F’$}
+
+\draw[JoliRouge,dashed] (B) -- (O) -- (\len,-2);
+\draw[JoliRouge] (B) -- (L1) -- ++ (\len,-2) coordinate (H1);
+\draw[JoliRouge] (B) -- (L2) -- ++ (\len,-2) coordinate (H2);
+\fill[JoliRouge,opacity=0.1] (L1) -- (L2) -- (H2) -- (H1) -- cycle;
+
+\end{tikzpicture}
+\end{document}

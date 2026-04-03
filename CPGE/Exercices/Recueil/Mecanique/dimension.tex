@@ -1,0 +1,60 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[MPSI][1][colle]{Estimation de l'énergie d'une bombe atomique}
+	\Notions{\item Analyse dimensionnelle}
+En 1949, G. \textsc{Taylor} proposa une estimation du rayon $R$ de la poche de gaz chaud produite par l'explosion d'une bombe atomique en fonction du temps $t$ écoulé depuis le début de la déflagration.
+%%% FIGURE : %%%%
+%\begin{figure}[h!]
+%\centering
+\begin{fig}[bombe]
+	\centering
+	\includegraphics[width=0.5\columnwidth]{bombe.jpg}
+	\capt{Cliché de l'explosion d'une bombe atomique à l'instant $t=\SI{16}{ms}$.}
+\end{fig}
+%\label{fig:bombe}
+%\end{figure}
+%%%%%%%%%%%%%%
+\begin{quest}
+	\item Quelles grandeurs physiques vous semblent pertinentes pour décrire le plus simplement possible l'évolution du rayon $R(t)$ parmi les suivantes : temps~$t$, énergie totale libérée $E$, masse de la bombe $m$, masse volumique de l'air $\rho$, pourcentage en dioxygène de l'air $\eta({\rm O}_2)$. Lesquelles sont des variables ? Lesquelles des paramètres~?
+	
+	\sol{$E$, $\rho$, $t$. Masse $m$ redondante avec $E$, et effet de $\eta({\rm O}_2)$ négligeable en première approximation. $t$ et $R$ variable, les autres paramètres.}
+	 
+	\item Donner la dimension physique (en terme de temps T, longueur L et masse M) de toutes les grandeurs citées ci-dessus, ainsi que leur unité et un ordre de grandeur pour la masse volumique $\rho$ et le pourcentage en dioxygène de l'air $\eta({\rm O}_2)$.
+	
+	\sol{$[t]=$s=T, $[E]=$J=ML$^2$T$^{-2}$, $\rho=$kg$\cdot$m$^{-3}$=ML$^{-3}$, $[\eta]=\%=1$. Typiquement, $\rho=1.2\,$kg$\cdot$m$^{-3}$ et $\eta({\rm O}_2)=21\,\%$.}
+	
+	\item Par analyse dimensionnelle, donner à un facteur numérique près l'expression de $R(t)$. 
+	
+	\sol{$R^5=t^2 E/\rho$}
+	\item À partir de la \Fig{bombe}, estimer le rayon $R(t)$ à l'instant temps $t$ du cliché, en accompagnant ces valeurs de leurs incertitudes respectives, et en déduire l'énergie $E$ relâchée par la bombe. On adoptera la notation appropriée pour représenter ces valeurs numériques.
+	
+	\sol{$t = (0.016 \pm 0.001)\,$s, $R = (2.5 \pm 0.5)\cdot 10^2\,$m d'où $E \sim 5\cdot 10^{15}\,$J.}
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PCSI]{Énergie produite par une bombe atomique}
+En 1949, Geoffrey Taylor proposa une estimation du rayon $R(t)$ de la poche de gaz chaud produite par l'explosion d'une bombe atomique en fonction du temps $t$ écoulé depuis le début de la déflagration.
+%%% FIGURE : %%%%
+%\begin{figure}[h!]
+%\centering
+\begin{center}
+\includegraphics[width=0.4\textwidth]{bombe.jpg}
+\end{center}
+%\caption{Observation de l'explosion d'une bombe atomique.}
+%\label{fig:bombe}
+%\end{figure}
+%%%%%%%%%%%%%%
+\begin{quest}
+	\item On indique que le rayon $R(t)$ dépend des grandeurs suivantes : temps~$t$, énergie libérée $E$, masse volumique de l'air $\rho$. Donner la dimension physique (en terme de temps T, longueur L et masse M) de chacune de ces grandeurs citées, ainsi que leur unité. Proposer un ordre de grandeur pour la masse volumique $\rho$ de l’air.
+	
+	\sol{$[t]=$s=T, $[E]=$J=ML$^2$T$^{-2}$, $\rho=$kg$\cdot$m$^{-3}$=ML$^{-3}$. Typiquement, $\rho=1.2\,$kg$\cdot$m$^{-3}$.}
+	
+	\item G. Taylor proposa que le rayon vérifie la loi $R^5=t^2 E/\rho$. Vérifier l’homogénéité de cette relation.
+	
+	\item À partir de la figure, estimer le rayon $R(t)$ et le temps $t$ au moment du cliché, en accompagnant ces valeurs de leurs incertitudes respectives, et en déduire l'énergie $E$ produite par la bombe. On adoptera la notation appropriée pour représenter ces valeurs numériques.
+	
+	\sol{$t = (0.016 \pm 0.001)\,$s, $R = (2.5 \pm 0.5)\cdot 10^2\,$m d'où $E \sim 5\cdot 10^{15}\,$J.}
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

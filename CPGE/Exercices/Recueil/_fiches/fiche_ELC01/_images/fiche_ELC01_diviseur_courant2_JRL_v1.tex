@@ -1,0 +1,11 @@
+\begin{tikzpicture}[
+	font=\footnotesize,
+	]
+	\draw (-2,0)--++(4,0);
+	\draw[fill=white] (-1,-.5)rectangle (1,.5);	
+	\resistanceH{shift={(0,.5)}}{$\alpha R$};
+	\resistanceH{shift={(0,-.5)}}{$R$};
+	\draw[-latex,shift={(-2,0)}](0,0)--++(10pt,0)node[midway,above]{$i$};
+	\draw[-latex,shift={(0.5,.5)}](0,0)--++(10pt,0)node[midway,above]{$i_1$};
+	\draw[-latex,shift={(0.5,-.5)}](0,0)--++(10pt,0)node[midway,above]{$i_2$};
+\end{tikzpicture}

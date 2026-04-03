@@ -1,0 +1,914 @@
+% displayname : Écoulements visqueux
+\documentclass[12pt,fancy]{cours}
+\Chapit{4}{3}
+\begin{document}
+\maketitre{
+Même dans le cas où l'on peut négliger les transferts thermiques dans un écoulement, il existe des transferts de quantité de mouvement dans un écoulement réel, en raison des collisions des particules du fluide. Nous allons étudier ce phénomène, appelé viscosité, dans le cas d'un fluide modèle appelé fluide newtonien, pour obtenir une nouvelle équation de la dynamique : l'équation de Navier-Stokes. Un nombre sans dimension, le nombre de Reynolds, jouera un rôle capital pour caractériser l'écoulement. 
+% Nous verrons qu'il gouverne entre autres l'échelle caractéristique des phénomènes visqueux, appelée épaisseur de la couche limite.
+}
+{
+	\item Cours Statique des fluides - 0
+	% \item Documents de cours Statique des fluides - 2
+	\item TD Statique des fluides
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{La force visqueuse}
+
+\subsection{Notion de viscosité}
+\label{sec:couette}
+\parag{Observation}
+
+Considérons un fluide réel entre deux plaques planes, dont celle du bas est immobile, et celle du haut se déplace à la vitesse constante $U\,\ex$, comme illustré en Fig.~\ref{fig:couetteplan}. Un tel écoulement est appelé \imp{cisaillement}. Raisonnons sur le comportement du fluide.
+\begin{liste}
+	\item Pour un écoulement parfait, on s'attendrait à ce que le fluide reste immobile, car les conditions aux limites n'imposent aucune contrainte sur la vitesse tangentielle.
+	\item Pour un écoulement réel, on observe que le fluide est entraîné par la plaque mobile. Le fluide s'oppose donc au cisaillement est \guill{s'accroche} à la paroi. L'écoulement est \imp{visqueux}.
+\end{liste}
+
+% On observe que le fluide est entraîné par la plaque mobile, contrairement au comportement attendu pour un fluide parfait. En effet, les conditions aux limites pour un écoulement parfait impose la continuité de la vitesse normale, mais pas de la vitesse tangentielle. Le fluide n'aurait aucune raison de se mettre en mouvement dans ce dispositif ! Cette écart à l'écoulement parfait montre que le fluide est \imp{visqueux}. 
+\begin{definition}[Viscosité]\label{def:}
+	La \imp{viscosité} désigne les phénomènes de résistance d’un fluide au cisaillement. La viscosité est négligée dans les écoulements parfaits.
+\end{definition}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{couette_plan.pdf}
+	\caption{Cisaillement d’un fluide visqueux entre deux plaques planes, la plaque haute étant entraînée à la vitesse $U\ex$. La viscosité induit un écoulement dans le fluide entre les plaques, dont le profil de vitesse est $\Vec{v} = v_x(y)\vec{e_x}$. Pour un fluide newtonien, la force exercée par une couche de surface $\d S$ sur la couche inférieure est de la forme $\d \vec{F_{\rm{v}}}=\eta\frac{\partial v_{x}}{\partial y}\d S\vec{e_x}$.}
+	\label{fig:couetteplan}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+Étudions plus en détail le profil d’écoulement de la Fig.~\ref{fig:couetteplan}. Nous supposons que l'écoulement est stationnaire, dans la direction $(Ox)$, et invariant par translation dans les directions $(Ox)$ et $(Oz)$. On peut postuler un profil de vitesse de la forme
+$$
+\Vec{v}(M) = v_x(y)\ex.
+$$
+Deux couches élémentaires de fluide en contact, d’altitudes $y + \d y$ et $y$, vont donc à des vitesses différentes. On appelle taux de cisaillement $\gamma$ (en  $\SI{}{s^{-1}}$) la variation de vitesse par unité de distance entre couches, 
+% \eqbox{
+$$\gamma = \dr{v_x}{y}.$$
+% }
+% La grandeur $\dd{v_x}{y}$ est le taux de cisaillement (homogène à l’inverse d’un temps, en $\SI{}{s^{-1}}$). Le taux de cisaillement s'interprète comme l'inverse du temps nécessaire pour qu'une couche glisse sur une distance égale à son épaisseur.
+
+\parag{Interprétation}
+Si les couches ne vont pas à la même vitesse, c'est qu'elles ont été accélérées dans la direction $(Ox)$ lors de la mise en mouvement de la plaque. Il y a donc une force qui s'exerce dans la direction de l'écoulement. Considérons deux particules de fluide, d'altitudes $y$ et $y+\d y$, en contact au niveau de leur interface de surface élémentaire $\d S$. La particule du dessus exerce sur la particule du dessous deux \imp{forces de contact}. Soit $\rm M$ un point à l'interface entre ces deux particules de fluide.
+\begin{liste}
+\item Une force normale 
+$$
+\Vec{\d F}_p = - p(M) \d S \,\ey,
+$$ c’est la \imp{force de pression}, qui intervient aussi dans les écoulements parfaits.
+% Nous avons discuté de l'effet de cette force sur les écoulements dans le chapitre précédent (relation de Bernoulli). 
+\item Une force tangentielle 
+$$
+\Vec{\d F}_{\rm v} = \sigma(M) \d S \,\ex,
+$$
+c’est la \imp{force de viscosité}, qui est absente dans les écoulements parfaits. La grandeur $\sigma$ est la contrainte de cisaillement (homogène à une pression, en $\SI{}{Pa}$). Dans la plupart des fluides, $\sigma(\gamma)$ est une fonction du taux de cisaillement $\gamma$ uniquement.
+\end{liste}
+Dans le cadre du programme, nous étudierons un modèle de fluide visqueux appelé \imp{fluide newtonien}, pour lequel la relation $\sigma(\gamma)$ est linéaire, soit $\sigma = \eta \gamma.$
+% Dans le cas général, on s'attend à ce que la contrainte de cisaillement $\sigma(\dd{v_x}{y})$ soit une fonction du taux de cisaillement $\dd{v_x}{y}$. Cette fonction peut être compliqué en général, mais dans le cadre du programme, nous étudierons les fluides visqueux les plus simples : les fluides \imp{newtoniens}, pour lesquels la contrainte de cisaillement $\sigma$ est proportionnelle au taux de cisaillement $\dd{v_x}{y}$. Cette relation de proportionnalité reste valable si l'écoulement n'est pas stationnaire ($\Vec{v}(x,t)$ dépend du temps).
+
+
+\begin{definition}[Fluide newtonien et force visqueuse]\label{def:newt}
+Dans un fluide \imp{newtonien} en écoulement suivant $x$, la force visqueuse surfacique a pour expression
+\begin{equation*}
+\frac{\Vec{\d F}_{\! \rm{v}}}{\d S}=\eta\dfrac{\partial v_{x}}{\partial y}\vv{e_{x}},
+\end{equation*}
+où $\eta > 0$ est une constante, appelée \important{viscosité dynamique} (en $\SI{}{\pascal\second} = \SI{}{Pl}$ (Poiseuille)).
+\end{definition}
+
+% \noindent Le coefficient de proportionnalité $\eta$ est appelée \important{viscosité dynamique}, et s'exprime en $\SI{}{\pascal\second}$ ou en $\SI{}{Pl}$ (Poiseuille), avec $\SI{1}{Pl}=\SI{1}{Pa.s}$.  
+Voici quelques ordres de grandeur à température ambiante.
+
+\begin{center}
+\begin{tabular}{|c||c|c|c|c|}
+\hline
+fluide & air & eau & huile & miel \\
+\hline
+$\eta~\SI{}{(Pl)}$ &  $\SI{2e-5}{}$ &
+$\SI{e-3}{}$ & $\SI{e-1}{}$  & $\SI{10}{}$ \\
+\hline
+\end{tabular}
+\end{center}
+
+
+
+\begin{remarque}
+Il existe des fluides dits complexes ou non newtoniens, pour lesquels la relation entre la contrainte et le taux de cisaillement n'est plus linéaire : fluides \emph{rhéoépaississants} lorsque $\eta$ augmente avec le taux de cisaillement (mélange maizena-eau) ;  fluides \emph{rhéofluidifiants} lorsque $\eta$ diminue avec le taux de cisaillement (sang ou magma).
+\end{remarque}
+\begin{remarque}
+	Attention, la viscosité dynamique d’un fluide newtonien ne dépend pas du taux de cisaillement, mais dépend de la température $T$ en général.
+La viscosité d'un liquide diminue avec la température en suivant une loi de type Arrhénius, de la forme $e^{-T_0/T}$. Celle d'un gaz varie faiblement avec la température, en $\sqrt{T}$.
+\end{remarque}
+
+% \begin{exemple}{Ordre de grandeur de contraintes de cisaillement}
+% 	Calculer la force de cisaillement $F_v$ s'exerçant sur une plaque de surface $S=\SI{1}{m^2}$ pour un taux de cisaillement de $\SI{1}{s^{-1}}$. 
+% \end{exemple}
+% \examplesol{}
+
+\subsection{Force visqueuse volumique}
+
+À toute force de contact (surfacique) on peut associer une force volumique.
+Par exemple, la force de pression $\Vec{\d F}_p = - p\, \d S \,\ey$ conduit à une force volumique de pression  $\Vec{f_p} = - \grad{p}$. Nous appliquons la même méthode pour
+ associer un équivalent volumique à la force visqueuse.
+
+ \begin{methode}[Trouver l'équivalent volumique d'une force de contact]
+ 	\item Définir une particule de fluide $\mc{P}$ de section $\d S$.
+ 	\item Exprimer les forces de contact $\d F_1$ et $\d F_2$ qui s'appliquent aux deux sections $1$ et $2$.
+ 	\item Montrer que la résultante $\d F_{\mc{P}} = \d F_1- \d F_2 = f \d V$ est proportionnelle au volume $\d V$.
+ 	\item Généraliser l'expression vectorielle de la force volumique $\Vec{f}$ avec l'opérateur approprié.
+ \end{methode}
+
+\begin{enumerate}
+\item
+On considère une particule de fluide $\mc{P}$ de section élémentaire $\d S = \d x \,\d z$, comme illustré sur la \Fig{viscosite_volumique}. Les interfaces sont situées aux altitudes $y$ et $y+\d y$, et la particule de fluide est de volume élémentaire $\d V=\d y \, \d S = \d x \,\d y\,\d z$.
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.49\textwidth]{Fvisc_volum.pdf}
+	\caption{Forces visqueuses exercées sur une particule de fluide.}
+	\label{fig:viscosite_volumique}
+\end{figure}
+\item Nous omettons les arguments $x$, $z$ et $t$.
+La force visqueuse exercée par le fluide au dessus de la particule s'écrit
+\begin{equation}
+\d \vv{F}_{\rm{v}}(y+\d y) = \eta \frac{\partial v_{x}}{\partial y}(y+\d y)\,\d S\,\ex.
+\end{equation}
+La force visqueuse exercée par le fluide au dessous de la particule est l'opposé de la force exercée par la particule sur le fluide en dessous (actions réciproques). Elle s'écrit donc
+\begin{equation}
+-\d\vv{F}_{\rm{v}}(y)=-\eta\frac{\partial v_{x}}{\partial y}(y)\,\d S\,\vv{e_{x}}.
+\end{equation}
+\item La résultante des forces visqueuses s'exerçant sur la particule de fluide vaut donc, en effectuant un développement de Taylor à l’ordre $1$,
+\begin{align}
+\d\vv{F}_{\rm{v}, \mc{P}}=\d \vv{F}_{\rm{v}}(y+\d y)  - \d\vv{F}_{\rm{v}}(y) & = \eta \left[ \frac{\partial v_{x}}{\partial y}(y+\d y) - \frac{\partial v_{x}}{\partial y}(y) \right]\d S\,\ex \\
+& \simeq \eta\frac{\partial^2 v_{x}}{\partial y^2}\underbrace{\d y\,\d S}_{\d V}\,\vv{e_{x}},
+%& =  \eta\frac{\partial^2 v_{x}}{\partial y^2}\,\d V\,\vv{e_{x}},
+\end{align}
+d’où l’on déduit l’expression de la force volumique,
+\begin{equation}
+\Vec{f}_{\rm v} = 
+\frac{\d\vv{F}_{\rm{v},\mc{P}}}{\d V}=\eta \frac{\partial^2 v_{x}}{\partial y^2}\,\ex.
+\end{equation}
+\item Pour généraliser à un écoulement de géométrie quelconque, il nous faut introduire l’opérateur  \important{laplacien vectoriel}, qui appliqué au champ des vitesses se note $\Delta\vv{v}$. Nous devons aussi supposer que le volume de la particule de fluide ne varie pas au cours avec le cisaillement, et donc que l’écoulement est \imp{incompressible} ($\dive{\Vec{v}} = \Vec{0}$).
+\end{enumerate}
+
+\begin{rappel}{Opérateur laplacien vectoriel}
+Le laplacien vectoriel n'est pas équivalent au laplacien scalaire ! Le laplacien scalaire prend comme argument un champ scalaire $\phi$, et est défini par $\Delta \phi=\dive{(\grad{\phi})}$. Le laplacien vectoriel prend en argument un champ vectoriel $\Vec{v}$, et est défini par
+\begin{equation}
+\label{eq:def_laplacien_vectoriel}
+\Delta \vv{v}=\grad{(\dive{\vv{v}})}-\rot{(\rot{\vv{v}})}.
+\end{equation}
+Il ne s'agit pas du même opérateur, mais en coordonnées cartésiennes (et seulement en cartésiennes !), les composantes du laplacien vectoriel sont celles du laplacien scalaire. Autrement dit,
+\begin{equation}
+(\Delta \vv{v})\cdot \JRouge{\ex}=\frac{\partial^2 v_{\JRouge{x}}}{\partial x^2}+\frac{\partial^2 v_{\JRouge{x}}}{\partial y^2}+\frac{\partial^2 v_{\JRouge{x}}}{\partial z^2}=\Delta(\vv{v}\cdot \JRouge{\ex})=\Delta v_{\JRouge{x}}.
+\end{equation}
+Dans les autres systèmes de coordonnées, il faut repasser par la définition de l'Éq.~\eqref{eq:def_laplacien_vectoriel}.
+\end{rappel}
+
+
+\begin{theorem}[Force visqueuse volumique]\label{form:visq}
+Dans l’écoulement \imp{incompressible} d’un fluide \imp{newtonien}, la force visqueuse volumique vaut
+\begin{equation*}
+\Vec{f}_{\!\rm v} = \eta\,\Delta\vv{v}.
+\end{equation*}
+\end{theorem}
+
+\subsection{Diffusion de quantité de mouvement}
+\label{subsec:diffusion_viscosité}
+
+\parag{Hypothèses}
+Dans l'écoulement de cisaillement de la Fig.~\ref{fig:couetteplan}, la vitesse horizontale $v_{x}(y)$ est une fonction croissante de $y$: les couches supérieures se déplacent plus vite et exercent donc une force qui entraîne les couches inférieures, ce qui les  accélère dans la direction $\vv{e_x}$. La viscosité est un phénomène de \imp{transport de la quantité de mouvement} entre couches de fluide. De quelle nature est ce transport ?
+
+Considérons pour simplifier un écoulement pour lequel l'accélération convective $(\vv{v}\cdot\grad)\vv{v}$ est nulle dans la direction $\vv{e_x}$. Le fluide est supposé incompressible, de masse volumique constante $\rho$. On suppose que le fluide est soumis aux seules forces de viscosité.
+
+\parag{Équation de diffusion}
+En présence des
+forces de viscosité uniquement, le PFD appliqué à une particule de fluide donne, en projetant sur l'axe $(Ox)$,
+\begin{equation}\label{eq:diffu_p}
+	\rho \Dt{\Vec{v}} = \Vec{f_v} = \eta \, \Deltav{v} \Rar 
+\rho \Dt{v_x} =\rho \frac{\partial v_x}{\partial t} = \eta \frac{\partial^2 v_x}{\partial y^2}. 
+ \end{equation}
+  On en déduit que la vitesse $v_x$ vérifie une équation de diffusion 
+ \eqbox{
+\frac{\partial v_x}{\partial t}=\dfrac{\eta}{\rho}\frac{\partial^2 v_x}{\partial y^2}.
+ } 
+Le coefficient de diffusion (en $\SI{}{m^2.s^{-1}}$) est la \important{viscosité cinématique}
+\begin{equation}
+\nu = \frac{\eta}{\rho}.
+\end{equation}
+Quelques ordres de grandeur à température ambiante sont donnés dans le \Tab{nu}. 
+% \begin{center}
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{|c||c|c|c|c|}
+		\hline
+		fluide & air & eau & huile & miel \\
+		\hline
+		$\eta~\SI{}{(Pl)}$ &  $\SI{2e-5}{}$ &
+$\SI{e-3}{}$ & $\SI{e-1}{}$  & $\SI{10}{}$ \\ 
+\hline
+$\rho~\SI{}{(kg.m^{-3})}$ &  $\SI{1.2}{}$ & 
+$\SI{1e3}{}$ & $\SI{800}{}$  & $\SI{1.4e3}{}$ \\
+\hline
+		$\nu~\SI{}{(m^2.s^{-1})}$ &  $\SI{1.5e-5}{}$ &
+		$\SI{e-6}{}$ & $\SI{e-4}{}$  & $\SI{e-2}{}$ \\
+		\hline
+		\end{tabular}
+	\caption{}
+	\label{tab:nu}
+\end{table}
+
+% \end{center}
+
+
+\begin{prop}\label{prop:}
+La viscosité engendre un transport \imp{diffusif} de quantité de mouvement dans la direction perpendiculaire à l'écoulement.
+\end{prop}
+
+%Nous avons $\nu\simeq \SI{2e-5}{Pl}$ pour l'air, $\eta\simeq\SI{e-3}{Pl}$ pour l'eau, et $\eta\simeq \SI{10}{Pl}$ pour le miel.
+% Le coefficient de diffusion associé à ce phénomène de transport est la viscosité cinématique $\nu$.
+
+% \begin{remarque}
+% Il s’agit du troisième processus diffusif que nous rencontrons ! Arrêtons-nous quelques instants pour discuter de l’analogie entre ces phénomènes.
+
+% \begin{liste}
+
+% \item Ce sont des phénomènes de transport : une inhomogénéité d’une grandeur intensive (la température $T$, la concentration $n$, ou la quantité de mouvement volumique $p_x$) induit le transfert d'une grandeur extensive (l’énergie interne $U$, le nombre de particules $N$, la quantité de mouvement $P_x$) pour s'opposer à l'inhomogénéité qui lui a donné naissance et rétablir l’équilibre.
+
+% \item Un phénomène de transport est caractérisé par une loi fondamentale (conservation de l’énergie, de la matière, de la quantité de mouvement), associée à une loi phénoménologique (loi de Fourier $\Vec{\jth} = - \lambda\, \Grad{T}$, loi de Fick  $\Vec{\jmath_N} = - D\, \Grad{n}$, et ici loi du fluide newtonien $\Vec{\jmath_{p_{x}}}=-\nu\,\grad{p_{x}}$).
+
+% \item Dans ces trois phénomènes de transport, la grandeur extensive transférée est proportionnelle à la grandeur intensive inhomogène, ce qui conduit à un processus de diffusion. L’équation de diffusion fait apparaître une constante caractéristique, le coefficient de diffusion (diffusivité thermique $\kappa$, coefficient de diffusion particulaire $D$, ou viscosité cinématique $\nu$).
+
+% \item Le cas de la viscosité est un peu plus subtil que la diffusion de particules ou thermique, parce que la grandeur inhomogène est vectorielle.
+% %L'équation de diffusion s'écrit sous la forme générale $\frac{\partial\vv{v}}{\partial t}=\nu\Delta \vv{v}$ faisant intervenir le laplacien vectoriel (et non scalaire) de $\vv{v}$.
+% \end{liste}
+% \end{remarque}
+
+
+% \section{Propriétés de l’écoulement visqueux}
+\subsection{Équation de Navier-Stokes}
+%\section{Équation de Navier-Stokes}
+%\subsection{Principe fondamental de la dynamique}
+
+\parag{Équation de Navier-Stokes}
+Soit un fluide newtonien s’écoulant de façon incompressible ($\dive{\vv{v}}=0$). Pour obtenir l’équation de la dynamique, nous procédons comme dans le cas de l’écoulement parfait en appliquant le PFD à une particule de fluide.
+\begin{enumerate}
+\item Système : particule de fluide $\mc{P}$ de volume $\d V$ et de masse $\d m = \rho\, \d V$.
+\item Bilan des forces : 
+\begin{liste}
+	\item Forces de contact : force de pression $\d \Vec{F}_{\!p,\mc{P}} = - \grad{p}\, \d V$, force visqueuse $\d \Vec{F}_{\! \rm v,\mc{P}} = \eta \Delta \Vec{v} \,\d V$.
+	\item Force extérieure : $\d \Vec{F}_\mc{P} = \Vec{f}_{\rm \! ext} \,\d V$.
+\end{liste}
+\item PFD :
+$
+\text{masse} \times \text{accélération particulaire} = \text{somme des forces}
+$, soit
+$$
+\d m \Dt{\vv{v}} = \rho\, \d V \left[\dfrac{\partial \vv{v}}{\partial t}+(\vv{v}\cdot\grad)\vv{v}\right] = - \grad{p}\, \d V + \eta \, \Deltav{v} \,\d V +\fext\,\d V.
+$$
+\end{enumerate}
+Il suffit donc d'ajouter la force visqueuse volumique $ \eta \,\Deltav{v}$ dans l'équation d'Euler. 
+% On obtient l'équation dite de \imp{Navier-Stokes}.
+
+\begin{theorem}[Équation de Navier-Stokes]\label{form:NS}
+\begin{equation*}
+\begin{split}
+\rho\left[\dfrac{\partial \vv{v}}{\partial t}+(\vv{v}\cdot\grad)\vv{v}\right]=-\grad{p}+\eta\,\Deltav{v}+\fext.
+\end{split}
+\end{equation*}
+\end{theorem}
+Les forces volumiques extérieures $\fext$ se réduisent souvent aux actions suivantes.
+%Vous pourrez éventuellement rencontrer deux autres forces :
+\begin{liste}
+\item Le poids volumique $\rho\vv{g}$.
+%\item la force de Lorentz volumique dans un fluide de densité volumique de charges $\rho_{\rm{e}}$, d’expression
+%\begin{equation}
+%\begin{split}
+%\vv{f}_{\rm{L}} =	\rho_{\rm{e}}(\vv{E}+\vv{v}\pv\vv{B});
+%\end{split}
+%\end{equation}
+\item  Les forces d'inertie volumiques d'entraînement et de Coriolis dans un référentiel $\mathcal{R}$ non galiléen, calculées  par rapport à un référentiel galiléen $\mathcal{R}_g$,
+\begin{equation}
+\begin{split}
+\vv{f}_{\rm{i}} =	-\rho\left[\vv{a_{\rm{e}}}(M)+2\,\vv{\Omega}_{\mathcal{R}/\Rcal_g}\pv\vv{v}_{\mathcal{R}}(M)\right].
+\end{split}
+\end{equation}
+\end{liste}
+%\begin{remarque}
+%Pour un fluide parfait (non visqueux) à l'équilibre soumis à la seule force de gravité, on retrouve la loi de l'hydrostatique $\vec{\text{grad}}P=\rho\vec{g}$
+%\end{remarque}
+
+\parag{Conditions aux limites}
+Pour compléter l’équation de Navier-Stokes, précisons les conditions aux limites sur la vitesse. Un fluide visqueux satisfait à une condition plus forte qu’un fluide parfait, parce que le fluide adhère à la paroi. %Autrement dit,
+\begin{prop}[Condition aux limites d’un écoulement visqueux]
+La vitesse est continue à l’interface entre un fluide visqueux et une paroi,
+\begin{equation*}
+\begin{split}
+\vv{v}_{\rm{fluide}}=\vv{v}_{\rm{paroi}}.
+\end{split}
+\end{equation*}
+\end{prop}
+\noindent Pour rappel, dans un fluide parfait, seule la vitesse \emph{normale} est continue. Dans un fluide visqueux, la vitesse \emph{tangentielle} est aussi continue.
+
+
+
+%\subsection{Conditions aux limites pour un fluide visqueux}
+
+\section{Écoulements modèles unidimensionnels}
+Il n'existe pas de solution générale de l'équation de Navier-Stokes, en raison  du terme non linéaire $(\Vec{v}\ps\grad)\Vec{v}$. Heureusement, nous n’avons pas besoin de résoudre cette équation pour comprendre la structure d’un écoulement visqueux. On peut envisager deux méthodes pour étudier les écoulements visqueux.
+\begin{liste}
+	\item Assimiler l'écoulement réel à un écoulement modèle simple, dans lequel l'accélération convective est nulle. C'est le cas des écoulements \imp{incompressibles unidimensionnels}. Nous en étudierons deux : l'écoulement de Couette plan (\Sec{Couette_plan}) et l'écoulement de Poiseuille cylindrique (\Sec{poiseuille}).
+	\item Déterminer les propriétés de l'écoulement réel de façon \imp{phénoménologique}, sans chercher à résoudre l'équation de Navier-Stokes.  C'est l'objet de la \Sec{Phenomeno}.
+\end{liste}
+ % Dans les écoulements unidimensionnels notamment, , ce qui
+
+
+\begin{methode}[Étudier un écoulement visqueux unidimensionnel]
+\item Utiliser la condition d'incompressibilité $\dive \Vec{v} = 0$ pour trouver la forme du champ de vitesse.
+\item Montre que $(\Vec{v}\ps\grad)\Vec{v} = \Vec{0}$.
+\item Écrire l'équation de Navier-Stokes en régime stationnaire  $\Vec{0} = -\grad{p}+\rho\vv{g}+\eta\Delta\vv{v} $.
+\item Déterminer le champ de pression $p(M)$ :
+\begin{liste}
+	\item projeter suivant la direction transverse et intégrer $p$ une première fois ;
+	\item projeter suivant la direction de l'écoulement et intégrer $p$ une deuxième fois ;
+	\item imposer la continuité de la pression pour déterminer les constantes d'intégration.
+\end{liste}
+\item Déterminer le champ de vitesse $\Vec{v}(M)$ :
+\begin{liste}
+	\item intégrer la projection dans la direction de l'écoulement pour déterminer $\Vec{v}(M)$ ;
+	\item imposer la condition $\vv{v}_{\rm{fluide}}=\vv{v}_{\rm{paroi}}$ pour déterminer les constantes d'intégration.
+\end{liste}
+\end{methode}
+
+\subsection{Écoulement de Couette plan}
+\label{sec:Couette_plan}
+
+\begin{definition}[Écoulement de Couette]\label{def:couette}
+	Un écoulement de \imp{Couette} est un écoulement unidimensionnel induit par le mouvement d'une plaque mobile sur une plaque fixe.  
+L'écoulement de Couette est \imp{plan} si les plaques sont planes.
+\end{definition}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\textwidth]{couette_plan_avance.pdf}
+	\caption{Écoulement de Couette plan. Le champ de vitesse est de la forme $\vec{v}=\frac{Uy}{h}\,\ex$.}
+	\label{fig:couetteplan_v2}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \parag{Hypothèses} 
+Il s'agit de l'écoulement unidimensionnel stationnaire de cisaillement étudié en \Sec{couette} et représenté en Fig.~\ref{fig:couetteplan_v2}. Un fluide newtonien s’écoule à l’horizontale entre deux plaques, dont celle du bas est fixe, l’autre étant mobile.  On étudie l'écoulement dans le référentiel où la plaque du bas est fixe, supposé galiléen. On modélise l'écoulement par un champ des vitesses $\Vec{v}(M) = v_x(x,y)\ex$, et on suppose qu'il y a invariance par translation dans la direction transverse $(Oz)$.
+
+\begin{enumerate}
+	\item  Comme toujours pour un fluide newtonien, on suppose l’écoulement incompressible,
+\begin{equation}
+	0 = \Dive{\Vec{v}} = \dr{v_x}{x} \Rar \Vec{v}(M) = v_x(z)\ex.
+\end{equation}
+\item On montre que l'accélération convective est nulle,
+\begin{equation}
+	(\Vec{v}\cdot \Grad{})\Vec{v} = \left(v_x \dr{}{x}+\JRouge{v_y} \dr{}{y}+\JRouge{v_z} \dr{}{z}\right)(v_x(z)\ex) = v_x \JRouge{\dr{v_x}{z}}\ex = \Vec{0},
+\end{equation}
+car les termes en rouge sont nuls.
+\item On suppose l’écoulement stationnaire : l’accélération locale $\dr{\Vec{v}}{t}$ est aussi nulle. Ainsi l'accélération particulaire est nulle et l'équation de Navier-Stokes se réduit à
+\begin{equation}\label{eq:ns}
+\Vec{0} = -\grad{p}+\rho\vv{g}+\eta\,\Deltav{v} = -\dr{p}{x}\ex - \dr{p}{z}\ez - \rho g \ez + \eta \ddd{v_x}{z} \ex.
+\end{equation}
+En effet le laplacien vectoriel donne en coordonnées cartésiennes, où les termes en rouge sont nuls,
+\begin{equation}
+\Deltav{v} = (\Delta v_x)\ex + (\Delta \JRouge{v_y})\ey + (\Delta \JRouge{v_z})\ez = \left(\JRouge{\ddr{}{x}}  + \JRouge{\ddr{}{y}} + \ddr{}{z}\right)\!v_x\, \ex = \ddd{v_x}{z} \ex.
+\end{equation}
+
+
+% \parag{Détermination du champ de pression}
+\item
+En projetant l’\Eq{ns} sur la verticale $\vv{e_y}$, on trouve
+\begin{equation}
+-\dfrac{\partial p}{\partial y}-\rho g = 0,
+\end{equation}
+qui s’intègre pour trouver $p(x,y)=-\rho g y+f(x)$, avec $f$ une fonction indéterminé.  En projetant  l’\Eq{ns} sur l’horizontale $\vv{e_x}$, on trouve
+\begin{equation}\label{eq:vcouette}
+\eta\frac{\d^{2} v}{\d y^2} = \dfrac{\partial p}{\partial x} = \frac{\d f}{\d x}.
+\end{equation}
+Or le membre de gauche ne dépend que de $y$ et le membre de droite que de $x$. Les deux membres de l’équation sont donc égaux à une constante $A$. En intégrant il vient $f(x)=Ax+B$ puis $p(x,y)=Ax-\rho g y+B$. Or la plaque n'est pas borné dans la direction $x$ alors que la pression est nécessairement positive, la seule solution physique est donc $A=0$. D'où
+\eqbox{p(y)= p(y=0)-\rho g y.}
+
+% \parag{Détermination du champ de vitesse}
+\item D’après l’\Eq{vcouette}, on a
+\begin{equation}
+\frac{\d^2 v}{\d y^2}=A=0 \quad\Rightarrow \quad v(y)=ay+b.
+\end{equation}
+Les constantes $a$ et $b$ s’obtiennent
+à partir des conditions aux limites sur la vitesse,
+\begin{equation}
+\begin{cases}
+v(y=0)=0=b,\\
+v(y=h)=U=ah,
+\end{cases}
+\Rightarrow  \quad \boxed{v(y)=\frac{Uy}{h}.}
+\end{equation}
+\end{enumerate}
+
+Le profil de vitesse est \imp{linéaire}. Ce résultat appelle deux remarques.
+\begin{liste}
+\item L’intensité de la pesanteur $g$ n'intervient pas dans l'expression de $v$ . La pesanteur n’a donc pas d’effet sur le profil de vitesse ; elle intervient par contre dans le profil de pression $p(y)= p(y=0)-\rho g y$, qui est le profil classique rencontré en hydrostatique.
+\item
+La viscosité dynamique $\eta$ n'intervient pas dans l'expression de $v$ ! La viscosité est pourtant indispensable pour expliquer le mouvement, puisque c’est elle qui impose l’adhérence du fluide sur les parois, et que c’est la nullité de la force visqueuse volumique $\propto \Delta \Vec{v}$ qui détermine le profil de vitesse.
+\end{liste}
+
+\begin{exemple}{Force exercée par un fluide visqueux}
+	Exprimer la force $\Vec{F}$ que le fluide exerce sur la plaque mobile en fonction de $\eta$, $U$, $h$ et de la surface $S$ de la plaque. \AN~pour une surface $S=\SI{1}{m^2}$, une vitesse $U=\SI{10}{m.s^{-1}}$, une hauteur $h=\SI{1}{cm}$, et de l'eau, de viscosité $\eta=\SI{e-3}{Pa.s}$.
+\end{exemple}
+\examplesol{}
+
+
+
+\subsection{Écoulement de Poiseuille cylindrique}
+\label{sec:poiseuille}
+
+\begin{definition}[Écoulement de Poiseuille]\label{def:couette}
+	Un écoulement de \imp{Poiseuille} est un écoulement unidimensionnel induit par un gradient de pression dans une conduite fixe. 
+L'écoulement de Poiseuille est \imp{cylindrique} si la conduite est un cylindre.
+\end{definition}
+
+
+
+\begin{figure}[h!]
+\centering
+\def\heigh{3.5cm}
+\subfigure[]{
+\includegraphics[height=\heigh]{poiseuille_schema.pdf}
+}
+\subfigure[]{
+\includegraphics[height=\heigh]{poiseuille_profil.pdf}
+}
+\caption{(a) Écoulement de Poiseuille cylindrique dans une conduite de rayon $R$ et de longueur $L$. On a représenté quelques lignes de courant. L’écoulement est induit par une différence de pression $\Delta p= p_1-p_2>0$ entre l’amont et l’aval. (b) Profil de vitesse dans un écoulement de Poiseuille.}
+\label{fig:poiseuille_cyl}
+\end{figure}
+
+\parag{Détermination du champ de vitesse}
+ L'écoulement de Poiseuille correspond à l'écoulement unidimensionnel d'un fluide visqueux dans une conduite, schématisé sur la \Fig{poiseuille_cyl}. Dans l’écoulement de Poiseuille cylindrique, la conduite est un cylindre de rayon $R$, que nous supposons horizontal. Cette situation permet de modéliser l'écoulement du sang dans les artères, ce qui était d’ailleurs l’intention de M. Poiseuille, qui était un médecin du \textsc{XIX}$^{\rm e}$ siècle. On suppose l’écoulement stationnaire. Par invariance par rotation, le champ de vitesse est de la forme $\Vec{v}(M) = v_z(r,z)\ez$ en coordonnées cylindriques.
+\begin{enumerate}
+	\item Comme toujours pour un fluide newtonien, on suppose l’écoulement incompressible,
+\begin{equation}
+	0 = \Dive{\Vec{v}} = \dr{v_z}{z} \Rar \Vec{v}(M) = v_z(r)\ez.
+\end{equation}
+\item  Comme $v$ est dirigé suivant $z$ mais ne dépend que de $r$, l’accélération convective $(\Vec{v}\cdot \Grad{})\Vec{v}$ est nulle également,
+\begin{equation}
+	(\Vec{v}\cdot \Grad{})\Vec{v} = v_z\dr{v_z}{z} \ez = \Vec{0}.
+\end{equation}
+\item
+  Pour simplifier le problème, nous négligeons la pesanteur.  L'équation de Navier-Stokes donne
+\begin{equation}\label{eq:ns_pois}
+ \Vec{0} = -\grad{p}+\eta\Delta\vv{v} = -\dr{p}{r}\er - \dr{p}{z}\ez + \frac{\eta}{r}\frac{\d}{\d r}\left(r\frac{\d v}{\d r}\right)  \ez
+ \end{equation}
+ % En raison de la géométrie du problème, on cherche un champ de vitesse de la forme $\vv{v}(M,t)=v(r)\ez$, qui est bien de divergence nulle.
+
+% \parag{Détermination du champ de pression} 
+\item La méthode est la même qu’en \Sec{Couette_plan}.
+En projetant l’\Eq{ns_pois} selon $\er$, on trouve $-\frac{\partial P}{\partial r}=0$, et donc $p(r,z)=p(z)$. En projection selon $\ez$, on trouve
+\begin{equation}\label{eq:visq_pois}
+\frac{\eta}{r}\frac{\d}{\d r}\left(r\frac{\d v}{\d r}\right) = \dd{p}{z}.
+\end{equation}
+Les deux membres sont nécessairement égaux à une constante $A$. En intégrant, on trouve $p(z)=Az+B$. On considère qu'en $z=L$ le fluide se trouve à la pression $p_{\rm{2}}$, et qu'en $z=0$ il se trouve à la pression $p_{\rm{1}}=p_2+\Delta p$\footnote{Dans le corps, c'est le cœur qui impose la pression en se contractant puis en se dilatant. Lorsque votre médecin mesure la \guill{tension} artérielle (soit dit en passant, il est plus correct de dire \important{pression} artérielle ...), il/elle vous donne 2 valeurs: la pression maximale (systolique) et la minimale (diastolique). Elles sont généralement exprimées en \SI{}{cmHg}, par exemple on dira \guill{12-7}.}. Le gradient de pression est donc cette fois-ci dans la direction de l’écoulement, et non dans la direction orthogonale. En utilisant les conditions aux limites (continuité de la pression), il vient ensuite $A= -\frac{\Delta p}{L}$ et $B=p_1$, soit
+\eqbox{p(z)= -\Delta p  \,\frac{z }{L}+p_{\rm{1}}.}
+
+\item
+% \parag{Détermination du champ de vitesse}
+On intègre l’\Eq{visq_pois} pour trouver
+\begin{equation}
+\frac{\d}{\d r}\left(r\frac{\d v(r)}{\d r}\right)=\frac{Ar}{\eta} \quad\Rightarrow\quad r\frac{\d v(r)}{\d r}=\frac{Ar^2}{2\eta}+C.
+\end{equation}
+En divisant par $r$, on voit qu’il faut $C=0$ pour éviter une divergence non physique en $r=0$. Enfin, on intègre une dernière fois pour en déduire
+\begin{equation}
+v(r)=\frac{Ar^2}{4\eta}+D.
+\end{equation}
+Il reste à traduire les conditions aux limites. Le e fluide visqueux adhère à la paroi, qui est fixe et donc $v(r=R)=0$, ce qui donne $D=-\frac{AR^2}{4\eta}$. Avec l'expression de $A$ trouvée plus haut, il vient finalement
+\eqbox{
+\vv{v}(r)=\frac{\Delta p}{4\eta L}(R^2-r^2)\,\vv{e_z}.
+}
+On obtient un profil de vitesse parabolique dirigé des hautes vers les basses pressions, dont la vitesse maximale est atteinte sur l'axe de révolution de la canalisation, de valeur
+\begin{equation}
+v_{\rm max} = \frac{\Delta p\, R^2}{4\eta L}.
+\end{equation}
+\end{enumerate}
+
+
+\parag{Détermination du débit volumique} Calculons le débit volumique à travers une section $S$ de la conduite, de normale élémentaire $\Vec{\d S}=r\d r\d\theta\, \ez$. On a
+\begin{equation}
+\DV = \iint_S v \,\d S =\int_{0}^{2\pi}\d\theta\int_{0}^{R} \frac{\Delta p}{4\eta L}(R^2-r^2)r\d r=\frac{\pi \Delta p}{2\eta L}\left[R^2 \frac{r^2}{2}-\frac{r^4}{4}\right]^{R}_{0}.
+\end{equation}
+On en déduit la loi de \imp{Hagen-Poiseuille}.
+\begin{theorem}[Loi de Hagen-Poiseuille]\label{form:poiseuille}
+Le débit volumique d'un fluide newtonien de viscosité dynamique $\eta$ soumis à une surpression $\Delta p$ dans une conduite de rayon $R$ et de longueur $L$ vaut
+\begin{equation*}
+	\DV=\frac{\pi R^4}{8\eta L}\Delta p.
+\end{equation*}
+\end{theorem}
+% Cette relation est appelée \imp{loi de Poiseuille}.
+Le débit volumique dépend énormément de la taille de la conduite, puisqu’il varie en $R^4$ : diviser le rayon d'un facteur 2, c'est réduire le débit d'un facteur 16 !
+
+\begin{experience}{Vérification de la loi de Hagen-Poiseuille}\label{exp:}
+	On peut vérifier la loi de Hagen-Poiseuille expérimentalement. On utilise le montage du vase de Mariotte pour imposer une différence de pression hydrostatique $\Delta p = \rho g h$ constante et connue, puis on mesure le débit massique sortant du capillaire.
+	\begin{quest}
+		\item Exprimer la débit massique $\Dm$ attendu d'après la loi de Hagen-Poiseuille en fonction de $\rho$, $g$, $h$, $R$, $L$ et $\eta$. \AN~pour de l'eau dans un capillaire de rayon $R=\SI{}{mm}$ et de longueur $L=\SI{}{cm}$.
+		\item Comparer au débit massique mesuré $\frac{\Delta m}{\Delta t}$.
+	\end{quest}
+\end{experience}
+
+
+\section{Phénoménologie des écoulements visqueux}
+\label{sec:Phenomeno}
+
+\subsection{Le nombre de Reynolds}
+Dans les années 1880, O. \textsc{Reynolds} étudie l'écoulement réel dans une conduite, reprenant les travaux antérieurs de \textsc{Poiseuille},  voir \Fig{Reynolds}.  
+\begin{liste}
+	\item Aux faibles vitesses, l'écoulement correspond à l'écoulement de Poiseuille, avec des lignes de courants parallèles et stables : l'écoulement est dit \imp{laminaire}.
+	\item Aux vitesses élevées, l'écoulement devient instable, des tourbillons apparaissent, et les lignes de courant ne sont plus bien définies : l'écoulement est dit \imp{turbulent}.
+\end{liste}
+% Il observe que le champ des vitesses correspond à celui prédit par Poiseuille aux basses vitesses, avec des lignes de courant parallèles et un profil de vitesse stable. 
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.6\textwidth]{conduite.png}
+	\caption{Différents régimes d'écoulements dans une conduite. (a) Régime laminaire à bas Reynold $\Re \ll 1$ : écoulement de Poiseuille cylindrique. (b) Régime intermédiaire. (c) Régime turbulent à haut Reynolds $\Re \gg 1$.
+	Source : \emph{An Album of Fluid Motion}, N. H. Johanssen, C. Lowe.}
+	\label{fig:Reynolds}
+\end{figure}
+
+Le profil de l'écoulement est dictée par deux actions mécaniques importantes.
+\begin{liste}
+	\item Le terme convectif $(\Vec{v}\cdot\grad)\Vec{v}$, qui a tendance à déformer le profil de vitesse.
+	\item Le terme visqueux $\eta\,\Deltav{v}$, qui a tendance à lisser le profil de vitesse.
+\end{liste}
+Nous pouvons estimer l'importance relative de ces deux termes dans le cas d'un écoulement à géométrie simple, lorsqu'une seule échelle spatiale intervient dans le problème. L'écoulement est déterminée par la longueur typique de l'écoulement $L$ (diamètre de la conduite), la vitesse typique $U$ du fluide (par exemple la vitesse au centre de la conduite), la masse volumique $\rho$ et la viscosité dynamique $\eta$ du fluide. On peut donc estimer 
+\begin{equation}
+	\left\{
+\begin{split}
+\text{Terme convectif} &: |(\Vec{v}\cdot\grad)\Vec{v}| \sim \frac{U^2}{L},\\
+\text{Terme visqueux} &: |\eta\,\Deltav{v}| \sim \eta\,\frac{U}{L^2}.
+\end{split}
+	\right.
+\end{equation}
+La rapport de ces deux termes définit un nombre adimensionnée, appelé \imp{nombre de Reynolds}.
+\begin{definition}[Nombre de Reynolds]
+Le \imp{nombre de Reynolds} est le nombre adimensionnée
+\begin{equation}
+\Re = \frac{\text{terme convectif}}{\text{terme visqueux}} = \frac{LU\rho}{\eta}.
+\end{equation}
+\end{definition}
+On peut donc discriminer trois régimes d'écoulement en fonction de la valeur du nombre de Reynolds.
+\begin{liste}
+	\item \fbox{$\Re \ll 1$} : le terme visqueux domine et l'écoulement est \imp{laminaire}. À fluide donné, ce régime intervient aux faibles vitesses $U$, ou aux faibles distances $L$.
+	\item \fbox{$\Re \sim 1$} : les deux termes sont du même ordre de grandeur. C'est un régime intermédiaire : les lignes de courant se déforment, des tourbillons apparaissent, l'écoulement reste stationnaire.
+	\item \fbox{$\Re \gg 1$} : le terme convectif domine et l'écoulement est \imp{turbulent}. Les lignes de courant ne sont pas bien définies et l'écoulement n'est plus stationnaire.
+	À fluide donné, ce régime intervient aux grandes vitesses $U$, ou aux grandes distances $L$.
+\end{liste}
+
+\begin{prop}[Régime d'écoulement]\label{prop:}
+	Le nombre de Reynolds  $\Re$ détermine le régime d'écoulement : \imp{laminaire} à bas Reynolds, \imp{turbulent} à haut Reynolds. Le $\Re$ de transition entre les deux régimes dépend de la géométrie de l'écoulement.
+\end{prop}
+
+\begin{remarque}
+	La valeur précise du nombre de Reynolds pour lequel l'écoulement transite de laminaire vers turbulent dépend de la \imp{géométrie} de l'écoulement ! 
+\end{remarque}
+
+\begin{exemple}{Estimation de nombre de Reynolds}
+	Estimer le nombre de Reynolds dans l'expérience précédente, et en déduire le régime d'écoulement.
+\end{exemple}
+\examplesol{}
+
+% \subsection{Équation de Navier-Stokes adimensionnée}
+
+% Nous introduisons dans cette partie une méthode extrêmement utilisé en mécanique des fluides : l’\imp{analyse dimensionnelle} de l'équation de Navier-Stokes. Supposons l’absence de forces extérieures pour simplifier ($\fext=\Vec{0}$). La complexité de l’équation de Navier-Stokes provient surtout du terme convectif (qui est non linéaire en la vitesse) et du terme visqueux (qui est du second ordre en les dérivées de la vitesse). Dans de nombreux cas cependant, il est possible de négliger un des deux termes.
+% %
+% % puis adimensionnons les variables eulériennes
+% % %\footnote{Mais pas les paramètres du fluide comme la masse volumique $\rho$ et la viscosité dynamique $\eta$.}
+% % (champs de vitesse et de pression ainsi que leurs dérivées).
+% % On divise pour cela la vitesse $\Vec{v}$ par une vitesse caractéristique $U$, les longueurs $x,y,z$ par une taille caractéristique $L$, et le temps $t$ par un temps caractéristique $L/U$. On note par des $'$ les variables ainsi adimensionnées : vitesse $\vv{v}=U\vv{v}'$, gradient $\Grad{} = \frac{1}{L}\Grad{}’$, Laplacien vectoriel $\Delta = \frac{1}{L^2}\Delta’$, temps $t = \frac{L}{U}t’$, pression $p = \rho U^2 p’$ (relation de Bernoulli). L’équation de Navier-Stokes devient
+% %\begin{equation}
+% % \rho\left[\frac{U^2}{L}\dfrac{\partial \vv{v}'}{\partial t'}+\frac{U^2}{L}(\vv{v}'\cdot\grad')\vv{v}'\right]=-\frac{\rho U^2}{L}\grad'{p'}+\frac{\eta U}{L^2}\Delta'\vv{v}'.
+% % \end{equation}
+% %En simplifiant, on observe que l'écoulement n’est en fait décrit que par un seul nombre sans dimension,
+% %\begin{equation}
+% %\dfrac{\partial \vv{v}'}{\partial t'}+(\vv{v}'\cdot\grad')\vv{v}'=-\grad'{p'}+\JRouge{\dfrac{\eta}{\rho L U}}\,\Delta'\vv{v}' = -\grad'{p'}+\JRouge{\dfrac{1}{\Re}}\,\Delta'\vv{v}'.
+% % \end{equation}
+% %
+% %\begin{definition}\label{def:}
+% %On appelle \imp{nombre de Reynolds} la grandeur sans dimension
+% %\begin{equation*}
+% %\Re = \frac{LU\rho}{\eta}=\frac{LU}{\nu}.
+% %\end{equation*}
+% %\end{definition}
+
+% Adimensionnons les variables eulériennes
+%  %\footnote{Mais pas les paramètres du fluide comme la masse volumique $\rho$ et la viscosité dynamique $\eta$.}
+%  (champs de vitesse et de pression ainsi que leurs dérivées).
+% On divise pour cela la vitesse $\Vec{v}$ par une vitesse caractéristique $U$ et les longueurs $x,y,z$ par une taille caractéristique $L$. L’échelle de temps sur laquelle varie la vitesse est noté $\tau$. Pour simplifier le raisonnement, nous prendrons pour $\tau$ le \imp{temps typique de convection}
+% \begin{equation}
+%  \tau_{\rm c} =  \frac{L}{U}.
+%  \end{equation}
+%  On peut définir de même un \imp{temps typique de diffusion visqueuse}
+%  \begin{equation}
+%   \tau_{\rm d} = \frac{\rho L^2}{\eta} = \frac{L^2}{\nu}.
+%  \end{equation}
+% On note par des $'$ les variables ainsi adimensionnées : vitesse $\vv{v}=U\vv{v}'$, gradient $\Grad{} = \frac{1}{L}\Grad{}’$, Laplacien vectoriel $\Delta = \frac{1}{L^2}\Delta’$, et temps $t = \frac{L}{U}t’$. Dans un écoulement incompressible, on peut montrer que le champ de pression est entièrement déterminé par le terme convectif : on peut donc poser $p = \rho U^2 p’$ (penser à la relation de Bernoulli). L’équation de Navier-Stokes devient
+% \begin{equation}
+% \frac{ \rho U^2}{L}\dfrac{\partial \vv{v}'}{\partial t'}+\frac{\rho U^2}{L}(\vv{v}'\cdot\grad')\vv{v}' = -\frac{\rho U^2}{L}\grad'{p'}+\frac{\eta U}{L^2}\Delta'\vv{v}'.
+%  \end{equation}
+% En simplifiant, on observe que l'écoulement n’est décrit que par un seul nombre sans dimension,
+% \begin{equation}\label{eq:NS_adim}
+% \dfrac{\partial \vv{v}'}{\partial t'} + \Grad'{p'} =  (\vv{v}'\cdot\grad')\vv{v}'  + \JRouge{\dfrac{1}{\Re}} \,\Delta'\vv{v}'.
+%  \end{equation}
+
+% \begin{definition}\label{def:}
+% On appelle \imp{nombre de Reynolds} la grandeur sans dimension
+% \begin{equation*}
+% \Re = \dfrac{\tau_{\rm d}}{\tau_{\rm c}} = \frac{LU\rho}{\eta}=\frac{LU}{\nu}.
+% \end{equation*}
+% \end{definition}
+
+% % Ce nombre sans dimension, noté $R_{\rm{e}}=\frac{LU}{\nu}$, est appelé nombre de Reynolds.
+% %
+% %\subsection{Nombre de Reynolds}
+
+% \noindent Le nombre de Reynolds $\Re$
+% %permet de caractériser la structure de l'écoulement. Il
+% évalue l’importance de la convection par rapport à la diffusion, puisqu’en ordre de grandeur, on a
+% \begin{equation}
+% \begin{split}
+% \frac{\norm{\rho(\vv{v}\cdot\grad{})\vv{v}}}{\norm{\eta\Delta\vv{v}}}=\frac{LU\rho}{\eta}= \Re.
+% \end{split}
+% \end{equation}
+% Il est essentiel d'évaluer le nombre de Reynolds avant d’étudier un écoulement, car celui-ci détermine la structure de l’écoulement. Lorsque $\Re \ll 1$, le terme convectif à droite de l’\Eq{NS_adim} est négligeable devant le terme diffusif. Au contraire, lorsque $\Re \gg 1$, le terme diffusif est négligeable devant le terme convectif.
+% % pour savoir si l'écoulement peut raisonnablement être assimilé à un écoulement parfait à une échelle d'observation $L$, avec $L$ une longueur caractéristique de l'écoulement (par exemple le diamètre du tube ou celui d'un obstacle s'il y en a un).
+
+\subsection{Écoulement autour d'un obstacle}
+
+\parag{Force de traînée} Adaptons ce que nous venons d'étudier au cas de l'écoulement autour d'un obstacle. Un obstacle de géométrie donné est caractérisé par une seule échelle spatiale, sa taille $L$. Considérons l'écoulement d'un fluide newtonien de viscosité dynamique $\eta$, de masse volumique $\rho$ et de vitesse uniforme $U\, \ex$ autour de cet obstacle. L'écoulement visqueux exerce une force sur l'obstacle, qui se décompose en deux composantes.
+\begin{liste}
+\item Force de \imp{portance} $\Vec{F}_p = F_p \,\ey $ normale à l'écoulement. 
+
+Cette force est responsable de la sustentation des avions, de la propulsion des voiles, etc.
+\item Force de \imp{traînée} $\Vec{F}_t = F_t \,\ex$ dirigée suivant le sens de l'écoulement. 
+
+Cette force est responsable du frottement fluide sur l'obstacle.
+\end{liste}
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=1.1]{obstacle.pdf}
+	\caption{Forces qu’exerce un fluide visqueux sur un obstacle : force de portance $\Vec{F}_{\! p}$, force de traînée $\Vec{F}_{\! t}$.}
+	\label{fig:}
+\end{figure}
+Nous nous intéressons ici uniquement à la force de traînée $F_t$. Déterminons son expression par analyse dimensionnelle. On souhaite relier les grandeurs physiques suivantes  :
+\begin{itemize}
+\item[--] la force de traînée $F_t$, homogène à $\SI{}{M.L.T^{-2}}$;
+\item[--] la vitesse de l'écoulement $U$, homogène à $\SI{}{L.T^{-1}}$;
+\item[--] la viscosité du fluide $\eta$, homogène à $\SI{}{M.L^{-1}.T^{-1}}$;
+\item[--] la masse volumique du fluide $\rho$, homogène à $\SI{}{M.L^{-3}}$;
+\item[--] la taille $L$ de l'obstacle, homogène à $\SI{}{L}$.
+\end{itemize}
+On dispose de 5 grandeurs physiques, qui s'expriment avec 3 dimensions différentes. On peut ainsi former $5-3=2$ nombres sans dimension indépendants pour décrire le problème.
+\begin{liste}
+	\item Le \imp{nombre de Reynolds} caractérise le régime d'écoulement, 
+	$$\Re=\frac{LU\rho}{\eta}.$$
+	\item Le \imp{coefficient de traînée} caractérise la résistance de l'obstacle à l'écoulement,
+	$$C_x = \frac{2F_t}{\rho U^2 S},$$ où $S \propto L^2$ est la surface de l'obstacle \imp{transverse} à l'écoulement.
+\end{liste}
+En se plaçant du point de vue de l'obstacle, qui se déplace à une vitesse $\Vec{v} = - U \ex$ par rapport à l'écoulement, la force de traînée s'écrit de la façon suivante.
+\begin{theorem}[Force de traînée]\label{form:trainee}
+	La force de traînée exercée par un fluide da masse volumique $\rho$ sur un obstacle de section transverse $S$ se déplaçant à la vitesse $\Vec{v}$ dans le fluide s'écrit
+\begin{equation*}
+\vv{F}_{\!t}=-\frac{1}{2}C_{x}\rho S v \Vec{v},
+\end{equation*}
+où $C_x$ (sans dimension) est le \imp{coefficient de traînée}.
+\end{theorem}
+
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{figure}[b!]
+% \centering
+% \includegraphics[width=\textwidth]{CX_SPHERE.png}
+% \caption{Courbe coefficient de traînée $C_{x}=f(R_{\rm{e}})$ en fonction du nombre de Reynolds $\Re$ pour un écoulement autour d'une sphère. Les axes sont en échelle logarithmique. On observe une crise de traînée (baisse brutale de $C_x$) pour des Reynolds de l'ordre de $\SI{e5}{}$. La crise de traînée dépend fortement de la rugosité de la surface. [Wikipédia, Coefficient de traînée].}
+% \label{fig:Cx_sphere}
+% \end{figure}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\parag{Coefficient de traînée et loi d'échelle}
+L'écoulement autour d'un obstacle donné est gouverné par la relation entre les deux nombres adimensionnés caractéristiques du problème,
+% \begin{eqb}
+\eqbox{
+	C_{x}=f(R_{\rm{e}}).
+}
+La courbe $C_x=f(\Re)$ présente différents comportements suivant le régime d’écoulement.
+La fonction $f$ est \imp{universelle} pour un obstacle de géométrie donné, i.e. que les écoulements autour d'obstacle semblables (qui s'obtiennent par une homothétie) sont caractérisés par la même fonction $f$, quelle que soit la valeur de $L$, $U$, $\eta$ ou $\rho$. Par contre, la fonction $f$ dépend de la géométrie de l'obstacle : ce n'est donc pas la même pour une sphère, un cylindre, une aile d'avion, etc. même si l'allure de cette fonction identique pour tous les obstacles. La courbe expérimentale $C_x(\Re)$ pour une sphère lisse est représentée en Fig.~\ref{fig:Cx_sphere}. 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{Cd.pdf}
+	\caption{Courbe universelle du coefficient de traînée $C_{x}=f(R_{\rm{e}})$ en fonction du nombre de Reynolds $\Re$ pour un écoulement autour d'une sphère lisse. Les axes sont en échelle logarithmique. Source : \emph{Les lois d’échelle}, .}
+	\label{fig:Cx_sphere}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \end{equation}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{ecoulement_reynolds.png}
+	\caption{Écoulement observé selon la valeur du nombre de Reynolds. [D'après Hydrodynamique physique, Guyon Hulin Petit \& Life in Moving Fluids, Vogel].}
+	\label{fig:reynolds}
+\end{figure}
+
+
+% La courbe $C_x=f(R_{\rm{e}})$ s'obtient en soufflerie. Nous représentons en Fig.~\ref{fig:Cx_sphere} la courbe $C_x=f(R_{\rm{e}})$  dans le cas de la sphère. On distingue à nouveau deux régimes importants.
+
+\begin{liste}
+\item \fbox{$\Re \ll 10$}.
+
+On observe une droite de pente $-1$ en échelle logarithmique ; autrement dit, $C_{x}\propto1/\Re=\eta/\rho U L$. D'après la \Formu{trainee}, la force de traînée vérifie la formule de \imp{Stokes}, 
+\eqbox[stokes]{
+F_{t}\propto \eta U L.
+}
+La force est proportionnelle à la taille $L$ de l’objet, à la vitesse $U$, et à la viscosité $\eta$. La force est dominée par la \imp{viscosité} du fluide dans le régime laminaire, ce qui cohérent avec l’interprétation physique du nombre de Reynolds (rapport du terme convectif sur le terme visqueux). 
+
+% est \important{linéaire} en la vitesse. Dans le cas spécifique d'une sphère de rayon $R$, on peut calculer le préfacteur numérique ; on obtient la formule de \imp{Stokes},
+% \begin{equation}\label{eq:stokes}
+% \vv{F}=-6\pi\eta R\vec{v}.
+% \end{equation}
+
+\item \fbox{$10 \ll \Re \ll 1000$}.
+
+Le coefficient de traînée obéit une loi complexe dans le régime intermédiaire. Les gradients de vitesse génèrent des tourbillons en aval de l’obstacle, comme illustré en Fig.~\ref{fig:reynolds}.
+
+\item \fbox{$\Re \gg 1000$}.
+
+Le coefficient $C_{x}$ est constant. En particulier, $C_x \simeq \num{0.4}$ pour une sphère de rayon $R=L$. La force de traînée vérifie la formule de \imp{Venturi},
+% \begin{equation}
+\eqbox{
+	F_t \propto \rho L^2 U^2.
+}
+La force est proportionnelle à la surface $S \propto L^2$ de l’objet, au carré de la vitesse $U$, et à la masse volumique $\rho$. La force est dominée par l’\imp{inertie}  du fluide dans le régime turbulent, ce qui est cohérent avec l’interprétation physique du nombre de Reynolds.
+% \end{equation}
+
+\item \fbox{$\Re \simeq \SI{2e5}{}$}.
+
+Il existe une région du régime turbulent où le coefficient de traînée $C_x$ chute brutalement : c'est la \imp{crise de traînée}, découverte par G. \textsc{Eiffel} en 1914. La force de traînée est minimale pour une valeur de $\Re$ critique donnée, qui dépend notamment de la rugosité de la surface. Cet effet est utilisée dans les balles de golf pour augmenter la portée des coups.
+\end{liste}
+
+\begin{prop}\label{prop:trainée}
+À bas Reynolds, la force de traînée est proportionnelle à la vitesse $U$ (régime de Stokes). À haut Reynolds, la force de traînée est proportionnelle à $U^2$ (régime de Venturi).
+\end{prop}
+
+
+\begin{exemple}{Expérience en soufflerie}
+	Un constructeur souhaite concevoir un véhicule qui consomme le moins possible. Le coefficient de traînée $C_x$ doit donc être le plus faible possible. Pour déterminer la courbe $C_x=f(\Re)$, il est beaucoup moins coûteux pour le constructeur d’étudier une maquette réduite en soufflerie, plutôt que de réaliser des expériences de terrain sur le modèle réel, comme sur le schéma ci-dessous.
+	% La maquette est de forme semblable au modèle réel, mais ses dimensions sont divisées d’un facteur $10$. La maquette est placée dans une soufflerie, où l’on mesure la force de traînée $F_t$ en fonction de la vitesse $U$ de l’écoulement. 
+	\begin{fig}[label]
+		\centering
+		\includegraphics[width=0.7\columnwidth]{car_flow.pdf}
+		%\capt{}
+	\end{fig}
+
+	\begin{quest}
+		\item Un constructeur automobile conçoit un nouveau modèle de voiture. Estimer le nombre de Reynolds $\Re$ pour un modèle réel de voiture de hauteur $L=\SI{1.8}{m}$ circulant sur autoroute. Dans quel régime d'écoulement se trouve-t-on ?
+		\item Un constructeur d’avion conçoit un nouvel modèle dont le fuselage est de diamètre $L=\SI{15}{m}$. Déterminer le nombre de Reynolds $\Re$ pour un avion volant à une vitesse $U=\SI{900}{km.h^{-1}}$, et montrer qu’on se situe dans le régime turbulent au-delà de la crise de traînée, de nombre de Reynolds critique $\Re_c \simeq \SI{2e5}{}$.
+		\item La soufflerie atteint des vitesses maximales de $\SI{20}{m.s^{-1}}$. Quelle doit être la taille minimale $L$ de la maquette pour que le coefficient de traînée $C_x$ soit le même que pour le modèle réel ?
+	\end{quest}
+	\end{exemple}
+	\examplesol{
+		\begin{quest}
+			\item	Le nombre de Reynolds pour un modèle réel de voiture de hauteur $L=\SI{1.8}{m}$ circulant sur autoroute à une vitesse $U=\SI{130}{km.h^{-1}}$ est donné par
+			$$
+			\Re = \frac{LU\rho}{\eta} = \frac{1.8\times 130/3.6 \times 1.2}{\num{1e-3}} \simeq \num{7e5}.
+			$$
+		\end{quest}
+	}
+
+	
+\begin{experience}{Viscosimètre à chute de billes}
+Nous pouvons exploiter l'\Eq{stokes} pour mesurer la viscosité d’un fluide. On lâche à l'instant $t=0$ une bille sphérique de rayon $R$ et dans une éprouvette graduée contenant du glycérol, de viscosité dynamique inconnue $\eta$. On admet qu’à bas Reynolds, la formule de Stokes pour une sphère s’écrit 
+\begin{equation}
+	\Vec{F}_{\! t} = -6\pi\eta R \Vec{v},
+\end{equation}
+où $\Vec{v}$ est la vitesse de la bille. On suppose un régime  stationnaire atteint.
+\begin{quest}
+	\item Faire un schéma du problème. Effectuer un bilan des forces à l’équilibre sur la bille. En particulier, exprimer le poids $\Vec{P}$ et la poussée d’Archimède $\Pi_A$ en fonction de $R$ et des masses volumiques $\rho_b$ et $\rho_l$ de la bille et du liquide, respectivement.
+	\item Montrer que la viscosité $\eta$ du glycérol s’obtient par la relation
+	\begin{equation}
+		\eta = \frac{2 gR^2 \Delta \rho }{9v},
+	\end{equation}
+	où $\Delta \rho = \rho_b - \rho_l$ est la différence de masse volumique entre la bille et le liquide, et $v$ la vitesse de la bille en régime permanent.
+	\item On utilise  une bille en acier de masse volumique $\rho_b = \SI{8e3}{kg.m^{-3}}$ et de rayon $R=\SI{1}{mm}$. Mesurer au chronomètre la durée de chute $t$ de la bille pour une hauteur $h$ connue. En déduire la vitesse $v$ de la bille, puis la viscosité $\eta$ du glycérol.
+	\item Vérifier \emph{a posteriori} que l’hypothèse $\Re \ll 1$ est vérifiée (régime laminaire).
+\end{quest}
+\end{experience}
+\examplesol{
+
+% En filmant la chute de la bille, on constate que l'équation horaire de l'altitude $z=f(t)$ est une droite. La pente est la vitesse $v$ de la bille en régime permanent, qui dépend de la viscosité $\eta$.
+\begin{quest}
+	\item	
+	En régime permanent, le principe fondamental de la dynamique appliqué à la bille et projeté selon la verticale ascendante s'écrit
+	\begin{equation}
+0=-\rho_{\rm{s}}V_{\rm s}\,g+\Pi_{\rm{A}}+6\pi\eta R v,
+\end{equation}
+où $V_{\rm s} = \frac{4\pi R^3}{3}$ désigne le volume de la bille et $\Pi_{\rm{A}}=\rho_{\rm{l}} V_{\rm s}\, g$ la poussée d'Archimède. 
+\item En en déduit l'expression de $\eta$ en fonction des paramètres mesurables,
+\begin{equation}
+6\pi\eta R v = (\rho_{\rm{s}}-\rho_{\rm{l}}) V_{\rm s}\, g \quad\Rightarrow\quad \eta=\dfrac{(\rho_{\rm{s}}-\rho_{\rm{l}}) V_{\rm s}\, g}{6\pi R v}=\frac{2(\rho_{\rm{s}}-\rho_{\rm{l}})gR^2}{9v}.
+\end{equation}
+	\item  
+On mène l'expérience avec des billes en acier de rayon $R\simeq \SI{1}{mm}$, et de masse volumique.. et on mesure $v\simeq\SI{1}{cm.s^{-1}}$. On en déduit $\eta\simeq\SI{1e-3}{m^2.s^{-1}}$ et $\nu\simeq\SI{1e-3}{m^2.s^{-1}}$. Le nombre de Reynolds vaut $\Re \simeq \SI{e-2}{}\ll 1$ : l'hypothèse initiale est donc valide.
+\end{quest}
+}
+
+
+\subsection{Notion de couche limite}
+
+% \parag{Définition} 
+Imaginons un écoulement autour d'un obstacle fixe de taille typique $L$. Les conditions aux limites imposent que la vitesse s'annule sur la paroi : les effets de cisaillement et donc de viscosité sont importants au voisinage de l'obstacle, et négligeables à grande distance de l’obstacle. Les effets de la viscosité sont donc localisés dans une mince couche autour de la paroi, appelée \imp{couche limite}. 
+
+%Existe-t-il une région de l'écoulement où la viscosité prédomine ? C'est typiquement le cas lorsque l'écoulement rencontre un obstacle au voisinage de celui-ci, et ce même si le fluide considéré est peu visqueux (par exemple un gaz).
+
+
+ L’épaisseur $\delta$ de la couche limites s’obtient à partir de la loi d’échelle de la diffusion
+ \begin{equation}
+	\delta \sim \sqrt{\nu \tau},
+ \end{equation} 
+ où $\tau \sim L/U$ est le temps caractéristique de diffusion,  si bien que $\delta\sim \sqrt{\nu L/U}$. En utilisant le nombre de Reynolds, on en déduit que l'épaisseur de la couche limite a pour ordre de grandeur
+% \begin{equation}
+\eqbox[couche_lim]{
+	\delta\sim \frac{L}{\sqrt{\Re}}.
+	}
+%  \end{equation}
+% \begin{remarque}
+% Pour déterminer l'épaisseur de la couche limite, on peut aussi dire qu'elle correspond en ordre de grandeur au cas où les effets visqueux sur l'échelle $\delta$ sont du même ordre de grandeur que les effets convectifs sur l'échelle de longueur $L$, autrement dit
+%\begin{equation}
+%\rho\frac{U^{2}}{L}\sim \eta\frac{U}{\delta^{2}}\qquad\Rightarrow\quad \delta\sim\sqrt{\frac{\eta L}{\rho U}}=\frac{L}{\sqrt{\Re}}.
+%\end{equation}
+% \end{remarque}
+%  \begin{remarque}
+% L'épaisseur de la couche limite s'interprète aussi comme la distance à l'obstacle où les effets visqueux et convectifs sont du même ordre de grandeur.
+% \end{remarque}
+
+\begin{definition}\label{def:couche_lim}
+	La \imp{couche limite} désigne la région de l'écoulement au voisinage de l’obstacle où la viscosité domine sur la convection. La couche limite d’un obstacle de taille $L$ est d’épaisseur 
+	$$
+	\delta\sim \frac{L}{\sqrt{\Re}}.
+	$$
+	\end{definition}
+
+% \parag{Rôle de la couche limite}
+% Examinons les deux cas limites : régime à bas Reynolds, et régime à haut Reynolds.
+\begin{liste}
+\item \fbox{$\Re \ll 1$}.
+
+Alors $\delta \gg L$ : la couche limite englobe tout l'écoulement en aval, et les effets visqueux dominent les effets convectifs : le régime est \important{laminaire}.
+%  À viscosité donné,  un écoulement est laminaire aux basses vitesses. Conséquence importante : 
+On peut négliger l’accélération convective  $(\vv{v}\cdot\grad)\vv{v}$ dans l'équation de la dynamique, ce qui donne l’équation de Stokes,
+\begin{equation}
+\begin{split}
+\rho\dfrac{\partial \vv{v}}{\partial t}=-\grad{p}+\eta\,\Deltav{v}+\fext.
+\end{split}
+\end{equation}
+
+\item \fbox{$\Re \gg 1$}.
+
+Alors $\delta\ll L$ : la couche limite est confinée à la surface de l'obstacle. Le terme convectif, non linéaire en la vitesse, est important dans tout l'écoulement, et l'écoulement devient erratique : le régime est \imp{turbulent}. On peut négliger le terme visqueux dans l'équation de la dynamique, ce qui donne l'équation d'Euler,
+
+\begin{equation}
+\begin{split}
+\rho\dfrac{\partial \vv{v}}{\partial t}+(\vv{v}\cdot\grad)\vv{v}=-\grad{p}+\fext.
+\end{split}
+\end{equation}
+\item \fbox{$\Re = \Re_c \simeq \SI{2e5}{}$}.
+
+La couche limite se décolle de l’obstacle, ce qui entraîne la crise de traînée. 
+\end{liste}
+% On représente en Fig.~\ref{fig:reynolds} ces deux types d'écoulements, laminaires et turbulents, ainsi qu'un écoulement intermédiaire, dans lequel apparaît des tourbillons en aval de l'obstacle.
+
+\begin{exemple}{Balle de golf}
+	On présente ci-dessous la courbe $C_x=f(\Re)$ pour des sphères de rugosités différentes.
+	\begin{fig}[label]
+		\centering
+		\includegraphics[width=0.7\columnwidth]{CX_golf.png}
+		%\capt{}
+	\end{fig}
+	\begin{quest}
+		\item	Les meilleurs golfeurs swingent la balle à une vitesse de $\SI{350}{km.h^{-1}}$. Estimer le nombre de Reynolds $\Re$ pour une balle de golf de rayon $R=\SI{2.13}{cm}$. 
+		\item Que vaut le coefficient de traînée $C_x$ pour une sphère lisse ? Pour une balle de golf rugueuse ?
+	\end{quest}
+\end{exemple}
+\examplesol{}
+
+
+
+\begin{remarque}
+	Hors de la couche limite, l'écoulement peut être supposé parfait, et les résultats établis au chapitre précédent s'appliquent. Par contre, la couche limite contrôle la dissipation d'énergie, puisque c'est dans cette région que la viscosité joue un rôle. La couche limite permet aussi de raccorder continûment le champ des vitesses entre un obstacle et l'écoulement uniforme loin de l'obstacle. La théorie de la couche limite a eu une importance capitale en mécanique des fluides, parce qu'elle ouvrit la porte à l'étude de problèmes physiques jugés insolubles auparavant, en particulier l'étude de l'écoulement autour d'un obstacle profilé comme une aile d'avion. L'épaisseur de la couche limite autour d'une aile d'avion en vol est de l'ordre de $\SI{1}{mm}$.
+\end{remarque}
+
+
+
+\end{document}

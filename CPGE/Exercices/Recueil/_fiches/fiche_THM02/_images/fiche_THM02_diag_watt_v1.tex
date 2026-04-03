@@ -1,0 +1,23 @@
+\def\iangle{25} % Angle of the inclined plane
+\def\down{-90}
+\def\arcr{0.5cm} % Radius of the arc used to indicate angles
+
+\begin{tikzpicture}[
+    base/.style={>=latex},
+    axis/.style={->,>=stealth},
+    M/.style={rectangle,draw,fill=lightgray,minimum size=0.5cm,thin},
+    m/.style={rectangle,draw=black,fill=lightgray,minimum size=0.3cm,thin},
+    plane/.style={draw=black,fill=blue!10},
+    string/.style={draw=red, thick},
+    pulley/.style={thick},
+]
+
+%    \draw [ultra thick] (-1,0) -- (1,0) ;%node [midway, above] {$O$};
+%    \draw [axis,->] (0,0) -- (0,-3) node [left] {$x$};
+    
+   
+    \coordinate (O) at (0, 0) node[below left] {O};
+    \draw [axis] (O) -- ++(3,0) node [below] {$V$};
+    \draw [axis] (O) --++ (0,3) node [left] {$P$};
+    
+\end{tikzpicture}

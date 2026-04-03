@@ -1,0 +1,15 @@
+\input{tikz.tex}
+\begin{document}
+\begin{tikzpicture}[scale=2]
+  \begin{scope}[rotate=45]
+    \draw[ultra thick, gray] (0,0) -- ++ (0,-1)  coordinate (M) ;
+    \draw[vecteur,JoliRouge] (M) -- ++ (0.5,0) node[above right] {$\Vec{n}$};
+    \draw[<->] (-0.2,-1) -- ++ (0,1) coordinate (N) node[midway,below left] {$a$};
+  \end{scope}
+    \draw[vecteur] (M) -- ++ (0.5,0) coordinate (X) node[right] {$\ex$};
+    \draw[vecteur] (M) -- ++ (0,0.5) node[above] {$\ey$};
+    \draw[dashed] ($(X) + (-0.15,0)$) arc(0:45:0.4) node[midway,right] {$\theta$};
+    \draw[dashed] ($(M) + (0,0.35)$) arc(90:125:0.4) node[midway,above] {$\theta$};
+% \fill[gray!10!white,draw=black] (0,0) coordinate (A) rectangle ++(1,1) coordinate (B);
+\end{tikzpicture}
+\end{document}

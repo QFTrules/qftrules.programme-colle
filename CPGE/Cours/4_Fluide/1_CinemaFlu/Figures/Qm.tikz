@@ -1,0 +1,33 @@
+\input{/home/eb/Dropbox/texmf/tex/latex/Preambles/tikz.tex}
+\begin{document}
+\begin{tikzpicture}[scale=0.6]
+  \fill[opacity=0,JoliVert,draw opacity=1,draw=JoliVert,thick] (0,0) ellipse (1cm and 2cm);
+  \draw[white,thick] (0,2) coordinate (A) arc(90:270:1cm and 2cm) coordinate (B);
+  \def\len{6}
+  \draw[JoliRouge,thick,<-] (A) node[above=0.1] {$\Vec{v}\d t$} -- ++ (-\len,-1) coordinate (A1);
+  % \draw[thick] (A) -- ++ (\len,0) coordinate (A2);
+  \draw[JoliRouge,thick,<-] (B)
+  -- ++ (-\len,-1) coordinate (B1);
+  % \draw[thick] (B) -- ++ (\len,0) coordinate (B2);
+  \fill[opacity=0.3,JoliVert,draw opacity=1,draw=JoliVert,thick] (-\len,-1) ellipse (1cm and 2cm);
+  \node[] at (-\len-1.5,-1) {$\d S$};
+  \draw[thick,JoliVert] (A1) arc(90:270:1cm and 2cm) coordinate (B1);
+  % \draw[thick] (A2) arc(90:270:1cm and 2cm) coordinate (B2) arc(270:450:1cm and 2cm) ;
+  % \fill[gray,opacity=0.3] (A2) arc(90:450:1cm and 2cm);
+    \draw[JoliVert] (A) arc(90:150:1cm and 2cm) coordinate (C);
+      \draw[JoliVert] (A) arc(90:210:1cm and 2cm) coordinate (D);
+  \fill[white,opacity=0.3] (A) arc(90:270:1cm and 2cm) -- (B1) arc(270:90:1cm and 2cm) -- cycle;
+  % \fill[gray,opacity=0.3] (A) arc(90:270:1cm and 2cm) -- (B2) arc(270:90:1cm and 2cm) -- cycle;
+  % \fill[] (0,0) circle(0.1);
+  \fill[] (-\len,-1) coordinate (R) circle(0.1) node[above=0.1] {$M$};
+  \draw[->,JoliVert] (R) -- ++ (1.5,0) node[right] {$\Vec{\d S}$};
+  \draw[JoliVert,thick] (0,2) coordinate (A) arc(90:270:1cm and 2cm) coordinate (B);
+
+
+  \draw[JoliRouge,thick,<-] (C)
+    -- ++ (-\len,-1) coordinate (B1);
+  \draw[JoliRouge,thick,<-] (D)
+  -- ++ (-\len,-1) coordinate (B1);
+
+\end{tikzpicture}
+\end{document}

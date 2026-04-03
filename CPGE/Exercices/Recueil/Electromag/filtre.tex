@@ -1,0 +1,351 @@
+% !TEX root = /home/eb/.vscode/extensions/qftrules.programme-colle/tmp/Exercice.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PCSI]{Adaptation d'impédance}
+On étudie un réacteur à plasma modélisé par un circuit série $R_{\rm{p}}-C_{\rm{p}}$, d'impédance complexe $\underline{Z}_{\rm{p}}$. On cherche à diminuer au maximum la partie imaginaire de $\underline{Z}_{\rm{p}}$ et dans ce but, on réalise le circuit ci-dessous.
+%\begin{figure}[h!]
+%\centering
+\begin{center}
+\includegraphics[width=0.25\columnwidth]{adaptation_impedance.pdf}
+\end{center}
+%\end{figure}
+
+\begin{quest}
+\item Exprimer l'impédance complexe totale, notée $\underline{Z}$, du circuit ci-dessus.
+\item En déduire la valeur de $C$ qui annule la partie imaginaire de l'impédance totale $\underline{Z}$.
+\item La condition précédente étant réalisée, déterminer l'expression de l'impédance $\underline{Z}$ totale du dipôle.
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][colle]{Modulation d'amplitude}
+On considère un signal modulé en amplitude de la forme $s(t)=k(A_0+s_i(t))s_p(t)$, où $A_0$ est une constante. Les signaux informatif $s_i(t) = A_i \cos(\omega_i t)$ et porteur $s_p(t) = A_p \cos(\omega_p t)$ sont des sinusoïdes de fréquences respectives $\omega_i$ et $\omega_p$ et d'amplitudes respectives $A_i$ et $A_p$.
+\begin{quest}
+    \item Déterminer le spectre en fréquence du signal modulé $s(t)$. La porteuse est-elle conservée ?
+    \item Définir le taux de modulation $m$ et le calculer pour $A_i=\SI{1}{V}$ et $A_0=\SI{2}{V}$. Peut-on démoduler le signal par détection de crêtes ?
+    \item Proposer un montage utilisant une diode et une circuit RC pour démoduler le signal. Justifier son fonctionnement. Expliquer l'effet du circuit RC sur le spectre du signal.
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{exo}[PC][1][colle]{Modulation de fréquence}
+    On considère un signal modulé en fréquence de la forme $s(t)=A_0\cos(\omega_0 t + k s_i(t))$, où $A_0$ est une constante, $\omega_0=2\pi f_0$ est la pulsation de la porteuse et $k$ est la sensibilité du modulateur. Le signal informatif $s_i(t)$ est une sinusoïde de pulsation $\omega_i=2\pi f_i$ et d'amplitude $A_i$.
+    \begin{quest}
+        \item	Donner l'expression du signal modulé $s(t)$. Définir le taux de modulation $\beta$ et la variation de fréquence $\Delta f$ en fonction de $k$, $A_i$ et $f_i$. Donner l'allure du signal modulé $s(t)$ en fonction du temps.
+        \item Donner l'allure du spectre en fréquence du signal modulé. Autour de quelle fréquence le spectre est-il centré ? Que vaut la largeur de bande $B$ du signal modulé (règle de Carson) ? 
+    \end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PCSI][2][colle]{Circuit bouchon}
+Un circuit bouchon est constitué d'une bobine réelle $(r,L)$ en parallèle avec un condensateur de capacité $C$, alimenté par la tension sinusoïdale $e(t)=E_{0}\cos(\omega t)$. On travaillera avec les grandeurs complexes.
+%\begin{figure}[h!]
+%\centering
+\begin{center}
+\includegraphics[width=0.25\columnwidth]{bouchon.pdf}
+\end{center}
+%\end{figure}
+\begin{quest}
+\item Déterminer l'expression de l'impédance $\underline{Z}(\omega)$ du circuit bouchon.
+\item Pour quelle pulsation $\omega_0$ a-t-on résonance ? Quel vaut alors la valeur $\udl{Z}(\omega_0)$ de l'impédance à la résonance ? 
+\item Montrer que si le facteur de qualité vérifie $Q=\frac{L\omega_0}{r}\gg 1$, l'impédance à la résonance se met sous la forme $\udl{Z}(\omega_0) \simeq rQ^2$. Justifier alors la dénomination de circuit bouchon.
+\item On pose $\omega - \omega_0 = \omega_0\, \veps$. On se place maintenant au voisinage de la résonance, de sorte que $\veps \ll 1$. Développer le rapport $\frac{\underline{Z}(\omega)}{\underline{Z}(\omega_0)}$ en fonction de $Q$ à l'ordre dominant en $\veps$.
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PCSI]{Étude d'un quartz}
+Les oscillateurs à quartz sont utilisés pour leur grande stabilité en fréquence. Ils sont notamment utilisés dans les montres électroniques, où ils sont taillés en diapason et réglés pour vibrer à une fréquence de \SI{32768}{Hz}.
+Entre ses deux bornes $A$ et $B$, un quartz est équivalent au circuit électrique ci-dessous.
+%\begin{figure}[h!]
+%\centering
+\begin{center}
+    \includegraphics[width=0.4\columnwidth]{quartz.pdf}
+\end{center}
+%\end{figure}
+
+\begin{quest}
+\item Exprimer l'impédance complexe $\underline{Z}$ entre $A$ et $B$ en fonction de $L,C_{\rm{s}},C_{\rm{p}}$ et $\omega$. 
+\item Mettre l'impédance sous la forme
+\begin{equation}
+    \underline{Z}=\frac{j(\omega_{\rm{s}}^2-\omega^2)}{C_{\rm{p}}\omega(\omega^2-\omega_{\rm{p}}^2)},
+\end{equation} 
+en exprimant les grandeurs $\omega_{\rm{s}}$ et $\omega_{\rm{p}}$  en fonction de $L$, $C_{\rm{s}}$ et $C_{\rm{p}}$. 
+\item Représenter le graphe de la partie imaginaire de l'impédance en fonction de la pulsation. À quelle pulsation a-t-on résonance (transmission maximale de courant sans perte) ? Déterminer $L$ et $C_{\rm{p}}$ pour que cette résonance soit à \SI{32768}{Hz}.
+\item Dans quel domaine le circuit a-t-il un comportement inductif ?  capacitif ? justifier.
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PCSI]{Filtre de Hartley}
+%\begin{figure}[h!]
+%\centering
+\begin{center}
+\includegraphics[width=0.45\columnwidth]{hartley.pdf}
+\end{center}
+%\end{figure}
+\begin{quest}
+\item Étudier qualitativement le comportement du filtre à basses et hautes fréquences.
+\item Déterminer la fonction de transfert du filtre et la mettre sous forme canonique 
+\begin{equation}
+    \udl{H} = \frac{H_0 jx/Q}{1-x^2+jx/Q},
+\end{equation}
+avec $x=\omega/\omega_0$. Donner les expressions de $H_0$, du facteur de qualité $Q$ et de la pulsation propre $\omega_0$.
+\item On pose maintenant $L_1=L_2=L=\SI{1}{mH}$, $C=\SI{0,1}{\micro F}$ et $R=\SI{10}{k\ohm}$. Tracer le diagramme de Bode complet du filtre (gain et phase),  d’abord en traçant les asymptotes, puis l’allure des courbes exactes.
+\item On envoie en entrée un signal carré, dont le spectre est représenté ci-dessous.
+\begin{fig}[label]
+    \centering
+    \includegraphics[width=0.5\columnwidth]{square_signal.jpg}
+    %\capt{}
+\end{fig}
+Représenter l'allure du spectre du signal en sortie.
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PCSI]{Filtre de Wien}
+    \Notions{\item Électrocinétique \task Filtre passif \task Condensateur \task Diagramme de Bode}
+    On considère le filtre passif suivant. Les résistances $R$ sont identiques, de même que les capacités $C$. La tension d’entrée est notée $e$ et la tension de sortie $s$.
+%\begin{figure}[h!]
+%\centering
+\begin{center}
+\includegraphics[width=0.45\columnwidth]{filtre_wien.pdf}
+\end{center}
+%\end{figure}
+\begin{quest}
+\item Étudier qualitativement le comportement du filtre à basses et hautes fréquences.
+\sol{
+  \begin{liste}
+    \item
+    Lorsque $\omega \rightarrow 0$, les condensateurs se comportent comme des interrupteurs ouverts. Ainsi aucun courant ne circule, ni dans la branche d'entrée, ni dans la résistance en parallèle, et donc $s=0$.
+    \item Lorsque $\omega \rightarrow \infty$, les condensateurs se comportent comme des fils. Or $s$ correspond alors à la tension aux bornes d'un fil, et donc $s=0$.
+  \end{liste}
+
+Le filtre est donc un \fbox{passe-bande}.
+}
+\item Déterminer la fonction de transfert du filtre et la mettre sous forme canonique, comme 
+\begin{equation}
+    \udl{H} = \frac{H_0}{1+jQ(x-\frac{1}{x})},
+\end{equation}
+avec $x=\omega/\omega_0$. Donner les expressions de $H_0$, du facteur de qualité $Q$ et de la pulsation propre $\omega_0$.
+\sol{
+    Notons $Z_s = R+\frac{1}{jC\omega}$ la résistance de l'association de $R$ et $C$ en série, et $Z_p = \frac{R}{1+jRC\omega}$ la résistance de l'association de $R$ et $C$ en parallèle. Un pont diviseur de tension donne
+$$
+\udl{H} = \frac{\udl{s}_f}{\udl{e}_f} = \frac{Z_p}{Z_s+Z_p} = \frac{R}{R+(\frac{1}{jC\omega}+R)(1+{jRC\omega})} = \frac{R}{3R+jR^2C\omega - j\frac{\omega}{C}},
+$$
+d'où l'on tire 
+% \eqbox{
+$$
+\udl{H} = \frac{1}{3}\frac{1}{1+j\frac{1}{3}\left(\frac{\omega}{1/RC}-\frac{1/RC}{\omega}\right)}.
+$$
+% }
+On peut mettre la fonction de transfert sous la forme canonique demandée en posant
+\eqbox{
+H_0 = \frac{1}{3}, \quad Q = \frac{1}{3}, \quad \omega_0 = \frac{1}{RC}.
+}
+On trouve bien l'expression demandée avec $x=\omega/\omega_0$.
+}
+\item On donne $C=\SI{10}{nF}$ et $R=\SI{10}{k\ohm}$. Calculer $H_0$, $\omega_0$ et $Q$. Tracer le diagramme de Bode complet du filtre (gain et phase), d’abord en traçant les asymptotes, puis l’allure des courbes exactes.
+\sol{
+    \begin{enumerate}
+        \item \AN~: $H_0 \simeq \num{0.33}, \quad Q \simeq \num{0.33}, \quad \omega_0 =\SI{1.0e4}{rad.s^{-1}}$.
+        \item On rappelle la définition du gain et de la phase :
+        % $$
+        \eqbox{
+            G_{dB} = 20 \log |\udl{H}|, \quad \varphi = \arg(\udl{H}).
+            }
+        % $$
+        Les asymptotes s'obtiennent dans les limites haute et basse fréquences. On trouve 
+        \begin{itemize}
+            \item Lorsque $x \rightarrow 0$, on a $\udl{H} \sim j\frac{H_0}{Q}x$, donc $G_{dB} \simeq +20 \log(x)$ et $\varphi \simeq +\frac{\pi}{2}$.
+            \item Lorsque $x \rightarrow \infty$, on a $\udl{H} \sim -j \frac{H_0}{Qx}$, donc $G_{dB} \simeq -20 \log(x)$ et $\varphi \simeq -\frac{\pi}{2}$.
+            \item Lorsque $x=1$, on a $\udl{H} = H_0$, donc $G_{dB} = 20 \log(H_0) = - 20 \log 3 \simeq -\num{9.5}$, et $\varphi = 0$.
+        \end{itemize}
+        Les courbes exactes sont tracées ci-dessous. 
+        \begin{fig}[label]
+            \centering
+            \includegraphics[width=0.7\columnwidth]{GdB_Wien}
+            %\capt{}
+        \end{fig}
+        \begin{fig}[label]
+            \centering
+            \includegraphics[width=0.7\columnwidth]{phase_Wien}
+            %\capt{}
+        \end{fig}
+    \end{enumerate}
+}
+\item On envoie en entrée un signal carré, dont le spectre est représenté ci-dessous. L'axe des abscisses correspond à la variable $x=\omega/\omega_0$.
+\begin{fig}[label]
+    \centering
+    \includegraphics[width=0.5\columnwidth]{square_signal.jpg}
+    %\capt{}
+\end{fig}
+Représenter l'allure du spectre du signal en sortie.
+\sol{
+La fréquence fondamentale du signal en entrée correspond à la fréquence propre du filtre de Wien. On voit que le signal contient ensuite toutes les harmoniques impaires. Si $A_k$ désigne l'amplitude du k-ème harmonique, de pulsation adimensionnée $x_k=2k+1$, l'amplitude en sortie doit valoir
+$$
+B_k = {\udl{H}(x_k)} A_k \simeq \frac{A_k}{2k+1}.
+$$
+
+}
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[MPSI]{Filtres RC en cascade}
+Le filtre suivant est réalisé en associant deux filtres RC en cascade. Les deux filtres sont reliés par un montage suiveur (non discuté ici) qui permet d'obtenir la tension $V_{\rm i}$ à l'entrée du filtre de droite sans tirer du courant du filtre de gauche. On envoie une tension sinusoïdale en entrée, notée $V_{ \rm e}$. On récupère la tension $V_{\rm s}$ en sortie du filtre.
+
+%%% FIGURE %%%
+%\begin{figure}[h!]
+%\centering
+\begin{center}
+\input{2b.pgf}
+\end{center}
+%\caption{Les fentes d'Young $S_1$ et $S_2$.}
+%\label{fig:}
+%\end{figure}
+%%%%%%%%%%
+
+\begin{quest}
+\item Sans calcul, étudier les comportements haute et basse fréquence ($\omega=\infty$ et $\omega=0$) de ce filtre.
+
+\sol{
+Condensateur = fil pour $\omega=\infty$ donc $V_s=0$. Condensateur = circuit ouvert pour  $\omega=0$ donc $V_s=0$.
+}
+
+
+\item Déterminer la fonction de transfert $H_1$ du filtre de gauche (en entrée du suiveur). Quelle est la nature de ce filtre ?
+
+\sol{
+$H_1 = \dfrac{R}{R+1/jC\omega} = \dfrac{jRC\omega}{1+jRC\omega}$. Passe-haut.
+}
+
+\item Déterminer la fonction de transfert $H_2$ du filtre de droite (en sortie du suiveur). Quelle est la nature de ce filtre ?
+
+\sol{
+$H_2 = \dfrac{1/jC\omega}{R+1/jC\omega} = \dfrac{1}{1+jRC\omega}$. Passe-bas.
+}
+
+\item En déduire la fonction de transfert $H$ du filtre complet. Définir une pulsation caractéristique du circuit, notée $\omega_0$. Représenter le diagramme de Bode en gain et en phase du filtre complet. Comment pourraît-on appeler ce filtre ?
+
+\sol{
+$H = H_1H_2$
+}
+
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[MPSI]{Circuit RL en régime forcé}
+
+On souhaite étudier la réponse du circuit suivant à une entrée sinusoïdale $V_e(t)=E\cos(\omega t)$ pour $t>0$. La tension d'entrée est nulle pour $t<0$. On se propose d'étudier le circuit en notations réelle et complexe afin de comparer les deux approches.
+
+%%% FIGURE %%%
+%\begin{figure}[h!]
+%\centering
+\begin{center}
+\input{RL_force.pgf}
+\end{center}
+%\caption{}
+%\label{fig:}
+%\end{figure}
+%%%%%%%%%%
+
+\begin{quest}
+\item Déterminer la résistance équivalente $R_{\rm eq}$ à l'association des trois résistances du bloc de droite du circuit. Représenter le schéma équivalent du circuit. On travaillera avec la grandeur $R_{\rm eq}$ par la suite.
+
+\sol{
+$R_{\rm eq} = 2R \parallel 3R = \dfrac{6}{5} R$.
+}
+
+
+
+\item  Équation d'évolution.
+
+
+\begin{enumerate}[label=\alph{*})]
+
+\item À partir des lois de Kirchhoff, établir l'équation différentielle qui lie la tension de sortie $V_{\rm s}(t)$ à la tension d'entrée $V_{\rm e}(t)$. Définir le temps caractéristique $\tau$ qui intervient dans cette équation.
+
+\sol{
+$V_e = V_s + L\d i/\d t = V_s + \dfrac{L}{R_{\rm eq}} \d V_s/\d t$.
+}
+
+\item À partir des lois de Kirchhoff en notation complexe, déterminer l'amplitude complexe $\underline{V_s}$ de la tension de sortie en fonction de l'amplitude de la tension d'entrée $E$. Peut-on décrire un régime transitoire avec cette équation ?
+
+\end{enumerate}
+
+
+\item Nous étudions le régime transitoire en notation réelle. Que vaut la période $T$ du signal d'entrée en fonction de $\omega$ ? On suppose que le temps caractéristique $\tau$ est très petit devant la période~$T$, de sorte à ce qu'on puisse supposer $V_e(t)$ constante, égale à $E$, sur une durée de quelques $\tau$. Résoudre alors l'équation différentielle pour obtenir $V_s(t)$ en régime transitoire.
+
+\sol{
+$i$ et $V_s$ continues. $V_s(t) = E(1-e^{-t/\tau})$ avec $\tau = L/R_{\rm eq}$.
+}
+
+
+\item Régime forcé.
+\begin{enumerate}[label=\alph{*})]
+\item On étudie le régime forcé en notation complexe. À partir de la question 2)b), déterminer le module $A$ et la phase $\phi$ de la tension de sortie complexe $\underline{V_s}$.
+
+
+\item On souhaite maintenant étudier le régime forcé en notation réelle. Chercher une solution à l'équation différentielle de la question 2)a) sous la forme $V_s(t) = A \cos(\omega t +\phi)$. Trouver les expressions de $A$ et $\phi$. Comparer les deux méthodes.
+
+\end{enumerate}
+
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[MPSI]{Filtres passe-bas en cascade}
+
+Le filtre suivant est réalisé en associant deux filtres RL et RC en cascade. Les deux filtres sont reliés par un montage suiveur (non discuté ici) qui permet d'obtenir la tension $V_{\rm i}$ à l'entrée du filtre de droite sans tirer du courant du filtre de gauche. On envoie une tension sinusoïdale en entrée, notée~$V_{ \rm e}$. On récupère la tension $V_{\rm s}$ en sortie du filtre.
+
+%%% FIGURE %%%
+%\begin{figure}[h!]
+%\centering
+\begin{center}
+\input{RL.pgf}
+\end{center}
+%\caption{Les fentes d'Young $S_1$ et $S_2$.}
+%\label{fig:}
+%\end{figure}
+%%%%%%%%%%
+
+\begin{quest}
+\item Sans calcul, étudier les comportements haute et basse fréquence ($\omega=\infty$ et $\omega=0$) de ce filtre.
+
+\sol{
+Condensateur = fil et bobine = ouvert pour $\omega=\infty$ donc $V_s=0$. Condensateur = circuit ouvert pour $\omega=0$ donc $V_s=V_e$.
+}
+
+
+\item Déterminer la fonction de transfert $H_1$ du filtre de gauche (en entrée du suiveur). Quelle est la nature de ce filtre ? Déterminer la pulsation caractéristique de ce filtre, notée $\omega_1$.
+
+\sol{
+$H_1 = \dfrac{R}{R+jL\omega} = \dfrac{1}{1+j\omega/\omega_1}$ avec $\omega_1 = R/L$. Passe-bas.
+}
+
+\item Déterminer la fonction de transfert $H_2$ du filtre de droite (en sortie du suiveur). Quelle est la nature de ce filtre ?  Déterminer la pulsation caractéristique de ce filtre, notée $\omega_2$.
+
+\sol{
+$H_2 = \dfrac{1/jC\omega}{R+1/jC\omega} = \dfrac{1}{1+j\omega/\omega_2}$ avec $\omega_2 = R/L$. Passe-bas.
+}
+
+\item En déduire la fonction de transfert $H$ du filtre complet. Tracer le diagramme de Bode en gain et en phase du filtre complet pour $L=2\,$mH, $C=100\,$nF et $R=2\,$k$\Omega$.
+
+\sol{
+$H = H_1H_2$
+}
+
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

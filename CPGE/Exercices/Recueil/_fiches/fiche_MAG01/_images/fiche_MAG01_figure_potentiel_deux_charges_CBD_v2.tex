@@ -1,0 +1,55 @@
+\def\longueurVecteurs{0.75}
+
+\begin{tikzpicture}[force/.style={->,>=latex,draw=blue!75,very thick,nodes={blue!75}}]
+  \tikzstyle{fleche}=[->,>=stealth];
+
+  \coordinate (O) at (0,0);
+  \coordinate (A) at (0,2*\longueurVecteurs);
+  \coordinate (B) at (1.5*\longueurVecteurs,0);
+  \coordinate (C) at (-1.5*\longueurVecteurs,0);
+
+  \coordinate (M) at (2.5*\longueurVecteurs,4*\longueurVecteurs);
+
+  \draw [fleche] (-2*\longueurVecteurs,0) -- (3*\longueurVecteurs,0) node [right] {$x$};
+  \draw [fleche] (O) -- (0,4.5*\longueurVecteurs) node [above] {$y$};
+
+  % \draw[dashed] (B) -- (A);
+
+  \draw ($(B)+(0,5pt)$) -- ($(B)-(0,5pt)$) node [below] {$a$};
+  \draw ($(0,4*\longueurVecteurs)+(5pt,0)$) -- ($(0,4*\longueurVecteurs)-(5pt,0)$) node [left] {$y$};
+  \draw ($(2.5*\longueurVecteurs,0)+(0,5pt)$) -- ($(2.5*\longueurVecteurs,0)-(0,5pt)$) node [below] {$x$};
+
+  \draw ($(C)+(0,5pt)$) -- ($(C)-(0,5pt)$) node [below] {$-a$};
+  
+
+  % \draw [fleche] ($(B)+(-0.4*1.5*\longueurVecteurs,0.4*2*\longueurVecteurs)$) arc (127:180:\longueurVecteurs);
+  % \path (B)++(153:1.2*\longueurVecteurs) node {$\alpha$};
+
+  \draw [fleche, very thick] (M) -- ($(M)+({-\longueurVecteurs*sin(atan(4/2.5))},{\longueurVecteurs*cos(atan(4/2.5))})$)node [above] {$\vv{e_{\theta}}$};
+  \draw [fleche, very thick] (M) -- ($(M)+({\longueurVecteurs*cos(atan(4/2.5))},{\longueurVecteurs*sin(atan(4/2.5))})$) node [above] {$\vv{e_{r}}$};
+  
+  % \draw [force] (A) -- ($(A)+(-0.75*\longueurVecteurs,\longueurVecteurs)$) node [left] {$\vv{F}$};
+
+
+  \draw [dashed] (O) -- (M);
+  \draw ($0.5*(M)-(0,8pt)$) node{$r$};
+  \draw [dashed] (B) -- (M);
+  \draw [dashed] (C) -- (M); 
+
+  \draw (O) node[below] {$\ptO$};
+  \draw (M) node[right] {$\ptM$};
+
+  \draw (M) node {\color{\blueOrBlack} $\bullet$};
+
+  \draw [fleche] ($(O)+(\longueurVecteurs,0)$) arc (0:{atan(4/2.5)}:\longueurVecteurs);
+  \path (O)++({0.5*atan(4/2.5)}:0.7*\longueurVecteurs) node {$\theta$};
+
+  
+  \draw (B) node {\color{\redOrBlack} $\bullet$};
+  \draw ($(B)+(5pt,5pt)$) node[above] {$q_1$, $\ptB$};
+
+  \draw (C) node {\color{\redOrBlack} $\bullet$};
+  \draw ($(C)+(-5pt,5pt)$) node[above] {$q_2$, $\ptC$};
+
+  
+\end{tikzpicture}

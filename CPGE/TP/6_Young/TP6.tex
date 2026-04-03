@@ -1,0 +1,504 @@
+% displayname : Fentes de Young
+\input{TP.sty}
+\begin{document}
+\Entete[TP][
+\item Caractériser un phénomène d’interférence et de diffraction.
+\item Comprendre l’intérêt des fentes d’Young vis-à-vis des trous d’Young.
+\item Étudier l'effet des élargissements spectral
+et spatial de la source sur les interférences.
+][
+\item TP 9 PCSI : Interférences
+\item \refChap{3}{3}
+]{6} % \end \entete
+
+
+Dans ce TP, nous étudions la physique associée aux phénomènes d’interférences par division du front d’onde sur l’exemple des fentes d’Young. Les interférences interviennent lorsque l’intensité issue de la superposition de deux ondes lumineuses cohérentes n’est pas égale de la somme des intensités individuelles. Nous verrons aussi que l’élargissement spatial ou spectral de la source conduit à une perte de contraste de la figure d’interférences.
+%
+% D'une part le phénomène de diffraction, qui est un effet de bord apparaissant lorsque l'onde lumineuse rencontre un obstacle. Le bord de l'obstacle agit comme une source secondaire qui réémet en chaque point une onde lumineuse appelée ondelette, qui est de même fréquence que l'onde incidente. D'autre part, le phénomène d'interférences, qui se caractérise par le fait que l'intensité résultant de la somme de deux sources cohérentes n'est pas égale à la somme des intensités des sources prises individuellement.
+
+
+
+\matos{
+\item 1 jeton de trois bifentes d’espacements $\SI{200}{\micro m}$, $\SI{300}{\micro m}$, $\SI{500}{\micro m}$.
+\item 1 jeton de bitrous de divers espacements.
+\item 1 jeton de fentes simples de divers largeurs.
+\item 1 jeton de trous simples de divers diamètres.
+\item 4 supports de jeton. 
+\item 1 fente réglable.
+\item 1 écran.
+\item 1 lampe blanche QI, 1 filtre AC, 1 diode laser verte (ou rouge sinon, ou 1 torche laser verte).
+ \item 1 écran opaque avec feuille blanche et son support, 1 caméra bleue flexible.
+ \item 1 long banc d’optique, 6 pieds d’optique.
+% \item Spectromètre et logiciel associé.
+}
+
+\section{Dispositif des fentes de Young}
+Nous considérons ici une source \imp{ponctuelle monochromatique}.
+\subsection{Figure d’interférences}
+
+\parag{Théorie} 
+
+\Enonce{
+Les \imp{fentes de Young} constituent le dispositif de base de l’étude des interférences à division du front d’onde. Il s’agit de
+deux fentes identiques de largeur $\ell$, séparées d’une distance $a$. Un interféromètre de type fentes de Young fonctionne grâce à la diffraction de la lumière incidente par chacune des fentes, les deux ondes diffractées interférant sur l’écran.
+}
+
+\begin{quest}
+  \todo {Rappeler les propriétés de la figure d'interférence obtenue avec les fentes de Young : schéma, champ d’interférences, expression de l'intensité lumineuse $I$, expression de l’interfrange $i$.}
+
+  \sol{
+  Voir cours. Voici un schéma de l'expérience.
+  \begin{fig}[label]
+    \centering
+    \includegraphics[width=\columnwidth]{experience_young_simple.pdf}
+    %\capt{}
+  \end{fig}
+  La différence de marche dans l’approximation paraxiale vaut 
+  \eqbox{
+\delta \simeq \frac{a x}{D},
+  }
+  L’intensité lumineuse à l’écran s’écrit
+  \eqbox{
+I(x) = 2I_0(1+\cos(2\pi \delta/\lambda)).
+  }
+  L’interfrange, c’est-à-dire la distance entre deux franges brillantes consécutives, vaut
+  \eqbox{
+i = \frac{\lambda D}{a}.
+  }
+  }
+
+\end{quest}
+
+\Enonce{
+\begin{figure}[H]
+  \centering
+  %\includegraphics[width=0.55\textwidth]{montage_QI.png}
+  \includegraphics[scale=1]{montage_young_2}
+  \caption{Montage optique pour l'étude des fentes d’Young.
+  % Le tube en carton sert à réduire la lumière parasite lors d’une mesure avec un capteur optique (à enlever bien sûr pour une observation à l’œil nu).
+   Les fentes d’Young sont situées à une distance $d \sim \SI{20}{cm}$ de la fente source. On observe la figure d'interférence sur un écran à une distance $D$ aussi grande que possible.}
+  \label{fig:young}
+  \end{figure}
+  %%%%%%%%%%%%%
+}
+
+\Enonce{
+\parag{Expérience} Le montage est représenté sur la \Fig{young}.
+\begin{protocole}
+\item Réaliser le montage en éclairant les fentes de Young avec une diode laser. Placer un écran à une distance $D$ des fentes aussi grande que possible, et observer l’allure de la figure d’interférences.
+\begin{danger}
+  Privilégier les diodes laser vertes qui sont plus lumineuses.
+\end{danger}
+\end{protocole}
+}
+
+\udl{Observation qualitative}.
+\begin{quest}
+\QR {En utilisant les trois double-fentes présentes sur le jeton, observer l’influence de l’espacement entre les fentes $a$ et de la distance à l’écran $D$ sur la figure d’interférences. Discuter du compromis à trouver sur $a$ et $D$ pour observer une figure de qualité optimale.}
+{
+\begin{liste}
+  \item
+  Plus $D$ est grand et plus la figure est large, ce qui rend les mesures plus précises et facilite l’observation. Mais plus $D$ est grand, moins la figure est lumineuse.
+  \item  Plus $a$ est petit, plus les franges sont espacées, ce qui facilite la mesure de l'interfrange. Mais plus $a$ est petit, plus l’incertitude relative sur $a$ est grande, ce qui rend aussi la vérification de la loi entre $i$ et $a$ plus difficile.
+\end{liste} 
+} 
+\end{quest}
+
+\udl{Étude quantitative}.
+\begin{quest}
+\QR{  Mesurer l’interfrange $i$ le plus précisément possible pour les trois valeurs d’espacement $a$ des fentes de Young. Expliquer votre protocole et estimer les incertitudes-type sur $i$ et $a$.}{
+On mesure la distance $x$ séparante le plus grande nombre de franges $N$ possible. On a alors $x= Ni$. L’incertitude sur $x$ est dictée par la précision de la règle. Il s’agit d’une double-lecture de graduations, et donc 
+$$
+\incert{x}  = \text{demi-graduation}\cdot \frac{\sqrt{2}}{\sqrt{3}} = \SI{0.4}{mm}.
+$$
+On en déduit l’incertitude sur $i$ par propagation,
+$$
+\incert{i} = \frac{\incert{x}}{N}.
+$$
+}
+\QR{
+Effectuer une régression affine de la forme $i=f(1/a)$ avec $f(y) = A y+ B$. Donner les valeurs optimales de $A$ et $B$ avec leurs incertitudes-type, et discuter du $\chi^2$ réduit. Comparer $A$ à la valeur attendue $A_{\rm att} = \lambda D$.
+}{La loi à vérifier est
+\eqbox{
+i = \frac{\lambda D}{a} = f\left(x=\frac{1}{a} \right),
+}
+où la fonction $f(x) = \lambda D x$ est linéaire. Pour chacune des trois valeurs de l'écartement $a$, on mesure l'interfrange $i$ à la règle sur l'écran, puis on calcule $x=1/a$ sur \texttt{Régressi}. On effectue ensuite une régression linéaire $i(x) = Ax$. La valeur attendue est $A = \lambda D$.
+
+Incerticudes.
+\begin{liste}
+  \item L’incertitude sur $a$ est inconnue. Le constructeur donne la régularité des fentes à $\SI{1}{\micro m}$, mais la régularité des fentes ne préjuge pas de bon écartement des fentes. On pourra prendre $\incert{a} \simeq \SI{10}{\micro m}$ comme valeur raisonnable.
+  \item L’incertitude sur $i$ s'obtient en mesurant l'écart $d=Ni$ entre $N\simeq 10$ franges brillantes. L'incertitude de lecture est d'environ une graduation de règle de chaque côté de la règle. On pourra donc prendre $\incert{d} \simeq \SI{1}{mm}$, et donc $\incert{i} = \incert{d}/N \simeq \SI{0.1}{mm}$. 
+\end{liste}
+% Sur Salja2, on définit une échelle puis on mesure 8 ou 10 interfranges. Pour une mesure unique,
+% %on compose les incertitudes avec la formule
+% %$$
+% %\frac{\Delta i}{i} = \sqrt{\left(\frac{\Delta D}{D}\right)^2 + \left(\frac{\Delta a}{a}\right)^2}.
+% %$$
+ Les incertitudes sur $D$ et $\lambda$ sont négligeables. 
+
+ 
+ Exemple de valeur : $i_{\rm mes}=\SI{3.00\pm0.05}{mm}$ pour $a=\SI{200}{\mu m}$, $D=\SI{907}{mm}$ et $\lambda=\SI{632.8}{nm}$, soit $i_{\rm att} = \SI{2.9\pm0.1}{mm}$.
+%On suppose en effet la longueur d’onde $\lambda$ connue exactement.
+}
+\end{quest}
+\udl{Comparaison aux trous de Young}.
+\begin{quest}
+  \item	
+% Remplacer la diode laser par une torche laser, qui produit une faisceau élargi. Pourquoi l’extension spatiale des fentes ne pose pas de problème pour observer la figure d’interférences ? Remettre la diode laser, et 
+Remplacer les fentes de Young par des trous de Young. Comment est modifiée la figure d’interférences ? Quel est l’avantage du dispositif des fentes de Young sur les trous de Young ?
+\end{quest}
+
+
+%%%%%%%%%%%%%%%%%%%%%
+\begin{table}[h!]
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+\hline
+Laser & Diode verte & Torche verte & Diode rouge \\
+\hline
+$\lambda$~(nm) & $532$ &  $532$ & $632.8$ \\
+\hline
+\end{tabular}
+\end{center}
+\caption{Longueurs d’onde des lasers utilisés.}
+\end{table}
+%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Effet de la diffraction}
+\parag{Théorie}
+\Enonce{
+Nous mettons ici en évidence la distinction entre l’effet de la \imp{diffraction} au passage d’une fentes, et l’\imp{interférence} entre les ondes provenant des deux fentes. Pour cela, on compare la figure d’interférences issue de fentes et issue de trous, dont la géométrie est différente.
+}
+\begin{quest}
+  \todo {Rappeler l’ordre de grandeur de l’angle de diffraction $\theta_{\rm diff}$ d’un faisceau de longueur d’onde $\lambda$ par un obstacle de largeur $\ell$. Faire un schéma.}
+\sol{
+Le demi-angle d'ouverture vérifie 
+\eqbox{
+ \theta_{\rm diff} \simeq \frac{\lambda}{\ell}.
+}
+Il s'agit simplement d'un ordre de grandeur, valable pour des angles petits, et le préfacteur numérique dépend de la forme de l'obstacle.
+}
+\end{quest}
+
+\Enonce{
+La forme de la tache de diffraction dépend de la géométrie de l’obstacle. 
+\begin{liste}
+  \item \fbox{Trou} de diamètre $\ell$ : la tache de diffraction est appelée tache d’Airy, et a une symétrie circulaire. Son rayon $R$ sur l’écran est donné par
+  \begin{equation}\label{eq:airy}
+  R \simeq \num{1.22}\,\frac{\lambda D}{\ell},
+\end{equation}
+\item \fbox{Fente} de largeur $\ell$ : la tache de diffraction a une symétrie rectiligne, et sa demi-largeur $L$ sur l’écran est donnée par
+\begin{equation}\label{eq:fente}
+  L \simeq \frac{\lambda D}{\ell}.
+\end{equation}
+\end{liste}
+\begin{remarque}
+Ces formules viennent de l’expression de l’intensité de l’onde diffraction par un obstacle, qui provient de la formule d’Huygens-Fresnel de la diffraction. Pour une fente, l’intensité est proportionnelle à $\sin^2(\pi \lambda \theta/\ell)$ ; pour un trou circulaire, l’intensité est proportionnelle à la fonction de Bessel d’ordre un $J_1(\pi \lambda \theta/\ell)$. Les angles $\theta$ correspondant aux premières annulations de l’intensité donnent les expressions précédentes.
+\end{remarque}
+}
+
+\parag{Expérience} On souhaite séparer expérimentalement l’effet de la diffraction et des interférences dans la figure observée à l’écran.
+
+
+\udl{Diffraction seule}
+\begin{quest}
+\QR{ Observer la tache de diffraction produite par un \emph{trou unique} sur l’écran.  Faire un schéma de la tache de diffraction. Vérifier qualitativement, puis quantitativement que le rayon de la tache vérifie l’\Eq{airy}.}
+ {
+ La tache d'Airy a l'allure suivante.
+ \begin{fig}[label]
+  \centering
+  \includegraphics[width=0.5\columnwidth]{airy.png}
+  %\capt{}
+ \end{fig}
+ Le rayon $L$ à mesurer correspond plus précisément au rayon de l'anneau noir qui entoure la tache d'Airy (première annulation de l'intensité). On peut effectuer une mesure unique de $L$, ou si le temps le permet, effectuer là aussi une régression linéaire $L=f(y=\frac{1}{\ell})$ pour plusieurs valeurs de $\ell$.
+ }
+
+\QR{ Remplacer le trou unique par une \emph{fente unique}, et observer la tache de diffraction. Que dire de la géométrie de la tache de diffraction ? Vérifier qualitativement, puis quantitativement que la demi-largeur $L$ de la tache de diffraction vérifie l’\Eq{fente}. 
+}{
+  On observe la figure de diffraction suivante. La demi-largeur $L$ de la première fente (plus précisément la position de la première extinction)  vérifie la formule de la diffraction $L \simeq \frac{\lambda D}{\ell}$. Cependant, la figure de diffraction présente des franges rectilignes, et non des anneaux, comme pour le trou.
+\begin{fig}[label]
+  \centering
+  \includegraphics[width=0.6\columnwidth]{fente_unique.jpg}
+  %\capt{}
+\end{fig}
+}
+\end{quest}
+\udl{Diffraction et interférences}
+\begin{quest}
+\QR{ 
+Observer ensuite la figure d’interférence pour \emph{deux trous} de Young, puis \emph{deux fentes} de Young. Distinguer à chaque fois l’effet de la diffraction et l’effet des interférences sur la figure à l’écran. Schématiser les figures observées à l’écran.
+%Comparer au dispositif des trous d’Young.
+}{
+  La diffraction donne une tâche de largeur $L=\lambda D/\ell$, qui est grande par rapport à l’interfrange $i=\lambda D/a$, car $a\gg \ell$ en pratique. Ainsi, la forme du champ d'interférences est donnée par la diffraction, qui est déterminée par la forme des motifs, tandis que la structure dans la tache de diffraction est donnée par l’interférence entre les motifs, qui est déterminée par leur écartement.
+  \begin{fig}[label]
+    \centering
+    \begin{subfig}[label][0.8]
+      \includegraphics[width=0.6\columnwidth]{2712_trous_diff.png}
+    \end{subfig}
+    \begin{subfig}[label][1]
+      \includegraphics[height=0.6\columnwidth, angle=90]{download.png}
+    \end{subfig}
+    \capt{(a) Trous de Young. (b) Fentes de Young.}
+  \end{fig}
+  
+La tâche de diffraction a la symétrie des motifs (donc circulaire pour les trous d’Young, et rectilignes pour les fentes) alors que la symétrie de la figure d’interférences  est déterminée par la position relative des motifs.
+}
+
+\end{quest}
+
+%\subsection{Montage de Fraunhofer}
+%
+%\subsection{Figure d’interférence}
+%
+%\subsection{Effet de la diffraction}
+
+
+
+\section{Perte de contraste}
+
+\Enonce{
+Dans la suite, nous utiliserons le montage de Fraunhofer, représenté en
+de la \Fig{young}. Nous montrons dans cette section que l’élargissement du spectre de la source (perte de cohérence temporelle, \Sec{temp}) et de la fente source (perte de cohérence spatiale, \Sec{spa}) conduisent à une perte de contraste de la figure d’interférences.
+}
+
+
+
+%\begin{danger}
+%Toujours placer un filtre anti-calorique (AC) en sortie d’une lampe quartz-iode (QI) !
+%\end{danger}
+
+\subsection{Montage de Fraunhofer}
+\begin{quest}
+  \todo {Rappeler le principe et l’intérêt du montage de Fraunhofer (\Fig{fraunhofer}).}
+  \sol{
+Le montage de Fraunhofer permet d’avoir une figure d’interférences \fbox{plus lumineuse}.
+  }
+\end{quest}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\columnwidth]{montage_fraunhofer_TP.pdf}
+  \caption{Montage de Fraunhofer. On pourra prendre $f_1’=\SI{100}{mm}$ et $f_2’=\SI{500}{mm}$ pour les distances focales des lentilles.}
+  \label{fig:fraunhofer}
+\end{figure}
+
+
+\begin{danger}
+Pour perdre le moins de lumière possible, rendre le montage compact, aligner correctement les éléments, et condenser la lumière sur la double-fente.
+%Focaliser la lumière de la lampe sur la fente source avec le condenseur.
+\end{danger}
+
+
+
+
+\subsection{Cohérence temporelle}
+\label{sec:temp}
+
+
+\parag{Théorie} On éclaire les fentes de Young avec une source ponctuelle \imp{polychromatique} de spectre continue.
+\begin{quest}
+  \todo {Rappeler le lien entre la longueur de cohérence temporelle $\lc$, la largeur spectrale de la source $\Delta \lambda$, et le nombre de franges visibles $N_{\rm f}$. Rappeler le critère de cohérence.}
+  \sol{
+    \begin{enumerate}
+      \item La longueur de cohérence temporelle est donnée par
+      \eqbox{
+\ell_{\rm c} \simeq \frac{\lambda_{\rm m}^2}{\Delta \lambda},
+      }
+      où $\lambda_{\rm m}$ est la longueur d’onde moyenne du spectre.
+      \item Le critère de cohérence temporelle s’écrit
+      \eqbox{
+\ell_{\rm c} \gtrsim \delta,
+      }
+      où $\delta$ est la différence de marche entre les deux ondes interférentes.
+    \end{enumerate}
+  }
+\end{quest}
+\parag{Expérience} On étudie l’allure de la figure d’interférences en lumière blanche, en comparant les montages classique et de Fraunhofer.
+
+
+\udl{Montage classique}.
+\begin{protocole}
+  \item 
+  Réaliser le montage classique des fentes de Young de la \Fig{young}. Éclairer les fentes de Young par une source de lumière blanche.
+\begin{danger}
+Placer un filtre anti-calorique immédiatement après le source !
+\end{danger}
+\end{protocole}
+\begin{quest}
+  \QR{Réduire la largeur de la fente source de façon à simuler une source \emph{ponctuelle} et observer les franges colorées nettes au centre de la figure d’interférences. Que dire de la luminosité de la figure d’interférences ?
+  }{
+  La figure est peu lumineuse.
+  }
+\end{quest}
+\udl{Montage de Fraunhofer}.
+\begin{protocole}
+  \item Remplacer le montage classique de la \Fig{young} par le montage de Fraunhofer de la \Fig{fraunhofer}. On pourra prendre $f_1’=\SI{100}{mm}$ et $f_2’=\SI{500}{mm}$. 
+\end{protocole}
+\begin{quest}
+  \QR{Expliquer comment placer la fente et l’écran dans les plans focaux des lentilles $(\mc{L}_1)$ et $(\mc{L}_2)$. Quelle différence voyez-vous sur la figure d’interférences par rapport au montage précédent ?
+  }{
+  La figure est plus lumineuse qu'avec le montage classique. La figure d'interférences est inchangée.
+  }
+\end{quest}
+\udl{Perte de cohérence temporelle}.
+\begin{quest}
+\QR{ Compter le nombre de franges visibles $N_f$ à partir du centre de la figure d’interférences. En déduire la longueur de cohérence temporelle $\lc$ de la source blanche utilisée. Comparer à la largeur spectrale typique $\Delta \lambda$ d’une source de lumière blanche.
+}{
+Le nombre de franges visibles de part et d'autre de la frange centrale vaut 
+\eqbox{
+N_f \simeq \frac{\ell_{\rm c}}{\lambda_{\rm m}} \simeq \frac{\lambda_{\rm m}}{\Delta \lambda}.
+}
+Pour la lumière blanche, on a $\Delta \lambda \simeq \SI{200}{nm}$, et $\lambda_{\rm m} \simeq \SI{600}{nm}$, soit 
+\eqbox{
+N_f \simeq 3.
+}
+La figure d'interférences a l'allure suivante.
+\begin{fig}[label]
+  \centering
+  \includegraphics[width=0.7\columnwidth]{young_blanc.png}
+  % \capt{Centre de la figure d’interférences d’une double-fente de Young en lumière blanche.}
+\end{fig}
+}
+
+% \item Placer un filtre interférentiel entre la fente source et la double-fente de Young. Observer la figure d’interférences et commenter. On donne la largeur spectrale d’un filtre interférentiel $\Delta \lambda \simeq \SI{20}{nm}$.
+% \sol{
+% 	En utilisant des filtres interférentiels, on met en évidence que chaque longueur d’onde contenue dans le rayonnement émis par la lampe crée son propre système d’interférences, caractérisé par un interfrange différent.
+
+%   Le critère de cohérence donne ici $N_f \simeq 30$. En pratique, on voit donc toutes les franges du champ d'interférences, même si elles sont peu lumineuses.
+% }
+%\item Vérifier par une régression linéaire que l’interfrange $i$ est proportionnel à la longueur d’onde $\lambda$ du rayonnement
+%incident. Évaluer les incertitudes. On indique que les filtres interférentiels laissent passer une bande spectrale de largeur environ $\SI{20}{nm}$.
+
+\end{quest}
+
+
+\subsection{Cohérence spatiale}
+\label{sec:spa}
+\parag{Théorie}
+\Enonce{
+Étudions maintenant l’influence de la taille de la source sur la figure d’interférences. Pour que la figure soit suffisamment lumineuse, on gardera la lampe quartz-iode comme source de lumière. L'effet de la cohérence spatiale va donc se superposer à l'effet de la cohérence temporelle.
+}
+\begin{quest}
+  \todo {Rappeler le lien entre la longueur de cohérence spatiale $\ls$, la largeur $b$ de la source. Rappeler le critère de cohérence spatiale.}
+  \sol{
+La longueur de cohérence spatiale est donnée par
+\eqbox{
+\ell_{\rm s} = \frac{\lambda d}{b},
+}
+Le critère de cohérence spatiale s'écrit
+\eqbox{
+\ell_{\rm s} \gtrsim a.
+}
+Lorsque $a$ est plus grand que $\ell_{\rm s}$, la figure d'interférences est brouillée.
+  }
+\end{quest}
+
+% On éclaire maintenant les fentes avec une source \emph{monochromatique} : on prendra la torche laser verte.
+%En prenant une fente source fine, il est possible d’observer des interférences. Si on élargit la fente source, le brouillage se fait plus fort et la figure d’interférences disparaît progressivement.
+\begin{quest}
+%\item Éclairer les fentes d’Young par une lumière monochromatique (lampe QI avec filtre interférentiel).
+\QR{ Élargir peu à peu la fente source de largeur réglable et observer l’évolution du contraste de la figure d’interférence. Déterminer la largeur $b$ de la fente source pour laquelle on observe un brouillage complet. En déduire la longueur de cohérence spatiale $\ls$ et comparer à la valeur attendue.
+%\item Pour différentes largeurs $\ell$ de la fente source, déterminer le contraste $\Co = (I_{\rm max} - I_{\rm min})/(I_{\rm max} + I_{\rm min})$ de la figure d’interférence. Interpréter en proposant un critère de brouillage portant sur l’ordre d’interférences.de nouveau la
+}{
+Cette expérience permet d’élucider le rôle de la fente source. Elle n’est assurément pas là en tant
+qu’objet diffractant, mais en tant que diaphragme pour faire une source de petite dimension à partir
+de la lampe quartz-iode. En raison des symétries des fentes d’Young, la fente source peut être étendue
+dans la direction parallèle aux fentes.
+
+
+\begin{fig}[label]
+  \centering
+  \includegraphics[width=\columnwidth]{source_moyenne.png}
+  %\capt{}
+\end{fig}
+
+On observe un brouillage complet de la figure d'interférences (franges centrales compris), comme sur la figure ci-dessous, lorsque $\ell_{\rm s} \simeq a$. On vérifie cela en mesurant $d$ au mètre-ruban et en estimant $b$ en mesurant le profil de diffraction de la fente source par un laser, puis en estimant $\ell_{\rm s} \simeq \lambda d/b$.
+}
+
+\end{quest}
+
+\begin{danger}
+Ne pas confondre l’effet de la largeur $b$ de la fente source avec la largeur $\ell$ des fentes d’Young !
+\end{danger}
+%
+%
+%On se propose enfin d’observer la composition spectrale de l’onde incidente sur l’écran en un point de la figure d’interférences.
+%
+%\begin{protocole}
+%\item Éclairer les fentes d’Young par une source de lumière blanche (lampe QI sans aucun filtre). À votre avis, quelle est l’allure du spectre de la lumière au centre de la figure d’interférences (frange centrale) ? En un point éloigné du centre, d’ordre d’interférences $p$ élevé ?
+%
+%\item Placer le capteur optique du spectromètre commercial en un point éloigné du centre de la figure d’interférences. Observer le spectre \imp{cannelé}. En quelles longueurs d’onde sont situées les cannelures ? La couleur blanche dont le spectre est cannelé est qualifié de \imp{blanc d’ordre supérieur}.
+%
+%\end{protocole}
+
+Pour une animation illustrant l’influence des paramètres dans l’expérience des fentes
+de Young, on consultera
+ \href{http://anim.institutoptique.fr/Young/}{http://anim.institutoptique.fr/Young/}.
+
+%  \begin{protocole}
+%   \item Remplir le tableau récap
+%  \end{protocole}
+
+ % \section{Mesure d'une distance focale}
+
+\section{Spectroscopie par réseau de diffraction\bonus}
+
+\subsection{Généralités}
+\Enonce{
+On considère un réseau de diffraction en transmission constitué d’un grand nombre de fentes, séparées par un pas $a$. On éclaire le réseau par une source monochromatique de longueur d’onde $\lambda$. 
+}
+\begin{quest}
+  \todo {Rappeler la formule des réseaux, qui relie les ordres d’interférences constructifs $p\in \Z$ aux angles d’incidence $i$ et diffracté $i’$.}
+  \sol{
+La formule des réseaux s’écrit
+\eqbox{
+a(\sin i - \sin i') = p \lambda.
+}
+  }
+\end{quest}
+On rappelle qu’à ordre d’interférences $p$ et longueur d’onde $\lambda$ fixé, la déviation angulaire minimale $\alpha_m$ vérifie 
+\begin{equation}\label{eq:2sin}
+2\sin\left(\frac{\alpha_m}{2}\right) = p \,\frac{ \lambda}{a}.
+\end{equation} 
+Dans la suite, nous mesurons l’angle de déviation $\alpha$ avec précision à l’aide d’un goniomètre.
+
+\subsection{Réglage du goniomètre}
+Le goniomètre est un appareil qui a pour objectif de mesurer avec précision des angles de rayons optiques. Il est composé d'un bâti sur lequel sont montés 3 accessoires.
+\begin{liste}
+  \item
+   Le \imp{collimateur} donne de la fente-source une image à l'infini. Il est composé d'un objectif et d'une fente de largeur réglable.
+  \item Le \imp{plateau} est destiné à recevoir le système optique (ici le réseau). Il est mobile autour d'un axe vertical; une vis permet de bloquer sa rotation et une seconde vis permet alors une rotation micrométrique. Autour du plateau, trois vis disposées en triangle équilatéral permettent le réglage de l'horizontalité de celui-ci.
+  \item  La \imp{lunette} est mobile autour du même axe vertical que le plateau ; une manette permet le bloquage de la rotation et une vis permet une rotation micrométrique. La position de la lunette peut être repérée à la minute d'angle près grâce à un vernier.
+\end{liste}
+
+\parag{Réglage de la lunette}
+La lunette comporte un objectif, un réticule éclairé par une ampoule, et un oculaire. Elle doit donner une image nette d'un objet à l'infini. Pour ce faire:
+\begin{protocole}
+  \item 
+  Pousser la lame semi-réfléchissante de façon qu'un faisceau lumineux éclaire le réticule et sorte de la lunette. Règler l'oculaire à votre vue de façon à voir le réticule net. Tourner le réticule de façon à avoir un trait horizontal et un trait vertical.
+  
+  \item Plaquer alors un miroir plan contre l'objectif et régler la position de l'objectif pour que l'image du réticule soit dans le même plan que le réticule. On a donc réalisé une autocollimation: le réticule est dans le plan focal de l'objectif. L'image d'un objet à l'infini sera donc dans le plan du réticule: la lunette est réglée.
+\end{protocole}
+
+\parag{Réglage du collimateur}
+  La lunette comporte un objectif, un réticule éclairé par une ampoule, et un oculaire. Elle doit donner une image nette d'un objet à l'infini. Pour ce faire:
+\begin{protocole}
+  \item
+   Pousser la lame semi-réfléchissante de façon qu'un faisceau lumineux éclaire le réticule et sorte de la lunette. Règler l'oculaire à votre vue de façon à voir le réticule net. Tourner le réticule de façon à avoir un trait horizontal et un trait vertical.
+  
+  \item Plaquer alors un miroir plan contre l'objectif et régler la position de l'objectif pour que l'image du réticule soit dans le même plan que le réticule. On a donc réalisé une autocollimation: le réticule est dans le plan focal de l'objectif. L'image d'un objet à l'infini sera donc dans le plan du réticule: la lunette est réglée.
+\end{protocole}
+
+\parag{Expérience} On éclaire le réseau de diffraction avec une lampe spectrale au sodium, qui contient un doublet de raies jaunes aux longueurs d’onde $\lambda_1 = \SI{589.0}{nm}$ et $\lambda_2 = \SI{589.6}{nm}$. 
+\begin{protocole}
+  \item Une fois le goniomètre réglé, monter le réseau de diffraction sur le plateau. En observant à travers la lunette, repérer la position de les raies d’ordre $p=0$ et les raies d’ordre $p=1$ pour les \emph{deux longueurs d’onde}.
+  \item Tourner le plateau sur lequel est posé le réseau tout en suivant les raies à la lunette, jusqu’à atteindre la position de déviation minimale. Mesurer l’angle de déviation minimale $\alpha_m$ pour les deux raies.
+\end{protocole}
+\begin{quest}
+  \QR{ Connaissant le pas $a$ du réseau, en déduire une mesure des longueurs d’onde $\lambda_1$ et $\lambda_2$ à partir de l’\Eq{2sin}. Comparer aux valeurs tabulées.
+  }{
+    
+    }
+\end{quest}
+
+  \end{document}

@@ -1,0 +1,1994 @@
+% Date : 16/11/2022
+% Version : 3
+% Auteur : JCI
+% Relu : 
+%
+% Relecteur : Catherine Lavainne, Cécile Bonnand
+
+% ------------------------------------------------------------ %
+% ----------------------  Fiche ELC05  ----------------------- %
+% Thème : Amplificateur linéaire intégré
+% Classes : PCSI uniquement
+% ------------------------------------------------------------ %
+
+
+
+% ======================================================= % 
+% ============== Gestion de la compilation ============== %
+% ======================================================= % 
+\ifdefined\mainIsLoaded\else
+  \RequirePackage{import}
+  \subimport{../../}{_preambule_CdE_PC}
+\begin{document}
+\fi
+% ======================================================= % 
+% ======================================================= % 
+
+
+% ============================================================================ %
+%                            FICHE D'ENTRAÎNEMENT                              %
+% ============================================================================ %
+% ======================= Métadonnées sur la fiche =========================== %
+\titreFicheEntrainement		{Amplificateurs linéaires intégrés}
+\grandTheme					{Électricité}
+\numeroFiche				{ELC05}
+\uniqueID					{BdOUdztEtKA} % une chaîne de caractères (a-z, A-Z) aléatoire de 10 caractères.
+\nombreColonnesReponses		{3} % 1, 2, 3, etc.
+% ============================================================================ %
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\debutFicheEntrainement                                                                      %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% --------------------------------------------------------------------- %
+%                              Prérequis                                %
+%                             (facultatif)                              %
+% --------------------------------------------------------------------- %
+% ================== Métadonnées sur le prérequis ===================== %
+\avecPrerequis{Y} % Y ou N
+% ===================================================================== %
+\begin{prerequis}
+  Loi des nœuds. Loi des mailles. Loi d’Ohm. Impédance complexe. Diviseur de tension.
+\end{prerequis}
+% --------------------------------------------------------------------- %
+
+
+
+
+
+% •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••• %
+% •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••• %
+\sectionFicheEntrainement{Les fondamentaux}
+% •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••• %
+% •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••• %
+
+
+
+
+% ********************************************************************* %
+%                           ENTRAÎNEMENT                                % 
+% ********************************************************************* %
+% ================ Métadonnées sur l'entraînement ===================== %
+
+\pointInterrogation				{Y}
+\titreEntrainementFacultatif	{Régime linéaire}
+\hauteurLargeurCadreReponse		{8mm}{4cm}
+\dureeResolutionFacultative		{1} % 1, 2, 3 ou 4
+\typeEntrainement				{QCM} % Newton ou QCM ou AN ou vide (exercice "normal")
+\nombreColonnesQuestions		{1} % vide, 1, 2, 3, etc.
+\avecPlusieursQuestions			{N} % Y ou N
+\initialisationEntrainement
+% ===================================================================== %
+
+% =============================================================================== %
+\debutEntrainement
+% =============================================================================== %
+ 
+Parmi les circuits suivants, lesquels peuvent fonctionner en régime linéaire~?
+
+\medskip
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+  \begin{listeQCM2Colonnes}
+    \item \shorthandoff{!}
+    \subimport{_images/}{1_suiveur_JCI_v3.tex}
+    \shorthandon{!}
+    \item \shorthandoff{!}
+    \subimport{_images/}{1_hysteresis_JCI_v3.tex}
+    \shorthandon{!}
+    \item \shorthandoff{!}
+    \subimport{_images/}{1_comparateur_JCI_v3.tex}
+    \shorthandon{!}
+    \item \shorthandoff{!}
+    \subimport{_images/}{1_non_inverseur_JCI_v3.tex}
+    \shorthandon{!}
+  \end{listeQCM2Colonnes}
+  \bigskip
+\end{enonce}
+
+\reponse{\reponseA{} \reponseD{}}
+
+\begin{corrige}
+Les circuits pouvant fonctionner en régime linéaire, sont les circuits \reponseA{} et \reponseD{}. Avec une rétroaction sur la seule entrée non inverseuse, les montages \reponseB{} et \reponseC{} fonctionnent en régime saturé.
+\end{corrige}
+
+% ************************************** %
+
+% =============================================================================== %
+\finEntrainement
+% =============================================================================== %
+
+
+
+
+
+% ********************************************************************* %
+%                           ENTRAÎNEMENT                                % 
+% ********************************************************************* %
+% ================ Métadonnées sur l'entraînement ===================== %
+
+\titreEntrainementFacultatif	{Modèle de l’ALI idéal de gain infini}
+\hauteurLargeurCadreReponse		{5mm}{2cm}
+\dureeResolutionFacultative		{1} % 1, 2, 3 ou 4
+\typeEntrainement				{QCM} % Newton ou QCM ou AN ou vide (exercice "normal")
+\nombreColonnesQuestions		{1} % vide, 1, 2, 3, etc.
+\avecPlusieursQuestions			{Y} % Y ou N
+\initialisationEntrainement
+% ===================================================================== %
+
+\medskip
+
+\pourcentageDeLaPartieAGauche{0.25}
+\initialisationPartieGauche
+\begin{center}
+  \shorthandoff{!:}
+  \begin{tikzpicture}
+    \ctikzset{tripoles/en amp/input height=0.45}
+    \draw (0,0) node [en amp] (A){}
+    (A.+) to [short, i<=\(i^{+}\)] ++(-.5,0)
+    (A.-) to [short, i<_=\(i^{-}\)] ++(-.5,0)
+    (A.out) to [short, i = \(i_{s}\)] ++(.5,0);
+  \end{tikzpicture}
+  \shorthandon{!:}
+\end{center}
+\initialisationPartieDroite
+
+Pour chaque affirmation, répondre par vrai ou faux.
+
+% =============================================================================== %
+\debutEntrainement
+% =============================================================================== %
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+  L’impédance d’entrée de l’ALI idéal est infinie
+\end{enonce}
+
+\reponse{Vrai}
+
+\begin{corrige}
+  L’impédance d’entrée d’un ALI réel est de l’ordre du \si{\mega\ohm} (c'est-à-dire de l'ordre de $10^6\,\si{\ohm}$). Dans le cas de l’ALI idéal, l'impédance d’entrée est supposée infinie.
+\end{corrige}
+
+% ************************************** %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+  Les courants d’entrée \(i^{+}\) et \(i^{-}\) de l’ALI idéal sont nuls
+\end{enonce}
+
+\reponse{Vrai}
+
+\begin{corrige}
+  Les courants d’entrée d’un ALI sont nuls dans le cadre du modèle de l’ALI idéal, ce qui est le cas ici.
+\end{corrige}
+
+% ************************************** %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+  Le courant de sortie \(i_{s}\) de l’ALI est toujours nul
+\end{enonce}
+
+\reponse{Faux}
+
+\begin{corrige}
+  Le courant de sortie est variable et dépend de la charge du circuit à ALI. 
+\end{corrige}
+
+% ************************************** %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+Les potentiels $V^+$ et $V^-$ des entrées sont nuls en régime linéaire.
+
+\end{enonce}
+
+\reponse{Faux}
+
+\begin{corrige}
+En régime linéaire, c'est la différence des potentiels entre les deux entrées qui est nulle: $V_+-V_- = 0$.
+\end{corrige}
+
+% ************************************** %
+
+% =============================================================================== %
+\finEntrainement
+% =============================================================================== %
+\finalisationDuPartageDePage
+
+
+
+\newpage
+
+
+
+% ********************************************************************* %
+%                           ENTRAÎNEMENT                                % 
+% ********************************************************************* %
+% ================ Métadonnées sur l'entraînement ===================== %
+
+\titreEntrainementFacultatif	{}
+\hauteurLargeurCadreReponse		{7mm}{4cm}
+\dureeResolutionFacultative		{1} % 1, 2, 3 ou 4
+\typeEntrainement				{Newton} % Newton ou QCM ou AN ou vide (exercice "normal")
+\nombreColonnesQuestions		{1} % vide, 1, 2, 3, etc.
+\avecPlusieursQuestions			{Y} % Y ou N
+\initialisationEntrainement
+% ===================================================================== %
+
+
+% =============================================================================== %
+\debutEntrainement
+% =============================================================================== %
+
+On considère le montage suivant: \vspace{-1cm}
+\begin{center}
+\shorthandoff{!:}
+\subimport{_images/}{2_inverseurA_CBD_v2.tex}
+\shorthandon{!:}
+\end{center}
+
+\vspace{-5mm}
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+  L’ALI peut-il fonctionner en régime linéaire?
+\end{enonce}
+
+\reponse{Oui}
+
+\begin{corrige}
+  La résistance \(R_{2}\) établit une rétroaction sur l’entrée inverseuse, l’ALI peut donc bien fonctionner en régime linéaire.
+\end{corrige}
+
+% ************************************** %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+Dans le cas du régime linéaire, quelle est la relation entre les potentiels \(V^{+}\) et \(V^{-}\) des entrées inverseuse et non inverseuse?\minusMedskip\par
+\end{enonce}
+
+\reponse{\(V^{+} = V^{-}\)}
+
+\begin{corrige}
+  Lorsqu’un ALI fonctionne en régime linéaire, on a \(\varepsilon = V^{+} - V^{-} = 0\). On a donc \(V^{+} = V^{-}\).
+\end{corrige}
+
+% ************************************** %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+  Donner, en régime linéaire, le potentiel \(V_{A}\) du point \(A\)
+\end{enonce}
+
+\reponse{\np[V]{0}}
+
+\begin{corrige}
+  L’entrée non inverseuse est reliée à la masse donc \(V^{+} = 0\). D’après le schéma: \(V_{A} = V^{-}\). Le régime linéaire donne donc \(V_{A} = 0\).
+\end{corrige}
+
+% ************************************** %
+
+% =============================================================================== %
+\finEntrainement
+% =============================================================================== %
+
+
+
+
+
+
+
+% ********************************************************************* %
+%                           ENTRAÎNEMENT                                % 
+% ********************************************************************* %
+% ================ Métadonnées sur l'entraînement ===================== %
+
+\titreEntrainementFacultatif	{Détermination de potentiels électriques}
+\hauteurLargeurCadreReponse		{6mm}{3cm}
+\dureeResolutionFacultative		{1} % 1, 2, 3 ou 4
+\typeEntrainement				{Newton} % Newton ou QCM ou AN ou vide (exercice "normal")
+\nombreColonnesQuestions		{1} % vide, 1, 2, 3, etc.
+\avecPlusieursQuestions			{Y} % Y ou N
+\initialisationEntrainement
+% ===================================================================== %
+
+% =============================================================================== %
+\debutEntrainement
+% =============================================================================== %
+
+{\itshape Tous les ALI de cet exercice sont supposés fonctionner en régime linéaire. }
+
+Donner, pour chaque montage, le potentiel \(V_{A}\) du point \(A\) en fonction de \(v_{e}\) ou de \(v_{s}\). Le potentiel peut également être nul.
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+  \shorthandoff{!:}
+  \subimport{_images/}{2_sommateurA_JCI_v3.tex}
+  \shorthandon{!:}
+\end{enonce}
+
+\reponse{\np[V]{0}}
+
+\begin{corrige}
+  Le potentiel de l’entrée non inverseuse est nul et est égal au potentiel de l’entrée inverseuse en régime linéaire.
+\end{corrige}
+
+% ************************************** %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+  \shorthandoff{!:}
+  \subimport{_images/}{2_passe_hautA_JCI_v3.tex}
+  \shorthandon{!:}
+\end{enonce}
+
+\reponse{\(v_{s}\)}
+
+% ************************************** %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+  \shorthandoff{!:}
+  \subimport{_images/}{2_derivateurA_CBD_v2.tex}
+  \shorthandon{!:}  
+\end{enonce}
+
+\reponse{\np[V]{0}}
+
+\begin{corrige}
+  Le potentiel de l’entrée non inverseuse est nul et est égal au potentiel de l’entrée inverseuse en régime linéaire.
+\end{corrige}
+
+% ************************************** %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+  \shorthandoff{!:}
+  \subimport{_images/}{2_noninverseurA_JCI_v3.tex}
+  \shorthandon{!:}
+\end{enonce}
+
+\reponse{\(v_{e}\)}
+
+\begin{corrige}
+  Le potentiel de l’entrée non inverseuse est \(v_{e}\). Grâce au régime linéaire, on en déduit que le potentiel de l’entrée inverseuse est également \(v_{e}\).
+\end{corrige}
+
+% ************************************** %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+\vspace{-2mm}
+\begin{enonce}
+  \shorthandoff{!:}
+  \subimport{_images/}{2_sallen_keyA_JCI_v3.tex}
+  \shorthandon{!:}
+\end{enonce}
+
+\reponse{\(v_{s}\)}
+
+\begin{corrige}
+  L’entrée inverseuse est reliée à la sortie par un fil donc \(V^{-} = v_{s}\). Le régime linéaire permet d’écrire \(V^{+} = V^{-}\), d’où le résultat.
+\end{corrige}
+
+% ************************************** %
+
+% =============================================================================== %
+\finEntrainement
+% =============================================================================== %
+
+
+
+
+
+
+% ********************************************************************* %
+%                           ENTRAÎNEMENT                                % 
+% ********************************************************************* %
+% ================ Métadonnées sur l'entraînement ===================== %
+
+\pointInterrogation				{Y}
+\titreEntrainementFacultatif	{Vrai ou faux}
+\hauteurLargeurCadreReponse		{5.25mm}{2.5cm}
+\dureeResolutionFacultative		{2} % 1, 2, 3 ou 4
+\typeEntrainement				{QCM} % Newton ou QCM ou AN ou vide (exercice "normal")
+\nombreColonnesQuestions		{1} % vide, 1, 2, 3, etc.
+\avecPlusieursQuestions			{Y} % Y ou N
+\initialisationEntrainement
+% ===================================================================== %
+
+
+On considère le montage ci-dessous dans lequel l’ALI est idéal et fonctionne en régime linéaire. 
+\vspace{-1mm}
+\shorthandoff{!:}
+\begin{center}
+  \subimport{_images/}{3_invnoninvFULL_JCI_v4.tex}
+\end{center}
+\shorthandon{!:}
+
+\vspace{-2mm}
+
+Pour chaque affirmation, répondre par vrai ou faux.
+
+\vspace{-1mm}
+
+% =============================================================================== %
+\debutEntrainement
+% =============================================================================== %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+  Toutes les résistances sont orientées en convention récepteur
+\end{enonce}
+
+\reponse{Faux}
+
+\begin{corrige}
+  La résistance \(R_{4}\) est en convention générateur. Les trois autres sont bien en convention récepteur.
+\end{corrige}
+
+% ************************************** %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+  La loi des nœuds assure \(i_{1} = i_{2}\)
+\end{enonce}
+
+\reponse{Vrai}
+
+% ************************************** %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+  La loi des nœuds assure \(i_{3} = i_{4}\)
+\end{enonce}
+
+\reponse{Faux}
+
+\begin{corrige}
+  Attention à la convention choisie pour les courants sur la figure.
+\end{corrige}
+
+% ************************************** %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+  Les tensions \(U_{1}\) et \(U_{3}\) sont égales
+\end{enonce}
+
+\reponse{Vrai}
+
+\begin{corrige}
+  On a \(U_{1} = v_{e} - V^{-}\) et \(U_{3} = v_{e} - V^{+}\). L’ALI fonctionne en régime linéaire donc \(V^{+} = V^{-}\). 
+  
+  Ainsi, on a bien \(U_{1} = U_{3}\).
+\end{corrige}
+
+% ************************************** %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+  Les tensions \(U_{2}\) et \(U_{4}\) sont égales
+\end{enonce}
+
+\reponse{Faux}
+
+\begin{corrigeNewpage}
+  On a \(U_{4} = V^{+}\), mais \(U_{2}=V^{-} - v_{s}\).
+\end{corrigeNewpage}
+
+% ************************************** %
+
+
+% =============================================================================== % 
+\finEntrainement
+% =============================================================================== %
+
+
+
+
+
+
+
+% •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••• %
+% •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••• %
+\sectionFicheEntrainement{Circuits usuels}
+% •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••• %
+% •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••• %
+
+
+% ********************************************************************* %
+%                           ENTRAÎNEMENT                                % 
+% ********************************************************************* %
+% ================ Métadonnées sur l'entraînement ===================== %
+
+\titreEntrainementFacultatif	{Autour de l'amplificateur inverseur}
+\hauteurLargeurCadreReponse		{8mm}{4cm}
+\dureeResolutionFacultative		{2} % 1, 2, 3 ou 4
+\typeEntrainement				{Newton} % Newton ou QCM ou AN ou vide (exercice "normal")
+\nombreColonnesQuestions		{1} % vide, 1, 2, 3, etc.
+\avecPlusieursQuestions			{Y} % Y ou N
+\initialisationEntrainement
+% ===================================================================== %
+
+% =============================================================================== %
+\debutEntrainement
+% =============================================================================== %
+
+
+On considère le montage amplificateur inverseur ci-dessous.
+
+L’ALI est idéal et on suppose qu’il fonctionne en régime linéaire.
+
+
+\shorthandoff{!:}
+\begin{center}
+  \subimport{_images/}{4_inverseurFULL_JCI_v3.tex}
+\end{center}
+\shorthandon{!:}
+
+\bigskip
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+  Quelle est la relation entre \(i_{1}\) et \(i_{2}\)?
+\end{enonce}
+
+\reponse{\(i_{1}=i_{2}\)}
+
+\begin{corrige}
+  La loi des nœuds appliquée à l’entrée inverseuse donne \(i_{1} = i^{-}+ i_{2}\). L’ALI étant idéal, on a \(i^{-}=0\). Finalement, on a  donc \(i_{1}=i_{2} \).
+\end{corrige}
+
+% ************************************** %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+  Exprimer \(U_{1}\) en fonction de \(v_{e}\)
+\end{enonce}
+
+\reponse{\(U_{1}=v_{e}\)}
+
+\begin{corrige}
+  D’après le schéma, on a \(U_{1} = v_{e} - V^{-}\). 
+    Comme l’ALI fonctionne en régime linéaire, on a \(V^{-} = V^{+} = 0\). D’où le résultat.
+\end{corrige}
+
+% ************************************** %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+  Exprimer \(U_{2}\) en fonction de \(v_{s}\)
+\end{enonce}
+
+\reponse{\(U_{2} = -v_{s}\)}
+
+\begin{corrige}
+  D’après le schéma, on a \(U_{2} = V^{-} - v_{s}\).
+  Comme l’ALI fonctionne en régime linéaire, on a \(V^{-} = V^{+} = 0\). D’où le résultat.
+\end{corrige}
+
+% ************************************** %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+  Exprimer l'intensité \(i_{1}\)  en fonction de \(v_{e}\)
+\end{enonce}
+
+\reponse{\(i_{1} = \frac{v_{e}}{R_{1}}\)}
+
+\begin{corrige}
+  La résistance \(R_{1}\) est représentée en convention récepteur. On a donc \(i_{1} = \frac{U_{1}}{R_{1}}\).
+\end{corrige}
+
+% ************************************** %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+  Exprimer l'intensité \(i_{2}\) en fonction de \(v_{s}\).
+\end{enonce}
+
+\reponse{\(i_{2} = -\frac{v_{s}}{R_{2}}\)}
+
+\begin{corrige}
+  La résistance \(R_{2}\) est représentée en convention récepteur. On a donc \(i_{2} = \frac{U_{2}}{R_{2}}\).
+\end{corrige}
+
+% ************************************** %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+  Déterminer l’amplification \(G = \frac{v_{s}}{v_{e}}\) de ce montage
+\end{enonce}
+
+\reponse{\(G = -\frac{R_{2}}{R_{1}}\)}
+
+\begin{corrige}
+  D’après la première question, on a \(i_{1} = i_{2}\). Donc, on a \(\frac{v_{e}}{R_{1}} = -\frac{v_{s}}{R_{2}}\). On en déduit le résultat.
+\end{corrige}
+
+% ************************************** %
+
+\medskip
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+  Parmi les couples de résistances suivants, lequel permet d’obtenir l’amplification la plus importante?
+  
+  \smallskip
+  
+  \begin{listeQCM1Colonne}
+  \item le couple \((R_{1} = \np[k\Omega]{3,3}, R_{2} = \np[k\Omega]{8,2})\)
+  \item le couple  \((R_{1} = \np[k\Omega]{1}, R_{2} = \np[k\Omega]{3,3})\)
+  \end{listeQCM1Colonne}
+\end{enonce}
+
+\reponse{\reponseB}
+
+% ************************************** %
+
+
+% =============================================================================== %
+\finEntrainement
+% =============================================================================== %
+
+
+\newpage
+
+
+% ********************************************************************* %
+%                           ENTRAÎNEMENT                                % 
+% ********************************************************************* %
+% ================ Métadonnées sur l'entraînement ===================== %
+
+\titreEntrainementFacultatif	{Amplificateur inverseur}
+\hauteurLargeurCadreReponse		{8mm}{2cm}
+\dureeResolutionFacultative		{1} % 1, 2, 3 ou 4
+\typeEntrainement				{QCM} % Newton ou QCM ou AN ou vide (exercice "normal")
+\nombreColonnesQuestions		{1} % vide, 1, 2, 3, etc.
+\avecPlusieursQuestions			{N} % Y ou N
+\initialisationEntrainement
+% ===================================================================== %
+
+% =============================================================================== %
+\debutEntrainement
+% =============================================================================== %
+Un montage amplificateur inverseur produit un gain 
+\[
+G = -\frac{R_{2}}{R_{1}}
+\]
+ avec \(R_{1} = \SI{1.2}{\kilo\ohm}\) et \(R_{2} = \SI{200}{\ohm}\).
+ 
+Les courbes ci-dessous représentent des allures temporelles de \(v_{e}\) (en pointillés) et \(v_{s}\) (en trait plein) en fonction du temps.
+
+Le calibre est de \SI{1}{\volt}/division pour \(v_{e}\) et \SI{0.5}{\volt}/division pour \(v_{s}\).
+
+\bigskip
+\bigskip
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+  \begin{listeQCM2Colonnes}
+  \def\scaleImageCDE{1.1}
+  \item \subimport{_images/}{5_inv_phase_CBD_v3.tex}\bigskip\bigskip
+  \item \subimport{_images/}{5_inv_G_CBD_v4.tex}
+  \item \subimport{_images/}{5_inv_gain_CBD_v4.tex}\bigskip\bigskip
+  \item \subimport{_images/}{5_inv_dephase_CBD_v3.tex}
+  \end{listeQCM2Colonnes}
+\bigskip
+\bigskip
+\bigskip
+Quelles sont les courbes pouvant correspondre au montage amplificateur inverseur étudié? 
+\bigskip
+
+\end{enonce}
+
+% ************************************** %
+
+
+\reponse{\reponseC{}}
+
+\begin{corrige}
+ Avec la formule donnée, l’amplification du montage vaut \(-\frac{1}{6}\): c’est un réel négatif. Les tensions \(v_{e}\) et \(v_{s}\) doivent donc être en opposition de phase, ce qui n’est pas le cas des réponses \reponseA{} et \reponseD{}. Sur la figure \reponseB{}, l’amplification vaut $-1$ alors qu’on a bien \(-\frac{1}{6} (=\np{0,5}/3)\) sur la figure \reponseC{}: seule cette dernière convient.
+\end{corrige}
+
+% =============================================================================== %
+\finEntrainement
+% =============================================================================== %
+
+
+
+\newpage
+
+
+
+% ********************************************************************* %
+%                           ENTRAÎNEMENT                                % 
+% ********************************************************************* %
+% ================ Métadonnées sur l'entraînement ===================== %
+
+\titreEntrainementFacultatif	{Un petit intermède}
+\hauteurLargeurCadreReponse		{8mm}{3.5cm}
+\dureeResolutionFacultative		{1} % 1, 2, 3 ou 4
+\typeEntrainement				{} % Newton ou QCM ou AN ou vide (exercice "normal")
+\basiqueEtTransversal			{Y}
+\nombreColonnesQuestions		{1} % vide, 1, 2, 3, etc.
+\avecPlusieursQuestions			{N} % Y ou N
+\initialisationEntrainement
+% ===================================================================== %
+
+% =============================================================================== %
+\debutEntrainement
+% =============================================================================== %
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+On considère une résistance $R$ et une capacité $C$.
+
+Quelle est la dimension de la grandeur \(RC\)?
+\end{enonce}
+
+\reponse{c'est un temps}
+
+\begin{corrige}
+On peut se rappeler que \(\tau = RC\) est la constante de temps d’un circuit \(R-C\).
+\end{corrige}
+
+% ************************************** %
+
+
+% =============================================================================== %
+\finEntrainement
+% =============================================================================== %
+
+
+
+% ********************************************************************* %
+%                           ENTRAÎNEMENT                                % 
+% ********************************************************************* %
+% ================ Métadonnées sur l'entraînement ===================== %
+
+\titreEntrainementFacultatif	{Montage intégrateur inverseur}
+\hauteurLargeurCadreReponse		{8mm}{3.5cm}
+\dureeResolutionFacultative		{3} % 1, 2, 3 ou 4
+\typeEntrainement				{Newton} % Newton ou QCM ou AN ou vide (exercice "normal")
+\nombreColonnesQuestions		{1} % vide, 1, 2, 3, etc.
+\avecPlusieursQuestions			{Y} % Y ou N
+\initialisationEntrainement
+% ===================================================================== %
+
+% =============================================================================== %
+\debutEntrainement
+% =============================================================================== %
+
+
+On considère le montage ci-dessous. 
+
+L’ALI est idéal.
+
+\begin{center}
+  \shorthandoff{!:}
+  \subimport{_images/}{6_integrateur_JCI_v4.tex}
+  \shorthandon{!:}
+\end{center}
+
+
+\begin{enonce}
+  En régime stationnaire, l’ALI peut-il fonctionner en régime linéaire?
+\end{enonce}
+\reponse{Non}
+\begin{corrige}
+  En régime constant, un condensateur est équivalent à un circuit ouvert. Il n’y a alors plus de rétroaction sur l’entrée inverseuse et l’ALI ne peut pas fonctionner en régime linéaire.
+\end{corrige}
+
+\bigskip
+
+{\itshape
+Dans toutes les questions suivantes, on suppose  que l’ALI fonctionne en régime linéaire et on se place en régime sinusoïdal.}
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+  Exprimer la tension \(U_{R}\) en fonction de \(v_{e}\) et/ou \(v_{S}\)
+\end{enonce}
+
+\reponse{\(v_{e}\)}
+
+\begin{corrige}
+  L’ALI fonctionne en régime linéaire donc \(V^{-} = V^{+} = 0\).
+\end{corrige}
+
+% ************************************** %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+  Exprimer la tension \(U_{C}\) en fonction de \(v_{e}\) et/ou \(v_{S}\)
+\end{enonce}
+
+\reponse{\(v_{s}\)}
+
+% ************************************** %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+  Donner la relation entre \(i_{R}\) et \(i_{C}\)
+\end{enonce}
+
+\reponse{\(i_{R} = i_{C}\)}
+
+\begin{corrige}
+  L’ALI est idéal donc \(i^{-} = 0\). La loi des nœuds à l’entrée inverseuse donne \(i_{R} = i_{C}\)
+\end{corrige}
+
+% ************************************** %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+  Quelle est la relation entre les grandeurs complexes \(\underline{i_{C}}\) et \(\underline{U_{C}}\)?
+\end{enonce}
+
+\reponse{\(\underline{i_{C}} = - \jC C\omega\underline{U_{C}}\)}
+
+\begin{corrige}
+  Le condensateur est représenté en convention générateur. Par conséquent, la loi d’Ohm donne 
+  \[
+  \underline{U_{C}} = -\underline{Z}\times \underline{i_{C}} \quad\text{avec}\quad \underline{Z} = \frac{1}{\jC C\omega}.
+  \] 
+\end{corrige}
+
+% ************************************** %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+  Donner la fonction de transfert \(\underline{H}\) du montage.
+\end{enonce}
+
+\reponse{\(-\frac{1}{\jC RC\omega}\)}
+
+\begin{corrige}
+  En combinant la loi des nœuds et la loi d’Ohm, on a \(\underline{i_{R}} = \frac{\underline{v_{e}}}{R} = \underline{i_{C}} = -\jC C\omega\underline{v_{s}}\). 
+  
+  En isolant l'expression \(\frac{\underline{v_{s}}}{\underline{v_{e}}}\), on trouve le résultat.
+\end{corrige}
+
+% ************************************** %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+ Donner la relation entre $v_e(t)$ et $v_s(t)$
+\end{enonce}
+
+\reponse{\(RC\frac{dv_s}{dt} = -v_e(t)\)}
+
+\begin{corrige}
+\`A partir de l'expression de \(\underline{H}\), on obtient que \(\jC RC\omega\underline{v_s}=-\underline{v_e}\). 
+
+Cette relation devient en grandeurs réelles \(RC\diff{v_s(t)}{t}=-v_e(t)\).
+\end{corrige}
+
+% ************************************** %
+
+
+% =============================================================================== %
+\finEntrainement
+% =============================================================================== %
+
+
+
+\newpage
+
+
+% ********************************************************************* %
+%                           ENTRAÎNEMENT                                % 
+% ********************************************************************* %
+% ================ Métadonnées sur l'entraînement ===================== %
+
+\titreEntrainementFacultatif	{}%Montage intégrateur inverseur en régime sinusoïdal}
+\hauteurLargeurCadreReponse		{7mm}{3.25cm}
+\dureeResolutionFacultative		{2} % 1, 2, 3 ou 4
+\typeEntrainement				{} % Newton ou QCM ou AN ou vide (exercice "normal")
+\nombreColonnesQuestions		{1} % vide, 1, 2, 3, etc.
+\avecPlusieursQuestions			{Y} % Y ou N
+\initialisationEntrainement
+% ===================================================================== %
+
+Un montage intégrateur inverseur a pour fonction de transfert 
+\[
+\underline{H} = -\frac{1}{\jC RC\omega}
+\]
+avec \(R = \SI{11}{\kilo\ohm}\) et \(C = \SI{4.7}{\nano\farad}\).
+
+Les courbes suivantes représentent des allures temporelles de \(v_{e}\) (en pointillés) et \(v_{s}\) (en trait plein) en fonction du temps.
+Les réglages de l’oscilloscope sont les suivants:
+\begin{itemize}
+  \item calibre vertical: \SI{1}{\volt}/division pour les deux voies,
+  \item calibre horizontal: \SI{250}{\micro\second}/division.
+\end{itemize}
+
+
+
+\bigskip
+
+% =============================================================================== %
+\debutEntrainement
+% =============================================================================== %
+
+% Un paramètre LaTeX pour gérer la taille des figures
+\def\scaleELCCinqExoNeuf{0.9}
+% ATTENTION: à éviter car cela change la position de la légende en abscisse.
+% Il vaut mieux changer les hauteurs de figures directement dans le tikzpicture.
+
+\begin{listeQCM2Colonnes}
+  \item
+  \shorthandoff{!:}
+  \subimport{_images/}{7_int_phase_JCI_v4.tex}
+  \shorthandon{!:}
+  \item
+  \shorthandoff{!:}
+  \subimport{_images/}{7_int_avphase_JCI_v4.tex}
+  \shorthandon{!:}
+  \item
+  \shorthandoff{!:}
+  \subimport{_images/}{7_int_retphase_JCI_v4.tex}
+  \shorthandon{!:}
+  \item
+  \shorthandoff{!:}
+  \subimport{_images/}{7_int_gainun_JCI_v4.tex}
+  \shorthandon{!:}
+\end{listeQCM2Colonnes}
+
+\bigskip\smallskip
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+  Quel est le gain du montage intégrateur inverseur?
+\end{enonce}
+
+\reponse{\(\frac{1}{RC\omega}\)}
+
+\begin{corrigeNewpage}
+  Le gain est égal au module de la fonction de transfert.
+\end{corrigeNewpage}
+
+% ************************************** %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+  Quel est le déphasage de la tension de sortie \(v_{s}\) par rapport à \(v_{e}\)?
+\end{enonce}
+
+\reponse{\(\frac{\pi}{2}\)}
+
+\begin{corrige}
+  Le déphasage demandé est égal à l’argument de la fonction de transfert. Cette dernière est un imaginaire pur de partie imaginaire strictement positive, car \(\underline{H} = -\frac{1}{\jC RC\omega} = \frac{j}{RC\omega}\).
+\end{corrige}
+
+% ************************************** %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+  Pour \(v_{e} = E\cos(\omega t)\), donner l’expression de \(v_{s}\).
+\end{enonce}
+
+\reponse{\(-\frac{E}{RC\omega}\sin(\omega t)\)}
+
+\begin{corrige}
+  On utilise les réponses aux deux questions précédentes: l’amplitude de \(v_{e}\) est multipliée par le gain et le déphasage est intégré dans le \(\cos\): \(v_{s} = \frac{E}{RC\omega}\cos\left(\omega t + \frac{\pi}{2}\right)= -\frac{E}{RC\omega}\sin(\omega t)\).
+\end{corrige}
+
+% ************************************** %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+  Quelle est la fréquence de fonctionnement?
+\end{enonce}
+
+\reponse{\SI{1}{\kilo\hertz}}
+
+\begin{corrige}
+  Avec un calibre de \SI{250}{\micro\second}/division, on mesure une période d’\SI{1}{\milli\second}. La fréquence de fonctionnement est donc d’\SI{1}{\kilo\hertz}.
+\end{corrige}
+
+% ************************************** %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+  Quelle est la valeur numérique du gain à cette fréquence?
+\end{enonce}
+
+\reponse{\np{3,1}}
+
+\begin{corrige}
+  Le module de la fonction de transfert est \(\frac{1}{RC\omega}\). Avec les valeurs numériques fournies, on trouve \(G = \np{3,1}\).
+\end{corrige}
+
+% ************************************** %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+  Quelle courbe est compatible avec les valeurs numériques données ci-dessus?\par
+\end{enonce}
+
+\reponse{\reponseB{}}
+
+\begin{corrige}
+  Le déphasage de \(v_{s}\) par rapport à \(v_{e}\) et de \(+\frac{\pi}{2}\) donc la tension de sortie doit être en {avance d’un quart de période} sur la tension d’entrée. Les réponses \reponseA{} (tensions en phase) et \reponseC{} (tension de sortie en retard) ne sont pas compatibles.
+  À la fréquence de fonctionnement, le gain est de 3, ce n’est pas le cas sur la réponse \reponseD{}.
+\end{corrige}
+
+% ************************************** %
+
+
+% =============================================================================== %
+\finEntrainement
+% =============================================================================== %
+
+
+\newpage
+
+
+
+
+% ********************************************************************* %
+%                           ENTRAÎNEMENT                                % 
+% ********************************************************************* %
+% ================ Métadonnées sur l'entraînement ===================== %
+
+\titreEntrainementFacultatif	{Montage intégrateur inverseur}
+\hauteurLargeurCadreReponse		{10mm}{5.5cm}
+\dureeResolutionFacultative		{2} % 1, 2, 3 ou 4
+\typeEntrainement				{} % Newton ou QCM ou AN ou vide (exercice "normal")
+\nombreColonnesQuestions		{1} % vide, 1, 2, 3, etc.
+\avecPlusieursQuestions			{Y} % Y ou N
+\initialisationEntrainement
+% ===================================================================== %
+
+% =============================================================================== %
+\debutEntrainement
+% =============================================================================== %
+
+Un montage intégrateur inverseur a pour fonction de transfert 
+\[
+\underline{H} = -\frac{1}{\jC RC\omega}
+\]
+ avec \(R = \SI{15}{\kilo\ohm}\) et \(C = \SI{25}{\nano\farad}\).
+ 
+Les courbes suivantes représentent des allures temporelles de \(v_{e}\) (en pointillés) et \(v_{s}\) (en trait plein) en fonction du temps.
+
+Les réglages de l’oscilloscope sont les suivants:
+\begin{itemize}
+  \item calibre vertical: \SI{1}{\volt}/division pour les deux voies,
+  \item calibre horizontal: \SI{250}{\micro\second}/division.
+\end{itemize}
+
+
+\bigskip
+
+
+\begin{listeQCM2Colonnes}
+  \item
+  \shorthandoff{!:}
+  \subimport{_images/}{7_int_trigain_JCI_v3.tex}
+  \shorthandon{!:}
+\medskip
+    \item
+  \shorthandoff{!:}
+  \subimport{_images/}{7_int_triinv_JCI_v3.tex}
+  \shorthandon{!:}
+  \item
+  \shorthandoff{!:}
+  \subimport{_images/}{7_int_tridecale_JCI_v3.tex}
+  \shorthandon{!:}
+\medskip
+  \item
+  \shorthandoff{!:}
+  \subimport{_images/}{7_int_triphase_JCI_v3.tex}
+  \shorthandon{!:}
+\end{listeQCM2Colonnes}
+
+\bigskip\smallskip
+
+% ************************************** %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+  Donner l’équation différentielle reliant \(v_{s}\) et \(v_{e}\)
+\end{enonce}
+\reponse{\(RC\diff{v_{s}}{t} = -v_{e}\)}
+\begin{corrige}
+  La fonction de transfert fournie se met sous la forme \(\jC RC\omega \underline{v_{s}} = -\underline{v_{e}}\). Comme une multiplication par \(\jC \omega\) en notation complexe correspond à une dérivation, on en déduit l’équation différentielle.
+\end{corrige}
+
+% ************************************** %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+  Pour une tension constante \(v_{e} = E\), donner l’expression temporelle de \(v_{s}\). \par 
+  {\itshape On ne se préoccupera pas de déterminer les éventuelles constantes d’intégration.}\par
+\end{enonce}
+\reponse{\(-\frac{E}{RC}t + K\)}
+
+% ************************************** %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+  Quelle est la courbe compatible avec les valeurs numériques ci-dessus?\par
+\end{enonce}
+\reponse{\reponseB{}}
+
+\begin{corrige}
+  Une tension constante positive \(E\) s’intègre en fonction affine de pente négative \(-A\cdot t+b\). Ce n’est pas le cas des réponses \reponseC{} et \reponseD{}.
+
+  Pour \(t\in \big[0, \SI{500}{\micro\second}\big]\), on lit \(E = \SI{3}{V}\). Avec les valeurs numériques de \(R\) et \(C\), on trouve une pente théorique de \(-\SI{8.0e3}{\volt\per\second}\). Sur la courbe \reponseA{}, on mesure une pente de \(6/\num{500e-6} = -\SI{12e3}{\volt\per\second}\) alors qu’on a une pente de \(4/\num{500e3} = \SI{8.0e3}{\volt\per\second}\) sur la courbe \reponseB{}.
+\end{corrige}
+
+% ************************************** %
+
+
+% =============================================================================== %
+\finEntrainement
+% =============================================================================== %
+
+
+
+\newpage 
+
+
+
+% ********************************************************************* %
+%                           ENTRAÎNEMENT                                % 
+% ********************************************************************* %
+% ================ Métadonnées sur l'entraînement ===================== %
+
+\titreEntrainementFacultatif	{Un petit intermède}
+\hauteurLargeurCadreReponse		{8mm}{3.5cm}
+\dureeResolutionFacultative		{2} % 1, 2, 3 ou 4
+\typeEntrainement				{} % Newton ou QCM ou AN ou vide (exercice "normal")
+\basiqueEtTransversal			{Y}
+\nombreColonnesQuestions		{1} % vide, 1, 2, 3, etc.
+\avecPlusieursQuestions			{Y} % Y ou N
+\initialisationEntrainement
+% ===================================================================== %
+
+% =============================================================================== %
+\debutEntrainement
+% =============================================================================== %
+
+On considère deux montages dont les gains valent respectivement
+\[
+G_1 = 1+\frac{R_2}{R_1}
+\quad\text{et}\quad
+G_2 = \frac{R_1R_2}{{R_1}^2+{R_2}^2},
+\]
+où $R_1$ et $R_2$ sont des résistances.
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+On suppose que $\frac{R_1}{R_2} = \alpha$. Exprimer $\frac{1}{G_2}$ en fonction de $\alpha$
+\end{enonce}
+
+\reponse{$\alpha + \frac{1}{\alpha}$}
+
+\begin{corrige}
+On a $\frac{1}{G_2} = \frac{R_1}{R_2} +  \frac{R_2}{R_1} = \alpha + \frac{1}{\alpha}$.
+\end{corrige}
+
+% ************************************** %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+On suppose encore que $\frac{R_1}{R_2} = \alpha$. Exprimer $G_2$ en fonction de $\alpha$
+\end{enonce}
+
+\reponse{$\frac{\alpha}{1+\alpha^2}$}
+
+\begin{corrige}
+On a $\frac{1}{G_2} = \alpha + \frac{1}{\alpha} = \frac{1+\alpha^2}{\alpha}$. Donc, $G_2 = \frac{1}{\tfrac{1}{G_2}} = \frac{\alpha}{1+\alpha^2}$.
+\end{corrige}
+
+% ************************************** %
+
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+  À quelle condition a-t-on $G_1 = \frac{1}{G_2}$ ?
+\end{enonce}
+
+\reponse{$R_1 = R_2$}
+
+\begin{corrige}
+On a $G_1 - G_2 = 1-\frac{R_1}{R_2}$. Donc, $G_1=G_2 \ssi \frac{R_1}{R_2}=1 \ssi R_1 = R_2$.
+\end{corrige}
+
+% ************************************** %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+Pour quelle valeur de $\alpha>0$ la quantité $\alpha + \frac{1}{\alpha}$ est minimale ?\minusBigskip\minusSmallskip\par
+{\itshape On pourra introduire une fonction et la dériver.}
+\end{enonce}
+
+\reponse{$\alpha = 1$}
+
+\begin{corrige}
+On pose $f(\alpha) = \alpha + \frac{1}{\alpha}$. On calcule $f'(\alpha) = 1- \frac{1}{\alpha^2} = \frac{\alpha^2-1}{\alpha^2}$. Ainsi, on $f'(\alpha) = 0 \ssi \alpha = 1$. Comme 
+\[
+f(\alpha) \cvg{\alpha \to 0^+} +\infty 
+\quad
+\text{et}
+\quad
+f(\alpha) \cvg{\alpha \to +\infty} +\infty, \vspace{-1.5mm}
+\]
+on en déduit que $\alpha + \frac{1}{\alpha}$ est mininale quand $\alpha = 1$.
+\end{corrige}
+
+% ************************************** %
+
+
+
+% =============================================================================== %
+\finEntrainement
+% =============================================================================== %
+
+
+
+
+
+
+
+
+% ********************************************************************* %
+%                           ENTRAÎNEMENT                                % 
+% ********************************************************************* %
+% ================ Métadonnées sur l'entraînement ===================== %
+
+\titreEntrainementFacultatif	{Montage non inverseur}
+\hauteurLargeurCadreReponse		{8mm}{3.5cm}
+\dureeResolutionFacultative		{2} % 1, 2, 3 ou 4
+\typeEntrainement				{Newton} % Newton ou QCM ou AN ou vide (exercice "normal")
+\nombreColonnesQuestions		{1} % vide, 1, 2, 3, etc.
+\avecPlusieursQuestions			{Y} % Y ou N
+\initialisationEntrainement
+% ===================================================================== %
+
+On considère le montage ci-dessous. 
+
+L’ALI est idéal et on suppose qu’il fonctionne en régime linéaire.
+\smallskip
+
+\begin{center}
+  \shorthandoff{!:}
+  \subimport{_images/}{8_noninverseur_JCI_v3.tex}
+  \shorthandon{!:}
+\end{center}
+
+\minusMedskip
+
+% =============================================================================== %
+\debutEntrainement
+% =============================================================================== %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+  Quelle est la relation entre les intensités \(i_{1}\) et \(i_{2}\)?
+\end{enonce}
+
+\reponse{\(i_{1} = i_{2}\)}
+
+\begin{corrige}
+  L’ALI étant idéal, les courants d’entrée sont nuls. Ainsi, la loi des nœuds à l’entrée inverseuse assure que \(i_{1} = i_{2}\).
+\end{corrige}
+
+% ************************************** %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+  Exprimer la tension \(U_{1}\) en fonction de \(v_{s}, R_{1}\) et \(R_{2}\)
+\end{enonce}
+
+\reponse{\(\frac{R_{1}}{R_{1} + R_{2}}v_{s}\)}
+
+\begin{corrigeNewpage}
+  Les deux résistances étant parcourues par le même courant, elles sont en série. Ainsi, on en déduit que le circuit équivalent est : \minusBigskip
+  \begin{center}
+    \shorthandoff{!:}
+	%\subimport{_images/}{8_divtension_JCI_v3.tex}
+	\begin{tikzpicture}
+  \draw (2, 2) node (S){} to [R, l=\(R_{2}\), *-, i=\(i_{2}\), v=\(U_{2}\)] (0, 2)
+  to [R, l=\(R_{1}\), v = \(U_{1}\), i=\(i_{1}\)] (0,0) to [short, -*] (2, 0) node (M){}
+  (1, 0) node [eground]{};
+  \draw [-latex] (M) -- (S) node [midway, right]{\(v_{s}\)};
+\end{tikzpicture}
+    \shorthandon{!:}
+  \end{center}
+  \minusMedskip
+  La formule du diviseur de tension aux bornes de \(R_{1}\) donne le résultat demandé.
+\end{corrigeNewpage}
+
+% ************************************** %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+  Exprimer \(U_{1}\) en fonction de \(v_{e}\)
+\end{enonce}
+
+\reponse{\(v_{e}\)}
+
+\begin{corrige}
+  L’ALI fonctionne en régime linéaire donc on a \(V^{+} = V^{-}\).
+\end{corrige}
+
+% ************************************** %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+  Exprimer le gain \(G\) du montage non inverseur
+\end{enonce}
+
+\reponse{\(1+\frac{R_2}{R_1}\)}
+
+\begin{corrige}
+  D’après les questions précédentes, on a \(v_{e} = \frac{R_{1}}{R_{1}+R_{2}}v_{s}\), d’où le résultat.
+\end{corrige}
+
+% ************************************** %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+  Donner la valeur de \(G\) pour \(R_{1} = \np[k\Omega]{2.2}\) et \(R_{2} = \np[k\Omega]{33}\)
+\end{enonce}
+
+\reponse{16}
+
+% ************************************** %
+
+
+% =============================================================================== %
+\finEntrainement
+% =============================================================================== %
+
+
+\newpage
+
+
+
+
+
+
+% ********************************************************************* %
+%                           ENTRAÎNEMENT                                % 
+% ********************************************************************* %
+% ================ Métadonnées sur l'entraînement ===================== %
+
+\titreEntrainementFacultatif	{Montage amplificateur non inverseur}
+\hauteurLargeurCadreReponse		{8mm}{3.5cm}
+\dureeResolutionFacultative		{1} % 1, 2, 3 ou 4
+\typeEntrainement				{QCM} % Newton ou QCM ou AN ou vide (exercice "normal")
+\nombreColonnesQuestions		{1} % vide, 1, 2, 3, etc.
+\avecPlusieursQuestions			{N} % Y ou N
+\initialisationEntrainement
+% ===================================================================== %
+
+% =============================================================================== %
+\debutEntrainement
+% =============================================================================== %
+
+Un montage amplificateur non inverseur possède un gain 
+\[
+G = 1+\frac{R_{2}}{R_{1}}
+\]
+avec \(R_{1} = \SI{1.5}{\kilo\ohm}\) et \(R_{2} = \SI{7.5}{\kilo\ohm}\).
+
+Les courbes suivantes représentent des allures temporelles de \(v_{e}\) (en pointillés) et \(v_{s}\) (en trait plein) en fonction du temps. 
+
+Le calibre utilisé pour \(v_{e}\) est de \SI{1}{\volt}/division alors que le calibre pour \(v_{s}\) est de \SI{2}{\volt}/division.
+
+
+\bigskip
+
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+\def\scaleImageCDE{1.1}
+  \begin{listeQCM2Colonnes}
+  \item 
+  \shorthandoff{!:}
+    \subimport{_images/}{9_noninv_dephase_CBD_v3.tex}\bigskip\bigskip
+   \shorthandon{!:}
+    
+  \item 
+  \shorthandoff{!:}
+    \subimport{_images/}{9_noninv_gmax_CBD_v3.tex}
+   \shorthandon{!:}
+    
+  \item 
+  \shorthandoff{!:}
+    \subimport{_images/}{9_noninv_gmin_CBD_v3.tex}\bigskip\bigskip
+  \shorthandon{!:}
+  
+  \item 
+  \shorthandoff{!:}
+	\subimport{_images/}{9_noninv_triangle_CBD_v3.tex}
+  \shorthandon{!:}
+  \end{listeQCM2Colonnes}
+  
+  \bigskip
+  \bigskip
+ Quelles sont les courbes qui peuvent correspondre au montage non inverseur? 
+
+\end{enonce}
+
+\reponse{\reponseD{}}
+
+\begin{corrige}
+  Le gain de l’amplificateur non inverseur vaut ici 6: c’est un réel positif. Par conséquent, la tension de sortie doit être en phase et de plus grande amplitude que la tension d’entrée. Les réponses \reponseA{} (tensions en opposition de phase) et \reponseC{} (sortie de plus faible amplitude) sont donc exclues.
+
+  Sur la réponse \reponseB{}, le gain mesuré est de 16 (8/\np{0,5}) alors qu’il est de 6 sur la réponse \reponseD{}: seule cette dernière convient.
+\end{corrige}
+
+% ************************************** %
+
+% =============================================================================== %
+\finEntrainement
+% =============================================================================== %
+
+
+\newpage
+
+
+
+
+
+% •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••• %
+% •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••• %
+\sectionFicheEntrainement{Impédances d’entrée}
+% •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••• %
+% •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••• %
+
+
+% ********************************************************************* %
+%                           ENTRAÎNEMENT                                % 
+% ********************************************************************* %
+% ================ Métadonnées sur l'entraînement ===================== %
+
+\titreEntrainementFacultatif	{Montage suiveur}
+\hauteurLargeurCadreReponse		{8mm}{4cm}
+\dureeResolutionFacultative		{2} % 1, 2, 3 ou 4
+\typeEntrainement				{} % Newton ou QCM ou AN ou vide (exercice "normal")
+\nombreColonnesQuestions		{1} % vide, 1, 2, 3, etc.
+\avecPlusieursQuestions			{Y} % Y ou N
+\initialisationEntrainement
+% ===================================================================== %
+
+
+% mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm %
+% 		  Insertion d'une image en regard d'un texte
+% mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm %
+% --------------------------------------------------------- %
+\pourcentageDeLaPartieAGauche   {0.55}
+% --------------------------------------------------------- %
+%                                                           %
+% -------------------- Partie à gauche -------------------- %
+%                                                           %
+\initialisationPartieGauche % 
+%                                                           %
+%                                                           %
+On considère le montage suiveur représenté ci-contre. 
+
+Le suiveur est alimenté par une source idéale de tension \(v_{e}\) de fréquence variable, la charge est une résistance \(R_{c}\).
+
+L’ALI est idéal et fonctionne en régime linéaire.
+% --------------------------------------------------------- %
+%                                                           %
+% -------------------- Partie à droite -------------------- %
+%                                                           %
+\initialisationPartieDroite %
+%                                                           %
+%                                                           %
+\begin{center}
+  \shorthandoff{!:}
+  \subimport{_images/}{10_suiveur_JCI_v3.tex}
+  \shorthandon{!:}
+\end{center}
+% --------------------------------------------------------- %
+\finalisationDuPartageDePage %					
+% --------------------------------------------------------- %
+
+
+% =============================================================================== %
+\debutEntrainement
+% =============================================================================== %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+  Quelle est la relation entre \(v_{e}\) et \(v_{s}\)?
+\end{enonce}
+\reponse{\(v_{s} = v_{e}\)}
+\begin{corrige}
+  L’ALI fonctionne en régime linéaire donc \(V^{+} = V^{-}\).
+\end{corrige}
+
+% ************************************** %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+  Quelle est l’impédance d’entrée d’un ALI idéal?
+\end{enonce}
+
+\reponse{$\infty$}
+\begin{corrige}
+  Les courants d’entrée de l’ALI idéal étant nuls quels que soient les potentiels des deux entrées, l’ALI se comporte comme un circuit ouvert en entrée. L’impédance d’entrée tend donc vers \(+\infty\).
+\end{corrige}
+
+% ************************************** %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+  Exprimer l’intensité \(i_{e}\) traversant la source de tension.
+\end{enonce}
+\reponse{\np[A]{0}}
+\begin{corrige}
+  Les courants d’entrée sont nuls donc \(i_{e} = \np[A]{0}\).
+\end{corrige}
+
+% ************************************** %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+  Quelle est l’impédance d’entrée du montage suiveur?
+\end{enonce}
+\reponse{\(\infty\)}
+\begin{corrige}
+  L’impédance d’entrée du montage est ici définie par \(\underline{Z_{e}} = \frac{\underline{v_{e}}}{\underline{i_{e}}}\). L’intensité d’entrée étant nulle, l’impédance d’entrée est infinie.
+\end{corrige}
+
+% ************************************** %
+
+% \begin{enonce}
+%   Quelle est la puissance délivrée par la source de tension?
+% \end{enonce}
+% \reponse{\np[W]{0}}
+% \begin{corrige}
+%   La puissance fournie par la source est \(\mathcal{P} = v_{e}\cdot i_{e}\) (dipôle en convention générateur). Comme \(i_{e} = 0\), la puissance fournie est nulle.
+% \end{corrige}
+
+% \begin{enonce}
+%   Exprimer la puissance instantanée reçue par la résistance \(R_{C}\) en fonction de \(v_{e}\).\\\null
+% \end{enonce}
+% \reponse{\(\frac{v_{s}^{2}}{R_{C}}\)}
+% \begin{corrige}
+%   La résistance \(R_{C}\) est représentée en convention récepteur donc la puissance reçue est \(\mathcal{P} = v_{s}\cdot i_{s}\). Avec la loi d’Ohm, on a \(i_{s} = \frac{v_{s}}{R_{C}}\) d’où le résultat.
+% \end{corrige}
+
+% \begin{enonce}
+%   Quelle est la valeur de cette puissance pour une tension d’entrée constante \(v_{e} = \np[V]{5,0}\) et \(R_{C} = \np[k\Omega]{1,0}\).
+% \end{enonce}
+% \reponse{\np[mW]{25}}
+
+% \begin{enonce}
+%   D’où provient la différence entre ces deux puissances?
+% \end{enonce}
+% \reponse{\begin{tabular}{l}De l’alimen- \\tation de l’ALI\end{tabular}}
+
+
+% =============================================================================== %
+\finEntrainement
+% =============================================================================== %
+
+
+
+
+
+
+
+
+% ********************************************************************* %
+%                           ENTRAÎNEMENT                                % 
+% ********************************************************************* %
+% ================ Métadonnées sur l'entraînement ===================== %
+
+\titreEntrainementFacultatif	{Circuits inverseurs}
+\hauteurLargeurCadreReponse		{8mm}{3cm}
+\dureeResolutionFacultative		{2} % 1, 2, 3 ou 4
+\typeEntrainement				{} % Newton ou QCM ou AN ou vide (exercice "normal")
+\nombreColonnesQuestions		{1} % vide, 1, 2, 3, etc.
+\avecPlusieursQuestions			{Y} % Y ou N
+\initialisationEntrainement
+% ===================================================================== %
+
+
+% mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm %
+% 		  Insertion d'une image en regard d'un texte
+% mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm %
+% --------------------------------------------------------- %
+\pourcentageDeLaPartieAGauche   {0.55}
+% --------------------------------------------------------- %
+%                                                           %
+% -------------------- Partie à gauche -------------------- %
+%                                                           %
+\initialisationPartieGauche % 
+%                                                           %
+%                                                           %
+On considère le montage représenté ci-contre. 
+
+Les impédances \(Z_{1}\) et \(Z_{2}\) sont quelconques et la tension d’entrée \(v_{e}\) est sinusoïdale de pulsation \(\omega\).
+
+L’ALI est idéal et fonctionne en régime linéaire.
+% --------------------------------------------------------- %
+%                                                           %
+% -------------------- Partie à droite -------------------- %
+%                                                           %
+\initialisationPartieDroite %
+%                                                           %
+%                                                           %
+\begin{center}
+  \shorthandoff{!:}
+  \subimport{_images/}{11_inverseurZ_JCI_v3.tex}
+  \shorthandon{!:}
+\end{center}
+% --------------------------------------------------------- %
+\finalisationDuPartageDePage %					
+% --------------------------------------------------------- %
+
+% =============================================================================== %
+\debutEntrainement
+% =============================================================================== %
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+  Exprimer l’intensité \(i_{1}\) en fonction de \(v_{e}\) et de \(Z_{1}\)
+\end{enonce}
+
+\reponse{\(\frac{v_{e}}{Z_{1}}\)}
+
+\begin{corrige}
+  Avec la convention choisie, on a \(i_{1} = \frac{v_{e} - V_{A}}{Z_{1}}\).  L’ALI fonctionnant en régime linéaire, on a \(V_{A} = 0\).
+\end{corrige}
+
+% ************************************** %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+  Donner l’impédance d’entrée du circuit
+\end{enonce}
+
+\reponse{\(Z_{1}\)}
+
+\begin{corrige}
+  L’impédance d’entrée du circuit est \(Z_{e} = \frac{v_{e}}{i_{1}}\). D’après la question précédente, \(Z_{e} = Z_{1}\).
+\end{corrige}
+
+% ************************************** %
+
+\medskip
+{\itshape La tension d’entrée est constante égale à \(\np[V]{10}\).}
+\minusBigskip
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+  Donner l’impédance d’entrée si \(Z_{1}\) est un condensateur.
+\end{enonce}
+
+\reponse{\(\infty\)}
+
+\begin{corrige}
+  En régime constant, l’impédance du condensateur tend vers \(+\infty\).
+\end{corrige}
+
+% ************************************** %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+  Donner l’impédance d’entrée si \(Z_{1}\) est une bobine
+\end{enonce}
+
+\reponse{0}
+
+\begin{corrige}
+  En régime constant, l’impédance d’une inductance tend vers \(0\)
+\end{corrige}
+
+% ************************************** %
+
+\smallskip
+
+{\itshape La tension d’entrée est maintenant sinusoïdale de pulsation \(\omega = \np[rad\cdot s^{-1}]{6.0e3}\).}
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+  Pour quel dipôle \(Z_{1}\) l’impédance d’entrée a-t-elle le plus grand module: \minusMedskip\par
+  un condensateur \(C = \np[nF]{10}\) ou une résistance \(R = \np[k\Omega]{15}\)?
+\end{enonce}
+
+\reponse{\(C = \np[nF]{10}\)}
+
+\begin{corrige}
+  Avec le condensateur, le module de l’impédance d’entrée est 
+ 	$|Z_{e}| = \frac{1}{C\omega} \simeq \np[\Omega]{0.16e5} \simeq \np[k\Omega]{16}$.
+  Il est donc légèrement plus grand qu’avec la résistance.
+\end{corrige}
+
+% ************************************** %
+
+% =============================================================================== %
+\finEntrainement
+% =============================================================================== %
+
+
+
+% ---------------------------------------------------------------------------- %
+%                       Affichage des réponses mélangées                       %
+% ---------------------------------------------------------------------------- %
+\afficheReponsesMelangees
+% ---------------------------------------------------------------------------- %
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\finFicheEntrainement                                                                        %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% ======================================================= % 
+% ============== Gestion de la compilation ============== %
+% ======================================================= % 
+\ifdefined\mainIsLoaded\else
+\printReponsesEtCorriges
+\end{document}\fi
+% ======================================================= % 
+% ======================================================= % 

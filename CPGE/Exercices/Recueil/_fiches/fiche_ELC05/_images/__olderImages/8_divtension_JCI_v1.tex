@@ -1,0 +1,6 @@
+\begin{tikzpicture}
+  \draw (2, 2) node (S){} to [R, l=\(R_{2}\), *-, i=\(i_{2}\), v=\(V_{2}\)] (0, 2)
+  to [R, l=\(R_{1}\), v = \(V_{1}\), i=\(i_{1}\)] (0,0) to [short, -*] (2, 0) node (M){}
+  (1, 0) node [eground]{};
+  \draw [-latex] (M) -- (S) node [midway, right]{\(v_{s}\)};
+\end{tikzpicture}

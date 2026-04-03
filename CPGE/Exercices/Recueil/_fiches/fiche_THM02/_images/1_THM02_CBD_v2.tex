@@ -1,0 +1,38 @@
+% les couleurs
+\def\JRLcyan{\couleurNBouCouleur{gray}{cyan}}
+\def\JRLcyanclair{\couleurNBouCouleur{lightgray}{cyan!10}}
+
+
+\begin{tikzpicture}[scale=0.9,
+	font=\footnotesize,
+	transfo/.style={no markers,samples=100,color=\JRLcyan,style=solid,line width=1pt,decoration={markings,mark=at position 20mm with {\arrow[]{stealth}}},postaction=decorate},
+	]
+	\begin{axis}[
+	width=5cm,
+	% height=7cm,
+	axis y line=middle,%center,right
+	axis x line=middle,%middle,top
+	inner axis line style={=>},
+	every axis x label/.style={anchor=north,at={(1,0)},yshift=-2pt},
+	every axis y label/.style={anchor=east,at={(0,1)},xshift=-2pt},
+	xlabel={$V$},
+	ylabel={$P$},
+	xtick=\empty,
+	ytick={.51,3},
+	yticklabels={0,$P_0$},
+	yticklabel style={anchor=east},			
+	xticklabel style={anchor=north },
+	xtick={.75,2},
+	xticklabels={$V_{\text{initial}}$, $V_\text{final}$},
+	xmin=0.5,
+	xmax=2.25,			
+	ymin=0.5,
+	ymax=4.5,
+	clip=false,
+	]
+	\addplot+[draw=white,fill=\JRLcyanclair,mark=none,opacity=.2,domain=.75:2,samples=20]{3}\closedcycle;
+	\addplot+[transfo,domain=.75:2.,samples=20]{3};
+	\addplot[black,mark=*,mark options={draw=black,solid,fill=white},densely dashed,ycomb,samples at={.75,2}] {3};
+	\end{axis}
+\end{tikzpicture}
+

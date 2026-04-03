@@ -1,0 +1,14 @@
+\begin{tikzpicture}
+  \ctikzset{tripoles/en amp/input height=0.45}
+  \draw (0,0) node [en amp](A){}
+  (A.-)to [short, i<=\(i^-\)]++(-.5, 0) coordinate (R1r) to [R, l = \(R_1\), *-*, i<= \(i_1\), v_>=\(V_{1}\)] ++(-2,0) coordinate (R1l) to [short, *-*] ++(-1.25, 0) node (E){}
+  (R1l) to [R, l=\(R_3\), -*, i=\(i_3\), v=\(V_{3}\)] ++(0, -1.75) coordinate(R3b) to [R, l=\(R_4\), i< = \(i_4\), v=\(V_{4}\)] ++(0, -1.75) node [eground] (masse){}
+  (A.+) -- (A.+|-R3b) to [short, i<= \(i^+\)] (R3b)
+  (A.out) to [short, -*, i=\(i_s\)] ++(.5,0) coordinate(S1) to [short, -*] ++(.5,0) node (S){}
+  (R1r) --++ (0,1.25) coordinate (tmp) to [R, l_=\(R_2\), i_= \(i_2\), v^=\(V_{2}\)] (tmp-|S1) -- (S1)  ;
+  \coordinate (masseS) at (masse-|S);
+  \coordinate (masseE) at (masse-|E);
+  \draw [latex-] (E) --(masseE)   node [midway, left] {\(v_e\)};
+  \draw [latex-] (S) --(masseS) node[midway, right] {\(v_s\)};
+  \draw (masseE) node [eground]{} (masseS)node[eground]{};
+\end{tikzpicture}

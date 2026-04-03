@@ -1,0 +1,17 @@
+\input{tikz.tex}
+\begin{document}
+\begin{tikzpicture}
+    \node[fill=white] at (0,0) {\includegraphics[width=\textwidth]{Cd.png}};
+    \node[fill=white] at (0.4,-3.4) {$\Re$};
+    \node[fill=white] at (-6.5,0.34) {\contour{white}{$C_x$}};
+    % draw line separation laminar/turbulent
+    \draw[thick, dashed] (-2.72,-2.7) -- ++(0,6);
+    \node at (-4,3) [below] {laminaire};
+    \draw[thick, dashed] (0.32,-2.7) -- ++(0,6);
+    \node at (-1.2,3) [below] {intermédiaire};
+    % \draw[thick, dashed] (3.36,-2.7) -- ++(0,6);
+    \node at (2,3) [below] {turbulent};
+    \draw[<-] (4.2,-1.8) -- ++(0.5,1) node[above=0.1] {crise\\de\\traînée};
+
+\end{tikzpicture}
+\end{document}

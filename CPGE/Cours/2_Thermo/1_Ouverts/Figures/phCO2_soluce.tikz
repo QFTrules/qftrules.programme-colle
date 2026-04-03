@@ -1,0 +1,15 @@
+\input{/home/eb/Dropbox/texmf/tex/latex/Preambles/tikz.tex}
+\begin{document}
+\begin{tikzpicture}
+  \node[] at (0,0) {\includegraphics{R744_CO2_P_h.pdf}};
+  \coordinate (A) at (2.8,-1.1);
+  \node at (A) {$\bullet$} ;
+  \coordinate (B) at (4.2,3);
+  \node at (B) {$\bullet$};
+  \coordinate (C) at (-0.3,3);
+  \node at (C) {$\bullet$} ;
+  \coordinate (D) at (-0.3,-1.1);
+  \node at (D) {$\bullet$};
+  \draw[blue,thick] (A) -- (B) -- (C) -- (D) --  cycle;
+\end{tikzpicture}
+\end{document}

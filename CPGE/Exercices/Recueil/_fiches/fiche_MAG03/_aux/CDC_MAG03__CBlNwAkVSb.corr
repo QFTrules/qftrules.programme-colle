@@ -1,0 +1,266 @@
+\protect \printNumberExercise {\protect \textbf  {1.2} }
+La force cherchée s'écrit $\vv{F}=-ev_{0}B_{0} ( \vv{e_x} \wedge \vv{e_y} + \vv{e_x} \wedge \vv{e_z} ) =ev_{0}B_{0} (\vv{e_y} -\vv{e_z} )$.
+\protect \removeBelowDisplayskip {\protect \tightdotfill }
+
+\protect \printNumberExercise {\protect \textbf  {1.3} a)}
+À l'équilibre, la boussole s'oriente dans la direction du champ résultant
+$\vv{B}(\ptO)=\vv{B_H}+\vv{B_{\text{fil}}}(\ptO)$. On a alors $\tan(\alpha)=\dfrac{B_{\text{fil}}}{B_H}$, d'où $B_{H}=\dfrac{\mu_0 I}{2 \pi d \tan(\alpha)}$.
+\protect \removeBelowDisplayskip {\protect \tightdotfill }
+
+\protect \printNumberExercise {\protect \textbf  {1.3} b)}
+On calcule \minusSmallskip
+\[
+B_H
+=\frac{\SI{4\pi e-7}{T.m.A^{-1}} \times \SI{1.2}{A}}{2\pi \times \SI{2e-2}{m} \times \tan(\ang{30})}
+=\frac{\SI{ e-7}{T.m.A^{-1}} \times \SI{1.2}{A}}{\SI{1e-2}{m} \times \frac{1}{\sqrt{3}} }
+=\sqrt{3}\times \SI{1,2  e-5}{T}=
+\SI{20,8 e-6}{\si{\tesla}}.
+\]
+\protect \removeBelowDisplayskip {\protect \tightdotfill }
+
+\protect \printNumberExercise {\protect \textbf  {1.4} }
+Au lieu d'exprimer le flux de $\vv{B}$ à travers la demi-sphère, il est plus simple de le calculer sur le disque qui s'appuie, comme la demi-sphère, sur la même circonférence de rayon $R$ (on utilise ici le fait que $\vv{B}$ est un champ vectoriel à flux conservatif).
+Sur le disque, on a $\vv{\d S}=\d{}S \vv{e_x}$. Ainsi $\phi=B \times S_{\text{disque}} = B \pi R^{2}$.
+\protect \removeBelowDisplayskip {\protect \tightdotfill }
+
+\protect \printNumberExercise {\protect \textbf  {1.5} }
+On calcule \vspace{-4mm}
+\[
+\phi=\int\limits_{r=0}^R \, \int\limits_{\theta=0}^{2 \pi} \vv{B}\cdot\vv{e_x} \d r \times r \d \theta
+=B_0 \times \left[ \pi R^{2}-\dfrac{2 \pi R^4}{4r^2} \right]
+=\dfrac{\pi}{2}  R^2 B_0.
+\]
+\protect \removeBelowDisplayskip {\protect \tightdotfill }
+
+\protect \printNumberExercise {\protect \textbf  {1.6} a)}
+On calcule \vspace{-4mm}
+\[
+\phi =
+\iintop_{\text{cadre}} \dfrac{\mu_{0}I}{2\pi r} \vv{e_\theta}\cdot \d{}S \vv{e_\theta}
+= \dfrac{\mu_{0}I}{2\pi}\intop_{0}^{a} \d z \times \intop_{D-a/2}^{D+a/2} \dfrac{\d r}{r}
+= \dfrac{\mu_{0}Ia}{2\pi} \ln \left(\dfrac{D+a/2}{D-a/2} \right).
+\]
+\protect \removeBelowDisplayskip {\protect \tightdotfill }
+
+\protect \printNumberExercise {\protect \textbf  {1.6} b)}
+On réécrit $\phi=\dfrac{\mu_{0}Ia}{2\pi}\left( \ln\left(1+\dfrac{a}{2D}\right)-\ln\left(1-\dfrac{a}{2D}\right)\right)$.
+Un développement limité de $\ln\left(1\pm\varepsilon\right)$
+à l'ordre 1 en $\varepsilon$ avec $\left|\varepsilon\right|\ll1$
+donne alors : $\ln\left(1\pm\varepsilon\right)\approx\pm\varepsilon$. D'où $\phi\approx\dfrac{\mu Ia^{2}}{2\pi D}$.
+\protect \removeBelowDisplayskip {\protect \tightdotfill }
+
+\protect \printNumberExercise {\protect \textbf  {1.6} c)}
+Si le cadre est situé dans un plan perpendiculaire à $(\ptO z)$, on a
+$\vv{\d S}=\d{}S\,\vv{e_z}$ et $\vv{B}\cdot\vv{\d S}=0$ : le flux est nul.
+\protect \removeBelowDisplayskip {\protect \tightdotfill }
+
+\protect \printNumberExercise {\protect \textbf  {1.7} a)}
+Le champ résultant en $\ptO$ s'écrit : $\vv{B}(\ptO)= \vv{B_1} + \vv{B_2}$ soit
+$\vv{B}(\ptO)= B_0 \left ( 1+ \cos(\alpha) \right ) \vv{e_x} + B_0 \sin(\alpha)\vv{e_y}$.
+\protect \removeBelowDisplayskip {\protect \tightdotfill }
+
+\protect \printNumberExercise {\protect \textbf  {1.7} b)}
+On a $B(\ptO) = B_0 \sqrt{(1+\cos(\alpha))^2 + \sin^2(\alpha)}$.
+Donc, $B(\ptO) = B_0 \sqrt{2\left(1+\cos(\alpha)\right)}$.
+\protect \removeBelowDisplayskip {\protect \tightdotfill }
+
+\protect \printNumberExercise {\protect \textbf  {1.7} c)}
+On a $B(\ptO)= 20 \sqrt{3} \, \si{m \tesla}$ et donc $B(\ptO)=\SI{34.6}{mT}$.
+\protect \removeBelowDisplayskip {\protect \tightdotfill }
+
+\protect \printNumberExercise {\protect \textbf  {1.8} a)}
+On a $\cos(\theta) = \dfrac{a}{d}$ d'où le résultat.
+\protect \removeBelowDisplayskip {\protect \tightdotfill }
+
+\protect \printNumberExercise {\protect \textbf  {1.8} b)}
+L'angle orienté $\theta$, entre l'horizontale $(\ptO x)$ et la demi-droite $[\ptO_1  \ptD)$ se retrouve entre la verticale $(\ptO y)$ et la perpendiculaire à $[\ptO_1 \ptD)$, c'est-à-dire la direction du vecteur $\vv{e_1}$.
+On a donc $\vv{e_1}=-\sin(\theta)\vv{e_x} + \cos(\theta)\vv{e_y}$.
+\protect \removeBelowDisplayskip {\protect \tightdotfill }
+
+\protect \printNumberExercise {\protect \textbf  {1.8} c)}
+Si on note $\beta$ l'angle que fait $\vv{e_2}$ avec la verticale descendante ($-\ptO y$), on a $\beta + \dfrac{\pi}{2} - \theta = \dfrac{\pi}{2}$, donc $\beta =\theta$. On a donc $\vv{e_2}=-\sin(\theta)\vv{e_x} - \cos(\theta)\vv{e_y}$.
+\protect \removeBelowDisplayskip {\protect \tightdotfill }
+
+\protect \printNumberExercise {\protect \textbf  {1.8} d)}
+Le champ résultant en $\ptD$ s'écrit $\vv{B_{\text{tot}}}=B_0(\vv{e_1}+\vv{e_2})$. En utilisant les résultats précédents, on trouve $\vv{B_{\text{tot}}}=-2B_0 \sin(\theta)\vv{e_x}$.
+\protect \removeBelowDisplayskip {\protect \tightdotfill }
+
+\protect \printNumberExercise {\protect \textbf  {1.8} e)}
+On a $\sin(\theta)=\dfrac{y}{d}$. De plus, dans le triangle rectangle $\left(\ptO\, \ptO_1\, \ptD\right) $, on a   $d^2=a^2+y^2$.
+
+Ainsi,
+$\vv{B_{\text{tot}}}=-\dfrac{\mu_0 I}{\pi}\dfrac{y}{a^2 + y^2},\vv{e_x}$.
+Par conséquent, on a $f(y)=-\dfrac{y}{a^2 + y^2}$.
+\protect \removeBelowDisplayskip {\protect \tightdotfill }
+
+\protect \printNumberExercise {\protect \textbf  {1.8} f)}
+On calcule $f'(y)=\dfrac{-(a^2+y^2)+y\times 2y}{(a^2 + y^2)^2} = \dfrac{y^2-a^2}{(a^2+y^2)^2}$. La fonction
+$f'$ s'annule pour $|y| \to \infty$, qui renvoie $\lim \limits_{|y| \to \infty} f(y) = 0$ et pour $|y|=a$ qui donne $\big|f(\pm a)\big|=\dfrac{1}{2a}$ : c'est le maximum recherché.
+\protect \removeBelowDisplayskip {\protect \tightdotfill }
+
+\protect \printNumberExercise {\protect \textbf  {1.9} a)}
+Le plan $(M, \vv{e_r}, \vv{e_z})$ est un plan de symétrie qui laisse $\ptM$ invariant ainsi que la distribution des courants car si $N\gg1$, chaque fil aura son symétrique, le courant circulant dans le même sens dans les deux fils symétriques.
+\protect \removeBelowDisplayskip {\protect \tightdotfill }
+
+\protect \printNumberExercise {\protect \textbf  {1.9} b)}
+Le vecteur $\vv{B}$ vecteur axial est perpendiculaire à tout plan de symétrie de ses sources, donc $\vv{B}(\ptM)$ est dirigé selon $\vv{e_\theta}$.
+\protect \removeBelowDisplayskip {\protect \tightdotfill }
+
+\protect \printNumberExercise {\protect \textbf  {1.10} a)}
+Dans une symétrie par rapport au plan $(x \ptO y)$, les fils restent inchangés mais les courants sont inversés  : c'est donc un plan d'antisymétrie.
+
+Dans une symétrie par rapport au plan $(y \ptO z)$, on permute les fils de gauche et de droite, les courants circulant dans le sens inverse de la situation initiale : il s'agit ici encore, d'un plan d'antisymétrie.
+
+Seul, le plan $(x \ptO z)$ laisse les fils inchangés ainsi que les sens des courants : c'est donc bien un plan de symétrie pour la distribution des courants.
+\protect \removeBelowDisplayskip {\protect \tightdotfill }
+
+\protect \printNumberExercise {\protect \textbf  {1.10} b)}
+Pour le point $\ptA$ sur l'axe $(\ptO x)$, le plan $(x \ptO y)$ est un plan de symétrie pour la distribution des courants et laisse $\ptA$ invariant. Le vecteur champ magnétique, vecteur axial, est perpendiculaire à tout plan de symétrie, donc on a $\vv{B}(\ptA) \perp (x \ptO z)$. Donc, $\vv{B}(\ptA)$ est parallèle à  $(\ptO y)$.
+\protect \removeBelowDisplayskip {\protect \tightdotfill }
+
+\protect \printNumberExercise {\protect \textbf  {1.10} c)}
+Pour le point $\ptD$ sur l'axe $(\ptO y)$, les plans $(x \ptO y)$ et $(y \ptO z)$ sont des plans d'antisymétrie pour la distribution des courants et laissent $\ptD$ invariant. Le vecteur champ magnétique, vecteur axial, est contenu dans tout plan d'antisymétrie, donc $\vv{B_{\text{tot}}} \in (x \ptO y)\cap (y \ptO z)$, soit $\vv{B_{\text{tot}}}$ est parallèle à  $(\ptO y)$.
+\protect \removeBelowDisplayskip {\protect \tightdotfill }
+
+\protect \newpage 
+\protect \printNumberExercise {\protect \textbf  {1.11} a)}
+Tout plan qui contient le point $\ptM$ et l'axe $(\ptO z)$ est plan d'antisymétrie pour la distribution des courants et laisse $\ptM$ invariant. Le vecteur $\vv{B}(\ptM)$, vecteur axial est contenu dans tous ces plans d'antisymétrie. Par conséquent, $\vv{B}(\ptM)$ est colinéaire à $(\ptO z)$.
+\protect \removeBelowDisplayskip {\protect \tightdotfill }
+
+\protect \printNumberExercise {\protect \textbf  {1.11} b)}
+Le plan $(\ptM, \vv{e_r}, \vv{e_z})$ est un plan d'antisymétrie pour la distribution des courants et laisse le point $\ptN$ invariant. Le vecteur champ magnétique, vecteur axial, est contenu dans tout plan d'antisymétrie, donc on a $\vv{B}(\ptN) \in (\ptM, \vv{e_r}, \vv{e_z})$.
+\protect \removeBelowDisplayskip {\protect \tightdotfill }
+
+\protect \printNumberExercise {\protect \textbf  {1.12} b)}
+On a $B_0 f(z)= B_0 \sin^3(\alpha)$, ce qui donne $f(z)=\dfrac{R^3}{\left(\sqrt{R^2+z^2}\right)^3}$.
+\protect \removeBelowDisplayskip {\protect \tightdotfill }
+
+\protect \printNumberExercise {\protect \textbf  {1.12} c)}
+Remplaçons $z$ par $R$ dans l'expression de $B_\text{axe}$. On trouve $B_1=\frac{\mu_0I}{2R}f(R)=
+\frac{\mu_0I}{2R}\frac{R^3}{\left(\sqrt{2R^2}\right)^3}=
+\frac{\mu_0I}{4\sqrt{2}\,R}$.
+\protect \removeBelowDisplayskip {\protect \tightdotfill }
+
+\protect \printNumberExercise {\protect \textbf  {1.12} d)}
+On cherche $z$ tel que $B_\text{axe}(z)=\frac12 B_1$, c'est-à-dire tel que :
+\[
+\frac{\mu_0I}{2R}\frac{R^3}{\left(\sqrt{R^2+z^2}\right)^3}=
+\frac12\frac{\mu_0I}{4\sqrt{2}\,R}
+\qquad\text{donc, après simplifications, tel que}\qquad
+\frac{R^3}{\left(R^2+z^2\right)^{3/2}}=
+\frac{1}{4\sqrt{2}}.
+\]
+Élevons à la puissance $2/3$ chaque terme de l'égalité. On obtient
+\[
+\frac{R^2}{R^2+z^2}=
+\frac{1}{\left(4\sqrt{2}\right)^{2/3}}=
+\frac{1}{\left(2^{5/2}\right)^{2/3}}=
+\frac{1}{\left(2\right)^{5/3}}
+\qquad\text{d'où}\qquad
+\left(2\right)^{5/3}R^2=R^2+z^2.
+\]
+Finalement, on trouve $z=R\sqrt{2^{5/3}-1}$.
+\protect \removeBelowDisplayskip {\protect \tightdotfill }
+
+\protect \printNumberExercise {\protect \textbf  {1.13} a)}
+Tout plan qui contient l'axe $(\ptO z)$ est plan d'antisymétrie pour la distribution des courants à condition de considérer que le symétrique de chaque spire par rapport à un plan qui contient se superpose à la spire de départ, ce qui n'est possible qu'en négligeant l'hélicité de l'enroulement.
+\protect \removeBelowDisplayskip {\protect \tightdotfill }
+
+\protect \printNumberExercise {\protect \textbf  {1.13} b)}
+En négligeant l'hélicité de l'enroulement des spires, tout plan qui contient $(\ptO z)$ est un plan d'antisymétrie pour la distribution des courants et laisse le point $\ptM$ invariant. Le vecteur champ magnétique, vecteur axial, est contenu dans tout plan d'antisymétrie, donc $\vv{B}(\ptM)$ est dirigé selon $\vv{e_z}$.
+\protect \removeBelowDisplayskip {\protect \tightdotfill }
+
+\protect \printNumberExercise {\protect \textbf  {1.14} a)}
+On a $B(z) = \dfrac{\mu_0 n I}{2} \left( \dfrac{z+\frac{\ell}{2}}{\sqrt{R^2 + \left(z+\frac{\ell}{2} \right)^2}} - \dfrac{z-\frac{\ell}{2}}{\sqrt{R^2 + \left(z-\frac{\ell}{2} \right)^2}} \right)$.
+\protect \removeBelowDisplayskip {\protect \tightdotfill }
+
+\protect \printNumberExercise {\protect \textbf  {1.14} b)}
+Au point $\ptO$, on a $\alpha_{\text{max}} = \pi - \alpha_{\text{min}}$. Or $\cos(\pi - \alpha_{\text{min}})= -\cos(\alpha_{\text{min}})$ qui donne en $\ptO$ :
+\[
+\cos(\alpha_{\text{min}}) = \dfrac{\ell / 2}{\sqrt{R^2+ \ell^2/4}}.
+\]
+Ainsi, on a $B(\ptO) = \mu_0 n I \cos(\alpha_{\text{min}}) = \mu_0 n I \dfrac{\ell}{\sqrt{4R^2+ \ell^2}}$.
+\protect \removeBelowDisplayskip {\protect \tightdotfill }
+
+\protect \newpage 
+\protect \printNumberExercise {\protect \textbf  {1.14} c)}
+Remarquons déjà que la fonction $B(z)$ est une fonction paire de $z$. On aura donc $B \left (- \dfrac{\ell}{2} \right ) = B \left( +\dfrac{\ell}{2} \right)$.
+
+En $z = \dfrac{\ell}{2}$, on a $\alpha_{\text{max}} = \dfrac{\pi}{2}$, donc $\cos(\alpha_{\text{max}}) = 0$ et $\cos(\alpha_{\text{min}}) = \dfrac{\ell}{\sqrt{R^2 + \ell^2}}$.
+Ainsi, on a
+$\dfrac{B \left(\pm \dfrac{\ell}{2} \right)} {B(\ptO)} = \dfrac{1}{2} \dfrac{\sqrt{4R^2 + \ell^2}}{\sqrt{R^2 + \ell^2}}$.
+\protect \removeBelowDisplayskip {\protect \tightdotfill }
+
+\protect \printNumberExercise {\protect \textbf  {1.14} d)}
+On a $B(\ptO) = \mu_0 n I \dfrac{\ell}{\sqrt{4R^2+ \ell^2}} = \dfrac{\mu_0 n I}{\sqrt{1+\frac{4R^2}{\ell^2}}}$.
+Si $\dfrac{\ell}{R} \to +\infty$, alors $\dfrac{4R^2}{\ell^2} \longto 0$ et $B(\ptO) \longto \mu_0 n I$.
+\protect \removeBelowDisplayskip {\protect \tightdotfill }
+
+\protect \printNumberExercise {\protect \textbf  {1.15} a)}
+La solution de l'équation différentielle s'écrit $B(z)=C\exp\left(\dfrac{z}{\delta}\right)+D\exp\left(-\dfrac{z}{\delta}\right)$.
+La fonction $B(z)$ étant paire, on a $C=D$. D'où $B(z)=2C\cosh\left(\dfrac{z}{\delta}\right)$.
+
+La condition aux limites en $z=e$ permet d'exprimer la constante $C$ par continuité de $B$ (forcément continu car défini en volume) : on trouve $C=\dfrac{B_{0}}{2\cosh\left(\dfrac{e}{\delta}\right)}$. Ainsi, on a $B(z)=B_{0}\dfrac{\cosh\left(\dfrac{z}{\delta}\right)}{\cosh\left(\dfrac{e}{\delta}\right)}$.
+\protect \removeBelowDisplayskip {\protect \tightdotfill }
+
+\protect \printNumberExercise {\protect \textbf  {1.15} b)}
+Pour $e=\delta/10$, on a $\dfrac{B(0)}{B_{0}}=\dfrac{1}{\cosh(1/10)} \approx 1$.
+\protect \removeBelowDisplayskip {\protect \tightdotfill }
+
+\protect \printNumberExercise {\protect \textbf  {1.15} c)}
+Pour $e=10\delta$, on a $\dfrac{B(0)}{B_{0}}=\dfrac{1}{\cosh(10)}\approx \num{9 e-5}$.
+\protect \removeBelowDisplayskip {\protect \tightdotfill }
+
+\protect \printNumberExercise {\protect \textbf  {1.16} b)}
+On calcule $\Delta = \left (\frac{\omega_0}{Q} \right )^2 - 4{\omega_0}^2
+= {\omega_0}^2 \left ( \frac{1}{Q^2}-4\right )
+={\omega_0}^2 \frac{1-4Q^2}{Q^2}
+=\left (\frac{\omega_0}{Q} \right )^2 (1-4Q^2)$.
+\protect \removeBelowDisplayskip {\protect \tightdotfill }
+
+\protect \printNumberExercise {\protect \textbf  {1.16} c)}
+En effet, on a $Q >1/2$.
+\protect \removeBelowDisplayskip {\protect \tightdotfill }
+
+\protect \printNumberExercise {\protect \textbf  {1.16} d)}
+La fonction constante $B_0$ est solution de ($\ast$).
+\protect \removeBelowDisplayskip {\protect \tightdotfill }
+
+\protect \printNumberExercise {\protect \textbf  {1.16} e)}
+Les racines de l'équation caractéristique sont $-\frac{\omega_0}{2Q} \pm \iC \frac{\omega_0}{2Q} \sqrt{4Q^2-1}$.
+
+Donc, la solution générale de l'équation sans second membre associée à  ($\ast$) est
+\[
+\eEuler^{-\frac{\omega_0}{2Q} t}
+\Big(
+\lambda \cos \big( \frac{\omega_0}{2Q} \sqrt{4Q^2-1} \cdot t\big)
++
+\mu \sin \big( \frac{\omega_0}{2Q} \sqrt{4Q^2-1} \cdot t\big)
+\Big).
+\]
+Donc, la solution générale de l'équation ($\ast$) est
+$B_0+\eEuler^{-\frac{\omega_0}{2Q} t}
+\Big(
+\lambda \cos \big( \frac{\omega_0}{2Q} \sqrt{4Q^2-1} \cdot t\big)
++
+\mu \sin \big( \frac{\omega_0}{2Q} \sqrt{4Q^2-1} \cdot t\big)
+\Big)$.
+\protect \removeBelowDisplayskip {\protect \tightdotfill }
+
+\protect \printNumberExercise {\protect \textbf  {1.16} f)}
+La condition initiale $B(0) = 0$ donne $\lambda = -B_0$. La condition initiale $B'(0) = 0$ donne
+$\mu = \frac{-B_0}{\sqrt{4Q^2-1}}$.
+\protect \removeBelowDisplayskip {\protect \tightdotfill }
+
+\protect \printNumberExercise {\protect \textbf  {1.17} }
+On a $[\mu_B]=\left[e^{\alpha}\cdot m_e^{\beta}\cdot h^{\gamma}\right]=Q^{\alpha}\cdot M^{\beta}\cdot \left[h\right]^{\gamma}$
+
+La constante de Planck $h$ est homogène au produit d'une énergie par un temps (la fréquence est homogène à l'inverse d'un temps). De plus, une énergie est homogène au produit d'une masse par une vitesse au carré. Nous obtenons donc :
+$[h]=\frac{M\cdot L^2}{T}$.
+Ainsi, on a $[\mu_B]=\frac{Q^{\alpha}\cdot M^{\beta+\gamma}\cdot L^{2\gamma}}{T^{\gamma}}$.
+
+Le magnéton de Bohr s'exprime en $\si{\ampere \cdot \metre^2}$. Il est donc homogène à $[\mu_B]=\left[I\right]\cdot \left[S\right]=\frac{Q\cdot L^2}{T}$.
+
+Finalement, en comparant les équations obtenues, on obtient $\alpha=1$, $\beta=-1$ et $\gamma=1$.
+\protect \removeBelowDisplayskip {\protect \tightdotfill }
+

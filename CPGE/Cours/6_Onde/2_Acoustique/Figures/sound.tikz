@@ -1,0 +1,64 @@
+\input{/home/eb/Dropbox/texmf/tex/latex/Preambles/tikz.tex}
+\begin{document}
+  % TRAVELLING WAVE
+  \begin{tikzpicture}
+    \def\ymax{0.85}    % y maximum
+    \def\xmax{5.5}     % x maximum
+    \def\A{0.80*\ymax} % amplitude
+    \def\D{1.20*\ymax} % pipe diameter
+    \def\lam{2.0}      % wavelength
+    \def\L{0.97*\xmax} % length
+    \def\s{2.45*\ymax} % shift
+    \def\nwaves{3}     % number of waves
+    \def\N{1200}       % number of points
+    %\def\N{100}        % number of points
+
+    % % DISPLACEMENT
+    % \foreach \i [evaluate={\x=(\i-0.5)*2*\lam/4;}] in {1,...,5}{
+    %   \ifodd\i \def\sgn{1} \else \def\sgn{-1} \fi % y position
+    %   \draw[myarr] (\x,\sgn*0.15*\A) --++ (0,\sgn*0.65*\A);
+    %   \draw[blue!20!black!60,very thin,dashed] (\x+\lam/4,\ymax) --++ (0,-2.1*\s);
+    % }
+    % \draw[->,thick] (0,-\ymax) -- (0,0.1+\ymax) node[below=2,left] {$s$};
+    % \draw[->,thick] (-0.2*\ymax,0) -- (0.2+\xmax,0) node[below] {$x$};
+    % \draw[xcol,very thick,samples=100,smooth,variable=\x,domain=0:\L]
+    %   plot(\x,{\A*sin(360/\lam*\x)});
+    % %\draw[xcol,dashed,samples=100,smooth,variable=\x,domain=0:\L]
+    % %  plot(\x,{-\A*sin(360/\lam*\x)});
+    % \draw[vvec] (1.45*\lam,0.70*\A) --++ (0.3*\lam,0) node[right=-2] {$v$};
+
+    % PRESSURE
+    \begin{scope}[shift={(0,-\s)}]
+      \draw[->,thick] (0,-\ymax) -- (0,0.1+\ymax) node[above] {$p_1$};
+      \draw[->,thick] (-0.2*\ymax,0) -- (0.2+\xmax,0) node[below] {$x$};
+      \draw[Pcol,very thick,samples=100,smooth,variable=\x,domain=0:\L]
+        plot(\x,{\A*sin(360/\lam*\x-90)});
+      %\draw[Pcol,dashed,samples=100,smooth,variable=\x,domain=0:\L]
+      %  plot(\x,{-\A*sin(360/\lam*\x-90)});
+      \draw[vvec] (1.70*\lam,0.70*\A) --++ (0.3*\lam,0) node[right=-2] {$v$};
+    \end{scope}
+
+    % TUBE
+ \begin{scope}[shift={(0,-2.1*\s)}]
+   \fill[thin air] (0,0) rectangle++ (\L,\D);
+   \foreach \i [evaluate={\x=(\i-1)*\lam;\cond=\x+0.75*\lam<\L ? 1 : 0;}] in {1,...,\nwaves}{
+     \message{^^JWave \i}
+     \draw[myarr] (\x+0.25*\lam,1.1*\D) --++ ( 0.21*\lam,0);
+     \ifnum\cond=1
+       \draw[myarr] (\x+0.75*\lam,1.1*\D) --++ (-0.21*\lam,0);
+     \fi
+     \begin{scope}
+       \clip (0,0) rectangle (\L,\D);
+       \path[left color=thin air,right color=thin air,middle color=dense air]
+         (\x,0) rectangle (\x+\lam,\D);
+       \foreach \i in {1,...,\N}{
+         \fill[blue!40!black] ({\x+acos(-rand)*\lam/180},{\D*(1+rand)/2}) circle(0.01);
+       }
+     \end{scope}
+   }
+   \draw[wood,line cap=round] (\L,\D) -| (0,0) -- (\L,0);
+   \draw[vvec] (0.97*\L,0.50*\D) --++ (0.3*\lam,0) node[right=-2] {$v$};
+ \end{scope}
+
+  \end{tikzpicture}
+\end{document}

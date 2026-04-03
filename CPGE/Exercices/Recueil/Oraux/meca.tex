@@ -1,0 +1,36 @@
+% !TEX root = /home/eb/.vscode/extensions/qftrules.programme-colle/tmp/Exercice.tex%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][colle]{Tir à la carabine}
+  Un homme tire à la carabine horizontalement une balle de $\SI{4,5}{mm}$ et de longueur $\SI{7}{mm}$ en plomb, de densité $d=\num{11}$.
+  Estimer la portée maximale du tir.
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][3][oral]{Pendule de torsion}
+  On considère une tige rigide $OA$, de longueur $\ell$, en liaison pivot parfaite en $O$ et à laquelle est fixée un masse $m$ en $A$. Le pendule évolue dans un plan vertical, et est relié à un ressort de torsion, de constante de torsion $C$, qui tend à ramener le pendule vers la position verticale. Le pendule est aussi soumis au poids.
+  \begin{quest}
+  \item Déterminer l'équation différentielle du mouvement de la masse $m$.
+  \sol{
+  TMC :
+  $$
+  m \ell^2 \ddot{\theta} = - C \theta + mg\ell \sin \theta \Rar \ddot{\theta} + \frac{C}{m\ell^2} \theta - \frac{g}{\ell} \sin \theta = 0.
+  $$
+  }
+  \item Déterminer l'énergie potentielle du pendule pour toute position.
+  \sol{
+  Travail élémentaire associé au couple de torsion, $\delta W = - C \theta \d \theta = - \d E_p$ avec $E_p = \frac{1}{2}C \theta^2$. Pour la pesanteur, $\delta W = mg\ell \sin \theta \d \theta = - \d E_p$ avec $E_p = mg\ell(1-\cos \theta)$. L’énergie potentielle totale vaut
+  $$
+E_p = mg\ell(1-\cos \theta) + \frac{1}{2}C \theta^2.
+  $$
+  }
+  \item Déterminer les positions d'équilibre, et leurs conditions d'existence, pour le pendule.
+  \sol{
+$\dd{E_p}{\theta} = C \theta-mg\ell\sin \theta = 0 $ pour $\theta = 0$ ou $\theta = \theta_0$ si $C<mg\ell$ (résolution graphique).
+  }
+  \item Déterminer si les positions d'équilibre précédentes sont stables ou instables (on pensera à séparer les différents cas).
+  \sol{
+  $\ddd{E_p}{\theta} = C-mg\ell\cos \theta$. Pour $\theta = 0$ , on trouve $\ddd{E_p}{\theta} = C-mg\ell$ stable ($>0$) si $C>mg\ell$ et instable ($<0$) si  $C<mg\ell$. C’est l’inverse pour l’autre position d’équilibre.
+  }
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

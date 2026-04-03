@@ -66,6 +66,7 @@ function generateTreeItems() {
 		return new TreeItem(theme.toUpperCase(), // theme level
 			latex_files.map(function (filePath) {
 				// get chapter latex file basename
+				// vscode.window.showInformationMessage(filePath);
 				var exercices = child_process.execSync('grep -E "\\\\\\\\begin{exo}" ' + filePath.toString()).toString().split('\n');
 				exercices.pop();
 				const basename = path.parse(filePath).name

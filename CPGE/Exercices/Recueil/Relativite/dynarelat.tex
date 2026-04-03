@@ -1,0 +1,1507 @@
+% !TEX root = /home/eb/.vscode/extensions/qftrules.programme-colle/tmp/Exercice.tex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][devoir]{Effet Doppler-Fizeau (3 points)}
+  Soit une source lumineuse monochromatique de pulsation $\omega_0$ et de vecteur d’onde $\Vec{k}_0$, immobile dans un référentiel inertiel $\Rcal$. Un récepteur immobile dans un référentiel inertiel $\Rcal’$ reçoit la lumière issue de cette source. Le référentiel $\Rcal’$ s’obtient à partir de $\Rcal$ par un boost de Lorentz dans la direction $(Ox)$ de vitesse adimensionnée $\beta$ et de facteur de Lorentz $\gamma$. Les photons s'éloignent de l'observateur $\Rcal'$ en faisant un angle $\theta$ avec l'axe $(Ox)$.
+  \begin{quest}
+    \item	Rappeler la relation de dispersion de la lumière dans le vide et l'expression du quadri-vecteur d’onde $\kmu$. À partir des transformations de Lorentz, montrer que la pulsation $\omega’$ mesurée dans $\Rcal'$ et la pulsation propre $\omega_0$ du photon émis par la source sont reliées par
+    \begin{equation}
+      {\omega’} = {{\omega_0}}{\gamma(1-\beta \cos \theta)}.
+    \end{equation}
+
+    \sol{
+      La relation de dispersion de la lumière dans le vide est 
+      \eqbox{
+      \omega_0 = k_0 c.
+      }
+        Dans le référentiel $\Rcal$ de l’émetteur, le quadri-vecteur d’onde a pour expression
+        $$
+        K=\left(\frac{\omega_0}{c}, \vec{k}_0\right)=\frac{\omega_0}{c}\left(1, \cos \theta, \sin \theta \right),
+        $$
+        Dans le référentiel du récepteur $\Rcal’$, le quadri-vecteur d’onde s’obtient par un boost de Lorentz de vitesse $v \ex$ :
+        $$
+        {K’}^\mu = \Lambda^\mu_{\,\,\nu} K^\nu \Rar 
+        \begin{cases}
+          \frac{\omega’}{c} = \gamma ( \frac{\omega_0}{c} -  \beta \frac{\omega_0 \cos \theta}{c}) \\
+          \frac{\omega’}{c} \cos \theta’ = \gamma ( \frac{\omega_0 \cos \theta}{c} -  \beta  \frac{\omega_0}{c})  \\
+          \frac{\omega’}{c} \sin \theta’ = \frac{\omega_0}{c} \sin \theta. \\
+          0 = 0
+        \end{cases}
+        $$
+        La première relation donne
+        \eqbox{
+        {\omega’} = {{\omega_0}}{\gamma(1-\beta \cos \theta)}.
+        }
+        Il s’agit de la loi de l’effet Doppler-Fizeau.
+    }
+    \item On observe une étoile, dont le déplacement par rapport à la Terre s'effectue suivant la ligne de visée, et dont le spectre contient la raie H$\alpha$ de l'hydrogène, mesurée à $\lambda' = \SI{851.2}{nm}$. La raie H$\alpha$ est de longueur d'onde propre $\lambda_0 = \SI{656.3}{nm}$. L'étoile s'éloigne-t-elle ou s'approche-t-elle ? En déduire la vitesse de l'étoile $v$ par rapport à la Terre.
+    \sol{
+    On suppose que l’étoile se déplace suivant la ligne de visée, soit $\theta = 0$ et $\beta$ de signe indéterminé. On a alors
+    $$
+    \omega’ = \omega_0 \gamma (1-\beta) = \omega_0 \sqrt{\frac{1-\beta}{1+\beta}} \Rar \boxed{\lambda’ = \lambda_0 \sqrt{\frac{1+\beta}{1-\beta}}},
+    $$
+    d’après la relation de dispersion $\omega = 2\pi c/\lambda$. On remarque que $\lambda’ > \lambda_0$, ce qui entraîne $\beta > 0$ : l’étoile s’éloigne. On trouve alors
+    \eqbox{
+    \beta = \frac{\lambda’^2 - \lambda_0^2}{\lambda’^2 + \lambda_0^2} = \num{0.25}.
+    }
+    }
+  \end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][devoir]{Dynamique relativiste (8 points)}
+
+  \begin{quest}
+    \QR{	Définir la quadri-position $\xmu$ et la notion de quadri-vecteur. Définir le pseudo-produit scalaire $Y^\mu Z_\mu$ entre deux quadri-vecteurs $Y$ et $Z$. Quelle propriété vérifie la pseudo-norme $Y^\mu Y_\mu$ ?
+   }{
+      \begin{enumerate}
+        \item 
+        La \imp{quadri-position} est le vecteur $X \in \R^4$ de composantes contravariantes $\xmu^\mu$ tel que 
+        \eqbox{
+          \xmu = (\xmu^0,\xmu^1,\xmu^2,\xmu^3) = (ct,x,y,z) = (ct, \Vec{OM}).
+          }
+        \item
+     Un \imp{quadri-vecteur} est un objet $Y \in \R^4$ de composantes contravariantes $Y^\mu$ (avec $\mu=0,1,2,3$) qui se transforme  suivant les \imp{transformations de Lorentz} sous un changement de référentiels inertiels,
+     \eqbox{
+       Y' = \Lambda Y.
+       }
+       \item
+         La \imp{pseudo-norme} d'un quadri-vecteur $Y$ est définie par
+         \eqbox{
+           Y^\mu Y_\mu,
+           }
+    avec $ Y_0 = Y^0 \text{ et } Y_i = -Y^i$ (composantes covariantes).
+    \item 
+    Le \imp{pseudo-produit scalaire}  $Y^\mu Z_\mu$ entre deux quadri-vecteurs $Y$ et $Z$ est un \imp{invariant de Lorentz}.
+    \end{enumerate}
+ }
+ 
+    \QR{ Définir le temps propre $\tau$. Définir la quadri-vitesse $\vmu$ et donner ses composantes contravariantes $\vmu^\mu$. 
+    }{
+      \begin{enumerate}
+        \item 
+        Le \imp{temps propre} $\tau$ est le temps mesuré dans le référentiel propre d’une particule, d'expression
+        \eqbox{
+          \d \tau = \frac{\d t}{\gamma},
+          }
+          où $\gamma$ est le facteur de Lorentz instantané de l'observateur. Il s'agit d'un \imp{invariant de Lorentz}.
+          \item La \imp{quadri-vitesse} est le quadri-vecteur $\vmu \in \R^4$ de composantes 
+  % \begin{equation}
+  \eqbox{
+    \vmu = \frac{d\xmu}{d\tau} = \gamma(c,\Vec{v}).  
+    }
+  % \end{equation}
+        \end{enumerate}
+    }
+    \QR{ Définir la quadri-accélération $\amu$ et donner ses composantes contravariantes $\amu^\mu$.
+    }{
+        La \imp{quadri-accélération} est le quadri-vecteur $\amu \in \R^4$ défini par
+        \eqbox{
+          \amu = \frac{d\vmu}{d\tau} = \gamma \dd{\gamma}{t}(c,\Vec{v}) + \gamma^2(0,\Vec{a}).
+          } 
+    }
+
+    \QR{ Définir la quadri-impulsion $\pmu$ et la quadri-force $F$. Définir l’impulsion relativiste $\Vec{p}$ et l’énergie cinématique $\mc{E}$ d’une particule de masse $m$.  Donner les équations fondamentales de la dynamique relativiste.
+    }{
+      \begin{enumerate}
+        \item 
+        La \imp{quadri-impulsion} d’une particule de masse $m$ est définie par
+        \eqbox{
+          \pmu = m\vmu=m\gamma(c, \Vec{v}) = \left(\frac{\Etot}{c}, \Vec{p}\right).
+          }
+          \item L’impulsion relativiste $\Vec{p}$ et l’énergie cinétique $\Etot$ d’une particule de masse $m$ sont définies par
+          \eqbox{
+            \Vec{p} = \gamma m \Vec{v}, \quad \Etot = \gamma m  c^2.
+            }
+          \item La \imp{quadri-force} $F$ est définie par
+            \eqbox{
+              F = \frac{d\pmu}{d\tau}.
+              }
+          \item Les équations fondamentales de la dynamique s’écrivent, pour une particule soumise à une force $\Vec{f}$,
+              \eqbox{
+                \dd{\Vec{p}}{t} = \Vec{f}, \quad \dd{\Etot}{t} = \Vec{f} \cdot \Vec{v}.
+          }
+      \end{enumerate}
+    }
+  \end{quest}
+  
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][devoir]{Le paradoxe des jumeaux de Langevin}
+  \Notions{\item Quadri-accélération \task Diagramme d’espace-temps \task Temps propre}
+
+  Le paradoxe des jumeaux a été popularisé par P. \textsc{Langevin} en France pour vulgariser les idées d’A. \textsc{Einstein}, peu après son article fondateur de 1905.
+  
+  Considérons deux jumeaux $J_1$ et $J_2$. Le jumeau $J_1$ reste sur Terre, associée au référentiel $\Rcal$ supposé inertiel. On munit $\Rcal$ d’un repère spatio-temporel $(O,ct,x,y,z)$. Le jumeau $J_2$ part en voyage dans l'espace à bord d'une fusée, associée au référentiel $\Rcal^\prime$, qui se déplace à grande vitesse par rapport à $\Rcal$ suivant l’axe $x$.
+Le voyage se décompose en trois phases uniformément accélérées :
+\begin{enumerate}
+  \item 
+  entre les instants $t=0$ et $t=\frac{T}{4}$, l'accélération propre vaut une constante $a_p=+a>0$;
+  \item entre les instants $t=\frac{T}{4}$ et $t=\frac{3 T}{4}$, l'accélération propre vaut la constante $a_p=-a<0$,
+  \item entre les instants $t=\frac{3 T}{4}$ et $t=T$, l'accélération propre vaut la constante $a_p=+a>0$.
+\end{enumerate}
+  
+La phase aller s'étend des instants $t=0$ et $t=\frac{T}{2}$, tandis que la phase retour s'étend des instants $t=\frac{T}{2}$ et $t=T$. Le jumeau $J_2$ revient sur Terre à l'instant $t=T$.
+\begin{quest}
+  % \item Représenter l'allure de la ligne d'univers de $J_2$ dans un diagramme d'espace-temps $(c t, x)$.
+  \item	
+   On rappelle que la quadri-accélération est de norme $\Gamma^\mu \Gamma_\mu=-a_p^2$. Montrer qu'une paramétrisation de la forme $\Gamma^0= \pm a \sinh (\psi)$ et $\Gamma^1= \pm a \cosh (\psi)$ convient, avec $\Gamma^2=\Gamma^3=0$ et $\psi \in \mathbb{R}$ une grandeur indéterminée pour l'instant. On précisera les signes à choisir pour chaque phase du mouvement.
+  \item Déterminer les composantes de la quadri-vitesse $U^\mu$. En déduire que $\psi$ représente la rapidité du boost permettant de passer de $\mathcal{R}$ au référentiel propre $\mathcal{R}_p$. Que vaut le facteur de Lorentz $\gamma$ ?
+\item On admet que la rapidité est reliée au temps propre par $\psi=\omega \tau$, où l'on a introduit la grandeur $\omega$ telle que $a=\omega c$. Pour chacune des phases $(a),(b)$ et $(c)$, déterminer le temps $t(\tau)$ mesuré par $J_1$. Que vaut la durée $T_2$ du voyage en fonction de $T_1$ ?
+
+\item Déterminer la trajectoire $x(t)$ de $J_2$ dans $\mathcal{R}$. Représenter la ligne d'universe de $J_2$ dans un diagramme d'espace-temps $(c t, x)$.
+\item Représenter sur ce même diagramme d'espace-temps les événements $A: J_2$ quitte la Terre en accélérant, $B: J_2$ commence à freiner, $C: J_2$ atteint le point le plus éloigné de son trajet, $D: J_2$ commence à décélérer avant d'atterrir sur Terre, $E: J_2$ se pose sur Terre. Déterminer les coordonnées $(c t, x)$ de chacun de ces événements dans $\mathcal{R}$. 
+\item Déterminer la distance $d$ parcoure par $J_2$ avant de rebrousser chemin. Pour une accélération $a=\SI{9,8}{m.s^{-2}}$ identique à celle de la pesanteur sur Terre, quelle serait la durée d’un aller-retour pour visiter : la planète Neptune, à une distance $d=\SI{}{km}$ ? 
+ l’étoile Proxima Centauri, à une distance $d=\SI{4,2}{a l}$ ? le centre de la galaxie, à une distance $d=\SI{e5}{a l}$ ?
+\end{quest}
+
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][appli]{Calcul tensoriel}
+  \hauteurLargeurCadreReponse{8mm}{11cm}
+  \Notions{\item Notation tensoriel \task Quadri-vecteur \task Métrique de Minkowski}
+  Nous nous entraînons dans cet exercice sur la notation tensorielle. On rappelle la convention de sommation d'Einstein des indices répétés :
+  \begin{equation}
+    X_\mu Y^\mu = \sum_{\mu=0}^3 X_\mu Y^\mu.
+  \end{equation}
+  Les indices contractés doivent apparaître en double, l’un en haut (contravariant), l’autre en bas (covariant).
+  % quadri-vecteur, matrice, convention d'Einstein.
+  \begin{quest}
+    \item	
+    Calculer les composantes covariantes $X_\mu$ et la pseudo-norme $X_\mu X^\mu$ pour les quadri-vecteurs $\xmu$ suivants.
+    
+    
+    \begin{enonce}
+    $X=(1,2,0,0)$
+  \end{enonce}
+
+  \begin{enonce}
+    $X=(2,1,0,0)$
+  \end{enonce}
+
+  \begin{enonce}
+    $X=(3,2,1,0)$
+  \end{enonce}
+
+  \begin{enonce}
+    $X=(4,1,1,1)$
+  \end{enonce}
+  \item	
+  Calculer le pseudo-produit scalaire $X_\mu Y^\mu$ pour les quadri-vecteurs  $X$ et $Y$ suivants.
+  
+  
+  \begin{enonce}
+  $X=(1,2,0,0)$ et $Y=(1,1,0,0)$
+\end{enonce}
+
+\begin{enonce}
+  $X=(2,1,0,0)$ et $Y=(1,2,0,0)$
+\end{enonce}
+
+\begin{enonce}
+  $X=(3,2,1,0)$ et $Y=(1,1,1,1)$
+\end{enonce}
+
+\begin{enonce}
+  $X=(4,1,1,1)$ et $Y=(1,1,0,0)$
+\end{enonce}
+  % \item La métrique de Minkowski $\eta$ est une matrice de composantes $\eta_{\mu \nu}$ ($\mu,\nu=0,1,2,3$), notées avec des indices covariants. On note $\eta^{\mu \nu}$  les composantes de la matrice inverse $\eta^{-1}$. Déterminer cette matrice et montrer qu’un quadri-vecteur contravariant s’obtient à partir d’une quadri-vecteur covariant par 
+  % \begin{equation}
+  %   X^\mu = \eta^{\mu \nu} X_\nu.
+  % \end{equation}
+  % \item Montrer qu'un quadri-vecteur covariant $X_\mu$ se transforme sous un changement de référentiels comme
+  % \begin{equation}
+  %   X_\mu' = \Lambda_\mu^{\,\,\nu} X_{\nu},
+  % \end{equation}
+  % où $\Lambda_\mu^{\,\,\nu} = \eta_{\mu \rho} \Lambda^\rho_{\,\,\sigma} \eta^{ \sigma \nu} $. De quelle matrice les coefficients $\Lambda_\mu^{\,\,\nu}$ sont-ils les composantes ?
+  % Déterminer explicitement les composantes $\Lambda_\mu^{\,\,\nu}$ pour un boost de Lorentz dans la direction $x$.
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][2][TD]{Mouvement d’une fusée uniformément accélérée}
+  \Notions{\item Quadri-vitesse \task Quadri-accélération \task Temps propre}
+  Considérons une fusée ayant un mouvement rectiligne accéléré par rapport à un référentiel inertiel $\Rcal$, par exemple la Terre. Sa vitesse à un instant $t$ est portée par $\ex$ et notée $v$. Dans le référentiel propre de la fusée $\Rp$, sa vitesse est nulle, alors que son accélération est déterminée par les gaz éjectés et a une valeur non nulle constante $a_p$ portée par $\ex$ mesurée par les instruments de bord.
+
+  \begin{quest}
+    \item	Que vaut la quadri-accélération $\amu_p$ dans le référentiel propre ? En déduire la quadri-accélération $\amu$, puis l'accélération $a$ dans le référentiel $\Rcal$ en fonction de $\gamma$ et $a_p$. Que vaut $\amu^\mu \amu_\mu$ ?
+     \sol{
+    La quadri-accélération est un quadri-vecteur : elle se transforme d'après les transformations de Lorentz sous un changement d'observateur inertiel. On a donc :
+    $$
+    \begin{cases}
+      \amu^0 & = \gamma(\amu_p^0 + \beta \amu_p^1) = \gamma \beta a_p, \\ 
+      \amu^1 & = \gamma(\amu_p^1 + \beta \amu_p^0) = \gamma a_p.	
+    \end{cases}
+    $$
+    Or on a aussi la relation générale 
+    $$
+    \begin{cases}
+      \amu^0 & = \gamma \dd{\gamma}{t} c, \\
+      \amu^1 & = \gamma \dd{\gamma}{t} v + \gamma^2 a .
+    \end{cases}
+    $$
+    Ainsi on trouve que 
+    $$
+    \gamma^2 a  = \amu^1 - \beta \amu^0 = \gamma a_p (1-\beta^2) = \frac{a_p}{\gamma^3},
+    $$
+    soit 
+    \eqbox{
+      a = \frac{a_p}{\gamma^3}.
+    }
+
+    On vérifie que la norme de la quadri-accélération est invariante de Lorentz,
+    $$
+    \amu^\mu \amu_\mu = \gamma^2 \beta^2a_p^2-\gamma^2a_p^2 = -a_p^2 = \amu_p^\mu \amu_{p\, \mu}.
+    $$
+
+    }
+    
+    \item Déterminer le facteur de Lorentz $\gamma$ et la vitesse adimensionnée $\beta$. En déduire la loi horaire $t(\tau)$.
+    \sol{
+      On obtient que 
+$$
+  \dd{\gamma}{t} = \frac{\amu^0}{\gamma c} = \beta \frac{a_p}{c}.
+$$
+Or $\beta = (1-\gamma^{-2})^{1/2}$, soit par séparation des variables,
+$$
+\frac{\d \gamma}{\sqrt{1-\gamma^{-2}}} = \frac{\gamma \d \gamma}{\sqrt{\gamma^2-1}} = \frac{a_p}{c} \d t.
+$$
+En intégrant, on trouve, 
+$$
+\int \frac{\gamma \d \gamma}{\sqrt{\gamma^2-1}} = \int \frac{a_p}{c} \d t \Rar  = \frac{a_p}{c} t,
+$$
+avec pour condition initiale $\gamma(t=0)=1$. On en déduit 
+\eqbox{
+\gamma(t) = \sqrt{1+\left( \frac{a_p t}{c} \right)^2}.
+}
+On trouve ensuite la vitesse adimensionnée $\beta$ par 
+\eqbox{
+\beta(t) = \sqrt{1-\frac{1}{\gamma(t)^2}} = \frac{a_p t}{\sqrt{1+(a_p t/c)^2}}.
+}
+On en déduit le temps $t$ pour l'observateur inertiel $\Rcal$ par l'\Eq{temps_propre} :
+      $$
+      \tau = \int_0^\tau \d \tau = \int_0^t \frac{\d t}{\gamma(t)} = \int_0^t \frac{\d t}{\gamma(t)} = \int_0^t \frac{\d t}{\sqrt{1+(a_p t/c)^2}} = \frac{c}{a_p} {\rm argsinh} \left( \frac{a_p t}{c} \right) = \frac{c}{a_p} \ln\left( \frac{a_p t}{c} + \sqrt{1+(a_p t/c)^2} \right).
+      $$
+      avec ${\rm argsinh}$ la fonction réciproque de $\sinh$. On a donc la relation
+      On a donc la relation 
+      \eqbox{
+      \frac{a_p t}{c} = \sinh\left( \frac{a_p \tau}{c} \right).
+      }
+      On peut réécrire les grandeurs en fonction de $\tau$, soit
+      \eqbox{
+      \gamma = \cosh (\omega \tau).
+      }
+      La vitesse $\beta$ s'obtient par la relation $\gamma = \frac{1}{\sqrt{1-\beta^2}}$,
+      soit 
+      \eqbox{
+        \beta = \tanh (\omega \tau).
+      }
+      La rapidité $\psi$ est donnée par $\beta = \tanh \psi$ et $\gamma = \tanh \psi$, soit 
+      \eqbox{
+        \psi = \omega \tau.
+      }
+      
+    }
+    \item  Déterminer la quadri-vitesse $\vmu$. Vérifier explicitement que $\vmu^\mu \vmu_\mu=c^2$. 
+    \sol{On a 
+    \eqbox{
+    \left\{ 
+    \begin{aligned}
+      \vmu^0 & = \gamma c = c \cosh (\omega \tau), \\
+      \vmu^1 & = \gamma \beta c = c \sinh (\omega \tau), \\
+    \end{aligned}
+    \right.
+    } 
+    La pseudo-norme a donc pour expression, comme attendu,
+    \eqbox{
+      \vmu^\mu \vmu_\mu = c^2 \cosh^2(\omega \tau) - c^2 \sinh^2(\omega \tau) = c^2.
+    }
+    }
+    \item  Déterminer les lois horaires du mouvement $x(\tau)$ puis $x(t)$. Représenter la ligne d'univers de la particule ainsi que la quadri-vitesse $\vmu$ et la quadri-accélération $\amu$ dans un diagramme d'espace-temps $(ct,x)$. 
+    % Interpréter.
+    \sol{
+      On trouve les équivalents $v^1(t) \underset{\tau \rightarrow 0}{\sim} \omega t$ à l'instant initial et $v^1(t) \underset{\tau \rightarrow \infty}{\sim} c$ aux grands temps.
+      La loi horaire $x(\tau)$ s'obtient en intégrant $\vmu^1$ par rapport à $\tau$. On suppose que $x(\tau=0)=0$ comme condition initiale, soit
+      $$
+      x(\tau) = \int_0^\tau  \vmu^1 d\tau = \int_0^\tau c \sinh (a_p \tau/c) d\tau = \frac{c^2}{a_p} \left[ \cosh(a_p \tau/c) -1 \right].
+      $$
+      En fonction du temps $t$ de l'observateur inertiel $\Rcal$, on trouve 
+      \eqbox{
+        x(t) = \frac{c^2}{a_p} \left[ \sqrt{1+(a_p t/c)^2}  -1 \right].
+      }
+      Il s'agit de l'équation d'une \fbox{hyberbole}. Les équivalents donnent $x(t) \underset{\tau \rightarrow 0}{\sim} \frac{a_p}{2}t^2$ à l'instant initial et $x(t) \underset{\tau \rightarrow \infty}{\sim} c t$ aux grands temps. On remarque que la trajectoire est parabolique aux faibles vitesses, dans la limite newtonienne.
+  
+    }
+    \item Combien de temps s'écoule-t-il dans la fusée et sur Terre pour atteindre les astres suivants avec une accélération propre de $1g$ : 
+    \begin{itemize}
+      \item Proxima du Centaure, à $\num{4.25}$ années-lumière ;
+      \item Le centre de la galaxie, à $\SI{30e3}{}$ années-lumière ;
+      \item les limites de l'univers observable, à $\SI{4.6e10}{}$ années-lumière ?
+    \end{itemize}
+    \sol{
+    L'application numérique donne ici le temps caractéristique $T = c/a_p \simeq \SI{3.05e7}{s}$, soit entre $11$ et $12$ mois. En supposant que le temps nécessaire pour effectuer le voyage est grand devant ce temps caractéristique, on a $x(t) \simeq ct$ et donc $t \simeq x/c$. Pour le temps propre, on a $\tau = \frac{c}{a_p} {\rm argsinh} \left( \frac{a_p t}{c} \right) \simeq T \ln(2t/T)$. On peut donc calculer les temps de trajet pour les différentes destinations, voir tableau ci-dessous. 
+    % On rappelle que $\SI{1}{al} =  \SI{9.46e15}{m}$.
+     \begin{center}
+      \begin{tabular}{|c|c|c|c|}
+        \hline
+        Destination & Distance $x$ & Temps $t$ dans $\Rcal$ & Temps propre $\tau$ \\
+        \hline
+        Proxima du Centaure & $\num{4.25}$ al & $\num{4.25}$ années & $\SI{2.1}{}$ années \\
+        Centre de la galaxie & $\SI{30e3}{al}$ & $\SI{30e3}{}$ années & $\SI{10.7}{}$ années \\
+        Limites de l'univers observable & $\SI{4.6e10}{al}$ & $\SI{4.6e10}{}$ années & $\SI{24.5}{}$ années \\
+        \hline
+      \end{tabular}
+        \end{center}
+    }
+  \end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][3][TD]{Composition des accélérations}
+  \Notions{\item Quadri-accélération \task Quadri-vitesse \task Lois de composition}
+  On étudie le mouvement d'un point matériel $M$ dans un référentiel inertiel $\Rcal=(ct,x,y,z)$.
+  \begin{quest}
+    \item	Donner l'expression du quadri-vecteur accélération $\amu$ du point $M$ dans $\Rcal$ en fonction du vecteur accélération $\Vec{a}$ et de la quadri-vitesse $\vmu$.
+    \sol{
+    \eqbox{
+      \amu = \gamma \dd{\gamma}{t}(c,\Vec{v}) + \gamma^2(0,\Vec{a}) =  \dd{\gamma}{t} \vmu + \gamma^2(0,\Vec{a})
+    }
+    }
+    \item On considère un référentiel inertiel $\Rcal'$ obtenu par un boost de Lorentz de $\Rcal$ dans la direction $x$ de vitesse $\vboost$. Rappeler la loi de transformation du facteur de Lorentz instantané $\gamma$ et de la vitesse $\Vec{v}$.
+    \item 
+    À partir de la loi de transformation des quadri-vecteurs, exprimer les composantes ${\amu^0}'$ et ${\amu^1}'$ de la quadri-accélération $\amu'$ dans $\Rcal'$. Déterminer l'accélération colinéaire au boost $a_x$.
+    \sol{
+    Pour alléger les calculs par la suite, nous écrivons plutôt $\amu$ en fonction de $\amu'$, dans ce sens. On a donc :
+    $$
+    \left\{
+    \begin{aligned}
+      {\amu^0}& = \gboost(\amu'^0 + \bboost \amu'^1),\\
+      {\amu^1}& = \gboost(\amu'^1 + \bboost \amu'^0),\\
+      {\amu^2}& = \amu'^2,\\
+      {\amu^3}& = \amu'^3.
+    \end{aligned}
+    \right. \Rar 
+    \left\{
+    \begin{aligned}
+       \dd{\gamma}{t} {\vmu^0} & = \gboost\left(\dd{\gamma'}{t'} \vmu'^0 + \bboost \dd{\gamma'}{t'} \vmu'^1 + \bboost \gamma'^2 a_x'\right),\\
+      \dd{\gamma}{t} {\vmu^1}  + \gamma^2 a_x & = \gboost\left( \dd{\gamma'}{t'} {\vmu'^1}  + \gamma'^2 a_x' + \bboost  \dd{\gamma'}{t'} {\vmu'^0} \right),\\
+      \dd{\gamma}{t} {\vmu^2}  + \gamma^2 a_y & = \dd{\gamma'}{t'} {\vmu'^2}  + \gamma'^2 a_y', \\ 
+    \dd{\gamma}{t} {\vmu^3} + \gamma^2 a_z & =  \dd{\gamma'}{t'} {\vmu'^3}  + \gamma'^2 a_z'.
+    \end{aligned}
+    \right.
+    $$
+    Avec la première équation, on trouve 
+    \begin{equation*}
+    \begin{split}
+      \dd{\gamma}{t} {\vmu^0} = \gboost\left(\dd{\gamma'}{t'} \vmu'^0 + \bboost \dd{\gamma'}{t'} \vmu'^1 + \bboost \gamma'^2 a_x'\right) =\dd{\gamma'}{t'} \underbrace{\left(  \vmu'^0 +\bboost {\vmu'^1} \right)}_{{\vmu^0}} + \gboost \bboost \gamma'^2 a_x'.
+    \end{split}
+  \end{equation*}
+On trouve
+  \eqbox{
+  \dd{\gamma'}{t'} - \dd{\gamma}{t} = -\frac{\gboost \bboost \gamma'^2 a_x'}{\vmu^0} 
+  }
+    Avec la deuxième équation, on trouve 
+    \begin{equation*}
+      \begin{split}
+       \gamma^2 a_x & = \gboost\left( \dd{\gamma'}{t'} {\vmu'^1}  + \gamma'^2 a_x' + \bboost  \dd{\gamma'}{t'} {\vmu'^0} \right) - \dd{\gamma}{t} {\vmu^1} \\ 
+      & = \dd{\gamma'}{t'} \underbrace{\gboost \left( {\vmu'^1}\: + \bboost{\vmu'^0}\,  \right)}_{{\vmu^1}} + \gboost \gamma'^2 a_x' - \dd{\gamma}{t} {\vmu^1}\\ 
+        & = \left( \dd{\gamma'}{t'} - \dd{\gamma}{t}  \right) {\vmu^1} + \gboost \gamma'^2 a_x'\\ 
+        & = \gboost \gamma'^2 a_x' \left(1 -\bboost \frac{\vmu^1}{\vmu^0} \right) 
+      \end{split}
+    \end{equation*}
+    Avec la relation $\vmu^1/\vmu^0 = v_x/c$ et $\gamma ' =\gamma\gboost(1-\frac{v_x \vboost}{c^2})$, on trouve
+    % \eqbox{
+    $$
+    \gamma^2 a_x = \gboost^3 \gamma'^2 a_x' \left( 1-\frac{v_x \vboost}{c^2} \right)^3,
+    $$
+    soit 
+    \eqbox{
+    a_x' = \frac{a_x}{\gboost^3(1-\frac{v_x \vboost}{c^2})^3}.
+    }
+    % }
+    }
+    \item En déduire les composantes $a_x'$, $a_y'$ et $a_z'$ de l'accélération $\Vec{a}'$ dans le référentiel $\Rcal'$ en fonction de celles dans $\Rcal$. Écrire la loi de composition sous forme vectorielle, à partir des composantes perpendiculaires et parallèles au boost.
+    \sol{
+    On trouve l’accélération transverse à partir des autres équations. On a 
+    $$
+    \gamma^2 a_y = \gamma’^2a_y’ + \left( \dd{\gamma'}{t'} - \dd{\gamma}{t}  \right) {\vmu^2} = \gboost \gamma’^2a_y’ -\gboost \bboost  \gamma'^2 a_x'\frac{v_y}{c} = \gboost \gamma’^2 a_y’\left( 1- \frac{\vboost v_y}{c^2} \right),
+    $$
+    soit 
+    \eqbox{
+    a_y’ = \frac{a_y}{\gboost^3(1-\frac{v_x \vboost}{c^2})^2(1-\frac{v_y \vboost}{c^2})}.
+    }
+    }
+  \end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][TD]{Réflexion sur un miroir mobile}
+  \Notions{\item Quadri-vecteur d'onde \task Transformation de Lorentz}
+Un observateur, immobile dans un référentiel inertiel $\Rcal$ voit un miroir se déplacer selon l'axe $(Ox)$ avec une vitesse $v$ constante. Cet observateur envoie sur le miroir une impulsion lumineuse de fréquence $\nu$, sous un angle $\alpha$ par rapport l'axe $(Ox)$. On note $(Oy)$ l'axe normal à $(Ox)$ dans le plan d'incidence.
+\begin{quest}
+  \item Quelle est la fréquence $\nu'$ et l'angle d'incidence $\alpha'$ du signal lumineux dans le référentiel du miroir~$\Rcal'$? Quelles lois connues retrouve-t-on ?
+  \sol{
+    \begin{enumerate}
+      \item \udl{Quadri-vecteur d'onde dans $\Rcal$}.
+      
+      Dans le référentiel $\Rcal$ de l’émetteur, le quadri-vecteur d’onde a pour expression
+      $$
+  K=\left(\frac{\omega}{c}, \vec{k}\right)=\left(\frac{2 \pi \nu}{c}, k \cos \alpha, k \sin \alpha,0\right),
+  $$
+  avec la relation de dispersion dans le vide, $\omega = k c$. On a donc
+  % $$
+  \eqbox{
+    K = \frac{2\pi \nu}{c} \left(1, \cos \alpha, \sin \alpha, 0\right).
+    }
+  % $$
+
+  \item \udl{Quadri-vecteur d'onde dans $\Rcal'$}.
+  
+  Dans le référentiel $\Rcal’$ du miroir, le quadri-vecteur d’onde s’obtient par un boost de vitesse $\Vec{\vboost} = v\, \ex$ :
+  $$
+  {K’} = \Lambda(v) K \Rar 
+  \begin{cases}
+    \frac{2\pi \nu’}{c} = \gamma ( \frac{2\pi \nu}{c} -  \beta \frac{2\pi \nu \cos \alpha}{c}) \\
+    \frac{2\pi \nu’}{c} \cos \alpha’ = \gamma ( \frac{2\pi \nu \cos \alpha}{c} -  \beta  \frac{2\pi \nu}{c})  \\
+    \frac{2\pi \nu’}{c} \sin \alpha’ = \frac{2\pi \nu}{c} \sin \alpha. \\
+    0 = 0
+  \end{cases}
+  $$
+  Ces relations ne sont pas indépendantes puisque $K$ est de pseudo-norme nulle. On peut donc utiliser les deux  premières relations.
+  \item \udl{Fréquence et angle dans $\Rcal’$}.
+  
+  On obtient en simplifiant,
+  $ \nu’  = \gamma \nu ( 1-  \beta \cos\alpha )$, et $\nu’ \cos \alpha’ = \gamma \nu (\cos \alpha - \beta)$. On en déduit 
+  \eqbox{
+    \nu’ = {\gamma} {\nu} \left(1- \beta \cos \alpha\right),
+ \quad \text{ et } \quad 
+  \cos \alpha’ = \frac{\cos \alpha - \beta}{1-\beta \cos \alpha}.
+      }
+      On retrouve les lois de l’effet Doppler-Fizeau et de l’aberration lumineuse !
+    \end{enumerate}
+      
+      
+  % \udl{Remarque} : 
+  %   La formule de l'aberration lumineuse a été écrite dans le cours en fonction de l'angle $\theta = \pi/2 - \alpha$. Or on a 
+  %   $$
+  %   \nu' \sin \alpha' = \gamma \nu (\sin \alpha -\beta) \Rar \sin \alpha' = \frac{\sin \alpha - \beta}{1-\beta \sin \alpha} \Rar \cos \theta ' = \frac{\cos \theta - \beta}{1-\beta \cos \theta}.
+  %   $$
+  %   On retrouve bien la formule du cours.
+  % % \end{remarque}
+  }
+  \item On suppose que la normale au miroir est perpendiculaire à la direction du mouvement, d'axe $(Oy)$. En déduire la fréquence $\nu_r$ et l'angle de réflexion $\alpha_r$ du signal réfléchi observé dans le référentiel $\mathcal{R}$. 
+  % Commenter.
+  \sol{
+    \begin{enumerate}
+      \item \udl {Schéma}.
+      
+      \begin{fig}[label]
+        \centering
+        \includegraphics[scale=1]{miroir_perpend.pdf}
+        %\capt{}
+      \end{fig}
+
+      
+      \item \udl{Lois de la réflexion dans $\Rcal’$}.
+      
+      Dans le référentiel du miroir $\Rcal’$, les lois de Snell-Descartes s'appliquent. On a ainsi : 
+      \begin{itemize}
+        \item Le rayon réfléchi appartient au plan d'incidence, du côté opposé au rayon incident par rapport à la normale au miroir.
+        \item L'angle d'incidence est égal à l'angle de réflexion en valeur absolue, soit $\alpha_r' = \alpha'$.
+      \end{itemize}
+       La fréquence $\nu_r' = \nu'$ est conservée. Le miroir étant de normale $(Oy)$, et la composante $k_y$ change de signe lors de la réflexion. Le quadri-vecteur après réflexion est donc
+      % $$
+      \eqbox{
+        K_r' = \frac{2\pi \nu'}{c} \left(1, \cos \alpha',\JRouge{-} \sin \alpha', 0\right).
+        }
+  
+        \item \udl{Quadri-vecteur d'onde réfléchi dans $\Rcal$}.
+  
+  
+        Le quadri-vecteur dans le référentiel $\Rcal$ est de la forme 
+        $$K_r = \frac{2\pi \nu_r}{c}(1,\cos \alpha_r,-\sin \alpha_r).$$ On obtient ses composantes par le boost inverse, de vitesse $\Vec{\vboost} = -v \ex$, soit 
+  $$
+    {K}_r = \Lambda(-v) K_r' \Rar  
+  \left\{
+  \begin{aligned}
+    \frac{2\pi \nu_r}{c} & = \gamma \left( \frac{2\pi \nu'}{c} + \beta \frac{2\pi \nu' \cos \alpha'}{c} \right) \\
+    \frac{2\pi \nu_r}{c} \cos \alpha_r & = \gamma \left( \frac{2\pi \nu' \cos \alpha'}{c} + \beta \frac{2\pi \nu'}{c} \right) \\
+    \frac{2\pi \nu_r}{c} \sin \alpha_r & = \frac{2\pi \nu'}{c} \sin \alpha'.
+  \end{aligned}
+  \right.
+    $$
+
+    \item \udl{Fréquence et angle dans $\Rcal$}.
+    
+  Seules deux premières relations sont indépendantes.  En simplifiant, on obtient 
+  $$
+    \left\{
+    \begin{aligned}
+      \nu_r & = \gamma \nu' (1 + \beta \cos \alpha') \\
+      \nu_r \sin \alpha_r & = \nu' \sin \alpha'.
+    \end{aligned}
+    \right. 
+    $$
+  On trouve en particulier que 
+  $
+  \nu_r = \nu \gamma^2 (1 - \beta \cos\alpha)(1 + \beta \cos \alpha') = \nu \gamma^2(1 - \beta^2),
+  $
+  soit 
+  \eqbox{
+  \nu_r  = \nu.
+  }
+  La fréquence n'est pas modifiée si la réflexion s'effectue dans une direction normale au boost. L'angle de réflexion est donné par
+  \eqbox{
+    \alpha_r = \alpha.
+    }
+    L'a loi de la réflexion est donc inchangée dans le référentiel $\Rcal$.
+  \end{enumerate}
+    % }
+    }
+    \item  On suppose que la normale au miroir est colinéaire à la direction du mouvement, d'axe $(Ox)$. L'onde incidente est envoyée sous incidence normale et a une longueur d'onde $\lambda = \SI{650}{nm}$, dans le rouge. Après réflexion, elle est vue comme une lumière verte de longueur d'onde $\lambda_r=\SI{540}{nm}$. Déterminer la vitesse $v$ du miroir dans $\Rcal$.
+    \sol{
+    \begin{enumerate}
+      \item \udl{Schéma}.
+      \begin{fig}[label]
+        \centering
+        \includegraphics[scale=1]{miroir_parall.pdf}
+        %\capt{}
+      \end{fig}
+
+      \item \udl{Quadri-vecteur d'onde réfléchi dans $\Rcal’$}.
+      
+      On reprend le raisonnement mais avec cette fois-ci inversion de la composante $k_x$, soit 
+      % $$
+      \eqbox{
+        K_r' = \frac{2\pi \nu'}{c} \left(1, \JRouge{-} \cos \alpha', \sin \alpha', 0\right).
+        }
+  % $$
+
+  \item \udl{Quadri-vecteur d'onde réfléchi dans $\Rcal$}.
+  
+  La transformation de Lorentz donne le quadri-vecteur d'onde réfléchi dans $\Rcal$, 
+  $$K_r = \frac{2\pi \nu_r}{c}(1,-\cos \alpha_r,\sin \alpha_r),$$ avec
+  $$
+  K_r = \Lambda(-v) K_r' \Rar
+  \left\{
+  \begin{aligned}
+    \nu_r & = \gamma \nu' (1 - \beta \cos \alpha') \\
+    \nu_r \sin \alpha_r & = \nu' \sin \alpha' = \nu \sin \alpha
+  \end{aligned}
+  \right.
+  $$
+  \item \udl{Fréquence et angle dans $\Rcal$}.
+  
+  La fréquence vaut alors 
+$ \nu_r = \gamma^2 \nu (1 - \beta \cos \alpha')(1-\beta \cos \alpha) = \nu \gamma^2 (1 - 2\beta \cos \alpha +\beta^2)$, soit 
+\eqbox{
+\nu_r = \nu \frac{1 - 2\beta \cos \alpha +\beta^2}{1-\beta^2}.
+}
+L'angle de réflexion s'obtient par 
+\eqbox{
+  \sin \alpha_r =  \frac{(1-\beta^2)\sin \alpha }{1 - 2\beta \cos \alpha +\beta^2}.
+  }
+  \item \udl{Application numérique}. 
+  
+  En incidence normale ($\alpha=0$), on trouve 
+  \eqbox{
+    \nu_r = \nu \frac{1 - \beta}{1+\beta} \Rar \beta = \frac{\nu - \nu_r}{\nu + \nu_r} = \frac{\lambda_r-\lambda}{\lambda_r+\lambda} = -\num{0.09}.
+    }
+    On voit que $\beta < 0$ : le miroir se rapproche de l'émetteur. L'angle de réflexion vaut bien sûr $\alpha_r = 0$.
+  \end{enumerate}
+  }
+  \end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \begin{exo}[PC][3][TD]{Rotation de Thomas}
+    \Notions{\item Groupe de Lorentz propre orthochrone \task Boost de Lorentz \task Rotation spatiale}
+    On considère la composition de deux boosts de Lorentz. On introduit une base orthonormée de l'espace-temps $(\ect,\ex,\ey,\ez)$ associée à un observateur inertiel.
+    \begin{quest}
+      \item	Soit la composition de deux boosts de Lorentz de même direction, par exemple, la direction $x$. Montrer que la composition de ces deux boosts $ \Lambda_x(\psi_2)\Lambda_x(\psi_1)$ est aussi un boost de Lorentz $\Lambda_x(\psi)$ de direction $x$ et de rapidité $\psi = \psi_1 + \psi_2$.
+      % \begin{equation}
+        
+      % \end{equation}
+      \item Considérons maintenant la composition des boosts de Lorentz $\Lambda_x(\psi_1)$ et $\Lambda_y(\psi_2)$, de direction orthogonales $x$ et $y$. Déterminer l'expression matricielle de la composition de ces deux boosts $\Lambda_y(\psi_2) \Lambda_x(\psi_1) $. Cette matrice est-elle symétrique ? En déduire que cette transformation composée n'est pas un boost de Lorentz. 
+    \end{quest}
+    On admet que toute transformation de Lorentz propre orthochrone peut se décomposer comme le produit d'un boost de Lorentz et d'une rotation spatiale, soit 
+      \begin{equation}
+        \Lambda_y(\psi_2) \Lambda_x(\psi_1)  = \Lambda_{\Vec{n}}(\psi) R_{\Vec{m}}(\theta).
+      \end{equation}
+      \begin{quest}
+      \item 
+      Justifier que $R_{\Vec{m}}(\theta)$ laisse le vecteur $\ect$ invariant.  En déduire que $\Lambda_{\Vec{n}}(\psi)(\ect) = \Lambda_y(\psi_2)\Lambda_x(\psi_1) (\ect)$. En exprimant ce vecteur, montrer que le facteur de Lorentz de la transformation $\Lambda_{\Vec{n}}(\psi)$ vaut 
+      \begin{equation}
+        \gamma = \gamma_1\gamma_2.
+      \end{equation}
+      Montrer aussi que la vitesse vectorielle adimensionnée  du boost vaut 
+      \begin{equation}
+        \Vec{\beta} = \beta_1 \ex + \frac{\beta_2}{\gamma_1} \ey.
+      \end{equation}
+      \item Justifier que $R_{\Vec{m}}(\theta)$ laisse le vecteur $\ez$ invariant. En déduire que $\Vec{m} = \ez$ et que cette matrice peut se mettre sous la forme 
+      \begin{equation}
+        R_{\Vec{m}}(\theta) = \begin{pmatrix}
+          1 & 0 & 0 & 0 \\
+          0 & \cos \theta & -\sin \theta & 0 \\
+          0 & \sin \theta & \cos \theta & 0 \\
+          0 & 0 & 0 & 1
+        \end{pmatrix}.
+      \end{equation}
+      Cette matrice se nomme rotation de Thomas.
+      \item Montrer que l'angle de Thomas $\theta$ vérifie 
+      \begin{equation}
+        \cos \theta = \frac{\gamma_1 + \gamma_2}{1 +\gamma_1\gamma_2}.
+      \end{equation}
+    \end{quest}
+  \end{exo}
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][3][TD]{Classification du groupe de Lorentz propre orthochrone}
+  \Notions{\item Groupe de Lorentz \task Boost de Lorentz \task Rotation spatiale \task Rotation lumière}
+  On rappelle que le groupe de Lorentz propre orthochrone SO$_+(1,3)$ est le sous-groupe du groupe de Lorentz O$(1,3)$ formé des transformations de Lorentz qui préservent l'orientation spatiale et la flèche du temps. Il est formé des matrices $\Lambda \in \mc{M}_4(\R)$ telles que 
+  \begin{equation}
+    \Lambda^t \eta \Lambda = \eta, \quad \det \Lambda = 1, \quad \Lambda^0_{\,\,\,\,0} > 0,
+  \end{equation}
+  où $\eta = \text{diag}(1,-1,-1,-1)$ est la métrique de Minkowski. Nous montrons ici que l'on peut classer les éléments de SO$_+(1,3)$ en trois catégories : boost de Lorentz, rotation spatiale, ou rotation lumière. On introduit une base orthonormée de l'espace-temps $(\ect,\ex,\ey,\ez)$ associée à un observateur inertiel.
+  \begin{quest}
+    \item	\udl{Boost de Lorentz}. Considérons un boost de Lorentz de direction $x$ et de rapidité $\psi$, soit la matrice
+    \begin{equation}
+      \Lambda_x(\psi) = \begin{pmatrix}
+        \cosh \psi & -\sinh \psi & 0 & 0 \\
+        -\sinh \psi & \cosh \psi & 0 & 0 \\
+        0 & 0 & 1 & 0 \\
+        0 & 0 & 0 & 1
+      \end{pmatrix}.
+    \end{equation}
+    Montrer explicitement que cette matrice appartient à SO$_+(1,3)$. Justifier que cette matrice laisse invariant le plan spatial $\Pi=\text{Vect}(\ey,\ez)$.
+    Donner sans calcul l'expression des matrices $\Lambda_y(\psi)$ et $\Lambda_z(\psi)$ associées aux boosts de Lorentz de directions $y$ et $z$, respectivement.
+    \begin{center}
+      \emph{Généralisation : un boost de Lorentz de direction $\Vec{n}$ et de rapidité $\psi$ est une matrice $\Lambda_{\Vec{n}}(\psi)$ de ${\rm SO}_+(1,3)$ qui laisse invariant un plan de genre espace : le plan $\Pi=\rm{Vect}{(\Vec{n})}^\perp$.}
+    \end{center}
+    \item \udl{Rotation spatiale}. Considérons une rotation spatiale d'angle $\theta$ autour de l'axe $x$, soit la matrice
+    \begin{equation}
+      R_x(\theta) = \begin{pmatrix}
+        1 & 0 & 0 & 0 \\
+        0 & 1 & 0 & 0 \\
+        0 & 0 & \cos \theta & -\sin \theta \\
+        0 & 0 & \sin \theta & \cos \theta 
+      \end{pmatrix}.
+    \end{equation}
+    Montrer explicitement que cette matrice appartient à SO$_+(1,3)$. Justifier que cette matrice laisse invariant le plan de genre temps $\Pi=\text{Vect}(\ect,\ex)$. Donner sans calcul l'expression des matrices $R_y(\theta)$ et $R_z(\theta)$ associées aux rotations spatiales autour des axes $y$ et $z$, respectivement.
+
+    \begin{center}
+      \emph{Généralisation : une rotation spatiale d'angle $\theta$ autour de l'axe $\Vec{m}$ est une matrice $R_{\Vec{m}}(\theta)$ de ${\rm SO}_+(1,3)$ qui laisse invariant un plan de genre temps : le plan $\Pi = \rm{Vect}(\ect,\Vec{m})$.}
+    \end{center}
+
+    \item \udl{Rotation lumière}. Considérons une rotation lumière d'angle $\alpha$, soit la matrice
+    \begin{equation}
+      L(\alpha) = \begin{pmatrix}
+        1 + 2\alpha^2 & -2\alpha^2 & 2\alpha & 0 \\
+        2\alpha^2 & 1 - 2\alpha^2 &  2\alpha & 0 \\
+        2\alpha & -2\alpha & 1 & 0 \\
+        0 & 0 & 0 & 1
+      \end{pmatrix}.
+    \end{equation}
+    Montrer explicitement que cette matrice appartient à SO$_+(1,3)$. Montrer que cette matrice laisse invariant le plan  $\Pi=\text{Vect}(\Vec{\ell},\ez)$, où $\Vec{\ell} = \ect + \ex$. Montrer que ce plan est de genre lumière, i.e. 
+    qu'il existe des vecteurs de ce plan de pseudo-norme nulle. Comment est transformée le vecteur de genre lumière $\Vec{k} = \ect - \ex$ sous cette transformation ?
+    % Donner sans calcul l'expression des matrices $L_{x}(\alpha)$ et $L_{y}(\alpha)$ associées aux rotations lumière autour des axes $x$ et $y$, respectivement.
+
+    \begin{center}
+      \emph{Généralisation : une rotation lumière d'angle $\alpha$ est une matrice $L(\alpha)$ de ${\rm SO}_+(1,3)$ qui laisse invariant un plan de genre lumière.}
+    \end{center}
+    \item On admet que tout élément de SO$_+(1,3)$ peut se décomposer de manière unique en un produit d'un boost de Lorentz et d'une rotation spatiale : il s'agit de la décomposition polaire. Par exemple, le produit d'un boost de Lorentz de direction $\Vec{n}$ et d'une rotation spatiale autour du même axe $\Vec{n}$ est appelé quadri-vis, ou transformation de Lorentz loxodromique. Montrer de même que la rotation lumière $L(\alpha)$ ci-dessus est le produit  
+    \begin{equation}
+    L(\alpha) = \Lambda_{\Vec{n}}(\psi)  R_{z}(\theta) ,
+    \end{equation}
+    d'un boost de Lorentz de direction $\Vec{n} = (1+2\alpha^2)\ect + 2\alpha^2\ex + 2\alpha \ey$ de facteur de Lorentz $\gamma = 1+2\alpha^2$ et d'une rotation spatiale autour de l'axe $z$ d'angle $\theta$ tel que $\tan \theta = -\frac{2\alpha}{1-\alpha^2}$.
+    \end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][devoir]{La fusée relativiste (8 points)}
+  \Enonce{
+    Supposons qu'une fusée accélère dans le vide suivant l'axe $(Ox)$ d'un référentiel inertiel $(\Rcal)$ en éjectant un flux de particules, qui se déplace à la vitesse $u<0$ \emph{par rapport à la fusée}. À l’instant $t$, la fusée est de masse $M$ et de vitesse $v$ dans $(\Rcal)$. À l’instant $t+\d t$, la fusée est de masse $M+\d M$ et de vitesse $v+\d v$ dans $(\Rcal)$, et a éjecté une masse $\d m$ de gaz. On notera $\gamma(u)$ le facteur de Lorentz associé à la vitesse $u$.}
+
+    % Ce flux de particules  par rapport à la fusée. Pour établir
+  \begin{quest}
+    \QR	{Écrire la conservation de l’énergie dans le référentiel inertiel propre $(\Rcal_p)$ attaché localement à la fusée, entre les instants $t$ et $t+\d t$, au système $\{\text{fusée + gaz}\}$. En déduire que $\d M =-\gamma(u) \d m$.}
+    {
+      La conservation de l’énergie dans le référentiel $\Rcal_p$ s’écrit
+      $$
+      \Etot_{\rm f,p}(t) = \Etot_{\rm f,p}(t+\d t) + \d \Etot_{\rm g,p} \Rar \d \Etot_{\rm f,p} = -\d \Etot_{\rm g,p}.
+      $$
+      Dans son référentiel propre, la fusée est au repos, et le gaz est de vitesse $u$, et donc $\Etot_{\rm f,p} = M c^2$. On a donc
+      $$
+      c^2 \d M = - \d m \gamma(u) c^2,
+      $$
+      et donc 
+      \eqbox{
+        \d M = -\gamma(u) \d m.
+      }
+    }
+    \QR {On note $w$ la vitesse du gaz \emph{dans $(\Rcal)$}. À partir de la méthode de votre choix, déterminer la relation entre $\gamma(w)$, $\gamma(u)$ et $\gamma(v)$. Idem pour la relation entre $w$, $u$ et~$v$.}
+    {
+      Notons $\vmu=\gamma(w)(c, w)$ la quadri-vitesse du gaz dans $(\Rcal)$ et $\vmu_p=\gamma(u)(c, u)$ sa quadri-vitesse dans le référentiel propre de la fusée $(\Rcal_p)$. Les référentiels s'obtiennent par un boost de Lorentz  suivant :
+      $$
+      \Rcal_p \xrightarrow[\rm{boost}]{-v} \Rcal.
+      $$
+      La quadri-vitesse se transforme comme tout quadri-vecteur, suivant les transformations de Lorentz. Ainsi,
+      $$
+      \vmu = \Lambda(-v) \vmu_p \Rar
+      \begin{cases}
+        \vmu^0 = \gamma(v) (\vmu_p^0 + \beta(v) \vmu_p^1) \\
+        \vmu^1 = \gamma(v) (\vmu_p^1 + \beta(v) \vmu_p^0) \\
+      \end{cases} \Rar 
+      \begin{cases}
+        \gamma(w) c = \gamma(v) (\gamma(u) c + \beta(v) \gamma(u) u) \\
+        \gamma(w) w = \gamma(v) (\gamma(u) u + \beta(v) \gamma(u) c) \\
+      \end{cases}
+      $$
+      \begin{enumerate}
+        \item L'équation sur la composante $0$ donne la relation entre les facteurs de Lorentz :
+        % $$
+        \eqbox{
+          \gamma(w) =\gamma(v) \gamma(u) \left(1 + \frac{v u}{c^2}\right).
+          }
+        % $$
+        \item L'équation sur la composante $1$ donne la relation entre les vitesses :
+        \eqbox{
+          w = \frac{u + v}{1 + \frac{v u}{c^2}}.
+        }
+      \end{enumerate}
+    }
+    \QR {Écrire la conservation de l’énergie dans $(\Rcal)$. La simplifier en reliant la fonction $\gamma(v)$ à la vitesse $v$.  En s'aidant des relations des questions précédentes, et en notant $\beta = \frac{v}{c}$,  en déduire que 
+    % \begin{equation}
+    %   M \frac{\d v }{\d M} +  u \left( 1 - \frac{v^2}{c^2}\right) = 0.
+    % \end{equation}
+    \begin{equation}
+      \frac{\d v}{1 - \beta^2} = - u \frac{\d M}{M}.
+    \end{equation}}
+    {
+    La conservation de l’énergie dans le référentiel inertiel $(\Rcal)$ s’écrit
+    $$
+    \d \Etot_{\rm f} = -\d \Etot_{\rm g},
+    $$
+    avec $\Etot_{\rm f} = \gamma(v) M c^2$ et $\d \Etot_{\rm g} = \d m \gamma(w) c^2$. On a donc
+    $$
+    \d \left( \gamma(v) M c^2 \right) = \gamma'(v) \d v M c^2  + \gamma(v) c^2 \d M = - \d m \gamma(w) c^2.
+    $$
+Or le facteur de Lorentz vérifie
+    $$
+    \gamma(v) = \left( 1-\frac{v^2}{c^2} \right)^{-1/2}  \Rar \gamma'(v) = \gamma(v)^3 \frac{v}{c^2}.
+    $$
+On a donc après simplification par $c^2$,
+    $$
+    \gamma(v)^3 M v \d v + \gamma(v) \d M = - \d m \gamma(w) \Rar \gamma(u)\gamma(v)^3 M v \d v + \gamma(v)\gamma(u) \d M = - \gamma(u)\d m \gamma(w) = \d M \gamma(w).
+    $$
+    En isolant les termes en $\d M$ et $\d v$,  on obtient
+    $$
+    \gamma(u)\gamma(v)^3 M v \d v = \left(  \gamma(w) -\gamma(v)\gamma(u) \right) \d M = - \gamma(u) \gamma(v)  \frac{v u}{c^2} \d M \Rar \gamma(v)^2 M \d v = - u \d M,
+    $$
+    soit 
+    \eqbox{
+     \frac{\d v}{1 - \frac{v^2}{c^2}} = - u \frac{\d M}{M}.
+    }
+
+    % On a 
+    % $$
+    % \frac{P^0}{c} = \gamma(v) M =  (M+\d M)\gamma(v+\d v) + \d m \gamma(w),
+    % $$
+    % avec $\gamma(v + \d v) \simeq \gamma(v) + \gamma’(v) \d v = \gamma(v) + \gamma(v)^3 \frac{v \d v}{c^2}.$
+    % On en déduit 
+    % $$
+    % \gamma(v) M = (M-\gamma(u)\d m) \left( \gamma(v) + \gamma(v)^3 \frac{v \d v}{c^2} \right) + \d m \gamma(w) \simeq  M\gamma(v) - \gamma(u)\gamma(v)\d m + \gamma(v)^3 M \frac{v}{c^2} \d v + \d m \gamma(w),
+    % $$
+    % soit 
+    % $$
+    % 0 = -\gamma(u)\gamma(v)\frac{u v}{c^2} \d m  + \gamma(v)^3 \frac{v M}{c^2} \d v \Rar u \d M  + \gamma(v)^2 M \d v ,
+    % $$
+    % d’où l’on tire 
+    % \eqbox{
+    %   \frac{\d v }{\d \ln M} = - u \gamma(v)^2.
+    % }
+    }
+    \QR {Intégrer cette équation pour obtenir la masse initiale de carburant $m_0$ en fonction de la masse à vide $M_0$, \emph{i.e. sans carburant,} de la fusée, et de la vitesse maximale $\beta_{\rm max}$ de la fusée. Que vaut la masse initiale de carburant pour atteindre une vitesse maximale $\beta_{\rm max} = \num{0.1}$ pour une fusée à propulsion nucléaire  ($u=\SI{27e3}{km.s^{-1}}$) de masse à vide $M_0 = \SI{1.0e3}{t}$ ? Commenter.\\
+    
+    \textsc{Données} : $\int \frac{\d x}{1 - x^2} = \frac{1}{2} \ln \left( \frac{1+x}{1-x} \right)$.}
+  %   \begin{table}[H]
+  %     \centering
+  %     \begin{tabular}{|c|c|c|}
+  %       \hline 
+  %       Objectif  & 
+  %       Distance
+  %        &
+  %       Masse initiale de carburant
+  %       \\
+  %       \hline Lune & 384000 km & ... \\
+  %       Pluton & $6 \times 10^9 \mathrm{~km}$ & 1108 t \\
+  %       Proxima du Centaure & $\SI{4,3}{al}$ & ... \\
+  %       % Nébuleuse du Crabe & $1000 \mathrm{a}-\mathrm{I}$ & $1,2 \times 10^{15} \mathrm{t}$ \\
+  %       Centre de la Galaxie & $\SI{30000}{al}$ & ... \\
+  %       % Galaxie d'Andromède & $3 \times 10^6$ a-I & $10^{29} \mathrm{t}$ \\
+  %       % Limites de l'univers & $\SI{1,5e10}{al}$ & ... \\
+  %       \hline
+  %       \end{tabular}
+  %       \caption{Distance des principaux objets célestes et masse initiale de carburant nécessaire pour les atteindre avec une fusée à propulsion nucléaire.}
+  %       % \label{}
+  % \end{table}
+    {
+      En intégrant l'équation précédente entre les conditions initiales $v=0$ et $M=M_0 + m_0$ et les conditions finales $v=v_{\rm max}$ et $M=M_0$, on obtient
+      $$
+      c \int_0^{\beta_{\rm max}} \frac{\d \beta}{1 - \beta^2} = - u \int_{M_0 + m_0}^{M_0} \frac{\d M}{M} \Rar \frac{c}{2} \ln \left( \frac{1 + \beta_{\rm max}}{1 - \beta_{\rm max}} \right) = u \ln \left( 1+ \frac{m_0}{M_0} \right).
+      $$
+      soit 
+      \eqbox{
+        % m_0 = M_0 \left[ \exp \left( \frac{c}{2u} \ln \left( \frac{1 + \beta_{\rm max}}{1 - \beta_{\rm max}} \right) \right) - 1 \right].
+            m_0 = M_0 \left[\left( \frac{1 + \beta_{\rm max}}{1 - \beta_{\rm max}}  \right)^{\frac{c}{2u} } - 1 \right].
+        }
+
+      Pour $\beta_{\rm max} = \num{0.1}$, $u = \SI{27e3}{km.s^{-1}}$ et $M_0 = \SI{1.0e3}{t}$, on trouve
+      \eqbox{
+        m_0 \simeq \SI{2.0e3}{t}.
+      }      
+      La masse de carburant est donc environ 2 fois la masse à vide de la fusée. Cela illustre la difficulté d'atteindre des vitesses relativistes avec une fusée à propulsion classique.
+
+          % \label{}
+    % \end{table}
+      }
+  \end{quest}
+  \end{exo}
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][colle]{Électron freiné par un champ électrique}
+    \Notions{\item Champ électrique constant \task Principe fondamental de la dynamique}
+    Un électron, émis par une source ponctuelle, est soumis à l'action d'un champ électrique $E$. On choisit un système d'axes tel que $(O x)$ soit orienté suivant le champ; la quantité de mouvement initiale $p_i$ en $O$ est elle-aussi orientée selon $(O x)$.
+    \begin{quest}
+        \item	
+         Montrer que la trajectoire est rectiligne. Au bout de quelle durée $t_1$, l'électron rebrousse-t-il chemin? Calculer $t_1$ lorsque $p_i=1~\mathrm{MeV} \cdot \mathrm{c}^{-1}$ et $E=10~\mathrm{kV} \cdot \mathrm{m}^{-1}$.
+        
+        \item Quelle est l'équation horaire? En déduire la distance $x_1$ parcourue pendant la durée $t_1$.
+        \item Comparer l'énergie $\Etot$ de l'électron à l'instant initial et à l'instant $t_1$.
+    \end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][2][TD]{Le cyclotron}
+    \Notions{\item Champ magnétique constant \task Champ électrique constant \task Théorème de l'énergie cinétique}
+    Le cyclotron est le premier type d'accélérateur de particules inventé. Il fut mis au point pour la première fois par E. \textsc{Lawrence} en 1932. Il s'agit d'un accélérateur circulaire  est formé de deux enceintes hémi-cylindriques en regard $D_1$ et $D_2$, appelées \emph{dees} en anglais, séparées par une cavité accélératrice d'épaisseur $a$. Les dees sont situés dans l'entrefer d'un électroaimant qui fournit un champ magnétique uniforme $\B=B \ez$, de norme $B=\num{1,5}\,\mathrm{T}$. Une tension variable $u(t)$ d'amplitude $U_{\mathrm{m}}=200\,\mathrm{kV}$ est appliquée entre les deux bords des \emph{dees} en regard. L'épaisseur $a$ de l'espace entre les \emph{dees} est très faible, si bien qu'il y règne un champ électrique $\E = E\ex$ uniforme et quasi-stationnaire pendant le passage de la particule.
+
+    \begin{fig}[label]
+        \centering
+        \begin{subfig}[label][0.4]
+          \includegraphics[width=\textwidth]{cyclotron_relat.png}
+        \end{subfig}
+        \begin{subfig}[label][0.5]
+          \includegraphics[width=\textwidth]{27-inch_cyclotron.jpg}
+        \end{subfig}
+        \capt{(a) Schéma du cyclotron. (b) Le cyclotron de \textsc{Lawrence} (1932) au Lawrence Berkeley National Laboratory. [Archive creator: Department of Energy]}
+    \end{fig}
+
+On injecte des protons au sein de la cavité accélératrice avec une vitesse initiale négligeable.
+
+\textsc{Données} : masse d'un proton $m=1,7 \cdot 10^{-27} \mathrm{~kg}$, charge d'un proton $e=1,6 \cdot 10^{-19} \mathrm{~C}$.
+
+\begin{quest}
+    \item Montrer qu'à l'intérieur d'un \emph{dee} la norme de la vitesse des protons est constante.
+    \sol{
+    $\triangleright$ Système : un proton, assimilé à un point matériel de masse $m$ et charge $q$.
+
+
+$\triangleright$ Référentiel : lié au cyclotron, donc a priori le référentiel terrestre, en bonne approximation galiléen.
+
+
+$\triangleright$ Bilan des forces : le proton n'est soumis qu'à la force de Lorentz magnétique $\Vec{f}_{\! B} = e \Vec{v} \wedge \Vec{B}$. Le théorème de la puissance cinétique donne
+$$
+\begin{aligned}
+    \dd{\Etot}{t}=e(\Vec{v} \pv \B) \cdot \Vec{v}=0 \quad \text { soit } \quad m c^2 \dd{\gamma}{t}=0 \quad \text { d'où } \quad \fbox{v=\cte}.
+\end{aligned}
+$$
+    }
+
+    \item En déduire le rayon de courbure $R$ de la trajectoire des protons ayant une vitesse $v$ ainsi que le temps $\Delta t$ que passe un proton dans un \emph{dee}, en fonction de valeurs numériques et de $\gamma$. 
+    \sol{
+        La trajectoire d'un proton dans un champ magnétique est un arc de cercle, parcouru à vitesse constante. Utilisons un repérage polaire, centré sur le centre de l'arc de cercle. D'après la loi de la quantité de mouvement,
+
+        $$
+        m \gamma \dd{\Vec{v}}{t}=e \vec{v} \wedge \vec{B}
+        $$
+        
+        soit en utilisant les résultats connus sur la cinématique d'un tel mouvement,
+        
+        $$
+        m\gamma\left(-\frac{v^2}{R} \vec{e}_r\right)=e v B\left(-\vec{e}_\theta \wedge \vec{e}_z\right)=-e v B \vec{e}_r
+        $$
+        
+        en utilisant $\vec{v}=-v \vec{e}_\theta$ : la trajectoire est parcourue en sens horaire pour un proton, résultat que vous pouvez ou bien connaître ou bien retrouver ici à partir de la cohérence des signes. Finalement,
+        
+        $$
+        \frac{m \gamma v^2}{R}=e v B \quad \text { d'où } \quad \boxed{R=\frac{m \gamma v}{e B}}.
+        $$
+
+        La trajectoire dans un dee est un demi-cercle de longueur $\pi R$, parcourue en un temps
+
+% $$
+\eqbox{
+    \Delta t=\frac{\pi  R}{v}=\frac{\pi \gamma m}{e B} = \gamma\cdot\SI{22}{ns}.
+}
+% $$
+
+        
+    }
+    
+    \item Quelle doit être la fréquence $f$ de la tension pour que le proton soit accéléré de façon optimale à chaque passage entre les \emph{dee} ?  Pour simplifier, on supposera $a \ll R$. La tension est-elle harmonique ?
+    %  Justifier le choix d'une tension harmonique au lieu, par exemple, d'une tension créneau.
+    \sol{
+        Pour que le proton soit accéléré de façon optimale à chaque passage entre les dees, il faut que la force électrique qu'il subit soit alternativement orientée selon $+\ex$ lorsqu'il passe de $D_2$ à $D_1$ et selon $-\ex$ lorsqu'il passe de $D_1$ à $D_2$. En négligeant le temps de passage dans l'espace entre les dees $(a \ll \pi R)$, il faut donc qu'une demi-période de la tension appliquée soit égale à $\Delta t$, soit pour la période
+
+        $$
+        T=2 \Delta t =\frac{2 \pi \gamma m}{e B} \quad \text { et } \quad \boxed{f = \frac{e B}{2 \pi \gamma m} = \frac{23 \mathrm{MHz}}{\gamma}.}
+        $$
+        
+        La fréquence dépend de la vitesse de la proton, dont la tension n'est pas parfaitement harmonique ! Cet effet fut un obstacle majeur à la conception des premiers cyclotrons. 
+        % Utiliser une tension harmonique plutôt qu'une tension créneau a l'intérêt de regrouper tous les protons pour que leur passage dans les dees soit en phase avec la tension. Regrouper les protons permet aux impulsions du faisceau d'être plus puissantes. De plus, en pratique, une tension créneau requiert beaucoup d'harmoniques qu'il peut ne pas être simple d'imposer à de telles fréquences.
+    }
+    \item Exprimer en fonction de $n$ le facteur de Lorentz $\gamma_n$ de la trajectoire d'un proton après $n$ passages dans les \emph{dees}. Le \emph{dee} $n=1$ est celui qui suit la première phase d'accélération.
+    \sol{
+        Jusqu'à présent, nous avons relié le rayon à la vitesse du proton. Il faut donc maintenant relier la vitesse du proton au nombre de passage dans les dees, ou plutôt au nombre de passage dans la zone accélératrice. Comme on ne s'intéresse qu'à la norme, le théorème de l'énergie cinétique est le plus adapté. Appliquons ce théorème sur une trajectoire entre la sortie d'un dee et l'entrée de l'autre, en supposant que le passage du proton se fait au moment où la tension atteint son maximum (justifié par la question précédente), et en supposant aussi que la durée de passage dans la zone accélératrice est négligeable devant la période de la tension, ce qui permet de supposer que la tension est presque constante égale à $U_{\mathrm{m}}$. Sous ces hypothèses, on trouve
+
+        $$
+        \Etot_{n+1}-\Etot_n = e \int_0^a \Vec{E} \cdot \dl = e U_{\mathrm{m}}.
+        $$
+        
+        
+        Avec $\Etot = \gamma m c^2$, et par récurrence, on obtient donc
+        
+        $$
+        \gamma_{n}-\gamma_0 \simeq \gamma_n-1 = n \frac{e U_{\mathrm{m}}}{mc^2} \quad \text { soit } \quad \boxed{\gamma_n = 1 + n \frac{e U_{\mathrm{m}}}{mc^2}.}
+        $$
+        
+        % En utilisant le résultat d'une question précédente,
+        
+        % $$
+        % R_n=\frac{m}{e B} \sqrt{\frac{2 n e U_{\mathrm{m}}}{m}} \quad \text { soit } \quad R_n=\sqrt{\frac{2 n m U_{\mathrm{m}}}{B^2 e}}
+        % $$
+        
+    }
+    \item Calculer la durée totale de passage $T$ dans les \emph{dees} pour un proton ayant subi $n$ accélérations, toujours en supposant $a \ll R$.
+    \sol{
+        On pose $\tau_0 = \pi m / e B = \SI{22}{ns}$. On a 
+    $$T = \sum_{i=1}{n} \Delta t_i = \tau_0 \sum_{i=1}^{n} \gamma_i = n \tau_0   + \frac{n(n+1)}{2} \frac{e U_{\mathrm{m}} \tau_0}{mc^2}, $$
+    soit 
+    \eqbox{
+        T = n \frac{\pi m}{eB} +  n(n+1) \frac{\pi U_{\mathrm{m}}}{2Bc^2}.
+    }
+    On évalue 
+    $$
+    \tau_0 = \frac{\pi m}{eB} = \SI{22}{ns} \quad \text { et } \quad \tau_1 =  \frac{\pi U_{\mathrm{m}}}{2Bc^2} = \SI{2.3}{ps}.
+    $$
+    }
+    \item Le rayon de la dernière trajectoire décrite par les protons avant de bombarder une cible est $R=35 \mathrm{~cm}$. Déterminer le facteur de Lorentz $\gamma$ du proton à la sortie du cyclotron, le nombre $n$ de passages dans les \emph{dees} nécessaires, la durée totale~$T$ d'accélérations, et l'énergie cinétique $\Ek$ du proton en sortie.
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][2][TD]{Synchrotron à protons \textsc{Saturne} de Saclay}
+    \Notions{\item Champ magnétique constant \task Champ électrique constant \task Théorème de l'énergie cinétique}
+    Un synchrotron est un accélérateur de particules circulaire constitué de puissants électroaimants pour courber la trajectoire des particules, et d'une cavité accélératrice pour augmenter leur énergie à chaque tour.
+La trajectoire des particules est rendue circulaire au moyen d'un champ magnétique~$\Vec{B}=B \ez$ constant. Dans le synchrotron \textsc{Saturne} de Saclay en France, cette trajectoire a un rayon $R=\SI{8,42}{m}$. L'accélération tangentielle est produite à chaque tour au moyen d'un champ électrique sinusoïdal $\E = E(t)\, \ex$, de fréquence~$f$, dans la cavité accélératrice. Les électroaimants sont séparées par deux sections rectilignes de longueur négligeable, nécessaires à l'injection et à l'extraction des particules. On considère ici des protons de masse $m = \SI{1,67e-27}{kg}$ et de charge $e = \SI{1,6e-19}{C}$.
+\begin{fig}[label]
+    \centering
+    \includegraphics[width=0.4\columnwidth]{synchrotron.png}
+    %\capt{}
+\end{fig}
+\begin{quest}
+  
+    \item Déterminer la fréquence $f$ du champ électrique en fonction de $R$ et $v$. Quelle est la fréquence limite~$f_0$ lorsque la vitesse des protons tend vers $c$ ? Montrer que $B$ et $f$ doivent satisfaire à une relation que l'on établira en fonction de $f_0$ et d'un champ magnétique $B_0$ à définir. \AN~?
+    \sol{
+        La fréquence $f$ du champ électrique est telle que :
+
+        $$
+        f=\frac{1}{T}=\frac{v}{2 \pi R}=\frac{\beta c}{2 \pi R}=\frac{c}{2 \pi R \gamma}\left(\gamma^2-1\right)^{1 / 2}=\frac{c}{2 \pi R}\left(1-\frac{1}{\gamma^2}\right)^{1 / 2}
+        $$
+        
+        
+        Lorsque $\gamma$ augmente, $f$ tend vers $f 0=c /(2 \pi R)=5,67 \mathrm{MHz} ; B$ et $f$ doivent varier de telle sorte que :
+        
+        $$
+        \frac{c\left(\gamma^2-1\right)^{1 / 2}}{R}=\gamma 2 \pi f=\gamma \omega \quad \text { soit } \quad f=\frac{e B}{2 \pi \gamma m_p}
+        $$
+        4. Établissons la relation entre $f, f_0$ et $B$ :
+
+$$
+f=f_0\left(1-\frac{1}{\gamma^2}\right)^{1 / 2} \quad \text { o } \quad \gamma^2=1+\left(\frac{e B R}{m c}\right)^2=1+\left(\frac{B}{B_0}\right)^2 \quad \text { avec } \quad B_0=\frac{m c}{e R}
+$$
+
+
+Donc :
+
+$$
+f=f_0\left(1-\frac{1}{1+B^2 / B_0^2}\right)^{1 / 2}=f_0\left(\frac{B^2 / B_0^2}{1+B^2 / B_0^2}\right)^{1 / 2}=f_0 \frac{1}{\left(1+B_0^2 / B^2\right)^{1 / 2}}
+$$
+
+
+    }
+    \item	
+    Quelle équation relie la \guill{rigidité magnétique} $B R$, produit du champ magnétique et du rayon de la trajectoire, et l'énergie cinétique $\mathcal{E}_k$ des particules ?
+
+    \sol{
+        Pour un proton en mouvement dans un champ magnétique, on a :
+
+        $$
+        \frac{\gamma m_p v^2}{R}=e v B \quad \text { soit } \quad B R=\frac{\gamma m_p v}{e}=\frac{\gamma \beta m_p c}{e}=\left(\gamma^2-1\right)^{1 / 2} \frac{m_p c}{e}
+        $$
+        
+        
+        Comme $\mathcal{E}_k=(\gamma-1) m_p c^2$, il vient :
+        
+        $$
+        B R=\frac{m_p c}{e}\left[\left(\frac{\mathcal{E}_k}{m_p c^2}+1\right)^2-1\right]^{1 / 2} \quad \text { soit } \quad B R=\frac{m_p c}{e}\left[\left(\frac{\mathcal{E}_k}{m_p c^2}\right)^2+\frac{2 \mathcal{E}_k}{m_p c^2}\right]^{1 / 2}
+        $$
+        
+    }
+    \item Les protons sont injectés avec l'énergie cinétique $\mathcal{E}_{k, 1}=\SI{3,6}{MeV}$ et sortent avec l'énergie cinétique $\mathcal{E}_{k, 2}=\SI{2,9}{GeV}$. Calculer les valeurs initiale et finale du champ magnétique $B$ et de la fréquence $f$.
+    
+     \textsc{Données :} $\SI{1}{eV} = \SI{1,6e-19}{J}$.
+
+
+    \sol{
+        La relation entre $B$ et $\gamma$ est :
+
+        $$
+        B=\left(\gamma^2-1\right)^{1 / 2} \frac{m_p c}{e R}=0,371\left(\gamma^2-1\right)^{1 / 2} \mathrm{~T}
+        $$
+        
+        
+        Par conséquent :
+        i) Pour $\mathcal{E}_{k, 1}=3,6 \mathrm{MeV}, \gamma_1=1,00384$ et $B_1=0,0326 \mathrm{~T}$ soit $32,6 \mathrm{mT}$.
+        ii) Pour $\mathcal{E}_{k, 2}=2,9 \mathrm{GeV}, \gamma_2=4,09167$ et $B_2=1,47 \mathrm{~T}$.
+    }
+    % \item Établir la relation entre $f, f_0$ et $B$.
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][2][devoir]{Principe du synchrotron (8 points)}
+    % \Notions{\item Champ magnétique constant}
+    \Enonce{
+    Un synchrotron est un accélérateur de particules circulaire constitué de puissants électroaimants et d'une cavité accélératrice.  Les particules sont accélérés dans un champ électrique $\E=E\,\ex$ quasi stationnaire dans la cavité accélératrice, puis leurs trajectoires sont rendues circulaires par un champ magnétique constant $\B=B\,\ez$. On considère ici le mouvement de protons de masse $m = \SI{1,7e-27}{kg}$ et de charge $e = \SI{1,6e-19}{C}$.  On donne $R=\SI{1.3}{km}$ le rayon de l'accélérateur.
+    \begin{fig}[label]
+        \centering
+        \includegraphics[width=0.4\columnwidth]{synchrotron.png}
+        %\capt{}
+    \end{fig}
+    }
+% \begin{fig}[label]
+%     \centering
+%     \includegraphics[width=0.4\columnwidth]{synchrotron.png}
+%     %\capt{}
+% \end{fig}
+\begin{quest}
+    \QR {Un proton est inséré à l'entrée de la cavité accélératrice, de potentiel électrique $V=U_m$, avec une vitesse initiale nulle. Faire un schéma de la situation. Rappeler l'expression de la force électrique de Lorentz. Déterminer l'énergie du proton $\Etot_1$ à la sortie de la cavité accélératrice, de potentiel électrique $V=0$. Évaluer $\Etot_1$ en Mev pour $U_m = \SI{200}{kV}$.}
+    {
+        La force électrique de Lorentz a pour expression 
+        \eqbox{
+            \Vec{f} = e \Vec{E} = e E \ex.
+        }
+Le théorème de l’énergie cinétique donne
+$$
+\dd{\Etot}{t} = \Vec{v}\cdot \Vec{f}  = e \Vec{v} \cdot \Vec{E} = e v E,
+$$
+soit 
+        $$
+        \Etot_1 - \Etot_0 = \Etot_1 - mc^2 = e \int v E \d t = e \int E \d x = - e (0-U_m) = e U_m.
+        $$
+        On en déduit 
+        \eqbox{
+            \Etot_1 - mc^2 = e U_m = \SI{200}{keV},
+        }
+        avec $mc^2 = \SI{938}{MeV}$.
+        
+    }
+    \QR {Le proton entre ensuite dans la zone où règne le champ magnétique. Rappeler l'expression de la force magnétique de Lorentz. Montrer que l'équation du mouvement est une équation de précession,
+    \begin{equation}
+        \dd{\Vec{v}}{t} = \Vec{v} \pv \Vec{\Omega},
+    \end{equation}
+    où $\Vec{\Omega} = \frac{e B}{\gamma m} \ez$ est la pulsation cyclotron. On admet que la trajectoire est circulaire. }
+    {
+        La force magnétique de Lorentz a pour expression 
+        \eqbox{
+            \Vec{f} = e \Vec{v} \wedge \Vec{B} = e v B \ez.
+        }
+        Le théorème de l’énergie cinétique donne 
+        $$
+        \dd{\Etot}{t} = \Vec{v}\cdot \Vec{f}  = 0,
+        $$
+        et donc $\gamma= \cte$. Le PFD donne ensuite 
+        $$
+        m \gamma \dd{\Vec{v}}{t} = e \Vec{v} \wedge \Vec{B},
+        $$
+        soit 
+        \eqbox{
+            \dd{\Vec{v}}{t} = \Vec{v} \pv \Vec{\Omega},
+        }
+        avec $\Vec{\Omega} = \frac{e B}{\gamma m} \ez$.
+    }
+    % Dans quel sens le proton parcourt-il sa trajectoire si $B>0$ (horaire ou anti-horaire) ? Justifier. 
+    \QR  
+   { Montrer que le rayon de la trajectoire est donné par 
+    % \begin{equation}
+        $R = \frac{m \gamma v}{e B}.$
+    % \end{equation}
+    En déduire la relation 
+    \begin{equation}
+        B = B_0\sqrt{\gamma^2 -1},
+    \end{equation}
+    avec $B_0 = \frac{m c}{e R}$.
+    Évaluer  $B$ pour que le proton atteigne une énergie totale de $\SI{20}{GeV}$.}
+    {
+    La trajectoire est circulaire uniforme. La vitesse $\Vec{v} = v \et$ est purement orthoradiale, et l’accélération est purement centripète. On a donc 
+    $$
+    -m\gamma \frac{v^2}{R} = - e v B,
+    $$
+    soit 
+    \eqbox{
+        R = \frac{m \gamma v}{e B}.
+    }
+    En exprimant $v$ en fonction de $\gamma$, on trouve 
+    $$
+\frac{ReB}{m} = \gamma v = \gamma c \sqrt{ 1-\gamma^{-2} } = c \sqrt{\gamma^2 -1 },
+    $$
+    soit 
+    \eqbox{
+    B = B_0 \sqrt{\gamma^2 -1},
+    }
+    avec $B_0 = \frac{m c}{e R} = \SI{2.4}{mT}$. Pour une énergie $\Etot = \SI{20}{GeV}$, il faut 
+    $$
+    \gamma = \frac{\Etot}{mc^2} = 21.3,
+    $$
+    soit 
+    \eqbox{
+    B = \SI{51.3}{mT}.
+    }
+    }
+    % \begin{equation}
+        
+    % \end{equation}
+    \QR {La fréquence $f$ du champ électrique doit être accordée de sorte à accélérer le proton de façon optimale à chaque passage dans la cavité accélératrice.
+    En déduire une relation entre la fréquence $f$, et les paramètres $R$ et $v$, en négligeant le temps de passage dans la cavité. Montrer ensuite que
+    \begin{equation}
+        f = f_0 \sqrt{1 -\gamma^{-2}},
+    \end{equation}
+    avec $f_0 = \frac{c}{2 \pi R}$. Évaluer $f$ pour que le proton atteigne une énergie totale de $\SI{20}{GeV}$.}
+    {
+        La fréquence $f$ du champ électrique est telle que :
+
+        $$
+        f=\frac{1}{T}=\frac{v}{2 \pi R}=\frac{\beta c}{2 \pi R}=\frac{c}{2 \pi R \gamma}\left(\gamma^2-1\right)^{1 / 2}=\frac{c}{2 \pi R}\left(1-{\gamma^{-2}}\right)^{1 / 2},
+        $$
+        soit 
+        \eqbox{
+            f = f_0 \sqrt{1 -\gamma^{-2}},
+        }
+        avec $f_0 = \frac{c}{2 \pi R} = \SI{36.7}{kHz}$. Pour une énergie $\Etot = \SI{20}{GeV}$, on trouve 
+        \eqbox{
+        f \simeq f_0.
+        }
+        
+
+    }
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{exo}[PC][3][TD]{Problème de Kepler relativiste}
+\Notions{\item Conservation du moment cinétique \task Conservation de l'énergie \task Problème de Képler}
+    On considère un référentiel inertiel, dont l'origine contient une masse $M$ immobile. On étudie le mouvement d'une masse $m$, de vecteur position $\Vec{r}$,  soumise à l’attraction gravitationnelle de la masse $M$. On note $G$ la constante gravitationnelle.
+    
+    \begin{quest}
+    \item Montrer la conservation du moment cinétique $\vec L = \vec r \pv \vec p$, avec $\vec p$ l’impulsion relativiste En déduire que le mouvement se fait dans un plan, que nous paramétrons par les coordonnées polaires $(r, \theta)$.
+    
+    
+    \sol{
+    On montre le théorème du moment cinétique à partir du PFD relativiste.
+    $$
+    \dfrac{\d \vec L}{\d t} = \dfrac{\d \vec r}{\d t}  \pv \vec p + \vec r \pv \dfrac{\d \vec p}{\d t}  = \vec v \pv \gamma m \vec v + \vec r \pv \vec{f} = \vec r \pv \vec{f}
+    $$
+    Ici $f= -\dfrac{GMm}{r^2} \vec{e_r}$ et donc le moment de la force de gravitation est nulle : $\vec L$  est une quantité conservée.
+    
+     Soit $z$ la direction de $\vec L$, de sorte que $\vec{L} = L \vec{e_z}$ avec $L$ une constante. Alors le mouvement se fait dans le plan $(x,y)$, de normale $\vec{e_z}$, que l'on peut décrire avec les coordonnées
+    polaires $(r, \theta)$.
+    }
+    
+    
+    \item  Utiliser la norme $L$ du moment cinétique pour éliminer les dérivées temporelles dans l'expression de $v^2$ en terme de $\dot{r}$ et $\dot{\theta}$. En déduire l’expression suivante du facteur de Lorentz instantané de la particule de masse $m$, où l'on a introduit la variable $u=1/r$, 
+    \begin{equation}\label{eq:gamma} 
+    \gamma^2 = 1+\left( \dfrac{L}{mc}\right)^2 \left[ u^2 + \left(\dfrac{\d u}{\d \theta} \right)^2\right].
+    \end{equation}
+    
+    \sol{
+    Il vient
+    $\vec r \pv \vec p = r \vec{e_r} \pv \gamma m (\dot{r} \vec{e_r} + r\dot{\theta} \vec{e_\theta}) = \gamma m r^2 \dot{\theta} \vec{e_z}$, d'où 
+    $$L = \gamma m r^2 \dot{\theta}.
+    $$
+    Ainsi $v^2 = \dot{r}^2 + r^2 \dot{\theta}^2 =  \left[ \left(\dfrac{\d r}{\d \theta}\right)^2  + r^2\right] \dot{\theta}^2 =  \left[ \left(\dfrac{1}{r^2}\dfrac{\d r}{\d \theta}\right)^2  + \dfrac{1}{r^2}\right] \left(\dfrac{L}{m}\right)^2 \dfrac{1}{\gamma^2} = c^2\left(1-\dfrac{1}{\gamma^2} \right)$. On en déduit l'expression de $\gamma^2$.\\ 
+
+    Introduisons la grandeur $u = 1/r$ comme en mécanique newtonienne. On a alors
+
+\begin{equation}
+    v^2=\dot{r}^2+r^2 \dot{\theta}^2 \quad \text { avec } \quad \dot{\theta}=\frac{L}{\gamma m r^2} \quad \text { et } \quad \dot{r}=\frac{\mathrm{d} r}{\mathrm{~d} t}=\frac{\mathrm{d} r}{\mathrm{~d} u} \frac{\mathrm{~d} u}{\mathrm{~d} \theta} \dd{\theta}{t}=-\frac{\dot{\theta}}{u^2} \frac{\mathrm{~d} u}{\mathrm{~d} \theta}=-\frac{L}{\gamma m} \frac{\mathrm{~d} u}{\mathrm{~d} \theta}.
+\end{equation}
+Ainsi :
+\begin{equation}
+    \frac{1}{\gamma^2}=1-\beta^2=1-\left(\frac{L}{\gamma m c}\right)^2\left[\left(\frac{\mathrm{~d} u}{\mathrm{~d} \theta}\right)^2+u^2\right]
+\end{equation}
+    
+ce qui donne :
+
+\begin{equation}
+    \gamma^2=1+\frac{L^2}{m^2 c^2}\left[\left(\frac{\mathrm{~d} u}{\mathrm{~d} \theta}\right)^2+u^2\right]
+\end{equation}
+
+À partir de l’expression de l’énergie, on trouve alors 
+\begin{equation}
+    \gamma^2 =\frac{\left( \Etot-\Epot \right)^2}{m^2 c^4} = 1+\frac{L^2}{m^2 c^2}\left[\left(\frac{\mathrm{~d} u}{\mathrm{~d} \theta}\right)^2+u^2\right] \Rar\, \left(\frac{\mathrm{~d} u}{\mathrm{~d} \theta}\right)^2+u^2 = \frac{\left(\Etot-\Epot\right)^2}{c^2L^2}.
+\end{equation}
+    }
+    
+    
+    \item Montrer que le théorème de la puissance cinétique conduit à la conservation de
+    l'énergie mécanique
+    \begin{equation}
+    E = \gamma m c^2 - GmMu .
+    \end{equation}
+    Éliminer $\gamma$ dans l'Éq.~\eqref{eq:gamma} au profit de $E$, et montrer
+    que le mouvement est décrit par l’équation
+    \begin{equation}
+    \dd{u}{\theta}+ \left[ 1-\left(\dfrac{GmM}{Lc}\right)^2\right]\, u= \dfrac{E G mM}{L^2c^2}.
+    \end{equation}
+    
+    \sol{
+    Avec $E_{\rm c} = \gamma mc^2$ l'énergie « cinématique » (énergie de masse + cinétique), le théorème de la puissance mécanique donne
+    $$
+    \dfrac{\d E_{\rm c}}{\d t} = \vec{f} \cdot \vec{v} = -\dfrac{GMm \dot{r}}{r^2} = \dfrac{\d}{\d t} \left(\dfrac{GMm}{r}  \right),
+    $$
+    et donc $\dfrac{\d E}{\d t} = 0$ avec $E = E_{\rm c} + E_{\rm p} = \gamma m c^2 - \dfrac{GmM}{r}$.
+    
+    On exprime alors $\gamma$ en fonction de la constante de mouvement $E$, ce qui donne
+    $\gamma = \dfrac{E}{mc^2}+\dfrac{GM}{rc^2}$ puis
+    $$
+    \gamma^2 = \dfrac{E^2}{m^2c^4} + \dfrac{G^2M^2}{c^4} \dfrac{1}{r^2} + \dfrac{2EGM}{mc^4} \dfrac{1}{r} =  1+\left( \dfrac{L}{mc}\right)^2 \left\{ \dfrac{1}{r^2} + \left[\dfrac{\d }{\d \theta} \left(\dfrac{1}{r}\right)\right]^2\right\}.
+    $$
+    En dérivant par rapport à $\theta$ on obtient
+    $$
+    2\left(\dfrac{GM}{c^2}\right)^2 \dfrac{1}{r} \dfrac{\d }{\d \theta} \left(\dfrac{1}{r}\right) + \dfrac{2EGM}{mc^4} \dfrac{\d }{\d \theta} \left(\dfrac{1}{r}\right) = \left(( \dfrac{L}{mc}\right)^2 \dfrac{1}{r} \dfrac{\d }{\d \theta} \left(\dfrac{1}{r}\right) + 2 \left( \dfrac{L}{mc}\right)^2  \dfrac{\d }{\d \theta} \left(\dfrac{1}{r}\right)  \dfrac{\d ^2}{\d \theta^2} \left(\dfrac{1}{r}\right),
+    $$
+    ce qui donne le résultat.\\ 
+
+    On dérive par rapport à $\theta$ pour obtenir une équation différentielle sur $u$, soit 
+\begin{equation}
+    2 \dd{u}{\theta}\left(\ddd{u}{\theta}+u\right)=-2 \frac{\Etot - \Epot}{c^2L^2} \dd{\Epot}{u} \dd{u}{\theta} \Rar \ddd{u}{\theta}+ u = -K \frac{\Etot - K u}{c^2L^2}.
+\end{equation}
+En posant $\alpha = \sqrt{1-(K/cL)^2}$, on obtient l’équation différentielle
+\eqbox{
+    \ddd{u}{\theta} + \alpha^2 u = -\frac{\veps \alpha^2}{p}.
+}
+
+
+    
+    }
+    
+    
+    
+    \item En déduire que la particule de masse $m$ suit une trajectoire de la forme
+    \begin{equation}
+    r = \dfrac{p}{1+e\cos(\alpha \theta)},
+    \end{equation}
+    où l'on définira $\alpha$ et $e$.
+    Montrer que cette trajectoire est une ellipse dont les axes tournent à chaque tour d'un léger angle de déviation $\delta \theta$, comme illustré sur la Fig.~\ref{fig:péri}, dont on déterminera l'expression.
+    \sol{
+    L'équation ci-dessus est d'équation d'un oscillateur harmonique de pulsation
+    $$
+    \omega = \sqrt{1-\left(\dfrac{GmM}{Lc}\right)^2}\simeq  1 - \dfrac{1}{2}\left(\dfrac{GmM}{Lc}\right)^2
+    $$ 
+    (bien définie car l'écart à $1$ est faible) avec second membre. Une solution particulière est
+    $$
+    \dfrac{1}{r} = \dfrac{E G mM}{\omega^2 L^2c^2} = \dfrac{1}{p}.
+    $$
+    Les solutions de l'équation homogène sont de la forme
+    $$
+    \dfrac{1}{r} = ep \cos(\omega \theta)
+    $$
+    avec $e$ une constante. On en déduit l'équation paramétrique $r(\theta)$.
+    
+    
+    Dans la limite non relativiste $c \rightarrow \infty$, $\omega=1$ et donc le mouvement est elliptique. Dans le cas relativiste, $\omega$ est légèrement inférieur à $1$, ce qui se traduit par une déviation angulaire $\delta \theta$ de l'apoastre (ou périastre). Soit $\theta_0$ l'angle qui repère un apoastre (position la plus éloignée de $M$). On a $r(\theta_0)=p/(1-e)$, donc $\cos(\omega \theta_0)=-1$ et $\omega \theta_0 = \pi$. L'apoastre suivant est atteint après avoir  tourné d'un angle $2\pi/\omega = 2\pi +\delta \theta $ et donc
+    $$
+    \delta \theta = 2\pi\left(\dfrac{1}{\omega} -1\right) \simeq \pi\left(\dfrac{GmM}{Lc}\right)^2
+    $$
+    }
+    
+    
+\end{quest}
+%%% FIGURE %%%
+% \begin{figure}[h!]
+\begin{fig}[péri]
+    \centering
+    \includegraphics[width=0.5\textwidth]{precession.png}
+    \capt{La trajectoire relativiste d'un corps autour d'un astre immobile soumis à la gravitation est une ellipse dont le périastre avance d'un angle $\delta \theta$ à chaque tour.}
+\end{fig}
+% \end{figure}
+%%%%%%%%%%
+\begin{quest}
+    
+    
+    \item Calculer l’avance du périhélie de Mercure sur un siècle. Comparer la valeur obtenue à la valeur expérimentale de 43”. Quelles
+    corrections permettent de rendre compte de l’écart obtenu ?
+    
+    \textsc{Données} :
+    \begin{itemize}
+    \item position du périhélie de Mercure $r_{\rm p} = 4,\!6 \times 10^7\,$km ;
+    \item vitesse au périhélie de Mercure $v_{\rm p} = 59\,$km$\p$s$^{-1}$  ;
+    \item période de révolution $T =
+    88\,$jours ;
+    \item masse du Soleil $M = 2,\!0 \times 10^{30}\,$kg ;
+    \item constante gravitationnelle $G = 6,\!7 \times 10^{-11}\,$m$^3\p$kg$^{-1}\p$s$^{-2}$.
+    \end{itemize}
+    
+    
+    \sol{
+    On a $\Delta \theta = N \delta \theta$ avec  $t=1\,$ siècle et $N=t/T$ le nombre de tours par siècle. De plus, $\gamma_{\rm p} -1 \simeq 2 \times 10^{-8}$ donc $\gamma_{\rm p} \simeq 1$ et $L = \gamma_{\rm p} m r_{\rm p} v_{\rm p} $ d'où
+    $$
+    \Delta \theta \simeq \pi\dfrac{t}{T}  
+    \left(\dfrac{GM}{r_{\rm p} v_{\rm p}c}\right)^2,
+    $$
+    qui indépendant de la masse de Mercure.
+    On trouve $\Delta \theta = 7,\!2$'', ce qui est trop faible. L'écart avec l'expérience s'explique par la courbure de l'espace-temps (relativité générale).
+    }
+    
+    \end{quest}
+    \end{exo}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][3][TD]{Oscillateur harmonique relativiste}
+  \Notions{\item Équations de la dynamique relativiste \task Oscillateur harmonique}
+Une particule de masse $m$ se déplace le long d'un axe $(O x)$ sous l'action de la force de rappel $\Vec{f} =-k x \,\ex$, avec pour conditions initiales $x(t=0)=x_0$ et $\dot{x}(t=0)=0$.
+
+\udl{Mécanique newtonienne}.
+\begin{quest}
+    \item 
+    Établir l'équation différentielle du mouvement à partir du PFD dans la limite newtonienne. Introduire la pulsation propre $\omega_0$, puis en déduire l'équation du mouvement et la position $x(t)$. Que vaut l'énergie mécanique ?
+  \end{quest}
+  \udl{Mécanique relativiste}.
+\begin{quest}
+  \item	
+    Écrire le TPC relativiste. En déduire l'expression du facteur de Lorentz $\gamma$ 
+    % et de la vitesse $\dot{x}$ 
+    en fonction de la position $x$. 
+    
+    \sol{
+ 
+    Le TPC donne 
+    $$
+    \dd{\Etot}{t} = mc^2 \dd{\gamma}{t} = \Vec{f}\cdot\Vec{v} = -k x \dot{x} = - \dd{}{t}\left( \frac{1}{2} k x^2 \right) = - \dd{\Epot}{t}.
+    $$
+    On a donc conservation de l'énergie mécanique
+    $$
+    \mc{E}_{\rm m} = \Etot + \Epot = \gamma m c^2 + \frac{1}{2} k x^2 = \cte.
+    $$
+    Les conditions initiales donnent 
+    $$
+    \mc{E}_{\rm m} = m c^2 + \frac{1}{2} k x_0^2,
+    $$
+    soit 
+    \eqbox{
+    \gamma = 1 + \frac{k x_0^2}{2 m c^2} \left[1 - \left(\frac{x}{x_0}\right)^2\right].
+    }
+    On en déduit ensuite la vitesse $v=\dot{x}$ par
+    $$
+      \gamma = \dfrac{1}{\sqrt{1-\dot{x}^2/c^2}} \Rar \dot{x} = c \sqrt{1 - \dfrac{1}{\gamma^2}} = c \left[1 - \left(1 + \frac{k x_0^2}{2 m c^2} \left[1 - \left(\frac{x}{x_0}\right)^2\right]\right)^{-2}\right]^{1/2}.
+    $$
+    }
+
+    \item Écrire le PFD relativiste. Montrer que la position vérifie l’équation différentielle 
+    \begin{equation}
+        \ddot{x} + \omega_0^2 \,g(x) = 0,
+    \end{equation}
+    où l’on donnera l’expression de la fonction $g(x)$.
+\sol{
+    Le PFD donne 
+    $$
+    \dd{\Vec{p}}{t} = \Vec{f} \Rar \dd{\gamma}{t} m \dot{x} + \gamma m \ddot{x} = -k x \Rar  \gamma m \ddot{x} = -k x - \dd{\gamma}{t} m \dot{x} = -k x - k x\frac{\dot{x}^2}{c^2} = -\frac{kx}{\gamma^2}.
+    $$
+    On trouve donc 
+    \eqbox{
+    \gamma^3 \ddot{x} + \omega_0^2 x = 0.
+    }
+    On peut interpréter $\gamma^3 \ddot{x} = a_p$ comme l'accélération propre de la particule. La fonction $g(x)$ vaut donc
+    % $$
+    \eqbox{
+      g(x) = \dfrac{x}{\gamma^3} = x \left[1 + \frac{k x_0^2}{2 m c^2} \left(1 - ( {x}/{x_0})^2\right)\right]^{-3}.
+      }
+    % $$
+    }
+    
+    \item On introduit l’angle $\theta(t)$ tel que $x(t)= x_0 \cos \theta(t)$. Montrer que la période $T$ s'écrit :
+    $$
+    T=\frac{4}{\omega_0} \int_0^{\pi / 2} \frac{1+ \alpha \sin ^2 \theta}{\sqrt{1+2 \alpha \sin ^2 \theta}} \, \d \theta,
+    $$
+    
+    où l'on exprimera $\alpha$ en fonction de $\omega_0$, $x_0$ et $c$.
+
+    \sol{
+    En posant $x(t) = x_0 \cos \theta(t)$, on trouve 
+    $$
+    \gamma = 1 + \frac{k x_0^2}{2 m c^2} \sin^2 \theta = 1 +  2\alpha \sin^2 \theta,
+    $$
+     avec
+    \eqbox{
+    \alpha = \dfrac{k x_0^2}{m c^2} = \dfrac{\omega_0^2 x_0^2}{c^2}.
+    }
+    Puis 
+    $$
+    \dot{x} = c \left[1 - \left(1 + 2 \alpha \sin^2 \theta\right)^{-2}\right]^{1/2} = c \dfrac{\sqrt{(1+2\alpha \sin^2 \theta)^2 -1}}{1+2\alpha \sin^2 \theta} = \omega_0 x_0|\sin \theta| \dfrac{\sqrt{1 + \alpha \sin^2 \theta}}{1+2\alpha \sin^2 \theta}.
+    $$
+    % ainsi que
+    % $$
+    % g(x) = x_0 \cos \theta \left[1 + \frac{k x_0^2}{2 m c^2} \sin^2 \theta\right]^{-3} = x_0 \cos \theta \left(1 + 2 \alpha \sin^2 \theta\right)^{-3},
+    % $$
+   
+    On a alors 
+    $$
+    T = \int_0^T \d t = 4 \int_0^{x_0} \dfrac{\d x}{\dot{x}} = 4 \int_0^{\pi/2} \left\| \dd{x}{\theta} \right\| \dfrac{1}{\dot{x}} \d \theta,
+    $$
+    avec 
+    $$
+    \dd{x}{\theta} = - x_0 \sin \theta,
+    $$
+    d'où le résultat,
+    \eqbox{
+     T = \frac{4}{\omega_0} \int_0^{\pi/2} \dfrac{1 + \alpha \sin^2 \theta}{\sqrt{1 + 2 \alpha \sin^2 \theta}} \d \theta.
+    }
+    }
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

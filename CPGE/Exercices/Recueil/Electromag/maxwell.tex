@@ -1,0 +1,669 @@
+% !TEX root = /home/eb/.vscode/extensions/qftrules.programme-colle/tmp/Exercice.tex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][TD]{Manipulation des équations de Maxwell}
+  \Notions{\item Équation de Maxwell}
+On suppose que règne dans l'espace le champ électromagnétique 
+\begin{equation}
+  \E(M, t)=f(z) e^{-t / \tau} \ex, \quad \text{ et } \quad \B(M, t)=g(z) e^{-t / \tau} \ey,
+\end{equation}
+% $$
+% \left\{\begin{array}{l}
+% \vec{E}(M, t)=f(z) \mathrm{e}^{-t / \tau} \ex \\
+% \vec{B}(M, t)=g(z) \mathrm{e}^{-t / \tau} \ey
+% \end{array}\right.
+% $$
+où $\tau$ est une constante de temps et $f, g$ deux fonctions. L'espace est vide de charges et de courants.
+\begin{quest}
+  \item   Vérifier que ces champs sont compatibles avec les équations de Maxwell-Gauss et Maxwell-Thomson.
+  \sol{
+  Maxwell-Gauss : $\dive \E = \dr{E_x}{x} = 0$ car $E_x$ indépendante de $x$. De même, Maxwell-Thomson : $\dive \B = \dr{B_y}{y} = 0$ car $B_y$ indépendante de $y$.
+  }
+  \item  Montrer que l'équation de Maxwell-Faraday impose une relation entre $g$ et $f^{\prime}$.  Montrer que l'équation de Maxwell-Ampère impose une relation entre $f$ et $g^{\prime}$.
+  \sol{
+  Maxwell-Faraday : $\rot \E = - \dr{\B}{t} \Rar f'(z) \mathrm{e}^{-t / \tau} \ey = \frac{g(z)}{\tau} \mathrm{e}^{-t / \tau} \ey$ ce qui est possible si
+  $$
+f'(z) = \frac{g(z)}{\tau}.
+  $$
+  Maxwell-Ampère : $\rot \B = \frac{1}{c^2}\dr{\E}{t} \Rar -g'(z) \mathrm{e}^{-t / \tau} \ex = -\frac{f(z)}{\tau c^2} \mathrm{e}^{-t / \tau} \ex$ ce qui est possible si
+  $$
+g'(z) = \frac{f(z)}{\tau c^2}.
+  $$
+  }
+  \item En déduire une équation différentielle vérifiée par $f$. La résoudre en prenant comme condition aux limites $f(z=0)=E_{0}$, et en supposant que le champ électrique est nul en $z \rightarrow+\infty$ à tout instant.  En déduire l'expression complète du champ électromagnétique $(\E,\B)$.
+  \sol{
+  On trouve $f''(z) = \frac{g'(z)}{\tau} = \frac{f(z)}{\tau^2 c^2}$. On pose $\lambda=\tau c$ une distance caractéristique. Alors $f(z) = A e^{-z/\lambda} +  B e^{z/\lambda} = E_0 e^{-z/\lambda} $ d'après les CL.
+  }
+\end{quest}
+\end{exo}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][2][devoir]{Émission radioactive}
+  Une masse radioactive, ponctuelle, initialement neutre, située au point $O$ émet, à partir de l’instant
+  $t = 0$, des particules $\alpha$ avec une vitesse supposée constante et de façon isotrope : à l’instant $t$ la charge électrique située en $O$ est $q(t) = q_0 (e^{-t/\tau}-1).$
+\begin{quest}
+\item Calculer le champ électrique $\E(M,t)$ et le champ magnétique $\B(M,t)$ pour $t > 0$ et commenter. On supposera que les symétries de $\E$ sont les mêmes qu’en statique.
+\item Exprimer la densité volumique de charge $\rho(M,t)$ et la densité volumique de courant $\j(M,t)$ pour
+$t > 0$.
+\item Vérifier la compatibilité des résultats obtenus avec la relation locale de conservation de la charge.
+\item En déduire la densité volumique d’énergie électromagnétique, le vecteur de Poynting et la puissance volumique fournie par le champ électromagnétique aux particules $\alpha$. Commenter.
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][2][TD]{Effet Meissner}
+  \Notions{\item Équations de Maxwell \task Densité de courant \task Force et énergie magnétique}
+
+Un matériau supraconducteur conduit le courant électrique sans aucune résistance. Les supraconducteurs présentent la propriété de repousser les lignes de champ magnétiques, ce qui permet à un aimant de léviter au-dessus d'un supraconducteur. Cet effet est appelé effet Meissner.
+
+\begin{fig}[]
+  \centering
+  \begin{subfig}[test][0.4]
+  \includegraphics[width=\textwidth]{supra_meissner.jpg}
+\end{subfig}
+\begin{subfig}[test][0.35]
+  \includegraphics[width=\textwidth]{supra.pdf}
+\end{subfig}
+\capt{(a) Lévitation d'un aimant au-dessus d'un supraconducteur par effet Meissner. (b) Shéma du problème.}
+\end{fig}
+
+Dans la \emph{théorie de London} de la supraconductivité, proposé en 1935, le vecteur densité volumique de courant dans le supraconducteur $\j$ vérifie l'équation de London,
+\begin{equation}
+  \label{eq:london}
+  \rot{\j}= - \frac{ne^2}{m} \B,
+\end{equation}
+où $e$ désigne la charge élémentaire, $n$ la densité des porteurs de charge supraconducteurs, $m$ la masse de l'électron, et $\vv{B}$ désigne le champ magnétique dans le supraconducteur. On impose un champ magnétostatique uniforme $B_0\, \ez$ dans le vide $x<0$. On cherche le champ magnétique dans le supraconducteur, qui occupe l'espace $x>0$, sous la forme stationnaire $\B(M) = B(x) \ez$.
+
+\begin{quest}
+% \item Par analyse dimensionnelle, déterminer la dimension physique de $\alpha$.
+\item Établir l'équation vérifiée par le champ $\vv{B}(M)$ dans le supraconducteur, et introduire une longueur de London $\lambda$ en fonction de $n$, $e$, et $m$. Résoudre l'équation en utilisant les conditions aux limites.
+% , et interpréter
+\item Proposer une interprétation physique de la grandeur $\lambda$. Pour l'aluminium, $\lambda=\SI{1,6e-8}{SI}$. Calculer $B(x)$ à une distance $x=\SI{0,1}{\micro\meter}$ sous la surface du supraconducteur pour $B_0=\SI{1}{T}$. Conclure.
+\item Calculer la densité de courant $\j(M)=j(x) \ey$ à l'intérieur du supraconducteur. Estimer l'intensité du courant $I$ parcourant un supraconducteur de hauteur $h = \SI{1}{cm}$ soumis à un champ $B_0 = \SI{1}{T}$.
+\item Montrer que la distribution de courant exerce une force magnétique sur la surface du supraconducteur, que l'on caractérisera par sa direction, son sens, et la pression correspondante. 
+% \textit{Indication:} La force volumique de Laplace exercée par le champ sur le conducteur s'écrit $\frac{\der\vv{f_{\rm{vol}}}}{\der V}=\vv{j}\pv\vv{B}$.
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][3][TD]{Solénoïde idéal dans l'ARQS magnétique}
+  \Notions{\item ARQS \task Solénoïde \task Équations de Maxwell \task Vecteur de Poynting}
+Une bobine, de longueur $\ell=\SI{10}{cm}$, de rayon $a=\SI{10}{cm}$ et d'axe $(Oz)$ est constituée d'un enroulement de $n=\SI{5000}{m^{-1}}$ spires circulaires par unité de longueur. Dans toute la suite on se place dans l'ARQS magnétique et on négligera les effets de bord pour l'expression des champs.
+\begin{fig}[label]
+  \centering
+  \includegraphics[width=0.4\columnwidth]{solenoide}
+  % \capt{}
+\end{fig}
+\begin{quest}
+  \item Que vaut le champ magnétique $\B$ engendré par la bobine parcourue par un courant d'intensité $I$ ?
+  \sol{
+Cours : à l’intérieur, \eqbox{\B(M) = \mu_0 n  I \ez.}
+À l’extérieur, $\B=\Vec{0}$. Il faut savoir faire la démo.
+}
+\item Quel vaut l'énergie magnétique $\Etot_{m}$ associée à la bobine ? En déduire la valeur de l'inductance $L$.
+\sol{
+Deux méthodes :
+\begin{liste}
+  \item  Énergie : on a $\mc{E}_{\rm{mag}} = \frac{B^2}{2\mu_0} \times (\ell \pi a^2) = \frac{1}{2} \mu_0 \pi n^2a^2 \ell I^2  =   \frac{1}{2}L I^2$ avec
+  \eqbox{L =  \mu_0 \pi n^2a^2 \ell.}
+  \item Flux : on a $\Phi  = B \times (N \pi a^2) = L I$.
+\end{liste}
+
+}
+\item La bobine est placée à l'instant $t=0$  en série avec un générateur de tension $e$, de résistance interne $R$ grande devant celle de l'enroulement. Quelle est la loi d'évolution de l'intensité $I(t)$ dans le circuit ?
+\sol{
+Il s’agit d’un circuit $RL$ série classique. Tension aux bornes de la bobine : $u=L\dd{I}{t} = e-RI$ donc d’après la loi des mailles
+$$\dd{I}{t} + \frac{R}{L} I = \frac{e}{L}.$$.
+On définit le temps caractéristique $\tau=\frac{L}{R}$ donc $I(t) = I_0 + A e^{-t/\tau})$ avec $I_0 = \frac{e}{R}$. Condition initiale : continuité de $I$ traversant une bobine en $t=0$, et donc $I(0) = I_0+A = 0$
+soit $A=-I_0$. Ainsi,
+\eqbox{I(t) = I_0 (1-e^{-t/\tau}).}
+}
+\item En déduire que le champ magnétique engendré par la bobine à l'instant $t$ en tout point à l'intérieur de la bobine est de la forme 
+\begin{equation}
+  \B(t)=\alpha(1-e^{-\beta t})\ez,
+\end{equation}
+ où l'on précisera les expressions de $\alpha$ et $\beta$. Que dire à l'extérieur de la bobine ? 
+
+\item Déterminer l'expression du champ électrique $\vv{E}(M,t)$ en tout point $\rm M$, à l'intérieur et à l'extérieur de la bobine, à partir d'une équation de Maxwell.
+\sol{
+On utilise la formule précédente. On a
+$$\B = \mu_0 n I \ez = \mu_0 n I_0 (1-e^{-t/\tau})\ez,$$ donc $\alpha = \mu_0 n I_0 = \frac{\mu_0 n e}{R}$ et $\beta = \frac{1}{\tau} = \frac{R}{L} = \frac{R}{ \mu_0 \pi n^2a^2 \ell}$. À l'extérieur, le champ magnétique est nul car on néglige les effets de bord et on se place dans l'ARQS.
+
+Pour le champ électrique, on utilise la loi de \imp{Maxwell-Faraday},
+$$
+\rot E = -\dr{\B}{t} = -\frac{\mu_0 n I_0}{\tau}e^{-t/\tau} \ez.
+$$
+Pour avoir un rotationnel suivant $\ez$, la solution la plus simple est que le champ $\E$ dépende de $r$ et s’enroule suivant $\et$. On trouve alors à partir d’un formulaire :
+$$
+\frac{1}{r}\dr{rE_{\theta}}{r} = -\frac{\mu_0 n I_0}{\tau}e^{-t/\tau} ,
+$$
+Soit
+\eqbox{\E = -\frac{\mu_0 n I_0 r}{2\tau}e^{-t/\tau} \et.}
+
+\underline{Remarque :} l’équation de Maxwell-Ampère $\rot \B = \mu_0 \epz \dr{\E}{t}$ ne permet pas de déterminer $\E$ puisque à l’ordre dominant $\B$ est uniforme et donc on trouverait $\E = \Vec{0}$ ! Les calculs effectués ici sont approchées, on calcule $\B$ à l’ordre 0 puis $\E$ à l’ordre 1 en $ac/\tau$, dans ce sens.
+}
+\item Comparer alors les ordres de grandeur des densités volumiques d'énergie magnétique et électrique en $r=a$ en prenant des valeurs numériques raisonnables pour les variables inconnues.
+\sol{
+Magnétique : $e_M =  \frac{B^2}{2\mu_0} \sim \left( \frac{\mu_0 n e}{R} \right)^2 /2\mu_0 \sim \frac{1}{2} \mu_0 n ^2 e^2/R^2$. \\
+
+Électrique : $e_E =  \epz \frac{E^2}{2} \sim \epz \left( \frac{\mu_0 n I_0 a}{2\tau}\right)^2 /2 \sim \frac{\epz \mu_0^2 n^2 a^2}{2} (e/L)^2 \sim \frac{\epz e^2}{2\pi^2 n^2 a^2 \ell^2}$.
+}
+\item Déterminer le vecteur de Poynting $\Poy$ ainsi que son flux à travers la surface de la bobine. Interpréter.
+\sol{
+$\Poy = \frac{\E \pv \B}{\mu_0} = \frac{E_\theta B_z}{\mu_0} \er = -\frac{\mu_0^2 n^2 I_0^2 r}{2\tau}e^{-t/\tau}(1-e^{-t/\tau}) \er$.
+Le vecteur de Poynting est radial donc l’énergie est transféré du bobinage vers le centre de la bobine (pour une décharge). On remarque au passage que
+$$
+\Poy  = -n I \times \mu_0 n \frac{r}{2}\dd{I}{t} \er = -\frac{1}{2} \mu_0 n^2 r I \dd{I}{t}\er.
+$$
+La puissance totale transférée vers le centre de la bobine vaut (avec $r=a$)
+$$
+\mc{P} = \iint_S \Poy  \ps \dS = \frac{1}{2} \mu_0 n a I \dd{I}{t} \times 2 \pi a \ell = (\pi \mu_0 n^2 a^2 \ell)  I \dd{I}{t} =   L I \dd{I}{t}.
+$$
+On a donc conservation de l’énergie
+\eqbox{\mc{P} = \dd{}{t}\left( \frac{1}{2} L I^2\right).}
+}
+\end{quest}
+
+\textsc{Données :} Opérateur rotationnel en coordonnées cylindriques
+
+ \begin{equation*}
+  \rot{A} =  \left[\frac{1}{r} \frac{\partial A_{z}}{\partial \theta} - \frac{\partial A_{\theta}}{\partial z}\right]   \vec{e_r} +
+				   \left[\frac{\partial A_{r}}{\partial z} - \frac{\partial A_{z}}{\partial r}\right]   \vec{e_\theta} +
+				   \left[\frac{1}{r} \frac{\partial (rA_{\theta})}{\partial r} - \frac{1}{r} \frac{\partial A_{r}}{\partial \theta}\right]   \vec{e_z}
+ \end{equation*}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{exo}[PC][3][TD]{Condensateur plan idéal en régime variable}
+  \Notions{\item ARQS \task Équations de Maxwell \task Théorèmes intégraux \task Géométrie cylindrique}
+  On considère un condensateur plan dont les armatures sont deux disques de rayon $a$, de section $S=\pi a^2$, séparées d'une distance $d$, coaxiaux d’axe $(Oz)$. On néglige les effets de bord en supposant $d\ll a$. Les armatures portent des charges électriques $\pm Q(t)$ dépendantes du temps et réparties uniformément sur la surface des armatures.
+   % $u(t)=u_0\cos(\omega t)$.
+% \begin{figure}[h!]
+% \centering
+% \begin{center}
+% \includegraphics[width=0.55\textwidth]{condo.pdf}
+% \end{center}
+% \end{figure}
+\begin{fig}[label]
+  \centering
+  \includegraphics[width=0.2\columnwidth]{disk_capa.pdf}
+  %\capt{}
+\end{fig}
+
+\begin{quest}
+\item Rappeler le cadre de l'ARQS magnétique. Que vaudrait le champ magnétique $\Vec{B}_0$ dans cette approximation ? À partir d'une analyse des invariances et symétries du problème, et du théorème de Gauss, montrer que le champ électrique a pour expression 
+$$
+\Vec{E}_0(M,t) = \frac{Q(t)}{S\epz} \ez.
+$$
+\sol{
+  \begin{liste}
+    \item
+  Dans l'AQRS magnétique, l'équation de Maxwell-Ampère se simplifie en $\rot \B_0 = \mu_0 \j = \Vec{0}$ dans tout l'espace. On a aussi $\dive \B_0 =0$. Comme le champ magnétique est nul à l'infini, il est nul partout par unicité de la solution : $\Vec{B}_0 = \Vec{0}$.
+\item
+Les armatures sont planes et infinies : la distribution de charge est invariante pas translation dans le plane ($x,y)$ et donc $\E_0(M,t) = \E(z,t)$. Les plans $(M,\ex,\ez)$ et $(M,\ey,\ez)$ sont des plans de symétrie, et donc $\E_0(M,t) = E_z(z,t)\ez$. On prend pour surface de Gauss un cylindre d'axe $(Oz)$ de section $s$ quelconque dont une extrémité est à la hauteur $z$ et comprise entre les armatures, et l'autre extrémité est en dehors des armatures. Comme le champ est nul en dehors des armatures, le théorème de Gauss donne alors 
+$$
+\oiint \E_0(M,t) \ps \dS  = E_z(z,t)s = \frac{q_int(t)}{\epz} = \frac{\sigma(t)s}{\epz} \Rightarrow E_z(z,t) = \frac{\sigma(t)}{\epz}.
+$$
+Or $\sigma(t) = Q(t)/S$ et donc 
+\eqbox{
+  \Vec{E}_0(M,t) = \frac{Q(t)}{S\epz} \ez.
+}
+\end{liste}
+
+}
+\item Que vaut alors le vecteur densité de courant de déplacement $\jd$  ? Commenter la pertinence de l'ARQS magnétique. Déterminer le champ magnétique $\Vec{B}_i(M,t)$ induit par ce courant de déplacement de deux façons différentes : par une équation locale, et par un théorème intégral.
+\sol{
+  Par définition,
+  $$
+  \j_d = \epz \dr{\E}{t} = \frac{\dot{Q}(t)}{S} \ez.
+  $$
+Le courant de déplacement est non nul alors que le courant de conduction $\j$ est nul : on ne se situe pas dans le cadre de l'AQRS magnétique, mais celle de l'ARQS électrique ! On peut obtenir rapidement le champ magnétique engendré par ce courant de déplacement par l'équation de Maxwell-Ampère,
+$$
+\rot \B_i = \mu_0 \epz \dr{\E_0}{t},
+$$
+ou bien par le théorème d'Ampère généralisé. Les invariances et symétries de la distribution de courant de déplacement indique que $\Vec{B}_i(M,t) = B_i(z,t)\et$. On prend comme contour d'Ampère un cercle de rayon $r$ à l'altitude $z$ entre les armatures,
+$$
+\oint_C \B_i(M,t) \ps \d\vv{l} = B_i(z,t)2\pi r =  \mu_0 I_d = \mu_0 \frac{\dot{Q}(t)}{S} \pi r^2,
+$$
+et donc 
+\eqbox{
+  \Vec{B}_i(M,t) = \frac{\mu_0 \dot{Q}(t)}{2S} r \et.
+}
+}
+\item Ce champ magnétique dépend-il du temps ? Quel phénomène physique intervient alors ? Déterminer le champ électrique induit $\Vec{E}_i(M,t)$ de deux façons différentes.
+\sol{
+  Le champ magnétique $\Vec{B}_i(M,t)$ dépend du temps. Le phénomène d'induction électromagnétique engendre un champ électrique induit $\Vec{E}_i(M,t)$, qui est donné par l'équation de Maxwell-Faraday,
+  $$
+  \rot \E_i = -\dr{\B_i}{t} = -\frac{\mu_0 \ddot{Q}(t)}{2S} r \et,
+  $$
+  ce qui s'intègre en 
+  \eqbox{
+    \Vec{E}_i(M,t) = -\frac{\mu_0 \ddot{Q}(t)}{4S} r^2 \ez.
+  }
+
+}
+\item À quelle condition ce champ électrique induit est-il négligeable devant le champ électrique $\Vec{E}_0(M,t)$ pour $a=\SI{15}{cm}$ ?
+\sol{
+  On calcule le rapport des normes 
+  $$
+  \frac{E_i}{E_0} = \frac{\mu_0 \ddot{Q}(t)}{4S} r^2 \frac{S\epz}{Q(t)} = \frac{\mu_0 \ddot{Q}(t)}{4\epz Q(t)} r^2 \simeq \frac{\mu_0 \epz \omega^2}{4} a^2,
+  $$
+  où $\omega$ est la pulsation caractéristique des grandeurs électriques. Le champ électrique induit est négligeable devant le champ électrique $\Vec{E}_0(M,t)$ à basse fréquence, pour 
+  \eqbox{
+    \omega \ll \frac{2a}{\sqrt{\epz \mu_0}} \simeq \SI{e9}{rad.s^{-1}}.
+  } 
+}
+\end{quest}
+\textsc{Données :} Opérateur rotationnel en coordonnées cylindriques
+
+ \begin{equation*}
+  \rot{A} =  \left[\frac{1}{r} \frac{\partial A_{z}}{\partial \theta} - \frac{\partial A_{\theta}}{\partial z}\right]   \vec{e_r} +
+				   \left[\frac{\partial A_{r}}{\partial z} - \frac{\partial A_{z}}{\partial r}\right]   \vec{e_\theta} +
+				   \left[\frac{1}{r} \frac{\partial (rA_{\theta})}{\partial r} - \frac{1}{r} \frac{\partial A_{r}}{\partial \theta}\right]   \vec{e_z}
+ \end{equation*}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][2][colle]{Condensateur plan idéal en régime harmonique}
+  Les armatures d’un condensateur plan sont deux disques de rayon $a$, distants de $e$, d’axe $(Oz)$.
+  On applique une différence de potentiels sinusoïdale entre les armatures du condensateur.
+   % $u(t)=u_0\cos(\omega t)$.
+%\begin{figure}[h!]
+%\centering
+% \begin{center}
+% \includegraphics[width=0.55\textwidth]{condo.pdf}
+% \end{center}
+%\end{figure}
+Dans un premier temps, on suppose que le champ électrique est uniforme dans l’espace entre les armatures et s’écrit $\E_0 = E_0 \cos(\omega t)\ez$. 
+
+\begin{quest}
+\item Déterminer le champ magnétique $\B_1$ entre les armatures du condensateur.
+\sol{
+  Le champ magnétique $\B_1$ est induit par le champ électrique $\E_0$, et s'obtient soit par l'équation de Maxwell-Faraday (forme locale), soit par la loi de Faraday (forme intégrale). Sachant que $\E_0$ est porté par $\ez$, on s'attend à ce que $\B_1$ soit porté par $\et$ et dépende de $r$ uniquement, par analogie avec un fil infini parcouru par un courant. On suppose donc 
+  % $$
+  \eqbox{
+    \B_1 = B_1(r,t) \et.
+    }
+L'équation de \udl{Maxwell-Ampère} donne alors 
+$$\rot \B_1 =  \frac{1}{r}\dr{rB_\theta}{r} \ez = \mu_0\epz \dr{\E}{t} = -\omega\mu_0\epz E_0 \sin(\omega t)\ez,$$ ce qui donne
+$$
+B_1(r,t) = -\frac{r}{2} \omega\mu_0\epz E_0 \sin(\omega t) + \frac{f(t)}{r},
+$$
+où $f(t)$ est une fonction de temps. Or le champ ne peut pas diverger en $r=0$, ce qui impose $f(t)=0$. Donc
+\eqbox{
+\B_1 = -\frac{r}{2} \omega\mu_0\epz E_0 \sin(\omega t) \et.
+} 
+}
+\end{quest}
+Ce champ magnétique $\B_1$ étant variable, il est lui-même source d’un champ électrique $\E_2$. 
+
+% On rappelle que $\mu_0\epz = 1/c^2$.
+
+\begin{quest}
+\item Déterminer $\E_2$ et montrer que le champ électrique approché s’écrit
+$$
+\E = \left[ 1-\frac{1}{4}\left(\frac{r\omega}{c}\right)^2\right]\E_0.
+$$
+À quelle condition se trouve-t-on dans le cadre de l’ARQS ?
+Le champ électromagnétique $(\E,\B_1)$ est-il compatible avec l’équation de Maxwell-Ampère ?
+
+\sol{
+L’équation de \udl{Maxwell-Faraday} donne 
+$$\rot \E_2 = -\dr{\B_1}{t} = \frac{r\omega^2}{2c^2}  E_0 \cos({\omega t}) \et.$$ Pour donner un rotationnel fonction de $r$ et porté $\et$, on doit choisir un champ fonction de $r$ et porté par $\ez$. On cherche donc $\E_2$ de la forme 
+\eqbox{
+\E_2 = E_2(r,t) \ez.
+}
+On trouve alors
+$$
+-\dr{E_2}{r} =  \frac{r\omega^2}{2c^2}  E_0 \cos({\omega t}) \Rightarrow E_2 = \frac{1}{4}\left(\frac{r \omega}{c}\right)^2 E_0 \cos({\omega t}) + g(t) .
+$$
+En l’absence de champ électrique uniforme $E_0$, on s’attend à ce qu’il n’y ait pas de champ électrique induit non plus, ce qui impose $g(t)=0$.
+Donc
+\eqbox{
+  \E_2 = -\frac{1}{4}\left(\frac{r \omega}{c}\right)^2 \E_0.
+  }
+  En utilisant le principe de superposition, on trouve le champ électrique total, à cet ordre d’approximation,
+\eqbox{
+\E = \left[ 1-\frac{1}{4}\left(\frac{r\omega}{c}\right)^2\right]\E_0 .
+}
+}
+\end{quest}
+
+On cherche une solution exacte du problème sous la forme
+$
+\E(M,t) = E(r)\cos(\omega t)\ez.
+$
+% $$
+% \E(r,t) = E(r)e^{i\omega t}\ez, \quad \text{avec} \quad E(r) = E_0\sum_{n=0}^{\infty} a_n \left(\frac{r \omega}{c} \right)^n.
+% $$
+
+\begin{quest}
+  \item  Montrer que la fonction $E(r)$ vérifie l’équation 
+  \begin{equation}
+  \label{eq:condo}
+  \frac{1}{r}\dd{}{r}\left(r \dd{E}{r} \right) = - k^2 E,
+  \end{equation}
+   avec $k=\frac{\omega}{c}$.
+  %, et en déduire une relation de récurrence sur les coefficients $a_n$.
+  % \textsc{Données} : $\Delta E(r) = \frac{1}{r}\dd{}{r}\left(r \dd{E}{r} \right)$.
+  % \question
+   On pose $E(r) = E_0 J(x)$ avec $x=r\omega/c$. On admet que le premier zéro de la fonction $J$ est en $x_0 \simeq \num{2.4}$. À partir de quelle fréquence observe-t-on une région de champ nul dans le condensateur pour $a = \SI{4}{cm}$ ?
+
+   \sol{
+On peut démontrer à partir des équations de Maxwell que le champ électrique est solution de l’équation de d’Alembert, soit 
+$$
+\Delta \E - \frac{1}{c^2} \ddr{\E}{t} = 0.
+$$
+En injectant la forme proposée pour $\E$, on trouve
+$$
+\Delta E(r) = \frac{1}{r}\dd{}{r}\left(r \dd{E}{r} \right) = -\frac{\omega^2}{c^2} E(r) = -k^2 E(r).
+$$
+On reconnaît l’équation de Helmholtz, qui admet des solutions de la forme $E(r) = E_0 J(x)$ avec $x=r\omega/c$. La fonction $f$ vérifie alors l’équation
+$$
+\frac{1}{x}\dd{}{x}\left(x \dd{J}{x} \right) = - J.
+$$
+On peut démontrer qu’une des solutions de cette équation est la fonctions de Bessel d'ordre 0, soit $J(x) = J_0(x)$, dont le premier zéro est en $x_0 \simeq \num{2.4}$. Le champ s’annule au bord du condensateur lorsque 
+$$
+\frac{a \omega}{c} = x_0 \Rightarrow \omega = \frac{x_0 c}{a} = \num{1.5e10} \text{ rad.s}^{-1},
+$$
+et donc 
+\eqbox{
+f = \SI{2.4e9}{ Hz}.
+}
+
+   }
+
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][2][colle]{Condensateur plan idéal dans l'ARQS électrique}%{1}
+L'étude du condensateur se traite rigoureusement dans le régime de l'ARQS électrique qui ne figure pas au programme ; nous admettrons que dans ce cas l'équation de Maxwell-Faraday est équivalente au cas statique, soit
+\begin{equation}
+  \label{eq:faraday}
+  \rot{\vv{E}} = 0,
+\end{equation}
+toutes les autres équations de Maxwell étant inchangées.
+On suppose dans la suite qu'un condensateur plan idéal est placé en série avec une résistance $R$ et un générateur de tension sinusoïdale $u(t)=u_0\cos(\omega t)$.
+%\begin{figure}[h!]
+%\centering
+\begin{center}
+\includegraphics[width=0.55\textwidth]{condo.pdf}
+\end{center}
+%\end{figure}
+\begin{quest}
+\item Donner l'expression du champ électrique $\vv{E}(M,t)$ entre les armatures du condensateur.
+\item À partir de l'équation de Maxwell-Ampère,  déterminer l'expression du champ magnétique $\vv{B}(M,t)$.
+\item Comparer les ordres de grandeur des densités d'énergie électrique $u_e$ et magnétique $u_m$. Conclure sur la nature de l'énergie prédominante stockée dans un condensateur.
+\item Calculer le vecteur de Poynting $\Poy(M,t)$, puis la puissance $\mc{P}$ traversant les parois latérales du condensateur, de rayon $a$ et de hauteur $d$. Interpréter.
+% \item Vérifier explicitement sur cet exemple le théorème de Poynting.
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][TD]{Énergétique d'un conducteur sphérique}
+  Une boule chargée de centre $\rm O$ et de rayon $R$ se décharge dans un milieu infini ohmique de conductivité~$\sigma$. Le champ électromagnétique est nul à l'intérieur du conducteur. À l'extérieur, il s'écrit
+  $$\vv{E}(M,t)=\frac{Q_0\exp(-\frac{\sigma t}{\varepsilon_0})}{4\pi\varepsilon_0 r^2}\,\vv{e_r}\qquad\text{et}\qquad \vv{B}(M,t)=0.$$
+  \begin{quest}
+    \item Expliquer sans exposer tous les calculs d'où provient l'expression donnée des champs.
+    \item Calculer l'énergie électromagnétique à l'instant $t$.
+    \item Calculer l'énergie dissipée par effet Joule dans le conducteur ohmique entre l'instant initial $t=0$ et un instant $t$ quelconque. Commenter.
+  \end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][TD]{Champ électromagnétique sinusoïdal}
+  \Notions{\item Équations de Maxwell \task Vecteur de Poynting}
+  On considère le champ électrique suivant, régnant dans une partie de l’espace vide,
+$$
+\Vec{E}(M,t) = E_0 \cos(\omega t - k z) \ex + E_0 \sin(\omega t - k z) \ey.
+$$
+
+\begin{quest}
+	\item Vérifier la compatibilité de cette expression avec l'équation Maxwell-Gauss.
+	\sol{
+  $$
+  \Dive \E = \dr{E_x}{x}\ex + \dr{E_y}{y}\ey + \dr{E_z}{z} \ez = 0,
+  $$
+  compatible avec l'équation de Maxwell-Gauss \fbox{$\Dive \E = \frac{\rho}{\epz}$} car $\rho=0$ dans le vide.
+
+	}
+  \item Déterminer le champ magnétique $\B(M,t)$ associé. Quelle relation existe-t-il entre $k$ et $\omega$ ?
+  \sol{
+    L'équation de Maxwell-Faraday donne
+    $$-\dr{\B}{t} = \rot\E = \left( \dr{E_y}{x}-\dr{E_x}{y} \right)\ez + \left( \dr{E_z}{y}-\dr{E_y}{z} \right)\ex + \left( \dr{E_x}{z}-\dr{E_z}{x} \right)\ey  = \dr{E_x}{z} \ey -\dr{E_y}{z}\ex $$
+    Donc
+    $ -\dr{\B}{t} = kE_0(\sin(\omega t + k z)\ey+\cos(\omega t + k z)\ex) = k \E $
+    et donc en intégrant par rapport au temps,
+    $$
+    \B(M,t) = \frac{kE_0}{\omega} \left[ -\sin(\omega t + k z)\ex+\cos(\omega t + k z)\ey \right].    $$
+    Avec $B_0 = \frac{kE_0}{\omega}$, on trouve 
+    \eqbox{
+    \B(M,t) = -B_0 \sin(\omega t - k z)\ex+B_0 \cos(\omega t - k z)\ey.
+    }
+    Les champs doivent aussi vérifier l’équation de Maxwell-Faraday, avec $\j = \Vec{0}$ dans le vide,
+    \begin{align*}
+      \rot\B & = \epz \mu_0 \dr{\E}{t} \\ 
+      & \Rar kB_0\, \left[ \cos(\omega t - k z)\ey - \sin(\omega t - k z) \ex  \right] = \epz \mu_0 \omega E_0 \left[ \cos(\omega t - k z)\ey - \sin(\omega t - k z)\ex  \right] \\ 
+      & \Rar k B_0 = -\epz \mu_0 E_0 \omega
+    \end{align*}
+    et donc 
+    \eqbox{
+    k = \pm \sqrt{\epz \mu_0} \omega.
+    }
+  }
+	\item Déterminer le vecteur de Poynting $\Poy(M,t)$. 
+  % Déterminer sa moyenne temporelle $\moy{\Poy}$ sur une période . 
+  Représenter les vecteurs $\E$, $\B$ et $\Poy$ dans l’espace.
+  \sol{
+    \begin{align*}
+      \Poy = \frac{1}{\mu_0}(\E \pv \B) & = \frac{E_0B_0}{\mu_0} (\cos(\omega t - k z) \ex + \sin(\omega t - k z) \ey) \pv ( -\sin(\omega t + k z)\ex +\cos(\omega t + k z)\ey) \\ 
+      & = \frac{E_0B_0}{\mu_0} (\cos(\omega t + k z)^2 + \sin(\omega t + k z)^2) \ez.
+    \end{align*}
+      et donc 
+      \eqbox{
+        \Poy = \pm \sqrt{\frac{\epz}{\mu_0}} E_0^2 \ez
+      }
+      Les vecteurs $(\E,\B,\Poy)$ forment une triade directe. On rappelle que $\Pi$ représente la puissance surfacique transportée par le champ électromagnétique. La direction de propagation de l'énergie est donnée par $\pm \ez$ suivant le signe de $k$.
+    }
+  \end{quest}
+  \end{exo}
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  
+  
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \begin{exo}[PC][1][TD]{Champ électromagnétique atténué}
+    \Notions{\item Équations de Maxwell \task Vecteur de Poynting}
+    On considère le champ électrique suivant dans un milieu conducteur occupant l'espace $z>0$,
+  $$
+  \Vec{E}(M,t) = E_0 \cos(\omega t - k z) e^{-kz} \ex.
+  $$
+  
+  \begin{quest}
+    \item Que vaut la densité volumique de charge $\rho$ ?
+    \sol{
+    L'équation de Maxwell-Gauss donne
+  $$
+  \Dive \E = \dr{E_x}{x}\ex + \dr{E_y}{y}\ey + \dr{E_z}{z} \ez = 0 = \frac{\rho}{\epz},
+  $$
+  donc \fbox{$\rho=0$} dans un milieu conducteur.
+
+	}
+  \item Déterminer le champ magnétique $\B(M,t)$ associé. Que vaut le vecteur densité de courant $\j$ ?
+  \sol{
+  L'équation de Maxwell-Faraday donne
+    $$-\dr{\B}{t} = \rot\E = \left( \dr{E_y}{x}-\dr{E_x}{y} \right)\ez + \left( \dr{E_z}{y}-\dr{E_y}{z} \right)\ex + \left( \dr{E_x}{z}-\dr{E_z}{x} \right)\ey  = \dr{E_x}{z} \ey $$
+    Donc
+    $ -\dr{\B}{t} = kE_0e^{-kz}\left[\sin(\omega t - k z)-\cos(\omega t - k z)\right] \ey $
+    et donc en intégrant par rapport au temps, on trouve 
+    \eqbox{
+    \B(M,t) = B_0 e^{-kz} \left[\cos(\omega t - k z)+\sin(\omega t - k z) \right] \ey.
+    }
+    Le vecteur densité de courant s'obtient à partir de l’équation de Maxwell-Faraday,
+    \begin{align*}
+      \mu_0 \j  & = \rot\B - \epz \mu_0 \dr{\E}{t} \\ 
+      & = \dots 
+    \end{align*}
+    Le courant est non nul dans un conducteur.
+    }
+	\item Déterminer le vecteur de Poynting $\Poy(M,t)$. Effectuer un bilan d'énergie sur un volume de conducteur.
+  \sol{
+    \begin{align*}
+      \Poy = \frac{1}{\mu_0}(\E \pv \B) & 
+    = \frac{E_0B_0}{\mu_0} \cos(\omega t - k z) e^{-kz} \ex \pv e^{-kz} \left[\cos(\omega t - k z)+\sin(\omega t - k z) \right] \ey \\ 
+    & = \frac{E_0B_0}{\mu_0} e^{-2kz} \left[  \cos(\omega t - k z)^2 +  \cos(\omega t - k z)\sin(\omega t - k z) \right] \ez\, 
+    \end{align*}
+  On peut effectuer la moyenne temporelle sur une période pour obtenir la puissance moyenne. On utilise $\moy{\cos^2}=\frac{1}{2}$ et $\moy{\cos \sin} = 0$, soit
+  \eqbox{
+    \moy{\Poy} = \frac{k}{\omega \mu_0} \frac{E_0^2}{2} \ez
+  }
+  }
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][3][TD]{Câble coaxial en régime variable}
+  \Notions{\item Équations de Maxwell \task Géométrie cylindrique \task Câble coaxial}
+
+  {\begin{wrapfigure}{r}{0.25\textwidth}
+    \vspace{-0.5cm} \centering \includegraphics[width=0.25\textwidth]{coax.png} \end{wrapfigure}
+  Un câble coaxial est constitué de deux cylindres métalliques d’axe $(Oz)$, de rayons intérieur $R_1$ et extérieur $R_2 > R_1$. La couronne cylindrique située entre ces deux conducteurs a les propriétés électromagnétiques du vide.
+Elle est le siège de champs électrique et magnétiques sinusoïdaux, dont on cherche l'expression en coordonnées cylindriques $(r,\theta,z)$ sous la forme :
+\begin{equation}
+  \label{eq:champ}
+\Vec{E}(M,t) = E_0(r) \cos(\omega t - k z) \er, \qquad \B(M,t) = \Vec{B_0}(r) \cos(\omega t -k z).
+\end{equation}
+On admet que les champs $\Vec{E}(M,t)$ et $\Vec{B}(M,t)$ sont nuls à l'extérieur du câble, pour $r < R_1$
+et $r > R_2$.}
+\begin{quest}
+	\item Déterminer la fonction $E_0(r)$ à partir d'une équation de Maxwell. On pourra poser $E_1 = E_0(R_1)$.
+  % On posera $E_a = \lim\limits_{r \rightarrow a^+} E(r)$. En déduire le potentiel scalaire $V (r,z,t)$ qui sera pris nul en tout point du conducteur extérieur.
+	\sol{
+    L'équation de \udl{Maxwell-Gauss} dans le vide entre les conducteurs donne
+    $$
+    \Dive \E = \frac{1}{r}\dr{(rE_r)}{r} + \frac{1}{r} \dr{E_\theta}{\theta} + \dr{E_z}{z} = \frac{1}{r}\dd{(rE_0)}{r}  =  0.
+    $$
+    On intègre cette équation par rapport à $r$ pour obtenir
+    $$
+    \dd{(rE_0)}{r} = 0 \Rightarrow E_0(r) = \frac{A}{r},
+    $$
+    avec $E_0(R_1) = E_1 = \frac{A}{R_1}$. On en déduit 
+    \eqbox{
+      E_0(r) = E_1 \frac{R_1}{r}.
+    }
+	}
+  \item Calculer le champ vectoriel $\Vec{B_0}(r)$. Simplifier son expression à partir de la relation de dispersion $\omega = k c$.
+  \sol{
+    On utilise l'équation de \udl{Maxwell-Faraday},
+    $$
+    \rot \E = -\dr{\B}{t} =   \dr{E_r}{z} \et  = E_0(r) k \sin(\omega t - k z) \et,
+    $$
+    soit 
+    % \eqbox{
+    $$
+    \B(M,t) = E_0(r)  \frac{k}{\omega} \sin(\omega t - k z) \et.
+    $$
+    Or $\omega = k c$ d'après la relation de dispersion dans le vide, et donc 
+    \eqbox{
+    \Vec{B_0}(r) = \frac{E_a a}{rc} \et.
+    }
+    % }
+  
+  }
+  % \item Quelle est la relation entre $k$ et $\omega$ ? On donne $\rot(\frac{\et}{r}) = \Vec{0}$.
+  % \item Déteminer les densités surfaciques de charges $\sigma_a$ et $\sigma_b$ et de courant $\j_a$ et $\j_b$ sur les armatures cylindriques (en $r = a$ et $r = b$).
+% Vérifier que l’équation de conservation de la charge sur les armatures est bien compatible avec
+% les expressions trouvées.
+\end{quest}
+On note $U (z,t) = V_2(z,t) - V_1(z,t)$ la tension entre le conducteurs extérieur et intérieur, et $I (z,t)$ l’intensité du courant électrique porté par le conducteur intérieur.
+\begin{quest}
+  \item Déterminer l’expression de $U(z,t)$ et de $I(z,t)$.
+  \sol{
+    \begin{liste}
+      \item \udl{Tension} : la tension est définit par la circulation du champ électrique entre les conducteurs, soit 
+      $$
+  U(z,t) = \int_a^b \Vec{E}(M,t) \ps \d r \,\er = \int_a^b E_a \frac{a}{r} \cos(\omega t - k z) \d r,
+      $$
+      soit 
+      \eqbox{
+        U(z,t) = E_a a \cos(\omega t - k z) \ln\left(\frac{b}{a}\right).
+      }
+      \item \udl{Intensité} : l'intensité peut s'obtenir à partir de \udl{théorème d'Ampère}. On choisit pour contour d'Ampère $\Gamma$ un cercle de rayon $r=a^+$ centré sur l'axe $(Oz)$. On trouve 
+      $$
+      \int_\Gamma \B(M,t) \ps \dl = 2\pi a \times \frac{E_a}{c} \cos(\omega t - k z) = \mu_0 I_\Gamma(z,t)  + \frac{1}{c^2} \dd{\Phi_E}{t} = \mu_0 I(z,t),
+      $$
+      car le courant de conduction enlacé par le contour vaut $I(z,t)$, et le flux du champ électrique est nul, puisque le champ est nul dans le conducteur, pour $r < a$. On en déduit 
+      \eqbox{
+      I(z,t) = \frac{2\pi a E_a}{\mu_0 c} \cos(\omega t - k z).
+      }
+    \end{liste}
+  }
+  \item Calculer l'impédance $Z$ du câble coaxial, puis vérifier que $Z$ est indépendant de $z$ et de $t$.
+  \sol{
+    L'\udl{impédance} $Z$ du câble coaxial est le rapport entre la tension et l'intensité,
+    $$
+    Z = \frac{U(z,t)}{I(z,t)} = \frac{E_a a \cos(\omega t - k z) \ln\left(\frac{b}{a}\right)}{\frac{2\pi a E_a}{\mu_0 c} \cos(\omega t - k z)},
+    $$
+    soit 
+    \eqbox{
+     Z = \frac{\mu_0 c}{2\pi} \ln\left(\frac{b}{a}\right).
+    }
+  L'impédance est indépendante de $z$ et de $t$, et ne dépend que des propriétés géométriques du câble coaxial.
+  }
+  \item Déterminer le vecteur de Poynting puis la puissance moyenne qui traverse une section droite
+du câble. Montrer qu’elle s’exprime simplement en fonction de $Z$ et commenter.
+\sol{
+  \begin{liste}
+    \item \udl{Vecteur de Poynting} : on calcule le vecteur de Poynting par la relation 
+    $$
+    \Poy(M,t) = \frac{1}{\mu_0}(\E \pv \B) = \frac{E_0(r) {B_0}(r)}{\mu_0} \cos^2(\omega t - k z) \ez,
+    $$
+    soit 
+    \eqbox{
+      \Poy(M,t) = \frac{E_a^2 a^2}{\mu_0 c r^2} \cos^2(\omega t - k z) \ez.
+    }
+    La moyenne temporelle du vecteur de Poynting donne la puissance moyenne surfacique transportée par le champ électromagnétique,
+    $$
+    \moy{\Poy} = \frac{E_a^2 a^2}{2\mu_0 c r^2} \ez.
+    $$
+    \item \udl{Puissance moyenne} : la puissance moyenne qui traverse une section droite du câble coaxial de rayon $r$ est donnée par l'intégrale de la puissance surfacique sur la surface de la section droite,
+    $$
+    \mc{P} = \iint_S \moy{\Poy}\ps \dS = \int_a^b \int_0^{2\pi} \frac{E_a^2 a^2}{2\mu_0 c r^2} r\d r \d \theta = \frac{E_a^2 a^2}{2\mu_0 c} \int_0^{2\pi} \d\theta \int_0^{2\pi r} \frac{\d r}{r}  = \frac{\pi E_a^2 a^2}{\mu  _0 c} \ln\left( \frac{b}{a} \right).
+    $$
+    On peut aussi écrire la puissance moyenne en fonction de l'impédance du câble coaxial,
+    \eqbox{
+      \mc{P} = \frac{1}{2} Z I_0^2,
+    }
+    avec 
+    $$
+    I_0 = \frac{2\pi a E_a}{\mu_0 c}$$
+    l'amplitude du courant électrique. On retrouve la loi de Joule en régime sinusoïdal.
+  \end{liste}
+}
+\end{quest}
+
+\textsc{Données :} 
+% \begin{tabular}{l}
+ $\rot (\lambda \Vec{a}) = \lambda \,\rot \Vec{a} + \grad \lambda \pv \Vec{a}$,
+  $\rot(f(r)\,\er) = \Vec{0}$,
+  $\rot\left( \textstyle\frac{\et}{r} \right) = \Vec{0}$.
+% \end{tabular}
+
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+

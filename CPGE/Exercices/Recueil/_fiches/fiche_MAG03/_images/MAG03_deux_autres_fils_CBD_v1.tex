@@ -1,0 +1,65 @@
+	\begin{tikzpicture}[>=stealth]
+	\draw[->] (-2.5,0)--(2,0)node[right]{$x$};
+	\draw[->] (0,-1)--(0,3)node[left]{$y$};
+	\draw (0,0)node{$\bullet$}node[above right]{$\ptO$}; 
+	
+	\coordinate (O1) at (-1.1,0); %Changer la position de O1 change tout le dessin
+	\draw (O1) node[above left]{$\ptO_{1}$}; 
+	
+	\path let \p{A}=(O1) in coordinate (O2) at (-\x{A},\y{A});
+	\draw (O2) node[above right]{$\ptO_{2}$};
+	
+	\coordinate (D) at (0,2); 
+	\draw (D) node{$\bullet$} node[above, xshift=0.2cm,yshift=0.1cm]{$\ptD$}; 
+	
+	%Définition angle O
+	
+	\draw[<->] (0,-0.5)-- ($ (O1) + ( 0, -0.5 ) $) node[above, midway]{$a$};
+	
+	\draw[<->] (0,-0.5)-- ($ (O2) + ( 0, -0.5 ) $) node[above, midway]{$a$};
+	
+	\draw[dashed] (O1)--($ (O1) + ( 0, -0.5 ) $) (O2) -- ($ (O2) + ( 0, -0.5 ) $);
+	
+	\draw[dashed] (O1)--(D) node[midway,right]{$d$} (O2)--(D) node[midway,left]{$d$};
+	
+	
+	%B1
+	\draw[very thick, \redOrDarkGray, ->] let\p1=($(D)-(O2)$),\n1={veclen(\x1,\y1)},
+	\n2={atan(\y1/\x1)} in (D) --++ ( {\n1*sin(\n2)}, {\n1*cos(\n2)} ) node[black, left]{$\vv{B_1}$};
+	
+	%B2
+	\draw[very thick, \redOrDarkGray, ->] let\p1=($(D)-(O2)$),\n1={veclen(\x1,\y1)},
+	\n2={atan(\y1/\x1)} in (D) --++ ( {\n1*sin(\n2)}, {-\n1*cos(\n2)} ) node[black, left]{$\vv{B_2}$};
+	
+	%Angle theta
+	\draw[->] let\p1=($(D)-(O2)$), \p3 = (O1), \n1={veclen(\x1,\y1)}, \n2={atan(\y1/\x1)} in ({0.5*\x3},0) arc(0:-\n2:{-0.5*\x3})node[right, midway]{$\theta$};
+	
+	%e1
+	\draw[ultra thick, ->,color=\blueOrBlack] let\p1=($(D)-(O2)$),\n1={veclen(\x1,\y1)},
+	\n2={atan(\y1/\x1)} in (D) --++ ( {0.5*\n1*sin(\n2)}, {0.5*\n1*cos(\n2)} ) node[black, above]{$\vv{e_1}$}; 
+	
+	%e2
+	\draw[ultra thick, ->,color=\blueOrBlack] let\p1=($(D)-(O2)$),\n1={veclen(\x1,\y1)},
+	\n2={atan(\y1/\x1)} in (D) --++ ( {0.5*\n1*sin(\n2)}, {-0.5*\n1*cos(\n2)} ) node[black, below]{$\vv{e_2}$}; 
+	
+	%Angle droit 1
+	\draw let\p1=($(D)-(O2)$),\n1={veclen(\x1,\y1)},
+	\n2={atan(\y1/\x1)-90} in ( $ (D) + ( {0.1*\n1*cos(\n2)}, {-0.1*\n1*sin(\n2)} ) $ ) -- 
+	( $ (D) + ( {0.1*\n1*sin(\n2)+0.1*\n1*cos(\n2)}, {0.1*\n1*cos(\n2)-0.1*\n1*sin(\n2)} ) $ ) --
+	( $ (D) + ( {0.1*\n1*sin(\n2)}, {0.1*\n1*cos(\n2)} ) $ );
+	
+	%Angle droit 2
+	\draw let\p1=($(D)-(O2)$),\n1={veclen(\x1,\y1)},
+	\n2={atan(-\y1/\x1)} in ( $ (D) + ( {0.1*\n1*sin(\n2)}, {0.1*\n1*cos(\n2)} ) $ ) -- 
+	( $ (D) + ( {0.1*\n1*sin(\n2)+0.1*\n1*cos(\n2)}, {0.1*\n1*cos(\n2)-0.1*\n1*sin(\n2)} ) $ ) --
+	( $ (D) + ( {0.1*\n1*cos(\n2)}, {-0.1*\n1*sin(\n2)} ) $ );
+	
+	
+	%Pointillé depuis D
+	\draw[dashed] let\p1=($(D)-(O2)$),\n1={veclen(\x1,\y1)},
+	\n2={atan(\y1/\x1)} in (D) --++ ( {-\n1*sin(\n2)}, {\n1*cos(\n2)} );
+	
+	
+	\draw (O2) node{$\odot$};
+	\draw (O1) node{$\odot$};
+	\end{tikzpicture}

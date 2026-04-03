@@ -1,0 +1,18 @@
+\input{tikz.tex}
+\begin{document}
+    \begin{tikzpicture}
+        \draw[->] (-4,0) -- (4,0) node[right] {$f$ (log)};
+        \draw[->] (0,-3) -- (0,1) node[above] {$G_{\rm dB}$};
+
+        \draw[JoliRouge,thick] plot[domain=-4:4,samples=100] (\x, {2*log10(1/(1+(\x)^2))}) node[right] {$G_{\rm dB}$};
+
+        % fréquence de résonance
+        \draw[thick] (0,0) -- (0,0.1) node[above] {\contour{white}{$f_0$}};
+        % bande passante
+        \draw[thick, dashed,JoliBleu] (-4,-1) -- ++ (8,0) node[right] {\contour{white}{$-\SI{3}{dB}$}};
+
+        % écart Delta f
+        \draw[thick, <->] (-1.5,-1.1) -- (1.5,-1.1) node[midway, below] {\contour{white}{$\Delta f$}};
+
+    \end{tikzpicture}
+\end{document}

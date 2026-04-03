@@ -1,0 +1,13 @@
+\begin{tikzpicture}
+	\draw[xstep=0.5cm,ystep=0.5cm,color=gray!50](-5,-2) grid (2,1.5);
+	\draw(-5,-2) rectangle (2,1.5);
+	\foreach \x in {0,...,7}
+     		\draw (\x-5,-2cm+2pt) -- (\x-5,-2cm-3pt)
+			node[anchor=north] {\x};
+	\foreach \y in {0,...,3}
+     		\draw (-5cm+1pt,\y-2) -- (-5cm-3pt,\y-2)
+			node[anchor=east] {\y};
+	\draw(-2,-2.8)node[]{$t$ (\unit{s})};
+	\draw(-5.8,-0.5)node[rotate=90]{$u(t)$ (\unit{V})};
+	\draw [color=\AEFcouleurA,line width=1.5pt](-5,-1)--(-5,1)--(-4,1)--(-4,-1)--(-1,-1)--(-1,1)--(0,1)--(0,-1)--(2,-1);
+\end{tikzpicture}

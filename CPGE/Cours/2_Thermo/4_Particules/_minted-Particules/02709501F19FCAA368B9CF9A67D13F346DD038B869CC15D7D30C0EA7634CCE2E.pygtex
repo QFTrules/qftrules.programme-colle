@@ -1,0 +1,8 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{} DISTANCE MOYENNE QUADRATIQUE \PYGZdq{}\PYGZdq{}\PYGZdq{}}
+\PYG{k}{def} \PYG{n+nf}{dquad}\PYG{p}{(}\PYG{n}{Nstep}\PYG{p}{):}
+    \PYG{n}{xcarre} \PYG{o}{=} \PYG{p}{[]}                         \PYG{c+c1}{\PYGZsh{} initialisation tableau}
+    \PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{l+m+mi}{1000}\PYG{p}{):}               \PYG{c+c1}{\PYGZsh{} 1000 simulutions}
+        \PYG{n}{xcarre}\PYG{o}{.}\PYG{n}{append}\PYG{p}{(}\PYG{n}{marche}\PYG{p}{(}\PYG{n}{Nstep}\PYG{p}{))}    \PYG{c+c1}{\PYGZsh{} simultion d’une marche}
+    \PYG{k}{return} \PYG{n}{np}\PYG{o}{.}\PYG{n}{sqrt}\PYG{p}{(}\PYG{n}{np}\PYG{o}{.}\PYG{n}{mean}\PYG{p}{(}\PYG{n}{xcarre}\PYG{p}{))}     \PYG{c+c1}{\PYGZsh{} moyenne quadratique}
+\end{Verbatim}

@@ -1,0 +1,19 @@
+\def\E{5}
+\def\Omga{600}
+\def\ttau{0.018}
+\def\induc{0.0012}
+\def\ttaua{0.015}
+\def\ttaub{0.022}
+\begin{tikzpicture}
+          \begin{axis}[xmin=-0,xmax=0.08,ymin=-6,ymax=11, width=14cm,height=8cm, grid=both,ytick={-4,-2,0,2,4,6,8,10} ,xlabel={$t~[s]$},ylabel={$?(t) ~[$mA ou V$]$},
+        ylabel near ticks,
+        xlabel near ticks,
+        scaled x ticks=false,
+      legend style={at={(0.95,0.95)}}
+]
+              \addplot[very thick,red,domain=0:0.08,samples=320] {\E - exp(-x/\ttau)*(\E * cos(\Omga * x*180/3.14) + \E /(\Omga * (\ttau)) * sin(\Omga * x*180/pi) )};
+              \addplot[very thick,blue,dotted,domain=0:0.08,samples=320] {\E /(\induc * \Omga) * exp(-x / (\ttau*0.75)) * sin(2*\Omga * x * 180 / 3.14)};
+              \addplot[very thick,black,dashed,domain=0:0.08,samples=120] {\E /(\ttaub - \ttaua) * (\ttaub * exp(-x / \ttaub)  - \ttaua * exp(-x/\ttaua) ) }; 
+              \legend{courbe $a$,courbe $b$, courbe $c$}
+          \end{axis}
+\end{tikzpicture}

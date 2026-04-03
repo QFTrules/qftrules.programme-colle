@@ -1,0 +1,10 @@
+\shorthandoff{:!} %règle un problème de compatibilité avec babel
+\begin{tikzpicture}[scale=0.45]
+\begin{circuitikz}
+		\draw (0,0) node {$\bullet$} node [above left] {$B$};
+		\draw(0,0)--(2.5,0) to [R, l_=$\underline{Z}_2$] (2.5,1.5);
+		\draw (0,1.5) to [R, l_= $\underline{Z}_1$] (2.5,1.5);
+	    \draw (0,1.5) node {$\bullet$} node [above left] {$A$};
+\end{circuitikz} 
+\end{tikzpicture} 
+\shorthandon{:!}

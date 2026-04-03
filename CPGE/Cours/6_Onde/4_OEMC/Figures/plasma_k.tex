@@ -1,0 +1,19 @@
+% !TEX root = /home/eb/Dropbox/CPGE/Physique/Cours/[6]Pondes/[4]OndesCond/Figures/plasma_k.tex
+\input{/home/eb/Dropbox/texmf/tex/latex/Preambles/tikz.tex}
+\begin{document}
+
+\begin{tikzpicture}[scale=1.5]
+
+	\draw[axe] (0,0) -- ++ (5,0) node[right] {$\omega$};
+	\draw[axe] (0,0) -- ++ (0,2) node[above] {$\udl{k}$};
+	\draw (2.5,0.1) -- ++ (0,-0.2) node[below] {$\omega_p$};
+	\draw[JoliRouge,thick] (0,0) -- ++ (2.5,0);
+	\draw[JoliRouge,thick] plot[domain=2.5:5,samples=200] (\x,{0.5*sqrt(\x^2-2.5^2)}) node[above left] {\JRouge{$\re\,\udl{k}$}};
+	\draw[JoliBleu,thick,dashed] (2.5,0) -- ++ (2.5,0);
+	\draw[JoliBleu,thick,dashed] plot[domain=2.5:0,samples=200] (\x,{0.5*sqrt(-\x^2+2.5^2)}) node[above right] {\JBleu{$\im\,\udl{k}$}};
+	\node at (4,0.5) {OPPH};
+	\node at (1,0.5) {Évanescente};
+
+\end{tikzpicture}
+
+\end{document}

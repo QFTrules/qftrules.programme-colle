@@ -1,0 +1,987 @@
+% !TEX root = /home/eb/.vscode/extensions/qftrules.programme-colle/tmp/Exercice.tex
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][TD]{Résonance magnétique nucléaire}
+	La RMN (Résonance Magnétique Nucléaire) est une technique d'imagerie médicale basée sur la résonance magnétique de certains noyaux atomiques, notamment les protons présents dans l'eau. Dans cet exercice, on
+	étudie un proton, assimilé à un dipôle magnétique, dans le référentiel du laboratoire $(\Rcal)$. Le proton possède un moment magnétique $\M$ proportionnel à son moment cinétique $\Vec{\sigma}$ selon la relation $\M = \gamma \Vec{\sigma}$, où $\gamma = \SI{2.7e8}{rad.s^{-1}.T^{-1}}$ est le rapport gyromagnétique du proton. 
+	\parag{Précession de Larmor} On soumet le proton à un champ magnétique statique uniforme $\B_0 = B_0 \,\ez$.
+\begin{quest}
+\item Établir l'équation de précession vérifiée par  $\Vec{\sigma}$ dans le champ magnétique $\B_0$. On introduira la pulsation de Larmor $\omega_L = \gamma B_0$.
+Quelle est la trajectoire du vecteur $\Vec{\sigma}$ dans l’espace ?
+\item Évaluer la fréquence de Larmor $f_L$ pour un champ magnétique $B_0 = \SI{11.75}{T}$.
+% \item En RMN, on applique un champ magnétique alternatif $\B_1(t) = B_1 \cos(\omega t) \ex$ perpendiculaire à $\B_0$. En supposant que $B_1 \ll B_0$, déterminer la condition de résonance pour laquelle le proton absorbe de l'énergie du champ alternatif.
+\end{quest}
+
+\parag{Relaxation} On suppose le proton est initialement à l'équilibre dans le champ magnétique statique $\B_0$. À l’instant $t=0$, on applique un champ magnétique alternatif $\B_1(t) = B_1 \Vec{n}(t)$, d’amplitude $B_1 \ll B_0$ et de direction $\Vec{n}(t) = \cos(\omega t) \ex + \sin(\omega t) \ey$ perpendiculaire à $\B_0$. 
+\begin{quest}
+	\item Déterminer l’orientation
+	du moment magnétique $\M$ à l’équilibre dans le champ statique $\B_0$ dans l’hypothèse où $B_0 >0$. Sachant que le moment cinétique $\Vec{\sigma}$ provient du spin du proton, déterminer la valeur de $\mu_z$.
+	\item Déterminer l’équation différentielle vérifiée par $\M$ dans le champ magnétique total $\B(t) = \B_0 + \B_1(t)$. Quelles équations vérifient la composante $\mu_z$ et la composante transverse complexe $\mu_\perp = \mu_x + i\mu_y$ ?
+	 \sol{
+	L’équation s’obtient là encore à partir du TMC, soit 
+	\begin{equation*}
+\dd{\Vec{L}}{t} = \frac{1}{\gamma} \dd{\Vec{mu}}{t} = \M \pv \B(t) \Rightarrow  \dd{\M}{t}\, = \omega_L \M \pv \ez + \gamma B_1 \cos(\omega t) \M \pv \Vec{n}(t).
+	\end{equation*}
+	EN décomposant $\M$ en composante axiale et transverse, on trouve
+\begin{equation*}
+\left\{
+\begin{array}{l}
+\dd{\mu_z}{t} = \gamma B_1 \cos(\omega t) M_y,\\
+\dd{M_x}{t} = \omega_L M_y,\\
+\dd{M_y}{t} = -\omega_L M_x - \gamma B_1 \cos(\omega t) \mu_z.
+\end{array}
+\right.
+\end{equation*}
+	}
+\item Dans le référentiel tournant lié au champ tournant $\Vec{B}_1(t)$, la composante transverse du moment magnétique vaut $\mu_\perp’ =  \mu_\perp e^{-i\omega t}$. Déterminer l’équation vérifiée par $\mu_\perp’$ dans ce référentiel. La simplifier à la résonance, lorsque $\omega = \omega_L$.
+\sol{
+Dans le référentiel tournant, on trouve
+\begin{equation*}
+\left\{
+\begin{array}{l}
+\dd{\mu_z}{t} = \frac{\gamma B_1}{2} (\mu_\perp’ + \mu_\perp’^*),\\
+\dd{\mu_\perp’}{t} = i(\omega_L - \omega) \mu_\perp’ - i\frac{\gamma B_1}{2} \mu_z.
+\end{array}
+\right.
+\end{equation*}
+}
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][TD]{Définition de l'ampère}
+	\Notions{\item Force de Laplace \task Fil infini}
+Avant 2019, la définition légale de l'ampère était :
+\begin{center}
+	\begin{minipage}{0.8\textwidth}
+
+		\emph{
+			L’ampère est l'intensité d'un courant électrique qui, maintenu constant dans deux conducteurs parallèles, rectilignes, de longueur infinie, de section circulaire négligeable et placés à une distance de 1 mètre l'un de l'autre dans le vide, produit entre ces deux conducteurs une force égale à $2 \times 10^{-7} \mathrm{~N}$ par mètre de longueur.}
+		\end{minipage}
+\end{center}
+Montrer que cette définition revient à fixer la valeur de $\mu_0$, puis donner cette valeur. 
+% On rappelle l’expression de la force élémentaire de Laplace $\d \Vec{F} = I \dl \pv \Vec{B}.$
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][2]{Champ magnétique dans un câble coaxial}
+On considère un câble coaxial constitué d'un cylindre métallique plein de rayon $R_1$ et parcouru par un courant uniforme stationnaire d’intensité $I$, et d'une couche cylindrique périphérique de rayon interne $R_2>R_1$ et parcouru par un courant opposé. Entre $R_1$ et $R_2$ se trouve une matière isolante assimilée au vide. Ce câble est rectiligne d'axe $(Oz)$ et infiniment long. Soit $M(r,\theta,z)$ un point entre les cylindres, avec $R_1<r<R_2$.
+% Sa partie conductrice centrale transporte une intensité $i$ constante, dirigé selon $\vv{e_z}$ et sa partie périphérique transporte une intensité $i$ dans le sens opposé. Dans chacune des deux parties conductrices, la densité de courant est supposée uniforme. Soit $M$ un point où on calcul le champ magnétique créé : on note $r$ la distance entre $M$ et l'axe de l'ensemble.
+
+\begin{quest}
+\item Par une analyse des invariances et des symétries, déterminer les variables et les composantes du champ magnétique $\B$ au point $M$.
+\sol{
+Invariance par translation suivant $(Oz)$ et rotation autour de $(Oz)$, donc $\B(M) = \B(r)$. Tout plan $(M,\ez,\er)$ est un plan d'antisymétrie, et donc $\B(M) = B(r)\et$.
+}
+\item Déterminer l'expression complète de $\B$, et tracer l'allure du champ dans le câble.
+\sol{
+Théorème d'Ampère sur un cercle $\Gamma$ parcouru dans le sens trigonométrique, de rayon $r$ telle que $R_1<r<R_2$. On a
+$$
+\int_\Gamma \B \ps \d \ell = B(r) \times 2\pi r = \mu_0 I_{\rm enlacé}  = \mu_0 I
+$$
+car seul le courant du cylindre de rayon $R_1$ est enlacé. Donc
+$$
+\B(M) = \frac{\mu_0 I}{2\pi r} \et.
+$$
+}
+\end{quest}
+
+Dans toute la suite, on négligera la part de l'énergie magnétique emmagasinée dans l'âme (région $r<R_1$) et dans le blindage (région $R_2<r<R_3)$.
+\begin{quest}
+\item  Rappeler l'expression de la densité volumique d'énergie magnétique du champ, puis exprimer l'énergie magnétique $U_{\rm{m}}$ contenue dans une portion de longueur $\ell$ du câble.
+\sol{
+Densité d'énergie $u_m = \frac{B^2}{2\mu_0} = \frac{\mu_0 I^2}{8\pi^2 r^2}$. En intégrant sur une portion de câble de longueur $\ell$ comprise entre les rayons $R_1$ et $R_2$, on trouve
+$$
+U_m = \frac{\mu_0 I^2}{8\pi^2} 2\pi \ell \int_{R_1}^{R_2} \frac{1}{r^2} r \d r = \frac{\mu_0 \ell}{4\pi} \ln\left(\frac{R_2}{R_1} \right) I^2
+$$
+}
+\item En déduire l’inductance propre $L$ de cette portion, puis l'inductance linéique propre du câble $\Lambda = \frac{L}{\ell}$. \AN pour $R_1 = \SI{1}{cm}$ et $R_2 = \SI{2}{cm}$.
+\sol{
+Par définition de l'inductance propre, on a $U_m = \frac{1}{2} L I^2$, et donc
+$$
+L =  \frac{\mu_0 \ell}{2\pi} \ln\left(\frac{R_2}{R_1} \right) \Rar \Lambda =  \frac{\mu_0}{2\pi} \ln\left(\frac{R_2}{R_1} \right).
+$$
+}
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][devoir]{Applications de bobines magnétiques}
+
+	\Enonce{
+On considère dans cette partie un ensemble de deux bobinages représenté sur la \Fig{bob}. On s'intéresse au champ magnétique produit par ce bobinage et à quelques applications que peut avoir ce dispositif. Le bobinage peut être utilisé dans deux configurations en fonction du sens de parcours du courant : la configuration de Helmholtz, et la configuration de \guill{Holtzhelm}.
+\begin{fig}[bob]
+	\centering
+	\includegraphics[width=0.4\textwidth]{bobines_helm.jpg}
+	\capt{Ensemble de deux bobinages coaxiaux.}
+\end{fig}
+	}
+
+\subsection{Bobines de Helmholtz}
+
+\Enonce{
+\parag{Champ magnétostatique}
+On modélise chaque bobinage par un ensemble de $N$ spires circulaires de rayon $R$ et d'axe $(Oz)$. Les bobinages sont placées aux positions $z=\pm \textstyle\frac{d}{2}$ et parcourues par un courant d'intensité~$I$ dans le \emph{même sens}.
+On s'intéresse au champ magnétostatique produit sur l'axe $(Oz)$ noté  $\B(z)$.
+}
+\begin{quest}
+	\QR	{Faire un schéma de la situation. Montrer par des considérations de symétrie que $\B(z)=B(z)\ez$.}
+	{
+		On étudie les symétries du champ magnétostatique $\B(M)$ en  un point $M$  sur l’axe $(Oz)$.  On distingue deux plans d’anti-symétrie,
+		$$\Pi_1 = (M,\ez,\ex) \text{ et } \Pi_2 = (M,\ez,\ey).$$ Or $\B(M)  \in \Pi_A(M)$ et donc $\B(M) \in \Pi_1 \cap \Pi_2$, soit 
+		\eqbox{
+		\B(z) = B(z)\ez.
+		}
+	}
+\end{quest}
+\Enonce{
+On donne l'expression du champ magnétique axial $b(z)$ produit par un \emph{seul bobinage centré sur l’origine}, à une abscisse $z$ le long de l’axe de la spire,
+\begin{equation}
+	b(z) = \frac{\mu_0 N I}{2R} f\left( \frac{z}{R} \right), \text{ avec } f(x) = {(1+x^2)^{-3/2}}.
+\end{equation}
+}
+\begin{quest}
+	\QR	{Calculer le champ total $B(z)$ produit par les deux bobinages en fonction de $\mu_0$, $I$, $R$, $z$ et $d$.}
+	{
+	\udl{Principe de superposition}.
+	
+	Le champ total est la somme des champs engendrés par les bobinages individuels :
+	$$
+	B(z) = b\left(z-\frac{d}{2}\right) + b\left(z+\frac{d}{2}\right).
+	$$
+	Ainsi,
+	\eqbox{
+	B(z) = \frac{\mu_0 N I}{2R} \left[ f(z/R-d/2R) + f(z/R+d/2R) \right].
+	}
+	% $$
+	% B(z) = \frac{\mu_0 I}{2} \left( \frac{R^2}{(R^2+(z+d/2)^2)^{3/2}} + \frac{R^2}{(R^2+(z-d/2)^2)^{3/2}} \right)
+	% $$
+	}
+	\QR	{Calculer la dérivée $B’(z)$ en $z=0$. Commentaire ?}
+	{
+On voit que $B(z)$ est une fonction paire et donc la dérivée $B’(z)$ est impaire, d'où $B’(0)=0$. On peut le vérifier par le calcul :
+$$
+B’(0) =   \frac{\mu_0 N I}{2R^2} [f’(d/2R) + f’(-d/2R)],
+$$
+et
+$$
+f’(x) = -3x(1+x^2)^{-5/2} \Rightarrow f’(-d/R)=-f’(d/2R).
+$$
+On en déduit 
+\eqbox{
+B'(z=0) = 0.
+}
+	}
+	\QR	{Calculer la dérivée seconde $B^{\prime\prime}(z)$ en $z=0$. Montrer que le champ magnétostatique $B(z)$ est le plus uniforme possible au voisinage de l'origine lorsque $d=R$. Donner alors l'expression de la norme $B_0$ de ce champ à l'origine. Dans cette configuration, les bobines sont appelées \guill{bobines de Helmholtz}.}
+	{
+	On peut calculer la dérivée seconde du champ. On a déjà
+	$$
+	f^{\prime\prime}(x) = -3(1+x^2)^{-5/2} +15x^2(1+x^2)^{-7/2} = -3(1-4x^2)(1+x^2)^{-7/2},
+	$$
+	qui est une fonction paire.
+	Puis 
+	$$
+	B^{\prime\prime}(0) =  \frac{\mu_0 N I}{2R^3} [f^{\prime\prime}(d/2R) + f^{\prime\prime}(-d/2R)]=  \frac{\mu_0 N I}{R^3} f^{\prime\prime}(d/2R) 
+	$$
+	Le champ est plus uniforme possible au voisinage de l’origine à condition que 
+	$$
+	B^{\prime\prime}(0) = 0 \Rightarrow  f^{\prime\prime}(d/2R) =0 \Rightarrow \boxed{d=R}
+	$$
+	On a alors 
+	$$
+	B(z) = B_0 + O(z^3), \text{ avec } \boxed{B_0 = \frac{\mu_0 N I}{R}f(1/2) = \frac{8}{5\sqrt{5}} \frac{\mu_0 N I}{R}}.
+	$$
+	}
+ \end{quest}
+ \Enonce{
+ \parag{Mesure du rapport gyromagnétique}
+ Un faisceau d'électrons est accéléré sous une tension $U$ dans une cavité électrostatique, puis soumis au champ magnétostatique quasi-uniforme des bobines de Helmholtz, supposé orthogonal au vecteur vitesse initial. On note $B$ la norme (constante) de ce champ.}
+\begin{quest}
+	\QR {Déterminer la vitesse $v$ des électrons en sortie de la cavité électrostatique.}
+	{
+	TD : on utilise la conservation de l'énergie mécanique $\frac{1}{2}mv^2 + qV$. On en déduit
+	\eqbox{
+	v = \sqrt{\frac{2eU}{m}}.
+	}
+	}
+	\QR	{On admet que le mouvement d'un électron dans un champ magnétostatique uniforme est circulaire uniforme. Déterminer le rayon $\rho$ de la trajectoire du faisceau en fonction de $U$, $B$ et du rapport gyromagnétique de l'électron $\gamma=-e/2m$.}
+	{
+	TD. L’équation de précession donne
+	$$
+		\dd{\Vec{v}}{t} = -\frac{v^2}{\rho} \er = \frac{eB}{m} \ez \pv v \et = -\frac{eBv}{m} \er,
+	$$
+	et donc 
+	% \eqbox{
+	$$\rho = \frac{mv}{eB}.$$
+	En remplaçant $v$ par son expression, on trouve
+	\eqbox{
+	\rho =  \sqrt{\frac{2U}{|\gamma| B^2}}.
+	}
+	% }
+	}
+	\QR {En déduire une mesure de $\gamma$ sachant que l'expérience est réalisée avec une tension accélératrice $U=\SI{300}{V}$, deux bobines de rayon $R=\SI{5.0}{cm}$ comprenant chacune un total de $N=\SI{100}{spires}$ parcourues par un courant d'intensité $I=\SI{1.0}{A}$. Le rayon de la trajectoire vaut $\rho=\SI{4.6}{cm}$.}
+	{
+		Le champ magnétostatique produit par ces bobines vaut 
+		$$
+		B_0 = \frac{8}{5\sqrt{5}} \frac{\mu_0 N I}{R} = \SI{1.8}{mT}.
+		$$
+		On en déduit la valeur du rapport gyromagnétique
+		\eqbox{
+		\gamma = - \frac{2U}{B^2 \rho^2} = \SI{-8.8e10}{rad.s^{-1}.T^{-1}}.
+		}
+	}
+\end{quest}
+
+\subsection{Bobines de Holtzhelm}
+\Enonce{
+\parag{Champ magnétostatique}
+Ces spires circulaires sont maintenus parcourus par des courants opposés. La spire située en $z=-d/2$ est maintenant parcouru par courant d'intensité $-I$ ; celle située en $z=+d/2$ est toujours parcouru par courant d'intensité $+I$.
+}
+\begin{quest}
+	\QR	{Calculer le champ total $B(z)$ produit par les deux spires en fonction de $\mu_0$, $I$, $R$, $z$ et $d$.}
+	{
+	Idem que dans la première sous-partie mais avec un signe $-$, soit
+	\eqbox{
+	B(z) = \frac{\mu_0 N I}{2R} \left[ f(z/R+d/2R)  - f(z/R-d/2R) \right].
+	}
+	}
+	\QR {Calculer les dérivées seconde $B^{\prime\prime}(z)$ et troisième $B^{\prime\prime\prime}(z)$ en $z=0$. Montrer que le gradient de champ magnétostatique $B’(z)$ est le plus uniforme possible lorsque $d=\sqrt{3}\,R$.  Dans cette configuration, les bobines sont appelées \guill{bobines de Holtzhelm}.}
+	{
+	La dérivée seconde s’annule pour des raisons de parité. On peut le vérifier par le calcul,
+	$$
+	B^{\prime\prime}(z) =  \frac{\mu_0 N I}{2R^2} [f^{\prime\prime}(d/2R) - f^{\prime\prime}(-d/2R)] = 0.
+	$$
+	La dérivée troisième s’obtient par 
+	$$
+	f^{\prime\prime\prime}(x) = 15x(3 - 4x^2)(1+x^2)^{-9/2}.
+	$$
+	La dérivée troisième $B^{\prime\prime\prime}(z)$ s’annule lorsque 
+	$$
+	f^{\prime\prime\prime}(d/2R) = 0 \Rightarrow \boxed{d = \sqrt{3}R}. 
+	$$
+	}
+\end{quest}
+
+\Enonce{
+On admet que dans cette configuration, le champ magnétique axial au voisinage de l'origine a pour expression
+\begin{equation}
+	B(z) \simeq a z, \quad\text{avec}\quad a = \frac{48}{25\sqrt{5}} \frac{\mu_0 N I}{R^2}.
+\end{equation}
+
+\parag{Mesure du moment magnétique d'un aimant}
+On propose de mesurer le moment magnétique~$\mu$ d'un aimant. Pour cela, on place l'aimant sur une balance au centre de deux bobines en configuration \guill{Holtzhem}. Le moment magnétique de l'aimant pointe vers le haut, soit $\M=\mu \ez$. En l'absence de courant dans les bobines, la balance affiche la masse $m$ de l'aimant. En présence du courant d'intensité $I$, la masse affichée par la balance est \emph{diminuée} d’une quantité $\Delta m > 0$.
+}
+\begin{quest}
+	\QR{ Schématiser l'expérience. Expliquer qualitativement l'origine de la variation $\Delta m$ de la masse affichée.}
+	{
+		Une variation de masse affichée indique l'apparition d'une force qui s'exerce sur l'aimant. C'est bien sûr la résultante des forces que le gradient du champ magnétique exerce sur l'aimant.
+		\begin{fig}[]
+			\centering
+			\includegraphics[width=0.6\textwidth]{Dispo_exp.pdf}
+			\capt{}
+		\end{fig}
+		}
+	\QR {En écrivant l'équilibre des forces sur l'aimant, montrer que la relation entre  $g \Delta m$ et le gradient du champ $a=\partial_z B$ est linéaire. Donner l'expression de la pente de cette droite en fonction de $\mu$.}
+	{
+	Équilibre des forces : $0 = - g \Delta m   \ez + (\mu \ps \grad)\B = -  g \Delta m \ez + \mu a \ez$ donc
+	$$
+	g \Delta m =  a \mu.
+	$$
+	C'est une fonction linéaire de pente $\mu$.
+	}
+	\QR {On réalise l'expérience suivante. On modifie l'intensité du courant $I$, puis on mesure le gradient de champ magnétique $a=\partial_z B$ avec un teslamètre, et on reporte la valeur de la variation de masse~$\Delta m$. On obtient la courbe de la \Fig{mesure_M}.  En s'aidant de la régression linéaire (en rouge), déterminer numériquement le moment magnétique $\mu$ de l'aimant.}
+	{
+Pour varier $B$ et donc $a$, on modifie $I$ avec un générateur de courant. On doit trouver $\mu \sim \SI{1}{A.m^2}$.
+}
+\Enonce{
+\begin{fig}[mesure_M]
+	\centering
+	\includegraphics[scale=1.1]{cropped_p05.pdf}
+	\capt{Mesure du moment magnétique d'un aimant par la méthode du gradient de champ.}
+\end{fig}
+}
+
+\QR {L'aimant utilisé est en néodyme, de composition $\mathrm{Nd_2Fe_{14}B}$. Il
+ possède un volume $V=\SI{3.84}{cm^3}$, une masse volumique $\rho=\SI{7.6}{g.cm^{-3}}$, et une masse molaire $M=\SI{1,08e6}{g.mol^{-1}}$. En supposant que chaque molécule possède un moment magnétique égal au magnéton de Bohr $\muB= \SI{9.27e-24}{J.T^{-1}}$, estimer indépendamment $\mu$ et comparer à la valeur mesurée.}
+{
+Cours : $\mu \sim N \muB = \Na (\rho V) / M \muB \sim \SI{1}{A.m^2}$ également.
+}
+
+\end{quest}
+
+
+% \begin{quest}
+% 	\question	Montrer que cette expression est cohérente avec l'analyse dimensionnelle.
+% 	\question On note $\theta$ l'angle entre
+% \end{quest}
+
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][2][TD]{La pince ampérométrique}
+	\Notions{\item Symétries et invariances  \task  Théorème d’Ampère \task Inductance \task Énergie magnétique}
+	Une pince ampérométrique est un instrument de mesure de courants intenses (plusieurs milliers d'Ampère). La bobine torique est constituée de $N$ spires jointives de section rectangulaire. Soit $(Oz)$ l'axe de la bobine. La bobine est de hauteur $h$, de rayon interne $a$ et de rayon externe $b$. On introduit la base des coordonnées cylindriques $(\er, \et, \ez)$. Un courant continu d’intensité $i_1$ circule dans l'enroulement.
+%\begin{figure}[h!]
+\begin{center}
+	\includegraphics[width=0.5\columnwidth]{bobine_torique.png}
+\end{center}
+%\caption{Coupe d'une pince ampérométrique dans un plan d'axe $(Oz)$. La bobine forme un tore de section rectangulaire de rayons interne $a$ et externe $b$ et de hauteur $h$. Le courant $i_1$ qui parcourt l'enroulement est orienté dans le sens trigonométrique.}
+%\label{fig:pince}
+%\end{figure}
+
+\begin{quest}
+\item 
+% On souhaite déterminer l'inductance propre de la bobine. 
+À partir de considérations d’invariance et de symétries, et du théorème d’Ampère, déterminer la forme puis l'expression du champ magnétostatique $\Vec{B}_1(M)$ créé par le courant $i_1$ à l'intérieur de la bobine.
+\sol{
+	\udl{Invariances et symétries} : rotation autour de selon $(Oz)$ ; plan de symétrie $(M,\er,\ez)$. Ainsi,
+	\eqbox{
+		\Vec{B}_1(M) = B_1(r,z)\et.
+	}
+	\\ 
+	\udl{Théorème d'Ampère} : contour d'Ampère = cercle $\Gamma$ de rayon $r$ passant à l'intérieur des spires. On a alors 
+	$$
+	\oint_\Gamma \B_1 \cdot \dl = B_1(r)2\pi r = \mu_0 i_1 N,
+	$$
+	et donc 
+	\eqbox{
+		\Vec{B}_1(M) = \frac{\mu_0 i_1 N}{2\pi r}\et.
+	}
+}
+\item Calculer le flux de $\Vec{B}_1$ à travers les $N$ spires de la bobine, noté $\Phi_1$, et en déduire l'auto-inductance
+\begin{equation}
+L_1 = \frac{\mu_0 N^2 h}{2 \pi} \ln\left(\frac{b}{a} \right).
+\end{equation}
+\sol{
+Le flux à travers une spire vaut
+	$$
+	\vphi = \iint \B_1 \cdot \dS = h \frac{\mu_0 i_1 N}{2\pi} \int_a^b \frac{\d r}{r},
+	$$
+	et le flux total vaut donc 
+	$$
+	\Phi_1 = N \vphi = \frac{\mu_0 N^2 h}{2 \pi} \ln\left(\frac{b}{a} \right) i_1 = L_1 i_1,
+	$$
+	avec 
+	\eqbox{
+		L_1 = \frac{\mu_0 N^2 h}{2 \pi} \ln\left(\frac{b}{a} \right).
+	}
+}
+% \item Rappeler l'expression de la densité volumique d'énergie magnétique puis calculer l'énergie magnétique stockée dans la bobine.
+\sol{
+	La densité volumique d'énergie magnétique est donnée par
+	$$
+	e_{\rm m} = \frac{B^2}{2\mu_0}  =\frac{\mu_0 i_1^2 N^2}{8\pi^2 r^2}.
+	$$
+	On en déduit l'énergie magnétique total dans la bobine 
+	$$
+	\mc{E}_{\rm m} = \iiint e_{\rm m} \d V = \frac{\mu_0 i_1^2 N^2 h}{8\pi^2} \int_a^b \frac{\d r}{r} \int_0^{2\pi} \d \theta = \frac{\mu_0 i_1^2 N^2 h}{4\pi} \ln\left(\frac{b}{a} \right).
+	$$
+	On retrouve l'expression usuelle
+	\eqbox{
+		\mc{E}_{\rm m} = \frac{1}{2} L_1 i_1^2.
+	}
+}
+\item Un courant continu $i_2$ parcourt maintenant un fil porté par l'axe $(Oz)$. Déterminer le champ magnétostatique $\Vec{B}_2(M)$ créé par cette distribution de courant. Montrer que le flux de $\Vec{B}_2$ à travers la bobine est de la forme $\Phi_2 = M i_2$, où on déterminera $M$, appelé inductance mutuelle.
+\sol{
+	Il s'agit du champ magnétique créé par un fil infini, soit
+	\eqbox{
+		\Vec{B}_2(M) = \frac{\mu_0 i_2}{2\pi r}\et.
+	}
+Le flux de $\Vec{B}_2$ à travers la bobine se calcule de la même façon que pour $\Vec{B}_1$, et on trouve $\Phi_2 = M i_2$, avec
+\eqbox{
+	M =  \frac{\mu_0 N h}{2 \pi} \ln\left(\frac{b}{a} \right).
+}
+On voit qu'un courant $i_2$ alternatif induit un courant $i_1$ alternatif dans la bobine par induction électromagnétique. En mesurant $i_2$ on peut en déduire $i_1$. La loi de l'induction en circuit fermé donne 
+$$
+e = 0 = -\dd{\Phi}{t} = -L_1 \dd{i_1}{t} - M \dd{i_2}{t},
+$$
+ce qui implique $L_1i_1+Mi_2 = 0$ en régime sinusoïdal, et donc 
+\eqbox{
+	i_1 = -\frac{M}{L_1}i_2 = -\frac{i_2}{N}.
+}
+\begin{equation*}
+	M =  \frac{\mu_0 N h}{2 \pi} \ln\left(\frac{b}{a} \right).
+\end{equation*}
+}
+% \item Déterminer l’énergie magnétique stockée dans la bobine et retrouver l’expression de l’énergie magnétique volumique.
+% \item Un courant continu $I_2$ parcourt maintenant l'axe $(Oz)$. Déterminer le champ magnétique $\Vec{B}_2$ créé par cette distribution de courant. Montrer que le flux de $\Vec{B}_2$ à travers la bobine est de la forme $\Phi_2 = M i_2$, où on déterminera $M$, appelé inductance mutuelle.
+% \sol{
+% \begin{equation}
+% M =  \frac{\mu_0 N h}{2 \pi} \ln\left(\frac{b}{a} \right).
+% \end{equation}
+% }
+%\item
+%
+%\item Un courant sinusoïdal $i_2(t)=I_2 e^{i\omega t}$ parcourt l'axe $(Oz)$. Soit $i_1(t)=I_1 e^{i(\omega t +\phi)}$ le courant induit par $i_2$ dans l'enroulement de la bobine. On suppose que la bobine est de résistance nulle (elle est assimilable à un fil). Que vaut la force électromotrice d'induction $e_1$? Montrer que le déphasage vaut $\phi = \pi$ et que
+%\begin{equation}
+%I_1 = \frac{I_2}{N}
+%\end{equation}
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][colle]{Le solénoïde}
+	\Notions{\item Champ magnétostatique \task Auto-inductance}
+	On caractérise un solénoïde par le nombre de spires par unité de longueur $n=\textstyle\frac{N}{L}$. On se place dans la limite du solénoïde infiniment long selon l'axe $(Oz)$, soit $L\gg a$, de sorte qu'à l'intérieur du solénoïde on puisse négliger les effets de bords.
+
+	\begin{fig}
+		\centering
+		\includegraphics[width=0.5\textwidth]{solenoide.pdf}
+		% \capt{Solénoïde de $n=N/L$ spires par unité de longueur. Toujours orienter le courant !}
+		% \label{fig:gauss_sphere}
+	\end{fig}
+
+	\begin{quest}
+		\item	Déterminer les invariances et symétries de la distribution de courant.
+		\sol{
+
+
+			\begin{liste}
+				\item \udl{Invariance} : Le solénoïde  possède une symétrie cylindrique. La distribution de courants est donc invariante par rotation et translation selon l'axe $(Oz)$. Donc le champ ne dépend pas de $\theta$ ni de~$z$, soit par conséquent $\vv{B}(M)=\vv{B}(r)$.
+				\item \udl{Symétrie} : tout plan $\Pi_{\rm S}=(M,\er,\et)$ normal à $\vv{e_z}$ est un plan de symétrie de la distribution de courants, et donc le champ est orthogonal à ce plan, soit  $\vv{B}=B_z\vv{e_z}$.
+			\end{liste}
+			Finalement on en conclut qu'en tout point $M(r,\theta,z)$ on a 
+			\eqbox{
+			\vv{B}(M)=B_z(r)\vv{e_z}.
+			}
+			}
+		\item Définir un contour d’Ampère approprié et appliquer le théorème d’Ampère pour déterminer le champ magnétique à l'intérieur et à l'extérieur du solénoïde.
+
+		\sol{
+		 Utilisons alors le théorème d'Ampère pour calculer le champ. Puisque le champ est selon $\vv{e_z}$, il faut un contour qui passe par $M$ et dont une portion est parallèle à $(Oz)$. Le plus simple est ainsi de choisir un rectangle. Les portions verticales du contour sont orthogonales au champ ($\vv{B}\cdot\vv{\d l}_{\rm{vert}}=0$) et ne contribuent donc pas à la circulation.   Nous distinguons deux situations, selon que le contour sort du solénoïde ou pas.
+
+		\begin{fig}
+		\centering
+		\includegraphics[width=0.8\textwidth]{solenoide_ampere.pdf}
+		% \capt{Choix du contour d'Ampère pour le solénoïde supposé infini, dans le cas où le point $M$ est à l'intérieur du solénoïde $(r<a$) et dans le cas où il est à l'extérieur ($r>a$).}
+		% \label{fig:ampère_solénoide}
+		\end{fig}
+
+		\begin{liste}
+		\item Pour \udl{$r<a$}, le théorème d'Ampère donne
+		\begin{equation}
+		\int_{\Gamma}\vv{B}\cdot\vv{\d l}=B(r)h-B_{\rm{axe}}h=\mu_0 I_{\rm{enla}}=0
+		\end{equation}
+		car le contour est situé à l'intérieur de la bobine et il n'enlace donc aucun courant. Le champ dans le solénoïde est donc uniforme (indépendant de $r$) !
+		%et il vaut la valeur du champ sur l'axe (en $r=0$):
+		\begin{equation}
+		\vv{B}(r<a)=B_{\rm{axe}}\,\vv{e_z}.
+		\end{equation}
+
+		\item
+		Pour \udl{$r>a$}, le théorème d'Ampère donne
+		\begin{equation}
+		\int_{\Gamma}\vv{B}\cdot\vv{\d l}=B(r)h-B_{\rm{axe}}h=\mu_0 I_{\rm{enla}}=-\mu_0 N\frac{h}{L}I = -\mu_0 nhI,
+		\end{equation}
+		où $N\frac{h}{L}$ est le nombre de spires enlacées par le contour $\Gamma$.
+
+		\begin{remarque}
+		Attention au signe, ici $I_{\rm{enla}}<0$ car le contour est orienté dans le sens direct (inverse des aiguilles d’une montre) mais $I$ sort vers l’arrière du plan.
+		\end{remarque}
+		\end{liste}
+		\begin{equation}
+		\vv{B}(r>a)=(B_{\rm{axe}}-\mu_0 n I)\,\vv{e_z}.
+		\end{equation}
+		Le champ est aussi uniforme en dehors du solénoïde. En particulier il est égal à sa valeur en $r=\infty$, qui est nulle. On peut donc remplacer $\Vec{B}(r>a)$ par $\Vec{0}$, ce qui donne 
+		$B_{\rm axe} = \mu_0 n I$. Ainsi, à l'intérieur du solénoïde,
+		\eqbox{
+		\vv{B}=\mu_0 n I\,\vv{e_z}.
+		}
+
+		}
+
+	\item Déterminer l’auto-inductance $L$ du solénoïde.
+	\sol{
+		Le flux du champ magnétique à travers une spire vaut $\phi = B_{\rm{axe}}S = \mu_0 n I \pi a^2$. Le flux à travers $N$ spires vaut alors $\Phi = N\phi = \mu_0 n I N \pi a^2$. Par définition de l'auto-inductance, on a $\Phi = LI$, donc
+		% \begin{equation}
+		\eqbox{
+			L  = \mu_0 n N \pi a^2.
+			}
+		% \end{equation}
+	}
+	\end{quest}
+
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][TD]{Solénoïde en forme de tore}
+	$N$ spires sont enroulées sur un tore de section carrée de côté $a$ et de rayon moyen $R$. Elles sont parcourues par un même courant $i$, et on note $\Phi$ le flux total les traversant. On négligera les effets de bord et ainsi on supposera le tore infini dans la direction de son axe de révolution pour le calcul du champ.
+   \begin{quest}
+   \item Donner l'expression du champ magnétique en tout point de l'espace.
+   \item En déduire l'expression de l'inductance $L$ liant le flux $\Phi$ à travers l'ensemble des $N$ spires et du courant $i$. Simplifier l'expression pour $R\gg a$.
+   \item À partir de l'expression de l'énergie magnétique totale stockée dans le tore, retrouver l'expression précédente de $L$.
+   \end{quest}
+   \end{exo}
+   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][2][TD]{Oscillations de translation d'un dipôle magnétostatique}
+	\Notions{\item Dipôle magnétostatique \task Actions d'un champ extérieur}
+	Une spire circulaire de rayon $R$, de centre $O$ et de normale $\vv{e_x}$ est parcourue par un courant d'intensité constante $I$. On admet que le champ en un point $\rm M$ d'abscisse $x$ sur l’axe est de la forme
+	\begin{equation}
+	\Vec{B}(M) = \frac{\mu_0 I}{2} \frac{R^2}{(R^2 + x^2)^{3/2}} \ex.
+	\end{equation}
+	On place sur l'axe un dipôle magnétostatique de moment magnétique $\M$, et de masse $m$. Ce dipôle est libre de se déplacer en rotation comme en translation.
+	%\begin{figure}[h!]
+	%\centering
+	\begin{center}
+	\includegraphics[width=0.4\textwidth]{spire2.pdf}
+	\end{center}
+	%\end{figure}
+	Déterminer la position d'équilibre stable du dipôle magnétique et la période des petites oscillations en orientation et en position.
+	\sol{
+	Le moment des forces s'écrit $\Gamma = \Vec{\mc{M}} \pv \Vec{B}$ donc $\Vec{\mc{M}}$ tend à s'aligner avec le champ. Sur l'axe $x$, le champ est suivant $\ex$, donc $\Vec{\mc{M}}$ s'aligne suivant $\ex$. Puis la force vaut
+	$$
+	\Vec{F} = (\M \cdot \grad) \B = \mc{M} \dd{B_x}{x} \ex
+	$$
+	qui est dirigé suivant $-\ex$ si $x>0$ et suivant $+\ex$ si $x<0$. Donc le dipôle se déplace jusqu'à la position d'équilibre stable en $x=0$, où $\Vec{B}$ est maximal.
+	}
+	\end{exo}
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\begin{exo}[PC][3][colle]{Oscillations de rotation d'une petite bobine}
+	Une spire de rayon $R$ comportant $N$ enroulements est suspendue au centre d'un solénoïde idéal d'axe $(Ox)$ par un fil de torsion vertical d'axe $(Oz)$ et de constante de raideur $C$. Le solénoïde est composé de~$n$ enroulements par unité de longueur, et est parcouru par un courant uniforme stationnaire d'intensité $I$ dans le sens direct. L'axe de la spire est porté par un vecteur unitaire $\Vec{n}$ qui fait un angle $\theta$ avec l'axe $(Ox)$.  L'angle vaut initialement $\theta_0 \ll 1$.
+	\begin{quest}
+	\item Faire un schéma de la situation.
+	\item Un courant de même intensité $I$ et de même sens que celui du solénoïde circule dans la spire. Expliquer qualitativement ce qu'il se passe.
+	\item Exprimer le champ magnétique $\Vec{B}$ à l'intérieur du solénoïde, le moment d'inertie $J$ de la spire autour de l'axe $(Oz)$, ainsi que son moment magnétique $\M$.
+	\item Quelle équation différentielle vérifie l'angle $\theta$. Que vaut la période $T$ des petites oscillations ?
+	\item Pour un courant circulant dans le sens opposé, à quelle condition y a-t-il oscillations  ?
+	\end{quest}
+	\end{exo}
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\begin{exo}[PC][2][TD]{Mesure du champ magnétique terrestre}
+	%Un petit aimant, assimilable à un dipôle magnétique de moment $\vv{\mc{M}}$ subit lorsqu'il est plongé dans un champ magnétique $\vv{B}$ uniforme, un moment $\vv{\Gamma}=\vv{\mc{M}}\pv\vv{B}$.
+	On cherche à mesurer la norme de la composante horizontale $\vv{B_{\rm{H}}}$ du champ magnétique terrestre supposé uniforme en un point à la surface de la Terre. Pour cela on dispose d'un petit aimant monté sur pivot, mobile autour d'un axe sans frottement, assimilé à un dipôle magnétique de moment $\vv{\mc{M}}$. Ce petit aimant est placé au centre $O$ d'une bobine plate comportant $N$ spires circulaires de rayon $R$ et alimentée par un courant continu d'intensité $I$ réglable. Les rotations éventuelles du petit aimant sont mesurables sur un cercle gradué où sur la graduation $0$ le petit aimant est dans le plan horizontal de la bobine. On désigne par $B_{\rm{bob}}$ la norme du champ magnétique créé par la bobine.
+	\begin{quest}
+	\item Si aucun courant ne circule dans la bobine, dans quelle direction s'oriente le petit aimant ? Comparer avec la situation où un courant d'intensité $I$ circule dans la bobine. En notant $\alpha$ l'angle entre l'aimant et l'horizontale, en déduire une expression de $B_{\rm{H}}$. Faire l'application numérique pour $N=5$, $R=\SI{12}{cm}$, $I=\SI{0,38}{mA}$ et $\alpha=\SI{20}{\degree}$.
+	\item On utilise le même dispositif que précédemment mais cette fois on tourne la bobine de sorte que la position de référence du petit aimant soit perpendiculaire au plan de la bobine (autrement dit maintenant le plan de la bobine est selon la verticale). On suppose $I$ tel que $B_{\rm{bob}}<B_{\rm{H}}$.
+	\begin{enumerate}
+	\item Montrer que cette fois la position d'équilibre du petit aimant n'est pas modifiée par l'existence d'un courant $I$ dans la bobine.
+	\item Montrer en revanche que la période des petites oscillations du petit aimant, préalablement écarté de sa position d'équilibre, dépend du sens du courant dans le circuit. En appelant $T_+$ et $T_-$ les périodes des oscillations quasi-sinusoïdales observées pour les deux sens (à préciser), établir que $B_{\rm{H}}=\frac{T_+^2+T_-^2}{T_-^2-T_+^2}B_{\rm{bob}}$.
+	\end{enumerate}
+	\end{quest}
+	\end{exo}
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\begin{exo}[PC][3][TD]{Chaîne linéique de dipôles magnétiques}
+		\Notions{\item Spire de courant \task Moment magnétique \task Solénoïde}
+	Une chaîne linéique de dipôles magnétiques est répartie sur l'axe $(Oz)$ horizontal avec une densité uniforme $m$: un élément de longueur $\d z$ de la chaîne se comporte comme un dipôle magnétique de moment magnétique $\d\M=m\,\d z\,\ez$.
+	\begin{quest}
+	\item Quelle est a priori la direction du champ magnétique créé par cette distribution en un point quelconque de l'espace? Montrer également que la norme du champ ne dépend que de la distance $\rho$ à l'axe $(Oz)$.
+	\sol{
+	On demande implicitement une étude de symétrie et d’invariance. On peut associer à chaque dipôle magnétique une boucle élémentaire de courant d’axe $(Oz)$. On utilise les coordonnées cylindriques $(r,\theta,z)$, 
+	\begin{itemize}
+		\item \udl{Symétrie} : le plan $(M,\vv{e}_\rho,\ez)$ est un plan de symétrie de la distribution de courant, donc le champ magnétique est orthogonal à ce plan, soit $$\vv{B}(M)=B_z(M)\ez.$$
+		\item \udl{Invariance} : la distribution de courant est invariante par rotation autour de l'axe $(Oz)$ et par translation suivant $(Oz)$, donc le champ magnétique ne dépend pas de $\theta$ ni de $z$, soit 
+		\eqbox{
+		\vv{B}(M)=B_z(\rho)\ez.
+		}
+	\end{itemize}
+	}
+	\item Par un calcul direct, on cherche à vérifier que ce champ est nul.
+	\begin{enumerate}
+	\item Rappeler l'expression du champ magnétique $\vv{\d B}$ créé par un dipôle de moment magnétique $\d\M$.
+	 Démontrer que le champ axial créé par un élément de longueur $\d z$ en un point ${\rm M}$ de coordonnées sphériques $(r,\theta,\vphi)$ s'écrit
+	\begin{equation}
+	\d B_z(M) =\frac{\mu_0m}{4\pi r^3}(3\cos^{2}\theta-1)\d z.
+	\end{equation}
+	\sol{
+			On utilise la formule du cours,
+	\eqbox{
+	\vv{\d B}(M) = \frac{\mu_0}{4\pi}\frac{3(\d\M\cdot\vv{e_r})\vv{e_r}-\d\M}{r^3}.
+	}
+	Le champ est ici exprimé dans les coordonnées sphérique $(r,\theta,\vphi)$.
+		Il suffit de projeter l’expression précédent sur $\ez$, ce qui donne 
+		$$
+		\d B_z(M) = 
+		\frac{\mu_0}{4\pi} \frac{3(\d\M\cdot\vv{e_r})(\vv{e_r}\cdot\ez)-\d\M\cdot\ez}{r^3} = \frac{\mu_0 \d\mu}{4\pi} \frac{3(\vv{e_r}\cdot \ez)^2-1}{r^3},
+		$$
+		avec $\d\mu = m \d z$ et $\vv{e_r}\cdot \ez = \cos\theta$. On en tire l'expression demandée.
+		\eqbox{
+		\d B_z(M) =\frac{\mu_0m}{4\pi r^3}(3\cos^{2}\theta-1)\d z.
+		}
+	}
+	\item Intégrer en posant le changement de variable $u=\cos\theta$ et conclure.
+	\sol{
+	Le champ total s’obtient par intégration sur la chaîne de dipôles, soit
+	$$
+	B_z(\rho) = \int_{\rm chaine} \d B_z(M) =\int_{-\infty}^{+\infty} \frac{\mu_0m}{4\pi r^3}(3\cos^{2}\theta-1)\d z. 
+	$$
+	Attention car les variables $\theta$ et $r$ sont reliées à $z$ ! On doit se ramener à une seule variable d’intégration, i.e. $\theta$ puis $u=\cos\theta$. Par géométrie, on a
+	$$
+	r = \frac{\rho}{\sin \theta}, \quad \text{et} \quad
+	z = \frac{\rho}{\tan \theta}.
+	$$
+	Ainsi, on a
+	$$
+	\d z = \rho \frac{\d\theta}{\sin(\theta)^2},
+	$$
+	et donc 
+	$$
+	B_z(\rho) = \int_{-\pi}^{0} \frac{\mu_0m}{4\pi \rho^2} \sin \theta^3 (3\cos^{2}\theta-1)  \frac{\d\theta}{\sin(\theta)^2} = \frac{\mu_0m}{4\pi \rho^2} \int_{-\pi}^{0} (3\cos^{2}\theta-1) \sin \theta \d\theta.
+	$$
+	Puis l’on remarque que $\d u = - \sin \theta \d \theta$, ce qui donne 
+	$$
+	B_z(\rho) = \frac{\mu_0m}{4\pi \rho^2} \int_{-1}^{+1} (3u^2-1) \d u = \frac{\mu_0m}{4\pi \rho^2} \left[ u^3 - u \right]_{-1}^{+1} = 0.
+	$$
+	On en conclut que 
+	\eqbox{
+	\vv{B}(M) = \Vec{0}.
+	}
+	}
+	\end{enumerate}
+	\item Que peut-on en conclure concernant le champ magnétique créé par un solénoïde circulaire infiniment long, en un point extérieur supposé très éloigné de l'axe du solénoïde ?
+	\sol{
+	La chaîne de dipoles magnétiques est un modèle particulier de solénoïde infiniment long de rayon nul. Nous venons donc de montrer que le champ magnétique créé par un solénoïde infiniment long est nul en tout point à l’extérieur du solénoïde.
+	}
+	\end{quest}
+	\end{exo}
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][TD]{Mesure d'un moment magnétique}
+Il est possible de mesurer le moment magnétique $M$ d'un aimant en plaçant cet aimant dans un gradient uniforme de champ magnétique puis en mesurant la force exercée à l'aide d'une balance. Le champ magnétique $\vec{B}$ est créé par deux bobines coaxiales de rayon $R$ constituées de $N$ spires et parcourues par un courant $I$, celles-ci étant placées en position anti-Helmholtz. En très bonne approximation, le champ est alors donné par
+\begin{equation}
+\vec{B}(z) = \frac{48}{25\sqrt{5}} \frac{\mu_0 N I}{R^2} z \, \vec{e_z}
+\end{equation}
+où $z$ est l'abscisse le long de l'axe des bobines dirigé par $\vec{e_z}$, l'origine des abscisses étant situé à mi-distance entre les bobines.
+%\begin{figure}
+\begin{center}
+\includegraphics[scale=1]{cropped_p05.pdf}
+%\caption{Variation de la force mesurée par la balance $\Delta F = g \Delta m$ ($\Delta m$ est la masse affichée après avoir taré la balance en champ nul) en fonction du gradient du champ magnétique $\partial_z B$. Les données sont compatibles avec une modélisation linéaire $\Delta F = M_{\text{exp}} \partial_z B$ avec $M_{\text{exp}} = (3,64 \pm 0,01) \cdot
+%10^{-1}$ \units{A}{}{m}{2}.}
+%\label{fig:moment}
+\end{center}
+%\end{figure}
+
+\begin{quest}
+	\item Quel est le courant électrique maximal $I_{\text{max}}$ exploré pour obtenir la courbe expérimentale de la Fig.~\ref{fig:moment}, sachant que $N=95$, $R=6,5$ cm et $\mu_0 = 4\pi \cdot 10^{-7}$ SI? Justifier l'unité donnée au moment magnétique mesuré $M_{\text{exp}}$. En supposant que l'aimant utilisé possède un volume $V=(3,84 \pm
+0,03) \cdot 10^{-7}$ m$^3$, une masse volumique $\rho=(7,6 \pm 0,1)$ {g}{}{cm}{-3} et une masse molaire $m=(1,08 \pm 0,01 )\cdot 10^6$ {g}{}{mol}{-1}, et que chaque molécule a un moment magnétique élémentaire $\mu_B= 9,27 \cdot 10^{-24}$ {J}{}{T}{-1}, estimer $M$ et comparer à la valeur mesurée.
+	\item En réalité à température ambiante il y a une compétition entre l'agitation thermique d'énergie $k_B T$ et l'énergie potentielle magnétique $\pm \mu_B B$, le signe dépendant de l'orientation du moment magnétique par rapport au champ. Donner la probabilité qu'un moment élémentaire donné soit orienté dans le sens du champ (respectivement dans le sens opposé) en fonction du facteur de  Boltzmann puis donner l'expression de $M(B,T)$ dans un champ $B$ et à la température $T$. Estimer le rapport $\frac{k_B T}{\mu_B B}$.
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][2][TD]{Expérience de Stern-Gerlach}
+ Des atomes d'argent Ag portés à l'état gazeux sont contenus dans une enceinte chauffée à la température $T=\SI{1000}{K}$. Certains atomes sortent de l'enceinte par une petite ouverture, formant ainsi un jet atomique dans la direction~$(Ox)$. Ces atomes sont ensuite déviés par un champ magnétique de la forme $\B(M) = a z \ez$, avec $a = \SI{1.0}{T.mm^{-1}}$, produit par un électro-aimant de longueur $\ell = \SI{1.0}{cm}$. En sortie de la cavité, les atomes déviés d'un angle $\alpha$ sont détectés sur un écran placé à une distance $D = \SI{10}{cm}$ derrière la cavité.
+
+	% Prédiction de la physique classique
+	\begin{fig}[label]
+		\centering
+		\includegraphics[width=0.65\columnwidth]{Stern-Gerlach.pdf}\hspace{0.5cm}
+		\includegraphics[width=0.2\columnwidth]{SG_quantique_Ag.pdf}
+
+	\end{fig}
+
+	\begin{quest}
+		\item Déterminer l'expression de la force magnétique s'exerçant sur chaque atome dont la composante transverse du moment magnétique vaut $\mu_z$. 
+		En appliquant le PFD à un atome d'argent de vitesse~$v_0$ en sortie de de la cavité, montrer que la cote de l'impact de cet atome sur l'écran est donnée par 
+		\begin{equation}
+			z = \frac{ \mu_z D a \ell}{m v_0^2}.
+		\end{equation}
+
+		% D'après la physique classique, comment serait distribué la projection $M_z$ du moment magnétique ? En déduire sans calcul ce qu'on observerait en physique classique sur un écran placé en aval de la cavité.
+		\sol{
+		% Notons $\M$ le moment magnétique des atomes d'Ag et $\mu_z$ la composante suivant $z$ du moment. La force que subit un atome vaut
+		% \begin{equation}
+		% 	\F = (\M \ps \grad) \B = \mc{M}_z \dd{B}{z} \ez = \mc{M}_z a \ez.
+		% \end{equation}
+		   Le PFD appliqué à l'atome d'Ag de masse $m$ donne
+    \begin{equation}
+    \begin{cases}
+    m \dd{v_z}{t} & = 0 \\
+    m \dd{v_x}{t} & = \mu_z a.
+    \end{cases}
+    \end{equation}
+    On note $v_z(\ell) = \cte = v_0$ la vitesse axiale de l'atome en entrée de la cavité. On a de plus $v_x(t) = \frac{\mu_z a}{m} t$. En supposant $v_x\ll v_z$, l'atome sort de la région soumis au champ magnétique à l'instant $t \simeq \ell/v_0$ et donc
+    \begin{equation}
+    v_x(\ell) = \frac{\mu_z a \ell}{m v_0}.
+    \end{equation}
+    On trouve un angle de déviation en sortie de cavité
+    \begin{equation}
+      \tan \alpha = \frac{v_x(\ell)}{v_z(\ell)} = \frac{ \mu_z a \ell}{m v_0^2}.
+    \end{equation}
+    L'atome se déplace ensuite en ligne droite et frappe l'écran à une hauteur
+    \eqbox{
+      z = D \tan \alpha  = \frac{ \mu_z D a \ell}{m v_0^2}.
+    }  
+		}
+
+		\item Stern et Gerlach ont observé que le nombre d'impact d'atomes sur l'écran a l'allure suivante. De quelle nature est le moment magnétique de l'argent (orbital ou de spin) ? En déduire les valeurs du moment magnétique $\mu_z$ et du moment cinétique $J_z$. On rappelle l'expression de la vitesse quadratique moyenne d'un atome,
+		\begin{equation}
+			v_q = \sqrt{\frac{3 \kB T}{m}}.
+		\end{equation}
+		% \begin{fig}[]
+		% 	% \centering
+		% 	% \capt{}
+		% \end{fig}
+		\sol{
+			La cote correspond au maximum de la distribution d'impact est donnée par les atomes dont la vitesse est égale à la vitesse quadratique moyenne $v_q$. En remplaçant $v_0$ par $v_q$ dans l'expression de $z$, on trouve
+		% \begin{equation}
+		$$
+		z = \frac{ \mu_z D a \ell}{m v_q^2} = \frac{\mu_z D a \ell}{3 \kB T}.
+		$$
+		En en déduit le moment magnétique de l'atome d'argent
+		$$
+		\mu_z = \frac{3 \kB T z}{D a \ell} \simeq \pm \SI{1.8e-23}{J.T^{-1}} = \pm 2 \muB.
+		$$
+		}
+		% \item On reporduit l'expérience de Stern-Gerlach avec des atomes de fer, de configuration électronique $3d^6 4s^2$. Combien de pics d'impact observe-t-on sur l'écran ? Justifier.
+		%  \sol{
+		% 	Le remplissage électronique suivant la règle de Hund donne la configuration $3d^5 4s^2$ pour le fer, avec les 5 électrons du sous-niveau $3d$ de spin parallèle.
+		% 	La configuration électronique du fer correspond à un moment cinétique de spin $S=2$ et un moment cinétique de moment orbital $L=0$. Le nombre de pics d'impact correspond au nombre de valeurs possibles de la projection du moment cinétique total $J$ sur l'axe du champ magnétique, soit $2J+1$. Ici, $J=S=2$, donc on observe 5 pics d'impact.
+		%  }
+	\end{quest}
+	\textsc{Données :} $\kB= \SI{1.38e-23}{J.K^{-1}}$, $\hbar = \SI{1.05e-34}{J.s}$.
+
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{exo}[PC][2]{Chaîne linéique de dipôles magnétiques}
+% Une chaîne linéique de dipôles magnétiques est répartie sur l'axe $(Oz)$ horizontal avec une densité uniforme $\lambda$: un élément de longueur $\d z$ de la chaîne se comporte comme un dipôle magnétique de moment $\d\vv{\mc{M}}=\lambda \d z\,\vv{e_z}$.
+% \begin{quest}
+% \item Quelle est la direction du champ magnétique $\B$  créé par cette distribution en un point quelconque de l'espace? Montrer également que la norme du champ ne dépend que de la distance $r$ à l'axe $(Oz)$.
+% \item Par un calcul direct, on cherche à vérifier que ce champ est nul.
+% \begin{enumerate}
+% \item Rappeler l'expression du champ magnétique $\vv{\d B}$ créé par un dipôle de moment magnétique $\vv{\d\mc{M}}$ dirigé selon $\vv{e_z}$.
+% \item Démontrer que le champ créé par une seule spire s'écrit
+% $$\d \Vec{B} =\frac{\mu_0\lambda}{4\pi r^3}(3\cos^{2}\theta-1)\d z \ez.$$
+% \item Intégrer en posant le changement de variable $u=\cos\theta$ et conclure.
+% \end{enumerate}
+% \item Que peut-on en conclure concernant le champ magnétique créé par un solénoïde circulaire infiniment long, en un point extérieur supposé très éloigné de l'axe du solénoïde ?
+% \end{quest}
+% \end{exo}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][3][TD]{Le modèle d'Ising}
+	\Annale[Magnétisme : statique, induction et milieux]{C. Garing}{Ellipses. 1999}
+	On modélise un matériau ferromagnétique par un cristal unidimensionnel composé de $N$ atomes répartis régulièrement sur l'axe $(Ox)$ et séparés d'une distance constante $a$. On soumet le matériau à un champ magnétostatique uniforme et transverse $\B(M) = B_0 \, \ez$. Les atomes possèdent tous un moment magnétique de norme égal au magnéton de Bohr $\muB$ et orienté suivant l'axe $(Oz)$, soit $\M = \pm \muB \ez$. 
+
+	\begin{fig}[label]
+		\centering
+		\includegraphics[scale=1.1]{Ising_chaine.pdf}
+		%\capt{}
+	\end{fig}
+	\begin{quest}
+		\item Exprimer l'énergie d'interaction $\Etot$  d'un atome avec le champ magnétique extérieur. À l'équilibre thermodynamique, un état d'énergie $\Etot$ est peuplé avec une probabilité de Boltzmann $P(\Etot) = \frac{1}{Z} e^{-\Etot/\kB T}$. Déterminer la constante de normalisation $Z$, appelée fonction de partition, en fonction de $\muB$, $B_0$, $\kB$ et $T$.
+		\sol{
+		Comme les atomes sont indépendants, l'énergie d'interaction du cristal avec le champ magnétique extérieur s'écrit
+L'énergie d'interaction d'un atome avec le champ magnétique extérieur vaut
+% $$
+\eqbox{
+	\Etot = - \M \cdot \B = \pm \muB B_0.
+	}
+La probabilité d'occupation d'un état d'énergie $\Etot$ est donnée par la distribution de Boltzmann et doit être normalisée, soit 
+$$
+P(+\muB B_0) + P(-\muB B_0) = 1 \Rightarrow \frac{1}{Z} e^{-\muB B_0/\kB T} + \frac{1}{Z} e^{\muB B_0/\kB T} = 1 \Rightarrow \frac{2}{Z} \cosh\left(\frac{\muB B_0}{\kB T}\right) = 1,
+$$
+soit 
+\eqbox{
+Z = 2 \cosh\left(\frac{\muB B_0}{\kB T}\right).
+}
+% $$
+
+		}
+		\item En déduire le moment magnétique total du cristal $M_z$ à l'équilibre thermodynamique. Représenter le graphe de la fonction $M_z(B_0)$ pour différentes températures $T$. Étudier les limites $B_0$ faible et $B_0$ fort.
+		 \sol{
+			Le moment magnétique total du cristal s'obtient par la moyenne statistique
+$$
+M_z = N_+ + N_- = N \muB P(+\muB B_0) - N\muB P(-\muB B_0),
+$$
+soit 
+\eqbox{
+ M_z(B_0) = N \muB \tanh\left(\frac{\muB B_0}{\kB T}\right).
+}
+Le graphe est représenté ci-dessous. Étudions le comportement limite.
+\begin{fig}[label]
+	\centering
+	\includegraphics[width=0.7\columnwidth]{Ising.pdf}
+	%\capt{}
+\end{fig}
+\begin{itemize}
+	\item Si $\muB B_0 \ll \kB T$, alors $\tanh x \simeq x$ et donc $M_z \simeq N \frac{\muB^2}{\kB T} B_0$. Le moment magnétique est proportionnel au champ magnétique extérieur, suivant la loi de Curie,
+	\eqbox{
+		M_z \simeq \frac{C}{T} B_0, \quad \text{avec} \quad C = N \frac{\muB^2}{\kB}.
+		}
+	\item Si $\muB B_0 \gg \kB T$, alors $\tanh x \simeq 1$ et donc $M_z \simeq N \muB$. Le moment magnétique sature à la valeur maximale 
+	\eqbox{
+M_{\rm max} \simeq N \muB.
+	}
+\end{itemize}
+Ces propriétés sont caractéristiques d'un matériau paramagnétique.
+		 }
+	\end{quest}
+On prend maintenant en compte l'interaction magnétique entre les atomes. Dans l'approximation de champ moyen, on remplace le champ magnétique extérieur $B_0$ par un champ magnétique effectif $B_{\rm eff} = B_0 + \lambda M_z/ N$, où $\lambda$ est une constante de couplage.
+\begin{quest}
+	\item Estimer la constante de couplage $\lambda$ en considérant que l'interaction magnétique entre les atomes est de type dipôle-dipôle, et en ne prenant en compte que les atomes plus proches voisins. \AN~pour le fer de paramètre de maille $a \simeq \SI{0.3}{nm}$ ?
+	\sol{
+	Le champ magnétique produit par les deux atomes voisins autour d'un atome donné est de nature dipolaire :
+	$$
+	B_{\rm dip} \sim 2 \cdot \frac{\mu_0}{4\pi} \frac{\muB}{a^3} \sim \frac{\mu_0 M_z}{2\pi N a^3}.
+	$$
+	On en déduit la constante de couplage
+	\eqbox{
+\lambda \sim \frac{\mu_0}{2\pi a^3}.
+	}
+	Pour un cristal de fer, on trouve \fbox{$\lambda \sim \SI{1.9e21}{H.m^{-4}}$}.
+	}
+	\item Déterminer l'équation que doit vérifier $M_z$ à l'équilibre thermodynamique en champ extérieur nul $B_0=0$. La résoudre graphiquement et représenter le graphe de la fonction $M_z(T)$. Déterminer la température de Curie $T_c$, à laquelle le matériau subit une transition de phase ferromagnétique-paramagnétique. Sachant que la température de Curie du fer vaut $T_c \simeq \SI{1043}{K}$, estimer la constante de couplage $\lambda$ et en déduire la nature de l'interaction dominante entre les atomes de fer.
+	\sol{
+	En champ extérieur nul, le moment magnétique total du cristal s'obtient par la moyenne statistique
+$$
+M_z = N \muB \tanh\left(\frac{\muB \lambda M_z}{N \kB T}\right).
+$$
+Il s'agit d'une équation implicite pour $M_z$. En posant $x = \frac{M_z}{N \muB }$, on trouve
+% $$
+\eqbox{
+x = \tanh\left(\frac{\muB^2 \lambda}{\kB T} x\right).
+}
+% $$
+Il existe une solution non nulle pour $M_z$ (i.e. $x$ non nul) si et seulement si $\frac{\muB^2 \lambda}{\kB T} > 1$, soit $T < T_c$ avec
+\eqbox{T_c = \frac{\muB^2 \lambda}{\kB}.
+}
+Avec $T_c \simeq \SI{1043}{K}$, on trouve  
+\eqbox{
+\lambda \simeq \frac{\kB T_c}{\muB^2} \sim \SI{1.2e26}{H.m^{-4}}.
+}
+Les interactions entre les atomes de fer sont donc environ mille fois plus fortes que les interactions dipôle-dipôle ! L'interaction dominante entre les atomes de fer est dc d'origine quantique, et provient de l'interaction d'échange entre les électrons de spin parallèle.
+% En résolvant numériquement l'équation pour $M_z$, on trouve le graphe suivant.
+\begin{fig}[label]
+	\centering
+	% \includegraphics[width=0.7\columnwidth]{Ising_ferro.pdf}
+	%\capt{}
+\end{fig}
+	}
+\end{quest}
+\textsc{Données :} constante de Boltzmann $\kB= \SI{1.4e-23}{J.K^{-1}}$, magnéton de Bohr $\muB = \SI{9.3e-24}{J.T^{-1}}$.
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][TD]{Piège de Ioffé-Pritchard}
+	\Notions{\item Dipôle magnétostatique \task Spin \task Actions d'un champ extérieur}
+Le piège de Ioffé-Prichard est utilisé pour confiner des atomes, qui sont donc de charge électrique nulle, mais dont le cortège électronique possède un moment magnétique $\M$. Le piège est constitué de quatre fils rectilignes répartis symétriquement autour de l'axe $(Oz)$,
+et de deux bobines de Helmholtz d'axe $(Oz)$. On peut montrer que le champ magnétostatique  est porté par $(Oz)$ et s'écrit au voisinage de l'origine 
+% $$
+\begin{equation}
+	B_z(M) =  a (x^2+y^2) + b z^2,
+\end{equation}
+% $$
+avec $a>0$ et $b>0$ des constantes.
+
+\begin{quest}
+	\question Donner l'expression de l'énergie d'interaction $\Epot$ d'un atome placé dans un champ magnétostatique. À position fixée, pour quelle orientation de $\M$ le dipôle est-il en équilibre stable ? À quelle position le dipôle est-il en équilibre stable ? Cette position d'équilibre existe-t-elle pour le champ produit par le piège de Ioffé-Pritchard ?
+	\sol{
+		$\mc{E} = - \M \ps \B$ et donc l'énergie est minimale (configuration d'équilibre stable) si $\M$ est colinéaire et de même sens que $\B$. Une fois cette orientation stable adoptée, l'énergie $\mc{E} = - \mc{M}B$ est minimale (position d'équilibre stable) si $B$ est maximal. Le piège semble donc ne pas pouvoir piéger les atomes car le champ magnétique est minimal à l'origine !
+		}
+	\question En réalité, la projection du moment magnétique sur le champ magnétique est quantifiée en unité de $g \mu_B$, où $g$ est le facteur de Landé et $\mu_B$ le magnéton de Bohr. On notera $m$ appelé nombre quantique magnétique. Montrer que les atomes peuvent être piégés s'ils sont dans un état $mg<0$.
+	\sol{
+	Les atomes sont dans un état quantique telle que la projection de $\M$ dans la direction de $\B$ soit fixée à $mg \mu_B$. Alors
+	$$
+	\mc{E} = -mg\mu_B B_0 -mg\mu_B a r^2 - m g \mu_B b z^2 = \cte + \frac{1}{2}k_r r^2 + \frac{1}{2}k_z z^2,
+	$$
+	par analogie avec un oscillateur harmonique.
+	}
+	\question Dans ce cas, déterminer les pulsations d'oscillations des atomes $\omega_r$ et $\omega_z$ dans les directions radiale et axiale respectivement.
+	\sol{
+	La pulsation des oscillations vaut $\omega = \sqrt{\frac{k}{M}}$ avec $M$ la masse de l'atome, et donc
+ $$
+\omega_r =\sqrt{\frac{2|mg|\mu_B a}{M}}, \qquad \omega_r =\sqrt{\frac{2|mg|\mu_B b}{M}}.
+ $$
+	}
+\end{quest}
+
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][2][TD]{Précession d'un électron dans un champ magnétique}
+	\Notions{\item Moment magnétique orbital \task Spin \task Force de Lorentz}
+	Un électron, de charge $-e$ et de masse $m$, initialement au repos, est accéléré dans la direction $(Ox)$ sous une tension $U$. Il entre ensuite dans une cavité où règne un champ magnétostatique uniforme $\B_c(M) = B \ey$.
+
+
+\begin{quest}
+	\item
+	Déterminer le vecteur vitesse $\Vec{v}$ de l'électron lorsqu'il entre dans la cavité.
+	\sol{
+	Par conservation de l'énergie mécanique $E_m = \frac{1}{2}mv^2 + q V$ de l'électron, on trouve
+	$v=\sqrt{\frac{2eU}{m}}$. La vitesse est portée par $\ex$.
+	}
+	\item\label{quest:L} Rappeler l'expression de la force magnétique de Lorentz $\F_{\rm m}$ en fonction de $\Vec{v}$ et $\Vec{B}_c$. Montrer que la vitesse de l'électron vérifie l'équation de précession 
+	% $$
+	\begin{equation}
+		\dd{\Vec{v}}{t} = \Vec{\Omega}_c \pv \Vec{v},
+	\end{equation}
+	% $$
+	où l'on exprimera la pulsation cyclotron $\Vec{\Omega}_c$. De quelle nature est la trajectoire de l'électron ?
+	\sol{
+	Force de Lorentz magnétique
+	$$
+	\F_L = -e\Vec{v} \pv \B.
+	$$
+	Le PFD ci-dessus s'écrit aussi sous la forme
+	$$
+	\dd{\Vec{v}}{t} = \frac{-e}{m}\Vec{v} \pv \Vec{B} = \Vec{\Omega} \pv \Vec{v},
+	$$
+	avec $\Vec{\Omega} = \frac{e}{m}\B$ le vecteur pulsation de précession. L'équation ci-dessus s'appelle, de façon générale, équation de précession. Ici $\Omega = \frac{eB}{m}$ est la pulsation cyclotron.
+	On va utiliser le PFD comme en classe.
+	$$
+m\Vec{a} = m(\ddot{r}-r\dot{\theta}^2) \er + m(r\ddot{\theta} +2 \dot{r}\dot{\theta})\et + \ddot{z} \ez = -e\Vec{v} \pv \B = -e(\dot{r}\er + r\dot{\theta}\et + \dot{z}\ez) \pv B\ez = -eB(- \dot{r} \et + r \dot{\theta} \er).
+	$$
+	On obtient une solution en imposant $\ddot{\theta} = 0$ et $\dot{r}=0$. On obtient alors une vitesse orthoradiale $\Vec{v} = v \et = r \dot{\theta} \et$ avec
+	$$
+-m \frac{v^2}{r} \er = -eB v \er \Rightarrow r = \frac{mv}{eB}.
+	$$
+	Le mouvement est circulaire uniforme, avec un rayon de gyration $r$ donné par la formule précédente.
+	}
+
+	\item Que vaut le moment cinétique orbital $\Vec{L}$ de cet électron ? Rappeler la définition et l'expression du rapport gyromagnétique $\gamma$ de l'électron. Exprimer le moment magnétique orbital $\M$.
+
+	\item On superpose un champ magnétostatique axial $\B_p(M) = B \ez$ au champ initial, d'intensité $B$ identique. Montrer que le moment cinétique orbital $\Vec{L}$ vérifie une équation de précession de pulsation $\Omega_p = \Omega_c/2$, et que $L_z$ est une constante. Rappeler quelles sont les valeurs autorisées par la mécanique quantique pour la projection $L_z$ du moment cinétique orbital.
+	\sol{
+
+	 On va retrouver une équation de précession dans une situation plus générale, qui porte sur le moment cinétique orbital $\Vec{L}$. Pour cela, on peut voir l'électron sur sa trajectoire circulaire comme une boucle de courant. Cette boucle possède un moment magnétique $\Vec{M} = \gamma \Vec{L}$, d'après la définition du rapport gyromagnétique $\gamma$. Dans cette analogie, l'action magnétique qui s'exerce sur l'électron est un moment $\Vec{\Gamma} = \M \pv \B$. Le TMC donne alors
+	 $$
+\dd{\Vec{L}}{t} = \Vec{M} \pv \B = \gamma \Vec{L} \pv \B.
+	 $$
+}
+	% 	\item L'équation ainsi obtenue est appelée équation de précession. En comparant au résultat de la question \ref{quest:L}, déterminer l'expression de $\gamma$.
+% 	\sol{
+% 	On retrouve une équation de précession. Malheureusement, on ne peut pas trouver $\gamma$ avec cette métholde parce que pour un électron dans un champ magnétique, $\Vec{L}$ et $\Vec{B}$ sont toujours colinéaires, et donc $\Vec{L}$ est conservé. L'équation précédent devient triviale ($\Vec{0} = \Vec{0}$).
+%  }
+\item L'électron possède aussi un moment magnétique de spin $\Vec{\mu}=g\gamma\Vec{S}$, où $\Vec{S}$ est le moment cinétique de spin et $g=-2$ est le facteur de Landé de l'électron. Montrer que le spin $\Vec{S}$ vérifie une équation de précession dite de Larmor, de pulsation $\Omega_L = -\Omega_c$. Rappeler quelles sont les deux valeurs autorisées par la mécanique quantique pour la projection $S_z$ du spin. En déduire la valeur numérique de $\mu$.
+	\sol{
+	Par contre, le moment cinétique de spin est décrit par cette équation. On a en effet,
+	$$
+\dd{\Vec{S}}{t} = \Vec{\mu} \pv \B = g\gamma \Vec{S} \pv \B.
+	$$
+	Le spin précesse autour du vecteur $\B$ à la pulsation $\Omega= |g\gamma| B$. On parle de précession de Larmor. Cet effet est utilisé en RMN pour sonder les moments magnétiques des noyaux atomiques.
+\begin{center}
+	\includegraphics[width=0.2\textwidth]{larmor.png}
+\end{center}
+	}
+\end{quest}
+
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

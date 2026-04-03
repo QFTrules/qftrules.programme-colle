@@ -1,0 +1,81 @@
+\input{tikz.tex}
+
+\begin{document}
+\begin{tikzpicture}[scale=1.2]
+
+% Optical axis
+\def\oc{4}
+\def\fobj{2}
+\def\lensheight{2}
+\draw[->,>=latex] (-3,-0) -- ++(13,0) node[right] {$x$};
+
+% lens centers
+\coordinate (O1) at (0,0);
+\coordinate (O2) at (\oc+3,0);
+\coordinate (O3) at (\oc,0);
+
+%  lens from P
+\lens[$\mc{L}_1$]{(O1)}{\lensheight}
+\lens[$\mc{L}_2$]{(O2)}{\lensheight}
+\lens[$\mc{L}_3$]{(O3)}{\lensheight}
+
+% focus point
+\coordinate (F2) at ({\fobj + 2*(\oc-\fobj)},0);
+\coordinate (F1) at (\fobj,0);
+\coordinate (F1') at (-\fobj,0);
+\coordinate (F3) at ({\fobj+1.5*(\oc-\fobj)},0);
+
+
+
+
+% \def\ang{20}
+
+%  ray 1
+\def\ang{20}
+\draw[JoliRouge,thick,densely dashed]  (180+\ang:2.15) node[left,black] {$B$ à l'$\infty$} -- (0,0);
+\draw[JoliRouge,thick,densely dashed]  (0,0) -- (\ang:{\oc/cos(\ang)}) coordinate (D);
+% \draw[JoliRouge,thick,densely dashed] (D) -- ++ (\ang:1);
+% \draw[ray] (D) -- ++ (-40:3.5);
+
+%  ray 2
+\def\ang{20}
+\draw[ray] (F1') -- ++ (\ang:{\fobj/cos(\ang)}) coordinate (H);
+\draw[reverseray]  (F1') -- ++ (\ang:{-1/cos(\ang)});
+\draw[ray] (H) -- ++ ({\oc-1},0) coordinate (J);
+\draw[JoliRouge,thick] (J) -- ++ (1,0) coordinate (I);
+\draw[ray,shorten >= -84] (I) -- (F3);
+\draw[ray] (\oc+3,-1.44) -- ++ (2,1.3) node[below right,black] {$B'$ à l'$\infty$};
+
+% ray 3
+\draw[JoliRouge,thick,densely dashed,shorten <= -73, shorten >= -108] (\fobj,{\fobj*tan(\ang)}) -- (O3);
+
+% ray 4
+\draw[JoliRouge,thick,densely dashed,shorten <= -78, shorten >= -80] ({\fobj + 2*(\oc-\fobj)},-0.7) -- (O2);
+% \begin{scope}[rotate around={180:(F3)}]
+% \coordinate (K) at (\oc,0.9) ;
+% \end{scope}
+% \draw[ray] (F3) -- (K) node[right,black] {$B'$ à l'$\infty$};
+
+% image intermédiaire 
+\draw[->,>=latex,JoliVert] (F1) -- ++ (0,{\fobj*tan(\ang)}) node[above=0.1] {\contour{white}{$B_1$}};
+\draw[->,>=latex,JoliVert] (F2) -- ++ (0,-0.72) node[below=0.1] {\contour{white}{$B_3$}};
+
+
+% NODES
+\point[below=0.1]{(F1')}{$F_1$}
+\point[below=0.1]{(F1)}{$F_1'$}
+\point[above=0.1]{(F2)}{$F_2$}
+\point[above=0.1]{(F3)}{$F_3'$}
+
+\point[below right]{(O1)}{$O_1$}
+\point[below left]{(O3)}{$O_3$}
+\point[below right]{(O2)}{$O_2$}
+
+% angle theta
+% \draw[->,>=latex] (0:0.5*\fobj) arc[start angle=0,end angle=\ang,radius=0.5*\fobj] node[midway,right] {$\theta$};
+
+% \draw[->,>=latex] (0:\oc+0.2*\fobj) arc[start angle=180,end angle=155,radius=0.5*\fobj] node[midway,right] {$\theta'$};
+
+
+\end{tikzpicture}
+\end{document}

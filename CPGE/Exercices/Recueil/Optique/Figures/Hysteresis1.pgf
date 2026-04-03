@@ -1,0 +1,26 @@
+\begin{tikzpicture}
+
+\draw [-latex, thick] (-4,0) -- (4,0);
+\draw (4,0) node [below] {$u_{e}$};
+\draw [-latex, thick] (0,-2) -- (0,2);
+\draw (0,2) node [right] {$u_{s}$};
+
+\draw (0,1.5) node [above left] {$V_{\mathrm{sat}}$};
+\draw (0,-1.5) node [below left] {$-V_{\mathrm{sat}}$};
+\draw (1,0) node [below right] {$\beta V_{\mathrm{sat}}$};
+\draw (-1,0) node [below left] {$-\beta V_{\mathrm{sat}}$};
+
+\draw [color=bostonuniversityred,very thick] (-3,1.5) -- (-2.5,1.5);
+\draw [color=bostonuniversityred,very thick,stealth-stealth] (-2.6,1.5) -- (-1.9,1.5);
+\draw [color=bostonuniversityred,very thick,-stealth] (-2,1.5) -- (0.5,1.5);
+\draw [color=bostonuniversityred,very thick,-stealth] (0.4,1.5) -- (1,1.5) --  (1,0.75);
+\draw [color=bostonuniversityred,very thick,-stealth] (1,0.85) --  (1,-0.75);
+\draw [color=bostonuniversityred,very thick,stealth-] (-0.4,-1.5) -- (1,-1.5) --  (1,-0.65);
+\draw [color=bostonuniversityred,very thick,-stealth] (-0.3,-1.5) -- (-1,-1.5) --  (-1,-0.65);
+\draw [color=bostonuniversityred,very thick,stealth-] (-1,0.85) --  (-1,-0.75);
+\draw [color=bostonuniversityred,very thick] (-1,0.75) --  (-1,1.5);
+\draw [color=bostonuniversityred,very thick] (3,-1.5) -- (2.5,-1.5);
+\draw [color=bostonuniversityred,very thick,stealth-stealth] (2.6,-1.5) -- (1.9,-1.5);
+\draw [color=bostonuniversityred,very thick] (2,-1.5) -- (1,-1.5);
+
+\end{tikzpicture}

@@ -1,0 +1,48 @@
+% !TEX encoding = UTF-8 Unicode
+% experiénce des trous d'young
+% © J.Roussel 2017-10-10
+%-------------------------------------------
+\documentclass[11pt]{article}
+\input{/home/eb/Dropbox/texmf/tex/latex/Preambles/styles_ondes.tex}
+\begin{document}
+
+
+
+	
+\begin{tikzpicture}[]
+
+\begin{axis}[colormap/blackwhite,	%du noir et blanc pour les couleurs
+   view={0}{90},		%vue de dessus
+   % width=10cm, height=2cm,	%je ne sais pas trop
+   xmin=0, xmax=20,
+   ymin=-10, ymax=10, 		%les limites des axes
+   samples=100,			%le nombre d'echantillons
+   hide axis]			%cache les axes
+   \addplot3[domain=0:10,domain y=-10:105, surf,shader=interp]{cos(360*(sqrt(x^2+(y-2)^2))+cos(360*(sqrt(x^2+(y+2)^2))};
+\end{axis}
+
+
+\end{tikzpicture}
+	% \begin{axis}[
+% 		% scale only axis,
+% 		grid=major,
+% 		axis lines=middle,% bottom,top
+% 		inner axis line style={=>},
+% 		xlabel style={anchor=west},
+% 		ylabel style={anchor=south},
+% 		xlabel={$z$},
+% 		ylabel={$p$},
+% 		xtick={1,2.3,4.6},
+% 		xticklabels={$H$,$2.3H$,$4.6H$},
+% 		ytick={4,1.47,0.4,0.04},
+% 		yticklabels={$p_0$,$0.37p_{0}$,$0.1p_0$,$0.01p_0$},
+% 		ymin=0,
+% 		ymax=4.5,
+% 		xmin=0,
+% 		xmax=5,]
+% 		\addplot+[mark=none,domain=0:5,samples=100]{(4)*(exp(-x))};
+% 		\addplot+[mark=none,domain=0:4,samples=15]{4-4*x};
+% 	\end{axis}
+%
+
+\end{document}

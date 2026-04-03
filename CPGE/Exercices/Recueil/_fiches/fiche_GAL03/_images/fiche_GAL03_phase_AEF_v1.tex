@@ -1,0 +1,17 @@
+\begin{tikzpicture}
+	\draw[xstep=0.5cm,ystep=0.5cm,color=gray!50](-5,-2) grid (5,2);
+	\draw(-5,-2) rectangle (5,2);
+	\foreach \x in {0,...,10}
+     		\draw (\x-5,-2cm+2pt) -- (\x-5,-2cm-3pt)
+			node[anchor=north] {\x};
+	\foreach \y in {-2,...,2}
+     		\draw (-5cm+1pt,\y) -- (-5cm-3pt,\y)
+			node[anchor=east] {\y};
+	\draw(0,-2.8)node[]{Temps (\unit{s})};
+	\draw(-5.8,0)node[rotate=90]{Tension (\unit{V})};
+	\draw [dashed,domain=-5:5,samples=500,color=\AEFcouleurB,line width=1.5pt] plot (\x,{1.5*sin(2*pi/3*(\x+1) r)});
+	\draw [domain=-5:5,samples=500,color=\AEFcouleurA,line width=1.5pt] plot (\x,{1.5*sin(2*pi/3*(\x+2) r)});
+	\draw(6,-0.5)rectangle(8,0.5);
+	\draw[color=\AEFcouleurA,line width=1.5pt](6.2,0.3)--(6.7,0.3)node[right]{$u_1(t)$};
+	\draw[dashed,color=\AEFcouleurB,line width=1.5pt](6.2,-0.3)--(6.7,-0.3)node[right]{$u_2(t)$};
+\end{tikzpicture}

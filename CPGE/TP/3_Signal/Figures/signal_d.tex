@@ -1,0 +1,17 @@
+\input{tikz.tex}
+\begin{document}
+\begin{tikzpicture}
+
+\draw[axe] (0,0) -- ++ (6.1,0) node[right] {$t$};
+\draw[axe] (0,-1.5) -- ++ (0,3) node[above] {$s_d(t)$};
+
+% omega porteuse
+\def\omegap{2*3.14*5}; % 1 Hz
+% omega signal
+\def\omegas{2*3.14*0.5}; % 0.5 Hz
+% amplitude signal
+\def\A{2};
+
+\draw[JoliRouge] plot[domain=0:6,smooth,samples=300] function{\A * 0.5 * sin(\omegas * x)} ;
+\end{tikzpicture}
+\end{document}

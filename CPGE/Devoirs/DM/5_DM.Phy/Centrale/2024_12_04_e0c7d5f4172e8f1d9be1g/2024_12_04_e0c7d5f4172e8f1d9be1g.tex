@@ -1,0 +1,355 @@
+\documentclass[10pt]{article}
+\usepackage[french]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[version=4]{mhchem}
+\usepackage{stmaryrd}
+\usepackage{graphicx}
+\usepackage[export]{adjustbox}
+\graphicspath{ {./images/} }
+\usepackage{bbold}
+
+\begin{document}
+\section*{2024 - INP - MP - Physique \\
+ Proposition de correction}
+\section*{PARTIE I - Dualité onde-corpuscule pour la lumière}
+Q1. a) La relation de Planck-Einstein permet d'écrire : \(E=h v=\frac{h c}{\lambda}\).\\
+La relation de de Broglie permet d'écrire : \(\vec{p}=\hbar \vec{k}=\frac{h}{\lambda} \vec{e}_{z}\).\\
+Q1. b) On utilise la relation de Planck-Einstein : \(E=\frac{h c}{\lambda}\).\\
+AN. \(E=\frac{6,63 \cdot 10^{-34} \times 3,00 \cdot 10^{8}}{475 \cdot 10^{-9}}=4,2 \cdot 10^{-19} \mathrm{~J}=2,6 \mathrm{eV}\).\\
+Q2. a) L'inégalité d'Heisenberg spatiale s'écrit: \(\Delta x \Delta p_{x} \geq h\).\\
+Or la position selon \(x\) de la particule qui passe à travers la fente a une indétermination de l'ordre de la largeur de la fente, c'est-à-dire \(\Delta x=2 r\).\\
+On a donc : \(\Delta p_{x} \geq \frac{h}{2 r}\). Ainsi la vitesse selon \(x\) n'est pas nulle et ily a bien forcément une ouverture angulaire.\\
+Q2. b) L'ouverture angulaire est caractérisée par la valeur de \(p_{x}\).\\
+On a : \(\sin \left(\frac{\theta}{2}\right) \simeq \frac{\theta}{2}=\frac{p_{x}}{p} \geq \frac{h}{2 r} \cdot \frac{\lambda}{h}=\frac{\lambda}{2 r}\).\\
+L'ouverture angulaire est donc: \(\theta \sim \frac{\lambda}{r}\).\\
+On retrouve bien l'expression connue pour le phénomène de diffraction.\\
+\includegraphics[max width=\textwidth, center]{2024_12_04_e0c7d5f4172e8f1d9be1g-01}
+
+Q3. On peut citer l'effet photoélectrique comme mise en évidence de l'aspect corpusculaire de la lumière.\\
+Q4. Pour que l'effet photoélectrique soit possible, il faut que le photon ait une énergie supérieure au travail d'extraction du métal pour qu'un électron puisse s'extraire. Il faut donc: \(E>W_{e}\).
+
+Les métaux subissant un effet photoélectrique avec la lumière bleue précédente sont donc le césium Cs, le sodium Na et le potassium K .
+
+L'électron est extrait avec une énergie cinétique correspondant à la différence entre l'énergie du photon et le travail d'extraction: \(E_{c}=\frac{1}{2} m v^{2}=E-W_{e}\).\\
+La vitesse d'un électron extrait est donc : \(v=\sqrt{\frac{2\left(E-W_{e}\right)}{m}}\).\\
+La vitesse maximale correspond au travail d'extraction le plus faible, c'est-à-dire pour le césium.\\
+On a alors : \(v=\sqrt{\frac{2 \times(2,6-1,15) \times 1,6 \cdot 10^{-19}}{9,11 \cdot 10^{-31}}}=7,1 \cdot 10^{5} \mathrm{~m} \cdot \mathrm{~s}^{-1}=7,1 \cdot 10^{2} \mathrm{~km} \cdot \mathrm{~s}^{-1}\).\\
+On a bien \(v \ll c\), les électrons sont bien non-relativiste et l'expression de l'énergie cinétique utilisée est bien correcte.
+
+Q5. a) L'énergie de la source optique s'écrit : \(E=\mathcal{P} \Delta t=N_{\mathrm{ph}} E_{\mathrm{ph}}=\frac{N_{\mathrm{ph}} h c}{\lambda}\).\\
+On a donc : \(N_{\mathrm{ph}}=\frac{\mathcal{P} \Delta t \lambda}{h c}\) avec \(\Delta t=1 \mathrm{~s} . \quad \underline{\mathrm{AN}} . \quad N_{\mathrm{ph}}=\frac{1 \cdot 10^{-3} \times 1 \times 632,8 \cdot 10^{-9}}{6,63 \cdot 10^{-34} \times 3,00 \cdot 10^{8}}=3 \cdot 10^{15}\) photons.
+
+Q5. b) On a un détecteur pour lequel : \(\Delta t=1 \mathrm{ps}=1 \cdot 10^{-12} \mathrm{~s}\) et on veut \(N_{\mathrm{ph}}=1\) photon.\\
+On a : \(\mathcal{P}=\frac{N_{\mathrm{ph}} h c}{\Delta t \lambda} . \quad \underline{\text { AN. }} \quad \mathcal{P}=\frac{1 \times 6,63 \cdot 10^{-34} \times 3,00 \cdot 10^{8}}{1 \cdot 10^{-12} \times 632,8 \cdot 10^{-9}}=3 \cdot 10^{-7} \mathrm{~W}=0,3 \mu \mathrm{~W}\).
+
+Q5. c) Dans le cas décrit, les photons arrivent un par un sur l'écran, on voit alors se dessiner point par point une figure d'interférences discrétisée qui va tendre vers la figure d'interférence habituelle des fentes d'Young pour un grand nombre de photons.
+
+Q5. d) L'interprétation probabiliste de la figure d'interférence est la probabilité pour un photon de prendre un chemin qui amène à l'écran. Les zones lumineuses correspondent aux chemins ayant une forte probabilité d'être pris alors que les zones sombres correspondent aux chemins de faibles probabilités.
+
+Pour avoir une figure d'interférences il faut avoir une somme d'ondes, le principe de superposition s'applique donc aux amplitudes de probabilités qui sont correspondent aux fonctions d'onde.
+
+\section*{PARTIE II - Interférences lumineuses à \(\mathbf{2}\) ou \(\mathbf{3}\) ondes}
+Q6. a) Le faisceau lumineux est séparé en deux par les deux fentes, on a donc une division interférentielle du front d'onde.
+
+On peut placer l'écran à différentes positions pour observer les interférences, elles sont donc non-localisées.\\
+Q6. b) Avec l'hypothèse \(D \gg x\) et \(D \gg a\), on peut considérer les deux rayons parallèles entre eux.
+
+On trace alors la surface d'onde partant de \(O_{1}\) et coupant le rayon \(O_{2} \mathrm{M}\) au point H .
+
+La différence de marche est alors la distance \(\mathrm{O}_{2} \mathrm{H}\).\\
+Par trigonométrie on trouve : \(\delta=a \sin \theta\).\\
+En considérant le rayon moyen, par trigonométrie, on a : \(\tan \theta=\frac{x}{D}\).\\
+\includegraphics[max width=\textwidth, center]{2024_12_04_e0c7d5f4172e8f1d9be1g-03(1)}
+
+En faisant l'approximation des petits angles, on trouve alors : \(\delta=\frac{a x}{D}\).\\
+Les deux sources secondaires \(O_{1}\) et \(O_{2}\) proviennent de la même source principale par division du front d'onde, elles sont donc cohérentes et de même amplitude.\\
+On peut alors appliquer la formule de Fresnel : \(I(M)=2 I_{0}\left(1+\cos \left(\frac{2 \pi \delta}{\lambda}\right)\right)=I_{\max }\left(1+\cos \left(\frac{2 \pi a x}{\lambda D}\right)\right)\).\\
+Ou encore : \(I(M)=2 I_{0}(1+\cos (\varphi))\) avec \(\varphi=2 \pi \frac{a x}{\lambda D}\).
+
+Q7. a) Sur l'écran on observe la figure d'interférence de trous d'Young, c'est-à-dire des franges verticales régulièrement espacées dans la tache de diffraction, représentée ci-contre.\\
+L'interfrange \(i\) est la périodicité spatiale de l'intensité calculée dans la question précédente, c'est donc la périodicité du terme \(\cos \left(\frac{2 \pi a x}{\lambda D}\right)\), on a donc: \(i=\frac{\lambda D}{a}=\frac{c D}{a v}\).\\
+\includegraphics[max width=\textwidth, center]{2024_12_04_e0c7d5f4172e8f1d9be1g-03}
+
+Q7. b) Les fentes d'Young se comportent comme un ensemble de trous d'Young accolés les uns aux autres. Les différences de marches changent pour chaque couple de trous, mais entrainent la même figure d'interférences.
+
+Ainsi, les figures se superposant, on retrouve la même figure d'interférence mais bien plus lumineuse.\\
+La différence entre les fentes d'Young et les trous d'Young provient uniquement de la figure de diffraction qui a une symétrie rectiligne au lieu de circulaire.
+
+Q8. a) L'intensité élémentaire s'écrit : \(d I=J_{v} d v=\frac{I_{0}}{\Delta v} d v\).\\
+On reprend le calcul d'intensité précédent : \(d I(M)=\frac{I_{0}}{\Delta v} d v\left(1+\cos \left(\frac{2 \pi \delta}{\lambda}\right)\right)=\frac{I_{0}}{\Delta v} d v\left(1+\cos \left(\frac{2 \pi \delta}{c} v\right)\right)\).\\
+L'intensité totale s'écrit donc: \(I(M)=\int_{v_{0}-\frac{\Delta v}{2}}^{v_{0}+\frac{\Delta v}{2}} d I(M)=\frac{I_{0}}{\Delta v} \int_{v_{0}-\frac{\Delta v}{2}}^{v_{0}+\frac{\Delta v}{2}}\left(1+\cos \left(\frac{2 \pi \delta}{c} v\right)\right) d v\).\\
+D'où : \(I(M)=\frac{I_{0}}{\Delta v}\left[\Delta v+\frac{c}{2 \pi \delta}\left[\sin \left(\frac{2 \pi \delta}{c}\left(v_{0}+\frac{\Delta v}{2}\right)\right)-\sin \left(\frac{2 \pi \delta}{c}\left(v_{0}-\frac{\Delta v}{2}\right)\right)\right]\right]\).\\
+En utilisant la formule de trigonométrie fournie : \(I(M)=\frac{I_{0}}{\Delta v}\left[\Delta v+\frac{c}{\pi \delta} \sin \left(\frac{\pi \delta}{c} \Delta v\right) \cos \left(\frac{2 \pi \delta}{c} v_{0}\right)\right]\).\\
+Et donc finalement : \(I(M)=I_{0}\left[1+\frac{c}{\pi \delta \Delta v} \sin \left(\frac{\pi \delta}{c} \Delta v\right) \cos \left(\frac{2 \pi x}{i}\right)\right]\) avec \(i=\frac{c}{\delta v_{0}}=\frac{c D}{a v_{0}}\).\\
+Et donc: \(I(M)=\frac{I_{\max }}{2}\left[1+\operatorname{sinc}\left(\frac{\pi \delta}{c} \Delta v\right) \cos \left(\frac{2 \pi x}{i}\right)\right]\).\\
+Q8. b) En comparant le résultat à l'expression fournie, on obtient la visibilité : \(V(M)=\operatorname{sinc}\left(\frac{\pi \delta}{c} \Delta v\right)\).\\
+Q8. c) La longueur de cohérence \(L\) correspond à la différence de marche produisant la première annulation de la visibilité.\\
+On a donc la première annulation de \(\sin \left(\frac{\pi \delta}{c} \Delta v\right)\) pour une différence de marche non nulle : \(\frac{\pi L}{c} \Delta v=\pi\).\\
+On a donc: \(L=\frac{c}{\Delta v}\).\\
+On calcule l'ordre d'interférence correspondant : \(p=\frac{L}{\lambda}=\frac{c}{\Delta v \lambda}\).\\
+On calcule l'écart d'ordre d'interférence : \(\Delta p=p_{0}-p=\frac{c}{\Delta v}\left(\frac{1}{\lambda_{0}}-\frac{1}{\lambda_{0}+\frac{\Delta \lambda}{2}}\right)=\frac{c}{\Delta v} \frac{\frac{\Delta \lambda}{2}}{\lambda_{0}\left(\lambda_{0}+\frac{\Delta \lambda}{2}\right)} \simeq \frac{c}{\Delta v} \frac{\Delta \lambda}{2 \lambda_{0}^{2}}=\frac{1}{2}\).\\
+On retrouve bien un écart d'ordre d'interférence de \(\frac{1}{2}\), ce qui correspond bien à la condition de brouillage.\\
+Q8. d) La durée de cohérence est : \(\tau=\frac{L}{c}=\frac{1}{\Delta v}\).\\
+Q8. e) On ne peut observer d'interfrange que dans l'intervalle où l'on ne brouille pas.\\
+La différence de marche doit donc rester inférieure à la longueur de cohérence.\\
+On a donc: \(\delta_{\max }=\frac{a x_{\max }}{D}= \pm L\).\\
+D'où : \(x_{\text {max }}= \pm \frac{L D}{a}\).\\
+L'intervalle de positions sur lequel on peut observer les franges est donc: \(\Delta x=\frac{2 L}{a D}\).\\
+On trouve le nombre de franges visibles en utilisant l'interfrange : \(N=\frac{\Delta x}{i}=\frac{2 L D}{a} \frac{a}{\lambda_{0} D}=\frac{2 L}{\lambda_{0}}\).\\
+On retrouve bien l'expression indiquée dans le sujet.
+
+Q8. f) On recopie et on complète le tableau fourni.
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+Source & \(\lambda_{0}\) en nm & \(\Delta \lambda\) en nm & \(\tau\) en s & \(L\) en m & \(N\) \\
+\hline
+Laser He -Ne & 632,991 & 0,001 & \(1 \cdot 10^{-9}\) & \(4 \cdot 10^{-1}\) & \(1 \cdot 10^{6}\) \\
+\hline
+Raie rouge de l'hydrogène & 656,2 & 0,1 & \(1 \cdot 10^{-11}\) & \(4 \cdot 10^{-3}\) & \(1 \cdot 10^{4}\) \\
+\hline
+Lumière blanche filtrée & 500 & 20 & \(4 \cdot 10^{-14}\) & \(1 \cdot 10^{-5}\) & \(5 \cdot 10^{1}\) \\
+\hline
+\end{tabular}
+\end{center}
+
+On retrouve bien le résultat connu que plus une source est monochromatique plus elle est cohérente et plus on voit d'interfranges.
+
+Q9. a) On réalise le schéma du montage.\\
+Q9. b) On ajoute trois rayons qui interfèrent.\\
+\includegraphics[max width=\textwidth, center]{2024_12_04_e0c7d5f4172e8f1d9be1g-05}
+
+Remarque : nouveau problème du sujet, où la distance \(a\) défini toujours la distance entre les deux trous extrêmes alors qu'il aurait été plus cohérent (vu la suite du sujet) de garder a comme la distance entre deux fentes.
+
+Q9. c) La différence de marche entre deux fentes successives se calcule comme précédemment : \(\delta=\frac{a x}{2 f^{\prime}}\). Le déphasage entre deux fentes successives est donc : \(2 \pi \frac{\delta}{\lambda}=\pi \frac{a x}{\lambda f^{\prime}}=\frac{\varphi}{2}\).\\
+Les trois vibrations sont donc: \(s_{1}(M, t)=S_{0} \cos \left(\omega t+\frac{\varphi}{2}\right)\);
+
+\[
+\begin{aligned}
+& s_{2}(M, t)=S_{0} \cos (\omega t) \\
+& s_{3}(M, t)=S_{0} \cos \left(\omega t-\frac{\varphi}{2}\right) .
+\end{aligned}
+\]
+
+L'intensité est alors: \(I(\varphi)=K\left\langle\left(s_{1}+s_{2}+s_{3}\right)^{2}\right\rangle=K\left(\left\langle s_{1}^{2}\right\rangle+\left\langle s_{2}^{2}\right\rangle+\left\langle s_{3}^{2}\right\rangle+2\left\langle s_{1} s_{2}\right\rangle+2\left\langle s_{1} s_{3}\right\rangle+2\left\langle s_{2} s_{3}\right\rangle\right)\). Or : \(\left\langle s_{1}^{2}\right\rangle=\left\langle s_{2}^{2}\right\rangle=\left\langle s_{3}^{2}\right\rangle=\frac{s_{0}^{2}}{2}=I_{0}\).\\
+On utilise la formule : \(\cos (a) \cos (b)=\frac{1}{2}[\cos (a+b)+\cos (a-b)]\).\\
+On a : \(\left\langle s_{1} s_{2}\right\rangle=\left\langle S_{0}^{2} \cos \left(\omega t+\frac{\varphi}{2}\right) \cos (\omega t)\right\rangle=\frac{S_{0}^{2}}{2}\left\langle\cos \left(2 \omega t+\frac{\varphi}{2}\right)\right\rangle+\frac{S_{0}^{2}}{2}\left\langle\cos \left(\frac{\varphi}{2}\right)\right\rangle=I_{0} \cos \left(\frac{\varphi}{2}\right)\).\\
+On a : \(\left\langle s_{1} s_{3}\right\rangle=\left\langle S_{0}^{2} \cos \left(\omega t+\frac{\varphi}{2}\right) \cos \left(\omega t-\frac{\varphi}{2}\right)\right\rangle=\frac{S_{0}^{2}}{2}\langle\cos (2 \omega t)\rangle+\frac{S_{0}^{2}}{2}\langle\cos (\varphi)\rangle=I_{0} \cos (\varphi)\).\\
+On a : \(\left\langle s_{2} s_{3}\right\rangle=\left\langle S_{0}^{2} \cos (\omega t) \cos \left(\omega t-\frac{\varphi}{2}\right)\right\rangle=\frac{S_{0}^{2}}{2}\left\langle\cos \left(2 \omega t-\frac{\varphi}{2}\right)\right\rangle+\frac{S_{0}^{2}}{2}\left\langle\cos \left(-\frac{\varphi}{2}\right)\right\rangle=I_{0} \cos \left(\frac{\varphi}{2}\right)\).\\
+On a donc au final: \(I(\varphi)=3 I_{0}+4 I_{0} \cos \left(\frac{\varphi}{2}\right)+2 I_{0} \cos (\varphi)\).
+
+Q9. d) On réalise la représentation graphique demandée.
+
+Remarque : ici le tracé demandé pose soucis puisque la variable \(\varphi\) n'est pas la même dans les deux cas de figure. Il n'y a donc pas vraiment de comparaison possible.\\
+\includegraphics[max width=\textwidth, center]{2024_12_04_e0c7d5f4172e8f1d9be1g-06}
+
+Q9. e) On voit que la luminosité des zones brillantes est plus importante dans le cas à 3 fentes que dans le cas à 2 fentes.
+
+On note également que les zones brillantes sont un peu plus fine dans le cas à 3 fentes que dans le cas à 2 fentes.
+
+Q9. f) Sur l'interférogramme donné, on mesure que la largeur de la tache centrale est: \(2 x_{1}=1,0 \mathrm{~mm}\).\\
+On cherche la première annulation de l'intensité : \(I\left(\varphi_{1}\right)=0\).\\
+On calcule la dérivée de l'intensité : \(\frac{d I}{d \varphi}=-2 \sin \left(\frac{\varphi}{2}\right)-2 \sin (\varphi)\).\\
+La dérivée s'annule pour \(\frac{\varphi}{2}=-\varphi+2 n \pi\) avec \(n \in \mathbb{Z}\).\\
+D'où : \(\varphi=\frac{4 n \pi}{3}\).\\
+La première annulation pour \(\varphi \neq 0\) est donc : \(\varphi_{1}=\frac{4 \pi}{3}\).\\
+Orona: \(\varphi_{1}=2 \pi \frac{a x_{1}}{\lambda f^{\prime}}\).\\
+D'où : \(a=\frac{2 \lambda f^{\prime}}{3 x_{1}} . \quad \underline{\text { AN. }} a=\frac{2 \times 633 \cdot 10^{-9} \times 50 \cdot 10^{-2}}{3 \times 0,50 \cdot 10^{-3}}=4,4 \cdot 10^{-4} \mathrm{~m}=0,44 \mathrm{~mm}\).\\
+Remarque : ici le \(\varphi_{1}=\frac{4 \pi}{3}\) trouvé dans cette question ne correspond pas au graphique de la question Q9. d) car le déphasage \(\varphi\) du graphique ne correspond pas au \(\varphi\) calculé ici.
+
+\section*{PARTIE III - Diffraction par un réseau et effet Talbot en optique}
+Q10. a) On réalise un schéma de la situation.\\
+\includegraphics[max width=\textwidth, center]{2024_12_04_e0c7d5f4172e8f1d9be1g-07}
+
+Q10. b) Dans le cas présent la différence de marche entre deux fentes successives est : \(\delta=a \sin \theta=\frac{a x}{f^{\prime}}\).\\
+Le déphasage correspondant est donc : \(\varphi=2 \pi \frac{a x}{\lambda f^{\prime}}\).\\
+Le déphasage entre deux fentes séparées de \(k-1\) voisin est : \(\varphi_{k}=k \varphi\).\\
+La somme des \(N\) ondes devient alors : \(s_{T}=\sum_{k=1}^{N} s_{k}=\sum_{k=1}^{N} S_{0} \sin \left(\omega t+\varphi_{k}\right)=\sum_{k=1}^{N} S_{0} \sin (\omega t+k \varphi)\).\\
+On réalise le calcule en complexe, en posant : \(\underline{s}_{T}=\underline{S}_{T} e^{j \omega t}\) et \(\underline{S}_{k}=S_{0} e^{j k \varphi} e^{j \omega t}\).\\
+D'où : \(\underline{S}_{T}=S_{0} \sum_{k=1}^{N} e^{j k \varphi}\).\\
+On est en présence d'une somme de terme d'une suite géométrique : \(\sum_{k=1}^{N} r^{k}=\frac{r^{N}-1}{r-1}\).\\
+D'où : \(\underline{S}_{T}=S_{0} \frac{e^{j N \delta}-1}{e^{j \delta-1}}=S_{0} \frac{e^{j N \Delta \varphi / 2} \sin (N \varphi / 2)}{e^{j \Delta \varphi / 2} \sin (\varphi / 2)}\).\\
+L'amplitude est donc: \(S_{T}=\left|\underline{S}_{T}\right|=S_{0} \frac{\sin (N \varphi / 2)}{\sin (\varphi / 2)}\).\\
+L'intensité lumineuse correspondante est donc: \(I_{T}=K \frac{S_{0}^{2}}{2} \frac{\sin ^{2}\left(\frac{N \varphi}{2}\right)}{\sin ^{2}\left(\frac{\varphi}{2}\right)}=I_{0} \frac{\sin ^{2}\left(\frac{N \varphi}{2}\right)}{\sin ^{2}\left(\frac{\varphi}{2}\right)}\) où \(I_{0}\) note l'intensité de la source incidente.\\
+On retrouve bien l'expression demandée : \(I(\varphi)=N^{2} I_{0}\left(\frac{\sin \left(\frac{N \varphi}{2}\right)}{N \sin \left(\frac{\varphi}{2}\right)}\right)^{2}\).\\
+Q10. c) Le numérateur de \(I(\varphi)\) s'annule pour \(\sin \left(\frac{N \varphi}{2}\right)=0\), donc pour \(\varphi=\frac{2 n \pi}{N}\) avec \(n \in \mathbb{Z}\).\\
+Les maximums d'intensité correspondent aux annulations du dénominateur, donc pour \(\sin \left(\frac{\varphi}{2}\right)=0\), c'est-à-dire pour \(\varphi=2 n \pi\).
+
+Les maximums correspondent aux valeurs \(\varphi=2 n \pi\) et les zéros aux valeurs \(\varphi=\frac{2 n \pi}{N}\).\\
+Il y a donc \(N-1\) zéros d'intensité entre deux maximums d'intensité successifs.\\
+Q10. d) On réalise en développement limité de l'intensité pour \(\varphi=0: I(\varphi) \simeq N^{2} I_{0}\left(\frac{\frac{N \varphi}{2}}{N \frac{\varphi}{2}}\right)^{2}=N^{2} I_{0}\). Pour une seule fente on avait \(I(0)=I_{0}\), \(\mathrm{d}^{\prime}\) où : \(H=N^{2}\).
+
+Q10. e) La « largeur » des franges brillantes correspond à la « distance » entre les deux zéros les plus proches d'un maximum d'intensité.
+
+On travaille autour du maximum \(\varphi=0\).\\
+Les deux zéros les plus proches sont alors : \(\varphi= \pm \frac{2 \pi}{N}\).\\
+La « largeur»d'une frange brillante est donc: \(\delta \varphi=\frac{4 \pi}{N}\).\\
+Q10. f) L'intensité d'une frange brillante augmente avec \(N\) et sa « largeur » diminue avec \(N\).\\
+Ainsi plus le nombre de fentes est importante, plus les franges brillantes sont fines et intenses.\\
+Q11. Dans le cas d'un réseau, la différence de marche entre deux fentes successives est : \(\delta=a \sin \theta\).\\
+L'ordre d'interférence est alors : \(p=\frac{\delta}{\lambda}=\frac{a \sin \theta}{\lambda}\).\\
+II y a interférences constructives pour \(p_{n}=n \in \mathbb{Z}\).\\
+On retrouve alors bien la « formule du réseau » fournie : \(\sin \theta_{n}=\frac{n \lambda}{a}\) avec \(n \in \mathbb{Z}\) l'ordre d'interférence.\\
+Dans le cas d'une incidence non normale, il faut ajouter un terme à la différence de marche qui correspond à une différence de marche avant le réseau. Celle-ci devient alors: \(\delta=a \sin \theta-a \sin \theta_{i}\) où \(\theta_{i}\) note I'incidence du faisceau incident.
+
+La « formule du réseau » devient alors : \(\sin \theta_{n}-\sin \theta_{i}=\frac{n \lambda}{a}\) avec \(n \in \mathbb{Z}\).\\
+Q12. a) L'onde incidente est caractérisée par l'expression \(\underline{\vec{E}}_{i}=E_{0} \exp \left[j\left(\omega t-\vec{k}_{i} \cdot \overrightarrow{O M}\right)\right] \vec{e}_{y}\), c'est donc une onde plane progressive harmonique de pulsation \(\omega\) selon \(+\vec{e}_{z}\) et polarisée selon \(\vec{e}_{y}\).\\
+Le vecteur d'onde est: \(\vec{k}_{i}=\frac{2 \pi}{\lambda} \vec{e}_{z}\).\\
+Q12.b) On utilise la relation de structure : \(\vec{B}_{i}=\frac{\vec{k}_{i} \wedge \vec{E}_{i}}{\omega}=-\frac{E_{0}}{c} \exp \left[j\left(\omega t-\vec{k}_{i} \cdot \overrightarrow{O M}\right)\right] \vec{e}_{x}\).\\
+Q12. c) Le vecteur de Poynting s'écrit : \(\vec{\Pi}_{i}=\frac{\vec{E}_{i} \wedge \vec{B}_{i}}{\mu_{0}}=-\frac{E_{0}^{2}}{c \mu_{0}} \cos ^{2}\left(\omega t-\vec{k}_{i} \cdot \overrightarrow{O M}\right) \vec{e}_{y} \wedge \vec{e}_{x}\).\\
+On a donc: \(\vec{\Pi}_{i}=+\frac{E_{0}^{2}}{c \mu_{0}} \cos ^{2}\left(\omega t-\vec{k}_{i} \cdot \overrightarrow{O M}\right) \vec{e}_{z}\).\\
+Et donc: \(\vec{\Pi}_{0}=\left\langle\vec{\Pi}_{i}\right\rangle=\frac{E_{0}^{2}}{2 c \mu_{0}} \vec{e}_{z}\).\\
+Q13. a) On considère le champ électrique après le réseau diffracté dans la même direction \(\theta_{n}\).\\
+Les fentes étant identiques, l'amplitude après chaque fente est la même pour une même direction.\\
+De plus les directions \(\theta_{n}\) correspondent aux interférences constructives, ainsi le champ électrique reste en phase dans les directions \(\theta_{n}\).
+
+Q13. b) Le champ électrique diffracté résultant est: \(\vec{E}_{d T}=\sum_{k=1}^{N} \vec{E}_{d}\).\\
+D'où : \(\underline{E}_{d T}=N \underline{\alpha}\left(\theta_{n}\right) E_{0} e^{j\left(\omega t-\vec{k}_{d} \cdot \overrightarrow{O M}\right)} \vec{e}_{y}\).
+
+Q14. a) Le champ électrique s'écrit : \(\vec{E}_{d T}=N|\underline{\alpha}| E_{0} \cos \left(\omega t-\vec{k}_{d} \cdot \overrightarrow{O M}\right) \vec{e}_{y}\).\\
+La relation de structure est toujours valable : \(\vec{B}_{d T}=\frac{N|\underline{\alpha}| E_{0}}{c} \cos \left(\omega t-\vec{k}_{d} \cdot \overrightarrow{O M}\right) \vec{e}_{\theta_{n}} \wedge \vec{e}_{y}\).\\
+Le vecteur de Poynting est : \(\vec{\Pi}_{d T}=\frac{\vec{E}_{d T} \wedge \vec{B}_{d T}}{\mu_{0}}=\frac{1}{c \mu_{0}}\left(N|\underline{\alpha}| E_{0}\right)^{2} \cos ^{2}\left(\omega t-\vec{k}_{d} \cdot \overrightarrow{O M}+\varphi^{\prime}\right) \vec{e}_{\theta_{n}}\).\\
+D'où : \(\vec{\Pi}_{N}=\left\langle\vec{\Pi}_{d T}\right\rangle=\frac{1}{2 c \mu_{0}} N^{2}|\underline{\alpha}|^{2} E_{0}^{2} \vec{e}_{\theta_{n}}=N^{2}|\underline{\alpha}|^{2}\left\|\vec{\Pi}_{0}\right\| \vec{e}_{\theta_{n}}\).\\
+Remarque : le sujet demande d'écrire le résultat en fonction de \(\vec{\Pi}_{0}\) mais ce vecteur n'est pas la même direction que \(\vec{\Pi}_{N}\).
+
+Q14. b) On vient de montrer que pour \(N\) fentes, on a : \(\vec{\Pi}_{N}=N^{2}|\underline{\alpha}|^{2}\left\|\vec{\Pi}_{0}\right\| \vec{e}_{\theta_{n}}\).\\
+Et donc pour une seule fente, dans une même direction : \(\vec{\Pi}_{1}=|\underline{\alpha}|^{2}\left\|\vec{\Pi}_{0}\right\| \vec{e}_{\theta_{n}}\).\\
+L'intensité est proportionnelle au module de la moyenne du vecteur de Poynting.\\
+On a alors: \(H=\frac{I_{N}}{I_{1}}=\frac{K\left\|\vec{\Pi}_{N}\right\|}{K\left\|\vec{\Pi}_{1}\right\|}=\frac{N^{2}|\underline{\alpha}|^{2}\left\|\vec{\Pi}_{0}\right\|}{|\underline{\alpha}|^{2}\left\|\vec{\Pi}_{0}\right\|}=N^{2}\).\\
+On retrouve bien le même résultat qu'à la question Q10. d).\\
+Q14. c) Le réseau a un pas \(p=100\) traits par mm et est éclairé par un faisceau de rayon \(r=1,0 \mathrm{~mm}\).\\
+On a donc: \(N=2 p r\).\\
+Et donc: \(H=N^{2}=(2 p r)^{2} . \quad\) AN. \(H=(2 \times 100 \times 1,0)^{2}=4,0 \cdot 10^{4}\).\\
+Q14. d) On est en présence d'une source de longueur d'onde : \(\lambda=632,8 \mathrm{~nm}\).\\
+On a : \(\sin \theta_{n}=\frac{n \lambda}{a}=n p \lambda\). Et donc: \(\theta_{n}=\arcsin (n p \lambda)\).\\
+On recopie et complète le tableau fourni.
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+Ordre \(n\) & 0 & 1 & 2 & 3 \\
+\hline
+\(\theta_{n}\) & \(0^{\circ}\) & \(3,6^{\circ}\) & \(7,3^{\circ}\) & \(10,9^{\circ}\) \\
+\hline
+\end{tabular}
+\end{center}
+
+Q15. Par trigonométrie : \(\sin \theta_{n}=\frac{k_{n, x}}{k_{n}}\) et \(k_{n}=\sqrt{k_{n, x}^{2}+k_{n, z}^{2}}\)\\
+Donc: \(k_{n, x}=k_{n} \sin \theta_{n}=\frac{2 \pi}{\lambda} \frac{n \lambda}{a}=\frac{2 \pi n}{a}\).\\
+\(\mathrm{Et}: k_{n, z}=\sqrt{k_{n}^{2}-k_{n, x}^{2}}=\sqrt{\left(\frac{2 \pi}{\lambda}\right)^{2}-\left(\frac{2 \pi n}{a}\right)^{2}}=\frac{2 \pi}{\lambda a} \sqrt{a^{2}-n^{2} \lambda^{2}}\).
+
+Q16. Le sujet propose la forme d'amplitude : \(\underline{A}(x, z, t)=\alpha_{0} \exp (j \omega t) \sum_{n=-\infty}^{n=+\infty} C_{n} \exp \left(-j\left(k_{n, z} z+k_{n, x} x\right)\right)\).\\
+On remarque que pour \(z=0: \underline{A}(x, z, t)=\alpha_{0} \exp (j \omega t) \sum_{n=-\infty}^{n=+\infty} C_{n} \exp \left(-j k_{n, x} x\right)\).\\
+En utilisant la question précédente : \(\underline{A}(x, z, t)=\alpha_{0} \exp (j \omega t) \sum_{n=-\infty}^{n=+\infty} C_{n} \exp \left(-j \frac{2 \pi n}{a} x\right)\).\\
+On reconnait la série de Fourier d'une fonction « créneau », ce qui est bien logique avec la forme d'un réseau.\\
+Q17. a) Le sujet donne : \(\underline{A}(x, z, t)=\alpha_{0} \exp \left(j\left(\omega t-\frac{2 \pi}{\lambda} z\right)\right) \sum_{n=-q}^{n=+q} C_{n} \exp \left(-2 j \pi \frac{n}{a}\left(-\frac{\lambda n}{2 a} z+x\right)\right)\).\\
+On a : \(\underline{A}(x, 0, t)=\alpha_{0} \exp (j \omega t) \sum_{n=-q}^{n=+q} C_{n} \exp \left(-2 j \pi \frac{n}{a} x\right)\).\\
+On a : \(\underline{A}\left(x, z=\frac{1}{2} Z_{T}=\frac{a^{2}}{\lambda}, t\right)=\alpha_{0} \exp \left(j\left(\omega t-\frac{2 \pi}{\lambda} \frac{a^{2}}{\lambda}\right)\right) \sum_{n=-q}^{n=+q} C_{n} \exp \left(-2 j \pi \frac{n}{a}\left(-\frac{\lambda n}{2 a} \frac{a^{2}}{\lambda}+x\right)\right)\).\\
+D'où : \(\underline{A}\left(x, z=\frac{1}{2} Z_{T}=\frac{a^{2}}{\lambda}, t\right)=\alpha_{0} \exp \left(j\left(\omega t-\frac{2 \pi a^{2}}{\lambda^{2}}\right)\right) \sum_{n=-q}^{n=+q} C_{n} \exp \left(-2 j \pi \frac{n}{a} x+j \pi n^{2}\right)\).\\
+On utilise la formule fournie : \(\exp \left(j \pi n^{2}\right)=\exp (j \pi n)\).\\
+D'où finalement: \(\underline{A}\left(x, z=\frac{1}{2} Z_{T}=\frac{a^{2}}{\lambda}, t\right)=\alpha_{0} \exp \left(j\left(\omega t-\frac{2 \pi a^{2}}{\lambda^{2}}\right)\right) \sum_{n=-q}^{n=+q} C_{n} \exp \left(-2 j \pi \frac{n}{a}\left(x+\frac{a}{2}\right)\right)\).\\
+On a : \(\underline{A}\left(x, z=Z_{T}=\frac{2 a^{2}}{\lambda}, t\right)=\alpha_{0} \exp \left(j\left(\omega t-\frac{2 \pi}{\lambda} \frac{2 a^{2}}{\lambda}\right)\right) \sum_{n=-q}^{n=+q} C_{n} \exp \left(-2 j \pi \frac{n}{a}\left(-\frac{\lambda n}{2 a} \frac{2 a^{2}}{\lambda}+x\right)\right)\).\\
+D'où : \(\underline{A}\left(x, z=Z_{T}=\frac{2 a^{2}}{\lambda}, t\right)=\alpha_{0} \exp \left(j\left(\omega t-\frac{4 \pi a^{2}}{\lambda^{2}}\right)\right) \sum_{n=-q}^{n=+q} C_{n} \exp \left(-2 j \pi \frac{n}{a} x+2 j \pi n^{2}\right)\).\\
+D'où encore : \(\underline{A}\left(x, z=Z_{T}=\frac{2 a^{2}}{\lambda}, t\right)=\alpha_{0} \exp \left(j\left(\omega t-\frac{4 \pi a^{2}}{\lambda^{2}}\right)\right) \sum_{n=-q}^{n=+q} C_{n} \exp \left(-2 j \pi \frac{n}{a} x\right)\).\\
+Q17. b) On s'intéresse à l'intensité de la lumière, ce qui revient à comparer les modules des amplitudes complexes.
+
+On a : \(\left|\underline{A}\left(x, z=Z_{T}=\frac{2 a^{2}}{\lambda}, t\right)\right|=\alpha_{0}\left|\sum_{n=-q}^{n=+q} C_{n} \exp \left(-2 j \pi \frac{n}{a} x\right)\right|=|\underline{A}(x, 0, t)|\).\\
+On retrouve donc bien la \(Z_{T}\)-périodicité de l'intensité.\\
+On a : \(\left|\underline{A}\left(x, z=\frac{1}{2} Z_{T}=\frac{a^{2}}{\lambda}, t\right)\right|=\alpha_{0}\left|\sum_{n=-q}^{n=+q} C_{n} \exp \left(-2 j \pi \frac{n}{a}\left(x+\frac{a}{2}\right)\right)\right|=\left|\underline{A}\left(x+\frac{a}{2}, 0, t\right)\right|\).\\
+On retrouve bien une périodicité en \(Z_{T} / 2\) avec un décalage selon \(x\) d'une valeur \(a / 2\).\\
+Remarque : il y a une erreur d'énoncé sur les coefficients \(C_{n}\) de la décomposition en série de Fourier de la fonction créneau proposée. L'expression est en fait \(C_{n}=\frac{\sin \left(\frac{n \pi \varepsilon}{a}\right)}{n \pi}\) et \(C_{0}=\frac{\pi \varepsilon}{a}\). Les \(C_{n}\) sont donc bien indépendant de \(x\), et l'égalité précédente est donc bien correcte.
+
+Q18. Sur la photo 1 du tapis de Talbot, on observe bien l'image qui se répète après \(Z_{T}\).\\
+On observe également la répétition mais décalée en opposition après \(Z_{T} / 2\).\\
+Cela est cohérent avec la question précédente.\\
+On lit \(a\) et \(\varepsilon\) par la distance entre deux franges lumineuses successives et par la largeur d'une frange lumineuse.
+
+On a alors : \(\frac{a}{\lambda}=63\) et \(\frac{\varepsilon}{\lambda}=4,8\). D'où le rapport demandé \(: \frac{\varepsilon}{a}=\frac{4,8}{63}=0,076\).\\
+On vérifie la longueur de Talbot: : \(\frac{Z_{T}}{\lambda}=\frac{2 a^{2}}{\lambda^{2}}=2 \times 63^{2}=8,0 \cdot 10^{3}\).\\
+On retrouve bien la valeur indiquée pour \(\frac{Z_{T}}{\lambda}\) sur la photo 1 .\\
+Q19. Le sujet fournit l'expression: \(I(M)=I_{\max }\left(\operatorname{sinc}\left(\frac{\pi \varepsilon x}{\lambda D}\right)\right)^{2}\left(\frac{\sin \left(\frac{\pi a}{\lambda D} x\right)}{N \sin \left(\frac{\pi a}{\lambda D} x\right)}\right)^{2}\).\\
+L'expression fournie traduit une interférence par un réseau.\\
+Le terme \(\left(\frac{\sin \left(N \frac{\pi a}{\lambda D} x\right)}{N \sin \left(\frac{\pi a}{\lambda D} x\right)}\right)^{2}\) est le terme d'interférences dépendant de la distance \(a\) entre les fentes.\\
+Le terme \(\left(\operatorname{sinc}\left(\frac{\pi \varepsilon x}{\lambda D}\right)\right)^{2}\) est le terme de diffraction dépendant de la largeur \(\varepsilon\) des fentes.
+
+À grande distance on observerait les ordres d'interférences du réseau hexagonal sans l'effet Talbot.\\
+Remarque : la question est difficile si ce qui est attendu est la forme de la figure d'interférences du réseau hexagonal, mais cela n'est pas au programme.
+
+Pour observer une photo en vraie grandeur, il faut se placer à la longueur de Talbot, soit : \(Z_{T}=\frac{2 a^{2}}{\lambda}\). AN. \(Z_{T}=\frac{2 \times\left(12 \cdot 10^{-6}\right)^{2}}{633 \cdot 10^{-9}}=4,5 \cdot 10^{-4} \mathrm{~m}=0,45 \mathrm{~mm}\).
+
+II faut donc se placer à \(0,45 \mathrm{~mm}\) des éléments diffractant pour observer une image Talbot.
+
+\section*{PARTIE IV - Interférences d'ondes de matière}
+Q20. a) La relation de de Broglie est : \(\lambda=\frac{h}{p}\).\\
+Un électron accéléré par une différence de potentiel \(U\) gagne une énergie \(e U\).\\
+On a donc: \(E_{c}=\frac{1}{2} m v^{2}=e U\). D'où : \(v=\sqrt{\frac{2 e U}{m}}\). Et : \(p=m v=\sqrt{2 e m U}\)\\
+Au final : \(\lambda=\frac{h}{\sqrt{2 e m U}} . \quad\) AN. \(\lambda=\frac{6,63 \cdot 10^{-34}}{\sqrt{2 \times 1,6 \cdot 10^{-19} \times 9,11 \cdot 10^{-31} \times 100}}=1,2 \cdot 10^{-10} \mathrm{~m}=0,12 \mathrm{~nm}\).\\
+Q20. b) Le pouvoir de résolution d'un microscope est d'autant plus élevé que la longueur d'onde utilisée est faible en raison du phénomène de diffraction qui limite la focalisation.\\
+Dans le cas du microscope électronique la longueur d'onde est très faible devant celle du visible, il a donc un bien meilleur pouvoir de résolution.
+
+Q21. Le théorème d'équipartition de l'énergie indique que chaque degré de liberté du système apporte une énergie cinétique valant \(\frac{1}{2} k_{B} T\) où \(k_{B}=\frac{R}{\mathcal{N}_{A}}\) est la constante de Boltzmann.
+
+Pour des atomes seul, il n'y a que trois degrés de liberté correspondant aux trois translations dans l'espace.\\
+On a donc: \(\frac{1}{2} m u^{2}=\frac{3}{2} k_{B} T\).\\
+Et donc : \(u=\sqrt{\frac{3 k_{B} T}{m}}=\sqrt{\frac{3 R T}{m \mathcal{N}_{A}}}=\sqrt{\frac{3 R T}{M}}\).\\
+On recopie et on complète le tableau fourni.
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+Atome & \begin{tabular}{c}
+Masse atomique \\
+en \(\mathrm{g} \cdot \mathrm{mol}^{-1}\) \\
+\end{tabular} & \begin{tabular}{c}
+Vitesse \(u\) \\
+à \(T_{1}=295 \mathrm{~K}\) \\
+\end{tabular} & \begin{tabular}{c}
+Vitesse \(u\) \\
+à \(T_{2}=83 \mathrm{~K}\) \\
+\end{tabular} & \begin{tabular}{c}
+Vitesse \(u\) \\
+à \(T_{1}=2,5 \mathrm{mK}\) \\
+\end{tabular} \\
+\hline
+Hélium & 4 & \(1,4 \mathrm{~km} \cdot \mathrm{~s}^{-1}\) & \(225 \mathrm{~m} \cdot \mathrm{~s}^{-1}\) &  \\
+\hline
+Néon & 20 &  &  & \(1,8 \mathrm{~m} \cdot \mathrm{~s}^{-1}\) \\
+\hline
+\end{tabular}
+\end{center}
+
+Remarque : avec l'expression de \(u\), je ne retrouve pas la valeur de \(225 \mathrm{~m} \cdot \mathrm{~s}^{-1}\) pour 83 K .\\
+Q22. a) On note \(\ell\) la taille de la tache de diffraction après la fente \(F\) au niveau des deux autres fentes.\\
+En utilisant la trigonométrie on a : \(\ell=2 L \tan \theta=2 L \tan \left(\frac{\lambda}{\varepsilon}\right)=2 L \tan \left(\frac{h}{\varepsilon m u}\right)=2 L \tan \left(\frac{h \mathcal{N}_{A}}{\varepsilon M u}\right)\).\\
+AN. \(\ell=2 \times 64 \cdot 10^{-2} \times \tan \left(\frac{6,63 \cdot 10^{-34} \times 6,02 \cdot 10^{23}}{2 \cdot 10^{-6} \times 4 \cdot 10^{-3} \times 225}\right)=3 \cdot 10^{-4} \mathrm{~m}=0,3 \mathrm{~mm}\).\\
+On a bien \(\ell \gg a\), les particules ont donc bien deux chemins possibles, pouvant passer par la fente 1 ou par la fente 2 .\\
+Q22. b) On voit se dessiner sur le détecteur une figure d'interférence correspondant au cas de fentes d'Young. Les atomes se comportent comme une onde et il y a interférence entre les amplitudes de probabilité.
+
+Q22. c) On cherche l'interfrange de la figure d'interférence : \(i=\frac{\lambda L^{\prime}}{a}=\frac{h L^{\prime}}{a m u}=\frac{h \mathcal{N}_{A} L^{\prime}}{a M u}\).\\
+AN. Pour \(T_{2}=83 \mathrm{~K}: i=\frac{6,63 \cdot 10^{-34} \times 6,02 \cdot 10^{23} \times 64 \cdot 10^{-2}}{8 \cdot 10^{-6} \times 4 \cdot 10^{-3} \times 225}=3,5 \cdot 10^{-5} \mathrm{~m}=35 \mu \mathrm{~m}\).\\
+AN. Pour \(T_{1}=295 \mathrm{~K}: i=\frac{6,63 \cdot 10^{-34} \times 6,02 \cdot 10^{23} \times 64 \cdot 10^{-2}}{8 \cdot 10^{-6} \times 4 \cdot 10^{-3} \times 1,4 \cdot 10^{3}}=5,7 \cdot 10^{-6} \mathrm{~m}=5,7 \mu \mathrm{~m}\).\\
+Remarque: pour \(T_{2}=83 \mathrm{~K}\), si on recalcule \(u\) plutôt que de prendre le \(225 \mathrm{~m} \cdot \mathrm{~s}^{-1}\) fourni, on trouve \(u=719 \mathrm{~m} \cdot \mathrm{~s}^{-1}\) et alors \(i=11 \mu \mathrm{~m}\).
+
+Q23. a) L'interfrange vaut toujours \(i=\frac{\lambda D}{a}\).\\
+On a donc : \(\lambda=\frac{i a}{D} . \quad \underline{\text { AN. }} \quad \lambda=\frac{1,1 \cdot 10^{-3} \times 6 \cdot 10^{-6}}{85 \cdot 10^{-2}}=7,8 \cdot 10^{-9} \mathrm{~m}\).\\
+On détermine la vitesse grâce à la relation de de Broglie : \(\lambda=\frac{h}{p}=\frac{h}{m v}=\frac{h \mathcal{N}_{A}}{M v}\).\\
+D'où : \(v=\frac{h \mathcal{N}_{A}}{M \lambda} . \quad\) AN. \(v=\frac{6,63 \cdot 10^{-34} \times 6,02 \cdot 10^{23}}{20 \cdot 10^{-3} \times 7,8 \cdot 10^{-9}}=2,6 \mathrm{~m} \cdot \mathrm{~s}^{-1}\).\\
+Q23. b) Dans le cas d'une chute libre on a : \(\vec{a}=\vec{g}\).\\
+Cela entraine une vitesse : \(v=g t\) et une position : \(z=\frac{g t^{2}}{2}\).\\
+Pour parcourir la distance \(d\) jusqu'aux fentes il faut un temps : \(t=\sqrt{\frac{2 d}{g}}\).\\
+Au niveau des fentes, la vitesse vaut : \(v=\sqrt{2 g d}\).\\
+AN. \(v=\sqrt{2 \times 9,8 \times 3,5 \cdot 10^{-2}}=0,83 \mathrm{~m} \cdot \mathrm{~s}^{-1}\).
+
+Au niveau du détecteur, la vitesse vaut: \(v=\sqrt{2 g(d+D)}\).\\
+AN. \(v=\sqrt{2 \times 9,8 \times\left(3,5 \cdot 10^{-2}+85 \cdot 10^{-2}\right)}=4,2 \mathrm{~m} \cdot \mathrm{~s}^{-1}\).\\
+On retrouve bien le même ordre de grandeur que dans le cas ondulatoire, l'écart provenant du comportement ondulatoire de la matière et non d'un comportement classique.
+
+Q23. c) Il faut travailler avec des atomes ultra-froid de manière à négliger la vitesse produite par l'agitation thermique.
+
+
+\end{document}

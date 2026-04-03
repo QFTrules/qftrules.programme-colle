@@ -1,0 +1,97 @@
+\protect \label {tDpmMaBgLyL}
+\protect {\protect \bfseries  \protect \Large \protect \hypertarget {solutionstDpmMaBgLyL}{\protect \hyperlink {titretDpmMaBgLyL}{Fiche \protect \no  1{}. Champ \IeC {\'e}lectrique}}}
+\protect \vspace  \bigskipamount \protect \begin {boxForTitleCorrigeFiche}{\protect \bfseries  \relax \protect \fontsize  {12}{14}\protect \selectfont  R\IeC {\'e}ponses}\protect \end {boxForTitleCorrigeFiche}
+\protect \begin {multicols}{2}
+\protect \textbf  {1.1} a){\protect \dotfill } 
+\fbox {$\sqrt {a^2 + y^2}$}\par 
+\protect \textbf  {1.1} b){\protect \dotfill } 
+\fbox {$\frac {a}{\sqrt {a^2 + y^2}}$}\par 
+\protect \textbf  {1.1} c){\protect \dotfill } 
+\fbox {$\frac {y}{\sqrt {a^2 + y^2}}$ }\par 
+\protect \textbf  {1.1} d){\protect \dotfill } 
+\fbox {$\frac {\lVert \vv {F} \rVert }{\sqrt {a^2 + y^2}}\left ( -a \vv {e_x} + y \vv {e_y} \right )$}\par 
+\protect \textbf  {1.2} {\protect \dotfill } 
+\fbox { \reponseC {}}\par 
+\protect \textbf  {1.3} a){\protect \dotfill } 
+\fbox {$\vv {e_y}$}\par 
+\protect \textbf  {1.3} b){\protect \dotfill } 
+\fbox {$-\vv {e_x}$}\par 
+\protect \textbf  {1.3} c){\protect \dotfill } 
+\fbox {$\vv {e_x}$}\par 
+\protect \textbf  {1.3} d){\protect \dotfill } 
+\fbox {$-\vv {e_y}$}\par 
+\protect \textbf  {1.4} a){\protect \dotfill } 
+\fbox {\reponseB {}}\par 
+\protect \textbf  {1.4} b){\protect \dotfill } 
+\fbox {$qV_0$}\par 
+\protect \textbf  {1.4} c){\protect \dotfill } 
+\fbox {$\sqrt {\frac {2qV_0}{m}}$}\par 
+\protect \textbf  {1.4} d){\protect \dotfill } 
+\fbox {$\sqrt {\frac {qV_0}{2m}}$}\par 
+\protect \textbf  {1.4} e){\protect \dotfill } 
+\fbox {$\frac {v(a)}{2}$}\par 
+\protect \textbf  {1.5} a){\protect \dotfill } 
+\fbox {$ \sqrt { \left (x - a\right )^2 + y^2} $}\par 
+\protect \textbf  {1.5} b){\protect \dotfill } 
+\fbox {$x^2+y^2$}\par 
+\protect \textbf  {1.5} c){\protect \dotfill } 
+\fbox {$\sqrt { r^2 - 2ax + a^2 }$}\par 
+\protect \textbf  {1.5} d){\protect \dotfill } 
+\fbox {$r\cos (\theta )$}\par 
+\protect \textbf  {1.5} e){\protect \dotfill } 
+\fbox {$\sqrt { r^2 - 2ar \cos (\theta ) + a^2 }$}\par 
+\protect \textbf  {1.5} f){\protect \dotfill } 
+\fbox {$\frac {1}{4\pi \varepsilon _0}\frac {q}{\sqrt { r^2 - 2ar \cos (\theta ) + a^2 }}$}\par 
+\protect \textbf  {1.5} g){\protect \dotfill } 
+\fbox {$ \sqrt { \left (x + a\right )^2 + y^2} $}\par 
+\protect \textbf  {1.5} h){\protect \dotfill } 
+\fbox {$\sqrt { r^2 + 2ax + a^2 }$}\par 
+\protect \textbf  {1.5} i){\protect \dotfill } 
+\fbox {$\sqrt { r^2 + 2ar \cos (\theta ) + a^2 }$}\par 
+\protect \textbf  {1.5} j){\protect \dotfill } 
+\fbox {$-\frac {1}{4\pi \varepsilon _0}\frac {q}{\sqrt { r^2 + 2ar \cos (\theta ) + a^2 }}$}\par 
+\protect \textbf  {1.5} k){\protect \dotfill } 
+\fbox {\small \begin {tabular}{l} $\frac {1}{4\pi \varepsilon _0}q\Big (\frac {1}{\sqrt { r^2 - 2ar \cos (\theta ) + a^2 }}$ \\ \qquad \quad \quad ${}- \frac {1}{\sqrt { r^2 + 2ar \cos (\theta ) + a^2 }} \Big )$ \end {tabular}}\par 
+\protect \textbf  {1.6} a){\protect \dotfill } 
+\fbox {$\frac {1}{4\pi \varepsilon _0} \frac {q}{r}\left ( 1 - \frac {2a}{r}\right )$}\par 
+\protect \textbf  {1.6} b){\protect \dotfill } 
+\fbox {$\frac {1}{4\pi \varepsilon _0}\frac {qa\cos (\theta ) }{r^2}$}\par 
+\protect \textbf  {1.6} c){\protect \dotfill } 
+\fbox {$\frac {1}{4\pi \varepsilon _0} \frac {qa}{r^2}\left (1 - \frac {1}{2}\theta ^2\right )$}\par 
+\protect \textbf  {1.6} d){\protect \dotfill } 
+\fbox {$\frac {1}{4\pi \varepsilon _0} \frac {qa}{r^2}$}\par 
+\protect \textbf  {1.6} e){\protect \dotfill } 
+\fbox {$\frac {1}{4\pi \varepsilon _0} \frac {q}{r}\ln \left ( 1 + \frac {r^2}{a^2} \right )$}\par 
+\protect \textbf  {1.7} a){\protect \dotfill } 
+\fbox {$\frac {1}{4\pi \varepsilon _0} \frac {q}{r^2} \left ( \sin \left ( 2\theta \right ) \vv {e_{r}} - 2\cos \left ( 2\theta \right ) \vv {e_{\theta }} \right )$}\par 
+\protect \textbf  {1.7} b){\protect \dotfill } 
+\fbox {$-\frac {8}{4\pi \varepsilon _0} \frac {q}{a^2} \vv {e_{\theta }}$}\par 
+\protect \textbf  {1.7} c){\protect \dotfill } 
+\fbox {$\np [V.m^{-1}]{2,7e5}$}\par 
+\protect \textbf  {1.8} a){\protect \dotfill } 
+\fbox {$\frac {1}{4\pi \varepsilon _0}\frac {qa}{r^3} \left ( 2\cos (\theta ) \vv {e_{r}} + \sin (\theta ) \vv {e_{\theta }} \right )$}\par 
+\protect \textbf  {1.8} b){\protect \dotfill } 
+\fbox {$\frac {1}{4\pi \varepsilon _0} \frac {q}{a^2} \vv {e_{\theta }}$}\par 
+\protect \textbf  {1.8} c){\protect \dotfill } 
+\fbox {$\np [V.m^{-1}]{3,4e4}$}\par 
+\protect \textbf  {1.9} a){\protect \dotfill } 
+\fbox {$\frac {1}{2}E_0d$}\par 
+\protect \textbf  {1.9} b){\protect \dotfill } 
+\fbox {$\frac {1}{3}E_0d$}\par 
+\protect \textbf  {1.9} c){\protect \dotfill } 
+\fbox {$\frac {2}{3\pi }E_0d$}\par 
+\protect \textbf  {1.9} d){\protect \dotfill } 
+\fbox {$E_0de^{-1}$}\par 
+\protect \textbf  {1.10} a){\protect \dotfill } 
+\fbox {$\frac {8}{3}\pi R^3 \rho _0$}\par 
+\protect \textbf  {1.10} b){\protect \dotfill } 
+\fbox {$\frac {8}{5}\pi R^3 \rho _0$}\par 
+\protect \textbf  {1.10} c){\protect \dotfill } 
+\fbox {$\frac {16}{5}R^3\rho _0$}\par 
+\protect \textbf  {1.11} a){\protect \dotfill } 
+\fbox {$3\pi R^2h$}\par 
+\protect \textbf  {1.11} b){\protect \dotfill } 
+\fbox {$\frac {4}{5}\pi R^2h$}\par 
+\protect \textbf  {1.11} c){\protect \dotfill } 
+\fbox {$\frac {8}{15}R^2h$}\par 
+\protect \end {multicols}

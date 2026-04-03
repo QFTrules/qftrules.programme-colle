@@ -1,0 +1,22 @@
+\begin{tikzpicture}[
+	font=\footnotesize,
+	maille/.style={thick,red,postaction={decorate},decoration={markings,mark=at position 25mm with {\arrow[red]{stealth};},mark=at position 55mm with {\arrow[red]{stealth};}}},
+	]
+	\draw (0,-1)rectangle(4.5,1);
+	\draw (4.5,1)--(3,0)--(4.5,-1);
+	\draw (3,0)-|(1,1);
+%	\pileL{}{};
+	\FEMVL{}{12\,V};
+	\FEMVR{shift={(4.5,0)}}{6\,V};
+%	\pileR{shift={(4.5,0)}}{6\,V};
+	\resistanceH{shift={(3.75,0.5)},rotate=33.7}{};
+	\resistanceH{shift={(3.75,-0.5)},rotate=-33.7}{};
+	\resistanceH{shift={(2,1)}}{};
+	\resistanceH{shift={(2,0)}}{};
+%	\draw[->,shift={(-.5,0)}](0,-.5)--++(0,1)node[midway,left=3pt]{\np[V]{12}};
+	\draw[->,shift={(3.75,.5)},rotate=33.7](-.5,6pt)--++(1,0)node[pos=.7,left=3pt]{$U_1$};
+	\draw[->,shift={(2,0.75)}](-0.5,0)--++(1,0)node[midway,below]{$U_2$};
+	\draw[->,shift={(2,-.25)}](0.5,0)--++(-1,0)node[midway,below]{$U_3$};
+	\draw[->,shift={(3.75,-.5)},rotate=-33.7](0.5,-6pt)--++(-1,0)node[pos=.3,left=3pt]{5\,V};
+	\draw[maille](0,-1)|-(1,1)|-(3,0)--(4.5,-1)--cycle;
+\end{tikzpicture}

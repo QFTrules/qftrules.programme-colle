@@ -1,0 +1,23 @@
+% !TEX root = /home/eb/Dropbox/CPGE/Physique/Cours/[6]Pondes/[4]OndesCond/Figures/metal_k.tex
+\input{/home/eb/Dropbox/texmf/tex/latex/Preambles/tikz.tex}
+\begin{document}
+
+\begin{tikzpicture}
+
+	\node at (0,0) {\includegraphics[scale=0.7]{metal_k_wolf.pdf}};
+	\node at (4.7,-2.4) {$\omega$};
+	\node at (-4.7,2.5) {$k$};
+	\node at (2.7,-2.8) {$\omega_p$};
+	\node at (-0.7,-2.8) {$\omega_c$};
+	\draw[dashed,thin] (-2.47,2.5) -- ++ (0,-4.9);
+	\draw[dashed,thin] (0.9,2.5) -- ++ (0,-4.9);
+	\node[red] at (3.5,0) {$\re\,\udl{k}$};
+	% \node at (3.8,1) {\tiny $\sqrt{\omega^2-\omega_p^2}$};
+	% \node at (1.5,-1) {\tiny $\sqrt{\omega_p^2-\omega^2}$};
+	\node[blue] at (1.5,-0.2) {$\im\,\udl{k}$};
+	\node at (2,2) {Plasma \\ $(\omega \tau \gg 1$)};
+	\node at (-3.35,2) {ARQS \\ $(\omega \tau \ll 1$)};
+
+\end{tikzpicture}
+
+\end{document}

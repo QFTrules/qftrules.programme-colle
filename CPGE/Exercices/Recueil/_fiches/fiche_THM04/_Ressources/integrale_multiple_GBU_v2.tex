@@ -1,0 +1,149 @@
+% Date : 28/02/2023
+% Version : 2
+% Auteur : GBU
+% Relu : 
+% Relecteur : 
+
+% ------------------------------------------------------------ %
+% ----------------------  Fiche ?????  ----------------------- %
+% Thème : ???
+% Classes : ???
+% ------------------------------------------------------------ %
+
+
+
+% ======================================================= % 
+% ============== Gestion de la compilation ============== %
+% ======================================================= % 
+\ifdefined\mainIsLoaded\else
+\RequirePackage{import}
+\subimport{../../}{_preambule_CdE_PC}
+\begin{document}
+\fi
+% ======================================================= % 
+% ======================================================= % 
+
+
+
+
+
+
+% ============================================================================ %
+%                            FICHE D'ENTRAÎNEMENT                              %
+% ============================================================================ %
+% ======================= Métadonnées sur la fiche =========================== %
+\titreFicheEntrainement		{Statique des fluides GBU}
+\grandTheme					{Thermodynamique}
+\numeroFiche				{THM04}
+\uniqueID					{WZhafEInvkq} % une chaîne de caractères (a-z, A-Z) aléatoire de 10 caractères.
+\nombreColonnesReponses		{2} % 1, 2, 3, etc.
+% ============================================================================ %
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\debutFicheEntrainement                                                                      %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+% ********************************************************************* %
+%                           ENTRAÎNEMENT                                % 
+% ********************************************************************* %
+% ================ Métadonnées sur l'entraînement ===================== %
+
+\pointInterrogation				{N}
+\titreEntrainementFacultatif	{Intégrales multiples}
+\hauteurLargeurCadreReponse		{8mm}{3.5cm}
+\dureeResolutionFacultative		{1} % 1, 2, 3 ou 4
+\typeEntrainement				{Newton} % Newton ou QCM ou AN ou vide (exercice "normal")
+\nombreColonnesQuestions		{1} % vide, 1, 2, 3, etc.
+\avecPlusieursQuestions			{Y} % Y ou N
+\initialisationEntrainement
+% ===================================================================== %
+
+
+
+
+
+% =============================================================================== %
+\debutEntrainement
+% =============================================================================== %
+Calculer les intégrales multiples suivantes:
+
+\begin{enonce}
+$I=\iiint\mathrm{d}r\cdot r\mathrm{d}\theta\cdot r\sin\theta\mathrm{d}\varphi$
+avec $r\in\left[0,R\right]$, $\theta\in\left[0,\pi\right]$ et $\varphi\in\left[0,2\pi\right]$.
+\end{enonce}
+\reponse{$\dfrac{4\pi R^{3}}{3}$}%
+\begin{corrige}
+\begin{align*}
+I & =\left(\int_{0}^{R}r^{2}\mathrm{d}r\right)\left(\int_{0}^{\pi}\sin\theta\mathrm{d}\theta\right)\left(\int_{0}^{2\pi}\mathrm{d}\varphi\right)\\
+ & =\left[\dfrac{r^{3}}{3}\right]_{0}^{R}\times\left[-\cos\theta\right]_{0}^{\pi}\times\left[\varphi\right]_{0}^{2\pi}\\
+ & =\dfrac{4\pi R^{3}}{3}
+\end{align*}
+Cela correspond au volume d'une sphère de rayon $R$.
+\end{corrige}
+%------------------------------------------------
+\begin{enonce}
+$J=\iint4\sqrt{1+\left(\dfrac{a}{2H}\right)^{2}}\mathrm{d}x\mathrm{d}z$
+avec $x\in\left[0,\dfrac{a}{H}z\right]$ et $z\in\left[0,H\right]$.
+\end{enonce}
+\reponse{$2a\sqrt{H^{2}+\left(\dfrac{a}{2}\right)^{2}}$}%
+\begin{corrige}
+\begin{align*}
+J & =4\sqrt{1+\left(\dfrac{a}{2H}\right)^{2}}\int_{z=0}^{H}\int_{x=0}^{\dfrac{az}{H}}\mathrm{d}x\mathrm{d}z\\
+ & =4\sqrt{1+\left(\dfrac{a}{2H}\right)^{2}}\int_{z=0}^{H}\dfrac{az}{H}\mathrm{d}z\\
+ & =4\dfrac{a}{H}\sqrt{1+\left(\dfrac{a}{2H}\right)^{2}}\left[\dfrac{z^{2}}{2}\right]_{0}^{H}\\
+ & =2aH\sqrt{1+\left(\dfrac{a}{2H}\right)^{2}}=2a\sqrt{H^{2}+\left(\dfrac{a}{2}\right)^{2}}
+\end{align*}
+Cela correspond à l'aire de la surface latérale d'une pyramide de
+base carrée de côté $a$ et de hauteur $H$.
+\end{corrige}
+%------------------------------------------------
+\begin{enonce}
+$K=\iiint r\mathrm{d}r\mathrm{d}\theta\mathrm{d}z$ avec $r\in\left[0,\dfrac{R}{H}\left(H-z\right)\right]$,
+$\theta\in\left[0,2\pi\right]$ et $z\in\left[0,H\right]$.
+\end{enonce}
+\reponse{$\dfrac{\pi R^{2}H}{3}$}%
+\begin{corrige}
+\begin{align*}
+K & =\int_{\theta=0}^{2\pi}\mathrm{d}\theta\int_{z=0}^{H}\int_{r=0}^{\dfrac{R}{H}\left(H-z\right)}r\mathrm{d}r\mathrm{d}z\\
+ & =2\pi\int_{z=0}^{H}\left[\dfrac{r^{2}}{2}\right]_{0}^{\dfrac{R}{H}\left(H-z\right)}\mathrm{d}z\\
+ & =\pi\left(\dfrac{R}{H}\right)^{2}\int_{z=0}^{H}\left(H-z\right)^{2}\mathrm{d}z\\
+ & =\pi\left(\dfrac{R}{H}\right)^{2}\left[-\dfrac{\left(H-z\right)^{3}}{3}\right]_{0}^{H}\\
+ & =\dfrac{\pi R^{2}H}{3}
+\end{align*}
+ Cela correspond au volume d'un cône de hauteur $H$ et de base de
+rayon $R$.
+
+\end{corrige}
+% =============================================================================== %
+\finEntrainement
+% =============================================================================== %
+
+
+
+
+
+
+
+% ---------------------------------------------------------------------------- %
+%                       Affichage des réponses mélangées                       %
+% ---------------------------------------------------------------------------- %
+\afficheReponsesMelangees
+% ---------------------------------------------------------------------------- %
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\finFicheEntrainement                                                                        %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% ======================================================= % 
+% ============== Gestion de la compilation ============== %
+% ======================================================= % 
+\ifdefined\mainIsLoaded\else
+\printReponsesEtCorriges
+\end{document}\fi
+% ======================================================= % 
+% ======================================================= % 

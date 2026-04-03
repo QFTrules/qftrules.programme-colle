@@ -1,0 +1,15 @@
+\input{/home/eb/Dropbox/texmf/tex/latex/Preambles/tikz.tex}
+\begin{document}
+\begin{tikzpicture}
+  \draw[axe] (-2,0) -- ++ (4,0) node[right] {$x$};
+  \draw[axe] (0,-2.5) -- ++ (0,3.5) node[above] {$y$};
+  \node[above left] at (0,0) {$O$};
+  \begin{scope}[shift={(-0.1,0)},rotate=-45]
+    \draw[] (0,0) rectangle ++(3,0.2);
+    \node[below left] at (1.5,0.1) {$G$};
+    \node at (1.5,0.1) {$\bullet$};
+    \end{scope}
+    \draw[->] (0,-2) arc(-90:-45:2) node[midway,below] {$\theta$};
+
+\end{tikzpicture}
+\end{document}

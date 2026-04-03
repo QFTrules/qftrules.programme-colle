@@ -1,0 +1,18 @@
+\begin{tikzpicture}[>=stealth,scale=1]
+\small
+\draw[ultra thick, \blueOrBlack] (0,-1)--(0,1.5)node[above left, black]{$z$};
+\draw[ultra thick, ->, \blueOrBlack] (0,1)--(0,1)node[left]{$I$};
+\draw[very thick, ->] (2,0)--(2,1)--(3,1)--(3,0)--cycle;
+\draw[->, very thick] (2,0.4)--(2,0.6);
+\draw[dotted] (0,0.5) -- (2.5,0.5);
+\draw[thick] (-0.1,0.5) node[left] {$\ptO$}-- (0.1,0.5);
+\draw (2.5,0.5) node {$\bullet$};
+\draw[->, very thick] (3,0.6)--(3,0.4);
+\draw[<->] (1.7,0)--(1.7,1)node[left, midway]{$a$};
+\draw[<->] (2,1.3)--(3,1.3)node[above, midway]{$a$};
+\draw[<->, dashed] (0,-0.5)--(2.5,-0.5)node[below, midway]{$D$};
+\draw[dashed] (2.5,0)--(2.5,-0.5);
+\draw (4,-0.5)node{$\otimes$}node[below left]{$\vv{e_\theta}$};
+\draw[->] (4,-0.5)--(4,0.1)node[right]{$\vv{e_z}$};
+\draw[->] (4.1,-0.5)--(4.6,-0.5)node[below]{$\vv{e_r}$};
+\end{tikzpicture}

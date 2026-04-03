@@ -1,0 +1,1135 @@
+% displayname : Conduction thermique
+\documentclass[12pt,fancy]{cours}
+\Chapit{2}{2}
+\begin{document}
+\maketitre{
+Lorsqu'une inhomogénéité de température apparaît dans un matériau, le système cherche à retourner à une situation d'équilibre en homogénéisant la température. Pour cela, de l'énergie interne est transportée des régions chaudes vers les régions froides, en accord avec le second principe de la thermodynamique. Il existe plusieurs modes de transferts thermiques. Dans ce chapitre, nous nous focalisons essentiellement sur un mode particulier: celui de la conduction thermique dans les solides, qui conduit à une équation de diffusion.
+}
+{
+\item Cours Thermodynamique 1 à 3 - 0
+\item Documents de cours Thermodynamique 2 - 1
+\item TD Thermodynamique 1 à 3
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Loi fondamentale de la conduction thermique}
+
+\subsection{Introduction aux transferts thermiques}
+
+D’après le premier principe, l’énergie peut s’échanger au travers d’un travail mécanique $\delta W$, ou d’un autre mode de transfert appelé transfert thermique, représenté par la grandeur $\delta Q$. On sait bien calculer $\delta W$, mais beaucoup moins $\delta Q$. Pour cela, nous devons nous demander par quels moyens ce transfert thermique d’énergie peut-il s’opérer. On en distingue trois.
+
+\begin{liste}
+\item La \imp{convection} correspond à un transport macroscopique de matière dans un fluide. Par exemple, l’ouverture d’une fenêtre entre l’atmosphère froide au-dehors et l’air chaud dans une pièce s’accompagne d’un courant d’air apportant le « chaud » vers l’extérieur. La convection permet d’homogénéiser rapidement la température, et intervient dans tous les fluides sur des échelles de distance suffisamment grandes (par contre, elle est supprimé lorsque le fluide est confiné, comme dans du double-vitrage).
+%Nous discuterons de la convection uniquement en \Sec{}.
+
+\item Le \imp{rayonnement} correspond à l’absorption d’une onde électromagnétique. L’onde électromagnétique n’a pas besoin de support matériel pour se propager. Nous étudierons le rayonnement au \Chap{}.
+\item La \imp{conduction} correspond au transfert d’énergie de proche en proche sans déplacement macroscopique de matière. À l’échelle microscopique, les particules transmettent leur agitation de proche en proche au gré des chocs. Par exemple, le manche d’une cuillère en métal dont le bout est plongé dans une tasse de café s’échauffe parce que l’énergie remonte le manche. Le phénomène de conduction s’effectue par \imp{diffusion}. La diffusion thermique (transport d’énergie) fait l’objet de ce chapitre, tandis que la diffusion de particules (transport de matière) fait l’objet du \Chap{}.
+\end{liste}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[h!]
+\centering
+\def\he{3.6cm}
+\subfigure[]{\label{fig:convec}
+\includegraphics[height=\he]{convec.jpg}
+}\hfill
+\subfigure[]{\label{fig:convec}
+\includegraphics[height=\he]{radiation.jpg}
+}\hfill
+\subfigure[]{\label{fig:convec}
+\includegraphics[height=\he]{conduc.jpg}
+}
+\caption{Les trois types de transfert thermique : (a) convection, (b) radiation, (c) conduction.}
+\label{fig:}
+\end{figure}
+%%%%%%%%%%%%%
+
+En première année, vous avez décrit des systèmes à l'équilibre thermodynamique, pour lesquels les variables intensives (pression $p$, température $T$, concentration $n$, etc.) sont homogènes. Que se passe-t-il lorsqu'une \important{inhomogénéité} apparaît dans le système ? Comme des régions macroscopiques du système ne sont plus en équilibre avec leurs voisines, on s’attend à ce qu’un transfert (d’énergie, de particules, etc.) s’effectue au sein du système pour rétablir l’équilibre. Pour traiter ce type de situation, nous devons supposer que l’équilibre thermodynamique subsiste localement, à une échelle intermédiaire dite \imp{mésoscopique}. Cette échelle est grande devant la taille d'un atome (de sorte à ce que les grandeurs thermodynamiques soient bien définies) mais petite devant la taille du matériau (de sorte à pouvoir décrire des inhomogénéités).
+
+
+\begin{prop}[Équilibre thermodynamique local]
+Lorsque les inhomogénéités d’un système thermodynamique hors équilibre sont suffisamment petites, le système reste à tout instant au voisinage de l'équilibre, de sorte que subsiste un équilibre local à l'échelle mésoscopique.
+\end{prop}
+\noindent Dans ce cas, la pression $p(x,t)$, température $T(x,t)$ ou concentration $n(x,t)$ dans un système reste bien définie mais dépend de l’espace et du temps. Un objectif important de ce chapitre est de trouver une version locale (c’est-à-dire une équation différentielle par rapport aux variables d’espace $x$ et de temps $t$) des principes de la thermodynamique, en particulier de la conservation de l’énergie.
+
+\subsection{Flux et densité de courant thermiques}
+
+À présent, nous pouvons zoomer à l’échelle mésoscopique pour décrire le transfert thermique. Soit une surface $\mc{S}$ séparant deux milieux $1$ et $2$ (ou deux portions d’un même milieu), de normale locale $\Vec{n}_{1\rightarrow2}$ dirigée de $1$ vers $2$ (\Fig{echange}). On observe expérimentalement que le transfert thermique élémentaire du milieu $1$ vers le milieu $2$, noté $\dQ_{1\rightarrow 2} $, est proportionnel :
+\begin{liste}
+  \item à la durée $\d t$ des échanges. Nous pouvons donc mettre $\dQ_{1\rightarrow 2}$ sous la forme suivante.
+  \begin{definition}\label{def:phith}
+  On définit le \imp{flux thermique} $\Pth$ (homogène à une puissance, en W) tel que
+  \begin{equation*}
+  \dQ_{1\rightarrow 2} = \Pth \,\d t.
+  \end{equation*}
+  \end{definition}
+  Le flux thermique est une grandeur algébrique.
+  Ainsi $\Pth>0$ si le milieu $1$ fournit effectivement de l'énergie au milieu $2$, et $\Pth<0$ si le milieu $1$ reçoit de l'énergie thermique du milieu $2$.
+  \item à l’aire $S$ de la surface d’échange. Nous pouvons donc mettre $\Pth$ sous la forme suivante.
+  \begin{definition}\label{def:jth}
+  On définit le vecteur \imp{densité de courant thermique} $\Vec{\jth}$ (homogène à une puissance surfacique, en $\SI{}{W.m^{-2}}$) tel que
+  \begin{equation*}
+  \Pth = \iint_{\S}\Vec{\jth}\cdot\vv{\d S}.
+  \end{equation*}
+  \end{definition}
+  La direction du vecteur $\Vec{\jth}$ donne la direction des échanges d'énergie.
+  \begin{exemple}{Calcul de flux thermique}
+Calculer le flux thermique $\Pth$ lorsque $\Vec{\jth} = \jth \ex$ avec $\jth$ une constante à travers un disque de normale locale $\Vec{n}_{1\rightarrow2} = \cos \theta \,\ex + \sin \theta \,\ey$ et d'aire $S$.
+  \end{exemple}
+  \examplesol{$\Pth = \jth \cos \theta S$.}
+\end{liste}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[H]
+\centering
+\subfigure[]{\label{fig:}
+\includegraphics[width=0.45\textwidth]{def_flux_jth.pdf}
+}\hfill
+\subfigure[]{\label{fig:syst_1D}
+\includegraphics[width=0.45\textwidth]{bilan_jth.pdf}
+}
+\caption{(a) Le transfert thermique entre deux milieux est proportionnel à l’aire $\d S$ de la surface d’échange, définie par la normale $\Vec{\d S} = \d S \Vec{n}_{1\rightarrow2}$ dirigée de $1$ vers $2$, et à la durée $\d t$ des échanges. La constante de proportionnalité est le flux surfacique $\Vec{\jth} \cdot \Vec{n}_{1\rightarrow2}$, ce qui définit le vecteur densité de courant thermique $\Vec{\jth}$. (b) Bilan énergétique sur un tronçon élémentaire d'un matériau longiligne d'axe $(Ox)$.}
+\label{fig:echange}
+\end{figure}
+%%%%%%%%%%%%%
+
+\subsection{Bilan énergétique}
+
+\begin{methode}[Établir l'équation de conservation de l'énergie]
+  \item Définir le système comme une portion élémentaire du milieu :
+  \begin{liste}
+    \item tronçon d'épaisseur $\d x$ et de section $S$ en cartésienne ;
+    \item coquille cylindrique de rayon $r$, d'épaisseur $\d r$ et de hauteur $H$ en cylindrique ;
+    \item coquille sphérique de rayon $r$, d'épaisseur $\d r$ en sphérique.
+  \end{liste}
+  \item Exprimer la variation d'énergie interne $\d U$ pendant $\d t$ en fonction de $\dr{T}{t}$.
+  \item Exprimer le transfert thermique élémentaire $\dQ$ reçu pendant $\d t$ en fonction de $\Vec{\jth}$.
+  \item Écrire le $1^{\rm er}$ principe $\d U = \dQ$.
+\end{methode}
+
+\begin{enumerate}
+  \item \udl{Système}. Nous souhaitons écrire le premier principe de la thermodynamique sous une forme locale. Pour cela, réalisons un bilan d'énergie dans un cylindre de section $S$ situé entre les abscisses $x$ et $x+\d x$ (géométrie linéaire, coordonnées cartésiennes), voir \Fig{syst_1D}. Nous généraliserons le résultat dans d'autres géométrie et d'autres systèmes de coordonnées. On peut par exemple imaginer que l'on étudie la conduction thermique dans un fil de cuivre dont on chauffe une extrémité. Pour simplifier, nous ramenons le problème à une seule dimension : les transferts se font uniquement dans la direction $\ex$, et que les grandeurs thermodynamiques ne dépendent que de l’abscisse $x$ et du temps $t$, soit 
+  \begin{equation}
+    T = T(x,t), \quad \Vec{\jth} = \jth(x,t) \ex.
+  \end{equation}
+
+
+\item \udl{Expression de l’énergie interne}.
+Si le matériau composant le cylindre et homogène de masse volumique $\rho$ et de capacité calorifique massique $c$, l'énergie interne de ce tronçon vaut $U = c \d m T = \rho S \d x c T$. Alors la variation d'énergie interne du tronçon $\d U = U(t+\d t) - U(t) = \rho S\d x\, c [T(x,t +\d t) - T (x,t)]$.
+La variation élémentaire de température pendant $\d t$ s'exprime à partir d'un développement de Taylor, soit  
+\begin{equation}
+  T(x,t+\d t)-T(x,t) = \dr{T}{t}(x,t) \d t + o(\d t^2).
+\end{equation}
+Dans la limite $\d t \rightarrow 0$, on a donc
+\eqbox[]{
+\d U = \rho c \frac{\partial T}{\partial t} (x,t) S\d x \d t.
+}
+
+\item \udl{Expression du transfert thermique}.
+Pendant la durée $\d t$, le système reçoit un transfert thermique de la part du matériau situé à gauche de l'abscisse $x$, et a fourni un transfert thermique au matériau situé à droite de l'abscisse $x+\d x$. D’après l’\Eq{jth}, le transfert thermique total reçu par la portion de matériau entre les abscisses $x$ et $x+\d x$ s’écrit, puisque $\Vec{\jth}=\jth \ex$ est uniforme sur la section $S$,
+\begin{align}
+\dQ = \dQ_{\rm entr\'ee} - \dQ_{\rm sortie} =  \left[\Pth(x,t)-\Pth(x+\d x,t)\right]\d t
+ =\left[\jth(x,t)-\jth(x+\d x,t)\right]S\d t.
+\end{align}
+Un développement de Taylor donne ici 
+\begin{equation}
+  \jth(x,t)-\jth(x+\d x,t) = -\dr{\jth}{x}(x,t)\d x + o(\d x^2).
+\end{equation}
+Dans la limite $\d x \rightarrow 0$, on a donc
+\eqbox[]{
+\dQ =-\frac{\partial \jth}{\partial x}(x,t)S\d x \d t.
+}
+
+\item \udl{Écriture du premier principe}.
+Supposons de plus le cylindre indéformable : il ne reçoit aucun travail, et donc $\delta W=0$. On le suppose de plus immobile dans le référentiel d’étude, de sorte que l’énergie cinétique est nulle. Le premier principe pour la portion élémentaire de longueur $\d x$ entre les instants $t$ et $t+\d t$ s'écrit
+\begin{equation}
+\d U=\dQ.
+\end{equation}
+En utilisant les résultats précédents, on peut écrire le premier principe sous la forme d’une équation locale à l’abscisse $x$ et au temps $t$,
+\eqbox[]{
+\label{eq:bilan_premier_principe_1D}
+\rho c\frac{\partial T}{\partial t}+\frac{\partial \jth}{\partial x}=0.
+}
+L’\Eq{bilan_premier_principe_1D} traduit la conservation de l'énergie. On peut généraliser le bilan d'énergie à trois dimensions en reconnaissant l'expression en coordonnées cartésiennes de l'opérateur divergence.
+\begin{rappel}{Opérateur divergence}
+En généralisant l'\Eq{bilan_premier_principe_1D} à trois dimensions, on obtiendrait
+\begin{equation}
+\rho c \dfrac{\partial T}{\partial t}+\frac{\partial {\jth}_{,x}}{\partial x} + \frac{\partial {\jth}_{,y}}{\partial y} + \frac{\partial {\jth}_{,z}}{\partial z} =0.
+\end{equation}
+On introduit l'opérateur divergence, noté $\Dive{}$, tel que pour tout vecteur $\Vec{u} = (u_x,u_y,u_z)$,
+\begin{equation}
+\Dive{\Vec{u}} = \dr{u_{\JRouge{x}}}{\JRouge{x}} + \dr{u_{\JRouge{y}}}{\JRouge{y}} + \dr{u_{\JRouge{z}}}{\JRouge{z}}.
+\end{equation}
+\begin{danger}
+  L'opérateur divergence prend un vecteur et renvoie un scalaire.
+\end{danger}
+\end{rappel}
+
+\end{enumerate}
+
+\begin{theorem}[Équation de conservation de l’énergie]\label{form:bilan_premier_principe_3D}
+\begin{equation*}
+\rho c\frac{\partial T}{\partial t}+\Dive{\Vec{\jth}}=0.
+\end{equation*}
+\end{theorem}
+
+
+Il peut arriver que de l’énergie interne soit « créée » localement. Cela ne contredit pas la conservation de l’énergie, mais indique que de l’énergie est convertie sous forme thermique à partir d’une autre forme au sein du système (c’est le cas si le matériau est le siège de réactions chimiques ou nucléaires, ou subit un effet Joule). Il faut en tenir compte dans le bilan d’énergie. Il suffit d’ajouter un terme source $p_{\rm{vol}}$, homogène à une puissance volumique  (en \SI{}{W.m^{-3}}) dans la \Formu{bilan_premier_principe_3D}, soit
+% \begin{equation}\label{eq:source}
+\eqbox[source]{
+  \rho c\frac{\partial T}{\partial t}+\Dive{\Vec{\jth}}= p_{\rm vol}.
+  }
+% \end{equation}
+Si $p_{\rm{vol}}>0$, de l’énergie est effectivement apportée au système (chauffage) ; si $p_{\rm{vol}}<0$, de l'énergie est effectivement prélevée au système (refroidissement).
+
+\section{Lois phénoménologiques de la conduction thermique}
+
+\subsection{Loi de Fourier}
+\parag{Définition}
+La \Formu{bilan_premier_principe_3D} est une loi fondamentale : elle traduit la conservation de l’énergie. Malheureusement, elle fournit une seule équation pour deux inconnues (la température $T$ et le vecteur densité de courant thermique $\Vec{\jth}$). Pour résoudre cette équation et déterminer la température, il faut relier $\Vec{\jth}$ et $T$. C'est le rôle de la \imp{loi de Fourier}, qui fournit une expression de $\Vec{\jth}$ valable pour les phénomènes de conduction.
+
+\begin{theorem}[Loi de Fourier]\label{form:fourier}
+  Le vecteur densité de courant thermique $\Vec{\jth}$ est relié à la température $T$ par
+\begin{equation*}
+\Vec{\jth}=-\lambda\,\Grad{T},
+\end{equation*}
+où la grandeur $\lambda$, appelée \imp{conductivité thermique}, se mesure en $\SI{}{\watt\per\meter\per\kelvin}$.
+\end{theorem}
+\noindent  Il est bien de connaître quelques ordres de grandeur de $\lambda$, voir \Tab{lambda}. Les métaux sont de bons conducteurs thermiques : leur conductivité thermique est élevée, de sorte qu’une petite variation de température entraîne un flux thermique important. L’air, au contraire, est un mauvais conducteur (donc un isolant) thermique : sa conductivité thermique est faible, de sorte qu’une grande variation de température entraîne un flux thermique modéré (en l’absence de convection !).
+%%%%%%%%%%%%%%%%%%%%%%
+\begin{table}[H]
+  \centering
+  \begin{tabular}{|c|c|c|c|c|}
+  \hline
+  Matériau & air & eau & béton & cuivre \\
+  \hline
+  $\lambda ~(\SI{}{\watt\per\meter\per\kelvin})$ & $\SI{0,03}{}$  & $\SI{0,6}{}$ & $\SI{0,9}{}$ & $\SI{390}{}$ \\
+  \hline
+  \end{tabular}
+  \caption{Quelques valeurs typiques de conductivités thermiques.}
+  \label{tab:lambda}
+  \end{table}
+  %%%%%%%%%%%%%%%%%%%%%%
+
+  \parag{Propriétés}
+La loi de Fourier est une loi \imp{phénoménologique} : elle permet d’expliquer les expériences sans proposer de mécanisme physique sous-jacent. Bien qu’elle soit tirée de l’observation, on peut la justifier par quelques arguments théoriques simples. %dans un milieu isotrope, et
+\begin{liste}
+\item Si la température ne varie pas trop brutalement dans l'espace et le temps,
+$\Vec{\jth}$ dépend linéairement de la température $T$ au même point $M$ et au même instant $t$ (linéarité, localité, absence de mémoire).
+ \item Comme seules les inhomogénéités de température induisent un flux d’énergie, $\Vec{\jth}$ doit être proportionnel aux variations spatiales de $T$, et plus simplement par des dérivées spatiales d'ordre $1$. Seul le gradient permet de construire un tel vecteur à partir d'un scalaire.
+ 
+ \item Le signe moins est imposé par le \imp{second principe} de la thermodynamique : l’énergie s’écoule des régions chaudes vers les régions froides, de façon à assurer le retour à l’équilibre.
+\end{liste}
+D'après les propriétés de l'opérateur gradient, le vecteur densité de courant thermique $\Vec{\jth}$ est orthogonal aux isothermes $T=\cte$, et dirigé des régions chaudes ($T$ grand) vers les régions froides ($T$ froid), comme sur la \Fig{fourier}.
+
+\begin{fig}[fourier]
+  \centering
+  \includegraphics[scale=1.2]{fourier.pdf}
+  \capt{Propriétés du vecteur densité de courant thermique $\Vec{\jth}$.}
+\end{fig}
+
+
+
+
+\subsection{Conditions aux limites}
+\label{sec:cond_limites}
+Pour résoudre complètement un problème de conduction thermique, il est nécessaire de préciser les conditions aux limites qui portent sur le vecteur densité de courant thermique $\Vec{\jth}$ ou la température~$T$. %Nous étudierons uniquement la conduction dans un solide.
+On distingue deux types de conditions aux limites. En pratique, ces conditions sont précisées dans l'énoncé d'un exercice.
+
+\parag{Continuité de la température} Si le système, de température de surface $T_{\rm s}$, est au contact d’un thermostat de température $T_{\rm th}$, le thermostat impose sa température à la surface du système :
+
+\begin{prop}[Contact d’un thermostat]\label{prop:}
+  La température est continue à l'interface entre le système et un \imp{thermostat},
+\begin{equation*}
+T_{\rm{s}}=T_{\rm{th}}.
+\end{equation*}
+\end{prop}
+Un thermostat peut être un solide de grande taille, un bain de glace, ou l'atmosphère par exemple.
+% C’est la condition la plus simple. La température est continue à l’interface.
+
+\parag{Continuité du flux thermique}
+Lorsque le solide ou le fluide au contact du système ne joue pas le rôle de thermostat, il n'y a pas d'accumulation d’énergie interne à l'interface entre les deux milieux.  Autrement dit, le vecteur densité de courant thermique, ou de façon équivalente, le flux thermique, est continu à l’interface.
+% On distingue deux types d’interface suivant la phase.
+
+\begin{prop}[Continuité du flux thermique]\label{prop:}
+À l'interface entre le système et un milieu extérieur qui ne joue pas le rôle de thermostat, le vecteur densité de courant est continu à l'interface :
+\begin{equation*}
+\Vec{\jth}=\Vec{\jth}_{\rm, ext}.
+\end{equation*}
+\end{prop}
+% \Pth=\Pth_{\rm, ext}
+Dans la suite, on supposera toujours que le vecteur densité thermique dans le système $\Vec{\jth}$ est donné par la loi de Fourier, soit $\Vec{\jth} = - \lambda \grad T$. On distingue alors deux types d'interface.
+\begin{liste}
+\item Interface solide/solide : le vecteur  $\Vec{\jth}_{\rm, ext}$ est aussi donné par la \imp{loi de Fourier}. En pratique, le solide impose un flux thermique $\Pth_{\rm, ext}$ supposé connu.
+
+
+\item Interface solide/fluide : en raison de la conduction dans une fine couche de fluide au voisinage immédiat du solide, le courant thermique à l’interface est donné par la \imp{loi de Newton} de la conducto-convection,
+\begin{theorem}[Loi de la conducto-convection]
+  Si le milieu extérieur est un fluide, le vecteur densité de courant à l'interface s'écrit
+\begin{equation*}
+% \begin{split}
+\Vec{\jth}_{\rm, ext}=h(T_{\rm{s}}-T_{\rm{f}})\Vec{n}_{{\rm{s}\rightarrow \rm{f}}},
+% \qquad\Rightarrow\qquad \Pth=hS(T_{\rm{s}}-T_{\rm{f}}),
+% \end{split}
+\end{equation*}
+où la grandeur $h$, appelé \imp{coefficient de conducto-convection}, se mesure en $\SI{}{W.m^{-2}.K^{-1}}$.
+\end{theorem}
+
+Bien penser à vérifier le signe : si $T_{\rm{s}}>T_{\rm{f}}$, c'est bien le solide qui fournit de la chaleur au fluide.
+
+\end{liste}
+
+\begin{exemple}{Exemple de conditions aux limites thermiques}
+% Appliquer les conditions aux limites dans les situations suivantes.
+Considérons un barreau métallique d'axe $(Ox)$ de longueur $L$, de section $S$, de conductivité thermique $\lambda$. Le champ de température est donné par $T(x)=Ax+B$.  Étudier les situations suivantes.
+\begin{quest}
+  \item Le  barreau est au contact de deux thermostats en $x=0$ (température $T_1$) et $x=L$ (température $T_2$). Déterminer $A$ et $B$.
+  \item Le barreau est au contact en $x=0$ d'un solide qui impose un flux thermique $\Phi_0>0$ vers les $x$ positifs. Déterminer $A$.
+  \item Le barreau est au contact en $x=0$ d'un thermostat de température $T_0$, et en $x=L$ d'un fluide de coefficient de conducto-convection $h$, et de température constante $T_{\rm f}$. Déterminer la constante $A$ et la température à l'interface $T(x=L)$.
+\end{quest}
+\end{exemple}
+\examplesol{
+  \begin{quest}
+    \item	La continuité de la température s'impose :
+    
+    $$
+    \left\{
+    \begin{array}{l}
+    T(0)=T_1=A\times 0+B=T_1,\\
+    T(L)=A\times L+B=T_2.
+    \end{array}
+    \right. \Rar 
+    \left\{
+    \begin{array}{l}
+    B=T_1,\\
+    A=\frac{T_2-T_1}{L}.
+    \end{array}
+    \right.
+    $$
+    \item La densité de courant thermique est continue à l'interface :
+    $$
+    \Vec{\jth}(x=0) = \Vec{\jth}_{,\rm ext} \Rar \Pth(x=0) = \iint_S \Vec{\jth}(x=0) \cdot \dS = \Phi_0 \Rar -\lambda \dd{T}{x}(x=0) S = -\lambda A S = \Phi_0,
+    $$
+    d'où 
+    \eqbox{
+      A = -\frac{\Phi_0}{\lambda S}.
+    }
+    \item La densité de courant thermique est continue à l'interface :
+    $$
+    \Vec{\jth}(x=L) = \Vec{\jth}_{,\rm ext} \Rar  -\lambda \dd{T}{x}(x=L) = - \lambda A  = h[T(x=L)-T_{\rm f}] \Rar -\lambda A S = h(AL+T_0-T_{\rm f}),
+    $$
+    soit 
+    \eqbox{
+    A = \frac{h(T_0-T_{\rm f})}{\lambda + hL}.
+    }
+    On en déduit ensuite la température à l'interface $T(x=L) = A L + T_0 = \frac{h(T_{\rm f}-T_0)}{\lambda + hL} L + T_0 $, soit
+    \eqbox{
+    T(x=L) = \frac{\lambda T_0 + hL T_{\rm f}}{\lambda + hL}.
+    }
+    On verra que cette expression peut s'obtenir à partir des lois d'associations des résistances thermiques.
+  \end{quest}
+}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Régime stationnaire}
+ Commençons par effectuer un bilan thermique complet dans un cas simple : le régime stationnaire. Par définition, le régime est stationnaire lorsque la température $T$ ne dépend pas du temps $t$.
+
+\subsection{Conservation du flux thermique}
+
+
+\parag{Forme locale}
+ En régime stationnaire (permanent), le champ de température et la densité de courant thermique sont indépendants du temps, soit
+ \begin{equation}
+  T(M,t) = T(M), \quad \Vec{\jth}(M,t) = \Vec{\jth}(M).
+ \end{equation}
+ Dans l’équation de conservation de l’énergie de la \Formu{bilan_premier_principe_3D}, en l’absence de terme source, nous avons 
+ \begin{equation}
+  \rho c \barred{\frac{\partial T}{\partial t}} + \Dive{\Vec{\jth}} = 0 \Rar \Dive{\Vec{\jth}} = 0.
+ \end{equation}
+ car la dérivée temporelle s’annule, ce qui impose la conservation du vecteur densité de courant thermique.
+\begin{prop}[Conservation du flux thermique -- forme locale]\label{prop:conservj}
+En régime stationnaire, et en l'absence de terme source,
+\begin{equation*}
+\Dive{\Vec{{\jth}}}=0.
+\end{equation*}
+\end{prop}
+
+\parag{Forme globale}
+
+Soit un conducteur cylindrique de section $S$ et de longueur $L$ orienté selon l'axe $x$, soumis à une densité de courant thermique $\Vec{\jth} = \jth(x) \ex$. D'après la propriété \Prop{conservj},
+\begin{equation}
+  \Dive{\Vec{{\jth}}}= \dd{\jth}{x} = 0,
+\end{equation}
+ce qui montre que $\jth(x)=\jth$ est constant (indépendant de $x$). Comme $\jth$ est uniforme sur une section, le flux thermique a pour expression $\Pth(x) = \jth S$, et est constant également (indépendant de $x$). Cela signifie que $\Pth$ ne dépend pas de la section $\mc{S}$ sur laquelle on le calcule. Généralisons ce résultat.
+
+On appelle \imp{ligne de champ} thermique une courbe tangente en tout point au vecteur densité de courant $\Vec{\jth}$.
+ On appelle \imp{tube de champ} thermique un ensemble de lignes de champ thermiques qui s'appuient sur deux sections $\S_1$ (en entrée) et $\S_2$ (en sortie). Le flux thermique traversant une section $\mc{S}$ de ce tube de champ a pour expression
+ \begin{equation}
+   \Pth = \iint_{\mc{S}} \Vec{\jth} \cdot \dS.
+ \end{equation}
+ En régime stationnaire, on montre que $\Pth$ ne dépend pas de la section $\mc{S}$ choisie le long du tube de champ.
+
+\begin{figure}[h!]
+\centering
+\includegraphics{bilan_jth_S.pdf}
+\includegraphics[width=0.4\textwidth]{bilan_jth_tube.pdf}
+\caption{(a) En régime stationnaire, le flux thermique $\Phi = \jth S$ traversant un cylindre dans la direction de son axe ne dépend pas de $x$, et donc de la section $\mc{S}$. On a $\Pth_1=\Pth_2$. (b) Tube de champ du vecteur densité de courant thermique $\Vec{\jth}$, s'appuyant sur deux sections $\mc{S}_1$ et $\mc{S}_2$.}
+\label{fig:}
+\end{figure}
+%%%%%%%%%%%%%
+
+\begin{prop}[Conservation du flux thermique -- forme globale]
+En régime stationnaire,
+le flux thermique $\Pth$ est constant le long d'un tube de champ thermique (indépendant de la section $\S$).
+\end{prop}
+\noindent On dit que $\Vec{\jth}$ est à \imp{flux conservatif}.
+
+\begin{remarque}
+En effet, soient $\S_1$ et $\S_2$ deux sections orthogonales au vecteur densité de courant thermique, et $\S$ la surface fermée composé de $\S_1$, $\S_2$, et de la  la surface latérale $\mc{S}_{\rm lat}$ joignant ces deux sections. Un théorème d'analyse vectorielle, le théorème de \imp{Green-Ostrogradski} nous dit alors que
+\begin{equation}
+\oiint_{\S}\Vec{\jth}\cdot\vv{\d S}=\iiint_{V} \Dive{\Vec{\jth}}\,\d V.
+\end{equation}
+Or en régime stationnaire, $\dive{\Vec{\jth}}=0$. En décomposant le flux sur $\mc{S}$, on obtient
+\begin{equation}
+0 = \oiint_{\mc{S}}\Vec{\jth}\cdot\vv{\d S} = \underbrace{\int_{\mc{S}_1}\Vec{\jth}\cdot\vv{\d S}}_{-\Pth_1} + \underbrace{\int_{\mc{S}_2}\Vec{\jth}\cdot\vv{\d S}}_{\Pth_2} + \underbrace{\int_{\mc{S}_{\rm lat}}\Vec{\jth}\cdot\vv{\d S}}_{0},
+\end{equation}
+et donc $\Pth_1 = \Pth_2$.
+\end{remarque}
+%\begin{remarquetech}
+%En effet
+%car d'après
+%Bien noter que le flux $\Pth$ est défini à travers une surface quelconque alors que le théorème de Green-Ostrogradski s'applique à une surface $S$ fermée, qui s'appuie sur le contour du volume $V$.
+%\end{remarquetech}
+
+%\parag{Résistance thermique}
+\subsection{Résistance thermique}
+
+\parag{Définition} Nous allons maintenant combiner la loi phénoménologique de Fourier $\Vec{\jth} = -\lambda\,\Grad{T}$ à la \Prop{conservj} de conservation du flux thermique en régime stationnaire. On trouve $\Dive{\Vec{\jth}} = -\lambda \,\Dive{\Grad{}}{T} = 0.$ On définit alors l'opérateur \imp{Laplacien} scalaire par $\Delta  = \Dive{\Grad{}} $. La température vérifie donc l'équation
+\eqbox[]{\label{eq:laplace}
+\Delta T = 0.
+}
+\begin{rappel}{Opérateur Laplacien}
+  En coordonnées cartésiennes, l’opérateur Laplacien scalaire s’écrit
+  \begin{equation}
+    \Delta T = \ddr{T}{x} +  \ddr{T}{y} +  \ddr{T}{z}.
+  \end{equation}
+\end{rappel}
+ % où le symbole $\Delta$ désigne l’opérateur Laplacien. Dans l’exemple précédent du cylindre conducteur de section $S$ et d’axe $x$, la température ne dépend que de $x$.
+\begin{experience}[Mesurer une température]{Profil de température dans un barreau de cuivre}
+On considère un barreau de cuivre d'axe $(Ox)$, de section $S$ et de longueur $L$. Le régime stationnaire est atteint et on suppose que la température ne dépend que de $x$.
+\begin{quest}
+  \item Résoudre l'\Eq{laplace} et en déduire $T(x)$ en fonction de deux constantes $A$ et $B$.
+  \item Déterminer $A$ et $B$ à partir des conditions aux limites. Représenter le graphe de $T(x)$.
+  \item Calculer le flux thermique $\Pth$ et commenter.
+\end{quest}
+Le profil de température calculé correspond bien à celui mesuré expérimentalement avec une caméra thermique, comme illustré ci-dessous.
+\begin{fig}[]
+  \centering
+\begin{subfig}[label][0.45]
+  \includegraphics[height=0.8\textwidth]{IR.jpg}
+\end{subfig}
+\begin{subfig}[label][0.45]
+  \includegraphics[height=0.75\textwidth]{T_vs_x_diffu.pdf}
+\end{subfig}
+\capt{(a) Image thermique d'un barreau de cuivre vertical dont l'extrémité basse est au contact d'une circulation d'eau chaude et l'extrémité haute au contact de glace fondante. (b) Profil de température mesuré dans le barreau le long d'un axe $x$ vertical descendant. Le profil est compatible avec une loi affine.}
+\end{fig}
+\end{experience}
+\examplesol{
+\begin{quest}
+  \item
+L’équation de Laplace donne alors
+$
+\ddm{T}{x}{2}=0,
+$
+de solution \eqbox{T(x)=Ax+B.}
+\item  Les conditions aux limites permettent de déterminer les constantes $A$ et~$B$. Il vient
+\begin{equation*}
+\left\{
+\begin{array}{ll}
+T(0) = A & = T_1 \\
+T(L) = AL + B & = T_2 \\
+\end{array}
+\right. \Rightarrow\quad
+\boxed{T(x)=T_{1}+\dfrac{T_{2}-T_{1}}{L}x.}
+\end{equation*}
+Le profil de température a donc l'allure ci-dessous.
+\begin{fig}[label]
+  \centering
+  \includegraphics[scale=1]{T_affine.pdf}
+  %\capt{}
+\end{fig}
+\item Le flux thermique a alors pour expression
+\eqbox{
+\Pth = -\lambda \dd{T}{x} S =  \frac{\lambda S}{L}(T_1-T_2),
+}
+qui est
+une constante (indépendant de $x$), comme attendu d'après la loi de conservation du flux thermique. On voit que $\Pth$ est proportionnel à $T_1-T_2$, et que le facteur ne dépend que des propriétés thermique ($\lambda$) et géométrique ($S$ et $L$) du matériau.
+\end{quest}
+}
+
+\begin{definition}\label{def:résistance thermique}
+  % Soit un matériau soumis à
+On appelle \imp{résistance thermique} la grandeur $R_{\rm th}$ telle qu’en régime stationnaire,
+\begin{equation*}
+T_1-T_2 =  R_{\rm th} \Pth.
+\end{equation*}
+Dans un matériau homogène de section $S$ et de longueur $L$, elle vaut  $R_{\rm th}=\frac{L}{\lambda S}$.
+\end{definition}
+
+
+
+Cette dénomination de « résistance » thermique vient de l’analogie entre l’électrocinétique et la conduction thermique en régime stationnaire. La loi d'Ohm $U=V_1-V_2=RI$ est similaire à la \Def{résistance thermique}, comme résumé dans le \Tab{analog}. La résistance électrique dans conducteur cylindrique homogène a pour expression
+$R=\frac{L}{\sigma S}$, où $\sigma$ désigne la conductivité électrique du matériau.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{table}[h!]
+\begin{center}
+\begin{tabular}{|ll|ll|}
+\hline
+\textsc{Électrique} &  & \textsc{Thermique} & \\
+\hline
+\rule{0pt}{3ex}
+Potentiel électrique & $V$ & Température & $ T$\\[1ex]
+\hline
+\rule{0pt}{4ex}
+Intensité du courant\notemark & $I = \displaystyle \iint_\mc{S} \Vec{\jmath} \cdot \Vec{\d S}$ & Flux thermique & $ \Pth = \displaystyle \iint_\mc{S} \Vec{\jth} \cdot \Vec{\d S}$\\[0.35cm]
+\hline
+\rule{0pt}{4ex}
+Loi d'Ohm locale\notemark & $ \Vec{\jmath} = -\sigma \, \Grad{V}$ & Loi de Fourier & $\Vec{\jth} = -\lambda \,\Grad{T}$\\[0.25cm]
+\hline
+\rule{0pt}{4ex}
+Loi d'Ohm & $ V_1-V_2 = RI$ & Loi « d’Ohm » thermique & $T_1-T_2 = R_{\rm th} \Pth$\\[0.25cm]
+\hline
+\end{tabular}
+\end{center}
+\caption{Analogie entre électrocinétique et conduction thermique en régime stationnaire. \notemark Nous verrons ces relations au \refChap{5}{6}.}
+\label{tab:analog}
+\end{table}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\begin{remarque} L'expression de $R_{\text{th}}$ dépend de la géométrie du problème puisque le flux en dépend (voir TD et chapitre de diffusion de particules pour les autres géométries).
+%\end{remarque}
+
+
+\parag{Associations de résistances thermiques}
+
+L'analogie thermique-électrocinétique se retrouve également dans les lois d’association de résistances thermiques.
+
+\begin{liste}
+  \item
+
+  Lorsque deux matériaux sont traversés par un même flux thermique $\Pth$, on dit qu’ils sont associés en en \imp{série} (Fig.~\ref{fig:serie}). Soit $T_{\rm m}$ la température de l’interface entre les milieux $1$ et $2$, et $\Rth[s]$ la résistance thermique de l’association série des deux milieux. Par définition,
+  \begin{equation}
+    \Rth[s]\Pth = T_1-T_2 = (T_1-T_{\rm m}) + (T_{{\rm m}}-T_2) = \Rth[1]\Pth + \Rth[2]\Pth.
+  \end{equation}
+  et donc en série :
+\eqbox{
+  \Rth[s] = \Rth[1] + \Rth[2].
+}
+
+  \begin{prop}[Association série]\label{prop:}
+  Lorsque deux matériaux sont en \imp{série}, i.e. traversés par un même flux thermique, les résistances thermiques s’ajoutent :
+  $$
+  \Rth[s] = \Rth[1] + \Rth[2]
+  $$
+  \end{prop}
+  \item Lorsque les matériaux sont soumis à la même différence de température $T_1-T_2$, on dit qu’ils sont associés en \imp{parallèle} (Fig.~\ref{fig:parallele}). Soit $R_{\rm th}^{\text{(p)}}$ la résistance thermique de l’association parallèle des deux milieux. Le flux thermique est partagé entre les deux matériaux, $\Pth=\Pth_1+\Pth_2$. Ainsi
+   \begin{equation}
+  \dfrac{T_1-T_2}{R_{\rm th}^{\text{(p)}}} =  \Pth = \Pth_1 + \Pth_2 = \frac{T_{1}-T_{2}}{R_{\rm{th}}^{(1)}}+\frac{T_{1}-T_{2}}{R_{\rm{th}}^{(2)}},
+  \end{equation}
+  et donc en parallèle :
+  \eqbox{  \frac{1}{R_{\rm{th}}^{(\text{p})}}=\frac{1}{R_{\rm{th}}^{(1)}}+\frac{1}{R_{\rm{th}}^{(2)}}.}
+  On peut alors introduire la notion de conductance thermique $G_{\rm th} = 1/R_{\rm th}$.
+  \begin{prop}[Association parallèle]\label{prop:}
+  Lorsque deux matériaux sont en \imp{parallèle}, i.e. soumis à la même différence de température, les conductances thermiques (inverse des résistances thermiques) s’ajoutent  :
+  $$
+\frac{1}{R_{\rm{th}}^{(\text{p})}}=\frac{1}{R_{\rm{th}}^{(1)}}+\frac{1}{R_{\rm{th}}^{(2)}}.
+  $$
+  \end{prop}
+\end{liste}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[H]
+	\centering
+	\subfigure[]{\label{fig:serie}
+	\includegraphics[scale=1]{serie_flux.pdf}
+	}\hspace{1cm}
+	\subfigure[]{\label{fig:parallele}
+	\includegraphics[scale=1]{parallel_flux.pdf}
+	}
+	\caption{Association (a) série et (b) parallèle de deux résistances thermiques. (a) Deux conducteurs thermiques sont disposés en série lorsqu'ils sont traversés par le même flux thermique $\Pth$. (b) Deux conducteurs thermiques sont disposés en parallèle lorsqu'ils sont soumis à la même différence de température $T_1-T_2$.}
+	\label{fig:resist_th}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%Dans une association parallèle, on somme les conductances thermiques.
+Les règles d’association sont donc les mêmes qu’en électrocinétique.
+
+%Comme en électricité, chaque branche ($\Leftrightarrow$ matériau) d'un montage en série est soumise au même débit de charges $I$ ($\Leftrightarrow$ même flux de chaleur $\Pth$) et on ajoute les résistances. En parallèle chaque branche ($\Leftrightarrow$ matériau) est soumise à la même tension ou différence de potentiel $V_1-V_2$ ($\Leftrightarrow$ différence de température $T_1-T_2$) et on ajoute l'inverse des résistances, aussi appelées les conductances.
+
+\begin{remarque}
+On comprend pourquoi isoler un bâtiment est difficile : la résistance thermique en parallèle est dominée par la résistance thermique la plus faible (typiquement, celle du vitrage). Il faut donc chercher avant tout à isoler au maximum le vitrage d’un bâtiment. Dans une association série, en revanche, il est suffisant de rajouter des couches pour isoler.
+
+De la même façon, on ne sort pas en hiver avec un gros pull et un short (association parallèle), mais plutôt avec un gros pull et un pantalon chaud. Lorsqu'il fait très froid, on superpose des couches pour isoler le corps au maximum (association série).
+\end{remarque}
+
+\begin{methode}[Déterminer l'expression d'une résistance thermique]
+  \item Faire un schéma et utiliser la géométrie du problème pour savoir de quelle variable dépend $T$.
+   % Justifier alors la dépendance et la direction de $\Vec{\jth}$ en invoquant la loi de Fourier.
+  \item Résoudre l'équation de Laplace $\Delta T = 0$.
+  \item Déterminer les constantes à partir des conditions de continuité de la température.
+  \item Calculer $\Vec{\jth}$ avec la loi de Fourier.
+  \item Intégrer $\Vec{\jth}$ sur une section d'un tube de champ thermique pour exprimer $\Pth$ en fonction de $T_2-T_1$, puis identifier $R_{\rm th}$ sachant que $T_1-T_2 =  R_{\rm th} \Pth$.
+\end{methode}
+
+
+% \vspace{1em}
+% \begin{exemple}{Température à l'intérieur de la Terre}
+% On modélise la Terre par une boule homogène de rayon $R$, de conductivité thermique $\lambda$, de capacité calorifique massique~$c$, et de masse volumique $\rho$. La température à la surface de la Terre est $T_{\rm s}$. Sous ces hypothèses, la température en régime stationnaire $T(r)$ ne dépend que du rayon $r$.
+%
+% En utilisant l’expression du gradient en coordonnées sphériques $(r,\theta,\varphi)$, on trouve
+% \begin{equation}
+% \Vec{\jth} = -\lambda \dd{T}{r} \er.
+% \end{equation}
+% La conservation du flux thermique en régime stationnaire donne alors
+% \begin{equation}
+% \Dive{\Vec{\jth}} = \dfrac{1}{r^2}
+% \dfrac{\d }{\d r} \left(- r^2 \lambda \dd{T}{r} \right) = 0 \quad \Rightarrow \quad \dfrac{\d }{\d r} \left(r^2 \dd{T}{r} \right) = 0.
+% \end{equation}
+%
+% On peut intégrer cette équation et déterminer les deux constantes d'intégration $A$ et $B$ en précisant les conditions aux limites en $r=R$ et $r=0$. On trouve en effet
+% \begin{equation}
+% r^2 \dd{T}{r}  = A \quad \Rightarrow \quad  \dd{T}{r} = \dfrac{A}{r^2} \quad  \Rightarrow \quad T(r) = -\dfrac{A}{r} + B.
+% \end{equation}
+% La condition aux limites en $r=R$ donne $-\frac{A}{R}+B=0$. Par contre, comme la température ne peut pas diverger en $r=0$, on doit avoir $A=0$. Mais alors $T=B=T_{\rm s }$ est constante, ce qui n’est pas un modèle réaliste (on sait qu’il fait plus chaud au centre de la Terre). On verra un modèle plus réaliste en TD.
+%
+% %La Terre est en fait le siège de désintégrations radioactives qui sont à l’origine d’une puissance volumique constante~$\alpha$. D’après l’\Eq{source}, le bilan d'énergie donne
+% %\begin{equation}
+% %\Dive{\Vec{\jth}} = -\lambda\dfrac{1}{r^2}
+% %\dfrac{\d }{\d r} \left(r^2  \dd{T}{r} \right) = \alpha \Rightarrow \dfrac{\d }{\d r}\left(r^2\dfrac{\d T}{\d r} \right) = -\dfrac{\alpha}{\lambda} r^2.
+% %\end{equation}
+% %En intégrant cette équation, on trouve
+% %\begin{equation}
+% %r^2\dd{T}{r} = -\dfrac{\alpha}{3\lambda} r^3 + C \quad  \Rightarrow \quad \dd{T}{r} = -\dfrac{\alpha}{3\lambda} r + \dfrac{C}{r^2}  \quad \Rightarrow \quad T(r) = -\dfrac{\alpha}{6\lambda} r^2 - \dfrac{C}{r}+ D.
+% %\end{equation}
+% %La constante $C=0$ doit être nulle pour que la température au centre de la Terre soit finie. Enfin, les conditions aux limites en $r=R$ donnent $T(R) = T_{\rm s} = -\frac{\alpha}{6\lambda} R^2 + D$, d’où l’on tire
+% %\begin{equation}
+% %T(r) = T_{\rm s } + \frac{\alpha}{6\lambda}(R^2-r^2).
+% %\end{equation}
+%
+% \end{exemple}
+
+\begin{exemple}{Résistance thermique d'une coquille cylindrique}
+On considère une coquille cylindrique de hauteur $H$ et de rayons interne $R_1$ et externe $R_2>R_1$ faite d'un matériau conducteur thermique de conductivité $\lambda$. La température $T(r)$ ne dépend que du rayon $r$ et vérifie $T(R_1)=T_1$ et $T(R_2)=T_2$. On souhaite déterminer l'expression de la résistance thermique de cette coquille.
+\begin{quest}
+  \item Écrire et résoudre l'équation vérifiée par $T(r)$ en régime stationnaire.
+  \item Utiliser les conditions aux limites pour déterminer les constantes d'intégration.
+  \item Calculer le flux thermique $\Pth$ et en déduire l'expression de $R_{\rm th}$.
+\end{quest}
+\end{exemple}
+\examplesol{
+\begin{quest}
+  \item  En régime stationnaire, on a
+  $
+\Delta T = \frac{1}{r} \dd{}{r}\left( r\dd{T}{r} \right) = 0$, donc $ r \dd{T}{r} = A,
+  $
+  soit \eqbox{T(r) = A\ln\left(\frac{r}{R_1}\right) + B,}
+  avec $A$ et $B$ des constantes. On a introduit $R_1$ dans le logarithme pour que l'argument soit adimensionné (cela revient à redéfinir la constante $B$).
+  \item Les conditions aux limites imposent les températures en $R_1$ et $R_2$. On trouve alors
+  $$
+\begin{cases}
+T(R_1) = B = T_1 \\
+T(R_2) = A \ln(R_2/R_1) + B = T_2\\
+\end{cases}
+\Rar
+\boxed{
+\begin{cases}
+B = T_1,\\
+A = (T_2-T_1)/\ln(R_2/R_1).\\
+\end{cases}
+}
+  $$
+  \item On peut ensuite calculer le vecteur densité de courant thermique $\Vec{\jth} = - \lambda\, \grad T = -\lambda \frac{A}{r} \er$ puis le flux thermique à travers une section cylindrique de rayon $r$, soit
+  $$
+\Pth = \iint_{\mc{S}} \Vec{\jth} \cdot \er \, \d S = - \int_0^H\int_0^{2\pi} \lambda \frac{A}{r} \times r\d \theta  \d z  = -2\pi H \lambda A = \frac{2\pi H \lambda}{\ln(R_2/R_1)} (T_1-T_2).
+  $$
+  Le flux thermique est indépendant de $r$ comme il se doit en régime stationnaire ! On en déduit l'expression de la résistance thermique
+  \eqbox{
+  R_{\rm th} =  \frac{\ln(R_2/R_1)}{2\pi H \lambda}.
+  }
+\end{quest}
+}
+
+\section{Régimes dépendant du temps}
+
+\subsection{Régime quasi stationnaire (AQRS)}
+
+En régime stationnaire, les grandeurs thermiques comme la température $T(M)$, la densité de courant thermique $\Vec{\jth}(M)$, où le flux thermique $\Pth$, ne dépendent pas du temps $t$. On peut relaxer cette hypothèse tout en supposant que les propriétés vues en régime stationnaire, à savoir : la conservation du flux thermique, l'équation de Laplace, la notion de résistance thermique et la loi de Fourier globale, restent valables. On parle alors d'\imp{approximation des régimes quasi-stationnaires} (AQRS).
+
+\begin{prop}[ARQS thermique]\label{prop:}
+  Dans l'ARQS, la température $T(M,t)$ dépend du temps $t$ assez lentement pour que restent valables :
+  \begin{liste}
+    \item la conservation du flux thermique : $\Pth(t) = \cte$ à $t$ fixé le long d'un tube de champ;
+    \item l'équation de Laplace : $\Delta T(M,t) = 0$ ;
+    \item la loi de Fourier globale : $T_1(t)-T_2(t) = \Rth \Pth(t)$.
+  \end{liste} 
+\end{prop}
+\begin{exemple}{Chauffage d'une habitation}
+L'intérieur d'une habitation est rempli d'une grande quantité d'air de capacité calorifique à volume constant $C_{\rm th} = \SI{30}{kJ.K^{-1}}$ et de température uniforme $T(t)$. L'extérieur de l'habitation est au contact de l'atmosphère de température $T_{\rm ext} = \SI{10}{\dC}$. 
+% \begin{quest}
+  % \item	Évaluer numériquement la capacité calorifique $C$ en assimilant l'air intérieur à un gaz parfait diatomique de volume total $\SI{100}{m^3}$.
+% \end{quest}
+On se place dans l'ARQS. On suppose que l'air intérieur et l'atmosphère jouent le rôle de thermostat pour les murs de  de l'habitation, de résistance thermique totale $\Rth = \SI{2.3e-2}{K.W^{-1}}$. À l'instant $t=0$, la température de l'air intérieur vaut $T_0  = \SI{17}{\dC}$, et on allume le chauffage de l'habitation, qui fournit une puissance constante $\mc{P} = \SI{440}{W}$.  
+  \begin{quest}
+  \item En appliquant le $1^{\text{er}}$ principe de la thermodynamique au système fermé $\{\text{air intérieur}\}$, montrer que la température vérifie l'équation différentielle
+  \begin{equation}
+  \dd{T}{t} + \frac{T}{\tau} = \frac{T_{\rm f}}{\tau},
+  \end{equation}
+  où l'on donnera l'expression et la valeur numérique de $\tau$ et $T_{ \rm f}$.
+  \item Résoudre cette équation différentielle et tracer le graphe de $T(t)$. Quelle analogie voyez-vous avec l'électrocinétique dans l'ARQS ? Représenter le circuit électrique équivalent.
+\end{quest}
+\end{exemple}
+\examplesol{
+  \begin{quest}
+    \item	\udl{Système} fermé : ${\text{air intérieur}}$. 
+    
+    \udl{Bilan d'énergie} : le 1er principe pendant une durée élémentaire $\d t$ s'écrit
+    $$
+\d U = U(t + \d t) - U(t) =  \delta Q = \mc{P}\,\d t - \Pth\,\d t,
+    $$
+    avec $U = CT$ l’expression de l’énergie interne, et $\Pth = \frac{T-T_{\rm ext}}{\Rth}$ le flux thermique de fuite. 
+
+
+    \udl{Équation différentielle} :
+    on en déduit
+    $$
+C \dd{T}{t} = \mc{P} - \frac{T-T_{\rm ext}}{\Rth},
+    $$
+    soit 
+    \eqbox{
+\dd{T}{t} + \frac{T}{\tau} = \frac{T_f}{\tau},
+    }
+    avec
+    % $$
+    \eqbox{
+      \tau = \Rth C_{\rm th} \simeq \SI{6.2e2}{s} 
+      }
+    % $$ 
+    le temps caractéristique de chauffage, et
+    % $$
+    \eqbox{
+      T_{\rm f} = T_{\rm ext} + \Rth \mc{P} = \SI{27}{\dC}
+      }
+    % $$
+    la température finale atteinte en régime établi.
+  \end{quest}
+}
+  \examplesol[]{
+    \begin{quest}
+    \item \udl{Solution générale} : la solution de cette équation est de la forme
+    $$
+    T(t) = T_{\rm f} + A e^{-t/\tau}.
+    $$
+
+    \udl{Condition initiale} : la condition initiale donne
+    $$
+    T(0) = T_0 = A + T_{\rm f} \quad \Rightarrow \quad A = T_0 - T_{\rm f}.
+    $$
+    On en déduit 
+    \eqbox{
+T(t) = T_{\rm f} + (T_0 - T_{\rm f}) e^{-t/\tau}.
+    }
+    \udl{Analogie}
+    On reconnait l’expression de la tension de décharge aux bornes d'un condensateur dans un circuit RC relié à une source de tension. ON voit que l’air intérieur joue le rôle d’un condensateur thermique de capacité $C_{\rm th}$, les murs de l’habitation celui d’une résistance thermique $\Rth$, et le chauffage celui d’une source de courant de puissance thermique $\mc{P}$. Le circuit électrique équivalent est représenté ci-dessous.
+    \begin{fig}[H]
+      \centering
+      \includegraphics[scale=1.5]{RC_thermique.pdf}
+      \capt{Circuit électrique équivalent de l'exemple du chauffage d'une habitation.}
+    \end{fig}
+  \end{quest}
+}
+
+
+%\section{Bilan thermique en régime quelconque}
+%\subsection{Équation de la diffusion thermique}
+\subsection{Régime quelconque et équation de diffusion}
+
+% \subsection{Équation de la diffusion thermique}
+
+Nous souhaitons maintenant obtenir une équation générale portant sur la température. Il suffit de combiner la loi de Fourier \Formu{fourier} avec la loi de conservation de l’énergie en l’absence de terme source \Formu{bilan_premier_principe_3D}. On obtient l'équation de la diffusion thermique, aussi appelé équation de la chaleur,
+\begin{equation}
+\rho c\frac{\partial T}{\partial t}=\lambda\,\Delta{T}.
+\end{equation}
+On retrouve bien l’équation de Laplace \Eq{laplace} en régime stationnaire, lorsque $T$ est indépendant de~$t$. On voit apparaître dans cette équation une constante dimensionnée, appelée \imp{diffusivité thermique}
+\begin{equation}
+\kappa = \dfrac{\lambda}{\rho c}.
+\end{equation}
+La diffusivité thermique se mesure en $\SI{}{\meter\squared\per\second}$. Quelques ordres de grandeurs sont donnés dans le \Tab{lambda}. Elle dépend de la capacité du matériau à transporter l’énergie (conductivité thermique $\lambda$) et de sa capacité à la stocker (capacité thermique volumique $\rho c$). L’équation de la diffusion thermique se met alors sous la forme suivante.
+%%%%%%%%%%%%%%%%%%%%%%
+\begin{table}[H]
+  \centering
+  \begin{tabular}{|c|c|c|c|c|}
+  \hline
+  Matériau & air & eau & béton & cuivre \\
+  \hline
+  $\kappa ~(\SI{}{\meter\squared\per\second})$ & $\SI{2e-5}{}$  & $\SI{e-7}{}$ & $\SI{5e-7}{}$ & $\SI{e-4}{}$ \\
+  \hline
+  \end{tabular}
+  \caption{Quelques valeurs typiques de diffusivités thermiques.}
+  \label{tab:lambda}
+  \end{table}
+  %%%%%%%%%%%%%%%%%%%%%%
+
+\begin{theorem}[Équation de la diffusion thermique]\label{form:diffu}
+  La conduction thermique est un phénomène diffusif. La température vérifie une équation de diffusion
+\begin{equation*}
+\frac{\partial T}{\partial t}=\kappa\,\Delta{T},
+\end{equation*}
+de coefficient de diffusion (en $\SI{}{\meter\squared\per\second}$)la \imp{diffusivité thermique} $\kappa = \frac{\lambda}{\rho c}$.
+\end{theorem}
+\noindent Les équations de diffusion interviennent dans de nombreux domaines de la physique : nous en verrons une autre pour la diffusion de particules dans le \refChap{2}{4}, et nous en profiterons pour étudier plus en détails les propriétés des phénomènes diffusifs. Une équation de diffusion couple une dérivée spatiale seconde ($\Delta$) avec une dérivée temporelle première ($\partial/\partial t$).
+
+
+%Ordres de grandeurs. Les métaux sont généralement de bons conducteurs de chaleur\footnote{Ils sont aussi de bons conducteurs électriques, ce qui est normal puisque dans les deux cas c'est la mobilité des porteurs de charges, les électrons, qui permet la conduction thermique ou la conduction électrique.}, par exemple pour le cuivre $D\simeq \SI{e-4}{m^2.s^{-1}}$. Pour les isolants comme le béton, $D\simeq \SI{5e-7}{m^2.s^{-1}}$. Pour l'eau, $D\simeq \SI{e-7}{m^2.s^{-1}}$ et pour l'air $D\simeq \SI{2e-5}{m^2.s^{-1}}$ (même si attention il y a surtout de la convection pour ces modes de transfert plutôt que de la conduction/diffusion pure). On remarque qu'en règle générale, la diffusion thermique est un phénomène plus rapide que la diffusion de particules.
+%Nous étudierons plus en détail l'équation de diffusion dans le \Chap{}.
+%au chapitre précédent s'appliquent toujours (irréversibilité du phénomène, longueur caractéristique $\delta=\sqrt{D\tau}$ et temps caractéristique $\tau=\delta^2/D$ associés au phénomène diffusif ...).
+
+% \subsection{}
+%
+% \subsection{Régime sinusoïdal}
+%
+% La température de l'atmosphère subit des variations périodiques, que ce soit sur la journée (cycle jour-nuit) ou sur l'année (cycle des saisons). Lorsque que la chaleur diffuse dans le sol, la terre est donc soumis à une condition aux limites périodiques, que l'on peut assimiler en première approximation à une évolution sinusoïdale.
+% %Dans cette partie on souhaite expliquer le principe d'une cave à vin.
+% D'expérience, on sait que les variations de température profondément dans le sol sont plus faibles qu'en surface, c'est pourquoi dans les grottes ou les caves à vin la température reste constante alors que la température à la surface varie au cours de la journée ou des saisons. C'est aussi pourquoi on enterre les canalisations d'eau dans le sol pour éviter qu'elles gèlent en hiver.
+%
+% \begin{exemple}{Effet de cave}
+% Nous modélisons le sol par un solide semi-infini ($z>0$) soumis à une variation de température sinusoïdale en $z=0$ de la forme $T(z=0,t)=T_{0}+T_1\cos(\omega t)$, avec une période de variation $\tau=\frac{2\pi}{\omega}$. On souhaite établir le profil de température $T(z,t)$ dans le sol.
+%
+% L'équation de la diffusion thermique \Formu{diffu}, qui est linéaire, admet nécessairement comme solution une fonction qui oscille à la même pulsation $\omega$. Pour faciliter les calculs, travaillons en notation complexe, On cherche une solution de la forme $\underline{T}(z,t)=T_{0}+f(z)\,\e^{i\omega t}$, où la fonction spatiale $f(z)$ reste à déterminer. L'équation de la diffusion thermique donne alors
+% \begin{equation}
+% i\omega f\e^{i\omega t}=\kappa\frac{\d^2 f}{\d z^2}\e^{i\omega t}\quad\Rightarrow\quad \frac{\d^2 f}{\d z^2}-i\frac{\omega}{\kappa}f=0.
+% \end{equation}
+% En cherchant $f$ sous la forme $f(z) \propto e^{-ikz}$, nous trouvons\footnote{En effet, $i=\e^{i\pi/2}$ donc $i^{1/2}=\e^{i\pi/4}=[\cos(\frac{\pi}{4})+i\sin(\frac{\pi}{4})]=\frac{(1+i)}{\sqrt{2}}$.}
+% \begin{equation}
+% k^2=i\frac{\omega}{\kappa} \Rightarrow k = k=\pm\frac{1+i}{\sqrt{2}}\sqrt{\frac{\omega}{\kappa}} = \pm\frac{1+i}{\delta},
+% \end{equation}
+% où $\delta = \sqrt{2\kappa/\omega}$ est homogène à une distance. Comme $k$ peut avoir deux valeurs, on obtient $f$ comme combinaison linéaire
+% \begin{equation}
+% f(z)=\underline{A}\,\exp\left[(1+i)\frac{z}{\delta}\right]+\underline{B}\,\exp\left[-(1+i)\frac{z}{\delta}\right].
+% \end{equation}
+% Une divergence de l'amplitude en $z\rightarrow\infty$ n'étant pas possible physiquement, nécessairement $\underline{A}=0$. On obtient ensuite $\underline{B}$ grâce aux conditions aux limites,
+% \begin{equation}
+% \underline{T}(z=0,t)=T_0+f(z=0)e^{i\omega t}=T_0+\underline{B}e^{i\omega t} = T_0 + T_1 e^{i\omega t}.
+% \end{equation}
+% Il vient finalement
+% \begin{equation}
+% \begin{split}
+% \underline{T}(z,t)=T_{0}+T_1\,\exp\left[-(1+i)\frac{z}{\delta}\right]\e^{i\omega t},
+% \end{split}
+% \end{equation}
+% puis en prenant la partie réelle
+% \begin{equation}
+% T=T_0+T_1\,\e^{-z/\delta}\cos\left(\omega t-\dfrac{z}{\delta}\right)\qquad\text{où}\qquad\delta=\sqrt{\frac{2\kappa}{\omega}}=\sqrt{\frac{\kappa \tau}{\pi}}.
+% \end{equation}
+% La grandeur $\delta$ est appelée \imp{longueur de pénétration} de l'onde dans le milieu. Elle est responsable d'une part d'une atténuation exponentielle de l'onde avec la profondeur, et d'autre part d'un déphasage de l'onde croissant avec la profondeur $\Delta\varphi = z/\delta$. Qualitativement, $\delta$ donne la distance typique sur laquelle les variations de température sont sensibles. Pour le sol, $\kappa = \SI{6.0e-7}{m^2.s^{-1}}$ .
+%
+% \begin{liste}
+% \item Sur la journée, de durée $\tau = \SI{24}{h}$, on trouve $\delta = \SI{13}{cm}$.
+% \item Sur l'année, de durée $\tau = \SI{1}{an}$, on trouve $\delta = \SI{2,5}{m}$.
+% \end{liste}
+% \end{exemple}
+%
+%\subsection{Irréversibilité et création d'entropie}
+%Cette partie étant un peu plus technique que les précédentes, elle peut être passée en première lecture. Réalisons un bilan d'entropie sur le système (second principe). Reprenons l'exemple du cylindre infinitésimal de longueur $\d x$ et de section notée $\Sigma$ (pour éviter une confusion avec l'entropie, notée $S$). On rappelle que pour une phase condensée, l'entropie s'exprime comme $S=S_{0}+mc\ln\left(\tfrac{T}{T_0}\right)$, c'est-à-dire que $\d S=mc\frac{\d T}{T}$. Or la variation d'entropie du système entre $t$ et $t+\d t$ (durant $\d t$) vaut
+%\begin{equation}
+%\begin{split}
+%\d S=S(x,t+\d t)-S(x,t)=\frac{\overbrace{(\rho\Sigma \d x)}^{= m} c}{T(x,t)}\underbrace{\frac{\partial T(x,t)}{\partial t}\d t}_{=\d T}.
+%\end{split}
+%\end{equation}
+%L'entropie échangée par le système au niveau des sections en $x$ et $x+\d x$ s'écrit
+%\begin{equation}
+%\begin{split}
+%\delta S_{\rm{éch}}&=\frac{\delta Q_{x}}{T(x,t)}-\frac{\delta Q_{x+\d x}}{T(x+\d x,t)}\\
+%&=\frac{j_{x,Q}(x,t)\Sigma \d t}{T(x,t)}-\frac{j_{x,Q}(x+\d x,t)\Sigma \d t}{T(x+\d x,t)}\\
+%&=\left[-\frac{\partial}{\partial x}\left(\frac{j_{x,Q}}{T}\right)(x,t)\,\d x\right]\Sigma \d t.
+%\end{split}
+%\end{equation}
+%On peut utiliser la loi de Fourier $j_{x,Q}=-\lambda\frac{\partial T}{\partial x}$ pour simplifier l'expression précédente en
+%\begin{equation}
+%\begin{split}
+%\delta S_{\rm{éch}}&=\lambda\frac{\partial}{\partial x}\left(\frac{1}{T}\frac{\partial T}{\partial x}\right)\d x\Sigma \d t\\
+%&=\left[-\frac{\lambda}{T^2}\left(\frac{\partial T}{\partial x}\right)^2+\frac{\JRouge{\lambda}}{T}\JRouge{\frac{\partial^2 T}{\partial x^2}}\right]\d x \Sigma \d t\\
+%&=\left[-\frac{\lambda}{T^2}\left(\frac{\partial T}{\partial x}\right)^2+\frac{\JRouge{\rho c}}{T}\JRouge{\frac{\partial T}{\partial t}}\right]\d x \Sigma \d t,
+%\end{split}
+%\end{equation}
+%où dans la dernière égalité nous avons utilisé l'équation de diffusion (terme en rouge).
+%
+%Il reste maintenant à écrire que d'après le second principe $\d S=\delta S_{\rm{créée}}+\delta S_{\rm{éch}}$ d'où on déduit
+%\begin{equation}
+%\begin{split}
+%\delta S_{\rm{créée}}&=\frac{(\rho\Sigma \d x) c}{T}\frac{\partial T}{\partial t}\d t-\left[-\frac{\lambda}{T^2}\left(\frac{\partial T}{\partial x}\right)^2+\frac{\rho c}{T}\frac{\partial T}{\partial t}\right]\d x \Sigma \d t\\
+%&=\frac{\lambda}{T^2}\left(\frac{\partial T}{\partial x}\right)^2 \d x \Sigma \d t.
+%\end{split}
+%\end{equation}
+%L'entropie créée par unité de temps et de volume s'exprime donc comme
+%\begin{equation}
+%s_{\rm{créée}}=\frac{\lambda}{T^2}\left(\frac{\partial T}{\partial x}\right)^2 >0.
+%\end{equation}
+%Une inhomogénéité de température est responsable d'une création d'entropie, ce qui démontre l'irréversibilité de la diffusion thermique.
+%
+%\section{Solutions classiques}
+%\subsection{Régime permanent : résistance thermique}
+%Considérons un conducteur cylindrique de section $S$ et de longueur $L$ orienté selon l'axe $x$. L'extrémité gauche en $x=0$ est maintenue à la température $T_{1}$ et l'extrémité droite en $x=L$ à la température $T_{2}$. On se place en régime permanent, où le champ de température est stationnaire, donc $T(x,t)=T(x)$.
+%
+%D'une part, d'après le premier principe, on obtient que $\Dive{\,\vv{j_Q}}=0$ donc ici $\frac{\d j_{x,Q}}{\d x}=0$ et finalement $j_{x,Q}$ est constant. On dit en régime permanent que $\vv{j_Q}$ est à flux conservatif, car d'après le théorème de Green-Ostrogradski
+%\begin{equation}
+%\oiint_{S}\vv{j_Q}\cdot\vv{\d S}=\iiint_{V} \Dive{\,\vv{j_Q}}\,\d V=0\quad\Rightarrow\quad \Pth=\iint_{S}\vv{j_Q}\cdot\vv{\d S}=\cte.
+%\end{equation}
+%\begin{remarquetech}
+%Bien noter que le flux $\Pth$ est défini à travers une surface quelconque alors que le théorème de Green-Ostrogradski s'applique à une surface $S$ fermée, qui s'appuie sur le contour du volume $V$.
+%\end{remarquetech}
+%
+%D'autre part, l'équation de la chaleur conduit à $\Delta T=0$, dont les solutions en géométrie cartésienne sont de la forme $T(x)=Ax+B$. En utilisant les conditions aux limites il vient
+%\begin{equation}
+%\begin{split}
+%T(x)=T_{1}+\dfrac{T_{2}-T_{1}}{L}x.
+%\end{split}
+%\end{equation}
+%On retrouve évidemment que le flux $\Pth=(T_1-T_2)\frac{\lambda S}{L}$ est constant. On définit alors la résistance thermique $R_{\rm{th}}$ telle que
+%\begin{equation}
+%R_{\rm{th}}=\frac{T_1-T_2}{\Pth}\qquad\Rightarrow\quad R_{\rm{th,cart}}=\frac{L}{\lambda S}.
+%\end{equation}
+%Cette dénomination de \guill{résistance} provient d'une analogie électrique, où dans l'approximation des régimes quasi-stationnaires, la loi d'Ohm s'écrit $U=RI$. Or $I$ est un débit de charges $I=\frac{\d q}{\d t}$ (analogie: $\Pth=\frac{\delta Q}{\d t}$) et $U$ est une différence de potentiel $U=V_1-V_2$ (analogie $T_1-T_2$) qui donne
+%$R=\frac{V_1-V_2}{I}=\frac{L}{\sigma S}$
+% en géométrie cartésienne avec $\sigma$ la conductivité électrique du matériau.
+%
+%\begin{remarque} L'expression de $R_{\text{th}}$ dépend de la géométrie du problème puisque le flux en dépend (voir TD et chapitre de diffusion de particules pour les autres géométries).
+%\end{remarque}
+%
+%\begin{figure}[h!]
+%	\centering
+%	\includegraphics[width=0.8\textwidth]{/serie_parallele.pdf}
+%	\caption{Configuration d'association série et parallèle des résistances thermiques.}
+%	\label{fig:resist_th}
+%\end{figure}
+%\begin{paragraph}{Association série/parallèle de résistances thermiques.\\}
+%Dans le cas où les matériaux sont traversés successivement par un même flux thermique, on parle d'association en série (Fig.~\ref{fig:resist_th}). Soit $\Pth_{1}$ (resp. $\Pth_2$) le flux qui traverse le matériau $1$ (resp. $2$) seul. En utilisant les résistances thermiques il vient
+%\begin{equation}
+%\Pth_{1}=\frac{T_{1}-T_{\rm{m}}}{R_{\rm{th},1}},
+%\qquad
+%\Pth_{2}=\frac{T_{\rm{m}}-T_2}{R_{\rm{th},2}},
+%\end{equation}
+%où nous avons introduit la température $T_{\rm{m}}$ à l'interface entre les deux matériaux.
+%De plus si on note $\Pth_{\rm{tot}}$ le flux qui traverse l'ensemble,
+%\begin{equation}
+%\Pth_{\rm{tot}}=\frac{T_1-T_2}{R_{\rm{th,eq}}}.
+%\end{equation}
+%Pour déterminer la résistance équivalente de l'ensemble $R_{\rm{th,eq}}$, on décompose
+%\begin{equation}
+%\begin{split}
+%\Pth_{\rm{tot}}R_{\rm{th,eq}}=T_1-T_2=(T_1-T_{\rm{m}})+(T_{\rm{m}}-T_2)=R_{\rm{th},1}\Pth_1+R_{\rm{th},2}\Pth_2.
+%\end{split}
+%\end{equation}
+%Or, la conservation de l'énergie et donc la non-accumulation du flux dans l'ensemble impose $\Pth_{\rm{tot}}=\Pth_1=\Pth_2$ d'où en simplifiant les flux
+%\begin{equation}
+%\begin{split}
+%R_{\rm{th,eq}}(\text{série})=R_{\rm{th},1}+R_{\rm{th},2}.
+%\end{split}
+%\end{equation}
+%Le raisonnement est similaire dans le cas où les matériaux sont soumis cette fois en même temps à la même différence de température (association en parallèle, Fig.~\ref{fig:resist_th}) et où donc le flux thermique est partagé entre les deux matériaux $\Pth_{\rm{tot}}=\Pth_1+\Pth_2$. Ainsi \begin{equation}
+%\begin{split}
+%\Pth_{\rm{tot}}=\frac{T_{1}-T_{2}}{R_{\rm{th},1}}+\frac{T_{1}-T_{2}}{R_{\rm{th},2}}\qquad \Rightarrow \quad \frac{1}{R_{\rm{th,eq}}(\text{parallèle})}=\frac{1}{R_{\rm{th},1}}+\frac{1}{R_{\rm{th},2}}.
+%\end{split}
+%\end{equation}
+%Comme en électricité, chaque branche ($\Leftrightarrow$ matériau) d'un montage en série est soumise au même débit de charges $I$ ($\Leftrightarrow$ même flux de chaleur $\Pth$) et on ajoute les résistances. En parallèle chaque branche ($\Leftrightarrow$ matériau) est soumise à la même tension ou différence de potentiel $V_1-V_2$ ($\Leftrightarrow$ différence de température $T_1-T_2$) et on ajoute l'inverse des résistances, aussi appelées les conductances.
+%
+%\begin{remarque}
+%On comprend pourquoi isoler un bâtiment est relativement difficile: le terme dominant de la résistance thermique en parallèle est donné par la résistance thermique la plus faible. Il faut donc toujours chercher à isoler la partie qui l'est le moins, sans se préoccuper du reste ... Pour une association en série en revanche, il est suffisant de \guill{rajouter des couches} pour isoler.
+%
+%\noindent C'est aussi pour ça qu'en hiver vous ne sortez pas avec un gros pull et un short (association parallèle), mais plutôt avec un gros pull et un pantalon chaud, et que lorsqu'il fait très froid vous superposez les couches (association série).
+%\end{remarque}
+%\end{paragraph}
+%
+%\subsection{Approximation des régimes quasi-stationnaires}
+%Ce régime correspond au cas où $\Delta t\gg \tau$ où $\Delta t$ est le temps caractéristique d'évolution de la perturbation extérieure (de façon équivalente de la température aux conditions aux limites extérieures), et $\tau\sim \delta^2/D$ est le temps caractéristique de diffusion dans le matériau.
+%
+%Dans ce régime, on peut utiliser tous les résultats du régime permanent (en particulier la notion de résistance thermique).
+%
+%\paragraph{Une astuce.} Dans l'ARQS ou en régime permanent, il est parfois efficace lorsqu'on réalise un bilan d'énergie de traduire le fait que toute l'énergie produite à l'intérieur du système est évacuée par transfert thermique à travers la surface. On obtient généralement une équation de la forme
+%\begin{equation}
+%\Pth=P_{\rm{prod}}-P_{\rm{cons}},
+%\end{equation}
+%où $P_{\rm{prod}}$ est la puissance produite et $P_{\rm{cons}}$ la puissance consommée par le système, qui traduit directement le bilan énergétique.
+%
+%\subsection{Régime sinusoïdal}
+%Dans cette partie on souhaite expliquer le principe d'une cave à vin. D'expérience, on sait que les variations de température profondément dans le sol sont plus faibles qu'en surface, c'est pourquoi dans les grottes ou les caves à vin la température reste constante alors que la température à la surface varie au cours des saisons. C'est aussi pourquoi on enterre les canalisations d'eau dans le sol pour éviter qu'elles gèlent en hiver.
+%
+%Précisons les choses: on étudie un solide semi-infini ($z>0$) soumis à une variation de température sinusoïdale en $z=0$ de la forme $T(z=0,t)=T_{0}+T_1\cos(\omega t)$, avec une période de variation $T=\frac{2\pi}{\omega}$. On cherche à établir le profil de température $T(z,t)$ dans le sol.
+%
+%L'équation de la chaleur étant une équation différentielle linéaire, on peut la résoudre en superposant des signaux harmoniques (théorie de Fourier). En notation complexe, on cherche $\underline{T}(z,t)=T_{0}+f(z)\,e^{i\omega t}$, c'est-à-dire la fonction $f(z)$. En substituant cette expression dans l'équation de la chaleur on obtient
+%\begin{equation}
+%i\omega f(z)e^{i\omega t}=D\frac{\d^2 f(z)}{\d z^2}e^{i\omega t}\qquad\Leftrightarrow\quad \frac{\d^2 f(z)}{\d z^2}-i\frac{\omega}{D}f(z)=0.
+%\end{equation}
+%Posons alors $k^2=i\frac{\omega}{D}$, c'est-à-dire\footnote{$i=e^{i\pi/2}$ donc $i^{1/2}=e^{i\pi/4}=[\cos(\frac{\pi}{4})+i\sin(\frac{\pi}{4})]=\frac{(1+i)}{\sqrt{2}}$.} $k=\pm\frac{1+i}{\sqrt{2}}\sqrt{\frac{\omega}{D}}=\pm \frac{1+i}{\delta}$ la solution générale est alors de la forme
+%\begin{equation}
+%f(z)=\underline{A}\,\exp\left[(1+i)\frac{z}{\delta}\right]+\underline{B}\,\exp\left[-(1+i)\frac{z}{\delta}\right].
+%\end{equation}
+%Une divergence de l'amplitude en $z\rightarrow\infty$ n'étant pas possible physiquement, nécessairement $\underline{A}=0$. Or $T(z=0,t)=f(z=0)=T_1=\underline{B}$ et donc il vient finalement
+%\begin{equation}
+%\begin{split}
+%\underline{T}(z,t)=T_{0}+T_1\,\exp\left[-(1+i)\frac{z}{\delta}\right]e^{i\omega t},
+%\end{split}
+%\end{equation}
+%puis en prenant la partie réelle
+%\begin{equation}
+%T=T_0+T_1\,e^{-z/\delta}\cos(\omega t-\dfrac{z}{\delta})\qquad\text{où}\qquad\delta=\sqrt{\frac{2D}{\omega}}=\sqrt{\frac{DT}{\pi}}.
+%\end{equation}
+%La longueur $\delta$ est appelée la longueur de pénétration de l'onde dans le milieu. Elle est responsable d'une part d'une atténuation de l'onde avec la profondeur, et d'autre part d'un déphasage de l'onde égal à $z/\delta$. Qualitativement, $\delta$ indique la longueur typique sur laquelle les variations de température sont visibles.
+%
+%Pour le sol, typiquement $D\sim\SI{6e-7}{m^2.s^{-1}}$ et donc à l'échelle d'une année $\delta\sim\SI{2,5}{m}$. Après quelques $\delta$, les fluctuations de température sont négligeables.
+
+%\begin{figure}[h!]
+%	\centering
+%	\input{Figures/ailette.tex}
+%	\caption{Ailette de refroidissement. Un zoom sur une portion élémentaire de l'ailette est réalisé à droite.}
+%\end{figure}
+%\begin{exemple}{Exemple: Ailette de refroidissement\\}
+%On se place en régime permanent et on considère le système unidimensionnel donc $T=T(x)$.
+%Le premier principe exprimé en terme de puissance donne
+%
+%\begin{equation}
+%\begin{split}
+%\rho c \pi R^{2}\mathrm{d}x\dfrac{\partial T}{\partial t}=0=\left(j(x)-j(x+\mathrm{d}x)\right)\pi R^{2}-h(T(x)-T_{\text{ext}})2\pi R\mathrm{d}x
+%\end{split}
+%\end{equation}
+%
+%où le signe - $(h>0)$ traduit le fait que la chaleur est perdue par le système si $T(x)>T_{\text{ext}}$. Ainsi
+%\begin{equation}
+%\begin{split}
+%\dfrac{\partial^{2}T}{\partial x^{2}}-\dfrac{2h}{\lambda R}\left(T(x)-T_{\text{ext}}\right)=0
+%\end{split}
+%\end{equation}
+%donc \begin{equation}
+%\begin{split}
+%T(x)=A~\text{e}^{x/\delta}+B~\text{e}^{-x/\delta}+T_{\text{ext}}\quad\text{avec}\quad\delta=\sqrt{\dfrac{\lambda R}{2h}}
+%\end{split}
+%\end{equation}
+%
+%En prenant la condition simpliste $T(L)=T_{\text{ext}}$ il vient pour $L\gg \delta$
+%\begin{equation}
+%\begin{split}
+%A=0\qquad\text{et}\qquad B=T_{0}-T_{\rm{ext}}
+%%T(x)=(T_{0}-T_{\text{ext}})~\text{e}^{-x/\delta}+T_{\text{ext}}
+%\end{split}
+%\end{equation}
+%En prenant la condition plus réaliste $-\lambda\left.\dfrac{\mathrm{d}T}{\mathrm{d}x}\right|_{x=L}=h\left(T(L)-T_{\text{ext}}\right)$ il vient
+%\begin{equation}
+%\begin{split}
+%A=\dfrac{T_{0}-T_{\text{ext}}}{1+\e^{2L/\delta}\left(\dfrac{h+\lambda/\delta}{\lambda/\delta -h}\right)}\qquad\text{et}\qquad B=A\,\e^{2L/\delta}\left(\dfrac{h+\lambda/\delta}{\lambda/\delta -h}\right)
+%\end{split}
+%\end{equation}
+%\end{exemple}
+
+%\section{Les autres modes de transferts thermiques}
+%\label{sec:autres_modes_transfert}
+%\subsection{Convection}
+%Contrairement à la conduction, la convection est un mode de transfert thermique par déplacement \important{macroscopique} du milieu support, donc de matière. Elle concerne ainsi les fluides. Le déplacement convectif peut apparaître spontanément par exemple à cause d'une différence de température dans le système: les gaz chauds se dilatent et s'élèvent par la poussée d'Archimède (résultante des forces de pression), contrairement aux gaz froids. On parle alors de convection \important{naturelle}. La convection peut aussi être \important{forcée}, si c'est une force extérieure qui est responsable de l'écoulement.
+%
+%\begin{remarque}
+%En général, les transferts thermiques sont couplés. C'est par exemple ce qu'il se passe lorsqu'on modélise le transfert thermique au niveau d'une fenêtre: la paroi de verre solide est à la température $T_{\rm{s}}(t)$, tandis que l'air extérieur est un fluide à la température $T_{\rm{f}}(t)$. En un point quelconque de la paroi, le transfert thermique est donné par la loi conducto-convective de Newton
+%\begin{equation}
+% \Pth_{\rm{s}\rightarrow \rm{f}}(t)=hS\left[T_{\rm{s}}(t)-T_{\rm{f}}(t)\right],
+% \end{equation}
+% où $h$ est une constante homogène à des \SI{}{W.m^{-2}.K^{-1}}. C'est aussi ce qu'il se passe dans l'exemple précédent du café: lorsqu'on le remue, on augmente le coefficient $h$, ce qui a pour effet de faciliter le transfert thermique avec l'air extérieur et donc de refroidir le café.
+%\end{remarque}
+%
+%\subsection{Rayonnement}
+%Tout système émet un rayonnement électromagnétique dont les caractéristiques dépendent de sa température. Ainsi, même si deux systèmes ne sont pas nécessairement en contact\footnote{Un transfert thermique par rayonnement ne nécessite donc pas de milieu matériel support, et peut donc se faire dans le vide.}, l'\important{énergie électromagnétique} émise par l'un est partiellement reçue par l'autre: une partie est directement \important{absorbée}, une partie est \important{transmise} (elle traverse le corps), et enfin une dernière partie est \important{réfléchie}. Ces différentes contributions s'illustrent bien par un bilan d'énergie au niveau de l'atmosphère terrestre, l'énergie incidente étant fournie par le Soleil sous forme de rayonnement électromagnétique. Le rôle de l'atmosphère est capital pour expliquer la température moyenne à la surface du globe, sans elle, la température moyenne annuelle serait plus faible d'au moins $\SI{30}{\celsius}$ ! C'est en piégeant une partie du rayonnement infrarouge incident (\important{effet de serre}) que la planète possède une température moyenne favorable au développement et au maintien de la vie.
+%
+%\medskip
+%\noindent$\clubsuit$ Analyse documentaire: \textit{Composition atmosphérique et bilan radiatif}, Reflets de la Physique (Mars 2013).
+%\medskip
+%
+%\begin{remarquetech}
+%Les expressions des lois qui suivent dans cette section ne sont pas à mémoriser. Par contre, il faut être capable de les utiliser.
+%\end{remarquetech}
+%
+%Si un corps est en équilibre radiatif avec le rayonnement total émis dans un certain volume, alors la densité spectrale d'énergie volumique du rayonnement (=quantité d'énergie électromagnétique par unité de volume et par unité de longueur d'onde) est donnée par la loi de Planck
+%\begin{equation}
+%\begin{split}
+%u(\lambda,T)=\dfrac{8\pi hc}{\lambda^{5}}\dfrac{1}{\exp\left(\frac{h c}{k_{B}T\lambda}\right)-1},
+%\end{split}
+%\end{equation}
+%avec $h\simeq\SI{6,626e-34}{J.s}$ la constante de Planck, de sorte que $u(\lambda,T)$ s'exprime bien en \SI{}{J.m^{-4}}. On peut tracer la fonction $u(\lambda,T)$ en fonction de la longueur d'onde pour différentes valeurs de température (Fig.~\ref{fig:corps_noir}), et on observe que la fonction passe par un maximum à la longueur d'onde $\lambda_{\rm{max}}$ telle que
+%\begin{equation}
+%\begin{split}
+%\lambda_{\rm{max}}T\simeq \SI{2.9e-3}{\kelvin\meter}.
+%\end{split}
+%\end{equation}
+%Cette loi est appelée la loi de Wien, elle se démontre simplement en dérivant la fonction $u(\lambda,T)$ donnée par la loi de Planck à $T$ fixée. Nous avons représenté en Fig.~\ref{fig:corps_noir} chaque courbe de la couleur donnée par la loi de Wien: on constate par exemple qu'une étoile très chaude émet une couleur plutôt violette, tandis qu'une étoile plus froide émet une couleur qui tire plus vers le rouge. La lumière qui nous provient du Soleil nous apparaît jaune, on peut ainsi en déduire une estimation de sa température au voisinage de sa surface, voisine de \SI{5000}{K}.
+%
+%\begin{figure}[h!]
+%	\centering
+%	\includegraphics[width=0.6\textwidth]{corps_noir.pdf}
+%	\caption{Spectre d'émission prédit par la loi de Planck. Le déplacement vers la droite de $\lambda_{\rm{max}}$ lorsque $T$ diminue est une conséquence de la loi de Wien (la couleur de chaque courbe indique la valeur associée de $\lambda_{\rm{max}}$). L'accroissement de l'aire sous la courbe lorsque $T$ augmente est une conséquence de la loi de Stefan.}
+%	\label{fig:corps_noir}
+%\end{figure}
+%
+%Enfin, une dernière loi utile relie la puissance totale émise par un corps en fonction de sa température. En intégrant $u(\lambda,T)$ sur toutes les longueurs d'ondes possibles\footnote{Preuve: poser le changement de variable $u=\frac{hc}{k_{\rm{B}}T\lambda}$ et noter que $\int_{0}^{\infty}\frac{u^3}{e^{u}-1}\d u=\frac{\pi^4}{15}$.}, on peut montrer que
+%\begin{equation}
+%u(T)=\int_{0}^{\infty}u(\lambda,T)\,\d\lambda=\sigma T^{4}.
+%\end{equation}
+%Cette loi est appelée loi de Stefan, et $\sigma=\frac{8\pi^5 k_B^4}{15(hc)^3}\simeq\SI{7,5e-16}{J.m^{-3}.K^{-4}}$ la constante de Stefan. On retrouve le fait que plus un corps est chaud, plus il émet d'énergie par rayonnement électromagnétique. La dépendance en $T^4$ illustre l'influence considérable de la température sur l'énergie volumique rayonnée.
+%
+%
+%
+%
+%
+%%\begin{remarque} Pour un corps noir présentant un pic d'émission à $\lambda_{m}$, la contribution de l'intervalle $[\lambda_{m};8\lambda_{m}]$ représente \SI{98}{\percent} de la puissance totale émise. \end{remarque}
+%
+%
+%\newpage
+%\begin{subappendices}
+%%\section{Résistances thermiques en coordonnées cylindriques et sphériques}
+%%\paragraph{En cylindriques\\}
+%%
+%%On considère un matériau de conductivité $\lambda$ piégé entre deux cylindres de rayons $R_{\rm{in}}$ et $R_{\rm{ext}}$ et de longueur $L$. La température de la face interne est fixée à $T(R_{\rm{in}})=T_{\rm{in}}$ et celle de la face extérieure à $T(R_{\rm{ext}})=T_{\rm{ext}}$. On cherche à évaluer en régime permanent la résistance thermique équivalente du système.
+%%\begin{equation}
+%%\begin{split}
+%%\Dive{j_Q}=\dfrac{1}{r}\left(\dfrac{\partial}{\partial r}(rj_{r})\right)=0~~\text{(stationnaire)}\quad\Rightarrow\quad\vv{j_{r}}=\dfrac{C}{r}\vv{e_{r}}
+%%\end{split}
+%%\end{equation}
+%%où $C$ est une constante indépendante de $r$. En utilisant la loi de Fourier on obtient
+%%\begin{equation}
+%%\begin{split}
+%%-\lambda\dfrac{\mathrm{d}T}{\mathrm{d}r}=\dfrac{C}{r}
+%%\end{split}
+%%\end{equation}
+%%or le flux étant conservatif, on a $\Pth=2\pi r L j_{Q}$ autrement dit $C=\frac{\Pth}{2\pi L}$ et donc
+%%\begin{equation}
+%%\begin{split}
+%%-\int_{T_{\rm{in}}}^{T_{\rm{ext}}}\d T = \frac{\Pth}{2\pi L\lambda}\int_{R_{\rm{in}}}^{R_{\rm{ext}}}\frac{\d r}{r}\quad\Rightarrow\quad \frac{T_{\rm{in}}-T_{\rm{ext}}}{\Pth}=R_{\rm{eq}}=\frac{\ln(R_{\rm{ext}}/R_{\rm{in}})}{2\pi L\lambda}
+%%\end{split}
+%%\end{equation}
+%%
+%%\paragraph{En sphériques\\}
+%%
+%%\begin{equation}
+%%\begin{split}
+%%\Dive{j_Q}=\dfrac{1}{r^2}\left(\dfrac{\partial}{\partial r}(r^2j_{r})\right)=0~~\text{(stationnaire)}\quad\Rightarrow\quad\vv{j_{r}}=\dfrac{C}{r^2}\vv{e_{r}}
+%%\end{split}
+%%\end{equation}
+%%En procédant de même sachant que $\Pth=4\pi r^2 j_Q$, alors $C=\frac{\Pth}{4\pi}$ et donc
+%%\begin{equation}
+%%\begin{split}
+%%-\int_{T_{\rm{in}}}^{T_{\rm{ext}}}\d T = \frac{\Pth}{4\pi \lambda}\int_{R_{\rm{in}}}^{R_{\rm{ext}}}\frac{\d r}{r^2}\quad\Rightarrow\quad \frac{T_{\rm{in}}-T_{\rm{ext}}}{\Pth}=R_{\rm{eq}}=\frac{\frac{1}{R_{\rm{in}}}-\frac{1}{R_{\rm{ext}}}}{4\pi\lambda}
+%%\end{split}
+%%\end{equation}
+%
+%\end{subappendices}
+
+\end{document}

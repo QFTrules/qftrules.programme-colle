@@ -1,0 +1,17 @@
+\input{tikz.tex}
+\begin{document}
+    \begin{tikzpicture}
+        \draw[->] (-1,0) -- (5,0) node[right] {$\beta$};
+        \draw[->] (0,-1) -- (0,5) node[above] {$\gamma$};
+        \draw[domain=0:0.97*5,smooth,variable=\x,JoliRouge,samples=300] plot ({\x},{1/sqrt(1-\x*\x/25)});
+        \draw[dashed] (0,1) -- (5,1);
+        \foreach \x in {0, 0.2, 0.4, 0.6, 0.8, 1} {
+            \pgfmathsetmacro{\y}{\x*5}
+            \draw (\y,0.1) -- (\y,-0.1) node[below] {\contour{white}{\x}};
+        }
+        \foreach \y in {1, 2, 3, 4, 5} {
+            \draw (0.1,\y) -- (-0.1,\y) node[left] {\y};
+        }
+
+    \end{tikzpicture}
+\end{document}

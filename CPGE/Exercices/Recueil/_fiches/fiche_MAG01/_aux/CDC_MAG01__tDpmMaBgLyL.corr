@@ -1,0 +1,334 @@
+\protect \printNumberExercise {\protect \textbf  {1.1} a)}
+Dans le triangle rectangle $\ptO\ptA\ptB$, on a ${\ptB\ptA} = \sqrt{a^2 + y^2}$.
+\protect \removeBelowDisplayskip {\protect \tightdotfill }
+
+\protect \printNumberExercise {\protect \textbf  {1.1} b)}
+Dans le triangle rectangle $\ptO\ptA\ptB$, on a $\cos (\alpha) = \frac{a}{\ptB\ptA} = \frac{a}{\sqrt{a^2 + y^2}}$.
+\protect \removeBelowDisplayskip {\protect \tightdotfill }
+
+\protect \printNumberExercise {\protect \textbf  {1.1} c)}
+Dans le triangle rectangle $\ptO\ptA\ptB$, on a
+	$\sin (\alpha) = \frac{y}{\ptB\ptA} = \frac{y}{\sqrt{a^2 + y^2}}$.
+\protect \removeBelowDisplayskip {\protect \tightdotfill }
+
+\protect \printNumberExercise {\protect \textbf  {1.1} d)}
+La composante suivant $\vv{e_x}$ correspond au produit scalaire
+\[
+	{F}_x=\vv{F}\cdot \vv{e_x}=\lVert \vv{F}\rVert\cos(\alpha+\pi)=-\lVert \vv{F} \rVert\cos (\alpha).
+\]
+De même, la composante suivant $\vv{e_y}$ correspond à
+\[
+	{F}_y=\vv{F}\cdot \vv{e_y}=\lVert \vv{F} \rVert\cos\left(-\frac{\pi}{2}+\alpha\right)=\lVert \vv{F} \rVert\sin\alpha.
+	\]
+Ainsi, on a
+\[
+{F}_x=-\lVert \vv{F}\rVert\frac{a}{\sqrt{a^2 + y^2}} \quad \text{et} \quad {F}_y=\lVert \vv{F} \rVert\frac{y}{\sqrt{a^2 + y^2}}.
+\]
+Finalement, on a
+\[
+\vv{F}= {F}_x \vv{e_x} + {F}_y \vv{e_y} = \frac{\lVert \vv{F} \rVert}{\sqrt{a^2 + y^2}}\left( -a \vv{e_x} + y \vv{e_y} \right).
+\]
+\protect \removeBelowDisplayskip {\protect \tightdotfill }
+
+\protect \printNumberExercise {\protect \textbf  {1.2} }
+	Une force attractive a une valeur négative, la charge qui attire le plus est donc la charge avec la force négative la plus importante en valeur absolue, soit la réponse \reponseC{}. En effet, on a
+
+	\begin{listeQCM2Colonnes}
+		\item $F/C = \frac{ \np[C]{2,00} }{\left(\np[m]{4,00e{-3}}\right)^2} = \np[C.m^{-2}]{1,25e{5}}$
+		\item $F/C = \frac{ \np[C]{-5,0e{3}} }{\left(\np[m]{0,4}\right)^2} = \np[C.m^{-2}]{-3,1e{4}}$
+		\item $F/C = \frac{ \np[C]{-3,0e{-3}} }{\left(\np[m]{200e{-6}}\right)^2} = \np[C.m^{-2}]{-7,5e{4}}$
+		\item $F/C = \frac{ \np[C]{100} }{\left(\np[m]{20e{-2}}\right)^2} = \np[C.m^{-2}]{2,5e{3}}$
+	\end{listeQCM2Colonnes}
+
+\protect \removeBelowDisplayskip {\protect \tightdotfill }
+
+\protect \printNumberExercise {\protect \textbf  {1.3} a)}
+	On a $q_0q_1 = q^2$ et $q_0q_2 = q^2$ donc $\vv{F}_{1/0} = -F_x \vv{e_x} + F_y \vv{e_y}$ et $\vv{F}_{2/0} = F_x \vv{e_x} + F_y \vv{e_y}$. Ainsi, la somme des deux forces est $\vv{F} = 2F_y \vv{e_y}$.
+\protect \removeBelowDisplayskip {\protect \tightdotfill }
+
+\protect \newpage 
+\protect \printNumberExercise {\protect \textbf  {1.3} b)}
+	On a $q_0q_1 = q^2$ et $q_0q_2 = -q^2$ donc $\vv{F}_{1/0} = -F_x \vv{e_x} + F_y \vv{e_y}$ et $\vv{F}_{2/0} = -F_x \vv{e_x} - F_y \vv{e_y}$. Ainsi, la somme des deux forces est $\vv{F} = -2F_x \vv{e_x}$.
+\protect \removeBelowDisplayskip {\protect \tightdotfill }
+
+\protect \printNumberExercise {\protect \textbf  {1.3} c)}
+	On a $q_0q_1 = -q^2$ et $q_0q_2 = q^2$ donc $\vv{F}_{1/0} = F_x \vv{e_x} - F_y \vv{e_y}$ et $\vv{F}_{2/0} = F_x \vv{e_x} + F_y \vv{e_y}$. Ainsi, la somme des deux forces est $\vv{F} = 2F_x \vv{e_x}$.
+\protect \removeBelowDisplayskip {\protect \tightdotfill }
+
+\protect \printNumberExercise {\protect \textbf  {1.3} d)}
+	On a $q_0q_1 = -2q^2$ et $q_0q_2 = -2q^2$ donc $\vv{F}_{1/0} = F_x \vv{e_x} - F_y \vv{e_y}$ et $\vv{F}_{2/0} = -F_x \vv{e_x} - F_y \vv{e_y}$. Ainsi, la somme des deux forces est $\vv{F} = -2F_y \vv{e_y}$.
+\protect \removeBelowDisplayskip {\protect \tightdotfill }
+
+\protect \printNumberExercise {\protect \textbf  {1.4} a)}
+	Comme $V_0$ est homogène à un potentiel électrique, l'argument entre parenthèses doit être sans dimension, ce qui est le cas dans l'expression
+	\[
+		V(x) = V_0 \left( 1 - \left(\frac{x}{a}\right)^2\right).
+	\]
+\protect \removeBelowDisplayskip {\protect \tightdotfill }
+
+\protect \printNumberExercise {\protect \textbf  {1.4} b)}
+	En $x=0$ la vitesse est nulle donc $
+		\mathrm{C^{te}} = \frac{1}{2}mv^2(0) + qV(0) = qV \left( 1 - \left(\frac{0}{a}\right)^2\right)
+		= qV_0$.
+\protect \removeBelowDisplayskip {\protect \tightdotfill }
+
+\protect \printNumberExercise {\protect \textbf  {1.4} c)}
+	On a
+	\[
+	qV_0 = \frac{1}{2}mv^2(a) + qV(a) = \frac{1}{2}mv^2(a) + qV\left( 1 - \left(\frac{a}{a}\right)^2\right) = \frac{1}{2}mv^2(a).
+	\]
+	Donc on a $v(a) = \sqrt{\frac{2qV_0}{m}}$.
+\protect \removeBelowDisplayskip {\protect \tightdotfill }
+
+\protect \printNumberExercise {\protect \textbf  {1.4} d)}
+On a
+	\[
+		qV_0 = \frac{1}{2}mv^2\left(\frac{a}{2}\right) + qV_0\left(\frac{a}{2}\right) = \frac{1}{2}mv^2\left(\frac{a}{2}\right) + qV_0\left( 1 - \left(\frac{a}{2a}\right)^2\right) = \frac{1}{2}mv^2\left(\frac{a}{2}\right) +  \frac{3}{4}qV_0
+	\]
+	Donc, on a
+	\[
+		\frac{1}{2}mv^2\left(\frac{a}{2}\right) = \frac{1}{4}qV_0 \qquad \text{ et donc} \qquad	v\left(\frac{a}{2}\right) = \sqrt{\frac{qV_0}{2m}}.
+	\]
+\protect \removeBelowDisplayskip {\protect \tightdotfill }
+
+\protect \printNumberExercise {\protect \textbf  {1.4} e)}
+On a
+	\[
+		v\left(\frac{a}{2}\right) = \sqrt{\frac{qV_0}{2m}} = \sqrt{\frac{2qV_0}{4m}}  = \frac{1}{2}\sqrt{\frac{2qV_0}{m}} = \frac{v(a)}{2}.
+	\]
+\protect \removeBelowDisplayskip {\protect \tightdotfill }
+
+\protect \printNumberExercise {\protect \textbf  {1.5} a)}
+	Dans le triangle $x\ptB\ptM$, on a  $\ptB\ptM =  \sqrt{ \left(x - a\right)^2 + y^2}$.
+\protect \removeBelowDisplayskip {\protect \tightdotfill }
+
+\protect \printNumberExercise {\protect \textbf  {1.5} b)}
+	Dans le triangle $x\ptO\ptM$, on a   $r^2 = x^2 + y^2$.
+\protect \removeBelowDisplayskip {\protect \tightdotfill }
+
+\protect \printNumberExercise {\protect \textbf  {1.5} c)}
+	En utilisant l'expression de $r^2$ en fonction de $x,y$, on a
+	\[
+		\ptB\ptM =  \sqrt{ \left(x - a\right)^2 + y^2} =
+		\sqrt{ x^2 + y^2 - 2ax + a^2} = \sqrt{ r^2 - 2ax + a^2 }.
+	\]
+\protect \removeBelowDisplayskip {\protect \tightdotfill }
+
+\protect \printNumberExercise {\protect \textbf  {1.5} d)}
+	Dans le triangle $x\ptO\ptM$, on a $\cos (\theta) = \frac{x}{r}$ et donc $x = r\cos(\theta)$.
+\protect \removeBelowDisplayskip {\protect \tightdotfill }
+
+\protect \printNumberExercise {\protect \textbf  {1.5} e)}
+	En utilisant l'expression de $x$ en fonction de $r,\theta$, on peut écrire
+	\[
+		\ptB\ptM = \sqrt{r^2 - 2ax + a^2 }= \sqrt{ r^2  - 2ar \cos (\theta) + a^2 }.
+	\]
+\protect \removeBelowDisplayskip {\protect \tightdotfill }
+
+\protect \printNumberExercise {\protect \textbf  {1.5} f)}
+	En utilisant les expressions de $V_1(\ptM)$ et de $\ptB\ptM$ en fonction de $r,a,\theta$,
+	on a
+	\[
+		V_1(\ptM) = \frac{1}{4\pi\varepsilon_0}\frac{q_1}{\ptB\ptM} = \frac{1}{4\pi\varepsilon_0}\frac{q}{\sqrt{ r^2  - 2ar \cos (\theta) + a^2 }}
+	.\]
+\protect \removeBelowDisplayskip {\protect \tightdotfill }
+
+\protect \printNumberExercise {\protect \textbf  {1.5} g)}
+	Dans le triangle $x\ptC\ptM$, on a $\ptC\ptM =  \sqrt{ \left(x + a\right)^2 + y^2}$.
+\protect \removeBelowDisplayskip {\protect \tightdotfill }
+
+\protect \printNumberExercise {\protect \textbf  {1.5} h)}
+	En utilisant l'expression de $r^2$ en fonction  de $x,y$, on a
+	\[
+		\ptC\ptM =  \sqrt{ \left(x + a\right)^2 + y^2} =
+		\sqrt{ x^2 + y^2 + 2ax + a^2} = \sqrt{ r^2 + 2ax + a^2 }.
+	\]
+\protect \removeBelowDisplayskip {\protect \tightdotfill }
+
+\protect \printNumberExercise {\protect \textbf  {1.5} i)}
+	En utilisant l'expression de $x$ en fonction de $r,\theta$, on a
+	$
+		\ptC\ptM = \sqrt{r^2 + 2ax + a^2 }= \sqrt{ r^2  + 2ar \cos (\theta) + a^2 }
+	$.
+\protect \removeBelowDisplayskip {\protect \tightdotfill }
+
+\protect \printNumberExercise {\protect \textbf  {1.5} j)}
+	En utilisant les expressions de $V_2(\ptM)$ et $\ptC\ptM$ en fonction de $r,a,\theta$, on a
+	\[
+		V_2(\ptM) = \frac{1}{4\pi\varepsilon_0}\frac{q_2}{\ptC\ptM} = -\frac{1}{4\pi\varepsilon_0}\frac{q}{\sqrt{ r^2  + 2ar \cos (\theta) + a^2 }}.
+		\]
+\protect \removeBelowDisplayskip {\protect \tightdotfill }
+
+\protect \printNumberExercise {\protect \textbf  {1.5} k)}
+	En utilisant les expressions de $V_1(\ptM)$ et $V_2(\ptM)$, on trouve
+	\[
+		V(\ptM) = V_1(\ptM) + V_2(\ptM) = \frac{1}{4\pi\varepsilon_0}q\left(\frac{1}{\sqrt{ r^2  - 2ar \cos (\theta) + a^2 }} -  \frac{1}{\sqrt{ r^2  + 2ar \cos (\theta) + a^2 }}  \right).
+	\]
+\protect \removeBelowDisplayskip {\protect \tightdotfill }
+
+\protect \printNumberExercise {\protect \textbf  {1.6} a)}
+	À l'ordre 1, on a  $\left(1+x\right)^{\alpha} \approx  1 + \alpha x$. Ainsi, on a
+	$
+		V\left(\frac{a}{r}\right) \approx \frac{1}{4\pi\varepsilon_0} \frac{q}{r} \left( 1 - \frac{4a}{2r}\right) = \frac{1}{4\pi\varepsilon_0} \frac{q}{r}\left( 1 - \frac{2a}{r}\right)
+	$.
+\protect \removeBelowDisplayskip {\protect \tightdotfill }
+
+\protect \printNumberExercise {\protect \textbf  {1.6} b)}
+	À l'ordre 1, on a $\left(1+x\right)^{\alpha} \approx  1 + \alpha x$. Ainsi, on a
+	\[
+		V\left(\frac{a}{r}\right) \approx \frac{1}{4\pi\varepsilon_0} \frac{q}{r} \left( 1  + \frac{a}{2r} \cos (\theta)  - \left( 1 -  \frac{a}{2r} \cos (\theta)  \right) \right) = \frac{1}{4\pi\varepsilon_0} \frac{qa\cos (\theta)}{r^2}.
+	\]
+\protect \removeBelowDisplayskip {\protect \tightdotfill }
+
+\protect \printNumberExercise {\protect \textbf  {1.6} c)}
+	À l'ordre 2, on a  $\cos(\theta) \approx  1 - \frac{1}{2}\theta^2$. Ainsi, on a
+	$
+		V\left(\theta\right) \approx \frac{1}{4\pi\varepsilon_0} \frac{qa}{r^2}\left(1 - \frac{1}{2}\theta^2\right)
+	$.
+\protect \removeBelowDisplayskip {\protect \tightdotfill }
+
+\protect \printNumberExercise {\protect \textbf  {1.6} d)}
+	À l'ordre 1, on a $\ln\left(1+x\right) \approx  x$. Ainsi,  on a
+	$
+		V\left(\frac{a}{r}\right) \approx \frac{1}{4\pi\varepsilon_0} \frac{q}{r} \frac{a}{r} = \frac{1}{4\pi\varepsilon_0} \frac{qa}{r^2}
+	$.
+\protect \removeBelowDisplayskip {\protect \tightdotfill }
+
+\protect \printNumberExercise {\protect \textbf  {1.6} e)}
+	À l'ordre 1, on a $\left(1+x\right)^{\alpha} \approx  1 + \alpha x$. Ainsi, on a
+	\[
+		V\left(\frac{a}{r}\right) \approx \frac{1}{4\pi\varepsilon_0} \frac{q}{r} \ln \left( \frac{ 1 + \frac{2a^2}{r^2} + 1 }{ 1 + \frac{2a^2}{r^2} - 1 } \right) = \frac{1}{4\pi\varepsilon_0} \frac{q}{r} \ln \left( \frac{2 + \frac{2a^2}{r^2}}{\frac{2a^2}{r^2}} \right) = \frac{1}{4\pi\varepsilon_0} \frac{q}{r}\ln \left( 1 + \frac{r^2}{a^2} \right).
+	\]
+\protect \removeBelowDisplayskip {\protect \tightdotfill }
+
+\protect \printNumberExercise {\protect \textbf  {1.7} a)}
+On calcule :
+	\begin{align*}
+		\vv{E}(\ptM) &= -\diffp{}{r} \left(  \frac{1}{4\pi\varepsilon_0} \frac{q \sin\left( 2\theta\right) }{r} \right)  \vv{e_{r}} - \frac{1}{r}\diffp{}{\theta} \left(  \frac{1}{4\pi\varepsilon_0} \frac{q \sin\left( 2\theta\right) }{r} \right)  \vv{e_{\theta}}\\
+		%\vv{E}(\ptM)
+		&= -\frac{1}{4\pi\varepsilon_0} q \left( \sin\left( 2\theta\right) \diffp{}{r}\left( \frac{1}{r}\right)\vv{e_{r}} + \frac{1}{r^2}\diffp{\sin\left( 2\theta\right)}{\theta}\vv{e_{\theta}}  \right)\\
+		%\vv{E}(\ptM)
+		&= \frac{1}{4\pi\varepsilon_0}\frac{q}{r^2} \left( \sin\left( 2\theta\right) \vv{e_{r}} - 2\cos\left( 2\theta\right) \vv{e_{\theta}} \right).
+	\end{align*}
+\protect \removeBelowDisplayskip {\protect \tightdotfill }
+
+\protect \printNumberExercise {\protect \textbf  {1.7} b)}
+	Pour $\ptM\left(r=\frac{a}{2},\theta=\pi\right)$ le champ est
+	$
+		\vv{E}(\ptM) = \frac{1}{4\pi\varepsilon_0} \frac{q}{\left(\frac{a}{2}\right)^2} \left( \sin\left( 2\pi\right) \vv{e_{r}} -  2\cos\left( 2\pi\right) \vv{e_{\theta}} \right) = -\frac{8}{4\pi\varepsilon_0} \frac{q}{a^2} \vv{e_{\theta}}
+	$.
+\protect \removeBelowDisplayskip {\protect \tightdotfill }
+
+\protect \printNumberExercise {\protect \textbf  {1.7} c)}
+On a
+	\[
+		\| \vv{E}(\ptM) \| = \frac{8}{4\pi\varepsilon_0} \frac{q}{a^2} = \frac{8}{ 4\pi \times \np[C.V^{-1}.m^{-1}]{8,85e-12} } \frac{\np[C]{6,0e-11}}{\left(\np[m]{4,0e-3}\right)^2} = \np[V.m^{-1}]{2,7e5}.
+	\]
+\protect \removeBelowDisplayskip {\protect \tightdotfill }
+
+\protect \printNumberExercise {\protect \textbf  {1.8} a)}
+On calcule :
+	\begin{align*}
+		\vv{E}(\ptM) &= -\diffp{}{r} \left(  \frac{1}{4\pi\varepsilon_0}\frac{qa\cos (\theta) }{r^2} \right)  \vv{e_{r}} - \frac{1}{r}\diffp{}{\theta} \left(  \frac{1}{4\pi\varepsilon_0}\frac{qa\cos (\theta) }{r^2} \right)  \vv{e_{\theta}}\\
+		%\vv{E}(\ptM)
+		&= -\frac{1}{4\pi\varepsilon_0}qa \left( \cos (\theta) \diffp{}{r}\left( \frac{1}{r^2}\right)\vv{e_{r}} + \frac{1}{r^3}\diffp{\cos (\theta)}{\theta}\vv{e_{\theta}}  \right)\\
+		%\vv{E}(\ptM)
+		&= \frac{1}{4\pi\varepsilon_0}\frac{qa}{r^3} \left( 2\cos(\theta) \vv{e_{r}} + \sin (\theta) \vv{e_{\theta}} \right).
+	\end{align*}
+\protect \removeBelowDisplayskip {\protect \tightdotfill }
+
+\protect \printNumberExercise {\protect \textbf  {1.8} b)}
+	Pour $\ptM\left(r=a,\theta=\frac{\pi}{2}\right)$ le champ est
+	\[
+		\vv{E}(\ptM) = \frac{1}{4\pi\varepsilon_0} \frac{qa}{a^3} \left( 2\cos\left(\frac{\pi}{2}\right) \vv{e_{r}} +  \sin\left( \frac{\pi}{2}\right) \vv{e_{\theta}} \right) = \frac{1}{4\pi\varepsilon_0} \frac{q}{a^2} \vv{e_{\theta}}.
+	\]
+\protect \removeBelowDisplayskip {\protect \tightdotfill }
+
+\protect \printNumberExercise {\protect \textbf  {1.8} c)}
+On a
+	\[
+		\| \vv{E}(\ptM) \| = \frac{1}{4\pi\varepsilon_0} \frac{q}{a^2} = \frac{1}{ 4\pi \times \np[C.V^{-1}.m^{-1}]{8,85e-12} } \frac{\np[C]{6,0e-11}}{\left(\np[m]{4,0e-3}\right)^2} = \np[V.m^{-1}]{3,4e4}.
+	\]
+\protect \removeBelowDisplayskip {\protect \tightdotfill }
+
+\protect \printNumberExercise {\protect \textbf  {1.9} a)}
+On a $V(0) = \int_{0}^{d} E_0 \left( 1 - \frac{x}{d} \right) \d{}x = E_0 \left[ -\frac{d}{2}\left( 1 - \frac{x}{d} \right)^2  \right]^{d}_{0} = \frac{1}{2}E_0d$.
+\protect \removeBelowDisplayskip {\protect \tightdotfill }
+
+\protect \printNumberExercise {\protect \textbf  {1.9} b)}
+On a $V(0) = \int_{0}^{d} E_0 \left( 1 - \frac{x}{d} \right)^2 \d{}x = E_0 \left[ -\frac{d}{3}\left( 1 - \frac{x}{d} \right)^3  \right]^{d}_{0} = \frac{1}{3}E_0d$.
+\protect \removeBelowDisplayskip {\protect \tightdotfill }
+
+\protect \printNumberExercise {\protect \textbf  {1.9} c)}
+On a $V(0) = \int_{0}^{d} E_0 \sin\left( \frac{3\pi}{2}\frac{x}{d} \right) \d{}x = E_0 \left[ -\frac{2d}{3\pi}\cos\left( \frac{3\pi}{2}\frac{x}{d} \right)  \right]^{d}_{0} = \frac{2}{3\pi}E_0d$.
+\protect \removeBelowDisplayskip {\protect \tightdotfill }
+
+\protect \printNumberExercise {\protect \textbf  {1.9} d)}
+On a $V(0) = \int_{0}^{d} E_0 \left( 1 - \eEuler^{-x/d} \right) \d{}x =
+		E_0 \Big[ x  \Big]^{d}_{0} - E_0 \Big[ -d\eEuler^{-x/d}  \Big]^{d}_{0} = E_0d\eEuler^{-1}$.
+\protect \removeBelowDisplayskip {\protect \tightdotfill }
+
+\protect \printNumberExercise {\protect \textbf  {1.10} a)}
+On calcule
+\begin{align*}
+	Q &= \int_{0}^{2\pi} \int_{0}^{\pi} \int_{0}^{R} 2\rho_0  r^2 \sin (\theta)
+	 \d{}r \d{} \theta \d{} \varphi \\
+	 &= 2\rho_0 \int_{0}^{2\pi} \d{} \varphi \int_{0}^{\pi} \sin (\theta) \d{} \theta \int_{0}^{R} r^2 \d{}r
+	 = 2\rho_0 \Big[ \varphi \Big]^{2\pi}_{0} \times \Big[ -\cos (\theta) \Big]^{\pi}_{0} \times \Big[ \frac{r^3}{3} \Big]^{R}_{0} \\
+	 &= 2\rho_0 \left( 2\pi - 0 \right) \left( -\cos \pi + \cos 0 \right) \left( \frac{R^3}{3} - \frac{0}{3} \right)
+	 = 2\rho_0 \times 2 \pi \times 2 \times \frac{R^3}{3} = \frac{8}{3}\pi R^3 \rho_0.
+\end{align*}
+\protect \removeBelowDisplayskip {\protect \tightdotfill }
+
+\protect \printNumberExercise {\protect \textbf  {1.10} b)}
+On calcule
+	\begin{align*}
+		Q &= 2 \int_{0}^{2\pi} \d{} \varphi \int_{0}^{\pi} \sin (\theta) \d{} \theta \int_{0}^{R} \left( \frac{r}{R} \right)^2\rho_0 r^2 \d{}r
+		 = 2\rho_0 \times 2 \pi \times 2 \times \int_{0}^{R} \frac{r^4}{R^2} \d{}r \\
+		 &= 8\rho_0\pi \left[ \frac{1}{5} \frac{r^5}{R^2} \right]^{R}_{0} = 8\pi \left( \frac{1}{5} \frac{R^5}{R^2} - \frac{1}{5} \frac{0}{R^2} \right)\rho_0 = \frac{8}{5}\pi R^3\rho_0.
+	\end{align*}
+\protect \removeBelowDisplayskip {\protect \tightdotfill }
+
+\protect \printNumberExercise {\protect \textbf  {1.10} c)}
+On calcule
+	\begin{align*}
+		Q &= 2 \int_{0}^{2\pi}  \sin \left( \frac{\varphi}{2} \right)\rho_0 \d{} \varphi \int_{0}^{\pi} \sin (\theta) \d{} \theta \int_{0}^{R} \left( \frac{r}{R} \right)^2 r^2 \d{}r
+		 = 2\rho_0 \times \left[ -2 \cos \frac{\varphi}{2} \right]^{2\pi}_{0} \times 2 \times \frac{1}{5}R^3\\
+		 &= \frac{4}{5}R^3 \left( -2 \cos \pi + 2 \cos 0  \right)\rho_0
+		 = \frac{4}{5}R^3 \left( 2+ 2 \right)\rho_0 = \frac{16}{5}R^3\rho_0.
+	\end{align*}
+\protect \removeBelowDisplayskip {\protect \tightdotfill }
+
+\protect \printNumberExercise {\protect \textbf  {1.11} a)}
+On calcule
+\begin{align*}
+	Q &= \int_{0}^{h} \int_{0}^{2\pi} \int_{0}^{R} 3 r
+	\d{}r \d{} \theta \d{} z
+	= 3 \int_{0}^{h} \d{} z \int_{0}^{2\pi} \d{} \theta \int_{0}^{R} r \d{}r
+	= 3 \Big[ z \Big]^{h}_{0}\times \Big[ \theta \Big]^{2\pi}_{0} \times \Big[ \frac{r^2}{2} \Big]^{R}_{0}\\
+	&= 3 \left( h -0 \right) \left( 2\pi - 0 \right) \left( \frac{R^2}{2} - 0 \right)
+	= 3\pi R^2h.
+\end{align*}
+\protect \removeBelowDisplayskip {\protect \tightdotfill }
+
+\protect \printNumberExercise {\protect \textbf  {1.11} b)}
+On calcule
+	\begin{align*}
+		Q &= 2\int_{0}^{h} \d{} z \int_{0}^{2\pi} \d{} \theta  \int_{0}^{R} \left( \frac{r}{R} \right)^3 r \d{}r
+		= 2 \times h \times 2\pi \int^{R}_{0} \frac{r^4}{R^3} \d{}r \\
+		&= 4\pi h \left[ \frac{1}{5} \frac{r^5}{R^3} \right]^{R}_{0}
+		= 4\pi h \left( \frac{1}{5} \frac{R^5}{R^3} - \frac{1}{5} \frac{0}{R^3} \right)
+		= \frac{4}{5}\pi R^2h.
+	\end{align*}
+\protect \removeBelowDisplayskip {\protect \tightdotfill }
+
+\protect \printNumberExercise {\protect \textbf  {1.11} c)}
+On calcule
+	\begin{align*}
+		Q &= 2\int_{0}^{h} \left( \frac{z}{h} \right)^{2} \d{} z \int_{0}^{2\pi} \sin \left( \frac{\theta}{2} \right) \d{} \theta  \int_{0}^{R} \left( \frac{r}{R} \right)^3 r \d{}r
+		= 2 \times \frac{1}{5}R^2 \left[ \frac{1}{3}\frac{z^3}{h^2} \right]^{h}_{0} \left[ -2 \cos \frac{\theta}{2} \right]^{2\pi}_{0}\\
+		&= \frac{2}{5}R^2 \left( \frac{1}{3}\frac{h^3}{h^2} - \frac{1}{3}\frac{0}{h^2} \right) \left( -2\cos \pi + 2 \cos 0 \right)
+		= \frac{2}{5}R^2 \times \frac{1}{3} h \times 4 = \frac{8}{15}R^2h.
+	\end{align*}
+\protect \removeBelowDisplayskip {\protect \tightdotfill }
+

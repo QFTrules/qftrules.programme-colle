@@ -1,0 +1,37 @@
+\input{/home/eb/Dropbox/texmf/tex/latex/Preambles/tikz.tex}
+\begin{document}
+\begin{tikzpicture}[scale=0.6]
+  \fill[opacity=0.3,JoliVert,draw opacity=1,draw=JoliVert,thick] (0,0) ellipse (1cm and 2cm);
+  \draw[white,thick] (0,2) coordinate (A) arc(90:270:1cm and 2cm) coordinate (B);
+  \def\len{6}
+  \draw[thick] (A) .. controls (-3,2) and (-6,4) .. (-8,4) coordinate (A1);
+  % \draw[thick] (A) -- ++ (\len,0) coordinate (A2);
+  \draw[thick] (B) .. controls (-3,-3) and (-6,2) .. (-8,1.85) coordinate (B1);
+  % \draw[thick] (B) -- ++ (\len,0) coordinate (B2);
+  \draw[thick,JoliVert] (A1) arc(90:270:0.5cm and 1.08cm) coordinate (B1);
+  \fill[opacity=0.3,JoliVert,draw opacity=1,draw=JoliVert,thick,densely dashed] ($(A1)+(0,-1.1)$) ellipse (0.5cm and 1.08cm);
+  % \draw[thick] (A2) arc(90:270:1cm and 2cm) coordinate (B2) arc(270:450:1cm and 2cm) ;
+  % \fill[gray,opacity=0.3] (A2) arc(90:450:1cm and 2cm);
+  \fill[white,opacity=0.3] (A) arc(90:270:1cm and 2cm) -- (B1) arc(270:90:1cm and 2cm) -- cycle;
+  % \fill[gray,opacity=0.3] (A) arc(90:270:1cm and 2cm) -- (B2) arc(270:90:1cm and 2cm) -- cycle;
+  \fill[] (0,0) circle(0.1);
+  \draw[->] (0,0) -- ++ (1.5,0) node[right] {$\dS$};
+  \fill[] (-8,3) circle(0.1);
+  \draw[->] (-8,3) -- ++ (-1.5,0) node[left] {$\dS$};
+  \draw[->] (-4.1,2.9) -- ++ (0.5,1) node[above] {$\dS$};
+  \draw[->,JoliRouge,thick] (-3,2.5) -- ++ (1,-0.23) node[below] {$\Vec{\jth}$};
+  \draw[->,JoliRouge,thick] (-3,-1.4) -- ++ (1,-0.5) node[below] {$\Vec{\jth}$};
+  \draw[JoliVert,thick] (0,2) coordinate (A) arc(90:270:1cm and 2cm) coordinate (B);
+  % \draw[vecteur,JoliVert] (0,0.05) -- ++ (2,0) node[above right] {$\dS$};
+  % \draw[vecteur,JoliRouge] (0,0) -- ++ (2,0) node[right] {$\Vec{\jth}(x_2)$};
+  % \draw[vecteur,JoliRouge] (-\len,0) -- ++ (1.5,0) node[right] {$\Vec{\jth}(x_1)$};
+  % \draw[vecteur] (-\len-1,-2.5) -- ++ (\len+3,0);
+  % \draw[thick] (-\len,-2.4) -- ++ (0,-0.2) node[below]{$x_2$};
+  % \draw[thick] (0,-2.4) -- ++ (0,-0.2) node[below]{$x_2$};
+  \node at (-8,2.5) {$\mc{S}_1$};
+  \node at (0,1) {$\mc{S}_2$};
+
+  % \node at (-2.6,-1.2) {milieu 1};
+  % \node at (2.6,-1.2) {milieu 2};
+\end{tikzpicture}
+\end{document}

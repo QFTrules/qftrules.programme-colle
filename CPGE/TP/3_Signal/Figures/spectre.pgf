@@ -1,0 +1,10 @@
+﻿\begin{tikzpicture}
+
+\draw[ax] (0,0) -- ++ (5,0) node[right] {fréquence};
+\draw[ax] (0,0) -- ++ (0,3) node[above] {amplitude};
+
+\draw[thick,blue] (2,0) node[below=2] {$f_{\rm p}$}  -- ++ (0,2) coordinate (A);
+\draw[blue,dashed] (A) -- ++ (-2,0) node[left] {$A_{\rm p}$};
+
+
+\end{tikzpicture}

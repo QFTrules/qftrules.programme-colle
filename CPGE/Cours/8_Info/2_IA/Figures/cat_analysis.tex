@@ -1,0 +1,12 @@
+% !TEX root = /home/eb/Dropbox/CPGE/Info/Cours/[2]IA/Figures/cat_analysis.tex
+\input{tikz.tex}
+\begin{document}
+\begin{tikzpicture}
+    \draw[->,>=latex] (0,0) -- (0,-1) node[shift={(0.7,0.3)}] {
+        \includegraphics[height=0.75cm]{cogs.png}
+        }  node[below] {algorithme} coordinate (A);
+    \draw[->,>=latex] (A) ++(1.2,-0.3) -- ++(2,0) node[right] {
+        \includegraphics[height=2cm]{cat_analysis.png}
+        } node[midway,below] {règles};
+\end{tikzpicture}
+\end{document}

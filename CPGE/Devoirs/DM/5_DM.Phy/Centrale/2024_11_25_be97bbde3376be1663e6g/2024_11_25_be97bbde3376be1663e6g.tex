@@ -1,0 +1,309 @@
+\documentclass[10pt]{article}
+\usepackage[french]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[version=4]{mhchem}
+\usepackage{stmaryrd}
+\usepackage{graphicx}
+\usepackage[export]{adjustbox}
+\graphicspath{ {./images/} }
+\usepackage{hyperref}
+\hypersetup{colorlinks=true, linkcolor=blue, filecolor=magenta, urlcolor=cyan,}
+\urlstyle{same}
+
+\title{ÉPREUVE SPÉCIFIQUE - FILIÈRE MP }
+
+\author{}
+\date{}
+
+
+\begin{document}
+\maketitle
+\section*{PHYSIQUE}
+\section*{Durée: \(\mathbf{4}\) heures}
+N.B. : le candidat attachera la plus grande importance à la clarté, à la précision et à la concision de la rédaction. Si un candidat est amené à repérer ce qui peut lui sembler être une erreur d'énoncé, il le signalera sur sa copie et devra poursuivre sa composition en expliquant les raisons des initiatives qu'il a été amené à prendre.
+
+\section*{RAPPEL DES CONSIGNES}
+\begin{itemize}
+  \item Utiliser uniquement un stylo noir ou bleu foncé non effaçable pour la rédaction de votre composition ; d'autres couleurs, excepté le vert, bleu clair ou turquoise, peuvent être utilisées, mais exclusivement pour les schémas et la mise en évidence des résultats.
+  \item Ne pas utiliser de correcteur.
+  \item Écrire le mot FIN à la fin de votre composition.
+\end{itemize}
+
+\section*{Interférences et diffraction}
+Ce sujet s'intéresse à différents aspects des phénomènes ondulatoires comme les interférences et la diffraction ainsi qu'aux aspects corpusculaires associés. Dans l'étude des propriétés ondulatoires de diffraction, nous évoquerons l'effet Talbot.
+
+Découvert en 1836 par Henry James Talbot, cet effet reste relativement peu connu. Ce photographe déposa un brevet en 1842 de " multiplication d'une image " sans utilisation d'un système optique (auto-image). L'effet est redevenu d'actualité par ses applications dans les domaines artistique, médical et celui de la détection infrarouge.
+
+Quand une onde plane incidente est envoyée sur un réseau diffractant plan placé dans le plan \(z=0\), on peut observer des images de celui-ci (auto-images) régulièrement espacées. La distance entre deux auto-images successives est appelée longueur de Talbot \(z_{T}\). Des images "décalées" du réseau sont aussi observées à des distances régulières \(z_{T} / 2, z_{T} / 4, z_{T} / n \ldots\) de l'auto-image formant ce qu'on nomme un tapis de Talbot (photo 1).
+
+Le sujet est constitué de quatre parties indépendantes, excepté la question Q10.f de la partie III qui est liée à la question Q9.e de la partie II.
+
+Les parties I et IV font appel à la physique quantique.\\
+La partie II fait appel aux interférences optiques à 2 et 3 ondes.\\
+La partie III étudie certains aspects des réseaux, en optique et en électromagnétisme.
+
+Les données sont placées en début de sujet.\\
+\includegraphics[max width=\textwidth, center]{2024_11_25_be97bbde3376be1663e6g-03}
+
+Photo 1 - Tapis de Talbot\\
+\href{https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Optical}{https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Optical} Talbot Carpet.png/460pxOptical Talbot Carpet.png
+
+\section*{Données}
+Constante de Planck \(h=6,63 \cdot 10^{-34} \mathrm{~J} \cdot \mathrm{~s}\)\\
+Constante de Planck réduite \(\hbar=\frac{h}{2 \pi}=1,05 \cdot 10^{-34} \mathrm{~J} \cdot \mathrm{~s}\)\\
+Vitesse de la lumière dans le vide \(c=3,00 \cdot 10^{8} \mathrm{~m} \cdot \mathrm{~s}^{-1}\)\\
+Constante de Boltzmann \(k_{B}=1,38 \cdot 10^{-23} \mathrm{~J} \cdot \mathrm{~K}^{-1}\)\\
+Masse de l'électron \(m=9,11 \cdot 10^{-31} \mathrm{~kg}\)\\
+Charge élémentaire \(e=1,6 \cdot 10^{-9} \mathrm{C}\)\\
+Constante des gaz parfaits \(R=8,31 \mathrm{~J} \cdot \mathrm{~K}^{-1} \cdot \mathrm{~mol}^{-1}\)\\
+Constante d'Avogadro \(N_{A}=6,02 \cdot 10^{23} \cdot \mathrm{~mol}^{-1}\)
+
+\section*{Notations}
+Le nombre imaginaire pur racine carrée de -1 est noté \(j\).\\
+La notation \(\langle f(M, t)\rangle\) représente la moyenne temporelle de la fonction \(f(M, t)\).
+
+La fonction sinus cardinal est par définition \(\sin c u=(\sin u) / u\).\\
+Elle possède un maximum principal égal à 1 pour \(u=0\), des zéros pour les valeurs de \(u\) égales à \(u_{\text {max }}=n \pi\) avec \(n\) entier relatif non nul et des maximas secondaires pour des valeurs proches de \(u_{\text {min }}=(2 p+1) \pi / 2\) avec \(p\) entier relatif différent de 0 et -1 .
+
+Les deux premiers maxima secondaires de la fonction (sinus cardinal) \({ }^{2}\) valent : 0,047 et 0,016.
+
+Interfrange dans un système à division du front d'onde de deux fentes d'Young:\\
+On pourra utiliser, sans démonstration, que celui-ci vaut \(i=\frac{\lambda D}{a}\) où \(D\) est la distance entre le plan des fentes et l'écran, a la distance entre les fentes et \(\lambda\) la longueur d'onde de la source. Les rayons sont considérés paraxiaux (faiblement inclinés par rapport à l'axe du système optique).
+
+\section*{Série de Fourier d'une fonction " créneaux" représentée sur la figure ci-dessous :}
+Pour la fonction périodique " carré " de hauteur 1 , de largeur \(\varepsilon\), de période a et de valeur moyenne \(\frac{1}{2}\), on peut écrire \(f(x)=\sum_{n=-\infty}^{n=+\infty} C_{n} \exp \left(-j n \frac{2 \pi x}{a}\right)\) avec \(C_{0}=\frac{\pi x}{a}\) et \(C_{n}=\frac{\sin \left(\frac{n \pi x}{a}\right)}{n \pi}\).\\
+\includegraphics[max width=\textwidth, center]{2024_11_25_be97bbde3376be1663e6g-04}
+
+\section*{Partie I - Dualité onde-corpuscule pour la lumière}
+Q1. a) On considère un faisceau parallèle de photons associés à une onde électromagnétique, de longueur d'onde \(\lambda\), se propageant dans l'air assimilé au vide dans la direction Oz de vecteur unitaire \(\overrightarrow{e_{z}}\) (figure 1).\\
+Rappeler ce que vaut leur énergie \(E\) en fonction de \(\lambda, c\) et de \(h\) et leur quantité de mouvement \(\vec{p}\) en fonction de \(\lambda, h\) et de \(\overrightarrow{e_{z}}\).\\
+b) Calculer l'énergie en eV d'un photon de lumière bleue de longueur d'onde 475 nm .
+
+Q2. Ce faisceau parallèle cylindrique de rayon \(R\) arrive face à un écran, perpendiculaire à l'axe du faisceau, percé d'un trou circulaire \(T_{1}\) de centre \(O\) et de rayon \(r\) (inférieur à \(R\) ) (figure 1).\\
+\includegraphics[max width=\textwidth, center]{2024_11_25_be97bbde3376be1663e6g-05}
+
+Figure 1 - Géométrie du dispositif à un trou\\
+a) Établir, à partir de l'inégalité d'Heisenberg spatiale, qu'il y a forcément ouverture angulaire du faisceau.\\
+b) Donner un ordre de grandeur de cette ouverture angulaire supposée petite. Commenter. Comment appelle-t-on ce phénomène ?
+
+Q3. Citer une expérience qui met en évidence l'aspect corpusculaire de la lumière.\\
+Q4. Un électron est expulsé d'un métal sous l'effet d'une radiation s'il absorbe une énergie au moins égale à We, énergie appelée travail " d'extraction ".
+
+Le tableau ci-dessous indique les valeurs du travail " d'extraction " pour différents métaux :
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+Métal & Cs & Na & K & Ti & Fe \\
+\hline
+We en eV & 1,15 & 2,11 & 2,22 & 4,33 & 4,67 \\
+\hline
+\end{tabular}
+\end{center}
+
+Avec quels métaux cités dans le tableau, la lumière bleue du Q1.b permet-elle d'obtenir un effet photoélectrique ? Justifier.\\
+Quelle sera la vitesse maximale des électrons émis ? Commenter.\\
+Q5. a) On utilise une source optique de puissance 1 mW : évaluer l'ordre de grandeur du nombre de photons qui sortent de la source par unité de temps en supposant le faisceau rigoureusement monochromatique de longueur d'onde \(\lambda=632,8 \mathrm{~nm}\).\\
+b) À quel niveau de puissance faudrait-il descendre, pour une source, pour que la lumière qu'elle émet soit détectée photon par photon? On admet que les détecteurs photoniques ont un temps de réponse de l'ordre de la picoseconde (le préfixe pico correspond à \(10^{-12}\) ).\\
+c) Décrire l'évolution des observations sur le détecteur en fonction de la durée d'observation dans la situation des interférences, par deux fentes d'Young éclairées par la source du Q5.b, modélisée par une source à photons uniques.\\
+d) Traduire ces observations en termes d'amplitude de probabilité pour un photon, détecté en un point M. Le principe de superposition s'applique-t-il aux probabilités ou aux amplitudes de probabilités?
+
+\section*{Partie II - Interférences lumineuses à \(\mathbf{2}\) ou \(\mathbf{3}\) ondes}
+On considère (figure 2) un faisceau de lumière parallèle de longueur d'onde \(\lambda\), se propageant dans la direction Oz . Ce faisceau arrive sur un écran placé dans le plan \(\mathrm{xOy}(z=0)\) percé de deux trous identiques \(T_{1}\) et \(T_{2}\). Les centres des trous \(O_{1}\) et \(O_{2}\) ont pour coordonnées respectivement \(\left(\frac{a}{2}, 0,0\right)\) et \(\left(-\frac{a}{2}, 0,0\right)\). Le rayon des trous est de l'ordre de grandeur de la longueur d'onde. Ceci permet de supposer qu'il existe un champ d'interférences qui est la zone commune aux deux faisceaux diffractés par les trous. On modélise chaque trou par une source secondaire ponctuelle émettant une lumière uniforme dans le champ d'interférences. Ces sources secondaires sont cohérentes entre elles.\\
+\includegraphics[max width=\textwidth, center]{2024_11_25_be97bbde3376be1663e6g-06}
+
+Figure 2 - Géométrie du dispositif à deux trous\\
+Q6. On observe sur un écran placé dans le plan \(z=D\), en un point \(M\) de coordonnées \((x, y, D)\). On suppose que D est très grand devant \(a,|x|\) et \(|y|\). Le montage est réalisé dans l'air d'indice égal à l'unité.\\
+a) De quel type de division interférentielle s'agit-il ? Les interférences sont-elles localisées ?\\
+b) Établir (dans le cadre de l'approximation scalaire de l'optique) l'expression de la différence de marche \(\delta(M)\). Établir l'expression de l'intensité \(I(M)\) au point \(M\) en notant \(I_{M a x}\) l'intensité maximale.
+
+Q7. a) Décrire ce qu'on doit voir sur l'écran dans le cadre de ces hypothèses et exprimer l'interfrange \(i\) en fonction de la fréquence d'émission \(v\), de \(c\) et des paramètres géométriques du dispositif.\\
+b) Pourquoi, dans ce cadre, peut-on remplacer les deux trous par deux fentes fines identiques parallèles à Oy ? Quel en est l'intérêt? La figure est-elle transformée si on translate de façon " raisonnable " en bloc les fentes dans leur plan?
+
+Q8. La source est en réalité quasi-monochromatique à profil spectral " rectangulaire " de largeur \(\Delta \lambda\) autour de \(\lambda_{0}\), avec \(\Delta \lambda \ll \lambda_{0}\). Ce profil spectral, en fonction de la fréquence d'émission, est représenté sur la figure 3. On admet que l'intensité émise par une bande spectrale de largeur \(d v\) autour de \(v\) vaut \(d I=J_{v} d v\).\\
+\includegraphics[max width=\textwidth, center]{2024_11_25_be97bbde3376be1663e6g-07}
+
+Figure 3 - Profil " rectangulaire " d'une source quasi-monochromatique Par commodité de représentation, l'échelle n'est pas respectée \(\left(\Delta v \ll v_{0}\right)\).\\
+a) Établir l'expression de l'intensité \(I(M)\) au point \(M\) en notant \(I_{M a x}\) l'intensité maximale et montrer qu'elle peut s'écrire sous la forme \(I(M)=\frac{I_{\max }}{2}\left(1+V(M) \cos \frac{2 \pi x}{i}\right)\), avec \(i\) l'interfrange correspondant à la valeur centrale de la raie. On rappelle que \(\sin p-\sin q=2 \sin \frac{p-q}{2} \cos \frac{p+q}{2}\).\\
+b) Exprimer la visibilité \(V(M)\) correspondante.\\
+c) Exprimer en fonction de \(\Delta \lambda\) et \(\lambda_{0}\) la longueur de cohérence \(L\), c'est-à-dire la plus petite valeur de la différence de marche \(\delta\) à partir de laquelle les franges ne sont plus visibles. Vérifier que ce résultat correspond au critère de brouillage des franges portant sur l'ordre d'interférences.\\
+On rappelle le lien entre les deux largeurs spectrales \(\Delta v=\frac{C}{\lambda_{0}^{2}} \Delta \lambda\).\\
+d) Établir la durée \(\tau\) des trains d'onde ou temps de cohérence.\\
+e) Justifier pourquoi on définit le nombre d'interfranges visibles par \(N=2 L / \lambda_{0}\).\\
+f) Dans le tableau ci-dessous sont indiquées des caractéristiques de sources quasimonochromatiques. Après l'avoir recopié sur votre copie, le compléter et le commenter.
+
+\begin{center}
+\begin{tabular}{|l|c|c|c|c|c|}
+\hline
+Source & \(\lambda_{0}\) en nm & \(\Delta \lambda\) en nm & \(\tau\) en s & \(L\) en m & \(N\) \\
+\hline
+Laser \(\mathrm{He}-\mathrm{Ne}\) & 632,991 & 0,001 & \(?\) & \(?\) & \(?\) \\
+\hline
+Raie rouge de l'hydrogène & 656,2 & 0,1 & \(?\) & \(?\) & \(?\) \\
+\hline
+Lumière blanche filtrée & 500 & 20 & \(?\) & \(?\) & \(?\) \\
+\hline
+\end{tabular}
+\end{center}
+
+Dans la suite de cette partie, on considère que la source est rigoureusement monochromatique de longueur d'onde \(\lambda\).
+
+Q9. Une troisième fente, identique au deux autres, parallèle à Oy , est placée en \(\mathrm{O}(0,0,0)\).\\
+Le plan des trois fentes est placé orthogonalement à l'axe de révolution commun de deux lentilles minces convergentes de distance focale \(f^{\prime}=50 \mathrm{~cm}\). La lumière provient d'une fente source monochromatique, parallèle aux fentes diffractantes, placée au foyer principal objet de la première lentille (lentille d'entrée). L'écran d'observation est confondu avec le plan focal image de la seconde lentille (lentille de sortie), placée en aval du plan percé.\\
+a) Faire une représentation schématique du montage.\\
+b) Représenter les cheminements des trois rayons qui interfèrent en un point M de l'écran.\\
+c) Établir la nouvelle fonction intensité \(I(\varphi)\) en posant \(\varphi=2 \pi \frac{a x}{\lambda f^{\prime}}\). On fera figurer l'intensité \(I_{0}\) qui correspondrait à celle d'une fente unique identique.\\
+d) Représenter, sur un même graphe, les fonctions intensités \(I(\varphi)\) pour les deux fentes de la question Q7. et pour les trois fentes de la question Q9. en fonction de la variable \(\varphi\) sur l'intervalle \([0,2 \pi]\).\\
+e) Commenter en comparant la luminosité et la largeur des zones les plus brillantes.\\
+f) On donne sur la photo 2 ce qu'on voit sur l'écran pour une lumière monochromatique rouge de longueur d'onde \(\lambda=633 \mathrm{~nm}\). À partir de cette photo 2, évaluer la distance entre les deux fentes en considérant que seule la zone comprise entre les abscisses \(x=2,1 \mathrm{~mm}\) et \(x=-2,1 \mathrm{~mm}\) correspond au calcul de l'intensité tel qu'il a été fait, c'est-à-dire sans tenir compte de la largeur des fentes diffractantes.\\
+\includegraphics[max width=\textwidth, center]{2024_11_25_be97bbde3376be1663e6g-08}
+
+Photo 2 - Interférences à 3 fentes (\href{http://plateforme.sillages.info}{plateforme.sillages.info})\\
+Les graduations sont en mm
+
+\section*{Partie III - Diffraction par un réseau et effet Talbot en optique}
+Q10. On se place dans le cas de \(N\) fentes identiques parallèles à Oy (figure 4) équidistantes (période a). La source ponctuelle S , supposée rigoureusement monochromatique de longueur d'onde \(\lambda=632,8 \mathrm{~nm}\) est placée au foyer objet d'une lentille mince convergente de distance focale \(f^{\prime}\). On observe en sortie sur un écran placé dans le plan focal image d'une seconde lentille mince de distance focale \(f^{\prime}\) et de centre optique O . On note Oz l'axe optique commun des deux lentilles.\\
+a) Faire une représentation du système optique et représenter le cheminement d'un rayon depuis la source jusqu'en un point \(M\left(x, y, f^{\prime}\right)\) de l'écran d'observation.\\
+On pose \(\varphi=2 \pi \frac{x a}{\lambda f^{\prime}}\).\\
+b) Établir que la fonction intensité \(I(\varphi)\) peut s'écrire sous la forme \(I(\varphi)=N^{2} I_{0}\left(\frac{\sin N \frac{\varphi}{2}}{N \sin \frac{\varphi}{2}}\right)^{2}=N^{2} I_{0} f(\varphi)^{2}\) en notant \(I_{0}\) l'intensité qui correspondrait à celle d'une fente unique identique.\\
+c) En déduire les valeurs de \(\varphi\) qui annulent le numérateur de la fonction \(I(\varphi)\). En déduire les valeurs de \(\varphi\) qui donnent des maxima d'intensité et celles qui donnent des zéros d'intensité. Combien existe-t-il de zéros d'intensité entre deux maximums d'intensité successifs?\\
+d) Établir le rapport H de l'intensité des franges les plus brillantes à celle produite par une seule fente identique éclairée de la même façon.\\
+e) Déterminer la « largeur» \(\delta \varphi\) des franges brillantes.\\
+f) Commenter en généralisant votre réponse à la question Q9.e.
+
+Q11. Le résultat obtenu en Q10.c pour les maxima d'intensité, établi dans le cadre de l'approximation de Gauss, peut être réécrit sous la forme \(\sin \theta_{n}=n \frac{\lambda}{a}\) avec \(n\) entier relatif. Elle est appelée " formule du réseau " et elle reste valable pour des rayons non paraxiaux. Justifier, sans calcul de l'intensité, cette formule. Comment nomme-t-on l'entier \(n\) ? Comment doit-on la modifier la formule si la situation n'est plus en incidence normale?
+
+On suppose que l'onde électromagnétique incidente, associée à un rayon issu de la source ponctuelle à l'infini dans la direction \(\overrightarrow{e_{z}}\), se propageant dans l'air d'indice unité est caractérisée par un champ électrique en notation complexe :
+
+\[
+\overrightarrow{E_{l}}=E_{0} \exp j\left(\omega t-\overrightarrow{k_{l}} \cdot \overrightarrow{O M}\right) \overrightarrow{e_{y}}
+\]
+
+avec \(E_{0}\) et \(\omega\) grandeurs constantes, uniformes et réelles et le vecteur d'onde \(\vec{k}_{l}\) uniforme.\\
+Q12. a) Indiquer les caractéristiques de cette onde incidente, en précisant sa polarisation, son caractère harmonique, sa planéité et l'expression du vecteur \(\overrightarrow{k_{l}}\).\\
+b) Quel est le champ magnétique complexe \(\overrightarrow{B_{l}}\) associé au champ électrique incident?\\
+c) Que vaut, pour l'onde incidente, l'expression du vecteur de Poynting moyen: \(\left\langle\overrightarrow{\Pi_{l}(M, t)}\right\rangle=\overrightarrow{\Pi_{0}(M)} ?\)
+
+On s'intéresse au champ électrique complexe, en un point infiniment éloigné, associé à un rayon diffracté, dans la direction \(\theta_{n}\), telle que \(\sin \theta_{n}=n \frac{\lambda}{a}\) avec \(n\) entier relatif. On admet que l'amplitude de celui-ci est proportionnelle à \(E_{0}\) avec un coefficient de proportionnalité ne dépendant que de \(\theta_{n}\) :
+
+\[
+\overrightarrow{E_{d}}(M, t)=\underline{\alpha}\left(\theta_{n}\right) E_{0} \overrightarrow{e_{y}} \exp j\left(\omega t-\overrightarrow{k_{d}} \cdot \overrightarrow{O M}\right) .
+\]
+
+Q13. a) Comparer les caractéristiques (amplitude, direction et phase) du champ électrique, en un point infiniment éloigné, de l'onde passée par une fente du réseau et de l'onde passée par une autre fente du réseau et diffractée dans la même direction.\\
+b) Conclure sur le champ électrique complexe résultant \(\overline{E_{d T}}\), c'est-à-dire associé à l'ensemble des rayons passés par les \(N\) fentes et diffractés dans la même direction \(\theta_{n}\).\\
+\includegraphics[max width=\textwidth, center]{2024_11_25_be97bbde3376be1663e6g-10}
+
+Figure 4 - Dispositif à \(N\) fentes
+
+Q14. a) Que vaut en un point \(M\) infiniment éloigné dans la direction \(\theta_{n}\) l'expression du vecteur de Poynting moyen \(\left\langle\overrightarrow{\Pi_{N}}(M, t)\right\rangle=\overline{\Pi_{N}}(M)\) associé à l'onde résultante issue des \(N\) fentes ? On l'exprimera en fonction de \(N,|\underline{\alpha}|^{2}\) et de \(\overrightarrow{\Pi_{0}}(M)\).\\
+b) En déduire le lien entre le rapport H évoqué en Q10.d et le nombre \(N\) de fentes éclairées.\\
+c) Application : calculer le rapport H pour un réseau \(R\) de \(p=100\) traits par mm éclairé par un faisceau cylindrique de rayon \(r=1,0 \mathrm{~mm}\).\\
+d) Indiquer dans quelles directions on obtiendra différents " ordres " de l'onde diffractée en complétant le tableau ci-dessous (en appliquant au réseau \(R\) la " formule du réseau " donnée avant la question Q12). On exprimera les résultats en degrés angulaires.
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+Ordre n & 0 & 1 & 2 & 3 \\
+\hline
+\(\theta_{n}\) & \(?\) & \(?\) & \(?\) & \(?\) \\
+\hline
+\end{tabular}
+\end{center}
+
+Q15. Exprimer, pour le réseau de pas a, les composantes \(k_{n, z}\) et \(k_{n, x}\) du vecteur d'onde \(\vec{k}\) des directions qui correspondent aux maxima d'intensité, en fonction de \(n\), a et de \(\lambda\).
+
+Dans le traitement fait précédemment, la largeur \(\varepsilon\) des fentes n'a pas été prise en compte. Pour corriger la démarche, on fait l'hypothèse que l'onde émergente du réseau est une superposition d'ondes cohérentes qui, dans le cadre de la diffraction, fournit l'amplitude complexe résultante sous la forme:
+
+\[
+\underline{A}(x, z, t)=\alpha_{0} \exp (j \omega t) \sum_{n=-\infty}^{n=+\infty} C_{n} \exp \left(-j\left(k_{n, z} z+k_{n, x} x\right)\right)
+\]
+
+avec les coefficients égaux à \(C_{n}=\frac{\sin \left(\frac{n \pi x}{a}\right)}{n \pi}\) pour \(n\) entier relatif non nul et à \(C_{0}=\frac{\pi x}{a}\) pour l'ordre nul et \(\alpha_{0}\) une constante réelle .
+
+Q16. Commenter la forme proposée, puis écrire la forme de l'amplitude complexe en utilisant la forme de \(\underline{A}(x, z, t)\) donnée ci-dessus et les expressions des composantes du vecteur d'onde obtenues en Q15.
+
+Q17. On suppose que la largeur \(\varepsilon\) de chaque fente est petite devant le pas du réseau a.\\
+On peut alors montrer que l'amplitude complexe dans le cadre de cette approximation vaut : \(\underline{A}(x, z, t)=\alpha_{0} \exp j\left(\omega t-\frac{2 \pi}{\lambda} z\right) \sum_{-q}^{q} C_{n} \exp \left(-j 2 \pi \frac{n}{a}\left(-\frac{\lambda n}{2 a} z+x\right)\right)\) en posant \(q\) égal à la partie entière de \(\frac{a}{\varepsilon}\).
+
+Dans la suite, on pourra utiliser le fait que puisque \(n\) est un entier \(\exp j\left(-\pi n^{2}\right)=\exp j(-\pi n)\).\\
+a) Écrire l'amplitude \(\underline{A}(x, 0, t)\), l'amplitude \(\underline{A}\left(x, z=\frac{1}{2} Z_{T}=\frac{a^{2}}{\lambda}, t\right)\) et l'amplitude \(\underline{A}\left(x, z=Z_{T}, t\right)\) en fonction de \(x, a, n \omega, \lambda\) et de \(t\).\\
+b) Justifier l'effet Talbot, c'est-à-dire le fait qu'on retrouve l'image du réseau à la distance \(z_{T} / 2\) avec un décalage à préciser tandis qu'à la distance \(z_{T}\) on retrouve l'image du réseau non décalée (auto-image).
+
+Q18. Commenter la photo 1 et déduire de celle-ci le rapport \(\frac{\varepsilon}{a}\) utilisé et vérifier que la longueur Talbot est bien conforme à la formule donnée.
+
+Q19. Problème. On peut établir que la fonction intensité reçue sur un point \(M(x, y, D)\) d'un détecteur placé directement à la distance \(D\) d'un réseau de période a et dont les \(N\) fentes sont de largeur \(\varepsilon\) s'écrit:
+
+\[
+I(M)=I_{\max }\left(\sin c\left(\frac{\pi \varepsilon x}{\lambda \mathrm{D}}\right)\right)^{2} \cdot\left(\frac{\sin \left(N \frac{\pi a}{\lambda \mathrm{D}} x\right)}{N \sin \left(\frac{\pi a}{\lambda \mathrm{D}} x\right)}\right)^{2}
+\]
+
+Commenter ce résultat en faisant apparaître un terme d'interférences et un terme lié à la dimension du motif du réseau.\\
+Actuellement, on utilise l'effet Talbot dans le domaine médical comme méthode d'étude des globules rouges permettant un diagnostic concernant les dysmorphies de ceux-ci par observation d'une image en vraie grandeur d'un échantillon sanguin. Les hématies (figure 5 (b)) dans le prélèvement sanguin analysé sont arrangées en couches mono-cellulaires à symétrie hexagonale (figure 5 (a)) formant un réseau permettant d'observer un effet Talbot. L'imagerie permet alors de détecter une maladie potentiellement mortelle le paludisme (parasitose) et des maladies génétiques comme la drépanocytose (globule en forme de faucille) et la micro-sphérocytose (globules sphériques fragiles).\\
+\includegraphics[max width=\textwidth, center]{2024_11_25_be97bbde3376be1663e6g-12}
+
+Figure 5 (a) - Arrangement hexagonal dans une monocouche d'hématies (à gauche)\\
+(b) forme d'une hématie (à droite)
+
+Les globules sont des éléments diffractants de " largeur \(2 \mathrm{r}=8 \mu \mathrm{~m}\) ". L'exploitation des images permet de mesurer une valeur de \(\mathrm{a}=12 \mu \mathrm{~m}\) en assimilant la période du réseau à la distance entre les centres de deux hématies voisines.
+
+En déduire ce qu'on observerait sur un écran éloigné.\\
+À quelle distance faudrait-il se placer pour voir une photo en vrai grandeur (image Talbot) des globules et de leur disposition si on éclaire avec la source monochromatique de longueur d'onde \(\lambda=633 \mathrm{~nm}\) ?
+
+\section*{Partie IV - Interférences d'ondes de matière}
+Q20. a) Après avoir rappelé la formule de De Broglie, établir la longueur d'onde associée à un faisceau d'électrons accélérés par une différence de potentiel égale à \(U=100 \mathrm{~V}\).\\
+b) Pourquoi un microscope électronique a-t-il un meilleur pouvoir de résolution qu'un microscope optique conventionnel ?
+
+Après la réalisation d'interférences avec des électrons et des neutrons, des expériences " historiques " d'interférences avec des atomes ont été réalisées en 1991 avec de l'Hélium par Carnel et Mlynek à Constance et en 1992 avec du Néon par Shimizu et Takuma à Tokyo.
+
+Q21. Après avoir cité le théorème d'équipartition de l'énergie, établir la valeur de la vitesse quadratique moyenne u d'un atome de masse \(m\) à la température \(T\). Indiquer les valeurs manquantes du tableau ci-dessous (cellule notée «? »).
+
+\begin{center}
+\begin{tabular}{|l|c|c|c|c|}
+\hline
+Atome & \begin{tabular}{c}
+Masse atomique \\
+en \(\mathrm{g} \cdot \mathrm{mol}^{-1}\) \\
+\end{tabular} & \begin{tabular}{c}
+Vitesse u \\
+à \(T_{1}=295 \mathrm{~K}\) \\
+\end{tabular} & \begin{tabular}{c}
+Vitesse u \\
+à \(T_{2}=83 \mathrm{~K}\) \\
+\end{tabular} & \begin{tabular}{c}
+Vitesse u \\
+à \(T_{3}=2,5 \mathrm{mK}\) \\
+\end{tabular} \\
+\hline
+Hélium & 4 & \(?\) & \(225 \mathrm{~m} \cdot \mathrm{~s}^{-1}\) &  \\
+\hline
+Néon & 20 &  &  & \(?\) \\
+\hline
+\end{tabular}
+\end{center}
+
+Q22. Dans l'expérience de 1991 (figure 6), la source est un dispositif d'émission thermique d'atomes d'hélium He suivie d'une fente diaphragme \(F\). Le montage est celui d'une division du front d'onde de type fentes d'Young. Le plan de la double fente est placé à la distance \(L=64 \mathrm{~cm}\) de la fente \(F\) et à la distance \(L^{\prime}=64 \mathrm{~cm}\) du plan le long duquel est déplacé le détecteur qui comptabilise les impacts de particules.\\
+Les atomes d'hélium sont émis soit à la température \(T_{1}=295 \mathrm{~K}\), soit à la température \(T_{2}=83 \mathrm{~K}\).\\
+\includegraphics[max width=\textwidth, center]{2024_11_25_be97bbde3376be1663e6g-13}
+
+Figure 6 - Expérience de 1991\\
+a) On admet qu'il y a diffraction du faisceau de particules au passage par \(F\), puis par les fentes \(F_{1}\) et \(F_{2}\), c'est-à-dire ouverture angulaire du faisceau d'un angle voisin de \(2 \lambda / \varepsilon\) avec \(\varepsilon\) la largeur de fente. La largeur de la fente \(F\) vaut \(2 \mu \mathrm{~m}\) et celles des fentes \(F_{1}\) et \(F_{2}\) valent \(1 \mu \mathrm{~m}\). La distance entre elles vaut \(\mathrm{a}=8 \mu \mathrm{~m}\). Vérifier que les chemins d'amplitude de probabilité permettent d'envisager deux chemins différents des particules avant leur détection.\\
+b) Le détecteur met en évidence des droites parallèles équidistantes sur lesquelles le nombre des impacts est très élevé et entre ces droites, des zones quasiment sans impacts. Interpréter.\\
+c) Estimer la distance entre ces droites pour les températures \(T_{1}\) et \(T_{2}\).
+
+Q23. L'expérience de 1992 est aussi un dispositif interférentiel de fentes d'Young, mais on utilise le champ de pesanteur pour accélérer les atomes de Néon (figure 7).\\
+\includegraphics[max width=\textwidth, center]{2024_11_25_be97bbde3376be1663e6g-14}
+
+Figure 7 - Expérience de 1992
+
+Les atomes de Néon, supposés indépendants les uns des autres, sont lâchés sans vitesse initiale et tombent dans le champ de pesanteur \(g=9,8 \mathrm{~m} \cdot \mathrm{~s}^{-2}\).\\
+a) On mesure un interfrange de \(1,1 \mathrm{~mm}\) : que vaut la longueur d'onde associée ? Quelle valeur de la vitesse en déduisez-vous au niveau du détecteur?\\
+b) En appliquant les lois de la mécanique classique, évaluer la vitesse des particules en chute libre au niveau des fentes. Que vaut-elle au niveau du détecteur? Commenter.\\
+c) Pourquoi a-t-on utilisé des atomes ultra-froids ?
+
+
+\end{document}

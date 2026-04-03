@@ -1,0 +1,1133 @@
+% !TEX root = /home/eb/.vscode/extensions/qftrules.programme-colle/tmp/Exercice.tex
+\begin{exo}[PC][1][TD]{Atmosphère avec gradient de température}
+Dans la troposphère, entre la surface terrestre et $\SI{10}{km}$ d'altitude, la température décroît linéairement avec un coefficient $\dd{T}{z}=-\alpha$ avec $\alpha=\SI{6.0e-3}{K.m^{-1}}$. L'air est assimilé à un gaz parfait de masse molaire  $M=\SI{29}{g.mol^{-1}}$.
+\begin{quest}
+\item Calculer la température à Chamonix $(1050 \mathrm{~m})$ et au sommet du Mont-Blanc (4810 $\mathrm{m})$ sachant que la température au niveau de la mer vaut $T_0=15{ }^{\circ} \mathrm{C}$.
+\sol{
+$T(z) = T_0 - \alpha z$ donne $T(z=\SI{1050}{m}) = \SI{8.7}{\dC}$ et $T(z=\SI{4810}{m}) = -\SI{13.9}{\dC}$.
+}
+\item En supposant un équilibre hydrostatique dans les couches de la troposphère, montrer que la pression $P$ vérifie l'équation
+$$
+\dd{P}{z} = - \frac{Mg}{RT} P.
+$$
+\sol{
+Loi de l’hydrostatique et loi du GP :
+$$
+\grad p = \rho \Vec{g} \Rar \dd{p}{z} = - \rho g = - \frac{Mg}{RT} p.
+$$
+}
+\item Intégrer cette équation pour obtenir la pression $P$ en fonction de $z$. On pourra poser $a=\frac{M g}{R \alpha}$.
+ \sol{
+En séparant les variables,
+$$
+\frac{\p p}{p} = -\frac{Mg}{R(T_0-\alpha z)} \d z = -\frac{Mg}{R\alpha}\frac{1}{T_0/\alpha-z} \d z  \Rar \ln\left(\frac{p}{p_0}\right) = \frac{Mg}{R\alpha}\ln\left(1-\alpha z/T_0\right) \Rar p(z) = p_0 \left(1-\frac{\alpha z}{T_0}\right)^{a}.
+$$
+}
+\item En déduire la pression à Chamonix et au sommet du Mont-Blanc sachant qu'au niveau de la mer $P=P_0=\SI{1.013e5}{Pa}$.
+\sol{
+On a $a=\num{5.7}$ et donc $p(z=\SI{1050}{m})=\SI{9.07e4}{Pa}$ et $p(z=\SI{4810}{m}) = \SI{5.64e4}{Pa}$.
+}
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][colle]{Le moteur Stirling}
+	\Notions{\item Système fermé \task Gaz parfait \task Moteur}
+
+	
+  \begin{minipage}{\columnwidth}
+  \begin{wrapfigure}{r}{0.3\columnwidth}
+  \centering
+  \vspace{-0.8cm}
+  \begin{center}
+  \includegraphics[scale=0.23]{Stirling_cycle}
+  \end{center}
+  %\caption{Cycle de Stirling dans le diagramme de Watt.}
+  \label{fig:}
+  \end{wrapfigure}
+  Un moteur est une machine thermodynamique qui effectue une suite de transformations cyclique. On suppose que le système qui subit le cycle est un gaz parfait monoatomique. On donne ci-contre le cycle Stirling idéal dans le diagramme de Watt, qui se compose de deux isothermes et de deux isochores. Durant les phases isothermes, le gaz est au contact de thermostats de température $T_{\rm c}=\SI{50}{\dC}$ (source chaude) et $T_{\rm f}=\SI{25}{\dC}$ (source froide).
+
+  %\begin{figure}[h!]
+  %\centering
+  %\begin{center}
+  %\includegraphics[scale=0.3]{Stirling_Cycle.png}
+  %\end{center}
+  %\caption{Cycle de Stirling dans le diagramme de Watt.}
+  %\label{fig:}
+  %\end{figure}
+  %%%%%%%%%%%%%
+  \end{minipage}
+  \vspace{0.4cm}
+
+  \begin{quest}
+
+  \item Rappeler l'expression de l'énergie interne $U$ et en déduire l'expression de l'entropie $S$ d'un gaz parfait monoatomique à partir de la relation fondamentale de la thermodynamique. Rappeler également la loi du gaz parfait.
+
+  \sol{
+  Pour un GP monatomique, le cours donne
+  \eqbox{
+  U=\frac{3}{2}nRT.
+  }
+  Puis la relation fondamentale donne $\d U= T\d S-p\d V$ soit $\d S = \frac{\d U}{T} + \frac{p}{T} \d V = \frac{3}{2}nR \frac{\d T}{T} + nR\frac{\d V}{V}$, d'où en intégrant,
+\eqbox{
+S = S_0 +  \frac{3}{2}nR \ln(T/T_0) + nR\ln(V/V_0).
+}
+  La loi du GP stipule que $pV=nRT$.
+  }
+
+  \item Reproduire le cycle dans le diagramme de Watt et identifier les quatre phases du cycle.
+
+  \sol{
+  $1-2$ : isotherme $T_c$, $2-3$ : isochore $V_{\rm max}$, $3-4$ : isotherme $T_f$, $4-1$ : isochore $V_{\rm min}$.
+  }
+
+
+
+  \item On note $V_{\rm min}=\SI{32}{cm^3}$ le volume minimal et $V_{\rm max}=\SI{44}{cm^3}$ le volume maximal. Déterminer les pressions $p_{\rm 1}$, $p_{\rm 2}$ et $p_{\rm 4}$, sachant que $p_3$ est égal à la pression atmosphérique.
+
+  \sol{
+  $nRT_{\rm c} = p_{\rm 1}V_{\rm min} = p_{\rm 2}V_{\rm max}$ donc $n=\SI{1.78e-3}{mol}$ puis $p_1 = \SI{1.49}{bar}$ et  $p_2=\SI{1.08}{bar}$.\\
+  $nRT_{\rm f} = p_{\rm 4}V_{\rm min} = p_{\rm 3}V_{\rm max}$ donc
+  $p_4 = \SI{1.38}{bar}$.
+  }
+
+  \item Que vaut la variation totale d'énergie interne et d'entropie au cours du cycle ? Pour chacune des quatre phases du cycle, déterminer le travail reçu par le gaz, le transfert thermique reçu, ainsi que les variations d'énergie interne et d'entropie. On introduira les taux de dilatation $\alpha=V_{\rm max}/V_{\rm min}$ et d'échauffement $\beta=T_{\rm c}/T_{\rm f}$, que l'on calculera numériquement.
+
+
+  \sol{
+  Les transformations sont en particulier quasi-statiques.
+  \begin{liste}
+
+  \item $1\rightarrow2$ : $W_{1-2}=-nRT_{\rm c}\ln(\alpha)<0$ et $Q_{\rm c}=\Delta U - W = -W=nRT_{\rm c}\ln(\alpha)>0$ et $\Delta S = nR \ln(\alpha)$.
+  \item $2\rightarrow3$ : $W_{2-3}=0$ et $Q_{2-3}=\Delta U = \frac{3}{2}nR(T_{\rm f}-T_{\rm c})=\frac{3}{2}(p_{\rm 4}-p_{\rm 1})V_{\rm min}<0$ et $\Delta S = -\frac{3}{2}nR\ln(\beta)$.
+  \item $3\rightarrow4$ : $W_{3-4}=nRT_{\rm f}\ln(\alpha)>0$ et $Q_{\rm f}=\Delta U - W = -W=-nRT_{\rm f}\ln(\alpha)<0$ et $\Delta S = -nR \ln(\alpha)$.
+  \item $4\rightarrow1$ : $W_{4-1}=0$ et $Q_{4-1}=\Delta U = \frac{3}{2}nR(T_{\rm c}-T_{\rm f})=\frac{3}{2}(p_{\rm 1}-p_{\rm 4})V_{\rm min}>0$ et $\Delta S = \frac{3}{2}nR\ln(\beta)$.
+  \end{liste}
+  }
+
+  \item À quelle étape le moteur fournit-il du travail à l'extérieur ? En reçoit-il ?
+  Soit $W$ le travail total reçu par le gaz au cours du cycle. Quel doit être le signe de $W$ pour que le cycle de Stirling soit moteur ?
+
+  \sol{
+  Il fournit du travail lorsque $W<0$, soit pendant la transformation isotherme $T_c$. Il reçoit du travail lorsque $W>0$, soit pendant la transformation isotherme $T_f$.
+
+  On a donc $W=W_{1-2} + W_{3-4}$. On veut \fbox{$W<0$} pour que le cycle soit moteur.
+  }
+
+  \item L'opérateur fournit de l'énergie thermique $Q_{\rm c}$ au système  lorsque celui-ci est au contact de la source chaude, de température $T_{\rm c}$. Pour quantifier la qualité de ce moteur, on définit le rendement
+  $
+  \eta = -\frac{W}{Q_{\rm c}}.
+  $
+  Expliquer le sens physique de cette grandeur. Déterminer son expression en fonction des températures du problème. Commentaire ?
+  \sol{
+  On a
+  $W = nR(T_{\rm c}-T_{\rm f})\ln(\alpha)$ et $Q_{\rm c} = nRT_{\rm c}\ln(\alpha)$, d'où
+  $\eta = \dfrac{T_{\rm c}-T_{\rm f}}{T_{\rm c}}$ et donc
+\eqbox{
+\eta = 1- \dfrac{T_{\rm f}}{T_{\rm c}}.
+}
+   Il s'agit du rendement de Carnot, qui est le rendement maximal pour un moteur ditherme. Ici on retrouve le rendement de Carnot avec un cycle qui n'est pas le cycle de Carnot, parce que le moteur Stirling n'est pas une machine ditherme en réalité. Durant la phase isochore, le gaz passe au contact d'une succession de thermostats de températures infiniment proches, ce qui engendre une transformation réversible.
+  }
+  \end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][colle]{Moteur thermique}
+Un moteur thermique fonctionne de manière réversible entre deux sources dont les températures $T_c$ et $T_f$ peuvent évoluer au cours du temps à cause des échanges thermiques avec la machine. La source froide est constituée d'une masse $M=100 \mathrm{~kg}$ d'eau en totalité à l'état de glace fondante à la température $T_{f, 0}=273 \mathrm{~K}$. La source chaude est constituée d'une masse $2 M$ d'eau liquide à la température $T_{c, 0}=373 \mathrm{~K}$. On donne la capacité thermique massique de l'eau liquide $C=4,18 \mathrm{~kJ} \cdot \mathrm{kg}^{-1} \cdot \mathrm{K}^{-1}$ et la chaleur latente massique de fusion de la glace $L=335,6 \mathrm{~kJ}^2 \mathrm{~kg}^{-1}$ à la température $T_{f, \mathrm{O}}$.
+\begin{quest}
+	\item Déterminer la température $T_{c, 1}$ de la source chaude quand la totalité de la glace de la source froide a fondu.
+	\item Calculer le travail $W_1$ fourni alors par le moteur.
+	\item Le moteur s'arrête lorsque les deux sources sont à la même température $T_0$.
+	\item Calculer le rendement thermique global du moteur.
+	\item Même question si les températures des deux sources avaient été maintenues constantes.
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][colle]{Pompe à chaleur}
+Une pompe à chaleur effectue le cycle de Joule inversé suivant. L'air pris dans l'état $A$ de température $T_0$ et de pression $P_0$ est comprimé suivant une adiabatique quasistatique jusqu'au point $B$ où il atteint la pression $P_1$. Le gaz est ensuite refroidi à pression constante et atteint la température finale de la source chaude $T_1$ correspondant à l'état C. Le gaz est encore refroidi dans une turbine suivant une détente adiabatique quasistatique pour atteindre l'état $D$ de pression $P_0$. Le gaz se réchauffe enfin à pression constante au contact de la source froide et retrouve son état initial.
+On considère que l'air est un gaz parfait de coefficient isentropique $\gamma=\num{1.4}$. On pose $\beta=1-\frac{1}{\gamma}$ et $a=\frac{P_1}{P_0}$. On prendra $T_0=283 \mathrm{~K}, T_1=298 \mathrm{~K}, a=5$ et $R=8,31 \mathrm{~J} \cdot \mathrm{K}^{-1} \cdot \mathrm{mol}^{-1}$.
+\begin{quest}
+	\item Représenter le cycle parcouru par le gaz dans le diagramme de Clapeyron donnant la pression en fonction du volume.
+	\item Rappeler les conditions nécessaires pour assurer la validité des formules de Laplace. Donner la formule de Laplace relative à la pression et à la température.
+	\item En déduire l'expression des températures $T_B$ et $T_D$ des états $B$ et $D$ en fonction de $T_0, T_1$, $a$ et $\beta$. Préciser leur valeur numérique.
+	\item Définir l'efficacité $e$ de la pompe à chaleur en fonction des transferts thermiques du cycle.
+	\item En déduire l'expression de $e$ en fonction de $a$ et $\beta$. Donner sa valeur numérique.
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][colle]{Chaleur latente de fusion}
+	Un vase calorimétrique (calorifugé, de capacité thermique négligeable) contient initialement une masse $m_{\ell}=\SI{120}{g}$ d'eau liquide à la température $T_{\ell}=\SI{50}{\dC}$ et une masse $m_{\rm g}=\SI{50}{g}$ de glace à $T_{\rm g}=\SI{-15}{\dC}$. Au bout d'un certain temps, un nouvel équilibre thermodynamique est atteint et on mesure $T_{\rm f}=\SI{9,5}{\dC}$. On rappelle qu'à pression atmosphérique, $T_{\rm fus}=\SI{0}{\dC}$ et on considère que la transformation étudiée est monobare.
+\begin{quest}
+\QR{
+	Quel est alors la phase du système dans l'état final (solide, liquide ou mélange) ?
+}{
+	On a $T_f > T_{fus}$ et on en déduit que toute la glace a fondu. Il ne reste donc plus qu'une phase liquide.
+}
+
+
+\QR{
+	Décomposez la transformation en plusieurs étapes fictives élémentaires pour chaque corps pur et représentez les données du problème sur ce schéma.
+}{
+	N.A.
+}
+
+
+\QR{
+	En déduire la chaleur latente massique de fusion de l'eau $l_{\rm fus}$
+	\astuce{$l_{fus} \approx \SI{335}{kJ.kg^{-1}}$}
+}{
+	On peut effectuer un bilan d'enthalpie séparément pour la glace et l'eau liquide
+	\begin{enumerate}
+		\item Pour la glace, on passe d'abord à la température de fusion, puis changement d'état, puis enfin montée en température jusque la température d'équilibre :
+		\eq{
+			\Delta H _g = m_g \pa{c_g (T_{fus}-T_g) + l_{fus} + c_e (T_f-T_{fus})}
+		}
+
+		\item Pour l'eau, on a simplement un changement de température :
+		\eq{
+			\Delta H _e = m_e c_e (T_f-T_e)
+		}
+
+		La transformation totale est adiabatique et $W=0$ (pas de travail des forces extérieures). On en déduit $\Delta H = \Delta H_e+ \Delta H_g = 0 $ (premier principe) soit au final :
+		\begin{align*}
+			l_{fus} &= -\frac{m_e}{m_g} c_e (T_f-T_e) - c_g (T_{fus}-T_g) - c_e (T_f-T_{fus}) \\
+			\iff ~~~ l_{fus} &= -(\frac{m_e}{m_g}+1)c_e T_f + c_g T_g + \frac{m_e}{m_g} c_e  T_e + (c_e-c_g )T_{fus}
+		\end{align*}
+		L'application numérique donne $\ell_{fus} \simeq \SI{335}{kJ.kg^{-1}}$
+	\end{enumerate}
+}
+
+\end{quest}
+\textsc{Données :} capacités thermiques pour la glace et l'eau : $c_{\rm g}= \SI{2,09}{kJ.kg^{-1}.K^{-1}}$ et $c_{\ell} = \SI{4,18}{kJ.kg^{-1}.K^{-1}}$.
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][colle]{Détermination du coefficient isentropique}
+	Une mole d'un gaz parfait de coefficient isentropique $\gamma >1$ subit un cycle de transformation représenté sur le diagramme ci-dessous : partant de l'état (1) de pression $P_1=\SI{2,5}{\bar}$, un détente isotherme réversible l'amène à l'état (2), elle subit ensuite une évolution isochore l'amenant dans l'état (3), puis retourne dans l'état (1) par une compression adiabatique réversible. La seconde transformation a lieu en contact thermique avec un thermostat à la température $T_e=\SI{200}{\kelvin}$.
+
+\begin{fig}[]
+	\centering
+	\includegraphics[width=0.4\textwidth]{cycle_isoth.png}
+	% \capt{}
+\end{fig}
+\begin{quest}
+
+\QR{
+	% En utilisant la loi des gaz parfaits ainsi que la loi de Laplace, justifier que,
+	Montrer que dans le diagramme de Clapeyron, la pente d'une transformation abiabatique-réversible est supérieur (en valeur absolue) à celle d'une transformation isotherme.
+}{
+	\begin{itemize}
+		\item Transformation adiabatique-réversible, d'après la loi de Laplace : $P=\frac{cst}{V^\gamma}$.
+		\item Transformation isotherme, d'après la loi des gaz parfaits : $P=\frac{cst}{V}$.
+	\end{itemize}
+
+	\noindent Puisque $\gamma>1$, la pente correspondant à la transformation adiabatique-réversible est plus importante que celle de la transformation isotherme.
+}
+
+
+\QR{
+	En justifiant soigneusement, placer les points (1), (2), (3) sur le diagramme. 	En déduire la valeur du coefficient $\gamma$. Le gaz parfait est-il diatomique ou monoatomique ?
+}{
+	$(1)\to(2)$ Détente isotherme : $V$ augmente, $P$ diminue comme $P=\dfrac{cste}{V}$
+
+	$(2)\to (3)$ transformation isochore : $V$ constant
+
+	$(3) \to (1)$ compression adiabatique réversible : $V$ diminue, $P$ augmente comme $P=\dfrac{cste}{V^\gamma}$
+
+	En $(1)$ : la pente de la tangente à la courbe de la transformation adiabatique réversible est supérieure à celle à la courbe de la transformation isotherme.
+
+	% \fig{0.6}{cycle_corr}
+	\begin{fig}[]
+		\centering
+		\includegraphics[width=0.4\textwidth]{cycle_corr.png}
+		% \capt{}
+	\end{fig}
+
+		Sur la transformation $(3) \to (1)$ : $P_3V_3^\gamma=P_1V_1^\gamma$, soit $\boxed{\gamma=\dfrac{\ln\left(\dfrac{P_1}{P_3}\right)}{\ln\left(\dfrac{V_3}{V_1}\right)}=1,4}$
+
+
+}
+
+\QR{
+	Pour chacune des transformations $(i) \to  (j)$, exprimer et calculer la variation d'énergie interne $\Delta U_{ij}$ du gaz,  le travail $W_{ij}$ reçu du gaz, et le transfert thermique reçus $Q_{ij}$ par le gaz.
+}{
+	\begin{itemize}
+		\item Transformation isotherme d'un gaz parfait : $\Delta U_{12}=0$.
+		\item $\boxed{\Delta U_{23}=nC_{Vm}(T_3-T_2)=\dfrac{P_3V_3-P_2V_2}{\gamma-1}=\SI{-900}{J}<0}$
+		\item $\boxed{\Delta U_{31}=\dfrac{P_1V_1-P_3V_3}{\gamma-1}=\SI{925}{J}>0}$.
+	\end{itemize}
+	\begin{itemize}
+		\item $W_{12}=-\int_{V_1}^{V_2}Pd V=-\int_{V_1}^{V_2}\dfrac{nRT_1}{V}d V$, ainsi $W_{12}=-nRT_1\ln\left(\dfrac{V_2}{V_1}\right)$, \\
+		soit $\boxed{W_{12}=-P_1V_1\ln\left(\dfrac{V_2}{V_1}\right)=\SI{1,0e3}{\joule}>0}$
+		\item Transformation isochore : $\boxed{W_{23}=0}$.
+		\item premier principe sur $(3)\to(1)$ : $\boxed{W_{31}=\Delta U_{31}}$.
+	\end{itemize}
+	\noindent On applique le premier principe de la thermodynamique au gaz au cours des transformations $(1)\to(2)$ et $(2)\to (3)$ :
+	\begin{itemize}
+		\item  $\Delta U_{12}=Q_{12}+W_{12}$, soit $\boxed{Q_{12}=P_1V_1\ln\left(\dfrac{V_2}{V_1}\right)}$
+		\item $\boxed{Q_{23}=\Delta U_{23}=nC_{Vm}(T_3-T_2)}$.
+		\item Transformation adiabatique : $\boxed{Q_{31}=0}$
+	\end{itemize}
+}
+
+
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%m
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][colle]{Expérience de Clément-Désormes et bilan entropique}
+	Une mole d'un gaz parfait de coefficient isentropique $\gamma >1$ subit un cycle de transformation représenté sur le diagramme ci-dessous : partant de l'état (1) de pression $P_1=\SI{2,5}{\bar}$, un détente isotherme réversible l'amène à l'état (2), elle subit ensuite une évolution isochore l'amenant dans l'état (3), puis retourne dans l'état (1) par une compression adiabatique réversible. La seconde transformation a lieu en contact thermique avec un thermostat à la température $T_e=\SI{200}{\kelvin}$.
+
+\begin{fig}[]
+	\centering
+	\includegraphics[width=0.6\columnwidth]{cycle_isoth.png}
+	% \capt{}
+\end{fig}
+\begin{quest}
+
+\QR{
+	% En utilisant la loi des gaz parfaits ainsi que la loi de Laplace, justifier que,
+	Montrer que dans le diagramme de Clapeyron $(p,V_m)$, la pente d'une transformation abiabatique réversible est supérieur (en valeur absolue) à celle d'une transformation isotherme.
+}{
+	\begin{itemize}
+		\item Transformation adiabatique-réversible, d'après la loi de Laplace : $P=\frac{cst}{V^\gamma}$.
+		\item Transformation isotherme, d'après la loi des gaz parfaits : $P=\frac{cst}{V}$.
+	\end{itemize}
+
+	\noindent Puisque $\gamma>1$, la pente correspondant à la transformation adiabatique réversible est plus importante que celle de la transformation isotherme.
+}
+
+
+\QR{
+	En justifiant soigneusement, placer les points (1), (2), (3) sur le diagramme. 	En déduire la valeur du coefficient $\gamma$. Le gaz parfait est-il diatomique ou monoatomique ?
+}{
+	$(1)\to(2)$ Détente isotherme : $V$ augmente, $P$ diminue comme $P=\dfrac{cste}{V}$
+
+	$(2)\to (3)$ transformation isochore : $V$ constant
+
+	$(3) \to (1)$ compression adiabatique réversible : $V$ diminue, $P$ augmente comme $P=\dfrac{cste}{V^\gamma}$
+
+	En $(1)$ : la pente de la tangente à la courbe de la transformation adiabatique réversible est supérieure à celle à la courbe de la transformation isotherme.
+
+	% \fig{0.6}{cycle_corr}
+	\begin{fig}[]
+		\centering
+		\includegraphics[width=0.4\textwidth]{cycle_corr.png}
+		% \capt{}
+	\end{fig}
+
+		Sur la transformation $(3) \to (1)$ : $P_3V_3^\gamma=P_1V_1^\gamma$, soit $\boxed{\gamma=\dfrac{\ln\left(\dfrac{P_1}{P_3}\right)}{\ln\left(\dfrac{V_3}{V_1}\right)}=1,4}$
+
+
+}
+
+\QR{
+	Pour chacune des transformations $(i) \to  (j)$, exprimer et calculer la variation d'énergie interne $\Delta U_{ij}$ du gaz,  le travail $W_{ij}$ reçu du gaz, le transfert thermique reçus $Q_{ij}$ par le gaz, et  la variation d'entropie $\Delta S_{ij}$ du gaz.
+}{
+	\begin{itemize}
+		\item Transformation isotherme d'un gaz parfait : $\Delta U_{12}=0$.
+		\item $\boxed{\Delta U_{23}=nC_{Vm}(T_3-T_2)=\dfrac{P_3V_3-P_2V_2}{\gamma-1}=\SI{-900}{J}<0}$
+		\item $\boxed{\Delta U_{31}=\dfrac{P_1V_1-P_3V_3}{\gamma-1}=\SI{925}{J}>0}$.
+	\end{itemize}
+	\begin{itemize}
+		\item $W_{12}=-\int_{V_1}^{V_2}Pd V=-\int_{V_1}^{V_2}\dfrac{nRT_1}{V}d V$, ainsi $W_{12}=-nRT_1\ln\left(\dfrac{V_2}{V_1}\right)$, \\
+		soit $\boxed{W_{12}=-P_1V_1\ln\left(\dfrac{V_2}{V_1}\right)=\SI{1,0e3}{\joule}>0}$
+		\item Transformation isochore : $\boxed{W_{23}=0}$.
+		\item premier principe sur $(3)\to(1)$ : $\boxed{W_{31}=\Delta U_{31}}$.
+	\end{itemize}
+	\noindent On applique le premier principe de la thermodynamique au gaz au cours des transformations $(1)\to(2)$ et $(2)\to (3)$ :
+	\begin{itemize}
+		\item  $\Delta U_{12}=Q_{12}+W_{12}$, soit $\boxed{Q_{12}=P_1V_1\ln\left(\dfrac{V_2}{V_1}\right)}$
+		\item $\boxed{Q_{23}=\Delta U_{23}=nC_{Vm}(T_3-T_2)}$.
+		\item Transformation adiabatique : $\boxed{Q_{31}=0}$
+	\end{itemize}
+	\begin{itemize}
+		\item $\boxed{\Delta S_{12}=nR\ln\left(\dfrac{V_2}{V_1}\right)=\dfrac{P_1V_1}{T_1}\ln\left(\dfrac{V_2}{V_1}\right)=\SI{0,41}{J.K^{-1}}}$.
+		\item $\boxed{\Delta S_{23}=\dfrac{nR}{\gamma-1}\ln\left(\dfrac{P_3}{P_2}\right)=\SI{-3}{J.K^{-1}}}$
+		\item d'après le deuxième principe de la thermodynamique : $\boxed{\Delta S_{31}=0}$ (adiabatique : $S_\text{éch}=0$ et réversible : $S_\text{créée}=0$)
+	\end{itemize}
+}
+
+
+\QR{
+	Pour chacune des transformations, faire un bilan entropique, et calculer l'entropie créée. Identifier si nécessaire les causes d'irréversibilité.
+}{
+	\begin{itemize}
+		\item Transformation $(1)\to(2)$
+		\begin{itemize}
+			\item Entropie échangée : $S_{éch,12}=\dfrac{Q_{12}}{T_1}=nR\ln\left(\dfrac{V_2}{V_1}\right)=\Delta S_{12}$
+
+			\item Le 2\ieme\ principe donne donc une entropie créée nulle.
+		\end{itemize}
+		\item Transformation $(2)\to(3)$
+		\begin{itemize}
+			\item Entropie échangée : $\boxed{S_{éch,23}=\dfrac{Q_{23}}{T_e}=\dfrac{P_3V_3-P_2V_2}{(\gamma-1)T_e}}$
+			\item Le 2\ieme\ principe donne accès à $S_{créée,23}=\Delta S_{23}-S_{éch,23}$
+		\end{itemize}
+		\item Transformation $(3)\to(1)$
+		\begin{itemize}
+			\item Transformation adiabatique : $S_\text{éch,31}=0$
+			\item  et réversible : $S_\text{créée,31}=0$
+		\end{itemize}
+	\end{itemize}
+	Ainsi sur le cycle entier : $\boxed{S_\text{créée}=S_\text{créée,12}+S_\text{créée,23}+S_\text{créée,31}=S_\text{créée,23}>0}$
+
+	Le cycle n'est pas réversible. En effet, bien que les transformations 12 et 31 le soient, la transformation 23 ne l'est pas car le système échange du transfert thermique avec le milieu extérieur de température différente de la température du système. L'inhomogénéité de température entre le système et le milieu extérieur sur 23 est la source de l'irréversibilité.
+}
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][colle]{Expérience de Clément-Désormes}
+	Une mole d'un gaz parfait de coefficient isentropique $\gamma > 1$ subit un cycle de transformation représenté sur le diagramme ci-dessous : partant de l'état (1) de pression $p_1=\SI{2,5}{\bar}$, un détente isotherme réversible l'amène à l'état (2), elle subit ensuite une évolution isochore l'amenant dans l'état (3), puis retourne dans l'état (1) par une compression adiabatique réversible. La seconde transformation a lieu en contact thermique avec un thermostat à la température $T_e=\SI{200}{\kelvin}$. On rappelle que $\gamma = \textstyle\frac{C_p}{C_V}$.
+
+\begin{fig}[]
+	\centering
+	\includegraphics[width=0.65\textwidth]{cycle_isoth.png}
+	% \capt{}
+\end{fig}
+\begin{quest}
+
+\QR{
+	% En utilisant la loi des gaz parfaits ainsi que la loi de Laplace, justifier que,
+	Déterminer les courbes décrivant les transformations abiabatique réversible et isotherme dans le diagramme de Watt $(p,V)$, où $V$ désigne le volume. En déduire le placement des points (1), (2), (3) sur le diagramme.
+}{
+	\begin{itemize}
+		\item Transformation adiabatique-réversible, d'après la loi de Laplace : $P=\frac{cst}{V^\gamma}$.
+		\item Transformation isotherme, d'après la loi des gaz parfaits : $P=\frac{cst}{V}$.
+	\end{itemize}
+
+	\noindent Puisque $\gamma>1$, la pente correspondant à la transformation adiabatique réversible est plus importante que celle de la transformation isotherme.
+}
+
+
+\QR{
+	Déterminer alors la valeur du coefficient $\gamma$ par lecture du diagramme. Le gaz parfait est-il diatomique ou monoatomique ?
+}{
+	$(1)\to(2)$ Détente isotherme : $V$ augmente, $P$ diminue comme $P=\dfrac{cste}{V}$
+
+	$(2)\to (3)$ transformation isochore : $V$ constant
+
+	$(3) \to (1)$ compression adiabatique réversible : $V$ diminue, $P$ augmente comme $P=\dfrac{cste}{V^\gamma}$
+
+	En $(1)$ : la pente de la tangente à la courbe de la transformation adiabatique réversible est supérieure à celle à la courbe de la transformation isotherme.
+
+	% \fig{0.6}{cycle_corr}
+	\begin{fig}[]
+		\centering
+		\includegraphics[width=0.4\textwidth]{cycle_corr.png}
+		% \capt{}
+	\end{fig}
+
+		Sur la transformation $(3) \to (1)$ : $P_3V_3^\gamma=P_1V_1^\gamma$, soit $\boxed{\gamma=\dfrac{\ln\left(\dfrac{P_1}{P_3}\right)}{\ln\left(\dfrac{V_3}{V_1}\right)}=1,4}$
+
+
+}
+
+\QR{
+	Pour chacune des transformations $(i) \to  (j)$, exprimer et calculer la variation d'énergie interne $\Delta U_{ij}$ du gaz,  le travail $W_{ij}$ reçu du gaz, et le transfert thermique reçus $Q_{ij}$ par le gaz.
+}{
+	\begin{itemize}
+		\item Transformation isotherme d'un gaz parfait : $\Delta U_{12}=0$.
+		\item $\boxed{\Delta U_{23}=nC_{Vm}(T_3-T_2)=\dfrac{P_3V_3-P_2V_2}{\gamma-1}=\SI{-900}{J}<0}$
+		\item $\boxed{\Delta U_{31}=\dfrac{P_1V_1-P_3V_3}{\gamma-1}=\SI{925}{J}>0}$.
+	\end{itemize}
+	\begin{itemize}
+		\item $W_{12}=-\int_{V_1}^{V_2}Pd V=-\int_{V_1}^{V_2}\dfrac{nRT_1}{V}d V$, ainsi $W_{12}=-nRT_1\ln\left(\dfrac{V_2}{V_1}\right)$, \\
+		soit $\boxed{W_{12}=-P_1V_1\ln\left(\dfrac{V_2}{V_1}\right)=\SI{1,0e3}{\joule}>0}$
+		\item Transformation isochore : $\boxed{W_{23}=0}$.
+		\item premier principe sur $(3)\to(1)$ : $\boxed{W_{31}=\Delta U_{31}}$.
+	\end{itemize}
+	\noindent On applique le premier principe de la thermodynamique au gaz au cours des transformations $(1)\to(2)$ et $(2)\to (3)$ :
+	\begin{itemize}
+		\item  $\Delta U_{12}=Q_{12}+W_{12}$, soit $\boxed{Q_{12}=P_1V_1\ln\left(\dfrac{V_2}{V_1}\right)}$
+		\item $\boxed{Q_{23}=\Delta U_{23}=nC_{Vm}(T_3-T_2)}$.
+		\item Transformation adiabatique : $\boxed{Q_{31}=0}$
+	\end{itemize}
+	\begin{itemize}
+		\item $\boxed{\Delta S_{12}=nR\ln\left(\dfrac{V_2}{V_1}\right)=\dfrac{P_1V_1}{T_1}\ln\left(\dfrac{V_2}{V_1}\right)=\SI{0,41}{J.K^{-1}}}$.
+		\item $\boxed{\Delta S_{23}=\dfrac{nR}{\gamma-1}\ln\left(\dfrac{P_3}{P_2}\right)=\SI{-3}{J.K^{-1}}}$
+		\item d'après le deuxième principe de la thermodynamique : $\boxed{\Delta S_{31}=0}$ (adiabatique : $S_\text{éch}=0$ et réversible : $S_\text{créée}=0$)
+	\end{itemize}
+}
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][colle]{Pression cinétique sur paroi oblique}
+Soit un gaz constitué de molécules $M$ de masse $m$. Ce gaz est totalement ionisé sous la forme $M^+, e^-$ puis par un dispositif électrique, tous les ions $M^+$ acquièrent une même vitesse $\Vec{v^\ast}=v^\ast\Vec{u_x}$. A la sortie de ce dispositif, les ions rencontrent une paroi plane telle que $(\Vec{u_x},\Vec{n})=\alpha$, où $\Vec{n}$ est la normale à la paroi dirigée vers l'extérieur. On raisonnera sur un élément de surface $dS$ et une durée $dt$. On notera $n^\ast$ la densité particulaire supposée uniforme.
+
+\begin{quest}
+\QR{
+	Exprimer le nombre de chocs $dN$ sur cet élément de surface $dS$ pendant un temps $dt$ en fonction de $n^*$, $v^*$, $\alpha$, $dt$ et $dS$.
+}{
+	cylindre oblique de surface $dS$ = cylindre droit de surface $dS\cos(\alpha)$.
+	\eq{
+		dN=n^\ast v^\ast \cos(\alpha)dtdS
+	}
+}
+
+\QR{
+	Exprimer la variation de quantité de mouvement $d\Vec{p}$ d'une molécule au cours d'un choc.
+}{
+	pour un choc, transfert de  quantité de mouvement~:
+	\eq{
+		dp=2mv^\ast \cos(\alpha)
+	}
+}
+
+
+\QR{
+	En déduire la pression résultante.
+}{
+	\eq{
+		P=2mn^\ast v^{\ast 2}\cos^2(\alpha)
+	}
+}
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][colle]{Liquéfaction de la vapeur d’eau dans un piston}
+	Un cylindre indéformable fermé par un piston contient de l'air sec sous la pression $P_1 = \SI{1}{\bar}$ de volume $V_1 = \SI{1,5}{\liter}$ et une température maintenue à $\theta_1 =  \SI{50}{\celsius}$.
+	On y introduit une masse $m$ d'eau à la même température à volume constant. La pression devient alors $P_2 = \SI{1,10}{\bar}$.\\
+
+	\textsc{Données} : $M(\text{eau}) = \SI{18}{\gram \per \mole}$. La vapeur d'eau sèche se comporte comme un gaz parfait. On considère l'air humide comme un mélange idéal de gaz parfaits.\\
+
+	\begin{center}
+	\begin{tabular}{|c|c|c|c|c|}
+	\hline
+	Pression de vapeur saturante (\si{\bar})
+	 & 0,04  &0,12  & 0,20  & 1,00 \\
+	\hline
+	Température (\si{\celsius}) & 30 & 50 & 60 & 100 \\
+	\hline
+	\end{tabular}
+	\end{center}
+
+\begin{quest}
+\QR{
+	Montrer que l'eau introduite se retrouve à l'état de vapeur sèche et calculer la masse $m$ d'eau introduite.
+}{
+	On suppose que l'eau est uniquement sous forme vapeur, donc la pression partielle $P_e$ en eau doit vérifier $P_e<P^\ast(\theta_1)=\SI{0,12}{\bar}$. On note $P_a$ la pression partielle de l'air. En appliquant l'équation d'état des gaz parfaits sur l'air :
+	\eq{
+		P_a=\frac{n_aR\theta_1}{V_1}=P_1
+	}
+	Or la pression totale $P_2=P_a+P_e$, donc $\boxed{P_e=\SI{0,10}{\bar}<P^\ast(\theta_1)}$. L'eau est bien sous forme de vapeur sèche.
+
+	On applique l'équation d'état des gaz parfaits à l'eau pour déterminer la masse introduite $m$ :
+	\eq{
+		P_eV_1=n_eR\theta_1=\frac{mR\theta_1}{M(eau)}\quad\Leftrightarrow \quad \boxed{m=\frac{P_eV_1M(eau)}{R\theta_1}=\SI{0,1}{\gram}}
+	}
+}
+
+
+\QR{
+	La température étant maintenue constante, un opérateur déplace  le piston de façon réversible pour amener le volume à $V_3 = \SI{1}{\liter}$.
+	Montrer que la vapeur d'eau devient saturante à partir d'un volume $V'$.
+	Déterminer ce volume et la pression totale finale $P_3$.
+}{
+	Soit $V'$ le volume maximal tel que l'eau est sous forme de vapeur saturante (donc la pression partielle en eau $P_e=P^\ast(\theta_1)$).
+	Si $V_3<V'$, alors l'eau est en équilibre liquide-vapeur, sinon l'eau est sous forme de vapeur saturante.
+
+	\textbf{L'eau ne peut pas être sous forme liquide en présence d'un gaz inerte, car cela impliquerait une pression partielle en eau nulle, donc inférieure à la pression de vapeur saturante !}
+
+	Calculons $V'$ en appliquant l'équation d'état des gaz parfaits à l'eau :
+	\eq{
+		\boxed{V'=\frac{mR\theta_1}{M(eau)P^\ast(\theta_1)}=\SI{1,24}{\liter}}
+	}
+
+	On a bien $V_3<V'$, donc l'eau est en équilibre liquide-vapeur. La pression partielle en eau est alors égale à la pression de vapeur saturante  $P_e=\SI{0,12}{\bar}$.
+
+	En négligeant le volume de liquide devant le volume de la phase gazeuse, on en déduit la pression partielle de l'air :
+	\eq{
+		P_a=\frac{n_aR\theta_1}{V_3}=\frac{P_1V_1}{V_3}=\SI{1,5}{\bar}
+	}
+
+	Donc la pression totale vaut $\boxed{P_3=\SI{1,62}{\bar}}$.
+}
+
+\QR{
+	Le piston étant maintenant maintenu dans sa position finale, un thermostat permet d'élever progressivement la température à $T_4 = \SI{100}{\celsius}$. En déduire l'état et la nouvelle pression totale finale $P_4$.
+}{
+	Comme à la question précédente, l'eau ne peut pas être sous forme liquide, car cela impliquerait une pression partielle en eau nulle dans la phase vapeur.
+
+	On suppose l'eau sous forme de vapeur sèche assimilable à un gaz parfait. On détermine la pression partielle de l'eau :
+	\eq{
+		P_e=\frac{mRT_4}{M(eau)V_3}=\SI{0,17}{\bar}<P^\ast(T_4)
+	}
+	Donc l'eau est bien sous forme de vapeur sèche.
+
+	En négligeant le volume de liquide devant le volume de la phase gazeuse, on en déduit la pression partielle de l'air :
+	\eq{
+		P_a=\frac{n_aRT_4}{V_3}=\frac{P_1V_1T_4}{V_3\theta_1}=\SI{1,73}{\bar}
+	}
+
+	On en déduit la pression totale $\boxed{P_4=\SI{1,90}{\bar}}$.
+}
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PT][1][devoir]{Transformation d'un gaz parfait dans un piston}
+On considère $n=1\,$mol d'un gaz parfait monoatomique enfermé dans un piston hermétique de volume variable $V$ à la pression $p$, dont les parois sont calorifugées. Soit $T$ la température du gaz.
+
+\begin{quest}
+	\item Rappeler l'expression de l'énergie interne $U$ d'un gaz parfait monoatomique.
+  % Dépend-elle du volume $V$ ?
+
+	\sol{
+		Pour un \udl{gaz parfait monoatomique}, le cours indique que
+	\eqbox{
+		U=\dfrac{3}{2}nRT.
+	}	
+	}
+
+\end{quest}
+On immerge dans le gaz une résistance $R$ en série avec un condensateur de capacité $C=1\,$mF initialement mis sous une tension $u=100\,$V. Le condensateur se décharge alors entièrement dans la résistance. On négligera la capacité calorifique du circuit électronique.
+\begin{quest}
+\setcounter{enumi}{1}
+	\item\label{quest:U_GP} On fixe d'abord le volume à $V=1\,$L. En appliquant le premier principe, calculer la variation de température du gaz $\Delta T$ au cours de cette transformation.
+
+	\sol{
+  \udl{Premier principe} sur le système $\{$gaz$\}$ :
+%   $$
+\eqbox{
+	\Delta U = W + Q.
+	}
+%   $$
+\begin{enumerate}
+	\item 
+	Le gaz ne subit pas de travail de pression lors d'une transformation isochore, donc $$W=0.$$
+	\item Le gaz reçoit du transfert thermique de la part de la résistance par effet Joule. Par conservation de l'énergie, cet transfert est égale à l'énergie initiale stockée dans le condensateur, soit
+	$$Q=\Etot_{\rm cond} = \frac{1}{2}Cu^2.$$ 
+\end{enumerate}
+En utilisant l’expression de U de la \Quest{U_GP}, on en déduit
+  $$
+\frac{3}{2}nR \Delta T = \frac{1}{2}Cu^2,
+  $$
+  et donc
+  \eqbox{\Delta T = \frac{Cu^2}{3nR}.}
+\AN~: \fbox{$\Delta T = \SI{0.4}{K}.$}
+}
+	\item Même question lorsque le volume est libre mais la pression est fixée à $p_0=1\,$bar.
+
+	\sol{
+		\udl{Premier principe} sur le système $\{$gaz$\}$.
+
+
+  La transformation est \udl{monobare}, et l'on peut alors écrire le premier principe sous la forme
+  $$
+\Delta H = Q,
+  $$
+  car le seul travail est celui des forces de pression, qui est absorbé dans la définition de $H = U+pV$. Pour un gaz parfaite monoatomique, on a 
+   $$H= \frac{5}{2}nRT.$$ On trouve alors
+\eqbox{\Delta T = \frac{Cu^2}{5nR}.}
+\AN~: \fbox{$\Delta T = \SI{0.24}{K}.$}
+	}
+\end{quest}
+On retire le circuit électrique du piston. À l'instant initial, le gaz est à la pression $p_0=1\,$bar et température $T_0=275\,$K.
+\begin{quest}
+\setcounter{enumi}{3}
+\item Calculer le volume dans l'état initial $V_0$.
+
+\sol{
+D'après la \udl{loi du gaz parfait},
+\eqbox{V_0=\frac{nRT_0}{p_0}.}
+\AN~: \fbox{$V_0=\SI{22.4}{L}.$}
+}
+\end{quest}
+ On ajoute une masse $m=10\,$kg sur le piston de façon très progressive, de sorte que la transformation soit réversible. L'ensemble est placé dans le champ de pesanteur $g=\SI{9.8}{m.s^{-2}}$, et on donne $S=\SI{1.0e-3}{m^2}$ pour la section du piston. On note par un indice $\rm f$ l'état final du gaz à l'équilibre. On donne le facteur adiabatique $\gamma=\num{1.5}$ pour un gaz parfait monoatomique.
+\begin{quest}
+% \item Notons $\delta Q = \lambda \d p + \mu \d V$ la chaleur élémentaire reçue au cours d'une transformation réversible. En utilisant le premier principe et l'expression de l'énergie interne, déterminer $\lambda$ et $\mu$ en fonction de $p$ et $V$. En déduire qu'un gaz parfait monoatomique subissant une transformation adiabatique réversible vérifie la loi de Laplace $pV^\gamma=$Cte, où $\gamma=5/3$.
+
+% \sol{$\d U = \dfrac{3}{2}nR \d T = \dfrac{3}{2} V \d p + \dfrac{3}{2} p \d V = \delta Q - p \d V = \lambda \d p + (\mu-p)\d V $ soit $\lambda=\dfrac{3}{2}V$ et $\mu=\dfrac{5}{2}p$.}
+
+\item  Déterminer l'état final du gaz $p_{\rm f}, T_{\rm f}, V_{\rm f}$.
+\sol{
+	\begin{enumerate}
+		\item 
+		\udl{Équilibre mécanique} du piston : la somme des forces se compense, et donc
+		
+		\eqbox{
+			p_f = p_0 + \frac{mg}{S} = \SI{2.0}{bar}.
+			}
+		\item \udl{Loi de Laplace} : pour une transformation adiabatique réversible d'un gaz parfait, on a $$p_f V_f^\gamma = p_0 V_0^\gamma,$$ ce qui donne ensuite 
+			\eqbox{
+				V_f = V_0 \left( \frac{p_0}{p_f} \right)^{1/\gamma} = \SI{1.4}{L}.
+				}
+		\item \udl{Loi du gaz parfait} : on en déduite la température
+				\eqbox{
+					T_f = \frac{p_f V_f}{nR} = \SI{345}{K}.
+					}
+	\end{enumerate}
+}
+
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PT][1]{Le cycle Diesel}
+	\Notions{\item Système fermé \task Gaz parfait \task Moteur}
+Un volume d'air évolue dans un moteur à essence suivant le cycle Diesel idéal~:
+\begin{enumerate}
+	%\item dilatation isobare $IA$ à la pression ; le volume passe de $V_I$ à $V_A=\SI{5.0e3}{cm^3}$ (introduction de l'air dans le cylindre);
+	\item $\rm A - B$ : compression adiabatique réversible de la pression $p_A=\SI{1.0}{bar}$, température $T_A=\SI{20}{\degree}$ et volume $V_A=\SI{5.0e3}{cm^3}$ jusqu'au volume $V_B$;
+	\item $\rm B - C$ : détente isobare jusqu'au volume $V_C$ (inflammation du gaz, source chaude);
+	\item $\rm C - D$ : détente adiabatique réversible  jusqu'au volume $V_A$;
+	\item $\rm D - A$ : détente isochore jusqu’à la pression $p_A$ (transfert thermique vers les parois, source froide);
+	%\item compression isobare $AI$ (ouverture de la soupape).
+\end{enumerate}
+
+ On raisonne sur un volume fermé de gaz, assimilé à un gaz parfait diatomique, de capacités à pression constante $C_p$ et volume constant~$C_V$, toutes deux indépendantes de la température $T$. On introduit le coefficient adiabatique $\gamma=\num{1.4}$. On donne les taux de compression $\alpha = \textstyle\frac{V_A}{V_B}=20$ et $\beta = \textstyle\frac{V_A}{V_C}=10$.
+
+\begin{quest}
+
+	\item Tracer le cycle dans le diagramme de Watt $(p,V)$.  Déterminer puis calculer numériquement les paramètres $T$, $p$ et $V$ aux points $A,B,C,D$ du cycle.
+	\sol{
+	Les phases $IA$ et $AI$ correspondent à l’admission et à l’échappement des gaz (non demandé).
+	\begin{fig}[label]
+		\centering
+		\includegraphics[scale=0.7]{diesel.png}
+		%\capt{}
+	\end{fig}
+	}
+	\sol{
+	\begin{itemize}
+		\item \fbox{Point B} :
+		on a 
+		$$V_B=V_A/\alpha = \SI{250}{cm^3}.$$
+		D'après la loi de Laplace en $AB$ avec $\gamma=\num{1.4}$, 
+		$$p_AV_A^\gamma = p_BV_B^\gamma,$$ donc $$p_B = p_A \alpha^\gamma =\SI{66}{bar}.$$
+		On a de même $$T_B = T_A \alpha^{\gamma-1} = \SI{9.7e2}{K}.$$
+		\item \fbox{Point C} : on a  $$V_C=V_A/\beta = \SI{500}{cm^3},$$ 
+		puis $$p_C=p_B,$$ puisque la transformation $CB$ est isobare, et enfin $$\frac{T_C}{V_C}=\frac{T_B}{V_B},$$ d'après la loi du gaz parfait, soit $$T_C = T_B \frac{V_C}{V_B} = \SI{1.9e3}{K}.$$
+		\item \fbox{Point D} : on a $$V_D=V_A,$$ puisque la transformation $DA$ est isochore, et d'après la loi de Laplace en $CD$, qui est adiabatique réversible,
+		$$p_D = p_C/\beta^\gamma =\SI{2.6}{bar},$$ puis $$T_D = T_A \frac{p_D}{p_A} = \SI{7.7e2}{K}.$$
+	\end{itemize}
+	}
+	\sol{
+	On peut résumer l'état du système dans le tableau suivant.
+
+	\begin{center}
+		\renewcommand{\arraystretch}{1.5}
+		\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		Point & $V$ (cm$^3$) & $p$ (bar) & $T$ (K) \\
+		\hline
+		A & 5000 & 1 & 293 \\
+		B & 250 & 66 & 970 \\
+		C & 500 & 66 & 1900 \\
+		D & 5000 & \num{2.6} & 770 \\
+		\hline
+	\end{tabular}
+	\end{center}
+	}
+	\item Pour chaque étape du cycle, Déterminer puis calculer numériquement le travail $W$ et le transfert thermique $Q$ reçu par le gaz, et indiquer le signe de ces grandeurs.
+
+	 \sol{
+		Pour les applications numériques, on calculera d'abord la quantité de matière de gaz à partir de la loi du gaz parfait :
+		\eqbox{
+		n = \frac{pV}{RT} = \SI{0.2}{mol}.
+		}
+		On rappelle que les capacités calorifiques à volume constant et à pression constante d'un gaz parfait diatomique sont données par :
+		$$C_V = \frac{5}{2}nR \quad \text{et} \quad C_p = \frac{7}{2}nR.$$
+		\begin{itemize}
+			\item 
+			%KL : $Q=C_p(T_L-T_K)$ et $W=p_A(V_A-V_B)$\\
+			\fbox{AB} : transformation adiabatique réversible : $Q=0$. Le premier principe donne 
+			\eqbox{
+				W =\Delta U = C_V(T_B-T_A) =  \frac{5}{2}nR(T_B-T_A) = \SI{2.8e3}{J}>0.
+			}
+		Cette étape soutire du \udl{travail} à l'opérateur.
+			%$W=-\int p \, \d V = - p_AV_A^{\gamma} \int \d V V^{-\gamma} = \dfrac{p_AV_A^{\gamma}}{\gamma-1}\left( V_A^{1-\gamma}-V_B^{1-\gamma}\right)$	 \\
+			\item 
+			\fbox{BC} : transformation isobare, donc le premier principe enthalpique donne 
+			% $$
+			\eqbox{
+				Q_c=\Delta H = C_p(T_C-T_B) = \frac{7}{2}nR(T_C-T_B) = \SI{5.4e3}{J}>0,
+				}
+			et 
+			\eqbox{
+				W=-p_B(V_C-V_B) = -\SI{1.7e-3}{J} < 0.
+			}
+			Cette étape se fait au contact de la \udl{source chaude}.
+			\item 
+			\fbox{CD} : transformation adiabatique réversible : $Q=0$. Le premier principe donne 
+			\eqbox{
+				W=\Delta U = C_V(T_D-T_C) = \frac{5}{2}nR(T_D-T_C) = \SI{-4.7e3}{J}<0.
+			}
+			%$W=\dfrac{p_2V_C^{\gamma}}{\gamma-1}\left(V_A^{1-\gamma}-V_C^{1-\gamma}\right)$\\
+			Cette étape permet de fournir du \udl{travail} à l'opérateur.
+			\item
+			\fbox{DA} : transformation isochore : $W=0$. Le premier principe donne 
+			\eqbox{
+				Q_f=\Delta U = C_V(T_A-T_D) = \frac{5}{2}nR(T_A-T_D) = \SI{-2.0e3}{J} < 0.
+			}
+			Cette étape se fait au contact de la \udl{source froide}.
+		\end{itemize}
+%LK : $Q=-C_p(T_L-T_K)$ et $W=-p_A(V_A-V_B)$
+
+	 }
+
+	\item Définir le rendement $\eta$ du moteur à partir du travail total $W_{\rm tot}$ et du transfert thermique	 reçu par la source chaude $Q_c>0$. L'exprimer ensuite uniquement en fonction de $Q_c$ et du transfert thermique $Q_f<0$ cédé à la source froide,
+	%, la chaleur cédée à la source froide, puis  des températures $T_P$, $T_L$, $T_M$, $T_N$ et du facteur de Laplace $\gamma$. %
+	puis en fonction
+	des températures. Évaluer numériquement. Comparer au rendement de Carnot.
+	%, et 	de $\gamma$, $\alpha$ et $\beta$.
+
+	\sol{
+	La définition générale du rendement est donnée par
+	% \eqbox{
+
+	$$
+	\text{rendement}  = \frac{\text{énergie utile}}{\text{énergie fournie}}.
+	$$
+	% }
+	Dans le cas d'un moteur ditherme, on a 
+	\eqbox{
+	% $$
+	\eta  = - \frac{W_{\rm tot}}{Q_c}.
+	% $$
+	}
+	Or le premier principe sur le cycle entier implique 
+	$$
+		\Delta U_{\rm cycle} = 0 = W_{\rm tot} + Q_c + Q_f,
+	$$
+	d'où l'on tire 
+	% \eqbox{
+	$$
+	\eta = 1 + \frac{Q_f}{Q_c} < 1.
+	$$
+	% }
+	Dans le cas du cycle Diesel, on trouve 
+	\eqbox{
+	\eta = 1- \frac{1}{\gamma} \frac{T_D-T_A}{T_C-T_B} = \SI{63}{\%}.
+	}
+	 Le rendement de Carnot associé vaut 
+	 \eqbox{
+	 \eta_C = 1- \frac{T_f}{T_c} = 1-\frac{T_A}{T_C} =\SI{69}{\%}.
+	 }
+	 On a bien $\eta \leq \eta_C$. Les données numériques sont données ici pour un moteur Diesel pédagogique. En pratique, les taux de compression sont plus faibles, et les moteurs Diesel des voitures ont plutôt des rendements de l’ordre de $\SI{45}{\%}$.
+ %Le long des adiabatiques, $TV^{\gamma-1}$ est constant, d'où $\frac{T_A}{T_B} = \alpha^{1-\gamma}$ et $\frac{T_D}{T_C} = \beta^{1-\gamma}$. Le long de l'isobare $BC$, $\frac{T_C}{T_B}= \frac{\alpha}{\beta}$. Donc $T_C = T_B \frac{\alpha}{\beta}$, $T_A = T_B \alpha^{1-\gamma}$ et
+  %$T_D = T_C \beta^{1-\gamma} = T_B \alpha \beta^{-\gamma}$. Ainsi, $\eta=1-\frac{1}{\gamma}\frac{ \alpha^{1-\gamma} - \alpha \beta^{-\gamma}}{ \frac{\alpha}{\beta}-1}=1-\frac{1}{\gamma}\frac{\alpha^{\gamma} - \beta^{\gamma}}{\alpha-\beta}$.
+	}
+
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[MPSI]{Dissociation du dibrome gazeux}
+Un considère un récipient contenant une masse $m=\SI{1}{g}$ de dibrome gazeux Br$_2$(g) maintenu à la pression atmosphérique. On donne la masse molaire du brome $M(\text{Br}) = \SI{80}{g.mol^{-1}}$.
+
+\begin{quest}
+\item Quel est le volume $V_1$ occupé par ce gaz à la température $T_1 = \SI{600}{^\circ C}$, en supposant que le dibrome se comporte comme un gaz parfait ?
+
+
+\sol{
+$V_1 = \SI{0.91}{L}$
+}
+
+
+\item Que deviendrait ce volume, noté $V_2$, à la température $T_2 = \SI{1600}{^\circ C}$, en négligeant la dissociation de Br$_2$(g) en Br(g) ?
+
+
+\sol{
+$V_2 = \SI{0.960}{L}$
+}
+
+
+\item En réalité ce volume est $V_2' = \SI{1.195}{L}$, car une certaine proportion de molécules s'est dissociée en atomes de brome. Calculer le coefficient de dissociation (proportion en masse de molécules dissociées), en supposant que le gaz se comporte comme un mélange idéal de gaz parfaits. Calculer les pressions partielles de Br$_2$(g) et de Br(g).
+
+\sol{
+$\eta = \SI{24.5}{\%}$.
+}
+
+\item On enferme le gaz précédent, à la température $T_2$, dans une enceinte hermétique de volume $V_2'$ fixe. On retire ensuite tous les atomes Br, puis on abaisse la température jusqu'à atteindre $T_1$. Que vaut la pression ?
+
+\end{quest}
+
+
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[MPSI]{Pression de l'eau sur quelques ouvrages}
+Un mur de barrage hydroélectrique est de largeur $\ell$, et de section triangulaire de hauteur $h$ et d'épaisseur à la base $L$. La face de hauteur $h$ est au contact d'un lac d'eau douce. Le barrage repose sur une couche de terrain avec un coefficient de frottement $\mu=\SI{0.5}{}$. On note $\rho=\SI{1.e3}{kg.m^{-3}}$ la masse volumique de l'eau douce et $g$ l'intensité de la pesanteur.
+\begin{quest}
+\item Déterminer le poids d'une couche d'eau de hauteur $z$ et de surface $S$. En déduire le profil de pression dans le lac.
+\item Déterminer la résultante des forces de pression que l'eau exerce sur le barrage (norme et direction).
+
+\item Quelle valeur minimale faut-il donner à $L$ pour que le mur de barrage ne glisse pas (on donne $h=\SI{50}{m}$, $\ell=\SI{100}{m}$ et la densité du mur vaut $2$) ?
+\end{quest}
+
+Un robot sous-marin autonome est un robot d'exploration de l'océan. L'Ifremer possède des robots sous-marin autonome qui opère à une profondeur $h=\SI{2.8}{km}$ lors de campagnes océanographiques. Ces robots doivent supporter les hautes pressions subies à ces profondeurs.
+
+\begin{quest}
+\item Quelle est la pression à cette profondeur en supposant l'eau de mer incompressible et de densité $\SI{1.03}{}$ ?
+\item Même question si la densité à la surface est de $\SI{1.03}{}$ et le coefficient de compressibilité isotherme vaut $\SI{4.5e-5}{atm^{-1}}$.
+\end{quest}
+
+
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][colle]{Libre parcours moyen}
+Les molécules constituant l'air sont modélisées par des sphères dures de diamètres $d$ réparties avec une densité volumique $n^*$. On s'intéresse à une molécule donnée, toutes les autres étant supposées immobiles.
+La molécule considérée possède une vitesse de norme constante égale à la vitesse quadratique moyenne $v^*$. Elle se déplace suivant une ligne brisée suite à ses collisions avec les autres molécules.
+\begin{fig}[]
+	\centering
+	\includegraphics[width=0.2\textwidth]{lm.pdf}
+\end{fig}
+
+\begin{quest}
+
+\QR{
+A partir de quelle distance $d_c$ entre deux molécules y-a-t-il collision ?
+}{
+C'est $\boxed{d_c = d}$ (attention, ce n'est pas $r$, il faut faire un schéma pour s'en convaincre si besoin)
+}
+
+\QR{
+On définit le volume utile balayé par la molécule considérée de la manière suivante : \emph{une molécule dont le centre est situé dans le volume utile sera percutée par la molécule considérée au cours de son mouvement}. Estimez le volume utile $V_u$ ainsi balayé au cours de la durée $\Delta t$ du mouvement d'une molécule.
+}{
+Il s'agit d'un cylindre de longueur $L= v^* \, \Delta t$ et de rayon $d_c = d$, donc de volume $\boxed{V_u=\pi d^2  v^* \Delta t}$
+}
+
+\QR{
+En déduire le nombre de collisions subies (en moyenne) par la molécule pendant la durée $\Delta t$
+}{
+Dans ce volume, il y a $N=n^*V_u$ particules, c'est-à-dire $\pi d^2 v^*n^* \, \Delta t$, il y a donc autant de chocs. La durée entre deux chocs est donc (toujours en moyenne) de $\boxed{\tau=\frac{\Delta t}{N}=\frac{1}{\pi d^2 v^*n^*}}$
+}
+
+\QR{
+Exprimez alors le libre parcours moyen $\overline \ell$ de la molécule. Vérifiez l'homogénéité du résultat.
+}{
+Le libre parcours moyen est alors le produit de la vitesse et de la durée entre deux collisions :  $\boxed{\overline \ell = v^*\tau=\frac{1}{\pi d^2 n^*}}$. Dimensionnellement [$n^*$]=L$^{-3}$ et [$d$]=L donc $\left [\frac{1}{\pi d^2n^*}\right]=\mathtt{L}^{-2}\mathtt{L}^3$ et le résultat est bien homogène.
+}
+
+\QR{
+Donnez son ordre de grandeur pour de l'air à pression et température usuelle. (on donne $d=\SI{300}{pm}$ et $k_B=\SI{1,38e-23}{J/K}$)
+}{
+Il nous faut d'abord $n^*$, pour cela on utilise $pV=Nk_BT\Rightarrow n^*=\frac{N}{V}=\frac{p}{k_BT}\simeq \frac{10^5}{1,38\times 10^{-23}\times 293}\simeq \SI{2,5}{m^{-3}}$ d'où $\boxed{\overline \ell =\SI{1,4e-7}{m} \simeq \SI{140}{nm}}$.
+}
+\end{quest}
+
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[MPSI]{Études de thermomètres}
+
+\begin{quest}
+\item \textsc{Thermomètre à dilatation.}
+Un liquide (du mercure ou de l'alcool) est enfermé dans un réservoir surmonté d'une tige fine. Les variations de volume du liquide sont repérés par les variations du niveau d'affleurement de la colonne liquide dans la tige.
+\begin{enumerate}
+\item Expliquer comment utiliser cet appareil pour mesurer une température. On introduira toutes les grandeurs nécessaires pour appuyer l'explication. Le coefficient de dilatation isobare de l'alcool vaut $\beta=\SI{1.00e-4}{\dC^{-1}}$. Quelle est la distance entre les graduations qui marquent la glace fondante et l'eau bouillante pour une section de la tige $\SI{1}{mm^2}$ et un volume d'alcool $V_0 =\SI{2}{cm^3}$ ?
+\item En réalité, l'enveloppe en verre se dilate également avec la température. Le coefficient $\beta$ donné ci-dessus représente donc la dilatation absolue du liquide. Calculer son coefficient de dilatation apparent, sachant que le coefficient de dilatation du verre est $\beta_v = \SI{9e-6}{\dC^{-1}}$.
+\item L'échelle Fahrenheit, en usage dans de nombreux pays, se déduit de l'échelle Celsius par une loi affine. Par définition, $\SI{32}{\dF}=\SI{0}{\dC}$ et $\SI{212}{\dF}=\SI{100}{\dC}$. Convertir $\SI{451}{\dF}$ en degrés Celsius. À quelle température ces deux échelles donnent la même indication ?
+\end{enumerate}
+
+\item \textsc{Thermistance.}
+La résistance d'un échantillon semi-conducteur varie rapidement avec la température. Une minuscule pastille peut ainsi servir à construire un thermomètre très sensible possédant en outre un faible temps de réponse.
+
+\begin{enumerate}
+\item La résistance d'une thermistance vaut $\SI{33.8}{k\Omega}$ à $\SI{273}{K}$, $\SI{3.16}{k\Omega}$ à $\SI{333}{K}$ et $\SI{0.994}{k\Omega}$ à $\SI{373}{K}$. Montrer que la résistance varie selon la loi $R=Ae^{B/T}$, où l'on donnera $A$ et $B$.
+\item La sensibilité est définie par
+\begin{equation}
+s = \dfrac{1}{R} \dd{R}{t}.
+\end{equation}
+Déterminer son expression en fonction de la température. Pour quelles valeurs de température est-il pertinent d'utiliser ce capteur ?
+\end{enumerate}
+
+\end{quest}
+
+
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[MPSI][2][colle]{Transformations brutale et quasistatique d'un gaz parfait}
+	\Notions{\item Thermodynamique \task Transformation brutale \task Premier principe \task Loi de Laplace}
+Un récipient est surmonté d’un piston de surface $S$ pouvant se déplacer sans frottement. Le
+piston et le récipient sont calorifugés. On note $p_{\rm i}$, $V_{\rm i}$ et $T_{\rm i}$ les pression, volume et
+température d'un nombre $n$ de moles de gaz parfait monoatomique, initialement à l'équilibre, contenu dans le récipient.
+
+
+\begin{quest}
+\item On place une masse $M$ sur le piston que l’on lâche brutalement (transformation brutale). Déterminer la pression final $p_{\rm f}$. À partir du $1^{\rm er}$ principe, déterminer ensuite $V_{\rm f}$ et $T_{\rm f}$.
+\sol{
+
+\begin{enumerate}
+	\item 
+	\udl{Équilibre mécanique} : le PFD à l'équilibre sur la piston donne
+	$$
+	\Vec{0} = M\vec{g} + p_i S \ez - p_f S \ez,
+	$$
+	soit
+	% $$
+	\eqbox{
+		p_f = p_i + \dfrac{Mg}{S}.
+		}
+	% $$
+	\item \udl{1er principe} sur le système $\{$gaz parfait monoatomique$\}$ :
+	$$
+	\Delta U = W + Q = W_{\rm p} \Rar \dfrac{3}{2} n R(T_{\rm f}-T_{\rm i}) = -p_{\rm f}(V_{\rm f}-V_{\rm i}),
+	$$
+	car $W_p = -\int p_{\rm ext} \d V$ et $p_{\rm ext} = p_{\rm f}$ pendant la transformation. On obtient donc, d'après la loi du gaz parfait $pV = nRT$, la relation
+	$$
+		\dfrac{5}{2}nRT_{\rm f} = \dfrac{3}{2}nRT_{\rm i} + nRT_{\rm i} \dfrac{p_{\rm f}}{p_{\rm i}}.
+		$$
+		En résolvant pour $T_{\rm f}$, on trouve
+	\eqbox{
+		T_{\rm f} = T_{\rm i}\left(1+\frac{2}{5}\frac{M g}{S p_{\rm i}} \right).
+	}
+	\item En utilisant une nouvelle fois la loi du gaz parfait, on trouve enfin
+	\eqbox{
+		V_{\rm f} = V_{\rm i}\left(1-\frac{3}{5}\frac{M g}{S p_{\rm f}} \right).
+				}
+\end{enumerate}
+\begin{remarque}
+	On voit que 
+	$$
+	T_{\rm f} > T_{\rm i} \quad \text{et} \quad V_{\rm f} < V_{\rm i}.
+	$$
+	Le gaz s'échauffe et son volume diminue.
+\end{remarque}	
+\begin{remarque}
+	La transformation est non monobare, car l'état initial hors équilibre.  On ne peut donc pas écrire $\Delta H = Q = 0$ !  On peut d'ailleurs calculer que 
+	$$
+	 \Delta H = \dfrac{5}{2}nR(T_{\rm f}-T_{\rm i}) = \frac{nRT_{\rm i}}{p_{\rm i}} \frac{Mg}{S} = \frac{Mg}{S}V_{\rm i}  = (p_{\rm f}-p_{\rm i})V_{\rm i} > 0.
+	$$
+\end{remarque}
+}
+	
+
+\item On enlève brutalement la masse, quel est l’état final du gaz ? Commenter.
+
+\sol{
+La transformation inverse s'obtient en inversant le signe de la masse, soit 
+$$
+M \mapsto -M.
+$$
+ Notons $\rm f$ l'état initial de la transformation inverse, et $\rm ff$ l'état final de la transformation inverse. On a donc
+% $$
+$$
+p_{\rm ff} = p_{\rm f} - \dfrac{Mg}{S},
+$$
+soit
+\eqbox{
+	p_{\rm ff} = p_{\rm i}.
+	}
+% $$
+On retrouve bien sûr la pression initiale, en vertu de l'équilibre mécanique. La transformation est \guill{mécaniquement réversible}. On a de plus,
+$$
+T_{\rm ff} = T_{\rm f} \left( 1- \frac{2Mg}{5S p_{\rm f}} \right),
+$$
+soit
+\eqbox{
+	T_{\rm ff} = T_{\rm i}\left(1+\frac{2Mg}{5S p_{\rm i}} \right)\left(1-\frac{2Mg}{5S p_{\rm f}} \right),
+	}
+et
+$$
+V_{\rm ff} = V_{\rm f}\left(1+\frac{3Mg}{5S p_{\rm i}} \right),
+$$
+soit
+\eqbox{
+	V_{\rm ff} = V_{\rm i}\left(1-\frac{3Mg}{5S p_{\rm f}} \right)\left(1+\frac{3Mg}{5S p_{\rm i}} \right).
+	}
+On trouve par contre que $T_{\rm ff} < T_{\rm i}$ et $V_{\rm ff} < V_{\rm i}$. On ne retrouve pas l'état thermodynamique initial : la transformation est \udl{irréversible}.
+
+\begin{remarque}
+	On peut le vérifier explicitement en calculant la variation d'entropie au cours de la première transformation. En l'absence de transfert thermique, la variation infinitésimale d'entropie est donnée par le second principe de la thermodynamique :
+		$$
+		dS = \frac{\delta Q}{T} + \delta S_c = \delta S_c,
+		$$
+		et s'identifie donc à l'entropie créée pour une transformation adiabatique. Or la relation fondamentale de la thermodynamique donne
+		$$
+		\d U = T dS - p dV \Rar dS = \frac{1}{T}dU + \frac{p}{T}dV = \frac{3}{2}nR\frac{dT}{T} + nR\frac{dV}{V}.
+		$$
+		On obtient par intégration,
+		$$
+		\Delta S_c = \int_{T_i}^{T_f} \frac{3}{2}nR\frac{dT}{T} + \int_{V_i}^{V_f} nR\frac{dV}{V} = \frac{3}{2}nR\ln\left( \frac{T_f}{T_i} \right) + n R \ln\left( \frac{V_f}{V_i} \right),
+		$$
+		soit 
+		\eqbox{
+			\Delta S_c = \frac{3}{2} n R \ln\left( 1 + \frac{2 M g}{5 S p_i} \right) + n R \ln\left( 1 - \frac{3 M g}{5 S p_f} \right).
+		}
+\end{remarque}
+
+}
+
+\item On procède maintenant par un ajout continu et lent de sable sur le piston de façon à ce que
+le gaz soit dans une succession d’états d’équilibres (transformation quasistatique). Quelle est la nature de la transformation ? Calculer l’état final après ajout d’une masse $M$ de sable.
+
+\sol{
+
+		Cette fois-ci, la transformation est quasistatique et adiabatique, donc isentropique. La loi de Laplace, qui s'applique pour un gaz parfait, donne
+		$$
+p_{f} V_f^{\gamma} = p_{i} V_i^{\gamma} 
+$$
+soit 
+\eqbox{
+	V_f = V_i\left(  \frac{p_i}{p_f}  \right)^{1/\gamma} = V_i \left(1+\dfrac{Mg}{Sp_i} \right)^{-1/\gamma}.
+}
+De même, on a 
+$$
+p_{\rm f}^{1-\gamma} T_{f}^{\gamma} = p_{\rm i}^{1-\gamma} T_i ^\gamma,
+$$
+soit 
+\eqbox{
+	T_f =  T_i \left( \frac{p_i}{p_f} \right)^{(\gamma-1)/\gamma} = T_i\left(1+\dfrac{Mg}{Sp_i} \right)^{(1-1/\gamma)}.
+	}
+	On remarque qu'on a toujours $T_f > T_i$ et $V_f < V_i$.
+}
+
+\item On inverse la transformation jusqu’à éliminer la masse additive. Sans calcul, quel est alors l’état du
+gaz ?
+
+\sol{
+On retrouve l'état \udl{initial}, puisque la transformation est réversible ! On peut le vérifier par le calcul. La transformation inverse s'obtient toujours en inversant le signe de la masse, soit
+	$$
+	M \mapsto -M.
+	$$
+	On retrouve la condition d'équilibre mécanique,
+	\eqbox{
+		p_{\rm ff} = p_{\rm i}.
+	}
+	On a de plus 
+	$$
+		T_{\rm ff} = T_{\rm f}\left( 1- \frac{Mg}{S p_{\rm f}} \right)^{(1-1/\gamma)}= T_{\rm f} \left( \frac{Sp_{\rm f} - Mg}{Sp_{\rm f}} \right)^{(1-1/\gamma)} = T_{\rm f} \left( \frac{p_{\rm i}}{p_{\rm f}} \right)^{(1-1/\gamma)},
+	$$
+	soit 
+	\eqbox{
+	 T_{\rm ff} = T_{\rm i}.
+	}
+	On obtient de même
+	% $$
+	\eqbox{
+		V_{\rm ff} = V_{\rm i}.
+		}
+	% $$
+}
+
+\end{quest}
+
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

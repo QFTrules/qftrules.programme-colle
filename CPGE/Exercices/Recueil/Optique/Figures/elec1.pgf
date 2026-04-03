@@ -1,0 +1,27 @@
+\usetikzlibrary{arrows}
+
+\begin{tikzpicture}
+\draw (0,0) -- (1,0);
+\draw (1,-0.5) rectangle (3,0.5);
+\draw (2,0) node {\large $R/2$};
+\draw (3,0) -- (5.5,0);
+\draw(3.5,0) -- (3.5,-1);
+\draw(3,-1) rectangle (4,-3);
+\draw (2,-4) node {\large $R/2$};
+\draw(3.5,-3) -- (3.5,-4);
+\draw(5.5,0) -- (5.5,-1);
+\draw(5,-1) rectangle (6,-3);
+\draw (5.5,-2) node {\large $2R$};
+\draw(5.5,-3) -- (5.5,-4);
+\draw (0,-4) -- (1,-4);
+\draw (1,-4.5) rectangle (3,-3.5);
+\draw (3.5,-2) node {\large $2R$};
+\draw (3,-4) -- (5.5,-4);
+
+\draw [-angle 90, thick] (-1,-4) -- (-1,0);
+\draw (-1,-2) node [right] {$V_{0}$};
+\draw [-angle 90, thick] (6.5,-4) -- (6.5,0);
+\draw (6.5,-2) node [right] {$V_{1}$};
+
+
+\end{tikzpicture}

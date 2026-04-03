@@ -1,0 +1,3 @@
+\begin{tikzpicture}
+\node (g) at (0,0) {\includegraphics{figure_1.eps}};
+\end{tikzpicture}

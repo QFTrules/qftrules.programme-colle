@@ -1,0 +1,47 @@
+\begin{tikzpicture}
+\draw (-2.5,2.5) node {(a)};
+\draw [dashed, thick] (-2,2) arc (90:-70:0.75 and 2);
+
+\draw [thick] (-1.8,-1.9) -- (-1.8,-2.1) -- (1.8,-2.1) -- (1.8,-1.9) arc (-70:20:-0.75 and 2);
+\draw [-stealth, thick] (2.06,2) arc (90:15:-0.75 and 2);
+\draw [dashed, thick] (2.06,2) arc (90:-70:0.75 and 2);
+\draw [thick] (2.3,-1.9) -- (2.3,-2.3) -- (0.5,-2.3);
+ \draw [thick]  (-0.5,-2.3) -- (-2.26,-2.3) -- (-2.26,-1.9) arc (-70:20:-0.75 and 2);
+\draw [-stealth, thick] (-2,2) arc (90:15:-0.75 and 2);
+
+\draw [-latex] (-3.5,0) -- (3.5,0);
+\draw [thick,-stealth] (-0.5,-0.5) -- (0.5,0.5);
+\draw (0.4,0.5) node [left] {$\vec{M}$};
+\draw (0.3,0) arc (0:45:0.3);
+\draw (0.3,0.2) node [right] {$\theta$};
+
+\begin{scope}[shift={(8,1)}]
+\draw (-2.5,2.5) node {(b)};
+\draw [dashed, thick] (-2.5,2) arc (90:-70:0.75 and 2);
+
+\draw [thick] (-2.3,-1.9) -- (-2.3,-3.8) -- (2.3,-3.8) -- (2.3,-1.9) arc (-70:20:-0.75 and 2);
+\draw [-stealth, thick] (2.56,2) arc (90:15:-0.75 and 2);
+\draw [dashed, thick] (2.56,2) arc (90:-70:0.75 and 2);
+\draw [thick] (2.8,-1.9) -- (2.8,-4) -- (0.5,-4);
+ \draw [thick]  (-0.5,-4) -- (-2.76,-4) -- (-2.76,-1.9) arc (-70:20:-0.75 and 2);
+\draw [-stealth, thick] (-2.5,2) arc (90:15:-0.75 and 2);
+
+\begin{scope}[rotate=90]
+\draw [dashed, thick] (-2.5,2) arc (90:-70:0.75 and 2);
+
+\draw [thick] (-2.3,-1.9) -- (-2.3,-3.8) -- (2.3,-3.8) -- (2.3,-1.9) arc (-70:20:-0.75 and 2);
+\draw [-stealth, thick] (2.56,2) arc (90:15:-0.75 and 2);
+\draw [dashed, thick] (2.56,2) arc (90:-70:0.75 and 2);
+\draw [thick] (2.8,-1.9) -- (2.8,-4) -- (0.5,-4);
+ \draw [thick]  (-0.5,-4) -- (-2.76,-4) -- (-2.76,-1.9) arc (-70:20:-0.75 and 2);
+\draw [-stealth, thick] (-2.5,2) arc (90:15:-0.75 and 2);
+\end{scope}
+
+\draw [-latex] (-3.5,0) -- (3.5,0);
+\draw [thick,-stealth] (-0.5,-0.5) -- (0.5,0.5);
+\draw (0.4,0.5) node [left] {$\vec{M}$};
+\draw (0.3,0) arc (0:45:0.3);
+\draw (0.3,0.2) node [right] {$\theta$};
+
+\end{scope}
+\end{tikzpicture}

@@ -1,0 +1,21 @@
+\input{tikz.tex}
+\begin{document}
+\begin{tikzpicture}[scale=2]
+    % trajectoire de la particule
+    % grid 
+\foreach \x in {-1,-0.5,...,2}
+    \draw[gray] (\x,-1) -- (\x,1);
+\foreach \y in {-1,-0.5,...,1}
+    \draw[gray] (-1,\y) -- (2,\y);
+% M point and density rho(M,t)
+\fill[black] (0.5,0) circle (0.05) node[above left] {$\rm M$};
+    \draw[JoliRouge,endarrow,midarrow,dash pattern = on 2pt off 2pt on 2pt off 2pt on 2pt off 2pt on 10cm] (-1,-1) .. controls ++(1,2) and ++(-1,-1) .. ++(3,2);
+    % particule de fluide carrée
+    \draw[fill=JoliBleu!20] (0.5,0.2) rectangle ++(0.4,0.4);
+    %  node[above left] {$\rho_\Pf(t_2)$};
+    \draw[fill=JoliBleu!20] (-0.8,-0.5) rectangle ++(0.4,0.4);
+    %  node[above left] {$\rho_\Pf(t_1)$};
+    % \draw[->,JoliBleu] (0.5,0.5) -- (1.5,0.5) node[above]{$\vec{r}$};
+    % \draw[->,JoliRouge] (0.5,0.5) -- (1.5,0.5) node[above]{$\vec{v}$};
+\end{tikzpicture}
+\end{document}    

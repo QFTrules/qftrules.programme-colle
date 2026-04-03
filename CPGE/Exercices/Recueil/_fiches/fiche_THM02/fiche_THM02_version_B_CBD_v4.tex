@@ -1,0 +1,1469 @@
+% Date : 5/02/2023
+% Version : 7
+% Auteur : Maxime Defosseux
+% Relu : 
+% Relecteur : 
+% Harmonisation : Cath Lavainne
+
+% ------------------------------------------------------------ %
+% ----------------------  Fiche ?????  ----------------------- %
+% Thème : ???
+% Classes : ???
+% ------------------------------------------------------------ %
+
+
+
+% ======================================================= % 
+% ============== Gestion de la compilation ============== %
+% ======================================================= % 
+\ifdefined\mainIsLoaded\else
+\RequirePackage{import}
+\subimport{../../}{_preambule_CdE_PC}
+\begin{document}
+\fi
+% ======================================================= % 
+% ======================================================= % 
+
+
+
+
+
+
+% ============================================================================ %
+%                            FICHE D'ENTRAÎNEMENT                              %
+% ============================================================================ %
+% ======================= Métadonnées sur la fiche =========================== %
+\titreFicheEntrainement		{Premier Principe}
+\grandTheme					{Thermodynamique}
+\numeroFiche				{THM02}
+\uniqueID					{DIfXbgveqQY} % une chaîne de caractères (a-z, A-Z) aléatoire de 10 caractères.
+\nombreColonnesReponses		{2} % 1, 2, 3, etc.
+% ============================================================================ %
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\debutFicheEntrainement                                                                      %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+% --------------------------------------------------------------------- %
+%                              Prérequis                                %
+%                             (facultatif)                              %
+% --------------------------------------------------------------------- %
+% ================== Métadonnées sur le prérequis ===================== %
+\avecPrerequis{Y} % Y ou N
+% ===================================================================== %
+\begin{prerequis}
+	Notions sur les gaz parfaits.
+	Équation d'état des gaz parfaits $PV=nRT$.
+	
+	\constantesUtiles
+	\begin{listeConstantes}
+		\item constante des gaz parfaits : $R=\SI{8,314}{J.K^{-1}.mol^{-1}}$
+	\end{listeConstantes}	 
+\end{prerequis}
+% --------------------------------------------------------------------- %
+
+
+
+
+
+
+% •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••• %
+% •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••• %
+\sectionFicheEntrainement{Calcul du travail des forces de pression}
+% •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••• %
+% •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••• %
+
+% ********************************************************************* %
+%                           ENTRAÎNEMENT                                % 
+% ********************************************************************* %
+% ================ Métadonnées sur l'entraînement ===================== %
+
+\titreEntrainementFacultatif	{Les bonnes unités}
+\hauteurLargeurCadreReponse		{8mm}{5cm}
+\dureeResolutionFacultative		{1} % 1, 2, 3 ou 4
+\typeEntrainement				{AN} % Newton ou QCM ou AN ou vide (exercice "normal")
+\basiqueEtTransversal			{Y}
+\nombreColonnesQuestions		{1} % vide, 1, 2, 3, etc.
+\avecPlusieursQuestions			{Y} % Y ou N
+\initialisationEntrainement
+% ===================================================================== %
+
+
+% =============================================================================== %
+\debutEntrainement
+% =============================================================================== %
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+Un étudiant doit calculer le travail reçu par un système au cours d'une transformation. L'expression littérale est la suivante : 
+\[
+W=-P_0\left(V_f-V_i\right).
+\]
+Il sait que pour faire l'application numérique, la pression doit être exprimée en pascal et les volumes en $m^3$. 
+
+On rappelle que $\SI{1}{bar} = \SI{1e5}{Pa}$.
+
+
+\begin{enonce}
+	 Calculer $W$ pour $P_0=\SI{1,5}{bar}$, $V_i=\SI{5}{L}$ et $V_f=\SI{3}{L}$
+\end{enonce}
+
+\reponse{$\SI{300}{J}$}
+
+\begin{corrige}
+	On a $W=-\left(\SI{1,5e5}{Pa}\right)\left(\SI{3e-3}{m^3}-\SI{5e-3}{m^3}\right)=\SI{300}{J}$.
+\end{corrige}
+
+\begin{enonce}
+	Calculer $W$ pour $P_0=\SI{50}{mbar}$, $V_i=\SI{2}{cL}$ et $V_f=\SI{120}{mL}$
+\end{enonce}
+
+\reponse{$\SI{-0,5}{J}$}
+
+\begin{corrige}
+	On a $P_0=\SI{50}{mbar}=\SI{50e-3}{bar}=\left(\SI{50e-3}{}\right)\times \SI{e5}{Pa}=\SI{50e2}{Pa}$.
+	
+	On a $V_i=\SI{2}{cL}=\SI{2e-2}{L}=\left(\SI{2e-2}{}\right)\times\SI{e-3}{m^3}=\SI{2e-5}{m^3}$.
+	
+	On a $V_f=\SI{120}{mL}=\SI{120e-3}{L}=\left(\SI{120e-3}{}\right)\times\SI{e-3}{m^3}=\SI{12e-5}{m^3}$.
+	
+	On a $W=-\left(\SI{50e2}{Pa}\right)\times\left(\SI{12e-5}{m^3} - \SI{2e-5}{m^3}\right)=\SI{-0,5}{J}$.
+\end{corrige}
+
+\begin{enonce}
+	Calculer $W$ pour $P_0=\SI{150}{bar}$, $V_i=\SI{20}{cm^3}$ et $V_f=\SI{10}{cm^3}$
+\end{enonce}
+
+\reponse{$\SI{150}{J}$}
+
+\begin{corrige}
+	On a $V_i=\SI{20}{cm^3}=\SI{20e-6}{m^3}$ et $V_f=\SI{10}{cm^3}=\SI{10e-6}{m^3}$.
+	
+	On a $W=-\left(\SI{150e5}{Pa}\right)\times\left(\SI{10e-6}{m^3} - \SI{20e-6}{m^3}\right)=\SI{150}{J}$.
+\end{corrige}
+% ************************************** %
+% =============================================================================== %
+\finEntrainement
+% =============================================================================== %
+
+
+
+
+
+
+
+% ********************************************************************* %
+%                           ENTRAÎNEMENT                                % 
+% ********************************************************************* %
+% ================ Métadonnées sur l'entraînement ===================== %
+
+\titreEntrainementFacultatif	{Suite de transformations}
+\hauteurLargeurCadreReponse		{8mm}{5cm}
+\dureeResolutionFacultative		{2} % 1, 2, 3 ou 4
+\typeEntrainement				{AN} % Newton ou QCM ou AN ou vide (exercice "normal")
+\nombreColonnesQuestions		{1} % vide, 1, 2, 3, etc.
+\avecPlusieursQuestions			{Y} % Y ou N
+\initialisationEntrainement
+% ===================================================================== %
+
+Un système composé de $n=2$ moles de gaz en contact avec un milieu extérieur à la pression $P_{\text{ext}}=\SI{1}{bar}$, subit une suite de transformations. 
+
+Au cours de la première, son volume ne varie pas (transformation isochore).
+
+Au cours de la seconde, la pression extérieure ne varie pas (transformation monobare) et son volume initialement à $V_i=\SI{1}{L}$ augmente et se fixe à $V_f= \SI{2}{L}$.
+
+Les transformations étant quasi statiques, le travail des forces de pression se met sous la forme suivante : 
+\[
+W= -\int_{V_\text{initial}}^{V_\text{final}} P_{\text{ext}} \d V.
+\]
+
+% =============================================================================== %
+\debutEntrainement
+% =============================================================================== %
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+	Calculer $W$ au cours de la première transformation 
+\end{enonce}
+
+\reponse{\SI{0} {J}}
+
+\begin{corrige}
+	Le volume ne variant pas, on a $\d V=0$. Le travail des forces de pression s'écrit $W=- \int_{V_\text{initial}}^{V_\text{final}} P_{\text{ext}} \d V$. Il est donc nul.
+\end{corrige}
+
+% ************************************** %
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+	Calculer $W$ au cours de la seconde transformation 
+\end{enonce}
+
+\reponse{\SI{-100} {J}}
+
+\begin{corrige}
+	Le travail des forces de pression s'écrit : 
+	$$W=- \int_{V_\text{initial}}^{V_\text{final}} P_{\text{ext}} \d V= -P_{\text{ext}} \int_{V_\text{initial}}^{V_\text{final}} \d V = -P_{\text{ext}} (V_\text{final}-V_\text{initial})$$
+	Nous pouvons donc faire l'application numérique : $W=- \SI{1e5}{Pa} \times (\SI{2e-3}{m^3}-\SI{1e-3}{m^3})= \SI{-100}{J}$.
+\end{corrige}
+
+% ************************************** %
+
+% =============================================================================== %
+\finEntrainement
+% =============================================================================== %
+
+
+
+
+\newpage
+
+
+
+
+% ********************************************************************* %
+%                           ENTRAÎNEMENT                                % 
+% ********************************************************************* %
+% ================ Métadonnées sur l'entraînement ===================== %
+
+\titreEntrainementFacultatif	{Bataille de travaux sans calculatrice}
+\hauteurLargeurCadreReponse		{6mm}{2cm}
+\dureeResolutionFacultative		{1} % 1, 2, 3 ou 4
+\typeEntrainement				{Newton} % Newton ou QCM ou AN ou vide (exercice "normal")
+\basiqueEtTransversal			{Y}
+\nombreColonnesQuestions		{1} % vide, 1, 2, 3, etc.
+\avecPlusieursQuestions			{N} % Y ou N
+\initialisationEntrainement
+% ===================================================================== %
+
+
+% =============================================================================== %
+\debutEntrainement
+% =============================================================================== %
+Considérons deux systèmes $A$ et $B$ recevant de l'énergie du milieu extérieur. La puissance reçue par le premier durant $\SI{30}{s}$ s'élève à  $\SI{50}{W}$. Le second reçoit une puissance plus importante ($\SI{400}{W}$) mais durant un temps plus court (\SI{5}{s}).
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+Quel système a reçu la plus grande quantité d'énergie (sous forme de travail) ?
+\end{enonce}
+
+\reponse{$B$}
+
+\begin{corrige}
+Le système $A$ a reçu du milieu extérieur un travail $W_a=\SI{50}{W} \times \SI{30}{s} =\SI{1500}{J}$.
+
+Le système $B$  a reçu du milieu extérieur un travail $W_b=\SI{400}{W} \times \SI{5}{s} =\SI{2000}{J}$.
+
+Le système $B$ a donc reçu la plus grande quantité d'énergie.
+\end{corrige}
+
+% ************************************** %
+% =============================================================================== %
+\finEntrainement
+% =============================================================================== %
+
+
+
+
+
+
+
+
+
+
+
+% ********************************************************************* %
+%                           ENTRAÎNEMENT                                % 
+% ********************************************************************* %
+% ================ Métadonnées sur l'entraînement ===================== %
+
+\titreEntrainementFacultatif	{Calcul d'aires}
+\hauteurLargeurCadreReponse		{8mm}{5cm}
+\dureeResolutionFacultative		{2} % 1, 2, 3 ou 4
+\typeEntrainement				{Newton} % Newton ou QCM ou AN ou vide (exercice "normal")
+\basiqueEtTransversal			{Y}
+\nombreColonnesQuestions		{2} % vide, 1, 2, 3, etc.
+\avecPlusieursQuestions			{Y} % Y ou N
+\initialisationEntrainement
+% ===================================================================== %
+
+Pour une transformation quasi-statique, le travail des forces de pression s'écrit sous la forme : $$W=- \int_{V_{\text{initial}}}^{V_{\text{final}}} P \d V$$
+Ce travail $W$ correspond alors à l'opposé de l'aire sous la courbe $P = f(V)$, pour $V_{\text{final}} > V_{\text{initial}}$.
+
+% =============================================================================== %
+\debutEntrainement
+% =============================================================================== %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+Exprimer le travail $W$ en fonction des variables $P_0$, $V_{\text{initial}}$ et $V_{\text{final}}$.
+\begin{center}
+\subimport{_images/}{1_THM02_CBD_v3.tex}
+\end{center}
+\end{enonce}
+
+\reponse{$-P_0 (V_{\text{final}}-V_{\text{initial}})$}
+
+\begin{corrige}
+Le travail correspond à l'opposé de l'aire sous la courbe, et donc à l'opposé de l'aire du rectangle : \minusSmallskip
+\[
+W=  -P_0 (V_{\text{final}}-V_{\text{initial}}).
+\]
+\end{corrige}
+
+% ************************************** %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+Exprimer le travail $W$ en fonction des variables $P_1$, $P_2$, $V_{\text{initial}}$ et $V_{\text{final}}$.
+\begin{center}
+\subimport{_images/}{2_THM02_CBD_v3.tex}
+\end{center}
+\end{enonce}
+
+\reponse{$\frac{-(P_2+P_1) (V_{\text{final}}-V_{\text{initial}})}{2}$}
+
+\begin{corrige}
+On décompose l'aire sous la courbe en un rectangle et en un triangle : \minusSmallskip
+\[
+W=  -\left(P_1 (V_{\text{final}}-V_{\text{initial}})+\frac{(P_2-P_1)(V_{\text{final}}-V_{\text{initial}})}{2}\right)
+= \frac{-(P_2+P_1)(V_{\text{final}}-V_{\text{initial}})}{2}.
+\]
+\end{corrige}
+
+% ************************************** %
+
+
+% =============================================================================== %
+\finEntrainement
+% =============================================================================== %
+
+
+
+
+
+% ********************************************************************* %
+%                           ENTRAÎNEMENT                                % 
+% ********************************************************************* %
+% ================ Métadonnées sur l'entraînement ===================== %
+
+\titreEntrainementFacultatif	{Différents types de transformations}
+\hauteurLargeurCadreReponse		{8mm}{5cm}
+\dureeResolutionFacultative		{2} % 1, 2, 3 ou 4
+\typeEntrainement				{Newton} % Newton ou QCM ou AN ou vide (exercice "normal")
+\basiqueEtTransversal			{Y}
+\nombreColonnesQuestions		{1} % vide, 1, 2, 3, etc.
+\avecPlusieursQuestions			{Y} % Y ou N
+\initialisationEntrainement
+% ===================================================================== %
+
+Un système est composé de $n$ moles de gaz parfait, de volume $V$, de pression $P$ et de température $T$.
+
+Nous souhaitons évaluer le travail reçu par ce système au cours de transformations quasi statiques :
+$$W=- \int_{V_i}^{V_f}P\d V$$
+La loi des gaz parfaits assure que $PV=nRT$.\\
+% =============================================================================== %
+\debutEntrainement
+% =============================================================================== %
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+% =============================================================================== %
+\pauseEntrainement
+% =============================================================================== %
+
+{\itshape
+		\textbf{Transformation isotherme :}\\
+	Au cours de cette transformation, la température du système ne varie pas et $T=T_0$. 
+\itshape
+}
+% =============================================================================== %
+\repriseEntrainement
+% =============================================================================== %
+
+\begin{enonce}
+	Écrire $W$ en fonction de $n$, $R$, $T_0$, $V_i$ et $V_f$
+\end{enonce}
+
+\reponse{$-nRT_0 \ln\left(\frac{V_f}{V_i} \right)$}
+
+\begin{corrige}
+	Le système est un gaz parfait, nous avons donc $PV=nRT$. De plus, la température reste constante et vaut $T_0$.
+	Le travail s'écrit alors : $W= -nRT_0 \int_{V_{i}}^{V_{f}} \frac{1}{V} \d V=-nRT_0 \ln \left(\frac{V_{f}}{V_{i}} \right)$.
+\end{corrige}
+
+% ************************************** %
+% =============================================================================== %
+\pauseEntrainement
+% =============================================================================== %
+
+{\itshape
+	\textbf{Transformation polytropique et quasi-statique :}\\
+	Au cours de cette transformation, on a $PV^k=constante$ (avec $k>1$). Les pressions et volumes du système à l'instant initial seront notés $P_i$ et $V_i$ et à l'instant final $P_f$ et $V_f$. 
+	\itshape
+}
+% =============================================================================== %
+\repriseEntrainement
+% =============================================================================== %
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+\begin{enonce}
+	Écrire le travail $W$ en fonction de $V_i$, $V_f$, $P_i$, $P_f$ et $k$ 
+\end{enonce}
+
+\reponse{$\frac{P_f V_f - P_i V_i}{k-1}$ }
+
+\begin{corrige}
+	La transformation étant polytropique, on a alors $P_i {V_i}^k=P_f {V_f}^k=P V^k$.
+	Le travail s'exprime alors:
+	\[
+	W= -\int_{V_i}^{V_f} \frac{P_i {V_i}^k}{V^k}dV =- \frac{P_i {V_i}^k} {1-k}  \left(\frac{1} {{V_f}^{k-1}}-\frac{1} {{V_i}^{k-1}}\right) = \frac{P_f V_f - P_i V_i}{k-1}.
+	\]
+\end{corrige}
+
+
+% ************************************** %
+
+
+
+%=============================================================================== %
+\finEntrainement
+% =============================================================================== %
+
+
+
+
+
+
+% •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••• %
+% •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••• %
+\sectionFicheEntrainement{Variation d'énergie interne et d'enthalpie}
+% •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••• %
+% •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••• %
+
+
+
+% ********************************************************************* %
+%                           ENTRAÎNEMENT                                % 
+% ********************************************************************* %
+% ================ Métadonnées sur l'entraînement ===================== %
+
+\titreEntrainementFacultatif	{Problème d'unités}
+\hauteurLargeurCadreReponse		{8mm}{3cm}
+\dureeResolutionFacultative		{1} % 1, 2, 3 ou 4
+\typeEntrainement				{AN} % Newton ou QCM ou AN ou vide (exercice "normal")
+\basiqueEtTransversal			{Y}
+\nombreColonnesQuestions		{1} % vide, 1, 2, 3, etc.
+\avecPlusieursQuestions			{Y} % Y ou N
+\initialisationEntrainement
+% ===================================================================== %
+
+La capacité thermique massique de l'eau %sous forme liquide 
+vaut $c=\SI{4,2 }{kJ.K^{-1}.kg^{-1}}$.
+
+La masse molaire de l'eau vaut ${M}_{\ptH_2\ptO}=\SI{18}{g.{mol}^{-1}}$.
+
+Une énergie peut être exprimée en joules ou en kilocalories ; on donne la relation $\SI{1}{kcal}=\SI{4184}{J}$.
+
+% =============================================================================== %
+\debutEntrainement
+% =============================================================================== %
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+Évaluer la capacité thermique molaire $C_m$ de l'eau %sous forme liquide 
+en \si{J.K^{-1}.mol^{-1}}
+\end{enonce}
+
+\reponse{\SI{76 }{J.K^{-1}.mol^{-1}}}
+
+\begin{corrige}
+Par définition, on a $c=\frac{C}{m}=n\frac{C_m}{m}$. Et donc $C_m={M}_{\ptH_2\ptO}\times c=\SI{76 }{J.K^{-1}.mol^{-1}}$.
+\end{corrige}
+
+% ************************************** %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+	En déduire sa valeur en \si{kcal.K^{-1}.mol^{-1}}
+\end{enonce}
+
+\reponse{$\SI{18e-3 }{kcal.K^{-1}.mol^{-1}}$}
+
+\begin{corrige}
+	 On a $C_m=\frac{\SI{76 }{J.K^{-1}.mol^{-1}}}{4184}=\SI{18e-3 }{kcal.K^{-1}.mol^{-1}}$.
+\end{corrige}
+
+% ************************************** %
+
+% ********************************************************************* %
+%                           ENTRAÎNEMENT                                % 
+% ********************************************************************* %
+% ================ Métadonnées sur l'entraînement ===================== %
+
+\titreEntrainementFacultatif	{Variation d'énergie interne d'une phase condensée}
+\hauteurLargeurCadreReponse		{8mm}{4cm}
+\dureeResolutionFacultative		{1} % 1, 2, 3 ou 4
+\typeEntrainement				{AN} % Newton ou QCM ou AN ou vide (exercice "normal")
+\basiqueEtTransversal			{Y}
+\nombreColonnesQuestions		{1} % vide, 1, 2, 3, etc.
+\avecPlusieursQuestions			{Y} % Y ou N
+\initialisationEntrainement
+% ===================================================================== %
+
+Un opérateur chauffe une masse $m$ d'eau liquide de capacité thermique massique $c=\SI{4,2 }{kJ.K^{-1}.kg^{-1}}$. La température initialement à $T_i=\SI{20}{\celsius}$ se stabilise en fin d'expérience à $T_f=\SI{30}{\celsius}$.
+
+Il souhaite calculer sa variation d'énergie interne par l'application de la relation suivante : \minusSmallskip
+\[
+\Delta U = \int_{T_{i}}^{T_{f}} C \d T \minusSmallskip
+\]
+où $C$ est la capacité thermique du système.
+
+% =============================================================================== %
+\debutEntrainement
+% =============================================================================== %
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+Donner $\Delta U$ du système en fonction $c$, $m$, $T_i$ et $T_f$
+\end{enonce}
+
+\reponse{$m c ( T_f - T_i) $}
+
+\begin{corrige}
+	La masse $m$ d'eau liquide de capacité thermique massique $c=\SI{4,2 }{kJ.K^{-1}.kg^{-1}}$ aura une capacité thermique $C=m c$. Ainsi, on a  
+	$\Delta U  =  m c ( T_f - T_i)$.
+\end{corrige}
+
+% ************************************** %
+\begin{enonce}
+	Calculer $\Delta U$ en $\si{kJ}$ pour $m=\SI{100}{g}$ 
+\end{enonce}
+
+\reponse{\SI{4,2}{kJ}}
+
+\begin{corrige}
+	Notons que la température doit être exprimée en kelvin. Ici, on a $T_i=\SI{293}{K}$ et $T_f=\SI{303}{K}$. Nous obtenons donc $\Delta T=\SI{10}{K}$. 
+	Ainsi, on a $\Delta U = \SI{100e-3}{kg} \times \SI{4,2 }{kJ.K^{-1}.kg^{-1}} \times \SI{10}{K}=\SI{4,2}{kJ}$.
+\end{corrige}
+
+% ************************************** %
+
+
+
+%=============================================================================== %
+\finEntrainement
+% =============================================================================== %
+
+% ********************************************************************* %
+%                           ENTRAÎNEMENT                                % 
+% ********************************************************************* %
+% ================ Métadonnées sur l'entraînement ===================== %
+
+\titreEntrainementFacultatif	{Étude d'un gaz parfait diatomique}
+\hauteurLargeurCadreReponse		{8mm}{4cm}
+\dureeResolutionFacultative		{2} % 1, 2, 3 ou 4
+\typeEntrainement				{} % Newton ou QCM ou AN ou vide (exercice "normal")
+\nombreColonnesQuestions		{1} % vide, 1, 2, 3, etc.
+\avecPlusieursQuestions			{Y} % Y ou N
+\initialisationEntrainement
+% ===================================================================== %
+
+Soient $n$ moles de gaz parfait diatomique évoluant d'un état initial caractérisé par $T_i=\SI{60}{\celsius}$ vers un état final à la température $T_f=\SI{90}{\celsius}$.  
+
+Pour un gaz parfait diatomique, la relation de Mayer impose 
+\(
+C_P-C_V=nR.
+\)
+
+Pour un gaz parfait diatomique, on a $\gamma=\frac{C_P}{C_V}=\np{1,4}$.
+
+\medskip
+
+% =============================================================================== %
+\debutEntrainement
+% =============================================================================== %
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+Exprimer $C_V$ (la capacité thermique à volume constant du gaz parfait) en fonction de $n$, $R$ et $\gamma$
+
+\end{enonce}
+
+\reponse{$\frac{nR}{\gamma - 1}$}
+
+\begin{corrige}
+On commence par exprimer la capacité thermique à volume constant $C_V$ du gaz parfait, à partir de la relation de Mayer $C_P-C_V=nR$ et du rapport des capacités thermiques $\gamma=\frac{C_P}{C_V}$.
+On obtient $C_V=\frac{nR}{\gamma - 1}$.
+\end{corrige}
+
+% ************************************** %
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+Évaluer $\Delta U = \int_{T_i}^{T_f} C_V \d T$ pour $n=\SI{1}{mol}$ 
+\end{enonce}
+
+\reponse{$\SI{6,2 e2}{J}$}
+
+\begin{corrige}
+La grandeur $C_V$ étant constante, la variation d'énergie interne d'un gaz parfait peut être écrite : \minusSmallskip
+\[
+\Delta U = C_V \Delta T = C_V (T_f - T_i) = \frac{nR}{\gamma - 1} (T_f - T_i).
+\]
+On passe alors à l'application numérique : on a
+ $ \Delta U = \frac{\SI{1}{mol} \times \SI{8,314}{J.K^{-1}.mol^{-1}} \times \SI{30}{K} } {\num{1,4}-1}=\SI{6,2 e2}{J}$.
+\end{corrige}
+
+% ************************************** %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+Exprimer $C_P$ (la capacité thermique à pression constante  du gaz parfait) en fonction de $n$, $R$ et $\gamma$
+
+\end{enonce}
+
+\reponse{$\frac{nR\gamma}{\gamma - 1}$}
+
+\begin{corrige}
+On commence par exprimer la capacité thermique à volume constant $C_P$ du gaz parfait, à partir de la relation de Mayer $C_P-C_V=nR$ et du rapport des capacités thermiques $\gamma=\frac{C_P}{C_V}$
+On obtient $C_P=\frac{nR\gamma}{\gamma - 1}$.
+\end{corrige}
+
+% ************************************** %
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+	Évaluer $\Delta H = \int_{T_i}^{T_f} C_P \d T$ pour $n=\SI{1}{mol}$ 
+\end{enonce}
+
+\reponse{$\SI{8,7e2}{J}$}
+
+\begin{corrige}
+La grandeur $C_P$ étant constante, la variation d'enthalpie d'un gaz parfait s'exprime : \minusSmallskip
+\[
+ \Delta H = C_P \Delta T = C_P (T_f - T_i) = \frac{nR \gamma}{\gamma - 1} (T_f - T_i).
+\]
+On passe alors à l'application numérique : on a $\Delta H =\frac{\SI{1}{mol} \times \SI{8,314}{J.K^{-1}.mol^{-1}} \times \num{1,4}  } {\num{1,4}-1} \times \SI{30}{K}= \SI{ 8,7e2}{J}$.
+\end{corrige}
+
+% ************************************** %
+
+
+
+%=============================================================================== %
+\finEntrainement
+% =============================================================================== %
+
+
+
+
+
+% ********************************************************************* %
+%                           ENTRAÎNEMENT                                % 
+% ********************************************************************* %
+% ================ Métadonnées sur l'entraînement ===================== %
+\pointExclamation				{N}
+\titreEntrainementFacultatif	{Des variations d'énergie interne}
+\hauteurLargeurCadreReponse		{6mm}{5cm}
+\dureeResolutionFacultative		{2} % 1, 2, 3 ou 4
+\typeEntrainement				{} % Newton ou QCM ou AN ou vide (exercice "normal")
+\basiqueEtTransversal			{Y}
+\nombreColonnesQuestions		{1} % vide, 1, 2, 3, etc.
+\avecPlusieursQuestions			{Y} % Y ou N
+\initialisationEntrainement
+% ===================================================================== %
+
+Suivant la finesse des modèles utilisés, la capacité calorifique à volume constant $C_V$ peut être une fonction de la température.
+Le calcul de la variation d'énergie interne $\Delta U = \int_{T_i}^{T_f} \!\! C_V(T) \d T$ se fera alors en tenant compte de son expression. 
+
+\smallskip
+ 
+Donner, dans chacun des cas suivants, l'expression de $\Delta U $. 
+
+% =============================================================================== %
+\debutEntrainement
+% =============================================================================== %
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+pour un gaz parfait ($C_V$ est une constante)
+\end{enonce}
+
+\reponse{$C_V(T_f - T_i) $}
+
+\begin{corrige}
+	On a $\Delta U =C_V \Delta T =C_V (T_f - T_i)$.
+\end{corrige}
+
+% ************************************** %
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+ pour un gaz réel ($C_V=AT+B$, où $A$ et $B$ sont des constantes)
+\end{enonce}
+
+\reponse{$\frac{A}{2}({T_f}^2-{T_i}^2)+B(T_f-T_i)$}
+
+\begin{corrige}
+	On a $\Delta U = \frac{A}{2}({T_f}^2-{T_i}^2)+B(T_f-T_i)$.
+\end{corrige}
+
+% ************************************** %
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+	pour un solide ($C_V=DT^3$, où $D$ est une constante)
+\end{enonce}
+
+\reponse{$\frac{D}{4}({T_f}^4-{T_i}^4)$}
+
+\begin{corrige}
+	On a $\Delta U =\frac{D}{4}({T_f}^4-{T_i}^4)$.
+\end{corrige}
+
+% ************************************** %
+
+
+
+% ********************************************************************* %
+%                           ENTRAÎNEMENT                                % 
+% ********************************************************************* %
+% ================ Métadonnées sur l'entraînement ===================== %
+
+\titreEntrainementFacultatif	{Variation d'enthalpie lors d'un changement d'état}
+\hauteurLargeurCadreReponse		{6mm}{3cm}
+\dureeResolutionFacultative		{1} % 1, 2, 3 ou 4
+\typeEntrainement				{AN} % Newton ou QCM ou AN ou vide (exercice "normal")
+\nombreColonnesQuestions		{1} % vide, 1, 2, 3, etc.
+\avecPlusieursQuestions			{N} % Y ou N
+\initialisationEntrainement
+% ===================================================================== %
+
+
+
+% =============================================================================== %
+\debutEntrainement
+% =============================================================================== %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+Dans cet entraînement, le système sera de l'eau : à l'état initial, $\SI{1}{kg}$ d'eau sous forme liquide, à la température de $\SI{0}{\celsius}$ ; à l'état final un mélange de $\SI{800}{g}$ d'eau sous forme solide, et $\SI{200}{g}$ d'eau sous forme liquide à la température de $\SI{0}{\celsius}$. 
+
+On rappelle la valeur de l'enthalpie massique de fusion de l'eau : $L_{\text{fus}}=\SI {335} {kJ.kg^{-1}}$.
+
+Quelle est la variation d'enthalpie du système ?
+\end{enonce}
+
+\reponse{ $\SI{-268} {kJ}$}
+
+\begin{corrige}
+Pour cette transformation, nous avons une masse $m_l=\SI{800}{g}$ d'eau qui est transformée de l'état liquide à l'état solide, et qui subit donc une solidification (transformation inverse d'une fusion). 
+
+La variation d'enthalpie s'exprime : $\Delta H= -m_l \times L_{\text{fus}} = \SI{0,800}{kg} \times \SI {-335} {kJ.kg^{-1}} =  \SI{-268} {kJ}$.
+\end{corrige}
+
+% ************************************** %
+
+
+%=============================================================================== %
+\finEntrainement
+% =============================================================================== %
+
+
+\minusBigskip
+
+
+
+
+% •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••• %
+% •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••• %
+\sectionFicheEntrainement{Applications du premier principe}
+% •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••• %
+% •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••• %
+
+\minusSmallskip
+
+% ********************************************************************* %
+%                           ENTRAÎNEMENT                                % 
+% ********************************************************************* %
+% ================ Métadonnées sur l'entraînement ===================== %
+
+\titreEntrainementFacultatif	{Détente de Joule-Gay Lussac d'un gaz réel}
+\hauteurLargeurCadreReponse		{8mm}{5cm}
+\dureeResolutionFacultative		{1} % 1, 2, 3 ou 4
+\typeEntrainement				{} % Newton ou QCM ou AN ou vide (exercice "normal")
+\basiqueEtTransversal			{Y}
+\nombreColonnesQuestions		{1} % vide, 1, 2, 3, etc.
+\avecPlusieursQuestions			{N} % Y ou N
+\initialisationEntrainement
+% ===================================================================== %
+
+La détente de Joule-Gay Lussac est une détente au cours de laquelle l'énergie interne du système est constante : $\Delta U=0$.
+Pour $n$ moles d'un gaz réel passant du volume $V_i$ au volume $V_f$ et de la température $V_i$ à la température $T_i$ à $T_f$,
+on a alors \minusMedskip
+\[
+\Delta U= C_V(T_f - T_i)-n^2a \left(\frac{1}{V_f}-\frac{1}{V_i}\right) = 0.
+\]
+
+\minusBigskip
+
+% =============================================================================== %
+\debutEntrainement
+% =============================================================================== %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+Exprimer $T_f$ en fonction de $T_i$, $C_V$, $n$, $a$, $V_f$, $V_i$
+\end{enonce}
+
+\reponse{ $T_i+\frac{n^2a}{C_V}\left(\frac{1}{V_f}-\frac{1}{V_i}\right) $}
+
+\begin{corrige}
+On a $T_f=T_i+\frac{n^2a}{C_V}\left(\frac{1}{V_f}-\frac{1}{V_i}\right)$.
+\end{corrige}
+
+% ************************************** %
+
+%=============================================================================== %
+\finEntrainement
+% =============================================================================== %
+
+
+
+
+\minusMedskip
+
+% ********************************************************************* %
+%                           ENTRAÎNEMENT                                % 
+% ********************************************************************* %
+% ================ Métadonnées sur l'entraînement ===================== %
+
+\titreEntrainementFacultatif	{Température finale}
+\hauteurLargeurCadreReponse		{7mm}{5cm}
+\dureeResolutionFacultative		{2} % 1, 2, 3 ou 4
+\typeEntrainement				{} % Newton ou QCM ou AN ou vide (exercice "normal")
+\basiqueEtTransversal			{Y}
+\nombreColonnesQuestions		{1} % vide, 1, 2, 3, etc.
+\avecPlusieursQuestions			{Y} % Y ou N
+\initialisationEntrainement
+% ===================================================================== %
+
+% =============================================================================== %
+\debutEntrainement
+% =============================================================================== %
+
+On applique le premier principe à un système subissant une transformation isobare : on a \minusSmallskip
+\[
+\Delta H = \int_{T_i}^{T_f} \! \! C_P(T) \d T = Q. \minusSmallskip
+\]
+Dans chacun des cas suivants, exprimer $T_f$ (en fonction de $T_i$, $Q$ et des paramètres liés à $C_P$).
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+$C_P=C$ est une constante
+\end{enonce}
+
+\reponse{$T_i+\frac{Q}{C}$}
+
+\begin{corrigeNewpage}
+On a alors $C(T_f-T_i)=Q$, et donc $T_f=T_i+\frac{Q}{C}$.
+\end{corrigeNewpage}
+
+% ************************************** %
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+$C_P=\frac{A}{T}$ (où $A$ est une constante)
+\end{enonce}
+
+\reponse{$T_i \, \eEuler^{\frac{Q}{A}}$}
+
+\begin{corrige}
+On a alors $A \ln\left (\frac{T_f}{T_i}\right) = Q$, et donc $T_f=T_i \eEuler^{\frac{Q}{A}}$.
+\end{corrige}
+
+% ************************************** %
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+$C_P=B T^2$ (où $B$ est une constante)
+\end{enonce}
+
+\reponse{$\left({T_i}^3 + \frac{3Q}{B}\right)^{1/3}$}
+
+\begin{corrige}
+On a alors $B \left (\frac{{T_f}^3}{3}-\frac{{T_i}^3}{3}\right)=Q$, et donc $T_f=\left({T_i}^3 + \frac{3Q}{B}\right)^{1/3}$.
+\end{corrige}
+
+% ************************************** %
+
+%=============================================================================== %
+\finEntrainement
+% =============================================================================== %
+
+
+% ********************************************************************* %
+%                           ENTRAÎNEMENT                                % 
+% ********************************************************************* %
+% ================ Métadonnées sur l'entraînement ===================== %
+
+\titreEntrainementFacultatif	{Transformations du gaz parfait}
+\hauteurLargeurCadreReponse		{8mm}{5cm}
+\dureeResolutionFacultative		{2} % 1, 2, 3 ou 4
+\typeEntrainement				{} % Newton ou QCM ou AN ou vide (exercice "normal")
+\nombreColonnesQuestions		{1} % vide, 1, 2, 3, etc.
+\avecPlusieursQuestions			{Y} % Y ou N
+\initialisationEntrainement
+% ===================================================================== %
+
+Dans cet entraînement, le système correspond à $n$ moles de gaz parfait de coefficient adiabatique
+$\gamma =\np{1,4}$. Il subit différentes transformations suivant les questions, et nous noterons les variables dans l'état initial $P_i, V_i, T_i$ et les variables dans l'état final $P_f, V_f, T_f$.
+
+On appliquera le premier principe $\Delta U = W + Q$, avec $\Delta U =\frac{nR}{\gamma - 1} (T_f - T_i)$ et $W= -\int_{V_i}^{V_f}\!\! P\d{}V$ pour une transformation quasi-statique.
+
+Dans chaque cas, exprimer le transfert thermique $ Q$ reçu par le gaz.
+% =============================================================================== %
+\debutEntrainement
+% =============================================================================== %
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+Pour une transformation isotherme (à température constante)
+\end{enonce}
+
+\reponse{$nRT_i \ln \left(\frac{V_f}{V_i}\right) $}
+
+\begin{corrige}
+Le système est un gaz parfait, et nous avons donc $PV=nRT$, avec $T$ la température qui est constante et qui vaut donc $T_i$.
+Le travail s'exprime donc:
+\[
+W= -nRT_i \int_{V_i}^{V_f} \frac{\d V}{V} =-nRT_i \ln\left( \frac{V_f}{V_i} \right).
+\]
+D'après la première loi de Joule, pour un gaz parfait la variation d'énergie interne s'exprime : $\Delta U = C_v \Delta T = 0$.
+
+On obtient finalement : $Q= -W= nRT_i \ln \left(\frac{V_f}{V_i}\right)$.
+\end{corrige}
+
+% ************************************** %
+
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+Pour une transformation isochore (à volume constant)
+\end{enonce}
+
+\reponse{$\frac{nR}{\gamma-1} (T_f - T_i) $}
+
+\begin{corrige}
+Pour un transformation isochore, le travail est nul : $W= -\int_{V_i}^{V_f} P\d V = 0$.
+
+On obtient alors: $Q= \Delta U = \frac{nR}{\gamma-1} (T_f - T_i)$.
+\end{corrige}
+
+% ************************************** %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+Pour une transformation adiabatique (sans transfert thermique)
+\end{enonce}
+
+\reponse{$0$}
+
+\begin{corrige}
+Pour une transformation adiabatique, le transfert thermique reçu de l'extérieur est nul, et donc $Q=0$.
+\end{corrige}
+
+% ************************************** %
+
+%=============================================================================== %
+\finEntrainement
+% =============================================================================== %
+
+
+
+
+
+% ********************************************************************* %
+%                           ENTRAÎNEMENT                                % 
+% ********************************************************************* %
+% ================ Métadonnées sur l'entraînement ===================== %
+
+\titreEntrainementFacultatif	{Étude d'une enceinte divisée en deux compartiments}
+\hauteurLargeurCadreReponse		{8mm}{4cm}
+\dureeResolutionFacultative		{2} % 1, 2, 3 ou 4
+\typeEntrainement				{} % Newton ou QCM ou AN ou vide (exercice "normal")
+\nombreColonnesQuestions		{1} % vide, 1, 2, 3, etc.
+\avecPlusieursQuestions			{Y} % Y ou N
+\initialisationEntrainement
+% ===================================================================== %
+
+
+
+% mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm %
+% 		  Insertion d'une image en regard d'un texte
+% mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm %
+% --------------------------------------------------------- %
+\pourcentageDeLaPartieAGauche   {0.6}
+% --------------------------------------------------------- %
+%                                                           %
+% -------------------- Partie à gauche -------------------- %
+%                                                           %
+                                \initialisationPartieGauche % 
+%                                                           %
+%                                                           %
+\smallskip
+Une enceinte est divisée en deux compartiments.
+\begin{itemize}
+\item
+Le compartiment $A$ reçoit un travail $W_1$ de l'extérieur et fournit un transfert thermique $Q_1$ au compartiment $B$. 
+
+\item
+Le compartiment $B$ reçoit un transfert thermique $Q_1$ du compartiment $A$ et fournit un transfert thermique $Q_2$ à l'extérieur.
+\end{itemize}
+
+On rappelle l'expression du premier principe pour un système : $\Delta U = W+Q$,
+où $\Delta U$ est la variation d'énergie interne du système, et où $W$ et $Q$ sont respectivement le travail et le transfert thermique reçus par le système considéré.
+
+% --------------------------------------------------------- %
+%                                                           %
+% -------------------- Partie à droite -------------------- %
+%                                                           %
+                                \initialisationPartieDroite %
+%                                                           %
+%                                                           %
+\begin{center}
+	\subimport{_images/}{8_THM02_CBD_v2.tex}
+\end{center}
+% --------------------------------------------------------- %
+                               \finalisationDuPartageDePage %					
+% --------------------------------------------------------- %
+
+
+
+
+
+% =============================================================================== %
+\debutEntrainement
+% =============================================================================== %
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+Exprimer $\Delta U_A$ la variation d'énergie interne du compartiment $A$
+\end{enonce}
+
+\reponse{ $W_1 - Q_1 $}
+
+\begin{corrige}
+On a $\Delta U_A = W_A + Q_A $ avec $W_A=W_1$ et $Q_A=-Q_1$. Ainsi, on a $\Delta U_1 = W_1 + Q_1 $.
+\end{corrige}
+
+% ************************************** %
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+Exprimer $\Delta U_B$ la variation d'énergie interne du compartiment $B$
+\end{enonce}
+
+\reponse{ $Q_1 - Q_2 $}
+
+\begin{corrige}
+On a $\Delta U_B = W_B + Q_B $ avec $W_B=0$ et $Q_B=Q_1-Q_2$. Ainsi, on a $\Delta U_2 = Q_1-Q_2$.
+\end{corrige}
+
+% ************************************** %
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+Exprimer $\Delta U_{\text{tot}}$ la variation d'énergie interne des compartiments $A$ et $B$, qui correspond à la somme des variations d'énergie interne des compartiments $A$ et $B$
+\end{enonce}
+
+\reponse{$W_1 - Q_2$}
+
+\begin{corrige}
+On a $\Delta U_{\text{tot}}=\Delta U_A + \Delta U_B = W_1 - Q_1 +Q_1 - Q_2=W_1 - Q_2$.
+\end{corrige}
+
+% ************************************** %
+
+%=============================================================================== %
+\finEntrainement
+% =============================================================================== %
+
+
+
+
+
+% •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••• %
+% •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••• %
+\sectionFicheEntrainement{Calorimétrie}
+% •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••• %
+% •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••• %
+
+
+% ********************************************************************* %
+%                           ENTRAÎNEMENT                                % 
+% ********************************************************************* %
+% ================ Métadonnées sur l'entraînement ===================== %
+
+\titreEntrainementFacultatif	{Capacité thermique d'un calorimètre}
+\hauteurLargeurCadreReponse		{8mm}{5cm}
+\dureeResolutionFacultative		{1} % 1, 2, 3 ou 4
+\typeEntrainement				{AN} % Newton ou QCM ou AN ou vide (exercice "normal")
+\nombreColonnesQuestions		{1} % vide, 1, 2, 3, etc.
+\avecPlusieursQuestions			{N} % Y ou N
+\initialisationEntrainement
+% ===================================================================== %
+
+
+
+% =============================================================================== %
+\debutEntrainement
+% =============================================================================== %
+	On considère un calorimètre de valeur en eau $m=\SI{10}{g}$. La valeur en eau d'un calorimètre est la masse d'eau ayant la même capacité thermique que le calorimètre vide.
+\newline
+On rappelle la capacité thermique massique de l'eau liquide : $c_{\text{eau}}=\SI{4,2 }{kJ.K^{-1}.kg^{-1}}$
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+	Que vaut la capacité thermique du calorimètre ?
+\end{enonce}
+
+\reponse{$\SI{42 }{J.K^{-1}}$}
+
+\begin{corrige}
+	La capacité thermique du calorimètre vaut donc $C=m\times c_{\text{eau}}$.
+	On obtient $C=\SI{42 }{J.K^{-1}}$.
+\end{corrige}
+
+% ************************************** %
+
+
+
+
+%=============================================================================== %
+\finEntrainement
+% =============================================================================== %
+
+% ********************************************************************* %
+%                           ENTRAÎNEMENT                                % 
+% ********************************************************************* %
+% ================ Métadonnées sur l'entraînement ===================== %
+
+\titreEntrainementFacultatif	{Évolution de la température d'un calorimètre}
+\hauteurLargeurCadreReponse		{8mm}{3cm}
+\dureeResolutionFacultative		{2} % 1, 2, 3 ou 4
+\typeEntrainement				{Newton} % Newton ou QCM ou AN ou vide (exercice "normal")
+\nombreColonnesQuestions		{1} % vide, 1, 2, 3, etc.
+\avecPlusieursQuestions			{Y} % Y ou N
+\initialisationEntrainement
+% ===================================================================== %
+
+% =============================================================================== %
+\debutEntrainement
+% =============================================================================== %
+Nous considérons ici un calorimètre initialement à la température $T_0$ alors que l'air extérieur est à la température $T_a$.\newline
+Le calorimètre étant de capacité thermique $C$, sa température $T$ évolue au cours du temps et obéit à l'équation différentielle suivante:
+\[
+\diff{T}{t}+\frac{h}{C}T=\frac{h}{C}T_a.
+\]
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+Définir un temps caractéristique pour l'équation différentielle
+ \end{enonce}
+
+\reponse{$\frac{C}{h}$}
+
+\begin{corrige}
+Le temps caractéristique pour l'équation différentielle obtenue est $\tau=\frac{C}{h}$.
+\end{corrige}
+
+% ************************************** %
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+Résoudre l'équation différentielle et exprimer $T$ en fonction du temps
+\end{enonce}
+
+\reponse{$T_a+ (T_0-T_a)\eEuler^{-\frac{ht}{C}}$}
+
+\begin{corrige}
+On obtient $T=T_a+ (T_0-T_a)\eEuler^{-\frac{ht}{C}}$ en sommant solutions particulière et homogène, et en appliquant la condition initiale $T(0)=T_0$.
+\end{corrige}
+
+% ************************************** %
+
+
+
+
+%=============================================================================== %
+\finEntrainement
+% =============================================================================== %
+
+% ================ Métadonnées sur l'entraînement ===================== %
+
+\titreEntrainementFacultatif	{Évolution temporelle de la température}
+\hauteurLargeurCadreReponse		{8mm}{3cm}
+\dureeResolutionFacultative		{2} % 1, 2, 3 ou 4
+\typeEntrainement				{Newton} % Newton ou QCM ou AN ou vide (exercice "normal")
+\basiqueEtTransversal			{Y}
+\nombreColonnesQuestions		{1} % vide, 1, 2, 3, etc.
+\avecPlusieursQuestions			{N} % Y ou N
+\initialisationEntrainement
+% ===================================================================== %
+
+
+% =============================================================================== %
+\debutEntrainement
+% ======================================================================%
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+\begin{enonce}
+En échangeant avec l'extérieur, la température d'un système varie et suit la loi d'évolution suivante:
+\[
+T=T_b+ (T_a-T_b)\eEuler^{-\frac{t}{\tau}}.
+\]
+
+Quelle courbe correspond à cette évolution temporelle ?
+	
+	\begin{listeQCM2Colonnes}
+	\item \subimport{_images/}{4_THM02_CBD_v2.tex}
+	\item \subimport{_images/}{5_THM02_CBD_v2.tex}
+	\item \subimport{_images/}{6_THM02_CBD_v2.tex}
+	\item \subimport{_images/}{7_THM02_CBD_v2.tex}
+	\end{listeQCM2Colonnes}
+
+\bigskip
+\end{enonce}
+
+\reponse{\reponseB}
+
+\begin{corrige}
+La température initiale est $T_a$, donc la courbe doit commencer en $T_a$. Les courbes \reponseA{} et \reponseC{} sont donc exclues.
+La courbe \reponseD{} correspond à une exponentielle croissante, et ne convient donc pas. La réponse est \reponseB{}.
+\end{corrige}
+
+%=============================================================================== %
+\finEntrainement
+% =============================================================================== %
+
+
+
+\newpage
+
+
+
+% ********************************************************************* %
+%                           ENTRAÎNEMENT                                % 
+% ********************************************************************* %
+% ================ Métadonnées sur l'entraînement ===================== %
+
+\titreEntrainementFacultatif	{Mélange de liquides}
+\hauteurLargeurCadreReponse		{12mm}{6cm}
+\dureeResolutionFacultative		{2} % 1, 2, 3 ou 4
+\typeEntrainement				{} % Newton ou QCM ou AN ou vide (exercice "normal")
+\basiqueEtTransversal			{Y}
+\nombreColonnesQuestions		{1} % vide, 1, 2, 3, etc.
+\avecPlusieursQuestions			{Y} % Y ou N
+\initialisationEntrainement
+% ===================================================================== %
+
+
+
+% =============================================================================== %
+\debutEntrainement
+% =============================================================================== %
+
+Dans un calorimètre, on mélange une masse $m_1$ d'eau liquide à la température $T_1$ et une masse $m_2$ d'eau liquide à la température $T_2$. 
+
+\medskip
+
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+À l'équilibre, la température de l'ensemble $T_{\text{eq}}$ vérifie l'équation :
+\[
+m_1 c (T_{\text{eq}} - T_1) + m_2 c (T_{\text{eq}} - T_2) = 0.
+\]
+Déterminer $T_{\text{eq}}$ en fonction de $T_1$, $T_2$, $m_1$, $m_2$
+\end{enonce}
+
+\reponse{ $\frac {m_1 T_{1}+m_2 T_{2}}{m_1+m_2} $}
+
+\begin{corrige}
+On trouve  $T_{\text{eq}} = \frac {m_1 T_{1}+m_2 T_{2}}{m_1+m_2}$.
+\end{corrige}
+
+% ************************************** %
+
+
+
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+%               Question                 %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ %
+
+\begin{enonce}
+	En réalité, des pertes thermiques $Q$ sont observées durant l'évolution de la température. 
+	
+	La température $T_{ \text{eq}}$ vérifie alors l'équation suivante :
+	\[
+	m_1 c (T_{ \text{eq} } - T_1) + m_2 c (T_{\text{eq}} - T_2) = Q.
+	\]
+Déterminer $T_{\text{eq}}$ en fonction de $T_1$, $T_2$, $m_1$, $m_2$ et Q
+\end{enonce}
+
+\reponse{ $\frac {m_1 T_{1}+m_2 T_{2}}{m_1+m_2} + \frac {Q}{(m_1+m_2)c}$}
+\begin{corrige}
+On trouve $T_{\text{eq}} = \frac {m_1 T_{1}+m_2 T_{2}}{m_1+m_2} + \frac {Q}{(m_1+m_2)c}$.
+\end{corrige}
+
+% ************************************** %
+
+
+
+
+%=============================================================================== %
+\finEntrainement
+% =============================================================================== %
+
+
+
+
+
+
+
+
+
+% ---------------------------------------------------------------------------- %
+%                       Affichage des réponses mélangées                       %
+% ---------------------------------------------------------------------------- %
+\afficheReponsesMelangees
+% ---------------------------------------------------------------------------- %
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\finFicheEntrainement                                                                        %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% ======================================================= % 
+% ============== Gestion de la compilation ============== %
+% ======================================================= % 
+\ifdefined\mainIsLoaded\else
+\printReponsesEtCorriges
+\end{document}\fi
+% ======================================================= % 
+% ======================================================= % 

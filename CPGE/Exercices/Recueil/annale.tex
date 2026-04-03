@@ -1,0 +1,770 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][devoir]{Physique d'un igloo}
+\Annale[Physique TPC]{CCINP}{2022}
+
+Les habitants des régions polaires savent qu'un abri constitué de neige (quinzee, hutte, abri sous arbre, trou à neige, igloo, etc.) offre un rempart efficace contre le froid. Nous allons nous intéresser ici au cas de l'igloo (\Fig{igloo}).
+
+\begin{fig}[igloo]
+  \centering
+  \includegraphics[width=0.5\textwidth]{2023_02_15_ee84447f7a040ba485c7g-02.jpg}
+  \capt{
+  Un Igloo.
+  }
+\end{fig}
+
+\subsection{Généralités}
+On considère un matériau solide de section $S$, de longueur $L$, calorifugé latéralement et placé au contact parfait de deux sources de températures constantes $T_{1}$ et $T_{2}$ (\Fig{contact_thermique}). On note $T(x, t)$ la température d'une section d'abscisse $x$ du matériau.
+
+\begin{fig}[contact_thermique]
+  \centering
+  \includegraphics[width=0.5\textwidth]{2023_02_15_ee84447f7a040ba485c7g-02(1).jpg}
+  \capt{
+  Matériau au contact de deux sources thermiques.
+  }
+\end{fig}
+
+Le matériau est caractérisé par sa masse volumique $\rho$, sa capacité thermique massique $c$ et sa conductivité thermique $\lambda$.
+
+\parag{Régime variable}
+\begin{quest}
+  \item
+Donner une interprétation physique à la loi de Fourier exprimant le vecteur densité volumique de courant thermique selon :
+
+$$
+\vec{j}_{\text {th }}=-\lambda\, \overrightarrow{\operatorname{grad}}(T) .
+$$
+
+\sol{
+L'existence d'une inhomogénéité spatiale de température engendre un courant thermique s'opposant à cette inhomogénéité, et proportionnel au gradient de température avec une constante de proportionnalité $\lambda$ appelée conductivité thermique propre à un matériau. Ceci se résume sous l'écriture suivante de la loi de Fourier
+
+$$
+\vec{j}_{\text {th }}=-\lambda \overrightarrow{\operatorname{grad}}(T)
+$$
+}
+\item Montrer, à l'aide d'un bilan thermique infinitésimal unidimensionnel, que la température satisfait à l'équation différentielle:
+
+$$
+\rho c \frac{\partial T}{\partial t}=\lambda \frac{\partial^{2} T}{\partial x^{2}} .
+$$
+
+
+\sol{
+On effectue un bilan thermique entre les instants $t$ et $t+\mathrm{d} t$ sur une tranche de matériau comprise entre $x$ et $x+\mathrm{d} x$ :
+
+\begin{itemize}
+  \item la variation d'énergie interne est:
+\end{itemize}
+
+$$
+U(t+\mathrm{d} t)-U(t)=\mathrm{d} U=C \mathrm{~d} T=m c \mathrm{~d} T=(\rho \times S \mathrm{~d} x) c \mathrm{~d} T
+$$
+
+\begin{itemize}
+  \item le flux thermique (entrant et sortant par les faces de section $S$ ) est :
+\end{itemize}
+
+$$
+\phi_{\mathrm{th}} \mathrm{d} t=+j_{\mathrm{th}}(x, t) \times S \mathrm{~d} t-j_{\mathrm{th}}(x+\mathrm{d} x, t) \times S \mathrm{~d} x
+$$
+
+\begin{center}
+\includegraphics[width=0.7\textwidth]{2023_03_03_d6e8ecccdc3c373fd4b4g-02}
+\end{center}
+
+Ce qui donne le bilan suivant :
+
+$$
+\begin{aligned}
+\mathrm{d} U & =\phi_{\mathrm{th}} \mathrm{d} t \\
+\rho S \mathrm{~d} x c \mathrm{~d} T & =\left(j_{\mathrm{th}}(x, t)-j_{\mathrm{th}}(x+\mathrm{d} x, t)\right) S \mathrm{~d} t \\
+\rho c \frac{\partial T}{\partial t} & =-\frac{\partial j_{\mathrm{th}}}{\partial x}
+\end{aligned}
+$$
+
+puis en utilisant la loi de Fourier à une dimension : $j_{\text {th }}(x, t)=-\lambda \frac{\partial T}{\partial x}$
+
+$$
+\rho c \frac{\partial T}{\partial t}=\lambda \frac{\partial^{2} T}{\partial x^{2}} \quad \text { équation de la diffusion de la chaleur }
+$$
+
+}
+
+\item Déterminer l'unité de la grandeur $\tau=\frac{\rho c L^{2}}{\lambda}$ et préciser sa signification concrète.
+
+\sol{
+Les unités des différents termes sont
+
+\begin{itemize}
+  \item $\rho$ en $\mathrm{kg} \cdot \mathrm{m}^{-3}$
+
+  \item $c$ en $\mathrm{J}^{-1} \cdot \mathrm{kg}^{-1}$
+
+  \item $L$ en $\mathrm{m}$
+
+  \item $\lambda$ en $\mathrm{W} \cdot \mathrm{m}^{-1} \cdot \mathrm{K}^{-1}$ (à retrouver avec la loi de Fourier ou avec la légende de la figure 4)
+
+\end{itemize}
+
+On en déduit que comme attendu par la notation $: \tau=\frac{\rho c L^{2}}{\lambda}$ est un temps en second (s). II représente le temps caractéristique de diffusion thermique sur la longueur $L$ du matériau et peut être retrouvé en faisant une analyse d'ordre de grandeur dans l'équation de la chaleur.
+}
+\item Le phénomène de diffusion thermique peut-il être un processus réversible ? Justifier.
+
+\sol{
+ Le phénomène de diffusion thermique est un phénomène irréversible. Ceci peut être vu soit comme une conséquence du second principe de la thermodynamique, qui formule par exemple que la chaleur ne se déplace que des zones chaudes vers les zones froides; ou par la non-invariance de l'équation de la diffusion par inversion du temps : $t^{\prime} \mapsto-t$.
+
+}
+\end{quest}
+
+\parag{Régime stationnaire}
+On se place en régime stationnaire. On note $\Phi_{12}=\iint_{S} \vec{j}_{\text {th }} \cdot \overrightarrow{d S}$ le flux thermique traversant la section $S$ du solide, de la zone de température $T_{1}$ vers celle de température $T_{2}$. On appelle résistance thermique conductive $R_{\text {th }}$ la grandeur satisfaisant la loi d'Ohm thermique :
+
+$$
+T_{1}-T_{2}=R_{\mathrm{th}} \Phi_{12} \text {. }
+$$
+
+\begin{quest}
+\item Donner l'équation différentielle satisfaite par la température en régime stationnaire et en déduire l'expression de $T(x)$ en fonction de $x, T_{1}, T_{2}$ et de $L$.
+
+\sol{
+En régime stationnaire, l'équation se résume à
+
+$$
+\lambda \frac{\partial^{2} T}{\partial x^{2}}=0 \quad \Leftrightarrow \quad \frac{\partial^{2} T}{\partial x^{2}}=0
+$$
+
+donc $T(x)=A x+B$ avec $(A, B) \in \mathbb{R}^{2}$ deux constantes à déterminer. On utilise alors les conditions aux limites :
+
+$$
+\left\{\begin{array} { l }
+{ T ( x = 0 ) = T _ { 1 } = A \times 0 + B } \\
+{ T ( x = L ) = T _ { 2 } = A \times L + B }
+\end{array} \Leftrightarrow \left\{\begin{array}{l}
+B=T_{1} \\
+A=\frac{T_{2}-T_{1}}{L}
+\end{array}\right.\right.
+$$
+
+donc
+
+$$
+T(x)=T_{1}+\frac{T_{2}-T_{1}}{L} x
+$$
+}
+
+\item Déterminer l'expression littérale de $\Phi_{12}$. Que constate-t-on?
+\sol{
+Le flux thermique total à travers la section $S$ est :
+
+$$
+\begin{aligned}
+& \phi_{12}=\iint_{S} \vec{j}_{\mathrm{th}} \cdot \overrightarrow{\mathrm{d} S}=\iint_{S}-\lambda \frac{T_{2}-T_{1}}{L} \overrightarrow{u_{x}} \cdot \mathrm{d} S \overrightarrow{u_{x}}=-\lambda \frac{T_{2}-T_{1}}{L} S \\
+& \phi_{12}=\frac{\lambda S}{L}\left(T_{1}-T_{2}\right)
+\end{aligned}
+$$
+
+Le flux thermique total est directement proportionnel à la différence de température.
+}
+
+\item Montrer que la résistance thermique conductive du matériau vaut $R_{\mathrm{th}}=\frac{L}{\lambda S}$.
+
+\sol{
+On peut alors faire apparaître la résistance thermique par analogie avec la loi d'Ohm donnée par l'énoncé et identifier $R_{\text {th }}$
+
+$$
+\begin{aligned}
+T_{1}-T_{2} & =R_{\mathrm{th}} \phi_{12} \\
+R_{\mathrm{th}} & =\frac{L}{\lambda S}
+\end{aligned}
+$$
+
+}
+
+\end{quest}
+On souhaite faire une analogie entre les grandeurs électrocinétique et thermique en régime stationnaire. On note $V$ le potentiel électrique et $R$ la résistance électrique.
+
+\begin{quest}
+\item Reproduire le tableau suivant et le compléter en définissant, si nécessaire, les grandeurs non mentionnées par l'énoncé.
+
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+Électrocinétique & Thermique \\
+\hline
+$V_{1}-V_{2}$ &  \\
+\hline
+$R$ &  \\
+\hline
+ & $\Phi_{12}$ \\
+\hline
+ & 1 \\
+\hline
+\end{tabular}
+\end{center}
+
+\sol{
+L'analogie avec l'électrocinétique est la suivante
+
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+Grandeurs & Électrocinétique & Thermique \\
+\hline
+Différence de potentiel & $V_{1}-V_{2}$ & $T_{1}-T_{2}$ \\
+\hline
+Résistance & $R$ & $R_{\mathrm{th}}$ \\
+\hline
+Flux & $I$ & $\phi_{12}$ \\
+\hline
+Conductivité & $\gamma$ & $\lambda$ \\
+\hline
+\end{tabular}
+\end{center}
+}
+\end{quest}
+
+Lorsqu'un solide de température de surface $T_{s}$ et un fluide, dont la température loin du solide est notée $T_{f}$, sont en contact par le biais d'une surface d'aire $S^{\prime}$, on observe un transfert thermique entre le solide et le fluide. Le flux thermique résultant suit la loi de Newton du transfert conducto-convectif $\Phi_{\mathrm{sf}}=h\left(T_{s}-T_{f}\right) S^{\prime}$, où $h$ est appelé coefficient de transfert conducto-convectif.
+
+\begin{quest}
+\item Montrer que la résistance conducto-convective associée à la loi de Newton s'écrit :
+
+$$
+R_{\mathrm{cc}}=\frac{1}{h S^{\prime}} \text {. }
+$$
+\sol{
+Le transfert conducto-convectif se traduit par un flux thermique suivant la loi de Newton. Par une analogie directe, on peut l'écrire comme une loi d'Ohm thermique et identifier la résistance thermique.
+
+$$
+\phi_{s f}=h\left(T_{s}-T_{f}\right) S^{\prime} \quad \Leftrightarrow \quad T_{s}-T_{f}=\frac{1}{h S^{\prime}} \phi_{s f}
+$$
+
+donc
+
+$$
+R_{c c}=\frac{1}{h S^{\prime}}
+$$
+
+}
+\end{quest}
+
+\subsection{Bilan thermique d'un igloo}
+On modélise un igloo par un hémisphère (une demi-sphère) creux de rayon intérieur $r_{i}=1,5 \mathrm{~m}$, fabriqué à partir de blocs de neige de conductivité thermique $\lambda$ et d'épaisseur supposée constante et égale à $L=30 \mathrm{~cm}$ (\Fig{coupe_igloo}).
+
+\begin{fig}[coupe_igloo]
+  \centering
+  \includegraphics[width=0.5\textwidth]{2023_02_15_ee84447f7a040ba485c7g-04.jpg}
+  \capt{
+  Vue de l'igloo en coupe.
+  }
+\end{fig}
+
+\parag{Résistance conductive de l'igloo}
+Une étude expérimentale (\Fig{resistivite}) a permis de mesurer la conductivité thermique $\lambda$ de la neige en fonction de sa masse volumique $\rho$.
+
+\begin{fig}[resistivite]
+  \centering
+  \includegraphics[width=0.5\textwidth]{2023_02_15_ee84447f7a040ba485c7g-04(1).jpg}
+  \capt{
+  Conductivité thermique de la neige en fonction de la masse volumique.
+  }
+\end{fig}
+
+On note $R_{\text {th }}$ la résistance thermique conductive de l'igloo dont l'expression, admise, en géométrie sphérique est :
+
+$$
+R_{\mathrm{th}}=\frac{L}{2 \pi \lambda r_{i}\left(r_{i}+L\right)} .
+$$
+\begin{quest}
+  \item
+ À partir de la \Fig{resistivite}, préciser si le fait de bien tasser les blocs de neige améliore ou non l'isolation de l'igloo.
+ \sol{
+ Dans les expressions précédentes comme dans l'expression donnée ici, la résistance thermique est inversement proportionnelle à la conductivité thermique : $R_{\mathrm{th}} \propto \frac{1}{\lambda}$. On observe sur le graphique que la conductivité thermique $\lambda$ augmente avec la masse volumique $\rho$ de la neige. Donc si la neige est plus tassée, sa masse volumique augmente, ce qui augmente sa conductivité thermique et diminue alors sa résistance thermique : l'igloo est moins bien isolé. Il est donc préférable de ne pas tasser les blocs de neige pour avoir un igloo mieux isolé.
+
+ }
+
+\item Pour une neige de masse volumique $\rho=20 \cdot 10^{1} \mathrm{~kg} \cdot \mathrm{m}^{-3}$, estimer la valeur de la conductivité thermique correspondante et calculer la résistance thermique $R_{\text {th }}$.
+\sol{
+Pour $\rho=200 \mathrm{~kg} \cdot \mathrm{m}^{-3}$, on lit sur le graphique $: \lambda \simeq 0,14 \mathrm{~W} \cdot \mathrm{m}^{-1} \cdot \mathrm{K}^{-1}$. La résistance thermique est alors de $R_{\text {th }} \simeq$ $0,13 \mathrm{~K}\mathrm{W}^{-1}$
+
+}
+\end{quest}
+
+\parag{Prise en compte de la conducto-convection}
+La circulation de l'air provoque de la conducto-convection que l'on prend en compte par le biais de résistances conducto-convectives intérieure $R_{\mathrm{cc} \text {,int }}=\frac{1}{h_{i} S_{i}}$ et extérieure $R_{\mathrm{cc}, \mathrm{ext}}=\frac{1}{h_{e} S_{e}}$. Dans ces expressions, $h_{i}$ et $h_{e}$ sont les coefficients de transfert conducto-convectifs intérieur et extérieur tandis que $S_{i}$ et $S_{e}$ correspondent aux surfaces intérieure et extérieure de l'igloo.
+
+On envisage deux modèles d'association des résistances thermiques précédentes, en parallèle ou en série (\Fig{circuit_thermique}).
+
+\begin{fig}[circuit_thermique]
+  \centering
+  \begin{subfig}[paral][0.48]
+    \includegraphics[width=0.6\textwidth]{2023_02_15_ee84447f7a040ba485c7g-05.jpg}
+  \end{subfig}
+  \begin{subfig}[serie][0.48]
+    \includegraphics[width=\textwidth]{2023_02_15_ee84447f7a040ba485c7g-05(1).jpg}
+  \end{subfig}
+  \capt{(a)
+  Modèle en parallèle
+  .
+(b)
+Modèle en série
+  }
+\end{fig}
+\begin{center}
+\end{center}
+
+
+
+% Figure 5 - Circuits équivalents
+
+\begin{quest}
+  \item
+ Préciser, en justifiant votre choix, quel modèle convient.
+ \sol{
+ Le modèle adapté pour modéliser les phénomènes de conduction et de conducto-convection ici est celui des résistances en série. En effet, les différents phénomènes se font « en série » / « à la suite » par différentes couches de transfert thermique, et avec des température de bords différentes qui ne pourraient correspondre à un modèle en dérivation.
+
+ \begin{center}
+ \includegraphics[width=0.7\textwidth]{2023_03_03_d6e8ecccdc3c373fd4b4g-04(2)}
+ \end{center}
+ }
+\item Déterminer, pour le modèle choisi, l'expression littérale de la résistance thermique équivalente $R_{\text {igloo }}$ en fonction de $\lambda, h_{e}, h_{i}, L$ et de $r_{i}$.
+
+\sol{
+La résistance thermique équivalente est donc:
+
+$$
+R_{\mathrm{igloo}}=R_{\mathrm{cc}, \mathrm{int}}+R_{\mathrm{th}}+R_{\mathrm{cc,ext}}=\frac{1}{h_{i} S_{i}}+\frac{L}{2 \pi \lambda L\left(r_{i}+L\right)}+\frac{1}{h_{e} S_{e}}
+$$
+
+avec les surfaces des hémisphères : $S_{i}=2 \pi r_{i}^{2}$ et $S_{e}=2 \pi\left(r_{i}+L\right)^{2}$
+
+$$
+R_{\text {igloo }}=\frac{1}{2 \pi h_{i} r_{i}^{2}}+\frac{L}{2 \pi \lambda L\left(r_{i}+L\right)}+\frac{1}{2 \pi h_{e}\left(r_{i}+L\right)^{2}}
+$$
+}
+
+
+\item Cette modélisation ne tient pas compte d'un autre mode de transfert thermique. De quel mode s'agit-il ? Si l'on souhaitait en tenir compte, la résistance thermique associée devrait-elle être placée en série ou en parallèle de celles de conducto-convection ?
+\sol{
+Cette modélisation ne tient pas compte du rayonnement thermique. Ce mode de transfert se fait dans les milieux transparents (ici l'air) sans support matériel, donc en parallèle de la convection. La résistance thermique associée devrait donc être placée en parallèle de celles de la conducto-convection (et donc augmenter effectivement le flux thermique total).
+}
+
+\end{quest}
+%
+% \section{II.3 - Température intérieure de l'igloo}
+% Pour étudier le comportement thermique de l'igloo, on propose un modèle électrique analogue représenté sur la figure 6. Ce modèle tient compte du sol sur lequel repose l'igloo et de la puissance thermique dégagée par ses occupants. On note $T_{\text {sol }}$ la température du sol, $R_{\text {sol }}$ sa résistance thermique et $P$ la puissance thermique dégagée par les occupants de l'igloo qui, du point de vue électrique, est analogue à un générateur de courant. La représentation électrique de l'ensemble est donnée sur la figure 6.
+%
+% \begin{center}
+% \includegraphics[width=0.5\textwidth]{2023_02_15_ee84447f7a040ba485c7g-05(2).jpg}
+% \end{center}
+%
+% Figure 6 - Modèle électrique complet de l'igloo
+%
+% Q15. Montrer que la température intérieure de l'igloo vaut :
+%
+% $$
+% T_{\text {int }}=\frac{P R_{\text {igloo }} R_{\text {sol }}+T_{\text {ext }} R_{\text {sol }}+T_{\text {sol }} R_{\text {igloo }}}{R_{\text {igloo }}+R_{\text {sol }}} .
+% $$
+%
+% Les personnes se trouvant à l'intérieur de l'igloo dégagent une puissance thermique $P=30 \cdot 10^{1} \mathrm{~W}$. La température extérieure vaut $T_{\text {ext }}=-40^{\circ} \mathrm{C}$, celle du sol vaut $T_{\text {sol }}=-20^{\circ} \mathrm{C}$ et les résistances thermiques valent $R_{\text {igloo }}=0,15 \mathrm{~K} \cdot \mathrm{W}^{-1}$ et $R_{\mathrm{sol}}=1,3 \mathrm{~K} \cdot \mathrm{W}^{-1}$.
+%
+% Q16. Calculer la température intérieure $T_{\text {int }}$ de l'igloo.
+%
+% Q17. On peut lire sur la page Wikipedia consacrée aux igloos que " Dans certains igloos, notamment ceux près du détroit de Davis, l'intérieur est quadrillé de peaux de bêtes : cela permet d'augmenter la température de presque $20{ }^{\circ} \mathrm{C}$. "
+%
+% Sachant que, lorsque les parois intérieures de l'igloo sont recouvertes de peaux, la résistance thermique de l'igloo augmente de moitié, estimer la nouvelle température intérieure et conclure.
+%
+% \section{II.4 - Influence des conditions météorologiques sur la température dans l'igloo}
+% On s'intéresse à l'effet du vent sur la température intérieure de l'igloo. Une étude expérimentale a permis d'établir l'influence du nombre de Reynolds sur la valeur du coefficient de conducto-convection pour un écoulement d'air autour d'une sphère (figure 7).
+%
+% \begin{center}
+% \includegraphics[width=0.5\textwidth]{2023_02_15_ee84447f7a040ba485c7g-06.jpg}
+% \end{center}
+%
+% Figure 7 - Coefficient de conducto-convection $h$ en fonction du nombre de Reynolds $R e$, d'un écoulement d'air autour d'une sphère
+%
+% On note $\eta=19 \cdot 10^{-6} \mathrm{Pl}$ le coefficient de viscosité dynamique de l'air et $\mu=1,3 \mathrm{~kg} \cdot \mathrm{m}^{-3}$ sa masse volumique.
+%
+% Q18. Sachant que la vitesse moyenne du vent polaire est de $70 \mathrm{~km} \cdot \mathrm{h}^{-1}$ et que les rafales de vent peuvent atteindre les $20 \cdot 10^{1} \mathrm{~km} \cdot \mathrm{h}^{-1}$, justifier, par un calcul en ordre de grandeur, que ces rafales n'ont pas d'effet sur la température intérieure de l'igloo.
+
+\subsection{Aération de l'igloo}
+On assimile l'air à un fluide parfait en écoulement stationnaire, homogène et incompressible. On note $v$ la vitesse de l'air dans l'écoulement, $p$ sa pression et $\mu$ sa masse volumique. Une simulation a permis d'obtenir le tracé des lignes de champ des vitesses de l'écoulement de l'air autour de l'igloo (\Fig{aeration_igloo}).
+
+\begin{fig}[aeration_igloo]
+  \centering
+  \includegraphics[width=0.5\textwidth]{2023_02_15_ee84447f7a040ba485c7g-07.jpg}
+  \capt{
+  Lignes de champ des vitesses autour d'un igloo hémisphérique.
+  }
+\end{fig}
+
+\begin{quest}
+  \item
+ Que peut-on dire de la vitesse de l'air au point $A$ ?
+ \sol{
+ Le point $A$ est manifestement un point d'arrêt. Pour un écoulement parfait, le champ des vitesse à une interface entre le fluide en écoulement et un obstacle solide doit être parallèle à l'interface. Or les lignes de courant suggèrent que que la vitesse en $A$ serait orthogonale à la surface. Donc on peut considérer que $v_{A}=0$.
+
+ \begin{center}
+ \includegraphics[width=0.8\textwidth]{2023_03_03_d6e8ecccdc3c373fd4b4g-05}
+ \end{center}
+ }
+
+\item Quelle propriété de l'écoulement permet d'affirmer qu'il y a conservation du flux des vitesses à travers toute section d'un tube de champ de l'écoulement?
+\sol{
+L'écoulement est incompressible, donc le flux des vitesses à travers toute section d'un tube de courant est conservé.
+
+$$
+\text { écoulement incompressible } \Leftrightarrow \operatorname{div}(\vec{v})=0 \quad \Leftrightarrow \oiint \vec{v} \cdot \overrightarrow{\mathrm{d} S}=0
+$$
+}
+
+\item En déduire qualitativement, à l'aide de la \Fig{aeration_igloo}, le classement relatif des vitesses $v_{A}, v_{B}$ et $v_{C}$ de l'écoulement de l'air aux points $A, B$ et $C$.
+\sol{
+On déduit de la propriété précédente que plus les lignes de courants sont resserrées, plus la vitesse de l'écoulement est élevée. On observe sur la figure 8 que les lignes de courants sont plus resserrées en $B$ qu'en $C$ (et plus qu'au point $A$ ). On en déduit donc que :
+
+$$
+v_{B}>v_{C}>v_{A}=0
+$$
+}
+
+\item Justifier que la quantité $p+\frac{1}{2} \mu v^{2}$ est constante le long d'une ligne de courant. Montrer alors que $p_{B}<p_{C}$.
+\sol{
+On admet la relation de Bernoulli en supposant les variations d'énergie de pesanteur négligeable : la quantité $p+\frac{1}{2} \mu v^{2}$ est constante le long d'une ligne de champ. Alors puisque $v_{B}>v_{C}$, il vient que $p_{B}<p_{C}$ si la quantité est conservée.
+}
+
+\end{quest}
+
+Pour améliorer le confort thermique, il est fréquent d'abaisser l'entrée de l'igloo en y creusant une " fosse à froid " et de surélever la zone de couchage (\Fig{fosse_froid}).
+
+\begin{fig}[fosse_froid]
+  \centering
+  \includegraphics[width=0.5\textwidth]{2023_02_15_ee84447f7a040ba485c7g-07(1).jpg}
+  \capt{
+  Fosse à froid et zone de couchage.
+  }
+\end{fig}
+
+\begin{quest}
+  \item
+ En assimilant l'air à un gaz parfait, exprimer sa masse volumique $\mu$ en fonction de la température $T$, de la masse molaire $M$, de la pression $p$ et de la constante des gaz parfaits $R$. Conclure quant à la pertinence de ces dénivellations.
+ \sol{
+ On assimile l'air à un gaz parfait. On peut alors écrire à partir de l'équation d'état des gaz parfaits
+
+$$
+\begin{aligned}
+p V & =n R T \quad \text { avec } n \text { la quantité de matière et } R \text { la constante des gaz parfaits } \\
+\text { on a } \quad n & =\frac{m}{M} \quad \text { avec } m \text { la masse et } M \text { la masse molaire } \\
+\text { et } \quad m & =\mu \times V \quad \text { avec } \mu \text { la masse volumique } \\
+\text { donc } \quad P V & =\frac{\mu V}{M} R T
+\end{aligned}
+$$
+
+d'où
+
+$$
+\mu=\frac{M}{R T} p
+$$
+
+À partir de cette expression, on peut raisonner en remarquant que l'air froid ( $T$ faible) est plus dense ( $\mu$ élevé) et peut « tomber » et rester piégé dans la fosse à froid. À l'inverse, surélever la zone de couchage permet d'être dans une zone d'air moins dense correspondant à une température plus élevée.
+}
+
+\item L'aération de l'igloo se fait à l'aide d'une ouverture pratiquée dans la partie basse de l'igloo au point $C$, plutôt qu'en haut au point $B$ (\Fig{fosse_froid}). Expliquer pourquoi.
+\sol{
+Si on tente de réaliser l'aération de l'igloo par le point $B$ situé au sommet, l'air s'échapperait par effet Venturi (puisque la pression $p_{B}$ est faible). Or cet air est le plus chaud dans l'igloo car l'air chaud est le moins dense. II est préférable de garder une poche d'air chaud dans l'igloo.
+}
+\end{quest}
+
+\subsection{Prospection électromagnétique en Antarctique}
+L'Antarctique, continent situé autour du pôle Sud, est recouvert à $98 \%$ d'une couche de glace pouvant atteindre 4000 mètres d'épaisseur. C'est pourquoi la morphologie de son sous-sol reste encore peu connue, voire inconnue.
+
+La prospection électromagnétique est dès lors un outil très utile pour l'étude des sols et est actuellement largement utilisée pour étudier l'Antarctique.
+
+\parag{La prospection électrique}
+% \section{Document 1 - Principe de la prospection électrique}
+La prospection électrique repose essentiellement sur l'interprétation de la résistivité électrique $\rho$ d'un terrain. Sachant que l'on ne peut pas procéder à cette mesure en laboratoire sur un échantillon prélevé sur le terrain et sorti de son environnement, il est nécessaire de la réaliser in situ (\Fig{prospection}).
+
+On dispose en $A$ une électrode parcourue par un courant I stationnaire qui se répartit uniformément dans le sol. Une contre-électrode placée en B permet de recueillir ce courant.
+
+C'est par la mesure d'une différence de potentiel d'une part et d'une intensité d'autre part que l'on accède à la valeur de cette résistivité.
+\begin{fig}[prospection]
+  \centering
+  \includegraphics[width=0.5\textwidth]{2023_02_15_ee84447f7a040ba485c7g-08.jpg}
+  \capt{
+  Principe de la prospection électrique.
+  }
+\end{fig}
+
+% Dubois Diament Cogné (2011), Géophysique, DUNOD
+
+On assimile le sol à un milieu conducteur de conductivité électrique $\gamma$, qui est donc par définition de résistivité $\rho=1/\gamma$.
+
+On modélise l'électrode en $A$ par le schéma de la \Fig{electrodes}. Dans le sol, on suppose que le vecteur densité volumique de courant en un point $\mathrm{M}$ placé à une distance $r$ de $A$ est de la forme $\vec{j}(\mathrm{M})=j(r) \overrightarrow{u_{r}}$ en coordonnées sphériques (\Fig{electrodes}).
+
+\begin{fig}[electrodes]
+  \centering
+  \includegraphics[width=0.5\textwidth]{2023_02_15_ee84447f7a040ba485c7g-08(1).jpg}
+  \capt{
+  Électrode au point $A$ .
+  }
+\end{fig}
+
+\begin{quest}
+  \item   Rappeler l'équation locale de conservation de la charge reliant $\vec{j}(\mathrm{M})$ à la densité volumique de charges $\mu(M)$. Simplifier cette équation en régime stationnaire. Comment peut-on alors qualifier le champ $\vec{j}(\mathrm{M}) ?$
+
+\sol{
+Équation locale de conservation de la charge :
+
+$$
+\frac{\partial \mu}{\partial t}+\operatorname{div}(\vec{j})=0
+$$
+
+avec $\mu$ la densité volumique de charges et $\vec{j}$ la densité volumique de courants.
+
+Dans le cas stationnaire cette équation se résume à
+
+$$
+\operatorname{div}(\vec{j})=0
+$$
+
+ce qui permet alors de dire que le champ $\vec{j}$ est à flux conservatif.
+
+}
+\item Montrer alors que $j(r)=\frac{I}{2 \pi r^{2}}$, avec $I$ l’intensité du courant.
+
+\sol{
+Calculons le flux total de $\vec{j}$ à travers une sphère de rayon $r$ centrée en $A$. Dans le sol, la densité de courant se répartit uniformément sur la demi-sphère car on écrit $\vec{j}(M)=j(r) \overrightarrow{u_{r}}$ en coordonnées sphériques. De l'autre côté, le flux total entrant (donc négatif) est le courant $I$.
+
+II vient :
+
+$$
+\begin{aligned}
+\oiint \vec{j} \cdot \overrightarrow{\mathrm{d} S} & =\iint_{\mathrm{sol}} \vec{j} \cdot \overrightarrow{\mathrm{d} S}+\iint_{\mathrm{air}} \vec{j} \cdot \overrightarrow{\mathrm{d} S} \\
+& =+j(r) \times 2 \pi r^{2}-I \\
+\text { et } \oiint \vec{j} \cdot \overrightarrow{\mathrm{d} S} & =0
+\end{aligned}
+$$
+
+car $\vec{j}$ est à flux conservatif. On a donc
+
+$$
+j(r)=\frac{I}{2 \pi r^{2}}
+$$
+
+\begin{center}
+\includegraphics[width=0.7\textwidth]{2023_03_03_d6e8ecccdc3c373fd4b4g-06}
+\end{center}
+}
+
+\item À l'aide de la loi d'Ohm locale que l'on rappellera, établir l'expression du champ électrique $\vec{E}(M)$.
+
+\sol{
+La loi d'Ohm local dans un conducteur ohmique de conductivité électrique $\gamma$ est :
+
+$$
+\vec{j}=\gamma \vec{E}
+$$
+
+donc ici le champ électrique a pour expression :
+
+$$
+\vec{E}=\frac{I}{2 \pi \gamma r^{2}} \overrightarrow{u_{r}}
+$$
+
+}
+
+\item En déduire que le potentiel au point $M$, dû à la présence de l'électrode en $A$, est donné par $V_{\mathrm{A}}(\mathrm{M})=\frac{\rho I}{2 \pi r}$, en choisissant le potentiel à l'infini nul.
+
+\sol{
+Le potentiel électrostatique $V$ est défini à partir du champ électrique par
+
+$$
+\vec{E}=-\overrightarrow{\operatorname{grad}}(V)
+$$
+
+On en déduit l'expression suivante :
+
+$$
+\begin{aligned}
+& \vec{E} \cdot \overrightarrow{u_{r}}=-\frac{\mathrm{d} V}{\mathrm{~d} r} \\
+& -\frac{\mathrm{d} V}{\mathrm{~d} r}=\frac{I}{2 \pi \gamma r^{2}} \\
+& \text { d'où } V(r)=\frac{I}{2 \pi \gamma r}+\text { constante } \\
+& \text { et on choisit } \quad V(r \rightarrow \infty)=0=\text { constante } \\
+& \text { donc } V(r)=\frac{I}{2 \pi \gamma r}=\frac{\rho I}{2 \pi r}
+\end{aligned}
+$$
+
+en notant $\rho=\frac{1}{\gamma}$ la résistivité électrique.
+
+
+}
+
+\end{quest}
+La contre-électrode placée dans le sol en B permet de recueillir le courant injecté en A et de fermer le circuit électrique (\Fig{deux_electrodes}).
+\begin{fig}[deux_electrodes]
+  \centering
+  \includegraphics[width=0.5\textwidth]{2023_02_15_ee84447f7a040ba485c7g-09.jpg}
+  \capt{
+  Deux électrodes placées en $A$ et $B$.
+  }
+\end{fig}
+
+\begin{quest}
+  \item  Par analogie, établir l'expression du potentiel $V_{B}(M)$ créé en $M$ par l'électrode placée au point $B$. En déduire que le potentiel résultant au point $M$ s'écrit : $V(M)=\frac{\rho I}{2 \pi}\left[\frac{1}{r_{\mathrm{A}}}-\frac{1}{r_{\mathrm{B}}}\right]$, avec $r_{\mathrm{A}}$ et $r_{\mathrm{B}}$
+  les distances respectivement $AM$ et $BM$.
+  \sol{
+  La contre électrode placée en $B$ agit exactement de la même façon que l'électrode placée en $A$, avec un courant de sens opposé. On peut donc utiliser les expressions précédentes en remplaçant $I$ par $-I$. Les potentiels électriques en un point $M$ sont :
+
+  $$
+  V_{A}(M)=\frac{\rho I}{2 \pi r_{A}} \quad \text { et } \quad V_{B}(M)=\frac{-\rho I}{2 \pi r_{B}}
+  $$
+
+  Par additivité, le potentiel résultant au point $M$ est :
+
+  $$
+  V(M)=V_{A}(M)+V_{B}(M)=\frac{\rho I}{2 \pi}\left(\frac{1}{r_{A}}-\frac{1}{r_{B}}\right)
+  $$
+
+  }
+
+\end{quest}
+
+Lors d'une expérience sur le terrain, on injecte du courant dans le sol grâce à une batterie ou à un groupe électrogène relié aux deux électrodes $A$ et $B$ plantées dans le sol. On lit l'intensité du courant injecté sur un ampèremètre. On mesure des différences de potentiel sur le sol entre deux points $M$ et $N$ grâce à un voltmètre et deux autres électrodes plantées dans le sol (\Fig{quatre_electrodes}).
+
+\begin{fig}[quatre_electrodes]
+  \centering
+  \includegraphics[width=0.5\textwidth]{2023_02_15_ee84447f7a040ba485c7g-09(1).jpg}
+  \capt{
+  Montage à quatre électrodes.
+  }
+\end{fig}
+
+On pose $\Delta V=V(\mathrm{M})-V(\mathrm{N})$ la différence de potentiel entre les points $\mathrm{M}$ et $\mathrm{N}$.
+
+
+
+\begin{quest}
+  \item
+  Montrer que la résistivité du sol s'écrit alors :
+
+  $$
+  \rho=\frac{2 \pi}{f} \frac{\Delta V}{I},
+  $$
+
+  où $f$ correspond au facteur géométrique du montage à exprimer en fonction des distances AM, BM, AN et BN.
+
+  \sol{
+  La différence de potentiel entre les points $M$ est $N$ est :
+
+  $$
+  \begin{aligned}
+  \Delta V & =V(M)-V(N) \\
+  & =\frac{\rho I}{2 \pi}\left(\frac{1}{r_{A}(M)}-\frac{1}{r_{B}(M)}\right)-\frac{\rho I}{2 \pi}\left(\frac{1}{r_{A}(N)}-\frac{1}{r_{B}(N)}\right) \\
+  & =\frac{\rho I}{2 \pi}\left(\frac{1}{A M}-\frac{1}{B M}-\frac{1}{A N}+\frac{1}{B N}\right)
+  \end{aligned}
+  $$
+
+  donc en faisant apparaître un facteur géométrique $f$ lié aux distances, il vient
+
+  $$
+  \rho=\frac{2 \pi}{f} \frac{\Delta V}{I} \quad \text { avec } \quad f=\frac{1}{A M}-\frac{1}{B M}-\frac{1}{A N}+\frac{1}{B N}
+  $$
+  }
+
+  \item
+ Montrer que le plan contenant la médiatrice du segment $A B$ est une surface équipotentielle de potentiel nul.
+ \sol{
+ Pour tous les points $K$ appartenant au plan médiateur du segment $A B$, c'est-à-dire tels que $A K=B K$, on a:
+
+ $$
+ V(K)=\frac{\rho I}{2 \pi}\left(\frac{1}{A K}-\frac{1}{B K}\right)=0
+ $$
+
+ Ce plan est donc une surface équipotentielle de potentiel nul.
+
+ On peut également le justifier avec des propriétés de symétrie en électrostatique.
+
+ }
+\end{quest}
+
+La \Fig{equiV} représente quelques courbes équipotentielles d'un sol homogène pour un courant injecté à l'électrode $I=100 \mathrm{~mA}$. Les équipotentielles à $-0,02 \mathrm{~V}$ et à $+0,02 \mathrm{~V}$ sont repérées sur la figure. Les zones noires de potentiels extrémaux correspondent à la position des électrodes A et B.
+
+\begin{fig}[equiV]
+  \centering
+  \includegraphics[width=0.7\textwidth]{2023_02_15_ee84447f7a040ba485c7g-10.jpg}
+  \capt{
+  Carte des équipotentielles, courant $100 \mathrm{~mA}$, résistivité homogène.
+  }
+\end{fig}
+
+\begin{quest}
+  \item
+   D'après cette carte, estimer la valeur de la résistivité de ce sol. Conclure sur la nature du milieu grâce aux données du tableau suivant.
+   \sol{
+   On s'appuie sur la carte de potentiel fournie (figure 14), et sur les deux lignes équipotentielles données à $\pm 0,02 \mathrm{~V}$. On prend alors pour points $M$ et $N$ la position des ces lignes pour la profondeur zéro.
+
+   On a alors $\Delta V=2 \times 0,02=0,04 \mathrm{~V}$. Le courant est $I=100 \mathrm{~mA}$. Le distances sont : $A M \simeq B N \simeq 20 \mathrm{~m}$ et $A N \simeq B M \simeq 40 \mathrm{~m}$. Ceci nous permet de calculer le facteur géométrique. On trouve finalement :
+
+   $$
+   \rho=\frac{2 \pi}{f} \frac{\Delta V}{I} \simeq 50 \Omega . m
+   $$
+
+   On peut supposer par exemple que ce sol est fait de calcaires (voir tableau).
+
+   Plusieurs matériaux pourraient correspondre ici.
+
+   }
+\end{quest}
+
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+Eaux ou roches & Résistivité $(\SI{}{\Omega.m})$ \\
+\hline
+Eau de mer & 0,2 \\
+\hline
+Eau de nappes & $10-30$ \\
+\hline
+Eau de sources & $1000-10000$ \\
+\hline
+Sables et graviers secs & $50-500$ \\
+\hline
+Sables et graviers imbibés d'eau douce & $2-20$ \\
+\hline
+Sables et graviers imbibés d'eau salée & $300-10000$ \\
+\hline
+Argiles & $50-300$ \\
+\hline
+Marnes & $300-10000$ \\
+\hline
+Calcaires & $20-100$ \\
+\hline
+Grès argileux & $300-10000$ \\
+\hline
+Grès, quartzites & $0,5-5$ \\
+\hline
+Cinérites, tufs volcaniques & $100-300$ \\
+\hline
+\end{tabular}
+\end{center}
+
+Dans le cas d'un sol inhomogène, on qualifie la résistivité de résistivité apparente $\rho_{a}$. La connaissance du facteur géométrique d'une part et la mesure de $\Delta \mathrm{V}$ et I d'autre part permettent alors de tracer des cartes de résistivités apparentes exploitables en géologie.
+
+\begin{fig}[sol]
+  \centering
+  \includegraphics[width=0.5\textwidth]{2023_02_15_ee84447f7a040ba485c7g-11.jpg}
+  \capt{
+  Résistivité apparente pour un segment A-B petit et grand.
+  }
+\end{fig}
+
+\begin{quest}
+  \item D'après la \Fig{sol}, un géologue souhaitant sonder le sol en forte profondeur doit-il utiliser une grande distance A-B entre les électrodes ou une faible distance ? Peut-il conserver cette distance pour sonder le sol en surface seulement?
+  \sol{
+  La figure 15 donnée n'est pas très explicite sur ce qu'elle signifie. On suppose que le premier graphique est un tracé de la résistivité apparente $\rho_{a}$ en fonction de la distance d'exploration, pour deux distances $A-B$ utilisée; et que sont reportées horizontalement les valeurs de résistivité de trois types de sols.
+
+  Le second graphique semble être un schéma des couches géologiques du sous-sols déduites de ces mesures.
+
+  En regardant la correspondance des motifs, il semblerait qu'une grande distance $A-B$ soit plus adaptée pour sonder le sol profond (frontière entre les couches (2) et (3)), mais qu'une distance $A-B$ faible soit plus adaptée pour sonder le sol en surface seulement (frontière entre (1) et (2)).
+  }
+\end{quest}
+
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

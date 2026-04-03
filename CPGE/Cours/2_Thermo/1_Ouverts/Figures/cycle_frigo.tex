@@ -1,0 +1,72 @@
+﻿\input{tikz.tex}
+\begin{document}
+\def\leng{1.5}
+\def\heigh{4}
+\begin{tikzpicture}[>=latex,scale=0.6]
+
+
+
+    \begin{scope}[yscale=-1]
+        
+        \draw[lowp,midarrow] (0,0) -- ++ (0,-\heigh-0.5)  ++ (-0.5,0.2) coordinate (B) node[below=0.5, right=0.5] {$p_1$};
+        \draw (B) -- ++ (2.5,-1) -- ++ (0,-2)  -- ++ (-0.5,-0.2) coordinate (C)  -- ++ (-2,-0.8) -- cycle  node[midway,above,sloped]{compresseur} ;
+        \draw[highp,midarrow] (C) node[above right=0.25] {$p_2$} -- ++ (0,-\heigh-0.5) coordinate (Rc);
+    \end{scope}
+
+    \begin{scope}[rotate=-180]
+        \fill[warrow] ($(C)+(-1.25,1)$)   -- ++ (1,0) -- ++(0,-0.25) -- ++ (0.5,0.5)-- ++ (-0.5,0.5) -- ++ (0,-0.25) -- ++ (-1,0) -- cycle node[midway,right=0.1, JoliJaune] {$w_u$} ;
+    \end{scope}
+
+    % hot source
+    \def\hot{($(Rc)+(-1.75*\leng,\heigh)$) -- ++ (0,-1.5*\heigh) -- ++ (5*\leng,0) coordinate (HN) --++(5*\leng,0) -- ++ (0,1.5*\heigh)}
+    \fill[Qc,opacity=0.1,draw opacity=0] \hot -- cycle;
+    \draw[Qc] \hot;
+
+
+   
+
+    \begin{scope}[xscale=-1,xshift=-10cm]
+        \draw[lowp,midarrow] (0,0) coordinate (O) --  (2*\leng,0) coordinate (B');
+        \draw (B') -- ++ (0,1) -- ++ (4,0) node[midway,above]{évaporateur} -- ++ (0,-1) coordinate (C') -- ++ (0,-1) -- ++ (-2,0) coordinate (CE) -- ++ (-2,0)  -- cycle;
+        \draw[lowp,midarrow] (C') -- ++ (2*\leng,0);
+        \draw (B')  -- ++ (0.5,0) -- ++ (0.25,0.5) -- ++ (0.5,-1) -- ++ (0.5,1) -- ++ (0.5,-1) -- ++ (0.5,1) -- ++ (0.5,-1) -- ++  (0.25,0.5) --  (C') ;
+    \end{scope}
+
+   
+
+    \begin{scope}[xshift=1.5cm,yshift=7cm]
+        \draw[highp,midarrow] (Rc) -- ++ (2*\leng,0) coordinate (B'');
+        \draw (B'') -- ++ (0,1) -- ++ (2,0) coordinate (CM) -- ++(2,0) -- ++ (0,-1) coordinate (C'') -- ++ (0,-1) -- ++ (-4,0) node[midway,below]{condenseur}  -- cycle;
+        \draw[highp,midarrow] (C'') -- ++ (2*\leng,0) coordinate (E'') ;
+        \draw (B'')  -- ++ (0.5,0) -- ++ (0.25,0.5) -- ++ (0.5,-1) -- ++ (0.5,1) -- ++ (0.5,-1) -- ++ (0.5,1) -- ++ (0.5,-1) -- ++  (0.25,0.5) --  (C'') ;
+    \end{scope}
+
+      % heat hot source
+      \begin{scope}[rotate=90]
+        \fill[hotq] (CM) ++ (-0.25,-0.25)   -- ++ (1,0) -- ++(0,-0.25) -- ++ (0.5,0.5) -- ++ (-0.5,0.5)  -- ++ (0,-0.25)   -- ++ (-1,0) node[pos=0.1,right=0.5, JoliRouge] {$q_c$}  -- cycle;
+    \end{scope}
+
+        \begin{scope}[rotate=-90]
+            \draw[highp,midarrow] (E'') -- ++ (\heigh,0) coordinate (Bp) node[above right=0.25] {$p_2$};
+            \draw (Bp) -- ++ (0,1) -- ++ (4,-2) -- ++ (0,1) coordinate (Cp) -- ++ (0,1) -- ++ (-4,-2)  node[pos=0.85,right=1.2,rotate=-90]{détendeur}  -- cycle;
+            \draw[lowp,midarrow] (Cp) node[below right=0.25] {$p_1$} -- ++ (\heigh,0) coordinate (Ep) ;
+            \draw[lowp] (Ep) -- (O);
+        \end{scope}
+
+    
+    % cold source
+    \def\cold{($(Ep)+(1.5*\leng,-\heigh)$) -- ++ (0,1.5*\heigh) -- ++ (-5*\leng,0) coordinate (CN) -- ++ (-5*\leng,0) -- ++ (0,-1.5*\heigh)}
+    \fill[Qf,opacity=0.1,draw opacity=0] \cold -- cycle;
+    \draw[Qf] \cold;
+        
+    % heat cold source
+    \begin{scope}[rotate=90]
+    \fill[coldq] (CE) ++ (-1.25,-0.25)   -- ++ (1,0) -- ++(0,-0.25) -- ++ (0.5,0.5) -- ++ (-0.5,0.5)  -- ++ (0,-0.25)   -- ++ (-1,0)  node[midway,right=0.4, JoliBleu] {$q_f$} -- cycle  ;
+    \end{scope}
+
+    \node[JoliBleu] at ($(CN)+(0,-1.25*\heigh)$) {\textsc{source froide}};
+    \node[JoliRouge] at ($(HN)+(0,1.25*\heigh)$) {\textsc{source chaude}};
+
+
+\end{tikzpicture}
+\end{document}

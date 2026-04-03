@@ -1,0 +1,16 @@
+\input{/home/eb/Dropbox/texmf/tex/latex/Preambles/tikz.tex}
+\begin{document}
+
+\begin{tikzpicture}[scale=1.2]
+
+	\draw[axe] (0,0) -- ++ (5,0) node[right] {$t$};
+	\draw[axe] (0,-2) -- ++ (0,4) node[above] {$s(x,t)$};
+	\draw[JoliRouge,dashed] plot[domain=0:5,samples=200] (\x,{exp(-(\x-2.5)^2)});
+	\draw[JoliRouge,dashed] plot[domain=0:5,samples=200] (\x,{-exp(-(\x-2.5)^2)});
+	\draw[JoliBleu,thick] plot[domain=0:5,samples=200] (\x,{cos(20*\x r)*exp(-(\x-2.5)^2)});
+	\draw[<->] (1.5,1.2) -- ++ (2,0) node[midway,above] {$\tau$};
+
+
+\end{tikzpicture}
+
+\end{document}

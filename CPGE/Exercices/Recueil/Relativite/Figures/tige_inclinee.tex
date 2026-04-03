@@ -1,0 +1,35 @@
+\input{tikz.tex}
+\begin{document}
+\tikzset{snake it/.style={decorate, decoration=snake}}
+\begin{tikzpicture}[scale=1.3]
+    %  axe x horizontal
+    \draw[->] (-5,0) -- ++(7,0) node[right] {$x$};
+    %  axe y vertical
+    \draw[->] (0,-2) -- ++(0,3.5) node[
+        above] {$y$};
+    \def\ang{20} % angle d'inclinaison de la tige
+    %  tige inclinée d'un angle theta' par rapport à l'axe x'
+    \draw[ultra thick,JoliRouge] (0,0) coordinate(B) -- ++(180+\ang:4) coordinate(A); 
+    % node[midway, above, sloped] {$L_0$};
+    % speed v of the rod
+    \draw[->,JoliBleu] (180+\ang:2) -- ++(1,0) node[right] {$\Vec{v}$};
+    %  extrémités A et B de la tige
+    \node at (A) [left] {\contour{white}{A}};
+    \node at (B) [right] {\contour{white}{B}};
+    %  ombre portée sur le film photographique
+    % \draw[dashed] (1,0) -- ++(4,0) node[midway, below] {$L$};
+    %  angle theta'
+    \draw (-1,0) arc[start angle=180, end angle=180+\ang, radius=1] node[pos=0.65, left=0.1] {$\theta'$};
+    % \node at (0.8,0.2) {$\theta'$};
+    % film photographique parallèle à Ox en bas de la figure
+    \draw[thick,rounded corners] (-5,-2.5) -- ++(0,0.2) -- ++ (7,0) -- ++(0,-0.2);
+    \node at (-1.5,-2.7) {film photographique};
+    % rayons lumineux
+    \foreach \x in {-4,-3.5,...,0}{
+        \draw[ultra thick,white,snake it] (\x,1.1) -- ++(0,-1) coordinate (I);
+        \draw[JoliVert,snake it] (\x,1.1) -- ++(0,-1) coordinate (I);
+        \draw[->,JoliVert](I) --++ (0,-0.1);  
+        }
+    \node at (-2,1.4) {flash};
+\end{tikzpicture}
+\end{document}

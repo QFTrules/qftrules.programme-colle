@@ -1,0 +1,74 @@
+\input{tikz.tex}
+\def\E{5}
+\def\Omga{600}
+\def\ttau{0.018}
+\def\induc{0.0012}
+\def\ttaua{0.015}
+\def\ttaub{0.022}
+
+\begin{document}
+	
+	
+\begin{tikzpicture}[
+	scale=0.8,
+	trait1/.style={very thick,smooth,samples=150,draw=JoliRouge},
+	trait2/.style={very thick,smooth,samples=150,draw=JoliVert},
+	trait3/.style={very thick,smooth,samples=150,draw=JoliBleu},
+	]
+    \begin{axis}[
+		title={courbe 1},
+		every axis title/.style={above,at={(0.5,1)}},
+		width=60mm,
+		name=plot1,
+		grid=both,
+		ylabel near ticks,
+		xlabel near ticks,
+		scaled x ticks=false,
+		xlabel={$t$ (en \si{ms})},
+		ylabel={tension (en \si{V})},
+		xmin=-0,xmax=0.08,ymin=-4.5,ymax=9.5,
+		ytick={-4,-2,0,2,4,6,8,10},
+		xtick={.01,.02,.03,.04,.05,.06,.07,.08},
+		xticklabels={10,20,30,40,50,60,70,80},
+		]
+		\addplot[trait1,domain=0:0.08] {\E - exp(-x/\ttau)*(\E * cos(\Omga * x*180/3.14) + \E /(\Omga * (\ttau)) * sin(\Omga * x*180/pi) )};
+	\end{axis}
+	\begin{axis}[
+		title={courbe 2},
+		every axis title/.style={above,at={(0.5,1)}},
+		width=60mm,
+		name=plot2,at={($(plot1.east)+(1cm,0)$)},anchor=west,
+		grid=both,
+		ylabel near ticks,
+		xlabel near ticks,
+		scaled x ticks=false,
+		xlabel={$t$ (en \si{ms})},
+		xmin=-0,xmax=0.08,ymin=-4.5,ymax=9.5,
+		ytick={-4,-2,0,2,4,6,8,10},
+		xtick={.01,.02,.03,.04,.05,.06,.07,.08},
+		xticklabels={10,20,30,40,50,60,70,80},
+		]
+		\addplot[trait2,domain=0:0.08] {\E /(\induc * \Omga) * exp(-x / (\ttau*0.75)) * sin(2*\Omga * x * 180 / 3.14)};
+
+	\end{axis}
+	\begin{axis}[
+		title={courbe 3},
+		every axis title/.style={above,at={(0.5,1)}},
+		width=60mm,
+		name=plot3,at={($(plot2.east)+(1cm,0)$)},anchor=west,
+		grid=major,
+		grid=both,
+		ylabel near ticks,
+		xlabel near ticks,
+		scaled x ticks=false,
+		xlabel={$t$ (en \si{ms})},
+		xmin=-0,xmax=0.08,ymin=-4.5,ymax=9.5,
+		ytick={-4,-2,0,2,4,6,8,10},
+		xtick={.01,.02,.03,.04,.05,.06,.07,.08},
+		xticklabels={10,20,30,40,50,60,70,80},
+		]
+	    \addplot[trait3,domain=0:0.08] {\E /(\ttaub - \ttaua) * (\ttaub * exp(-x / \ttaub)  - \ttaua * exp(-x/\ttaua) ) }; 
+	\end{axis}
+
+\end{tikzpicture}
+\end{document}

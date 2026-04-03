@@ -1,0 +1,24 @@
+\begin{tikzpicture}[yscale=1]
+		\begin{axis}[
+    /pgf/number format/.cd,
+        use comma,
+        1000 sep={},
+        grid= major ,
+				width=0.8\textwidth ,
+				xlabel = {$t$ (en \si{min})} ,
+				ylabel = {$c$ (en \si{\milli\mol\per\liter})} ,
+				xmin = 0, xmax = 10,
+				ymin = 0, ymax = 5,
+				legend entries={$[\ce{C\ell O^-}]$, $[\ce{C\ell O3^-}]$, $[\ce{C\ell^-}]$},
+				legend style={at={(1,1)},anchor=north east}]
+		\addplot expression[domain=0:10, mark=triangle*, color=\blueOrBlack, every mark/.append style={solid, fill=\blueOrBlack}]
+							{5*(exp(-1.1*x))}; % équation analytique 1 ClO-
+		\addplot expression[domain=0:10, color=\redOrBlack, every mark/.append style={solid, fill=\redOrBlack}]
+							{1.65*(1-exp(-1.1*x))}; % équation analytique 2 ClO3-
+		\addplot expression[domain=0:10, color=\redOrBlack, every mark/.append style={solid, fill=\greenOrDarkGray}]
+							{3.3*(1-exp(-1.1*x))}; % équation analytique 3 Cl-
+		\addplot expression[domain=0:1, dotted, thick, mark=, color=\blueOrBlack]{-5*x+5}; % tangente intiiale 1
+		\addplot expression[domain=0:3, dotted, thick, mark=, color=\redOrBlack]{5/3*x}; % tangente initiale 2
+		\addplot expression[domain=0:1.5, dotted, thick, mark=, color=\greenOrDarkGray]{10/3*x}; % tangente initiale 3
+		\end{axis}
+\end{tikzpicture}

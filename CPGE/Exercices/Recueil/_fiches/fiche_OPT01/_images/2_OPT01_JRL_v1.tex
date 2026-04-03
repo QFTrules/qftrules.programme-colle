@@ -1,0 +1,21 @@
+%=============================================================
+% réfraction d'un rayon
+%=============================================================
+\begin{tikzpicture} [
+	scale=1.2,
+	font=\footnotesize,
+	rayon/.style={draw=\JRLred,thick,line join=round,->,>=stealth,decoration={markings,mark=between positions 0.25 and .75 step 2cm with{\arrow[line width=1pt]{stealth}}},postaction=decorate},
+	]
+	\draw (0,-1)--(0,1);
+	\draw[dashed](-1.5,0)--(1.5,0);
+	\draw[rayon](220:1.5)--(0,0)--(20:2);
+	% angles
+	\draw[-latex](0:20pt)arc(0:20:20pt);
+	\draw (10:20pt)node[right]{$r$};
+	\draw[-latex](180:15pt)arc(180:220:15pt);
+	\draw (200:15pt)node[left]{$i$};
+	\draw[rotate=-90] (0,5pt)-|(5pt,0);
+	% legende
+	\node[draw,inner sep=1pt,circle] at (-10pt,-1) {$n_1$};
+	\node[draw,inner sep=1pt,circle] at (10pt,-1) {$n_2$};
+\end{tikzpicture}		

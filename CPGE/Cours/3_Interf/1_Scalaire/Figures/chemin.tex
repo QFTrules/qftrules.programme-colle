@@ -1,0 +1,7 @@
+\input{tikz.tex}
+\begin{document}
+\begin{tikzpicture}[scale=2]
+\useasboundingbox (-0.25,-0.4) rectangle (3.25,0.75);
+\draw[thick,JoliRouge,midarrow] (0,0) node[black]{\small  $\bullet$} node[below=0.2,black]{$\rm S$}..controls (1,1) and (2,-1) .. (3,0.5) node[black]{\small  $\bullet$} node[above=0.2,black]{$\rm M$} node[midway,below=0.2,black]{$\rm P$} node[midway,black]{\small  $\bullet$} coordinate (P);
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,21 @@
+\input{tikz.tex}
+\begin{document}
+\begin{tikzpicture}
+    % dashed horizontal line for Imax at 2 
+    \draw[dashed] (-5,2) -- (5,2) node[pos=0.4,above=0.1] {\contour{white}{$1$}};
+    \draw[domain=-5:5,smooth,samples=200,variable=\x,JoliRouge,thick] plot ({\x},{1+cos((\x*\x) r)});
+    % axis x 
+    \draw[->] (-5,0) -- (5,0) node[right] {$x$};
+    % axis I
+    \draw[->] (0,0) -- (0,2.5) node[above] {$t(x)$};
+    % pas du réseau a(x)
+    \draw[<->] (2.5,2.2) -- ++(1,0) node[midway,above] {\contour{white}{$a(x)$}};
+    % successions créneaux de même pas a
+    \coordinate (A) at (0,2);
+    \foreach \x in {0,2,4,6}
+        \draw[JoliBleu,densely dashed,thick] (A) -- ++ ({1.14/(0.37*abs(\x)+1)},0) --++(0,-2) -- ++({1/(0.43*abs(\x)+1)},0) -- ++ (0,2) coordinate (A);
+    \coordinate (A) at (0,2);
+    \foreach \x in {0,2,4,6}
+        \draw[JoliBleu,densely dashed,thick] (A) -- ++ ({-1.14/(0.37*abs(\x)+1)},0) --++(0,-2) -- ++({-1/(0.43*abs(\x)+1)},0) -- ++ (0,2) coordinate (A);
+    \end{tikzpicture}
+\end{document}

@@ -1,0 +1,13 @@
+\input{tikz.tex}
+\begin{document}
+% \shorthandoff{:!} %règle un problème de compatibilité avec babel
+\begin{tikzpicture}[scale=2]
+% \begin{circuitikz}
+		\draw (0,0.0) node {$\bullet$} node [above left] {$A$};
+		\draw (0,0.0)--(0.5,0.0)--(0.5,0.5) to [C, l= $C$] (1.5,0.5)to [L, l= $L$] (3,0.5)--(3,0.0)--(3.5,0.0);
+		\draw (3.5,0.0) node {$\bullet$} node [above right] {$B$};
+		\draw (0.5,0.0)--(0.5,-0.5) to [R, l_= $R$] (3,-0.5)--(3,0);
+% \end{circuitikz} 
+\end{tikzpicture} 
+% \shorthandon{:!}
+\end{document}

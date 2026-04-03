@@ -1,0 +1,16 @@
+\begin{tikzpicture}
+\begin{scope}[yscale=\ratioGraphiqueY, xscale=\ratioGraphiqueX]
+	\draw[xstep=0.5cm,ystep=0.5cm,color=gray!50](-3,-2.5) grid (2,2.5);
+	\draw(-3,-2.5) rectangle (2,2.5);
+	\draw[->] (-3,-2.5) -- (2.5, -2.5) node[below right] () {$\alpha$};
+	\foreach \x in {0,4,8,12,16,20}
+     		\draw (\x/4-3,-2.5cm+2pt) -- (\x/4-3,-2.5cm-3pt)
+			node[anchor=north] {\x};
+	\foreach \y in {0,0.25,0.5,0.75,1}
+     		\draw (-3cm+1pt,4*\y-2) -- (-3cm-3pt,4*\y-2)
+			node[anchor=east] {$\np{\y}$};
+	\draw [domain=-3:2,samples=500,color=\AEFcouleurA,line width=1pt] plot (\x,{4*cos(4*(\x+3) r)*cos(4*(\x+3) r)-2});
+	\draw (-0.5,3)node[]{courbe 1};
+	%\draw(-0.5,-3.5)node[]{$\alpha$};
+\end{scope}
+\end{tikzpicture}

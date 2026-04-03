@@ -1,0 +1,14 @@
+\input{/home/eb/Dropbox/texmf/tex/latex/Preambles/tikz.tex}
+\begin{document}
+\begin{tikzpicture}
+  \node[] at (0,0) {\includegraphics{ph_eau.pdf}};
+  \node[red,rotate=90] at (11,-2.3) {\Large isotherme};
+  \node[blue,rotate=45] at (11,5.2) {\Large isentrope};
+  \node[darkgreen!80!white,rotate=10] at (0,-3.2) {\Large isochore};
+  \node[rotate=65,opacity=0.8] at (-0.9,-0.5) {\Large isotitre};
+  \node[rotate=59] at (-7,-1.2) {SATURATION};
+  \node[fill=white] at (-10.5,-5) {\Large L};
+  \node[fill=white] at (0,-5) {\Large L + V};
+  \node[fill=white] at (10.5,-5) {\Large V};
+\end{tikzpicture}
+\end{document}

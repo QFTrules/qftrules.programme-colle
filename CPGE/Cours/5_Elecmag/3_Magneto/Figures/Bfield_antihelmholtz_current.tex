@@ -1,0 +1,37 @@
+\documentclass[border=3pt,tikz]{standalone}
+\usepackage{tikz}
+\usepackage{auto-pst-pdf}
+\usepackage{pst-magneticfield}
+\usepackage[outline]{contour} % glow around text
+\usetikzlibrary{calc}
+\tikzset{>=latex} % for LaTeX arrow head
+\usetikzlibrary{decorations.pathreplacing}
+\usepackage{xcolor}
+\colorlet{Bcol}{violet!90}
+\colorlet{Ncol}{red!60}
+\colorlet{Scol}{blue!60}
+\tikzstyle{north}=[thick,top color=red!60,bottom color=red!90,shading angle=20]
+\tikzstyle{south}=[thick,top color=blue!60,bottom color=blue!90,shading angle=20]
+\contourlength{1.5pt}
+
+
+\begin{document}
+\def\xmax{7}
+\def\ymax{7}
+\def\H{1}
+\def\W{0.45}
+\psset{unit=0.5}
+\begin{tikzpicture}
+\clip (0,0) rectangle (\xmax,\ymax);
+% ,styleSpire=styleSpire,styleCourant=sensCourant}
+% \newpsstyle{grille}{subgriddiv=0,gridcolor=blue!50,griddots=10}
+% \newpsstyle{cadre}{linecolor=yellow!50}
+\begin{pspicture*}[](-\xmax,-\ymax)(\xmax,\ymax)
+% \psframe*[linecolor={[HTML]{996666}}](-\xmax,-\ymax)(\xmax,\ymax)
+\psmagneticfield[linecolor={[HTML]{000099}},AntiHelmholtz,N=2,
+R=2,pointsB=500,pointsS=1000,PasB=0.02,PasS=0.0035,nS=12,
+nL=0,drawSelf=True](-\xmax,-\ymax)(\xmax,\ymax)
+% \psmagneticfield[linecolor={[HTML]{000099}}]
+\end{pspicture*}
+\end{tikzpicture}
+\end{document}

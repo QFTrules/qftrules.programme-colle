@@ -1,0 +1,34 @@
+% les couleurs
+\def\JRLcyan{\couleurNBouCouleur{gray}{cyan}}
+\def\JRLcyanclair{\couleurNBouCouleur{lightgray!30}{cyan!10}}
+
+
+\begin{tikzpicture}[
+	font=\footnotesize,
+	transfo/.style={no markers,samples=100,color=\JRLcyan,style=solid,line width=1pt},
+	]
+	\begin{axis}[
+	width=5cm,
+	% height=7cm,
+	axis y line=middle,%center,right
+	axis x line=middle,%middle,top
+	inner axis line style={=>},
+	every axis x label/.style={anchor=north,at={(1,0)},yshift=-2pt},
+	every axis y label/.style={anchor=east,at={(0,1)},xshift=-2pt},
+	xlabel={$t$},
+	ylabel={$T$},
+	xtick=\empty,
+	ytick={0.01,1,4},
+	yticklabels={0,$T_a$,$T_b$},
+	yticklabel style={anchor=east},			
+	xticklabel style={anchor=north },
+	xmin=0,
+	xmax=2.25,			
+	ymin=0,
+	ymax=4.5,
+	clip=false,
+	]
+	\addplot+ [transfo, domain=0:2.,samples=20] {4-3*exp(-2*x)};
+	\end{axis}
+\end{tikzpicture}
+

@@ -1,0 +1,47 @@
+\def\iangle{25} % Angle of the inclined plane
+\def\down{-90}
+\def\arcr{0.5cm} % Radius of the arc used to indicate angles
+\tikzset{vecteur/.style={->,thick,color=black,smooth}}
+
+\begin{tikzpicture}[
+    base/.style={>=latex},
+    axis/.style={->,>=stealth},
+    M/.style={rectangle,draw,fill=lightgray,minimum size=0.5cm,thin},
+    m/.style={rectangle,draw=black,fill=lightgray,minimum size=0.3cm,thin},
+    plane/.style={draw=black,fill=blue!10},
+    string/.style={draw=red, thick},
+    pulley/.style={thick},
+]
+
+	\coordinate (O) at (0, 0) ;
+\draw (O) node[below left] {O};
+
+
+\draw [axis] (-1,0)--(5,0); 
+\draw [axis]  (0,-1) --(0,5);   
+\draw (1,0) node[below]  {$\overrightarrow{{e}_{x}}$} ++(-1,1) node[below 
+left]  {$\overrightarrow{{e}_{y}}$};
+
+\coordinate (C) at (3,4);
+\draw (C) node[above right] {C};
+\draw (C) node{$\bullet$} ;
+
+\coordinate (A) at (0:3);
+\draw (A) node[below] {3};
+\draw (A) node[above right] {A};
+\draw (A) node{$\bullet$} ;
+
+\coordinate (B) at (90:4);
+\draw (B) node[left] {4};
+\draw (B) node[above right] {B};
+\draw (B) node{$\bullet$} ;
+
+\draw[dashed] (A) -- (C);
+\draw[dashed] (B) -- (C);
+%\draw[thin,->] (O)node {$\bullet$} -- (M) node{$\bullet$} ;
+% {$\bullet$}node[midway,above,rotate=55]{$\overrightarrow{r}(t)$};
+\draw[vecteur] (O)-- ++(1,0);
+\draw[vecteur] (O)-- ++(0,1);
+%\draw[dashed]({3*cos(55)},0)node[below] {$x(t)$} --(M);
+%\draw[dashed](0,{3*sin(55)})node[left] {$y(t)$} --(M);
+\end{tikzpicture}

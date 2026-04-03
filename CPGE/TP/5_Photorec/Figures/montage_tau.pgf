@@ -1,0 +1,19 @@
+﻿\begin{circuitikz}
+\draw   (0,0) to [square voltage source, v=$e$] (0,2)  --++(1.5,0) coordinate (A) to[empty led] ++(0,-2) to[short] ++(-1.5,0) node[ground] {} -- cycle;
+\draw (5,0) coordinate (A) --++ (-1,0) to[photoresistor] ++(0,2) -- ++(1,0) coordinate (B); 
+\draw[densely dashed] (B) -- ++ (1,0);
+\node[align=center] at (6,1) {circuit\\ de \\conditionnement};
+\draw[densely dashed] (A) -- ++ (1,0);
+\end{circuitikz}ikz}kz}+(0.1,2) coordinate (B);
+\draw (A) -- (B);
+\end{scope}
+
+\begin{scope}[ xshift=7cm,xscale=-0.5]
+\draw (0,0) rectangle (1.5,1) coordinate (A) node[shift={(0.4,0)}, above,align=center] {capteur\\ optique};
+\draw[thick,JoliRouge] (0,0.25) -- ++ (-0.75,-0.3);
+\draw[thick,JoliRouge] (0,0.75) -- ++ (-0.75,0.3);
+\draw ($(A)+(0,-0.25)$) rectangle ++(0.2,-0.5) coordinate (F)++ (1,0.25) coordinate (B); 
+\end{scope}
+\end{tikzpicture}2) coordinate (G2) -- ++ (-1,0.15);
+\draw[JoliRouge] (G1) -- ++ (2,-0.5);\draw[JoliRouge] (G2) -- ++ (2,0.5);
+\end{tikzpicture}

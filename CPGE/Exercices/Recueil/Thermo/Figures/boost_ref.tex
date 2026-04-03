@@ -1,0 +1,46 @@
+\input{tikz.tex}
+\begin{document}
+\begin{tikzpicture}
+%  axe x
+\draw[->,>=latex] (0,0)--(3,0);
+\draw (3,0,0) node[right]{$x$};
+
+%  axe y
+\draw[->,>=latex] (0,0)--(0,3);
+\draw (0,3,0) node[above]{$y$};
+
+%  axe z vu du dessus
+\node at (0,0) {\small $\bullet$};
+\draw (0,0) circle(0.2) node[below=0.2]{$z$};
+
+
+% fontawsome clock icon
+\coordinate (A) at (-1,0);
+\node at (A) {\faClock};
+\node[right=0.2] at (A) {$t$};
+
+% boost speed
+\draw[->,>=latex,JoliRouge,thick] ({4.5},0) --++ (1,0) node[right]{$\vboost$};
+
+\begin{scope}[rotate=0,shift={(8,0)}]
+    %  axe x
+\draw[->,>=latex] (0,0)--(3,0);
+\draw (3,0,0) node[right]{$x'$};
+
+%  axe y
+\draw[->,>=latex] (0,0)--(0,3);
+\draw (0,3,0) node[above]{$y'$};
+
+%  axe z vu du dessus
+\node at (0,0) {\small $\bullet$};
+\draw (0,0) circle(0.2) node[below=0.2]{$z'$};
+
+% fontawsome clock icon
+\coordinate (A) at (-1,0);
+\node at (A) {\faClock};
+\node[right=0.2] at (A) {$t'$};
+
+\end{scope}
+\end{tikzpicture}
+
+\end{document}

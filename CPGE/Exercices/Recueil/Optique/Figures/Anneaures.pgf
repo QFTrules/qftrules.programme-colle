@@ -1,0 +1,27 @@
+\usetikzlibrary{arrows}
+\begin{tikzpicture}
+\draw[-angle 90](-3,-2) -- (3,-2);
+\draw[-angle 90] (0,1) -- (0,-5);
+\draw (0,-2) circle (2);
+
+\begin{scope}[rotate=-60]
+\draw[domain=0:3.44,samples=500] plot (\x,{sin(\x*1890)/5});
+\end{scope}
+\draw [fill] (-60:3.445) circle (1.5pt);
+ \draw (-60:3.445) node [right] {$M$};
+ \draw (0,0) node [above left] {$B$};
+ \draw (0,-4) node [below left] {$A$};
+ \draw (0,-2) node [above left] {$O$};
+ \draw (0,-3) node [left] {$H$};
+\draw[dashed] (0,-3) -- (-60:3.445);
+\draw[dashed] (0,-2) -- (-60:3.445);
+
+\draw (3,-2) node [below] {$\mathbf{e_{y}}$};
+\draw (0,-5) node [right] {$\mathbf{e_{z}}$};
+
+\draw [->] (-90:1.5) arc  (-90:-60:1.5);
+ \draw (-75:1.5) node [below] {$\alpha$};
+\draw [->] (-90:2.5) arc  (-90:-30:0.5);
+ \draw (-82:2.35) node [below] {$\theta$};
+
+\end{tikzpicture}

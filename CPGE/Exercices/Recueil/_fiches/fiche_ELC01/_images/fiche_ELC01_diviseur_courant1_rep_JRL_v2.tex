@@ -1,0 +1,14 @@
+\begin{tikzpicture}[
+	font=\footnotesize,
+	]
+	\draw (0,-1)rectangle (-2.5,1);	
+	\resistanceV{shift={(-2.5,0)}}{$\frac23 R$};
+	\resistanceH{shift={(-1,1)}}{$R$};
+	\resistanceH{shift={(-1,-1)}}{$R$};
+	\FEMVR{shift={(0,0)}}{$e$};
+	\draw[-latex,shift={(0,.5)}](0,-5pt)--++(0,10pt)node[midway,right]{$i$};
+	\draw[-latex,shift={(-2.5,1)}](0,0)--++(0,-10pt)node[midway,right]{$i$};
+	\draw[->,shift={(-1,10mm-10pt)}](-.5,0)--++(1,0);
+	\draw[->,shift={(-1,-10mm+15pt)}](.5,0)--++(-1,0);
+	\draw[->,shift={(-25mm+10pt,0)}](0,-.5)--++(0,1);
+\end{tikzpicture}

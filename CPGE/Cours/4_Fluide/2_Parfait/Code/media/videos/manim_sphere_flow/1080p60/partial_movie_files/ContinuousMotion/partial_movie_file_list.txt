@@ -1,0 +1,2 @@
+# This file is used internally by FFMPEG.
+file 'file:/home/eb/Dropbox/CPGE/Physique/Cours/[4]Fluide/[2]Parfait/Code/media/videos/manim_sphere_flow/1080p60/partial_movie_files/ContinuousMotion/3544663784_1488220414_2402900332.mp4'

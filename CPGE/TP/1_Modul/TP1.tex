@@ -1,0 +1,582 @@
+% displayname : Modulation
+\input{TP.sty}
+\begin{document}
+\Entete[TP][
+\item Revoir la modulation d'amplitude.
+ % de PCSI.
+% \item Utiliser la démodulation synchrone.
+\item Étudier la modulation de fréquence.
+][
+\item TP 14 PCSI.
+%  : Modulation et démodulation.
+\item TP ALI PCSI.
+]
+{1}
+
+\matos{
+\item 1 multiplieur nu ? sinon 1 multiplieur dans boîtier + alimentation ;
+\item 1 mini-plaquette de câblage.
+\item plusieurs résistances nues, dont $R=\SI{2.2}{k\Omega}$ (ils doivent trouver la bonne);
+\item 1 condensateur nu $C=\SI{100}{nF}$ ;
+\item 1 diode nue ? sinon 1 diode dans boîtier ;
+\item 2 GBF, 1 carte acquisition Sysam, LatisPro ;
+\item 1 RLC-mètre.
+}
+
+
+\section{Intérêt de la modulation}
+\label{sec:théorie}
+%\subsection{Intérêt pratique}
+Les signaux du quotidien sont de basse fréquence: entre \SI{20}{Hz} et \SI{20}{kHz} pour le son audible par exemple. Pour transmettre un signal, on dispose de plusieurs canaux : par exemple le son se transmet dans l’air (le canal est le milieu environnant), et les données internet peuvent se transmettre par des  câbles électriques ou de la fibre optique (le canal est un guide d'onde). Problème : pour émettre un signal électromagnétique de fréquence $f$, la taille typique de l'antenne émettrice doit être $L\sim \lambda=c/f$. Pour $f=\SI{1}{kHz}$, cela donne une taille d'antenne de \SI{300}{km}... ce qui est irréaliste ! La modulation présente alors deux intérêts majeurs.
+
+% \begin{manip}
+%   \item Tester la modulation d'amplitude.
+% \end{manip}
+
+\begin{liste}
+\item  Au lieu de transmettre un signal de faible fréquence $f\sim \SI{1}{kHz}$, on envoie un signal facile à produire
+de fréquence $f_{\rm p}$ beaucoup plus grande,
+%, de $\SI{100}{Mhz}-\SI{20}{Ghz}$
+sur lequel on encode les informations de fréquence $f$. Ce signal auxiliaire de haute fréquence se nomme \imp{porteuse}, noté avec $\omega_{\rm p} = 2\pi f_{\rm p}$ la pulsation,
+\begin{equation}
+s_{\rm p}(t) = 	A_{\rm p} \cos(\omega_{\rm p} t).
+\end{equation}
+Le signal d’intérêt se nomme signal modulant, ou \imp{informatif}, noté avec $\omega = 2\pi f$ la pulsation,
+\begin{equation}
+s_{\rm i}(t) = A_{\rm i} \cos(\omega t).
+\end{equation}
+
+\item La modulation permet aussi d’éviter l’encombrement des bandes spectrales : on ne peut pas envoyer plusieurs signaux sonores, tous compris entre \SI{20}{Hz} et \SI{20}{kHz}, à travers le même milieu, au risque de superposer les signaux ; par contre, on peut utiliser plusieurs porteuses de fréquences différentes.
+\end{liste}
+% Il faut donc produire et transmettre les signaux de façon indirecte : c'est le principe de la \important{modulation}.
+
+Les technologies radio, de téléphonie, et de transmission de données en général sont  toutes  fondées sur la modulation.  On distingue deux méthodes principales de modulations : la modulation d’amplitude, que nous révisons en \Sec{mod_amp}, et la modulation de fréquence, qui nous étudions en \Sec{mod_freq}. Il en existe bien d'autres (que nous n’étudierons pas) comme la modulation de phase.
+
+\section{Modulation d'amplitude (AM)}
+\label{sec:mod_amp}
+
+\subsection{Théorie}
+En modulation d'amplitude (AM), le signal informatif est codée dans l'\imp{amplitude} de la porteuse.
+%La fréquence de la porteuse vaut alors $f_{\rm p} \sim \SI{100}{kHz}$.
+ Pour ce faire, on multiplie le signal informatif par la porteuse. Le signal résultant est le signal \imp{modulé}, d’expression
+ \eqbox[mod_amp]{
+  s(t) = k \, s_{\rm{i}}(t)s_{\rm{p}}(t)
+  }
+\begin{danger}[1]
+    La constante $k$ est homogène à l'inverse d'une tension ! Elle est nécessaire pour que le \guill{produit} de deux tensions reste homogène à une tension.
+\end{danger}
+    \begin{protocole}
+      \todo	Expliquer en quoi cette opération revient à encoder l’information dans l’amplitude de la porteuse. 
+      \sol{
+        Le signal modulé s'écrit alors 
+        % \eqbox{
+        $$
+        s(t) = k A_{\rm{p}} s_i(t) \cos(\omega_{\rm{p}} t).
+        $$
+        % }
+        Tout se passe comme si la porteuse avait une amplitude instantanée 
+        \eqbox{
+        A_{\rm p}(t) = k A_{\rm p} s_i(t),
+        }
+        qui dépend du signal informatif. L'information est donc bien encodé dans \fbox{l'amplitude} de la porteuse.
+
+      }
+    \end{protocole}
+  % La constante $k$ est nécessaire pour que le produit de deux tensions reste homogène à une tension.
+%
+Il existe deux types de modulation d'amplitude : celle à porteuse supprimée, et celle à porteuse conservée. 
+
+\parag{Porteuse supprimée}
+Dans ce cas, on n’ajoute aucun signal continu (\emph{offset}) au signal informatif.
+Le signal modulé, qui s’obtient par un l’\Eq{mod_amp}, vaut donc
+\begin{equation}
+ s(t) = kA_{\rm{i}}A_{\rm{p}}\cos(\omega t)\cos(\omega_{\rm{p}} t).
+ \end{equation}
+
+
+\begin{protocole}
+
+\todo  Linéariser le produit de cosinus ci-dessus et représenter l’allure du spectre en fréquence du signal modulé $s(t)$. Le spectre en fréquence de la porteuse $s_{\rm p}(t)$, qui est une sinusoïde de fréquence $f_{\rm p}$ et d'amplitude $A_{\rm p}$, est représenté ci-dessous.
+% \begin{remarque}
+%  On rappelle  que  $\cos(a)\cos(b)=\frac{1}{2}[\cos(a+b)+\cos(a-b)]$.
+% \end{remarque}
+\begin{center}
+\includegraphics[scale=1]{spectre.pdf}
+\end{center}
+
+\sol{
+On linéarise le produit grâce à la formule 
+$$
+\cos(a) \cos(b) = \frac{1}{2}[\cos(a+b)+\cos(a-b)].
+$$
+On trouve alors :
+% $$
+% \eqbox{
+$$
+  s(t) = kA_{\rm{i}}A_{\rm{p}}\cos(\omega t)\cos(\omega_{\rm{p}} t) = \frac{kA_{\rm{i}}A_{\rm{p}}}{2}[\cos((\omega+\omega_p)t)+\cos((\omega-\omega_p)t)],
+$$
+  soit,
+  \eqbox{
+  s(t)= \frac{kA_{\rm{i}} A_{\rm{p}}}{2} \cos(2\pi(f_{\rm{p}}+f)t) + \frac{kA_{\rm{i}} A_{\rm{p}}}{2} \cos(2\pi (f_{\rm{p}}-f)t).
+  }
+% $$
+}
+
+\sol{
+Le signal modulé $s(t)$ est une superposition de deux sinusoïdes de fréquences respectives $f_{\rm p}+f$ et $f_{\rm p}-f$, et d'amplitude égale $kA_{\rm{i}}A_{\rm{p}}/2$. Le spectre en fréquence de $s(t)$ a donc l'allure ci-dessous.
+\begin{center}
+\includegraphics[scale=1]{spectre_mod.pdf}
+\end{center}
+\begin{equation*}
+% \begin{split}
+%  s(t)&=\frac{kA_{\rm{i}} A_{\rm{p}}}{2}\left[\cos((\omega_{\rm{p}}+\omega)t)+\cos((\omega_{\rm{p}}-\omega)t)\right].
+% \end{split}
+ \end{equation*}
+
+ \udl{Remarque} : la fonction $x \mapsto \cos(x)$ est paire, donc le spectre est symétrique par rapport à l'axe des ordonnées. Nous n’avons pas représenté la partie du spectre de fréquences négatives.
+}
+
+\end{protocole}
+
+% %%%%%%%%%%%%%%%%%%%%
+% \begin{figure}[b!]
+%   \centering
+%   \includegraphics[width=0.45\textwidth]{signaux}
+%   \caption{Modulation avec porteuse supprimé. Signaux temporels : informatif $s_i(t)$, porteuse $s_p(t)$, modulé $s(t)$.}
+%   \label{fig:modul}
+%   \end{figure}
+%   %%%%%%%%%%%%%%%%%%
+
+
+ \parag{Porteuse conservée}
+On préfère en général ajouter une composante continue au signal informatif :
+\begin{equation}
+s_{\rm{i}}(t)=A_0+A_{\rm{i}}\cos(\omega t)=A_0[1+m\cos(\omega t)].
+\end{equation}
+Le coefficient $m=\frac{A_{\rm{i}}}{A_0}$ est appelé \important{taux de modulation} (sans dimension). Le signal modulé s'obtient toujours par le produit $ s(t) = k \, s_{\rm{i}}(t)s_{\rm{p}}(t)$.
+
+
+\begin{protocole}
+\todo Comment s’écrit alors le signal modulé $s(t)$ ? Représenter son spectre.
+
+\sol{
+Le signal modulé s'écrit
+%  \begin{equation*}
+% \begin{split}
+\eqbox{
+  s(t)=kA_0A_{\rm{p}}\cos(\omega_{\rm{p}} t)+\frac{k A_{\rm i} A_{\rm{p}}}{2}\left[\cos((\omega_{\rm{p}}+\omega)t)+\cos((\omega_{\rm{p}}-\omega)t)\right].
+  }
+% \end{split}
+%  \end{equation*}
+ Le spectre est donc composés de trois pics : un pic central à la fréquence $f_p$, et deux pics symétriques aux fréquences $f_p\pm f$.
+\begin{center}
+ \includegraphics[scale=1]{spectre_mod2}
+ \end{center}
+ On voit que le pic de fréquence $f_p$ associé à la porteuse est conservé. On retiendra donc que 
+%  \fbox{
+ \begin{liste}
+  \item Avec porteuse supprimée, on a deux pics à $f_p\pm f$ ;
+  \item Avec porteuse conservée, on a deux pics à $f_p\pm f$ et un pic à $f_p$.
+ \end{liste}
+%  }
+ Dans les conditions choisies, les trois pics apparaissent aux fréquences $f_p-f=\SI{9.5}{kHz}$, $f_p=\SI{10}{kHz}$ et $f_p+f=\SI{10.5}{kHz}$.
+ }
+\end{protocole}
+%Cette fois ci on récupère la fréquence de la porteuse, au prix d'une puissance perdue correspondant à une fraction $\frac{1}{1+m}$ de la puissance totale.
+
+%  \begin{protocole}
+
+  %%%%%%%%%%%%%%%%%%%%
+% \begin{figure}[t!]
+%   \centering
+%   \includegraphics[width=0.45\textwidth]{signaux_surmodul}
+%   \caption{Modulation avec porteuse conservée. Signaux temporels : informatif $s_i(t)$, porteuse $s_p(t)$, modulé $s(t)$.}
+%   \label{fig:surmodul}
+%   \end{figure}
+%   %%%%%%%%%%%%%%%%%%
+
+%  \end{protocole}
+
+ \subsection{Expérience}
+
+
+\parag{Porteuse supprimée}
+
+% Dans ce cas, on n’ajoute aucun signal continu (\emph{offset}) au signal informatif.
+% Le signal modulé, qui s’obtient par un l’\Eq{mod_amp}, vaut donc
+% \begin{equation}
+%  s(t) = kA_{\rm{i}}A_{\rm{p}}\cos(\omega t)\cos(\omega_{\rm{p}} t).
+%  \end{equation}
+\begin{protocole}
+  
+
+%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[b!]
+  \centering
+  \includegraphics[width=0.45\textwidth]{signaux}
+  \caption{Modulation avec porteuse supprimé. Signaux temporels : informatif $s_i(t)$, porteuse $s_p(t)$, modulé $s(t)$.}
+  \label{fig:modul}
+  \end{figure}
+  %%%%%%%%%%%%%%%%%%
+
+\item\label{quest:montage} Représenter puis réaliser un montage avec un multiplieur pour réaliser une modulation d'amplitude.
+On pourra choisir $A_{\rm{i}}=\SI{2}{V}$, $f=\SI{500}{Hz}$ pour le signal informatif, et $A_{\rm{p}}=\SI{4}{V}$, $f_{\rm{p}}=\SI{10}{kHz}$ pour la porteuse. Vérifier à l’oscilloscope que ces trois signaux (informatif, porteuse, modulé) ont l’allure de la \Fig{modul}. En expliquant la méthode, déterminer la valeur de la constante de multiplication $k$.
+\begin{danger}
+Un multiplieur est un composant actif, il est donc nécessaire de l'alimenter.
+\end{danger}
+
+
+\sol{
+  Il suffit d'envoyer $s_i(t)$ et $s_p(t)$ en entrée du multiplieur :
+\begin{center}
+\includegraphics[width=0.45\textwidth]{multiplieur_modul}
+\end{center}
+On obtient le signal modulé $s(t)$ en sortie du multiplieur. Pour les branchements du multiplieur (composant nu), on pourra se référer au schéma ci-dessous.
+\begin{fig}[label]
+  \centering
+  \includegraphics[width=\columnwidth]{Multiplieur_nu}
+  %\capt{}
+\end{fig}
+
+}
+\sol{
+L'amplitude maximale du signal modulé vaut $kA_{\rm{i}}A_{\rm{p}}$, et peut se lire sur l'oscilloscope ou sur une acquisition \texttt{LatisPro} comme ci-dessous.
+
+\begin{fig}[label]
+  \centering
+  \includegraphics[width=\columnwidth]{AM1_temps}
+  %\capt{}
+\end{fig}
+On mesure ici $kA_{\rm{i}}A_{\rm{p}} = \SI{0.8}{V}$. Connaissant $A_{\rm{i}}$ et $A_{\rm{p}}$, on en déduit
+\eqbox{
+k = \SI{0.1}{V^{-1}}.
+}
+}
+
+
+
+\item Tracer le spectre en fréquence du signal modulé à partir d'une acquisition sur le logiciel \texttt{Latis Pro}. On pourra pour cela cliquer sur : 
+\begin{center}
+  \texttt{Traitements} $\mapsto$ \texttt{Calculs spécifiques} $\mapsto$ \texttt{Analyse de Fourier}. 
+\end{center}
+Expliquer l’effet d'une multiplication sur le spectre en fréquence.
+\sol{
+On obtient bien un spectre constitué de deux pics de même amplitude situés aux fréquences 
+\eqbox{
+f_p-f=\SI{9.5}{kHz} \quad \text{et} \quad f_p+f=\SI{10.5}{kHz}.
+}
+
+\begin{fig}[label]
+  \centering
+  \includegraphics[width=\columnwidth]{AM1_freq}
+  %\capt{}
+\end{fig}
+
+On peut remarquer aussi la présence de petits pics secondaires, que l'on expliquera au \refTP{3}.
+}
+\end{protocole}
+
+
+
+ \parag{Porteuse conservée}
+% On préfère en général ajouter une composante continue au signal informatif :
+% \begin{equation}
+% s_{\rm{i}}(t)=A_0+A_{\rm{i}}\cos(\omega t)=A_0[1+m\cos(\omega t)].
+% \end{equation}
+% Le coefficient $m=\frac{A_{\rm{i}}}{A_0}$ est appelé \important{taux de modulation} (sans dimension). Le signal modulé s'obtient toujours par le produit $ s(t) = k \, s_{\rm{i}}(t)s_{\rm{p}}(t)$.
+
+%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[t!]
+\centering
+\includegraphics[width=0.45\textwidth]{signaux_surmodul}
+\caption{Modulation avec porteuse conservée. Signaux temporels : informatif $s_i(t)$, porteuse $s_p(t)$, modulé $s(t)$.}
+\label{fig:surmodul}
+\end{figure}
+%%%%%%%%%%%%%%%%%%
+
+
+\begin{protocole}
+
+
+
+\item On reprend le montage de la \Quest{montage} et on ajoute maintenant une tension de décalage (\textit{offset}) d'amplitude $A_{0}=\SI{3}{V}$ sur le signal informatif. Que vaut le taux de modulation~$m$ ? On parle de \imp{sous-modulation}. Vérifier que les signaux ont l'allure de la \Fig{surmodul}. Comment est modifié le spectre du signal modulé sur \texttt{LatisPro} ?
+
+\sol{
+\udl{Taux de modulation} : le taux de modulation vaut ici
+\eqbox{
+m = A_{\rm i} / A_{\rm 0} =2/3=\num{0.67}.
+}
+On dit qu'il y a \fbox{sous-modulation} car $m<1$.
+}
+\sol{
+\udl{Signaux temporels} : voici une acquisition \texttt{LatisPro} du signal informatif $s_i(t)$ et du signal modulé $s(t)$. On voit que l'enveloppe du signal modulé suit parfaitement le signal informatif. C'est l'intérêt de la modulation avec porteuse conservée.
+\begin{fig}[label]
+  \centering
+  \includegraphics[width=\columnwidth]{AM2_temps}
+  %\capt{}
+\end{fig}
+% On obtient bien l'allure du spectre trouvé en question 4.
+}
+\sol{
+  \udl{Spectre en fréquence} : le spectre en fréquence du signal modulé est le suivant.
+  \begin{fig}[label]
+    \centering
+    \includegraphics[width=\columnwidth]{AM2_freq}
+    %\capt{}
+  \end{fig}
+  On observe bien trois pics aux fréquences 
+  \eqbox{
+f_p-f=\SI{9.5}{kHz}, \quad f_p=\SI{10}{kHz} \quad \text{et} \quad f_p+f=\SI{10.5}{kHz}.
+  }
+
+On observe ici que le pic central est plus haut que les deux autres. Son amplitude vaut en effet
+$$
+kA_0A_p = \frac{kA_iA_p}{m} = 3 \times \frac{kA_iA_p}{2}.
+$$
+Le pic central est donc trois fois plus haut que les pics latéraux.
+}
+
+\item Réduire l'\emph{offset} à la valeur $A_{0}=\SI{1}{V}$. Que vaut le taux de modulation~$m$ ? On parle de \imp{surmodulation}. Acquérir le signal modulé sur \text{LatisPro} et tracer son spectre. Commenter.
+
+\sol{
+\udl{Taux de modulation} : le taux de modulation vaut ici
+\eqbox{
+m = A_{\rm i} / A_{\rm 0} =2/1=2.
+}
+On dit qu'il y a \fbox{sur-modulation} car $m>1$.
+}
+\sol{
+\udl{Signaux temporels} : on voit que l'enveloppe du signal modulé possède un maximum secondaire lorsque le signal est surmodulé ($m>1$) là où elle ne possède qu'un minimum lorsque le signal n'est pas surmodulé ($m<1$).
+
+\begin{fig}[label]
+  \centering
+  \includegraphics[width=\columnwidth]{AM3_temps}
+  %\capt{}
+\end{fig}
+}
+
+\sol{
+  \udl{Spectre en fréquence} :  le spectre en fréquence du signal modulé est le suivant.
+
+  \begin{fig}[label]
+    \centering
+    \includegraphics[width=\columnwidth]{AM3_freq}
+    %\capt{}
+  \end{fig}
+   On observe toujours trois pics aux fréquences
+  \eqbox{
+f_p-f=\SI{9.5}{kHz}, \quad f_p=\SI{10}{kHz} \quad \text{et} \quad f_p+f=\SI{10.5}{kHz}.
+  }
+Par contre, le pic central a diminué d'amplitude, car 
+$$
+kA_0A_p = \frac{kA_iA_p}{m} = \frac{kA_iA_p}{2}.
+$$
+Le pic central est donc de même hauteur que les pics latéraux.
+}
+
+% %%%%%%%%%%%%
+%  \begin{figure}[h!]
+% \centering
+% \includegraphics[width=0.45\textwidth]{surmodulation.pdf}
+% \caption{Signaux temporels : informatif $s_i(t)$ (bleu) et modulé $s(t)$ (orange).}
+% \label{fig:m}
+% \end{figure}
+% %%%%%%%%%%%%%%%%%
+
+ \end{protocole}
+ 
+
+ \subsection{Démodulation par détection de crêtes}
+ La démodulation consiste à extraire le signal informatif $s_{\rm i}(t)$ du signal modulé $s(t)$. Il existe deux méthodes de démodulation d’amplitude : la détection de crêtes, et la détection synchrone. Dans ce TP, nous étudions uniquement la détection de crêtes. Nous verrons la détection synchrone au \refTP{3}.
+%Le multiplieur est alors libéré pour être utilisé dans la détection synchrone.
+
+% \parag{Détection de crêtes}
+\technique{Utiliser un filtre passe-bas}\label{sec:crete}
+La détection de crête consiste à suivre les variations lentes du signal modulé afin de ne garder que le signal informatif.
+
+\begin{protocole}
+
+  \item On suppose que le signal $s(t)$ n'est pas surmodulé. Expliquer comment un montage à partir d’une diode et d'un filtre $RC$ parallèle, qui l'on représentera, permet d'extraire le signal informatif. Cette méthode peut-elle fonctionner sur un signal surmodulé ?
+
+
+  \sol{
+  On rappelle que la caractéristique d'une diode idéale vérifie :
+  \begin{liste}
+    \item $i_d=0$ lorsque $u_d\leq0$ (état bloqué) ;
+    \item $u_d=0$ lorsque $i_d\geq0$ (état passant).
+  \end{liste}
+  La diode n'est pas un dipôle symétrique. Le symbole de la diode est le suivant :
+  \begin{center}
+    \includegraphics[scale=1]{symbol_diode.pdf}
+  \end{center}
+  }
+
+  \sol{
+  Plaçons maintenant la diode en série avec un circuit $RC$ parallèle :
+  \begin{center}
+  \includegraphics[width=0.5\textwidth]{demodul_crete}
+  \end{center}
+  Dans le jargon, on dit qu'il s'agit d'un circuit redresseur simple alternance.
+  }
+
+  \sol{ 
+  Étudions son fonctionnement.
+  \begin{liste}
+    \item Lorsque $s(t)$ croît et devient supérieure à $s_d(t)$, la diode est passante car $i_d\geq0$. La tension aux bornes de la diode est nulle, et donc $s_d(t)=s(t)$ : le signal démodulé suit le signal modulé.
+    \item Lorsque $s(t)$ décroît et devient inférieure à $s_d(t)$, la diode est bloquante et le courant que la traverse s'annule, soit $i_d = 0$. Le circuit $RC$ est donc fermé : le condensateur se décharge dans la résistance : $s_d(t)$ décroît exponentiellement avec un temps caractéristique $\tau = RC$ jusqu'à atteindre la prochaine crête.
+  \end{liste}
+  On observe un signal en sortie proche du signal rouge ci-dessous.
+  \begin{fig}[label]
+    \centering
+    \includegraphics[width=1.05\columnwidth]{Detect_crete}
+    %\capt{}
+  \end{fig}
+  \udl{Remarque} : une diode réelle possède une tension de seuil $u_s \simeq \SI{0.7}{V}$. Le signal démodulé $s_d(t)$ ne suit donc pas $s(t)$ jusqu'aux crêtes, mais décroche dès que $s(t)$ est $\SI{0.7}{V}$ sous la crête. On observe  donc un signal ayant l'allure suivante.
+  }
+
+  \item Réaliser ce montage en choisissant judicieusement les paramètres $R$ et~$C$ : on réfléchira aux limites haute et basse de la fréquence de coupure. Mesurer $R$ et $C$ au RLC-mètre en leur affectant une incertitude, et en déduire la fréquence de coupure associée, avec son incertitude.
+
+  \sol{
+    \udl{Choix des composants} : il faut que la décroissance soit beaucoup plus lente que les variations de la porteuse pour ne pas la suivre, et beaucoup plus raide que les variations du signal informatif, pour ne pas sauter des oscillations. Donc 
+  \eqbox{
+    f \ll f_{\rm c} \ll f_{\rm p}
+    }
+  où la fréquence de coupure vaut 
+  \eqbox{
+    f_{\rm c} = \frac{1}{2\pi RC}.
+    }
+  Pour vérifier cette double inégalité, on peut choisir par exemple 
+  \eqbox{
+  C = \SI{100}{nF} \quad \text{et} \quad R = \SI{2.2}{k\Omega}.
+  }
+  }
+
+  \sol{
+    \udl{Mesure de la fréquence} : on mesure les valeurs de $R$ et $C$ au RLC-mètre. Ces mesures sont affectées d'une incertitude, en raison de la précision limitée des appareils de mesure. Il s'agit d'\imp{incertitudes de type B} (non statistique, sur une mesure unique). Le constructeur donne 
+    \begin{liste}
+      \item
+      $\incert{R} = \SI{0.3}{\%} + 3~digits$, soit $R=\SI{2.20\pm0.02}{k\Omega}$; \item $\incert{C} = \SI{1}{\%} + 2~digits$, soit $C=\SI{100\pm1}{nF}$. 
+      % \item Incertitudes dues aux variations de l’affichage négligeables.
+    \end{liste}
+  % \end{liste}
+  La valeur de la fréquence de coupure est donc
+  % \eqbox{
+  $$
+    f_c = \frac{1}{2\pi RC} = \SI{2.08}{kHz}.
+$$
+    % }
+    La fréquence de coupure est donnée par un produit de puissances de $R$ et $C$. La formule de composition des incertitudes du\refTP{0}donne alors
+    $$\incert{f_c} = f_c\sqrt{\left(\frac{\incert{R}}{R}\right)^2+\left(\frac{\incert{C}}{C}\right)^2} = \SI{0.03}{kHz}.$$ 
+    Le résultat de mesure vaut donc 
+  \eqbox{
+    f_c=\SI{2.08\pm0.03}{kHz}.
+  }
+  }
+
+\end{protocole}
+
+
+\section{Modulation de fréquence (FM)}
+\label{sec:mod_freq}
+
+
+\subsection{Théorie}
+
+La modulation d'amplitude est très simple à mettre en œuvre, mais elle souffre d'un inconvénient majeur: l'information étant codée dans l'amplitude de la porteuse, la chaîne d'acquisition est très sensible au bruit. C'est pourquoi on lui préfère généralement la modulation de fréquence.
+% La modulation d'amplitude reste toutefois
+
+%%%%%%%%%%%%%%%%%%
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.9]{modul}
+\caption{Comparaison entre la modulation d'amplitude (AM) et la modulation de fréquence (FM). Les variations du signal informatif sont codées dans des variations d'amplitude ou de fréquence respectivement.}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%
+En \important{modulation de fréquence}, l'information du signal informatif est codée dans la variation temporelle de la fréquence.
+%Autrement dit, l'amplitude et la phase de la porteuse restent constantes, et c'est la fréquence $f_{\rm{p}}$ qui varie dans le temps.
+ Cette technique est très utilisée aujourd'hui (radio FM, télévision, wifi...). Cela revient à modifier la fréquence instantanée de la porteuse,
+% \begin{equation}
+\eqbox[mod_freq]{
+  f_{\rm{p}}(t)=f_0+\alpha\, s_{\rm{i}}(t).
+  }
+% \end{equation}
+La constante $\alpha$ est homogène à des $\SI{}{Hz.V^{-1}}$.  Le signal modulé s'écrit donc
+% \begin{equation}
+\eqbox{
+  s(t)=A_{\rm{p}}\cos\left[2\pi\int_{0}^t f_p(t')\,\d t'\right].
+  }
+% \end{equation}
+
+\begin{protocole}
+  \todo Déterminer $s(t)$ pour un signal informatif sinusoïdal $s_i(t) = A_i \cos(2\pi f t)$ d’amplitude $A_{\rm i}$ et de fréquence $f$. On exprimera $s(t)$ en fonction du \imp{taux de modulation} en fréquence $\beta=\Delta f/f$ (sans dimension), où  $\Delta f=\alpha A_{\rm{i}}$ (en Hz) désigne la  \imp{déviation de fréquence}. 
+  \sol{
+On obtient 
+$
+s(t) = A_{\rm{p}}\cos\left[2\pi f_0 t + 2\pi \frac{\alpha A_{\rm{i}}}{2\pi f} \sin(2\pi f t)\right]$, soit 
+\eqbox{
+  s(t) = A_{\rm{p}}\cos\left[2\pi f_0 t + \beta \sin(2\pi f t)\right].
+}
+
+
+  }
+\end{protocole}
+
+\subsection{Expérience}
+\begin{protocole}
+ \item  Avec un deuxième GBF fonctionnant comme un oscillateur commandé en tension, générer un signal modulé en fréquence. Pour cela, envoyer le signal informatif sinusoïdal d’amplitude $A_{\rm i}=\SI{1.5}{V}$ et de fréquence $f=\SI{10}{Hz}$ du GBF 1 sur l'entrée VCF IN (\textit{Voltage Controled Frequency}) du GBF~2, puis activer la fonction SWEEP en sélectionnant la
+source externe (EXT). Pour le balayage, on choisira une amplitude $A_{\rm{p}}=\SI{5}{V}$ et une fréquence centrale $f_{0}=\SI{200}{Hz}$.
+ \item Visualiser le signal modulé à l’oscilloscope. Calculer la déviation en fréquence $\Delta f$, le coefficient $\alpha$, et le taux de modulation $\beta$.
+ \sol{
+  \begin{fig}[label]
+    \centering
+    \includegraphics[width=\columnwidth]{FM_temps}
+    %\capt{}
+  \end{fig}
+ }
+ \sol{
+ On peut déterminer $\Delta f$ en mesurant à l'oscilloscope la période minimale $T_{\rm min}$, qui correspond à la fréquence maximale $f_0+\Delta f$, et la période maximale $T_{\rm max}$, qui correspond à la fréquence $f_0-\Delta f$. On trouve 
+ \eqbox{
+ \Delta f = \SI{85}{Hz}
+ }
+
+ Connaissant l'amplitude du signal informatif $A_i = \SI{1.5}{V}$, on en déduit 
+ \eqbox{
+  \alpha = \frac{\Delta f}{A_i} = \SI{57}{Hz.V^{-1}}.
+ }
+ Connaissant la fréquence du signal informatif $f=\SI{10}{Hz}$, on détermine également
+ \eqbox{
+  \beta = \frac{\Delta f}{f} = \SI{8.5}{}.
+ }
+ }
+
+
+\item Le spectre en fréquence du signal modulé est difficile à interpréter, mais on peut montrer que $\SI{98}{\%}$ de l’énergie du signal est contenue dans une bande spectrale centrée autour de $f_0$ et de largeur 
+% \begin{equation}
+  \eqbox[Carson]{
+    B=2f(1+\beta).
+  }
+% \end{equation}
+ Vérifier expérimentalement cette loi, appelée \imp{règle de Carson}.
+ \sol{
+ Pour cela, tracer le spectre sur \texttt{Latis Pro}. Le spectre est bien centré autour de la valeur 
+ \eqbox{
+ f_0=\SI{200}{Hz},
+ }
+ et est de largeur \eqbox{
+  B = \SI{190}{Hz}.
+ }
+ \begin{fig}[label]
+  \centering
+  \includegraphics[width=\columnwidth]{FM_spectre}
+  %\capt{}
+ \end{fig}
+ }
+\item  Changer la forme du signal informatif (carré, triangulaire) et observer le signal modulé. Interpréter l’allure du signal.
+
+ \end{protocole}
+
+
+
+
+
+\end{document}

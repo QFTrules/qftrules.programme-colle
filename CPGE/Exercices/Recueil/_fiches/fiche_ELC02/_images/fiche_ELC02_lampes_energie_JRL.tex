@@ -1,0 +1,7 @@
+\shorthandoff{:!} %règle un problème de compatibilité avec babel
+\begin{circuitikz}[scale=.7]
+\draw (0,0) to[vsource,V=$E$,l={}] (0,3) -- (0.5,3) to[L,l_=$L$] (2.5,3) -- (3,3) to[lamp,l_={$\ptA_2$},bipoles/length=.7cm] (3,0);
+\draw (0.5,3) -- (0.5,4) to[lamp,l={$\ptA_1$},bipoles/length=.7cm] (2.5,4) -- (2.5,3);
+\draw (3,3) -- (4.5,3) to[lamp,l={$\ptA_3$},bipoles/length=.7cm] (4.5,1.5) to[C,l=$C$] (4.5,0) -- (0,0);
+\end{circuitikz}
+\shorthandon{:!}

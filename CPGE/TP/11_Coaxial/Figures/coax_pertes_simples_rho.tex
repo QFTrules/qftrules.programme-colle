@@ -1,0 +1,17 @@
+\input{/home/eb/Dropbox/texmf/tex/latex/Preambles/tikz.tex}
+\begin{document}
+\begin{tikzpicture}
+
+\draw (0,0) coordinate (O) to[short, i=${i(x,t)}$] ++ (1,0) to[L=$\Lambda\d x$] ++ (2,0) to[R=$\rho\d x$] ++ (2,0) coordinate (A);
+
+\draw (A) to[C=$\Gamma\d x$] ++ (0,-2);
+\draw (A) -- ++ (2,0) coordinate(B)  ++ (0,-2) coordinate(C) -- ++ (2,0);
+\draw (B)  to[short, i=${i(x+\d x,t)}$] ++ (2,0) coordinate (D);
+\draw (C) -- ++ (-7,0);
+
+\draw[<-,>=stealth]  ($(D)+(0.2,0)$) node[right]{$u(x+\d x,t)$} -- ++ (0,-2) coordinate (G);
+\draw[<-,>=stealth]  ($(O)+(-0.2,0)$) node[left]{$u(x,t)$} -- ++ (0,-2) coordinate (H);
+
+
+\end{tikzpicture}
+\end{document}

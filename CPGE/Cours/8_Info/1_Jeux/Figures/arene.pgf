@@ -1,0 +1,25 @@
+﻿\usetikzlibrary{arrows,automata}
+\usetikzlibrary{shadows.blur}
+\usetikzlibrary{shapes.symbols}
+  \tikzstyle{every state}=[fill=white,draw=black,text=black,blur shadow={shadow blur steps=10}]
+  \tikzstyle{sq}=[fill=white,draw=black,text=black,blur shadow={shadow blur steps=10},rectangle split, rectangle split parts=1,
+                 rectangle split horizontal,inner sep=0.8em,align=center]
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,node distance=2cm,semithick,scale=1]
+  \node[state,fill=JoliRouge,fill opacity=0.5,text=black, text opacity=1] (A)   {$0$};
+  \node (A1) [right of=A] {};\node (A2) [right of=A1] {};
+\node[sq]  (B) [above right of=A2] {$3$};
+  \node[state]  (D) [below of=A] {$1$};
+  \node (D1) [right of=D] {};\node (D2) [right of=D1] {};  
+  \node[sq]   (C) [above right of=D2] {$4$};
+  \node[state,fill=JoliBleu,fill opacity=0.5]  (E) [below of=D,text=black, text opacity=1] {$2$};
+  \node (E1) [right of=E] {};\node (E2) [right of=E1] {};
+  \node[sq]   (F) [above right of=E2] {$5$};
+  \node  (G) [below of=E] {}; \node (G) [right of=G] {};\node (G) [right of=G] {};
+  \node[sq,fill=JoliBleu,fill opacity=0.5]   (H) [above right of=G,text=black, text opacity=1] {$6$};
+
+  \path (A) edge              node {} (B) (A) edge              node {} (C)
+        (D) edge   node{} (H)   (D) edge  node {} (F) (B) edge  node {} (D) (F) edge  node {} (E)
+          (C) edge              node {} (E) ;%(E) edge              node {} (H) ;
+\end{tikzpicture}    ode {} (F) ;
+\end{tikzpicture}   (A);
+\end{tikzpicture}\end{tikzpicture}

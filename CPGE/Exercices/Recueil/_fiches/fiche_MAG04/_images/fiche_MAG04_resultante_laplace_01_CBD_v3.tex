@@ -1,0 +1,26 @@
+\begin{tikzpicture}
+
+\begin{scope}[shift={(6.5,-1)},scale=1.5]
+\draw[-latex] (-2,0.5) -- +(0.5,0) node[right]{$\vv{e_x}$};
+\draw[-latex] (-2,0.5) -- +(0,0.5) node[above]{$\vv{e_y}$};
+\filldraw[fill=white,draw=black] (-2,0.5) circle(3pt) node[below left]{$\vv{e_z}$};
+\fill (-2,0.5) circle(1.2pt);
+
+\draw[decoration={markings,mark= at position 0.3 with {\arrow{Latex[scale=1.25]}}},postaction={decorate}] (-1,0) node[below](A){$\ptA$} -- (1,0) node[below](B){$\ptB$}  node[near start,below]{$I$};
+
+\draw (1,0) -- ++(120:2) coordinate(C) node[above]{$\ptC$} coordinate [midway] (m1);
+\draw (-1,0) -- ++(60:2) coordinate [midway] (m2);
+\draw[dashed] (m1.center) -- (-1,0);
+\draw[dashed] (m2.center) -- (1,0);
+\draw[dashed] (C.center) -- (0,0);
+\fill (0,0.577) circle(0.8pt) node[left]{$\ptO$};
+\draw (0,-0.1) node[below]{$a$};
+
+\draw[double] ($(1,0)+(-0.2,0)$) arc(180:120:0.2);
+\draw[double] ($(-1,0)+(0.2,0)$) arc(0:60:0.2);
+\draw[double] ($(C)+(-60:0.2)$) arc(-60:-120:0.2);
+
+%\draw (0,-0.667) node[text centered]{circuit triangle};
+\end{scope}
+
+\end{tikzpicture}

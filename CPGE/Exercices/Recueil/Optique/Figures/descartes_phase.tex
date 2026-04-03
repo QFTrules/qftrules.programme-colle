@@ -1,0 +1,19 @@
+\input{/home/eb/Dropbox/texmf/tex/latex/Preambles/tikz.tex}
+% !TEX root = /home/eb/Dropbox/CPGE/Physique/Exercices/Recueil/Optique/Figures/descartes_phase.tex
+% \usetkzobj{all}
+\begin{document}
+\begin{tikzpicture}
+    \node at (0,0) {\includegraphics[width=0.6\textwidth]{dioptre_descartes.pdf}};
+    \coordinate (C) at (-0.25,1.18);
+    \coordinate (D) at (-0.6,-0.8);
+    \node at (C) [above right] {\contour{white}{\large $\rm C$}};
+    \node at (D) [below right] {\contour{white}{\large $\rm D$}};
+    \coordinate[] (A) at (-1.12,0.15);
+    \coordinate[] (B) at (1.22,0.15);
+    \draw[JoliRouge] (C) -- (A);
+    % \tkzMarkRightAngle[draw=JoliRouge,size=.7](A,0,C);
+    \draw[JoliRouge] (B) -- (D);
+    \fill (C) circle (2pt);
+    \fill (D) circle (2pt);
+\end{tikzpicture}
+\end{document}

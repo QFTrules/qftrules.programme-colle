@@ -1,0 +1,43 @@
+% !TEX encoding = UTF-8 Unicode
+% experiénce des trous d'young
+% © J.Roussel 2017-10-10
+%-------------------------------------------
+\documentclass[11pt]{article}
+\input{/home/eb/Dropbox/texmf/tex/latex/Preambles/styles_ondes.tex}
+\begin{document}
+
+		\begin{tikzpicture}[]
+			\def \ep {10pt};
+			\def \a {2cm};%distance laser biprisme
+			\def \L {8cm};%distance biprisme-écran
+			\def \divergence {15};
+			\def \deviation {7}; 
+			\coordinate (O) at (0,0);
+			\coordinate (OO) at (\ep,0);
+			\coordinate (S) at (180:\a);%source primaire
+			\coordinate (SS) at ({180-\deviation}:\a);%S1
+			\coordinate (SSS) at ({180+\deviation}:{\a});%S2
+			\coordinate (A) at (\L,{\a*tan(\divergence)+\L*tan(\divergence-\deviation)});
+			\coordinate (B) at (\L,{(\L-\ep)*tan(\deviation)});
+			\coordinate (C) at (\L,{-\L*tan(\deviation)});
+			\coordinate (D) at (\L,{-\a*tan(\divergence)-\L*tan(\divergence-\deviation)});
+			\fill[white] (-\a,1.8)rectangle(\L,-1.8);%masque blanc pour l'opacité
+			\draw (SS)node{\tiny •}node[above=0.8]{ S$_2$};
+			\draw (SSS)node{\tiny •}node[below=0.8]{ S$_1$};
+		    % \draw(S)node[red]{•}node[left=5pt]{ point source};			
+			\fill[red!50!white,opacity=0.5,] (SS)--(A)--(C)--(OO)--cycle;
+			\fill[red!50!white,opacity=0.5,] (SSS)--(D)--(B)--(OO)--cycle;
+			\draw[dashed,red](SS)--(C);
+			\draw[dashed,red](SS)--(A);
+			\draw[dashed,red](SSS)--(D);
+			\draw[dashed,red](SSS)--(B);
+			% \draw[verre](0,-1)--(0,1)--(\ep,0)--cycle;	
+			\draw ({\L/2},0) node{ champ d'interférences};
+			\draw (\L,-2) -- ++ (0,4)node[right,midway]{ écran};
+			\draw[<->] (-\a,-2) -- ++ (\L+\a,0) node[midway,above]{$D$};
+			\draw[<->] (SS) -- (SSS) node[midway,left]{$a$};
+		\end{tikzpicture}
+
+
+\end{document}
+

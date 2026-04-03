@@ -1,0 +1,721 @@
+% !TEX root = /home/eb/.vscode/extensions/qftrules.programme-colle/tmp/Exercice.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][colle]{Spectrscopie par transformation de Fourier}
+  On considère une source polychromatique de  densité spectrale en fréquence $D(\nu)$. Un dispositif interférométrique permet de mesurer l'intensité $I(\delta)$ issu de la superposition de deux ondes issues de cette source et présentant une différence de marche $\delta$. 
+ 
+  \begin{quest}
+    \item Montrer que l’interférogramme a pour expression 
+     \begin{equation}
+    I(\delta) = \int_0^\infty D(\nu) \left[1+\cos\left(2\pi c \nu \delta \right)\right] d\nu.
+    \end{equation}
+  \end{quest}
+  On considère une raie spectrale émise par une vapeur atomique basse pression, dont la largeur spectrale est dominée par l’élargissement Doppler résultant du mouvement des atomes par rapport à l’observateur. La densité spectrale est alors donnée par une fonction gaussienne centrée en $\nu_0$ et d’écart-type $\Delta \nu$, soit
+    \begin{equation}
+    D(\nu) = D_0 \exp\left[-\ln(2)\left(\frac{\nu - \nu_0}{\Delta \nu /2}\right)^2\right].
+    \end{equation}
+    \begin{quest}
+      \item	
+    \item Calculer l’interférogramme $I(\delta)$ 
+    \item On considère une lampe spectrale émettant deux raies très proches de longueurs d'onde $\lambda_1$ et $\lambda_2$. On note $\overline{\lambda} = \frac{\lambda_1 + \lambda_2}{2}$ et $\Delta \lambda = \lambda_2 - \lambda_1$.
+  \end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1]{Couleurs d'une bulle de savon}
+Une bulle d'eau savonneuse d'épaisseur $e$ et d'indice $n$ est éclairée sous incidence normale. Le coefficient de réflexion est faible, de sorte qu'on néglige les ondes ayant deux réflexions ou plus sur la bulle de savon.
+\begin{center}
+\includegraphics[width=0.2\textwidth]{bulle_savon.jpg}
+\end{center}
+\begin{quest}
+\item Faire un schéma de la situation. Quel est le déphasage entre les deux ondes réfléchies ?
+\item À quelle condition une lumière de longueur d'onde dans le vide $\lambda_0$ est-elle réfléchie avec une intensité maximale ?
+\item Pourquoi la bulle, éclairée en lumière blanche, prend-elle des reflets colorés lorsqu'elle devient suffisamment mince ? Donner un ordre de grandeur de l'épaisseur des bulles sur la photo.
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][devoir]{Observation de disques protoplanétaires}
+\Annale[Physique TSI]{Centrale-Supélec}{2015}
+
+
+\Enonce{
+Depuis 1995, des milliers d'exoplanètes on été découvertes et l'étude des mécanismes de formation d'une ou plusieurs planètes autour d'une étoile est devenue une partie extrêmement prolifique de l'astrophysique. Le scénario actuellement retenu met en jeu un disque protoplanétaire, une couche fine de poussières en rotation autour de l'étoile naissante. À l'intérieur de ce disque, des phénomènes de sédimentation, d'agrégation, d'accrétion et de collision aboutissent à la formation d'un système planétaire en orbite de son étoile.
+
+L'observation des disques protoplanétaires est grandement compliquée par la très grande différence de luminosité entre l'étoile centrale et le disque. Cependant, en utilisant plusieurs télescopes du VLT (Very Large Telescope), la méthode de l'interféromètrie annulante permet de pallier cette difficulté.\\
+
+\textsc{Formulaire:}
+\begin{align*}
+  \text{Unité astronomique} & : \SI{1}{UA} = \SI{1.5e11}{m} \\
+  \text{Année-lumière} & : \SI{1}{AL} = \SI{9.5e15}{m}.
+\end{align*}
+}
+
+
+\subsection{Caractéristique du disque observé}
+
+\Enonce{
+ L'image d'un point situé à l'infini, rayonnant à une longueur d'onde $\lambda_0 = \SI{10}{\mu m}$, par un des télescopes du VLT est une tache de diffraction de taille $t=\SI{130}{\mu m}$. On admet ici que l'on peut modéliser ce télescope par un diaphragme circulaire de diamètre $D=\SI{8.2}{m}$ suivi d'une lentille convergente équivalente au télescope de distance focale $f'_{\rm eq} $.
+}
+
+\begin{quest}
+  \QR{ Estimer la valeur de l'angle d'évasement $\varepsilon$ du faisceau lumineux après la traversée du diaphragme circulaire de diamètre $D=\SI{8.2}{m}$.
+  }{
+    Il s'agit de l'angle de diffraction, valable dans l'approximation des petits angles. La formule est 
+    \eqbox{
+    \varepsilon \sim \frac{\lambda_0}{D} \sim \SI{e-6}{rad}.
+    }
+    L'ouverture angulaire totale du faisceau vaut $2\veps$.
+  }
+  \QR{ Préciser la position de l'image géométrique d'une étoile située sur l'axe optique du télescope.
+  }{Si l'objet est situé à l'infini sur l'axe optique, alors l'image géométrique est formée au \fbox{foyer image} de la lentille, dans l'hypothèse du stigmatisme approché et en négligeant la diffraction.
+  % , soit
+  % $$
+  % \infty \underset{(\mc{L})}{\longrightarrow} F'.
+  % $$
+  }
+  \QR{ Déterminer l'ordre de grandeur de la distance focale équivalent $f'_{\rm eq} $ du VLT.
+  }{
+    On sait que la tache de diffraction, de largeur totale $t$, est observée dans le plan focal image de la lentille, à une distance $f'_{\rm eq}$ de celle-ci. Si la lentille est disposée immédiatement en sortie du diaphragme, on a $\tan \veps =  \frac{t}{2f'_{\rm eq}}$. Dans l'approximation des petits angles, $\tan \veps \simeq \veps$ et donc 
+    \eqbox{
+    f'_{\rm eq} \simeq \frac{t}{2\veps} \simeq \SI{43}{m}.
+    } 
+  }
+\end{quest}
+
+
+\Enonce{
+\begin{fig}[planete]
+  \includegraphics[width=0.85\textwidth]{planete.jpg}
+  \capt{Observation d'un disque protoplanétaire.}
+\end{fig}
+
+
+Soit un disque protoplanétaire tel que celui de l'étoile $\beta$ Pictoris, imagé par le VLT. Cette étoile est située à $\SI{63.4}{}$ années-lumière du système solaire et est $\SI{1.75}{}$ fois plus massive que le Soleil. En 2008, les astrophysiciens ont annoncé avoir détecté une planète, baptisée $\beta$ Pictoris b, dont l'orbite autour de cette étoile a un rayon égal à $8$ à $9$ unités astronomiques, et dont la période orbitale est de $17$ à $21$ ans. Cette planète est visible sur l'image de la \Fig{planete} où la ligne en pointillées est la trace de l'intersection du plan moyen du disque avec le plan de l'image. Par ailleurs, cette figure indique la taille de l'orbite de Saturne autour du Soleil afin d'illustrer les ordres de grandeur des distances.
+}
+
+
+\begin{quest}
+  \QR{À l'aide de l'image et des données précédentes, déterminer le diamètre typique du disque protoplanétaire autour de $\beta$ Pictoris, puis en déduire la taille angulaire $\theta_D$ sous laquelle le disque est vu depuis la Terre. Déterminer également la distance angulaire $\theta_P$ séparant l'étoile et la planète vues depuis la Terre. Commenter sachant que la résolution du VLT est de l'ordre de quelques millisecondes d'arc.
+  }{
+    On mesure directement le diamètre du disque sur l'image. L'échelle est donneé par le rayon de l'orbite de $\beta$ Pictoris b, qui vaut $R_b = \SI{8}{UA}$. On mesure alors un diamètre du disque $D_D = \SI{160}{UA}$. Le système stellaire est situé à une distance à la Terre $d_{T-\beta} = \SI{63.4}{AL}$. L'angle sous lequel est vu le disque vaut donc
+    % $$
+    \eqbox{
+      \theta_D \simeq \frac{D_D}{d_{T-\beta}} \simeq \SI{4e-5}{rad}.
+    }
+  % $$
+  L'angle de vue de la planète
+  % $$
+  \eqbox{
+    \theta_b \simeq \frac{R_b}{d_{T-\beta}} \simeq \SI{2e-6}{rad}.
+    }
+  % $$
+  La résolution angulaire du VLT vaut $\theta_{VLT} = \SI{5e-9}{rad}$, et est donc suffisante pour distinguer ces objets.
+  }
+\end{quest}
+
+\subsection{Principe de l'interférométrie annulante}
+
+\Enonce{
+Le physicien français Antoine Labeyrie est parvenu, dans les années 1970, à mettre en place le premier couple de télescopes interférométriques. L'australien Ronald Bracewell a ensuite repris ce concept et a proposé d'utiliser l'interférométrie pour éteindre artificiellement des sources intenses au voisinage de sources peu intenses. Cette technique d'interférométrie annulante est utilisée pour l'observation des disques protoplanétaires.
+
+On modélise le couple de télescopes $T_1$ et $T_2$ par deux trous d'Young de même rayon, séparés d'une distance $L$, éclairant un écran situé dans le plan focal image d'une lentille convergente de distance focale $f'_{\rm eq}$, dont l'axe optique est perpendiculaire au plan des deux ouvertures situées en avant de la lentille et passe par le milieu du segment $[T_1, T_2]$. On pointe le dispositif d'observation vers l'étoile $\beta$ Pictoris, située au centre du disque protoplanétaire étudié. Cet objet céleste est considéré à l'infini sur l'axe optique de la lentille équivalente au télescope. On s'intéresse dans un premier temps au rayonnement issu de l'étoile centrale.
+
+\begin{fig}[VLT]
+  \centering
+  \includegraphics[width=0.6\textwidth]{VLT.jpg}
+  \capt{Principe de l'interférométrie annulante.}
+\end{fig}
+}
+
+% \begin{fig}
+% \centering
+% \includegraphics{I_annul_1.jpg}
+% \capt{}
+% \end{fig}
+
+\begin{quest}
+  \QR{ Faire un schéma du dispositif modèle en y reportant les grandeurs pertinentes. Tracer les rayons lumineux pertinents issus de l'étoile centrale et interférant en un point $M$ du plan focal image de la lentille équivalente.
+  }{
+% \begin{fig}[]
+% \centering
+% \includegraphics[]{I_annul_1.png}
+% \capt{}
+% \end{fig}
+  }
+  \QR{ On notera $x$ l'abscisse de $M$ repérée par rapport au foyer principal image $F'$ le long de l'axe parallèle à $[T_1,T_2]$. On place en entrée du système un filtre qui sélectionne uniquement le rayonnement associé à la longueur d'onde $\lambda_0$. Ainsi, dans toute la suite de cette partie, on considère un rayonnement monochromatique à cette longueur d'onde. Exprimer, au niveau du point $M$, la différence de marche entre les rayons passant par $T_1$ et $T_2$, si on fait l'approximation $f'_{\rm eq} \gg L,x$.
+  }{
+    La méthode la plus efficace consiste à reprendre la démonstration du cours sur le montage de Fraunhofer. La différence de marche vaut 
+  $\delta(M) = L \sin \theta$ où l'angle $\theta$ vérifie $\tan \theta = \frac{x}{f'_{\rm eq}}$. Dans l'approximation des petits angles, on trouve 
+  \eqbox{
+    \delta(M) \simeq  \frac{Lx}{f'_{\rm eq}}.
+  }
+  }
+  \QR{ Lors de la traversée de l'ouverture $T_1$, la vibration lumineuse est déphasée de $\pi$ à l'aide d'un dispositif annexe qui n'introduit aucune différence de marche entre les deux voies de l'interféromètre. En déduire la différence de marche totale entre les deux rayons interférant en $M$.
+  }{
+    La formule du déphasage nous indique qu'un déphasage de $\pi$ correspond à un chemin optique de $\frac{\lambda_0}{2}$. On supposant que l'on a défini $\delta$ comme étant $(SM)_1-(SM)_2$ (l'autre signe est tout aussi valable), on a donc
+    \eqbox{
+    \delta(M) =  \frac{Lx}{f'_{\rm eq}}+\frac{\lambda_0}{2},
+    }
+    avec un signe $+$.
+  }
+  \QR{ On suppose uniforme l'intensité obtenu, au niveau de la zone utile du plan d'observation, à l'aide d'un seul des télescopes. On note $I_{0,E}$ cette intensité. On suppose de plus que cette intensité est la même pour les deux télescopes. En déduire l'intensité $I_E(x)$. Que constate-t-on si on place un détecteur quasi ponctuel en $x=0$ ? Ce résultat dépend-il de $L$ ? Commenter.
+  }{
+    Les intensités issues de chaque bras de l'interféromètre sont supposées uniformes et égales, de valeur $I_{0E}$. La formule des interférences à deux ondes (Fresnel) donne alors 
+  % $$
+  \eqbox{
+    I_E(x) = 2I_{0,E} \left[ 1+\cos\pa{2\pi \frac{\delta}{\lambda_0}} \right] = 2I_{0E} \left[ 1-\cos\pa{2\pi \frac{x}{i}} \right],
+  }
+  car $\cos(a+\pi) = -\cos a$, et où l'interfrange vaut 
+  \eqbox{
+  i  = \frac{\lambda_0 f'_{\rm eq}}{L}.
+  }
+  % $$
+  Au centre $x=0$ de la figure, on a $I_E(0) = 0$ : un photorécepteur ponctuel observerait donc de l'obscurité, quelle que soit la valeur de $L$.
+  }
+\end{quest}
+
+On s'intéresse maintenant uniquement au rayonnement issu d'un point $P$ du disque situé à une distance angulaire $\theta$ de l'étoile définie sur la \Fig{VLT}. Le dispositif pointe toujours vers l'étoile $\beta$ Pictoris. On cherche à contraindre le choix de $L$.
+
+\begin{quest}
+  \QR{ Exprimer la différence de marche totale entre les deux rayons issus de $P$ interférant en $M(x)$ après être passés par $T_1$ et $T_2$. Là encore, on suppose que les intensités issues des deux télescopes sont égales et que la vibration lumineuse est déphasée de $\pi$ lors du passage par $T_1$. En déduire l'intensité $I_D(x,\theta)$ si on note $I_{0,D}$ l'intensité au niveau du plan d'observation du rayonnement issu du point $P$ et obtenue à l'aide d'un seul des deux télescopes.
+  }{
+    Ici le point $\rm P$ est situé hors axe. La différence de marche supplémentaire introduite par le trajet optique en amont des trous de Young se calcle de la même façon que pour le montage de Franhofer (voir cours sur la translation de la source) et vaut $L\theta$. La différence de marche totale vaut donc
+    \eqbox{
+     \delta(P) =  \frac{Lx}{f'_{\rm eq}}+\frac{\lambda_0}{2} + L\theta.
+    }
+  La formule des interférences à deux ondes (Fresnel) donne
+  % $$
+  \eqbox{
+    I_D(x,\theta) = 2I_{0,D} \left[ 1-\cos\pa{2\pi \frac{x}{i} + 2\pi \frac{L\theta}{\lambda_0} } \right].
+  }
+  % $$
+  }
+  \QR{ Le point $P$ constitue-il une source cohérente avec l'étoile centrale $\beta$ Pictoris ? Donner l'expression de l'intensité totale $I(x,\theta)$ au point $M(x)$.
+  }{
+    Le point $\rm P$ du disque et le point $\rm M$ de l'étoile $\beta$ Pictoris constituent des sources indépendantes, et sont donc \udl{incohérents}. On utilise l'additivité des intensités :
+  % $$
+  \begin{equation*}
+    \begin{split}
+      I(x,\theta) = I_E(x) + I_D(x,\theta) & = 2I_{0,E} \left[ 1-\cos\pa{2\pi \frac{x}{i}} \right] + 2I_{0,D} \left[ 1-\cos\pa{2\pi \frac{x}{i} + 2\pi \frac{L\theta}{\lambda_0} } \right]. \\ 
+      % & = 2(I_{0,E} +I_{0,D}) \left[ 1- \cos\pa{2\pi \frac{x}{i}} \right] - 2I_{0,D} \left[\cos\pa{2\pi \frac{x}{i}} \cos\pa{2\pi \frac{L\theta}{\lambda_0}} - \sin\pa{2\pi \frac{x}{i}} \sin\pa{2\pi \frac{L\theta}{\lambda_0}}\right]. \\
+    \end{split}
+  \end{equation*}
+  soit 
+  \eqbox{
+    I(x,\theta)  = 2(I_{0,E} +I_{0,D}) - 2I_{0,E} \cos\pa{2\pi \frac{x}{i}} - 2I_{0,D} \cos\pa{2\pi \frac{x}{i} + 2\pi \frac{L\theta}{\lambda_0} }. 
+  }
+  % $$
+  }
+  \QR{ On note $I(\theta)$ l'intensité totale au niveau du centre du détecteur au point d'abscisse $x=0$ en considérant l'étoile centrale et la source située au point $P$. Expliciter $I(\theta)$ et donner l'expression $L_{\theta,k}$ des diverses valeurs de $L$ (indicées par l'entier $k$) qui permettent de rendre cette intensité maximale. Commenter l'expression \guill{interférométrie annulante}.
+  }{
+  En $x=0$, l'intensité totale vaut $ I(\theta) = I(x=0,\theta) = 2(I_{0,E} +I_{0,D}) - 2I_{0,E} - 2I_{0,D} \cos\pa{2\pi \frac{L\theta}{\lambda_0} }$, soit
+  \eqbox{
+  I(\theta) = 2I_{0,D}\left[  1- \cos\pa{2\pi \frac{L\theta}{\lambda_0} } \right].
+  }
+  La fonction $I(\theta)$ attend périodiquement son maximum  pour tous les écartements $L_k$ tels que $2\pi \frac{L_k\theta}{\lambda_0} = (2k+1)\pi$, soit
+  \eqbox{
+  L_k = \left( k+\frac{1}{2} \right)\frac{\lambda_0}{\theta}.
+  }
+  La plus petite valeur de l'écartement est 
+  $$
+  L_1 = \frac{\lambda_0}{2\theta}.
+  $$
+  On voit que les propriétés de l'étoile ont été \guill{annulées} dans l'expression de $I(\theta)$. Seules les propriétés du disque interviennent : intensité $I_{0,D}$, et largeur angulaire $\theta$. D'où l'appellation \guill{interférométrie annulante}.
+  }
+\end{quest}
+
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][TD]{Interférences de deux ondes planes}
+  \Notions{\item Ondes planes \task Interférences \task Notation complexe}
+On considère deux ondes planes progressives monochromatiques de même pulsation $\omega$, dont les vecteurs d'onde $\vec{k}_1$ et $\vec{k}_2$ forment un angle $\pm\alpha$ par rapport à l'axe $(Ox)$ horizontal orienté vers la droite. On prendra l'axe $(Oy)$ vertical ascendant. On note $\underline{s_1}$ et $\underline{s_2}$ les amplitudes complexes des vibrations lumineuses. On suppose qu'en $O$, origine de l'espace, les ondes vibrent en phase de sorte que $\underline{s_1}(O,t)=\underline{s_2}(O,t)=A_{0}\,\e^{i\omega t}$.
+\begin{quest}
+\item Exprimer le déphasage $\Delta\varphi(M)$ entre ces deux ondes en un point $M$ quelconque de l'espace, d'abord en fonction des vecteurs d'onde, puis seulement en fonction de $\alpha$, $\lambda$ et des coordonnées du point $M$.
+\item On place un écran dans un plan $y=\cte$, qu'observe-t-on ?
+\item On tourne le même écran dans un plan $z=\cte$ : décrire la figure d'interférences obtenue. Déterminer l'interfrange $i$, qui on rappelle est la distance séparant deux franges brillantes successives.
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][TD]{Indice optique du méthane}
+  \Notions{\item Interférence à deux ondes}
+On considère l'interféromètre ci-contre, composé de deux miroirs et de deux lames semi-réfléchissantes qui transmettent la moitié de l'intensité lumineuse et réfléchissent l'autre moitié. L'interféromètre est éclairé par un laser de longueur d'onde $\lambda=\SI{532}{nm}$ et une photodiode mesure l'intensité dans l'une des voies de sortie de l'interféromètre. Une cuve fermée de longueur $l=\SI{10}{cm}$ est placée sur une voie. Cette cuve contient initialement de l'air, d'indice optique $n_{\rm{air}}$, que l'on remplace progressivement par du méthane d'indice $n_{\rm{CH}_4}>n_{\rm{air}}$. Au cours de la procédure, la photodiode détecte le défilement de 32 franges.
+
+\begin{center}
+\includegraphics[width=0.5\textwidth]{mach_zender.png}
+\end{center}
+
+\begin{quest}
+\item Exprimer l'ordre d'interférences $p_{\rm{air}}$ lorsque la cuve est remplie d'air, en fonction des longueurs géométriques $L_1$ et $L_2$ des bras de l'interféromètre.
+\sol{
+La différence de marche vaut $\delta = (SM)_2 - (SM)_1  = n_{\rm air} (L_2-L_1)$. L’ordre d’interférences vaut
+\eqbox{p_{\rm air} = \frac{\delta}{\lambda} = \frac{n_{\rm air} (L_2-L_1)}{\lambda}.}
+}
+\item Exprimer de même l'ordre $p_{\rm{CH}_4}$ lorsque la cuve est remplie de méthane.
+\sol{
+Le chemin optique $(SM)_2$ a maintenant augmenté de $(n_{ch4} - n_{\rm air})\ell.$  donc
+\eqbox{p_{\rm ch4}  = p_{\rm air}  + (n_{ch4} - n_{\rm air})\frac{\ell}{\lambda}.}
+}
+\item En déduire l'indice optique du méthane sachant que $n_{\rm{air}}-1=\num{2,78e-4}$.
+\sol{
+On a un nombre de franges qui défilent $N = 32 = p_{\rm ch4} -p_{\rm air} = (n_{ch4} - n_{\rm air})\frac{\ell}{\lambda}$. Donc
+\eqbox{
+  n_{ch 4} -1 =  n_{\rm air} - 1 + \frac{N \lambda}{\ell} = \SI{4.48e-4}{}.
+}
+}
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][3][TD]{Interféromètre de Fabry-Perot}
+  \Notions{\item Division d’amplitude \task Ondes multiples \task Finesse}
+Un interféromètre de Fabry-Perot est constitué d'une lame d'air à faces parallèles d'épaisseur $e$ comprise entre deux lames de verre d'épaisseur négligeable. Ces lames ont un coefficient de transmission en amplitude $t$ et un coefficient de réflexion en amplitude $r$.
+On éclaire la lame avec une source étendue monochromatique de longueur d'onde $\lambda=\SI{422,7}{nm}$. Un rayon incident donne naissance à différents rayons dont on doit tenir compte si le coefficient de réflexion est élevé.
+\begin{fig}[]
+  \centering
+  \includegraphics[scale=1.1]{Diff_marche.pdf}
+  % \capt{Cavité Fabry-Perot.}
+\end{fig}
+\begin{quest}
+  \item Quelle relation existe-t-il entre $r$ et $t$ si l'on néglige l'absorption lumineuse ? On rappelle que les coefficients de réflexion et transmission en énergie sont données par $r^2$ et $t^2$. 
+  \sol{
+  Par conservation de l'énergie, on a 
+  \eqbox{
+    r^2 + t^2 = 1.
+  }
+  }
+  \item En s'aidant du théorème de Malus et de constructions géométriques, déterminer le déphasage constant $\vphi$ entre deux rayons émergents successifs en fonction de $e, \lambda$ et $\theta$.
+  \sol{
+  On a $\delta = 2e \cos \theta$ (la démo sera faite pour le Michelson en lame d'air) et donc 
+  \eqbox{
+    \vphi = \frac{2\pi}{\lambda} \delta = \frac{4\pi e}{\lambda} \cos \theta.
+  }
+   Le calcul de la différence de marche se fait comme dans le cours sur la division d'amplitude.
+  }
+  \item On appelle $\udl{s}_m$ l'amplitude complexe de l'onde associée au $m$-ième rayon. Quelle relation a-t-on entre $\udl{s}_{m}$ et $\udl{s}_{m-1}$ ? Comment s'exprime $\udl{s}_m$ en fonction de $\udl{s}_1$ ? En déduire l'expression de l'amplitude résultante~$\udl{s}$ et montrer que l'intensité lumineuse $I$ a pour expression 
+  % $$
+  \begin{equation}
+    I=\frac{I_{\rm max}}{1+m \sin ^2(\frac{\vphi}{2})},
+  \end{equation}
+% $$
+où  l'on supposera $r$ réel et où $m$ est à déterminer.
+\sol{
+  On a $\udl{s}_{m+1} = r^2 \udl{s}_m \e^{i\vphi}$. En effet, chaque aller-retour entre les lames de verre s'accompagnent de deux réflexions. 
+  On utilise la méthode de sommation du cours pour les interférences à $N$ ondes. On a 
+  $$\udl{s} = \sum_{k=1}^{\infty} \udl{s}_k = \udl{s}_1 \sum_{k=0}^{\infty} r^{2k} \e^{i k \vphi} = \udl{s}_0\frac{1}{1-r^2\e^{i\vphi}}.$$
+  l’intensité vaut donc 
+  $$
+I = \frac{1}{2} \udl{s} \udl{s}^\star = \frac{I_0}{(1-r^2\cos\vphi)^2 + r^4 \sin^2(\vphi) } = \frac{I_0}{1 - 2r^2\cos\vphi + r^4} = \frac{I_{\rm max}}{(1-r^2)^2 + 4r^2 \sin^2(\frac{\vphi}{2})},
+  $$
+  en utilisant la formule $\cos(2a) = 1-2\sin^2(a)$. On a donc
+  $$
+  I_{\rm max} = \frac{I_0}{(1-r^2)^2}.
+  $$ 
+  \eqbox{
+    m = \frac{4r^2}{(1-r^2)^2}.
+  }}
+\item Représenter l'intensité $I$ en fonction de $\vphi$ pour différentes valeurs de $r$. On désire des interférences très contrastées. Comment faut-il choisir $r$ ? Déterminer la finesse $\mc{F}$.
+\sol{
+  On a représenté ci-dessous le graphe de la fonction $I(\vphi)$ (fonction d'Airy) pour plusieurs valeurs de $R=r^2$ (coefficient de réflexion en intensité).
+  \begin{fig}[label]
+    \centering
+    \includegraphics[width=0.7\columnwidth]{Fonction_airy_new.pdf}
+    %\capt{}
+  \end{fig}
+Le contraste vaut $\mc{C}\simeq 1$ car l'intensité  minimale est quasi nulle pour $m$ grand. Mais les franges brillantes sont d'autant mieux séparées les unes des autres que $r$ est grand. La finesse vaut 
+\eqbox{
+  \mc{F} = \frac{\pi r}{1-r^2}.
+}
+}
+% \bonus{
+% \item En pratique on utilise des lames de verre de coefficient de réflexion $r=\num{0,95}$. Les interférences sont observés sur un écran situé dans le plan focal image d'une lentille convergente dont l'axe est perpendiculaire à la cavité Fabry-Perot. À quoi ressemble la figure d'interférences ? Calculer le rayon des $5$ premières franges. Déterminer la finesse $\mc{F}$ de la cavité Fabry-Perot, définie comme le rapport entre le déphasage $\Delta \vphi$ entre deux franges brillantes successives et leur largeur à mi-hauteur $\delta \vphi$. Comparer la résolution de cet appareil par rapport à celle d'un interféromètre de Michelson.
+% \sol{
+% La figure d'interférences est invariante par rotation autour de l'axe optique, car $\vphi$ ne dépend que de $\theta$. On observe donc des anneaux concentriques. Les anneaux sont séparés de $\Delta \vphi = 2\pi$ et de largeur à mi-hauteur $\delta \vphi $ telle que 
+% $$
+% I(\delta \vphi/2) = \frac{I_{\rm max}}{2} = \frac{I_{\rm max}}{1+m\sin^2(\delta \vphi/4)} \simeq \frac{I_{\rm max}}{1+m\delta \vphi^2/16} \Rar \delta \vphi = \frac{4}{\sqrt{m}}.
+% $$
+% On en déduit la finesse
+% $$
+% \mc{F} = \frac{2\pi }{4/\sqrt{m}} = \frac{\pi}{2} \sqrt{m},
+% $$
+% soit
+% \eqbox{
+%   \mc{F} = \frac{\pi r}{1-r^2}.
+% }
+% On voit que $\mc{F} \gg 1$ pour un interféromètre de Fabry-Perot si $r$ est suffisamment proche de $1$.
+% }}
+\end{quest}
+
+\textsc{Données} : $\cos(2a) = 1-2\sin^2(a)$.
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][2][colle]{Interférogramme d'une lampe spectrale}
+On obtient l'interférogramme suivant de la lumière issue d'une lampe spectrale de nature inconnue. La lumière qui interfère est filtrée pour ne laisser passer qu'une partie du spectre.
+%%%%%%%%%%%%%%%
+\begin{center}
+\includegraphics[width=0.8\columnwidth]{interfero_lampe.pdf}
+\end{center}
+%%%%%%%%%%%%%%%%%%%%%
+%\end{figure}
+\begin{quest}
+\item Qu’est-ce qu'un interférogramme ? Estimer la longueur d'onde moyenne $\lambda_0$ et la largeur spectrale $\Delta \lambda$. Quel élément contient cette lampe spectrale, et quelles raies interfèrent ?
+% \begin{fig}[]
+  \begin{center}
+  \includegraphics[width=0.8\columnwidth]{spectre_Hg.png}\hfill
+  \includegraphics[width=0.8\columnwidth]{spectre_Cd.png}
+\end{center}
+% \end{fig}
+
+\sol{$\lambda_0 \simeq \SI{500}{nm}$ et $\Delta \lambda \simeq \SI{20}{nm}$. La largeur spectrale correspond à celle d'un filtre interférentiel.}
+
+\item Rappeler la formule de Fresnel des interférences pour une onde monochromatique. En déduire l'intensité totale $I(\delta)$ pour un doublet de raies aux longueurs d'onde $\lambda_1$ et $\lambda_2$ de même intensité $I_0$. Cette hypothèse est-t-elle compatible avec l'interférogramme ?
+
+\sol{
+On somme les intensités associées à chaque raie. On a
+$$
+I_1(\delta) = I_0 [1+\cos(2\pi \frac{\delta}{\lambda_1})]
+$$
+et
+$$
+I_2(\delta) = I_0 [1+\cos(2\pi \frac{\delta}{\lambda_2})].
+$$
+Deux ondes de longueurs d’onde différentes sont incohérentes, et donc on somme les intensités :
+\begin{align*}
+I(\delta) & = I_1(\delta) + I_2(\delta)   \\
+& =  I_0 [2 + \cos(2\pi \frac{\delta}{\lambda_1}) + \cos(2\pi \frac{\delta}{\lambda_2})]  \\
+ = 2I_0[1+ \cos(\pi \delta(\frac{1}{\lambda_1} + \frac{1}{\lambda_2})) \cos(\pi \delta(\frac{1}{\lambda_1} - \frac{1}{\lambda_2}))] \\
+ \simeq 2I_0[1+ \cos(2 \pi \frac{\delta}{\lambda_0}) \underbrace{\cos(\pi \delta \frac{\Delta \lambda}{\lambda_0^2})}_{\rm{contraste }~\mc{C}(\delta)}].
+\end{align*}
+
+% \begin{center}
+%   \includegraphics[width=0.6\textwidth]{interf_2raies.jpeg}
+% \end{center}
+
+
+On obtient des battements non amortis, donc pas cohérent. Pour le doublet jaune du mercure, $\Delta \lambda \simeq \SI{2}{nm}$. Pour le doublet jaune  du sodium, $\Delta \lambda \simeq \SI{0.6}{nm}$. Pas cohérent non plus avec l'ODG de $\Delta \lambda$.
+}
+
+\item Chaque raie possède en réalité une largeur $\delta \lambda \simeq \SI{5e-4}{nm}$ en raison des collisions entre atomes. Déterminer la longueur de cohérence temporelle $\ell_c$ associée. Pourquoi la largeur de chaque raie individuelle ne conduit à aucun brouillage visible sur l'interférogramme ci-dessus ?
+
+\sol{
+Attention il faut remplacer $I_0$ par $I_0/\Delta \sigma$ par rapport à la formule initiale !
+$$I(\delta) = 2\dfrac{I_0}{\Delta \sigma} \displaystyle\int_{\sigma_0-\Delta \sigma/2}^{\sigma_0 + \Delta \sigma/2}[1+\cos(2\pi \delta \sigma)]\der \sigma = 2I_0 + \dfrac{2I_0}{\Delta \sigma 2\pi \delta}\left[ \sin(2\pi \delta \sigma) \right]_{\sigma_0-\Delta \sigma/2}^{\sigma_0 + \Delta \sigma/2}$$ soit
+$$
+I(\delta) = 2I_0 + \dfrac{2I_0}{\Delta \sigma 2\pi \delta}\left[ \sin(2\pi\delta \sigma_2) - \sin(2\pi\delta \sigma_1)  \right] = 2I_0 + \dfrac{4I_0}{\Delta \sigma 2\pi \delta} \sin(\pi\delta \Delta \sigma) \cos(2\pi \delta \sigma_0).
+$$
+Donc
+$$
+I(\delta) = = 2I_0\left[1 + \underbrace{\dfrac{\sin(\pi\delta \Delta \sigma)}{ \pi  \delta \Delta \sigma  }}_{\rm{contraste }~\mc{C}(\delta)}  \cos(2\pi \delta \sigma_0)\right].
+$$
+La fonction $x \mapsto \sin(x)/x$ est appelée sinus cardinal et a l’allure suivante :
+% \begin{center}
+%   \includegraphics[width=0.6\textwidth]{sinc.jpeg}
+% \end{center}
+On reproduit bien l’interférogramme de l’énoncé.
+}
+\end{quest}
+
+ %%%%%%%%%%%
+\noindent
+% \textsc{Données :}
+$\cos(a) + \cos(b)  = 2\cos\left(\dfrac{a+b}{2}\right)\cos\left(\dfrac{a-b}{2}\right)$,
+$\sin(a) - \sin(b)   = 2\sin\left(\dfrac{a-b}{2}\right)\cos\left(\dfrac{a+b}{2}\right)$.
+%%%%%%%%%%%%
+
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][2][oral]{Détermination du spectre d'une source lumineuse}
+  \Notions{\item Interférences \task Source polychromatique \task Cohérence temporelle}
+On mesure l'interférogramme suivant d'une source lumineuse inconnue.
+%%%%%%%%%%%%%%%
+\begin{center}
+\includegraphics[width=0.6\textwidth]{interfero.pdf}
+\end{center}
+%%%%%%%%%%%%%%%%%%%%%
+%\end{figure}
+Déterminer, en justifiant, les propriétés spectrales de la source lumineuse.
+
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][3][TD]{Étude d'un interférogramme}
+  \Notions{\item Interférences à deux ondes \task Source polychromatique \task Cohérence temporelle}
+On obtient l'interférogramme suivant d'une source dont la densité spectrale est inconnue.
+%%%%%%%%%%%%%%%
+\begin{center}
+\includegraphics[scale=1]{interfero.pdf}
+\end{center}
+%%%%%%%%%%%%%%%%%%%%%
+%\end{figure}
+\begin{quest}
+\item Estimer la longueur d'onde moyenne $\lmoy$ et la largeur spectrale $\Delta \lambda$ de cette source lumineuse.
+%  De quelle type de source pourraît-il s'agir ?
+
+\sol{
+  \begin{fig}[label]
+    \centering
+    \includegraphics[scale=1]{interfero_lecture.pdf}
+    %\capt{}
+  \end{fig}
+  \begin{enumerate}
+    \item \udl{Longueur d’onde moyenne} : la longueur d’onde moyenne $\lmoy$ donne la période des oscillations rapides du terme d’interférences. On lit donc
+    \eqbox{
+    \lmoy \simeq \SI{500}{nm}.
+    }
+    \item \udl{Critère de cohérence temporelle} : le contraste s’annule lorsque $\delta \simeq \lc$. On lit donc 
+    \eqbox{
+    \lc \simeq \SI{5}{\micro m}.
+    }
+    Or la longueur de cohérence temporelle est reliée à la largeur spectrale par la relation 
+    $$
+    \lc \simeq \frac{\lmoy^2}{\Delta \lambda} \Rar \Delta \lambda \simeq \frac{\lmoy^2}{\lc}.
+    $$
+    On en déduit 
+    \eqbox{
+    \Delta \lambda \simeq \SI{50}{nm}.
+    }
+    Alternativement, on peut aussi compter le nombre de franges visibles avant annulation du contraste, qui vaut $N_{\rm f} \simeq \frac{\lmoy}{\Delta \lambda} \simeq 10$. On retrouve alors la même valeur de $\Delta \lambda$.
+  \end{enumerate}
+  % La largeur spectrale correspond à celle d'un filtre interférentiel.
+  }
+
+\item Rappeler la formule de Fresnel pour une source monochromatique de longueur d'onde $\lambda$. On suppose que la source est constituée d'un doublet de raies aux longueurs d'onde $\lambda_1 = \lmoy - \Delta \lambda$ et $\lambda_2 = \lmoy + \Delta \lambda$, de même intensité $I_0$. Justifier que l’intensité résultante $I(\delta)$ est la somme des intensités $I_1(\delta)$ et $I_2(\delta)$ des ondes issues de ces deux raies.
+Exprimer $I(\delta)$ en fonction de $\lmoy$ et $\lc$ en supposant $\Delta \lambda \ll \lmoy$.
+
+\sol{
+  \begin{enumerate}
+    \item \udl{Formule de Fresnel} : la formule des interférences à deux ondes pour une longueur d'onde $\lambda$ s’écrit
+    \eqbox{
+      I_\lambda(\delta) = 2I_0 \left[ 1+\cos\pa{2\pi \frac{\delta}{\lambda}} \right].
+    }
+    \item \udl{Intensité résultante} : pour un doublet de raies aux longueurs d'onde $\lambda_1$ et $\lambda_2$, on note $I_1(\delta)$ et $I_2(\delta)$ les intensités associées à chaque raie. On représente ci-dessous la densité spectrale de la source.
+    \begin{fig}[label]
+      \centering
+      \includegraphics[scale=1]{Dlambda_doublet.pdf}
+      %\capt{}
+    \end{fig}
+    Deux ondes de longueurs d’onde différentes sont \udl{incohérentes}, et donc on somme les intensités :
+    \begin{align*}
+I(\delta) & = I_1(\delta) + I_2(\delta)   \\
+& = 2I_0\left[ 1+\cos\pa{2\pi \frac{\delta}{\lambda_1}} \right] + 2I_0\left[  1+\cos\pa{2\pi \frac{\delta}{\lambda_2}} \right]  \\
+& =
+2I_0 \left[2 + \cos\left(2\pi \frac{\delta}{\lambda_1}\right) + \cos\left(2\pi \frac{\delta}{\lambda_2}\right)\right]  \\
+ & = 2I_0\left[1+ \cos\left(\pi \delta\left(\frac{1}{\lambda_1} + \frac{1}{\lambda_2}\right)\right) \cos\left(\pi \delta\left(\frac{1}{\lambda_1} - \frac{1}{\lambda_2}\right)\right)\right],
+\end{align*}
+où l’on a utilisé une formule trigonométrique donnée en fin d’énoncé. 
+\item \udl{Simplification} : on peut simplifier l’argument des cosinus en supposant $\Delta \lambda \ll \lmoy$. La grandeur $\Delta \lambda$ représente la demi-séparation entre les raies longueurs d'ondes $\lambda_1$ et $\lambda_2$ ; on suppose donc les raies proches. On trouve 
+$$
+\frac{1}{\lambda_1} + \frac{1}{\lambda_2} = \frac{2\lmoy}{\lmoy^2 - \Delta \lambda^2} \simeq \frac{2}{\lmoy},
+$$
+à l’ordre dominant en $\Delta \lambda/\lmoy$, et de même
+$$
+\frac{1}{\lambda_1} - \frac{1}{\lambda_2} = \frac{2\Delta \lambda}{\lmoy^2 - \Delta \lambda^2} \simeq \frac{2\Delta \lambda}{\lmoy^2} \simeq \frac{2}{\lc}.
+$$
+On en déduit
+\eqbox{
+I \simeq 2I_0 \left[  1+ \cos\left(  2 \pi \frac{\delta}{\lambda_0}\right)  \cos\left(  2\pi \frac{\delta}{\ell_c}\right) \right].
+}
+  \end{enumerate}
+  
+}
+
+\item On représente ci-dessous le spectre de quelques vapeurs atomiques usuelles. Indiquer deux raisons pour lesquelles l'hypothèse du doublet de raies n'est pas compatible avec l’interférogramme observé.
+\begin{center}
+  \includegraphics[width=0.8\columnwidth]{spectre_Hg.png}\hfill
+  \includegraphics[width=0.8\columnwidth]{spectre_Cd.png}
+\end{center}
+
+\sol{
+  \begin{enumerate}
+    \item \udl{Contraste} :
+    le cosinus de période $\lmoy$ oscille bien plus rapidement que celui de période $\lc$. On peut donc interpréter ce dernier comme l’enveloppe de l’interférogramme, autrement dit comme le facteur de contraste
+    \eqbox{
+      \mc{C}(\delta) = \cos\left(  2\pi \frac{\delta}{\ell_c}\right).
+      }
+      On voit que le contraste est ici une fonction de $\delta$, est proche de $1$ pour $\delta \ll \lc$ et s’annule pour $\delta = \lc$, en accord avec le critère de cohérence temporelle. 
+      \item \udl{Interférogramme} : l’interférogramme a l’allure suivante les valeurs de longueur d’onde moyenne $\lmoy = \SI{500}{nm}$ et d’écart spectral $\Delta \lambda = \SI{50}{nm}$ trouvé précédemment. 
+      \begin{itemize}
+        \item 
+        On voit que l’enveloppe est une fonction périodique, ce qui n’est pas le cas de l’interférogramme observé. 
+        \item De plus, on voit qu'aucune vapeur atomique ne possède un doublet de raie centré sur $\SI{500}{nm}$ avec un écart de $\SI{100}{nm}$ entre les deux raies. On peut conclure que l'interférogramme observé ne peut pas provenir d'un doublet de raies.
+      \end{itemize}
+      \begin{center}
+  \includegraphics[scale=1]{interfero_lampe.pdf}
+\end{center}
+\end{enumerate}
+}
+
+\item On suppose cette fois-ci que la densité spectrale est constante entre les longueurs d'ondes $\lambda_1$ et~$\lambda_2 = \lambda_1 + \Delta \lambda$, et nulle en dehors, avec $\Delta \lambda \ll \lambda_{1,2}$. Déterminer l'intensité lumineuse $I(\delta)$ et le contraste $\Co$. On pourra introduire le nombre d'onde $\sigma = 1/\lambda$ pour  l'intégration, ainsi que la fonction sinus cardinal $x \mapsto \sinc(x) = \sin(x)/x$. Ce modèle de source est-t-il compatible avec l'interférogramme observé ?
+
+\sol{
+  \begin{enumerate}
+    \item \udl{Densité spectrale} : la densité spectrale a l'allure suivante.
+    \begin{fig}[label]
+      \centering
+      \includegraphics[scale=1]{Dlambda_plat.pdf}
+      %\capt{}
+    \end{fig}
+    Soit $I_0$ l'intensité totale émise par la source. La densité spectrale en nombre d'onde est définie par  le changement de variable 
+    $$
+    I_0 = \int_{\sigma_2}^{\sigma_1} D(\sigma) \d \sigma = \int_{\lambda_1}^{\lambda_2} \tilde{D}(\lambda) \d \lambda = \int_{\sigma_2}^{\sigma_1} \tilde{D}(\lambda=1/\sigma) \frac{\d \sigma}{\sigma^2}, 
+    $$
+    soit pour $ \sigma \in [\sigma_1, \sigma_2]$,
+    $$
+    D(\sigma) = \frac{\tilde{D}(\lambda=1/\sigma)}{\sigma^2} \simeq \frac{\tilde{D}(\lambda)}{\sigma_{\rm m}^2} = \lmoy^2 \tilde{D}(\lambda) = \lmoy^2 \dfrac{I_0}{\Delta \lambda},
+    $$
+    où $\sigma_{\rm m} = 1/\lmoy$ et $\lmoy = (\lambda_1 + \lambda_2)/2$ est la longueur d'onde moyenne. En effet, $\sigma$ varie très peu sur l'intervalle $[\sigma_1, \sigma_2]$ si $\Delta \lambda \ll \lmoy$. On en déduit que 
+    \eqbox{
+    D(\sigma) = \lc I_0, \quad \sigma \in [\sigma_1, \sigma_2],
+    }
+    et $D(\sigma) = 0$ en dehors.
+
+    \item \udl{Intensité} : l'intensité interférant pour une longueur d'onde $\lambda = 1/\sigma$ est donnée par la formule de Fresnel
+    $$
+  \d I_\sigma(\delta) = 2D(\sigma) \d  \sigma [1+\cos(2\pi \delta \sigma)].
+$$
+L'intensité totale est obtenue en intégrant sur toutes les longueurs d'onde :
+$$
+I(\delta) = \displaystyle\int_{\sigma_2}^{\sigma_1}2 D(\sigma)[1+\cos(2\pi \delta \sigma)]\der \sigma = 2I_0 + \dfrac{2\lc I_0}{2\pi \delta}\left[ \sin(2\pi \delta \sigma) \right]_{\sigma_2}^{\sigma_1},$$ soit
+$$
+I(\delta) = 2I_0 + \dfrac{2 \lc I_0}{2\pi \delta}\left[ \sin(2\pi\delta \sigma_2) - \sin(2\pi\delta \sigma_1)  \right] = 2I_0 + \dfrac{\lc I_0}{\pi \delta} \sin(\pi\delta \Delta \sigma) \cos(2\pi \delta \sigma_0).
+$$
+On peut ensuite faire intervenir les longueurs d'onde $\lambda_{\rm m} = 1/ \sigma_{\rm m}$ et $\lc \simeq 1/\Delta \sigma$ pour obtenir
+\eqbox{
+  I(\delta) =  2I_0\left[1 + \sinc\left(  \pi \frac{\delta}{\ell_c}\right) \cos\left( 2\pi \frac{\delta}{\ell_c}\right)\right].
+  }
+  où  $\sinc(x) =  \sin(x)/x$ est la fonction sinus cardinal.
+\end{enumerate}
+}
+\sol{
+  \begin{enumerate}
+  \item \udl{Contraste} : le contraste a ici pour expression
+  \eqbox{
+    \Co(\delta) = \sinc\left(  \pi \frac{\delta}{\ell_c}\right).
+  }
+  Le graphe de cette fonction est représentée ci-dessous.
+\begin{fig}[label]
+  \centering
+  \includegraphics[width=0.7\columnwidth]{contraste_plat.pdf}
+  %\capt{}
+\end{fig}
+  \item \udl{Interférogramme} :
+ \begin{center}
+\includegraphics[scale=1]{interfero.pdf}
+\end{center}
+  On reproduit bien l’interférogramme de l’énoncé !
+\end{enumerate}
+  }
+\end{quest}
+
+ %%%%%%%%%%%
+\noindent
+\textsc{Données :}
+$\cos(a) + \cos(b)  = 2\cos\left(\dfrac{a+b}{2}\right)\cos\left(\dfrac{a-b}{2}\right)$,
+$\sin(a) - \sin(b)   = 2\sin\left(\dfrac{a-b}{2}\right)\cos\left(\dfrac{a+b}{2}\right)$.
+%%%%%%%%%%%%
+
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][2][TD]{Interférence à trois ondes}
+  \Notions{\item Construction de Fresnel \task Contraste \task Ondes multiples \task Notation complexe}
+On fait interférer trois ondes lumineuses, de vibrations lumineuses complexes $\udl{s}_1$, $\udl{s}_2$ et $\udl{s}_3$, d'amplitudes égales notées $A_0$. L’onde $\udl{s}_2$ (respectivement $\udl{s}_3$) est en avance de phase (respectivement en retard de phase) d’un même angle $\vphi$ par rapport à $\udl{s}_1$. 
+\begin{quest}
+  \item Quelle intensité maximale  $I_{\max }$ peut-on observer à partir de ses trois ondes en faisant varier le déphasage $\vphi$ ? On exprimera $I_{\max }$ en fonction de l'amplitude $A_0$.
+  \sol{
+    D’après l’énoncé, on peut écrire les vibrations lumineuses comme 
+    $$
+    \udl{s}_1 = A_0, \quad
+    \udl{s}_2 = A_0 e^{i\vphi}, \quad \udl{s}_3 = A_0 e^{-i\vphi}.
+    $$
+    L'amplitude maximale est atteinte lorsque $\vphi = 0$, et vaut $3A_0$. L'intensité maximale vaut donc 
+    \eqbox{
+      I_{\max} = 9I_0,
+    }
+    avec $I_0 = \frac{A_0^2}{2}$ l’intensité associée à une seule onde.
+  }
+  \item Que vaut l'onde lumineuse complexe résultante $\udl{s}$ ? Déterminer l'expression de l'intensité lumineuse~$I(\vphi)$. Représenter le graphe de cette fonction et déterminer le contraste. Interpréter à partir de la construction de Fresnel.
+  \sol{
+On ne peut pas appliquer ici la formule de Fresnel, puisqu’on fait interférer non pas deux mais trois ondes. Il faut revenir au principe de superposition.
+La vibration lumineuse résultante est donnée par $$\underline{s} = \underline{s_1} + \underline{s_2} + \underline{s_3} = A_0 \pa{1 + \e^{i\vphi} + \e^{-i\vphi}} = A_0(1+ 2\cos \vphi).$$
+L'intensité vaut
+$$
+I= \frac{1}{2} |\underline{s}|^2 =  \frac{1}{2}A_0^2(1+ 2\cos \vphi)^2 = I_0(1+4\cos(\vphi) + 4\cos^2(\vphi)),
+$$
+soit 
+\eqbox{
+  I = 3I_0\left(1+\frac{4}{3}\cos(\vphi) + \frac{2}{3}\cos(2\vphi)\right).
+}
+\begin{fig}[]
+  \centering
+  \includegraphics[width=0.4\textwidth]{graphe_I3.pdf}
+  % \capt{}
+\end{fig}
+Le contraste s’obtient par la relation
+  $$
+  \mc{C} = \frac{I_{\rm max} - I_{\rm min}}{I_{\rm max} + I_{\rm min}}.
+  $$
+Ici, l’intensité maximale vaut $I_{\rm max} = \SI{9}{I_0}$, et l’intensité minimale vaut $I_{\rm min} = 0$, qui est atteinte lorsque $\vphi = \frac{2\pi}{3}$ et $\frac{4\pi}{3}$. Cela correspond dans la représentation de Fresnel à la situation où les trois vecteurs de Fresnel représentant $\udl{s}_1$, $\udl{s}_2$ et $\udl{s}_3$ forment un triangle équilatéral. Le contraste vaut donc 
+
+\eqbox{
+\mc{C} = 1. 
+}
+  }
+  \item On suppose dans cette question uniquement que l'onde $\udl{s}_1$ est déphasée de $\frac{\pi}{2}$ en la faisant traverser une lame quart d'onde avant d'interférer. Déterminer la nouvelle expression de l'intensité $I(\vphi)$. Représenter le graphe de cette fonction et déterminer le contraste. Interpréter à partir de la construction de Fresnel.
+  \sol{
+ L’amplitude résultante s’écrit
+$$\underline{s} = \underline{s_1} + \underline{s_2} + \underline{s_3} = A_0 \pa{i + \e^{i\vphi} + \e^{-i\vphi}} = A_0(i + 2\cos \vphi).$$
+L'intensité vaut
+$$
+I = \frac{1}{2} |\underline{s}|^2=  \frac{1}{2}A_0^2(1 + 4\cos^2(\vphi)) = I_0(1+2+2\cos(2\vphi)),
+$$
+soit 
+\eqbox{
+I = 3I_0 \left(1+\frac{2}{3}\cos(2\vphi)\right).
+}
+\begin{fig}[]
+  \centering
+  \includegraphics[width=0.4\textwidth]{graphe_I3_pisur2.pdf}
+\end{fig}
+L’intensité maximale vaut $I_{\rm max} = 9I_0$, et l’intensité minimale $I_{\rm min} = I_0$. On en déduit le contraste 
+\eqbox{
+\mc{C} = \num{0.8}.
+}
+  }
+  
+  \item On suppose dans cette question uniquement que les trois ondes $\udl{s}_1$, $\udl{s}_2$, et $\udl{s}_3$ sont d'amplitudes inégales $A_0$, $\frac{A_0}{2}$ et $\frac{A_0}{10}$ respectivement. En s'aidant d'une construction de Fresnel, déterminer l'intensité maximale $I_{\rm max}$ et l'intensité minimale $I_{\rm min}$ dans cette configuration. En déduire le contraste.
+  \sol{
+    \begin{itemize}
+      \item 
+      L'intensité est maximale lorsque les ondes sont toutes en phase, ce qui correspond à  une amplitude $A_0 + A_0/2 + A_0/10 = \frac{16}{10}A_0$. L’intensité vaut donc 
+      $$
+I_{\rm max} = \num{2.56}I_0.
+      $$
+      
+      \item L'intensité minimale est obtenue lorsque les ondes $2$ et $3$ sont en opposition de phase avec l’onde $1$, soit une amplitude $A_0 - A_0/2 - A_0/10 = \frac{2}{5}A_0$. L’intensité minimale vaut donc m
+      $$
+        I_{\rm min} = \num{0.16}I_0.
+      $$
+    \end{itemize}
+      Le contraste vaut donc
+    \eqbox{
+      \mc{C} = \num{0.88}.
+    }
+  }
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

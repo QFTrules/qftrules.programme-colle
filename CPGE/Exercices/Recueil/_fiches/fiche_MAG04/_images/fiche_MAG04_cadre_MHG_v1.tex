@@ -1,0 +1,32 @@
+\begin{tikzpicture}
+
+\begin{scope}[shift={(-4,0)},scale=1.5]
+\draw[-latex] (0,0,0) --++ (0,0,6) node[left]{$\Delta$};
+\draw[thick] (0,0,1) --++ (0.5,-1,0) --++ (0,0,4) --++(-0.5,1,0) ;
+\draw[dashed] (0,0,1) --++ (0,-1.3,0) --++ (0,0,4) --++(0,1.3,0) ;
+\draw[-{Latex[scale=1.25]}] (0.5,-1,3) --++ (0,0,-0.01) node[below right]{$i$};
+\draw[latex-latex] (0,0,0.8) --++ (0.5,-1,0) node[midway, right]{$a$};
+\draw[latex-latex] (-0.1,0.1,1) --++ (0,0,4) node[midway, left]{$b$};
+\draw[-latex] (0.2,-0.2,6) --++ (0,-1,0) node[midway, left]{$\vv{g}$};
+\draw (0,-0.8,5) arc(-90:-63.43:0.8) node[midway, below]{$\theta$};
+\draw[-latex] (0,0,1) --++ (0,0.8,0) node[above right]{$\vv{B}$};
+%\draw (0,0,5) node[left]{\ptE};
+%\draw (0.5,-1,5) node[below]{\ptF};
+%\draw (0.5,-1,1) node[right]{\ptG};
+%\draw (0,0,1) node[above]{\ptH};
+\end{scope}
+
+\begin{scope}[shift={(0,-1)},scale=2]
+\draw[-latex] (0,0) --++ (0,0.8) node[above right]{$\vv{B}$};
+\draw[dashed] (0,0) --++ (0,-1.2);
+\draw[thick] (0,0) --++ (0.5,-1);
+\filldraw[fill=white,draw=black] (0,0) circle(3pt) node[above right]{$\vv{e_\Delta}$};
+\fill (0,0) circle(1.1pt);
+\draw (0,-0.8) arc(-90:-63.43:0.8) node[midway, below]{$\theta$};
+\draw[-latex] (-0.4,-0.4) --++ (0,-0.8) node[midway, left]{$\vv{g}$};
+\filldraw[fill=white,draw=black] (0.5,-1) circle(2pt) node[below right]{$i$};
+\draw(0.45,-1.05) --++ (2.9pt,2.9pt);
+\draw(0.45,-0.95) --++ (2.9pt,-2.9pt);
+\end{scope}
+
+\end{tikzpicture}

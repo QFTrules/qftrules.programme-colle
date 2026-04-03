@@ -1,0 +1,12 @@
+﻿\input{tikz.tex}
+\begin{document}
+\begin{tikzpicture}[>=latex,scale=0.6]
+    \draw[->] (0,0) node[left] {$E_1$} -- ++ (0.5,0) coordinate (A); \draw (A) -- ++ (0.5,0) coordinate (B);
+    \draw (B) -- ++ (0,1) -- ++ (4,0) -- ++ (0,-1) coordinate (C) -- ++ (0,-1)  coordinate (E) -- ++ (0,-1) -- ++ (-4,0) -- cycle;
+    \draw[->] (C) -- ++ (0.5,0) coordinate (D);\draw (D) -- ++ (0.5,0);
+    \draw (B)  -- ++ (0.5,0) -- ++ (0.25,0.5) -- ++ (0.5,-1) -- ++ (0.5,1) -- ++ (0.5,-1) -- ++ (0.5,1) -- ++ (0.5,-1) -- ++  (0.25,0.5) --  (C) node[right=0.6] {$S_1$}  ;
+    \draw[->] (0,-1) node[left] {$E_2$} -- ++ (0.5,0) coordinate (F); \draw (F) -- ++ (0.5,0) coordinate (G);
+    \draw (G)  -- ++ (0.5,0) -- ++ (0.25,0.5) -- ++ (0.5,-1) -- ++ (0.5,1) -- ++ (0.5,-1) -- ++ (0.5,1) -- ++ (0.5,-1) -- ++  (0.25,0.5) --  (E) ;
+    \draw[->] (E) node[right=0.6] {$S_2$} -- ++ (0.5,0) coordinate (D)  ;\draw (D) -- ++ (0.5,0);
+\end{tikzpicture}
+\end{document}

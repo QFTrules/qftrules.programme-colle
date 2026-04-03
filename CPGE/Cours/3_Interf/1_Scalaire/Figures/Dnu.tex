@@ -1,0 +1,11 @@
+\input{tikz.tex}
+\begin{document}
+\begin{tikzpicture}
+  \draw[->] (0,0) -- ++ (0,3) node[above] {$D(\nu)$};
+  \draw[->] (0,0) -- ++ (3*1.618,0) node[right] {$\nu$};
+  \draw[JoliRouge] plot[domain=0:4,samples=200] (\x,{2.5*exp(-7*(\x-2)^2)});
+  \draw (2,0.1) -- ++ (0,-0.2) node[below] {$\nu_{\rm m}$};
+  \draw[dashed] (2,0) -- ++ (0,2.5);
+  \draw[<->] (1.6,0.7) -- ++ (0.8,0) node[midway,above=0.1] {\contour{white}{$\Delta \nu$}};
+\end{tikzpicture}
+\end{document}

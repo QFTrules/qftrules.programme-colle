@@ -1,0 +1,1277 @@
+% !TEX root = /home/eb/.vscode/extensions/qftrules.programme-colle/tmp/Exercice.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][colle]{Recyclage de l'air dans une cabine d'avion}
+  \Annale[Oral physique PC]{Centrale}{2019}
+
+Dans un avion, l'air circulant dans la cabine est un mélange d'air provenant de l'atmosphère extérieure et d'air chaud provenant des moteurs (qui n'est pas à la pression adéquate)
+On étudie la machine qui récupère l'air chaud des moteurs et l'envoie dans la cabine.
+
+Échangeur 1
+
+Échangeur 2
+
+Données:
+- (1) : $T_1=160^{\circ} \mathrm{c}, P_1=2,6$ bar
+- (2) : $T_2=110^{\circ} \mathrm{c}$
+- (3) : $T_3=210^{\circ} \mathrm{c}$
+- (4) : $T_4=100^{\circ} \mathrm{c}$
+- (5) : $T_5=5^{\circ} \mathrm{c}$
+
+Nature des transformations:
+- $1 \rightarrow 2$ : transformation isobare
+- $2 \rightarrow 3$ : compression adiabatique réversible
+- $3 \rightarrow 4$ : transformation isobare
+- $4 \rightarrow 5$ : détente adiabatique réversible
+1. Donner la pression $P_5$
+2. Le fonctionnement de la turbine permet-il de faire fonctionner le compresseur?
+3. Quel est l'intérêt de rajouter le compresseur et l'échangeur $E_2$
+
+Indication : faire une hypothèse sur la nouvelle température en sortie de la machine
+PC* Hoche 2019-2024
+15
+Séverine Mensch
+
+Données :
+- masse molaire de l'air $M=29 \mathrm{~g} \cdot \mathrm{~mol}^{-1}$
+- vitesse maximale de l'air dans le système $v_{\text {max }}=1,2 \mathrm{~m} \cdot \mathrm{~s}^{-1}$
+- diamètre de la cabine de l'avion $D=4,4 \mathrm{~m}$
+- capacité thermique massique de l'air à pression constante $c_p=1 \mathrm{~kJ} . \mathrm{K}^{-1} . \mathrm{kg}^{-1}$
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][devoir]{Détente d'un gaz dans une tuyère}
+Une tuyère est une conduite cylindrique rigide d'axe de révolution $(O x)$ et de section variable $S(x)$. On considère un écoulement d'air dans une tuyère dont les parois sont calorifugées. On suppose que l'air se comporte comme un gaz parfait diatomique de masse molaire $M=29 \mathrm{~g} \cdot \mathrm{mol}^{-1}$ caractérisé par un coefficient $\gamma=\num{1,4}$ et que la vitesse de l'air en un point d'abscisse $x$ de l'écoulement s'écrit $\Vec{c}=c(x) \ex$.
+% Figure 5.23. Schéma d'une tuyère.
+L'air entre dans la tuyère avec une vitesse $c_1=100 \mathrm{~m} \cdot \mathrm{s}^{-1}$, une température $T_1=1500 \mathrm{~K}$, une pression $p_1=50$ bar et un volume massique $v_1=\SI{8,71e-2}{m^3.kg^{-1}}$ et en sort à une température $T_2=500 \mathrm{~K}$, une pression $p_2=1$ bar et avec un volume massique
+$v_2=\SI{1,44e-2}{m^3.kg^{-1}}$.
+\begin{quest}
+\item Montrer en appliquant le premier principe industriel sur un système ouvert que l'on définira que la quantité $h(x)+\frac{1}{2} c^2(x)$ se conserve dans la tuyère, i.e. est indépendante de $x$.
+\sol{
+\udl{Système ouvert} : volume de contrôle défini entre les abscisses $0$ (section d'entrée $S_1$) et $x$ (section de sortie $S(x)$).
+La tuyère est calorifugée donc $q=0$ et ne comporte aucune pièce mécanique donc $w_u=0$. En négligeant la variation d'énergie potentielle de pesanteur, le premier principe industriel s'écrit:
+$$
+\left(h(x)+\frac{1}{2} c^2(x)\right)-\left(h_1+\frac{1}{2} c_1^2\right)=q+w_u=0 .
+$$
+Cette relation est vraie pour toute abscisse $x$. On en déduit que la quantité \fbox{$h(x)+\frac{1}{2} c^2(x)$} se conserve dans la tuyère.
+}
+\item Déterminer la vitesse de sortie du gaz $c_2$ en fonction des températures $T_1$ et $T_2$, de $c_1$, $R$, $M$ et de $\gamma$. Application numérique.
+\sol{
+ Utilisons la conservation de la quantité $h(x)+\frac{1}{2} c^2(x)$ entre l'entrée et la sortie de la tuyère :
+$$
+h_2+\frac{1}{2} c_2^2=h_1+\frac{1}{2} c_1^2 \quad \text { soit } \quad c_2=\sqrt{c_1^2+2\left(h_1-h_2\right)} .
+$$
+L'air se comporte comme un gaz parfait donc $h_2-h_1=c_p\left(T_2-T_1\right)$ avec $c_p=\frac{R \gamma}{M(\gamma-1)}$ la capacité thermique massique à pression constante de l'air.
+\udl{Remarque } :
+Il faut être en mesure de retrouver les expressions des capacités thermiques massiques $c_P$ et $c_V$ à partir de la définition du coefficient $\gamma: \gamma=\frac{C_P}{C_V}$ et de la loi de Mayer : $C_P-C_V=n R$ où $n$ est la quantité de matière. Sous forme massique, ces deux équations se réécrivent :
+$$
+\gamma=\frac{c_P}{c_V} \quad \text { et } \quad c_P-c_V=\frac{R}{M}
+$$
+En résolvant ce système de deux équations à deux inconnues, il vient :
+$$
+c_V=\frac{R}{M(\gamma-1)} \quad \text { et } \quad c_P=\frac{R \gamma}{M(\gamma-1)}
+$$
+
+
+La vitesse d'éjection du gaz est donc :
+\eqbox{c_2=\sqrt{c_1^2+\frac{2R \gamma}{M(\gamma-1)}\left(T_1-T_2\right)}=\SI{1,4e3}{m.s^{-1}}.}
+La vitesse d'éjection est supersonique.
+}
+\end{quest}
+Pour une tranche de gaz comprise entre les abscisses $x$ et $x+\mathrm{d} x$, la variation de l'enthalpie massique s'écrit $\mathrm{d} h(x)=T(x) \mathrm{d} s(x)+v(x) \mathrm{d} p(x)$, où $v(x)$ est le volume massique du gaz à l'abscisse $x$.
+\begin{quest}
+\item Exprimer la variation d'entropie massique du gaz entre l'entrée $1$ et la sortie $2$ de la tuyère en fonction des températures $T_1$ et $T_2$ et pressions $p_1$ et $p_2$.
+\sol{
+
+La variation d'entropie massique sur une tranche de longueur $\mathrm{d} x$ est :
+$$
+\mathrm{d} s(x)=\frac{\mathrm{d} h(x)}{T(x)}-\frac{v(x)}{T(x)} \mathrm{d} p(x) .
+$$
+L'air est considéré comme un gaz parfait. L'enthalpie du gaz ne dépend donc que de la température et $\mathrm{d} h(x)=c_P \mathrm{~d} T(x)$ où $\mathrm{d} T(x)$ est la variation de température du gaz entre $x$ et $x+\mathrm{d} x$. De plus, l'équation d'état des gaz parfaits donne $\frac{v(x)}{T(x)}=\frac{R}{M p(x)}$.
+La variation d'entropie se réécrit :
+$$
+\mathrm{d} s(x)=c_P \frac{\mathrm{d} T(x)}{T(x)}-\frac{R}{M} \frac{\mathrm{d} p(x)}{p(x)}
+$$
+L'intégration de cette relation entre l'entrée et la sortie de la tuyère donne la variation ds de l'entropie massique
+\eqbox{
+s_2-s_1=c_P \ln \left(\frac{T_2}{T_1}\right)-\frac{R}{M} \ln \left(\frac{p_2}{p_1}\right)
+}
+% Attention!
+% Malgré l'intégration de $\mathrm{d} s(x)$ entre l'entrée et la sortie de la tuyère, ds reste un infiniment petit correspondant à la variation d'entropie du gaz entre les instants $t$ et $t+\mathrm{d} t$.
+}
+\item En appliquant le $2^{\rm nd}$ principe industriel, calculer numériquement l'entropie créée lors du passage du gaz dans la tuyère. La détente est-elle réversible ?
+\sol{
+$\triangleright$ Appliquons le deuxième principe industriel :
+$$
+s_2-s_1=s_{\mathrm{c}}+s_{\mathrm{e}}
+$$
+or, $s_{\mathrm{e}}=0$ car la tuyère est calorifugée. Il s'ensuit que l'entropie massique créée durant d $t$ est :
+$$
+s_{\mathrm{c}}=c_P \ln \left(\frac{T_2}{T_1}\right)-\frac{R}{M} \ln \left(\frac{p_2}{p_1}\right)= \num{19.2} \mathrm{~J} \cdot \mathrm{K}^{-1} \cdot \mathrm{kg}^{-1} .
+$$
+}
+% \item Calculer le rapport des sections de sortie et d'entrée $S_2 / S_1$ permettant le bon fonctionnement de la tuyère.
+% \sol{
+% $\triangleright$ En régime stationnaire, le débit massique $D_m$ se conserve entre l'entrée et la sortie de la tuyère. Il vient alors:
+% $$
+% D_m=\frac{S_1 c_1}{v_1}=\frac{S_2 c_2}{v_2}
+% $$
+% On en déduit le rapport des sections permettant le bon fonctionnement de la tuyère :
+% $$
+% \frac{S_2}{S_1}=\frac{c_1 v_2}{c_2 v_1}=1,2
+% $$
+% La section de sortie doit donc être supérieure à la section d'entrée de la tuyère.
+% Complément
+% On peut montrer que pour que la tuyère réalise la détente du gaz, celle-ci doit tout d'abord être convergente jusqu'à ce que l'écoulement devienne supersonique puis être divergente jusqu'à la sortie du gaz.
+% }
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][2][devoir]{Cycle de Rankine avec détente étagée}
+\Notions{\item Système thermodynamique ouvert  \task Diagramme $(p,h)$ \task Rendement}
+  On considère le cycle de Rankine avec détente étagée que décrit l'eau dans une centrale nucléaire REP, représenté sur la \Fig{rankine_etage}. 
+  % On étudie le cycle sur le diagramme $(p,h)$ de l'eau de la figure ci-dessous.
+   Les transformations sont modélisées par :
+  \begin{liste}
+  \item A-B : générateur de vapeur : échauffement isobare de $p_2 = \SI{55}{bar}$ à l'état de liquide saturant $A'$, puis vaporisation jusqu'à l'état de vapeur saturante sèche B ;
+  \item B-C : turbine haute pression : détente adiabatique réversible de $p_2$ à $p_3 = \SI{10}{bar}$ ;
+  \item C-B' : surchauffeur : échauffement isobare jusqu'à la vapeur saturante sèche en B' ;
+  \item B'-C' : turbine basse pression :  détente adiabatique réversible de $p_3$ à $p_1 = \SI{430}{mbar}$ ;
+  \item C'-D : condenseur : liquéfaction totale isobare jusqu'au liquide saturant en D ;
+  \item D-A : pompe : compression adiabatique réversible de travail utile négligeable.
+  \end{liste}
+  \begin{fig}[rankine_etage]
+  \centering
+  \includegraphics[width=0.8\columnwidth]{rankine_etage.png}
+  \capt{Cycle de Rankine avec détente étagée.}
+\end{fig}
+
+  \begin{quest}
+  \item Placer les points A, B, C', B', C'' et D sur le diagramme $(p,h)$ ci-dessous. Déterminer graphiquement l'enthalpie massique de vaporisation de l'eau $\ell_{\rm vap}$ à la pression $p_2=\SI{55}{bar}$.
+
+  \sol{
+    \begin{fig}[label]
+      \centering
+      \includegraphics[width=0.7\columnwidth]{ph_eau_rankine_etage.pdf}
+      %\capt{}
+    \end{fig}
+  Le cycle avec détente étagée comprend la partie en pointillé en plus par rapport au cycle sans détente étagée vu en TD.
+  % \begin{center}
+  % \includegraphics[width=0.8\textwidth]{rankine_etage_sol-min.jpg}
+  % \end{center}
+  L'enthalpie massique de vaporisation de l'eau  à la pression $p_2=\SI{55}{bar}$ vaut
+  \eqbox{
+    \ell_{\rm vap} = h_B-h_{A'} = 2780-1190 = \SI{1590}{kJ.kg^{-1}}.
+  }
+  }
+  \item Calculer numériquement les titres massiques en vapeur $x_C$ et $x_{C'}$ aux points C et C'. Quel est un des intérêts de la surchauffe ?
+
+  \sol{
+  On peut utiliser la loi des moments et contrôler graphiquement à l'aide des isotitres. En utilisant la loi des moments, on trouve 
+  $$
+x_C = \frac{h_C-h_{A'}}{h_B-h_A'} \quad \text{et} \quad x_{C'} = \frac{h_{C'}-h_{L}}{h_V-h_L}.
+  $$
+  On trouve 
+  \eqbox{
+    x_C=\num{0.86} \quad \text{et} \quad x_{C'} = \num{0.77}.
+  }
+ Sans surchauffe, on parcourrait le cycle en trait plein de la figure ci-dessus, et donc on le titre en vapeur serait moins élevé : on formerait davantage de liquide, ce qui conduirait à une corrosion accrue de la turbine.
+  }
+  \item Déterminer numériquement les travaux utiles $w_{BC}$ et $w_{B'C'}$ fournis effectivement par l'eau aux turbines HP et BP.
+
+  \sol{
+  Le travail est récupéré par l'opérateur dans les turbines. Le $1$er principe industriel donne $\Delta h = w_u+ q$ en l'absence de variation d'énergie mécanique.
+  Appliqué à la turbine HP (B$\rightarrow$C) : $w_{BC} = h_C-h_B=-\SI{350}{kJ.kg^{-1}}$. De même, pour la turbine BP (B'$\rightarrow$C'), on trouve  $w_{B'C'} = h_{C'}-h_{B'}=-\SI{780}{kJ.kg^{-1}}$.
+  }
+  \item  Déterminer numériquement les transferts thermiques $q_{AB}$ et $q_{CB'}$ dépensés pour chauffer l'eau dans le générateur de vapeur et le surchauffeur.
+  \sol{
+  Le générateur de vapeur et la surchauffeur jouent le rôle de source chaude. Le $1$er principe appliqué au générateur de vapeur donne $q_{AB}=\SI{2598}{kJ.kg^{-1}}$. De même, $q_{CB'} = \SI{340}{kJ.kg^{-1}}$ pour le surchauffeur.
+  }
+  \item En déduire  la valeur numérique du rendement énergétique $\eta$ de ce cycle moteur. Quel est un autre intérêt de la surchauffe ?
+  \sol{
+  Le transfert thermique fourni au fluide par la source chaude vaut au total $q_{\rm chaud} = q_{AB}+q_{CB'} = \SI{2938}{kJ.kg^{-1}}$. Le travail utile total récupéré par l'opérateur vaut $w_u = w_{BC} + w_{B'C'} = \SI{-1130}{kJ.kg^{-1}}$. Le rendement vaut donc
+  \eqbox[*]{\eta = -\frac{w_u}{q_{\rm chaud}} = \num{0.38}.}
+  }
+  \vspace{-0.5cm}
+  \begin{fig}
+  \centering
+  % \includegraphics[width=0.9\textwidth]{ph_eau.pdf}
+  \includegraphics[width=1.15\columnwidth,angle=90]{ph_eau.pdf}
+  % \capt{Diagramme $(p,h)$ de l'eau.}
+  \label{fig:pheau_rankine}
+\end{fig}
+  %%%%%%%%%%%%%
+  \end{quest}
+
+  \end{exo}
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][devoir]{Modélisation de la fuite de matière d’un réservoir}
+  % \ccp[Modélisation de systèmes physiques ou chimiques]{2021}
+  \medskip
+
+  On s’intéresse au système ouvert décrit par la \Fig{syst}. Ce système possède une entrée de matière
+  notée A, et une sortie notée B. Il reçoit du milieu extérieur une puissance thermique $\dot{Q}_e$ et une puissance
+  de force $\dot{W}_e$. Il fournit au milieu extérieur une puissance thermique $\dot{Q}_s$ et une puissance de force $\dot{W}_s$.
+  Les grandeurs $\dot{Q}_e$, $\dot{Q}_s$, $\dot{W}_e$, $\dot{W}_s$ sont définies comme des quantités algébriques. En revanche, les débits
+  massiques $D_{m,A}$ et $D_{m,B}$ sont définis comme des quantités positives.
+
+  \begin{fig}[syst]
+  \centering
+  \includegraphics[width=0.8\textwidth]{systeme_ouvert.pdf}
+  \capt{Représentation schématique d’un système ouvert.}
+  \label{fig:syst}
+\end{fig}
+  %%%%%%%%%%%%%
+
+  \begin{quest}
+  \QR{ 
+    Donner l’unité des grandeurs $\dot{W}$, $\dot{Q}$ et $D_m$ mentionnées sur la \Fig{syst}.
+  }{
+    $\dot{W}$, $\dot{Q}$  sont des puissances (en W). $D_m$ est un débit massique (en $\SI{}{kg.s^{-1}}$).
+  }
+
+  \QR{ 
+    Le système considéré est supposé évoluer en régime stationnaire. Quelle est la relation entre les débits des courants de matière entrant $D_{m,A}$ et sortant $D_{m,B}$ ? Justifier.
+  }{
+    En régime stationnaire, le débit massique se conserve entre l'entrée et la sortie, et donc
+  \eqbox[*]{D_{m,A} = D_{m,B}.}
+  }
+
+  \QR{ 
+    Appliquer le premier principe industriel au système ouvert stationnaire de la \Fig{syst}. On négligera les variations d'énergie potentielle mais pas d'énergie cinétique. Montrer qu’il peut se mettre sous la forme :
+    \begin{equation}
+    \text{(Débit d’énergie entrant) =
+    (Débit  d’énergie sortant)}.
+    \end{equation}
+    On explicitera les termes \guill{débits d’énergie} (homogènes à une puissance) en fonction des grandeurs introduites par la \Fig{syst}.
+  }{
+    Pour rappel, le $1$er principe industriel n'est valable qu'en régime stationnaire ! Attention, les puissance utile et transfert thermique sortants sont définis positifs lorsque le fluide cède de la puissance. Avec $D_m = D_{m,A}=D_{m,B}$, on a
+    $$
+    D_{m}\left[h+\frac{1}{2}v^2\right]_A^B = \dot{W} + \dot{Q} = \dot{W}_e - \dot{W}_s + \dot{Q}_e - \dot{Q}_s.
+    $$
+    Donc
+    \eqbox{
+      \underbrace{D_{m,A}\left(h_A+\frac{1}{2}v_A^2\right) + \dot{W}_e + \dot{Q}_e}_{\rm débit~d'énergie~entrant} =  \underbrace{D_{m,B}\left(h_B+\frac{1}{2}v_B^2\right) + \dot{W}_s + \dot{Q}_s}_{\rm débit~d'énergie~sortant}.
+      }
+  }
+
+  \QR{
+      Le système ouvert de la \Fig{syst} est supposé évoluer en régime transitoire. On note $m(t)$ la fonction représentant l’évolution de sa masse $m$ en fonction du temps $t$. À partir d’un bilan de matière réalisé sur un système fermé $\Sigma_f$, déduire la relation existant entre $\dd{m}{t}$ et les débits $D_{m,A}$ et $D_{m,B}$. Proposer une interprétation qualitative du bilan.
+  }{
+    Ce type de bilan est à savoir refaire.
+
+\begin{enumerate}
+  \item 
+  \underline{Système}. Le système fermé $\Sigma_f$ est constitué :
+  \begin{liste}
+    \item à $t$ : du volume de contrôle $\So$ de masse $m(t)$, et du fluide entrant de masse $\delta m_A$ ;
+    \item  à $t+\d t$ :  du volume de contrôle $\So$ de masse $m(t+\d t)$, et du fluide sortant de masse $\delta m_B$ .
+  \end{liste}
+  \item \udl{Bilan de matière}. Par additivité des masses, on a 
+  $$
+  \left\{
+    \begin{array}{l}
+      m_{\Sf}(t) = m(t) + \delta m_A \\[0.3cm]
+      m_{\Sf}(t+\d t) = m(t+\d t) + \delta m_B
+    \end{array}
+  \right..
+  $$
+  \item \udl{Loi de conservation de la matière}. Par définition d'un système fermé, on a 
+  $$m_{\Sf}(t) = m_{\Sf}(t+\d t).$$ 
+  \item \udl{Équation de conservation globale}. On en déduit 
+  $$m(t+\d t) - m(t)  = \delta m_A - \delta m_B = (D_{m,A} - D_{m,B})\d t,$$ soit
+  \eqbox[*]{\dd{m}{t} = D_{m,A} - D_{m,B}.}
+\end{enumerate}
+  }
+  \end{quest}
+
+  %\noindent
+  On admet dans la suite l’écriture du premier principe en système ouvert, étendue aux systèmes en régime transitoire :
+  \begin{equation}\label{eq:dudt}
+  \dd{U}{t} =  \text{(Débit d’énergie entrant) -
+   (Débit  d’énergie sortant)}.
+  \end{equation}
+  où $\dd{U}{t}$ désigne la dérivée de l’énergie interne du système étudié par rapport au temps $t$.
+
+
+  \begin{quest}
+  \QR{ 
+    Proposer une interprétation qualitative du bilan d’énergie traduit par l’\Eq{dudt}.
+  }{
+    Le débit d'énergie entrant fait augmenter l'énergie interne. Le débit d'énergie sortant la fait diminuer.
+  }
+  \end{quest}
+
+  On s’intéresse à présent à un réservoir contenant un gaz parfait monoatomique. Ce réservoir calorifugé et indéformable (donc
+  de volume $V$ fixe) est le siège d’une fuite vers le milieu environnant à la température $T_{\rm ext} = \SI{293}{K}$ et à la
+  pression $p_{\rm ext} = \SI{1.01}{bar}$ supposées fixes dans tout le sujet. Il n’est pas agité mécaniquement. Les propriétés du gaz dans le réservoir  (entre autres, sa température
+  $T$, sa pression $P$ et son enthalpie massique $h$)  sont supposées uniformes à chaque instant. Ce réservoir est décrit
+  par la \Fig{res}.
+
+  \begin{fig}
+  \centering
+  \includegraphics[width=0.5\textwidth]{reservoir.png}
+  \capt{Réservoir siège d'une fuite.}
+  \label{fig:res}
+\end{fig}
+  %%%%%%%%%%%%%
+
+  \begin{quest}
+  \QR{ 
+    Dans quelle situation limite un gaz réel s’identifie-t-il à un gaz parfait ?  Donner les valeurs de la capacité calorifique molaire à pression constante $C_{P,m}$ et à volume constant $C_{V,m}$  pour un gaz parfait monoatomique.
+  %Faire de même pour un gaz parfait diatomique.
+  }{
+    Pour un gaz parfait monoatomique, 
+    \eqbox{
+    C_{p,m}=\frac{5}{2}R \text{ et } C_{V,m}=\frac{3}{2}R.
+    }
+  }
+
+  %\question
+  %Pour le CO$_2$ gaz parfait, de masse molaire $M$, $C_{p,m}=Rf(T)$ dépend de la température selon une loi $f(T)$, avec $R$ la constante des gaz parfaits.
+  %%L’étude de la loi $f(T)$ sera l’objet de la partie suivante. Donner un argument physique expliquant pourquoi, pour le CO$_2$, $c_p/R$ est une fonction de la température contrairement au cas des gaz parfaits mono- et di-atomiques.
+  % Donner la relation entre variations d’énergie interne massique $\d u$ et de température $\d T$ et la fonction $f(T)$. En déduire l’expression de $\dd{u}{T}$.
+  %
+  % \sol{
+  %On a $\d u = C_{V,m}\d T/M$ et $C_{V,m} = C_{P,m}-R=R(f(T)-1)$ d’après la relation de Mayer, et donc
+  %$$
+  %\dd{u}{T} = \frac{R}{M}(f(t)-1).
+  %$$
+  % }
+  %
+  \QR{ 
+    On considérera que les propriétés intensives du gaz sortant sont les mêmes que celles du gaz dans le réservoir. On s’intéresse au système $\{$volume contenant le gaz à $T$ et $P$ dans le réservoir, paroi non comprise$\}$ représenté par des pointillés sur la \Fig{res}. Montrer que l’application du bilan de matière et du premier principe  industriel au système ouvert en pointillés amène :
+    \begin{equation}\label{eq:dmdU}
+    \left\{
+    \begin{array}{ll}
+    \displaystyle
+    \dd{m}{t}(t) & = - D_{m,B}\\[0.5cm]
+    \displaystyle\dd{U}{t}(t)  & = - D_{m,B} \,h(t)
+    \end{array}
+    \right..
+    \end{equation}
+    On supposera négligeable l’énergie
+    cinétique massique de
+    la matière quittant le système.
+  }{
+    On applique l'\Eq{dudt} avec aucun débit entrant, soit $D_{m,A}=0$, aucune puissance utile, soit $\dot{W_e} = \dot{W_s}=0$, et aucun flux thermique, soit $\dot{Q_e}=\dot{Q_s}=0$. De plus, $h_B=h(t)$ parce que le gaz sortant a les mêmes propriétés que le gaz dans le réservoir. Enfin, la variation d'énergie cinétique et de pesanteur est négligeable.On en déduit bien 
+    \eqbox{
+    \dd{U}{t}(t)   = - D_{m,B} \,h(t)
+    }
+   }
+
+  \QR{
+    En introduisant la relation entre l’énergie interne massique $u$ (en $\SI{}{J.kg^{-1}}$) et l’énergie interne $U$
+    (en~$\SI{}{J}$) du système étudié,  montrer que
+    \begin{equation}
+    \dd{u}{t} = -\frac{RT}{M m} D_{m,B},
+    \end{equation}
+    où $R$ et $M$ désignent respectivement la constante des gaz parfaits et la masse molaire du gaz.
+    En déduire que
+    \begin{equation}
+    \dd{T}{t} = -\frac{2}{3}\frac{T}{m} D_{m,B}.
+    \end{equation}
+  }{
+    \begin{enumerate}
+      \item 
+      L'énergie interne d'un  système de masse $m$ vaut 
+      \eqbox{
+        U = um,
+        }
+        où l'énergie interne massique $u(\rho,p,T)$ est une fonction d'état intensive. 
+        \item
+        On remplace dans la seconde équation de l'\Eq{dmdU} puis on dérive par rapport au temps.
+        \begin{align*}
+          \dd U t & = \dd u t m + u \dd m t \\
+          & =  \dd u t m - u D_{m,B} \\
+          & = - h D_{m,B}.
+        \end{align*}
+        Donc $ \dd u t m  = (u-h) D_{m,B} = - \frac{pV}{m} D_{m,B} = -\frac{RT}{M} D_{m,B}$, d'où le résultat
+        \eqbox{\dd{u}{t} = -\frac{RT}{M m} D_{m,B}.}
+        \item On trouve ensuite la $2^e$ équation en écrivant que $u=\frac{C_{V,m}T}{M} = \frac{3}{2} \frac{RT}{M}$ pour un gaz parfait monoatomique. On trouve bien 
+        \eqbox{
+        \dd{T}{t} = -\frac{2}{3}\frac{T}{m} D_{m,B}.
+        }
+      \end{enumerate}
+    }
+  \end{quest}
+
+  On admet que le débit massique a l'expression suivante :
+   \begin{equation}
+   D_{m,B} = \frac{S v_B M P_{\rm ext}}{R T_B},
+   \end{equation}
+   où $S$ désigne la surface de l'orifice. On considère le système $\{$orifice dans la paroi du réservoir$\}$ ; on supposera que :
+  l’écoulement de gaz à travers l’orifice est adiabatique et stationnaire ;
+   la vitesse du gaz en entrée du système est nulle ; elle est notée $v_B$ en sortie ;
+   la température et la pression du gaz en entrée sont notées T et P (ce sont celles du gaz à l’intérieur
+  du réservoir) ; en sortie, elles sont notées $T_B$ et $P_B = P_{\rm ext} = \SI{1.01}{bar}$.
+
+
+   \begin{fig}[h!]
+   \centering
+   \includegraphics[width=0.7\textwidth]{orifice.pdf}
+   \capt{Fuite d'un gaz à travers l'orifice dans la paroi du réservoir.}
+   \label{fig:ori}
+ \end{fig}
+   %%%%%%%%%%%%%
+
+   \begin{quest}
+   \QR{ 
+    En appliquant l’expression du premier principe en système ouvert stationnaire au système $\{$orifice dans la paroi du réservoir$\}$ délimité par des pointillés sur la \Fig{ori}, montrer que la vitesse de sortie du gaz a pour expression
+    \begin{equation}
+    v_B = \sqrt{\frac{5R}{M}(T-T_B)}.
+    \end{equation}
+  }{
+    \begin{enumerate}
+      \item \underline{Système} : $\{$orifice dans la paroi du réservoir$\}$.
+      \item \underline{$1$er principe industriel} (valable en régime stationnaire)  :
+      $$D_m\left[ h+\frac{1}{2}v^2\right]_A^B =  \dot{Q} + \dot{W} = 0.$$
+      \item \udl{Smiplification} : on trouve $$h_A+\frac{1}{2}v_A^2 = h_A=  h_B+\frac{1}{2}v_B^2$$ car $v_A =0$. On utilise l'expression de $h$ pour un gaz parfait monoatomique, $h = \frac{5}{2}\frac{RT}{M}$, puis que $h_A = h(t)$ parce que le gaz entrant a les
+      mêmes propriétés que le gaz dans le réservoir. Ainsi, 
+      $$\frac{1}{2}v_B^2 = h(t)-h_B = \frac{5R}{2M}(T-T_B),$$ d'où le résultat
+      \eqbox{ v_B = \sqrt{\frac{5R}{M}(T-T_B)}.}
+    \end{enumerate}
+   }
+
+  \QR{
+     En déduire à partir des résultats précédents que la masse $m(t)$ et la température $T(t)$ vérifient les équations suivantes
+    \begin{equation}
+    \left\{
+    \begin{array}{ll}
+    \displaystyle
+    \dd{m}{t} & = - \alpha \sqrt{T-T_B}\\[0.4cm]
+    \displaystyle
+    \dd{T}{t} & = -\beta \displaystyle\frac{T}{m} \sqrt{T-T_B}
+    \end{array}
+    \right..
+    \end{equation}
+    On donnera l'expression des constantes $\alpha$ et $\beta$.
+  }{
+    D'après les questions précédentes, $$D_{m,B} = \frac{S  M P_{\rm ext}}{R T_B}v_B = \frac{S  M P_{\rm ext}}{R T_B} \sqrt{\frac{5R}{M}(T-T_B)} = \underbrace{\sqrt{\frac{5M}{R}} \frac{SP_{\rm ext}}{T_B}}_{\alpha} \sqrt{T-T_B}.$$ De plus,  $$\dd{T}{t} = -\frac{2}{3}\frac{T}{m} D_{m,B} = -\underbrace{\frac{2}{3}\alpha}_{\beta} \frac{T}{m} \sqrt{T-T_B}.$$
+    On a donc les équations attendues avec 
+    \eqbox{
+    \alpha = \sqrt{\frac{5M}{R}} \frac{SP_{\rm ext}}{T_B} \quad \text{et} \quad \beta = \frac{2}{3}\alpha.
+    }
+    }
+  \end{quest}
+  % On cherche à présent à estimer le débit Dm,B de gaz quittant le réservoir. Pour ce faire, on s’intéresse à
+  %la zone de l'espace dans laquelle se produit la fuite.
+  %
+  % \begin{quest}
+  % \question Nous cherchons l'expression
+  %\end{quest}
+
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][devoir]{Cycle thermodynamique de Brayton}%{1}
+% \ccp{2020}
+\Annale[Physique PC]{CCINP}{2020}
+Pour leur propulsion, les avions sont équipés majoritairement de réacteurs. Cette dénomination
+usuelle désigne en fait des turboréacteurs qui appartiennent à la catégorie des turbomachines encore
+appelées générateurs ou turbines à gaz. Les turbomachines présentent plusieurs avantages par
+rapport aux moteurs à pistons, avec notamment un rapport puissance-poids environ trois fois
+supérieur. En effet, le nombre de pièces mobiles est réduit et leur mouvement est très simple, ce qui
+permet de les alléger. Ces machines sont inégalables lorsque de grandes puissances sont requises
+avec des contraintes d’espace ou de poids. Leur inconvénient majeur est que leur efficacité et leur
+réactivité chutent très rapidement à faible puissance : ils ne sont donc pas adaptés au domaine
+automobile par exemple.
+
+%%%%%%%%%%%%%%%%%
+\begin{fig}[turbo]
+\includegraphics[scale=0.2]{turboreacteur.png}
+\capt{Schéma de principe d’un turboréacteur simple flux.}
+\end{fig}
+%%%%%%%%%%%%%
+
+Les constituants principaux d’un turboréacteur (\Fig{turbo}) sont un compresseur, une chambre de combustion et
+une turbine. Dans cette partie on étudie un turboréacteur dit simple flux (figure 12) pour lequel le
+gaz entrant dans le réacteur passe dans un diffuseur pour en diminuer la vitesse avant d’être
+comprimé par le compresseur. Le gaz comprimé arrive dans une chambre de combustion où il est
+chauffé avant d’être détendu partiellement dans la turbine qui fournit la puissance nécessaire au
+compresseur. En sortie de turbine, le gaz reste à une pression relativement élevée par rapport à la
+pression extérieure et il est détendu dans une tuyère, ce qui permet de l’accélérer : c’est cette
+accélération qui permet la propulsion de l’avion.
+Le turboréacteur simple flux est principalement utilisé dans l’aviation militaire.
+
+
+
+Le turboréacteur fonctionne selon le cycle théorique ouvert de Brayton. Les conditions d’étude de
+ce cycle sont les suivantes : l’air est considéré comme un gaz parfait. Sa capacité thermique massique à pression
+constante $c_p$ est supposée constante, comme le rapport $\gamma$ entre les capacités thermiques
+isobare et isochore. L'enthalpie massique a donc pour expression $h=c_p T$. On prendra $\gamma = \num{1.35}$ et $c_p = \SI{1.1}{ kJ.kg^{-1}.K^{-1}}$ ;
+ les variations d’énergie potentielle sont négligeables. Dans ce cas, on rappelle l'expression du premier principe industriel :
+ \begin{equation}
+  \Delta h+\Delta\left(\frac{v^2}{2} \right) = w_u + q_e,
+ \end{equation}
+ avec $w_u$ le travail utile et $q_e$ le transfert thermique échangé avec l'extérieur, et $\Delta$ indique une variation entre l'entrée et la sortie. La variation d’énergie cinétique est supposée négligeable uniquement entre l’entrée du compresseur et la sortie de la turbine.
+
+\begin{liste}
+
+
+\item En entrée du diffuseur, l’air est à l’état (1) : $(P_1, T_1)$. On considère que le diffuseur est idéal, ce qui
+revient à dire que l’énergie cinétique du gaz après traversée du diffuseur est négligeable devant les
+autres termes énergétiques et que la traversée du diffuseur est adiabatique et réversible, sans travail utile ni transfert thermique.
+\item En entrée du
+compresseur, l’air se trouve à l’état (2) : $(P_2, T_2)$ et est amené à l’état (3) : $(P_3 = 10P_2, T_3)$ par une
+compression adiabatique réversible.
+\item Dans la chambre de combustion, l’air, mélangé au carburant, subit un échauffement isobare
+réversible jusqu’à l’état (4) : $(P_4, T_4 = \SI{1 400}{K})$. Bien que les compositions du gaz à l’entrée et à la
+sortie de la chambre de combustion soient différentes, pour simplifier la modélisation, on suppose
+que celle-ci sert uniquement à réchauffer l’air et que les propriétés de l’air ne sont pas modifiées par
+ce changement de composition. 
+\item L’air parvient dans la turbine où il subit une détente adiabatique réversible jusqu’à l’état (5) :
+$(P_5, T_5)$.
+\item Enfin, il se détend de façon adiabatique et réversible dans la tuyère et arrive dans l’état (6) :
+$(P_6,T_6)$. Aucun travail utile ni transfert thermique n'est fourni.
+\end{liste}
+
+
+On considère un avion qui vole avec une vitesse de croisière $V_a = \SI{260 }{m.s^{-1}}$ par rapport à l’air
+considéré au repos. À cette altitude, l’air est à la pression de $\SI{34.5}{kPa}$ et à la température de $\SI{-40}{\dC}$.
+L’air entre dans le compresseur avec un débit massique $D_m = \SI{45}{kg.s^{-1}}$.
+
+%On rappelle que l’expression du premier principe pour une masse m = 1 kg de fluide en écoulement
+%au travers d’une machine est :
+%v 2
+%h 
+%  g  
+% z w u  q e
+%2
+%où h représente la différence hs  h e entre les enthalpies massiques (en kJ·kg-1) du fluide à la
+%sortie h s et à l’entrée h e de la machine,
+%v 2  vs 2  v e 2
+%avec vs et ve les vitesses du fluide à la sortie et à l’entrée de la machine,
+%z  z s  z e
+%avec zs et ze les altitudes du fluide à la sortie et à l’entrée de la machine, w u le travail massique
+%utile, c’est-à-dire le travail massique (en kJ·kg -1) échangé entre une masse m = 1 kg de fluide et les
+%parois mobiles de la machine, qe le transfert thermique massique entre le kilogramme de fluide et la
+%machine (en kJ·kg-1).
+
+\begin{quest}
+  
+\QR{
+   Donner l’expression de la température $T_2$ en fonction de $T_1$, $V_a$ et $c_p$. Effectuer l’application
+numérique.
+}{
+Dans le diffuseur, il n'y a ni pièce mobile ni transfert thermique, donc en négligeant la pesanteur, il vient : $\Delta h+\Delta(\frac{v^2}{2})=0$.
+
+La vitesse en sortie et négligeable et celle en entrée vaut $V_a$, et on a un gaz supposé parfait, donc $\Delta h=c_p\Delta T$. On en déduit :
+
+\eqbox[*]{T_2=T_1+\frac{V_a^2}{2 c_p}}
+\AN~: $T_2 = 264$ K.
+}
+
+\QR{
+   Donner l’expression de la pression $P_2$ en fonction de $P_1$, $T_1$, $T_2$ et $\gamma$. Effectuer l’application numérique.
+}{
+La transformation est adiabatique et réversible
+donc isentropique : on peut utiliser la loi de Laplace
+
+$$P_2^{1-\gamma}T_2^\gamma=P_1^{1-\gamma}T_1^\gamma,$$
+soit 
+\eqbox{
+P_2 = P_1\left(\frac{T_1}{T_2} \right)^{\frac{\gamma}{1-\gamma}}
+}
+
+
+\AN~: $P_2 = 55,9$ kPa
+}
+
+\QR{ Établir l’expression du travail massique utile $w_{\rm comp}$ fourni à l’air par le compresseur. En
+prenant $T_3 = \SI{480}{K}$, calculer la puissance $P_{\rm comp}$ fourni à l'air par le compresseur.
+}{
+Le compresseur est adiabatique et on néglige pesanteur et énergie cinétique. Le premier principe s'écrit donc :
+
+$$\Delta h=c_p(T_3-T_2)=w_{comp}$$
+
+On a donc $w_{comp}=c_p(T_3-T_2)=\SI{238}{kJ.kg^{-1}}$. Pour avoir la puissance, on multiplie par le débit massique :
+
+\eqbox{
+\mathcal{P}_{comp}=D_mc_p(T_3-T_2).
+}
+\AN~: $\mathcal{P}_{comp}=\SI{10.7}{MW}$.
+}
+
+\QR{  Sachant que le travail fourni par la détente du gaz dans la turbine est intégralement reçu par le
+compresseur, déterminer l’expression de la température $T_5$ en fonction de $T_2$, $T_3$ et $T_4$. Calculer la valeur de $T_5$. En déduire la valeur de la pression $P_5$.
+}{
+D'après l'énoncé, tout le travail fourni par la turbine est reçu par le compresseur, donc $w_{turb}=-w_{comp}$. Le premier principe dans la turbine (adiabatique) donne : $c_p(T_5-T_4)=w_{turb}$. On en déduit alors :
+$$c_p(T_5-T_4)=-c_p(T_3-T_2),$$
+soit 
+\eqbox{
+T_5=T_4+T_2-T_3.
+}
+
+\AN~: $T_5=1,18.10^3$ K
+
+Par ailleurs, l'échauffement étant isobare, $P_4=P_3=10P_2=5,59.10^5$ Pa.
+
+On utilise à nouveau la loi de \bsc{Laplace} dans la turbine (isentropique) : 
+\eqbox{
+P_5 =P_4\left(\frac{T_4}{T_5} \right)^{\frac{\gamma}{1-\gamma}}.
+}
+
+\AN~: $P_5=2,93.10^5$ Pa
+}
+
+\QR{  Donner l’expression de la vitesse de sortie du gaz $v_s$ en sortie de tuyère en fonction de $T_5$, $T_6$
+et $c_p$. Calculer la valeur de $v_s$ sachant que $T_6 = \SI{680}{K}$.
+}{
+
+La tuyère est adiabatique et ne présente pas de pièces mobiles ($w_u=q=0$) mais l'énergie cinétique en sortie n'est pas négligeable. Le premier principe s'écrit donc (toujours avec la seconde loi de \bsc{Joule} reliant $h$ et $T$ pour un gaz parfait) :
+
+$$c_p(T_6-T_5)+\frac 1 2 v_s^2=0,$$
+soit 
+\eqbox{
+v_s=\sqrt{2c_p(T_5-T_6)}.
+}
+
+\AN~: $v_s=1,05.10^3$ m.s$^{-1}$
+
+}
+
+\QR{ On admet que la force propulsive a pour norme $F = D_m (v_s-V_a)$. Déterminer la puissance de cette force propulsive.
+}{
+On admet que la puissance recherchée est celle reçue par l'avion de la part de l'air dans le référentiel terrestre, soit $$\mathcal{P}=\vv{F_{air\to avion}}\cdot\vv{v_{avion/sol}},$$ et donc 
+\eqbox{
+\mc{P} = D_m(v_s-V_a)V_a
+}
+
+\AN~:$\mathcal{P}=9,24$ MW.
+
+}
+
+\QR{ Calculer le rendement $\eta$ du turboréacteur, qui correspond au rapport entre la puissance de la
+force propulsive, et la puissance qui sert à chauffer le gaz dans la chambre de combustion $P_{\rm chamb} = \SI{45.5}{MW}$. Comparer avec le rendement d’autres machines thermiques.
+}{
+Le rendement est 
+\eqbox{
+  \eta=\frac{\mathcal{P}}{\mathcal{P}_{chamb}}.
+}
+
+\AN~: $\eta=20,3\%$
+
+Ce rendement est inférieur aux machines thermiques motrices usuelles (moteur de voiture : rendement de 30 à 40\%).
+
+}
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PT][1]{Fonctionnement d'une hélice}
+
+On considère un écoulement homogène, parfait et incompressible. L'hélice est
+animée d'un mouvement de rotation autour de son axe fixe, à vitesse angulaire
+constante. On néglige son épaisseur ce qui revient à supposer que $S_1 = S_2 = S$. On
+néglige les effets de la pesanteur. Le mouvement du fluide autour de l'hélice est
+supposé stationnaire dans le référentiel terrestre galiléen et à symétrie de révolution autour de $Ox$. On considère un tube de courant représenté sur la figure ci-dessous qui englobe l'hélice. La pression $p_0$ est supposée uniforme autour du
+tube de courant. On appelle $D_m$ le débit massique. On rappelle que :
+\begin{equation}
+\d h = T \d s + \dfrac{\d p}{\mu}.
+\end{equation}
+
+
+%%% FIGURE %%%
+%\begin{figure}[h!]
+%\centering
+\begin{center}
+\includegraphics[scale=0.4]{helice.png}
+\end{center}
+%\caption{Caption}
+%	\label{fig:}
+%\end{figure}
+%%%%%%%%%%
+
+
+
+\begin{quest}
+\item Exprimer $p_2 - p_1$ en fonction de $v_A$, $v_B$ et $\mu$.
+
+\sol{
+Parfait + incompressible $\rightarrow$ Bernouilli, entre AI et JB. Incompressible et stationnaire donc conservation du débit volumique $D_v =v_1S_1 = v_2S_2$ donc $v_1=v_2=v$.
+$$
+\dfrac{p_0}{\mu} + \dfrac{v_A^2}{2} + g z_A = \dfrac{p_1}{\mu} + \dfrac{v_I^2}{2} + g z_I
+$$
+donc $p_2-p_1=\dfrac{\mu}{2}(v_A^2-v_B^2)$.
+}
+
+\item Exprimer la force exercée par l'hélice sur le fluide de deux façons et en déduire la vitesse $v$ du fluide au niveau de l'hélice en fonction de $v_A$ et $v_B$.
+
+\sol{
+Méthode 1 : système ouvert IJ $\rightarrow$ système fermé IJ + masse $\d m = D_m \d t$ qui entre en $t$ puis sort en $t+\d t$.
+
+On a $\vec p_IJ(t) +\d m \vec{v_1} = \vec p_IJ(t+\d t) +\d m \vec{v_2} $ en régime permanent donc $\d \vec p = \vec 0$.
+
+Actions extérieures : force $\vec F$ de l'hélice, force de pression $(p_1-p_2)S \vec{e_x}$. Somme $=0$ donc $\vec F = (p_2-p_1)S \vec{e_x} = \dfrac{\mu S}{2}(v_A^2-v_B^2) \vec{e_x}$\\
+
+Méthode 2 : système ouvert AB. $\d \vec p/\d t = D_m(\vec v_B-\vec v_A)$.
+
+Actions de pression car surface fermée et pression $p_0$ uniforme. Donc $\vec F  = D_m(\vec v_B-\vec v_A)$.\\
+
+On en déduit $v = \dfrac{v_A+v_B}{2}$.
+
+}
+
+\item Déterminer la puissance de la force exercée par l'hélice sur le fluide en fonction de $D_m$, $v_A$ et $v_B$.
+
+\sol{
+Méthode 1 : 1er principe sur système IJ refermé
+$\d m (h_2-h_1) = \delta W_i + \delta Q
+$ avec $\delta Q=0$ car adiabatique réversible et $W_i = P \d t$ travail indiqué. Donc
+$$
+P = D_m(h_2-h_1) = \dfrac{p_2-p_1}{\mu} = \dfrac{D_m}{2}(v_B^2-v_A^2).
+$$
+
+}
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PT][1][colle]{Cycle de réfrigération}
+
+
+%%% FIGURE %%%
+%\begin{figure}[h!]
+%\centering
+\begin{center}
+\includegraphics[width=0.45\textwidth]{cycle.png}
+\end{center}
+%%\caption{Caption}
+%\label{fig:}
+%\end{figure}
+%%%%%%%%%%
+
+Le condenseur et l’évaporateur sont des échangeurs permettant respectivement la condensation et l'évaporation totale du fluide qui les traverse ; dans les états 1 et 7, le fluide est respectivement à l’état de liquide saturant et de vapeur saturante sèche. Les évolutions du fluide dans les échangeurs sont supposées isobares. $R_{\rm HP}$ et $R_{\rm BP}$ sont des robinets de laminage, respectivement haute et basse pression, qui assurent, sans partie mobile, des détentes supposées
+adiabatiques.
+
+\begin{itemize}
+\item Le fluide pénètre dans $R_{\rm HP}$ sous une haute pression $P_1$ (état 1) et en ressort sous une pression intermédiaire $P_2$ (état 2).
+\item Le fluide pénètre dans $R_{\rm BP}$, sous la pression intermédiaire $P_5$ (état 5) et en ressort sous une basse pression $P_6$ (état 6). CPHP et CPBP sont des compresseurs, respectivement haute et basse pression, qui assurent des compressions également supposées adiabatiques et réversibles du fluide à l'état gazeux.
+\item Le fluide pénètre dans CPHP sous une pression intermédiaire $P_3$ (état 3) et en ressort sous une haute pression $P_4$ (état 4).
+\item Le fluide pénetre dans CPBP sous basse pression $P_7$ (état 7) et en ressort sous la pression intermédiaire $P_8$ (état 8).
+\end{itemize}
+
+À la sortie de $R_{\rm HP}$ (état 2), et à la sortie de CPBP (état 8), le fluide pénetre dans le
+mélangeur-séparateur (MS) et ressort a l’état de vapeur sèche saturante (état 3) vers CPHP et a
+l'état de liquide saturant (état 5) vers $R_{\rm BP}$. L’échangeur MS est parfaitement calorifugé, dépourvu
+de partie mobile, et les évolutions du fluide y sont supposées réversibles.
+
+
+\textsc{Données} : $P_1 = 15\,$bar ;  $P_2 = P_3 = P_5 = P_8 = 4,\!0\,$bar ;  $P_6 = 1,\!5\,$bar. Débit du cycle basse pression :
+$D_{\rm BP} = 1,\!50\,$kg$\p$s$^{-1}$. Débit du cycle haute pression : $D_{\rm HP} = 2,\!43\,$kg$\p$s$^{-1}$.
+
+
+%%% FIGURE %%%
+%\begin{figure}[h!]
+%\centering
+\begin{center}
+\includegraphics[width=\textwidth]{frigo.png}
+\end{center}
+%\caption{Diagramme des frigoristes du Forane 502 (entropie massique $s$ en kJ$\p$K$^{-1}\p$kg$^{-1}$).}
+%\label{fig:}
+%\end{figure}
+%%%%%%%%%%
+
+
+\begin{quest}
+\item Étude du diagramme des frigoristes $(P,h)$. L’abscisse est l'enthalpie massique $h$ du fluide étudié, exprimée en kJ$\p$kg$^{-1}$, avec une échelle
+linéaire. L’ordonnée est la pression $P$, exprimée en bar ($1\,\text{bar}= 105\,$Pa), avec une échelle
+logarithmique. On note $x$ le titre massique en vapeur dans un état donné. Reproduire l'allure du diagramme du fluide frigorigène utilisé ici, le Forane 502, puis repérer les isothermes, isotitres, courbes isentropiques, ainsi que les régions liquide, vapeur et de coexistence sur le   Quelle est la forme des isothermes à l’intérieur de la courbe de saturation ? Trouver l'équation d'une isotherme d'un gaz parfait dans le diagramme étudié ; y a-t-il accord avec les isothermes du diagramme réel ?
+
+\sol{
+
+\includegraphics[scale=0.4]{diag.png}
+
+Isotherme = isobare dans la courbe de saturation (segment horizontal). Gaz parfait : isotherme = isenthalpe (droite verticale), donc désaccord près du point critique.
+}
+
+\item Étude du cycle haute pression (états 1 à 4). Tracer sur le diagramme le cycle $1-2-3-4$. Donner sous forme d'un tableau les grandeurs $h$, $P$, $T$, $x$ pour chacun des états $1$ à $4$. Retrouver le titre massique en vapeur $x$ pour l'état $2$  avec le théorème des moments.
+
+\sol{
+\includegraphics[scale=0.4]{soluce.png}\\
+\includegraphics[scale=0.4]{2sol.png}
+}
+
+\item Mêmes questions pour le cycle basse pression (états 5 à 8).
+
+\sol{
+\includegraphics[scale=0.4]{3sol.png}
+}
+
+\item Bilan énergétique. Calculer la puissance mécanique échangée dans CPHP et CPBP. Calculer la puissance thermique échangée dans l'évaporateur et dans le condenseur. Calculer le coefficient de performance de l'installation frigorifique
+\begin{equation}
+\text{COP} = \dfrac{\text{puissance utile}}{\text{puissance fournie}} = \dfrac{P_{\rm th, evap}}{P_{\rm meca}}.
+\end{equation}
+
+Comparer au COP d'un cycle réfrigérant idéal de Carnot de températures de la source froide $T_7$ et de la source chaude $T_1$. En déduire le rendement par rapport au cycle de Carnot,
+\begin{equation}
+\eta = \dfrac{\text{COP}}{\text{COP}_{\rm Carnot}}.
+\end{equation}
+
+
+\sol{
+\includegraphics[scale=0.5]{sol4.png}
+}
+
+
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PT][1][colle]{Le turboréacteur}%{1}
+Un turboréacteur opère les opérations suivantes sur un écoulement d’air, assimilé à un gaz parfait de capacité calorifique massique $c_p = 1\,$kJ$\p$kg$^{-1}\p$K$^{-1}$ et de coefficient de Laplace $\gamma=1,\!4$.
+\begin{liste}
+\item Un compresseur aspire l'air ambiant à la pression $p_1 = 1\,$bar et température $T_1 = 288\,$K de façon adiabatique réversible jusqu’à l’état $2$ de pression $p_2 = \num{6.15} \,p_1$.
+\item Après compression, l'air est chauffé de façon isobare dans la chambre de combustion jusqu'à la température $T_3 = 1250\,$K.
+\item Ensuite, l’air subit une détente adiabatique réversible dans la turbine axiale jusqu’à l’état $4$.
+\item Enfin l'air est envoyé dans la tuyère, où il subit une détente jusqu’à la pression ambiante $p_5 = p_1$.
+\end{liste}
+Le compresseur est uniquement entraîné par la turbine, qui lui transmet intégralement la puissance mécanique que lui fournit l'écoulement.
+%On donne le taux de compression du compresseur $p_2/ p_1=6,\!15$.
+%%% FIGURE %%%
+%\begin{figure}[h!]
+%\centering
+%\begin{center}
+%\includegraphics[width=0.75\textwidth]{turbo1.png}
+%\end{center}
+%%\caption{Caption}w
+%%\label{fig:}
+%%\end{figure}
+%%%%%%%%%%
+%L'air est assimilé à un gaz parfait. On donne $c_p = 1\,$kJ$\p$kg$^{-1}\p$K$^{-1}$ et $\gamma=1,\!4$.
+La variation d’énergie cinétique est négligée, sauf à la sortie de la tuyère. La variation d’énergie potentielle est négligée.
+Le débit massique d'air aspiré par le turboréacteur  vaut $D_m = 50\,$kg$\p$s$^{-1}$.
+%Le compresseur  aspire l'air ambiant à la pression $p_1 = 1\,$bar et température $T_1 = 288\,$K. Les évolutions à l'intérieur des turbomachines (compresseurs et turbines) et des tuyères sont supposées adiabatiques et réversibles. On néglige les pertes de charge de l'air  à l'intérieur d'une chambre de combustion : les évolutions y sont isobares, de sorte que $p_2 = p_3$.
+On définit l'efficacité thermique du turboréacteur $\eta_{\rm th}$ comme étant le rapport entre l'énergie cinétique massique reçue par l'air, notée $e_c$, et le transfert thermique massique fourni par la chambre de combustion, noté $q$.
+
+
+\begin{quest}
+\item Représenter et annoter le schéma d’un turboréacteur. On représentera la chambre de combustion par \includegraphics[scale=0.5]{combustion.pdf} et la tuyère par \includegraphics[scale=0.5]{tuyere.pdf}.
+% par les schémas suivants.
+%\begin{center}
+%\includegraphics[scale=1]{combustion.pdf}
+%\includegraphics[scale=1]{tuyere.pdf}
+%\end{center}
+	\item Calculer la température $T_2$ en sortie du compresseur, le travail utile massique de $w_{1\rightarrow 2}$ compression, la température $T_4$ et la pression $p_4$ en sortie de la turbine, la température $T_5$ et la vitesse $c_5$ en sortie de la tuyère.
+
+	 \sol{
+Pour un compresseur, $w_i > 0$ ; pour une turbine, $w_i < 0$.
+
+Laplace : $T_2 = T_1(p_1/p_2)^{(1-\gamma)/\gamma}	= 484\,$K.
+
+1er principe : $\Delta h = c_p(T_2-T_1) = w_i = 196\,$kJ.kg-1.
+
+Travail reçu par la turbine fournie au compresseur. Donc $w_{12} + w_{34} = 0 = c_p(T_2-T_1) + c_p(T_4-T_3)$ soit $T_4 = T_3-T_2+T_1 = 1054\,$K.
+
+Laplace : $p_4 = p_3(T_3/T_4)^{(1-\gamma)/\gamma} = 3.39\,$bar.
+
+Laplace : $T_5 = T_4(p_4/p_5)^{(1-\gamma)/\gamma} = 744\,$ K.
+
+1er principe $h_5-h_4 + \dfrac{1}{2}c_5^2 = 0$ d'où $c_5 = \sqrt{2c_p(T_4-T_5)} = 787\,$m.s-1.
+	 }
+
+	\item Calculer le transfert thermique massique fourni à l'air lors de la combustion. Calculer l'énergie cinétique massique de l'air à la sortie de la tuyère. En déduire l'efficacité thermique du turboréacteur. Calculer également la puissance cinétique $P_c$ en sortie de la tuyère.
+
+	\sol{
+	1er principe : $q = c_p(T_3-T_2) =766\,$kJ.kg-1.
+
+	$e_c = \dfrac{1}{2}c_5^2 = 310\,$kJ.kg-1.
+
+	L'efficacité vaut $\eta = e_c/q = 40\%$.
+
+	Puissance cinétique $P_c = D_m e_c = 1.55\,$MW.s-1.
+	}
+
+
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][TD]{Lecture des diagrammes thermodynamiques de l’eau}
+  \Notions{\item Diagramme $(p,h)$ \task Diagramme $(T,s)$ \task Loi des moments}
+  On donne sur la \Fig{ph_eau} le diagramme $(p,h)$ de l'eau, et sur la \Fig{Ts_eau} le diagramme $(T,s)$ de l'eau. 
+\begin{fig}[ph_eau]
+  \centering
+  \includegraphics[width=\textwidth]{ph_eau_M.pdf}
+  \capt{Digramme $(p,h)$ de l'eau.}
+\end{fig}
+On étudie le diagramme $(p,h)$ de l'eau. 
+  \begin{quest}
+    \item  Déterminer graphiquement l'enthalpie massique de vaporisation de l’eau  $h_{\rm vap}$ à  $T=\SI{100}{\dC}$. En déduire l'entropie de vaporisation de l'eau  $s_{\rm vap}$.
+    \sol{
+    À $T=\SI{100}{\dC}$, on lit $h_{l}(T)=\SI{420}{kJ.kg^{-1}}$ sur la courbe d’ébullition et $h_{\rm v}(T)=\SI{2280}{kJ.kg^{-1}}$ sur la courbe de rosée. On en déduit la chaleur latente massique de vaporisation de l’eau, \eqbox{\Delta h_{\rm vap} = h_{\rm v}- h_l = \SI{2.26e3}{kJ.kg^{-1}},} et l’entropie de vaporisation de l’eau
+    \eqbox{s_{\rm vap} = \frac{\Delta h_{\rm vap}}{T} = \SI{6.06}{kJ.K^{-1}.kg^{-1}}.}
+    }
+    \item Déterminer graphiquement le titre massique en vapeur d’eau au point $\rm M$ par la loi des moments~:
+    % $x_v = \frac{h_M-h_L}{h_V-h_L}$.
+    \begin{equation}
+    x_v = \frac{h_M-h_L}{h_V-h_L}.
+    \end{equation}
+    \sol{
+      Déterminons le titre massique en vapeur d’eau au point $M$. On lit $h_M =\SI{1.8e3}{kJ.kg^{-1}}$. Le long du palier de vaporisation, on lit $h_L=\SI{500}{kJ.kg^{-1}}$ sur la courbe de vaporisation et $h_V=\SI{2.70e3}{kJ.kg^{-1}}$ sur la courbe de rosée. On déterminer ensuite le titre en vapeur avec la loi des moments
+      \eqbox{
+      x_v = \frac{h_M-h_L}{h_V-h_L} = \num{0.59}.
+      }
+    }
+  \end{quest}
+  \begin{fig}[Ts_eau]
+    \centering
+    \includegraphics[width=\textwidth]{Ts_eau_M.pdf}
+    \capt{Digramme $(T,s)$ de l'eau.}
+  \end{fig}
+  On étudie maintenant le diagramme $(T,s)$ de l'eau.
+  \begin{quest}
+    \item Déterminer graphiquement l'entropie de vaporisation de l’eau  $s_{\rm vap}$ à  $T=\SI{20}{\dC}$. En déduire l'enthalpie massique de vaporisation de l'eau $ h_{\rm vap}$.
+    \sol{À $T=\SI{20}{\dC}$, on lit $s_{l}(T)=\SI{295}{kJ.K^{-1}.kg^{-1}}$ sur la courbe d’ébullition et $s_{\rm v}(T)=\SI{915}{kJ.K^{-1}.kg^{-1}}$ sur la courbe de rosée. On en déduit l’entropie massique de vaporisation de l’eau, 
+    \eqbox{
+    s_{\rm vap} = s_{\rm v}- s_l = \SI{620}{kJ.K^{-1}.kg^{-1}},
+    }
+    et l’enthalpie massique de vaporisation de l’eau,
+    \eqbox{
+    h_{\rm vap} = T  s_{\rm vap} = \SI{1.82e3}{kJ.kg^{-1}}.
+    }
+    }
+  \item Déterminer graphiquement le titre massique en vapeur d’eau au point $\rm M$ par la loi des moments~:
+  % $x_v = \frac{s_M-s_L}{s_V-s_L}$.
+  \begin{equation}
+  x_v = \frac{s_M-s_L}{s_V-s_L}.
+  \end{equation}
+  \sol{
+    Déterminons le titre massique en vapeur d’eau au point $P$. On lit $s_P =\SI{730}{kJ.K^{-1}.kg^{-1}}$. Le long du palier de vaporisation, on lit $s_L=\SI{295}{kJ.K^{-1}.kg^{-1}}$ sur la courbe de vaporisation et $s_V=\SI{915}{kJ.K^{-1}.kg^{-1}}$ sur la courbe de rosée. On détermine ensuite le titre en vapeur avec la loi des moments
+    \eqbox{
+    x_v = \frac{s_M-s_L}{s_V-s_L} = \num{0.70}.
+    }
+    }
+  \end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][TD]{Cycle réfrigérant au CO$_2$}
+  \Notions{\item Diagramme $(p,h)$ \task Cycle de réfrigération}
+%\begin{figure}
+%\centering
+Le CO$_2$ est de plus en plus utilisé pour la réfrigération et la climatisation. En effet, on peut l'extraire facilement de l’environnement, et son empreinte environnementale est faible par rapport aux autres fluides frigorigènes.
+On étudie ici le cycle de réfrigération au CO$_2$  suivant : une compression adiabatique réversible dans un compresseur, d'un état 1 ($p_1=\SI{35}{bar}$, température $T_1=\SI{0}{\dC}$, vapeur saturante sèche) à un état $2$ de pression $p_2=\SI{90}{bar}$; un refroidissement isobare dans un condenseur de l'état $2$ à un état $3$ de température $T_3=\SI{40}{\celsius}$;
+une détente adiabatique réversible dans un détenteur de l'état $3$ à l'état $4$ de pression $p_4=p_1$; un échauffement isobare dans un évaporateur de l'état $4$ jusqu'à retrouver l'état initial $1$.
+\begin{fig}[CO2]
+\includegraphics[width=0.9\textwidth]{R744_CO2_P_h.pdf}
+% \capt{Diagramme $(p,h)$ du CO$_2$.}
+\end{fig}
+%%%%%%%%%%%%%
+%\caption{Diagramme $(p,h)$ du CO$_2$.}
+%\label{fig:CO2}
+%\end{figure}
+\begin{quest}
+\item Représenter le schéma de fonctionnement de cette machine industrielle. Dessiner le cycle orienté sur le diagramme enthalpique de la \Fig{CO2}. Que vaut la température $T_2$ ? Quel est l'état du fluide en $4$ ? Que vaut la température $T_4$ ?
+
+\sol{
+\begin{center}
+\includegraphics[width=0.5\textwidth]{cycle_frigo}
+\end{center}
+}
+\sol{
+\begin{center}
+\includegraphics[width=0.85\textwidth]{phCO2_corrige.pdf}
+\end{center}
+Le fluide est diphasé en $4$ et $T_4=T_1=\SI{0}{\dC}$ car on est sur le palier de transition. On lit $T_2 = \SI{75}{\dC}$.
+}
+\item Rappeler le principe d'une machine frigorifique ditherme. Calculer le transfert thermique par unité de masse soutiré à la source froide.
+\sol{
+La source chaude correspond à l'air de la pièce ou l'atmosphère, et la source froide est l'intérieur du frigo ou de l'habitacle. Le cycle doit refroidir la source froide ($Q_f>0$) grâce au travail fourni ($W_u>0$), au prix du réchauffement de la source chaude ($Q_c<0$).
+\begin{center}
+\includegraphics[scale=1.1]{recepteur_ditherme}
+\end{center}
+
+Il s'agit ici d'un cycle diphasé : le gaz carbonique est partiellement liquéfié lorsqu'il entre en contact avec la source froide, puis il se vaporise entièrement en lui soutirant de l'énergie thermique.
+Le contact avec la source froide s'effectue lors de l'échauffement isobare $4\rightarrow 1$, dans l'évaporateur. Le transfert thermique reçu vaut 
+\eqbox{
+  q_f = \Delta h = h_1-h_4 = 430-325 = \SI{105}{kJ.kg^{-1}}.
+}
+}
+\item Calculer l'efficacité frigorifique du cycle. Comparer au rendement de Carnot.
+\sol{
+L’efficacité frigorifique est définie par 
+\eqbox{
+  e = \frac{q_f}{w_u},
+}
+avec $w_u$ le travail utile (en général électrique) fourni par la machine. Le travail utile est fourni au gaz dans le compresseur (phase $1\rightarrow 2$), soit $$w_u = \Delta h =h_2-h_1 = 470-430=\SI{50}{kJ.kg^{-1}}.$$
+On trouve 
+\eqbox{
+e = \num{2.1}.
+}
+ On peut comparer à l'efficacité frigorifique de Carnot. Pour un cycle réversible, $\frac{q_f}{T_f} + \frac{q_c}{T_c}=0$ et donc $e_C = \frac{q_f}{w_u} = -\frac{q_f}{q_f + q_c}$ car $\Delta h =0$ sur un cycle, donc 
+ \eqbox{
+   e_C = \frac{T_f}{T c-T_f} = \frac{273}{40} = \num{6.8}.
+ }
+}
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][colle]{Étude d'un congélateur}%{1}
+  \Notions{\item Diagramme $(p,h)$ \task Machine frigorifique}
+ On étudie le cycle thermodynamique suivi par le fluide frigorigène R134a dans un congélateur, dont le diagramme $(p,h)$ est donné ci-dessous.
+%  \begin{center}
+  %  \includegraphics[width=\columnwidth]{R134a_P_h_cycle.pdf}
+%  \end{center}
+\begin{quest}
+\item Donner pour chaque état $1,2,3$ et 4 l'état physique du fluide, sa température et sa pression.
+
+\sol{
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+ & 1 & 2 & 3 & 4 \\
+\hline
+état physique & L+V & V & V & L\\
+\hline
+$p~\SI{}{bar}$ & $\num{0.85}$ & $\num{0.85}$ & $10$ & $10$ \\
+\hline
+$T~\SI{}{\dC}$ & $-30$ & $-20$ & $60$ & $30$ \\
+\hline
+\end{tabular}
+\end{center}
+}
+\item En déduire les transformations correspondant au compresseur, au détendeur, au condenseur et à l'évaporateur. Préciser les caractéristiques thermodynamiques des transformations dans chacun de ces composants.
+
+\sol{
+\begin{liste}
+\item $1\rightarrow2$ : chauffage isobare avec formation de vapeur : évaporateur ;
+\item $2\rightarrow3$ : compression isentrope : compresseur ;
+\item $3\rightarrow4$ : refroidissement isobare avec formation de liquide : condenseur ;
+\item $4\rightarrow1$ : détente isenthalpe : détenteur.
+\end{liste}
+}
+\item Faire un schéma récapitulatif indiquant les éléments précédents, et définir les sources chaudes et froides, ainsi que les transferts thermiques algébriques associés $q_c$ et $q_f$, et le travail utile $w_{\rm{u}}$.
+
+\sol{
+\begin{center}
+\includegraphics[scale=1]{cycle_congel.pdf}
+\end{center}
+
+Pour une machine frigorifique, $Q_c<0$, $Q_f>0$ et $W_u>0$.
+
+Source chaude : au contact du condenseur, donc $q_c = h_4-h_3 = 242-442 = \SI{-200}{kJ.kg^{-1}}$.
+
+Source froide : au contact de l'évaporateur, donc $q_f =  h_2-h_1 = 387-242 = \SI{165}{kJ.kg^{-1}}$.
+
+Travail utile : fourni par le compresseur au fluide, donc $w_u = h_3-h_2 = 442-387 = \SI{55}{kJ.kg^{-1}}$.
+}
+
+\item Définir l'efficacité frigorifique du congélateur et déterminer sa valeur numérique. Comparer à l'efficacité de Carnot.
+
+\sol{
+L'efficacité frigorifique est définie  par $e = \frac{q_f}{w_u}$. On trouve
+\eqbox[*]{e = \frac{q_f}{w_u} = \num{3.0}.} L'efficacité de Carnot s'obtient lorsque toutes les transformations sont réversibles, donc lorsque $\frac{q_c}{T_c} + \frac{q_f}{T_f} = 0$ et donc $\frac{q_c}{q_f} = -\frac{T_c}{T_f}$. Or $e = \frac{q_f}{w_u} = -\frac{q_f}{q_c+q_f} = -\frac{1}{1+q_c/q_f}$ car $\Delta u = 0$ sur un cycle. Donc l'efficacité de Carnot vaut $e_{\rm Carnot} = -\frac{1}{1-T_c/T_f} = \frac{T_f}{T_c-T_f}$. Avec ici $T_c = T_3 = \SI{30}{\dC}$ et $T_f = T_2 = \SI{253}{\dC}$, on trouve
+\eqbox[*]{e_{\rm Carnot} = \frac{T_f}{T_c-T_f} = \num{5.1}.}
+On a bien $e < e_{\rm Carnot}$, en accord avec le $2^{\rm nd}$ principe.
+}
+\end{quest}
+
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][3][TD]{Cycle d'une centrale thermique à resurchauffe}
+  \Notions{\item Diagramme $(T,s)$ \task Cycle moteur}
+On étudie le fluide frigorigène R718 (eau) dans une centrale thermique au charbon qui subit le cycle thermodynamique de Hirn avec resurchauffe. L'eau est chauffée dans un générateur de vapeur où elle sort à $\SI{100}{bar}$ et $\SI{510}{\celsius}$ (état 1). La vapeur subit une détente adiabatique réversible dans une turbine et sort à \SI{10}{bar} (état 2). Puis un surchauffeur isobare permet de ramener la vapeur à la température initiale (état 3).
+La vapeur passe ensuite dans une autre turbine d'où sort de l'eau à $\SI{40}{\celsius}$ (état 4). L'eau passe ensuite dans un condenseur où elle sort à l'état de liquide saturant (état 5). Ce liquide saturant est pompé de façon adiabatique réversible, et le travail de pompage est négligeable : on atteint le point $6$ confondu avec le point $5$.  Enfin l'eau est renvoyée en entrée du générateur de vapeur où elle est chauffée le long de la courbe d'ébullition jusqu'à la température de $\SI{310}{\dC}$ (état 6'), est entièrement vaporisée (état 6''), puis subit un échauffement isobare jusqu'à l'état initial $1$.
+%\begin{figure}
+%\centering
+
+%%%%%%%%%%%%%
+%\caption{Diagramme $(T,s)$ de l’eau.}
+%\label{fig:thermique}
+%\end{figure}
+\begin{quest}
+\item Tracer le cycle orienté dans le diagramme entropique de la \Fig{thermique}. Que vaut la température de l'eau en $2$ ? Que vaut la pression $p_4$ ?  Quel est l'état physique du fluide au point $4$ ?  La fraction d'eau condensée dans les derniers étages de la turbine conduisent à sa corrosion. On souhaite donc éviter
+au maximum la condensation partielle au point $4$. Calculer le titre massique en vapeur $x_4$.
+\sol{
+\begin{center}
+\includegraphics[width=0.85\textwidth]{Tseau_corrige.pdf}
+\end{center}
+
+$p_4 \simeq \SI{0.05}{bar} $ et $T_2 = \SI{180}{\dC}$. La loi des moments donne $x_4 = \frac{LM}{LV} = \SI{95}{\%}$.
+}
+%\item et l'état de l'eau en 4.
+\item Déterminer les enthalpies massiques de l'eau en chaque point du cycle.
+\sol{
+On lit $h_1=\SI{3400}{kJ.kg^{-1}}$, $h_2 \simeq \SI{2780}{kJ.kg^{-1}}$, $h_3 \simeq \SI{3500}{kJ.kg^{-1}}$, $h_4 \simeq \SI{2420}{kJ.kg^{-1}}$, $h_5=h_6 \simeq \SI{150}{kJ.kg^{-1}}$, $h_{6'} \simeq \SI{1420}{kJ.kg^{-1}}$, $h_{6''} \simeq \SI{2700}{kJ.kg^{-1}}$.
+}
+\item Déterminer le travail massique utile $w_u$ fournit par la vapeur d'eau aux turbines.
+\sol{
+Le 1er principe industriel appliqué à l'eau dans une turbine (transformation adiabatique réversible) donne $\Delta h = w_u$ et donc $w_{u,1} = h_2-h_1 = \SI{620}{kJ.kg^{-1}}$, et $w_{u,2} = h_4-h_3=\SI{1080}{kJ.kg^{-1}}$. Le travail utile totale vaut $w_u = w_{u,1}+w_{u,2} = \SI{1700}{kJ.kg^{-1}}$.
+}
+
+
+\item Évaluer les transferts thermiques massiques $q_s$ et $q_g$ dépensés par le surchauffeur et le générateur de vapeur, respectivement. En déduire le rendement $\eta$ de l'installation. Quel serait la valeur du rendement en l'absence de surchauffe ?
+\sol{
+De même, au surchauffeur (transformation isobare), $\Delta h = q_s = h_3-h_2 = \SI{720}{kJ.kg^{-1}}$. Le transfert thermique fourni par l’opérateur dans le générateur de vapeur vaut $q_g = h_1-h_6 = \SI{3250}{kJ.kg^{-1}}$. Au total, $q_c = q_s+q_g=\SI{3970}{kJ.kg^{-1}}$. Donc $\eta=-\frac{w_u}{q_c} = \SI{43}{\%}$.
+
+
+En l'absence de surchauffe, on passerait du point $2$ directement au point $2'$ d’une enthalpie massique $h_{2'} = \SI{800}{kJ.kg^{-1}}$. Le transfert thermique dans le générateur serait réduit et vaudrait $q_g = h_1-h_{2'} = \SI{2600}{kJ.kg^{-1}}$. Il n’y aurait pas de passage dans le surchauffeur, donc $q_s$ n’interviendrait pas. Le travail utile totale serait celui produit par la première turbine uniquement, noté $w_{u,1}$. Le rendement vaudrait alors $\eta' = -\frac{w_{u,1}}{q_g} = \SI{24}{\%}$.
+}
+
+\end{quest}
+
+\begin{fig}[thermique]
+\includegraphics[width=\textwidth]{R718_T_s.pdf}
+\capt{Diagramme $(T,s)$ de l’eau.}
+\end{fig}
+
+
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][2]{Le réacteur à eau pressurisé}
+  \Notions{\item Diagramme $(p,h)$ \task Cycle moteur}
+Considérons une centrale nucléaire REP (réacteur à eau pressurisé) produisant une puissance électrique $P_e = \SI{900}{MW}$, représentée sur la \Fig{REP}. Le fluide circulant dans le circuit secondaire est de l’eau, dont l’écoulement est supposé stationnaire. L’eau liquide est supposée indilatable et incompressible, et de capacité thermique massique isobare constante $c$.
+% On donne ci-dessous quelques propriétés thermodynamiques de l’eau.
+%\begin{center}
+%\includegraphics[width=0.85\textwidth]{extrait_table.pdf}
+%\end{center}
+
+  L’eau est évaporée dans le générateur de vapeur (GV) par absorption de la chaleur produite dans le réacteur, puis elle entraîne une turbine couplée à un alternateur produisant l'électricité. Elle est ensuite liquéfié dans un condenseur (eau de rivière ou atmosphère via une tour aéroréfrigérante), puis comprimée avant d'être renvoyée vers le générateur de vapeur.
+Le cycle thermodynamique correspondant est le \emph{cycle de Rankine}, schématisé sur la \Fig{REP}, et comprenant les transformations suivantes :
+\begin{enumerate}%[label=\protect\circled{\arabic*}]
+\item  $\rm A-B$ : échauffement isobare dans le générateur de vapeur à la pression $p_2 =\SI{55}{bar}$ jusqu’à un état de liquide saturant $A’$, puis vaporisation isobare jusqu’à un état de vapeur saturante $B$;
+\item $\rm B-C$ : détente adiabatique réversible dans la turbine, de $p_2$ à la pression $p_1 = \SI{430}{mbar}$. Le fluide est diphasé en $C$ ;
+\item $\rm C-D$ : liquéfaction isobare dans le condenseur jusqu’à un état de liquide saturant $D$;
+\item $\rm D-A$ : compression adiabatique réversible dans la pompe de $p_1$ à $p_2$, de travail utile négligeable.
+\end{enumerate}
+% \begin{center}
+\begin{fig}[REP]
+  \centering
+  %\capt{}
+  \begin{subfig}[label][0.45]
+    \includegraphics[height=5cm]{schéma_global_REP.png}
+  \end{subfig}
+  % \hspace{1cm}
+  \begin{subfig}[rankine][0.45]
+    \includegraphics[height=5cm]{rankine.jpg}
+  \end{subfig}
+  \capt{Schéma global d'une centrale REP (à gauche) et cycle de Rankine (à droite).}
+\end{fig}
+% \end{center}
+\begin{quest}
+\item Représenter la courbe de saturation de l'eau dans le diagramme de Clapeyron $(p,v)$ avec les isothermes $T_B=\SI{270}{\dC}$,
+$T_D=\SI{75}{\dC}$ et $T_{\rm crit}=\SI{374}{\dC}$ (température critique). Préciser les domaines liquide et
+vapeur. Représenter
+l'allure du cycle décrit par l'eau du circuit secondaire avec le sens de parcours et les points $A,$ $A'$, $B$, $C$
+et~$D$.
+\sol{
+Le diagramme de Clapeyron correspond à
+\begin{center}
+\includegraphics[width=0.6\textwidth]{clapeyron.pdf}
+\end{center}
+On a $T_B=T_{A’}>T_A$ et $T_B>T_C=T_D$ où $A’$ désigne le liquide saturant.
+}
+\item Sur le diagramme enthalpique $(p,h)$
+de l'eau de la \Fig{pheau}, placer avec soin et à l'échelle, les points $A'$, $B$, $C$,
+$D$ du cycle. Expliciter la méthode.
+
+\begin{fig}[pheau]
+\includegraphics[width=0.9\textwidth]{ph_eau.pdf}
+\capt{Diagramme $(p,h)$ de l’eau.}
+\end{fig}
+%%%%%%%%%%%%%
+%\end{center}
+%\caption{Diagramme $(p,h)$ de l’eau.}
+%\label{fig:pheau}
+%\end{figure}
+%%%%%%%%%%%%%
+\sol{
+On place les points successivement en fonction des transformations suivies (2 isentropiques et deux isobares).
+\begin{center}
+\includegraphics[width=\textwidth]{REP_corrige.pdf}
+\end{center}
+Le seul point délicat est la transformation A $\rightarrow$ D qui est isentropique. Or pour un liquide indilatable et incompressible, $h(T)=cT$ ne dépend que de $T$, et de même $s=c\ln\left(\frac{T}{T_0}\right)+s_0$ ne dépend qe de $T$ (les grandeurs avec un indice $0$ sont constantes). Une isentrope s'identifie donc à une isotherme et à une isenthalpe ; il s’agit d’une droite verticale dans le diagramme $(p,h)$.
+}
+\item À partir du diagramme $(p,h)$
+de l'eau,
+déterminer les valeurs
+des températures, des enthalpies massiques et des entropies massiques
+aux points $A'$, $B$, $C$ et $D$.
+\sol{
+Par lecture du diagramme, on a
+\begin{center}
+\begin{tabular}{ccccc}
+Point & $p$ (bar) & $\theta~(\SI{}{\dC})$ & $h~(\SI{}{kJ.kg^{-1}})$ & $s~(\SI{}{kJ.K^{-1}.kg^{-1}})$ \\
+A’ &   $55$ & $270$ & $1200$ & $\num{3.0}$ \\
+B & $55$ & $270$ & $2800$ & $\num{5.9}$ \\
+C & $\num{0.43}$ & $75$ & $2050$ & $\num{5.9}$ \\
+D &  $\num{0.43}$ & $75$ & $320$ & $\num{1.1}$
+\end{tabular}
+\end{center}
+}
+
+\item En s’aidant du premier principe industriel, exprimer puis calculer à partir du diagramme $(p,h)$ le travail massique $w_{BC}$ reçu par l'eau dans la
+turbine. Faire de même pour le transfert thermique massique $q_{AB}$ reçu par l'eau quand elle s’échauffe puis quand se vaporise complètement dans le générateur de vapeur de $T_A\simeq T_D$ à $T_{B}$.
+\sol{
+\begin{liste}
+\item \underline{Turbine} : transformation  $B \rightarrow C$ adiabatique et donc $w_{\rm{u}} = w_{BC} =  \Delta h =h_C-h_B = -\SI{750}{kJ.kg^{-1}}$.
+\item \underline{Générateur de vapeur} : transformation $A \rightarrow B$ sans travail utile, donc $q_c = q_{AB} = \Delta h = h_B-h_A = \SI{2480}{kJ.kg^{-1}}$.
+\end{liste}
+
+}
+\item Calculer alors le rendement de l'installation.
+Comparer au rendement de Carnot et commenter.
+\sol{
+$\eta_{\rm{Rankine}}=\frac{\norm{w_{BC}}}{q_{AA'}+q_{A'B}}\simeq\frac{750}{2480}\simeq \SI{30}{\%}$. À comparer au rendement de Carnot $\eta_{\rm{Carnot}}=1-\frac{T_f}{T_c} = 1-\frac{T_D}{T_B}\simeq \SI{44}{\%}$, qui est bien supérieur au rendement de Rankine, en accord avec le second principe.
+}
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC]{Échangeur thermique}%{1}
+
+Considérons un échangeur thermique possédant deux entrées et deux sorties parcouru par deux liquides identiques de capacité calorifique massique $c=\SI{4.8}{kJ.K^{-1}.kg^{-1}}$. Le liquide entrant par $E_1$ sort par $S_1$ avec un débit massique $D_{m,1} = \SI{10}{kg.s^{-1}}$ et le liquide entrant par $E_2$ sort par $S_2$ avec un débit massique $D_{m,2}=\SI{2}{kg.s^{-1}}$. Le liquide arrivant sur l'entrée $1$ a une température $T_{E1}=\SI{290}{\dC}$ plus importante que le liquide arrivant sur l'entrée $2$ notée $T_{E2} = \SI{180}{\dC}$. On suppose que les parois externes de l'échangeur thermique sont calorifugées, de sorte que les liquides n'échangent du transfert thermique qu'entre eux.
+\begin{fig}[label]
+  \centering
+  \includegraphics[width=0.4\columnwidth]{echangeur2.pdf}
+  %\capt{}
+\end{fig}
+\begin{quest}
+\item  Un échangeur thermique fournit-il ou reçoit-il du travail utile au fluide ? En appliquant le premier principe industriel, version \guill{puissance}, aux liquides $1$ puis $2$, déterminer une relation entre les températures d'entrée $T_{E1}$, $T_{E2}$ et de sortie  $T_{S1}$, $T_{S2}$.
+\sol{
+Le $1$er principe pour $1$ donne $D_{m,1}(h_{S1}-h_{E1}) = D_{m,1}c(T_{S1}-T_{E1})  =  P_{2\rightarrow1}$. Le $1$er principe pour $2$ donne $D_{m,2}(h_{S2}-h_{E2}) = D_{m,2}c(T_{S2}-T_{E2})  =  P_{1\rightarrow2} = - P_{2\rightarrow1}$. On en déduit $D_{m,1}(T_{S1}-T_{E1})   + D_{m,2}(T_{S2}-T_{E2}) =0$.
+}
+\item En supposant que le temps de contact entre les deux liquides est long, déterminer une autre relation entre $T_{S1}$ et $T_{S2}$.
+\sol{
+$T_{S1}=T_{S2}=T_S$.
+}
+\item Sous cette hypothèse, calculer alors la température de sortie $T_{S}$.
+\sol{
+On a alors $T_S = \frac{D_{m,1}T_{E1} + D_{m,2}T_{E2}}{D_{m,1}+D_{m,2}}=\SI{545}{K}=\SI{272}{\dC}$.
+}
+\end{quest}
+En réalité, les parois de l'échangeur ne sont pas parfaitement calorifugées et chaque liquide perd une puissance thermique $P=\SI{50}{kW}$ dans l'échangeur.
+\begin{quest}
+
+\item En supposant que le temps de contact entre les deux liquides est long, calculer la nouvelle température de sortie $T_{S}$ en présence de pertes.
+\sol{
+Le $1$er principe pour $1$ donne $D_{m,1}(h_{S1}-h_{E1}) = D_{m,1}c(T_{S1}-T_{E1})  =  P_{2\rightarrow1} - P$. Le $1$er principe pour $2$ donne $D_{m,2}(h_{S2}-h_{E2}) = D_{m,2}c(T_{S2}-T_{E2})  =  P_{1\rightarrow2} - P = - P_{2\rightarrow1} - P$. On en déduit $D_{m,1}(T_{S1}-T_{E1})   + D_{m,2}(T_{S2}-T_{E2}) = - 2P$.
+
+On a alors $T_S = - \frac{2P}{c(D_{m,1}+D_{m,2})}\frac{D_{m,1}T_{E1} + D_{m,2}T_{E2}}{D_{m,1}+D_{m,2}}=\SI{543}{K}=\SI{270}{\dC}$.
+}
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

@@ -1,0 +1,29 @@
+\input{tikz.tex}
+\begin{document}
+    \begin{tikzpicture}[scale=1.2]
+        % système rond
+        \draw (0,0)  ellipse(1 and 0.5);
+        \draw (0,0) node{$\Sigma$};
+        % source chaude = boite
+        \begin{scope}[rotate=0,shift={(-0.5,2.5)}]
+            \draw[JoliRouge,rounded corners] (0,0.5) -- (1,0.5) -- (1,-0.5) -- (0,-0.5) -- cycle;
+            \draw[JoliRouge] (0.5,-0.25) node[above]{$T_c$};
+            \draw[JoliRouge] (1.6,0) node[]{source\\chaude};
+        \end{scope}
+        % source froide =  boite
+        \begin{scope}[rotate=0,shift={(0.5,-2.5)}]
+            \draw[JoliBleu,rounded corners] (0,-0.5) -- (-1,-0.5) -- (-1,0.5) -- (0,0.5) -- cycle;
+            \draw[JoliBleu] (-0.5,0.25) node[below]{$T_f$};
+            \draw[JoliBleu] (0.6,0) node[]{source\\froide};
+        \end{scope}
+        % travail W
+        \draw[warrow,<-] (1,0) -- ++(1.5,0) node[midway,above=0.1,JoliJaune]{$W>0$} coordinate(W);
+        % milieu extérieur = rectangle
+        \draw[rounded corners] (W) -- ++(0,0.5) -- ++ (2,0) -- ++ (0,-1) -- ++ (-2,0) -- cycle;
+        \node at ($(W) + (1,0)$) []{opérateur};
+        % chaleur Q1
+        \draw[hotq,->] (0,0.5) -- ++(0,1.5) node[midway,right=0.1,JoliRouge]{$Q_c<0$};
+        % chaleur Q2
+        \draw[coldq,<-] (0,-0.5) -- ++(0,-1.5) node[midway,right=0.1,JoliBleu]{$Q_f>0$};
+    \end{tikzpicture}
+\end{document}

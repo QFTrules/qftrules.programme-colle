@@ -1,0 +1,31 @@
+\input{tikz.tex}
+\begin{document}
+\begin{tikzpicture}[scale=1.1]
+    % axe x
+    \def\b{0.75}
+    \def\a{1.25}
+    \draw[->] (-3,0) -- (3,0) node[right] {$x$};
+    % axe y du potentiel V(x)
+    \draw[->] (0,-0.5) -- (0,3) node[above,JoliBleu] {$V(x)$};
+    % potentiel double puits rectangulaire
+    \draw[thick,JoliBleu] (-2,3) -- ++ (0,-3) -- ++ (\a,0) -- ++ (0,1) -- ++ (2*\b,0) -- ++ (0,-1) -- ++ (\a,0) -- ++ (0,3);
+    % width a of each well
+    % \draw[<->,JoliRouge] (-2,-0.2) -- ++ (1.25,0) node[midway,below] {$a$};
+    % height of the barrier
+    % \draw[<->,JoliRouge] (0,0) -- ++ (0,1) node[midway,right] {$V_0$};
+    % width of the barrier
+    % \draw[<->,JoliRouge] (-0.75,1.1) -- ++ (1.5,0) node[midway,above] {\contour{white}{$2b$}};
+
+    % SYM
+    \draw[thick,JoliRouge] plot[domain=-\b-\a:-\b,samples=100] (\x,{-0.7*sin(180*(\x+\b)/\a)+2.8*exp(3*\x)});
+    \draw[thick,JoliRouge] plot[domain=-\b:\b,samples=100] (\x,{cosh(\x)-1});
+    \draw[thick,JoliRouge] plot[domain=\b:\b+\a,samples=100] (\x,{0.7*sin(180*(\x-\b)/\a) + 2.8*exp(-3*\x)});
+
+    \node[JoliRouge] at (-\b-\a/2,1.2) {\contour{white}{$\vphi_S(x)$}};
+
+    % % ANTISYM
+    % \draw[thick,white] plot[domain=-\b-\a:-\b,samples=100] (\x,{-0.7*sin(180*(\x+\b)/\a)+2.8*exp(3*\x)});
+    % \draw[thick,white] plot[domain=-\b:\b+0.01,samples=100] (\x,{-0.063*sinh(3*\x)});
+    \draw[thick,white] plot[domain=\b:\b+\a,samples=100] (\x,{-0.7*sin(180*(\x-\b)/\a) - 2.8*exp(-3*\x)});
+\end{tikzpicture}
+\end{document}

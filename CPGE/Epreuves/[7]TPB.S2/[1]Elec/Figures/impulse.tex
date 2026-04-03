@@ -1,0 +1,19 @@
+\input{tikz.tex}
+\begin{document}
+   \begin{tikzpicture}
+    % temps en abscisse
+    \draw[->] (-1,0) -- (7,0) node[right] {$t$};
+    % tension d'entrée en ordonnée
+    \draw[->] (0,0) -- (0,5) node[above] {$e(t)$};
+    % tracé de la tension d'entrée = impulsion entre 0 et x
+    \draw[thick,JoliRouge] (-1,0) -- (0,0) -- ++(0,4)  -- ++(2,0) -- ++(0,-4) -- ++(4.8,0);
+    % tick at x
+    \draw[thick] (0,0) -- ++(0,-0.2) node[below] {$0$};
+    % tick at x
+    \draw[thick] (2,0) -- ++(0,-0.2) node[below] {$x$};
+    % tick at height of impluse
+    \draw[thick] (0,4)  node[left] {$1/x$};
+
+
+   \end{tikzpicture} 
+\end{document}

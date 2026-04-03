@@ -1,0 +1,11 @@
+﻿\begin{tikzpicture}
+
+\node at (0,0) {
+\includegraphics[scale=0.35]{train.jpeg}
+};
+
+\draw[->,>=latex,JoliRouge] (-2,-0.7) -- ++ (-1,-0.1) node[left=-1] {$\ey$};
+\draw[->,>=latex,JoliRouge] (-2,-0.7) -- ++ (-0.7,0.2) node[above left=-2] {$\ex$};
+\draw[->,>=latex,JoliRouge] (-2,-0.7) -- ++ (0,1) node[above=-2] {$\ez$};
+
+\end{tikzpicture}

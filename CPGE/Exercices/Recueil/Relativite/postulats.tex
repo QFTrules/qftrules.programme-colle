@@ -1,0 +1,707 @@
+% !TEX root = /home/eb/.vscode/extensions/qftrules.programme-colle/tmp/Exercice.tex
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][colle]{Événements dans l'expérience de Michelson-Morley (12 points)}
+On se propose d'analyser les différents événements qui doivent être pris en compte dans l'expérience de Michelson-Morley. Le référentiel $\mathcal{R}^{\prime}=(S,ct',x^{\prime},y^{\prime})$, dans lequel est fixé l'interféromètre, est le référentiel terrestre qui se déplace en translation rectiligne uniforme à la vitesse $v=\SI{30}{km.s^{-1}}$ dans la direction $(Sx')$, par rapport au référentiel de Copernic  $\mathcal{R}=(O,ct,x,y)$, supposé inertiel. La source de lumière $S$ est située à l'origine de $\Rcal'$ et les miroirs $\mc{M}_1$ et $\mc{M}_2$ sont placés sur les axes $(Sx^{\prime})$ et $(Sy^{\prime})$ respectivement, à la même distance $\ell=3 \mathrm{~m}$ de~$S$. On considère les cinq événements suivants :
+\begin{liste}
+  \item
+  $E_0$ est l'émission du signal lumineux de $S$ vers $M_1$ et $M_2$,
+  \item
+  $A_1$ est l'arrivée du signal sur $\mc{M}_1$,
+  \item 
+  $A_2$ est l'arrivée du signal sur $\mc{M}_2$,
+  \item 
+  $R_1$ est le retour en $S$ du signal réfléchi par $\mc{M}_1$,
+  \item 
+  $R_2$ est le retour en $S$ du signal réfléchi par $\mc{M}_2$.
+
+
+
+\end{liste}
+On représentera les événements par leurs coordonnées $(ct',x',y')$ dans $\Rcal'$ ou $(ct,x,y)$ dans $\Rcal$.
+\begin{fig}[label]
+  \centering
+  \includegraphics[scale=1]{schema_michelson_mouv.pdf}
+  %\capt{}
+\end{fig}
+
+\begin{quest}
+  \QR { Justifier que $\mathcal{R}^{\prime}$ est lui-aussi inertiel sous ces hypothèses. Serait-ce le cas en pratique si on réalisait l'expérience sur une durée de plusieurs mois ?
+  }{
+  Le référentiel $\mathcal{R}^{\prime}$ est inertiel car il est en \fbox{translation rectiligne uniforme} par rapport à $\mathcal{R}$. 
+  
+  En pratique, le référentiel $\mathcal{R}^{\prime}$ n'est pas inertiel si l'on considère une durée de plusieurs mois, car la Terre tourne autour du Soleil dans un mouvement quasi-circulaire en un an. Notons aussi que la Terre est en rotation dans le référentiel géocentrique, même si l'accélération axifuge associée est plus faible. 
+  }
+  \QR{	
+  Sachant qu'à l'instant initial les origines $O$ et $S$ de $\mathcal{R}$ et $\mathcal{R}^{\prime}$ coïncident, écrire les coordonnées spatio-temporelles de ces événements en fonction de $\ell, \beta$ et $\gamma$, d'abord dans $\Rcal'$, puis dans $\Rcal$ en s'aidant des transformations de Lorentz.
+  }{
+    Les coordonnées spatio-temporelles de ces événements s'écrivent dans $\mathcal{R}^{\prime}$ : 
+    \eqbox{
+      \begin{split}
+        E_0(ct'=0,x'=0,y'=0), & \\ A_1(ct'=\ell,x'=\ell,y'=0), A_2(ct'=\ell,x'=0,y'=\ell), & \\ 
+        R_1(ct'=2\ell,x'=0,y'=0), R_2(ct'=2\ell,x'=0,y'=0). &
+      \end{split}
+    }
+
+    On obtient aisément les coordonnées dans $\mathcal{R}$ à partir de celles dans $\Rcal'$ en effectuant une transformation de Lorentz de vitesse $-v$ :
+    $$
+    \left\{
+    \begin{aligned}
+      ct &= \gamma(ct'+\beta x'), \\
+      x &= \gamma(x'+\beta ct'), 
+    \end{aligned}
+    \right.
+    $$
+    On en déduit les coordonnées dans $\mathcal{R}$ :
+    \eqbox{
+      \begin{split}
+        E_0(ct=0,x=0,y=0), & \\ A_1(ct=\gamma(1 + \beta)\ell,x=\gamma(1 +\beta)\ell,y=0), A_2(ct=\gamma\ell,x = \beta \gamma \ell, y =\ell), & \\ 
+        R_1(ct=2\gamma\ell,x = 2\beta \gamma \ell, y=0), R_2(ct=2\gamma\ell,x = 2\beta \gamma \ell, y=0). &
+      \end{split}
+    }
+    % \begin{remarque}
+    \udl{Remarque :}
+      On reconnaît dans la coordonnée temporelle de $A_1$ la formule de l'effet Doppler-Fizeau longitudinal ($t=\gamma(1+\beta)t'$), et dans la coordonnée de $A_2$ la formule de dilatation des durées $(t=\gamma t')$. 
+      % La coordonnée $x_{A_2} = \gamma \beta \ell$ correspond à la dilatation des distances puisque $\beta \ell$ est la distance parcourue 
+    % \end{remarque}
+  }
+
+  \QR{ Représenter les événements $E_0$, $A_2$ et $R_2$, ainsi que la ligne d'univers du photon se propageant dans la voie 2, dans un diagramme d'espace-temps $(ct,y)$ dans $\Rcal$. 
+  }{
+    Noter que le miroir $\mc{M}_2$ est d'ordonnée $y_2 = \ell$ constante ! Sa ligne d'univers dans un diagramme d'espace-temps $(ct,y)$ est donc une droite verticale. On trace la trajectoire du photon dans la voie 2, qui est un segment de bissectrice avant et après réflexion.
+    Le diagramme d'espace-temps est le suivant :
+  \begin{fig}[label]
+    \centering
+    \includegraphics[scale=1.5]{M2_Michelson.pdf}
+    %\capt{}
+  \end{fig}
+
+  }
+ 
+  \QR{ Représenter les événements $E_0$, $A_1$ et $R_1$, ainsi que la ligne d'univers du photon se propageant dans la voie 1, dans un diagramme d'espace-temps $(ct,x)$ dans $\Rcal$. Représentez les axes $ct'$ et $x'$ sans respecter les échelles, mais en indiquant la méthode, et expliquer où lire les coordonnées de ces événements sur les axes $ct'$, et $x'$.
+  }{
+    Le diagramme d'espace-temps est le suivant :
+  \begin{fig}[label]
+    \centering
+    \includegraphics[scale=1.5]{M1_Michelson.pdf}
+    %\capt{}
+  \end{fig}
+  Les coordonnées des événements $E_0$, $A_1$ et $R_1$ se lisent sur les axes $ct$ et $x$ dans $\Rcal$, et sur les axes $ct'$ et $x'$ dans $\Rcal'$. On peut lire les coordonnées $ct'$ des événements sur l'intersection entre l'axe $ct'$ et la droite qui passe par l'événement et parallèle à l'axe $x'$. On peut lire les coordonnées $x'$ des événements sur l'intersection entre l'axe $x'$ et la droite qui passe par l'événement et parallèle à l'axe $ct'$. L'exemple de l'événement $A_1$ est donné sur le diagramme.
+  }
+  \QR{ On admet que l'intervalle d'espace-temps s'écrit ici 
+  $\Delta s^2 = c^2\Delta t^2 - \Delta x^2 - \Delta y^2$.
+  Déterminer les  intervalles d'espace-temps entre $E_0$ et $A_1$, entre $E_0$ et $A_2$, entre $A_1$ et $A_2$, entre $R_1$ et $R_2$. Indiquer le genre de chaque intervalle (espace, temps, lumière) et commenter physiquement.
+  }{
+    Pour calculer les intervalles d'espace-temps, il suffit de se placer dans le référentiel le plus commode, ici $\mathcal{R}^{\prime}$, car l'intervalle est un invariant de Lorentz. On trouve
+
+    \eqbox{
+      \Delta s^2(E_0,A_1) =c^2t_{A_1}^2 - x_{A_1}^2 - y_{A_1}^2 =\ell^2-\ell^2-0=0  \text{ (genre lumière)}
+      }
+      \eqbox{
+      \Delta s^2(E_0,A_2) =c^2t_{A_2}^2 - x_{A_2}^2 - y_{A_2}^2=\ell^2-0-\ell^2=0  \text{ (genre lumière)}
+      }
+      \eqbox{
+      \Delta s^2(A_1,A_2) =c^2(t_{A_2}-t_{A_1})^2 - (x_{A_2}-x_{A_1})^2 - (y_{A_2}-y_{A_1})^2=0-\ell^2-\ell^2=-2\ell^2  < 0 \text{ (genre espace)}
+      }
+      \eqbox{
+      \Delta s^2(R_1,R_2) =c^2(t_{R_2}-t_{R_1})^2 - (x_{R_2}-x_{R_1})^2 - (y_{R_2}-y_{R_1})^2=0-0-0=0  \text{ (genre lumière)}
+      }
+    Les paires d'événements $E_0$ et $A_1$, et $E_0$ et $A_2$, sont reliés par la propagation d'un photon, et sont donc du genre lumière. Les événements $A_1$ et $A_2$ correspondent à la longueur séparant deux miroirs distants, et sont du genre espace.
+  }
+
+  \QR { Les événements $A_1$ et $A_2$ sont-ils simultanés dans $\mathcal{R}$ ? dans $\mathcal{R}^{\prime}$ ? Même question pour les événements $R_1$ et $R_2$. Préciser par un calcul numérique. Commenter.
+  }{
+  On voit que $A_1$ et $A_2$ sont simultanés dans $\Rcal'$ car $ct_{A_1} = ct_{A_2} = \ell$, mais pas dans $\Rcal$. La différence de temps entre $A_1$ et $A_2$ dans $\Rcal$ est donnée par, avec $\beta = v/c \simeq \SI{e-4}{}$ et $\gamma \simeq 1$,
+  \eqbox{
+  c(t_{A_1}-t_{A_2}) = \gamma(1+\beta)\ell - \gamma \ell = \gamma \beta \ell \simeq \SI{3e-4}{m}.
+  } 
+  L'arrivée du photon sur $\mathcal{M}_1$ est donc postérieure à l'arrivée du photon sur $\mathcal{M}_2$ de $\SI{1}{ps}$.
+  Par contre, les événements $R_1$ et $R_2$ sont simultanés dans $\Rcal$ et $\Rcal'$, car la simultanéité est absolue pour deux événements de même position.
+  }
+
+%    \item Les coordonnées de $E_0$ et $A_1$ sont-elles compatibles avec la formule de contraction des longueurs ? Justifier de la façon qui vous semble la plus pertinente (calcul, diagramme d'espace-temps, ...).
+%   \sol{
+%   La longueur du bras $1$ vaut $\ell$ dans $\Rcal'$ (longueur propre) et $\ell/\gamma$ dans $\Rcal$ (longueur impropre) d'après la formule de contraction des longueurs. La distance aller  parcourue par le photon dans le bras $1$ de l'interféromètre dans $\Rcal$ vaut donc 
+%   % \eqbox{$
+% $\ell/\gamma.$
+%   % }
+%   Mais pendant la durée $ct_{A_1} = (1+\beta)\gamma \ell$ du trajet aller dans $\Rcal$, l'interféromètre s'est déplacé d'une distance $v t_{A_1} = \beta(1+\beta)\gamma \ell$. La distance totale parcourue par le photon $1$ vaut donc $\ell/\gamma + \beta(1+\beta)\gamma \ell =  \gamma  \ell (\gamma^{-2} + \beta + \beta^2) = \gamma (1+\beta) \ell = x_{A_1}$. Les coordonnées de $E_0$, $A_1$ sont donc compatibles avec la formule de contraction des longueurs, même si le lien n'est pas immédiat. Le même raisonnement s'applique au retour, entre $A_1$ et $R_1$.
+%   }
+\end{quest}
+  
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][colle]{Principe de l'inertie en mécanique de Newton}
+  \Notions{\item Principe d’inertie}
+Dans le \textit{Dialogue des deux mondes}, Galilée pose la question suivante : quel est le point de chute d'un boulet  abandonné au sommet du mât vertical d'un voilier, qui se déplace à vitesse (vectorielle) constante par rapport au référentiel terrestre, lorsqu'on néglige l'influence du vent. Le boulet arrive-t-il au bas du mât, en avant ou en arrière ? Justifier votre réponse.
+
+\sol{
+  Comme le référentiel du voilier a les mêmes propriétés que le rêféremiel terrestre, et que, dans ce demier, tout corps abandonné en chute libre a une trajectoire verticale, le point de chute est Évidemment le bas du mât.
+}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][devoir]{Les postulats de la relativité (8 points)}
+Répondez aux questions en quelques phrases, sans calcul.
+\begin{quest}
+  \item	
+   Dans l'univers, peut-on mesurer des vitesses plus élevées que la vitesse de la lumière? Expliquez.
+  \sol{
+  
+    Oui.
+    
+    
+    Nous avons vu que la vitesse $v$ d'un boost entre référentiels inertiels est toujours inférieure à $c$. Cela implique (nous reverrons cela en dynamique) que la vitesse de déplacement d'un objet massif par rapport à un référentiel inertiel est toujours inférieure à celle de la lumière.
+    
+    Mais il existe d'autres vitesses mesurables. On peut mesurer des vitesses géométriques et de projection sans lien causal avec l'observateur et entre les points considérés, et qui ne sont donc pas limitées par $c$. Par exemple,  toutes les galaxies ayant un décalage spectral supérieur à $z>1,4$ s'éloignent de nous plus vite que la vitesse de la lumière. Les vitesses supraluminiques des jets astrophysiques excèdent souvent la vitesse de la lumière par effet de projection (vitesse apparente).
+    
+    }
+    \item 
+   En relativité restreinte, il est souvent commode d'exprimer le temps en mètres $c t$, au lieu de $t$ en unité de temps. Pour autant, pourquoi est-il abusif d'affirmer que temps et espace ont des propriétés identiques en relativité?
+  \sol{
+  
+    Les coordonnées spatiales sont strictement symétriques entre elles, alors que la coordonnée temporelle s'écoule du passé vers le futur dans un sens défini par la flèche du temps. Le temps et les coordonnées spatiales n'ont donc pas des propriétés identiques en relativité. Les coordonnées temporelle et spatiale ne sont pas affectées du même signe dans l'intervalle d'espace-temps $\Delta s^2 = c^2 \Delta t^2 - \Delta x^2$ (métrique de Minkowski). Notons aussi que les effets relativistes
+    sur l'espace (contraction des longueurs) et le temps (dilatation des durées) sont inverses, même si l'on ne compare pas exactement les mêmes choses dans ces effets.
+    }
+  
+    \item	
+     Comment expliqueriez-vous la notion de durée et longueur propres? Quel est le lien entre durée propre et impropre, longueurs propre et impropre?
+    
+    \sol{
+    
+      La durée propre $\Tp$ est la durée mesurée par un ensemble d'horloge synchronisées fixes (dont les coordonnées spatiales sont constantes) dans le référentiel considéré.
+      Cette même durée mesurée dans tout autre référentiel, en mouvement par rapport aux horloges, est dite impropre $T$, la relation entre les deux étant (dilatation des durées)
+      \eqbox{
+      T = \gamma\Tp.
+      }
+      La longueur propre $\Lp$ d'une barre est la longueur mesurée par une règle immobile entre deux graduations en coïncidence avec les bouts de la barre.
+      Une longueur impropre $L$ est mesurée dans tout autre situation, la relation entre longueur propre et impropre est (contraction des longueurs)
+      \eqbox{
+      L  = \frac{\Lp}{\gamma}.
+      }
+      }
+    \item 
+     L'expérience de pensée des jumeaux de Langevin suppose qu'un jumeau reste sur Terre, tandis que l'autre fait un voyage intersidéral à grande vitesse avant de revenir sur Terre. Pourquoi n'y a-t'il pas réciprocité entre eux? Lequel des jumeaux est plus jeune que l'autre à la fin du voyage?
+
+    \sol{
+    
+      La situation des deux jumeaux n'est pas symétrique parce que le jumeau voyageur subit des accélérations et décélérations pendant son voyage, alors que le jumeau terrestre est fixe dans un référentiel inertiel. En conséquence le temps propre du jumeau voyageur est donc dilaté par rapport au jumeau terrestre, il sera plus jeune en rentrant sur Terre.
+      }
+  \end{quest}
+  \end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][colle]{Coordonnées d'événements en cinématique galiléenne}
+On considère, dans le référentiel $\mathcal{R}^{\prime}$, les événements $E_1$ \guill{émission de lumière en $O^{\prime}$}, $E_2$ \guill{réflexion de la lumière sur le miroir $M^{\prime}$}, situé a a la distance $l=0,5 \mathrm{~m}$ sur l'axe $O y^{\prime}$, et $E_3$ «réception de la lumière en $O^{\prime} »$ (Fig. 1.2).
+1. Écrire, dans le cadre de la cinématique galiléenne, les coordonnées de ces trois événements dans les référentiels galiléens $\mathcal{R}^{\prime}$ et $\mathcal{R}$, sachant que $\beta_e=v_e / c=0,2$.
+2. En déduire, en fonction de $l$ et $\beta_e$, la durée et la distance qui séparent $E_1$ et $E_2$ d'une part, et $E_1$ et $E_3$ d'autre part. Quels sont les invariants?
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][TD]{Représentations graphiques des axes issus d'un boost de Lorentz}
+  \Notions{\item Diagramme d'espace-temps}
+    On considère un diagramme d'espace-temps de coordonnées $(ct,x)$ associées au référentiel $\Rcal$. Soit un référentiel $\Rcal'$ de coordonnées $(ct',x')$ en mouvement dans $\Rcal$ à la vitesse $v = -\textstyle\frac{c}{2}$ suivant l'axe $(Ox)$.
+    \begin{quest}
+      \item	De quel angle $\theta$ sont tournés les axes $(ct',x')$ par rapport aux axes $(ct,x)$ ?
+      \sol{
+         On a $\beta = -\num{0.5}$ avec $\beta = \tan \theta$. On trouve donc 
+         \eqbox{
+         \theta \simeq -\SI{27}{^\circ}.
+         }
+      }
+      \item Les représenter graphiquement en justifiant la méthode de construction.
+      \sol{
+        Les axes sont donc tournés de $\SI{27}{^\circ}$ vers l'extérieur du quadrant $(ct>0,x>0)$. Il est plus simple de se servir la pente pour tracer les axes.
+  \begin{liste}
+    \item L'axe $(Ox')$ est défini par l'équation $ct'=0$, soit $ ct = \beta x$. La pente de l'axe $(Ox')$ vaut donc $\beta = -\frac{1}{2}$.
+    \item L'axe $(Oct')$ est défini par l'équation $x'=0$. Il est symétrique de l'axe $(Ox')$ par rapport à l'axe $(ct)$.
+  \end{liste}
+
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\columnwidth]{E_exo1_soluce}
+    % \caption{}
+    % \label{fig:}
+  \end{figure}
+      }
+    \end{quest}
+
+    % tracer les axes $(Oct')$ et $(Ox')$ issus d'un boost de $\Rcal$ de vitesse $v = -\frac{c}{2}$.
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][2][colle]{Expérience de Michelson-Morley}
+\Notions{\item Transformations de Galilée \task Mouvement d'un photon}
+  Dans l'expérience de A. \textsc{Michelson} et E. \textsc{Morley} de 1887, la lumière qui provient d'une source $S$ monochromatique de longueur d'onde $\lambda = \SI{589}{nm}$ est divisée en deux rayons par une lame semi-réfléchissante. Ces deux rayons cheminent perpendiculairement l'un à l'autre jusqu'aux miroirs $\mc{M}_1$ et $\mc{M}_2$, où ils sont réfléchis et interfèrent en sortie après recombinaison sur la lame semi-réfléchissante.
+  On règle les deux bras de l'interféromètre de sorte que la distance $L=\SI{11}{m}$ entre la lame et les miroirs est égale ; si la lumière se propage à la même vitesse dans les deux bras,  les rayons interférent constructivement en sortie.
+  \begin{fig}[michel]
+    \centering
+    \includegraphics[width=0.8\columnwidth]{schema_michelson.pdf}
+    % \capt{Expérience de Michelson et Morley.}
+  \end{fig}
+  On suppose maintenant que la Terre se déplace dans l'espace dans la direction $(Ox')$ parallèle à la direction du rayon de la voie $2$. On introduit l'axe perpendiculaire $(Oy')$, suivant la direction du rayon de la voie $1$. On note $\Vec{\vboost} = \vboost \ex$ la vitesse d'entraînement de la Terre par rapport à l'éther, supposé immobile dans l'espace. Soit $\Rcal$ le référentiel de l'éther et $\Rcal'$ celui de la Terre. On se propose de prédire ce que serait les résultats de l'expérience si les transformations de Galilée étaient valables ; en particulier, le temps est supposé absolu et la loi d'additivité des vitesses est supposée s'appliquer.
+  \begin{quest}
+    \item	Que vaut le temps de parcours $t_2$ du rayon pour effectuer un aller-retour dans la voie $2$ ? L'exprimer en fonction de $L$ et du paramètre $\bboost=\frac{\vboost}{c}$, où $c$ désigne la vitesse de la lumière dans l'éther.
+    \sol{
+      Considérons le mouvement d'un photon dans la voie 2 dans le référentiel $\Rcal'$ la Terre, de vitesse $c'$.
+      \begin{enumerate}
+        \item \udl{Trajet aller} : la terre et le rayon se déplace dans le même sens, et donc $c'_a = c - \vboost = c(1 - \bboost)$. Le temps de parcours aller est donné par
+        $$
+        t_{2,a} = \frac{L}{c'_a} = \frac{L}{c(1 - \bboost)}.
+        $$
+        \item \udl{Tajet retour} : le rayon revient dans le sens opposé au déplacement la Terre, et donc $c'_r = c + \vboost = c(1 + \bboost)$. Le temps de parcours retour est donné par 
+        $$
+        t_{2,r} = \frac{L}{c'_r} = \frac{L}{c(1 + \bboost)}.
+        $$
+      \end{enumerate}
+      Le temps de parcours total est donc donné par
+      $$
+      t_2 = t_{2,a} + t_{2,r} = \frac{L}{c(1 - \bboost)} + \frac{L}{c(1 + \bboost)} = \frac{L\left( 1 - \bboost + 1 + \bboost \right)}{c(1 - \bboost)(1+\bboost)},
+      $$
+      soit 
+
+      \eqbox{
+      t_2 = \frac{2L}{c(1 - \bboost^2)}.
+      }
+    }
+    \item Représenter la trajectoire du rayon lumineux dans la voie $1$ dans le référentiel de l'éther $\Rcal$. En déduire le temps de parcours $t_1$ du rayon pour effectuer un aller-retour dans la voie $1$. A-t-on $t_1=t_2$ ?
+    \sol{
+      Dans le référentiel $\Rcal$ de l'éther, le rayon de la voie $1$ effectue le trajet suivant. En effet, le rayon se déplace suivant la vertical dans $\Rcal'$, ce qui signifie qu'il suit le mouvement de la Terre suivant l'axe ($Ox$).
+      \begin{fig}[label]
+        \centering
+        \includegraphics[scale=1.2]{trajet_rayon_1}
+        %\capt{}
+      \end{fig}
+      La distance totale parcourue par le rayon 1 dans $\Rcal$, notée $d_1$, vérifie 
+      $$
+      \left( \frac{d_1}{2} \right)^2 = L^2 + \left( \frac{\vboost t_1}{2} \right)^2,
+      $$
+      avec $d_1 = c t_1$,
+      puisque le photon de déplace à la vitesse $c$ dans $\Rcal$. On en déduit 
+      $$
+      c^2t_1^2 = 4L^2 + \vboost^2t_1^2, 
+      $$
+      soit
+      \eqbox{
+      t_1 = \frac{2L}{c\sqrt{1 - \bboost^2}}.
+      }
+      On voit immédiatement que $t_1 \neq t_2$ : on s'attend donc à observer un déphasage en sortie de l'interféromètre.
+    }
+    \item On assimile la vitesse d'entraînement de la Terre dans l'éther à sa vitesse de révolution autour du Soleil, de valeur $\vboost \simeq \SI{30}{km.s^{-1}}$. Évaluer $\bboost$. Calculer la différence de temps de parcours $\tau = t_1-t_2$ à l'ordre $2$ en $\bboost$. En déduire l'ordre d'interférence, nombre sans dimension défini par 
+    \begin{equation}
+      p = \frac{c \tau}{\lambda}.
+    \end{equation}
+    De combien de franges devrait se décaler la figure d'interférence selon les prédictions de la physique newtonienne ? En pratique, on n'observe aucun décalage de franges. Conclure.
+
+    \sol{
+      \begin{enumerate}
+        \item On trouve 
+        \eqbox{
+        \bboost \simeq 10^{-4} \ll 1.
+        }
+        Il est donc légitime d'effectuer un développement limité en $\bboost$ au premier ordre non nul.
+        \item On trouve à l'ordre $2$ en $\bboost$ :
+        $$
+    \tau = t_1-t_2 =  \frac{2L}{c(1 - \bboost^2)}  - \frac{2L}{c\sqrt{1 - \bboost^2}}= \frac{2L}{c} \left[ (1 - \bboost^2)^{-1}  - (1-\bboost)^{-1/2} \right] = 
+     \frac{2L}{c}  \left[ 1 + \bboost^2  1 - 1 - \frac{\bboost^2}{2}  + o(\bboost^2)  \right],
+      $$
+      soit 
+      \eqbox{
+        \tau \simeq \frac{L}{c} \bboost^2.
+        }
+        \item L'ordre d'interférence vaut alors 
+        \eqbox{
+        p \simeq \frac{L}{\lambda} \bboost^2.
+        }
+        \AN~: \fbox{$p \simeq \num{0.2}$}. On devrait donc observer un décalage d'un cinquième de frange, ce qui est parfaitement mesurable. Les transformations de Galilée sont mises en défaut.
+      \end{enumerate}
+    }
+  \end{quest}
+  
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][colle]{Mesure de la célérité de la lumière par Roemer et Huygens}
+\Notions{\item Célérité de la lumière}
+En 1676, l'astronome danois O. \textsc{Roemer} prouva, pour la première fois, que la vitesse de la lumière avait une valeur finie, en notant les instants d'éclipses de Io, satellite naturel de Jupiter, lesquelles se produisent toutes les \SI{42}{h} environ.
+%  Des cinq satellites de Jupiter, Io est le plus proche, à une distance de \SI{412600}{km} du centre de la planète. 
+O. \textsc{Roemer} constata un retard maximal de $\tau_R = \SI{22}{min}$ entre deux observations d'éclipses à six mois d'intervalle, ce que C. \textsc{Huygens} attribua aux positions diamétralement opposées de la Terre sur son orbite autour du Soleil : la lumière parcourt une distance supplémentaire égale au diamètre $D=\SI{3,0e8}{km}$ de l'orbite terrestre. Quelle était l'estimation de la célérité de la lumière $c$ faite par C. \textsc{Huygens}?
+
+% \begin{center}
+% \includegraphics[width=\textwidth]{2024_07_17_808426ff8a01cb4955afg-02}
+% \end{center}
+
+\sol{
+ On trouve
+ \eqbox{
+   c = \frac{D}{\tau_R} = \SI{2.3e8}{m.s^{-1}}.
+   }
+}
+
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][colle]{Propagation du son}
+La vitesse de propagation du son dans un milieu isotrope a pour expression : $c_{s}=\left(\rho \kappa_{s}\right)^{-1 / 2}, \rho$ étant la masse volumique du milieu et $\kappa_{s}$ le coefficient de compressibilité isentropique (cf. Thermodynamique).
+
+\begin{quest}
+  \item Calculer la vitesse de propagation du son, dans le dioxygène et dans le diazote, à 300 K , sachant que ces gaz sont des gaz parfaits diatomiques, de facteur thermodynamique $\gamma=1,4$. On donne leurs masses molaires respectives $32 \mathrm{~g} \cdot \mathrm{mol}^{-1}$ et $28 \mathrm{~g} \cdot \mathrm{mol}^{-1}$.
+
+  \item Quelle est la valeur de $c_{s}$ dans le benzène : $\rho=879 \mathrm{~kg} \cdot \mathrm{m}^{-3}$ et $\kappa_{s}=0,73 \times 10^{-9} \mathrm{~Pa}^{-1}$ ?
+
+  \item Même question dans une roche : $\rho=2500 \mathrm{~kg} \cdot \mathrm{m}^{-3}$ et $\kappa_{s}=10^{-12} \mathrm{~Pa}^{-1}$ ?
+
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{exo}[PC][3][TD]{Analyse spectrale des transformations de Lorentz}
+%   \Notions{\item Transformations de Lorentz \task Rapidité}
+% La transformation de Lorentz $\Lambda : (ct,x) \mapsto (ct’,x’)$ est une application linéaire de l’espace vectorielle $\R^2$ dans $\R^2$. On se propose de déterminer les propriétés de cette application linéaire.
+% \begin{quest}
+%   \item	Rappeler la représentation matricielle de l’application linéaire $\Lambda$ dans la base canonique de $\R^2$.
+%   \item Montrer que les vecteurs propres de $\Lambda$ sont $e_- = (1,1)$ et $e_+ = (1,-1)$ et sont associés aux valeurs propres $\lambda_\pm = \gamma(1\pm\beta)$. Les espaces propres associés sont appelés directions lumière. Pourquoi ? Faire le lien avec  l’invariance de $c$.
+%   \sol{
+  
+% Les espaces propres de $\Lambda$ sont Vect$(1,1)$ et Vect$(1,-1)$, ce qui correspond aux directions lumières $x=\pm ct$, en accord avec l’invariance de $c$.
+% En effet, on a 
+% \begin{equation}
+%   \left(\begin{array}{cc}\gamma & -\beta \gamma \\ -\beta \gamma & \gamma\end{array}\right) \begin{pmatrix}1\\1\end{pmatrix} = \begin{pmatrix}\gamma-\beta \gamma \\ -\beta \gamma + \gamma\end{pmatrix} = \gamma(1-\beta) \begin{pmatrix}1\\1\end{pmatrix},
+% \end{equation}
+% et 
+% \begin{equation}
+%   \left(\begin{array}{cc}\gamma & -\beta \gamma \\ -\beta \gamma & \gamma\end{array}\right) \begin{pmatrix}1\\-1\end{pmatrix} = \begin{pmatrix}\gamma+\beta \gamma \\ \beta \gamma + \gamma\end{pmatrix} = \gamma(1+\beta) \begin{pmatrix}1\\-1\end{pmatrix}.
+% \end{equation}
+
+%   }
+%   \item Montrer qu’il existe $\psi \in ]-\infty,+\infty[$ tel que $\lambda_\pm = e^{\pm\psi}$. En déduire l’expression de $\beta$ et $\gamma$, ainsi que la représentation matricielle de $\Lambda$ dans la base canonique, en fonction de $\psi$.
+%   \sol{
+%     Les valeurs propres associées sont respectivement $\gamma(1\pm \beta) > 0$. En posant $\gamma(1+\beta) = e^{\psi}$ avec $\psi \in ]-\infty, +\infty[$, on voit que $\gamma(1-\beta) = \gamma^2(1-\beta^2)/\gamma(1+\beta) = 1/\gamma(1+\beta) = e^{-\psi}$.
+%   }
+% \end{quest}
+
+
+% \end{exo}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][colle]{Étude d'un événement}
+  \Notions{\item Diagramme d'espace-temps \task Transformations de Lorentz \task Intervalle d'espace-temps}
+  Soit l'événement $E$ de coordonnées spatio-temporelles $(ct=2,x=4)$ pour un observateur inertiel $\Rcal$. Les unités sont arbitraires. Soit $\Rcal'$ un autre observateur inertiel. On représente sur la \Fig{E_exoTD} l'événement $E$ ainsi que les systèmes de coordonnées des référentiels $\Rcal$ et $\Rcal'$.
+  \begin{quest}
+    \item  Déterminer graphiquement la vitesse adimensionnée $\beta$, et le facteur de Lorentz $\gamma$ du boost de Lorentz permettant de passer de $\Rcal$ à $\Rcal'$.
+    \sol{
+    La pente de l'axe $x'$ donne 
+    \eqbox{
+    \beta = \frac{1}{4}.
+    }
+    On en déduit $\gamma$ par le calcul, soit 
+    \eqbox{
+    \gamma = \frac{1}{\sqrt{1-\beta^2}} = \frac{4}{\sqrt{15}} \simeq \num{1.033}.
+    }
+    }
+     \item Déterminer analytiquement les coordonnées $(ct',x')$ de l'événement $E$ dans  $\Rcal'$ en utilisant les transformations de Lorentz, et les valeurs de $\beta$ et $\gamma$ trouvées précédemment.
+    \sol{
+    On utilise les transformations de Lorentz pour passer de $\Rcal$ à $\Rcal'$, soit
+    $$
+    \left\{
+    \begin{array}{l}
+      ct_E' = \gamma(ct_E-\beta x_E) = \frac{4}{\sqrt{15}}(2-4/4) = \frac{4}{\sqrt{15}},\\[3mm]
+      x_E' = \gamma(x_E-\beta ct_E) = \frac{4}{\sqrt{15}}(4-2/4) = \frac{14}{\sqrt{15}},
+    \end{array}
+    \right.
+    $$
+    soit 
+    \eqbox{
+    ct_E' \simeq \num{0.97}, \quad x_E' \simeq \num{3.39}.
+    }
+    }
+
+%     \item	En expliquant la méthode, retrouver graphiquement les coordonnées $(ct',x')$ de  $E$ dans $\Rcal'$ .
+%     \sol{
+% Pour retrouver graphiquement les coordonnées de $E$ dans $\Rcal'$, on trace les droites $ct=f(x)$ ou $x=f(ct)$ passant par $E$. D'après les transformations de Lorentz, l'équation de ces droites est donnée par 
+% $$
+% \left\{
+%   \begin{array}{lr}
+%     ct  = \dfrac{ct_E'}{\gamma} + \beta x & (a), \\[3mm]
+%     x  = \dfrac{x_E'}{\gamma} + \beta ct & (b).
+%   \end{array}
+% \right.
+% $$
+% L'équation $(a)$ décrit une droite parallèle à l'axe $(Ox')$ d'ordonnée à l'origine 
+
+%     On trace les droites parallèles aux axes $ct'$ et $x'$ qui passent par $E$. L'intersection de ces droites avec les axes $ct'$ et $x'$ donne les valeurs de $ct_E'$ et $x_E'$. On ne peut pas lire directement ces valeurs car les axes ne sont pas gradués. On regarde donc l'intersection de ces droites avec les axes $ct$ et $x$, qu donnent les valeurs de $ct_E'/\gamma$ et $x_E'$ respectivement. On en déduit
+%     \eqbox{
+%     ct_E' = \frac{1}{\gamma} \simeq \num{0.97}, \quad x_E' = \frac{\num{3.5}}{\gamma} \simeq  \num{3.39}.
+%     }
+%     }
+   
+    \item Déterminer l'intervalle d'espace-temps $\Delta s^2$ entre l'événement $E$ et l'événement origine. De quel genre est cet intervalle d'espace-temps ? Déterminer l'équation $ct=f_E(x)$ de l'ensemble des événements de même valeur d'intervalle d'espace-temps que $E$. Tracer la courbe correspondante sur le diagramme d'espace-temps.
+    \sol{
+      \begin{enumerate}
+        \item 
+        L'intervalle d'espace-temps par rapport à l'origine est donné par
+        $
+    \Delta s^2 = (ct_E)^2-x_E^2 = 4-16,
+    $
+    soit 
+    \eqbox{
+    \Delta s ^2 = -12.
+    }
+    \item On a $\Delta s^2<0$, donc $E$ est du genre \fbox{espace} vis-à-vis de l'origine. Cela est cohérent avec sa position hors du cône de lumière.
+
+    \item L'équation de l'ensemble des événements de même valeur d'intervalle d'espace-temps que $E$ est donnée par
+    $
+    (ct)^2-x^2 = -12,
+    $
+    soit 
+    \eqbox{
+      ct = \pm \sqrt{x^2-12}.
+      }
+      Il s'agit d'une parabole, d'axe $(Ox)$, centrée en $(0,0)$, et de sommets en $x=\sqrt{12} \simeq \num{3.46}$.
+    \end{enumerate}
+    }
+    \sol{
+    \begin{fig}[label]
+      \centering
+      \includegraphics[width=0.5\columnwidth]{E_exoTD_intervalle.pdf}
+      %\capt{}
+    \end{fig}
+    }
+  \end{quest}
+  \begin{fig}[E_exoTD]
+    \centering
+    \includegraphics[width=0.5\columnwidth]{E_exoTD.pdf}
+    \capt{Un événement $E$ d'un diagramme d'espace-temps.}
+  \end{fig}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][2][TD]{Expérience de Fizeau}
+  \Notions{\item Composition des vitesses \task Propagation de la lumière}
+  En 1851, H. \textsc{Fizeau} réalise une expérience d’interférométrie pour mesurer la célérité de la lumière dans un milieu transparent en mouvement afin de tester l’hypothèse d’entraînement de l’éther.
+    On considère le dispositif ci-dessous, où la source lumineuse est monochromatique de longueur d'onde dans le vide $\lambda$. L'amplitude du rayon incident est divisé en deux au passage d'une lame semi-réfléchissante ($\mathcal{L}$). Les deux tubes horizontaux sont de même longueur $L$, de sorte que la distance des trajets lumineux $[1]$ et $[2]$ est identique. Dans chacun des tubes circule de l'eau à une vitesse $v$, mais dans des sens de parcours opposés. Le trajet $[1]$ est parcouru dans le sens opposé à celui de l'eau, tandis que le trajet $[2]$ est parcouru dans le même sens que l'eau. 
+
+
+    %%% FIGURE : %%%%
+    %\begin{figure}[h!]
+    %\centering
+    \begin{fig}[fizeau]
+      \centering
+      \includegraphics[width=0.8\textwidth]{fizeau.png}
+      % \capt{Dispositif de l'expérience de Fizeau.}
+    \end{fig}
+    % \begin{center}
+    % \includegraphics[width=0.6\textwidth]{fizeau.png}
+    % \end{center}
+    %\caption{}
+    %\label{fig:fizeau}
+    %\end{figure}
+    %%%%%%%%%%%%%
+   On suppose les transformations de Galilée valables dans toute la suite.
+   \begin{quest}
+    \item  On rappelle que la vitesse de la lumière dans l'eau  dans son référentiel propre vaut $c/n$, avec $n$ l'indice de réfraction. Donner l'expression des vitesses $v_1$ et $v_2$ de la lumière dans le référentiel $\Rcal$ du laboratoire.
+    \sol{
+     La vitesse de la lumière s'additionne à la vitesse de l'eau, de sorte que
+     \eqbox{
+     v_1 = c/n-v, \quad v_2 =c/n+v.
+     }
+
+    }
+      \item Déterminer le retard $\tau$ du faisceau [1] par rapport au faisceau [2].
+
+      \sol{
+        Il vient
+        $$
+        \tau = 2L\left(\dfrac{1}{v_1}-\dfrac{1}{v_2}\right) = 2L\left(\dfrac{1}{c/n-v} - \dfrac{1}{c/n+v} \right) = 2L\dfrac{(c/n+v)-(c/n-v)}{c^2/n^2-v^2}
+        $$
+        soit
+        $$
+        \tau = 2L\dfrac{2v}{c^2/n^2-v^2},
+        $$
+        et donc 
+        \eqbox{
+        \tau = 4Lv\dfrac{n^2}{c^2-n^2v^2}
+        }
+    }
+
+
+    \item Calculer l'ordre d'interférence $p$ entre les faisceaux [1] et [2] en fonction de $L$, $\lambda$, $n$ et $\beta=v/c$. Donner un ordre de grandeur raisonnable pour $\beta$. En déduire une formule simplifiée pour le déphasage. \AN~pour $\lambda = 590\,$nm, $L = 2\,$m, $n = 1,\!33$, et $v=\SI{5}{m.s^{-1}}$.
+
+    \sol{
+      On a 
+      $$
+      p = \frac{c \tau}{\lambda} = \frac{4 L vc}{\lambda} \dfrac{n^2}{c^2-n^2v^2},
+      $$
+      soit 
+      \eqbox{
+      p = \frac{4L}{\lambda} \frac{\beta  n^2}{1-n^2\beta^2}.
+      }
+      On peut simplifier cette expression sachant que $\beta \ll 1$. On trouve à l'ordre dominant,
+      \eqbox{
+      p \simeq \frac{4L}{\lambda} \beta  n^2.
+      }
+      \AN~:~\fbox{$p \simeq \num{0.40}$}.
+    }
+    \item L'expérience donne comme mesure $p \simeq \num{0.17}$. Commenter.
+    \sol{
+      La formule d'additivité des vitesses est fausse !
+    }
+    
+    % \item Que se passe-t-il sur l'écran lorsqu'on augmente progressivement la vitesse $v$ de l'eau ? Que vaut la valeur $\beta_0$ du rapport $\beta$ séparant deux interférences constructives ? Application numérique pour  $\lambda = 590\,$nm, $L = 2\,$m et $n = 1,\!33$. Calculer également le rapport $\Delta \phi/2\pi$ pour $v = 5\,$m$\p$s$^{-1}$.
+    
+    % \sol{ $\Delta \phi = 2\pi$ donne $\beta_0 = \dfrac{\lambda }{4 L n^2}$.
+    % }
+  
+  \end{quest}
+  % \item On utilise maintenant les transformations de Lorentz.  
+  % \begin{enumerate}
+  %   \item Déterminer $v_1$ et $v_2$ en fonction de $v$, $c$ et $n$.
+  %   \sol{
+  %   La loi de composition donne 
+  %   \eqbox{
+  %   v_1 = \dfrac{c/n-v}{1-v/nc}, \quad v_2 = \dfrac{c/n+v}{1+v/nc}.
+  %   }
+  %   }
+  %   \item En déduire une expression simplifée du déphasage $\Delta \vphi$. \AN. La différence entre ces deux valeurs de $\Delta \vphi$ est-elle significative ?
+  %   \sol{
+  %   ON obtient 
+  %   $$
+  %   \Delta t = 2L\left( \frac{1}{v_1}-\frac{1}{v_2} \right) = 2L \frac{(c/n+v)(1-v/nc) - (c/n-v)(1+v/nc)}{c^2/n^2-v^2} = 2L \frac{2(v-v/n^2)}{c^2/n^2-v^2} = 4Lv\frac{n^2-1}{c^2-v^2}.
+  %   $$
+  %   On en déduit,
+  %   $$
+  %   \Delta \vphi = 2\pi \frac{c \Delta t}{\lambda} = \frac{8\pi L cv(n^2-1)}{\lambda(c^2-v^2)}, 
+  %   $$
+  %   soit 
+  %   \eqbox{
+  %   \Delta \vphi \simeq \frac{8\pi L \beta(n^2-1)}{\lambda}.
+  %   }
+  %   }
+  % \end{enumerate}
+    
+  % \end{quest}
+  
+  \end{exo}
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][colle]{Variation du facteur relativiste}
+  \Notions{\item Facteur de Lorentz}
+ On se propose d'étudier la dépendance du facteur de Lorentz $\gamma$ en fonction de la vitesse.
+  \begin{quest}
+    \item	
+    Calculer les valeurs de $\gamma$ correspondant aux valeurs suivantes de $\beta$ :
+      $$
+      \begin{array}{lllllllll}
+        \num{0,1} & \num{0,2} & \num{0,3} & \num{0,4} & \num{0,5} & \num{0,6} & \num{0,7} & \num{0,8} & \num{0,9}.
+      \end{array}
+      $$
+\sol{
+On trouve 
+$$
+\begin{array}{|l|l|l|l|l|l|l|l|l|l|}
+  \hline
+  \beta & 0,1 & 0,2 & 0,3 & 0,4 & 0,5 & 0,6 & 0,7 & 0,8 & 0,9 \\ 
+  \hline
+  \gamma & 1.005 & 1.021 & 1.048 & 1.091 & 1.155 & 1.250 & 1.400 & 1.667 & 2.290 \\
+  \hline
+\end{array}
+$$
+}
+    Tracer le graphe correspondant.
+    \item Pour quelles valeurs de $\beta$, le facteur $\gamma$ est-il égal à $\textstyle{1+\frac{1}{2}\beta^2}$ avec une précision meilleure que $10^{-3}$ ?
+    \sol{
+    \begin{fig}[label]
+      \centering
+      \includegraphics[scale=1]{graphe_gamma.pdf}
+      %\capt{}
+    \end{fig}
+    On effectue un développement de Taylor de $\gamma$ en $\beta$ : 
+    $$
+    \gamma=(1-\beta^2)^{1/2} = 1 - \frac{\beta^2}{2} + \frac{3\beta^4}{8} + o(\beta^4)
+    $$
+    L'écart relatif entre $\gamma$ et son expression à l'ordre $\beta^2$ est donné par
+    $$
+    \frac{\gamma - (1+\beta^2/2)}{\gamma} = \frac{3\beta^4/8}{\gamma} \simeq \frac{3\beta^4}{8} \leq 10^{-3},
+    $$
+    ce qui donne 
+    \eqbox{
+    \beta < \num{0.23}.
+    }
+    }
+  \end{quest}
+  \end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][2][TD]{Mouvement d'un train}
+  \Notions{\item Diagramme d'espace-temps \task Événements \task Simultanéité}
+  On considère trois personnes dans un train : celle en tête du train, notée $\rm T$, celle au milieu du train, notée $\rm M$, et celle en queue de train, notée $\rm Q$. On note $\Rcal$ le référentiel terrestre. 
+  \begin{quest}
+    \item Le train est immobilisé en gare. Indiquer sur un diagramme espace-temps ($ct,x$) les lignes d'univers des trois personnes, en supposant que $\rm Q$ se situe à l'origine des $x$. Tracer aussi une ligne de simultanéité dans $\Rcal$, i.e. une droite d'équation $t=\cte$.
+    \sol{
+      Les lignes de simultanéité sont représentées par les droites horizontales.
+      \begin{fig}[label]
+        \centering
+        \includegraphics[scale=1.2]{train_immobile}
+        %\capt{}
+      \end{fig}
+    }
+    \item Le train se déplace maintenant à la vitesse $v$ dans $\Rcal$. Indiquez les lignes d'univers des trois personnages dans $\Rcal$. La personne au milieu du train envoie un signal lumineux à l'instant $t=0$ aux deux extrémités du train. Justifiez que dans le référentiel $\Rcal^{\prime}$ du train, les deux autres personnes reçoivent simultanément le signal. Tracer la ligne de simultanéité correspondant au temps $t_R'$ de réception du signal.
+    \sol{
+      Dans $\Rcal'$, la personne au milieu du train est à équidistance de ses comparses aux extrémités. Cela signifie que le signal lumineux partant de $M$ à $t=0$ atteindra simultanément $Q$ et $T$ dans ce référentiel. 
+      \begin{fig}[label]
+        \centering
+        \includegraphics[scale=1.2]{train_mobile}
+        %\capt{}
+      \end{fig}
+    }
+    \item En déduire comment construire géométriquement l'axe $(O x^{\prime})$. Construire aussi l'axe $(O c t^{\prime})$.
+    \sol{
+      L'axe $(O x^{\prime})$ est la ligne de simultanéité correspond à l'instant initial $t'=0$. Il s'agit de la droite parallèle à la ligne de simultanéité construite ci-dessus passant par l'origine $(0,0)$. L'axe $(O c t^{\prime})$ correspond à la ligne d'univers de $\rm Q$.
+      }
+  \end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][appli]{Intervalles d’espace-temps}
+  \Notions{\item Intervalle d’espace-temps}
+  \hauteurLargeurCadreReponse{8mm}{9cm}
+  Soit un référentiel inertiel $\Rcal$ muni d’un repère spatio-temporel $(ct,x)$.
+  Pour chaque paire d’événements suivants, calculer l’intervalle d’espace-temps $\Delta s^2$. Les événements peuvent-ils être reliés causalement ?
+  
+  \begin{enonce}
+    $E_1(ct=1,x=0)$ et $E_2(ct=2,x=1)$
+  \end{enonce}
+
+  \begin{enonce}
+    $E_1(t=\SI{0}{ns},x=\SI{0}{m})$ et $E_2(t=\SI{4}{ns},x=\SI{10}{m})$
+  \end{enonce}
+
+  \begin{enonce}
+    $E_1$ : \guill{disparition instantannée du Soleil} et
+    $E_2$ : \guill{apocalypse sur Terre $\SI{7}{min}$ plus tard} \dotfill
+
+  \end{enonce}
+
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

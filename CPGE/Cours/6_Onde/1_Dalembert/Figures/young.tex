@@ -1,0 +1,20 @@
+% !TEX root = /home/eb/Dropbox/CPGE/Physique/Cours/[6]Pondes/[1]Dalembert/Figures/young.tex
+\input{tikz.tex}
+\begin{document}
+\begin{tikzpicture}
+\draw[->] (0,0) -- (5.5,0) node[right] {$\Delta \ell$};
+\draw[->] (0,0) -- (0,3.5) node[above] {$F$};
+
+%  régime de déformation linéaire
+\draw[thick,JoliRouge] (0,0) -- (3,2.5) coordinate (A);
+%  régime de déformation plastique
+\draw[thick, JoliBleu] (A) .. controls (4,3.3) and (5,3) .. (5,3) coordinate (B);
+%  rupture
+\draw[] (B) -- ++(0.5,0.5) node[above] {rupture};
+\draw[dashed] (A) -- (3,0);
+\draw[dashed] (B) -- (5,0);
+\node[] at (1.5,3) {régime\\ élastique};
+\node at (4,2) {régime\\ plastique}; 
+\node[JoliBleu] at (B) {$\bullet$};
+\end{tikzpicture}
+\end{document}

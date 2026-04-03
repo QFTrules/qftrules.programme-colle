@@ -1,0 +1,23 @@
+\input{tikz.tex}
+\begin{document}
+\begin{tikzpicture}
+		\draw[thick] (45:-1.2)node[anchor=north west]{$(\Surf)$}--(45:1.2);
+		\draw[-latex] (-2,0)--(6,0)node[right]{$z$};
+		\draw[-latex] ({1.5/tan(15)},-1)--++(0,4)node[above]{$x$};
+		\draw (0,1.5)++(30:1)--++(30:-2);
+		\foreach \x in {-1,-.9,...,1.1}
+		{
+			\draw (0,1.5)++(30:\x)--++(-.2,0);
+		}
+		\draw[thick,JoliBleu,midarrow] (0,0)--(0,1.5)--++(-15:{1.5/sin(15)});
+		\draw[thick,JoliRouge,midarrow] (0,0)--({1.5/tan(15)},0);
+		\draw[fill] ({1.5/tan(15)},0)node[below right=0.1]{$\rm O$}circle(2pt) ({1.5/tan(15)},.5)node[right=0.1]{$\rm M$}circle(2pt);
+		\draw[thick] (-2,0)--(0,0);
+		\draw[thick,-latex] (-2,-.7)--++(1,0);
+		\draw[thick,-latex] (-2,0)--++(1,0);
+		\draw[thick,-latex] (-2,.7)--node[above]{$\lambda_0$}++(1,0);
+		\draw (1,0)arc[start angle=0,end angle=45,radius=1cm]node[right,pos=.5]{$\SI{45}{\degree}$};
+		\draw[dashed] (0,1.5)--++(2,0);
+		\draw (.7,1.5)arc[start angle=0,end angle=30,radius=.7cm]node[right,pos=.5]{$\alpha$};
+	\end{tikzpicture}
+\end{document}

@@ -1,0 +1,20 @@
+% !TEX root = /home/eb/Dropbox/CPGE/Physique/Cours/[5]Electromg/[1]Electrostat/Figures/line_charge.tex
+\input{tikz.tex}
+\begin{document}
+\begin{tikzpicture}
+    \draw[ultra thick] (-2,0) -- (2,0);
+    \draw[ultra thick,JoliBleu] (-1,0) -- (-0.5,0) node[midway, above=0.2, black] {$P$};
+    \draw[<->] (-1,-0.1) -- ++(0.5,0) node[midway, below] {$\d \ell$};
+    % \foreach \x in {-2.5,-2,...,2.5}
+        % \draw[fill=red] (\x,0) circle (0.1);
+        
+    \coordinate (M) at (0.5,1); % Coordinates of point M
+    \coordinate (P) at (-0.75,0); % Coordinates of point P
+    
+    \draw[densely dashed] (P) -- (M);
+    %  node[midway, above] {$\vec{r}$}; % Vector \(\vec{r}\) from P to M
+    \draw[->, JoliRouge] (M) -- ++($0.5*(M)-0.5*(P)$) node[right] {$\vec{E}$}; % Electric field vector \(\vec{E}\) at point M
+    \draw (M) node{$\bullet$} node[below right] {$M$}; % Point M
+    
+\end{tikzpicture}
+\end{document}

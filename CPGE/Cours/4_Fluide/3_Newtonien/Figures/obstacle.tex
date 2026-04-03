@@ -1,0 +1,16 @@
+\input{tikz.tex}
+\begin{document}
+\begin{tikzpicture}
+    \node at (0,0) {\includegraphics[width=0.2\textwidth]{obstacle.png}};
+    % force de portance verticale Fp
+    \draw[->,thick,JoliRouge] (0,1.2) -- ++(0,1) node[above]{$\Vec{F}_{\!p}$};
+    % force de trainée Ft
+    \draw[->,thick,JoliBleu] (1.3,0) -- ++(1,0) node[right]{$\Vec{F}_{\!t}$};
+    % ingoing flow at speed U
+    \draw[->] (-3,0)  node[left]{$\Vec{U}$} -- ++(1,0);
+    \draw[->] (-3,0.5) -- ++(1,0);
+    \draw[->] (-3,-0.5) -- ++(1,0);
+    \draw[->] (-3,1) -- ++(1,0);
+    \draw[->] (-3,-1) -- ++(1,0);
+\end{tikzpicture}
+\end{document}

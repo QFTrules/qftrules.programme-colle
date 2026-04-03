@@ -1,0 +1,30 @@
+\input{tikz.tex}
+\begin{document}
+\begin{tikzpicture}[scale=0.6]
+    % plan d'onde (x,y)
+\draw[->] (-3,0) -- (3,0) node[right] {$x$};
+\draw[->] (0,-3) -- (0,3) node[above] {$y$};
+    % polarisation circulaire droite
+\draw[midarrow,thick,JoliRouge] (2.5,0)  arc(0:90:2.5) coordinate (A);
+\draw[midarrow,thick,JoliRouge] (A)  arc(90:180:2.5) coordinate (B);
+\draw[midarrow,thick,JoliRouge] (B)  arc(180:270:2.5) coordinate (C);
+\draw[midarrow,thick,JoliRouge] (C)  arc(270:360:2.5);
+\node[JoliRouge] at (0,-4) [above] {gauche};
+
+% angle alpha
+
+\node at (5,0) {$\underset{\lambda/2}{\longmapsto}$};
+
+\begin{scope}[rotate=0,shift={(10,0)}]
+        % plan d'onde (x,y)
+\draw[->] (-3,0) -- (3,0) node[right] {$x$};
+\draw[->] (0,-3) -- (0,3) node[above] {$y$};
+\draw[midarrow,thick,JoliVert] (2.5,0)  arc(0:-90:2.5) coordinate (A);
+\draw[midarrow,thick,JoliVert] (A)  arc(-90:-180:2.5) coordinate (B);
+\draw[midarrow,thick,JoliVert] (B)  arc(-180:-270:2.5) coordinate (C);
+\draw[midarrow,thick,JoliVert] (C)  arc(-270:-360:2.5);
+\node[JoliVert] at (0,-4) [above] {droite};
+
+\end{scope}
+\end{tikzpicture}
+\end{document}

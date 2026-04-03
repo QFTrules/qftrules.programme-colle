@@ -1,0 +1,67 @@
+1 - 1 - Cinématique
+        Mouvement pendule simple ?
+1 - 2 - Référentiels
+        Image/vidéo pendule dans un train
+        Translation vs rotation (plaque comme Seb)
+1 - 3 - Dynamique
+        Perle sur cerceau en rotation
+        Table tournante Coriolis ?                                              OK
+        Masse et ressort en rotation (utiliser seringues verre fritté) ?
+2 - 2 - Diffusion thermique
+        Barre de cuivre à l’équilibre entre 2 thermostats                       OK + TP
+2 - 3 - Diffusion de particules
+        Goutte d’encre dans l’eau
+        Diffusion du glycérol                                                   OK
+2 - 4 - Rayonnement thermique
+        Spectre d’une source thermique ?
+        Petite serre ?
+3 - 1 - Cinématique fluides
+        Visualisation ligne courant ?
+        Débit massique avec tuyau + balance ?
+        Écoulement vortex ?
+3 - 2 - Écoulement parfait
+        Vérifier loi hydrostatique                                              À voir
+        Tube Venturi ?                                                          OK
+        Temps vidange réservoir ?                                               OK
+3 - 3 - Fluide newtonien
+        Soufflerie                                                              non fait
+        Viscosimètre bille                                                      OK
+        Poiseuille cylindrique                                                  OK
+3 - 4 - Bilans
+        Effet Coanda                                                            oublié
+4 - 1 - Optique scalaire
+        Photodétecteurs nus ?                                                   OK
+        Différentes sources (spectromètre) ?                                    OK
+4 - 2 - Division front d’onde
+        Exp fentes d’Young + contraste                                          OK
+        Réseau par transmission                                                 À voir
+4 - 3 - Division amplitude
+        Michelson                                                               OK
+4 - 4 - Laser
+        Faisceau laser gaussien ?
+5 - 2 - Exemples Electrostatique
+        Condensateur d'Aepinus ?
+5 - 3 - Magnetostatique
+        Bobine plate                                                            À faire
+        Bobine Helmholtz                                                        À faire
+        Solénoide                                                               OK
+5 - 4 - Moment magnétique
+        Mesure moment magnétique                                                OK
+5 - 5 - Maxwell
+        Fluxmètre                                                               À voir (vitesse constante)
+5 - 6 - Conduction
+        Sonde à effet Hall ?
+6 - 2 - Ondes acoustiques
+        Propagation du son dans l'air : salve + déphasage -> mesure c           OK
+        Impédance diapason ?
+6 - 3 - Ondes EM dans le vide
+        Mesure c ?
+        Radio ?
+6 - 4 - Ondes EM dans les conducteurs
+        Résistance fil vs fréquence : effet de peau ?
+6 - 5 - Dispersion
+        Câble coaxial ? reprendre TP
+6 - 6 - Quantique
+        Diffraction des électrons
+6 - 7 - Puits Quantique
+        ?

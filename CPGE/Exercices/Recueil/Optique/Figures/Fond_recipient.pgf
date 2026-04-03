@@ -1,0 +1,15 @@
+\begin{tikzpicture}
+
+\draw [color=tealblue, thick,fill=tealblue!50] (-3,3) -- (-3,0) -- (-2,0) arc (180:0:2) -- (3,0) -- (3,3) -- cycle;
+
+\draw [thick] (-3,3.5) -- (-3,0) -- (-2,0) arc (180:0:2) -- (3,0) -- (3,3.5);
+
+\draw (0,3.3) node {$p_{0}$};
+
+\draw[dashed, latex-latex] (0:0) -- (60:2);
+
+\draw (75:1) node {$R$};
+
+
+
+\end{tikzpicture}

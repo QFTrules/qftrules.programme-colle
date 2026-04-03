@@ -1,0 +1,714 @@
+% !TEX root = /home/eb/.vscode/extensions/qftrules.programme-colle/tmp/Exercice.tex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PCSI]{Stabilité d'une trajectoire circulaire}
+Une particule $M$ est soumise à une accélération constamment dirigée vers le point $O$ du plan $(Oxy)$ et de norme $a=k\left(\frac{b}{r}\right)^n$ où $k,b,n$ sont des constantes positives.
+\begin{quest}
+\item Comment faut-il choisir la vitesse initiale $\vv{v_0}$ pour que $M$ décrive dans le plan $(Oxy)$ un cercle de centre $O$ et de rayon $b$ ?
+\item Cette condition étant remplie, exprimer la fréquence associée à ce mouvement.
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PCSI][1]{Interférence d’ondes radio}
+﻿Deux sources $S_1$ et $S_2$ en phase génèrent des ondes radio sinusoïdales de longueur d'onde $\lambda=\SI{50}{cm}$ et de même amplitude $A$. $S_1$ est placée à l'origine de l'axe $x$ et $S_2$ peut être placée n'importe où sur le demi axe ($Ox$), à une distance $d<\SI{1}{m}$ de $S_1$.
+
+\begin{quest}
+\QR{
+Réalisez un schéma clair et détaillé de la situation.
+}{}
+
+\QR{
+Déterminez à quel(s) endroit(s) placer $S_2$ pour qu'il y ait des interférences constructives en $x=\SI{15}{cm}$.
+}{
+La condition pour avoir des interférences constructives est :
+\eq{
+	x - |x_2-x| = n\lambda\quad n \in \mathbb{Z}
+	}
+Si la source 2 est à gauche de $x$, cette relation devient :
+\eq{
+	x_2 = n\lambda,
+	}
+ce qui n'a pas de solution avec les données de l'exercice. Si la source 2 est à droite de $x$, alors la condition devient :
+\eq{
+	\boxed{x_2 = 2x + n\lambda}
+}
+L'application numérique donne
+\eq{
+	\boxed{x_2 = \SI{30}{\centi\metre}}
+	\quad\text{et}\quad
+	\boxed{x_2 = \SI{80}{\centi\metre}}.
+	}
+
+}
+
+\QR{
+Même question pour des interférences destructives en $x=\SI{15}{cm}$.
+}{
+La condition pour avoir des interférences destructives est :
+\eq{
+	x - |x_2-x| = \left( n + \frac{1}{2} \right) \lambda\quad n \in \mathbb{Z}
+	}
+Si la source 2 est à gauche de $x$, cette relation devient :
+\eq{
+	x_2 = \left( n + \frac{1}{2} \right)\lambda,
+	}
+ce qui n'a pas de solution avec les données de l'exercice. Si la source 2 est à droite de $x$, alors la condition devient :
+\eq{
+	\boxed{x_2 = 2x + \left(n+\frac{1}{2}\right)\lambda}
+}
+
+L'application numérique donne
+\eq{
+	\boxed{x_2 = \SI{5}{\centi\metre}}
+	\quad\text{et}\quad
+	\boxed{x_2 = \SI{55}{\centi\metre}}.
+	}
+
+}
+
+\QR{
+On suppose que la seconde source est à une distance $l$ de $\SI{70}{cm}$ de la première. Détermine l'interfrange, c'est à dire la distance entre deux points successifs dans le même état intérférentiels.
+}{
+L'onde reçue en $x>x_2$ est :
+\eq{
+s(x,t) = A\cos(\omega t - kx) + A\cos (\omega t - k(x-x_2))
+	}
+En utilisant des formules trigonométriques
+\eq{
+\cos (p) + \cos (q) = 2\cos \left(\frac{p+q}{2} \right)\cos \left( \frac{p-q}{2}\right),
+}
+on trouve que l'onde reçu en $x$ est :
+\eq{
+s(x,t) = A\left[ \cos(\omega t - kx + kx_2/2) \cos(kx_2/2) \right].
+	}
+L'interfrange est alors :
+\eq{
+i=l_1-l_2
+\quad\text{tel que} \quad
+s(l_1,t) = s(l_2,t)
+	}
+On trouve alors :
+\eq{
+kl_1 = kl_2+2\pi
+\quad \Rightarrow\quad
+\boxed{i = \frac{2\pi}{k} = \lambda}.
+	}
+  }
+\end{quest}
+
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PCSI]{Ondes sismiques}
+On distingue deux types d'ondes sismiques : les ondes P qui se propagent à la vitesse $c_P$ et les ondes $S$ qui se propagent à la vitesse $c_S < c_P$. Après un séisme, les ondes $P$ atteignent une station sismographique à l'instant $t_P$ et les ondes $S$, à l'instant $t_S$. On souhaite déterminer la distance $D$ de la station à l'épicentre (le foyer du séisme) et la date $t_0$ du séisme. Les figures ci-dessous représentent l'allure d'une portion de la croûte terrestre pour ces deux types d'ondes.
+
+\begin{center}
+  \begin{minipage}{.3\linewidth}
+    $\xrightarrow{\mbox{sens de propagation}}$
+	\begin{fig}[label]
+		\centering
+		\includegraphics[width=0.7\columnwidth]{fig-sans.pdf}
+		%\capt{}
+	\end{fig}
+    %   \figRaw[width=0.6\columnwidth]{fig-sans.pdf}
+    \begin{center}
+    En l'absence d'onde
+      \end{center}
+  \end{minipage}
+  \begin{minipage}{.33\linewidth}
+      \begin{center}
+    $\xrightarrow{\mbox{sens de propagation}}$
+	\begin{fig}[label]
+		\centering
+		\includegraphics[width=0.7\columnwidth]{fig-S.pdf}
+		%\capt{}
+	\end{fig}
+    % \figRaw[width=0.6\columnwidth]{fig-S.pdf}
+    Onde S
+      \end{center}
+  \end{minipage}
+  \begin{minipage}{.33\linewidth}
+      \begin{center}
+    $\xrightarrow{\mbox{sens de propagation}}$
+		\begin{fig}[label]
+			\centering
+			\includegraphics[width=0.7\columnwidth]{fig-P.pdf}
+			%\capt{}
+		\end{fig}
+    % \figRaw[width=0.6\columnwidth]{fig-P.pdf}
+    Onde P
+      \end{center}
+  \end{minipage}
+\end{center}
+
+
+\begin{quest}
+
+\QR{
+Quelle est la différence entre les ondes $P$ et les ondes $S$ ? Quel adjectif décrit les ondes $P$ ? les ondes $S$ ?
+Préciser quelles sont les ondes détectées les premières.
+
+}{
+Les ondes P sont longitudinales, les ondes S sont transversales
+Celles qui courent le plus vite : les ondes $P$.
+}
+
+
+% \QR{
+% Avant de déterminer les expressions générales de $D$ et $t_0$, on cherche un (ou plusieurs) cas particulier(s) pour lequel (lesquels) ces expressions sont intuitives et simples.  Imaginer une (des) valeur(s) particulière(s) des paramètres $t_S$ et $t_P$ pour laquelle (lesquelles) il est très facile de  donner l'expression de $t_0$ ou de $D$.
+% }{
+% Si $t_S = t_P$ alors $D=0$ et $t_0=t_S=t_P$
+% }
+
+
+\item
+Exprimer $t_0$ et $D$ en fonction des paramètres $t_S$, $t_P$, $c_P$ et $c_S$.
+% Vérifier que les expressions trouvées sont en accord avec la réponse à la question précédente.
+%Vérifier l'homogénéité des formules.
+%Vérifier le signe de $D$.
+%Vérifier que la date $t_0$ est bien antérieure à $t_P$ et $t_S$.
+\sol{
+Si $t_S = t_P$ alors $D=0$ et $t_0=t_S=t_P$.
+
+$t_P = t_0 + D/c_P$
+
+$t_S = t_0 + D/c_S$
+
+
+Donc
+
+$\displaystyle t_0 = \frac{c_P t_P - c_S t_S}{c_P - c_s} $
+
+$\displaystyle D = c_P c_S \frac{t_S - t_P}{c_P - c_S}$
+
+
+}
+
+\QR{
+Quelle hypothèse a-t-on faite implicitement sur la propagation des ondes ? Cette hypothèse est-elle réaliste sachant que la terre est formée de différentes "couches".\\
+}{
+On suppose que les ondes se propagent en ligne droite : on néglige tout phénomène de réflexion ou de réfraction.
+}
+
+\end{quest}
+Pour localiser l'épicentre, on utilise les mesures de plusieurs stations.
+
+\begin{quest}
+\QR{
+On considère ici deux stations proches à une distance respective $D_1$ et $D_2$ de l'épicentre.
+%On suppose que la distance $d$ séparant les deux stations est petite devant le rayon terrestre $R_T$.
+On considére que la Terre est plane localement. En supposant que les deux stations et l'épicentre sont dans un même plan vertical, montrer que la connaissance de $D_1$ et $D_2$ permet de trouver la position de l'épicentre.
+%Vous justifierez votre réponse à l'aide d'une construction graphique.
+}{
+Chaque station permet de décrire un cercle. Il y deux intersections mais une seule dans la Terre !
+}
+
+\QR{
+Combien faut-il de stations au minimum si on enlève l'hypothèse simplificatrice que les stations et l'épicentre sont coplanaires~?
+}{
+3
+
+Il y a deux intersections, on élimine celle qui a une altitude positive.
+}
+
+% \QR{
+% Quel autre système de localisation s'appuie sur un principe similaire ?
+% }{
+% Le GPS
+% }
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PCSI]{Éléments cinématiques en coordonnées cylindriques}
+On considère un point $M$ en mouvement dont les coordonnées cylindriques sont $r(t)=a_{0}t^2+r_0$, $\theta(t)=\omega t-\theta_0$ et $z(t)=-vt$ avec $r_0=\SI{1}{m}$, $a_0=\SI{1}{m.s^{-2}}$, $\omega=\SI{3}{rad.s^{-1}}$, $\theta_0=\SI{2}{rad}$ et $v=\SI{2}{m.s^{-1}}$.
+\begin{quest}
+\item Rappeler les expressions des vecteurs de la base cylindrique dans la base cartésienne, et utiliser ces expressions pour retrouver les expressions générales des vecteurs vitesse et accélération dans la base cylindrique.
+\item Calculer ensuite la norme de la vitesse du point $M$ à l'instant $t=\SI{1}{s}$, puis son accélération à l'instant initial ($t=0$).
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PCSI][2]{Transmission entre deux cordes}
+  Une corde infinie est constituée de deux parties :
+	\begin{itemize}
+	\item[$\bullet$] $x<0$ :  masse linéique $\mu_1$, tension $T$
+	\item[$\bullet$] $x>0$ :  masse linéique $\mu_2$, même tension $T$
+	\end{itemize}
+	Une onde progressive se dirige vers le point $O$ en provenant de la région des $x$ négatifs. On notera $c_1$ (respectivement $c_2$) la célérité des ondes susceptibles de se propager sur la partie $x<0$ (respectivement $x>0$) de la corde.\\
+
+	On note $y_i(x,t)$, $y_r(x,t)$, $y_t(x,t)$ les élongations correspondant à l'onde incidente, réfléchie et transmise. \`A ces élongations correspondent les ondes de vitesse respectives
+	\eq{
+		v_i(x,t)=\diffp{y_i(x,t)}{ t} \quad ,\quad
+		v_r(x,t)=\diffp{y_r(x,t)}{t} \quad ,\quad
+		v_t(x,t)=\diffp{ y_t(x,t)}{ t}.
+	}
+\begin{quest}
+
+  \QR{
+  	Définir une onde progressive se propageant à la vitesse $v$ selon les $x$ croissants. Justifier que $\cfrac{\partial y_i(x,t)}{\partial x}=-\cfrac{v_i(x,t)}{c_1}$.
+  }{
+  	% Comme
+  	% $
+  	% 	y_i(x,t)=f(t-x/c_1)\qet y_r(x,t)=g(t+x/c_1)\qet y_t=h(t-x/c_2)
+  	% $
+
+  	% On en déduit
+  	% $
+  	% 	\diffp{y_i(x,t)}{x}=\diff{f(u)}{t}\times \diffp{t}{u}\times \diffp{u}{x}\qavec u=t-x/c_1
+  	% $
+
+  	% On trouve alors
+  	% $
+  	% 	\diffp{y_i(x,t)}{x}=\diff{f(t-x/c)}{t}\times\pa{-\cfrac{1}{c_1}}
+  	% $
+  	% $
+  	% 	\qsoit
+  	% 	\cfrac{\partial y_i(x,t)}{\partial x}=-\cfrac{v_i(x,t)}{c_1}
+  	% $
+  }
+
+  \QR{
+  	Déterminer les coefficients de réflexion $r$ et de transmission $t$ relatifs à la vitesse. On introduira la quantité $\eta=\sqrt{\mu_2/\mu_1}$.
+
+  	Que se passe-t-il pour les cas limites  $\mu_2\rightarrow \infty$ et $\mu_1=\mu_2$~?
+  }{
+  	On écrit la continuité de la corde en $y=0$ et en dérivant par rapport au temps, on a
+  	\eq{
+  		\boxed{v_i(0,t)+v_r(0,t)=v_t(0,t)}
+  	 }
+
+  	 On écrit la continuité de la tangente à la corde en $y=0$ :
+  	 \eq{
+  		 \diffp{y_i(x,t)}{x}(x=0) +\diffp{y_r(x,t)}{x}(x=0)= \diffp{y_t(x,t)}{x}(x=0)
+  		}
+  	\eq{
+  	 	\qsoit
+  	 	\boxed{-\cfrac{v_i(0,t)}{c_1}+\cfrac{v_r(0,t)}{c_1}=-\cfrac{v_t(0,t)}{c_2}}
+  	 }
+
+  	 En exploitant ces deux relation  et avec $\eta=c_1/c_2$, on a
+  	 \eq{
+  		\boxed{r=\cfrac{1-\eta}{1+\eta}\qet t=1+r=\cfrac{2}{1+\eta}}
+  	  }
+
+  	  Cas limites :
+  	  \begin{itemize}
+  	\item $\eta\Rightarrow +\infty$ : $r=-1$, $ t=0$ l'onde se "heurte" à un mur, elle est uniquement réfléchie
+  	\item $\eta=1$ : $r=0$, $t=1$ : il n'y a pas de changement de milieu, donc pas de réflexion
+  	  \end{itemize}
+  }
+
+  \QR{
+  	Définir la puissance $\Pi (x,t)$ transférée en $x$ dans le sens des $x>0$ dans le cas général d'une corde infinie de tension $T$ et de masse linéique $\mu$. On exprimera $\Pi (x,t)$ en fonction de $T$, $c$, la célérité de l'onde, et $v(x,t)$ sa vitesse transversale. On se placera dans le cas d'une onde progressive.
+  }{
+  	\eq{
+  		\Pi(x,t)=-\vec{T}(x,t)\cdot\vec{v}(x,t)=-T_y(x,t)\times\diffp{y(x,t)}{t}
+  	}
+
+  	Or $T_y(x,t)=T\sin(\alpha)\approx T\alpha=T\diffp{y(x,t)}{x}$ et pour une onde progressive $\diffp{y(x,t)}{x}=-\cfrac{v(x,t)}{c}$ on en déduit
+  	\eq{
+  		\boxed{\Pi(x,t)=\cfrac{T}{c}v^2(x,t)}
+  	}
+  }
+
+  \QR{
+  	En traduisant la conservation de l'énergie en $x=0$, établir une relation entre $r$, $t$ et $\eta$. Vérifier que cette expression est compatible avec les expressions obtenues précédemment.
+  }{
+  	\eq{
+  		\Pi(0^-,t)=-\cfrac{T_y(0^-,t)}{c_1}v(0^-,t)
+  	}
+
+  	\eq{
+  		T_y(0^-,t)=T\pa{\diffp{y_i}{x}(x=0)+\diffp{y_r}{x}(x=0)}=\cfrac{T}{c_1}\pa{v_r(0,t)-v_i(0,t)}
+  	}
+
+  	Comme $v(0^-,t)=v_r(0,t)+v_i(0,t)$, on en déduit
+  	\eq{
+  		\Pi(0^-,t)=\cfrac{T}{c_1}\pa{v_i(0,t)-v_r(0,t)}\times \pa{v_i(0,t)+v_r(0,t)}
+  	}
+  	\eq{
+  		\qsoit
+  		\boxed{\Pi(0^-,t)=\cfrac{T}{c_1}\pa{v_i^2(0,t)-v_r^2(0,t)}}
+  	}
+
+  	Pour $x>0$ l'onde est progressive, donc
+  	\eq{
+  		\boxed{\Pi(0^+,t)=\cfrac{T}{c_2}v_t^2(0,t)}
+  	}
+
+  	La continuité de la puissance donne
+  	\eq{
+  		\cfrac{T}{c_1}\pa{v_i^2(0,t)-v_r^2(0,t)}=\cfrac{T}{c_2}v_t^2(0,t)
+  	}
+  	\eq{
+  		\qsoit
+  		v_i^2(0,t)-v_r^2(0,t)=\cfrac{c_1}{c_2}v_t^2(0,t)
+  	}
+
+  	On en déduit $\boxed{1-r^2=\eta t^2}$.
+
+  	On vérifie qu'avec les expressions de $r$ et $t$ établies précédemment; cette relation est vérifiée.
+
+  }
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PCSI]{Onde progressive}
+  \tcols{0.4}{0.6}{
+  	Un signal dont la forme est indiquée sur le graphe ci-contre se propage sur une corde vibrante. La courbe représente l'élongation $y_i(u)$ de la corde en fonction de la variable $u=t-z/c$. On suppose que $y_i(u)=0$ pour les valeurs de $u$ non représentées sur le graphique.
+  }{
+	\begin{fig}[label]
+		\centering
+		\includegraphics[width=0.7\columnwidth]{onde.pdf}
+		%\capt{}
+	\end{fig}
+  }
+
+\begin{quest}
+
+
+  \QR{
+  	Décrire la nature de cette onde.
+  }{
+  	C'est une onde transversale \underline{progressive} selon les \underline{$z$ croissants} se propageant à la \underline{vitesse $c$}.
+  }
+
+  \QR{
+  	Représenter l'élongation $y_i(u)$ en fonction du temps pour $z=-\tau c$.
+  }{
+  	\tcols{0.4}{0.6}{
+  		On pose trois points de l'onde :
+  		\begin{itemize}
+  		\item point $A$ : $u_i=0$ et $p_A=0$
+  		\item point $B$ : $u_i=u_m$ et $p_B=\tau$
+  		\item point $C$ : $u_i=0$ et $p_C=3\tau$
+  		\end{itemize}
+
+  		Pour $z=-\tau c$, $p=t+\tau$, soit $\boxed{t=p-\tau}$. Cela revient à effectuer un changement de l'origine de l'axe du temps de $\tau$ vers la droite.
+  		\begin{itemize}
+  		\item point $A$ : $p_A=0$,  $t_A=-\tau$
+  		\item point $B$ : $p_B=\tau$, $t_B=0$
+  		\item point $C$ : $p_C=3\tau$,  $t_C=2\tau$
+  		\end{itemize}
+  	}{
+  		\begin{fig}[]
+        \centering
+        \includegraphics[width=0.4\textwidth]{onde2.pdf}
+        % \capt{}
+      \end{fig}
+      }
+  }
+
+
+  \QR{
+  	Représenter l'élongation $y_i(u)$ en fonction de $z$ pour $t=0$.
+  }{
+  	\tcols{0.4}{0.6}{
+  		Pour $t=0$, $p=-z/c$, donc $z=-pc$
+  		\begin{itemize}
+  		\item point $A$ : $p_A=0$,  $z_A=0$
+  		\item point $B$ : $p_B=\tau$,  ${z_B=-c\tau}$
+  		\item point $C$ : $p_C=3\tau$,  ${z_C=-3c\tau}$
+  		\end{itemize}
+  	}{
+  	 \begin{fig}[]
+       \centering
+       \includegraphics[width=0.4\textwidth]{onde3.pdf}
+    %    \capt{}
+     \end{fig}
+       	}
+  }
+
+
+
+  \QR{
+  	La corde se trouve dans le demi-espace $z\leq 0$ et est attachée en $z=0$. Montrer que cette condition aux limites conduit à une onde réfléchie $y_r$ en opposition de phase de l'onde incidente $y_i$ en $z=0$.
+  }{
+  	En $z=0$, il y a un n\oe ud de vibration :
+
+  	${\forall t\, u(z=0,t)=u_i(z=0,t)+u_r(z=0,t)=0}$, d'où $\boxed{u_r(z=0,t)=-u_i(z=0,t)}$.
+
+  	Le signe - traduit l'opposition de phase.
+  }
+
+
+  \QR{
+  	Représenter le signal incident $y_i(u)$ et celui réfléchi $y_r(u)$ en $z=0$ en fonction du temps $t$.
+  }{
+  \begin{fig}[]
+    \centering
+    \includegraphics[width=0.4\textwidth]{onde4.pdf}
+    % \capt{}
+  \end{fig}
+  }
+
+  \QR{
+  	Représenter $y_r(u)$ en fonction de $z$ à l'instant $t_0=4\tau$.
+  }{
+  	L'onde se propage selon les $z$ décroissants, donc s'écrit $u_r(t+z/c)=u_r(q)$ avec $q=t+z/c$. Le graphique précédent représente alors $u_r(q)$. On fait le même raisonnement qu'à la question \textbf{3} : $t=4\tau$, donc $z=c(q-4\tau)$. Pour $q=0$, $z=-4c\tau$, pour $q=\tau$,  $z=-3c\tau$ et pour $q=3\tau$,  $z=-c\tau$.
+
+  	% \figRaw{0.5}{onde5}
+	\begin{fig}[label]
+		\centering
+		\includegraphics[width=0.4\textwidth]{onde5.pdf}
+		%\capt{}
+	\end{fig}
+  }
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PCSI]{Étude d'un instrument à vent}
+On assimile un instrument à vent à un tuyau de longueur $L$ dans lequel peuvent se propager les ondes acoustiques. Pour certaines fréquences, un système d'ondes stationnaires apparaît: ces fréquences sont appelées les modes propres et déterminent les notes que l'instrument peut jouer.
+\begin{quest}
+\item Une flûte traversière est ouverte à ses deux extrémités. Schématiser l'onde stationnaire dans le tuyau sonore correspondant à la note fondamentale.
+\item Déterminer alors la longueur de l'instrument pour que cette note soit un $mi_3$ ($f=\SI{330}{Hz}$). On exprimera $f$ en fonction de $c$ et $L$ avec $c=\SI{340}{m.s^{-1}}$.
+\item On étudie maintenant une clarinette qui peut être assimilée à un tuyau ayant une extrémité fermée. Répondre aux mêmes questions que précédemment pour une clarinette de même longueur que la flûte. Quel est l'instrument le plus grave ?
+\item Montrer que les fréquences des harmoniques sont régulièrement espacées pour les deux instruments, et évaluer cet écart.
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PCSI]{Sismométrie}
+Un séisme produit deux types d'ondes sismiques: les ondes de compression P longitudinales de vitesse $c_P$ et les ondes de cisaillement S transversales de vitesse $c_S<c_P$. Un sismographe détecte d'abord les ondes P à l'instant $t_P$ et les ondes S à l'instant $t_S$.
+\begin{quest}
+\item Montrer qu'on peut en déduire, connaissant $c_P$ et $c_S$, la distance $d$ entre le foyer du séisme et l'appareil de mesure ainsi que la date du début du séisme.
+%$\blacksquare$ Notons $t_0$ l'instant auquel le séisme a lieu à la distance $d$ de l'appareil de mesure.
+%L'onde $P$ a mis la durée $t_P-t_0=\dfrac{\Delta}{c_P}$ (*) pour atteindre l'appareil de mesure.
+%L'onde $S$ a mis la durée $t_S-t_0=\dfrac{\Delta}{c_S}$ (**) pour atteindre l'appareil de mesure.
+%Ainsi $(**)-(*)$ : $t_S-t_P=\Delta\left(\dfrac{1}{c_S}-\dfrac{1}{c_P}\right)$, donc $\boxed{d=\dfrac{c_Sc_P}{c_P-c_S}(t_S-t_P)}$.
+%La mesure de la durée entre les deux réceptions permet de connaître la distance au foyer, connaissant les deux célérités.
+%On peut en déduire l'instant $t_0$ du début du séisme avec l'une des deux relations (*) et (**).
+
+\item Pour un séisme, on mesure les distances $\Delta_1$, $\Delta_2$ et $\Delta_3$ entre le foyer du séisme et trois stations de mesures.
+
+Sans faire de calcul, montrer que cette information permet de localiser le foyer du séisme à l'intérieur de la Terre.
+
+Quel système très connu fonctionne sur ce même principe ?
+
+%$\blacksquare$ La mesure d'une distance localise le séisme sur une sphère centrée sur l'appareil de mesure. L'intersection de deux sphères de centres différents localise le séisme sur un cercle. L'intersection avec une troisième sphère localise le séisme en deux points différents. L'un des deux points est aberrant (par exemple hors de la terre). Le système GPS fonctionne sur ce même principe.
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PCSI]{Effet Doppler}
+Un émetteur, repéré par sa position $x$ sur un axe, émet une série de bips espacés d'une durée $T$ dans la direction d'un récepteur fixe en $O$. Chaque onde sonore se propage dans la direction $-x$ à la célérité $c$. L'émetteur se déplace à la vitesse constante $\vv{v}=v\,\vv{e_x}$ et sa position initiale est au point $E$.
+\begin{quest}
+\item Montrer que le récepteur reçoit les bips tous les $T'$ que l'on exprimera en fonction de $T$, $v$ et $c$.
+
+\item Comment faire pour que la période $T'$ perçue par le récepteur soit plus faible que $T$ ? Plus importante ?\\
+
+Un haut parleur émet une onde sinusoïdale de fréquence $f$ se propageant à la célérité $c$ dans la direction $+x$. Un observateur $O'$ muni d'un micro se déplace avec une vitesse $\vv{v}=v\,\vv{e_x}$ le long de l'axe d'émission de l'onde. Pour l'observateur en mouvement, un point d'abscisse $x$ de l'axe $(Ox)$ se trouve à une distance $x'=x-vt$ sur l'axe $(O'x)$ qui se déplace avec l'observateur (référentiel de l'observateur).
+\item Donner l'expression du signal $s(x,t)$ de l'onde.
+
+\item Que devient l'expression du signal $s(x',t)$ dans le référentiel de l'observateur ?
+
+\item En déduire l'expression (en fonction de $f$, $v$ et $c$) de la fréquence $f'$ mesurée dans le référentiel de l'observateur. L'effet est-il le même que lorsque c'est l'émetteur qui se déplace ?
+
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PCSI]{Accorder sa guitare à l'oscilloscope}
+Pour accorder ma guitare, j'utilise un oscilloscope. Je joue simultanément la même note sur deux cordes différentes, jusqu'à ce que les fréquences soient très proches. Pour affiner le réglage, j'utilise un microphone relié à un oscilloscope, et j'observe l'oscillogramme ci-dessous.
+%\begin{figure}[h!]
+%\centering
+\begin{center}
+\includegraphics[width=0.6\textwidth]{battements.png}
+\end{center}
+%\end{figure}
+\begin{quest}
+\item Rappeler le nom et expliquer l'origine du phénomène observé. Expliquer ce qu'il se passe lorsque la guitare est parfaitement accordée.
+\item Déterminer sur l’oscillogramme la période puis la fréquence du phénomène intéressant observé.
+\item Sachant qu'une corde est parfaitement accordée sur le La à \SI{440}{Hz}, déterminer les fréquences possibles de l'autre corde. Comment savoir à quelle fréquence est l'autre corde ?
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PCSI]{Onde stationnaire dans une corde de guitare}
+On considère une corde de guitare de longueur $L$, tendue et attachée à ses deux extrémités à une plaque fixe (régime libre).
+\begin{quest}
+\item Rappeler la forme des ondes stationnaires solution de ce problème. En utilisant les conditions aux limites, montrer que $\omega$ ne peut prendre qu'une série de valeurs discrètes $\omega_n$ où $n$ est un entier positif et donner l'expression de $\omega_n$ en fonction de $n,L$ et $c$ la vitesse de propagation de l'onde le long de la corde.
+\item Représenter l'allure des modes $n=1,2,3$. Définir et indiquer la position des nœuds et des ventres de l'onde stationnaire.
+\item On admet que la vitesse de l'onde est reliée à la tension de la corde $T$ et sa masse par unité de longueur (masse linéique $\mu$) par la relation $c=\sqrt{T/\mu}$. Déterminer la tension de la corde $T$ en fonction de la fréquence fondamentale $f_1$, de la masse volumique $\rho$ de la corde, de sa longueur $L$ et de son diamètre $d$. Faire l'application numérique pour une corde de guitare de $mi_1$ ($f_1=\SI{82,5}{Hz}$) en acier de masse volumique $\rho=\SI{7,8e3}{kg.m^{-3}}$, de longueur $L=\SI{63}{cm}$ et de diamètre $d=\SI{1,12}{mm}$
+\item Quelle variation relative peut être tolérée sur la tension d'une corde pour que la fréquence fondamentale ne varie pas de plus de 1\% en valeur relative ?
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PCSI][1][colle]{Autour de la corde de Melde}
+	\Notions{\item Physique des ondes \task Corde vibrante \task Onde stationnaire \task Oscillateur harmonique}
+Lors d'une manipulation avec la corde de Melde (régime oscillant forcé), on obtient les résultats suivants pour une longueur $L=\SI{117}{cm}$ de corde et une masse $M=\SI{25}{g}$ attachée à l'extrémité non reliée au vibreur pour tendre la corde.
+\begin{quest}
+\item On observe deux fuseaux pour une fréquence de résonance de \SI{18}{Hz} et trois fuseaux pour une fréquence de résonance de \SI{27}{Hz}. Ces valeurs numériques sont-elles compatibles entre elles ? Quelles seraient les fréquences de résonances suivantes ?
+\sol{
+	Les fréquences de résonance observées correspondent à des modes de vibration de la corde. Pour une corde fixée à ses deux extrémités, les fréquences de résonance sont données par la relation :
+	$$
+	f_n = n \frac{c}{2L},
+	$$
+	où $n$ est un entier positif, et $c$ est la vitesse de propagation de l'onde dans la corde.
+
+	Pour le mode $n=2$ (deux fuseaux), on a :
+	$$
+	f_2 = 2 \frac{c}{2L} = \frac{c}{L} = \SI{18}{Hz}.
+	$$
+	Pour le mode $n=3$ (trois fuseaux), on a :
+	$$
+	f_3 = 3 \frac{c}{2L} = \frac{3c}{2L} = \SI{27}{Hz}.
+	$$
+	Les valeurs numériques sont donc compatibles entre elles, puisqu'on a la relation 
+	\eqbox{
+	\frac{f_3}{f_2} = \frac{27}{18} = \frac{3}{2}.
+	}
+}
+\item Déterminer la valeur de la tension de la corde, puis en déduire un ordre de grandeur de la masse linéique de la corde $\mu$ sachant que la vitesse des ondes le long de la corde est donnée par $c=\sqrt{T/\mu}$. Comment pourrait-on vérifier ce dernier résultat expérimentalement ?
+\sol{
+	La tension dans la corde est due au poids de la masse suspendue, donc :
+	% $$
+	\eqbox{
+		T = Mg = \SI{25}{g} \times \SI{9,81}{m.s^{-2}} = \SI{0,245}{N}.
+		}
+	% $$
+	La vitesse des ondes dans la corde est donnée par :
+	% $$
+	\eqbox{
+		c = \sqrt{\frac{T}{\mu}}.
+		}
+	% $$
+	On peut donc en déduire la masse linéique de la corde en fonction des données du problème,
+	% $$
+	\eqbox{
+		\mu = \frac{T}{c^2} \simeq  \frac{T}{f_2^2L^2 } = \SI{5.5e-4}{kg.m^{-1}}.
+		}
+	Pour vérifier ce résultat expérimentalement, on pourrait mesurer la fréquence de résonance de la corde pour différentes tensions et en déduire la masse linéique à partir de la relation $c = \sqrt{T/\mu}$.
+}
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[MPSI]{Interférences d'ondes à la surface de l'eau}
+
+Deux cailloux identiques tombent dans l'eau à une distance $a$ l'un de l'autre, générant ainsi deux ondes circulaires à la surface de l'eau. La première source se trouve à l'origine $O$ d'un repère $(x,y)$ décrivant la surface de l'eau, l'autre se trouvant en $x=a$. On suppose que la hauteur $z$ de la perturbation à la surface de l'eau induite par la source a pour expression
+$$
+z(r,t) = z_0(r-ct)\cos[2\pi(r-ct)/\lambda]
+$$
+où $z_0$ donne la forme de l'enveloppe de l'onde, $c$ est la célérité de l'onde, $\lambda$ la longeur d'onde, et $r$ la distance à la source.
+
+
+\begin{quest}
+\item S'agit-il d'ondes progressives ? On suppose que la célérité $c$ d'une telle onde dépend de l'intensité de la pesanteur $g$ et de la longueur d'onde $\lambda$. Trouver son expression par analyse dimensionnelle.
+
+\sol{
+oui car forme $f(r-ct)$.
+}
+
+
+\item Déterminer la différence de marche $\delta(r,\theta)$ entre les deux ondes en un point de la surface de coordonnée polaire $(r,\theta)$ dans la limite $r \gg a$. Déterminer le lieu des interférences constructive et destructive lorsque $a=\sqrt{2}\lambda$, $a=\lambda$ et $a=\lambda/2$.
+
+\sol{
+$\delta = r-\sqrt{(x-a)^2+y^2)} \simeq ax/r \simeq a \cos(\theta)$. Constructif pour $\delta = p \lambda$ donne $\cos(\theta) = p \lambda/a$.
+}
+
+
+\item Déterminer l'expression exacte de la différence de marche $\delta(x)$ entre les deux ondes en un point de l'axe $Ox$. Déterminer le lieu des interférences constructive et destructive lorsque $a>\lambda$ et $a<\lambda$.
+
+\sol{
+$\delta = |x|-|x-a|=a$ si $x>a$, $2x-a$ si $0<x<a$ et $-a$ si $x<0$.
+}
+
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[MPSI][1]{Quelques propriétés des ondes sonores}
+
+On admet que les ondes sonores peuvent être décrites par un champ scalaire $s(x,t)$ qui vérifie l'équation d'onde
+$
+\frac{\partial^2 s}{\partial x^2} - \frac{1}{c^2}\frac{\partial^2 s}{\partial t^2} = 0
+$
+avec $x$ la position et $t$ le temps.
+
+
+\begin{quest}
+
+\item De quelle nature sont les ondes sonores ? Quelle grandeur pourraît représenter~$s$ ?
+
+\sol{
+mécanique, longitudinal. vitesse ou pression.
+}
+
+\item Déterminer la dimension de la constante $c$. Par analyse dimensionnelle, déterminer son expression dans l'air  en fonction de la masse molaire $M$, de la constante des gaz parfaits $R$ et de la température $T$. Quelle est la valeur de $c$ pour l'air ? l'eau ? un métal ?
+
+\sol{
+célérité en $m.s^{-1}$, $c=345\,$m$\p$s$^{-1}$ pour l'air, $c=1\,500\,$m$\p$s$^{-1}$ pour l'eau, $c=6\,000\,$m$\p$s$^{-1}$ pour un métal.
+}
+
+\item Montrer qu'une fonction $s(x,t)=f(x\pm ct)$ est solution de cette équation de propagation. Comment appelle-t-on ce type de solutions ?
+
+\sol{
+$$
+\dfrac{\partial^2 s}{\partial x^2} - \dfrac{1}{c^2}\dfrac{\partial^2 s}{\partial t^2} = f''(x \pm vt)(1 - \dfrac{v^2}{c^2}) = 0
+$$
+donc soit $f''=0$ et $f$ affine, soit $v=c$ et $f$ quelconque. Onde progressive.
+}
+
+\item On cherche $f$ sous la forme d'une fonction sinusoïdale. Écrire alors la forme la plus générale de $s(x,t)$,
+% en interprétant chaque terme. En illustrant éventuellement la définition par un schéma,
+et définir la fréquence, la pulsation, la période, la phase, la longueur d'onde et le vecteur d'onde.
+
+\sol{
+$s(x,t) = A\cos[k(x-ct)] + B\sin[k(x-ct)] + C\cos[k(x+ct)] + D\sin[k(x+ct)]$. $k=2\pi/\lambda$ vecteur d'onde, $\omega = kc=2\pi \nu$ pulsation. Phase $\phi=kx-\omega t$.
+}
+
+
+\end{quest}
+
+Un générateur de salves sonores et un
+récepteur sont sur un même axe, séparés
+d'une distance $d = 85\,$mm. Ces deux appareils
+sont reliés à un oscilloscope. Les salves sont
+visualisées à l'écran.
+
+
+%%% FIGURE %%%
+%\begin{figure}[h!]
+%\centering
+\begin{center}
+\includegraphics[width=0.5\columnwidth]{salve.png}
+\end{center}
+%\caption{Signaux émis (2) et reçu (1).}
+%\label{fig:}
+%\end{figure}
+%%%%%%%%%%
+
+\begin{quest}
+\item Faire un schéma de l'expérience. Déterminer la fréquence des signaux. À quel domaine acoustique appartiennent les salves (infrason, son audible, ultrason) ? Déterminer la célérité de ces ondes sonores dans l'air.
+
+\sol{
+$f = 40\,$kHz et $c=340\,$m$\p$s$^{-1}$.
+}
+\end{quest}
+
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+

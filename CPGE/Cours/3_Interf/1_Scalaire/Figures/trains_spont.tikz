@@ -1,0 +1,12 @@
+\input{/home/eb/Dropbox/texmf/tex/latex/Preambles/tikz.tex}
+\begin{document}
+\begin{tikzpicture}[scale=1.5]
+  \draw[red!50!gray] plot[domain=0:2*pi,samples=200] (1+0.1*\x,{-0.5+0.2*sin(5*\x r)});
+  \begin{scope}[rotate=10]
+    \draw[JoliVert!50!gray] plot[domain=0:2*pi,samples=200] (1.7+0.1*\x,{-0.5+0.2*sin((0.8+5*\x) r)});
+  \end{scope}
+  \begin{scope}[rotate=-15]
+    \draw[JoliBleu!50!gray] plot[domain=0:2*pi,samples=200] (2.45+0.1*\x,{-0.5+0.2*sin((4+5*\x) r)});
+  \end{scope}
+\end{tikzpicture}
+\end{document}

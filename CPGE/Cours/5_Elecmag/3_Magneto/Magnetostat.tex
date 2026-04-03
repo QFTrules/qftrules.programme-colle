@@ -1,0 +1,563 @@
+% displayname : Magnétostatique
+\documentclass[12pt,fancy]{cours}
+\Chapit{5}{3}
+\begin{document}
+\maketitre{
+Nous poursuivons l'étude de l'électromagnétisme en considérant maintenant l'effet d'un champ magnétique seul et indépendant du temps. Avant de discuter ce qu'est le champ magnétostatique et ses conséquences, nous commençons par discuter de ce qui le crée: les courants électriques, générés par déplacement de charges électriques.
+}
+{
+\item Cours de Champ magnétique et induction 1 - 0 et 2 - 0 (Inductance)
+\item Documents de cours Champ magnétique et induction 1 - 1 et 2
+\item TD Champ magnétique et induction 1 et 2
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\section{Symétries et invariances du champ magnétostatique}
+\label{sec:topographie_symétrie_invariances}
+Le champ magnétique étant créé par les courants électriques, nous pouvons simplifier l'expression du champ magnétique en utilisant le principe de Curie (les symétries et invariances des causes se retrouvent dans les effets produits).
+%  créé par des distributions de courants possédant des propriétés de symétrie.
+
+
+\subsection{Le courant électrique : source du champ magnétostatique}
+
+\parag{Le champ magnétostatique} On appelle \imp{champ magnétostatique} $\Vec{B}(M)$ tout champ magnétique stationnaire, i.e. indépendant du temps. Le \imp{champ magnétique} est le champ vectoriel à l’origine des phénomènes magnétiques : attraction entre le fer et un aimant, orientation d’une boussole vers le Nord, etc. L’expérience d’Œrsted, proposée en 1820 par le physicien danois  Hans Christian, montre qu’une aiguille aimantée est déviée de sa position initiale et s'aligne perpendiculairement au fil parcouru par un courant électrique, ce qui prouve que les courants électriques sont des sources du champ magnétique. 
+
+\begin{experience}{Expérience d'Oersted}\label{exp:}
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{Oersted_experiment.png}
+    \caption{Expérience d'Œrsted. Une aiguille aimantée est déviée de sa position initiale et s'aligne perpendiculairement au fil parcouru par un courant électrique.}
+    \label{fig:}
+  \end{figure}
+\end{experience}
+\begin{remarque}
+Nous verrons que les particules élémentaires se comportent comme de petits aimants, et créent donc aussi un champ magnétique. Dans ce cas, le champ magnétique n’est pas produit par un courant électrique.
+\end{remarque}
+
+\begin{table}[h!]
+  \centering
+    \begin{tabular}{|c|c|c|c|c|}
+      \hline
+      Source & Champ terrestre & Aimant permanent & Électroaimant & Étoile à neutrons \\
+      \hline
+     $B$ (T) & $\SI{33}{\micro T}$ à $\SI{70}{\micro T}$ & $\SI{1}{T}$ & $\SI{10}{T}$ & $\SI{e8}{T}$ \\
+      \hline
+    \end{tabular}
+    \caption{Ordres de grandeur du champ magnétique $B$.}
+    \label{tab:ordres_de_grandeur_B}
+  \end{table}
+
+\parag{Le courant électrique} Les champs magnétiques sont créés par des déplacements de charges électriques, ce qu’on appelle un \imp{courant électrique}. 
+L'\imp{intensité} du courant $I$ est définie par le débit de charges $q$ qui traverse une section $\Surf$ par unité de temps,
+% \begin{equation*}
+\eqbox[Idq]{
+  I=\frac{\d q}{\d t}.
+  }
+% \end{equation*}
+L’intensité du courant électrique se mesure en \imp{Ampère} ($\SI{1}{A}=\SI{1}{C.s^{-1}}$), qui est une unité fondamentale du système SI. Comme pour tout phénomène de transport, on peut aussi écrire d’intensité du courant comme le flux d’une densité de courant à travers la section, soit 
+\eqbox{
+I=\iint_{\Surf}\vv{j}\cdot\vv{\d S}.
+}
+% \begin{fig}[label]
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=1.1]{I.pdf}
+  \caption{Le courant électrique est un déplacement de charges électriques. L'intensité du courant $I$ est définie par le débit de charges $q$ qui traverse une section $\Surf$ par unité de temps}
+  \label{fig:courant}
+\end{figure}
+\begin{definition}[Courant électrique]
+  Le \imp{courant électrique} est un déplacement de charges électriques. L’\imp{intensité} $I$ (en $\SI{}{A}$) est reliée à la charge $q$ (en C) et à la \imp{densité de courant} $\j$ (en $\SI{}{A.m^{-2}}$) par
+\begin{equation*}
+ I=\dd{q}{t} = \iint_{\Surf}\j\cdot\vv{\d S}.
+ \end{equation*}
+\end{definition}
+\noindent
+% La densité de courant électrique se mesure donc en $\SI{}{A.m^{-2}}$. 
+
+\begin{remarque}
+  
+  Dans le cadre de la magnétostatique, le courant électrique est indépendant du temps $t$, et donc $\j(M,t) = \j(M)$. 
+  
+\end{remarque}
+
+
+% On peut relier ce vecteur densité de courant à la vitesse des porteurs de charges \imp{mobiles} $\vv{v}$ et à leur densité volumique de charge $\rho$ par
+
+% \begin{equation}
+% \vv{j}=\rho \vv{v}.
+% \end{equation}
+% Pour un ensemble de porteurs de même charge $q$ (en $\SI{}{C}$) et de densité volumique $n$ (en $\SI{}{m^{-3}}$), la densité volumique de charge vaut $\rho = nq$  (en $\SI{}{C.m^{-3}}$). 
+
+% \begin{remarque}
+%   Bien souvent, il existe plusieurs types de porteurs de charge (cations et anions dans une solution électrolytique, électrons et trous dans un semi-conducteur). Pour un ensemble de porteurs de type $i$, de densité volumique $n_{i}$, de charge $q_i$, et de vitesse $\Vec{v_i}$, la densité de courant s’écrit
+%   \begin{equation}
+%     \Vec{j} = \sum_{i}n_{i}q_{i}\Vec{v_i}.
+%   \end{equation}
+% \end{remarque}
+
+% %\parag{Analogie}
+% Notons l’analogie avec les densités de courant de volume, de masse, de particules, ou thermique.
+% \begin{center}
+% \begin{tabular}{ccccc}
+% \hline
+% Phénomène & Grandeur transportée  & Densité de courant   & Courant \\
+% \hline
+% Conduction \\ électrique & charge $q$  & $\Vec{j}=\rho \Vec{v}$ & intensité $I=\displaystyle\iint_{S}\vv{j}\cdot\vv{\d S}=\dd{q}{t}$  \\[0.3cm]
+% \hline
+% Transport de \\ matière & masse $m$  & $\Vec{j_{\rm m}}=\mu \Vec{v}$ & débit $D=\displaystyle\iint_{S}\vv{j_{\rm m}}\cdot\vv{\d S}=\dd{m}{t}$  \\[0.3cm]
+% \hline
+% Conduction \\ thermique & énergie $U$  & $\Vec{j_{\rm th}}$ & flux $\Phi=\displaystyle\iint_{S}\vv{j_{\rm th}}\cdot\vv{\d S}=\dd{U}{t}$  \\[0.3cm]
+% \hline
+% \end{tabular}
+% \end{center}
+
+
+\begin{remarque}
+Le calcul direct du champ magnétostatique $\Vec{B}$ à partir du vecteur densité de courant électrique $\j$ est donné par la loi de Biot-Savart, mais elle n’est pas au programme.
+\end{remarque}
+
+\subsection{Symétries du champ}
+\label{subsec:symétries}
+
+\parag{Le champ magnétique est un pseudo-vecteur} Un pseudo-vecteur se distingue d’un \guill{vrai} vecteur, ou vecteur polaire, qui ne dépend pas de l’orientation de l’espace. 
+
+\begin{definition}[Pseudo-vecteur]\label{def:}
+  Un \imp{pseudo-vecteur}, ou vecteur axial, est un vecteur qui dépend de l'orientation de l'espace. 
+\end{definition}
+Plus précisément, si l’on transforme une base directe $(\ex,\ey,\ez)$ en une base indirecte $(\ex',\ey',\ez')$, 
+\begin{liste}
+  \item un vecteur polaire $\Vec{P}$ est inchangé, $$\Vec{P} \mapsto \Vec{P}.$$ Exemple de vecteurs polaires : champ électrostatique $\Vec{E}$, force $\Vec{F}$, vitesse $\Vec{v}$, etc.
+  \item un pseudo-vecteur $\Vec{A}$ est transformé en son opposé, $$\Vec{A} \mapsto -\Vec{A}.$$ Exemple de pseudo-vecteurs : champ magnétique $\Vec{B}$, moment cinétique $\Vec{L}$, tout produit vectoriel de vecteurs polaires $\Vec{P}_1 \pv \Vec{P}_2$, etc.
+\end{liste}
+En particulier, la force de Lorentz magnétique $\vv{F}=q\vv{v}\pv\B$, et la vitesse $\Vec{v}$ sont des vecteurs polaires, ce qui impose que le champ magnétique $\Vec{B}$ est un pseudo-vecteur (Fig.~\ref{fig:}).
+
+\begin{figure}[H]
+  \centering
+  \subfigure[]{\label{fig:}
+  \includegraphics[width=0.45\textwidth]{BIsApvector.png}
+  }
+  \subfigure[]{\label{fig:}
+  \includegraphics[width=0.45\textwidth]{BIsAPseudovector.png}
+  }  
+
+  \caption{(a) Un vecteur polaire est inchangé par une inversion de l'espace. (b) Un pseudo-vecteur est transformé en son opposé par une inversion de l'espace. [Wikipedia].}
+  \label{fig:}
+\end{figure}
+
+
+%  Ceci se comprend à partir de l'expression de  Comme la force $\vv{F}$ et la vitesse $\vv{v}$ sont des \guill{vrais} vecteurs, et que le produit vectoriel $\pv$ dépend de l’orientation de l’espace, $\B$ doit également en dépendre. Par conséquent, les propriétés de $\Vec{B}$ sont \guill{inversées} par rapport à celles de $\Vec{E}$.
+
+
+% Nous analysons les conséquences de cette dernière affirmation sur les propriétés de symétrie de $\B$ en Sec.~\ref{subsec:symétries}.
+
+\parag{Symétries} L'étude des symétries permet de limiter le nombre de \important{composantes} dont dépendent les champs. Définissons les plans de symétrie et d’antisymétrie d’une distribution de courant, i.e du champ vectoriel $\j(M)$.  Soit $\Pi$ un plan et $\rm P$ et $\rm P’$ deux points symétriques par rapport à $\Pi$.
+\begin{liste}
+  \item Un plan de symétrie est un plan $\Pi_{\rm S}$ tel que 
+  \eqbox{
+  j_{\rm \perp}(P)=-j_{\rm \perp}(P’) \text{ et } j_{\rm \parallel}(P)=j_{\rm \parallel}(P’).
+  }
+  \item Un plan d’antisymétrie est un plan $\Pi_{\rm AS}$ tel que
+  \eqbox{
+  j_{\rm \perp}(P)=j_{\rm \perp}(P’) \text{ et } j_{\rm \parallel}(P)=-j_{\rm \parallel}(P’).
+  }
+
+\end{liste}
+ En tant que pseudo-vecteur, le champ magnétostatique a les propriétés suivantes (Fig.~\ref{fig:sym_antisym}).
+% \begin{liste}
+% \item Il est orthogonal à tout plan de symétrie $\Pi_{\rm S}(M)$ de la distribution de courant contenant le point courant $M$, soit $\Vec{B}(M) \perp \Pi_{\rm S}(M)$.
+% \item Il appartient à tout plan d'antisymétrie $\Pi_{\rm AS}(M)$ de la distribution de courant contenant le point courant $M$, soit $\Vec{B}(M) \in \Pi_{\rm AS}(M)$.
+% \end{liste}
+
+\begin{prop}[Symétries du champ magnétostatique]\label{prop:}
+Comme tout vecteur axial, le champ magnétostatique $\Vec{B}(M)$ est 
+ \begin{liste}
+  \item \imp{orthogonal} à tout plan de symétrie passant par $\rm M$ : $\Vec{B}(M) \perp \Pi_{\rm S}(M)$;
+  \item \imp{contenu} dans tout plan d'antisymétrie passant par $\rm M$ : $\Vec{B}(M) \in \Pi_{\rm A}(M)$.
+ \end{liste}
+\end{prop}
+
+%\begin{figure}[h!]
+%\centering
+%\includegraphics[width=\textwidth]{symetries_B.pdf}
+%\caption{Propriétés de symétrie du pseudo-vecteur $\vec{B}$, à partir de l'expression de la force magnétique de Lorentz. On utilise les propriétés de symétrie des deux vrais vecteurs ($\vec{F}$ et $\vec{v}$), puis on utilise le fait que $\vec{B}$ est dirigé selon $\vec{F}\wedge\vec{v}$ (pas égal, attention à l'homogénéité!) si $q>0$. On constate que $\vec{B}$ est orthogonal aux plans de symétrie de la distribution de courants et il est contenu dans les plans d'antisymétrie de cette même distribution.}
+%\label{fig:sym_B}
+%\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[h!]
+\centering
+\subfigure[]{\label{fig:}
+\includegraphics[height=0.35\textwidth]{sym_antisym_bis1.pdf}
+}
+\subfigure[]{\label{fig:}
+\includegraphics[height=0.35\textwidth]{sym_antisym_bis2.pdf}
+}
+\caption{Exemples de symétrie (a) et d'antisymétrie (b) d'une distribution de courants. Les points $P(x,y,z)$ et $P'(-x,y,z)$ sont conjugués par rapport aux plans $\Pi_{\rm S}$  et $\Pi_{\rm AS}$. (a) Pour une distribution symétrique, l’image de $\Vec{\jmath}(P)$ par l’inversion $x \mapsto -x$ vérifie $j(P’)_{x} = - j(P)_x$, les autres composantes étant inchangées. (b) Pour une distribution antisymétrique, l’image de $\Vec{\jmath}(P)$ par l’inversion $x \mapsto -x$ est le vecteur opposé à celui d’une distribution symétrique. }
+\label{fig:sym_antisym}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%
+%Maintenant il faut déterminer comment le pseudo-vecteur $\B$ se transforme sous les opérations de symétries. Partons pour cela de l'expression de la force de Lorentz magnétique $\vv{F}=q\vv{v}\pv\B$, car elle fait intervenir des vrais vecteurs dont on connaît les propriétés de symétrie (Fig.~\ref{fig:sym_B}).
+
+
+%On cherchera à repérer des plans de symétrie ou d'antisymétrie de la distribution de courants. En effet l'analyse de la figure montre que le champ $\B$
+%\begin{itemize}
+%\item[$\bullet$] est orthogonal aux plans de symétrie de la distribution de courant;
+%\item[$\bullet$] appartient aux plans d'antisymétrie de la distribution de courant.
+%\end{itemize}
+
+%\begin{danger}
+%Attention, c'est exactement l'inverse du champ électrostatique ! Cela est dû au fait que $\B$ est un pseudo-vecteur alors que $\vv{E}$ est un vrai vecteur.
+%\end{danger}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.5]{I1-cours-0-image-22k}
+  \caption{Le sens du champ magnétique s’obtient ensuite avec la règle de la main droite (selon $+\et$ lorsque le courant circule selon $+\ez$).}
+  \label{fig:sens_B}
+\end{figure}
+\begin{exemple}{Fil infini parcouru par un courant uniforme}
+Par étude des symétries, déterminer la forme du champ magnétostatique $\B(M)$ créé par un fil infini parcouru par un courant uniforme d’intensité $I>0$ dans le sens de l’axe $(Oz)$.
+% \begin{fig}[fil_infini]
+%   \centering
+%     \includegraphics[height=0.4\columnwidth]{fil_infini.pdf}
+%   \capt{Plan de symétrie (en vert) et d'antisymétrie (en rouge) de la distribution de courant uniforme d'un fil infini dirigé selon $\vec{e}_z$. Le champ magnétostatique est normal au plan de symétrie, il est donc dirigé selon $\vec{e}_\theta$.}
+%   \end{fig}
+\end{exemple}
+\examplesol{
+  \begin{wrapfigure}{r}{0.4\textwidth}
+    \vspace{-0.5cm}
+    \centering
+    \includegraphics[width=0.32\textwidth]{fil_infini.pdf}
+    % \caption{Plan de symétrie (en vert) et d'antisymétrie (en rouge) de la distribution de courant uniforme d'un fil infini dirigé selon $\vec{e}_z$. Le champ magnétostatique est normal au plan de symétrie, il est donc dirigé selon $\vec{e}_\theta$.}
+  \end{wrapfigure}
+  La distribution de courant possède un plan de symétrie, le plan $\Pi_{\rm S}=(M,\vv{e_r},\vv{e_z})$ (en vert sur la figure). Il possède également un plan d’antisymétrie, le plan $\Pi_A = (M,\vv{e_r},\et)$ (en rouge sur la figure).
+  On sait que $\B(M)$ est orthogonal à ce plan, il est donc dirigé selon $\et$. Le champ magnétostatique est donc de la forme
+  \eqbox{
+  \B(M)=B_\theta(M)\,\et.
+}
+La règle de la main droite permet de prédire que $B_\theta(M)>0$ si $I>0$.
+  % \begin{fig}[fil_infini]
+    % \centering
+    % \begin{center}
+    %   \includegraphics[height=0.4\columnwidth]{fil_infini.pdf}
+    % \end{center}
+    % \capt{(}
+    % \end{fig}
+
+% \begin{equation}
+
+% \end{equation}
+}
+
+
+
+
+
+%\begin{remarque}
+%Le plan $(M,\vv{e_r},\et)$, représenté en rouge sur la Fig.~\ref{fig:fil_infini}, est un plan d'antisymétrie de la distribution de courant, donc $\B$ est contenu dans ce plan. Mais ce plan est moins intéressant que le plan de symétrie $(M,\vv{e_r},\vv{e_z})$ car il ne permet pas de déterminer complètement la direction de $\B$.
+%\end{remarque}
+
+
+\subsection{Invariances du champ }
+%Rappelons que l'analyse des invariances permet de limiter le nombre de \important{coordonnées} (ou variables) dont dépendent les composantes des champs. Dans le cas du champ magnétostatique, le principe de Curie permet d'affirmer que $\B$ possède les mêmes invariances que la distribution de courants qui lui a donné naissance.
+Le principe de Curie permet d'affirmer que le champ magnétostatique $\B$ possède les mêmes invariances que la distribution de courant (par exemple leur vecteur densité de courant $\Vec{j}$) qui leur donne naissance. Les invariances usuelles d'une distribution de courant sont les mêmes que pour les charges
+\begin{liste}
+\item Invariance par \imp{translation} selon un axe $(Ox)$ : $\j(M)$ ne dépend pas de $x$.
+\item Invariance par \imp{rotation} d'angle $\theta$ autour d'un axe $(Oz)$ : $\j(M)$ ne dépend pas de $\theta$.
+\end{liste}
+Plusieurs invariances peuvent êtres vérifiées simultanément. Les exemples courants sont :
+\begin{liste}
+  \item Symétrie cylindrique : invariance par translation selon et rotation autour de $(Oz)$.
+  \item Symétrie sphérique : invariance par rotation autour de tout axe passant par l’origine $O$.
+\end{liste} 
+D’après le principe de Curie, les invariances de la distribution de courant se retrouvent dans le champ magnétostatique. 
+\begin{prop}[Invariance du champ magnétostatique]\label{prop:}
+  Si une distribution de courant est invariante par
+  % \begin{equation*}
+    % \left\{
+    % \begin{array}{l}
+    \begin{liste}
+      \item
+      \imp{translation} selon un axe $(Oz)$ : $\B(M)$ est indépendant de $z$, 
+      \item 
+      \imp{rotation} autour de $(Oz)$ : $B_r(M), B_\theta(M)$, et $B_z(M)$ sont indépendants de $\theta$.\\
+    \end{liste}
+    % \end{array}
+    % \right.
+  % \end{equation*}
+\end{prop}
+  %Parmi les invariances communes, citons l'existence de plans miroirs ou anti-miroirs (Fig.~\ref{fig:sym_antisym}).
+%\begin{figure}[h!]
+%\centering
+%\includegraphics[width=0.8\textwidth]{sym_antisym.pdf}
+%\caption{Exemples de symétrie miroir plane (gauche) et d'antisymétrie miroir plane (droite) d'une distribution de courants, avec $P(x,y,z)$ et $P'(-x,y,z)$ deux points conjugués appartenant à la distribution de courants.}
+%\label{fig:sym_antisym}
+%\end{figure}
+%
+%\noindent Par exemple, si le plan $(Oyz)$ est un plan miroir,
+%\begin{equation}
+%\begin{cases}
+%j_y(x,y,z)=j_y(-x,y,z)\\
+%j_z(x,y,z)=j_z(-x,y,z)
+%\end{cases}
+%\Rightarrow ~j_y \text{~et~} j_z \text{~ne dépendent pas de~} x.
+%\end{equation}
+%\noindent Et s'il s'agit d'un plan anti-miroir,
+%\begin{equation}
+%j_x(x,y,z)=j_x(-x,y,z)~\Rightarrow ~j_x \text{~ne dépend pas de~} x.
+%\end{equation}
+
+%Les invariances classiques sont les translations ou les rotations autour d'un axe, déjà vues en électrostatique pour les distributions de charges. Ici le principe est le même mais pour les distributions de courants.
+
+\begin{exemple}{Fil infini parcouru par un courant uniforme}
+Prenons l'exemple d'un fil infini selon $(Oz)$, parcouru par un courant d'intensité $I$ uniforme. On repère un point $\rm M$ quelconque par ses coordonnées cylindriques $(r,\theta,z)$. Déterminer de quelles variables dépend le champ orthoradial $B_\theta(M)$.
+
+\end{exemple}
+\examplesol{
+  La distribution de courant est à symétrie cylindrique :
+toute translation selon l'axe $(Oz)$ laisse invariante la distribution de courants, de même que toute rotation d'angle $\theta$ autour de $z$. On a vu précédemment que le champ magnétostatique est de la forme $\B(M)=B_\theta(M)\,\et$. D'après le principe de Curie, la composante $B_\theta(M)$ ne dépend donc pas de $\theta$ ni de $z$. On a donc 
+\eqbox{
+\B(M)=B_\theta(r)\,\et.
+}
+}
+
+
+\section{Lois de la magnétostatique}
+\subsection{Formulation locale}
+\label{subsec:éqs_Maxwell}
+
+\parag{Équations de Maxwell de la magnétostatique}
+\label{subsec:éqs_Maxwell}
+Le champ magnétostatique est un cas particulier du champ magnétique $\B(M,t)$, qui obéit aux équations de Maxwell. En statique, les équations de Maxwell qui portent sur le champ $\Vec{B}(M)$ ont la forme suivante.
+\begin{theorem}[Équations de Maxwell de la  magnétostatique]
+\begin{equation*}
+\dive{\B}=0\text{ (Maxwell-Thompson)}, \qquad
+\rot{\B}=\mu_0\vv{j} \text{ (Maxwell-Ampère)}.
+\end{equation*}
+\end{theorem}
+Les lois de la magnétostatique font intervenir la constante fondamentale 
+\eqbox{
+\mu_0=\SI{4\pi e-7}{H.m^{-1}},
+}
+appelée \imp{perméabilité magnétique du vide}\footnote{Pour trouver l'unité SI des henry, partir de l'expression de l'énergie stockée dans une bobine $\mc{E}_L=\frac{1}{2}LI^2$. On en déduit alors que $[\mu_0]=\SI{}{kg.m.s^{-2}.A^{-2}}$.}. Interprétons ces équations.
+\begin{liste}
+  \item
+  L'équation de \imp{Maxwell-Thomson} (appelée aussi Maxwell-flux) traduit qu'il n'existe pas de charge magnétique. Le champ magnétique a donc les mêmes propriétés que le champ de vitesse dans un écoulement incompressible. 
+  % La conservation du débit volumique correspond ici à la conservation du flux de $\Vec{B}$. 
+  \item L'équation de \imp{Maxwell-Ampère} traduit que les courants électriques sont les sources du champ magnétostatique. Par contre, les courants engendre un rotationnel de $\B(M)$ et non une divergence, ce qui entraîne que $\B(M)$ est une vecteur axial et non polaire.
+\end{liste}
+  
+\begin{remarque}
+L'équation de Maxwell-Thomson est inchangée en régime variable. En revanche, l'équation de Maxwell-Ampère est modifiée. Cette modification est essentielle pour satisfaire la conservation de la charge électrique en régime variable, comme nous le verrons plus tard.
+\end{remarque}
+
+
+\subsection{Formulation intégrale}
+\parag{Conservation du flux}
+De même que pour l’équation de Maxwell-Gauss, utilisons le théorème de Green-Ostrogradski pour relier la divergence à un flux. Le flux du champ magnétostatique sur une surface fermée $S$ vaut
+\begin{equation}
+\oiint_{S}\B\cdot\vv{\d S}  ~\overset{\text{Green}}{=} \iiint_{\mc{V}(S)}\dive{\B}\,\d\mc{V}~\overset{\text{M.T.}}{=}0.
+\end{equation}
+Ainsi, le flux du champ magnétique
+% \begin{equation}
+\eqbox[phi_B]{
+  \Phi = 
+  \iint_{S}\B\cdot\vv{\d S}= \cte
+  }
+% \end{equation}
+est conservée le long d’un tube de champ (Fig.~\ref{fig:B_flux_conservatif}).
+\begin{prop}\label{prop:}
+Le champ magnétique $\B$ est à flux conservatif : $\Phi= \cte$ le long d’un tube de champ magnétique.
+\end{prop}
+\noindent
+Cette propriété reste vrai en régime variable.
+%Il s'agit d'une formulation intégrale de l'équation locale de Maxwell-Thomson.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.33\textwidth]{flux_B.pdf}
+\caption{Le champ magnétique est à flux conservatif. Par conséquent, il ne peut pas y avoir de point source de $\vec{B}$, et donc pas de charge, ou \guill{monopole} magnétique.}
+\label{fig:B_flux_conservatif}
+\end{figure}
+
+\parag{Théorème d'Ampère}
+\label{subsec:ampère}
+Utilisons maintenant le théorème de Stokes pour relier la circulation du champ magnétique aux propriétés de la distribution de courant. Sur un contour fermé orienté $\Gamma$ sur lequel s’appuie une surface ouverte $S$ on a
+\begin{equation}
+\begin{split}
+\oint_{\Gamma}\B\cdot\vv{\d l}~\overset{\text{Stokes}}{=}\iint_{S}\rot{\B}\cdot\vv{\d S}~\overset{\text{M.A.}}{=}\mu_0\iint_{S}\vv{j}\cdot\vv{\d S}=\mu_0 I_{\Gamma}.
+\end{split}
+\end{equation}
+La grandeur $I_{\Gamma}$ représente le courant algébrique enlacé par le contour $\Gamma$.
+La normale $\Vec{\d S}$ et donc le signe de $I_{\Gamma}$  est déterminée par la règle de la main droite et le sens de parcours de $\Gamma$ (Fig.~\ref{fig:surface_contour}).
+\begin{theorem}[Théorème d'Ampère]
+  La circulation du champ magnétostatique sur un contour fermé $\Gamma$ est relié au courant enlacé $I_{\rm _\Gamma}$ par
+\begin{equation*}
+\oint_{\Gamma}\B\cdot\vv{\d l}=\mu_0 I_{\Gamma}
+\end{equation*}
+\end{theorem}
+
+\begin{figure}[h!]
+\centering
+\subfigure[]{\label{fig:surface_contour}
+\includegraphics[height=0.3\textwidth]{surface_contour.pdf}
+}\hspace{1cm}
+\subfigure[]{\label{fig:Ienlacé}
+\includegraphics[height=0.3\textwidth]{I_enlace.pdf}
+}
+\caption{(a) Règle d'orientation relative du contour $\Gamma$ et de la surface $S(\Gamma)$ qui s'appuie dessus. (b) Le courant enlacé dans cet exemple vaut $I_{\rm{enlacé}}=+I_{1}-I_2+I_{3}-I_{3}=I_1-I_2$.}
+\end{figure}
+\noindent
+Le théorème d'Ampère permet dans les cas où les symétries et invariances de la distribution de courant sont suffisantes de déterminer complètement le champ magnétique généré par la distribution.
+
+\begin{methode}[Appliquer le théorème d'Ampère]
+  \item	Définir et représenter un contour fermé orienté $\Gamma$ qui respecte les symétries du problème : le vecteur déplacement élémentaire $\dl$ doit être :
+  \begin{liste}
+    \item soit orthogonal à $\B$ (intégrale nulle) ;
+    \item soit colinéaire à $\B$ (intégrale facile à calculer).
+  \end{liste}
+  \item Calculer la circulation de $\B$ le long de $\Gamma$ en décomposant si besoin le contour en portions.
+  \item Appliquer le théorème d’Ampère et calculer le courant enlacé $I_{\Gamma}$.
+  \item En déduire le champ magnétostatique $\B(M)$.\end{methode}
+
+L’intensité du courant enlacé $I_{\Gamma}$ désigne la somme des courants \important{algébriques} qui traversent la surface $S$ s'appuyant sur le contour orienté $\Gamma$. Puisque c'est une grandeur algébrique, on sera vigilant aux signes et à l'orientation du contour $\Gamma$.
+% (qui détermine le sens de la normale de $S(\Gamma)$ d'après la règle de la main droite). %Un exemple est donné en Fig.~\ref{fig:Ienlacé}.
+
+\begin{exemple}{Fil infini parcouru par un courant uniforme}
+D'après l'étude des symétries et des invariances, nous avons vu que le champ magnétostatique est de la forme $\B(M)=B_{\theta}(r)\et$. Appliquer le théorème d'Ampère pour déterminer la fonction $B_\theta(r)$. 
+
+\end{exemple}
+\examplesol{
+  \begin{enumerate}
+    \item 
+    On commence par choisir un contour d'Ampère passant par le point $M$ de coordonnées $(r,\theta,z)$. Vu la géométrie du problème, on prend pour contour $\Gamma = \{$cercle de centre $O$ de rayon $r \}$. Le contour orienté dans le sens direct, suivant la règle de la main droite, en accord avec l'orientation du courant.
+    
+  \begin{fig}
+\centering
+\includegraphics[width=0.3\textwidth]{fil_infini_ampere.pdf}
+% \capt{Contour d'Ampère $\Gamma$ (cercle orange) utile au calcul du champ magnétostatique créé par un fil infini parcouru par un courant d'intensité $I=\cte$.}
+\end{fig}
+
+\item 
+Le champ étant selon $\et$, seule la composante selon $\et$ du déplacement élémentaire $\vv{\d l}$ le long du cercle nous importe pour calculer la circulation. Elle s'écrit $\d l=r\d\theta$. De plus le courant enlacé par le contour vaut $+I$. Ainsi d'après le théorème d'Ampère
+$$
+  \oint_{\Gamma}\B\cdot\vv{\d l}=\int_{0}^{2\pi}r\d\theta  B_{\theta}(r)=2\pi r B_{\theta}(r)
+$$
+\item Le théorème d'Ampère donne alors
+$$
+\oint_{\Gamma}\B\cdot\vv{\d l} =\mu_0 I_{\Gamma} = \mu I.
+$$
+\item 
+On peut alors conclure que $B_{\theta}(r)=\frac{\mu_0 I}{2\pi r}$, soit
+\eqbox{
+  \B(M)=\frac{\mu_0 I}{2\pi r}\,\et.
+  }
+\end{enumerate}
+}
+
+\section{Topographie du champ magnétostatique}
+
+\subsection{Propriétés des lignes de champ}
+
+Les notions de ligne et de tube de champ s’appliquent également au champ magnétostatique. Certaines propriétés des cartes de champ que nous avons vus pour $\Vec{E}$ sont aussi valables pour $\Vec{B}$, car valables pour tout champ. Les lignes de champ magnétostatique sont
+\begin{enumerate}
+\item  \imp{continues} et \imp{uniques} : deux lignes de champ ne peuvent pas se couper.
+\item d’autant plus \imp{resserrées} que le champ est \imp{intense}.
+\end{enumerate}
+D’autres propriétés du champ magnétostatique diffèrent de celles du champ électrostatique. Les lignes de champ magnétostatique
+\begin{enumerate}
+\item sont \imp{fermées};
+
+\begin{preuve}
+  Soit une ligne de champ 
+  Comme $\B$ est à flux conservatif, il n'existe pas de point source ou de puits de champ, où pourraient se trouver l’extrémité d’une ligne de champ. Les lignes de champ bouclent donc sur elles-mêmes.
+\end{preuve}
+\item \imp{enlacent} les courants dans le sens donné par la règle de la main droite.
+
+\begin{preuve}
+  C’est une conséquence du théorème d’Ampère.
+\end{preuve}
+\end{enumerate}
+\begin{prop}[Propriétés des lignes de champ magnétostatique]\label{prop:}
+  Les lignes de $\Vec{B}(M)$ sont \imp{fermées} et \imp{enlacent} les courants dans le sens direct.
+\end{prop}
+
+\subsection{Exemples de cartes de champ}
+
+\begin{exemple}{Exemples de cartes de champ}
+  Représenter la distribution de courant qui produit les cartes de champ magnétostatique suivantes.
+  \begin{fig}[label]
+    \centering
+    \begin{subfig}[label][0.45]
+      \includegraphics[width=\textwidth]{Bfield_coil}
+    \end{subfig}
+    \begin{subfig}[label][0.45]
+      \includegraphics[width=\textwidth]{Bfield_helmholtz}
+    \end{subfig}
+    \begin{subfig}[label][0.45]
+      \includegraphics[width=\textwidth]{Bfield_antihelmholtz}
+    \end{subfig}
+    \begin{subfig}[label][0.45]
+      \includegraphics[width=\textwidth]{Bfield_solenoid}
+    \end{subfig}
+    % \includegraphics[width=0.7\columnwidth]{}
+    %\capt{}
+  \end{fig}
+\end{exemple}
+\examplesol{
+  \begin{fig}[label]
+    \centering
+    \begin{subfig}[label][0.45]
+      \includegraphics[width=\textwidth]{Bfield_coil_current}
+    \end{subfig}
+    \begin{subfig}[label][0.45]
+    \includegraphics[width=\textwidth]{Bfield_helmholtz_current}
+    \end{subfig}
+    \begin{subfig}[label][0.45]
+      \includegraphics[width=\textwidth]{Bfield_antihelmholtz_current}
+    \end{subfig}
+    \begin{subfig}[label][0.45]
+      \includegraphics[width=\textwidth]{Bfield_solenoid_current}
+    \end{subfig}
+    % \includegraphics[width=0.7\columnwidth]{}
+    %\capt{}
+  \end{fig}
+}
+
+% \begin{figure}[H]
+%   \centering
+%   \begin{subfig}[label][0.3]
+%     \includegraphics[height=0.7\columnwidth]{fil.jpeg}
+%   \end{subfig}
+%   \begin{subfig}[label][0.3]
+%     \includegraphics[trim=0 55 0 55, clip, height=0.7\columnwidth]{spire_courant_B.pdf}
+%   \end{subfig}\hfill
+%   % \caption{(a) Spire de courant circulaire.}
+%   \label{fig:cartes_de_champ}
+%   \end{figure}
+
+
+%\begin{remarque}
+%Le théorème d'Ampère joue pour le champ magnétostatique le même rôle que le théorème de Gauss pour le champ électrostatique. Attention tout de même, les équations de Maxwell statiques pour $\vv{E}$ et $\B$ sont \guill{inversées}: $\B$ est indivergent et rotationnel alors que $\vv{E}$ est divergent et irrotationnel. Pour calculer $\vv{E}$ on passe par le flux sur une surface fermée (théorème de Gauss/Green-Ostrogradski) alors que pour $\B$ on passe par la circulation sur un contour fermé (théorème d'Ampère/Stokes).
+%\end{remarque}
+
+
+\newpage
+
+\begin{methode*}[Résoudre un problème de magnétostatique]
+  \begin{center}
+      \includegraphics{methode_B.pdf}
+  \end{center}
+\end{methode*}
+% \begin{figure}[H]
+%   \centering
+%   \includegraphics{methode_B.pdf}
+%   \caption{Méthode pour la résolution d'un problème de magnétostatique.}
+%   \label{fig:}
+% \end{figure}
+
+
+
+
+\end{document}

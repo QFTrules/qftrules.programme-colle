@@ -1,0 +1,11 @@
+﻿\begin{tikzpicture}[>=latex]
+
+\newcommand{\gradp}[2]{\draw[->,JoliRouge,ultra thick]  #1 -- ++ #2 ;}
+\node at (0,0) {\includegraphics[scale=0.5]{p_map.png}};
+\gradp{(-2.2,1.18) coordinate (A)}{(55:0.8)  node[below=25,fill=white,inner sep=0pt] {\Large $\Grad{p}$}}
+\draw (A) ++ (55:0.15) -- ++ (145:0.15) -- ++ (235:0.15);
+\gradp{(-3.25,2.45) coordinate (B)}{(2:0.6)  }
+\draw (B) ++ (2:0.15) -- ++ (92:0.15) -- ++ (182:0.15);
+\gradp{(-0.27,1.5) coordinate (C)}{(154:1)}
+\draw (C) ++ (154:0.15) -- ++ (244:0.15) -- ++ (334:0.15);
+\end{tikzpicture}

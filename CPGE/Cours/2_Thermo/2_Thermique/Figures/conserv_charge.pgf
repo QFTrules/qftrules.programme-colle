@@ -1,0 +1,222 @@
+% Graphic for TeX using PGF
+% Title: C:\Users\Louis\Desktop\Projet Fiches\Figures\electromag\conserv_charge.dia
+% Creator: Dia v0.97.2
+% CreationDate: Fri Aug 14 19:04:16 2015
+% For: Louis
+% \usepackage{tikz}
+% The following commands are not supported in PSTricks at present
+% We define them conditionally, so when they are implemented,
+% this pgf file will use them.
+\ifx\du\undefined
+  \newlength{\du}
+\fi
+\setlength{\du}{15\unitlength}
+\begin{tikzpicture}[scale=0.7]
+\pgftransformxscale{1.000000}
+\pgftransformyscale{-1.000000}
+\definecolor{dialinecolor}{rgb}{0.000000, 0.000000, 0.000000}
+\pgfsetstrokecolor{dialinecolor}
+\definecolor{dialinecolor}{rgb}{1.000000, 1.000000, 1.000000}
+\pgfsetfillcolor{dialinecolor}
+\pgfsetlinewidth{0.150000\du}
+\pgfsetdash{}{0pt}
+\pgfsetdash{}{0pt}
+\pgfsetmiterjoin
+\pgfsetbuttcap
+{
+\definecolor{dialinecolor}{rgb}{0.000000, 0.000000, 0.000000}
+\pgfsetfillcolor{dialinecolor}
+% was here!!!
+\definecolor{dialinecolor}{rgb}{0.000000, 0.000000, 0.000000}
+\pgfsetstrokecolor{dialinecolor}
+\pgfpathmoveto{\pgfpoint{17.029289\du}{8.432322\du}}
+\pgfpathcurveto{\pgfpoint{16.129289\du}{8.182322\du}}{\pgfpoint{13.079289\du}{10.332322\du}}{\pgfpoint{13.429289\du}{11.832322\du}}
+\pgfpathcurveto{\pgfpoint{13.779289\du}{13.332322\du}}{\pgfpoint{11.829289\du}{14.682322\du}}{\pgfpoint{14.029289\du}{16.982322\du}}
+\pgfpathcurveto{\pgfpoint{16.229289\du}{19.282322\du}}{\pgfpoint{12.779289\du}{20.532322\du}}{\pgfpoint{13.679289\du}{22.832322\du}}
+\pgfpathcurveto{\pgfpoint{14.579289\du}{25.132322\du}}{\pgfpoint{20.229289\du}{26.632322\du}}{\pgfpoint{20.829289\du}{22.082322\du}}
+\pgfpathcurveto{\pgfpoint{21.429289\du}{17.532322\du}}{\pgfpoint{17.379289\du}{14.532322\du}}{\pgfpoint{18.879289\du}{12.132322\du}}
+\pgfpathcurveto{\pgfpoint{20.379289\du}{9.732322\du}}{\pgfpoint{19.891140\du}{11.228144\du}}{\pgfpoint{16.991140\du}{8.428144\du}}
+\pgfusepath{stroke}
+}
+\pgfsetlinewidth{0.100000\du}
+\pgfsetdash{{\pgflinewidth}{0.200000\du}}{0cm}
+\pgfsetdash{{\pgflinewidth}{0.200000\du}}{0cm}
+\pgfsetbuttcap
+{
+\definecolor{dialinecolor}{rgb}{0.000000, 0.000000, 0.000000}
+\pgfsetfillcolor{dialinecolor}
+% was here!!!
+\definecolor{dialinecolor}{rgb}{0.000000, 0.000000, 0.000000}
+\pgfsetstrokecolor{dialinecolor}
+\pgfpathmoveto{\pgfpoint{14.613254\du}{17.814846\du}}
+\pgfpatharc{121}{38}{3.962031\du and 3.962031\du}
+\pgfusepath{stroke}
+}
+\pgfsetlinewidth{0.100000\du}
+\pgfsetdash{{\pgflinewidth}{0.200000\du}}{0cm}
+\pgfsetdash{{\pgflinewidth}{0.200000\du}}{0cm}
+\pgfsetbuttcap
+{
+\definecolor{dialinecolor}{rgb}{0.000000, 0.000000, 0.000000}
+\pgfsetfillcolor{dialinecolor}
+% was here!!!
+\definecolor{dialinecolor}{rgb}{0.000000, 0.000000, 0.000000}
+\pgfsetstrokecolor{dialinecolor}
+\pgfpathmoveto{\pgfpoint{19.727502\du}{16.795237\du}}
+\pgfpatharc{294}{225}{4.567455\du and 4.567455\du}
+\pgfusepath{stroke}
+}
+\pgfsetlinewidth{0.150000\du}
+\pgfsetdash{}{0pt}
+\pgfsetdash{}{0pt}
+\pgfsetbuttcap
+\pgfsetmiterjoin
+\pgfsetlinewidth{0.150000\du}
+\pgfsetbuttcap
+\pgfsetmiterjoin
+\pgfsetdash{}{0pt}
+\definecolor{dialinecolor}{rgb}{1.000000, 1.000000, 1.000000}
+\pgfsetfillcolor{dialinecolor}
+\fill (14.154045\du,13.690744\du)--(14.154045\du,16.064688\du)--(16.451410\du,16.064688\du)--(16.451410\du,13.690744\du)--cycle;
+\definecolor{dialinecolor}{rgb}{0.000000, 0.000000, 0.000000}
+\pgfsetstrokecolor{dialinecolor}
+\draw (14.154045\du,13.690744\du)--(14.154045\du,16.064688\du)--(16.451410\du,16.064688\du)--(16.451410\du,13.690744\du)--cycle;
+\pgfsetbuttcap
+\pgfsetmiterjoin
+\pgfsetdash{}{0pt}
+\definecolor{dialinecolor}{rgb}{0.000000, 0.000000, 0.000000}
+\pgfsetstrokecolor{dialinecolor}
+\draw (14.154045\du,13.690744\du)--(14.154045\du,16.064688\du)--(16.451410\du,16.064688\du)--(16.451410\du,13.690744\du)--cycle;
+\pgfsetlinewidth{0.150000\du}
+\pgfsetdash{}{0pt}
+\pgfsetdash{}{0pt}
+\pgfsetbuttcap
+{
+\definecolor{dialinecolor}{rgb}{0.000000, 0.000000, 0.000000}
+\pgfsetfillcolor{dialinecolor}
+% was here!!!
+\definecolor{dialinecolor}{rgb}{0.000000, 0.000000, 0.000000}
+\pgfsetstrokecolor{dialinecolor}
+\draw (14.118690\du,13.717261\du)--(15.220818\du,12.783088\du);
+}
+\pgfsetlinewidth{0.150000\du}
+\pgfsetdash{}{0pt}
+\pgfsetdash{}{0pt}
+\pgfsetbuttcap
+{
+\definecolor{dialinecolor}{rgb}{0.000000, 0.000000, 0.000000}
+\pgfsetfillcolor{dialinecolor}
+% was here!!!
+\definecolor{dialinecolor}{rgb}{0.000000, 0.000000, 0.000000}
+\pgfsetstrokecolor{dialinecolor}
+\draw (16.451410\du,13.690744\du)--(17.324460\du,12.800765\du);
+}
+\pgfsetlinewidth{0.150000\du}
+\pgfsetdash{}{0pt}
+\pgfsetdash{}{0pt}
+\pgfsetbuttcap
+{
+\definecolor{dialinecolor}{rgb}{0.000000, 0.000000, 0.000000}
+\pgfsetfillcolor{dialinecolor}
+% was here!!!
+\definecolor{dialinecolor}{rgb}{0.000000, 0.000000, 0.000000}
+\pgfsetstrokecolor{dialinecolor}
+\draw (15.167785\du,12.783088\du)--(17.377493\du,12.791926\du);
+}
+\pgfsetlinewidth{0.150000\du}
+\pgfsetdash{}{0pt}
+\pgfsetdash{}{0pt}
+\pgfsetbuttcap
+{
+\definecolor{dialinecolor}{rgb}{0.000000, 0.000000, 0.000000}
+\pgfsetfillcolor{dialinecolor}
+% was here!!!
+\definecolor{dialinecolor}{rgb}{0.000000, 0.000000, 0.000000}
+\pgfsetstrokecolor{dialinecolor}
+\draw (17.307977\du,12.720093\du)--(17.315621\du,14.816020\du);
+}
+\pgfsetlinewidth{0.150000\du}
+\pgfsetdash{}{0pt}
+\pgfsetdash{}{0pt}
+\pgfsetbuttcap
+{
+\definecolor{dialinecolor}{rgb}{0.000000, 0.000000, 0.000000}
+\pgfsetfillcolor{dialinecolor}
+% was here!!!
+\definecolor{dialinecolor}{rgb}{0.000000, 0.000000, 0.000000}
+\pgfsetstrokecolor{dialinecolor}
+\draw (16.451410\du,16.064688\du)--(17.324460\du,14.754148\du);
+}
+\pgfsetlinewidth{0.100000\du}
+\pgfsetdash{{\pgflinewidth}{0.200000\du}}{0cm}
+\pgfsetdash{{\pgflinewidth}{0.100000\du}}{0cm}
+\pgfsetbuttcap
+{
+\definecolor{dialinecolor}{rgb}{0.000000, 0.000000, 0.000000}
+\pgfsetfillcolor{dialinecolor}
+% was here!!!
+\definecolor{dialinecolor}{rgb}{0.000000, 0.000000, 0.000000}
+\pgfsetstrokecolor{dialinecolor}
+\draw (15.247334\du,12.827282\du)--(15.247334\du,14.886730\du);
+}
+\pgfsetlinewidth{0.100000\du}
+\pgfsetdash{{\pgflinewidth}{0.100000\du}}{0cm}
+\pgfsetdash{{\pgflinewidth}{0.100000\du}}{0cm}
+\pgfsetbuttcap
+{
+\definecolor{dialinecolor}{rgb}{0.000000, 0.000000, 0.000000}
+\pgfsetfillcolor{dialinecolor}
+% was here!!!
+\definecolor{dialinecolor}{rgb}{0.000000, 0.000000, 0.000000}
+\pgfsetstrokecolor{dialinecolor}
+\draw (15.238495\du,14.816020\du)--(17.280266\du,14.816020\du);
+}
+\pgfsetlinewidth{0.100000\du}
+\pgfsetdash{{\pgflinewidth}{0.100000\du}}{0cm}
+\pgfsetdash{{\pgflinewidth}{0.100000\du}}{0cm}
+\pgfsetbuttcap
+{
+\definecolor{dialinecolor}{rgb}{0.000000, 0.000000, 0.000000}
+\pgfsetfillcolor{dialinecolor}
+% was here!!!
+\definecolor{dialinecolor}{rgb}{0.000000, 0.000000, 0.000000}
+\pgfsetstrokecolor{dialinecolor}
+\draw (15.229656\du,14.824858\du)--(14.154045\du,16.064688\du);
+}
+\definecolor{dialinecolor}{rgb}{1.000000, 1.000000, 1.000000}
+\pgfsetfillcolor{dialinecolor}
+\pgfpathellipse{\pgfpoint{15.388755\du}{22.196447\du}}{\pgfpoint{0.830850\du}{0\du}}{\pgfpoint{0\du}{0.441942\du}}
+\pgfusepath{fill}
+\pgfsetlinewidth{0.100000\du}
+\pgfsetdash{}{0pt}
+\pgfsetdash{}{0pt}
+\definecolor{dialinecolor}{rgb}{0.000000, 0.000000, 0.000000}
+\pgfsetstrokecolor{dialinecolor}
+\pgfpathellipse{\pgfpoint{15.388755\du}{22.196447\du}}{\pgfpoint{0.830850\du}{0\du}}{\pgfpoint{0\du}{0.441942\du}}
+\pgfusepath{stroke}
+% setfont left to latex
+\definecolor{dialinecolor}{rgb}{0.000000, 0.000000, 0.000000}
+\pgfsetstrokecolor{dialinecolor}
+\node[anchor=west] at (18.330876\du,21.047398\du){$\rho$};
+% setfont left to latex
+\definecolor{dialinecolor}{rgb}{0.000000, 0.000000, 0.000000}
+\pgfsetstrokecolor{dialinecolor}
+\node[anchor=west] at (11.547676\du,21.249480\du){$\overrightarrow{\mathrm{d}S}$};
+% setfont left to latex
+\definecolor{dialinecolor}{rgb}{0.000000, 0.000000, 0.000000}
+\pgfsetstrokecolor{dialinecolor}
+\node[anchor=west] at (14.724631\du,11.713589\du){$\mathrm{d}\tau$};
+\pgfsetlinewidth{0.150000\du}
+\pgfsetdash{}{0pt}
+\pgfsetdash{}{0pt}
+\pgfsetbuttcap
+{
+\definecolor{dialinecolor}{rgb}{0.000000, 0.000000, 0.000000}
+\pgfsetfillcolor{dialinecolor}
+% was here!!!
+\pgfsetarrowsend{latex}
+\definecolor{dialinecolor}{rgb}{0.000000, 0.000000, 0.000000}
+\pgfsetstrokecolor{dialinecolor}
+\draw (15.404554\du,22.223483\du)--(12.259808\du,23.027297\du);
+}
+\end{tikzpicture}

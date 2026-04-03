@@ -1,0 +1,11 @@
+\input{tikz.tex}
+\begin{document}
+\begin{tikzpicture}
+  \draw[->] (0,0) -- ++ (0,3) node[above] {$\tilde{D}(\lambda)$};
+  \draw[->] (0,0) -- ++ (3*1.618,0) node[right] {$\lambda$};
+  \draw[JoliBleu] plot[domain=0:4,samples=200] (\x,{2.5*exp(-2*(\x-2)^2)});
+  \draw[dashed] (2,0) -- ++ (0,2.5);
+  \draw (2,0.1) -- ++ (0,-0.2) node[below] {$\lambda_{\rm m}$};
+  \draw[<->] (1.2,0.7) -- ++ (1.6,0) node[midway,above=0.1] {\contour{white}{$\Delta \lambda$}};
+\end{tikzpicture}
+\end{document}

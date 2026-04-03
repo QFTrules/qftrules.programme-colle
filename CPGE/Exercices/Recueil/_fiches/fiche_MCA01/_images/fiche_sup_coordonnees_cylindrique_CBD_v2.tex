@@ -1,0 +1,59 @@
+\newenvironment{3dtikzpicture}[3][]{
+    \pgfmathsetmacro\xx{cos(#3)}
+    \pgfmathsetmacro\xy{cos(#2)*sin(#3)}
+    \pgfmathsetmacro\yx{-sin(#3)}
+    \pgfmathsetmacro\yy{cos(#2)*cos(#3)}
+    \pgfmathsetmacro\zy{sin(#2)}
+    \begin{tikzpicture}[x={(\xx cm,\xy cm)},y={(\yx cm,\yy cm)},z={(0,\zy cm)},#1]
+    }{
+    \end{tikzpicture}
+}
+
+
+%\resizebox{0.5\textwidth}{!}{
+
+\begin{3dtikzpicture}{70}{260}
+    
+    	%\draw(0,0,0) node[left]{$O$};
+        
+        \draw[->,>=latex] (0,0,0)--(0,3,0); %axe y
+        \draw (0,3,0) node[below]{$y$};
+        
+        \draw[->,>=latex] (0,0,0)--(0,0,4); %axe z
+        \draw (0,0,4) node[above]{$z$};
+        
+        \draw[->,>=latex] (0,0,0)--(3,0,0); %axe x
+        \draw (3,0,0) node[below]{$x$};
+        
+        %vecteur r
+        \draw (0,0,0) -- (2,2,3);
+        \draw[dashed] (0,0,0) -- (2,2,0) node[midway, xshift=3pt,yshift=3pt]{$r$};
+        
+        %Vecteurs de la base cylindriques
+        \draw[->,>=latex,thick,color=\redOrBlack](0,0,0)--(1,0,0) node[left]{$\vv{e_x}$}; %\vv
+        \draw[->,>=latex,thick,color=\redOrBlack](0,0,0)--(0,1,0) node[above]{$\vv{e_y}$}; %\vv
+        \draw[->,>=latex,thick,color=\redOrBlack](0,0,0)--(0,0,1) node[left]{$\vv{e_z}$}; %\vv
+        
+        %Angle theta
+        \def\Theta{44.4};
+        \draw [->,>=latex] (1.25,0,0) arc (0:\Theta:1.25) node[midway,below]{$\theta$};
+        
+        %Vecteurs de base cylindrique
+        \draw[->,>=latex,color=\blueOrBlack,thick](2,2,3)--(2.7,2.7,3) node[right]{$\vv{e_r}$};
+        \draw[->,>=latex,color=\blueOrBlack,thick](2,2,3)--(1.3,2.7,3) node[right]{$\vv{e_{\theta}}$};
+        \draw[->,>=latex,color=\blueOrBlack,thick](2,2,3)--(2,2,4) node[above]{$\vv{e_{z}}$};
+
+		\draw[dashed] (2,2,3)--(2,2,0) node[right]{$\ptM'$};
+		\draw[dotted] (2,2,3)--(0,0,3) node[left]{$z$};
+
+		\draw (0,0,0) node[above left]{$\ptO$};
+
+
+		\draw (2,2,0) node{$\bullet$};
+        
+        \draw (2,2,3) node{$\bullet$};
+        \draw (2,2,3) node[above left]{$\ptM$};
+    
+\end{3dtikzpicture}
+
+%}

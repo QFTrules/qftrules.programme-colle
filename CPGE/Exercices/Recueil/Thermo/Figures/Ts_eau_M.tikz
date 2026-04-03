@@ -1,0 +1,7 @@
+\input{/home/eb/Dropbox/texmf/tex/latex/Preambles/tikz.tex}
+\begin{document}
+\begin{tikzpicture}
+  \node[] at (0,0) {\includegraphics{Ts_eau.pdf}};
+  \bull[above=0.2]{(2,-1.81)}{\Large M};
+\end{tikzpicture}
+\end{document}

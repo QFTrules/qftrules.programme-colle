@@ -1,0 +1,26 @@
+\input{/home/eb/Dropbox/texmf/tex/latex/Preambles/tikz.tex}
+\begin{document}
+
+%=============================================================
+% 2015-07-08	Référentiel en rotation par rapport à un axe fixe
+%============================================================
+\begin{tikzpicture}
+	\tikzset{elliparc/.style args={#1:#2:#3}{%
+insert path={(#1:#3) arc (#1:#2:#3)}}}
+	\node at (0,0) {\includegraphics[scale=0.4]{manege_simple.png}};
+	\draw[axe] (0,2) -- ++ (0,1) node[above] {$z$};
+	\draw[axe] (-1,-1.5) -- ++ (-130:0.75) node[below] {$x$};
+	\draw[axe] (1.9,-1) -- ++ (0:1) node[right] {$y$};
+	\coordinate (A) at (0.3,-1.25);
+	\node at (A) {\color{JoliRouge}$\bullet$};
+	\node[left=0.1,JoliRouge,textfill=white,fill opacity=1] at (A) {M};
+	\draw[JoliRouge,->] (A) arc(-90:-75:2);
+	% \draw[JoliRouge,->] (A) -- ++ (0,-0.5);
+	\begin{scope}[yshift=2cm]
+		\draw[->,JoliBleu] (0,0)  [elliparc=220:0:0.5cm and -0.1cm] node[right] {$\Omega$};
+	\end{scope}
+	 % node[midway,above] {$\Omega$};
+ \end{tikzpicture}
+
+
+\end{document}

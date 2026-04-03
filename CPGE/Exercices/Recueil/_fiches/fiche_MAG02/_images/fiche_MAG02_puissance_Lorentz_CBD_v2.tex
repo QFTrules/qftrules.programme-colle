@@ -1,0 +1,49 @@
+\begin{tikzpicture}
+
+
+\begin{scope}[shift={(4,0)}]
+\fill (0,0) circle(2pt) node[right]{$+2q$};
+\draw (0,0) node[below left]{A};
+\draw[-latex] (0,0)  -- +(0,1) node[near end,left]{$\vv{v}$};
+\end{scope}
+
+
+\begin{scope}[shift={(7,0)}]
+\draw[dotted] (0,0) -- +(0,1.25);
+\fill (0,0) circle(2pt) node[right]{B};
+\draw (0,0) node[below left]{$-q$};
+\draw[-latex] (0,0)  -- +(120:2) node[near end,left]{$2\vv{v}$};
+\draw (0,1.05) arc(90:120:1.05) node[midway,above]{\footnotesize $\pi/6$};
+\end{scope}
+
+\begin{scope}[shift={(10,0.5)}]
+\draw[dotted] (0,0) -- +(1.25,0);
+\fill (0,0) circle(2pt) node[below, yshift=-1mm]{$+3q$};
+\draw (0,0) node[left]{C};
+\draw[-latex] (0,0)  -- +(45:1) node[near end,above left]{$\vv{v}$};
+\draw (0.75,0)  arc(0:45:0.75) node[midway,right]{\footnotesize $\pi/4$};
+\end{scope}
+
+\begin{scope}[shift={(13,1)}]
+\draw[dotted] (0,0) -- +(1.25,0);
+\fill (0,0) circle(2pt) node[above]{$-q$};
+\draw (0,0) node[left]{D};
+\draw[-latex] (0,0)  -- +(-60:1) node[near end,left]{$\vv{v}$};
+\draw (0.75,0)  arc(0:-60:0.75) node[midway,right]{\footnotesize $\pi/3$};
+\end{scope}
+
+
+
+\begin{scope}[shift={(8.25,-2)}, scale=0.7]
+\draw[-latex] (0,0) -- +(1,0) node[right]{$\vv{e_x}$};
+\draw[-latex] (0,0) -- +(0,1) node[right]{$\vv{e_y}$};
+\filldraw[fill=white,draw=black] (0,0) circle(3pt) node[below left]{$\vv{e_z}$};
+\fill[] (0,0) circle(1.2pt);
+
+\filldraw[fill=white,draw=black] (1,1.5) circle(3pt) node[above]{$\vv{B}$};
+\fill (1,1.5) circle(1.2pt);
+\draw[-latex] (1.25,0.68) -- +(0.75,0) node[midway,above]{$\vv{E}$};
+\end{scope}
+
+
+\end{tikzpicture}

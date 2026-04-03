@@ -1,0 +1,639 @@
+% !TEX root = /home/eb/.vscode/extensions/qftrules.programme-colle/tmp/Exercice.tex
+\begin{exo}[PC][1][TD]{Étude énergétique d'un plasma à basse fréquence}
+  \Notions{\item Plasma dilué  \task Basse fréquence \task Polarisation \task Vecteur de Poynting}
+  On étudie la propagation d'une onde radio de pulsation $\omega \simeq \SI{1.5e9}{Hz}$ émise par une station émettrice sur Terre à travers le plasma ionosphérique, de densité électronique $n \simeq \SI{2e6}{m^{-3}}$.  On cherche une solution sous la forme d'une OPPH généralisée se propageant dans la direction $(Oz)$, d'expression 
+  \begin{equation}
+    \E*(z,t) = \E*_0 \,\e^{i(\omega t - \udl{k} z)}.
+  \end{equation}
+  % On rappelle que le vecteur d'onde complexe se met sous la forme $\udl{k} = - i/\delta$ dans ce régime de fréquence, où $\delta$ est la distance typique d'atténuation.
+  \begin{quest}
+    \item	Évaluer numériquement la pulsation plasma $\omega_p$. En déduire le régime de fréquence et la nature réelle ou imaginaire du vecteur d'onde $\udl{k}$.
+  \end{quest}
+
+  On considère pour commencer que l'onde est polarisée rectilignement selon l'axe $(Ox)$, soit $\E*_0 = E_0 \,\ex$.
+  \begin{quest}
+    \item	En déduire le champ électrique réel $\E(z,t) = \re\,\Vec{\udl{E}}(z,t)$. Comment s'appelle ce type d'onde ?
+    \item Déterminer l'expression du champ magnétique complexe $\B*(z,t)$ puis du champ réel $\B(z,t)$.
+    \item En déduire l'expression du vecteur de Poynting $\Poy(z,t)$ et de sa moyenne temporelle. Interpréter.
+    % \item Quelle distance terrestre totale peut parcourir l'onde radio après réflexion sur la ionosphère ?
+  \end{quest}
+  On considère maintenant que l'onde est polarisée circulairement droite, soit $\E*_0 = E_0 \,\left(\ex + i\,\ey\right)$.
+  \begin{quest}
+    \item	Reprendre les questions précédentes pour cette polarisation.
+  \end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][3][colle]{Observation d'un pulsar}
+  On donne le retard de propagation $\d \tau$ entre deux ondes de fréquences proches $\nu$ et $\nu + \d \nu$ issues d'un pulsar sous la forme, 
+  \begin{equation}
+    \dd{\nu}{\tau}=-\SI{5}{Mhz.s^{-1}}.
+  \end{equation}
+On modélise l'espace interstellaire par un plasma dilué homogène de densité $n=\SI{2e6}{m^{-3}}$.
+\begin{quest}
+  \item	Quelles sont les fréquences du pulsar que l'on peut capter?
+  \item Estimer la distance Terre-Pulsar.
+  \item A chaque période de rotation du pulsar, sa période diminue d'une variation relative $\frac{\Delta T}{T}=-10^{-15}$. En déduire la masse du pulsar.
+\end{quest}
+\textsc{Données} :
+\begin{tabular}{ll}
+  moment d'inertie d'une boule : & $J=\textstyle\frac{2}{5} m R^2$, \\ 
+  puissance rayonnée par le pulsar : & 5 fois celle du Soleil.
+\end{tabular}
+
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PSI][1][TD]{Réflexion à la surface d'un plasma}
+  \begin{minipage}[c][2.5cm][t]{0.6\textwidth}
+  Le demi-espace $z<0$ est vide, tandis qu'un plasma de pulsation caractéristique $\omega_{0}$ occupe le demi-espace $z>0$. Une onde progressive monochromatique se propageant selon
+  les $z$ croissants arrive en incidence normale en $z=0$.
+  \end{minipage}
+  \hfill
+  \begin{minipage}[c][3.5cm][t]{0.3\textwidth}
+  \begin{center}
+   \includegraphics[scale=1]{plasma.pdf}
+  \end{center}
+  \end{minipage}
+  
+   \begin{quest}
+    \item Justifier qualitativement que l'on puisse supposer l'onde incidente polarisée rectilignement selon $\ex$ sans perte de généralité.
+  
+    \sol{
+    Le problème est invariant par rotation autour de $Oz$ et l'incidence est normale. Il n'y a donc pas de plan d'incidence privilégié.}
+  
+    \item L'onde incidente (en $z<0$) est de la forme
+    \begin{equation}
+    \Vec{E}_{i} = E_{0} e^{i(\omega t - k z)} \,\ex
+    \end{equation}
+    Rappeler l'expression de $k$ et en déduire celle du champ magnétique incident $\Vec{B}_{i}$.
+  
+    \sol{
+    La relation de dispersion dans le vide est
+  
+    \begin{equation*}
+     k^{2}c^{2}=\omega^{2}
+    \end{equation*}
+  
+    donc $k = \pm \dfrac{\omega}{c}$. Comme la propagation de l'onde incidente se fait dans le sens des $z$ croissants, $\Vec{k} = k\,\Vec{e}_{z}$ et
+  
+    \begin{equation*}
+     k = \dfrac{\omega}{c}
+    \end{equation*}
+  
+    La relation de structure donne
+  
+    \begin{equation*}
+     \Vec{B}_{i} = \frac{\Vec{k} \wedge \Vec{E}_{i}}{\omega} = \frac{E_{0}}{c} e^{i(\omega t - k z)}\,\ey
+    \end{equation*}
+    }
+  
+    \item On suppose qu'ne onde réfléchie se propage également dans le demi-espace $z<0$,
+    \begin{equation}
+   \Vec{E}_{r} = \rho E_{0} e^{i(\omega t + k z)} \,\ex,
+    \end{equation}
+    avec $\rho$ le coefficient de réflexion en amplitude.
+  
+    Donner l'expression du champ magnétique réfléchi $\Vec{B}_{r}$.
+  
+    \sol{
+    La propagation se fait selon les $z$ décroissants, donc $\Vec{k}_{r} = - \dfrac{\omega}{c}\,\Vec{e}_{z}$. Donc
+  
+    \begin{equation}
+     \Vec{B}_{r} = - \frac{\Vec{k} \wedge \Vec{E}_{r}}{\omega} = - \rho \frac{E_{0}}{c} e^{i(\omega t + k z)}\,\ey
+    \end{equation}
+    }
+  
+    \item Rappeler la relation de dispersion du plasma. Rappeler ou retrouver l'expression de $\omega_0$ à partir du modèle du plasma. Quelle est la condition de propagation dans un ce milieu ? Préciser l'expression des champs électrique et magnétique en $z>0$ en introduisant
+    un coefficient de transmission en amplitude $\tau$.
+  
+    \sol{
+    $$
+    \omega_0 = \sqrt{\dfrac{ne^2}{m \varepsilon_0}}.
+    $$
+  La relation de dispersion s'obtient à partir du calcul du vecteur densité de courant (principe fondamental de la dynamique appliqué à un ion du plasma) puis des
+    équations de Maxwell (Faraday et Ampère). Elle est de la forme
+  
+    \begin{equation}
+     k_{t}^{2} = \frac{\omega^{2} -\omega^{2}_{0}}{c^{2}}
+    \end{equation}
+    Ainsi l'onde est evanescente si $\omega < \omega_{0}$, le plasma agit comme un filtre passe-haut.
+  
+    Comme précedemment
+  
+    \begin{equation}
+     \begin{cases}
+      \Vec{E}_{t} = \tau E_{0} e^{i(\omega t - k_{t} z)} \,\ex \\
+      \Vec{B}_{t} = \tau \frac{E_{0}}{\omega} k_{t} e^{i(\omega t - kt z)}\,\ey
+     \end{cases}
+    \end{equation}
+    }
+  
+    \item En admettant qu'il n'existe pas de densité surfacique de courant en $z=0$, donner un système d'équations reliant $\rho$ et $\tau$.
+  
+    \sol{
+  Conditions aux limites :
+    \begin{itemize}
+     \item[\scriptsize\textbullet] $E_{x}$ est continu en $z=0$, donc
+     \begin{equation}
+      1 + \rho = \tau \label{eq:plasma1}
+     \end{equation}
+     \item[\scriptsize\textbullet] $B_{y}$ est continu en $z=0$ car $\Vec{j}(0) = \Vec{0}$. Donc
+     \begin{equation}
+      \frac{1}{c} - \frac{\rho}{c} = \tau \frac{k_{t}}{\omega} \label{eq:plasma2}
+     \end{equation}
+    \end{itemize}
+    }
+  
+    \item En déduire $\rho$ et $\tau$. Représenter les coefficients de réflexion et de transmission en puissance en fonction de $x=\omega/\omega_0$.
+    \sol{
+    Coefficient de réflexion :
+    \begin{eqnarray}
+     \eqref{eq:plasma1} + c\,\eqref{eq:plasma2} \qquad \Longrightarrow \qquad \tau = \frac{2}{\frac{ck_{t}}{\omega}+1} \\
+     \mathrm{d'où} \hspace{4cm} \rho = \frac{1-\frac{k_{t}c}{\omega}}{1+\frac{k_{t}c}{\omega}}
+    \end{eqnarray}
+  
+    Si le milieu est non-transparent, $k_{t}$ est imaginaire pur. Donc $\left|\rho\right|^{2} = 1$.
+    }
+   \end{quest}
+  \end{exo}
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][TD]{Étude énergétique d'un plasma à haute fréquence}
+  \Notions{\item Onde électromagnétique dans les plasmas  \task Haute fréquence \task Vecteur de Poynting}
+  On étudie la propagation d'une onde radio de pulsation $\omega = \SI{1.5e9}{Hz}$ émise par un pulsar lointain à travers le plasma interstellaire, de densité électronique $n \simeq \SI{e6}{m^{-3}}$. On cherche une solution sous la forme d'une OPPH généralisée se propageant dans la direction $(Oz)$, d'expression 
+  \begin{equation}
+    \E*(z,t) = \E*_0 \,\e^{i(\omega t - \udl{k} z)}. 
+  \end{equation}
+
+  \begin{quest}
+    \item	Évaluer numériquement la pulsation plasma $\omega_p$. En déduire le régime de fréquence et la nature réelle ou imaginaire du vecteur d'onde $\udl{k}$.
+  \end{quest}
+
+  On considère pour commencer que l'onde est polarisée rectilignement selon l'axe $(Ox)$, soit $\E*_0 = E_0 \,\ex$.
+  \begin{quest}
+    \item	En déduire le champ électrique réel $\E(z,t) = \re\,\Vec{\udl{E}}(z,t)$. Comment s'appelle ce type d'onde ?
+    \item Déterminer l'expression du champ magnétique complexe $\B*(z,t)$ puis du champ réel $\B(z,t)$.
+    \item En déduire l'expression du vecteur de Poynting $\Poy(z,t)$ et de sa moyenne temporelle. Interpréter.
+  \end{quest}
+  On considère maintenant que l'onde est polarisée circulairement droite, soit $\E*_0 = E_0 \,\left(\ex + i\,\ey\right)$.
+  \begin{quest}
+    \item	Reprendre les questions précédentes pour cette polarisation.
+  \end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][2][TD]{Propagation d'une onde dans le plasma interstellaire}
+Le plasma interstellaire est constitué d'électrons de masse $m$, de charge électrique $-e$, de densité particulaire $n$, et d'ions de charge électrique $+e$, et de même densité particulaire $n$. %La densité de charge totale est nulle.
+Le mouvement des ions est négligé et celui des électrons, non relativistes, est décrit par le vecteur vitesse $\vv{v}$. Avec ces hypothèses, on cherche des solutions aux équations de Maxwell  sous la forme d'OPPH de vecteur d'onde $\vv{k}$, dont le champ électrique est noté
+\begin{equation}
+ \underline{\vv{E}}(r,t)=\vv{E_0}\,\e^{i(\omega t-\vv{k}\cdot\vv{r})}.
+ \end{equation}
+\begin{quest}
+\item Montrer que le champ magnétique de l'onde est aussi décrit par une onde plane de mêmes pulsation et vecteur d'onde. Déterminer la nature du trièdre $(\vv{E},\vv{B},\vv{k})$ de l'onde.
+\sol{
+L'équation de Maxwell-Faraday en complexe conduit à la relation de structure
+$$
+\Vec{\udl{B}} = \frac{\Vec{k}}{\omega} \pv \Vec{\udl{E}}  = \frac{1}{\omega} (\Vec{k}\pv \Vec{\udl{E_0}} )\e^{i(\omega t-\vv{k}\cdot\vv{r})}.
+$$
+Le champ magnétique est donc décrit par une OPPH de même $\omega$ et $k$. Le trièdre $(\vv{E},\vv{B},\vv{k})$  est direct d'après les propriétés du produit vectoriel.
+}
+\item Déterminer l'amplitude $\Vec{j_0}$ du vecteur densité volumique de courant exprimé en notation complexe comme $\udl{\j}(\vv{r},t)=\Vec{j_0}\,\e^{i(\omega t-\vv{k}\cdot\vv{r})}$ en fonction de $\vv{E_0},\omega,c,k$ et $\varepsilon_0$. En étudiant le mouvement des électrons, exprimer la constante $\alpha$ telle que $\udl{\j}=-i\frac{\alpha}{\omega}\vv{E}$.
+\sol{
+Pour la première formule, il est naturel d'utiliser l'équation de Maxwell-Ampère, soit
+$$
+\rot \udl{\B} = \mu_0 \udl{\j} + \frac{1}{c^2} \dr{\udl{\E}}{t}, \Rar -i \Vec{k} \pv \Vec{\udl{B_0}} = \mu_0 \Vec{j_0}  + i \frac{\omega}{c^2} \Vec{\udl{E_0}}
+$$
+donc
+$$
+\Vec{j_0} = -\frac{i}{\mu_0 \omega} \Vec{k} \pv (\Vec{k}\pv \Vec{\udl{E_0}}) - i \frac{\omega}{\mu_0 c^2} \Vec{\udl{E_0}} = i\left(\frac{c^2 \epz k^2}{\omega} - \epz \omega\right) \Vec{\udl{E_0}}.
+$$
+Pour la deuxième relation, on utilise la relation constitutive (démonstration dans le cours),
+$$
+\dr{\udl{\j}}{t} = i\omega \udl{\j} = \frac{ne^2}{m} \udl{\E} \Rar \udl{\j} = -i\frac{ne^2}{m\omega}.
+$$
+On a donc $\alpha = \frac{ne^2}{m}$.
+}
+\item En déduire la relation de dispersion $\omega(k)$ liant la pulsation de l'onde et la norme de son vecteur d'onde. En posant $\alpha=\varepsilon_0 c^2 K^2$, calculer les vitesses de phase et de groupe de l'onde en fonction de $k$ et $K$. Quelle est la relation liant ces vitesses ?
+\sol{
+On a
+$$
+-i\frac{\alpha}{\omega} = i\frac{c^2 \epz k^2}{\omega} -i \epz \omega \Rar -\alpha = \epz c^2k^2 - \epz \omega^2 \Rar \omega^2 = c^2 k^2 + \frac{\alpha}{\epz} = c^2 k^2 + c^2 K^2,
+$$
+soit
+\eqbox{\omega(k) = c\sqrt{K^2+k^2}.}
+
+On en déduit ensuite les vitesses de phase et de groupe.
+ $$
+v_\vphi = \frac{\omega}{k} = c\sqrt{1+(\frac{K}{k})^2} >c, \qquad v_g = \dd{\omega}{k} = \frac{ck}{\sqrt{K^2+k^2}} = \frac{c}{\sqrt{1+(\frac{K}{k})^2}} < c.
+ $$
+ On remarque que $v_\vphi v_g =c^2$. Cette propriété est vérifiée lorsque
+ $$
+c^2 = v_\vphi v_g = \frac{\omega}{k}\dd{\omega}{k} = \dd{\omega^2}{k^2},
+ $$
+ i.e. quand $\omega^2 = c^2k^2 + \cte$ où $\cte$ est homogène à une pulsation au carré. Lorsque $\cte > 0$, on peut écrire $\cte = \omega_p^2$ et on obtient la relation de dispersion du plasma. Lorsque $\cte<0$, on peut écrire $\cte = -\omega_0^2$ et alors $k = c \sqrt{\omega^2 + \omega_0^2}$ est toujours réel.
+}
+\item Deux trains d'ondes de longueurs d'onde $\lambda_1$ et $\lambda_2$ sont émis au même instant par un objet stellaire situé à une distance $L$. En supposant $K^2\lambda_1^2$ et $K^2\lambda_2^2\ll 1$, montrer que ces signaux sont reçus avec un décalage $\Delta t=t_2-t_1$ à déterminer en fonction de $L,K,c,\lambda_1$ et $\lambda_2$.
+\sol{
+On suppose $K^2\ll k^2$ pour les deux trains d'ondes, donc $v_g = \frac{c}{\sqrt{1+(\frac{K}{k})^2}} \simeq c $ : on est dans le régime faiblement dispersif. Le décalage dans les instants de réception est donné au premier ordre non nul par
+$$
+\Delta t = t_2-t_1 = \frac{L}{v_{g,2}} - \frac{L}{v_{g,1}} = \frac{L}{c}\left(\sqrt{1+(\frac{K}{k_2})^2} - \sqrt{1+(\frac{K}{k_1})^2}\right) \simeq  \frac{LK^2}{2c} \left(\frac{1}{k_2^2} - \frac{1}{k_1^2}\right)
+= \frac{LK^2}{8\pi^2 c}(\lambda_2^2-\lambda_1^2).
+$$
+}
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC]{Propagation de l'énergie dans un plasma peu dense}
+On considère un plasma peu dense contenant $n$ électrons par unité de volume et on étudie la propagation d'une OPPH selon les $z$ croissants de pulsation $\omega>\omega_{\rm{p}}$ et polarisée suivant l'axe $(Ox)$.
+\begin{quest}
+\item Donner l'expression des champs électrique et magnétique et du vecteur de Poynting.
+\item Calculer la densité volumique d'énergie électromagnétique et d'énergie cinétique des électrons.
+\item En déduire la vitesse de propagation de l'énergie, et la comparer à la vitesse de groupe.
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][3][TD]{Équation de propagation dans un métal}
+  \Notions{\item Onde électromagnétique dans un métal \task Relation de dispersion}
+  On se propose de déterminer l'équation de propagation générale d'une onde électromagnétique dans un conducteur ohmique, sans approximation, par deux méthodes. On notera $\sigma_0$ la conductivité électrique en régime continu et $\tau$ le temps typique de collision.
+  \begin{quest}
+    \item Rappeler la loi d'Ohm généralisée en notation complexe et déterminer la relation de dispersion des OPPH généralisées en s'aidant des équations de Maxwell. À l'aide de manipulations algébriques et en passant aux notations réelles, en déduire l'équation de propagation.
+    \sol{
+      La relation de dispersion s'écrit 
+      $$
+      \underline{k}^2=\frac{\omega^2}{c^2}\left(1-\frac{i\udl{\sigma}}{\omega\varepsilon_0}\right) = \frac{\omega^2}{c^2}\left(1-i\frac{\sigma_0}{\omega\varepsilon_0(1+i\omega \tau)}\right) \Rar \udl{k}^2+i\omega \tau \udl{k}^2  = \frac{\omega^2}{c^2} + \frac{i\omega^3 \tau}{c^2}  - i\mu_0 \sigma_0 \omega.
+      $$
+      En multipliant par $\udl{\E}$ et en passant aux notations réelles, on trouve 
+      \eqbox{
+      \Delta \E + \tau  \dr{}{t} \Delta\E - \frac{1}{c^2} \ddr{\E}{t} - \frac{\tau}{c^2}\drm{\E}{t}{3} - \mu_0 \sigma_0 \dr{\E}{t} = \Vec{0}.
+      }
+    }
+    \item Sans passer par la notation complexe, déterminer la loi constitutive qui lie la densité de courant $\j$ et le champ électrique $\E$ dans un conducteur ohmique en régime variable. À l'aide des équations de Maxwell, en déduire l'équation de propagation.
+  \end{quest}
+  \end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][2][TD]{Modèle du plasma dilué}
+  \Notions{\item Onde électromagnétique dans les plasmas \task Régime haute fréquence}
+  Nous revenons sur les hypothèses du modèle du plasma dilué. On considère une OPPH généralisée polarisée rectilignement se propageant suivant l'axe $(Oz)$ dans un plasma dilué, caractérisée par son champ électrique complexe $\udl{\E}=E_0 \,e^{i(\omega t - \udl{k} z)} \ex$. On suppose la pulsation $\omega$ supérieure à la pulsation plasma $\omega_p$, de sorte que le vecteur d'onde $\udl{k}=\textstyle\frac{1}{c}\sqrt{\omega^2-\omega_p^2}$ est réel.
+  \begin{quest}
+    \item	Les collisions entre les électrons et les ions du plasma de sont caractérisée par une durée typique entre deux collisions $\tau$. Rappeler l'expression de la force phénoménologique de friction $\vv{F}$ subie par un électron de charge $-e$ et de masse $m$. La comparer au produit masse fois accélération d'un électron. En déduire une condition sur la fréquence $\omega$ pour que le modèle du plasma dilué soit valide.
+    \item Déterminer le champ magnétique complexe $\udl{\B}$. En déduire l'expression de la composante magnétique de la force de Lorentz. À quelle condition sur la vitesse $v$ des électrons peut-on négliger cette force devant la composante électrique de la force de Lorentz ?
+    \item Dans l'approximation du continu, on décrit l'ensemble des électrons libres par un fluide de champ de vitesse eulérien $\Vec{v}(M,t)$. Décomposer l'accélération particulaire $\Dt{\Vec{v}}$ en un terme local et un terme convectif. Par une analyse en ordre de grandeur, montrer que le terme convectif est négligeable devant le terme local si la condition sur $v$ de la question précédente est vérifiée.
+  \end{quest} 
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{exo}[PC][3][TD]{Effet de peau dans un fil électrique}
+  \Notions{\item Effet de peau \task Géométrie d'un conducteur}
+  On considère un fil cylindrique de rayon $R$, d'axe $(Oz)$, constitué d'un conducteur ohmique de conductivité $\sigma_0$ en régime continu, et de permittivité $\varepsilon_0$. On étudie le conducteur dans l'ARQS en régime harmonique à la pulsation $\omega$. On cherche une solution complexe pour le champ électrique de la forme $\udl{\E}(r,t) = \udl{E}(r) e^{i\omega t} \ez$ en coordonnées cylindriques $(r,\theta,z)$.
+  \begin{quest}
+    \item	Déterminer l'équation différentielle vérifiée par la fonction $\udl{E}(r)$. On introduira une distance caractéristique $\delta$ à exprimer. On rappelle l'expression du Laplacien d'une fonction $f(r)$ dans les coordonnées cylindriques,
+    \begin{equation}
+      \Delta f = \ddd{f}{r} + \frac{1}{r} \dr{f}{r}.
+    \end{equation}
+     \sol{
+     Le Laplacien d'une fonction $f(r)$ dans les coordonnées cylindriques est donné par
+     $$
+     \Delta f = \frac{1}{r} \dr{}{r}\left(r \dr{f}{r}\right).
+     $$
+     En injectant l'expression de $\udl{\E}$ dans l'équation de propagation, on trouve
+     $$
+     \frac{1}{r} \dr{}{r}\left(r \dr{\udl{E}}{r}\right) + i\omega\mu_0\sigma_0 \udl{E} = 0.
+     $$
+     En posant $\delta = \sqrt{\frac{2}{\omega\mu_0\sigma_0}}$, on trouve l'équation différentielle suivante pour $\udl{E}$ :
+     $$
+     \frac{1}{r} \dr{}{r}\left(r \dr{\udl{E}}{r}\right) + (1+i)\frac{\udl{E}}{\delta^2} = 0.
+     $$
+    }
+    \item Résoudre cette équation différentielle dans l'hypothèse où $\delta \ll R$. En déduire l'expression du champ réel $E(r)$ en fonction de l'amplitude $E_0$ du champ sur le bord du fil, en $r=R$.
+    \item Calculer l'intensité électrique $I$ circulant à travers le câble, et en déduire la résistance linéique $R_\ell$ du fil. Commenter sa dépendance en la pulsation $\omega$.
+  \end{quest}
+\end{exo}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC]{Effet Faraday}
+On considère dans tout le problème un plasma d'ions supposés immobiles et d'électrons de charge $-e$ de masse $m$ et de densité volumique $n_0$.
+\begin{quest}
+\item \textbf{Pulsation plasma.} On suppose que la densité volumique des électrons n'est pas uniforme et s'écrit $n(\vv{r})=n_0+\delta n$ avec $\delta n\ll n_0$. Un champ électrique $\vv{E}(\vv{r},t)$ règne dans le plasma.
+\begin{enumerate}
+\item En utilisant l'équation de Maxwell-Gauss, l'équation de conservation de la charge et l'équation du mouvement d'un électron placé dans le champ électrique $\vv{E}$, déterminer l'équation différentielle vérifiée par $\delta n$.
+\item En déduire que si $\vv{E}$ est sinusoïdal de pulsation $\omega\neq\omega_{\rm{p}}=\sqrt{\frac{n_0e^2}{m\varepsilon_0}}$, la densité volumique d'électrons reste égale à $n_0$ en régime forcé.
+\end{enumerate}
+\item \textbf{Pulsation cyclotron.} Montrer que le mouvement d'un électron dans un champ magnétique $\vv{B}_0$ uniforme dans le plan orthogonal à $\vv{B}_0$ est circulaire de pulsation $\omega_{\rm{c}}=\frac{eB_0}{m}$.
+\textit{Dans la suite, une onde électromagnétique plane se propage dans un plasma. Il règle de plus un champ magnétique statique $\vv{B_0}$ dans ce plasma de direction identique à la direction de propagation de l'onde notée $\vv{e_z}$. Dans l'équation du mouvement d'un électron, on tiendra uniquement compte du champ électrique $\vv{E}$ de l'onde et du champ magnétique $\vv{B_0}$ uniforme.}
+\item \textbf{Densité de courant dans un plasma.}
+\begin{enumerate}
+\item En utilisant l'équation du mouvement d'un électron, donner l'équation différentielle vérifiée par la densité de courant $\vv{j}$ dans le plasma en fonction de $\vv{E}$ et des pulsations plasma et cyclotron.
+\item L'onde est supposée monochromatique de vecteur d'onde $\vv{k}=k\vv{e_z}$ et de pulsation $\omega$. En utilisant les équations de Maxwell en notation complexe, donner une deuxième équation reliant $\vv{j}$ à $\vv{E}$. On posera $\vv{E}=\vv{E_0}\,\e^{i(\omega t-\vv{k}\cdot\vv{r})}$.
+\item En déduire que $\vv{E}$ vérifie une équation du type $M\vv{E}=iN\vv{e_z}\pv\vv{E}$ où $M$ et $N$ sont des expressions réelles faisant intervenir $k,\omega,\omega_{\rm{p}},\omega$ et $c$.
+\end{enumerate}
+\item \textbf{Ondes circulaires droites et gauches.}
+Montrer qu'en notation complexe, une onde circulaire droite ou gauche se propageant suivant $(Oz)$ vérifie $\vv{E}=\pm i\vv{e_z}\pv\vv{E}$.
+\item \textbf{Équation de dispersion.}
+Déduire de ce qui précède que l'équation de dispersion pour des ondes circulaires s'écrit
+\begin{equation*}
+k^2=\frac{\omega^2}{c^2}-\frac{\omega_{\rm{p}}^2}{c^2\left(1\pm\frac{\omega_{\rm{c}}}{\omega}\right)}
+\end{equation*}
+\item \textbf{Domaines de propagation.}
+Tracer l'allure de $k$ en fonction de $\omega$ et préciser les domaines de fréquences pour lesquels une onde peut se propager. Faire l'application numérique avec $n_0=\SI{5e10}{m^{-3}}$, $m=\SI{9,1e-31}{kg}$, $e=\SI{1,6e-19}{C}$, $\varepsilon_0\simeq\SI{8,85e-12}{F.m^{-1}}$ et $B_0=\SI{4e-5}{T}$.
+\item \textbf{Propagation d'une onde polarisée rectilignement.} On se place dans le domaine de propagation des deux types d'ondes circulaires.
+\begin{enumerate}
+\item Quelle polarisation circulaire (gauche ou droite) a-t-elle la vitesse de phase la plus grande ?
+\item En déduire l'évolution au cours de sa propagation d'une onde de polarisation rectiligne.
+\end{enumerate}
+\item \textbf{Réflexion sur un plasma.}
+Une onde électromagnétique est émise dans la basse atmosphère (assimilée au vide) vers l'ionosphère (assimilée au plasma précédent). Discuter qualitativement des ondes réfléchies et transmises au niveau de l'interface entre les deux milieux.
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC]{Oscillations plasma}
+On considère dans un plasma constitué d'ions supposés immobiles et d'électrons mobiles de charge $-e$ de masse $m$. La densité volumique de charge des électrons vaut $\rho_0 = -e n_0$  à l’équilibre ; celle des ions vaut $-\rho_0$ de sorte à assurer la neutralité électrique. Il règne un champ électrique $\E(\Vec{r},t)$ dans le plasma.
+\begin{quest}
+\item En écrivant l'équation du mouvement d'un électron, déterminer la relation constitutive du plasma, qui relie la densité de courant $\j$ au champ $\Vec{E}$.
+\item On étudie une perturbation de la densité volumique de charge  $\rho(\Vec{r},t)=\rho_0+\delta \rho(\Vec{r},t)$ avec $\delta \rho \ll \rho_0$.
+ En utilisant l'équation de Maxwell-Gauss, l'équation de conservation de la charge,  déterminer l'équation différentielle vérifiée par $\delta \rho$.
+ \item En déduire que $\delta \rho$ oscille dans le temps à la pulsation plasma $\omega_{\rm{p}}=\sqrt{\frac{n_0e^2}{m\varepsilon_0}}$.
+\item On envoie une OemPPH $\udl{\E} = E_0 e^{i(\omega t - k z)}\ex$ de pulsation $\omega\neq\omega_{\rm{p}}$. Montrer que la charge volumique des électrons reste égale à $\rho_0$ dans ce régime forcé.
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][colle]{Onde électromagnétique dans un métal}
+  On s'intéresse au déplacement des électrons du cuivre soumis à une onde électromagnétique dont le champ électrique est de la forme $\Vec{E}(z, t)=\Vec{E_0}\, e^{j(\omega t-\underline{k} z)}$. On pose $m$ la masse d'un électron, $n_e$ le nombre d'électrons par unité de volume et $\vec{v}$ leur vitesse. Ils sont soumis à une force de frottements $\F=-\gamma m \vec{v}$ avec $\gamma \approx 2 \pi \cdot 10^{14}$ SI pour le cuivre.
+  \begin{quest}
+    \item   Donner la dimension de $\gamma$. À quelle vitesse doit-on comparer la vitesse des électrons dans le métal $v_e$ pour pouvoir négliger la force magnétique dans la force de Lorentz? Donner l'équation différentielle vérifiée par $\vec{v}$.
+\item Exprimer le vecteur densité de courant $\vec{j}$. En déduire l'équation différentielle vérifiée par $\vec{j}$, puis l'expression de la conductivité complexe $\underline{\sigma}$ (l'exprimer en fonction de $\sigma_s:$ valeur en régime stationnaire).
+\item Donner les équations de Maxwell pour le champ électromagnétique dans un métal. Trouver l'équation de propagation vérifiée par le champ électrique.
+\item Trouver la relation de dispersion, et la simplifier à basse fréquence. On donne la conductivité en ordre de grandeur dans le cas du cuivre à $50 \mathrm{~Hz}$. Comment caractériser l'onde dans le métal? Exprimer l'indice de réfraction.
+\item Calculer la puissance volumique moyenne cédée par l'onde au métal à une cote $z$ donnée.
+  \end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][2][colle]{Étude simplifiée de l'effet Faraday}
+On considère un plasma dilué constitué d'ions supposés immobiles et d'électrons de charge $-e$, de masse $m$, et de densité particulaire $n$. On impose un champ magnétostatique uniforme $\vv{B_0}=B_0\,\ez$ dans le plasma.
+\begin{quest}
+\item On admet que le mouvement d'un électron dans le champ magnétostatique uniforme est circulaire uniforme. Montrer que le mouvement des électrons dans ce plasma se fait à la pulsation cyclotron
+\begin{equation}
+\omega_{\rm{c}}=\frac{eB_0}{m}.
+\end{equation}
+\end{quest}
+On envoie  maintenant dans ce plasma une onde électromagnétique $(\E_1,\B_1)$ dans le plasma. On admet que la force de Lorentz magnétique exercée par $\B_1$ est négligeable, mais pas celle exercée par $\B_0$.
+\begin{quest}
+\item Déterminer l'équation différentielle vérifiée par la densité de courant électrique ${\j}$ dans le plasma en fonction du champ électrique $\vv{E}_1$, de la pulsation cyclotron $\omega_c$, et de la pulsation plasma $\omega_p$, à définir.
+\item L'onde est supposée être une OPPH généralisée se propageant dans la direction  du champ magnétostatique, d'expression complexe $\vv{\udl{E}}_1=\vv{\udl{E}_0}\,\e^{i(\omega t-\udl{k} z)}$. En utilisant les équations de Maxwell, donner une deuxième équation reliant ${\udl{\j}}$ au champ électrique $\vv{\udl{E}}_1$.
+\item En déduire que $\vv{\udl{E}}$ vérifie une équation du type $\alpha\vv{\udl{E}}=i\beta\vv{e_z}\pv\vv{\udl{E}}$ où $\alpha$ et $\beta$ sont des expressions réelles faisant intervenir $k,\omega,\omega_{\rm{p}},\omega_{\rm c}$ et $c$.
+\item
+On suppose que l'onde électromagnétique est polarisée circulairement droite.
+En déduire que la relation de dispersion pour des ondes circulaires droite (signe $+$) et gauche (signe $-$) s'écrit
+\begin{equation}
+\udl{k}^2=\frac{\omega^2}{c^2}-\frac{\omega_{\rm{p}}^2}{c^2\left(1\pm\frac{\omega_{\rm{c}}}{\omega}\right)}.
+\end{equation}
+Étudier cette relation de dispersion et déterminer la nature des ondes qui se propagent dans le plasma.
+% \item \textbf{Domaines de propagation.}
+% Tracer l'allure de $k$ en fonction de $\omega$ et préciser les domaines de fréquences pour lesquels une onde peut se propager. Faire l'application numérique avec $n_0=\SI{5e10}{m^{-3}}$, $m=\SI{9,1e-31}{kg}$, $e=\SI{1,6e-19}{C}$, $\varepsilon_0\simeq\SI{8,85e-12}{F.m^{-1}}$ et $B_0=\SI{4e-5}{T}$.
+% \item \textbf{Propagation d'une onde polarisée rectilignement.} On se place dans le domaine de propagation des deux types d'ondes circulaires.
+% \item Quelle polarisation circulaire (gauche ou droite) a-t-elle la vitesse de phase la plus grande ?
+% \item En déduire l'évolution au cours de sa propagation d'une onde de polarisation rectiligne.
+% \item \textbf{Réflexion sur un plasma.}
+% Une onde électromagnétique est émise dans la basse atmosphère (assimilée au vide) vers l'ionosphère (assimilée au plasma précédent). Discuter qualitativement des ondes réfléchies et transmises au niveau de l'interface entre les deux milieux.
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PSI]{Amortissement visqueux des ondes acoustiques}
+On considère un gaz de masse volumique $\mu$ et de viscosité dynamique $\eta$. Une onde acoustique se propage dans le gaz : les particules se déplace dans la direction $x$ à une vitesse $\vec{v}=v(x,t)\,\vec{e_{x}}$. Soit $p(x,t)$ la surpression acoustique et $\chi$ la compressibilité isentropique.
+
+ \begin{quest}
+ \item Rappeler le cadre des approximations acoustiques. Écrire les trois équations de l'acoustique : équation d'Euler, conservation de la masse et expression du coefficient de compressibilité. En déduire l’expression de la célérité $c$ des ondes.
+
+
+  \item On prend en compte la viscosité du gaz. On admet que la viscosité modifie l’équation d’Euler en ajoutant une force volumique
+  \begin{equation}
+  \vec{f_v} = \eta \dfrac{\d^2 v}{\d x^2} \ex.
+  \end{equation}
+Établir la nouvelle équation de propagation de la surpression $p$.
+  \item Déterminer la relation de dispersion. Déterminer $k$ au premier ordre en $\omega\tau$, où $\tau=\eta/\mu c^{2}$.
+  \item Déterminer la distance typique  d'amortissement $d$ et la vitesse de phase $v_\phi$ des ondes. Application numérique pour $f=1\,\text{kHz}$.
+
+
+ \end{quest}
+
+  $\begin{array}{lll}
+\textsc{Données :}
+& \text{masse volumique} & :  \mu = \SI{1.3}{kg.m^{-3}} \\
+& \text{célérité du son} & : c = \SI{340}{m.s^{-1}} \\
+& \text{viscosité dynamique} & : \eta=\SI{18.2e-6}{N.s.m^{-2}}
+\end{array}
+$
+
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][3][colle]{Onde d'Alfvén dans un plasma dense}
+  \Notions{\item Conducteur ohmique \task Écoulement parfait}
+ Un plasma dense est assimilé à un fluide conducteur dont l'écoulement est parfait et incompressible, de masse volumique $\mu$. Il est initialement au repos et placé dans un champ magnétique uniforme et stationnaire $\B_0 = B_0 \,\ez$. Une perturbation dans le plasma engendre un champ magnétique additionnel $\B_1=B_1(z,t)\,\ex$ avec $B_1 \ll B_0$, et un champ des vitesses $\Vec{v}=v_1(z,t)\,\ex$ du fluide, tous deux orthogonaux à $\Vec{B_0}$. On note $\B = \B_0 + \B_1$ le champ magnétique total. On suppose que ces perturbations, appelées ondes l'Alfvén, sont suffisamment lentes pour pouvoir se placer dans l'ARQS : on peut donc négliger le courant de déplacement devant celui de conduction, et le milieu est caractérisé par sa conductivité réelle constante $\sigma$. On admet que dans un conducteur en mouvement, le vecteur densité de courant~$\j$ est donné par la loi d'Ohm généralisée 
+ \begin{equation}
+ \j = \sigma(\Vec{E}+\Vec{v}\wedge \Vec{B}).
+\end{equation}
+On commence par établir l'équation électromagnétique.
+    \begin{quest}
+        \item 
+        À l'aide d'une équation de Maxwell, déterminer l'expression du champ électrique $\E$ en fonction uniquement du champ des vitesses $\Vec{v}$ et du champ magnétique total $\B$.
+
+        \sol{
+          L'équation de Maxwell-Ampère donne
+       $$ \Vec{E} = \dfrac{1}{\mu_0 \sigma} \rot{\Vec{B}}  - \Vec{v} \wedge \Vec{B}.$$
+        }
+
+
+        \item À partir d'une autre équation de Maxwell, déterminer $\frac{\partial \Vec{B}}{\partial t}$. Que valent $\Dive{\Vec{B}}$ et $\Dive{\,\Vec{v}}$ ? Linéariser l'équation obtenu à l'ordre $1$ en les perturbations $B_1$ et $v_1$. En déduire que la perturbation du champ magnétique vérifie l'équation
+        \begin{equation}
+        \dfrac{\partial B_1}{\partial t} = \dfrac{1}{\mu_0 \sigma} \dfrac{\partial^2 B_1}{\partial z^2} + B_0 \dfrac{\partial v_1}{\partial z}.
+        \end{equation}
+        \sol{
+        L'équation de Maxwell-Faraday donne
+        $$
+        \dfrac{\partial \Vec{B}}{\partial t} = -\rot{\E} = -\dfrac{1}{\mu_0 \sigma} \rot{(\rot{\Vec{B}})}  + \rot{(\Vec{v}\wedge \Vec{B})} = \Deltav{B} + (\B \cdot \Grad{}) \Vec{v} - (\Vec{v} \cdot \Grad) \B,
+        $$
+        où l'on a utilisé l'équation de Maxwell-Thompson $\dive \B = 0$ et le caractère incompressible de l'écoulement $\Dive{\,\Vec{v}} = 0$. En linéarisant à l'ordre $1$ en les perturbations $B_1$ et $v_1$, on obtient bien l'équation donnée.
+        }
+\textsc{Données} :   $
+\Rot{(\Vec{p}\wedge\Vec{q})} =  \Vec{p} \,(\Dive{\,\Vec{q}})- \Vec{q}\, (\Dive{\,\Vec{p}}) + (\Vec{q}\cdot \Grad{}) \Vec{p} - (\Vec{p}\cdot \Grad{}) \Vec{q}.
+$
+\end{quest}
+On détermine maintenant l'équation de mécanique des fluides.
+\begin{quest}
+           \item Justifier l'expression de la force magnétique de Lorentz volumique
+          %  \begin{equation}
+            $
+           \Vec{f} = \j \wedge \Vec{B}.
+           $
+          %  \end{equation}
+           À partir de l'équation de Maxwell-Ampère, déterminer son expression exacte en fonction de $B_1$ et $B_0$ uniquement.
+
+           \sol{
+           $$\Vec{f_{\rm m}} =  \frac{\rot \B}{\mu_0} \pv \B = \dfrac{B_0}{\mu_0}  \dfrac{\partial B_1}{\partial z} \ex - \dfrac{B_1}{\mu_0} \dfrac{\partial B_1}{\partial z}  \ez.$$
+           }
+
+           \item Écrire l'équation d'Euler gouvernant la vitesse du fluide, en décomposant la pression totale comme $p=p_0 + p_1$, où $p_1(z,t) \ll p_0$ est la surpression dû au passage de la perturbation. Projeter cette équation selon les directions $z$ et~$x$. Interpréter la projection de cette équation suivant~$z$. Quelle équation sur la vitesse $v_1$ obtient-t-on selon $x$ ?
+
+           \sol{
+On trouve
+           $$\dfrac{\partial v_1}{\partial t} = \dfrac{B_0}{\mu_0} \dfrac{\partial B_1}{\partial z}$$ selon $x$, et
+           $$
+           p + \dfrac{B_1^2}{2\mu_0} = \text{Cte}
+           $$
+           selon z. Il s'agit d'une équation de Bernoulli généralisée. La grandeur $\frac{B_1^2}{2\mu_0}$ est une pression magnétique.
+           }
+
+           \item Montrer que l'équation régissant l'évolution de $B_1$ est 
+           \begin{equation}
+            \dfrac{\partial^2 B_1}{\partial z^2} - \dfrac{\mu_0 \mu}{B_0^2} \dfrac{\partial^2 B_1}{\partial t^2} + \dfrac{\mu}{\sigma B_0^2} \dfrac{ \partial^3 B_1}{\partial t \partial z^2}  = 0,
+           \end{equation}
+           et déterminer la relation de dispersion associée. Étudier la propagation d'OPPH généralisées dans les limites haute et basse fréquences.
+
+           \sol{
+           
+          %  $$
+          %  \dfrac{\partial^2 b}{\partial z^2} - \dfrac{\mu_0 \rho}{B_0^2} \dfrac{\partial^2 b}{\partial t^2} + \dfrac{\rho}{\sigma B_0^2} \dfrac{ \partial^3 b}{\partial t \partial z^2}  = 0.
+          %  $$
+           }
+
+
+    \end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC]{Oscillations de la densité de charges dans un métal}
+On assimile un métal à un gaz d'électrons libres (électrons de conduction) dans un réseau cristallin d'ions positifs placés dans le vide. Seule l'interaction du champ électromagnétique avec les électrons est pour l'instant considérée, le reste de la matière étant assimilé au vide. Les électrons sont supposés non relativistes, leurs interactions mutuelles sont négligées et les pertes d'énergie par collision avec le réseau sont prises en compte par une force d'amortissement $-\alpha\vv{v}$. La densité électronique est $n_0$ à l'équilibre, sa valeur $n$ hors équilibre reste très proche de $n_0$.
+\begin{quest}
+\item Établir l'équation différentielle liant le vecteur densité volumique de courant $\vv{j}$ et le champ électrique $\vv{E}$.
+\item En déduire l'équation régissant l'évolution de la densité volumique de charge $\rho$ au sein du milieu.
+\item Un milieu métallique est initialement perturbé: sa répartition de charges initiale fausse localement sa neutralité électrique globale. Quel ordre de grandeur peut-on prévoir pour le temps de retour à la neutralité électrique du milieu métallique ?
+\item Montrer que si on néglige les forces d'amortissement, il peut exister dans le gaz d'électron un mode propre d'oscillations de charges, de pulsation $\omega_{\rm{p}}$ à préciser.
+\item Calculer $\omega_{\rm{p}}$ pour l'aluminium (en considérant que tous les électrons de valence d'un atome deviennent électrons de conduction) avec la concentration atomique $C_{\rm{Al}}=\SI{6,02e28}{m^{-3}}$ et $Z_{\rm{Al}}=13$. Situer la valeur dans le spectre électromagnétique.
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC]{Ondes longitudinales et transverses dans un plasma}
+Dans un plasma de densité électronique $n_0$ à l'équilibre, on s'intéresse à la propagation d'une onde plane progressive monochromatique électromagnétique dont le champ électrique est noté $\underline{\vv{E}}(\vv{r},t)=\underline{\vv{E}}_0\,\e^{i(\omega t-\underline{\vv{k}}\cdot\vv{r})}$.
+\begin{quest}
+\item Écrire l'équation du mouvement des charges, non relativistes, les collisions au sein du plasma étant négligées. Pourquoi peut-on négliger le mouvement des ions ?
+\item Établir, en régime sinusoïdal établi, l'expression du vecteur densité de courant électrique en fonction du champ de l'onde. Quelle est la \guill{conductivité} du plasma ?
+\item Expliciter la relation liant $\underline{\vv{k}},\omega$ et $\underline{\vv{E}}$ imposée par l'équation de propagation de l'onde. On séparera les composantes longitudinale $\underline{\vv{E}}_{\parallel}$ et transverse $\underline{\vv{E}}_{\perp}$.
+\item Que peut-on dire des ondes longitudinales susceptibles d'exister au sein du plasma ?
+\item Quelle est la relation de dispersion caractérisant la propagation des ondes transverses ?
+\item Quelle serait l'influence des phénomènes de collision, modélisés par l'ajout d'une force de dissipation d'énergie (que l'on proposera) dans l'équation du mouvement des charges, d'une part sur les ondes longitudinales, d'autre part sur les ondes transverses ?
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][2][TD]{Couche anti-reflet}
+À la surface d'un verre d'indice $n$ on dépose une couche d'épaisseur $e$ et d'indice $N$ de telle sorte que l'espace est divisé en 3 domaines: l'air ($x<0$) d'indice 1, la couche $(0<x<e$) d'indice $N$ et le verre $(x>e)$ d'indice $n$. Une OPPH de pulsation $\omega$ polarisée rectilignement sur $\vv{e_z}$ arrive dans l'air sous incidence normale et on cherche les conditions pour qu'il n'y ait pas d'onde réfléchie dans l'air.
+ \begin{quest}
+\item Donner en notation complexe la forme attendue du champ électrique dans chaque région.
+\sol{
+On suppose qu'il n'y a pas d'onde réfléchie dans l'air.\\
+Dans l'air : champ incident $\udl{\E_0}=\udl{E_{i}} e^{i(\omega t - k_0 x)}\ez$.\\
+Dans la couche : superposition des champs transmis et réfléchis : $\udl{\E_1}=\udl{E_{t1}} e^{i(\omega t - k_1 x)}\ez + \udl{E_{r1}} e^{i(\omega t + k_1 x)}\ez$.\\
+Dans le verre : onde transmise uniquement : $\udl{\E_2}=\udl{E_{t}} e^{i(\omega t - k_2 (x-e))}\ez$.\\
+On a $k_0 = \frac{\omega}{c}$, $k_1 = N \frac{\omega}{c}$ et $k_2 = n \frac{\omega}{c}$.
+}
+\item En déduire la forme du champ magnétique dans les trois milieux.
+\sol{
+Relation de structure pour une OPPH : $\Vec{B} = \frac{\Vec{k}}{\omega} \pv \E = \frac{n}{c} \Vec{u} \pv \E$ avec $\Vec{u} = \pm \ex$ suivant la direction de propagation. Attention à bien appliquer cette formule sur chaque OPPH séparément (et pas directement sur $\udl{\E_1}$).
+}
+\item Établir 4 relations entre les amplitudes du champ électrique dans les différentes régions, puis en déduire que
+\begin{equation*}
+\frac{(N+1)(N-n)}{(N-1)(N+n)}=\e^{i2Nk_{0}e},
+\end{equation*}
+où $k_{0}$ est le module du vecteur d'onde dans le vide.
+\sol{
+On utilise la continuité des champs électrique et magnétique à chaque interface. On repère l'interface air-couche en $x=0$. On obtient alors
+$$
+\begin{cases}
+\udl{E_{i}} = \udl{E_{t1}} + \udl{E_{r1}} \\
+\udl{E_{i}} = N(\udl{E_{t1}} - \udl{E_{r1}}) \\
+\end{cases}\qquad
+\begin{cases}
+\udl{E_{t1}} e^{-i N k_0 e)} + \udl{E_{r1}} e^{+i N k_0 e)} = \udl{E_{t}}\\
+N(\udl{E_{t1}} e^{-i N k_0 e)} - \udl{E_{r1}} e^{+i N k_0 e)}) = n\udl{E_{t}} \\
+\end{cases}
+$$
+Le premier système donne $\udl{E_{t1}}=\frac{N+1}{2N}\udl{E_{i}}$ et $\udl{E_{r1}}=\frac{N-1}{2N}\udl{E_{i}}$. On en déduit
+$$
+\begin{cases}
+\udl{E_{i}}(\frac{N+1}{2N} e^{-i N k_0 e)} + \frac{N-1}{2N} e^{+i N k_0 e)}) = \udl{E_{t}}\\
+\udl{E_{i}}(\frac{N+1}{2} e^{-i N k_0 e)} - \frac{N-1}{2} e^{+i N k_0 e)}) = n\udl{E_{t}} \\
+\end{cases}
+$$
+Or la conservation de l'énergie impose $\udl{E_{i}} = \udl{E_{t}}$, et donc on trouve la relation attendue.
+}
+\item En déduire les valeurs qu'il faut choisir pour $e$ et $N$. Comment expliquer qu'il subsiste des reflets violet et rouge sur un objectif ainsi traité lorsqu'on l'observe à la lumière du Soleil ?
+\sol{
+En l'absence d'absorption, $\frac{(N+1)(N-n)}{(N-1)(N+n)}$ est réel et donc $\e^{i2Nk_{0}e}=\pm 1$, soit $2Nk_0 e = p\pi$ avec $p$ entier, et donc
+\eqbox{eN = p \frac{\lambda_0}{4}.}
+Cette condition dépend de la longueur d'onde $\lambda_0$ (et dans une moindre mesure, l'indice optique $N$ aussi). En fonction du signe de $\e^{i2Nk_{0}e}$, on trouve alors deux valeurs possibles pour $N$ (l'une supérieure à $n$ et l'autre inférieure) puis pour $e$, données par l'équation ci-dessus.
+}
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{exo}[PC][3][python]{Propagation d'un paquet d'onde}
+% On souhaite étudier la propagation d'une onde au cours du temps. Une onde plane complexe quelconque $\udl{s}(x,t)$ peut se mettre sous la forme
+% $$
+% \udl{s}(x,t) =\int_{-\infty}^{+\infty}\udl{A}(k)\e^{i(\omega t-kx)}\d k,
+% $$
+% où $\udl{A}(k)$ désigne l'amplitude spectrale en vecteur d'onde $k$. Cette fonction est supposée être centrée en $k_0$ et de largeur typique $\Delta k$. Nous prendrons à titre d'exemple une fonction gaussienne réelle,
+% $$
+% \udl{A}(k) = A(k) = A_0 e^{-(k-k_0)^2/\Delta k^2}.
+% $$
+% \begin{quest}
+%   \item  Compléter le script suivant pour définir un tableau \texttt{numpy} représentant la fonction $A(k)$ (on prendra $A_0=1$).
+%   \inputminted{python}{./Code/Paquet1.py}
+%   \item Quelle est l'expression de $\udl{s}(x,t=0)$ en fonction de $A(k)$ ?  Compléter le script suivant pour définir une fonction \texttt{s\_ini} que renvoie tableau \texttt{numpy} représentant la fonction $s(x,t=0)$.
+%   \inputminted{python}{./Code/Paquet2.py}
+%   \item On suppose maintenant que $\Delta k \ll k_0$, de sorte qu'on puisse approximer la relation de dispersion comme $\omega(k) \simeq \omega_0 + (k-k_0)v_g$, où on rappellera le nom de la grandeur $v_g$. Montrer alors que le paquet d'onde s'écrit
+%   $$
+%   \udl{s}(x,t)
+%    \simeq \e^{i(\omega_0 t-k_0 x)}\int_{-\frac{\Delta k}{2}}^{+\frac{\Delta k}{2}}A(k + k_0)\e^{-i k (x-v_g t )}\d k.
+%   $$
+%   Commenter la forme de cette fonction, et justifier que dans cette approximation un paquet d'onde ne se déforme pas au cours de sa propagation.
+%   \item On considère enfin que $\Delta k$ n'est pas petit devant $k_0$, de sorte que la relation de dispersion ne peut plus être linéarisée. Pour l'exemple, on utilise ici la relation de dispersion $\omega(k)$ du plasma. Compléter le script suivant pour définir une fonction \texttt{s\_temps} qui renvoie un tableau \texttt{numpy} représentant la fonction $s(x,t)$. Afficher le paquet d'onde pour $\Delta k = 3$ à différents instants, et observer la déformation du paquet d'onde.
+%   \inputminted{python}{./Code/Paquet3.py}
+%   \sol{
+%   \inputminted{python}{./Code/Paquet_sol.py}
+%   }
+% \end{quest}
+% \end{exo}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

@@ -1,0 +1,372 @@
+% displayname : Photorécepteurs
+\input{TP.sty}
+\begin{document}
+\Entete[TP][
+\item Réaliser un capteur optique et comprendre l’effet du circuit de conditionnement.
+\item Démontrer la linéarité et étudier la réponse dynamique d’un capteur optique.
+% \item  d’un capteur optique.
+][
+\item TP ALI PCSI
+\item \refChap{3}{1}
+]{5} % \end \entete
+
+
+
+\matos{
+\item 1 photodiode (composant nu), 1 photorésistance
+\item  1 résistance $\SI{1}{k\Omega}$, 1 résistance $\SI{2.2}{k\Omega}$, 1 résistance $\SI{4.7}{k\Omega}$, 1 résistance $\SI{47}{k\Omega}$, 1 résistance $\SI{10}{k\Omega}$.
+\item 1 diode et 1 DEL.
+\item 1 lampe blanche (QI) ronde sans ventilateur.
+\item 1 luxmètre.
+\item 1 GBF, 1 générateur de tension continue, 1 oscilloscope, 1 carte d’acquisition Syzam pour \texttt{LatisPro}.
+}
+
+% \Enonce{
+Un capteur optique, ou \imp{photorécepteur}, sert à mesurer un flux lumineux, ou à capter une image. On se restreint dans ce TP aux capteurs de flux lumineux.
+Nous étudions la caractéristique courant-tension d’une \imp{photodiode} intégré dans un circuit électronique de conditionnement, et montrons que la réponse de la photodiode est linéaire. Nous mesurons ensuite le temps de réponse d'une \imp{photorésistance}. Enfin nous proposons une application des photorécepteurs en tant que détecteur d’obscurité.
+\begin{danger}
+    Dans ce TP, le symbole $I$ désignera une intensité du courant électrique et $\Phi$ un flux lumineux (intensité lumineuse).
+\end{danger}
+% }
+
+\section{Caractéristique d'une photodiode}
+
+\subsection{Description d’une photodiode}
+
+La photodiode est un récepteur \imp{photonique} : l’absorption d’un photon (un grain de lumière) fait passer un porteur de charge (un électron ou un trou) des matériaux semi-conduteur formant la jonction PN
+dans un état excité, donnant lieu à un courant dépendant du nombre de photons reçus.
+
+
+\begin{figure}[h!]
+\centering
+\subfigure[]{\label{fig:photod}
+\includegraphics[width=0.12\textwidth]{photodiode.jpg}
+}\hspace{1.5cm}
+\subfigure[]{\label{fig:photod}
+\includegraphics[width=0.12\textwidth]{photodiode_schema.png}
+}
+\caption{(a) Une photodiode possède une cellule photosensible et deux pattes : il s’agit d’un dipôle. (b) Symbole électrique d’une photodiode. La photodiode est un dipôle non symétrique : ces deux pattes ne sont pas équivalentes !}
+\label{fig:photod}
+\end{figure}
+%%%%%%%%%%%%%
+
+On appelle \imp{grandeur photosensible} la
+grandeur électrique (courant ou tension le plus souvent) dont la mesure donne accès au flux lumineux. La photodiode est un dipôle asymétrique similaire à une diode, mais dont l’intensité du courant dépend de l’éclairement, voir \Fig{photod}.
+
+Les propriétés du photorécepteur dépendent autant du circuit électrique (le circuit de conditionnement) dans lequel le capteur est
+intégré que du capteur lui-même. Le circuit de conditionnement permet d’étudier la caractéristique courant-tension de la photodiode et surtout de l’utiliser en tant que capteur optique dans des applications réelles.
+
+
+\subsection{Circuit de conditionnement}
+\label{sec:exp}
+
+\parag{Théorie}
+
+Nous plaçons la photodiode dans le montage optique de la \Fig{opt}. La source lumineuse est une torche laser.
+% Nous plaçons la photodiode dans le montage optique de la \Fig{opt}. La source lumineuse est une lampe quartz-iode (QI, source de lumière blanche).
+% \begin{danger}
+% Toujours utiliser un filtre (anticalorique ou interférentiel) en sortie d’une lampe QI pour empêcher les infrarouges d’abîmer les éléments optiques~!
+% \end{danger}
+Les polariseurs, dont le fonctionnement sera étudié dans un prochain TP, servent à moduler le flux lumineux impactant la photodiode.
+Le circuit électrique que nous proposons sur la \Fig{elec} est dit à résistance de charge. Comme tout dipôle électrique, la diode est déterminé par sa caractéristique courant-tension notée $I_{\rm d}(U)$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[h!]
+\centering
+\subfigure[]{\label{fig:opt}
+\includegraphics[scale=1.2]{montage_optique.pdf}
+}
+% \hspace{1cm}
+\subfigure[]{\label{fig:elec}
+\includegraphics[scale=1.2]{montage_photdiode.pdf}
+}
+\caption{(a) Montage optique. La source lumineuse est une lampe quartz-iode munie d’un filtre (interférentiel) et de deux polariseurs. Ceux-ci servent à moduler le flux lumineux frappant le capteur. (b) Circuit électrique de conditionnement de la photodiode.}
+\label{fig:}
+\end{figure}
+%%%%%%%%%%%%%
+
+
+\begin{quest}
+    \todo {Justifier que le point de fonctionnement $(I,U)$ du circuit est donné par l’intersection de la courbe $I_{\rm d}(U)$ et de la droite de pente $-1/R$ et d'ordonnée $E/R$. Justifier graphiquement que ce point de fonctionnement parcourt la courbe $I_{\rm d}(U)$ lorsqu’on fait varier $E$. }
+\sol{
+    \begin{enumerate}
+        \item La loi d’Ohm impose $E=U+RI$, ce qui impose la relation affine
+        \eqbox{
+        I  = \frac{E}{R}-\frac{U}{R}.
+        }
+    De plus, le courant qui circule dans la photodiode vérifie la caractéristique du composant, 
+    \eqbox{
+        I=I_d(U).
+    }
+    \item 
+    En faisant varier $E$ lentement entre deux valeurs $-E_0$ et $+E_0$, on décrit la caractéristique sur les valeurs de tension $U$ dans l’intervalle entre $-E_0-RI_d(U)$ et   $+E_0-RI_d(U)$. On peut par exemple choisir une tension sinusoïdale de basse fréquence, $E(t) = E_0 \sin(2\pi f t)$ avec $f \sim \SI{1}{Hz}$.
+    \end{enumerate}
+    \begin{fig}[label]
+        \centering
+        \includegraphics[width=0.7\columnwidth]{poinrt_fonct}
+        %\capt{}
+    \end{fig}
+}
+\end{quest}
+
+\parag{Expérience} On souhaite déterminer expérimentalement la caractéristique courant-tension de la photodiode  $I_{\rm d}(U)$.
+\begin{protocole}
+\item Réaliser les montages optique et électrique des \Fig{opt} et \Fig{elec}.
+%On imposera une tension continue $E=-\SI{5}{V}$ avec un GBF (tension de décalage, ou \emph{offset}).
+ Prendre $R=\SI{10}{k\Omega}$ environ, et utiliser un GBF comme source de tension.
+
+
+
+\QR{ Relier les bornes V1 et V2 aux voies d’une carte d’acquisition \texttt{Sysam}.  Avec le GBF, envoyer pour entrée $E$ une sinusoïde d’amplitude $\SI{5}{V}$ et de fréquence $\SI{1}{Hz}$ et observer les signaux V1 et V2 sur \texttt{LatisPro}.
+%En remarquant que V$1 = RI$,
+Calculer $I$ et $U$ à partir de $V_1$ et $V_2$, puis tracer une caractéristique $I_{\rm d}(U)$.
+\begin{danger}
+    Le potentiel $V_1$ n'est pas relié à la masse !
+\end{danger}
+}
+{
+Dans feuille de calcul, entrer $R=10000$, $I=V1/R$ et $U=V2-V1$.
+}
+\end{protocole}
+On observe que la caractéristique $I_{\rm d}(U)$ atteint un plateau de courant pour des tensions $U < 0$. La valeur absolue de l'intensité du courant sur ce plateau est appelée photocourant, notée~$I_{\rm ph}$.
+\begin{quest}
+\QR{
+Tracer la caractéristique $I_{\rm d}(U)$ pour plusieurs flux lumineux en modulant le flux lumineux impactant la photodiode à l'aide des polariseurs.  En déduire que le photocourant $I_{\rm ph}(\Phi)$ est une grandeur photosensible. Imprimer les courbes et déterminer l'ordre de grandeur de $I_{\rm ph}(\Phi)$.
+}{
+On représente ci-dessous la caractéristique de la photodiode (en bleu) et la caractéristique du circuit $I=(E-U)/R$. Le point de fonctionnement du circuit est donné par l’intersection entre ces deux courbes.
+\begin{center}
+    \includegraphics[scale=1.1]{caract_photodiode.pdf}
+\end{center}
+}
+\end{quest}
+
+%Dans toute la suite on imposera une tension continue $E=-\SI{5}{V}$ de façon à se placer sur le plateau de la caractéristique de la photodiode.
+\section{Linéarité de la photodiode}\technique{Mesurer un flux lumineux}
+
+\subsection{Choix de la résistance}
+
+%La mesure du photocourant $I_{\rm ph}$ permet donc de déterminer le flux lumineux $\Phi$.
+
+On souhaiterait déterminer la fonction $I_{\rm ph}(\Phi)$ de façon à déterminer $\Phi$ à partir d’une mesure de la tension $U_R$ aux bornes de la résistance. Il faut pour cela s’assurer que le point de fonctionnement reste sur le plateau de la caractéristique, de façon à ce que $I_{\rm d} = I_{\rm ph}$.
+Dans la suite, on imposera $E=-\SI{5}{V}$.
+%Dans la suite, on imposera $E=-\SI{6}{V}$ avec la source de tension continue.
+
+\begin{quest}
+\todo {Pourquoi faut-il choisir $E$ négatif ? Comment choisir $R$ pour explorer le plateau de la caractéristique et s’assurer que l'intensité du courant $I_{\rm d}(U)$ correspond bien au photocourant $I_{\rm ph}(\Phi)$ ? \AN~?}
+\sol{
+On souhaite se placer sur le plateau de la caractéristique, donc pour des tensions $U < 0$. Comme $U = E - RI$, il faut que $E-RI<0$, soit
+\eqbox{
+R < \frac{E}{I}.
+}
+Il faut donc choisir $E$ négatif puisque $I<0$ sur le plateau.
+Avec $I = -I_{\rm ph} \simeq -\SI{50}{\mu A}$ et $E = -\SI{5}{V}$, on trouve
+\eqbox{
+R < \SI{100}{k\Omega}.
+}
+}
+
+\todo {Comment choisir $R$ pour mesurer le photocourant à partir de la tension~$U_R$ aux bornes de la résistance le plus précisément possible avec un multimètre ? En déduire que le choix de $R$ résulte d’un compromis, et justifier la valeur $R=\SI{10}{k\Omega}$ proposée dans l’énoncé.}
+\sol{
+Le photocourant $I_{\rm ph}$ est calculé à partir de la mesure de la tension $U_R = R I_{\rm ph}$ au voltmètre. La valeur de $U_R$ doit être supérieure à la précision du voltmètre pour que la mesure soit fiable. La précision est donnée par $u(U_R) = \SI{1}{mV}$, et représente la tension minimale que l'on peut mesurer. Si l'on veut espérer mesurer un courant minimal de $u(I_{\rm ph}) = \SI{1}{\mu A}$, il faut que
+\eqbox{
+R > \frac{u(U_R)}{u(I_{\rm ph})} = \SI{1}{k\Omega}.
+}
+En conclusion, il faut que 
+\eqbox{
+1\,\text{k}\Omega < R < 100\,\text{k}\Omega.
+}
+}
+\end{quest}
+
+\subsection{Mesure de la sensibilité}
+% Lorsque les polariseurs sont alignés, la lampe envoie un flux lumineux maximal~$\Phi_0$ sur la photodiode. On a vu dans le TP 5 qu’en désaxant les polariseurs d’un angle $\theta$, le flux lumineux en sortie de l’analyseur %reçu par la photodiode
+% vaut
+% \begin{equation}
+% \Phi = \Phi_0 \cos^2(\theta).
+% \end{equation}
+On place maintenant deux polariseurs entre la source de lumière et la photodiode, comme sur la \Fig{opt}. Les polariseurs sont des dispositifs optiques qui permettent de contrôler le flux lumineux $\Phi$ en les tournant l'un par rapport à l'autre. Nous les étudierons plus en détail au \refTP{10}.
+% \item 
+Le courant $I$ qui traverse la photodiode est donc le photocourant $I_{\rm ph}$. Si possible, placer un tube en carton entre le polariseur et la photodiode pour atténuer la lumière parasite. 
+% Placer l’axe du polariseur en entrée sur la position $\SI{0}{\degree}$, puis tourner le polariseur en sortie (appelé analyseur) en position croisée à $\SI{90}{\degree}$, de façon à bloquer totalement la
+% lumière transmise.
+\begin{danger}
+    Ne plus toucher à la lampe ni au polariseur en entrée par la suite !
+\end{danger}
+\begin{protocole}
+\item Pour plusieurs positions relatives des polariseurs, mesurer le flux lumineux $\Phi$ reçu par la photodiode avec un fluxmètre, et mesurer la tension $U_R = R I_{\rm ph}$ correspondante au multimètre. Estimer les incertitudes. 
+\end{protocole}
+\begin{quest}
+    \QR{	
+    En effectuant une régression linéaire sur \texttt{Régressi}, montrer que la loi $I_{\rm ph}(\Phi) = S \Phi$ reproduit bien les données, avec $S$ une constante à déterminer, appelée \imp{sensibilité}. On utilisera le khi-deux réduit et on imprimera la courbe pour le compte-rendu. Justifier que la photodiode est qualifiée de  capteur \imp{linéaire}.}
+    {
+        Comme la grandeur photosensible $I_{\rm ph}$ est une fonction linéaire de $\Phi$, on dit du capteur qu’il est linéaire.
+        \begin{fig}[label]
+            \centering
+            \includegraphics[width=0.9\columnwidth]{sensibilite.pdf}
+            %\capt{}
+        \end{fig}
+        On trouve avec les données ci-dessus la régression linéaire
+        \eqbox{
+            I_{\rm ph}(\Phi) = S \,\Phi, \quad \text{avec } S = \SI{91(4)}{nA.lux^{-1}}.
+        }
+        et un bon ajustement avec un $\chi^2_{\rm red} \simeq \num{0.4}$. La loi linéaire est validée.
+    }
+\end{quest}
+% \item %En déduire que la photodiode est un capteur linéaire,
+% Mesurer $\Phi_0$ avec un luxmètre, puis déterminer la \imp{sensibilité} $S = \dd{I_{\rm ph}}{\Phi}$.
+% de la photodiode.
+% ou un smartphone (application \guill{phyphox}).
+
+% \item Si le temps le permet, reprendre l’expérience en mesurant, pour chaque angle $\theta>0$, les valeurs $I_{\rm ph}(+\theta)$ et $I_{\rm ph}(-\theta)$, et tracer le courant moyen $
+% \overline{I}_{\rm ph}(\theta) = \frac{1}{2}[I_{\rm ph}(+\theta)+I_{\rm ph}(-\theta)]
+% $
+% en fonction de $\cos^2(\theta)$. La régression affine est-elle de meilleure qualité ? Pourquoi ?
+% \sol{
+% La régression est de meilleur qualité parce que prendre la moyenne entre $-\theta$ et $+\theta$ permet de réduire l’effet d’une erreur de repérage de la valeur $\theta = 0$, qui correspond au cas où l’intensité transmise par les deux polariseurs est maximale.
+% }
+
+\section{Réponse dynamique d'une photorésistance}
+
+Jusqu’à présent, nous avons étudié la réponse statique d'un photorécepteur. Nous étudions maintenant la \imp{réponse dynamique} ; en particulier, nous déterminons un \imp{temps de réponse} $\tau_r$. Comme le temps de réponse de la photodiode est trop court ($\tau_r \simeq \SI{1}{\mu s}$), nous étudions ici une photorésistance.
+
+\subsection{Description d'une photorésistance}
+Une photorésistance est un capteur photonique, comme la photodiode (l'absorption d'un photon excite des porteurs de charge). Il s'agit d'un photorécepteur non linéaire (la sensibilité n'est pas constante), dont la grandeur photosensible est la résistance $R$, ou de façon équivalente la conductance $G=1/R$. Nous choisissons comme circuit de conditionnement celui de la \Fig{photoR}.
+
+\begin{figure}[h!]
+\centering
+\subfigure[]{
+\includegraphics[width=0.12\textwidth]{symb_photoR.pdf}
+}\hspace{1cm}
+\subfigure[]{
+\includegraphics[scale=1]{montage_photoR.pdf}
+}
+\caption{(a) Symbole électrique d'une photorésistance. (b) Circuit de conditionnement pour la photorésistance.}
+\label{fig:photoR}
+\end{figure}
+%%%%%%%%%%%%%
+
+\begin{quest}
+\todo { Montrer par le calcul que la tension $U$ en sortie de l'ALI, supposé idéal, est proportionnelle à la conductance $G$ de la photorésistance.}
+\sol{
+Avec ce montage on trouve 
+\eqbox{
+U = U = -ER_0 G(\Phi).
+}
+La tension de sortie est donc l’image de la conductance.
+}
+\todo {Comment change cette relation si l'on interchange $R$ et $R_0$ ?}
+\sol{
+ En intervertissant $R$ et $R_0$, on trouve 
+ \eqbox{
+    U = -E \frac{R(\Phi)}{R_0}.
+ }
+}
+\end{quest}
+
+\subsection{Mesure du temps de réponse}
+ L’expérience consiste à éclairer une photorésistance avec un éclairement en créneau, puis à suivre l'évolution temporelle de la grandeur photosensible en réponse à une rampe d'éclairement.
+%Pour produire ce créneau, nous optons pour une diode laser commandée par un signal créneau.
+
+%\begin{danger}
+%Comme pour tout laser, veiller à utiliser la diode laser avec précaution : ne pas la diriger à hauteur du regard, ne pas présenter de surfaces réfléchissantes, comme une montre, au voisinage du faisceau, etc.
+%\end{danger}
+
+%\begin{figure}[h!]
+%\centering
+%\includegraphics[width=0.4\textwidth]{dynamique.png}
+%\caption{Une diode laser commandée par un générateur de signal TTL éclaire un
+%photorécepteur. Le photocourant de la  photodiode est mesurée à l’oscilloscope via un circuit électronique.
+%}
+%\label{fig:}
+%\end{figure}
+%%%%%%%%%%%%%%
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=1]{montage_tau.pdf}
+\caption{Une diode électroluminescente (DEL) est alimenté par un signal créneau et éclaire la photorésistance.
+}
+\label{fig:tau}
+\end{figure}
+%%%%%%%%%%%%%
+
+
+\begin{protocole}
+    \item Câbler le montage de la \Fig{photoR} avec $E=\SI{5}{V}$ et $R_0=\SI{1}{k\Omega}$. Éclairer la photodiode par une DEL alimentée par un créneau de fréquence $\SI{10}{Hz}$ variant entre $\SI{0}{V}$ et  $\SI{10}{V}$, comme sur la \Fig{tau}.
+    
+    %%Le signal créneau n’est pas parfait, mais présente des variations brutales de tension sur un temps $t_{\rm TTL}$ très court. Comment doit être $t_{\rm TTL}$ par rapport au temps de réponse $\tau$ de la photodiode pour espérer mesurer $\tau$ ?
+    %\begin{danger}
+    %Le créneau ne doit pas dépasser une amplitude de $\SI{1}{V}$.
+    %\end{danger}
+    \end{protocole}
+    \begin{quest}
+    \QR{ Acquérir la tension $U$ sur un oscilloscope. %On obtient typiquement la courbe suivante.
+    Quelle pourraît être la fonction qui décrit le photocourant en fonction du temps ? Acquérir également sur \texttt{LatisPro} et imprimer la courbe.
+ }{
+        Un expemple d'acquisition est donné ci-dessous.
+        \begin{fig}[label]
+            \centering
+            \includegraphics[width=0.9\columnwidth]{tau_mesure.pdf}
+            %\capt{}
+        \end{fig}
+        La courbe ressemble à une exponentielle : la tension semble être de la forme
+        \eqbox{
+            U(t) = U_{\infty} + (U_0-U_{\infty})e^{-t/\tau}.
+        } 
+        La photorésistance se comporte comme un système du premier ordre et présente un effet similaire à un effet capacitif.
+        }
+    \QR{  Proposer un protocole pour mesurer le temps de montée à $\SI{90}{\%}$, noté $\tau_{\rm m}$. On pourra s’aider des curseurs sur l’oscilloscope. Expliquer la méthode sur votre courbe imprimée.
+    }{
+        Le temps de montée à $\SI{90}{\%}$ est le temps nécessaire pour que la tension atteigne $\SI{90}{\%}$ de sa valeur finale après une variation brutale du flux lumineux. 
+        \begin{enumerate}
+            \item Mesurer les valeurs initiales $U_0$ et finale $U_{\infty}$ de la tension.
+            \item Calculer la valeur $U_{90} = U_0 + \num{0.9}(U_{\infty}-U_0)$.
+            \item Placer un curseur horizontal à la valeur $U_{90}$.
+            \item Placer un curseur vertical au moment où la variation brutale du flux lumineux se produit (front montant du créneau).
+            \item Placer un curseur vertical au moment où la tension atteint $U_{90}$.
+            \item Le temps de montée $\tau_{\rm m}$ est la différence entre les deux temps mesurés avec les curseurs verticaux.
+        \end{enumerate}
+        On mesure typiquement 
+        \eqbox{
+            \tau_{\rm m} \simeq \SI{15(3)}{ms}.
+        }
+    }
+    \QR{ 
+    Comment varie $\tau_{\rm m}$ avec le flux lumineux incident ? Comparer le temps de montée $\tau_{\rm m}$ de la photorésistance au temps de réponse $\tau_r \simeq \SI{1}{\micro s}$ d’une photodiode.
+    }{
+        Le temps de montée $\tau_{\rm m}$ est essentiellement \fbox{indépendant} du flux lumineux incident. Le temps de montée de la photorésistance est beaucoup plus grand que celui d'une photodiode, ce qui la rend inadaptée aux mesures rapides. Par contre, la photorésistance est souvent plus sensible que la photodiode, ce qui la rend intéressante pour des applications comme le détecteur d'obscurité.
+        }
+        %\item Montrer que le comportement de l’ensemble de la photodiode et du circuit de conditionnement est compatible avec un comportement capacitif, dont on déterminera la capacité électrique $C$.
+        %
+        %\sol{La capacité de jonction de la photodiode est de l’ordre de $C_{\rm d}\sim \SI{1}{pF}$. À cela s’ajoute la capacité du circuit  $C_{\rm c}$ placée en parallèle. La capacité totale vaut $C = C_{\rm p} + C_{\rm c}$.}
+        
+        \QR{ Mesurer de façon similaire le temps de descente $\tau_{\rm d}$ pour plusieurs flux lumineux. Comparer à~$\tau_{\rm m}$ ?
+        }{
+            Le temps de descente $\tau_{\rm d}$ est également \fbox{indépendant} du flux lumineux incident, et est en général proche de $\tau_{\rm m}$.
+        }
+    \end{quest}
+        
+
+\section{Application au détecteur d’obscurité\bonus}\technique{Utiliser un ALI}
+Un détecteur d’obscurité permet par exemple de commander l’allumage de l’éclairage publique au moment du crépuscule, puis son extinction à l’aube. Pour cela, on récupère le signal issu du photorécepteur et on le compare avec un signal constant. Les photorésistances sont souvent utilisés comme détecteur d'obscurité, mais nous utiliserons ici une photodiode.
+
+%%%%%%%%%%%%%%%%%
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.4\textwidth]{detecteur_obs_DEL2.png}
+\caption{Circuit électrique de détection d’obscurité. La diode centrale est une diode classique, celle de droite est une diode électroluminescente (DEL).}
+\label{fig:obs}
+\end{figure}
+%%%%%%%%%%%%%
+
+\begin{quest}
+\QR{ Monter le circuit de la \Fig{obs} avec $E=\SI{-10}{V}$, $V_e=-\SI{9.5}{V}$, $R=\SI{47}{k\Omega}$,  $R_1=\SI{4.7}{k\Omega}$ et $R_2=\SI{2.2}{k\Omega}$. Expliquer le rôle de l’ALI, de la diode	, et des résistances $R_1$ et $R_2$, en supposant les composants idéaux.
+}{L’ALI est utilisé en comparateur. Il sature à $\pm V_{\rm sat}$ selon la luminosité. La diode ploque lorsque l’ALI sature à$+ V_{\rm sat}$, et passe lorsqu’il sature à $- V_{\rm sat}$. Les résistances servent de pont diviseur pour alimenter la DEL lorsque la diode passe ; la tension vaut alors $V_{\rm sat}R_2/(R_2+R_2) \simeq \SI{10}{V}$.}
+
+\QR{ Au-delà de quelle valeur de photocourant $I_{\rm ph}$ la DEL s’allume-t-elle ? Vérifier qualitativement le fonctionnement de ce détecteur d’obscurité.
+}{
+L’ALI sature à $+V_{\rm sat}$ lorsque  $V_+ > V_-$, soit $E-RI > V_e$, et donc $I < (E-V_e)/R = -\SI{11}{mA}$, soit pour $I_{\rm ph} > \SI{11}{mA}$. Lorsque la lumière est forte, l’ALI sature à $+V_{\rm sat}$, la diode bloque et donc la LED ne s’allume pas. Lorsque la lumière est faible, l’ALI sature à $-V_{\rm sat}$, la diode passe et donc la LED s’allume.
+}
+
+\end{quest}
+
+\end{document}

@@ -1,0 +1,23 @@
+\begin{tikzpicture}
+
+
+\draw [line width=1.5pt ,shorten  >= 10pt,shorten <= 10pt] (3.,2)-- (3.,-2);
+\draw [line width=1.5pt ,shorten  >= 10pt,shorten <= 10pt] (-3.,-2)-- (-3.,2);
+
+\draw[dotted] (-3,-2) -- +(0,-1);
+\draw[dotted] (3,-2) -- +(0,-1);
+
+
+\draw [-{Stealth[scale=1.2]},shorten  >= 3pt,shorten <= 3pt] (3,-2.75)-- +(-6,0) node[midway,below]{$\Delta V = \SI{7}{V}$};
+
+\draw (1,0.9) node[]{$\boldsymbol{\times}$} node[right]{$M$};
+
+\begin{scope}[shift={(-1.2,-0.75)},scale=0.84]
+\draw[-latex] (0,0) -- +(1,0) node[right]{$\vv{e_x}$};
+\draw[-latex] (0,0) -- +(0,1) node[right]{$\vv{e_y}$};
+\filldraw[fill=white,draw=black] circle(2pt) node[below left]{$\vv{e_z}$};
+\fill[] (0,0) circle(1.2pt);
+\end{scope}
+
+
+\end{tikzpicture}

@@ -1,0 +1,23 @@
+%------ \aimant{} -------
+	\newcommand{\aimant}[1]{
+	\draw[fill, color = red,#1] (0,0.2) rectangle(0.5,-0.2) node[color=white,midway]{\tiny \textbf{S}};
+	\draw[fill, color = black,#1] (0.5,0.2) rectangle(1,-0.2) node[color=white,midway]{\tiny  \textbf{N}};
+	\node[#1, xshift = -2.1mm, yshift = -2.5mm] at (0.5,0.2) {\tiny aimant};}
+	%-------------------------------------------
+	\begin{tikzpicture} [scale=.7,font=\footnotesize] 
+		% support
+		\shade[left color=white,right color=gray] (0,-4)--++(0,4.5)--++(-0.3,0)--++(0,-4.5)-- cycle;
+		\draw[thick] (0,0.5)--++(0,-4.5);
+		% thread
+		\coordinate (M) at (-60:3);
+		\draw (0,0)node{•}--(M);
+		\draw[ball color=lightgray] (M) circle(8pt);
+		\aimant{shift={($(M)+(2,0)$)}};
+		% forces
+		\draw[-latex, ultra thick,red](M)node{\tiny•}--++(0,-1.5)node[above right]{$\vv{P}$};
+		\draw[-latex, ultra thick,red](M)--++(1,0)node[right]{$\vv{F}$};
+		\draw[-latex, ultra thick,red]($(M)+(120:8pt)$)--++(120:1.7)node[right=2pt]{$\vv{T}$};
+		% angles
+		\draw (0,-1) arc (-90:-60:1);
+		\draw (-75:1)node[below]{$\alpha$};
+	\end{tikzpicture}

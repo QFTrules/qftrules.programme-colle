@@ -1,0 +1,844 @@
+% displayname : Écoulements parfaits
+\documentclass[12pt,fancy]{cours}
+\Chapit{4}{2}
+\begin{document}
+\maketitre{
+Après avoir étudié la cinématique des fluides, nous abordons la dynamique en nous intéressant aux causes de l'écoulement: nous allons donc définir les forces qui s'exercent sur les particules de fluide. Nous nous restreignons pour l'instant à des écoulements dits parfaits, pour lesquels tous les phénomènes diffusifs (de chaleur mais aussi de quantité de mouvement par viscosité) sont négligés. Cette modélisation n'est pas purement académique: de nombreuses applications existent et nous en traiterons quelques unes. La prise en compte de la viscosité fera l'objet du chapitre suivant.
+}
+{
+  \item Cours Statique des fluides - 0
+  % \item Documents de cours Statique des fluides - 2
+  \item TD Statique des fluides
+}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Statique des fluides}
+
+\subsection{La force pressante}
+
+
+\parag{Définition}
+
+Dans un fluide, on distingue deux types de forces : les forces dont l'origine est extérieure au fluide comme la pesanteur ; et les forces de contact entre particules de fluide que l'on appelle forces internes.
+Considérons la section $\d S$ d’un particule de fluide situé en un point $\rm M$. Dans un fluide au repos, les forces de contact sont \imp{normales} à la section et proportionnelle à la surface $\d S$ de celle-ci : ces forces sont appelées \imp{forces de pression}.
+\begin{definition}[Force de pression]\label{def:}
+  La force de pression s’exerçant sur une section $\d S$ au point $\rm M$ s’écrit
+  $$
+  \Vec{\d F_p} = -p(M) \,\Vec{\d S},
+  $$
+  où $p(M)$ désigne la pression au point $\rm M$ (en $\SI{}{Pa} = \SI{}{N.m^{-2}}$).
+\end{definition}
+
+\parag{Force pressante volumique}
+Calculons maintenant la résultante des forces de pression sur une particule de fluide $\mc{P}$. La méthode suivante s’applique à toute force de contact.
+% \begin{equation}
+% \eqbox{
+  % }
+% \end{equation}
+% La force pressante est donc dirigée vers l'intérieur de la particule fluide.
+% La pression $p$ est homogène à une force surfacique ; elle se mesure en $\SI{}{Pa} = \SI{}{N.m^{-2}}$.
+
+\begin{methode}[Trouver l'équivalent volumique d'une force de contact]
+  \item Définir une particule de fluide $\mc{P}$ de section $\d S$.
+  \item Exprimer les forces de contact $\d \Vec{F_1}$ et $\d \Vec{F_2}$ qui s'appliquent sur deux sections opposées $1$ et $2$.
+  \item Montrer que la résultante $\d \Vec{F_{\mc{P}}} = \d \Vec{F_1}- \d \Vec{F_2} = \Vec{f} \d V$ est proportionnelle au volume $\d V$.
+  \item Généraliser l'expression vectorielle de la force volumique $\Vec{f}$ avec l'opérateur approprié.
+\end{methode}
+
+
+\begin{enumerate}
+  \item
+  On considère une particule de fluide $\mc{P}$ de section élémentaire $\d S = \d y \,\d z$, comme illustré sur la \Fig{viscosite_volumique}. Les interfaces sont situées aux abscisses $x$ et $x+\d x$, et la particule de fluide est de volume élémentaire $\d V=\d x \, \d S = \d x \,\d y\,\d z$.
+  \begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.49\textwidth]{forces_Pvol.pdf}
+    \caption{Forces de pression exercées sur une particule de fluide.}
+    \label{fig:viscosite_volumique}
+  \end{figure}
+  \item Nous omettons les arguments $y$, $z$ et $t$ des fonctions.
+  La force de pression exercée par le fluide à gauche de la particule s'écrit
+  \begin{equation}
+  \d \vv{F}_{{p}}(x) = p(x)\,\d S\,\ex.
+  \end{equation}
+  La force de pression exercée par le fluide à droite de la particule s'écrit
+  \begin{equation}
+  \d\vv{F}_{{p}}(x + \d x)=- p(x + \d x)\d S\,\ex.
+  \end{equation}
+  \item La résultante des forces de pression s'exerçant sur la particule de fluide vaut donc, en effectuant un développement de Taylor à l’ordre $1$,
+  \begin{align}
+  \d\vv{F}_{{p}, \mc{P}}=\d \vv{F}_{{p}}(x+\d x)\,  +\d\vv{F}_{{p}}(x) & = - \left( p(x+\d x) - p(x) \right)\d S\,\ex \\
+  & \simeq -\dr{p}{x}\underbrace{\d x\,\d S}_{\d V}\,\vv{e_{x}},
+  %& =  \eta\frac{\partial^2 v_{x}}{\partial y^2}\,\d V\,\vv{e_{x}},
+  \end{align}
+  d’où l’on déduit l’expression de la force volumique,
+  \begin{equation}
+  \Vec{f}_{p} = 
+  \frac{\d\vv{F}_{{p},\mc{P}}}{\d V}= - \dr{p}{x}\,\ex.
+  \end{equation}
+  \item Pour généraliser à un écoulement de géométrie quelconque, il nous faut introduire l’opérateur  gradient.
+  \end{enumerate}
+\begin{theorem}[Force pressante volumique]\label{form:stat_flu}
+  Les forces pressantes sur une particule de fluide sont équivalentes à une force volumique (en $\SI{}{N.m^{-3}}$)
+  \begin{equation*}
+    \Vec{f_p} = -\Grad{p}.
+  \end{equation*}
+\end{theorem}
+% \noindent La notation avec un $f$ minuscule indique une force volumique, qui s'exprime en $\SI{}{N.m^{-3}}$.
+\begin{remarque}
+  Notons que si la pression est uniforme, la force pressante volumique et la résultante des forces pressantes qui s'exerce sur une surface fermée est nulle !
+\end{remarque}
+
+\begin{remarque}
+  
+  La résultante des forces de pression qu'exerce le fluide environnant sur une surface macroscopique $S$ s'écrit
+  \begin{equation}
+    \Vec{F_p}=-\iint_{S}p \,\Vec{\d S}.
+  \end{equation}
+  Dans le cas particulier d’une surface fermée, on peut utiliser le théorème du gradient pour écrire
+  \begin{equation}\label{eq:force_press}
+    \Vec{F_p}=-\oiint_{S}p \,\Vec{\d S}= -\iiint_{V}\Grad{p}\,\,\d V = \iiint_{V}\Vec{f}_{\rm p}\,\d V,
+  \end{equation}
+  On retrouve l’expression de la force volumique de pression $\Vec{f}_{\rm p}$.
+\end{remarque}
+  
+
+
+% \begin{rappel}{Théorème du gradient}
+% Démontrons l’\Eq{force_press} dans le cas d’une particule de fluide cubique de volume $\d V=\d x\,\d y\,\d z$. La résultante des forces pressante suivant la direction $x$ vaut
+% \begin{equation}
+% \d F_{x}=p(x,y,z)\,\d y\,\d z-p(x+\d x,y,z)\,\d y\,\d z\simeq -\frac{\partial p}{\partial x}\,\d x\,\d y\,\d z =  -\frac{\partial p}{\partial x}\, \d V.
+% \end{equation}
+% En raisonnant de même selon les autres directions, on montre que les coordonnées de cette force dans une base cartésienne sont
+% \begin{equation}
+% \Vec{\d F_p} = -\left(\frac{\partial p}{\partial x},\frac{\partial p}{\partial y},\frac{\partial p}{\partial z}\right)\,\d V = - \Grad{p}\,\d V.
+% \end{equation}
+% Le théorème se généralise bien sûr dans tous les systèmes de coordonnées et s’applique aussi à une surface fermée macroscopique.
+% \end{rappel}
+
+% \begin{center}
+% \includegraphics[width=0.5\textwidth]{forces_Pvol.pdf}
+% \end{center}
+
+
+
+
+
+\subsection{Équation fondamentale de la statique des fluides}
+Considérons un fluide au repos dans un référentiel quelconque $\Rcal$. On distingue deux types de forces qui s'exerce sur une particule de fluide $\mc{P}$ :
+\begin{liste}
+   \item les forces de \imp{contact} : dans un fluide au repos, seul la force pressante intervient, de résultante 
+    \begin{equation}
+    \d \Vec{F_p} = -\grad p \,\d V.
+    \end{equation}
+    \item les forces \imp{externes} : comme la pesanteur, les forces électromagnétique, ou les forces d'inertie. Nous noterons de façon générale la résultante des forces extérieures qui s'exercent sur $\mc{P}$ sous la forme 
+    \begin{equation}
+      \d \Vec{F_{\rm ext}} = \Vec{f}_{\rm \! ext} \d V.
+    \end{equation}
+\end{liste}
+La condition d'équilibre de la particule de fluide $\mc{P}$ dans $\Rcal$ s'écrit alors
+\begin{equation}
+\Vec{f_{\rm p}} + \Vec{f}_{\rm \! ext} = \Vec{0}.
+\end{equation}
+\begin{theorem}[Équation fondamentale de la statique des fluides]\label{form:stat_flu}
+La pression $p$ d'un fluide \imp{au repos} soumis à des forces externes de résultante volumique $\Vec{f}_{\rm \! ext}$ vérifie
+\begin{equation*}
+\Grad p = \Vec{f}_{\rm \! ext}.
+\end{equation*}
+% \begin{equation*}
+% \Vec{0} = -\Grad p + \Vec{f}.
+% \end{equation*}
+\end{theorem}
+
+
+De même que le PFD, l'équation de la statique des fluides s'applique dans un référentiel non galiléen, pourvu que l'on ajoute les forces d'inertie. Dans le cadre du programme, seule la démonstration de l'expression de la force d'inertie d'entraînement volumique est à connaître.
+\begin{methode}[Trouver l'équivalent volumique d'une force externe]
+  \item Définir une particule de fluide $\mc{P}$ de masse $\d m$ et de volume $\d V$.
+  \item Écrire l'expression de la force $\Vec{\d F_{\mc{P}}}$ exercée sur la particule de fluide.
+  \item Diviser par le volume $\d V$ pour faire apparaître la masse volumique $\rho$.
+\end{methode}
+
+\begin{exemple}{Déterminer une force extérieure volumique}
+  On étudie un fluide de masse volumique $\rho$ soumis à une force extérieure $\Vec{F}$ dans un référentiel $\Rcal^\prime$. Soit une particule fluide de masse $\d m$ et de volume $\d V$ située au point $\rm M$. Déterminer la force volumique~$\Vec{f}$ associée aux forces extérieures suivantes : 
+  \begin{quest}
+    \item	la force de pesanteur $\Vec{P} = m\Vec{g}$ ;
+    \item la force axifuge $\Fe = m\,\Omega_{\Rcal/\Rcal'}^2\,\Vec{HM}$, où $\Rcal$ est galiléen ;
+    \item la force d’entraînement en translation $\Fe = -m\,\Vec{a_{\rm \Rcal}}(O’)$, où $\Rcal$ est galiléen.
+    \item la force de Coriolis $\Fc = 2\,m\,\vRp(M)\wedge\OR$, où $\Rcal$ est galiléen.
+
+  \end{quest}
+  
+\end{exemple}
+\examplesol{
+  Soit $\rho(M)$ la masse volumique au point $\rm M$, et $\d m = \rho(M)\,\d V$ la masse de la particule de fluide de volume $\d V$.
+  \begin{quest}
+    \item Le poids qui s’exerce sur cette particule fluide a pour expression $\d P = \d m \Vec{g} = \rho(M) \d V \Vec{g} = \Vec{f}_g \d V$.     La force volumique associée est donc
+      \eqbox{
+        \Vec{f_{\rm g}} = -\rho(M)\,\Vec{g}.
+        }
+    \item La force axifuge s’exprime $\d F_{\rm e} = \d m\,\Omega^2\,r\,\er = \rho(M)\,\d V\,\Omega^2\,r\,\er = \Vec{f_{\rm e}}\,\d V$. La force volumique associée est
+      \eqbox{
+        \Vec{f_{\rm e}} = -\rho(M)\,\Omega^2\,\Vec{HM}.
+        }
+    \item La force d’entraînement en translation s’exprime $\d F_{\rm e} = -\d m\,\Vec{a_{\rm \Rcal}}(O’) = -\rho(M)\,\d V\,\Vec{a_{\rm \Rcal}}(O’) = \Vec{f_{\rm \Rcal}}\,\d V$. La force volumique associée est
+      \eqbox{
+        \Vec{f_{\rm e}} = \rho(M)\,\Vec{a_{\rm \Rcal}}(O’).
+        }
+
+    \item La force de Coriolis s’exprime $\d F_{\rm c} = 2\,\d m\,\vRp(M)\wedge\OR = 2\,\rho(M)\,\d V\,\vRp(M)\wedge\OR = \Vec{f_{\rm c}}\,\d V$. La force volumique associée est
+      \eqbox{
+        \Vec{f_{\rm c}} = 2\,\rho(M)\,\vRp(M)\wedge\OR.
+        }
+
+  \end{quest}
+}
+
+% Raisonnons sur une particule de fluide de masse $\d m$  et de volume $\d V$ situé au point $M$ dans un référentiel $\Rcal'$ non galiléen. Le fluide est de masse volumique $\rho(M)$ en ce point. La force d'inertie d'entraînement qui agit sur cette particule a pour expression
+% \begin{equation}
+% \Vec{\d F_{\rm e}} = -\d m\, \ae = -\rho(M) \ae \d V.
+% \end{equation}
+% On identifie en facteur de $\d V$ l'expression recherchée de la force volumique d'inertie d'entraînement.
+Dans le cadre du programme, seule la force d'inertie d'entraînement est à connaître.
+\begin{theorem}[Force d’inertie d’entraînement volumique]\label{form:}
+La force d'\imp{inertie d'entraînement volumique} dans un fluide de masse volumique $\rho$ s'écrit
+\begin{equation*}
+\Vec{f_{\rm e}} = -\rho \,\Vec{a_{\rm e}}.
+\end{equation*}
+\end{theorem}
+
+
+\begin{exemple}{Le vase en rotation}
+\begin{minipage}{0.59\textwidth}
+On met en rotation à la vitesse angulaire $\omega$ un vase contenant un liquide soumis au champ de pesanteur terrestre $\Vec{g}$. On considère le référentiel $\Rcal$ du laboratoire galiléen.
+\begin{quest}
+  % \item Rappeler l'expression de la force volumique de pesanteur $\Vec{f}_{\rm \! g}$.
+  \item	
+  En raisonnant dans le référentiel $\Rcal'$ lié au vase tournant, déterminer un système d'équations aux dérivées partielles sur la pression $p$.
+  \item Résoudre ce système et déterminer l'équation de la surface libre du liquide.\\
+\end{quest}
+
+\textsc{Données} : $\Grad p = \dr{p}{r} \er + \frac{1}{r}\dr{p}{\theta} \et +  \dr{p}{z} \ez $.
+
+% On pourra s'aider du Formulaire B pour résoudre les équations aux dérivées partielles.
+\end{minipage}
+  \begin{minipage}{0.39\textwidth}
+    \includegraphics{vase_rotation.pdf}
+  \end{minipage}
+\end{exemple}
+\examplesol{
+  \begin{quest}
+    \item	
+    Soit $\Rcal$ le référentiel du laboratoire, supposé galiléen. Soit $\Rcal'$ le référentiel lié au réservoir tournant, auquel on attache une base cylindrique $(\er,\et,\ez)$. $\Rcal'$ est en rotation uniforme autour de l'axe $(Oz)$ fixe dans $\Rcal$, de vecteur rotation $\OR = \omega \ez$. Le liquide est au repos dans $\Rcal'$ et soumis aux forces volumiques extérieures : poids volumique $\Vec{f_{\rm g}} = -\rho g \ez$ et force axifuge $\Vec{f_{\rm e}} = \rho \omega^2 r \er$. L'équation fondamentale de la statique des fluides donne
+    $$
+\Grad p = \dr{p}{r} \er + \frac{1}{r}\dr{p}{\theta} \et +  \dr{p}{z} \ez	  = - \rho g \ez + \rho\omega^2 r \er,
+$$
+soit 
+\eqbox{
+\begin{cases}
+  \dr{p}{z} & = - \rho g,\\
+   \frac{1}{r}\dr{p}{\theta}  & = 0,\\
+\dr{p}{r} & = \rho\omega^2 r,
+\end{cases}
+}
+
+\item 
+On voit donc que $p(r,z)$ est indépendant de $\theta$.
+La projection selon $\ez$ donne l'expression classique de la pression hydrostatique :
+$
+p(z,r) = f(r) - \rho g z,
+$
+où ici $f(r)$ est une fonction de $r$. En injectant cette expression dans la projection selon $\er$, on trouve
+$$
+\dfrac{\partial p}{\partial r}  = f'(r) = \rho\omega^2 r \Rightarrow f(r) = A + \dfrac{1}{2}\rho \omega^2 r^2.
+$$
+La constante $A$ s'obtient par exemple à partir de la condition aux limites $p(0,h) = A- \rho g h = p_0$, où $h$ est la hauteur de liquide au niveau de l'axe, ce qui donne $A = p_0 + \rho g h$ et 
+$$p(r,z) = p_0 + \dfrac{1}{2}\rho \omega^2 r^2 + \rho g (h-z).$$
+La surface libre du liquide vérifie la condition de continuité $p(r,z) = p_0$, ce qui entraîne
+\eqbox{z=h + \frac{\omega^2}{2g} r^2.}
+Il s'agit d'une paraboloïde de révolution d'axe $(Oz)$.
+\end{quest}
+}
+
+\subsection{Poussée d'Archimède}
+
+Nous pouvons aussi appliquer l’\Eq{force_press} à un corps au repos immergé dans un fluide homogène au repos soumis au champ de pesanteur. La résultante des forces pressantes qui s’exerce sur ce corps est appelée \imp{poussée d’Archimède}.
+\begin{definition}[Poussée d’Archimède]
+  La \imp{poussée d’Archimède} est la force $\Vec{\Pi}_{\rm A}$ exercée par un fluide au repos sur un corps immergé.
+\end{definition}
+Cette force est égale à l’opposée du poids de fluide déplacé.
+\begin{demo}
+  La poussée d’Archimède $\Vec{\Pi}_{\rm A}$  a la même expression que si on remplaçait le corps par du fluide (puisque les forces de contact « ignorent » ce qu’il y a dans le volume). Soit $V$ le volume du corps, de surface~$S$, et $\rho_{\rm f}$ la masse volumique constante du fluide. En appliquant la relation fondamentale de la statique des fluides,
+  \begin{equation}
+\Grad{p} = \rho \Vec{g},
+\end{equation}
+on peut exprimer la poussé d’Archimède sous la forme
+\begin{equation}
+  \Vec{\Pi}_{\rm A} = -\oiint_{S}p \,\Vec{\d S}= -\iiint_{V}\Grad{p}\,\d V = -\iiint_{V}\rho \,\d V \,\Vec{g} = m_{\rm f} \Vec{g}.
+\end{equation}
+La quantité $m_{\rm f}$ représente la masse de fluide déplacé. Ainsi,
+la poussée d'Archimède $\Vec{\Pi}_{\rm{A}}$ égale l’opposée du poids du fluide déplacé par le corps immergé. C’est pourquoi l’on « pèse » moins lourd dans une piscine, parce que le poids apparent $\left(m-m_{\rm{f}}\right)\vv{g}$ est plus faible que le poids $m\vv{g}$.
+\end{demo}
+
+\begin{prop}[Expression de la poussée d’Archimède]\label{prop:}
+  La poussée d’Archimède  est égale à l’opposée du poids du fluide déplacé, soit 
+  \begin{equation*}
+    \Vec{\Pi}_{\rm A} = m_{\rm f} \Vec{g}.
+  \end{equation*}
+\end{prop}
+
+
+ \subsection{Mouvements atmosphériques} 
+ 
+ Dans l'atmosphère, les masses nuageuses sont constamment en mouvement suivant deux axes :
+ \begin{itemize}
+  \item l'axe vertical, sous l'effet de la convection et de la pesanteur ;
+  \item l'axe horizontal, sous l'effet des variations de pression et de la rotation terrestre.
+ \end{itemize}
+ En l'absence de convection, les masses d'air sont à l'équilibre mécanique selon la verticale puisque le poids est compensé par la variation de pression avec l'altitude. Étudions maintenant le mouvement horizontal des masses d'air sous l'effet des variations de pression et de la rotation terrestre.
+
+
+ \parag{Vents géostrophiques}
+% \docu{Aller en ligne droite sur une planète qui tourne : la force de Coriolis}{Pêches et Océans, Canada}{}{D. \textsc{Gilbert}}
+Soit $\RT$ le référentiel terrestre, non galiléen, et $\RG$ le référentiel géocentrique, supposé galiléen.
+On considère une masse d’air en mouvement dans un plan horizontal soumis à la force de Coriolis et à la force pressante dans $\RT$. On suppose la masse d’air en quasi-équilibre, i.e. que la masse d’air accélère suffisamment lentement pour que la somme des forces soit quasi-nulle. 
+
+\begin{definition}[Vent géostrophique]\label{def:}  
+  On appelle \imp{vent géostrophique} un mouvement horizontal d’une masse d’air en quasi-équilibre.
+\end{definition}
+La loi de la statique des fluides s’applique donc dans $\RT$ :
+% \begin{equation}
+\eqbox[geostrophique]{
+  \grad{p} = 2 \rho \vR \wedge \Vec{\Omega_{\RT / \RG}} .
+}
+% \end{equation}
+Le long d’une isobare, on a 
+% $$
+\begin{equation}
+  \grad p \cdot \dl = 0 = 2 \rho \left(\vR \wedge \OR\right)\cdot \dl = 2 \rho  \left(  \dl \wedge \vR \right) \cdot  \Vec{\Omega_{\RT / \RG}}.
+\end{equation}
+% $$
+Or le vecteur rotation $ \Vec{\Omega_{\RT / \RG}}$ a une composante horizontale (suivant l’axe nord-sud). La relation étant vrai en tout point, on a nécessairement $\vR \cdot \dl = 0$, c’est-à-dire que la vitesse $\vR$ est tangentielle à l’isobare.   Les vents géostrophiques se déplacent donc suivant les \imp{isobares}. 
+
+% Ainsi, les vents géostrophique se déplacent suivant les isobares.
+
+\parag{Dépressions et anticyclones}
+On considère le mouvement de vents géostrophiques autour d'une zone de basse pression (dépression) ou de haute pression (anticyclone). Les isobares enlacent les extrema  locaux de pression, et donc les vents géostrophiques tournent autour des dépressions et des anticyclones.
+On peut prédire le sens de cette rotation des masses d'air suivant l'hémisphère. On rappelle que dans l'hémisphère nord, la force de Coriolis dévie les trajectoires horizontales vers la droite, alors que dans l'hémisphère sud, elle les dévie vers la gauche  (\Fig{deviation}).
+
+\begin{figure}[H]
+  \centering
+  \subfigure[]{\label{fig:}
+  \includegraphics{deviation_droite}
+  }\hspace{1cm}
+  \subfigure[]{\label{fig:}
+  \includegraphics[]{deviation_gauche}
+  }
+  \caption{(a) Déviation des vents géostrophiques vers la droite dans l'hémisphère Nord. (b) Déviation des vents géostrophiques vers la gauche dans l'hémisphère Sud. La base terrestre $({\rm O},\ex,\ey,\ez)$ est choisie avec $\ex$ pointant vers le nord, $\ey$ vers l'est et $\ez$ vers le haut.}
+  \label{fig:deviation}
+\end{figure}
+
+
+\begin{figure}[H]
+  \centering
+  \subfigure{
+  \includegraphics[scale=1]{cyclone.pdf}}
+  \subfigure{
+  \includegraphics[width=0.41\textwidth]{cyclone_sally2020_USA.png}
+  }
+  \caption{À droite : sens de rotation d'un cyclone autour (a)   d'une dépression dans l'hémisphère nord ; (b) d'un anticyclone dans l'hémisphère nord ; (c) d'une dépression  dans l'hémisphère sud ; (d) d'un anticyclone dans l'hémisphère  sud. À gauche : image satellite du cyclone Sally (2020) proche de la Floride (États-Unis)  [Wikipédia].}
+  \label{fig:coriolis_cyclones}
+\end{figure}
+
+\begin{enumerate}
+  \item \udl{Hémisphère nord}.
+  \begin{itemize}
+    \item \udl{Dépression} : le gradient de pression est dirigé vers l'extérieur, et donc la force de Coriolis aussi. Comme la force de Coriolis dévie vers la droite, le vent géostrophique tourne dans le sens direct autour de la dépression (\Fig{coriolis_cyclones}a).
+    \item \udl{Anticyclone} : le gradient de pression est dirigé vers l'intérieur, et donc la force de Coriolis aussi. Comme la force de Coriolis dévie vers la droite, le vent géostrophique tourne dans le sens indirect autour de l'anticyclone (\Fig{coriolis_cyclones}b).
+  \end{itemize}
+  \item \udl{Hémisphère sud}. Le sens de rotation est inversé (\Fig{coriolis_cyclones}c et d).
+\end{enumerate}
+
+
+
+
+
+\begin{prop}[Vents géostrophiques]\label{prop:geostrophique}
+  Les vents géostrophiques se déplacent suivant les \imp{isobares}, les zones de haute pression à leur droite dans l'hémisphère nord, et à leur gauche dans l'hémisphère sud.
+\end{prop}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Dynamique de l'écoulement parfait}
+
+\begin{definition}[Écoulement parfait]\label{def:parfait}
+Un écoulement est dit \imp{parfait} si tous les phénomènes \imp{irréversibles} sont négligeables, ce qui inclut :
+\begin{itemize}
+  \item la diffusion de quantité de mouvement (viscosité) ;
+  \item la diffusion d'énergie interne (diffusion thermique).
+\end{itemize}
+\end{definition}
+Puisqu'on néglige également la diffusion thermique, les particules de fluide évoluent de façon adiabatique et réversible, donc isentropique.
+
+\subsection{Loi de la dynamique}
+
+
+Appliquons le PFD à une particule de fluide de masse dans un référentiel galiléen pour déterminer l'équation de la dynamique des fluides parfaits.
+\begin{enumerate}
+  \item \udl{Référentiel} : laboratoire, galiléen $\Rcal$.
+  \item \udl{Système} : particule de fluide de volume élémentaire $\d V$ et de masse $\d m = \rho\, \d V$ située au point $\rm M$.
+  \item \udl{Bilan des forces} :
+  \begin{itemize}
+    \item forces de contact : forces pressantes de résultante $\Vec{f_{\rm p}} = (-\grad{p}) \,\d V$ ;
+    \item forces extérieures : force de pesanteur de résultante $\Vec{f_{g}} = \rho \Vec{g} \,\d V$.
+  \end{itemize}
+  \item \udl{PFD} : il vient
+  \begin{equation}
+    \d m \Vec{a} = \rho\,\d V\Dt{\vv{v}} = \Vec{f_{\rm p}} + \Vec{f_{g}} = \left(-\grad{p} + \rho \Vec{g}\right)\d V.
+  \end{equation}
+\end{enumerate}
+En simplifiant par $\d V$ et en explicitant l'accélération particulaire on obtient l'équation dite d'\imp{Euler}.
+% \begin{equation}\label{eq:}
+% \eqbox[Euler]{
+\begin{theorem}[Équation d'Euler]\label{form:Euler}
+  $$\rho\left[ \dfrac{\partial \vec{v}}{\partial t}+(\vv{v}\cdot\Grad{})\vv{v}\right]=-\grad{p}+\rho  \Vec{g}.$$
+\end{theorem}
+ 
+  % }
+% \end{equation}
+Le terme de droite est l’accélération volumique de la particule de fluide ; elle comprend l’accélération locale $\dr{\Vec{v}}{t}$ et l’accélération convective $(\vv{v}\cdot\Grad{})\vv{v}$, qui est un terme non linéaire en la vitesse ! Le terme de gauche est la résultante des forces volumiques.
+
+\subsection{Relation de Bernoulli}
+Comme la \Formu{Euler} est non linéaire, il n'existe pas de solution générale exacte. Pour traiter les écoulements parfaits, on utilise donc plutôt des relations \imp{globales} au lieu d'équations locales, moyennant certaines hypothèses supplémentaires. Une relation importante de ce type est la relation de Bernoulli.
+%Dans l'exemple précédent, nous avons vu que pour un écoulement parfait, une zone de pression élevée est associée à une région de vitesse faible et réciproquement. Cette relation peut s'établir rigoureusement moyennant quelques hypothèses: c'est le théorème de Bernoulli.
+
+\parag{Formulation restreinte}
+Considérons un écoulement \imp{parfait}, \imp{stationnaire} d’un fluide \imp{homogène}, i.e. de masse volumique $\rho$ constante. Les écoulements parfaits sont souvent (pas toujours) \imp{irrotationnels} ; aussi allons-nous ajouter cette hypothèse pour l'instant. On a alors la relation, valable en tout point :
+\eqbox[Bernoulli restreint]{
+  \frac{1}{2}\rho v^{2}+p+\rho gz = \cte.
+  }
+
+% Comme $\rho = \cte$, l’écoulement est aussi \imp{incompressible}.
+ % implique en particulier que
+\begin{demo}
+% \begin{liste}
+  % \item
+Le terme de gauche de la \Formu{Euler} se simplifie de la sorte :
+\begin{align}
+% \tag{stationnarité}
+\rho \dr{\Vec{v}}{t} +
+\rho(\vv{v}\cdot\Grad{})\vv{v} & \underset{\text{stationnaire}}{=}\rho(\vv{v}\cdot\Grad{})\vv{v}
+% \tag{irrotationnel}
+\underset{\text{irrotationnel}}{=} \rho \, \grad{\left(\frac{v^2}{2}\right)}
+% \tag{homogène}
+\underset{\text{homogène}}{=}  \grad{\left(\frac{1}{2}\rho v^2\right)},
+\end{align}
+où nous avons utilisé la formule d’analyse vectorielle
+\begin{equation}\label{eq:a_convec_rot}
+  (\vv{v}\cdot\Grad{})\vv{v} = \grad{\left(\frac{v^2}{2}\right)}+  \rot{\vv{v}}\pv\vv{v}.
+\end{equation}
+% \item 
+En présence de pesanteur, le terme de droite de l’\Eq{Euler} se met aussi sous la forme d’un gradient.
+Si $(Oz)$ désigne l’axe vertical ascendant. On peut écrire
+\begin{equation}
+  -\grad p + \rho \Vec{g} = -\grad(p+\rho g z).
+\end{equation}
+% \end{liste}
+
+On en déduit que
+\begin{equation}\label{eq:euler_rot}
+\grad{\left(\frac{1}{2}\rho v^{2}+p+\rho gz\right)} = \Vec{0}.
+\end{equation}
+La grandeur $\frac{1}{2}\rho v^{2}+p+\rho gz$ ne dépend pas des coordonnées spatiales, c’est une constante dans tout le fluide.
+\end{demo}
+
+
+\parag{Formulation générale}
+On suppose cette fois-ci que l’écoulement n’est pas irrotationnel et le fluide pas forcément homogène, mais l’écoulement est incompressible. On obtient alors la relation de Bernoulli.
+\begin{theorem}[Relation de Bernoulli]\label{form:}
+Dans un écoulement \imp{parfait}, \imp{stationnaire}, et \imp{incompressible}, le long d’une \imp{ligne de courant} :
+\begin{equation*}
+\frac{1}{2}\rho v^{2}+p+\rho gz={\rm Cte}.
+\end{equation*}
+
+\end{theorem}
+
+\begin{demo}
+L’\Eq{euler_rot} devient alors, en utilisant l'\Eq{a_convec_rot}, et sachant que la masse volumique $\rho$ n'est plus forcément uniforme,
+\begin{equation}\label{eq:grad_bernoulli}
+\rho \, \grad{\left(\frac{1}{2}v^{2} + gz\right)}  + \grad p = - \rho\, \rot{\vv{v}}\pv\vv{v}.
+\end{equation}
+On souhaiterait s’affranchir du terme de droite et rentrer $\rho$ dans le gradient.
+Prenons le produit scalaire de l’\Eq{grad_bernoulli} avec un vecteur déplacement élémentaire $\vv{\d \ell}$ dirigé le long d'une \imp{ligne de courant}. Alors
+\begin{equation}\label{eq:bernoulli_rot}
+  \rho \, \grad{\left(\frac{1}{2}v^{2} + gz\right)}\ps \d \ell  + \grad p \ps \d \ell  = -\rho\, (\rot{\vv{v}}\pv\vv{v}) \cdot\Vec{\d\ell}
+% \tag{produit mixte}
+\underset{\text{produit mixte}}{=}-\rho (\vv{v}\pv\vv{\d l})\cdot(\rot{\vv{v}}) 
+= 0,
+\end{equation}
+car $\vv{v}\pv \vv{\d l}=\Vec{0}$ par définition d'une ligne de courant. Or on suppose toujours l'écoulement incompressible, de sorte que $\rho = \cte$ le long d'une ligne de courant, et donc
+\begin{equation}
+  \rho \, \grad{\left(\frac{1}{2}v^{2} + gz\right)}\ps \dl  + \grad p \ps \dl =   \grad{\left(\frac{1}{2}\rho v^{2}+p+\rho gz\right)} = \d{\left(\frac{1}{2}\rho v^{2}+p+\rho gz\right)}  = 0
+\end{equation}
+d'après l'\Eq{bernoulli_rot}. La grandeur $\frac{1}{2}\rho v^{2}+p+\rho gz$ est donc constante le long d'une ligne de courant.
+\end{demo}
+
+
+% \parag{Équation de la dynamique}
+% L’\Eq{Euler} se simplifie de la sorte :
+% \begin{align*}
+% \tag{stationnarité}
+% -\grad{p}+\rho
+%  \Vec{g} = \rho \dr{\Vec{v}}{t} +
+% \rho(\vv{v}\cdot\Grad{})\vv{v} & = \rho(\vv{v}\cdot\Grad{})\vv{v} \\
+% \tag{formule d’analyse} & = \rho \, \grad{\left(\frac{v^2}{2}\right)}+ \rho\, \rot{\vv{v}}\pv\vv{v} \\
+% \tag{$\rho$ constant}
+% & =  \grad{\left(\frac{1}{2}\rho v^2\right)}+ \rho\, \rot{\vv{v}}\pv\vv{v}.
+% \end{align*}
+% Soit $(Oz)$ l’axe vertical ascendant. On peut écrire le champ de pesanteur sous la forme
+% $
+% \vv{g}=-g\,\vv{e_{z}}=-\,\grad{(g z)}
+% $, de sorte que
+% \begin{equation}\label{eq:euler_rot}
+% \grad{\left(\frac{1}{2}\rho v^{2}+p+\rho gz\right)} = -\rho\, \rot{\vv{v}}\pv\vv{v}.
+% \end{equation}
+%
+% \parag{Ligne de courant}
+% On souhaiterais s’affranchir du terme de droite.
+% Prenons le produit scalaire de l’\Eq{euler_rot} avec un vecteur déplacement élémentaire $\vv{\d \ell}$ dirigé le long d'une \imp{ligne de courant},
+% \begin{align*}
+% \d{\left(\frac{1}{2}\rho v^{2}+p+\rho gz\right)}  = \grad{\left(\frac{1}{2}\rho v^{2}+p+\rho gz\right)}\cdot\Vec{\d\ell} & = -\rho\, (\rot{\vv{v}}\pv\vv{v}) \cdot\Vec{\d\ell} \\
+% \tag{produit mixte} & = -\rho (\vv{v}\pv\vv{\d l})\cdot(\rot{\vv{v}}) \\
+% &= 0,
+% \end{align*}
+% car $\vv{v}\pv \vv{\d l}=0$ par définition d'une ligne de courant. Ce résultat constitue la \imp{relation de Bernoulli}.
+
+
+
+% Si l’écoulement est aussi irrotationnel, le membre de droite de l’\Eq{euler_rot} est nul partout.
+% \begin{prop}\label{prop:}
+% Dans un écoulement \imp{irrotationnel}, la relation de Bernoulli est valable en tout point du fluide.
+% % et non seulement le long d’une ligne de courant.
+% \end{prop}
+  %et
+% Par conséquent le dernier terme de l'Éq.~\eqref{eq:bernoulli_ligne_courant} s'annule: on peut donc toujours appliquer le théorème de Bernoulli même si l'écoulement est rotationnel tant qu'on se place le long d'une ligne de courant.
+
+\subsection{Conditions aux limites}
+
+\parag{Conditions aux limites sur la pression}
+Dans le cadre du programme, nous ne discutons pas des effets de tension de surface, qui sont d’autant plus importants que l’interface avec le fluide est courbée. Il y a alors continuité de la pression au niveau d’une interface fluide/fluide.
+\begin{prop}[Continuité de la pression]\label{prop:}
+La pression dans un écoulement \imp{parfait} est \imp{continue} au niveau d'une interface fluide/fluide.
+\end{prop}
+
+\parag{Conditions aux limites sur la vitesse}
+On considère une paroi \imp{imperméable} de vecteur normal unitaire $\vv{n}_{\rm{ext}}$ dirigé de la paroi vers le fluide. L'imperméabilité impose l’égalité des vitesses normales à l’interface fluide/paroi, soit
+\begin{equation}
+\vv{v}_{\rm{f}}\cdot\vv{n}_{\rm{ext}}=\vv{v}_{\rm{p}}\cdot\vv{n}_{\rm{ext}},
+\end{equation}
+
+\begin{prop}[Continuité de la vitesse normale]\label{prop:}
+La \imp{vitesse normale} dans un écoulement parfait est \imp{continue} au niveau d'une paroi \imp{imperméable}. 
+\end{prop}
+Si de plus, la paroi est \imp{immobile} dans le référentiel d’étude, la vitesse de la paroi est nulle. Dans le référentiel $(\Rcal_{\rm p})$ lié à la paroi, on a donc
+% \begin{equation*}
+\eqbox[vitesse_normale]{
+  \vv{v}_{\rm{f}/\Rcal_{\rm p}}\cdot\vv{n}_{\rm{ext}}=0.
+  }
+% \end{equation*}
+La vitesse du fluide dans un écoulement parfait est purement tangentielle à la paroi.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Quelques applications}
+
+\begin{methode}[Étudier un écoulement parfait]
+\item Pour un écoulement incompressible dans une conduite, utiliser la conservation de $\DV = Sv$.
+\item Pour un écoulement stationnaire et incompressible, utiliser la relation de Bernoulli :
+\begin{liste}
+  \item définir une ligne de courant et deux points $A$ et $B$ bien choisis sur cette ligne ;
+  \item écrire que $\frac{1}{2}\rho v_A^{2}+p_A+\rho gz_A= \frac{1}{2}\rho v_B^{2}+p_B+\rho gz_B$ ;
+  \item utiliser les données du problème  (valeur de $z$, $p$ et $v$) et les conditions aux limites.
+\end{liste}
+\end{methode}
+
+\subsection{Effet Venturi}
+
+
+On considère un écoulement parfait, stationnaire, incompressible, d'un fluide de masse volumique constante $\rho$, dans une conduite présentant un étranglement (Fig.~\ref{fig:venturi}). Soient $S_1>S_2$ deux sections de la conduite, où le fluide s'écoule aux vitesses $v_1$ et $v_2$ uniformes sur une section. Analysons cet écoulement.
+%%%%%%%%%%%%%%%%%%%
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=1.1]{venturi0.pdf}
+  \caption{Schéma de principe de l'effet Venturi en soufflerie.
+  % Un fluide s'écoule dans une conduite présentant un étranglement, un tube vertical permet de mesurer la différence de pression en fonction de la dénivellation $h$. Les lignes grises et la ligne orange représentent des lignes de courant.
+  }
+  \label{fig:venturi}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{enumerate}
+  \item
+  L’écoulement étant incompressible, le débit volumique se conserve et donc $S_{1}v_{1}=S_{2}v_{2}$. Or $S_{1}>S_{2}$, et donc $v_{2}>v_{1}$ : le fluide accélère au niveau de l'étranglement.
+  \item La relation de Bernoulli nous apporte une information sur la pression.
+\begin{liste}
+  \item   On choisit n'importe quelle ligne de courant de la conduite reliant les régions $1$ et $2$.
+  \item On applique la relation de Bernoulli le long de cette ligne de courant,
+   \begin{equation}
+   \begin{split}
+   p_{1}+\frac{\rho v_{1}^{2}}{2}+\rho g z_{1}=p_{2}+\frac{\rho v_{2}^{2}}{2}+\rho g z_{2}.
+   \end{split}
+   \end{equation}
+   \item   Si la conduite est horizontale, on a de plus $z_{1}=z_{2}$ et donc
+     \begin{equation}
+     p_{1} - p_{2} = \frac{\rho}{2} \left( v_{2}^{2} - v_{1}^2 \right) = \rho\dfrac{v_{1}^{2}}{2}\left[\left(\dfrac{S_{1}}{S_{2}}\right)^{2}-1\right]>0.
+     \end{equation}
+     L’étranglement de conduite subit ainsi une dépression.
+      % : il s’agit de l’\imp{effet Venturi}.
+\end{liste}
+\end{enumerate}
+
+\begin{prop}[Effet Venturi]\label{prop:}
+  Au niveau d'un étranglement dans une conduite, la \imp{vitesse augmente}, et la \imp{pression diminue}.
+\end{prop}
+
+
+
+%À l'aide de la relation de la statique des fluides on réécrit $P_1-P_2=\rho g h$, et donc
+%\begin{equation}
+%h=\dfrac{v_{1}^{2}}{2g}\left[\left(\frac{S_{1}}{S_{2}}\right)^{2}-1\right]\qquad\Rightarrow\quad v_1=\sqrt{\frac{2gh}{\left(\frac{S_{1}}{S_{2}}\right)^{2}-1}}.
+%\end{equation}
+
+% \begin{remarque}
+% Si la dépression dans l'écoulement est suffisamment importante pour que la pression devienne inférieure à la pression de vapeur saturante, des bulles de vapeur peuvent se former dans un liquide en écoulement. Ce phénomène de cavitation peut avoir des effets particulièrement dommageables sur les pièces mécaniques (pompes et moteurs thermiques en particulier).
+%
+% \noindent Enfin, la cavitation n'est pas toujours un phénomène néfaste: elle est utilisée dans les bains à ultrasons pour nettoyer les bijoux, les verres de lunettes ...
+% \end{remarque}
+
+L'effet Venturi possède d'innombrables applications: en général tout ce qui est lié à l'aspiration par étranglement (trompes à eau utilisées en chimie et filtrage Büchner, désembuage des casques, tirage des cheminées, pommeau de douche à économie d'eau, etc.). C'est aussi en exploitant l'effet Venturi que s'arrête une pompe à essence lorsque le réservoir est plein (voir \href{https://youtu.be/jUdlNsgjJRY}{\JRouge{ici}}).
+On peut aussi exploiter cet effet pour mesurer la vitesse d'un écoulement à partir d'une mesure de pression. Il existe pour cela un dispositif adapté: le tube de Pitot (\Sec{tube_pitot}).
+
+\begin{experience}{Effet venturi sur l’air}\label{exp:}
+En aspirant l’air à travers une conduite dont la section présente un étranglement, et en mesurant la pression en entrée et au niveau de l’étranglement.
+\begin{quest}
+  \item	Quelle différence de pression $p_1-p_2$ mesure-t-on entre l’entrée et l’étranglement ?
+  \item Comparer à l’expression trouvée précédemment, sachant que les diamètres des sections sont $d_1=\SI{2}{cm}$ et $d_2=\SI{3}{cm}$, que le débit volumique vaut $\DV=\SI{25}{L.s^{-1}}$, et que la masse volumique de l’air est $\rho=\SI{1.2}{kg.m^{-3}}$. 
+\end{quest}
+\end{experience}
+\examplesol{
+  \begin{quest}
+    \item	On mesure $p_1= \SI{988}{hPa}$ et $p_2 = \SI{950}{hPa}$, soit 
+    \eqbox{
+    p_1 - p_2 = \SI{38}{hPa}.
+    }
+    \item On peut comparer à l’expression 
+    $$
+    p_1 - p_2 = \dfrac{1}{2}\rho v_{1}^{2}\left[\left(\dfrac{S_{1}}{S_{2}}\right)^{2}-1\right] = \dfrac{1}{2}\rho {{\DV}^2} \left( \frac{1}{S_2^2} - \frac{1}{S_1^2} \right)
+    =  \frac{8 \rho{{\DV}}^2}{\pi^2} \left(\frac{1}{d_2^4} - \frac{1}{d_1^4}\right) = \SI{30}{hPa}.
+    $$
+    L’ordre de grandeur est correct.
+  \end{quest}
+}
+
+\subsection{Tube de Pitot}
+\label{sec:tube_pitot}
+
+
+
+
+Un dispositif couramment utilisé pour mesurer la vitesse d'écoulement d'un fluide (en particulier dans la marine et l'aéronautique) est le \imp{tube de Pitot} (1732), schématisé en Fig.~\ref{fig:pitot}. Le but de cet appareil est de déterminer la vitesse du fluide $v_{\rm \infty}$ à partir d'une mesure de différence de pression.
+% On suppose que les hypothèses d'utilisation du théorème de Bernoulli sont réunies\footnote{Pour l'avion, le critère d'incompressibilité est le plus limitant car à \SI{900}{km.h^{-1}}, $(u/v_{\rm{s}})^2\simeq 0,5$ qui n'est pas vraiment négligeable devant 1. De toute façon, pour des applications quantitatives il faut aussi prendre en compte la viscosité dans la couche limite (voir chapitre suivant).}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[H]
+  \centering
+  \subfigure[]{\label{fig:}
+  \includegraphics[height=0.3\textwidth]{tube_pitot.pdf}
+  }\hspace{1cm}
+  \subfigure[]{\label{fig:}
+  \includegraphics[height=0.3\textwidth]{pitot_avion.jpg}
+  }
+  \caption{(a) Schéma d'un tube de Pitot. La mesure de pression est illustrée par un manomètre à colonne de liquide, mais un manomètre électronique peut aussi être utilisé. (b) Tube de Pitot monté sur le nez d'un avion de chasse.}
+  \label{fig:pitot}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{enumerate}
+  \item L'écoulement est supposé incompressible. Le fluide ne s'écoule pas dans une conduite, donc la conservation du débit volumique ne donne pas d'information intéressante ici.
+  \item L'écoulement est de plus parfait et stationnaire. On peut appliquer la relation de Bernoulli.
+  \begin{liste}
+    \item On définit la ligne de courant de B vers A tangente à l'appareil comme sur la \Fig{pitot}.
+    \item On applique la relation de Bernoulli entre A et B,
+    \begin{equation}
+      \frac{1}{2}\rho v_A^{2}+p_A+\rho gz_A= \frac{1}{2}\rho v_B^{2}+p_B+\rho gz_B.
+    \end{equation}
+    \item On utilise les conditions aux limites. La vitesse d'écoulement est purement tangentielle, et donc $v_{\rm{B}}=0$ : on dit que le point B est un \imp{point d'arrêt}. De plus, en supposant que l'appareil ne perturbe pas l'écoulement sur les bords, $v_{\rm{A}}=v_{\infty}$ est égal à la vitesse de l'écoulement uniforme loin de l'appareil. Enfin, on a $z_{\rm{A}}\simeq z_{\rm{B}}$, et donc
+    \begin{equation}
+    \begin{split}
+    p_{\rm{A}}+\frac{2}{2} \rho v_{\infty}^{2} =p_{\rm{B}} \qquad \Rightarrow \quad v_{\infty}=\sqrt{\frac{2\Delta p}{\rho}},
+    \end{split}
+    \end{equation}
+    où $\Delta p=p_B-p_A$ désigne la surpression.
+  \end{liste}
+\end{enumerate}
+
+\begin{experience}{Principe du tube de Pitot}\label{exp:}
+  On place un tube de Pitot à colonne de liquide dans l’écoulement d'air produit par une soufflerie.
+  \begin{quest}
+    \item	Mesurer la différence de pression et la vitesse de l’écoulement sur la colonne de liquide. 
+    \item Expliquer comment sont calibrées les graduations de vitesse. On donne la masse volumique de l’éthanol $\rho=\SI{789}{kg.m^{-3}}$.
+  \end{quest} 
+\end{experience}
+
+ % . , la relation de Bernoulli le long de la ligne de courant reliant A et B donne
+
+%, mesurable par une colonne de liquide ou un manomètre électronique.
+%Le tube de Pitot offre un moyen simple de mesurer l'écoulement stationnaire d'un fluide parfait incompressible.
+
+\subsection{Vidange d'un réservoir}
+
+\parag{Vitesse de vidange et formule de Toricelli} Considérons un réservoir de section $S$ percé d’un trou de petite section $s\ll S$ par lequel s’écoule un liquide, voir \Fig{torricelli}. Expérimentalement, on remarque que la vitesse $v_B$ d’éjection du liquide augmente avec la hauteur $h$ de liquide dans le réservoir.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=1.1]{torricelli.pdf}
+	\caption{Vidange d'un réservoir de hauteur $h$ et de section $S$. Le réservoir est percé d’un trou de section $s\ll S$.
+  %[Tiré de femto-physique.fr]
+  }
+	\label{fig:torricelli}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{enumerate}
+  \item L'écoulement est supposé incompressible. Par conservation du débit volumique, il vient $sv_{\rm{B}}=Sv_{\rm{A}}$, et puisque $s \ll S$, on a $v_{\rm{A}}\ll v_{\rm{B}}$. La vitesse de la surface libre est négligeable devant celle du jet.
+  \item L'écoulement est de plus parfait et stationnaire.
+  \begin{liste}
+    \item On choisit une ligne de courant reliant la surface libre en A à l'orifice en B (\Fig{torricelli}.)
+    \item La relation de Bernoulli impose
+    \begin{equation}
+    p_A + \rho
+    gz_A+ \frac{1}{2}\rho  v_{\rm{A}}^{2}= p_B  + \rho g z_B + \frac{1}{2}\rho v_{\rm{B}}^{2}.
+    \end{equation}
+    \item L'effet de la pesanteur n'est pas négligeable ici, et $z_A-z_B= h$. Les pressions en A  et en B sont égales à la pression atmosphérique $p_A=p_B=p_0$. De plus, $\frac{1}{2}\rho v_{\rm{A}}^{2} \ll \frac{1}{2}\rho v_{\rm{B}}^{2}$ et donc
+    \begin{equation}
+    gh+ \frac{1}{2}v_{\rm{A}}^{2}=  \frac{1}{2} v_{\rm{B}}^{2}.
+    \end{equation}
+     OR $v_A \ll v_B$, et on obtient finalement la formule dite de \imp{Torricelli}, $v_{\rm{B}}=\sqrt{2gh}$.
+  \end{liste}
+\end{enumerate}
+\begin{theorem}[Formule de Torricelli]\label{form:torricelli}
+  La vitesse de vidange d’un écoulement parfait, stationnaire et incompressible vaut
+$$
+v_{\rm{B}}=\sqrt{2gh}.
+$$
+\end{theorem}
+\begin{remarque}
+  Cette vitesse s'interprète comme la vitesse qu'aurait un point matériel en chute libre d'une hauteur $h$.
+\end{remarque}
+
+
+
+\parag{Temps de vidange}
+On peut aller plus loin et calculer la durée de vidange $T$. Notons $V=Sh$ le volume d'eau contenu dans le récipient. Par définition,
+\begin{equation}
+\DV = -\dd{V}{t} = -S\dfrac{\mathrm{d}h}{\mathrm{d}t}= sv_B = s\sqrt{2gh}.
+\end{equation}
+Notons $h_0$ la hauteur initiale de liquide. En séparant les variables et en intégrant, on trouve
+\begin{equation}
+T = \int_{0}^{T}\mathrm{d}t = \int_{0}^{T}\left(\dd{h}{t}\right)^{-1} \d h =-\dfrac{S}{s\sqrt{2g}}\int_{h_{0}}^{0}\dfrac{\mathrm{d}h}{\sqrt{h}}=-\dfrac{S}{s\sqrt{2g}}\left[2\sqrt{h}\right]^{0}_{h_{0}},
+\end{equation}
+soit 
+\eqbox[]{
+T=\dfrac{S}{s}\sqrt{\dfrac{2h_{0}}{g}}.
+}
+
+\parag{Vérification de l'hypothèse de stationnarité}
+ Cherchons à préciser dans quelles conditions
+l'écoulement est stationnaire par un calcul d’ordre de grandeur. La condition de stationnarité est valable si l’accélération locale est négligeable devant l’accélération convective. Au point $\rm B$, on peut estimer, avec $\tau$ un temps caractéristique de vidange,
+\begin{equation}
+\norm{\dr{\Vec{v}}{t}} \sim \dfrac{v_B}{\tau}.
+\end{equation}
+De même, $h$ fournit une distance caractéristique de vidange, et donc
+\begin{equation}
+\norm{ (\vv{v}\cdot\grad{})\vv{v} } \sim \dfrac{v_B^2}{h}.
+\end{equation}
+On peut estimer $\tau \sim h/v_A$ (ou bien prendre $\tau = T$) pour trouver
+\begin{equation}
+\frac{\norm{\partial\vv{v}/\partial t}}{\norm{(\vv{v}\cdot\grad{})\vv{v}}}\sim\frac{h}{v_{\rm{B}}\tau}\sim\frac{v_{\rm{A}}}{v_{\rm{B}}}\sim\frac{s}{S}.
+\end{equation}
+Pour satisfaire à la condition de stationnarité, Il faut donc 
+\eqbox{
+\frac{s}{S} \ll 1.
+}
+
+
+%
+%\begin{exemple}{Écoulement potentiel autour d'une sphère.}
+%On considère une sphère de rayon $R$ placée dans un écoulement uniforme, c'est-à-dire dont le champ de vitesse est indépendant du point $M$. Lorsque $M$ est à l'infini, la vitesse vaut $U\ex$. On se place dans le référentiel lié à la sphère, où l'écoulement est stationnaire, et on repère $M$ par ses coordonnées sphériques $(r,\theta,\varphi)$. On souhaite déterminer le champ de vitesse $\Vec{v}(M)$ en tout point $M$, l'écoulement étant perturbé par la présence de la sphère.
+%%
+%%, perturbé par rapport à $U\ex$ à distance finie de la sphère.
+%\parag{Symétries et invariances}
+%Le plan de la feuille, de normale $\Vec{e_\varphi}$, est un plan de symétrie de l'écoulement, donc $v_{\varphi}=0$. De plus, l'écoulement est invariant par rotation autour de l'axe~$(Ox)$, donc $\Vec{v}(M)$ ne dépend pas de $\varphi$. Le champ des vitesses est donc de la forme
+%\begin{equation}
+%\Vec{v}(M)=v_{r}(r,\theta)\er+v_{\theta}(r,\theta)\et.
+%\end{equation}
+%\parag{Potentiel des vitesses} Pour simplifier, supposons l'écoulement irrotationnel et incompressible : le potentiel des vitesses vérifie $\Delta \phi=0$. Cette équation étant linéaire, toute combinaison linéaire de solutions est solution. On se propose de chercher la solution en superposant :
+%\begin{liste}
+%\item le potentiel correspondant au champ de vitesse uniforme à l'infini $U\,\ex = \Grad{\phi_{\rm u}}$, qui s'écrit donc $\phi_{\rm u} = U x = U r\cos\theta$ ;
+%\item un potentiel correspondant au champ de vitesse créé par une source centré à l'origine, qui est analogue au potentiel électrostatique créé par une charge ponctuelle, soit $\phi_{\rm c} = \frac{\beta}{r}$ avec $\beta$ une constante ;
+%\item un potentiel dipolaire de la forme $\phi_{\rm d} = \frac{\gamma\cos\theta}{r^2}$ avec $\gamma$ une constante.
+%\end{liste}
+%La vitesse $\Vec{v}$ a donc l'expression suivante avec $\phi = \phi_{\rm u} + \phi_{\rm c} + \phi_{\rm d}$,
+%\begin{equation}
+%\Vec{v}(M)=\frac{\partial \phi}{\partial r}\er+\frac{1}{r}\frac{\partial \phi}{\partial \theta}\et
+%=\left(U\cos\theta-\frac{\beta}{r^2}-\frac{2\gamma\cos\theta}{r^3}\right)\er+\left(-U\sin\theta -\frac{\gamma\sin\theta}{r^3}\right)\et.
+%\end{equation}
+%\begin{figure}[t!]
+%\centering
+%\sousfigure{ecoulement_sphere.pdf}{}{0.48}{ecoulement_sphere_zoom.pdf}{}{0.48}
+%\caption{Champ des vitesses obtenu pour l'écoulement irrotationnel et incompressible autour d'une sphère, avec $U=R=1$. On remarque que l'écoulement est très peu perturbé lorsqu'on s'éloigne de l'obstacle pour des distances de l'ordre de la taille typique de l'obstacle (diamètre de la sphère). Proche de l'obstacle en revanche, l'écoulement est perturbé. En A, $r=R$ et $\theta=\pi$ d'où $\vec{v}(A)=0$ (point d'arrêt). En B, $r=R$ et $\theta=\pi/2$, la vitesse est purement tangentielle à la sphère et maximale, elle vaut $-\frac{3}{2}U\ex$ dans le référentiel lié à la sphère (donc $+\frac{3}{2}U\ex$ dans le référentiel du laboratoire).}
+%\label{fig:écoulement_sphère}
+%\end{figure}
+%\parag{Conditions aux limites}
+%Pour déterminer les constantes $\beta$ et$ \gamma$, il reste à préciser les conditions aux limites.
+%On doit d'une part retrouver à l'infini l'écoulement non perturbé par la sphère, soit
+%\begin{equation}
+%\lim_{r\rightarrow\infty}\Vec{v}(r,\theta)=U\,\ex=U\cos\theta\,\er-U\sin\theta\,\et,
+%\end{equation}
+%ce qui est bien vérifié. D'autre part, au niveau du contact entre le fluide et la sphère, la vitesse normale doit s'annuler puisque la sphère est immobile, soit
+%%\begin{equation}
+%%\Vec{v}_{\rm{fluide}}(M\in\mathrm{paroi})\cdot\Vec{\d S}=\Vec{v}_{\rm{paroi}}(M\in\mathrm{paroi})\cdot\Vec{\d S}.
+%%\end{equation}
+%\begin{equation}
+%\Vec{v}(M \in \text{contact})\cdot\Vec{n} = 0.
+%\end{equation}
+%On en déduit $0 = v_{r}(r=R,\theta)= U\cos\theta-\frac{\beta}{R^2}-\frac{\gamma\cos\theta}{R^3}$ pour tout $\theta$, et donc $\beta=0$ avec $\gamma=\frac{UR^3}{2}$. Finalement, on trouve
+%\begin{equation}
+%\Vec{v}(M)=U\left(1-\frac{R^3}{r^3}\right)\cos\theta\,\er-U\left(1+\frac{R^3}{2r^3}\right)\sin\theta\,\et.
+%\end{equation}
+%
+%\end{exemple}
+%
+%\newpage
+%\begin{subappendices}
+%\section{Sustentation d'objet dans un écoulement, effet Coandă}
+%L'effet Coandă désigne la tendance d'un écoulement à suivre une surface convexe autour de laquelle le fluide s'écoule. Cet effet est à l'origine de la force de portance qui permet notamment aux avions de voler. Il est possible de le mettre en évidence de façon spectaculaire avec un sèche-cheveux et une balle de ping-pong (Fig.~\ref{fig:coanda}).
+%\begin{figure}[h!]
+%	\centering
+%	\includegraphics[width=0.4\textwidth]{coanda.pdf}
+%	\qquad
+%	\includegraphics[width=0.4\textwidth]{ping_pong.png}
+%	\caption{Sustentation d'une sphère dans un écoulement fluide dont le jet est incliné ou non. La position d'équilibre est stable lorsque le diamètre de la sphère est de l'ordre de grandeur du diamètre du jet et que la vitesse du jet est suffisante pour créer un gradient de pression compensant le poids (volumique): c'est la situation typique avec une balle de ping-pong et un sèche-cheveux. L'image est issue de \url{https://youtu.be/NvzXKZNJ7ZU}.}
+%	\label{fig:coanda}
+%\end{figure}
+%
+%\begin{figure}[h!]
+%	\centering
+%	\includegraphics[width=\textwidth]{coanda_exp.pdf}
+%	\caption{Expérience réalisée par [Lopez-Arias et al., Physics Education, \textbf{46}(2), 2011] pour mesurer la force de trainée (drag) et de portance (lift) exercée par le fluide sur le ballon. Le poids n'intervient pas car le ballon est maintenu par une potence. L'allure des forces montre l'existence d'un équilibre stable par rapport au centre de l'écoulement.}
+%	\label{fig:coanda_exp}
+%\end{figure}
+%
+%Pour une application récente de l'effet Coandă, voir par exemple \url{https://youtu.be/X1kQFJcKEaM}.
+%
+%\end{subappendices}
+
+\end{document}

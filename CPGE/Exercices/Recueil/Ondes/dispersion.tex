@@ -1,0 +1,994 @@
+% !TEX root = /home/eb/.vscode/extensions/qftrules.programme-colle/tmp/Exercice.tex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][colle]{Lois de Snell-Descartes}
+  
+  
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][2][TD]{Influence de la raideur d'une corde}
+  \Notions{\item Relation de dispersion \task Modes propres}
+  Lorsqu'on tient compte de sa raideur, les petites déformations transverses $y(x, t)$ d'une corde de masse linéique $\mu$ tendue avec une tension $T$ sont décrites par l'équation d'onde
+  $$
+  \mu \frac{\partial^2 y}{\partial t^2}-T \frac{\partial^2 y}{\partial x^2}+E S K^2 \frac{\partial^4 y}{\partial x^4}=0,
+  $$
+  où $E$ est le module d'Young, $S$ la section de la corde et $K$ un coefficient dépendant de la forme de la section droite de la corde, égal à $a / 2$ pour une corde cylindrique de rayon $a$.
+  \begin{quest}
+    \item Déterminer la relation de dispersion $\omega(\udl{k})$ de cette équation d'onde. On introduira la célérité $c$ de l'onde dans la limite $\udl{k} \rightarrow 0$, que l'on exprimera en fonction de $\mu$ et $T$.
+    \sol{
+    On cherche une solution complexe sous la forme d'une pseudo-OPPH, ou OPPH généralisée, $\udl{y}(x,t) = \udl{y_0} e^{i(\omega t - \udl{k}x)}$. On substitue dans l'équation d'onde :
+    $$
+  \mu (i\omega)^2 -T (-i\udl{k})^2  + E S K^2(-i\udl{k})^4 = 0, \Rar  -\mu \omega^2 + T \udl{k}^2 +  ESK^2 \udl{k}^4 = 0 \Rar \omega = c \udl{k} \sqrt{1+A\udl{k}^2}
+    $$
+    avec $A=\frac{ESK^2}{\mu}$ et $c= \sqrt{\frac{T}{\mu}}$.
+    }
+    \item
+    Représenter cette fonction pour $k>0$ réel et en déduire la nature de la propagation. Comparer à la relation de dispersion en l'absence de raideur.
+    \sol{
+
+\begin{fig}[]
+  \centering
+  \includegraphics[width=0.4\textwidth]{raideur.pdf}
+  \capt{}
+\end{fig}
+    }
+    \item En cherchant une solution sous forme d'onde stationnaire harmonique, montrer que les fréquences propres de la corde tendue entre $x=0$ et $x=L$ se mettent sous la forme
+    $$
+    f_n=n \frac{c}{2 L} \sqrt{1+B n^2},
+    $$
+    où $c$ est la célérité des ondes dans la corde sans raideur et $B$ une constante à exprimer en fonction de $E, S, K, T$ et $L$. Tracer, sur un même graphique, l'allure des courbes représentant $f_n$ en fonction de $n$ pour une corde sans raideur puis pour une corde avec raideur.
+    \sol{
+    On cherche une solution de la forme $y(x,t) = y_0 cos(\omega t)\cos(k x + \vphi)$. Comme la corde est attachée en $x=0$ et $x=L$, on doit avoir $y(0,t) = y(L,t)=0$, ce qui implique $\cos(k x + \vphi) = \sin(k x)$ avec
+    $$
+    \sin(k L) = 0, \Rar k_n = \frac{\pi n}{L}.
+    $$
+    En remplaçant dans la relation de dispersion, on trouve
+    $$
+    f_n = \frac{\omega_n}{2\pi} =  \frac{c k_n}{2\pi} \sqrt{1+Ak_n^2} = n \frac{c}{2 L} \sqrt{1+B n^2},
+    $$
+    avec $B = \frac{\pi^2 A}{L^2} =  \frac{\pi^2 ESK^2}{\mu L^2}$.
+    }
+    \item Pour une corde de piano, on donne $B=4 \cdot 10^{-4}$. À partir de quelle valeur de $n$ la fréquence propre de la corde avec raideur est-elle plus aiguë d'un demi-ton que celle de la corde infiniment souple? On rappelle que la gamme tempérée divise l'octave en 12 intervalles, appelés demi-tons, et que les fréquences successives $f_p$ des notes espacées par ces demi-tons forment une suite géométrique vérifiant la loi générale $f_p=2^{p / 12} f$, où $p \in \llbracket 1 ; 12 \rrbracket$.
+  \end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PSI][2][TD]{Conduction thermique dans le sol}
+  \Notions{\item Équation de diffusion \task Dispersion}
+Soit $T(x,t)$ la température du sol terrestre à l'instant $t$ et à la profondeur $x>0$. Suite aux variations saisonnières de la température de l'atmosphère, on suppose que la température de la surface vérifie
+\begin{equation}
+T(0,t) = T_0 + T_1 \cos(\omega t),
+\end{equation}
+de période $t_0 = 2\pi/\omega =1\text{ an}$.
+On admet qu'à grande profondeur la température tend vers $T_0$. On rappelle l'équation de diffusion de la diffusion thermique 1D,
+\begin{equation}\label{eq:diffu}
+\dfrac{\partial T}{\partial t} = \kappa \dfrac{\partial^2 T}{\partial x^2},
+\end{equation}
+avec $\kappa = \lambda/\mu c$ la diffusivité thermique.
+
+
+\begin{quest}
+
+\item En posant $u=(T-T_0)/T_1$, chercher une solution de cette équation sous la forme complexe $\underline{u}(x,t)=e^{\gamma x-i\omega t}$. En particulier, déterminer $\gamma$. L'équation de diffusion est-elle dispersive ?
+
+\sol{
+  La température adimensionnée $u(x,t)$ vérifie aussi l'\eq{diffu} par linéarité,
+  $$\dfrac{\partial u}{\partial t} = \kappa \dfrac{\partial^2 u}{\partial x^2}.$$
+  En cherchant une solution de la forme $\underline{u}(x,t)=e^{\gamma x-i\omega t}$, on trouve
+  $$
+  -i\omega \udl{u}(x,t) = \kappa \gamma^2 \udl{u}(x,t),
+  $$
+  soit 
+  \eqbox{
+  \gamma = \pm (1-i)\sqrt{\dfrac{\omega}{2\kappa}}.
+  }
+  Pour que $\udl{u}(x,t)$ ne diverge pas lorsque $x \to \infty$, il faut choisir le signe moins : $\gamma = -(1-i)\sqrt{\dfrac{\omega}{2\kappa}}$.
+}
+
+\item Déterminer l'expression de la longeur d'onde $\lambda$ et de la distance typique d'atténuation de l'onde~$\delta$. Écrire la solution réelle de l'équation pour la température $T(x,t)$.  \AN.
+
+\sol{
+On peut écrire $\gamma$ comme 
+$$
+\gamma = -\frac{1-i}{\delta},
+$$
+avec 
+\eqbox{
+  \delta = \sqrt{\dfrac{2\kappa}{\mu c \omega}}=\SI{2.6}{m}.
+}
+$\delta$ représente bien la distance d'attéruation puisque le vecteur d'onde complexe est $\udl{k} = i\gamma  = \frac{1+i}{\delta}$ et donc $1/|\im\,\udl{k}| = \delta$. La longueur d'onde s'obtient à partir de $\lambda = 2\pi/\re\,\udl{k}$, soit 
+\eqbox{
+  \lambda = 2\pi \delta = \SI{16}{m}.
+  }
+  On peut alors écrire la température comme $T(x,t) = T_0 + T_1 \re\left(e^{-x/\delta}e^{ix/\delta -i\omega t}\right)$, soit
+  \eqbox{
+    T(x,t) = T_0 + T_1 e^{-x/\delta}\cos\left(\omega t - \frac{x}{\delta}\right).
+  }
+  }
+
+\item Vers quelle date la température est-elle minimum à une profondeur $x=\SI{2}{m}$ sachant qu'elle est minimale à la surface le $1^{\rm er}$ janvier où elle vaut $\SI{-10}{\degree}$ et maximale le $1^{\rm er}$ juillet où elle vaut $\SI{30}{\degree}$.
+
+\sol{
+L'amplitude de variation vaut $T_1 =\SI{-20}{\degree}$, mais cela n'influe pas sur la grandeur rechrechée. On soit que la température est minimale en surface lorsque $\cos\left(\omega t\right)=-1$, donc pour $t = \frac{t_0}{2}$, ce qui correspond au $1^{\rm er}$ janvier. À la profondeur $x$, la température est minimale lorsque $\cos\left(\omega t - x/\delta\right)=-1$, soit pour $t-t_0x/\lambda = \frac{t_0}{2}$. Le minimum de température à la profondeur $x$ est donc atteint une durée $t_0x/\lambda=\SI{1.5}{mois}$ après le $1^{\rm er}$ janvier, soit le \fbox{$15$ février}.
+}
+\end{quest}
+
+% $\begin{array}{lll}
+% \textsc{Données :}  & \text{masse volumique du sol} & : \mu = \SI{3.1}{kg.m^{-3}} \\
+% & \text{capacité thermique massique du sol} & : c=\SI{870}{J.kg^{-1}.K^{-1}} \\
+% & \text{conductivité thermique du sol} & : \Lambda =\SI{0.32}{W.m^{-1}.K^{-1}}.
+% \end{array}
+% $
+
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\begin{exo}[PC][2][TD]{Propagation d'une onde dans le plasma interstellaire}
+  \Notions{\item Onde électromagnétique dans un plasma \task Relation de dispersion \task Dispersion d'un signal}
+Le plasma interstellaire est constitué d'électrons de masse $m$, de charge électrique $-e$, de densité particulaire $n$, et d'ions de charge électrique $+e$, et de même densité particulaire $n$. %La densité de charge totale est nulle.
+Le mouvement des ions est négligé et celui des électrons, non relativistes, est décrit par le vecteur vitesse $\vv{v}$. Avec ces hypothèses, on cherche des solutions aux équations de Maxwell  sous la forme d'OPPH généralisé de vecteur d'onde complexe $\vv{\udl{k}}$, dont le champ électrique est noté
+\begin{equation}
+ \underline{\vv{E}}(M,t)=\vv{E_0}\,\e^{i(\omega t-\vv{\udl{k}}\cdot\vv{r})}.
+ \end{equation}
+\begin{quest}
+\item Montrer que le champ magnétique de l'onde est aussi décrit par une onde plane de mêmes pulsation et vecteur d'onde. Déterminer la nature du trièdre $(\vv{\udl{k}},\vv{\udl{E}},\vv{\udl{B}})$ de l'onde.
+\sol{
+L'équation de Maxwell-Faraday en complexe conduit à la relation de structure
+$$
+\Vec{\udl{B}} = \frac{\Vec{k}}{\omega} \pv \Vec{\udl{E}}  = \frac{1}{\omega} (\Vec{k}\pv \Vec{\udl{E_0}} )\e^{i(\omega t-\vv{k}\cdot\vv{r})}.
+$$
+Le champ magnétique est donc décrit par une OPPH de même $\omega$ et $k$. Le trièdre $(\vv{E},\vv{B},\vv{k})$  est direct d'après les propriétés du produit vectoriel.
+}
+\item Déterminer l'amplitude $\Vec{j_0}$ du vecteur densité volumique de courant exprimé en notation complexe comme $\udl{\j}(M,t)=\Vec{j_0}\,\e^{i(\omega t-\vv{\udl{k}}\cdot\vv{r})}$ en fonction de $\vv{E_0},\omega,c,\udl{k}$ et $\varepsilon_0$. En étudiant le mouvement des électrons, exprimer la constante $\alpha$ telle que $\udl{\j}=-i\frac{\alpha}{\omega}\vv{E}$.
+\sol{
+Pour la première formule, il est naturel d'utiliser l'équation de Maxwell-Ampère, soit
+$$
+\rot \udl{\B} = \mu_0 \udl{\j} + \frac{1}{c^2} \dr{\udl{\E}}{t}, \Rar -i \Vec{k} \pv \Vec{\udl{B_0}} = \mu_0 \Vec{j_0}  + i \frac{\omega}{c^2} \Vec{\udl{E_0}}
+$$
+donc
+$$
+\Vec{j_0} = -\frac{i}{\mu_0 \omega} \Vec{k} \pv (\Vec{k}\pv \Vec{\udl{E_0}}) - i \frac{\omega}{\mu_0 c^2} \Vec{\udl{E_0}} = i\left(\frac{c^2 \epz k^2}{\omega} - \epz \omega\right) \Vec{\udl{E_0}}.
+$$
+Pour la deuxième relation, on utilise la relation constitutive (démonstration dans le cours),
+$$
+\dr{\udl{\j}}{t} = i\omega \udl{\j} = \frac{ne^2}{m} \udl{\E} \Rar \udl{\j} = -i\frac{ne^2}{m\omega}.
+$$
+On a donc $\alpha = \frac{ne^2}{m}$.
+}
+\item En déduire la relation de dispersion $\omega(\udl{k})$ liant la pulsation de l'onde $\omega$ à son vecteur d'onde complexe $\udl{k}$. En posant $\alpha=\varepsilon_0 c^2 K^2$, calculer les vitesses de phase et de groupe de l'onde en fonction de $k$ et $K$. Quelle est la relation liant ces vitesses ?
+\sol{
+On a
+$$
+-i\frac{\alpha}{\omega} = i\frac{c^2 \epz k^2}{\omega} -i \epz \omega \Rar -\alpha = \epz c^2k^2 - \epz \omega^2 \Rar \omega^2 = c^2 k^2 + \frac{\alpha}{\epz} = c^2 k^2 + c^2 K^2,
+$$
+soit
+\eqbox{\omega(k) = c\sqrt{K^2+k^2}.}
+
+On en déduit ensuite les vitesses de phase et de groupe.
+ $$
+v_\vphi = \frac{\omega}{k} = c\sqrt{1+(\frac{K}{k})^2} >c, \qquad v_g = \dd{\omega}{k} = \frac{ck}{\sqrt{K^2+k^2}} = \frac{c}{\sqrt{1+(\frac{K}{k})^2}} < c.
+ $$
+ On remarque que $v_\vphi v_g =c^2$. Cette propriété est vérifiée lorsque
+ $$
+c^2 = v_\vphi v_g = \frac{\omega}{k}\dd{\omega}{k} = \dd{\omega^2}{k^2},
+ $$
+ i.e. quand $\omega^2 = c^2k^2 + \cte$ où $\cte$ est homogène à une pulsation au carré. Lorsque $\cte > 0$, on peut écrire $\cte = \omega_p^2$ et on obtient la relation de dispersion du plasma. Lorsque $\cte<0$, on peut écrire $\cte = -\omega_0^2$ et alors $k = c \sqrt{\omega^2 + \omega_0^2}$ est toujours réel.
+}
+\item Deux trains d'ondes de longueurs d'onde $\lambda_1$ et $\lambda_2$ sont émis au même instant par un objet stellaire situé à une distance $L$. En supposant $K^2\lambda_1^2$ et $K^2\lambda_2^2\ll 1$, montrer que ces signaux sont reçus avec un décalage $\Delta t=t_2-t_1$ à déterminer en fonction de $L,K,c,\lambda_1$ et $\lambda_2$.
+\sol{
+On suppose $K^2\ll k^2$ pour les deux trains d'ondes, donc $v_g = \frac{c}{\sqrt{1+(\frac{K}{k})^2}} \simeq c $ : on est dans le régime faiblement dispersif. Le décalage dans les instants de réception est donné au premier ordre non nul par
+$$
+\Delta t = t_2-t_1 = \frac{L}{v_{g,2}} - \frac{L}{v_{g,1}} = \frac{L}{c}\left(\sqrt{1+(\frac{K}{k_2})^2} - \sqrt{1+(\frac{K}{k_1})^2}\right) \simeq  \frac{LK^2}{2c} \left(\frac{1}{k_2^2} - \frac{1}{k_1^2}\right)
+= \frac{LK^2}{8\pi^2 c}(\lambda_2^2-\lambda_1^2).
+$$
+}
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC]{Amortissement de l'onde sonore par viscosité}
+  Contrairement au modèle idéal étudié en cours, une onde sonore est amortie par viscosité au cours de sa propagation dans un fluide. On considère ici une OPP se propageant dans le sens des $x$ croissants. À une dimension, la prise en compte de la viscosité implique de rajouter à l'équation d'Euler la force visqueuse volumique $\eta\frac{\partial^2 v(x,t)}{\partial x^2}$ où $\eta$ est la viscosité dynamique du fluide. On considérera que les deux autres équations restent inchangées.
+   \begin{quest}
+  \item Écrire l'équation hydrodynamique dans le cadre de l'approximation acoustique, puis en déduire la nouvelle équation de propagation satisfaite par $v(x,t)$.
+  \item On considère une OPPH$^{\star}$ se propageant dans le sens des $x$ croissants de la forme $\underline{v}(x,t)=v_0\,\e^{i(\omega t-\underline{k}x)}$. Établir la relation de dispersion des ondes acoustiques et commenter.
+  \item Montrer que l'onde est amortie sur une distance caractéristique $\delta$ dont on précisera l'expression. Faire l'application numérique dans l'air (on rappelle que $\eta=\SI{2e-5}{Pa.s}$) pour des sons aigus et graves. Commenter.
+  \end{quest}
+  \end{exo}
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][colle]{Fluides viscoélastiques}
+  On considère l'écoulement d'un fluide entraîné par une plaque horizontale à la pulsation $\omega$. On suppose que le profil de vitesse vérifie $\Vec{v}(M,t) = v_x(z,t) \ex$ où $x$ désigne la direction horizontale, $z$ la direction verticale et $M$ un point du fluide. On suppose que la pesanteur compense le gradient de pression, de sorte que seule la force visqueuse intervienne dans la direction horizontale.
+  \begin{quest}
+    \item	On suppose l'écoulement incompressible et le fluide newtonien de viscosité dynamique $\eta$ et de masse volumique $\rho$. À partir de l'équation de Navier-Stokes, montrer que la vitesse $v_x(z,t)$ vérifie une équation de diffusion. Chercher une solution de cette équation sous la forme d'une pseudo-OPPH de pulsation $\omega$ et de vecteur d'onde complexe $\udl{k}$. Déterminer la relation de dispersion.
+    \item On suppose maintenant que le fluide est viscoélastique de viscosité cinématique complexe $\overline{\nu} = \frac{\nu_0}{1+i\omega \tau}$ où $\tau$ est un temps caractéristique et $\nu_0$ une constante réelle. Montrer que la nouvelle relation de dispersion vérifie $\udl{k} = k-i\beta$ avec $k$ et $\beta$ réels et
+    $$
+    k^2 = \frac{1}{2\nu_0}\left( \omega^2 + \sqrt{1+\omega^2\tau^2} \right), \qquad \beta = \frac{\omega}{2\nu_0 k}.
+    $$
+    Discuter des comportements du fluide dans les régimes de fréquences faibles ($\omega\tau \ll1$) et élevées ($\omega\tau \gg 1$).
+  \end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC]{Propagation de l'énergie dans un plasma peu dense}
+On considère un plasma peu dense contenant $n$ électrons par unité de volume et on étudie la propagation d'une OPPH selon les $z$ croissants de pulsation $\omega>\omega_{\rm{p}}$ et polarisée suivant l'axe $(Ox)$.
+\begin{quest}
+\item Donner l'expression des champs électrique et magnétique et du vecteur de Poynting.
+\item Calculer la densité volumique d'énergie électromagnétique et d'énergie cinétique des électrons.
+\item En déduire la vitesse de propagation de l'énergie, et la comparer à la vitesse de groupe.
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][2][TD]{Dispersion des ondes gravito-capillaires}
+La relation de dispersion d'une onde à la surface d'une eau de profondeur $h$ est donnée par
+\begin{equation}
+ \omega^2=\left(gk+\frac{\gamma k^3}{\rho}\right)\tanh(kh)
+ \end{equation}
+ où $g$ est l'accélération de la pesanteur, $\rho$ la masse volumique de l'eau, et $\gamma$ la constante de tension superficielle à l'interface eau-air.
+\begin{quest}
+\item Déterminer la dimension physique de $\gamma$.
+\item Déterminer une longueur caractéristique $l_{\rm{c}}$ appelée la longueur capillaire, qui permet de comparer les effets de la tension superficielle et ceux de la pesanteur.
+\item Comment se simplifie la relation de dispersion si $\lambda\ll l_{\rm{c}}$ ? Et si $\lambda\gg l_{\rm{c}}$ ? Donner dans chaque cas l'expression de la vitesse de phase $v_\varphi$ et de la vitesse de groupe $v_{\rm{g}}$ d'une part en eau peu profonde ($h\ll\lambda$) puis en eau profonde ($h\gg\lambda$). Quand y a-t-il dispersion ?
+\sol{
+Vous pouvez observer l'évolution d'un paquet d'onde dans les différents cas à partir de l'animation suivante \url{http://ressources.univ-lemans.fr/AccesLibre/UM/Pedago/physique/02/meca/vitgroupe.html}. La vitesse de phase est fixée à $\varphi=\frac{\omega}{k}=\frac{50}{3}\,\SI{}{SI}$. Vous pouvez observer les cas précédents en fixant par exemple $\Delta k=\SI{0,015}{SI}$ et en prenant $\Delta\omega=\SI{1,2}{SI}$ ou $\SI{2,5}{SI}$ ou $\SI{3,7}{SI}$ ou $\SI{5}{SI}$.
+}
+\item On donne $\gamma=\SI{73e-3}{SI}$, en déduire $l_{\rm{c}}$. Calculer alors $v_\varphi$ et $v_{\rm{g}}$ pour une onde de marée dans l'océan ($\lambda\simeq\SI{1000}{km}$ et $h\simeq$ quelques km), puis pour une houle de longueur d'onde $\SI{5}{m}$ dans un océan profond.
+%, puis pour une onde dans une cuve à onde ($\lambda=\SI{3}{cm}$ et $h=\SI{1}{mm}$).
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][1][TD]{Dispersion des ondes gravitaires}
+  \Notions{\item Relation de dispersion \task Vitesse de phase et de groupe}
+  La relation de dispersion d'une onde gravitaire à la surface d'une eau de profondeur $h$ est donnée par
+$
+ \omega^2=gk\tanh(kh)
+$ avec $\omega>0$ et $k>0$,
+ où $g$ est l'accélération de la pesanteur.
+\begin{quest}
+% \item Déterminer la dimension physique de $\gamma$.
+% \item Déterminer une longueur caractéristique $l_{\rm{c}}$ appelée la longueur capillaire, qui permet de comparer les effets de la tension superficielle et ceux de la pesanteur.
+% \item Comment se simplifie la relation de dispersion si $\lambda\ll l_{\rm{c}}$ ? Et si $\lambda\gg l_{\rm{c}}$ ? Donner dans chaque cas l'expression de la vitesse de phase $v_\varphi$ et de la vitesse de groupe $v_{\rm{g}}$ d'une part en eau peu profonde ($h\ll\lambda$) puis en eau profonde ($h\gg\lambda$). Quand y a-t-il dispersion ?
+\item Y a-t-il dispersion ? propagation ? atténuation ? Représenter le graphe de la fonction $\omega(k)$. Calculer les vitesses de phase $v_{\vphi}(\omega)$ et de groupe $v_g(\omega)$.
+\sol{
+Il y a propagation ($\udl{k}$ possède une partie réelle) avec dispersion ($\omega(k)$ est non linéaire) sans atténuation ($\udl{k}$ ne possède pas de partie imaginaire). On a
+$$
+\omega(k) = \sqrt{gk\tanh(kh)}  \simeq \begin{cases}
+\sqrt{gh} k  & \text{en eau peu profonde } (kh\ll1), \\
+\sqrt{gk} & \text{en eau profonde } (kh\gg1). \\
+\end{cases}
+$$
+La propagation est non dispersive dans la limite de l'eau peu profonde, de célérité $c=\sqrt{gh}$, et fortement dispersive dans la limite d'eau profonde.
+% Vous pouvez observer l'évolution d'un paquet d'onde dans les différents cas à partir de l'animation suivante \url{http://ressources.univ-lemans.fr/AccesLibre/UM/Pedago/physique/02/meca/vitgroupe.html}. La vitesse de phase est fixée à $\varphi=\frac{\omega}{k}=\frac{50}{3}\,\SI{}{SI}$. Vous pouvez observer les cas précédents en fixant par exemple $\Delta k=\SI{0,015}{SI}$ et en prenant $\Delta\omega=\SI{1,2}{SI}$ ou $\SI{2,5}{SI}$ ou $\SI{3,7}{SI}$ ou $\SI{5}{SI}$.
+}
+\item Estimer $v_\varphi$ et $v_{\rm{g}}$ pour une onde de marée de longueur d'onde $\lambda= \SI{1000}{km}$ dans l'océan, de profondeur $h=\SI{4}{km}$, puis pour une houle de longueur d'onde $\lambda = \SI{5}{m}$ dans l'océan. Dans quelle situation la relation de dispersion devient linéaire ?
+\sol{
+Vitesse de phase
+$$
+v_{\vphi} = \frac{\omega}{k} \simeq \sqrt{\frac{g}{k}\tanh(kh)} \begin{cases}
+c  & \text{en eau peu profonde } (kh\ll1), \\
+ \sqrt{\frac{g}{k}} & \text{en eau profonde } (kh\gg1). \\
+\end{cases}
+$$
+Vitesse de groupe
+$$
+v_{g} = \dd{\omega}{k} \simeq \begin{cases}
+c  & \text{en eau peu profonde } (kh\ll1), \\
+ \frac{1}{2}\sqrt{\frac{g}{k}} & \text{en eau profonde } (kh\gg1). \\
+\end{cases}
+$$
+On voit que $v_\vphi = 2 v_g$ en régime d'eau profonde. \AN
+\begin{liste}
+  \item Pour une onde de marée, $h \ll \lambda$ : régime d'eau peu profonde. On a $v_\vphi = v_g = c = \sqrt{gh} = \SI{200}{m.s^{-1}}$.
+  \item Pour la houle, $h \gg \lambda$ : régime d'eau profonde. On a $v_\vphi = \sqrt{\frac{\lambda g}{2\pi}} = \SI{2.8}{m.s^{-1}}$ et $v_g = \frac{v_\vphi}{2} = \SI{1.4}{m.s^{-1}}$.
+\end{liste}
+}
+\end{quest}
+En prenant en compte la capillarité de l’eau, caractérisée par la tension superficielle $\gamma = \SI{72}{mN.m^{-1}}$,  la relation de dispersion en eau profonde $kh \gg 1$ devient $\omega^2 = gk + \frac{\gamma}{\rho}k^3$, où $\rho$ est  la masse volumique de l’eau. 
+\begin{quest}
+  \item	Déterminer les vitesses de phase $v_\varphi(\omega)$ et de groupe $v_{\rm{g}}(\omega)$ dans ce cas. Définir et calculer une longueur caractéristique $\ell_{\rm{c}}$ qui délimite les régimes gravitaire et capillaire, appelée longueur capillaire. Expliquer la photographie ci-dessous.
+  \begin{fig}[label]
+    \centering
+    \includegraphics[width=0.6\columnwidth]{kelvin_wake.jpg}
+    %\capt{}
+  \end{fig}
+\end{quest}
+%, puis pour une onde dans une cuve à onde ($\lambda=\SI{3}{cm}$ et $h=\SI{1}{mm}$).
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC]{Équation de Klein-Gordon}
+  On étudie la propagation d'onde le long d'une chaîne de pendules simples identiques, de masse $M$ et de longueur $L$, de moment d'inertie $ML^2$ par rapport à l'axe, couplés par des ressorts de raideur $K$.
+  %\begin{figure}[h!]
+  %\centering
+  \begin{center}
+  \includegraphics[width=0.4\textwidth]{klein_gordon.pdf}
+  \end{center}
+  %\end{figure}
+  \begin{quest}
+  \item Déterminer l'équation de propagation liant les petits déplacements des extrémités des pendules notés $\psi_n\simeq L\theta_n$, $\psi_{n-1}$ et $\psi_{n+1}$.
+  \item Quelle est la relation de dispersion des ondes progressives monochromatiques caractérisant cette propagation ? Que devient-elle dans la limite continue ?
+  \end{quest}
+  \end{exo}
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][3][exp]{Vibration de lames en musique}
+  \Notions{\item Relation de dispersion \task Mode propre \task Onde mécanique transverse}
+  La déformation transverse $y(x,t)$ d'une lame de section rectangulaire d’épaisseur $b$, de masse volumique $\rho$ et de module de Young $E$, vérifie l’équation d’onde
+    $$
+    \frac{\partial^2 y}{\partial t^2}+ \frac{E b^2}{12 \rho} \frac{\partial^4 y}{\partial x^4}=0.
+    $$
+    Le modèle qui mène à cette équation d’onde ne prend aucune dissipation en compte.
+  \begin{quest}
+    \item	On définit $c = \sqrt{\frac{E}{\rho}}$. Quelle est la dimension de $c$ ? Que représente cette grandeur ?
+    \sol{
+    La grandeur $c$ est une vitesse. Il s’agit de la célérité des ondes longitudinales dans le matériau.
+    }
+    
+    \item  On cherche une solution en OPPH complexe $\udl{y}(x,t) = y_0 \, e^{i(\omega t -k x)}$ de pulsation $\omega>0$ et de vecteur d’onde $k>0$. Justifier que l’on suppose $k$ réel. Déterminer la relation de dispersion $\omega(k)$. Représenter le graphe de la fonction $\omega(k)$ et calculer les vitesses de phase $v_\varphi$ et de groupe $v_g$. 
+    \sol{
+    On cherche une solution de la forme $\udl{y}(x,t) = \udl{y_0} e^{i(\omega t - \udl{k}x)}$. On substitue dans l'équation d'onde :
+    $$
+    -\omega^2 + \frac{c^2 b^2}{12} k^4 = 0,
+    $$
+    d’où la relation de dispersion 
+    \eqbox{
+    \omega(k) = \frac{cb}{2\sqrt{3}} k^2.
+    }
+    La relation de dispersion est non linéaire ; il y a donc dispersion. Les vitesses de phase et de groupe sont données par
+    $$
+    \left\{
+    \begin{array}{ll}
+      v_\varphi & = \frac{\omega}{k} = \frac{cb}{2\sqrt{3}} k =   \sqrt{\frac{2\sqrt{3}}{cb}} \sqrt{\omega}.\\
+      % $$
+      % $$
+       v_g & = \dd{\omega}{k} = \frac{cb}{\sqrt{3}} k = 2 v_\vphi.
+    \end{array}
+    \right.
+    $$
+    }
+    
+  \end{quest}
+  Le xylophone est un instrument de musique à percussion formé d’un ensemble de lames parallélépipédiques de bois ou de métal de différentes longueurs, dont les deux extrémités sont fixées sur un socle en bois. On étudie la vibration d’une lame de xylophone de longueur $L$. 
+  \begin{quest}
+    \item	Quelles sont les conditions aux limites qui portent sur $y(x=0,t)$ et $y(x=L,t)$ ? En cherchant une solution sous la forme d’une onde stationnaire $y(x,t) = y_0 \cos(\omega t) \cos(k x + \varphi)$, déterminer la forme des modes propres de vibration de la lame. En particulier, exprimer la quantification des vecteurs d’onde $k_n$ par un entier $n\geq1$, et montrer que les fréquences propres se mettent sous la forme
+    $$
+    f_n = n^2 f_1 \qquad \text{avec} \qquad f_1 = \frac{\pi bc}{4\sqrt{3}L^2}.
+    $$
+    \sol{
+    Les conditions aux limites pour des extrémités fixes sont $y(x=0,t) = y(x=L,t) = 0$. On cherche une solution de la forme $y(x,t) = y_0 \cos(\omega t) \sin(k x + \varphi)$. Cette fonction est solution de l’équation si $\omega$ et $k$ sont reliés par la relation de dispersion. Les conditions aux limites imposent
+    $$
+    \sin(kL + \varphi) = \sin(\varphi) = 0 \Rar kL = n\pi \Rar k_n = \frac{n\pi}{L}.
+    $$
+    On en déduit les fréquences propres
+    \eqbox{
+    f_n = \frac{cb}{4\pi\sqrt{3}} k_n^2 = n^2  \frac{\pi cb}{4\sqrt{3}L^2}.
+    }
+    }
+    \item \AN~: déterminer la fréquence fondamentale $f_1$ et la première fréquence harmonique $f_2$ d'une lame de xylophone de longueur $L = \SI{24.3}{cm}$, d’épaisseur $b= \SI{9.15}{mm}$, faite en bois de palissandre, de module de Young $E = \SI{1.2e10}{Pa}$ et de masse volumique $\rho = \SI{740}{kg.m^{-3}}$. Représenter le graphe de la déformation $y(x,t)$ pour ces deux premiers modes.
+  \end{quest}
+  La clarinette est un instrument de musique qui produit un son grâce à la vibration d’une anche rivetée sur un chassis à l’une de ses extrémités, l’autre extrémité étant libre. On étudie la vibration d’un anche de clarinette de longueur $L$ fixée en $x=0$.
+  \begin{quest}
+    \item On cherche une solution de la forme $y(x,t) = f(x)\cos(\omega t)$. 
+     Déterminer l’équation différentielle vérifiée par $f(x)$ et montrer que les solutions sont de la forme 
+     $$
+    f(x) = A \cos(kx) + B \sin(kx) + C \cosh(kx) + D \sinh(kx),
+     $$
+    où $k$ est le vecteur d’onde donné par la relation de dispersion et $A$, $B$, $C$ et $D$ sont des constantes.
+    \sol{
+    On cherche une solution de la forme $y(x,t) = f(x)\cos(\omega t)$. En substituant dans l’équation d’onde, on obtient
+    $$
+    -\omega^2 f(x) + \frac{E b^2}{12 \rho} f^{(4)}(x) =0 \Rar f^{(4)}(x) - \frac{12 \rho \omega^2}{E b^2} f(x) = 0 \Rar f^{(4)}(x) - k^4 f(x) = 0,
+    $$
+    où $k$ est la racine réelle positive de la relation de dispersion. L’équation caractéristique associée est $r^4=k^4$, ce qui donne $r=\pm k$ et $r=\pm ik$. Les solutions sont donc de la forme annoncée : 
+    \eqbox{
+    f(x) = A \cos(kx) + B \sin(kx) + C \cosh(kx) + D \sinh(kx).
+    }
+    }
+    \item	Quelles conditions aux limites vérifie la déformation $y(x=0,t)$ et l’angle de courbure $\dr{y}{x}(x=0,t)$ au niveau de l’extrémité fixe ? Ces conditions sont-elles suffisantes pour déterminer entièrement $f(x)$ ? 
+    \sol{
+    La anche est encastrée, ce qui impose que la déformation et l’angle de courbare s’annulent, soit 
+    \eqbox{
+    y(x=0,t) = 0, \qquad\text{et}\qquad\dr{y}{x}(x=0,t)=0.
+    }
+    Ces deux équations ne sont pas suffisantes pour déterminer les quatre inconnues.
+    }
+    \item On admet que les conditions aux limites au niveau de l’extrémité libre imposent de plus 
+    $$\drm{y}{x}{2}(x=L,t)=0
+     \quad \text{ et } \quad \drm{y}{x}{3}(x=L,t)=0.$$ En déduire un système de quatre équations linéaires pour les inconnues $A$, $B$, $C$ et $D$.
+     \sol{
+      On obtient le système d’équations 
+      $$
+      \left(\begin{array}{cccc}
+        0 & 1 & 0 & 1 \\
+        1 & 0 & 1 & 0 \\
+        -\sin (k L) & -\cos (k L) & \sinh (k L) & \cosh (k L) \\
+        -\cos (k L) & \sin (k L) & \cosh (k L) & \sinh (k L)
+        \end{array}\right)\left(\begin{array}{l}
+        A \\
+        B \\
+        C \\
+        D
+        \end{array}\right)=\left(\begin{array}{l}
+        0 \\
+        0 \\
+        0 \\
+        0
+        \end{array}\right)
+        $$
+          }
+    \item On admet que pour obtenir des solutions non triviales, le paramètre $\alpha=kL$ doit vérifier la relation $\cos(\alpha)\cosh(\alpha)=-1$, dont les solutions sont de la forme $\alpha_n \simeq (2n+1)\frac{\pi}{2}$ avec $n\geq0$. En déduire les fréquences propres $f_n$ de vibration de l’anche. 
+    \sol{
+    Pour obtenir des solutions non triviales, le déterminant de la matrice doit s’annuler. On obtient alors $\cos(\alpha)\cosh(\alpha)=-1$. Les solutions sont de la forme $\alpha_n \simeq (2n+1)\frac{\pi}{2}$ avec $n\geq0$. On en déduit les fréquences propres 
+    $$
+    f_n = \frac{\omega_n}{2\pi} = \frac{cb}{4\pi\sqrt{3}}k_n^2,
+    $$
+    soit 
+    \eqbox{
+     f_n \simeq \frac{cb\pi}{16\sqrt{3}L^2} (2n+1)^2.
+    }
+    }
+
+    % \item \AN~: déterminer la fréquence fondamentale $f_1$ et la première fréquence harmonique $f_2$ d'une lame de xylophone de longueur $L = \SI{24.3}{cm}$, d’épaisseur $b= \SI{9.15}{mm}$, faite en bois de palissandre, de module de Young $E = \SI{1.2e10}{Pa}$ et de masse volumique $\rho = \SI{740}{kg.m^{-3}}$. Représenter le graphe de la déformation $y(x,t)$ pour ces deux premiers modes.
+    % \sol{
+    % \begin{fig}[label]
+    %   \centering
+    %   % \includegraphics[width=0.7\columnwidth]{anche_deformation.png}
+    %   %\capt{}
+    % \end{fig}
+    % }
+  \end{quest}
+
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PSI][2][TD]{Câble coaxial avec pertes}
+  \Notions{\item Onde électrocinétiquie \task Relation de dispersion \task Vitesse de phase.}
+On modélise un câble coaxial par un ensemble de blocs élémentaires dont le circuit est le suivant.
+On note $\Lambda$ l'inductance linéique, $\Gamma$ la capacité linéique, $r$ la résistance linéique, et $g$ la conductance linéique.
+%%% FIGURE %%%
+\begin{center}
+\includegraphics{coax_pertes.pdf}
+\end{center}
+%\caption{Bloc d'un câble coaxial, de résistance linéique $r	$, inductance linéique $\Lambda$, capacité linéique $\Gamma$ et conductance linéique $g$.}
+%\label{fig:}
+%\end{figure}
+%%%%%%%%%%
+
+\begin{quest}
+\item À l'aide d'une loi des mailles, déterminer une équation aux dérivées partielles qui relient la tension $v(x,t)$  au courant $i(x,t)$.
+Faire de même avec une loi des nœuds.
+
+\sol{
+$u(x,t) = u(x+\d x,t) + \Lambda \d x \dfrac{\partial i}{\partial t} + r \d x i(x,t)$ donc
+$$
+ - \dfrac{\partial v}{\partial x} = \Lambda  \dfrac{\partial i}{\partial t} + r i.
+ $$
+
+$i(x,t)  =  i(x+\d x,t) + \Gamma \d x \dfrac{\partial v}{\partial t} + g \d x v(x,t) $ donc
+$$
+ - \dfrac{\partial i}{\partial x} = \Gamma  \dfrac{\partial v}{\partial t} + g v.
+ $$
+}
+
+\item En déduire une équation aux dérivées partielles sur la tension $v(x,t)$, que l'on mettra sous la forme
+\begin{equation}
+\dfrac{\partial^2 v}{\partial x^2} - \dfrac{1}{c^2} \dfrac{\partial v}{\partial t^2} = \dfrac{1}{\tau c^2} \dfrac{\partial v}{\partial t} + \dfrac{v}{\ell^2}.
+\end{equation}
+Quelle est l'expression et la dimension des grandeurs $c$, $\tau$, et $\ell$ ? Applications numériques pour  $r=\SI{3.9e-2}{\Omega.m^{-1}}$, $g=\SI{2e-9}{S.m^{-1}}$, $\Lambda = \SI{2.6e-7}{H.m^{-1}}$ et $\Gamma=\SI{42.8}{pF.m^{-1}}$.
+
+
+\sol{
+On a
+$$
+ - \dfrac{\partial^2 v}{\partial x^2} = \Lambda  \dfrac{\partial i}{\partial t \partial x} + r \dfrac{\partial i}{\partial x} = -\Lambda c \dfrac{\partial^2 v}{\partial t^2} - \Lambda g \dfrac{\partial v}{\partial t} - r\Gamma \dfrac{\partial v}{\partial t} - rg v.
+$$
+d'où
+$$
+\dfrac{\partial^2 v}{\partial x^2} - \dfrac{1}{c^2} \dfrac{\partial^2 v}{\partial t^2} = \dfrac{1}{\tau c^2} \dfrac{\partial v}{\partial t} + \dfrac{v}{\ell^2}.
+$$
+avec $c=1/\sqrt{\Lambda c} = \SI{3.0e8}{m.s^{-1}}$, $\tau = 1/(g/\Gamma+r/\Lambda)=\SI{6.7}{\mu s}$ et $\ell = 1/\sqrt{rg}=\SI{113}{km}$.
+}
+
+\item Chercher des solutions de cette équation sous la forme d'OPPH généralisées $\underline{v}(x)= Ae^{j(\omega t-\udl{k}x)}$. En déduire la relation de dispersion. On néglige dans cette question da conductance de la ligne ($g=0$). À la fréquence $f=\SI{15}{kHz}$, comparer les parties réelles et imaginaires de $\udl{k}^2$. En déduire un développement limité pertinent pour mettre le vecteur d'onde sous la forme $\udl{k}=\alpha-j\beta$, avec $\alpha$ et $\beta$ à déterminer.
+
+\sol{
+$k^2 = \dfrac{\omega^2}{c^2}-\dfrac{1}{\ell^2} - \dfrac{j\omega}{\tau c^2} \simeq \dfrac{\omega^2}{c^2} - j\omega r \Gamma $ donc $k \simeq \dfrac{\omega}{c} \sqrt{1-j\dfrac{r \Gamma c^2}{\omega}} \simeq \dfrac{\omega}{c} \left(1-j\dfrac{r \Gamma c^2}{2\omega}  + \dfrac{r^2 \Gamma^2 c^4}{8\omega^2} \right)$ d'où
+$$
+\beta = \dfrac{r\Gamma c}{2}, \qquad \alpha = \dfrac{\omega}{c}\left(1  + \dfrac{r^2 \Gamma^2 c^4}{8\omega^2} \right)
+$$
+}
+
+\item \AN~: définir la distance d'atténuation des ondes $\delta$ en fonction de $\alpha$ et la calculer. Définir de même la vitesse de phase $v_{\vphi}$ et calculer le rapport $v_{\vphi}/c$.
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PSI]{Amortissement visqueux des ondes acoustiques}
+On considère un gaz de masse volumique $\mu$ et de viscosité dynamique $\eta$. Une onde acoustique se propage dans le gaz : les particules se déplace dans la direction $x$ à une vitesse $\vec{v}=v(x,t)\,\vec{e_{x}}$. Soit $p(x,t)$ la surpression acoustique et $\chi$ la compressibilité isentropique.
+
+ \begin{quest}
+ \item Rappeler le cadre des approximations acoustiques. Écrire les trois équations de l'acoustique : équation d'Euler, conservation de la masse et expression du coefficient de compressibilité. En déduire l’expression de la célérité $c$ des ondes.
+
+
+  \item On prend en compte la viscosité du gaz. On admet que la viscosité modifie l’équation d’Euler en ajoutant une force volumique
+  \begin{equation}
+  \vec{f_v} = \eta \dfrac{\d^2 v}{\d x^2} \vec{e_x}.
+  \end{equation}
+Établir la nouvelle équation de propagation de la surpression $p$.
+  \item Déterminer la relation de dispersion. Déterminer $k$ au premier ordre en $\omega\tau$, où $\tau=\eta/\mu c^{2}$.
+  \item Déterminer la distance typique  d'amortissement $d$ et la vitesse de phase $v_\phi$ des ondes. Application numérique pour $f=1\,\text{kHz}$.
+
+
+ \end{quest}
+
+  $\begin{array}{lll}
+\textsc{Données :}
+& \text{masse volumique} & :  \mu = \SI{1.3}{kg.m^{-3}} \\
+& \text{célérité du son} & : c = \SI{340}{m.s^{-1}} \\
+& \text{viscosité dynamique} & : \eta=\SI{18.2e-6}{N.s.m^{-2}}
+\end{array}
+$
+
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{exo}[PSI]{Onde d'Alfvén dans un plasma}
+%  Un plasma est assimilé à un fluide conducteur de conductivité réelle $\sigma$ et homogène de masse volumique $\rho$. Il est initialement au repos dans un champ magnétique uniforme et constant $\Vec{B_0} = B_0 \Vec{e_z}$. Une perturbation dans le plasma engendre un champ magnétique additionnel $\Vec{b}=b(z,t)\Vec{e_x}$ avec $b \ll B_0$ et une vitesse $\Vec{v}=v(z,t)\Vec{e_x}$ du fluide, tous deux orthogonaux à $\Vec{B_0}$. Ces perturbations sont suffisamment lentes pour pouvoir négliger le courant de déplacement devant celui de conduction.
+
+%     \begin{quest}
+%         \item Soit $\Vec{j}$ la densité de courant. On admet que dans un conducteur en mouvement à la vitesse~$\Vec{v}$, la loi d'Ohm s'écrit
+%         \begin{equation}
+%         \Vec{j} = \sigma(\Vec{E}+\Vec{v}\wedge \Vec{B}).
+%         \end{equation}
+%         À l'aide d'une équation de Maxwell, en déduire l'expression de $\Vec{E}$ en fonction uniquement de $\Vec{v}$ et du champ magnétique total $\Vec{B} = \Vec{B_0} + \Vec{b}$.
+
+%         \sol{
+%        $$ \Vec{E} = \dfrac{1}{\mu_0 \sigma} \rot{\Vec{B}}  - \Vec{v} \wedge \Vec{B}.$$
+%         }
+
+
+%         \item On donne
+%         \begin{equation}
+%         \Rot{(\Vec{p}\wedge\Vec{q})} =  \Vec{p} \,(\Dive{\,\Vec{q}})- \Vec{q}\, (\Dive{\,\Vec{p}}) + (\Vec{q}\cdot \Grad{}) \Vec{p} - (\Vec{p}\cdot \Grad{}) \Vec{q}.
+%         \end{equation}
+%         À partir d'une équation de Maxwell, déterminer $\frac{\partial \Vec{B}}{\partial t}$. Que valent $\Dive{\Vec{B}}$ et $\Dive{\,\Vec{v}}$ ? En déduire que la perturbation du champ magnétique vérifie l'équation
+%         \begin{equation}
+%         \dfrac{\partial \Vec{b}}{\partial t} = \dfrac{1}{\mu_0 \sigma} \dfrac{\partial^2 \Vec{b}}{\partial z^2} + B_0 \dfrac{\partial \Vec{v}}{\partial z}.
+%         \end{equation}
+
+%            \item Justifier l'expression de la force magnétique volumique
+%            \begin{equation}
+%            \Vec{f_m} = \Vec{j} \wedge \Vec{B}.
+%            \end{equation}
+%            Déterminer son expression en fonction de $\Vec{b}$.
+
+%            \sol{
+%            $$\Vec{f_{\rm m}} =  \dfrac{B_0}{\mu_0}  \dfrac{\partial \Vec{b}}{\partial z} - \dfrac{b}{\mu_0} \dfrac{\partial b}{\partial z}  \Vec{e_z}.$$
+%            }
+
+%            \item Écrire l'équation d'Euler gouvernant la vitesse du fluide, en supposant que la pression totale s'écrive $P=P_0 + p$, où $p(z,t)$ est la surpression. Projeter cette équation selon les directions $x$ et~$z$. Quelle information nous donne la projection selon~$z$ ? La pression apparaît dans la projection selon $x$ ?
+
+%            \sol{
+
+%            $$\dfrac{\partial \Vec{v}}{\partial t} = \dfrac{B_0}{\mu_0} \dfrac{\partial \Vec{b}}{\partial z}$$ selon $x$ et
+%            $$
+%            p + \dfrac{b^2}{2\mu_0} = \text{Cte}
+%            $$
+%            selon z.
+%            }
+
+%            \item En déduire l'équation régissant l'évolution de $\Vec{b}$ et la relation de dispersion associée. Étude dans les limites haute et basse fréquences.
+
+%            \sol{
+
+%            $$
+%            \dfrac{\partial^2 b}{\partial z^2} - \dfrac{\mu_0 \rho}{B_0^2} \dfrac{\partial^2 b}{\partial t^2} + \dfrac{\rho}{\sigma B_0^2} \dfrac{ \partial^3 b}{\partial t \partial z^2}  = 0.
+%            $$
+%            }
+
+
+%     \end{quest}
+% \end{exo}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC]{Couplage thermo-acoustique dans un gaz}
+Lorsqu'une onde sonore perturbe un milieu, la chaleur n'a en général pas le temps de diffuser depuis les tranches comprimées un peu plus chaudes vers les tranches dilatées un peu plus froides. Ce problème propose de tenir compte d'un tel phénomène. L'air est considéré comme un gaz parfait, de masse molaire $M=\SI{29}{g.mol^{-1}}$, de conductivité thermique $\lambda=\SI{2,5e-2}{W.K^{-1}.m^{-1}}$ dans les conditions d'équilibre de pression $P_0=\SI{1}{bar}$ et de température $T_0=\SI{300}{K}$; sa masse volumique est notée $\rho_0$ et la viscosité du gaz ainsi que les effets de pesanteur sont négligés.
+\begin{quest}
+\item Ce fluide est le siège d'une perturbation mécanique plane se propageant dans la direction de l'axe $(Oz)$. On note $p(z,t)$ et $\tau(z,t)$ les petites variations de sa pression et de sa température autour des valeurs $P_0$ et $T_0$ lorsqu'une tranche de gaz est déplacée de $a(z,t)$. En utilisant l'équation d'état des gaz parfaits, établir une relation entre $p(z,t)$, $\frac{\partial a}{\partial z}(z,t)$ et $\tau(z,t)$. (Aucune hypothèse n'est faite sur la nature thermodynamique des transformations).
+\item En effectuant un bilan des échanges thermiques subis par la tranche infinitésimale de gaz de section $S$ et d'épaisseur $\d z$, montrer que
+\begin{equation}
+\lambda\frac{\partial^2 \tau}{\partial z^2}=\rho_0 c_p\frac{\partial \tau}{\partial t}-\frac{\partial p}{\partial t}
+\end{equation}
+où $c_p$ désigne la chaleur massique du gaz à pression constante. On justifiera les hypothèses conduisant à la relation ci-dessus.
+\item En utilisant notamment l'équation d'état du gaz parfait, montrer que $\rho_0c_p=\frac{\gamma}{\gamma-1}\frac{P_0}{T_0}$ et en déduire que l'équation précédente se met sous la forme
+$$lc\frac{\partial^2\tau}{\partial z^2}=\frac{\partial}{\partial t}\left(\tau-\frac{\gamma-1}{\gamma}T_0\frac{p}{P_0}\right)$$ où $c$ est la célérité de propagation adiabatique et $l$ une constante homogène à une longueur. Calculer $l$.
+\item En utilisant la relation fondamentale de la dynamique et une relation établie à la première question, montrer que
+$$\frac{\partial^2p}{\partial z^2}=\frac{\gamma}{c^2}\frac{\partial^2}{\partial t^2}\left(p-\frac{P_0}{T_0}\tau\right).$$
+\item Quelle serait la célérité de propagation d'une onde acoustique si la conductivité thermique du gaz était infinie ? et si elle était nulle ?
+\item On se propose de trouver pour le système des deux équations aux dérivées partielles couplées précédent une solution harmonique de la forme (en notation complexe)
+\begin{equation}
+\underline{p}=\underline{p_0}\,\e^{i(\omega t-kz)}\qquad \qquad\underline{\tau}=\underline{\tau_0}\,\e^{i(\omega t-kz)}.
+\end{equation}
+Quelle est la condition qui pour un $\omega$ donné, permet de calculer les valeurs possibles de $k$ ? Montrer qu'elle s'écrit
+$$k^4\epsilon(\omega)+ik^2\frac{\omega^2}{c^2}\left[1+i\gamma\epsilon(\omega)\right]-i\frac{\omega^4}{c^4}=0,$$
+où $\epsilon(\omega)$ est une fonction à déterminer. Montrer que pour une fréquence inférieure à $\SI{100}{Hz}$, $\epsilon(\omega)$ reste très petit. Jusqu'à quelle fréquence $\epsilon(\omega)$ reste-t-il inférieur à \num{e-3} ?
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{exo}[PC]{Oscillations de la densité de charges dans un métal}
+% On assimile un métal à un gaz d'électrons libres (électrons de conduction) dans un réseau cristallin d'ions positifs placés dans le vide. Seule l'interaction du champ électromagnétique avec les électrons est pour l'instant considérée, le reste de la matière étant assimilé au vide. Les électrons sont supposés non relativistes, leurs interactions mutuelles sont négligées et les pertes d'énergie par collision avec le réseau sont prises en compte par une force d'amortissement $-\alpha\vv{v}$. La densité électronique est $n_0$ à l'équilibre, sa valeur $n$ hors équilibre reste très proche de $n_0$.
+% \begin{quest}
+% \item Établir l'équation différentielle liant le vecteur densité volumique de courant $\vv{j}$ et le champ électrique $\vv{E}$.
+% \item En déduire l'équation régissant l'évolution de la densité volumique de charge $\rho$ au sein du milieu.
+% \item Un milieu métallique est initialement perturbé: sa répartition de charges initiale fausse localement sa neutralité électrique globale. Quel ordre de grandeur peut-on prévoir pour le temps de retour à la neutralité électrique du milieu métallique ?
+% \item Montrer que si on néglige les forces d'amortissement, il peut exister dans le gaz d'électron un mode propre d'oscillations de charges, de pulsation $\omega_{\rm{p}}$ à préciser.
+% \item Calculer $\omega_{\rm{p}}$ pour l'aluminium (en considérant que tous les électrons de valence d'un atome deviennent électrons de conduction) avec la concentration atomique $C_{\rm{Al}}=\SI{6,02e28}{m^{-3}}$ et $Z_{\rm{Al}}=13$. Situer la valeur dans le spectre électromagnétique.
+% \end{quest}
+% \end{exo}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{exo}[PC]{Ondes longitudinales et transverses dans un plasma}
+% Dans un plasma de densité électronique $n_0$ à l'équilibre, on s'intéresse à la propagation d'une onde plane progressive monochromatique électromagnétique dont le champ électrique est noté $\underline{\vv{E}}(\vv{r},t)=\underline{\vv{E}}_0\,\e^{i(\omega t-\underline{\vv{k}}\cdot\vv{r})}$.
+% \begin{quest}
+% \item Écrire l'équation du mouvement des charges, non relativistes, les collisions au sein du plasma étant négligées. Pourquoi peut-on négliger le mouvement des ions ?
+% \item Établir, en régime sinusoïdal établi, l'expression du vecteur densité de courant électrique en fonction du champ de l'onde. Quelle est la \guill{conductivité} du plasma ?
+% \item Expliciter la relation liant $\underline{\vv{k}},\omega$ et $\underline{\vv{E}}$ imposée par l'équation de propagation de l'onde. On séparera les composantes longitudinale $\underline{\vv{E}}_{\parallel}$ et transverse $\underline{\vv{E}}_{\perp}$.
+% \item Que peut-on dire des ondes longitudinales susceptibles d'exister au sein du plasma ?
+% \item Quelle est la relation de dispersion caractérisant la propagation des ondes transverses ?
+% \item Quelle serait l'influence des phénomènes de collision, modélisés par l'ajout d'une force de dissipation d'énergie (que l'on proposera) dans l'équation du mouvement des charges, d'une part sur les ondes longitudinales, d'autre part sur les ondes transverses ?
+% \end{quest}
+% \end{exo}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][3][TD]{Étude des vibrations d'une corde verticale}
+  \Notions{\item Équation d'onde \task Résonance \task Fonction de Bessel}
+  Une corde infiniment souple de masse linéique $\mu$ et de longueur $L$ est suspendue verticalement dans le champ de pesanteur terrestre par son extrémité supérieure notée $A$. 
+  % Lorsque la corde est au repos, on note $O$ le point qui coïncide avec son extrémité inférieure. 
+  Le point d'accroche $A$ effectue des oscillations horizontales $y_{\rm{A}}(t)=a_0\cos(\omega t)$ d'amplitude $a_0\ll L$, tandis que l'extrémité inférieure de la corde est laissée libre. Le déplacement supposé horizontal d'un point $P(x)$ de la corde par rapport à sa position d'équilibre est repéré par l'ordonnée $y(x,t)$. On se place  déformations  petites, soit  $y(x,t) \ll L$. L'origine de l'axe $x$ est prise à l'extrémité libre à hauteur du point $O$.
+  % Dans toute la suite, $y$, $\frac{\partial y}{\partial x}$ et $\frac{\partial^2 y}{\partial x^2}$ sont très petits de sorte que le déplacement de la corde ne se produit sensiblement que selon $(Oy)$.
+  %\begin{figure}[h!]
+  %\centering
+  \begin{center}
+  \includegraphics[width=0.27\textwidth]{corde_verticale.pdf}
+  \end{center}
+  %\end{figure}
+   \begin{quest}
+  \item Montrer que l'équation de propagation des ondes le long de la corde s'écrit
+  \begin{equation*}
+  \frac{\partial^2 y}{\partial t^2}=g\left(\frac{\partial y}{\partial x}+x\frac{\partial^2 y}{\partial x^2}\right).
+  \end{equation*}
+  \sol{
+  
+\begin{liste}
+  \item \udl{PFD}: pour déterminer le déplacement de cette perturbation, on doit appliquer un théorème de la mécanique. Ici, nous appliquons le PFD à un élément de corde de longueur $\d x$ et de masse $\d m = \mu \d x$,
+  \begin{equation*}
+    \d m \Vec{a} =  \mu\d x\frac{\partial^2 y}{\partial t^2}(x,t)\vv{e_y} = \vv{T_{\rm{d}}}(x+\d x,t)+\vv{T_{\rm{g}}}(x,t) + \d m \Vec{g} = \vv{T_{\rm{d}}}(x+\d x,t) - \vv{T_{\rm{d}}}(x,t) + \d m \Vec{g}.
+  \end{equation*}
+  % Or la force exercée au point d'abscisse $x$ par la partie située à gauche est égale à l'opposée celle exercée en ce même point par la partie située à droite (actions réciproques\footnote{On peut aussi appliquer le PFD en un point (système de masse nulle) pour établir ce résultat.}), autrement dit $\vv{T_{\rm{g}}}(x,t)=-\vv{T_{\rm{d}}}(x,t)$.
+ \item \udl{Projection sur $\ex$} :% le PFD donne donc
+ \begin{equation*}
+ 0=T_{\rm{d}}(x+\d x,t)\cos\alpha(x+\d x,t)-T_{\rm{d}}(x,t)\cos\alpha(x,t) - \d m g 
+ \end{equation*}
+ Comme les angles sont petits, $\cos\alpha(x+\d x,t)\simeq \cos\alpha(x,t) =  1 + O(\alpha^2)$, et donc la tension  vérifie 
+ 
+ $$T_{\rm{d}}(x+\d x,t) - T_{\rm{d}}(x,t)= -\mu g \d x \Rar \dr{T_d}{x} \simeq -\mu g,$$ soit 
+ $$
+T_d(x,t) =  T_d(0,t) -\mu g x = - \mu g x,
+ $$
+ car la tension est nulle à l'extrémité libre $x=0$.
+ % au premier ordre. On note alors plus simplement
+  \item \udl{Projection sur $\vv{e_y}$} :%donne d'autre part
+ \begin{align*}
+ \mu\d x\frac{\partial^2 y}{\partial t^2} & = T_d(x +\d x,t)\sin\alpha(x+\d x,t)- T_d(x,t)\sin\alpha(x,t) \\ & = T_d(x +\d x,t)\alpha(x+\d x,t)-T_d(x,t)\alpha(x,t) + O(\alpha^2) \\ & 
+ \simeq \dr{T_d}{x}(x,t) \alpha(x,t)\d x + T_d(x,t)\dr{\alpha}{x}(x,t) 
+ \\ & =\, -\mu g x \frac{\partial \alpha}{\partial x}(x,t)\d x -\mu g \alpha.
+\end{align*}
+\item \udl{Relation géométrique} :
+or par définition de $\alpha$, on a la propriété géométrique
+\begin{equation*}
+ \alpha \simeq \tan\alpha = \frac{\partial y}{\partial x}.
+\end{equation*}
+\item \udl{Équation de propagation} : après simplification par $\d x$,
+\begin{equation*}
+  \mu\frac{\partial^2 y}{\partial t^2}(x,t) =-\mu g x \frac{\partial^2 y}{\partial x^2}(x,t) - -\mu g \dr{y}{x}.
+\end{equation*}
+Cette équation se met bien sous la forme demandée de l'énoncé,
+% \begin{equation}
+\eqbox{
+  \frac{\partial^2 y}{\partial t^2}=g\left(\frac{\partial y}{\partial x}+x\frac{\partial^2 y}{\partial x^2}\right).
+  }
+% \end{equation}
+% où $c$ désigne avec la célérité des ondes mécaniques transverses le long de la corde, et où la dépendance en $(x,t)$ est sous-entendue pour $y$.
+\end{liste}
+  }
+  \item Peut-on cherche une solution de l'équation précédente sous la forme complexe $\udl{y}(x,t)=y_0 \, e^{i(\omega t - \udl{k}x)}$ ? On cherche une solution sous la forme réelle $y(x,t)=a(x)\cos(\omega t)$. Que vaut $a(x=L)$ ? Déterminer l'équation vérifiée par $a(x)$ et définir une grandeur $k$ homogène à un vecteur d'onde, de sorte à mettre l'équation sous la forme 
+  \begin{equation}
+    xa'' + a' + k a = 0.
+  \end{equation}
+  \sol{
+    \begin{liste}
+      \item \udl{Solution en OPPH généralisée} : si l'on cherche une solution de la forme $\udl{y}(x,t)=y_0 \, e^{i(\omega t - \udl{k}x)}$, on trouve la relation de dispersion 
+      $$
+      \omega^2 = g\left(i\udl{k} + x\udl{k}^2\right).
+      $$
+      On voit que cette relation fait intervenir la position $x$, ce qui n'a pas de sens ! Le problème est que l'équation de propagation n'est pas à coefficients constants, si qui conduit à ce que la partie spatiale de la solution ne puisse pas se mettre sous la forme $e^{i\udl{k}x}$.
+      \item \udl{Solution en OPS} : on cherche donc plutôt une solution sous forme d'OPS harmonique où la partie spatiale est une fonction réelle $a(x)$ quelconque pour l'instant, soit 
+      $$
+      y(x,t) = a(x)\cos(\omega t).
+      $$
+      La condition aux limites au point d'attache $A$ est donnée par l'excitation horizontale de la corde, soit $y(x=0,t)=y_A(t) = a(x=L)\cos(\omega t) = a_0 \cos(\omega t)$, avec $a_0$ l'amplitude du forçage. On en déduit 
+      \eqbox{
+      a(x=L) = a_0.
+      }
+
+      \item \udl{Équation différentielle}. La fonction $a(x)$ vérifie l'équation différentielle
+      \begin{equation*}
+        -\omega^2 a(x) \cos(\omega t ) = g\left(\frac{\d a}{\d x}+x\frac{\d^2 a}{\d x^2}\right)\cos(\omega t),
+      \end{equation*}
+      soit 
+      % \eqbox{
+      $$
+        xa'' + a' + \frac{\omega^2}{g}a = 0.
+        $$
+        On peut introduire une grandeur $k$ homogène à un vecteur d'onde, d'expression 
+      \eqbox{
+      k = \frac{\omega^2}{g}.
+      }
+      L'équation différentielle vérifiée par $a(x)$ s'écrit alors
+      \eqbox{
+        xa'' + a' + k a = 0.
+      }
+        % }
+      \end{liste}
+  % On peut poser $k = \frac{\omega^2}{g}$. On trouve alors 
+  % \begin{equation*}
+  % \dd{}{x}\left( x\dr{A}{x} \right) + k A = 0
+  % \end{equation*}
+  }
+  
+  \item On définit l'abscisse adimensionnée $X=kx$ et la perturbation adimensionnée $A(X)$ telle que $a(x)=bA(kx)$, avec $A(0)=1$. Que représente la constante $b$ ? L'exprimer en fonction de $A$ et des paramètres du problème. Établir l'équation différentielle vérifiée par la fonction $A(X)$, puis rechercher une solution sous la forme d'un développement en série entière 
+  $$A(X) = \sum_{n=0}^{\infty} A_n X^n.$$ Quelle relation de récurrence vérifie les coefficients $A_n$ ? En déduire la fonction $A(X)$.
+  \sol{
+  \begin{liste}
+    \item \udl{Fonction adimensionnée} : en évaluant $a(x)$ au niveau de l'extrémité $x=0$, on trouve 
+    $$
+    a(x=0) = b A(0) = b.
+    $$
+    La grandeur $b$ représente donc l'amplitude du mouvement de l'extrémité libre de la corde. On peut la relier à l'amplitude du forçage $a_0$ par la relation
+    $$
+    a(x=L) = b A(kL) = a_0,
+    $$
+    soit 
+    \eqbox{
+    b = \frac{a_0}{A(kL)}.
+    }
+    \item \udl{Équation adimensionnée}. L'équation vérifiée par $A(X)$ est
+    % \begin{equation*}
+    \eqbox{
+      X\frac{\d^2 A}{\d X^2} + \frac{\d A}{\d X} + A = 0.
+      }
+% \end{equation*}
+\item \udl{Série entière}.  En injectant une solution sous la forme d'une série entière $A(X) = \sum_{n=0}^{\infty} A_n X^n$, on a
+  $$
+  \sum_{i=1}^{\infty} A_n n(n-1)X^{i-1} + \sum_{i=1}^{\infty} A_n n X^{i-1} + \sum_{i=0}^{\infty} A_n X^n = 0, \Rar 
+  \sum_{i=0}^{\infty} \left( A_{n+1}(n+1)^2 + A_n  \right) X^n = 0.
+  $$
+  Les coefficients vérifient la relation de récurrence $A_{n+1} = -\frac{A_n}{(n+1)^2}$. Avec $A(0) = A_0=1$, on trouve 
+  % \eqbox{
+  $$
+    A_n = \frac{(-1)^n}{n!^2}.
+    $$
+    % }
+    La solution de l'équation est donc 
+    \eqbox{
+      A(X) = \sum_0^{\infty} \frac{(-1)^n}{n!^2}X^n.
+      } 
+    \end{liste}  
+      }
+      \item 
+      On donne ci-dessous le développement en série entière de la fonction de Bessel d'ordre zéro $J_0(z)$, dont le graphe est également donné ci-dessous.
+      
+      \begin{equation}
+    J_0(z) = \sum_{n=0}^{\infty} \frac{(-1)^n}{(n!)^2}\left(\frac{z}{2}\right)^{2n}.
+  \end{equation}
+  % On admet que la fonction $A(X)$ ainsi trouvée s'écrit aussi $A(X) = J_0(2\sqrt{X})$ où $J_0(z)$ désigne la première fonction de Bessel, dont on donne le graphe ci-dessous.
+  % . On représente ci-dessous le graphe des deux premières fonctions de Bessel $J_0$ et $J_1$. 
+  \begin{fig}[label]
+    \centering
+    \includegraphics[width=0.5\columnwidth]{Bessel.pdf}
+    \capt{Graphe de la fonction de Bessel d'ordre zéro $J_0(z)$.}
+  \end{fig}
+  % \begin{center}
+  % \includegraphics[width=0.5\textwidth]{Bessel.pdf}
+  % \end{center}
+  Exprimer $A(X)$ à partir de la fonction de Bessel $J_0$. Le premier zéro de la fonction de Bessel $J_0(z)$ est atteint pour $z_0 = \num{2.4}$. On donne $L=\SI{1}{m}$, et $a_0=\SI{1}{mm}$. Déterminer la plus petite fréquence de résonance $f_0$. Déterminer l'amplitude du mouvement de l'extrémité libre à la fréquence $f=\SI{1}{Hz}$.
+
+  \sol{
+    \begin{liste}
+      \item \udl{Fonction de Bessel} : on voit que 
+      On trouve 
+      \eqbox{
+        A(X) =   J_0(2\sqrt{X}).
+        }
+      \end{liste}
+      \item \udl{Fréquence de résonance} : le premier zéro de la fonction de Bessel $J_0(z)$ est atteint pour $z_0 = \num{2.4}$. Or la résonance correspond à une divergence de l'amplitude de la corde, soit $b= \infty$ et donc 
+      $$
+      A(kL) = J_0(2\sqrt{kL}) = 0. 
+      $$
+      On en déduit 
+      $$
+      z_0 = 2\sqrt{kL} = 2\omega_0\sqrt{\frac{ L}{g}} = 4\pi f_0 \sqrt{\frac{L}{g}},
+      $$
+      et donc la plus petite fréquence de résonance est
+      \eqbox{
+      f_0 = \frac{z_0}{4\pi} \sqrt{\frac{g}{L}} = \SI{0.6}{Hz}.
+      }
+      \item \udl{Amplitude de l'extrémité libre} : à la fréquence $f=\SI{1}{Hz}$, on a
+      $$
+      b = \frac{a_0}{A(kL)} = \frac{a_0}{J_0(2\sqrt{kL})} = \frac{a_0}{J_0(4\pi\sqrt{{L}/{g}})}.
+      $$
+      Or $4\pi\sqrt{{L}/{g}} = \num{4.0}$. On lit sur le graphe que $J_0(\num{4.0}) \simeq -\num{0.4}$, et donc
+      \eqbox{
+      b = \frac{a_0}{J_0(\num{4.0})} \simeq -\SI{2.5}{mm}.
+      }
+      Le signe négatif indique que le mouvement de l'extrémité libre est opposé à celui du forçage.
+  }
+\end{quest}
+  \end{exo}
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][3][python]{Propagation d'un paquet d'onde}
+  \Notions{\item Paquet d'onde \task Onde électromagnétique dans un plasma}
+On souhaite étudier la propagation d'une onde au cours du temps. Une onde plane complexe quelconque $\udl{s}(x,t)$ peut se mettre sous la forme
+$$
+\udl{s}(x,t) =\int_{-\infty}^{+\infty}\udl{A}(k)\e^{i(\omega t-kx)}\d k,
+$$
+où $\udl{A}(k)$ désigne l'amplitude spectrale en vecteur d'onde $k$. Cette fonction est supposée être centrée en $k_0$ et de largeur typique $\Delta k$. Nous prendrons à titre d'exemple une fonction gaussienne réelle,
+$$
+\udl{A}(k) = A(k) = A_0 e^{-(k-k_0)^2/\Delta k^2}.
+$$
+\begin{quest}
+  \item  Compléter le script suivant pour définir un tableau \texttt{numpy} représentant la fonction $A(k)$ (on prendra $A_0=1$).
+  % \python{Paquet1.py}
+  \item Quelle est l'expression de $\udl{s}(x,t=0)$ en fonction de $A(k)$ ?  Compléter le script suivant pour définir une fonction \texttt{s\_ini} que renvoie tableau \texttt{numpy} représentant la fonction réelle $s(x,t=0)$.
+  % \python{Paquet2.py}
+  \item On suppose maintenant que $\Delta k \ll k_0$, de sorte qu'on puisse approximer la relation de dispersion comme $\omega(k) \simeq \omega_0 + (k-k_0)v_g$, où on rappellera le nom de la grandeur $v_g$. Montrer alors que le paquet d'onde s'écrit
+  $$
+  \udl{s}(x,t)
+   \simeq \e^{i(\omega_0 t-k_0 x)}\int_{-\frac{\Delta k}{2}}^{+\frac{\Delta k}{2}}A(k + k_0)\e^{-i k (x-v_g t )}\d k.
+  $$
+  Commenter la forme de cette fonction, et justifier que dans cette approximation un paquet d'onde ne se déforme pas au cours de sa propagation.
+  \item On considère enfin que $\Delta k$ n'est pas petit devant $k_0$, de sorte que la relation de dispersion ne peut plus être linéarisée. Pour l'exemple, on utilise ici la relation de dispersion $\omega(k)$ du plasma. Compléter le script suivant pour définir une fonction \texttt{s\_temps} qui renvoie un tableau \texttt{numpy} représentant la fonction $s(x,t)$. Afficher le paquet d'onde pour $\Delta k = 3$ à différents instants, et observer la déformation du paquet d'onde.
+  % \python{Paquet3.py}
+  \sol{
+  % \python{Paquet_sol.py}
+  }
+\end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][3][colle]{Onde électromagnétique dans un gaz}
+  \Notions{\item Relation de dispersion \task Onde électromagnétique dans un diélectrique}
+  On assimile un gaz à un milieu diélectrique homogène et isotrope dilué, de permittivité diélectrique relative $\varepsilon_r >1$. Le gaz est de charge globale nulle, de sorte que la charge volumique vaut $\rho = 0$, et est un isolant électrique, de sorte que le courant de conduction vaut $\j = \vv{0}$.
+   On s'intéresse à la propagation d'une OPPH dans le gaz, de pulsation $\omega$ et de vecteur d'onde réel $k$. 
+  \begin{quest}
+    \item On admet que dans un milieu diélectrique, les équations de Maxwell-Gauss et Maxwell-Ampère sont modifiées en remplaçant la permittivité diélectrique du vide $\epz$ par la permittivité diélectrique du matériau $\epz \varepsilon_r$. Déterminer l'équation de propagation de l'onde électromagnétique dans le gaz. Montrer que l'indice optique du milieu est ici réel et vaut $n=\sqrt{\varepsilon_r}$. 
+  \end{quest}
+    La théorie de l'électron élastiquement lié dans un milieu dilué donne la relation
+    $$
+    \varepsilon_r - 1 = \frac{\omega_p^2}{\omega_0^2-\omega^2},
+    $$
+    où $\omega_p=\SI{3.5e14}{rad.s^{-1}}$ est la pulsation plasma et $\omega_0 \simeq \SI{2.1e16}{rad.s^{-1}}$ est la pulsation propre associée à la force de rappel du noyau atomique sur l'électron.
+    \begin{quest}
+      \item	Dans le domaine du visible, on observe expérimentalement que l'indice optique vérifie la loi de Cauchy $n(\omega) \simeq  A + B \omega^2$, où $A$ et $B$ sont des constantes. Justifier cette observation par le calcul et déterminer $A$ et $B$. Y a-t-il propagation ? absorption ? dispersion ?
+      \sol{
+        $A=\SI{1.4e-4}{}$ et $B=\SI{1.1e-18}{m^2}$ sont des constantes. 
+      }
+      \item Déterminer les vitesses de phase $v_{\vphi}$ et de groupe $v_g$ de l'onde dans le gaz en fonction de $n(\omega)$ et de sa dérivée. Représenter l'allure du graphe de la fonction exacte $n(\omega)$ puis de $v_{\vphi}(\omega)$ et $v_g(\omega)$. Dans quel régime a-t-on dispersion normale ? anormale ? Que se passe-t-il au voisinage de $\omega_0$ ? Commenter. 
+      \sol{
+        $v_{\vphi} = \frac{\omega}{k} =  \frac{c}{n}$ et $v_g = \dd{\omega}{k} = \dd{k}{\omega}^{-1} = (\dd{n}{\omega} \omega/c + n/c)^{-1}$.
+      }
+      
+    \end{quest}
+    On doit prendre en compte un phénomène de dissipation caractérisé par un taux de dissipation $\gamma$ (en $\SI{}{s^{-1}}$). La permittivité diélectrique complexe $\udl{\varepsilon_r}$ vérifie  alors
+    $$
+    \udl{\varepsilon_r} - 1 = \frac{\omega_p^2}{\omega_0^2-\omega^2 + i\gamma \omega}.
+    $$
+    \begin{quest}
+      \item	Déterminer l’indice de réfraction $n’(\omega)$ et l’indice d’absorption $n^{\prime \prime}(\omega)$ dans l’hypothèse de faible dispersion $\udl{\varepsilon_r} \simeq 1$. Représenter l'allure du graphe de ces deux fonctions. Pour quelle valeur de $\omega$ a-t-on une absorption maximale ? Commenter.
+    \end{quest}
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exo}[PC][3][oral]{Ondes internes}
+  \Notions{\item Relation de dispersion \task Anisotropie}
+  Une onde interne est une onde gravitaire qui apparaît dans les fluides stratifiés, pour lesquels la masse volumique varie avec la profondeur $z$. La relation de dispersion est 
+  $$
+  \omega = \omega_{f} \cos \theta,
+  $$
+  où la constante $\omega_{f}$ est la pulsation de flottabilité, et $\theta$ l’angle que fait le vecteur d’onde avec l’horizontale. 
+  % Le vecteur d’onde peut donc s'écrire $\Vec{k}= k \Vec{u}$ avec $\Vec{u} = \cos \theta\, \ex + \sin \theta \,\ez$ un vecteur unitaire. 
+  Déterminer les vitesses vectorielles de phase  $\Vec{v_{\vphi}}(\omega)$ et de groupe $\Vec{v_g}(\omega)$. En déduire les propriétés des ondes internes.
+
+  \sol{
+    % On peut exprimer la relation de dispersion en fonction des composantes $k_x = k \cos \theta$ et $k_y = k \sin \theta$ du vecteur d’onde :
+    % $$
+    % \omega = \omega_{f} \frac{k_x}{k}.
+    % $$
+    Un fluide stratifié est un milieu anisotrope, ce qui explique que $\omega$ ne dépende pas que de la norme de $k$ mais de ses composantes.
+    On note que les ondes internes n’existent que si $\omega \leq \omega_f$ car $\cos \theta \leq 1$.
+    On peut déterminer les composantes $v_{\vphi,x}$ et $v_{\vphi,y}$ de la vitesse de phase. La vitesse vectorielle de phase donne la vitesse de déplacement des plans d’onde, i.e.
+    $$
+    \Vec{v_{\vphi}} = \dd{\Vec{r}}{t},
+    $$
+    tel que $\vphi = \omega t - \Vec{r} \cdot \Vec{k} = \cte$. Elle vérifie donc 
+    $$
+  \dd{\vphi}{t} = 0 = \omega - \Vec{v_{\vphi}} \cdot \Vec{k} \Rar \Vec{v_{\vphi}} \Vec{u} = \frac{\omega}{k}.
+    $$
+    La vitesse de phase est portée par la direction de propagation $\Vec{u}$. On peut donc écrire $\Vec{v_{\vphi}} = v_{\vphi} \Vec{u}$, avec
+    $$
+    v_{\vphi} = \frac{\omega}{k}.
+    $$
+    La pulsation $\omega$ et la norme du vecteur d’onde $k$ sont deux paramètres indépendants. 
+    On en déduit  
+    \eqbox{
+      \Vec{v_{\vphi}} = \frac{\omega}{k} \Vec{u}.
+    }
+    La vitesse vectorielle de groupe se détermine par la relation 
+    $$
+    \Vec{v_g} = \dr{\omega}{k_x} \ex + \dr{\omega}{k_y} \ey, 
+    $$
+    où les composantes $k_x$ et $k_y$ du vecteur d’onde sont indépendantes dans le calcul de dérivée partielle. On a $\omega = \omega_f k_x / \sqrt{k_x^2+k_y^2}$, et donc
+    $$
+    v_g,x = \omega_f \left( \frac{1}{\sqrt{k_x^2+k_y^2}} - \frac{k_x^2}{\sqrt{k_x^2+k_y^2}^3} \right) =  \frac{\omega_f}{k^3} k_y^2 = \frac{\omega_f}{k} \sin^2\theta.
+    $$
+    et
+    $$
+    v_g,y = \omega_f \left( \frac{-k_x k_y}{\sqrt{k_x^2+k_y^2}^3} \right) =  -\frac{\omega_f}{k} \cos \theta \sin \theta.
+    $$
+    On en déduit 
+    $$
+    \Vec{v_g} = \frac{\omega_f}{k} \sin \theta \left( \sin \theta \ex - \cos \theta \ez \right) = \frac{\omega}{k} \sin \theta \Vec{n},
+    $$
+    où $\Vec{n}=\sin \theta \ex - \cos \theta \ez$ est le vecteur unitaire orthogonal à $\Vec{u}$. En norme nous avons $v_g = v_{\vphi} \sin \theta$. La vitesse de groupe est orthogonale à la vitesse de phase et à la direction de propagation. L’énergie se propage donc dans une direction orthogonale à la direction de propagation !
+    On en conclut 
+    \eqbox{
+      \Vec{v_g} = \frac{\sqrt{\omega_f^2-\omega^2}}{k} \Vec{n}.
+    }
+  }
+  
+\end{exo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

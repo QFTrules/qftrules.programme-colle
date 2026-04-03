@@ -676,7 +676,7 @@ function activate(context) {
 		insertLatexMagic(editor, exercice);
 		// vscode.window.showInformationMessage('Exiting potentially buggy line');
 		// create the exercise latex file
-		const template = `%&Exercice\n%\\input{TDappli.sty}\n%\\Soluce\n% \\endofdump\n\\begin{document}\n\\Source{${SourceFile}}\n\\Ex{${exo}}\n\\end{document}`;
+		const template = `%&Exercice\n%\\input{${styPath}TDappli.sty}\n%\\Soluce\n% \\endofdump\n\\begin{document}\n\\Source{${SourceFile}}\n\\Ex{${exo}}\n\\end{document}`;
 		fs.writeFileSync(exercice + '.tex', template);
 		// compile and open the exercise
 		vscode.commands.executeCommand('latex-workshop.build', {rootFile:FilePath, recipe:'pdflatex'}).then(() => {

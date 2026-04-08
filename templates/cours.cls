@@ -1088,8 +1088,8 @@ format=custom}
 \usepackage[french]{babel}
 
 %%% SYMBOLS AND COMMON COMMANDS %%%
-\input{$HOME/Dropbox/texmf/tex/latex/Preambles/symbols.sty}%$
-\input{$HOME/Dropbox/texmf/tex/latex/Preambles/URL.tex}%$
+\input{symbols.sty}%$
+\input{URL.tex}%$
 
 %%% FIGURE WITHIN EXERCISE ENVIRONNEMENT %%%
 \newcommand{\capt}[1]{\captionof{figure}{#1}}

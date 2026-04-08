@@ -482,7 +482,7 @@
 
 
 %%% SYMBOLS AND COMMON COMMANDS %%%
-\input{/home/eb/Dropbox/texmf/tex/latex/Preambles/symbols.sty}%$
+\input{symbols.sty}%$
 
 %%% TCOLORBOX %%%
 \RequirePackage{pifont,manfnt,bbding}

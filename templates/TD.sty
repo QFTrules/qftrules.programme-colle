@@ -70,8 +70,15 @@
 %%% SYMBOLS %%%
 \input{symbols.sty}
 \input{programme.tex}
-\input{URL.tex}
+% \input{URL.tex}
+\input{URL_qftrules.tex}
+\input{QR_qftrules.tex}
 % \input{_preambule_CdE_PC.tex}
+
+% PERSO PARAGRAPH
+\renewcommand{\theparagraph}{{\color{coolblack}\hspace*{1em}(\roman{paragraph})}\hspace*{-0.7em}}
+\newcommand{\parag}[1]{
+\paragraph{{\color{coolblack}#1}~---$\!\!\!\!$}}
 
 
 %%% ANNALES %%%

@@ -422,6 +422,11 @@
   \newcommand{\historyname}{Version History}
 }{\relax}
 
+% PERSO PARAGRAPH
+\renewcommand{\theparagraph}{{\color{structurecolor}\hspace*{1em}(\roman{paragraph})}\hspace*{-0.7em}}
+\newcommand{\parag}[1]{
+\paragraph{{\color{structurecolor}#1}~---$\!\!\!\!$}}
+
 % ---------------------------------
 % PATHS
 % ---------------------------------
@@ -1089,7 +1094,9 @@ format=custom}
 
 %%% SYMBOLS AND COMMON COMMANDS %%%
 \input{symbols.sty}%$
-\input{URL.tex}%$
+% \input{URL.tex}%$
+\input{URL_qftrules.tex}
+\input{QR_qftrules.tex}
 
 %%% FIGURE WITHIN EXERCISE ENVIRONNEMENT %%%
 \newcommand{\capt}[1]{\captionof{figure}{#1}}
@@ -1478,4 +1485,4 @@ format=custom}
 \date{\theyears}
 \version{\today}
 \logo{logo-blue.png}
-\input{$HOME/Dropbox/texmf/tex/latex/Preambles/programme.tex}%$
+\input{programme.tex}%$

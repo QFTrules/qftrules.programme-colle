@@ -1,8 +1,0 @@
-\input{/home/eb/Dropbox/texmf/tex/latex/Preambles/tikz.tex}
-\begin{document}
-\begin{tikzpicture}[xscale=1.5]
-  \draw[axe] (0,0) -- ++ (1.5,0) node[midway,above] {infrason} -- ++ (2,0) node[midway,above] {audible} -- ++ (1.5,0) node[midway,above] {ultrason} node[right] {$f$};
-  \draw (1.5,0.1) -- ++ (0,-0.2) node[below] {$\SI{20}{Hz}$};
-  \draw (3.5,0.1) -- ++ (0,-0.2) node[below] {$\SI{20}{kHz}$};
-\end{tikzpicture}
-\end{document}

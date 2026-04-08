@@ -1,0 +1,469 @@
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~%
+%  dernière                   %
+%  modification = 09/04/2023  %
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~%
+%     Colas Bardavid
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%             Constants for tests                %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\varLetterY{Y}
+\def\varNoLetter{}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%        Version of document to compile          %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\varForChoosenVersion{versionB}
+\def\chooseVersionA{\gdef\varForChoosenVersion{versionA}}
+\def\chooseVersionB{\gdef\varForChoosenVersion{versionB}}
+\def\chooseVersionC{\gdef\varForChoosenVersion{versionC}}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                 Import fiche                   %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\varDossierFiche{}
+\newcommand{\nomDuDossier}[1]{\gdef\varDossierFiche{#1}}
+
+\def\varNomFichierVersionA{}
+\def\varNomFichierVersionB{}
+\def\varNomFichierVersionC{}
+
+\newcommand{\versionA}[1]{\gdef\varNomFichierVersionA{#1}}
+\newcommand{\versionB}[1]{\gdef\varNomFichierVersionB{#1}}
+\newcommand{\versionAetB}[1]{\versionA{#1}\versionB{#1}}
+
+\newcommand{\versionC}[1]{\gdef\varNomFichierVersionC{#1}}
+
+\def\inclureCetteFiche
+{%
+\IfStrEqCase{\varForChoosenVersion}
+	{
+	{versionA}{\newpage\subimport{_fiches/\varDossierFiche/}{\varNomFichierVersionA}}%
+    {versionB}{\newpage\subimport{_fiches/\varDossierFiche/}{\varNomFichierVersionB}}%
+    {versionC}{\newpage\subimport{_fiches/\varDossierFiche/}{\varNomFichierVersionC}}%
+    }
+}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%       Import fiche (ancienne façon)            %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\inclureFiche}[3][]{
+  \def\optionTitreFiche{#1}
+  \newpage\subimport{_fiches/#2}{#3}
+}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%              Counter for sheets                %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcounter{counterForSheet}
+\setcounter{counterForSheet}{0}
+\def\incrementCounterForSheet{\refstepcounter{counterForSheet}}
+\def\printCounterForSheet{\thecounterForSheet}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%            Counter for exercises               %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcounter{counterForExercises}
+\def\initCounterForExercises{\setcounter{counterForExercises}{0}}
+\def\incrementCounterForExercises{\stepcounter{counterForExercises}}
+\def\printCounterForExercises{\thecounterForExercises}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                Global commands                 %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\debutFicheEntrainement
+{\initCounterForExercises\incrementCounterForSheet\startWritingToLocalAuxFiles\startWritingAnswersToAux\videListeReponses\afficheTitre}
+
+\def\finFicheEntrainement
+{\stopWritingAnswersToAux\stopWritingToLocalAuxFiles\message{^^J^^JNombre de calculs : \thenombreExercices^^J^^J}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%              Frames for answer                 %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newlength{\lengthHauteurCadreReponse}
+\newlength{\lengthLargeurCadreReponse}
+\newcommand{\hauteurLargeurCadreReponse}[2]
+{\setlength{\lengthHauteurCadreReponse}{#1}%
+\setlength{\lengthLargeurCadreReponse}{#2}}
+
+\def\coreCadreReponse
+{\ifx\varWithBoiteReponse\varLetterY%
+\framebox[\lengthLargeurCadreReponse]{\rule{0pt}{\lengthHauteurCadreReponse}}%
+\else%
+\vphantom{\framebox[\lengthLargeurCadreReponse]{\rule{0pt}{\lengthHauteurCadreReponse}}}%
+\fi}
+
+
+\def\printCadreReponse{\raisebox{-0.2\lengthHauteurCadreReponse}{\coreCadreReponse}}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%               Code for the card                %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\varCodePourLaFiche{N}
+
+\def\withCodeForFiche
+{\gdef\varCodePourLaFiche{Y}}
+\def\withoutCodeForFiche
+{\gdef\varCodePourLaFiche{N}}
+
+\def\codePourLaFiche
+{\ifx\varCodePourLaFiche\varLetterY%
+{\footnotesize\textcolor{gray}{\bfseries\textsf{\varForNumeroFiche}}}
+\else{\mbox{}}\fi}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%              Metadata for sheet                %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\varForTitreFicheEntrainement{}
+\newcommand{\titreFicheEntrainement}[1]{
+  \def\varForTitreFicheEntrainement{#1}
+  \ifdefined\optionTitreFiche
+    \ifx\optionTitreFiche\empty
+    \else
+      \let\varForTitreFicheEntrainement=\optionTitreFiche
+    \fi
+  \fi
+}
+
+\def\varForGrandTheme{}
+\newcommand{\grandTheme}[1]{
+  \def\varForGrandTheme{#1}
+}
+
+\def\varForNumeroFiche{000A}
+\newcommand{\numeroFiche}[1]{\def\varForNumeroFiche{#1}}
+
+\def\afficheTitre%
+{\codePourLaFiche\hfill{\footnotesize\textcolor{gray}{\bfseries\textsf{\varForGrandTheme}}}\par
+\vspace{-2.2\baselineskip}
+\begin{center}
+\ifx\varCorrigesSeulement\varLetterY
+	\textsf{Fiche d'entraînement \no\printCounterForSheet{}}\par
+\else
+	{\hypertarget{titre\varForUniqueID}{\textsf{Fiche d'entraînement \no\printCounterForSheet{}}}\par}
+\fi
+\smallskip
+{\Large \bfseries \varForTitreFicheEntrainement}
+\end{center}
+% Merci Ivan
+\addcontentsline{toc}{section}{\texorpdfstring{\hspace{-7mm}\hbox to7mm{\protect\parbox[c]{4mm}{\protect\scalebox{1.4}{$\square$}}\hfill}\hbox to22mm{\hspace{8mm}\textsf{\mbox{fiche~\printCounterForSheet{}.}}} \varForTitreFicheEntrainement}{\printCounterForSheet{}. \varForTitreFicheEntrainement}}}
+
+
+\def\varWithColonnesReponses{N}
+\def\varNombreColonnesReponses{1}
+\newcommand{\nombreColonnesReponses}[1]
+{\if#11\def\varWithColonnesReponses{N}%
+\else\def\varWithColonnesReponses{Y}%
+\def\varNombreColonnesReponses{#1}%
+\fi}
+
+\def\varFirstSheet{Y}
+\def\varForListOfSheets{}
+\newcommand{\addToListOfSheetIds}[1]
+{\ifx\varFirstSheet\varLetterY\edef\varForListOfSheets{\expandafter#1}
+\else\edef\varForListOfSheets{\expandafter\varForListOfSheets, \expandafter#1}
+\fi%
+\def\varFirstSheet{N}}
+
+\def\varForUniqueID{IboEqAMIAhS}
+\newcommand{\uniqueID}[1]
+{\def\varForUniqueID{#1}\addToListOfSheetIds{\fullSheetId}}
+
+\def\fullSheetId{_\varForNumeroFiche__\varForUniqueID}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%          %   Managing ponctuation              %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\varForPonctuation{.}
+\def\computePonctuation{%
+\ifx\varForPointInterrogation\varLetterY%
+\gdef\varForPonctuation{ ?}%
+\else
+\ifx\varForPointExclamation\varLetterY%
+\gdef\varForPonctuation{ !}%
+\else
+\gdef\varForPonctuation{.}\fi\fi}
+
+\def\varForPointInterrogation{}
+\newcommand{\pointInterrogation}[1]
+{\gdef\varForPointInterrogation{#1}\computePonctuation}
+\pointInterrogation{N}
+
+\def\varForPointExclamation{}
+\newcommand{\pointExclamation}[1]
+{\gdef\varForPointExclamation{#1}\computePonctuation}
+\pointExclamation{N}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%             Metadata for exercise              %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\varForTitreEntrainementFacultatif{}
+\newcommand{\titreEntrainementFacultatif}[1]
+{\def\varForTitreEntrainementFacultatif{#1}}
+
+\def\varWithColonnes{N}
+\def\varNombreColonnes{1}
+\newcommand{\nombreColonnesQuestions}[1]
+{\if#11\def\varWithColonnes{N}%
+\else\def\varWithColonnes{Y}%
+\def\varNombreColonnes{#1}%
+\fi}
+
+\def\varavecPlusieursQuestions{}
+\newcommand{\avecPlusieursQuestions}[1]
+{\def\varavecPlusieursQuestions{#1}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%             Duration for exercise              %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\varForDureeResolution{0}
+\newcommand{\dureeResolution}[1]
+{\def\tempVar{#1}%
+\ifx\tempVar\varNoLetter\def\varForDureeResolution{0}%
+\else\def\varForDureeResolution{#1}\fi}
+
+% Deprecated
+\def\dureeResolutionFacultative{\dureeResolution}
+
+\def\interClockSpace{\hspace{0.75pt}}
+
+\def\dureeExercise
+{\if\varForDureeResolution0\fi%
+\if\varForDureeResolution1\ONEclock\fi%
+\if\varForDureeResolution2\TWOclocks\fi%
+\if\varForDureeResolution3\THREEclocks\fi%
+\if\varForDureeResolution4\FOURclocks\fi}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%               Type of exercise                 %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\varForTypeOfEntrainement{}
+\newcommand{\typeEntrainement}[1]
+{\global\def\varForTypeOfEntrainement{#1}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%          Type BasiqueEtTransversal             %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\basiqueEtTransversal}[1]
+{\def\extraLocal{#1}\ifx\extraLocal\varLetterY\typeEntrainement{BasiqueEtTransversal}\fi}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                   Exercise                     %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\initialisationEntrainement{%
+\bigskip%
+\incrementCounterForExercises%
+\initializeCounterForCalcul%
+%\hspace{-15mm}\hbox to15mm{\hfill\dureeExercise\ }%
+\printNumeroExercice%
+\ifx\varForTitreEntrainementFacultatif\varNoLetter\else%
+{} --- \textbf{\varForTitreEntrainementFacultatif\varForPonctuation\pointInterrogation{N}\pointExclamation{N}}\fi\hfill\dureeExercise}
+
+
+\def\debutEntrainement{%
+\ifx\varWithColonnes\varLetterY%
+\begin{multicols}{\varNombreColonnes}\fi
+}
+
+\def\pauseEntrainement{%
+\ifx\varWithColonnes\varLetterY%
+\end{multicols}\fi
+}
+
+\def\repriseEntrainement{%
+\ifx\varWithColonnes\varLetterY%
+\begin{multicols}{\varNombreColonnes}\fi
+}
+
+\def\finEntrainement{%
+\ifx\varWithColonnes\varLetterY%
+\end{multicols}\fi%
+}
+
+\def\printNumeroExercice{
+\ifx\varCorrigesSeulement\varLetterY
+	\textbf{\coreTextExercise{} \printCounterForSheet.\printCounterForExercises}
+\else
+	\hyperlink{solutions\varForUniqueID}{\textbf{\coreTextExercise{} \printCounterForSheet.\printCounterForExercises}}
+\fi}
+
+\def\coreTextExercise{%
+\IfStrEqCase{\varForTypeOfEntrainement}
+	{
+	{QCM}{\putSymbolInTheMargin{\pictoQCM}Entraînement}%
+    {AN}{\putSymbolInTheMargin{\pictoAN}Entraînement}%
+    {Newton}{\putSymbolInTheMargin{\pictoApple}Entraînement}%
+    {BasiqueEtTransversal}{\putSymbolInTheMargin{\pictoBulldozer}Entraînement}%
+    }
+    [\putSymbolInTheMargin{}Entraînement]%
+}
+
+
+\newcommand{\putSymbolInTheMargin}[1]{%
+{\llap{\parbox[t][0pt]{1.7cm}{\raggedleft#1\hspace{2.5mm}\mbox{}}}}}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                 Sectionning                    %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\sectionFicheEntrainement}[1]{%
+\vspace{4mm plus 2mm minus 2mm}
+{\bfseries \Large {#1}\par}
+\par
+\begin{tikzpicture}
+    \node[minimum width=\columnwidth, minimum height=2mm] (a) {};
+    \draw[\couleurContour, fill=\couleurContour, rounded corners=2pt] 
+    (a.south west) -- (a.north west) -- (a.north east) -- (a.south east) -- cycle ;
+\end{tikzpicture}
+\vspace{-6mm plus 1mm minus 1mm}
+}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                   Prerequis                    %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\avecPrerequis}[1]
+{\def\localVariable{#1}%
+\ifx\localVariable\varLetterY%
+\includeversion{prerequis}%
+\else\excludeversion{prerequis}%
+\fi}
+
+\newenvironment{prerequis}
+{\begin{coloredBox}\small\textsf{\textbf{Prérequis}}\par}%\vspace*{0.5mm}}
+{\end{coloredBox}}
+
+\newenvironment{prerequisLarge}
+{\begin{coloredBoxLarge}\small\textsf{\textbf{Prérequis}}\par}%\vspace*{0.5mm}}
+{\end{coloredBoxLarge}}
+
+
+
+\def\constantesUtiles
+{\vspace*{0.75mm}\small\textsf{\textbf{Constantes utiles}}\vspace*{-0.5mm}}
+
+\newlist{listeConstantes}{itemize}{1}
+\setlist[listeConstantes]{label=$\to$, leftmargin=2em, 
+labelsep=0.4em, partopsep=0pt}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                    Enonce                      %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\varWithBoiteReponse{Y}
+\def\withBoiteReponse{\def\varWithBoiteReponse{Y}}
+\def\withoutBoiteReponse{\def\varWithBoiteReponse{N}}
+
+\newcounter{counterForCalcul}
+\setcounter{counterForCalcul}{0}
+\def\incrementCounterForCalcul{\stepcounter{counterForCalcul}}
+\def\initializeCounterForCalcul{\setcounter{counterForCalcul}{0}}
+\def\printCounterForCalcul{\alph{counterForCalcul}}
+
+\newcounter{nombreExercices}
+
+\newenvironment{enonce}
+{\stepcounter{nombreExercices}
+\ifx\varavecPlusieursQuestions\varLetterY%
+	\incrementCounterForCalcul%
+	{\leavevmode\hbox to5mm{\printCounterForCalcul)}}%
+\fi}
+{\ifx\varWithBoiteReponse\varLetterY\dotfill\else\hfill\fi\printCadreReponse}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                Numéro du calcul                %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\printNumeroDeCalul
+{\ifx\varavecPlusieursQuestions\varLetterY%
+\textbf{\printCounterForSheet.\printCounterForExercises} \printCounterForCalcul)%
+\else%
+\textbf{\printCounterForSheet.\printCounterForExercises} %
+\fi
+}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                   Reponse                      %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\reponse}[1]
+{\par\ajouteReponse{\mbox{#1}}\addReponseToAux{#1}}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%               Shuffled answers                 %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\varWithEncadreReponsesMelangees{Y}
+\def\withEncadreReponsesMelangees{\def\varWithEncadreReponsesMelangees{Y}}
+\def\withoutEncadreReponsesMelangees{\def\varWithEncadreReponsesMelangees{N}}
+
+\def\varWithPageNumberSolutions{Y}
+\def\withPageNumberSolutions{\def\varWithPageNumberSolutions{Y}}
+\def\withoutPageNumberSolutions{\def\varWithPageNumberSolutions{N}}
+
+\def\afficheReponsesMelangees
+{\vfill
+\ifx\varWithEncadreReponsesMelangees\varLetterY
+\begin{boxForShuffledAnswers}
+\afficheReponses
+\end{boxForShuffledAnswers}
+\fi
+\ifx\varWithPageNumberSolutions\varLetterY
+\hfill $\blacktriangleright$ \hyperlink{solutions\varForUniqueID}{\textsf{Réponses et corrigés page \pageref{\varForUniqueID}}}
+\fi}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Corriges seulement                                         %%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\varCorrigesSeulement{N}
+\def\corrigesSeulement{\gdef\varCorrigesSeulement{Y}}
+
+\def\varOnlyQuestions{N}
+\def\onlyQuestions{\def\varOnlyQuestions{Y}}
+
+\def\varCouvertureNumeroUn{N}
+\def\couvertureNumeroUn{\def\varCouvertureNumeroUn{Y}}
+
+\def\varCouvertureNumeroDeux{N}
+\def\couvertureNumeroDeux{\def\varCouvertureNumeroDeux{Y}}
+
+\def\varCouvertureNumeroTrois{N}
+\def\couvertureNumeroTrois{\def\varCouvertureNumeroTrois{Y}}

@@ -1,0 +1,594 @@
+% CE FICHIER DEFINIT LE PREAMBULE POUR LES
+% EXOS DE COLLES VERSION JOLIDON
+
+%%% DOCUMENT %%%
+\documentclass[a4paper,11pt]{book}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[autolanguage]{numprint}
+\usepackage{lmodern}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{cases}
+\usepackage{mathrsfs}
+\usepackage{textcomp}
+\usepackage[top=2cm,bottom=2cm,left=1.5cm,right=1.5cm]{geometry}
+\usepackage{stmaryrd}
+\usepackage{inputenc}
+\usepackage{moreverb}
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage{fancyvrb}
+\usepackage{listings}
+\usepackage{wrapfig}
+\usepackage{subfigure}
+\usepackage{pgfplots}
+\usepackage{esint}
+\usepackage{tikz}
+\usepackage[europeanresistors]{circuitikz}
+\usepackage{multicol}
+\usepackage{tabularx}
+\usepackage{lipsum}
+\usepackage{chngcntr}
+\usepackage{fancyhdr}
+\usepackage{exercise}
+\usepackage{titlesec}
+\usepackage{titletoc}
+\usepackage{vwcol}
+\counterwithin{table}{section}
+\usepackage[titletoc]{appendix}
+\usepackage{changepage}
+\usepackage{mdframed}
+\usepackage{pdfpages}
+\usepackage{multirow}
+\pgfplotsset{compat=1.16}
+
+
+%%% FIGURE WITHIN EXERCISE ENVIRONNEMENT %%%
+\newcommand{\capt}[1]{\captionof{figure}{#1}}
+\addto\captionsfrench{
+  \renewcommand{\figurename}{Fig.}
+  }
+  
+%%% CAPTIONS %%%
+%\DeclareCaptionLabelSeparator{trait}{$\,-\,$}
+\usepackage[font      = small,
+			%labelfont = bf,
+			labelsep  = endash]{caption}
+
+%%% SYMBOLS %%%
+\input{$HOME/Dropbox/texmf/tex/latex/Preambles/symbols.sty}%$
+\input{$HOME/Dropbox/texmf/tex/latex/Preambles/programme.tex}%$
+\input{$HOME/Dropbox/texmf/tex/latex/Preambles/URL.tex}%$
+\input{$HOME/Dropbox/texmf/tex/latex/Preambles/_preambule_CdE_PC.tex}
+
+% \setlist[enumerate]{label = \alph*), leftmargin = *}
+% \setlist[enumerate]{label = \alph*), leftmargin = 1cm}
+% \setlist[enumerate]{label=\protect\textcircled{\alph*}}
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,inner sep=1.5pt] (char) {#1};}}
+% \setlist[enumerate]{label=\protect\textcircled{\alph*}}
+\setlist[enumerate]{label=\protect\circled{\alph*}}
+
+%%% MINTED FOR PYTHON CODE %%%
+\usepackage[cache=false]{minted}
+\setminted{fontsize=\footnotesize}
+
+%%% COLORS %%%
+\def\colorSec{coolblack}
+%\def\colorTP{brickred}
+\def\colorTP{coolblack}
+
+\usepackage[colorlinks=true,
+pdfstartview=FitV,
+linkcolor= brickred,
+citecolor= brickred,
+urlcolor= brickred,
+hyperindex=true,
+hyperfigures=true]
+{hyperref}
+\hypersetup{linktoc=page}
+
+\usetikzlibrary{arrows}
+
+%%% NUMBERING STYLE %%%
+\makeatletter
+\renewcommand{\thefigure}{\ifnum \c@section>\z@ \thesection.\fi
+ \@arabic\c@figure}
+\@addtoreset{figure}{section}
+ \let\p@subfigure\thefigure
+\makeatother
+\makeatletter
+\renewcommand\theequation{\Roman{Exercise}.\arabic{equation}}
+% \renewcommand\theequation{\arabic{equation}}
+%\@addtoreset{equation}{section}
+\@addtoreset{section}{part}
+\makeatother
+
+
+%%% SECTIONNING %%%
+\renewcommand{\thesection}{\Roman{section}}
+\titleformat{\section}[hang]{\bfseries}{\Large\bfseries{\color{coolblack}\thesection}~--~}{1pt}{%
+  \color{coolblack}\Large\bfseries\filright}
+\renewcommand{\thesubsection}{\thesection.\arabic{subsection}}
+\titleformat{\subsection}[hang]{\bfseries}{\large\bfseries{\color{coolblack}\thesubsection}\,--\,}{1pt}{%
+  \color{coolblack}\large\bfseries\filright}
+
+
+%%% STRUCTURE %%%
+
+
+\newcommand*\parttitle{}
+\let\origpart\part
+\renewcommand*{\part}[2][]{%
+   \ifx\\#1\\% optional argument not present?
+      \origpart{#2}%
+      \renewcommand*\parttitle{#2}%
+i   \else
+      \origpart[#1]{#2}%
+      \renewcommand*\parttitle{#1}%
+   \fi
+}
+
+%----------------------------------------------------------------------------------------
+%	ENVIRONNEMENT protocole
+%---------------------------------------------------------------------------------------
+\definecolor{tealblue}{rgb}{0.21, 0.46, 0.53}
+
+\newcommand{\carre}{\begin{tikzpicture} \draw[thick] (0,0) rectangle (0.15,0.15); \end{tikzpicture}}
+%
+\newenvironment{protocole}
+        {\begin{itemize}[label=\carre,leftmargin=0.6cm]
+        }
+        {\end{itemize}}
+
+\usepackage{marginnote}
+\makeatletter
+\patchcmd{\@mn@@@marginnote}{\begingroup}{\begingroup\@twosidefalse}{}{\fail}
+\reversemarginpar
+\makeatother
+
+%%% TO PREDEFINE SOLUTION ENVIRONMENT %%%
+\newcommand{\sol}[1]{}
+%\newcommand{\sol}{}
+
+%\usepackage{fancyhdr}
+% \renewcommand{\sectionmark}[1]{\bfseries{#1}}
+% \renewcommand{\subsectionmark}[1]{}
+\pagestyle{fancy}
+\cfoot{}
+% \fancyhead[RO,LE]{\bfseries\thepage}
+\fancyhead[R]{\nouppercase{\rightmark}\quad\quad\bfseries\thepage}
+%\fancyhead[RE]{{\bfseries\thepage}\quad\quad\parttitle}
+\renewcommand{\headrulewidth}{0.8pt}
+
+\ListOfExerciseInToc
+\ExerciseLevelInToc{subsection}
+
+\date{}
+
+%%% ENTETE %%%
+\usepackage{varwidth}
+\usepackage[skins]{tcolorbox}
+%\usepackage{tikz}
+
+\newtcolorbox{mybox}[2][]{
+enhanced,
+halign=center,valign=center,
+before skip=2mm,after skip=2mm,
+%drop shadow southeast,
+fuzzy shadow={0.75mm}{-0.75mm}{0mm}{0.1mm}{black!50!white},
+colback=gray!5!white,colframe=\colorTP!60!white,boxrule=0.4mm,
+attach boxed title to top left={xshift=0.5cm,yshift*=1mm-\tcboxedtitleheight},
+varwidth boxed title*=-3cm,
+boxed title style={frame code={
+\path[fill=\colorTP!20!black]
+([yshift=-1mm,xshift=-1mm]frame.north west)
+arc[start angle=0,end angle=180,radius=1mm]
+([yshift=-1mm,xshift=1mm]frame.north east)
+arc[start angle=180,end angle=0,radius=1mm];
+\path[left color=\colorTP!70!white,right color=\colorTP!70!white,
+middle color=\colorTP!70!white]
+([xshift=-2mm]frame.north west) -- ([xshift=2mm]frame.north east)
+[rounded corners=1mm]-- ([xshift=1mm,yshift=-1mm]frame.north east)
+-- (frame.south east) -- (frame.south west)
+-- ([xshift=-1mm,yshift=-1mm]frame.north west)
+[sharp corners]-- cycle;
+},interior engine=empty,
+},
+fonttitle=\bfseries,
+title={#2},#1
+}
+
+\newtcolorbox{dsbox}[2][]{
+enhanced,
+halign=center,valign=center,
+before skip=2mm,after skip=2mm,
+%drop shadow southeast,
+fuzzy shadow={0.75mm}{-0.75mm}{0mm}{0.1mm}{black!50!white},
+colback=gray!5!white,colframe=\colorSec!60!white,boxrule=0.4mm,
+attach boxed title to top left={xshift=0.5cm,yshift*=1mm-\tcboxedtitleheight},
+varwidth boxed title*=-3cm,
+boxed title style={frame code={
+\path[fill=\colorSec!20!black]
+([yshift=-1mm,xshift=-1mm]frame.north west)
+arc[start angle=0,end angle=180,radius=1mm]
+([yshift=-1mm,xshift=1mm]frame.north east)
+arc[start angle=180,end angle=0,radius=1mm];
+\path[left color=\colorSec!70!white,right color=\colorSec!70!white,
+middle color=\colorSec!70!white]
+([xshift=-2mm]frame.north west) -- ([xshift=2mm]frame.north east)
+[rounded corners=1mm]-- ([xshift=1mm,yshift=-1mm]frame.north east)
+-- (frame.south east) -- (frame.south west)
+-- ([xshift=-1mm,yshift=-1mm]frame.north west)
+[sharp corners]-- cycle;
+},interior engine=empty,
+},
+fonttitle=\bfseries,
+title={#2},
+#1
+}
+
+\newcommand{\ConsignesPhy}{
+\begin{consigne}
+Il est conseillé de passer environ \textbf{$\SI{6}{h}$} sur un DM de Physique.
+Vous pouvez y passer davantage de temps, mais il ne faut pas que ce soit au détriment de la révision du cours ou de la préparation des TD.
+\item Il est conseillé de travailler en \textbf{binôme} plutôt que seul. Par contre, vous devez rendre des copies \textbf{individuelles}. Évitez de travailler à trois ou plus.
+\item Les devoirs maisons sont notés entre \textbf{A et F} et pourront valoriser ou abaisser votre note final en Physique.
+\item Il est \textbf{interdit} de se servir de corrections d’annales de concours pour préparer votre DM. Vous pouvez les consulter \textbf{après} que votre copie vous a été rendue pour retravailler le sujet si vous le souhaitez.
+\item La \textbf{$1^{\rm ere}$ page} de votre copie doit indiquer le temps passé sur le DM (estimé) et votre binôme (le cas échéant). 
+Vous laisserez la moitié de la première page de votre copie vierge. Sur cette moitié de page vierge, vous indiquerez les items suivants, en laissant de l'espace entre chaque item pour que je puisse ajouter mes commentaires~:
+\begin{itemize}
+  \item \udl{Rédaction} : 
+  % \item \udl{Savoirs} :
+  \item \udl{Capacités} :
+\end{itemize}
+% Le reste de la $1^{\rm ere}$ page doit être laissé libre pour que je puisse ajouter mes commentaires.
+\end{consigne}
+}
+
+\newcommand{\ConsignesDM}{
+% \vspace{0.5em}
+% \noindent\underline{Consignes}~:
+% \begin{center}
+% \begin{minipage}{0.9\textwidth}
+\begin{consigne}
+Il est conseillé de passer environ \textbf{$\SI{6}{h}$} sur un DM de Physique.
+Vous pouvez y passer davantage de temps, mais il ne faut pas que ce soit au détriment de la révision du cours ou de la préparation des TD.
+\end{consigne}
+% \end{minipage}
+% \end{center}
+}
+
+\newcommand{\ConsignesInfo}{
+\begin{consigne}
+\item  Il est conseillé de passer environ \textbf{$\SI{6}{h}$} sur un DM d'informatique.
+\item Vous préciserez obligatoirement les \textbf{spécifications} de toutes les fonctions que vous définirez en python.
+Ces fonctions seront de préférence commentées. Les spécifications et les commentaires seront d'une autre \textbf{couleur}.
+\item Vous respecterez l'\textbf{indentation} des programmes python.
+\end{consigne}
+}
+
+
+
+\usepackage{setspace}
+\renewcommand{\title}[1]{#1}
+\newcommand{\subtitle}[1]{#1}
+\newcommand{\cover}[1]{}
+
+%%% ENTETe DM PHYSIQUE %%
+\newcommand{\EnteteDM}[3][\ConsignesPhy]{
+\noindent
+\begin{mybox}[]{Pour le~#2}
+\vspace{-2em}
+{\huge\color{\colorTP} DM\,\,Physique\,\,#3}
+\end{mybox}
+% \begin{liste}
+#1
+% \end{liste}
+}
+
+
+%%% ENTETe DM Sciences %%
+\newcommand{\Entetedm}[3][\ConsignesSc]{
+\noindent
+\begin{mybox}[]{Pour le~#2}
+\vspace{-2em}
+{\huge\color{\colorTP}~~~DM\,\,Physique\,\,#3\,\,(Sciences)}
+\end{mybox}
+% \begin{liste}
+#1
+% \end{liste}
+}
+
+
+%%% ENTETe DS Relat %%
+\newcommand{\EnteteRelat}[3][1h]{
+  \noindent
+  \begin{dsbox}[]{#2}
+  %\begin{minipage}{0.01\textwidth}
+  %\end{minipage}\hfill
+  %\begin{minipage}{0.9\textwidth}
+  %\centering
+  \vspace{-1em}
+  {\huge\color{\colorSec}
+  %\color{coolblack}
+  DS\,\,Relativité\,\,Restreinte\,\,#3}
+  %\end{minipage}
+  \end{dsbox}
+  \vspace{0.5em}
+  %\noindent\underline{Consignes}~:
+  \begin{center}
+  \begin{minipage}{0.9\textwidth}
+  %\begin{protocole}
+  \Consigneds[#1]
+  %\end{protocole}
+  \end{minipage}
+  \end{center}
+}
+
+
+%%% ENTETe DM INFORMATIQUE %%
+\newcommand{\EnteteDMinfo}[3][\ConsignesInfo]{
+\noindent
+\begin{mybox}[]{À rendre le~#2}
+{{\huge\color{\colorTP}
+{{DM\,\,Informatique\,\,#3}}}}
+\end{mybox}
+#1
+}
+
+\newcommand{\ConsignesSc}{
+\begin{consigne}
+Il est conseillé de passer environ \textbf{$\SI{2}{h}$} sur la partie physique d'un DM de Sciences.
+Vous pouvez y passer davantage de temps, mais il ne faut pas que ce soit au détriment de la révision du cours ou de la préparation des TD.
+\item Il est conseillé de travailler en \textbf{binôme} plutôt que seul. Par contre, vous devez rendre des copies \textbf{individuelles}. Évitez de travailler à trois ou plus.
+\item Les devoirs maisons sont notés entre \textbf{A et F} et pourront valoriser ou abaisser votre note finale en Physique.
+\item Il est \textbf{interdit} de se servir de corrections d’annales de concours pour préparer votre DM. Vous pouvez les consulter \textbf{après} que votre copie vous a été rendue pour retravailler le sujet si vous le souhaitez.
+\item La \textbf{$1^{\rm ere}$ page} de votre copie doit indiquer dans la marge le temps passé sur le DM (estimé) et votre binôme (le cas échéant). 
+% Le reste de la $1^{\rm ere}$ page doit être laissé libre pour que je puisse ajouter mes commentaires.
+Vous laisserez la moitié de la \textbf{$1^{\rm ere}$} page de votre copie vierge. Sur cette moitié de page vierge, vous indiquerez les items suivants, en laissant de l'espace entre chaque item pour que je puisse ajouter mes commentaires~:
+\begin{itemize}
+  \item \udl{Rédaction} : 
+  % \item \udl{Savoirs} :
+  \item \udl{Capacités} :
+\end{itemize}
+\end{consigne}
+}
+
+\newcommand{\Consigneds}[1][1h]{
+\emph{Vous disposez de $\rm #1$. Les calculatrices sont autorisées. Tout autre appareil électronique ou document de cours est interdit. Une importance particulière sera accordée à la qualité de la rédaction~: orthographe, clarté, concision, présentation. Les résultats doivent être encadrés.
+}}
+
+%%% ENTETE DS SCIENCES %%%
+\newcommand{\Enteteds}[2]{
+\noindent
+\begin{dsbox}[]{#1}
+%\begin{minipage}{0.01\textwidth}
+%\end{minipage}\hfill
+%\begin{minipage}{0.9\textwidth}
+%\centering
+\vspace{-1em}
+{\huge\color{\colorSec}
+%\color{coolblack}
+DS\,\,Physique\,\,#2\,\,(Sciences)}
+%\end{minipage}
+\end{dsbox}
+\vspace{0.5em}
+%\noindent\underline{Consignes}~:
+\begin{center}
+\begin{minipage}{0.9\textwidth}
+%\begin{protocole}
+\Consigneds
+%\end{protocole}
+\end{minipage}
+\end{center}
+}
+
+%%% ENTETE DS PHYSIQUE %%%
+\newcommand{\EnteteDS}[3][]{
+\noindent
+\begin{dsbox}[]{#2}
+%\begin{minipage}{0.01\textwidth}
+%\end{minipage}\hfill
+%\begin{minipage}{0.9\textwidth}
+%\centering
+%\vspace{-1em}
+{{\huge\color{\colorSec}
+%\color{coolblack}
+{{DS\,\,Physique\,\,#3}}}}
+%\color{\colorSec}{Partie Physique}
+%\end{minipage}
+\end{dsbox}
+\vspace{0.5em}
+%\noindent\underline{Consignes}~:
+% \begin{center}
+% \begin{minipage}{0.9\textwidth}
+\ifthenelse{\equal{#1}{\detokenize{***}}}{}{
+  \begin{consigne}
+%\begin{protocole}
+Vous disposez de $\SI{4}{h}$. Les calculatrices sont autorisées. Tout autre appareil électronique ou document de cours est interdit. Une importance particulière sera accordée à la qualité de la rédaction : orthographe, clarté, concision, présentation. Les résultats doivent être encadrés.\\ 
+\ifthenelse{\equal{#1}{\detokenize{*}}}{
+% Le sujet est constitué d'un exercice (I) d'1h30 et d'un problème indépendant (II) de 2h30.
+
+
+Le sujet est constitué d'une capacité numérique d'1h30 (I) et de deux problèmes indépendants (II et III) de 2h30.
+}{
+}
+
+Vous laisserez la moitié de la première page de votre copie vierge. Sur cette moitié de page vierge, vous indiquerez les items suivants, en laissant de l'espace entre chaque item pour que je puisse ajouter mes commentaires :
+\begin{itemize}
+  \item \udl{Rédaction} : 
+  \item \udl{Savoirs} :
+  \item \udl{Capacités} :
+\end{itemize}
+
+\end{consigne}
+}
+%\emph{\underline{Tiers-temps} : la partie I.3 n'est pas à traitée.}
+%\end{protocole}
+% \end{minipage}
+% \end{center}
+}
+
+
+\newcommand{\EnteteDSInfo}[2]{
+\noindent
+\begin{dsbox}[]{#1}
+%\begin{minipage}{0.01\textwidth}
+%\end{minipage}\hfill
+%\begin{minipage}{0.9\textwidth}
+%\centering
+%\vspace{-1em}
+{{\huge\color{\colorSec}
+%\color{coolblack}
+{{DS\,\,Informatique\,\,#2}}}}
+%\color{\colorSec}{Partie Physique}
+%\end{minipage}
+\end{dsbox}
+\vspace{0.5em}
+%\noindent\underline{Consignes}~:
+\begin{center}
+\begin{minipage}{0.9\textwidth}
+%\begin{protocole}
+\emph{Vous disposez de $\SI{3}{h}$.
+Les calculatrices et tout autre appareil électronique ou document de cours sont interdit.
+Une importance particulière sera accordée à la qualité de la rédaction :
+orthographe, clarté, concision, présentation. Les programmes python doivent être commentés et indentés.}
+
+%\emph{\underline{Tiers-temps} : la partie I.3 n'est pas à traitée.}
+%\end{protocole}
+\end{minipage}
+\end{center}
+}
+
+%%% ENTETE INTERRO DE COURS %%%
+\newcommand{\EnteteInter}[2]{
+\noindent
+\begin{dsbox}[]{#1}
+%\begin{minipage}{0.01\textwidth}
+%\end{minipage}\hfill
+%\begin{minipage}{0.9\textwidth}
+%\centering
+%\vspace{-1em}
+
+{{\Large\color{\colorSec}
+%\color{coolblack}
+{{Interrogation\,\,\,de\,\,\,cours}}
+~~~~~Nom\,:~~~~~~~~~~~~~~~~~~~~~~~~~ Note\,:~~~/20}}
+%%\end{minipage}
+
+\end{dsbox}
+\vspace{0.5em}
+%\noindent\underline{Consignes}~:
+\begin{center}
+\begin{minipage}{0.9\textwidth}
+%\begin{protocole}
+\emph{Vous disposez de $\SI{10}{min}$. Les calculatrices et les documents de cours sont interdits. Pour chaque formule, vous donnerez le nom et l’unité de toutes les grandeurs qui interviennent. Vous ferez un schéma à chaque fois que cela est pertinent.}
+%Une importance particulière sera accordée à la qualité de la rédaction : orthographe, clarté, concision, présentation. Les résultats doivent être encadrés.
+%\end{protocole}
+\end{minipage}
+\end{center}
+}
+
+% balise fin du sujet
+\newcommand{\FIN}{
+\medskip
+\hrulefill~$\star\star\star$~Fin du sujet~$\star\star\star$~\hrulefill
+}
+
+
+\newcommand{\EnteteSc}[2]{
+\noindent
+\begin{mybox}[]{À rendre le~#1}
+%\begin{minipage}{0.01\textwidth}
+%\end{minipage}\hfill
+%\begin{minipage}{0.9\textwidth}
+%\centering
+%\vspace{-1em}
+{{\huge\color{\colorTP}
+%\color{coolblack}
+{{DM\,\,Sciences\,\,#2}}}}\\
+\color{\colorTP}{Partie Physique}
+%\end{minipage}
+\end{mybox}
+\vspace{0.5em}
+\noindent\underline{Consignes}~:
+\begin{center}
+\begin{minipage}{0.9\textwidth}
+\begin{protocole}
+\ConsignesSc
+\end{protocole}
+\end{minipage}
+\end{center}
+}
+
+
+\lhead{\small PC Théophile Gautier}
+\chead{\small \theyears}
+\rhead{\small Eric Brillaux}
+% \fancyhf{}
+\cfoot{\small \thepage}
+\lfoot{}
+\rfoot{}
+\renewcommand\footrule{}%
+
+
+%%% EXERCICE %%%
+\renewcommand{\ExerciseHeaderTitle}{\ExerciseTitle}
+\renewcommand{\ExerciseHeaderOrigin}{%
+[\textit{\!\ExerciseOrigin\!}]}
+\renewcommand{\ExerciseName}{}
+\renewcommand{\ExerciseHeader}{
+\noindent\Large\bfseries{\color{coolblack}\thesection~--~\ExerciseHeaderTitle}
+\medskip\newline
+}
+\renewcounter{Exercise}[part]% Reset counter every part ?
+% \renewcounter{Exercise}[section]% Reset counter every section
+\renewcommand{\theExercise}{\arabic{Exercise}}
+
+%%% EXERCISE ENVIRONMENTS %%%
+
+% insertion exercise
+% \newcounter{questexo}
+\setcounter{questexo}{0}
+
+\renewcommand{\Ex}[2][0]{
+\addtocounter{section}{1}
+% \setcounter{subsection}{0}
+% \setcounter{subsubsection}{0}
+% \setcounter{figure}{0}
+\setcounter{questexo}{#1}
+% \setcounter{quest}{#1}
+\ExerciseSelect[exam=#2]
+\input{\source}
+\ExerciseStopSelect
+\setcounter{questexo}{0}
+\medskip
+}
+
+
+%%% REDIFINITION OF \d %%%
+\renewcommand{\d}{\mathrm{d}}
+
+%%% REDIFINITION OF Notions exercices %%%
+\renewcommand{\Notions}[1]{}
+
+
+%%% EX WITHOUT BONUS QUESTIONS %%%
+\usepackage{suffix}
+\WithSuffix\newcommand\Ex*[2][0]{  
+	\setcounter{figure}{\theexofigure}
+	\renewcommand{\qbonus}[1]{}
+	\renewcommand{\bonus}[1]{}
+  % \addtocounter{exercice}{1}
+	% \ExerciseSelect[exam={#2}]
+  % \input{\source}
+	% \ifthenelse{\equal{#1}{0}}{}
+	% {\setcounter{questexo}{#1}}
+  % \ExerciseStopSelect
+  \Ex[#1]{#2}
+	\renewcommand{\qbonus}[1]{\item #1}
+	\renewcommand{\bonus}[1]{#1}
+}

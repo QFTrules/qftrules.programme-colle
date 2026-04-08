@@ -1,0 +1,183 @@
+\documentclass[12pt,a4paper]{report}
+\usepackage[utf8]{inputenc}
+% \usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[tmargin=2cm,rmargin=1.5cm,lmargin=4cm,bmargin=2cm]{geometry}
+\usepackage{kpfonts}
+\usepackage{tikz}
+\usepackage{ifthen}
+\definecolor{doc}{rgb}{0.0,0.18,0.39}
+\usepackage{titletoc}
+\usepackage{hyperref}
+\contentsmargin{0cm}
+
+%\newcommand{\tdname}[1]{\subsubsection{#1}}
+\newcommand{\subtitle}[1]{\chapter{#1}}
+\renewcommand{\title}[1]{\subsection{#1}}
+% \renewcommand{\cover}[1]{}
+% \newcommand{\cover}[1]{}
+
+
+\input{/home/eb/Dropbox/texmf/tex/latex/Preambles/symbols.sty}%$
+
+%% PREDEFINED COMMANDS USED IN TP SHEETS %%%
+\newcommand{\technique}[1]{}
+\renewcommand{\bonus}{~(bonus)}
+
+%%% TWO TYPES OF EXERCICES %%%
+%\newcommand{\Cours}{
+%\vspace{0.5cm}
+%\noindent{\color{coolblack}\hrulefill~
+%\Large\textsc{Cours}~\hrulefill\hspace{-0cm}}
+%}
+%
+%\newcommand{\TD}{
+%\vspace{0.5cm}
+%\noindent{\color{coolblack}\hrulefill~
+%\Large\textsc{Travaux Dirigés}~\hrulefill\hspace{-0cm}}
+%}
+
+%\titlecontents{chapter}[0pc]
+%{\addvspace{30pt}}%
+%{\begin{tikzpicture}[remember picture, overlay]%
+%\draw[fill=doc!30,draw=doc!30] (-4,-.2) rectangle (-0.5,.5);%
+%\pgftext[left,x=-3.7cm,y=0.2cm]{\color{white}\Large\sc\bfseries chapitre\
+%\thecontentslabel};%
+%\end{tikzpicture}\color{doc!40}\large\sc\bfseries}
+%{\color{doc!40}\large\sc\bfseries}
+%{\color{doc!40}\;\titlerule\;\large\sc\bfseries Page \thecontentspage
+%\begin{tikzpicture}[remember picture, overlay]
+%\draw[fill=doc!25,draw=doc!20] (2pt,0) rectangle (6,0.1pt);
+%\end{tikzpicture}}%
+%
+%\titlecontents{section}[2.4pc]
+%{\addvspace{1pt}}
+%{\contentslabel[\thecontentslabel]{2.4pc}}
+%{}
+%{\dotfill\small \thecontentspage}
+%[]
+%\titlecontents{subsection}[5pc]
+%{\addvspace{1pt}}
+%{\contentslabel[\thecontentslabel]{2.4pc}}
+%{}
+%{\dotfill\small \thecontentspage}
+%[]
+%\makeatletter
+%
+%\renewcommand{\tableofcontents}{%
+%\chapter*{%
+%\vspace*{-20\p@}%
+%\begin{tikzpicture}[remember picture, overlay]%
+%\pgftext[right,x=15cm,y=0.2cm]{\color{doc!30}\Huge\sc\bfseries
+%\contentsname};%
+%\draw[fill=doc!30,draw=doc!30] (13,-.75) rectangle (20,1);%
+%\clip (13,-.75) rectangle (20,1);
+%\pgftext[right,x=15cm,y=0.2cm]{\color{white}\Huge\sc\bfseries
+%\contentsname};%
+%\end{tikzpicture}}%
+%\@starttoc{toc}}
+%\makeatother
+
+%\newcommand{\PartName}{Cours}
+\titlecontents{section}[0pc]
+{\addvspace{30pt}}%
+{\begin{tikzpicture}[remember picture, overlay]%
+\draw[fill=doc,opacity=0.7,draw=white] (-4,-.2) rectangle (-0.5,.5);%
+\pgftext[left,x=-3.7cm,y=0.2cm]{\color{white}\Large\sc\bfseries Exercices};%
+\end{tikzpicture}\color{doc}\large\sc\bfseries}
+{\color{doc!40}\large\sc\bfseries}
+{\color{doc!40}\;\titlerule\;%\large\sc\bfseries \thecontentspage
+%\begin{tikzpicture}[remember picture, overlay]\draw[fill=doc!25,draw=doc!20] (2pt,0) rectangle (6,0.1pt);
+%\end{tikzpicture}
+}%
+
+%\usepackage{titlesec}
+%\titleformat{\part}[display]
+%{\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{20pt}{\Huge}
+
+
+\titlecontents{chapter}[0pc]
+{\addvspace{30pt}}%
+{\begin{tikzpicture}[remember picture, overlay]%
+\draw[fill=doc,opacity=0.7,draw=white] (-4,-.2) rectangle (-0.5,.5);%
+\pgftext[left,x=-3.7cm,y=0.2cm]{\color{white}\Large\sc\bfseries Cours};%
+\end{tikzpicture}\color{doc}\large\sc\bfseries}
+{\color{doc!40}\large\sc\bfseries}
+{\color{doc!40}\;\titlerule\;%\large\sc\bfseries \thecontentspage
+%\begin{tikzpicture}[remember picture, overlay]\draw[fill=doc!25,draw=doc!20] (2pt,0) rectangle (6,0.1pt);
+%\end{tikzpicture}
+}%
+
+
+
+\titlecontents{subsection}[2pc]
+{\addvspace{1pt}}
+{\contentslabel[\thecontentslabel]{1pc}}
+{$\bullet$}
+{\hfill\small}
+[]
+
+\titlecontents{subsubsection}[3pc]
+{\addvspace{1pt}}
+{\contentslabel[\thecontentslabel]{1pc}}
+{--~~}
+{\hfill\small}
+[]
+
+\titlecontents{paragraph}[5pc]
+{\addvspace{1pt}}
+{\contentslabel[\thecontentslabel]{1pc}}
+{}
+{\hfill\small}
+[]
+
+\makeatletter
+\renewcommand{\tableofcontents}{%
+\chapter*{%
+\vspace*{-20\p@}%
+\begin{tikzpicture}[remember picture, overlay]%
+\pgftext[right,x=15cm,y=0.2cm]{\color{doc!30}\Huge\sc\bfseries
+\contentsname};%
+\draw[fill=doc,opacity=0.7,draw=white] (13,-.75) rectangle (20,1);%
+\clip (13,-.75) rectangle (20,1);
+\pgftext[right,x=15cm,y=0.2cm]{\color{white}\Huge\sc\bfseries
+\contentsname};%
+\end{tikzpicture}}%
+\@starttoc{toc}}
+\makeatother
+
+%\usepackage{titlesec}
+%\titleformat{\subsubsection}
+%{\normalfont\normalsize\bfseries}{\thesubsubsection}{1em}{}
+%\titleformat{\paragraph}[runin]
+%{\normalfont\normalsize\bfseries}{\theparagraph}{1em}{}
+\renewcommand{\thesubsection}{$\bullet$}
+%\renewcommand{\thesubsubsection}{\arabic{section}}
+%\renewcommand{\theparagraph}{}
+\setcounter{tocdepth}{5}
+
+%% HEADINGS %%
+\usepackage{fancyhdr}
+\fancyhf{}
+\pagestyle{fancy}
+%\fancyfoot[c]{\color{black}\small\thepage%/\pageref{LastPage}
+%}
+\lhead{\small PC Théophile Gautier}
+\chead{\small \theyears}
+\rhead{\small Eric Brillaux}
+\cfoot{\small\thepage}
+
+%%% types d’enseignements %%%
+\newcommand{\DM}{
+\section{Devoir Maison}
+}
+\newcommand{\TD}{
+\section{Travaux Dirigés}
+}
+\newcommand{\DS}{
+\section{Devoir Surveillé}
+}
+\newcommand{\TP}{
+\section{Travaux Pratiques}
+}

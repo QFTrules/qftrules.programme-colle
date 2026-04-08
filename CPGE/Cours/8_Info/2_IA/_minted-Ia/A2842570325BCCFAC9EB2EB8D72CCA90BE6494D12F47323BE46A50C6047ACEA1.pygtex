@@ -1,9 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-    \PYG{n}{c}    \PYG{o}{=} \PYG{n}{centres}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]}
-    \PYG{n}{dist} \PYG{o}{=} \PYG{n}{d}\PYG{p}{(}\PYG{n}{x}\PYG{p}{,}\PYG{n}{c}\PYG{p}{)}
-    \PYG{k}{for} \PYG{n}{y} \PYG{o+ow}{in} \PYG{n}{centres}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{:]:}
-        \PYG{k}{if} \PYG{n}{d}\PYG{p}{(}\PYG{n}{x}\PYG{p}{,}\PYG{n}{y}\PYG{p}{)} \PYG{o}{\PYGZlt{}} \PYG{n}{dist}\PYG{p}{:}
-            \PYG{n}{c}    \PYG{o}{=} \PYG{n}{y}
-            \PYG{n}{dist} \PYG{o}{=} \PYG{n}{d}\PYG{p}{(}\PYG{n}{x}\PYG{p}{,}\PYG{n}{y}\PYG{p}{)}
-    \PYG{k}{return} \PYG{n}{c}
-\end{Verbatim}

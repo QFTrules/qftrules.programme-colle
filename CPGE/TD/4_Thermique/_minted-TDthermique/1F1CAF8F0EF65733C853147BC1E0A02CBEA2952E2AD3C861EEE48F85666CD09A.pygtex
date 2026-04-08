@@ -1,5 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{k}{def} \PYG{n+nf}{schema\PYGZus{}explicite}\PYG{p}{(}\PYG{n}{T0}\PYG{p}{):} \PYG{c+c1}{\PYGZsh{} T0 est un tableau numpy (nd.array) contenant les valeurs initiales}
-    \PYG{o}{...}
-\PYG{k}{return} \PYG{n}{k}\PYG{p}{,}\PYG{n}{T\PYGZus{}tous\PYGZus{}k} \PYG{c+c1}{\PYGZsh{} k = entier = nombre d’itérations, T\PYGZus{}tous\PYGZus{}k est un tableau numpy}
-\end{Verbatim}

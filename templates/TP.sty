@@ -1,0 +1,605 @@
+% CE FICHIER DEFINIT LE PREAMBULE POUR LES
+% EXOS DE COLLES VERSION JOLIDON
+
+%%% DOCUMENT %%%
+\documentclass[a4paper,twocolumn,11pt,landscape]{book}
+\setlength{\columnsep}{18pt}
+\setlength{\columnseprule}{0pt}
+% \usepackage{svg}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[autolanguage]{numprint}
+\usepackage{lmodern}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{cases}
+\usepackage{mathrsfs}
+\usepackage{textcomp}
+\usepackage[top=2cm,bottom=2cm,left=1.5cm,right=1.5cm]{geometry}
+\usepackage{stmaryrd}
+% \usepackage{inputenc}
+% \usepackage{moreverb}
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage{fancyvrb}
+\usepackage{listings}
+% \usepackage{wrapfig}
+\usepackage{subfigure}
+\usepackage{pgfplots}
+\usepackage{esint}
+% \usepackage{tikz}
+% \usepackage[europeanresistors]{circuitikz}
+% \usetikzlibrary{arrows}
+\usepackage{multicol}
+\usepackage{tabularx}
+% \usepackage{lipsum}
+\usepackage{chngcntr}
+\usepackage{fancyhdr}
+\usepackage{exercise}
+\usepackage{titlesec}
+% \usepackage{titletoc}
+% \usepackage{vwcol}
+\counterwithin{table}{section}
+% \usepackage[titletoc]{appendix}
+\usepackage{changepage}
+\usepackage{mdframed}
+\usepackage{pdfpages}
+% \usepackage{enumitem}
+\usepackage{multirow}
+\pgfplotsset{compat=1.15}
+% \usepackage{empheq}
+
+%%% CAPTIONS %%%
+%\DeclareCaptionLabelSeparator{trait}{$\,-\,$}
+\usepackage[font      = small,
+			%labelfont = bf,
+			labelsep  = endash]{caption}
+
+      %\DeclareCaptionLabelSeparator{trait}{$\,-\,$}
+\usepackage[font      = small,
+%labelfont = bf,
+labelsep  = endash]{caption}
+\captionsetup{hypcap=false}
+
+%%% FIGURE WITHIN EXERCISE ENVIRONNEMENT %%%
+\newcommand{\capt}[1]{\captionof{figure}{#1}}
+\addto\captionsfrench{
+\renewcommand{\figurename}{Fig.}
+}
+
+%%% SYMBOLS %%%
+\input{$HOME/Dropbox/texmf/tex/latex/Preambles/symbols.sty}%$
+\input{$HOME/Dropbox/texmf/tex/latex/Preambles/programme.tex}%$
+\input{$HOME/Dropbox/texmf/tex/latex/Preambles/URL.tex}%$
+% \newcommand{\vv}[1]{\Vec{#1}}
+
+%%% PATH %%%
+% \def\pathtocolles{/home/eric/pCloudDrive/Colles/Exos.de.Colles}
+% \def\pathtoexos{$HOME/Dropbox/CPGE/Physique/Exercices/Recueil}%$
+% \makeatletter
+% \def\input@path{{\pathtoexos/Dimensionnelle/}{\pathtoexos/Optique/}{\pathtoexos/Mecanique/}{\pathtoexos/Thermo/}{\pathtoexos/Fluide/}{\pathtoexos/Electromag/}{\pathtoexos/Ondes/}{\pathtoexos/Quantique/}{\pathtocolles/Mecanique}{\pathtoexos/Figure/}{\pathtoexos/Mecanique/Figures/}{\pathtoexos/Thermo/Figures/}{\pathtoexos/Optique/Figures/}{\pathtoexos/Fluide/Figures/}{\pathtoexos/Electromag/Figures/}{\pathtoexos/Ondes/Figures/}{\pathtoexos/Quantique/Figures/}}
+% \makeatother
+% \graphicspath{{./Figure/}{./Figures/}{\pathtoexos/Figure/}{\pathtoexos/Mecanique/Figures/}{\pathtoexos/Thermo/Figures/}{\pathtoexos/Optique/Figures/}{\pathtoexos/Fluide/Figures/}{\pathtoexos/Electromag/Figures/}{\pathtoexos/Ondes/Figures/}{\pathtoexos/Quantique/Figures/}}
+
+
+\newcommand{\citshape}{\itshape}
+
+%%% LAYOUT %%%
+% \newmdenv[
+%   topline=false,
+%   bottomline=false,
+%   rightline=false,
+%   linecolor=brickred,
+%   linewidth=1pt,
+%   skipabove=\topsep,
+%   skipbelow=\topsep
+% ]{siderule}
+
+\usepackage[colorlinks=true,
+pdfstartview=FitV,
+linkcolor= brickred,
+citecolor= brickred,
+urlcolor= coolblack,
+hyperindex=true,
+hyperfigures=true]
+{hyperref}
+\hypersetup{linktoc=page}
+
+
+%%% NUMBERING STYLE %%%
+\makeatletter
+\renewcommand{\thefigure}{\ifnum \c@section>\z@ \thesection.\fi
+ \@arabic\c@figure}
+\@addtoreset{figure}{section}
+ \let\p@subfigure\thefigure
+\makeatother
+\makeatletter
+%\renewcommand\theequation{\theExercise.\arabic{equation}}
+\renewcommand\theequation{\arabic{equation}}
+%\@addtoreset{equation}{section}
+\@addtoreset{section}{part}
+\makeatother
+
+%%% COLORS %%%
+\def\colorTP{coolblack}
+
+%%% SECTIONNING %%%
+\renewcommand{\thesection}{\Roman{section}}
+\titleformat{\section}[hang]{\bfseries}{
+  \Large\bfseries{\color{coolblack}\thesection}\,--\,}{1pt}{%
+  \color{coolblack}\Large\bfseries\filright}
+\renewcommand{\thesubsection}{\thesection.\arabic{subsection}}
+\titleformat{\subsection}[hang]{\bfseries}{
+  \large\bfseries{\color{coolblack}\thesubsection}\,--\,}{1pt}{%
+  \color{coolblack}\large\bfseries\filright}
+
+
+%%% ANSWER ENVIRONNEMENT %%%
+\makeatletter
+\renewenvironment{answer}{%
+
+\vspace{0.1cm}%
+\begin{adjustwidth}{0cm}{}%
+  \begin{minipage}{0.95\columnwidth}
+    \begin{siderule}%
+      \itshape%
+      \footnotesize%
+      }{%
+    \end{siderule}%
+  \end{minipage}
+  \end{adjustwidth}%
+  \normalsize%
+}%
+\makeatother
+
+
+
+% \RenewDocumentEnvironment{soluce}{ O{Solution} }{%
+
+% \noindent\iconSoluce~~\textbf{\textcolor{iconcolor}{#1}}%
+% \begin{answer}%
+% }{%
+% \end{answer}%
+% }%
+
+%%% STRUCTURE %%%
+
+% \makeatletter
+% \newenvironment{answer}
+% {\begin{adjustwidth}{1.5cm}{}
+%   \begin{siderule}
+%  \footnotesize}
+% {\end{siderule}
+% \end{adjustwidth}
+% \normalsize
+% \setcounter{equation}{0}}
+% \makeatother
+
+\newcommand*\parttitle{}
+\let\origpart\part
+\renewcommand*{\part}[2][]{%
+   \ifx\\#1\\% optional argument not present?
+      \origpart{#2}%
+      \renewcommand*\parttitle{#2}%
+i   \else
+      \origpart[#1]{#2}%
+      \renewcommand*\parttitle{#1}%
+   \fi
+}
+
+
+
+%%% REMARQUE %%%
+\newcommand{\iconMateriel}{%
+{\color{iconcolor}\small\faFlask}%
+}
+
+% \newcommand{proof}[1]{%
+\newenvironment{materiel}{%
+\noindent\iconMateriel~~\textbf{\textcolor{iconcolor}{Matériel}}%
+\begin{answer}%
+% \begin{awesomeblock}[JoliRouge]{1pt}{\iconProof}{JoliRouge}%
+}{%
+\end{answer}%
+% \end{awesomeblock}%
+}%
+
+\newcommand{\manipulation}{\noindent\iconMateriel~~\textbf{\textcolor{iconcolor}{Protocole}}}
+
+%----------------------------------------------------------------------------------------
+%	ENVIRONNEMENT
+%---------------------------------------------------------------------------------------
+\definecolor{tealblue}{rgb}{0.21, 0.46, 0.53}
+% \newcommand{\carre}{\begin{tikzpicture} \draw[thick] (0,0) rectangle (0.15,0.15); \end{tikzpicture}}
+
+
+% \usepackage{enumitem}
+\newlist{protocole}{enumerate}{1}
+\setlist[protocole]{%
+  label=\fbox{$\phantom{1}$},
+	leftmargin=1cm
+}
+
+% \newenvironment{protocole}{
+%   \setcounter{enumi}{\value{quest}}
+%   \begin{enumerate}[label=\fbox{$\phantom{1}$},resume,leftmargin=1cm]
+% }{
+%   \end{enumerate}
+% }
+
+\renewenvironment{quest}[1][\arabic*]{
+  \begin{enumerate}[label=\boxed{$\arabic*$},
+    leftmargin=1cm,resume]
+    \setcounter{enumi}{\value{quest}}
+  \everymath{\textstyle}
+}{
+  \end{enumerate}
+    \setcounter{quest}{\value{enumi}}
+}
+
+
+% \newlist{manip}{itemize}{1}
+% \setlist[manip]{%
+%   label=$\square$,
+% 	% start=2,
+% 	leftmargin=1cm
+% }
+% \newcon
+% \renewenvironment{protocole}
+%         {\begin{enumerate}[label=\fbox{$\arabic*$},resume]
+% 				% ,leftmargin=0.6cm]
+%         }
+%         {\end{enumerate}}
+
+\newcommand{\icontodo}{
+{\color{coolblack}\faPencil*}
+}
+\newcommand{\todo}[1]{
+\stepcounter{quest}
+% \setcounter{enumi}{\value{quest}}
+\item[\icontodo\fbox{\thequest}] #1
+% \setcounter{quest}{\value{enumi}}
+\stepcounter{enumi}
+}
+
+%%% TO PREDEFINE SOLUTION ENVIRONMENT %%%
+\newcommand{\sol}[2][]{}
+%\newcommand{\sol}{}
+
+%\usepackage{fancyhdr}
+% \renewcommand{\sectionmark}[1]{\bfseries{#1}}
+% \renewcommand{\subsectionmark}[1]{}
+\pagestyle{fancy}
+\cfoot{}
+% \fancyhead[RO,LE]{\bfseries\thepage}
+\fancyhead[R]{\nouppercase{\rightmark}\quad\quad\bfseries\thepage}
+%\fancyhead[RE]{{\bfseries\thepage}\quad\quad\parttitle}
+\renewcommand{\headrulewidth}{0.8pt}
+
+\ListOfExerciseInToc
+\ExerciseLevelInToc{subsection}
+
+\date{}
+
+%%% ENTETE %%%
+% \usepackage{varwidth}
+% \usepackage[skins,many]{tcolorbox}
+% %\usepackage{tikz}
+% \newtcolorbox{mybox}[2][]{
+% enhanced,
+% halign=center,valign=center,
+% before skip=2mm,after skip=2mm,
+% %drop shadow southeast,
+% fuzzy shadow={0.75mm}{-0.75mm}{0mm}{0.1mm}{black!50!white},
+% colback=gray!5!white,colframe=\colorTP!60!white,boxrule=0.4mm,
+% attach boxed title to top left={xshift=1cm,yshift*=1mm-\tcboxedtitleheight},
+% varwidth boxed title*=-3cm,
+% boxed title style={frame code={
+% \path[fill=\colorTP!20!black]
+% ([yshift=-1mm,xshift=-1mm]frame.north west)
+% arc[start angle=0,end angle=180,radius=1mm]
+% ([yshift=-1mm,xshift=1mm]frame.north east)
+% arc[start angle=180,end angle=0,radius=1mm];
+% \path[left color=\colorTP!100!white,right color=\colorTP!100!white,
+% middle color=\colorTP!70!white]
+% ([xshift=-2mm]frame.north west) -- ([xshift=2mm]frame.north east)
+% [rounded corners=1mm]-- ([xshift=1mm,yshift=-1mm]frame.north east)
+% -- (frame.south east) -- (frame.south west)
+% -- ([xshift=-1mm,yshift=-1mm]frame.north west)
+% [sharp corners]-- cycle;
+% },interior engine=empty,
+% },
+% fonttitle=\bfseries,
+% title={#2},#1
+% }
+
+
+% \usepackage{setspace}
+\renewcommand{\title}[1]{#1}
+\newcommand{\subtitle}[1]{#1}
+\newcommand{\cover}[1]{}
+% \newcommand{\Entete}[3]{
+% \noindent
+% \begin{mybox}[]{TP~#1}
+% {\Large\textsc{\color{\colorTP}
+% {{#2}}}}
+% \end{mybox}
+% \vspace{0.5em}
+% \noindent\underline{Objectifs}~:
+% \vspace{-0.5cm}
+% \begin{center}
+% \begin{minipage}{0.49\textwidth}
+% \begin{protocole}
+% #3
+% \end{protocole}
+% \end{minipage}
+% \end{center}
+% }
+
+%%%%%% MINTED %%%%%%
+\usepackage[cache=false]{minted}
+% \setminted{fontsize=\footnotesize}
+\setminted[python]{fontsize=\footnotesize,linenos=true,frame=single}
+
+% \newcommand{\EnteteSimple}[2]{
+% \noindent
+% \begin{TPbox}[]{TP~#1}
+% {\Large\textsc{\color{\colorTP}
+% {{#2}}}}
+% \end{TPbox}
+% }
+
+%%% HEADER AND FOOTER %%%
+\lhead{\small PC Théophile Gautier}
+\chead{\small \theyears}
+\rhead{\small Eric Brillaux}
+\cfoot{\small \thepage}
+
+%%% STRUCTURE %%%
+% \usepackage{mdframed}
+% \newmdenv[
+%   topline=false,
+%   bottomline=false,
+%   rightline=false,
+%   linecolor=black,
+%   linewidth=1pt,
+%   skipabove=\topsep,
+%   skipbelow=\topsep
+% ]{sideruleremarque}
+
+% \makeatletter
+% \newenvironment{remarque}
+% {\begin{sideruleremarque}
+%   \small}
+% {\end{sideruleremarque}
+% \normalsize}
+% \makeatletter
+
+% \newcommand{\Exos}{
+% \vspace{0.5cm}
+% \noindent{\color{coolblack}\hrulefill~
+% \Large\textsc{Exercices}~\hrulefill\hspace{-0.2cm}}
+% }
+%
+% \newcommand{\Problemes}{
+% \vspace{0.5cm}
+% \noindent{\color{coolblack}\hrulefill~
+% \Large\textsc{Résolution de problème}~\hrulefill\hspace{-1.1cm}}
+% \begin{remarque}
+% Un exercice de type résolution de problème requiert davantage d’initiative. Il peut être utile de faire un
+% schéma modèle, d’identifier et nommer les grandeurs pertinentes, d’utiliser l’analyse dimensionnelle,
+% de proposer des hypothèses simplificatrices, de décomposer le problème en des sous-problèmes simples,
+% etc.
+% \end{remarque}
+% }
+
+
+%%% REDIFINITION OF \d %%%
+\renewcommand{\d}{\mathrm{d}}
+
+%%% ENVIRONNENT SPÉCIFIQUES %%%
+% \newcommand{\matos}[1]{
+% \begin{materiel}%
+% \begin{liste}[leftmargin=0.45cm]%
+%   #1%
+% \end{liste}%
+% \end{materiel}%
+% }
+% }
+
+% \newcommand{\prerequis}[1]{
+% \noindent\underline{Prérequis}~:
+% % \begin{minipage}{0.49\textwidth}
+% \begin{liste}
+% #1
+% \end{liste}
+% % \end{minipage}
+% }
+
+
+%----------------------------------------------------------------------------------------
+%	REMARQUE ET REMARQUETECH ET EXEMPLE
+%----------------------------------------------------------------------------------------
+
+\makeatletter
+\newenvironment{exemple}[1]
+{\vspace{0.5em}
+\noindent{\color{JoliVert}\hrulefill}\fcolorbox{white}{JoliVert!10!white}{\textsc{#1}}{\color{JoliVert}\hrulefill}\\
+ \small}
+{\vspace{-1em}
+{\noindent\color{JoliVert}\hrulefill}\\[-1em]
+\normalsize}
+\makeatother
+
+%%% colors %%%
+		  \definecolor{structurecolor}{RGB}{60,113,183}
+		  \definecolor{main}{RGB}{0,166,82}%
+		  \definecolor{second}{RGB}{255,134,24}%
+		  \definecolor{third}{RGB}{0,174,247}%
+%%%%%%%%%%%%%
+
+% \newcommand{\versionname}{Version~: }
+% \newcommand{\notename}{Note}
+% \newcommand{\proofname}{Preuve}
+% \newcommand{\problemname}{Probl\`eme}
+% \newcommand{\definitionname}{D\'efinition}
+% \newcommand{\theoremname}{Formule}
+% \newcommand{\axiomname}{Axiome}
+% \newcommand{\postulatename}{Postulat}
+% \newcommand{\lemmaname}{Lemme}
+% \newcommand{\propname}{Propri\'et\'e}
+% \newcommand{\propositionname}{Proposition}
+% \newcommand{\corollaryname}{Corollaire}
+% \newcommand{\examplename}{Exemple}
+% \newcommand{\exercisename}{Exercice}
+% \newcommand{\remarkname}{Remarque}
+% \newcommand{\assumptionname}{Hypoth\`ese}
+% \newcommand{\conclusionname}{Conclusion}
+% \newcommand{\solutionname}{Solution}
+% \newcommand{\propertyname}{Propri\'et\'e}
+% \newcommand{\introductionname}{Introduction}
+% \renewcommand{\appendixname}{Appendice}
+% % \newcommand{\problemsetname}{Exercise}
+% \newcommand\bioinfo[2]{\gdef\@bioinfo{\textbf{#1}: #2}}
+% \newcommand{\updatename}{Updates:}
+% \newcommand{\historyname}{Version History}
+
+
+%%% TCOLORBOX %%%
+\usepackage{pifont,manfnt,bbding}
+%\RequirePackage[many]{tcolorbox}
+% \newlength{\normalparindent}
+% \setlength{\normalparindent}{\parindent}
+\tcbset{
+common/.style={
+fontupper=\citshape,
+lower separated=false,
+% before upper={\setlength{\parindent}{\normalparindent}},
+coltitle=white,
+colback=gray!5,
+boxrule=0.5pt,
+fonttitle=\bfseries,
+enhanced,
+breakable,
+top=8pt,
+before skip=8pt,
+attach boxed title to top left={
+yshift=-0.11in,
+xshift=0.15in},
+boxed title style={
+boxrule=0pt,
+colframe=white,
+arc=0pt,
+outer arc=0pt},
+separator sign={.},},
+defstyle/.style={
+common,
+colframe=main,
+colback=main!5,
+colbacktitle=main,
+overlay unbroken and last={
+\node[anchor=south east, outer sep=0pt] at (\linewidth-width,0) {
+\textcolor{main}{
+%$\clubsuit$
+}};}},
+thmstyle/.style={
+common,
+colframe=second,
+colback=second!5,
+colbacktitle=second,
+overlay unbroken and last={
+\node[anchor=south east, outer sep=0pt] at (\linewidth-width,0) {
+\textcolor{second}{
+%$\heartsuit$
+}};}},
+propstyle/.style={
+common,
+colframe=third,
+colback=third!5,
+colbacktitle=third,
+overlay unbroken and last={
+\node[anchor=south east, outer sep=0pt] at (\linewidth-width,0) {
+\textcolor{third}{
+%$\spadesuit$
+}};}},
+}
+\tcbset{
+  introductionsty/.style={
+    enhanced,
+    breakable,
+    colback=structurecolor!10,
+    colframe=structurecolor,
+    fonttitle=\bfseries,
+    colbacktitle=structurecolor,
+    fontupper=\citshape,
+    attach boxed title to top center={yshift=-3mm,yshifttext=-1mm},
+    boxrule=0pt,
+    toprule=0.5pt,
+    bottomrule=0.5pt,
+    top=8pt,
+    before skip=8pt,
+    sharp corners
+  },
+  }
+
+% \newtcbtheorem[auto counter,number within=chapter]{definition}{\definitionname}{defstyle}{def}
+\DeclareTColorBox[auto counter]{definition}{ o t\label g }{
+common,defstyle,
+IfValueTF={#1}{title={\definitionname~\thetcbcounter\ (#1)}}{title=\definitionname~\formucounter.\thetcbcounter},
+IfBooleanTF={#2}{label=#3}{}}
+% \newtcbtheorem[auto counter,number within=chapter]{theorem}{\theoremname}{thmstyle}{thm}
+\DeclareTColorBox[auto counter,number within=chapter]{theorem}{ o t\label g }{
+common,thmstyle,
+IfValueTF={#1}{title={\theoremname~\thetcbcounter\ (#1)}}{title=\theoremname~\formucounter.\thetcbcounter},
+IfBooleanTF={#2}{label=#3}{}}
+\DeclareTColorBox[auto counter]{prop}{ o t\label g }{
+common,propstyle,
+IfValueTF={#1}{title={\propname~\thetcbcounter\ (#1)}}{title=\propname~\formucounter.\thetcbcounter},
+IfBooleanTF={#2}{label=#3}{}}
+% \newtcbtheorem[auto counter,number within=chapter]{postulate}{\postulatename}{thmstyle}{pos}
+\DeclareTColorBox[auto counter,number within=chapter]{postulate}{ o t\label g }{
+common,thmstyle,
+IfValueTF={#1}{title={\postulatename~\thetcbcounter\ (#1)}}{title=\postulatename~\thetcbcounter},
+IfBooleanTF={#2}{label=#3}{}}
+% \newtcbtheorem[auto counter,number within=chapter]{axiom}{\axiomname}{thmstyle}{axi}
+\DeclareTColorBox[auto counter,number within=chapter]{axiom}{ o t\label g }{
+common,thmstyle,
+IfValueTF={#1}{title={\axiomname~\thetcbcounter\ (#1)}}{title=\axiomname~\thetcbcounter},
+IfBooleanTF={#2}{label=#3}{}}
+% \newtcbtheorem[auto counter,number within=chapter]{corollary}{\corollaryname}{thmstyle}{cor}
+\DeclareTColorBox[auto counter,number within=chapter]{corollary}{ o t\label g }{
+common,thmstyle,
+IfValueTF={#1}{title={\corollaryname~\thetcbcounter\ (#1)}}{title=\corollaryname~\thetcbcounter},
+IfBooleanTF={#2}{label=#3}{}}
+% \newtcbtheorem[auto counter,number within=chapter]{lemma}{\lemmaname}{thmstyle}{lem}
+\DeclareTColorBox[auto counter,number within=chapter]{lemma}{ o t\label g }{
+common,thmstyle,
+IfValueTF={#1}{title={\lemmaname~\thetcbcounter\ (#1)}}{title=\lemmaname~\thetcbcounter},
+IfBooleanTF={#2}{label=#3}{}}
+% \newtcbtheorem[auto counter,number within=chapter]{proposition}{\propositionname}{propstyle}{pro}
+\DeclareTColorBox[auto counter,number within=chapter]{proposition}{ o t\label g }{
+common,propstyle,
+IfValueTF={#1}{title={\propositionname~\thetcbcounter\ (#1)}}{title=\propositionname~\thetcbcounter},
+IfBooleanTF={#2}{label=#3}{}}
+
+%% redefine these commands
+% \renewcommand{\[}{\left[}
+% \renewcommand{\]}{\right]}
+% \renewcommand{\(}{\left(}
+% \renewcommand{\)}{\right)}
+
+
+%%% BONUS SECTIONS IN TP %%%
+\renewcommand{\bonus}
+{
+(bonus)
+}
+
+
+% redefine enumerate environment
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{\draw (0,0) circle(0.22) node (char) {#1};}}
+\setlist[enumerate]{label=\protect\circled{\alph*},leftmargin=0.55cm}
+
+% predefine \technique exp command
+\newcommand{\technique}[1]{}

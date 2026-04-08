@@ -1,0 +1,153 @@
+% CE FICHIER DEFINIT LE PREAMBULE POUR LES 
+% TD (ISSU DES TD D'HENNING)
+
+%%% DOCUMENT %%%
+\documentclass[11pt]{article}
+
+\usepackage{epsf,epsfig,wrapfig}
+\usepackage[francais]{babel}
+\usepackage{amssymb,amsmath}
+
+%%% TO PREDEFINE SOLUTION ENVIRONMENT %%%
+\newcommand{\sol}[1]{}
+
+%%% GEOMETRY %%%
+\newcounter{serie}
+\newcounter{exo}[serie]
+\textheight=22 true cm
+\textwidth=16.5 true cm
+\oddsidemargin=0.5truecm
+\topmargin=-1truecm
+
+%%% ENTETE %%%
+\newcommand{\entete}[1]{
+\newpage\stepcounter{serie}\noindent
+{\large Licence Sciences de la Mati\`ere (L3) \hfill 2021--2022}
+\par \vspace{0.4cm}\par
+\begin{center}
+{\Large {TD Outils Math\'ematiques} \qquad --- \,\No #1 \,\,---  }
+\end{center}
+\par \vspace{0.2cm}\par
+\hrule
+}
+
+
+%%% PERSONAL SYMBOLS %%%
+\newcommand{\der}{\mathrm{d}}
+
+\newcommand{\pr}{\prime}
+\newcommand{\epr}{{\, \prime}}
+\newcommand{\xp}{x^{\pr}}
+
+\newcommand{\vare}{\varepsilon}
+\newcommand{\vap}{\varphi}
+\newcommand{\vapt}{\tilde{\vp}}
+\newcommand{\tg}{\tilde{G}}
+
+\newcommand{\pa}{\partial}
+
+\newcommand{\ga}{\gamma}
+\newcommand{\la}{\lambda}
+%\newcommand{\th}{\theta}
+\newcommand{\vp}{\varphi}
+
+\newcommand{\de}{\delta}
+
+\newcommand{\re}{{\rm e}}
+\newcommand{\ri}{{\rm i}}
+
+\newcommand{\hh}{{\cal H}}
+\newcommand{\br}{{\bf R}}
+\newcommand{\brn}{{\bf R}^n}
+\newcommand{\bc}{{\bf C}}
+\newcommand{\bn}{{\bf N}}
+\newcommand{\ns}{{\bf N}^*}
+\newcommand{\lt}{{L^2 ({\br},dx)}}
+\newcommand{\ltp}{{L^2 ({\br},dp)}}
+\newcommand{\hs}{{\cal H}}
+\newcommand{\fo}{{\cal F}}
+\newcommand{\po}{{\cal P}}
+\newcommand{\dd}{{\cal D}}
+\newcommand{\ii}{{\cal I}}
+\newcommand{\st}{{\cal S}(\br)}
+\newcommand{\std}{{\cal S}^{\prime} (\br)}
+
+\newcommand{\ds}{\displaystyle}
+
+% math sets
+\newcommand{\R}{\mathbb{R}}
+
+\renewcommand{\dag}{\ds{\dagger}}
+\newcommand{\be}{\begin{equation}}
+\newcommand{\ee}{\end{equation}}
+\newcommand{\beq}{\begin{eqnarray*}}
+\newcommand{\eeq}{\end{eqnarray*}}
+\newcommand{\bea}{\begin{eqnarray}}
+\newcommand{\eea}{\end{eqnarray}}
+
+% vectorial analysis
+\renewcommand{\div}{{\vec \nabla} \cdot \vec }
+\newcommand{\grad}{{\vec \nabla}}
+\newcommand{\rot}{{\vec \nabla} \times \vec}
+
+
+\newcommand{\F}{\mathcal{F}}
+
+% matrix-related operations
+\renewcommand{\det}{\text{det}}
+\newcommand{\com}{\text{Com}}
+
+\newtheorem{defin}{D\'efinition}
+\newtheorem{theo}{Th\'eor\`eme}
+\newtheorem{lem}{Lemme}
+\newtheorem{prop}{Proposition}
+\newtheorem{cor}{Corollaire}
+
+
+\setcounter{enumiv}{1}
+
+\usepackage[T1]{fontenc}
+\usepackage{kantlipsum}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage[breakable, theorems, skins]{tcolorbox}
+\tcbset{enhanced}
+
+
+%%% GRAY BOX FOR EXERCISE TITLE %%%
+\DeclareRobustCommand{\greybox}[2][gray!20]{%
+\begin{tcolorbox}[   %% Adjust the following parameters at will.
+        breakable,
+        left=0pt,
+        right=0pt,
+        top=0pt,
+        bottom=0pt,
+        colback=#1,
+        colframe=#1,
+        width=\dimexpr\textwidth\relax, 
+        enlarge left by=0mm,
+        boxsep=5pt,
+        arc=0pt,outer arc=0pt,
+        ]
+        #2
+\end{tcolorbox}
+}
+
+\newcommand{\redbox}[1]{\greybox[blue!10]{#1}}
+
+
+%%% ENVERONNEMENT EXERCICE %%%
+\newcommand{\exo}[1]{\bigskip\bigskip{
+\noindent\greybox{{\large\bf \Roman{enumiv}.\,\, #1}
+}\bigskip}\noindent
+\setcounter{enumiii}{1}\addtocounter{enumiv}{1}}
+
+\newcommand{\exosupp}[1]{\bigskip\bigskip{
+\noindent\redbox{{\large\bf \Roman{enumiv}.\,\, #1}
+}\bigskip}\noindent
+\setcounter{enumiii}{1}\addtocounter{enumiv}{1}}
+
+
+\newcommand{\sub}{\addtocounter{enumiv}{-1}{\noindent\bf \Roman{enumiv}.{\footnotesize \Alph{enumiii}}\, }\addtocounter{enumiv}{1}\addtocounter{enumiii}{1}}
+
+\newcommand{\subsub}{\addtocounter{enumiv}{-1}\addtocounter{enumiii}{-1}{\noindent\bf [{\footnotesize \Alph{enumiii}\arabic{enumii}}]\, }\addtocounter{enumiv}{1}\addtocounter{enumiii}{1}\addtocounter{enumii}{1}}
+

@@ -1,0 +1,93 @@
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~%
+%  dernière                   %
+%  modification = 24/02/2023  %
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~%
+%      Colas Bardavid
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Include Graphical files  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\includeCDCGraphics}[3]
+{
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\pathToGraphicalFile{#1/#2}
+\IfFileExists{#2}
+	% then
+    {\def\pathToGraphicalFile{#2}}
+    % else
+    {
+        \IfFileExists{__macros/#1/#2}
+        	% then
+        	{\def\pathToGraphicalFile{__macros/#1/#2}}
+        	% else
+        	{
+                \IfFileExists{/__macros/#1/#2}
+                	% then
+                	{\def\pathToGraphicalFile{/__macros/#1/#2}}
+                	% else
+                	{
+                		\IfFileExists{../__macros/#1/#2}
+                			% then
+                			{\def\pathToGraphicalFile{../__macros/#1/#2}}
+                			% else
+                			{
+                				\IfFileExists{../../__macros/#1/#2}
+                				% then
+                				{\def\pathToGraphicalFile{../../__macros/#1/#2}}
+                				% else
+                				{}
+                			}
+                	}
+        	}
+	}
+%	
+\includegraphics[#3]{\pathToGraphicalFile}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%         The clock        %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\clockForCDC{\scalerel*{\includeCDCGraphics{pictos}{clock.pdf}{}}{\rule[-0.5mm]{1mm}{3mm}}}
+\def\clockLightForCDC{\scalerel*{\includeCDCGraphics{pictos}{clockLight.pdf}{}}{\rule[-0.5mm]{1mm}{3mm}}}
+
+\def\interClockSpace{\hspace{0.75pt}}
+\def\ONEclock{\clockLightForCDC\interClockSpace\clockLightForCDC\interClockSpace\clockLightForCDC\interClockSpace\clockForCDC}\def\TWOclocks{\clockLightForCDC\interClockSpace\clockLightForCDC\interClockSpace\clockForCDC\interClockSpace\clockForCDC}\def\THREEclocks{\clockLightForCDC\interClockSpace\clockForCDC\interClockSpace\clockForCDC\interClockSpace\clockForCDC}
+\def\FOURclocks{\clockForCDC\interClockSpace\clockForCDC\interClockSpace\clockForCDC\interClockSpace\clockForCDC}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%       Other pictos       %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\corePictoQCM{{\scalerel*{\includeCDCGraphics{pictos}{QCM.pdf}{}}{\rule[-0.5mm]{1mm}{3mm}}}}
+\def\corePictoAN{{\scalerel*{\includeCDCGraphics{pictos}{AN.pdf}{}}{\rule[-0.5mm]{1mm}{3mm}}}}
+\def\corePictoApple{{\scalerel*{\includeCDCGraphics{pictos}{Apple2.pdf}{}}{\rule[-0.75mm]{1mm}{4mm}}}}
+\def\pictoBulldozer{{\scalerel*{\includeCDCGraphics{pictos}{Bulldozer.pdf}{}}{\rule[-1mm]{1mm}{4mm}}}}
+\def\pictoBulldozerForAttribution{{\scalerel*{\includeCDCGraphics{pictos}{Bulldozer_forAttribution.pdf}{}}{\rule[-1mm]{1mm}{4mm}}}}
+\def\pictoAppleForAttribution{{\scalerel*{\includeCDCGraphics{pictos}{Apple2_forAttribution.pdf}{}}{\rule[-1mm]{1mm}{4mm}}}}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%    Options for pictos    %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\varForShowingAllPictos{N}
+
+\def\showAllPictos
+{\gdef\varForShowingAllPictos{Y}\resetPictos}
+\def\dontShowAllPictos
+{\gdef\varForShowingAllPictos{N}\resetPictos}
+
+\def\resetPictos
+{\ifx\varForShowingAllPictos\varLetterY%
+{\gdef\pictoQCM{\corePictoQCM}\gdef\pictoAN{\corePictoAN}\gdef\pictoApple{\corePictoApple}}
+\else
+{\gdef\pictoQCM{}\gdef\pictoAN{}\gdef\pictoApple{}}\fi}
+\resetPictos

@@ -1,0 +1,1766 @@
+%%% CURRENT SCHOOL YEAR %%%
+\def\theyears{2025 - 2026}
+
+
+% note 
+\newcommand{\notemark}{%
+${\color{JoliRouge}^*}$%
+}%
+
+% nice calligraphic
+\usepackage{calrsfs}
+
+% ENONCE FOR SOLUCE ONLY
+\newcommand{\Enonce}[1]{#1}
+
+% if error too many math alphabets
+% \usepackage[bb=boondox]{mathalfa}
+
+% -------------------
+% UNITS 
+% -------------------
+\usepackage{siunitx}
+\sisetup{
+    inter-unit-product = \ensuremath{{}\!\cdot\!{}},
+    detect-all,
+    separate-uncertainty = true,
+    exponent-product = \times,
+    space-before-unit = true,
+    output-decimal-marker = {,},
+    multi-part-units = brackets,
+    range-phrase = --,
+    % allow-number-unit-breaks,
+    list-final-separator = { et },
+    list-pair-separator = { et }
+    %,
+    %abbreviations
+}
+\DeclareSIUnit{\dC}{\degres C}				% degré Celsius
+\DeclareSIUnit{\dF}{\degres F}				% degré Farhenheit
+\newcommand{\micro}{$\rm{\mu}$}       % micro droit
+
+% --------------------
+% COLORS
+% --------------------
+\definecolor{Blue1}{rgb}{0,0.55,0.55}
+\definecolor{Red2}{rgb}{0.86,0.08,0}
+
+% miscellaneous colors
+\definecolor{linkcolor}{rgb}{0,0,0.6}
+\definecolor{cornellred}{rgb}{0.7, 0.11, 0.11}
+\definecolor{darkcyan}{rgb}{0.0, 0.55, 0.55}
+\definecolor{coolblack}{rgb}{0.0, 0.18, 0.39}
+\definecolor{tealblue}{rgb}{0.21, 0.46, 0.53}
+\definecolor{darkgreen}{rgb}{0.0, 0.2, 0.13}
+\definecolor{asparagus}{rgb}{0.53, 0.66, 0.42}
+\definecolor{brickred}{rgb}{0.8, 0.25, 0.33}
+\definecolor{JoliBleu}{rgb}{0,0.55,0.55}
+\definecolor{JoliVert}{rgb}{0.15,0.6,0}
+\definecolor{JoliRouge}{rgb}{0.86,0.08,0}
+\definecolor{JoliJaune}{rgb}{1,0.75,0}
+\definecolor{JoliGris}{rgb}{0.52,0.52,0.51}
+\definecolor{mypink1}{rgb}{1, 0.2, 0.6}
+\colorlet{mdtRed}{red!70!black}
+\definecolor{blueryb}{rgb}{0.01,0.28,1.0}
+\definecolor{bluegray}{rgb}{0.4,0.6 0.8}
+\definecolor{lightgray}{gray}{0.85}
+\definecolor{greenblue}{rgb}{0,0.5,0.3}
+\definecolor{slateblue}{rgb}{0,0.1,0.35}
+\definecolor{lightblue}{rgb}{0.95,0.95,1}
+
+% text with Jolidon colors
+\newcommand{\JRouge}[1]{\textcolor{JoliRouge} {#1}}
+\newcommand{\JVert}[1]{\textcolor{JoliVert} {#1}}
+\newcommand{\JBleu}[1]{\textcolor{JoliBleu} {#1}}
+\newcommand{\lcl}[1]{\textcolor{JoliRouge}{#1}}
+
+% ------------------
+% CONSTANTS
+% ------------------
+% physical constants
+\newcommand{\NA}{\mc{N}_{\rm A}}
+\newcommand{\kB}{k_{\rm B}}
+\newcommand{\epz}{\varepsilon_0}
+% greek letters
+\newcommand{\vphi}{\varphi}
+\newcommand{\veps}{\varepsilon}
+\newcommand{\muB}{\mu_{\rm B}}  % moment magnétique de Bohr
+
+% ------------------
+% INCERTITUDES
+% ------------------
+\newcommand{\incert}[1]{u(#1)}
+\newcommand{\incertX}[1]{u(\uppercase{#1})}
+
+% ------------------
+% VECTOR ANALYSIS
+% ------------------
+
+% vecteurs
+\usepackage[e]{esvect}
+\renewcommand{\Vec}[1]{\protect\vv{#1}}
+
+% opérateurs simples
+\newcommand{\ps}{\cdot}
+\newcommand{\p}{\ps}
+\newcommand{\udl}{\underline}
+\newcommand{\ovl}{\overline}
+\newcommand{\pv}{\wedge}
+\DeclareMathAlphabet{\mathdutchcal}{U}{dutchcal}{m}{n}
+% \SetMathAlphabet{\mathdutchcal}{bold}{U}{dutchcal}{b}{n}
+% \DeclareMathAlphabet{\mathdutchbcal}{U}{dutchcal}{b}{n}
+% This command defines a new robust command \mc which takes one argument.
+% The \newrobustcmd is provided by the 'etoolbox' package, so make sure to include \usepackage{etoolbox} in your preamble.
+\usepackage{etoolbox}
+\newrobustcmd{\mc}[1]{%
+% \ifthenelse{\equal{}{}}{a}{b}%
+% \ifthenelse{\equal{\detokenize{#1}}{\detokenize{S}}}{{\mathdutchcal{#1}}}{{
+\mathcal{#1}
+% }}%
+}
+\usepackage{cancel}
+\newcommand{\barred}[1]{{\color{JoliRouge}\cancel{#1}}}
+
+% opérateurs différentiels
+\newcommand{\Grad}[1]{\ensuremath{\Vec{\rm {grad}}\,{#1}}}
+\newcommand{\Rot}[1]{\ensuremath{\Vec{\rm {rot}}\,{{#1}}}}
+\newcommand{\Dive}[1]{\ensuremath{{\rm {div}\,{{#1}}}}}
+\newcommand{\grad}{\ensuremath{\Vec{\rm {grad}}\,}}
+\newcommand{\rot}{\ensuremath{\Vec{\rm {rot}}\,}}
+\newcommand{\dive}{\ensuremath{{\rm {div}\,}}}
+\newcommand{\Deltav}[1]{\ensuremath{\Vec{\Delta}\,{\!\Vec{#1}}}}
+
+% points
+\newcommand{\ptO}{{\rm O}}
+\newcommand{\ptA}{{\rm A}}
+\newcommand{\ptB}{{\rm B}}
+\newcommand{\ptC}{{\rm C}}
+\newcommand{\ptD}{{\rm D}}
+\newcommand{\ptE}{{\rm E}}
+\newcommand{\ptM}{{\rm M}}
+
+% --------------------------
+% SHORCUTS
+% --------------------------
+\newcommand{\pa}[1]{\left(#1\right)}
+\newcommand{\cro}[1]{\left[#1\right]}
+% \renewcommand{\[}{\left[}
+% \renewcommand{\]}{\right]}
+% \renewcommand{\(}{\left(}
+% \renewcommand{\)}{\right)}
+\newcommand{\Ar}{\Rightarrow}
+\newcommand{\Rar}{\quad  \Rightarrow \quad}
+\renewcommand{\udl}[1]{\underline{#1}}
+
+
+% --------------------------
+% DIFERRENTIAL ANALYSIS
+% --------------------------
+
+% dérivées
+\RequirePackage{esdiff}
+\renewcommand{\d}{\mathrm{d}}
+\newcommand{\der}{\mathrm{d}}
+% \newcommand{\Dt}[1]{\frac{\D #1}{\D t}}
+\newcommand{\Dt}[1]{\frac{\mathrm{D} #1}{\mathrm{D} t}}
+\newcommand{\dd}[2]{\ensuremath{\frac{\mathrm{d}{#1}}{\mathrm{d}{#2}}}}
+\newcommand{\ddd}[2]{\ensuremath{\frac{\mathrm{d}^2{#1}}{\mathrm{d}{#2}^2}}}
+\newcommand{\ddm}[3]{\ensuremath{\frac{\mathrm{d}^{{#3}}{#1}}{\mathrm{d}{#2}^{{#3}}}}}
+\newcommand{\dr}[2]{\ensuremath{\frac{\partial{#1}}{\partial{#2}}}}
+\newcommand{\ddr}[2]{\ensuremath{\frac{\partial^2{#1}}{\partial{#2}^2}}}
+\newcommand{\dcr}[3]{\ensuremath{\frac{\partial^2{#1}}{\partial{#2}\partial{#3}}}}
+\newcommand{\drm}[3]{\ensuremath{\frac{\partial^{#3}{#1}}{\partial{#2}^{#3}}}}
+
+\newcommand{\dpart}[3][]{\drm{#1}{#2}{#3}}
+\newcommand{\deriv}[3][]{\ddm{#1}{#1}{#3}}
+
+%------------------------------------------------------
+% MECANIQUE
+%------------------------------------------------------
+
+% position
+% \newcommand{\r}{\Vec{r}}
+
+% noms des referentiels
+\newcommand{\nomR}{{référentiel absolu}}
+\newcommand{\nomRprime}{{référentiel relatif}}
+
+% vitesses et accélération
+\newcommand{\vR}{\Vec{v}_{\!\Rcal}}
+\newcommand{\vRef}[1]{\Vec{v}_{\!#1}}
+\newcommand{\vRp}{\Vec{v}_{\!\Rcal'}}
+\newcommand{\ve}{\Vec{v_{\rm{e}}}(M)}
+\newcommand{\aR}{\Vec{a}_\Rcal}
+\newcommand{\aRp}{\Vec{a}_{\!\Rcal'}}
+\newcommand{\aRef}[1]{\Vec{a}_{#1}}
+\renewcommand{\ae}{\Vec{a_{\rm{e}}}(M)}
+\newcommand{\aC}{\Vec{a_{\rm{C}}}(M)}
+\newcommand{\dR}[3]{\ensuremath{\frac{\mathrm{d}{#1}}{\mathrm{d}{#2}}\left.{\color{white}\frac{l}{a}}\hspace{-0.9em}\right\rvert_{#3}}}
+\newcommand{\PC}{M^*}
+\newcommand{\OR}{\Vec{\Omega}_{\Rcal'/\Rcal}}
+\newcommand{\Rcal}{\mathcal{R}}
+\newcommand{\Rg}{\Rcal_{\rm g}}
+\newcommand{\RT}{\Rcal_{\rm T}}
+\newcommand{\RG}{\mathcal{R}_{\rm{G}}}
+\newcommand{\RC}{\mathcal{R}_{\rm{C}}}
+
+% grandeurs mécaniques
+\newcommand{\Fe}{\Vec{F}_{\rm \!e}}
+\newcommand{\Fc}{\Vec{F}_{\rm \!c}}
+\newcommand{\F}{\Vec{F}}
+\newcommand{\Ec}[1]{\hspace{-0.25em}\left.E_{\rm{c}}\right|_{#1} }
+
+% vecteurs unitaires
+\newcommand{\ect}{\Vec{e_{ct}}}
+\newcommand{\ex}{\Vec{e_x}}
+\newcommand{\ey}{\Vec{e_y}}
+\newcommand{\ez}{\Vec{e_z}}
+\newcommand{\er}{\Vec{e_r}}
+\newcommand{\et}{\Vec{e_{\theta}}}
+\newcommand{\ep}{\Vec{e_{\varphi}}}
+\newcommand{\uz}{\vv{u_z}}
+\newcommand{\ur}{\vv{u_r}}
+\newcommand{\ut}{\vv{u_\theta}}
+
+\newcommand{\dl}{\Vec{\d \ell}}
+\newcommand{\Surf}{\mathdutchcal{S}}
+\newcommand{\Vol}{\mc{V}}
+
+%------------------------------------------------------
+% MECANIQUE DES FLUIDES
+%------------------------------------------------------
+
+% differentiel
+\newcommand{\Pf}{\mathcal{P}}			% particule fluide
+\newcommand{\dS}{\Vec{\d S}}
+\newcommand{\dV}{\d^2 V}
+\newcommand{\DV}{D_V}
+\newcommand{\Dm}{D_m}
+\newcommand{\dm}{\d^2 m}
+
+% grandeurs
+\newcommand{\Na}{N_{\rm A}}				% nombre d'avogadro
+\renewcommand{\Re}{{R\rm{e}}}			% Reynolds
+\newcommand{\fext}{\Vec{f}_{\!\rm ext}}	% forces extérieures
+
+% -----------------------------------------------------------
+% OPTIQUE
+% -----------------------------------------------------------
+\newcommand{\vib}{s}
+\newcommand{\opt}[1]{\mathit{(#1)}}
+\newcommand{\Co}{\mathcal{C}}						% contraste
+\newcommand{\taur}{\tau_{\rm{r}}} %temps réponse
+
+\newcommand{\Sp}{S'}
+\newcommand{\Su}{S_1}
+\newcommand{\Sd}{S_2}
+
+\newcommand{\lmoy}{\lambda_{\rm m}}
+\newcommand{\lc}{\ell_{\rm c}}
+\newcommand{\tauc}{\tau_{\rm c}}
+\newcommand{\ls}{\ell_{\rm s}}
+
+% -----------------------------------------------------
+% ELECTROMAGNETISME
+%------------------------------------------------------
+\usepackage{suffix}
+\renewcommand{\j}{\Vec{\jmath}}
+\newcommand{\je}{\Vec{\jmath}}
+\newcommand{\jd}{\j_{\rm \!d}}
+\newcommand{\B}{\Vec{B}}
+\WithSuffix\newcommand\B*{\Vec{\udl{B}}}
+\newcommand{\E}{\Vec{E}}
+\WithSuffix\newcommand\E*{\Vec{\udl{E}}}
+\newcommand{\Eext}{\Vec{E}_{\rm ext}}
+\renewcommand{\k}{\Vec{k}}
+\newcommand{\M}{\Vec{\mu}}
+\newcommand{\Poy}{\Vec{\Pi}}
+
+% -----------------------------------------------------------
+% THERMODYNAMIQUE
+% -----------------------------------------------------------
+% énergie
+\newcommand{\Pth}{{\Phi_{\rm th}}}
+\newcommand{\dQ}{\delta Q}
+\newcommand{\dW}{\delta W}
+\newcommand{\jth}{\jmath_{\rm th}}
+\newcommand{\jN}{\jmath_N}
+\newcommand{\dM}{\delta m}
+\newcommand{\dEe}{\delta E_{\rm e}}
+
+% systèmes
+\newcommand{\So}{\Sigma_{\rm o}}
+\newcommand{\Sf}{\Sigma_{\rm f}}
+
+% radiation
+\usepackage{psfrag}
+\def\mdense{\medmuskip=1.5mu plus1mu \thickmuskip=3mu plus1mu minus1mu}
+\def\mDense{\medmuskip=1mu plus.5mu \thickmuskip=2mu plus.5mu minus.5mu}
+\def\dfg#1#2{\psfrag{#1}[][]{$\mdense{#2}$}}
+\def\Dfg#1#2{\psfrag{#1}[][]{$\mDense{#2}$}}
+\def\DfgTXT#1#2{\psfrag{#1}[][]{#2}}
+\newcommand{\mvb}{\mathversion{bold}}
+\newcommand{\intfer}{{\int \hspace{-1.2em} \bigcirc}}
+\newcommand{\intdoubfer}{{\int \hspace{-.9em} \int \hspace{-1.3em} \bigcirc}}
+
+% résistance thermique
+\newcommand{\Rth}[1][]{%
+\ifthenelse{\equal{#1}{}}{%
+R_{\rm th}%
+}%
+{%
+R_{\rm th, #1}%
+}%
+}%
+
+% ------------------------------------------
+% QUANTIQUE
+% ------------------------------------------
+\newcommand{\A}{A_{21}}
+
+% ------------------------------------------
+% MATHEMATIQUES
+% ------------------------------------------
+
+% textes usuels en mode math
+\newcommand{\qMath}[1]{\quad\text{ #1 }\quad}
+\newcommand{\qet}{\qMath{et}}
+\newcommand{\qavec}{\qMath{avec}}
+\newcommand{\qsoit}{\qMath{soit}}
+\newcommand{\Et}{\quad \text{et} \quad}
+\newcommand{\Avec}{\quad \text{avec} \quad}
+\newcommand{\qou}{\qMath{ou}}
+\newcommand{\qdonc}{\qMath{donc}}
+\newcommand{\qcar}{\qMath{car}}
+
+\newcommand{\qqMath}[1]{\qquad\text{ #1 }\qquad}
+
+\newcommand{\qqet}{\qqMath{et}}
+\newcommand{\qqavec}{\qqMath{avec}}
+\newcommand{\qqsoit}{\qqMath{soit}}
+\newcommand{\qqou}{\qqMath{ou}}
+\newcommand{\qqdonc}{\qqMath{donc}}
+\newcommand{\qqcar}{\qqMath{car}}
+
+% fonctions
+\newcommand{\norm}[1]{\left|{#1}\right|}
+\newcommand{\norme}[1]{|{#1}|}
+\newcommand{\sinc}{{\rm{sinc}}}
+\newcommand{\cotan}{{\rm{cotan}}}
+\newcommand{\e}{\mathrm{e}}
+\newcommand{\moy}[1]{\ensuremath{\left\langle {#1} \right\rangle}}
+\newcommand{\avg}[1]{\moy{#1}}
+\newcommand{\abs}[1]{|#1|}
+\renewcommand{\O}[1]{O({#1})}
+
+% ensembles
+\newcommand{\ensemblenombre}[1]{\mathbb{#1}}
+\newcommand{\N}{\ensemblenombre{N}}
+\newcommand{\Z}{\ensemblenombre{Z}}
+\newcommand{\Q}{\ensemblenombre{Q}}
+\newcommand{\R}{\ensemblenombre{R}}
+\renewcommand{\S}{\mathcal{S}}
+
+% integral symbols
+\usepackage{esint}
+
+% complexes
+\newcommand{\im}{{\rm Im}}
+\newcommand{\re}{{\rm Re}}
+
+% --------------------------
+% RELATIVITÉ
+% --------------------------
+\newcommand{\xmu}{X} % quadri-position
+\newcommand{\ymu}{Y} 
+\newcommand{\zmu}{Z}
+\newcommand{\vmu}{U} % quadri-vitesse
+\newcommand{\pmu}{P} % quadri-impulsion
+\newcommand{\amu}{\Gamma} % quadri-accélération
+\newcommand{\Fmu}{F} % quadri-force
+\newcommand{\kmu}{K}
+
+\newcommand{\Ek}{{\mc{E}_c}} % énergie cinétique
+\newcommand{\Epot}{{\mc{E}_{\rm pot}}} % énergie potentielle
+\newcommand{\Ep}{{\mc{E}_0}} % énergie de masse
+\newcommand{\Etot}{{\mc{E}}} % énergie cinématique
+
+\newcommand{\Pcoll}{A}
+
+\newcommand{\Rp}{\Rcal_p} % référentiel propre
+
+\newcommand{\vboost}{v_{e}} 
+\newcommand{\gboost}{\gamma_{e}}
+\newcommand{\bboost}{\beta_{e}}
+
+\newcommand{\Lp}{L_0} % longueur propre
+\newcommand{\Tp}{T_0} % durée propre
+\newcommand{\lapp}{\ell} % longueur apparente
+\newcommand{\vapp}{v_{\rm app}} % vitesse apparente
+
+\newcommand{\ap}{\Vec{a}_{\rm\!p}}
+
+% ---------------------------
+% DOCUMENT REFERENCE SHORCUTS
+% ---------------------------
+\newcommand{\Chap}[1]{Chap.~\ref{chap:#1}}
+\newcommand{\Part}[1]{Part.~\ref{part:#1}}
+\newcommand{\Sec}[1]{Sec.~\ref{sec:#1}}
+\newcommand{\App}[1]{Annexe~\ref{app:#1}}
+\newcommand{\Eq}[1]{Éq.~\eqref{eq:#1}}
+\newcommand{\Tab}[1]{Tab.~\ref{tab:#1}}
+\newcommand{\Fig}[1]{Fig.~\ref{fig:#1}}
+\newcommand{\Def}[1]{Déf.~\ref{def:#1}}
+\newcommand{\Prop}[1]{Prop.~\ref{prop:#1}}
+\newcommand{\Formu}[1]{Form.~\ref{form:#1}}
+\newcommand{\Comp}[1]{Comp.~\ref{app:#1}}
+\newcommand{\Quest}[1]{\ref{quest:#1}}
+
+%%% MISCELLANEOUS %%%
+\renewcommand{\-}{_}
+\newcommand{\imp}[1]{{\color{iconcolor}\textbf{#1}}}
+\newcommand{\important}[1]{\imp{#1}}
+\newcommand{\guill}[1]{«$\,${#1}$\,$»}
+\newcommand\cte{\text{Cte}}
+
+%%% INFORMATIQUE %%%
+\renewcommand{\_}{\lstinline{_}}%\lstinline{_}
+
+%-----------------------------------
+%	ACRONYMES
+%-----------------------------------
+\usepackage{acro}
+\newcommand{\acro}[1]{
+\!\acl{#1}~(\ac{#1})
+}
+% \DeclareAcronym{PFD}{short = PFD,
+					  % long  = Principe fondamental de la dynamique}
+% \DeclareAcronym{TMC}{short = TMC,
+					  % long  = Théorème du moment cinétique}
+\DeclareAcronym{TEC}{short = TEC,
+					  long  = Théorème de l'énergie cinétique}
+\DeclareAcronym{TEM}{short = TEM,
+					  long  = Théorème de l'énergie mécanique}
+
+
+% ---------------------------------
+% BALISES SPECIALES
+% ---------------------------------
+\usepackage{fontawesome5}
+\newcommand{\docu}[3]{
+\noindent{\color{coolblack}$\clubsuit$} Étude documentaire~: \textit{#1},~{#2}~(#3).
+}
+
+\newcommand{\ProgrammeColle}{}
+\newcommand{\Femto}{[Adapté de femto-physique.fr].}
+\newcommand{\Wiki}{[Wikipédia]}
+\newcommand{\ccp}[2][]{}
+\newcommand{\ea}[2][]{}
+\newcommand{\Annale}[3][Physique PC]{
+}
+
+% ---------------------------------
+% EQUATIONS
+% ---------------------------------
+
+% packages for equations and brackets
+\usepackage[overload]{empheq}
+\usepackage{xstring}
+
+% boxed equation
+\newcommand{\eqbox}[2][*]{
+  \StrLen{#1}[\numberlength]
+  \ifthenelse{\equal{\detokenize{#1}}{\detokenize{*}}}{
+    % sans argument : non numéroté
+    \begin{equation*}
+    \boxed{#2}
+    \end{equation*}
+  }{
+    \ifthenelse{\numberlength=0}{
+      % avec argument vide : numéroté non étiquetté
+    \begin{equation}
+    \boxed{#2}
+    \end{equation}
+    }{
+      % avec argument non vide : numéroté et étiquetté
+      \begin{equation}
+        \label{eq:#1}
+        \boxed{#2}
+      \end{equation}
+    }
+  }
+}
+
+% standard equation
+\newcommand{\eq}[2][*]{
+\begin{equation#1}
+#2
+\end{equation#1}
+}
+
+% system of equations
+\newcommand{\syst}[3][cc]{
+\left\{\begin{array}{#1}\displaystyle#2\\[0.75em]\displaystyle#3\end{array}\right.
+}
+
+% --------------------
+% CUSTOM ITEMIZES
+% --------------------
+
+% question avec points pour DS
+\usepackage{marginnote}
+\newcommand{\question}[1][]{\item #1}
+
+% itemize perso
+\definecolor{listecolor}{RGB}{60,113,183}
+\usepackage[inline]{enumitem}
+\setlist[enumerate]{label*=\protect\fbox{\rm \arabic{enumi}}} % for boxed numbers
+% \renewcommand{\labelitemi}{$\circ$}
+\newenvironment{liste}[1][]
+{\begin{itemize}
+% [label={\color{JoliRouge} $\bullet$}]
+[labelindent=\parindent, label={\color{listecolor}$\blacktriangleright$},#1]
+}
+{\end{itemize}}
+\newenvironment{tasks}[1][]
+{\begin{itemize*}[label={$\triangleright$},#1]
+}
+{\end{itemize*}}
+
+% hypotheses environment
+\newenvironment{hypotheses}
+{\begin{enumerate}[label*=\protect\fbox{\rm H\arabic{enumi}}]}
+{\end{enumerate}}
+
+% item seul
+\newcommand{\oneitem}[2][]{
+  \vspace{1em}
+\begin{liste}
+  \item \udl{#2}#1
+\end{liste}
+}
+
+% liste de questions
+\newcounter{quest}
+\setcounter{quest}{0}
+\newenvironment{quest}[1][\arabic]
+{\begin{enumerate}[label=#1*)]
+\setcounter{enumi}{\value{quest}}
+\everymath{\textstyle}
+}
+{\end{enumerate}
+\setcounter{quest}{\value{enumi}}
+}
+
+\usepackage{xparse}
+
+% figure
+\newcounter{exofigure}
+\setcounter{exofigure}{0}
+\NewDocumentEnvironment{fig}{O{} O{1}}
+{
+% \addtocounter{exofigure}{1}
+% \setcounter{figure}{\theexofigure}
+\setcounter{subfig}{0}
+\vspace{0.2cm}
+\begin{center}
+\begin{minipage}{#2\columnwidth}
+  \begin{center}
+    }{
+  \label{fig:#1}
+\end{center}
+\end{minipage}
+\end{center}
+}
+
+% sufigure
+\newcounter{subfig}
+\NewDocumentEnvironment{subfig}{O{} O{0.49} O{}}
+{
+\addtocounter{subfig}{1}
+\begin{minipage}{#2\textwidth}
+\begin{center}
+  \hfill
+}{
+  \hfill
+\label{fig:#1}
+(\alph{subfig})~#3
+\end{center}
+\end{minipage}
+}
+
+%%% PARAGRAPHS %%%
+
+\renewcommand{\theparagraph}{{\color{coolblack}\hspace*{1em}(\roman{paragraph})}\hspace*{-0.7em}}
+\newcommand{\parag}[1]{
+\paragraph{{\color{coolblack}#1}~---$\!\!\!\!$}}
+% \titleformat{\paragraph}[hang]{\bfseries}{%
+% ~~~~~~\bfseries\color{\ColorStructure}\theparagraph%
+% }{1pt}{}
+
+
+%%% BUILD SOLUCE ADDITIONAL LINES %%%
+
+%%% REMARQUE %%%
+\usepackage{mdframed}
+\newmdenv[
+  topline=false,
+  % bottomline=true,
+  bottomline=false,
+  rightline=false,
+  linecolor=JoliRouge,
+  % linewidth=2pt,
+  % skipabove=2\topsep,
+  % skipabove=\topsep,
+  skipbelow=\topsep,
+  innertopmargin=0mm,
+  innerbottommargin=0.2mm,
+  innerleftmargin=3mm,
+  leftmargin=-15pt,
+  linewidth=1pt,
+  % shadow=true,
+  % shadowsize=2pt,
+  % shadowcolor=gray!50,
+  % rounded corners,
+  % roundcorner=2pt
+]{siderule}
+
+%%% BOXES %%%
+\newcommand{\iconBomb}{
+\faBomb
+}
+\newenvironment{danger}[1][0]
+{
+\begin{itemize}[leftmargin=*]
+\vspace{0.1em}
+\item[\iconBomb] \small \color{JoliRouge!65!black}
+}
+{
+\end{itemize}
+\normalsize
+}
+
+
+% for boxes
+\usepackage{awesomebox}
+\definecolor{iconcolor}{rgb}{0.8, 0.25, 0.33}
+
+%%% PREUVE %%%
+\newcommand{\iconProof}{%
+{\color{iconcolor}\small\faCogs}%
+}
+
+
+% \newcommand{proof}[1]{%
+\newenvironment{preuve}{%
+\iconProof~~\textbf{\textcolor{iconcolor}{Preuve}}\medskip
+\begin{answer}%
+% \begin{awesomeblock}[JoliRouge]{1pt}{\iconProof}{JoliRouge}%
+}{%
+\end{answer}%
+% \end{awesomeblock}%
+}%
+
+%%% REMARQUE %%%
+\newcommand{\iconRemarque}{%
+{\color{iconcolor}\small\faLightbulb}%
+}
+
+% \newcommand{proof}[1]{%
+\newenvironment{remarque}{%
+
+% \begin{minipage}{\columnwidth}
+\noindent\iconRemarque~~\textbf{\textcolor{iconcolor}{Remarque}}%
+\begin{answer}%
+% \begin{awesomeblock}[JoliRouge]{1pt}{\iconProof}{JoliRouge}%
+}{%
+\end{answer}%
+% \end{minipage}%
+
+% \end{awesomeblock}%
+}%
+
+% soluce environment for cours and TD
+\usepackage{changepage}
+\makeatletter
+\newenvironment{answer}{%
+
+% \setminted[python]{fontsize=\footnotesize,linenos=true,frame=none}
+\vspace{0.1cm}%
+\begin{adjustwidth}{1cm}{}%
+  \begin{siderule}%
+  \itshape%
+ \footnotesize%
+}{%
+  \end{siderule}%
+  \end{adjustwidth}%
+  \normalsize%
+  % \setminted[python]{fontsize=\footnotesize,linenos=true,frame=single}
+}%
+\makeatother
+
+% my wrap environment
+\NewDocumentEnvironment{mywrap}{ m m }{
+\begin{minipage}{\textwidth}
+\begin{wrapfigure}{r}{#1\textwidth}
+% \vspace{-0.5cm}
+% \begin{flushleft}
+% \includegraphics[scale=1]{cable.pdf}
+% \end{flushleft}
+\begin{flushleft}
+}{
+\end{flushleft}
+\end{wrapfigure}
+#2
+\end{minipage}
+}
+
+%%% REMARQUE %%%
+\newcommand{\iconSoluce}{%
+{\color{iconcolor}\small\faCheckCircle}%
+}
+
+\NewDocumentEnvironment{soluce}{ O{Solution} }{%
+
+\begin{minipage}{\linewidth}%
+\noindent\iconSoluce~~\textbf{\textcolor{iconcolor}{#1}}%
+\begin{answer}%
+}{%
+\end{answer}%
+\end{minipage}%
+}%
+
+%%% DÉMONSTRATION %%%
+\newcommand{\iconDemo}{%
+{\color{iconcolor}\small\faCogs}%
+}
+
+\NewDocumentEnvironment{demo}{ O{} }{%
+
+\noindent\iconDemo~~\textbf{\textcolor{iconcolor}{Démonstration #1}}%
+\begin{answer}%
+}{%
+\end{answer}%
+\medskip
+}%
+
+
+%%% TP %%%
+
+% matériel
+\newcommand{\matos}[1]{}
+
+% consignes
+\newcommand{\iconConsigne}{%
+{\color{iconcolor}\small\faCompass}%
+}
+
+\newenvironment{consigne}{%
+\noindent\iconConsigne~~\textbf{\textcolor{iconcolor}{Consignes}}%
+\begin{answer}%
+% \begin{liste}
+}{%
+% \end{liste}
+\end{answer}%
+}
+
+\newcommand{\ConsignesTP}{
+\begin{consigne}
+  Vous devez rendre un compte-rendu de TP le lendemain de chaque séance. Le compte-rendu doit être rédigé par les deux membres du binômes, et doit intégrer la fiche d’évaluation pré-remplie. Le compte-rendu est évalué entre A et D.
+\end{consigne}
+\medskip
+}
+
+
+%%%%%% CETTE PARTIE EST UTILISÉE PAR build-soluce.py %%%%
+\newrobustcmd{\Soluce}{
+
+% print the solution to each question
+\renewcommand{\sol}[2][Solution]{
+\begin{soluce}[##1]
+{##2}
+\end{soluce}
+% \medskip
+}
+
+\renewcommand{\matos}[1]{
+\vspace{0.1cm}
+  \begin{materiel}%
+    \begin{liste}[leftmargin=0.45cm]%
+      ##1%
+    \end{liste}%
+    \end{materiel}%
+
+}
+
+\renewenvironment{corrige}{
+\begin{soluce}}
+{\end{soluce}}
+% print the references of annales exercises
+\renewcommand{\ccp}[2][Physique]{\vspace{-0.5cm}\begin{flushleft}\faIcon{book-open} CCINP, Concours PC : ##1, ##2.\end{flushleft}}
+\renewcommand{\ea}[2][Physique]{\vspace{-0.5cm}\begin{flushleft}\faIcon{book-open} E3A, Concours PC : ##1, ##2. \end{flushleft}}
+\renewcommand{\Annale}[3][Physique PC]{\begin{flushleft}{\color{coolblack}\faIcon{book-open}} ##2 : \emph{##1}, ##3. \medskip  \end{flushleft}}
+% print points for each question
+% \renewcommand{\question}[1][1]{\item\reversemarginpar\marginnote{{\color{JoliRouge}(##1~pt.)}}}
+}
+
+% additional command to print ONLY the solutions
+\newrobustcmd{\SoluceOnly}{%
+\renewcommand{\question}[1]{\item}%
+\renewcommand{\Enonce}[1]{}
+\renewcommand{\sol}[2][Solution]{%
+  {\normalsize ##2}%
+}%
+% set top-level enumerate (used by 'quest') to zero left margin in solution-only mode
+% \setlist[enumerate,1]{}
+\renewenvironment{quest}[1][\arabic*]{
+  \begin{enumerate}[label=\boxed{$\arabic*$},
+    leftmargin=0.5cm,resume]
+    \setcounter{enumi}{\value{quest}}
+  \everymath{\textstyle}
+}{
+  \end{enumerate}
+    \setcounter{quest}{\value{enumi}}
+}
+}%
+
+
+% -----------------------------
+% EXERCISES (TD, colle, DM or DS)
+% -----------------------------
+
+% doubler ou tripler les exercices de colle
+\newrobustcmd{\Double}[1]{
+{#1}
+{#1}
+}
+\newrobustcmd{\Triple}[1]{
+{#1}
+{#1}
+{#1}
+}
+% tex source file to fetch the exercise
+\newcommand{\source}{}
+\newrobustcmd{\Source}[1]{
+\renewcommand{\source}{#1}
+}
+
+% default command to insert an exercise
+\newcommand{\Ex}[1]{
+\ExerciseSelect[exam={#1}]
+\input{\source}
+}
+
+% counter for exercices in devoir
+\newcounter{questexo}
+\setcounter{questexo}{0}
+
+% exo environment as defined in tex source files (receuil)
+\NewDocumentEnvironment{exo}{O{PC} O{1} O{colle} m}
+{
+% counter redefinition
+\setcounter{equation}{0}
+\setcounter{quest}{0}
+% \setcounter{subsection}{0}
+
+% command that takes first word of string
+% \makeatletter
+% \newcommand\FirstWord[1]{\@firstword#1 \@nil}%
+% \newcommand\@firstword{}%
+% \newcommand\@removecomma{}%
+% \def\@firstword#1 #2\@nil{\@removecomma#1,\@nil}%
+% \def\@removecomma#1,#2\@nil{#1}
+% \makeatother
+
+% exercice de colle
+\ifthenelse{\equal{\detokenize{#3}}{\detokenize{colle}}}
+	{
+	\begin{Exercise}[title={#4}, exam={#4}, label=colle, type={\textsc{#1}}]
+	}
+	{% exercice de TD
+	\ifthenelse{\equal{\detokenize{#3}}{\detokenize{TD}}}
+		{
+		\def\diff{
+		$\star$\ifnum#2=1\else
+		$\star$\ifnum#2=2\else
+		$\star$\ifnum#2=3\fi\fi\fi}
+		\begin{Exercise}[title={#4}, exam={#4}, origin={\diff~}, label=TD, type={\textsc{#1}}]
+		}
+		{% exercice python
+		\ifthenelse{\equal{\detokenize{#3}}{\detokenize{python}}}
+			{
+			\def\diff{
+			$\star$\ifnum#2=1\else
+			$\star$\ifnum#2=2\else
+			$\star$\ifnum#2=3\fi\fi\fi}
+			\renewcommand{\ExerciseName}{{\normalsize \faPython}~\large Exercice}
+			\begin{Exercise}[title={#4}, exam={#4}, origin={\diff~}, label=python, type={\textsc{#1}}]
+			}
+			{% exercice de DS ou DM
+			\ifthenelse{\equal{\detokenize{#3}}{\detokenize{devoir}}}
+				{
+        \setcounter{subsection}{0}
+        \setcounter{figure}{0}
+        \setcounter{quest}{\value{questexo}}
+				\begin{Exercise}[title={#4}, exam={#4}, label=devoir, type={\textsc{#1}}]
+				}
+        {% exercice oral
+        \ifthenelse{\equal{\detokenize{#3}}{\detokenize{oral}}}
+          {
+          \def\diff{
+      		$\star$\ifnum#2=1\else
+      		$\star$\ifnum#2=2\else
+      		$\star$\ifnum#2=3\fi\fi\fi}
+      		\begin{Exercise}[title={#4}, exam={#4}, label=oral, type={\textsc{#1}}]
+          }
+          {% exercice d'application
+          \ifthenelse{\equal{\detokenize{#3}}{\detokenize{appli}}}
+            {
+            \def\diff{
+            $\star$\ifnum#2=1\else
+            $\star$\ifnum#2=2\else
+            $\star$\ifnum#2=3\fi\fi\fi}
+            \renewcommand{\ExerciseName}{{\normalsize
+            \includegraphics{Bulldozer.pdf}
+            % \faPenToSquare
+            }~\large Exercice}
+            \begin{Exercise}[title={#4}, exam={#4}, label=appli, type={\textsc{#1}}]
+            % \begin{adjustwidth}{-0.85cm}{0cm}
+            }{ 
+              % \begin{Exercise}[title={#4}, exam={#4}, label=appli, type={\textsc{#1}}]  
+            % exercice avec expérience
+              \ifthenelse{\equal{\detokenize{#3}}{\detokenize{exp}}}
+                {
+                \def\diff{
+                $\star$\ifnum#2=1\else
+                $\star$\ifnum#2=2\else
+                $\star$\ifnum#2=3\fi\fi\fi}
+                \renewcommand{\ExerciseName}{{\normalsize
+                \includegraphics{Bulldozer.pdf}
+                % \faPenToSquare
+                }~\large Exercice}
+                \begin{Exercise}[title={#4}, exam={#4}, label=exp, type={\textsc{#1}}]
+                % \begin{adjustwidth}{-0.85cm}{0cm}
+                }{}
+            }
+          }
+        }
+			}
+		}
+	}
+}{
+\ifthenelse{\equal{\detokenize{#3}}{\detokenize{appli}}}
+{
+% \end{adjustwidth}
+\end{Exercise}
+}
+{\end{Exercise}}
+}
+
+
+% ------------------------
+% ENTETE
+% ------------------------
+
+%%% BOXES %%%
+\usepackage{varwidth}
+\usepackage[skins,many]{tcolorbox}
+\usepackage{setspace}
+\usepackage{xargs}
+
+% TD box
+\def\ColorTD{coolblack}
+\newtcolorbox{TDbox}[2][]{
+enhanced,
+halign=center,valign=center,
+before skip=2mm,after skip=2mm,
+%drop shadow southeast,
+fuzzy shadow={0.75mm}{-0.75mm}{0mm}{0.1mm}{black!50!white},
+colback=gray!1!white,colframe=\ColorTD!60!white,boxrule=0.4mm,
+attach boxed title to top left={xshift=0.5cm,yshift*=1mm-\tcboxedtitleheight},
+varwidth boxed title*=-3cm,
+boxed title style={frame code={
+\path[fill=\ColorTD!20!black]
+([yshift=-1mm,xshift=-1mm]frame.north west)
+arc[start angle=0,end angle=180,radius=1mm]
+([yshift=-1mm,xshift=1mm]frame.north east)
+arc[start angle=180,end angle=0,radius=1mm];
+\path[left color=\ColorTD!70!white,right color=\ColorTD!70!white,
+middle color=\ColorTD!70!white]
+([xshift=-2mm]frame.north west) -- ([xshift=2mm]frame.north east)
+[rounded corners=1mm]-- ([xshift=1mm,yshift=-1mm]frame.north east)
+-- (frame.south east) -- (frame.south west)
+-- ([xshift=-1mm,yshift=-1mm]frame.north west)
+[sharp corners]-- cycle;
+},interior engine=empty,
+},
+fonttitle=\bfseries,
+title={#2},
+#1
+}
+
+\def\colorTP{coolblack}
+\newtcolorbox{TPbox}[2][]{
+enhanced,
+halign=center,valign=center,
+before skip=2mm,after skip=2mm,
+%drop shadow southeast,
+fuzzy shadow={0.75mm}{-0.75mm}{0mm}{0.1mm}{black!50!white},
+colback=\colorTP!1!white,colframe=\colorTP!60!white,boxrule=0.4mm,
+attach boxed title to top left={xshift=0.5cm,yshift*=1mm-\tcboxedtitleheight},
+varwidth boxed title=0.8cm,
+boxed title style={frame code={
+% \begin{scope}[rotate=90]
+\path[fill=\colorTP!20!white]
+([yshift=-1mm,xshift=-1mm]frame.north west)
+arc[start angle=0,end angle=180,radius=1mm]
+([yshift=-1mm,xshift=1mm]frame.north east)
+arc[start angle=180,end angle=0,radius=1mm];
+\path[left color=\colorTP!70!white,right color=\colorTP!70!white,
+middle color=\colorTP!50!white]
+([xshift=-2mm]frame.north west) -- ([xshift=2mm]frame.north east)
+[rounded corners=1mm]-- ([xshift=1mm,yshift=-1mm]frame.north east)
+-- (frame.south east) -- (frame.south west)
+-- ([xshift=-1mm,yshift=-1mm]frame.north west)
+[sharp corners]-- cycle;
+% \end{scope}
+},interior engine=empty,
+},
+fonttitle=\bfseries,
+title={\!\!\!#2},#1
+}
+
+
+\def\ColorFormu{JoliRouge}
+\newtcolorbox{Formubox}[2][]{
+enhanced,
+halign=center,valign=center,
+before skip=2mm,after skip=2mm,
+%drop shadow southeast,
+fuzzy shadow={0.75mm}{-0.75mm}{0mm}{0.1mm}{black!50!white},
+colback=gray!0!white,colframe=\ColorFormu!80!white,boxrule=0.3mm,
+attach boxed title to top left={xshift=1cm,yshift*=1mm-\tcboxedtitleheight},
+varwidth boxed title*=-3cm,
+boxed title style={frame code={
+\path[fill=\ColorFormu!20!gray]
+([yshift=-1mm,xshift=-1mm]frame.north west)
+arc[start angle=0,end angle=180,radius=1mm]
+([yshift=-1mm,xshift=1mm]frame.north east)
+arc[start angle=180,end angle=0,radius=1mm];
+\path[left color=\ColorFormu!70!white,right color=\ColorFormu!70!white,
+middle color=\ColorFormu!70!gray]
+([xshift=-2mm]frame.north west) -- ([xshift=2mm]frame.north east)
+[rounded corners=1mm]-- ([xshift=1mm,yshift=-1mm]frame.north east)
+-- (frame.south east) -- (frame.south west)
+-- ([xshift=-1mm,yshift=-1mm]frame.north west)
+[sharp corners]-- cycle;
+},interior engine=empty,
+},
+fonttitle=\bfseries,
+title={#2},#1
+}
+
+% gestion des QRcodes
+\usepackage{qrcode}
+
+\NewDocumentCommand{\miniQR}{O{TD} O{} m}{
+  \begin{minipage}{0.02\textwidth}
+    \rotatebox{90}{\textcolor{coolblack}{corrigé}}
+  \end{minipage}
+  % \begin{minipage}{0.015\textwidth}
+    % \textcolor{coolblack}{\large$\blacktriangleright$}
+  % \end{minipage}
+  \begin{minipage}{0.02\textwidth}
+      \begin{fig}
+        \textcolor{coolblack}{
+      \StrLen{#3}[\numberlength]
+      \ifthenelse{\numberlength=1}{
+        \myQRcode{#10#3}
+      }{
+        \ifthenelse{#2=7}{
+        \myQRcode{#1R#3}
+        }{
+        \myQRcode{#1#3}
+        }
+      }
+        }
+      % \includegraphics[height=1.8cm]{QR.png}
+      \end{fig}
+% QR code
+  \end{minipage}
+}
+
+\def\ColorDoc{JoliVert!70!black}
+\newtcolorbox{Docbox}[2][]{
+enhanced,
+halign=center,valign=center,
+before skip=2mm,after skip=2mm,
+%drop shadow southeast,
+fuzzy shadow={0.75mm}{-0.75mm}{0mm}{0.1mm}{black!50!white},
+colback=gray!5!white,colframe=\ColorDoc!60!white,boxrule=0.4mm,
+attach boxed title to top left={xshift=1cm,yshift*=1mm-\tcboxedtitleheight},
+varwidth boxed title*=-3cm,
+boxed title style={frame code={
+\path[fill=\ColorDoc!20!black]
+([yshift=-1mm,xshift=-1mm]frame.north west)
+arc[start angle=0,end angle=180,radius=1mm]
+([yshift=-1mm,xshift=1mm]frame.north east)
+arc[start angle=180,end angle=0,radius=1mm];
+\path[left color=\ColorDoc!100!white,right color=\ColorDoc!100!white,
+middle color=\ColorDoc!70!white]
+([xshift=-2mm]frame.north west) -- ([xshift=2mm]frame.north east)
+[rounded corners=1mm]-- ([xshift=1mm,yshift=-1mm]frame.north east)
+-- (frame.south east) -- (frame.south west)
+-- ([xshift=-1mm,yshift=-1mm]frame.north west)
+[sharp corners]-- cycle;
+},interior engine=empty,
+},
+fonttitle=\bfseries,
+title={#2},#1
+}
+
+\newcommandx{\Entete}[4][1=TD,2=1,3=1]
+% optional #1 is the type of document
+{%
+\ifthenelse{\equal{\detokenize{#1}}{\detokenize{TD}}}%
+	{%
+  % optional #2 is the TD chapter
+  % optional #3 is the TD theme
+  % mandatory #4 is the TD number
+  \noindent%
+  \begin{TDbox}{TD~#4}%
+    \begin{center}%
+      % \vspace{-1.8em}
+      \vspace{-2.3em}%
+      \begin{minipage}{0.82\textwidth}%
+        \centering%
+        \vspace{1.4em}%
+        {\huge\textsc{\color{coolblack}\ThemeName{#3}}}\\[0.5em]%
+        {\Large\color{coolblack}\ChapitName{#3}{#2}}\\[0cm]~%
+        % \begin{wrapfigure}{r}{0.01\textwidth}
+          %  \end{wrapfigure}
+        \end{minipage}%
+        \miniQR[TD][#3]{#4}%
+   \vspace{-0.5em}%
+  % \vspace{-1.8em}
+   \end{center}%
+  \end{TDbox}%
+  \vspace{0.25em}%
+  \noindent%
+  \begin{minipage}{\textwidth}
+    {\large\color{coolblack}\faSortAmountUp} : Notions travaillées%
+    \hfill {\color{coolblack}\large\textbf{$[\,\star\star\,]$}} : Difficulté%
+    \hfill {\color{coolblack}\large\faPython} : Résolution numérique%
+    % \hfill {\color{coolblack}\faPencil*} : Application directe%
+    \hfill {\color{coolblack}\large\faFlask} : Illustration expérimentale%
+  \end{minipage}
+  \vspace{-0.25cm}
+  }%
+	{% entete pour les oraux
+	\ifthenelse{\equal{\detokenize{#1}}{\detokenize{oraux}}}%
+		{%
+    % mandatory #4 is the year
+    \noindent%
+    \begin{TDbox}{#4}%
+    \begin{center}%
+    \vspace{-1em}%
+    {\huge\textsc{\color{coolblack}Entrainement aux oraux}}%
+    \end{center}%
+    \end{TDbox}%
+		}%
+		{% entete pour les TD d'info
+		\ifthenelse{\equal{\detokenize{#1}}{\detokenize{TDinfo}}}%
+			{%
+      \noindent%
+      \begin{TDbox}{TD~#4}%
+      \begin{center}%
+      \vspace{-1em}%
+      {\Large\textsc{\color{coolblack}#2}}%
+      \end{center}%
+      \end{TDbox}%
+			}%
+			{% entete de formulaire
+			\ifthenelse{\equal{\detokenize{#1}}{\detokenize{formu}}}%
+				{%
+        % \noindent%
+        \newcommand{\formucounter}{#2}%
+        \begin{Formubox}{Formulaire~#2}%
+        \begin{center}%
+        \vspace{-0.2em}%
+        {\huge\textsc{\color{\ColorFormu!70!gray}\FormuName{#2}}}\\[0.3em]%
+        {\Large\color{\ColorFormu!70!gray}}%
+        \end{center}%
+        \end{Formubox}%
+				}%
+        {% entete d'analyse documentaire
+        \ifthenelse{\equal{\detokenize{#1}}{\detokenize{doc}}}%
+          {%
+          \noindent%
+          \begin{Docbox}{Analyse documentaire}%
+          \begin{center}%
+            % \renewcommand{\Theme}{}
+          {\Large\color{\ColorDoc}#2%
+            % \Large\color{\ColorDoc}\textsc{\Chapit{#2}{#3}}
+            }%
+          \end{center}%
+          \end{Docbox}%
+          }%
+          {% entete de TP
+          \ifthenelse{\equal{\detokenize{#1}}{\detokenize{TP}}}%
+            {%
+            % optional #2 is the list of goals
+            % optional #3 is the prérequis
+            % mandatory #4 is the TP number
+            \noindent%
+            \begin{TPbox}[]{TP~#4\!\!}%
+            % \vspace{-7em}
+            \vspace{-2.2em}%
+            \begin{minipage}{0.09\textwidth}%
+            {\color{white}Test}%
+            \end{minipage}%
+            \begin{minipage}{0.72\textwidth}%
+              \centering%
+            \Large\textsc{\color{\colorTP}%
+            {\TPName{#4}}}%
+            \vspace{0.5em}%
+            \end{minipage}%
+            \miniQR[TP]{#4}%
+            \hfill%
+            \vspace{-1.7em}%
+            \end{TPbox}%
+            \noindent%
+            \!\!\icontodo~:~question à préparer avant le TP%
+            \hfill\iconBomb~:~indication pratique importante%
+            % \hfill
+            \vspace{-0.3cm}%
+            \begin{center}%
+            \begin{minipage}[t]{0.27\textwidth}%
+              \vspace{0pt}%
+              \noindent\underline{Objectifs}~:%
+              \begin{liste}[leftmargin=0.45cm]%
+                {\small\itshape #2}%
+              \end{liste}%
+            \end{minipage}\hfill%
+            \begin{minipage}[t]{0.2\textwidth}%
+              \vspace{0pt}%
+              \noindent\underline{Prérequis}~:%
+              \begin{liste}[leftmargin=0.45cm]%
+                {\small\itshape #3}%
+              \end{liste}%
+            \end{minipage}%
+            % Consigne de TP
+          \end{center}%
+          \ConsignesTP
+            }%
+            {% entete de TP evaluation
+            \ifthenelse{\equal{\detokenize{#1}}{\detokenize{TPeval}}}%
+              {%
+              % optional #2 is the TD name
+              % optional #3 is the list of goals
+              % mandatory #4 is the TP number
+              \begin{center}%
+              \begin{tabularx}{\linewidth}{|l|X|r|}%
+              \hline%
+              % \begin{minipage}{0.4\linewidth}
+              % \begin{center}
+              % \begin{large}
+              {%
+              \color{coolblack}%
+              \large%
+              \ifthenelse{\equal{\detokenize{#4}}{\detokenize{-1}}}%
+                {TIPE : \textsc{Présentation orale}}%
+                {TP~#4~:\!\TPName{#4}\hspace{-0.7em}}%
+              }%
+              % \end{large}
+              % \end{center}
+              % \end{minipage}
+               &%
+               % \begin{minipage}{0.3\linewidth}
+              % \begin{LARGE}
+               \textsc{\textsc{Nom} :}%
+              % \end{LARGE}
+               % \end{minipage}
+               &%
+               % \begin{minipage}{0.2\linewidth}
+              % \begin{flushright}
+              % \begin{LARGE}
+               \textsc{\textsc{Note} :~~~~~~~~~~~~~~}%
+              % \end{LARGE}
+              % \end{flushright}
+               % \end{minipage}
+              \\%
+              \hline%
+              \end{tabularx}%
+              \end{center}%
+              }{%
+                % entete de TP revision
+                \ifthenelse{\equal{\detokenize{#1}}{\detokenize{TPrevision}}}%
+                  {%
+                  % optional #2 is the list of goals
+                  % mandatory #4 is the TP name
+                  \noindent%
+                  \begin{TPbox}[]{TP~R.}%
+                  \vspace{-7em}%
+                  \centering%
+                  \Large\textsc{\color{\colorTP}%
+                  {{#4}}}%
+                  \end{TPbox}%
+                  \noindent%
+                  \vspace{0pt}%
+                  \noindent\underline{Objectifs}~:%
+                  \begin{liste}[leftmargin=0.45cm]%
+                  {\small\itshape #2}%
+                  \end{liste}%
+                  }{%
+                    \ifthenelse{\equal{\detokenize{#1}}{\detokenize{TPblanc}}}%
+                    {%
+                    % optional #2 is the list of goals
+                    % mandatory #4 is the TP name
+                    \noindent%
+                    \begin{TPbox}[]{#4\!\!}%
+                    \vspace{-7em}%
+                    \centering%
+                    \Large\textsc{\color{\colorTP}%
+                    % \vspace{-1em}
+                    {{Épreuve de Travaux Pratiques}}}%
+                    % \end{minipage}
+                    \end{TPbox}%
+                    % \vspace{0.5em}
+                    \noindent%
+                    \vspace{0pt}%
+                    \noindent\underline{Consignes}~:%
+                    \begin{liste}[leftmargin=0.45cm]%
+                    {\small\itshape 
+                    \item Le sujet de l'épreuve est composée d'une phase de préparation de 45 min et d'une phase de manipulation de 2h15.
+                    \item Le candidat devra commencer par la phase de préparation A, et ne pourra aborder la phase de manipulation B qu'une fois la phase de préparation terminée.
+                    \item Le candidat devra faire valider sa progression par l'examinateur entre chaque question de la partie manipulation B, avant de passer à la suite.
+                    \item Le candidat devra rendre un compte-rendu de TP à l'issue de l'épreuve.
+                    }%
+                    \end{liste}%
+                    % sectionning
+                    \renewcommand{\thesection}{\Alph{section}}
+                    \titleformat{\section}[hang]{\bfseries}{
+                      \Large\bfseries{\color{coolblack}\thesection}\,--\,}{1pt}{%
+                      \color{coolblack}\Large\bfseries\filright}
+                    \renewcommand{\thesubsection}{\thesection.\arabic{subsection}}
+                    \titleformat{\subsection}[hang]{\bfseries}{
+                      \large\bfseries{\color{coolblack}\thesubsection}\,--\,}{1pt}{%
+                      \color{coolblack}\large\bfseries\filright}
+                      % matériel
+                      \renewcommand{\matos}[1]{
+                        \begin{materiel}%
+                          \begin{liste}[leftmargin=0.45cm]%
+                            ##1%
+                          \end{liste}%
+                          \end{materiel}%
+                      }
+                    }{}%
+                  }%
+              }%
+            }%
+          }%
+        }%
+			}%
+		}%
+	}%
+}%
+
+
+
+%%% ANSWER BOX for devoir and cours %%%
+\newtcolorbox{AnsBox}{sidebyside,
+                lower separated=false,
+                righthand ratio=0.9, % to define right-hand fraction
+                colback=white,
+colframe=white!20!gray,fonttitle=\bfseries,
+colbacktitle=white!95!gray,enhanced,
+attach boxed title to bottom right={xshift=0cm,
+        yshift=0.73cm},
+title={\color{black}~/4}
+}
+
+\newtcolorbox{ExempleBox}{sidebyside,
+                lower separated=false,
+                righthand ratio=0.9, % to define right-hand fraction
+                colback=white,
+                fuzzy shadow={0.75mm}{-0.75mm}{0mm}{0.1mm}{black!50!white},
+colframe=black,fonttitle=\bfseries,coltitle=black,
+colbacktitle=white,enhanced,
+attach boxed title to top left={xshift=0.1cm,
+        yshift=-0.7cm,
+        boxed title style={frame code={}}},
+title={Solution}
+}
+
+
+
+% for interro de cours
+\newcommand{\ansbox}[1][]{
+\newline
+\vspace{-0.5cm}
+\begin{AnsBox}
+\vspace{1cm}
+\begin{center}
+{#1}
+\end{center}
+\vspace{1cm}
+\end{AnsBox}
+}
+
+% for exemple de cours
+\newcommand{\exemplebox}[1][]{
+\newline
+\vspace{-0.1cm}
+\begin{ExempleBox}
+\vspace{1cm}
+\begin{center}
+{#1}
+\end{center}
+\vspace{1cm}
+\end{ExempleBox}
+}
+
+
+
+
+%---------------------------------------------------
+%	ENVIRONNEMENTS POUR INCLURE LES FIGURES - JOLIDON
+%---------------------------------------------------
+\usepackage{stmaryrd}     % circuitikz ?
+\usepackage{calc}         % calculate coordinates in tikz
+\usepackage{subfigure}    % subfigure
+\newlength{\mylength}
+
+\makeatletter
+\newcommand{\sousfigure}[6]
+{ \tikz[remember picture] \coordinate(figtop);
+
+  \tikz[remember picture] \coordinate(figleft);
+  \subfigure{\includegraphics[{#3}]{#1}\label{#2}}
+   \tikz[remember picture]\coordinate(figcenter);
+  \subfigure{\includegraphics[{#6}]{#4}\label{#5}}
+  \begin{tikzpicture}[overlay, remember picture]
+    \draw ($(figtop -| figleft)-(0,0)$) node {\small (a)};
+    \draw ($(figtop -| figcenter)-(0,0)$) node {\small (b)};
+  \end{tikzpicture}
+  % \vspace{-0.4cm}
+}
+\newcommand{\sousfigurecd}[6]
+{ \tikz[remember picture] \coordinate(figtop);
+
+  \tikz[remember picture] \coordinate(figleft);
+  \subfigure{\includegraphics[{#3}]{#1}\label{#2}}
+   \tikz[remember picture]\coordinate(figcenter);
+  \subfigure{\includegraphics[{#6}]{#4}\label{#5}}
+  \begin{tikzpicture}[overlay, remember picture]
+    \draw ($(figtop -| figleft)-(0,0)$) node {\small (c)};
+    \draw ($(figtop -| figcenter)-(0,0)$) node {\small (d)};
+  \end{tikzpicture}
+  % \vspace{-0.4cm}
+}
+\newcommand{\sousfigurecolonne}[6]
+{ \tikz[remember picture] \coordinate(figtop);
+
+  \tikz[remember picture] \coordinate(figleft);
+  \subfigure{\includegraphics[{#3}]{#1}\label{#2}}
+
+  \tikz[remember picture] \coordinate(figcenter);
+
+  \subfigure{\includegraphics[{#6}]{#4}\label{#5}}
+  \begin{tikzpicture}[overlay, remember picture]
+    \draw ($(figtop -| figleft)-(0,0)$) node {\small (a)};
+    \draw ($(figleft |- figcenter)-(0,0)$) node {\small (b)};
+  \end{tikzpicture}
+}
+\newcommand{\troissousfigures}[9]
+{ \tikz[remember picture] \coordinate(figtop);
+
+  \tikz[remember picture] \coordinate(figleft);
+  \subfigure{\includegraphics[{#3}]{#1}\label{#2}}\tikz[remember picture] \coordinate(figcenter1);
+  \subfigure{\includegraphics[{#6}]{#4}\label{#5}}
+  \tikz[remember picture] \coordinate(figcenter2);
+  \subfigure{\includegraphics[{#9}]{#7}\label{#8}}
+  \begin{tikzpicture}[overlay, remember picture]
+    \draw ($(figtop -| figleft)-(0,0)$) node {\small (a)};
+    \draw ($(figtop -| figcenter1)-(0,0)$) node {\small (b)};
+    \draw ($(figtop -| figcenter2)-(0,0)$) node {\small (c)};
+  \end{tikzpicture}
+  % \vspace{-0.4cm}
+}
+\newcommand{\troissousfigurescolonne}[9]
+{ \tikz[remember picture] \coordinate(figtop);
+
+  \tikz[remember picture] \coordinate(figleft);
+  \subfigure{\includegraphics[{#3}]{#1}\label{#2}}
+
+  \tikz[remember picture] \coordinate(figcenter1);
+
+  \subfigure{\includegraphics[{#6}]{#4}\label{#5}}
+
+  \tikz[remember picture] \coordinate(figcenter2);
+
+  \subfigure{\includegraphics[{#9}]{#7}\label{#8}}
+  \begin{tikzpicture}[overlay, remember picture]
+    \draw ($(figtop -| figleft)-(0,0)$) node {\small (a)};
+    \draw ($(figleft |- figcenter1)-(0,0)$) node {\small (b)};
+    \draw ($(figleft |- figcenter2)-(0,0)$) node {\small (c)};
+  \end{tikzpicture}
+  \vspace{-0.4cm}
+}
+\newcommand{\sousfigurescolonnedeuxun}[9]
+{\tikz[remember picture] \coordinate(figtop);
+
+  \tikz[remember picture] \coordinate(figleft);
+  \subfigure{\includegraphics[{#3}]{#1}\label{#2}}\tikz[remember picture] \coordinate(figcenter);
+  \subfigure{\includegraphics[{#6}]{#4}\label{#5}}
+
+  \tikz[remember picture] \coordinate(figcenter1);
+
+  \subfigure{\includegraphics[{#9}]{#7}\label{#8}}
+  \begin{tikzpicture}[overlay, remember picture]
+    \draw ($(figtop -| figleft)-(0,0)$) node {\small (a)};
+    \draw ($(figtop -| figcenter)-(0,0)$) node {\small (b)};
+    \draw ($(figleft |- figcenter1)-(0,0)$) node {\small (c)};
+  \end{tikzpicture}
+  \vspace{-0.7cm}
+}
+\makeatother
+
+
+% -----------------------
+% BPEP commands
+% -----------------------
+
+% gestion des astuces
+\newtoggle{astuces}
+\togglefalse{astuces} % astuces cachées par défaut
+\newcommand{\astuce}[1]{
+\iftoggle{astuces}{
+	\global\toggletrue{astucesPresentes}
+	\hintFF{#1}
+}{
+}
+}
+
+%  boxed equations
+\newcommand\res[1]{\boxed{#1}}
+\newcommand\resm[1]{\boxed{#1}}
+
+
+% text and figure side by side
+\newcommand{\tcols}[4]{
+        \begin{minipage}[t]{#1 \linewidth}
+            \vspace{0cm}
+            #3
+        \end{minipage}%
+        \hfill
+        \begin{minipage}[t]{ #2 \linewidth}
+            \vspace{0cm}
+            #4
+        \end{minipage}
+}
+
+% figure sans légende
+\newcommand{\figRaw}[3][]{
+    \begin{center}
+    	\selectlanguage{english}
+        \includegraphics[width=#2\linewidth, #1]{#3}
+        \selectlanguage{french}
+    \end{center}
+}
+
+% figure avec légende
+\newcommand{\figCap}[4][]{
+    \begin{center}
+    	\selectlanguage{english}
+        \includegraphics[width=#2\linewidth, #1]{#3}
+        \selectlanguage{french}
+    \end{center}
+    \vspace{-4mm}
+    \captionof{figure}{#4}
+    \bigskip
+}
+
+\newcommand{\figCapRaw}[3][]{
+    \begin{center}
+    \selectlanguage{english}
+        \includegraphics[#1]{#2}
+        \selectlanguage{french}
+    \end{center}
+    \vspace{-4mm}
+    \captionof{figure}{#3}
+    \bigskip
+}
+
+% raccourcis texte : « Application numérique »
+\newcommand{\AN}{%
+  \emph{Application numérique}%
+}%
+
+% Question-Réponse
+\newcommand{\QR}[2]{
+\question{#1}
+
+\sol{#2}
+}
+
+
+%------------------
+% PATHS
+%------------------
+
+% tex files
+\def\mainpath{$HOME/qftrules.github.io/assets}
+% \def\mainpath{$HOME/Dropbox/}
+\def\pathtoexos{/home/eb/qftrules.github.io/assets/CPGE/Exercices/Recueil}
+\def\pathtopreamble{$HOME/Dropbox/texmf/tex/Preambles}
+% \def\pathtopreamble{$HOME/Dropbox/texmf/tex/latex/Preambles}
+\def\pathtoPhysique{\mainpath/CPGE}
+\def\pathtoTP{\pathtoPhysique/TP}
+\makeatletter
+\def\input@path{
+% {\pathtopreamble/}
+{\pathtoexos/Mecanique/Code/}
+{\pathtoexos/Thermo/Code/}
+{\pathtoexos/Optique/Code/}
+{\pathtoexos/Fluide/Code/}
+{\pathtoexos/Electromag/Code/}
+{\pathtoexos/Ondes/Code/}
+{\pathtoexos/Quantique/Code/}
+{\pathtoexos/Oraux/Code/}
+{\pathtoexos/Info/code/}
+{\pathtoexos/Info/Scripts/}
+{./Code/}
+{./Scripts/}
+{\pathtoexos/}
+{\pathtoexos/Info/}
+{\pathtoexos/Dimensionnelle/}
+{\pathtoexos/Optique/}
+{\pathtoexos/Mecanique/}
+{\pathtoexos/Thermo/}
+{\pathtoexos/Fluide/}
+{\pathtoexos/Electromag/}
+{\pathtoexos/Ondes/}
+{\pathtoexos/Oraux/}
+{\pathtoexos/Quantique/}
+{\pathtoexos/Relativite/}
+{\pathtoexos/Relativite/Figures/}
+{\pathtoexos/Figure/}
+{\pathtoexos/Mecanique/Figures/}
+{\pathtoexos/Info/Figures/}
+{\pathtoexos/Thermo/Figures/}
+{\pathtoexos/Optique/Figures/}
+{\pathtoexos/Fluide/Figures/}
+{\pathtoexos/Electromag/Figures/}
+{\pathtoexos/Ondes/Figures/}
+{\pathtoexos/Quantique/Figures/}
+{\pathtoexos/Oraux/Figures/}
+}
+\makeatother
+
+% graphics
+\graphicspath{
+{./Figure/}
+{./Figures/}
+{\pathtoPhysique/Cours/Covers/}
+{\pathtoPhysique/Covers/}
+{\pathtoexos/Figure/}
+{\pathtoexos/Info/Figures}
+{\pathtoexos/Mecanique/Figures/}
+{\pathtoexos/Thermo/Figures/}
+{\pathtoexos/Optique/Figures/}
+{\pathtoexos/Fluide/Figures/}
+{/home/eb/qftrules.github.io/assets/CPGE/Exercices/Recueil/Electromag/Figures/}
+{\pathtoexos/Ondes/Figures/}
+{\pathtoexos/Quantique/Figures/}
+{\pathtoexos/Oraux/Figures/}
+{\pathtoexos/Relativite/Figures/}
+% {\pathtoTP/[0]Incertitudes/Figures/}
+% {\pathtoTP/[1]Modul/Figures/}
+% {\pathtoTP/[2]Oscillateur/Figures/}
+% {\pathtoTP/[3]Signal/Figures/}
+% {\pathtoTP/[4]Thermique/Figures/}
+% {\pathtoTP/[5]Photorec/Figures/}
+% {\pathtoTP/[6]Young/Figures/}
+% {\pathtoTP/[7]LameAir/Figures/}
+% {\pathtoTP/[8]CoinAir/Figures/}
+% {\pathtoTP/[9]Induction/Figures/}
+% {\pathtoTP/[10]Polaris/Figures/}
+% {\pathtoTP/[11]Coaxial/Figures/}
+{\pathtopreamble/__macros/}
+{\pathtopreamble/__macros/pictos/}
+}
+
+% for later use : images for exercices entrainement
+\newcommand{\pathtofiche}{}
+
+% -----------------------
+% ENVIRONNEMENTS
+% -----------------------
+
+% env corrige undefined when building soluce
+\newenvironment{corrige}{
+}{
+}
+
+% progression exercice
+\newcommand{\task}{\hspace{1em} \hspace{2em}\item}
+\newcommand{\Notions}[1]{
+{\color{coolblack}\large\faSortAmountUp}\hspace{0.25cm}
+\begin{tasks}[before=\itshape]
+#1
+\end{tasks}
+\newline\newline\indent
+% \begin{center}
+% test
+% \end{center}
+% \vspace{-1.5cm}
+}
+% \newcommand{\OldNotions}[1]{\Notions{#1}}
+
+
+%-----------------------------
+% ALGORITHM
+% ----------------------------
+
+\newcommand{\Ini}[1]{\text{\textbf{Initialiser} : {#1}}}
+\newcommand{\Input}{Entrée :}
+\newcommand{\Output}{Sortie :}
+\newcommand{\Do}[1]{\textbf{Faire~} #1 }
+\newcommand{\For}[3]{\text{\textbf{Pour}~} {#1} \text{~variant de~} #2 \text{~à~} #3 }
+\newcommand{\Else}{Sinon }
+\newcommand{\Defin}[1]{\text{\textbf{Définir} :~}& \text{#1}}
+
+
+% Environnement pour les énoncés des exercices d'application
+% \newenvironment{enonce}{}{}
+
+% Encercler texte
+\newcommand\encircle[1]{%
+\tikz[baseline=(X.base)] 
+  \node (X) [draw, shape=circle, inner sep=0] {\strut #1};}
+
+
+% bonus parts or questions or TP
+\newcommand{\qbonus}[1]{\item #1}
+% \newcommand{\bonus}[1]{#1}
+% \newcommand{\TPbonus}{}
+\newcommand{\bonus}{}
+
+
+
+% -----------------------------
+% ENVIRONNEMENT CHAPITRE DE COURS
+% ----------------------------
+\NewDocumentEnvironment{chapitre}{ m m m m }{%
+% mandatory #1 : theme number
+% mandatory #2 : chapter number
+% mandatory #3 : sommaire
+% mandatory #4 : prérequis PCSI
+\documentclass[12pt,fancy]{cours}%
+\Chapit{#1}{#2}%
+\begin{document}%
+  \maketitre{#3}{#4}%
+}{%
+\end{document}%
+}%

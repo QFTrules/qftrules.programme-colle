@@ -1,8 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{k}{def} \PYG{n+nf}{calc\PYGZus{}norme}\PYG{p}{(}\PYG{n}{vecteur}\PYG{p}{):}
-    \PYG{n}{N}\PYG{o}{=}\PYG{n+nb}{len}\PYG{p}{(}\PYG{n}{vecteur}\PYG{p}{)}
-    \PYG{n}{norme}\PYG{o}{=}\PYG{l+m+mi}{0}
-    \PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n}{N}\PYG{p}{):}
-        \PYG{n}{norme}\PYG{o}{+=}\PYG{p}{(}\PYG{n}{vecteur}\PYG{p}{[}\PYG{n}{i}\PYG{p}{])}\PYG{o}{**}\PYG{l+m+mi}{2}
-    \PYG{k}{return} \PYG{n}{norme}\PYG{o}{**}\PYG{p}{(}\PYG{l+m+mf}{0.5}\PYG{p}{)}
-\end{Verbatim}

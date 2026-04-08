@@ -1,0 +1,239 @@
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~%
+%  dernière                   %
+%  modification = 03/10/2021  %
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~%
+%      Colas Bardavid
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Subtilités sur \write                            %%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% see: https://tex.stackexchange.com/a/583215/8323
+
+% ->->->->->-> %
+\makeatletter
+% ->->->->->-> %
+\newcommand\immediateprotectedwrite[2]
+  {%
+    \begingroup
+      \let\thepage\relax
+      \let\protect\@unexpandable@protect
+      \edef\reserved@a{\immediate\write#1{#2}}%
+      \reserved@a
+    \endgroup
+  }
+% ->->->->->-> %
+\makeatother
+% ->->->->->-> %
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Gestion des réponses et des corrigés             %%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% ->->->->->-> %
+\makeatletter
+% ->->->->->-> %
+
+\newcommand{\commandForNomFichierReponses}[1]{_aux/CDC#1.ans}
+\newcommand{\commandForNomFichierCorriges}[1]{_aux/CDC#1.corr}
+
+\def\nomFichierReponses{\commandForNomFichierReponses{\fullSheetId}}
+\def\nomFichierCorriges{\commandForNomFichierCorriges{\fullSheetId}}
+
+\newwrite\fich@ans
+\newwrite\fich@corr
+
+\def\startWritingToLocalAuxFiles
+{\immediate\openout\fich@ans=\nomFichierReponses%
+\immediate\openout\fich@corr=\nomFichierCorriges}
+
+\def\stopWritingToLocalAuxFiles{\immediate\closeout\fich@ans\immediate\closeout\fich@corr}
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Gestion des réponses                             %%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\printAnswer}[2]
+%{{\leavevmode\hbox to1.5cm{#1 \dotfill}} \fbox{#2}\par}
+{#1 {\protect\dotfill} {\protect\fbox{#2}} \par}
+
+\newcommand{\printNumberExercise}[1]
+%{\leavevmode\hbox to1.5cm{\fbox{#1} \hfill}}
+{{\leavevmode\hbox to1.5cm{\fcolorbox{\couleurFond}{\couleurFond}{#1}  \hfill}}}
+
+\def\startWritingAnswersToAux
+{
+\immediateprotectedwrite{\fich@ans}{\protect\label{\varForUniqueID}}
+\ifx\varCorrigesSeulement\varLetterY
+	\immediateprotectedwrite{\fich@ans}{\protect{\bfseries \protect\Large  Fiche
+ \no\printCounterForSheet{}. \varForTitreFicheEntrainement}}
+	%\immediateprotectedwrite{\fich@ans}{\protect\phantomsection\protect\addcontentsline{toc}{section}{\hbox to6mm{\textbf{\printCounterForSheet{}.}} \varForTitreFicheEntrainement}}
+	% Merci Ivan : 
+	\immediateprotectedwrite{\fich@ans}{\protect\phantomsection\protect\addcontentsline{toc}{section}{\protect \texorpdfstring{\hbox to6mm{\textbf{\printCounterForSheet{}.}} \varForTitreFicheEntrainement}{\printCounterForSheet{}. \varForTitreFicheEntrainement}}}
+	\immediate\write\fich@ans{\global\def\unexpanded{\textForFooter}}
+	\immediateprotectedwrite{\fich@ans}{{Fiche \protect\no\printCounterForSheet{}. \varForTitreFicheEntrainement}}
+\else
+	\immediateprotectedwrite{\fich@ans}{\protect{\bfseries \protect\Large \protect\hypertarget{solutions\varForUniqueID}{\protect\hyperlink{titre\varForUniqueID}{Fiche
+ \no\printCounterForSheet{}. \varForTitreFicheEntrainement}}}}
+\fi
+\immediateprotectedwrite{\fich@ans}{\bigskip\protect\begin{boxForTitleCorrigeFiche}{\bfseries \large Réponses}\protect\end{boxForTitleCorrigeFiche}}
+\ifx\varWithColonnesReponses\varLetterY
+\immediateprotectedwrite{\fich@ans}{\protect\begin{multicols}{\expandafter\varNombreColonnesReponses}}
+\fi}
+
+
+
+
+
+\def\stopWritingAnswersToAux{
+\ifx\varWithColonnesReponses\varLetterY
+\immediateprotectedwrite{\fich@ans}{\protect\end{multicols}}
+\fi}
+
+\newcommand{\addReponseToAux}[1]
+{\immediateprotectedwrite{\fich@ans}{\printNumeroDeCalul {\protect\dotfill} }
+\immediate\write\fich@ans{\unexpanded{\fbox{#1}}\par}}
+% less robust command
+%{\immediateprotectedwrite{\fich@ans}{\printAnswer{\printNumeroDeCalul}{#1}}}
+
+\newcommand{\printReponses}[1]
+{\stopWritingToLocalAuxFiles
+\input{#1}}
+
+
+
+% ----------------------------------------------- %
+%    Removing \belowdisplayshortskip or \belowdisplayskip 
+%    when it is at the end of a given environment.
+% ----------------------------------------------- %
+% https://tex.stackexchange.com/q/608903/8323
+
+
+\def\miniskip{\vspace{1.5pt plus 1pt minus 1pt}}
+
+\def\removeBelowDisplayskip
+{\par%
+ \ifdim\lastskip=\belowdisplayshortskip\vskip-\lastskip\miniskip\fi%
+ \ifdim\lastskip=\belowdisplayskip\vskip-\lastskip\miniskip\fi
+ }
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Gestion des corrigés                             %%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\corrige{%
+  \immediateprotectedwrite{\fich@corr}{\protect\printNumberExercise{\printNumeroDeCalul}}
+  \@bsphack
+  \let\do\@makeother\dospecials
+  \catcode`\^^M\active \catcode`\^^I=12
+  \def\verbatim@processline{%
+    \immediate\write\fich@corr
+      {\the\verbatim@line}}%
+  \verbatim@start}
+\def\endcorrige{%
+  \immediateprotectedwrite{\fich@corr}{\protect\removeBelowDisplayskip{\protect\tightdotfill}}
+  \immediate\write\fich@corr{}
+  \@esphack}
+
+
+\def\corrigeNewpage{%
+\immediateprotectedwrite{\fich@corr}{\protect\newpage}
+\corrige}
+\def\endcorrigeNewpage{\endcorrige}
+
+
+\newcommand{\printSolutions}[1]
+{\stopWritingToLocalAuxFiles
+\bigskip
+\introCorriges
+\input{#1}
+\endgroup}
+
+
+\def\introCorriges
+{\needspace{3cm}
+\begin{boxForTitleCorrigeFiche}
+{\bfseries \large Corrigés}
+\end{boxForTitleCorrigeFiche}
+\smallskip
+\begingroup\small}
+
+
+% ->->->->->-> %
+\makeatother
+% ->->->->->-> %
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Affichage des réponses/corrigés pour une fiche   %%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\printReponsesEtCorriges
+{\newpage\printReponses{\nomFichierReponses}\printSolutions{\nomFichierCorriges}}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Affichage des réponses/corrigés pour toutes les fiches   %%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\printAllReponsesEtCorriges
+{\ifx\varCorrigesSeulement\varLetterY\else\enTeteReponsesEtCorriges\fi
+\subimport{_aux/}{CDC.imports}
+\foreach \sheetId in \varForListOfSheets
+{\ifx\sheetId\empty\else
+\message{^^J *** Réponses et corrigés pour \sheetId ***^^J}
+\newpage\printReponses{\commandForNomFichierReponses{\sheetId}}
+\printSolutions{\commandForNomFichierCorriges{\sheetId}}\fi
+}}
+
+\def\printOnlyAllReponses
+{\ifx\varCorrigesSeulement\varLetterY\else\enTeteReponsesEtCorriges\fi
+\subimport{_aux/}{CDC.imports}
+\foreach \sheetId in \varForListOfSheets
+{\ifx\sheetId\empty\else
+\message{^^J *** Réponses et corrigés pour \sheetId ***^^J}
+\newpage\printReponses{\commandForNomFichierReponses{\sheetId}}
+%\printSolutions{\commandForNomFichierCorriges{\sheetId}}
+\fi
+}}
+
+
+
+\def\enTeteReponsesEtCorriges
+{%\part*{Réponses et corrigés}
+%\addcontentsline{toc}{section}{\textbf{Réponses et corrigés}}
+\mbox{}\vfill
+\pagecolor{\couleurFond}\afterpage{\nopagecolor}
+{\Huge \bfseries \centering Réponses et corrigés\par}
+\vfill\mbox{}\newpage
+}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Écriture dans un fichier de la liste des imports à faire   %%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\writeImportsToDo
+{\def\nomFichierImports{_aux/CDC.imports}
+\newwrite\fichImports
+\immediate\openout\fichImports=\nomFichierImports
+\immediate\write\fichImports{\gdef\unexpanded{\varForListOfSheets}{\expandafter\varForListOfSheets}}
+\immediate\closeout\fichImports}

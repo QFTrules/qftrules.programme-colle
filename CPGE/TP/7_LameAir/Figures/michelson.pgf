@@ -1,7 +1,0 @@
-﻿\begin{tikzpicture}
-\node at (0,0) {
-\includegraphics[scale=0.1]{michelson_TP.pdf}
-};
-\node[white] at (-1,2) {($\mathcal{M}_1$)};
-\node[white] at (2.5,-1.5) {($\mathcal{M}_2$)};
-\end{tikzpicture}

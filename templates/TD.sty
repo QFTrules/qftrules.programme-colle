@@ -1,0 +1,729 @@
+% CE FICHIER DEFINIT LE PREAMBULE POUR LES
+% EXOS DE COLLES VERSION JOLIDON
+
+%%% DOCUMENT %%%
+\documentclass[a4paper,11pt]{book}
+% \usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[autolanguage]{numprint}
+\usepackage{lmodern}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{cases}
+\usepackage{mathrsfs}
+\usepackage{textcomp}
+\usepackage[top=2cm,bottom=2cm,left=1.5cm,right=1.5cm]{geometry}
+\usepackage{stmaryrd}
+% \usepackage{inputenc}
+\usepackage{moreverb}
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage{fancyvrb}
+\usepackage{listings}
+\usepackage{wrapfig}
+\usepackage{subfigure}
+\usepackage{pgfplots}
+\usepackage{esint}
+\usepackage{tikz}
+\usepackage[europeanresistors]{circuitikz}
+\usepackage{multicol}
+\usepackage{tabularx}
+\usepackage{lipsum}
+\usepackage{chngcntr}
+\usepackage{fancyhdr}
+\usepackage{exercise}
+\usepackage{titlesec}
+\usepackage{titletoc}
+\usepackage{vwcol}
+\counterwithin{table}{section}
+\usepackage[titletoc]{appendix}
+\usepackage{changepage}
+\usepackage{mdframed}
+\usepackage{pdfpages}
+\usepackage{csquotes}
+\usepackage{multirow}
+% \usepackage[inline]{enumitem}
+\pgfplotsset{compat=1.16}
+\pdfminorversion=7
+% \usepackage{empheq} % loaded in symbols.sty
+\usepackage{afterpage}
+% \usepackage{tocloft}
+% \usepackage{subequations}
+\usepackage{import}
+% \usepackage{qrcode}
+
+%%% CAPTIONS %%%
+%\DeclareCaptionLabelSeparator{trait}{$\,-\,$}
+\usepackage[font      = small,
+			%labelfont = bf,
+			labelsep  = endash]{caption}
+\captionsetup{hypcap=false}
+
+%%% FIGURE WITHIN EXERCISE ENVIRONNEMENT %%%
+\newcommand{\capt}[1]{\captionof{figure}{#1}}
+\addto\captionsfrench{
+  \renewcommand{\figurename}{Fig.}
+  }
+
+
+%%% SYMBOLS %%%
+\input{$HOME/Dropbox/texmf/tex/latex/Preambles/symbols.sty}
+\input{$HOME/Dropbox/texmf/tex/latex/Preambles/programme.tex}
+\input{$HOME/Dropbox/texmf/tex/latex/Preambles/URL.tex}
+% \input{$HOME/Dropbox/texmf/tex/latex/Preambles/_preambule_CdE_PC.tex}
+
+
+%%% ANNALES %%%
+\renewcommand{\Annale}[3][Physique PC]{
+	\vspace{-1cm}\begin{flushleft}\faIcon{book-open} #2, #1, #3. \medskip  \end{flushleft}}
+
+%%% MINTED %%%
+\usepackage[cache=false]{minted}
+\setminted[python]{fontsize=\footnotesize,linenos=true,frame=single}
+
+% personal minted command to add default path
+\ExplSyntaxOn
+\NewDocumentCommand{\mintedpath}{m}
+ {
+  \seq_gset_split:Nnn \g_paulie_mintedpath_seq { } { #1 }
+  \seq_gput_left:Nn \g_paulie_mintedpath_seq { }
+ }
+
+\seq_new:N \g_paulie_mintedpath_seq
+
+\NewDocumentCommand{\python}{O{linenos=true}m}
+ {
+  \seq_map_inline:Nn \g_paulie_mintedpath_seq
+   {
+    \file_if_exist:nT { ##1 #2 }
+     {
+    %  \ifnum\pdfmatch{\detokenize{.py}}{\detokenize{#2}}=1
+       \def\filename{##1 #2}
+    %  \else
+    %    \def\filename{##1 #2.py}
+    %  \fi
+      \inputminted[#1]{python}{\filename}
+      \seq_map_break:
+     }
+   }
+ }
+\ExplSyntaxOff
+
+% python code
+\mintedpath{
+{\pathtoexos/Mecanique/Code/}
+{\pathtoexos/Thermo/Code/}
+{\pathtoexos/Optique/Code/}
+{\pathtoexos/Fluide/Code/}
+{\pathtoexos/Electromag/Code/}
+{\pathtoexos/Ondes/Code/}
+{\pathtoexos/Quantique/Code/}
+{\pathtoexos/Oraux/Code/}
+{\pathtoexos/Info/code/}
+{\pathtoexos/Info/Scripts/}
+{./Code/}
+{./Scripts/}
+}
+
+% HYPERREF
+\usepackage[colorlinks=true,
+pdfstartview=FitV,
+linkcolor= coolblack,
+% linkcolor= brickred,
+citecolor= coolblack,
+% citecolor= brickred,
+urlcolor= coolblack,
+% urlcolor= brickred,
+hyperindex=true,
+hyperfigures=true]
+{hyperref}
+\usepackage{bookmark}
+\hypersetup{linktoc=page}
+
+\usetikzlibrary{arrows}
+
+
+% ---------------------------------------------------------------------------------------
+%	ENVIRONNEMENT
+%---------------------------------------------------------------------------------------
+\definecolor{tealblue}{rgb}{0.21, 0.46, 0.53}
+
+\newcommand{\carre}{\begin{tikzpicture} \draw[thick] (0,0) rectangle (0.15,0.15); \end{tikzpicture}}
+
+% \usepackage{enumitem}
+% \setlist[enumerate]{label*=\protect\alph{enumi}} 
+\newlist{protocole}{enumerate}{1}
+\setlist[protocole]{%
+  label=\fbox{$\arabic*$},
+	% start=2,
+  resume,
+	leftmargin=1cm
+}
+
+%%% NUMBERING STYLE %%%
+\makeatletter
+\renewcommand{\thefigure}{\ifnum \c@section>\z@ \thesection.\fi
+ \@arabic\c@figure}
+\@addtoreset{figure}{section}
+ \let\p@subfigure\thefigure
+\makeatother
+\makeatletter
+%\renewcommand\theequation{\theExercise.\arabic{equation}}
+\renewcommand\theequation{\arabic{equation}}
+\renewcommand\thefigure{\theExercise.\arabic{figure}}
+\@addtoreset{equation}{section}
+\@addtoreset{section}{part}
+\makeatother
+
+\renewcommand{\thepart}{\arabic{part}}
+\renewcommand{\thesection}{\thepart.\arabic{section}}
+\newcommand{\sectionbreak}{\clearpage}
+
+%%% STRUCTURE AND FORMAT %%%
+\titlecontents{section}
+[0.75cm]             % left margin
+{\thispagestyle{plain}\vspace{0.2cm}}                  % above code
+{\bfseries                  % numbered format
+{\thecontentslabel\ }%
+}%
+{}         % unnumbered format
+{}         % filler-page-format, e.g dots
+
+\titlecontents{subsection}
+[1cm]             % left margin
+{}                  % above code
+{                  % numbered format
+{\thecontentslabel\ }%
+}%
+{}         % unnumbered format
+{\titlerule*[0.5pc]{.}\large \contentspage}         % filler-page-format, e.g dots
+
+
+\renewcommand{\thesubsubsection}{\arabic{Exercise}.\arabic{subsubsection}}
+% \renewcommand{\thesubsection}{\arabic{subsection}}
+
+\titleformat{\subsubsection}
+{\color{coolblack}\Large}{}{0em}
+{\color{coolblack}\Large\thesubsubsection\ \;}
+
+\newcommand*\parttitle{}
+\let\origpart\part
+\renewcommand*{\part}[2][]{%
+   \ifx\\#1\\% optional argument not present?
+      \origpart{#2}%
+      \renewcommand*\parttitle{#2}%
+i   \else
+      \origpart[#1]{#2}%
+      \renewcommand*\parttitle{#1}%
+   \fi
+}
+
+%%% TO PREDEFINE SOLUTION ENVIRONMENT %%%
+\newcommand{\sol}[2][]{}
+%\newcommand{\sol}{}
+
+\newrobustcmd{\EndSoluce}{
+% sstop printing the solution to each question for partial correction of TD
+\renewcommand{\sol}[2][]{}
+}
+
+%\usepackage{fancyhdr}
+% \renewcommand{\sectionmark}[1]{\bfseries{#1}}
+\renewcommand{\subsectionmark}[1]{}
+\pagestyle{fancy}
+\cfoot{}
+% \fancyhead[RO,LE]{\bfseries\thepage}
+\fancyhead[R]{\nouppercase{\rightmark}\quad\quad\bfseries\thepage}
+%\fancyhead[RE]{{\bfseries\thepage}\quad\quad\parttitle}
+\renewcommand{\headrulewidth}{0.8pt}
+
+\ListOfExerciseInToc
+\ExerciseLevelInToc{subsection}
+% \renewcommand{\subsection}[1]{\for{toc}{#1}\except{toc}{#1}}
+
+% fix the wrong code in exercise.sty
+% \makeatletter
+% \patchcmd{\@@@ExeEnv}{\expandafter}{}{}{}
+% \patchcmd{\@@@Execmd}{\expandafter}{}{}{}
+% \makeatother
+
+\date{}
+
+%%% ENTETE %%%
+\usepackage{varwidth}
+\usepackage[skins]{tcolorbox}
+\renewcommand{\title}[1]{#1}
+\newcommand{\subtitle}[1]{#1}
+\newcommand{\cover}[1]{}
+
+\lhead{\small PC Théophile Gautier}
+\chead{\small \theyears}
+\rhead{\small Eric Brillaux}
+\cfoot{\small \thepage}
+\lfoot{}
+\rfoot{}
+\renewcommand{\footrulewidth}{0pt}
+
+%%% REMARQUE %%%
+% \usepackage{mdframed}
+% \newmdenv[
+%   topline=false,
+%   bottomline=false,
+%   rightline=false,
+%   linecolor=JoliRouge,
+%   linewidth=1.5pt,
+%   skipabove=\topsep,
+%   skipbelow=\topsep
+% ]{sideruleremarque}
+%
+% \makeatletter
+% \newenvironment{remarque}
+% {  \begin{sideruleremarque}
+%  \small}
+% {\end{sideruleremarque}
+% \normalsize}
+
+
+%%% TWO TYPES OF EXERCICES %%%
+\newcommand{\Classiques}{
+
+\vspace{0.5cm}
+\noindent{\color{coolblack}\hrulefill~
+\Large\textsc{Exercices classiques}~\hrulefill\\[-0.5em]
+% \hspace{-1.2cm}
+}
+}
+
+\newcommand{\Exos}{
+
+\vspace{0.5cm}
+\noindent{\color{coolblack}\hrulefill~
+\Large\textsc{Exercices avancés}~\hrulefill\\[-0.5em]
+% \hspace{-1.2cm}
+}
+}
+
+\newcommand{\Appli}{
+
+\vspace{0.5cm}
+\noindent{\color{coolblack}\hrulefill~
+\Large\textsc{Applications du cours}~\hrulefill\\[-0.5em]
+% \hspace{-0.9cm}
+}
+}
+
+\newcommand{\Tech}{
+
+\vspace{0.5cm}
+\noindent{\color{coolblack}\hrulefill~
+\Large\textsc{Exercices techniques}~\hrulefill\\[-0.5em]
+% \hspace{-0.9cm}
+}
+}
+
+\newcommand{\Discipline}{
+
+\vspace{0.5cm}
+\noindent{\color{coolblack}\hrulefill~
+\Large\textsc{Exercices disciplinaires}~\hrulefill\\[-0.5em]
+% \hspace{-0.9cm}
+}
+}
+
+\newcommand{\Problemes}[1][]{
+\renewcommand{\ExerciseName}{\large Problème}
+\setcounter{Exercise}{0}
+
+\vspace{0.5cm}
+\noindent{\color{coolblack}\hrulefill~
+\Large\textsc{Résolutions de problème}~\hrulefill\\[0.5em]
+% \hspace{-1.3cm}
+}
+\ifthenelse{\equal{#1}{*}}{
+% 	\vspace{0.5cm}
+% \noindent{\color{coolblack}\hrulefill~
+% \Large\textsc{Résolutions de problème}~\hrulefill\\[0.3cm]
+% % \hspace{-1.3cm}
+% }
+% \begin{remarque}
+{\footnotesize
+\LaiusProbleme
+}
+% \end{remarque}
+
+	}{
+% 		\vspace{0.5cm}
+% \noindent{\color{coolblack}\hrulefill~
+% \Large\textsc{Résolutions de problème}~\hrulefill\\[-0.5em]
+% % \hspace{-1.3cm}
+\begin{remarque}
+	Un exercice de type résolution de problème requiert davantage d’initiative. Il peut être utile de faire un
+	schéma modèle, d’identifier et nommer les grandeurs pertinentes, d’utiliser l’analyse dimensionnelle,
+	de proposer des hypothèses simplificatrices, de décomposer le problème en des sous-problèmes simples,
+	etc.
+	%Le candidat peut également être amené à proposer des valeurs numériques raisonnables pour les grandeurs manquantes ... et toutes les valeurs données ne sont pas forcément utiles. Le tout est évidemment à adapter à la situation proposée !
+\end{remarque}
+}
+
+}
+
+\newcommand{\LaiusProbleme}{
+	Rappelons les différents types de problème rencontrés en sciences.
+    \begin{liste}
+      \item \udl{Problème à démontrer} : l'énoncé demande de démontrer un théorème, une loi, une expression.
+      \begin{center}
+        \emph{Soit un pendule simple de masse $m$ et de longueur $\ell$ en oscillation dans le champ de pesanteur $\Vec{g}$. Démontrer à partir du PFD que la période propre du pendule a pour expression $T = 2\pi \textstyle\sqrt{\frac{\ell}{g}}$.}
+      \end{center}
+      L'énoncé fournit les données du problème, le résultat à obtenir, et éventuellement les étapes de la méthode à utiliser.
+      \item \udl{Problème à résoudre} : l'énoncé demande de déterminer une grandeur, sans donner sans expression.
+      \begin{center}
+        \emph{Soit un pendule simple de masse $m$ et de longueur $\ell$ en oscillation dans le champ de pesanteur $\Vec{g}$. Déterminer l'expression de la période propre du pendule $T$.}
+      \end{center}
+     L'énoncé fournit les données du problème, la variable à déterminer, et éventuellement les étapes de la méthode à utiliser.
+     \item \udl{Problème ouvert} : l'énoncé demande de résoudre un problème sans introduire les paramètres du problème, proposer de méthode, ou donner le résultat à obtenir.
+     \begin{center}
+      \emph{Expliquer pourquoi un pendule simple lâché en dehors de sa position d'équilibre effectue des oscillations de période constante.}
+    \end{center}
+    \end{liste}
+    Dans le cadre des résolutions de problème aux concours, nous faisons face à des \imp{problèmes ouverts.} Les problèmes ouverts des concours sont accompagnés d'un \imp{document} : graphe, photo, données expérimentales, etc. Pour attaquer un problème ouvert, nous devons utiliser toutes les compétences du physicien, que voici.
+\begin{liste}
+  \item[\encircle{S}] \udl{S'approprier} : identifier les données, faire un schéma, traduire en langage mathématique, trouver quelle grandeur déterminer pour résoudre le problème.
+  \item[\encircle{A}] \udl{Analyser} : choisir un cadre d'étude, formuler des hypothèses, effectuer une analyse dimensionnelle, décomposer en sous-problèmes simples, procéder par analogie avec un problème connu, définir une stratégie de résolution.
+  \item[\encircle{R}] \udl{Réaliser} : mener les calculs de la stratégie de résolution, en vérifier chaque étape.
+  \item[\encircle{V}] \udl{Valider} : vérifier l'homogénéité et la cohérence du résultat, comparer le modèle à la réalité.
+  \item[\encircle{C}] \udl{Communiquer} : rédiger de façon organisée, rigoureuse, claire et efficace.
+\end{liste}
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%% EXERCICE %%%
+\renewcommand{\ExerciseHeaderTitle}{~\ExerciseTitle}
+\renewcommand{\ExerciseHeaderOrigin}{%
+[\textit{\!\ExerciseOrigin\!}]}
+\renewcommand{\ExerciseName}{\large Exercice}
+\renewcommand{\ExerciseHeader}{\noindent \textcolor{coolblack}{\textbf{\Large
+\ExerciseName \space \ExerciseHeaderNB~:\large\ExerciseHeaderTitle
+\dotfill\ExerciseHeaderOrigin}}\medskip\newline
+\setcounter{quest}{0}}
+
+%%% EXO ENVIRONMENT %%%
+\makeatletter
+\newenvironment{exodm}[2][]
+{\begin{Exercise}[title={#2}, label={#2}]
+%\ref{exo:{#2}}
+\setcounter{equation}{0}
+\setcounter{quest}{0}
+}
+{
+\end{Exercise}
+}
+\makeatother
+
+\makeatletter
+\newenvironment{exotd}[3][]
+{
+\def\diff{
+$\star$\ifnum#3=1\else
+$\star$\ifnum#3=2\else
+$\star$\ifnum#3=3\fi\fi\fi}
+\begin{Exercise}[title={#2}, label={#2}, origin={\diff~}]
+%\ref{exo:{#2}}
+\setcounter{equation}{0}
+\setcounter{quest}{0}
+}
+{
+\end{Exercise}
+}
+\makeatother
+
+\makeatletter
+\newenvironment{exopython}[3][]
+{
+%\renewcommand{\ExerciseHeaderOrigin}{%
+%\includegraphics[height=15pt]{python.jpeg}[\textit{\!\ExerciseOrigin\!}]}
+\def\diff{
+$\star$\ifnum#3=1\else
+$\star$\ifnum#3=2\else
+$\star$\ifnum#3=3\fi\fi\fi}
+\renewcommand{\ExerciseName}{{\normalsize \faPython
+}~\large Exercice}
+\begin{Exercise}[title={#2}, label={#2}, origin={\diff~}]
+%\ref{exo:{#2}}
+\setcounter{equation}{0}
+\setcounter{quest}{0}
+}
+{
+\end{Exercise}
+\renewcommand{\ExerciseName}{\large Exercice}
+}
+\makeatother
+
+\newenvironment{doc}[1]
+{\renewcommand{\ExerciseName}{\large Document}
+\begin{Exercise}[title=#1]
+\vspace{-0.5cm}
+\begin{quest}
+}{\end{quest}
+\end{Exercise}
+\renewcommand{\ExerciseName}{\large Exercice}
+}
+
+\renewcounter{Exercise}[section]% Reset counter every section
+%\renewcommand{\theExercise}{\thepart.\arabic{Exercise}}
+\renewcommand{\theExercise}{\arabic{Exercise}}
+
+
+%%% REDIFINITION OF \d %%%
+\renewcommand{\d}{\mathrm{d}}
+\renewcommand{\k}{\Vec{k}}
+\renewcommand{\ae}{\Vec{a_{\rm{e}}}(M)}
+
+
+% command to insert an exercise in TD
+\renewcommand{\Ex}[2][0]{
+\setcounter{figure}{\theexofigure}
+\ExerciseSelect[exam={#2}]
+\ifthenelse{\equal{#1}{0}}
+{\input{\source}}
+{\renewcommand{\source}{#1.tex}
+\input{#1.tex}}
+}
+
+% exercise with bonus part or question
+\usepackage{suffix}
+\WithSuffix\newcommand\Ex*[2][0]{
+	\setcounter{figure}{\theexofigure}
+	\renewcommand{\qbonus}[1]{}
+	\renewcommand{\bonus}[1]{}
+	\ExerciseSelect[exam={#2}]
+	\ifthenelse{\equal{#1}{0}}
+	{\input{\source}}
+	{\renewcommand{\source}{#1.tex}
+	\input{#1.tex}}
+	\renewcommand{\qbonus}[1]{\item #1}
+	\renewcommand{\bonus}[1]{#1}
+}
+
+% REDEFINE exo command
+\RenewDocumentEnvironment{exo}{O{PC} O{1} O{colle} m}
+{
+	% \renewcommand{\Notions}[1]{
+	% 	{\color{coolblack}\large\faSortAmountUp}\hspace{0.25cm}
+	% 	\begin{tasks}[before=\itshape]
+	% 	#1
+	% 	\end{tasks}
+	% 	\newline\newline\indent
+	% 	% \begin{center}
+	% 	% test
+	% 	% \end{center}
+	% 	% \vspace{-1.5cm}
+	% 	}
+% \setcounter{figure}{\theexofigure}
+\setcounter{equation}{0}
+\setcounter{quest}{0}
+\def\diff{
+$\star$\ifnum#2=1\else
+$\star$\ifnum#2=2\else
+$\star$\ifnum#2=3\fi\fi\fi}
+% counter redefinition
+\ifthenelse{\equal{\detokenize{#3}}{\detokenize{appli}}}
+	{
+	% \setcounter{nombreExercices}{0}
+	% \initializeCounterForCalcul
+	% \hauteurLargeurCadreReponse		{8mm}{3cm}
+	% \dureeResolutionFacultative		{2} % 1, 2, 3 ou 4
+	% \typeEntrainement				{Newton} % Newton ou QCM ou AN ou vide (exercice "normal")
+	% \basiqueEtTransversal			{Y}
+	% \nombreColonnesQuestions		{1} % vide, 1, 2, 3, etc.
+	% \avecPlusieursQuestions			{Y} % Y ou N
+	% \renewcommand{\ExerciseName}{{\normalsize \includegraphics[height=10pt]{Bulldozer.pdf}}~\large Exercice}
+	\begin{Exercise}[title={#4}, exam={#4}, origin={\diff~}, label=appli, type={\textsc{#1}}]
+	\vspace{-0.5cm}
+	\begin{adjustwidth}{0.01cm}{0cm}
+	% \indent
+	}{
+	\ifthenelse{\equal{\detokenize{#3}}{\detokenize{python}}}
+		{
+		\def\diff{
+		$\star$\ifnum#2=1\else
+		$\star$\ifnum#2=2\else
+		$\star$\ifnum#2=3\fi\fi\fi}
+		\renewcommand{\ExerciseName}{{\normalsize \faPython}~\large Exercice}
+		\begin{Exercise}[title={#4}, exam={#4}, origin={\diff~}, label=python, type={\textsc{#1}}]
+		}{
+			\ifthenelse{\equal{\detokenize{#3}}{\detokenize{oral}}}
+			{
+			\renewcommand{\Notions}[1]{}
+			\def\diff{
+			$\star$\ifnum#2=1\else
+			$\star$\ifnum#2=2\else
+			$\star$\ifnum#2=3\fi\fi\fi}
+			% \renewcommand{\ExerciseName}{\large Problème}
+			\begin{Exercise}[title={#4}, exam={#4}, origin={\diff~}, label=TD, type={\textsc{#1}}]
+			}{ % expérience
+			\ifthenelse{\equal{\detokenize{#3}}{\detokenize{exp}}}
+                {
+                \def\diff{
+                $\star$\ifnum#2=1\else
+                $\star$\ifnum#2=2\else
+                $\star$\ifnum#2=3\fi\fi\fi}
+                \renewcommand{\ExerciseName}{{\normalsize \faFlask}~\large Exercice}
+                % \faPenToSquare
+                % }~\large Exercice}
+                \begin{Exercise}[title={#4}, exam={#4}, origin={\diff~}, label=exp, type={\textsc{#1}}]
+                % \begin{adjustwidth}{-0.85cm}{0cm}
+                }{
+				\begin{Exercise}[title={#4}, exam={#4}, origin={\diff~}, label=TD, type={\textsc{#1}}]
+				}
+			}
+		}
+	}
+}{
+\ifthenelse{\equal{\detokenize{#3}}{\detokenize{appli}}}
+{
+\end{adjustwidth}
+\end{Exercise}
+}
+{\end{Exercise}}
+}
+
+% REMOVE Cahier exercices commands
+% \renewcommand{\initialisationEntrainement}{}
+% \renewcommand{\debutEntrainement}{}
+% \renewcommand{\pauseEntrainement}{}
+% \renewcommand{\repriseEntrainement}{}
+% \renewcommand{\finEntrainement}{}
+
+
+%%% ORAUX BLANCS %%%
+\newcounter{oral}
+\setcounter{oral}{0}
+\newenvironment{oral}[1][1]{
+\renewcommand{\Annale}[3][]{}
+\def\diff{% $\star$\ifnum#1=1\else
+% $\star$\ifnum#1=2\else
+% $\star$\ifnum#1=3\fi\fi\fi
+}
+\stepcounter{oral}
+\renewcommand{\thesubsubsection}{\arabic{subsubsection}}
+\titleformat{\subsubsection}
+{\color{coolblack}\Huge}{}{0em}
+{\color{coolblack}\Large}
+\subsubsection{\textbf{Exercice~\theoral~}\hrulefill~{\diff}}
+\vspace{-0.5cm}
+\renewcommand{\ExerciseHeader}{\noindent \textcolor{black}{\textbf{\Large\ExerciseName}}~--\!\!\!\!\noindent}
+\renewcommand{\ExerciseName}{\normalsize Exercice principal~(14~pt)}
+}{}
+
+
+% ------------------------------------
+%%% EXERCICE PRINCIPAL D'ORAL %%%
+
+% sans etoile
+\newrobustcmd{\Principal}[2][]{
+\renewcommand{\Notions}[1]{}
+\renewenvironment{mywrap}[2]{
+##2
+\begin{center}
+}{
+\end{center}
+}
+\renewcommand{\ExerciseName}{\normalsize Exercice principal~(14~pt)}
+\renewcommand{\ExerciseHeader}{\noindent \textcolor{black}{\textbf{\Large\ExerciseName}}~--\!\!\!\!\!\!\!\noindent}
+\Ex[#1]{#2}
+\renewcommand{\ExerciseName}{\normalsize Résolution de problème~(6~pt)}
+}
+
+\newrobustcmd{\ExoMines}[2][]{
+\renewcommand{\Notions}[1]{}
+\renewenvironment{mywrap}[2]{
+##2
+\begin{center}
+}{
+\end{center}
+}
+\renewcommand{\ExerciseName}{
+\normalsize
+{
+\normalfont
+\emph{
+Les exercices sont réalisés sans préparation. Durée de la prestation : 30 minutes.	
+}}
+\\
+ Exercice A~(10~pt)}
+\renewcommand{\ExerciseHeader}{\noindent\textcolor{black}{\textbf{\Large\ExerciseName}}.\!\!\!\!\!\!\!\noindent}
+\Ex[#1]{#2}
+\renewcommand{\ExerciseName}{\normalsize Exercice B~(10~pt)}
+}
+
+\newrobustcmd{\ExoCentrale}[2][]{
+\renewcommand{\Notions}[1]{}
+\renewenvironment{mywrap}[2]{
+##2
+\begin{center}
+}{
+\end{center}
+}
+\renewcommand{\ExerciseName}{
+\normalsize
+{
+\normalfont
+\emph{
+L'exercice est réalisé sans préparation. Durée de la prestation : 30 minutes.	
+}}
+\\}
+\renewcommand{\ExerciseHeader}{\noindent\textcolor{black}{\textbf{\Large\ExerciseName}}\!\!\!\!\!\!\!\noindent}
+\Ex[#1]{#2}
+% \renewcommand{\ExerciseName}{\normalsize Exercice B~(10~pt)}
+}
+
+\newcommand{\Probleme}[2][]{
+% remove name of exercise
+\renewcommand{\ExerciseName}{\normalsize Résolution de problème~(6~pt)}
+\renewcommand{\ExerciseHeader}{\noindent \textcolor{black}{\textbf{\Large\ExerciseName}}~--\!\!\!\!\!\!\!\noindent}
+\Ex[#1]{#2}
+}
+
+% avec etoile
+\WithSuffix\newrobustcmd\Principal*[2][]{
+\renewcommand{\Notions}[1]{}
+\renewenvironment{mywrap}[2]{
+##2
+\begin{center}
+}{
+\end{center}
+}
+\renewcommand{\ExerciseName}{\normalsize Exercice principal~(14~pt)}
+\renewcommand{\ExerciseHeader}{\noindent \textcolor{black}{\textbf{\Large\ExerciseName}}~--\!\!\!\!\!\!\!\noindent}
+\Ex*[#1]{#2}
+\renewcommand{\ExerciseName}{\normalsize Résolution de problème~(6~pt)}
+}
+
+%-------------------------------------------
+
+% redefine enumerate environment
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{\draw (0,0) circle(0.22) node (char) {#1};}}
+% \setlist[enumerate]{label=\protect\textcircled{\alph*}}
+\setlist[enumerate]{label=\protect\circled{\alph*}}
+% define enonce env for application exercices
+\newenvironment{enonce}{}{}
+\newcommand{\hauteurLargeurCadreReponse}[2]{}
+\newcommand{\pourcentageDeLaPartieAGauche}[1]{}
+\newcommand{\initialisationPartieGauche}{}
+\newcommand{\initialisationPartieDroite}{}
+\newcommand{\finalisationDuPartageDePage}{}
+\newcommand{\reponse}[1]{\sol{#1}}
+\newenvironment{listeQCM3Colonnes}{\begin{liste}}{\end{liste}}
+\newenvironment{listeQCM2Colonnes}{\begin{liste}}{\end{liste}}
+
+\newcommand{\blueOrBlack}{}
+\newcommand{\dureeResolutionFacultative}[1]{}
+\newcommand{\typeEntrainement}[1]{}
+\newcommand{\basiqueEtTransversal}[1]{}
+\newcommand{\nombreColonnesQuestions}[1]{}
+\newcommand{\avecPlusieursQuestions}[1]{}
+
+% do not display points per question as in devoirs
+\renewcommand{\question}{\item}

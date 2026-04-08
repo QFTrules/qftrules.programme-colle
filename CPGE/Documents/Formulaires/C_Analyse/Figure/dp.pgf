@@ -1,7 +1,0 @@
-﻿\begin{tikzpicture}[>=latex]
-
-\newcommand{\gradp}[2]{\draw[->,JoliBleu,ultra thick]  #1 -- ++ #2 ;}
-\node at (0,0) {\includegraphics[scale=0.5]{dp.png}};
-\coordinate (A) at (2.8,0.65);
-\gradp{(A)}{(-160:1.42) coordinate (B) node[midway,below=3,fill=white] {\Large $\Vec{\d \ell}~$}}
-\end{tikzpicture}

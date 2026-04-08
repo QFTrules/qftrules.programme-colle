@@ -1,8 +1,0 @@
-\input{/home/eb/Dropbox/texmf/tex/latex/Preambles/tikz.tex}
-\begin{document}
-\begin{tikzpicture}
-  \node at (0,0) {\includegraphics[width=0.4\textwidth]{programme0.png}};
-  % \node at (0,-1.25) {\includegraphics[width=0.4\textwidth]{programme0bis.png}};
-  \node at (5.43,0.35) {\includegraphics[width=0.4\textwidth]{programme1.png}};
-\end{tikzpicture}
-\end{document}

@@ -1,3 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{n}{T\PYGZus{}tous\PYGZus{}k}\PYG{p}{[:,}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{o}{=}\PYG{n}{T0}     \PYG{c+c1}{\PYGZsh{} 1ère colonne : température initiale des points xi}
-\end{Verbatim}

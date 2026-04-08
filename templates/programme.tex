@@ -1,0 +1,219 @@
+%% LISTE DES THÈMES %%%
+% Changement en 2023 : thème Mécanique quantique supprimé
+\newrobustcmd{\ThemeName}[2][]{%
+\ifthenelse{\equal{#2}{10}}{Physique PC}{}%
+\ifthenelse{\equal{#2}{0}}{}{}%
+\ifthenelse{\equal{#2}{1}}{Mécanique du point}{}%
+\ifthenelse{\equal{#2}{2}}{Thermodynamique}{}%
+\ifthenelse{\equal{#2}{3}}{Optique Interférentielle}{}%
+\ifthenelse{\equal{#2}{4}}{Mécanique des fluides}{}%
+\ifthenelse{\equal{#2}{5}}{Électromagnétisme}{}%
+\ifthenelse{\equal{#2}{6}}{Physique des ondes}{}%
+\ifthenelse{\equal{#2}{7}}{\textsc{Relativité restreinte} \\ 
+{\large\color{gray}PHYS3-MECA-T5}}{}%
+\ifthenelse{\equal{#2}{8}}{Algorithmique}{}%
+}
+
+\newrobustcmd{\ThemeLetter}[2][]{%
+\ifthenelse{\equal{#2}{0}}{}{}%
+\ifthenelse{\equal{#2}{1}}{M}{}%
+\ifthenelse{\equal{#2}{2}}{T}{}%
+\ifthenelse{\equal{#2}{3}}{I}{}%
+\ifthenelse{\equal{#2}{4}}{F}{}%
+\ifthenelse{\equal{#2}{5}}{E}{}%
+\ifthenelse{\equal{#2}{6}}{O}{}%
+\ifthenelse{\equal{#2}{7}}{R}{}%
+\ifthenelse{\equal{#2}{8}}{A}{}%
+}
+
+%% LISTE DES TP %%%
+\newrobustcmd{\TPName}[1]{%
+\ifthenelse{\equal{#1}{0}}{Incertitudes}{}%
+\ifthenelse{\equal{#1}{1}}{Modulation et démodulation d'un signal}{}%
+\ifthenelse{\equal{#1}{2}}{Production d'un signal et oscillateurs}{}%
+\ifthenelse{\equal{#1}{3}}{Acquisition et traitement du signal}{}%
+\ifthenelse{\equal{#1}{4}}{Utilisation d'une caméra thermique}{}%
+\ifthenelse{\equal{#1}{5}}{Étude d'un photorécepteur}{}%
+\ifthenelse{\equal{#1}{6}}{Expérience des fentes de Young}{}%
+\ifthenelse{\equal{#1}{7}}{Interféromètre de Michelson -- 1}{}%
+\ifthenelse{\equal{#1}{8}}{Interféromètre de Michelson -- 2}{}%
+\ifthenelse{\equal{#1}{9}}{Capteur inductif}{}%
+\ifthenelse{\equal{#1}{10}}{Polarisation de la lumière}{}%
+\ifthenelse{\equal{#1}{11}}{Propagation dans un câble coaxial}{}%
+}
+
+%%%% LISTE DES CHAPITRES %%%
+% Changement en 2023 : chapitres de Mécanique quantique répartis :
+% - laser : Optique
+%  - MQ ondulatoire : Physique des ondes
+\newrobustcmd{\ChapitName}[2]{%
+\ifthenelse{\equal{#1}{10}}{Syllabus}{}%
+\ifthenelse{\equal{#1}{0}}{RÉVISIONS PCSI}{}%
+\ifthenelse{\equal{#1}{1}}{%
+    \ifthenelse{\equal{#2}{1}}{Cinématique du point}{}%
+    \ifthenelse{\equal{#2}{2}}{Changements de référentiels}{}%
+    \ifthenelse{\equal{#2}{3}}{Dynamique en référentiel non galiléen}{}%
+    \ifthenelse{\equal{#2}{4}}{Référentiel terrestre}{}%
+}{}%
+\ifthenelse{\equal{#1}{2}}{%
+    \ifthenelse{\equal{#2}{0}}{Principes de la thermodynamique}{}%
+    \ifthenelse{\equal{#2}{1}}{Systèmes ouverts en régime stationnaire}{}%
+    \ifthenelse{\equal{#2}{2}}{Conduction thermique}{}%
+    \ifthenelse{\equal{#2}{3}}{Rayonnement thermique}{}%
+    \ifthenelse{\equal{#2}{4}}{Diffusion de particules}{}%
+}{}%
+\ifthenelse{\equal{#1}{3}}{%
+    \ifthenelse{\equal{#2}{1}}{Modèle scalaire de la lumière}{}%
+    \ifthenelse{\equal{#2}{2}}{Interférences lumineuses}{}%
+    \ifthenelse{\equal{#2}{3}}{Interférences à division du front d'onde}{}%
+    \ifthenelse{\equal{#2}{4}}{Interférences à division d'amplitude}{}%
+    \ifthenelse{\equal{#2}{5}}{Laser}{}%
+}{}%
+\ifthenelse{\equal{#1}{4}}{%
+    \ifthenelse{\equal{#2}{1}}{Cinématique des fluides}{}%
+    \ifthenelse{\equal{#2}{2}}{Dynamique de l'écoulement parfait}{}%
+    \ifthenelse{\equal{#2}{3}}{Dynamique de l'écoulement visqueux}{}%
+    \ifthenelse{\equal{#2}{4}}{Bilans macroscopiques}{}%
+}{}%
+\ifthenelse{\equal{#1}{5}}{%
+    \ifthenelse{\equal{#2}{0}}{Induction}{}%
+    \ifthenelse{\equal{#2}{1}}{Électrostatique}{}%
+    \ifthenelse{\equal{#2}{2}}{Applications des champs électrostatiques}{}%
+    \ifthenelse{\equal{#2}{3}}{Magnétostatique}{}%
+    \ifthenelse{\equal{#2}{4}}{Applications des champs magnétostatiques}{}%
+    \ifthenelse{\equal{#2}{5}}{Équations de Maxwell}{}%
+    \ifthenelse{\equal{#2}{6}}{Conduction électrique}{}%
+}{}%
+\ifthenelse{\equal{#1}{6}}{%
+    \ifthenelse{\equal{#2}{1}}{Ondes mécaniques unidimensionnelles}{}%
+    \ifthenelse{\equal{#2}{2}}{Ondes acoustiques}{}%
+    \ifthenelse{\equal{#2}{3}}{Ondes électromagnétiques dans le vide}{}%
+    \ifthenelse{\equal{#2}{4}}{Ondes électromagnétiques dans les conducteurs}{}%
+    \ifthenelse{\equal{#2}{5}}{Dispersion, propagation, atténuation}{}%
+    \ifthenelse{\equal{#2}{6}}{Ondes et interfaces}{}%
+    \ifthenelse{\equal{#2}{7}}{Introduction à la mécanique quantique ondulatoire}{}%
+    \ifthenelse{\equal{#2}{8}}{Puits de potentiel}{}%
+}{}%
+\ifthenelse{\equal{#1}{7}}{%
+    \ifthenelse{\equal{#2}{1}}{Principes de la relativité restreinte}{}%
+    % \ifthenelse{\equal{#2}{2}}{Structure de l'espace-temps}{}%
+    \ifthenelse{\equal{#2}{2}}{Cinématique relativiste}{}%
+    \ifthenelse{\equal{#2}{3}}{Dynamique relativiste}{}%
+    \ifthenelse{\equal{#2}{4}}{Collisions de particules}{}%
+    \ifthenelse{\equal{#2}{5}}{Électrodynamique relativiste}{}%
+}{}%
+\ifthenelse{\equal{#1}{8}}{%
+    \ifthenelse{\equal{#2}{1}}{Théorie des jeux}{}%
+    \ifthenelse{\equal{#2}{2}}{Intelligence artificielle}{}%
+}{}%
+}%
+
+%% LISTE DES TD %%%
+\newrobustcmd{\TDName}[1]{%
+\ifthenelse{\equal{#1}{0}}{}{}%
+\ifthenelse{\equal{#1}{1}}{\ChapitName{1}{1}}{}%
+% \ifthenelse{\equal{#1}{2}}{\ChapitName{1}{2}}{}%
+% \ifthenelse{\equal{#1}{2}}{\ChapitName{1}{3}}{}%
+\ifthenelse{\equal{#1}{2}}{\ChapitName{1}{4}}{}%
+\ifthenelse{\equal{#1}{3}}{\ChapitName{2}{1}}{}%
+\ifthenelse{\equal{#1}{4}}{\ChapitName{2}{2}}{}%
+\ifthenelse{\equal{#1}{5}}{\ChapitName{2}{3}}{}%
+\ifthenelse{\equal{#1}{6}}{\ChapitName{2}{4}}{}%
+% \ifthenelse{\equal{#1}{9}}{\ChapitName{3}{1}}{}%
+\ifthenelse{\equal{#1}{7}}{\ChapitName{3}{2}}{}%
+\ifthenelse{\equal{#1}{8}}{\ChapitName{3}{3}}{}%
+\ifthenelse{\equal{#1}{9}}{\ChapitName{3}{4}}{}%
+\ifthenelse{\equal{#1}{01}}{\ChapitName{1}{1}}{}%
+% \ifthenelse{\equal{#1}{2}}{\ChapitName{1}{2}}{}%
+% \ifthenelse{\equal{#1}{2}}{\ChapitName{1}{3}}{}%
+\ifthenelse{\equal{#1}{02}}{\ChapitName{1}{4}}{}%
+\ifthenelse{\equal{#1}{03}}{\ChapitName{2}{1}}{}%
+\ifthenelse{\equal{#1}{04}}{\ChapitName{2}{2}}{}%
+\ifthenelse{\equal{#1}{05}}{\ChapitName{2}{3}}{}%
+\ifthenelse{\equal{#1}{06}}{\ChapitName{2}{4}}{}%
+% \ifthenelse{\equal{#1}{9}}{\ChapitName{3}{1}}{}%
+\ifthenelse{\equal{#1}{07}}{\ChapitName{3}{2}}{}%
+\ifthenelse{\equal{#1}{08}}{\ChapitName{3}{3}}{}%
+\ifthenelse{\equal{#1}{09}}{\ChapitName{3}{4}}{}%
+\ifthenelse{\equal{#1}{10}}{\ChapitName{3}{5}}{}%
+\ifthenelse{\equal{#1}{11}}{\ChapitName{4}{1}}{}%
+\ifthenelse{\equal{#1}{12}}{\ChapitName{4}{2}}{}%
+\ifthenelse{\equal{#1}{13}}{\ChapitName{4}{3}}{}%
+\ifthenelse{\equal{#1}{14}}{\ChapitName{4}{4}}{}%
+\ifthenelse{\equal{#1}{15}}{\ChapitName{5}{1}}{}%
+\ifthenelse{\equal{#1}{16}}{\ChapitName{5}{2}}{}%
+\ifthenelse{\equal{#1}{17}}{\ChapitName{5}{3}}{}%
+\ifthenelse{\equal{#1}{18}}{\ChapitName{5}{4}}{}%
+\ifthenelse{\equal{#1}{19}}{\ChapitName{5}{5}}{}%
+\ifthenelse{\equal{#1}{20}}{\ChapitName{5}{6}}{}%
+\ifthenelse{\equal{#1}{21}}{\ChapitName{6}{1}}{}%
+\ifthenelse{\equal{#1}{22}}{\ChapitName{6}{2}}{}%
+\ifthenelse{\equal{#1}{23}}{\ChapitName{6}{4}}{}%
+\ifthenelse{\equal{#1}{24}}{\ChapitName{6}{5}}{}%
+\ifthenelse{\equal{#1}{25}}{\ChapitName{6}{6}}{}%
+\ifthenelse{\equal{#1}{26}}{\ChapitName{6}{7}}{}%
+\ifthenelse{\equal{#1}{27}}{\ChapitName{6}{8}}{}%
+}%
+
+
+% FORMULAIRE NAMES 
+\newrobustcmd{\FormuName}[1]{%
+\ifthenelse{\equal{\detokenize{#1}}{\detokenize{A}}}{Formulaire numérique}{}%
+\ifthenelse{\equal{\detokenize{#1}}{\detokenize{B}}}{Systèmes de coordonnées}{}%
+\ifthenelse{\equal{\detokenize{#1}}{\detokenize{C}}}{Analyse vectorielle}{}%
+\ifthenelse{\equal{\detokenize{#1}}{\detokenize{D}}}{Trigonométrie}{}%
+\ifthenelse{\equal{\detokenize{#1}}{\detokenize{E}}}{Techniques expérimentales}{}%
+}
+
+% CAPACITÉS NUMÉRIQUES NAMES 
+\newrobustcmd{\CapaciteName}[1]{%
+\ifthenelse{\equal{#1}{0}}{Python : matplotlib, classe array}{}%
+\ifthenelse{\equal{#1}{1}}{Le pendule de Foucault}{}%
+\ifthenelse{\equal{#1}{2}}{Diffusion thermique}{}%
+\ifthenelse{\equal{#1}{3}}{Marche aléatoire}{}%
+\ifthenelse{\equal{#1}{4}}{Simulation Monte-Carlo}{}%
+\ifthenelse{\equal{#1}{5}}{Paquet d'onde}{}%
+}
+
+% ------------------------
+% COMMANDES SPÉCIFIQUES
+% ------------------------
+
+% Chapitre du cours
+\newrobustcmd{\Chapit}[3][0]{
+\Theme[#1]{#2}
+% \renewcommand{\chaptername}{\Large\textsc{Chapitre}~M\thechapter}
+\setcounter{chapter}{#3-1}\subtitle{\ChapitName{#2}{#3}}}
+% Thème du cours
+\newrobustcmd{\Theme}[2][0]{
+\setcounter{part}{#2}
+\ifthenelse{\equal{#1}{0}}{\cover{#2.jpg}}{\cover{full_blank.png}}
+\title{\ThemeName{#2}}
+% \newcommand{\themeletter}{\ThemeLetter{#1}}
+}
+% Chapitres pour programme de colle partie TD
+\newrobustcmd{\ChapitTD}[2]{\subsection{\ChapitName{#1}{#2}}}
+
+% ------------------------
+% LIST OF REFS
+\newrobustcmd{\refChap}[2]{%
+% \myURL{\ThemeLetter{#1}#2}{Chap.~\ThemeLetter{#1}#2~:~\ChapitName{#1}{#2}}%
+\myURL{M1}{Chap.~\ThemeLetter{#1}#2~:~\ChapitName{#1}{#2}}%
+}%
+\newrobustcmd{\refTP}[1]{%
+\StrLen{#1}[\myLength]%
+\ifthenelse{\myLength>1}{%
+    \myURL{TP#1}{TP#1~:~\TPName{#1}}%
+}{%
+    \myURL{TP0#1}{TP#1~:~\TPName{#1}}%
+}%
+}%
+\newrobustcmd{\refTD}[1]{%
+\myURL{TD#1}{TD#1~:~\TDName{#1}}%
+}%
+\newrobustcmd{\refFormu}[1]{%
+\myURL{TD01}{Formu.~#1~:~\FormuName{#1}}%
+}%
+\newrobustcmd{\refCN}[1]{%
+\myURL{TD01}{CN~#1~:~\CapaciteName{#1}}%
+}%

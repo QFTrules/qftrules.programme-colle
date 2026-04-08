@@ -1,0 +1,42 @@
+% \documentclass[10pt, twosides]{book}
+
+% \usepackage{geometry}
+%\geometry{	papersize 		= {19cm, 24cm}}			% real size of the book
+% \geometry{	papersize 		= {21cm, 26.526cm}} 	% bigger size in order to have smaller text
+
+%\geometry{	papersize 		= {210mm, 297mm},
+%			layoutsize	 	= {19cm, 24cm},
+%			layoutoffset	= {1cm, 2cm},
+%			showcrop		= true }
+
+
+% ----------------------------------------------------------------------------%
+%             Produire un document avec des marques de coupe                  %
+% ----------------------------------------------------------------------------%
+
+%\def\withCropPackage{Y}
+%
+%\usepackage[
+%  width=25.6truecm, height=32.126truecm,
+%  cam, axes,
+%  pdftex,
+%  center
+%]{crop}
+
+% ----------------------------------------------------------------------------%
+
+\RequirePackage{import}
+
+\subimport{$HOME/Dropbox/texmf/tex/latex/Preambles/__macros/}{packages_CdE_PC_techniques}
+\subimport{$HOME/Dropbox/texmf/tex/latex/Preambles/__macros_specifiques/}{packages_CdE_PC_specifiques}
+\subimport{$HOME/Dropbox/texmf/tex/latex/Preambles/__macros/}{macros_CdE_PC_uniqueID}
+\subimport{$HOME/Dropbox/texmf/tex/latex/Preambles/__macros_specifiques/}{macros_CdE_PC_specifiques}
+\subimport{$HOME/Dropbox/texmf/tex/latex/Preambles/__macros/}{macros_CdE_PC_couleurs}
+\subimport{$HOME/Dropbox/texmf/tex/latex/Preambles/__macros/}{macros_CdE_PC_techniques}
+\subimport{$HOME/Dropbox/texmf/tex/latex/Preambles/__macros/}{macros_CdE_PC_miseEnPage}
+\subimport{$HOME/Dropbox/texmf/tex/latex/Preambles/__macros/}{macros_CdE_PC_melangeReponses}
+\subimport{$HOME/Dropbox/texmf/tex/latex/Preambles/__macros/}{macros_CdE_PC_writeLater}
+\subimport{$HOME/Dropbox/texmf/tex/latex/Preambles/__macros/}{macros_CdE_PC_pictos}
+\subimport{$HOME/Dropbox/texmf/tex/latex/Preambles/__macros/}{macros_CdE_PC_bleeding}
+
+\input{$HOME/Dropbox/texmf/tex/latex/Preambles/options_CdE_PC}

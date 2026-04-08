@@ -1,0 +1,97 @@
+
+%%% BIBLIOGRAPHY %%%
+\usepackage[
+	%authordate,
+    backend     = biber,
+    bibencoding = utf8,
+    style = numeric,
+    % style        = authoryear,%-comp,
+   %authoryear-comp, % authoryear-comp, % Style for the end biblio
+    url		    = false,
+    hyperref    = true,
+    eprint	    = false,
+    maxbibnames = 99,
+    %natbib,
+    doi			= false,
+    maxcitenames = 1,
+    %maxnames     = 1,
+    mincitenames = 1,
+    	uniquelist   = false,
+    	uniquename   = false,
+   % 	minyear      = 1,
+    %nohashothers = true,
+    dashed      = false, % to repeat author name in list ref
+    %citestyle   = authoryear, %numeric-comp, % style refs
+    giveninits  = true,
+    sorting     = nyt,%none,
+    clearlang   = true]{biblatex}%-chicago}	 % biblio setting
+    
+% removes the In:
+\renewbibmacro{in:}{}
+    
+% clear language in bib entries
+%\DeclareFieldFormat{keyword}{\thechapter}
+\AtEveryBibitem{\clearlist{language}
+				\clearlist{day}
+				\clearlist{note}
+				\clearfield{note}
+				%\clearlist{keyword}
+				%\savefield{keyword}{\thechapter}
+				%\restorelist{keyword}{bla}%\thechapter}
+}
+
+
+% hyperlink around name also
+\DeclareCiteCommand{\parencite}[\mkbibparens]
+  {\usebibmacro{prenote}}
+  {\usebibmacro{citeindex}%
+    \printtext[bibhyperref]{\usebibmacro{cite}}}
+  {\multicitedelim}
+  {\usebibmacro{postnote}}
+
+
+% prints author names as small caps
+\renewcommand{\mkbibnamegiven}[1]{\textsc{#1}}
+%\renewcommand{\mkbibnamelast}[1]{\textsc{#1}}
+%\renewcommand{\mkbibnamefirst}[1]{\textsc{#1}}
+%\renewcommand{\mkbibnameaffix}[1]{\textsc{#1}}
+\renewcommand{\mkbibnamefamily}[1]{\textsc{#1}}
+\renewcommand{\mkbibnameprefix}[1]{\textsc{#1}}
+\renewcommand{\mkbibnamesuffix}[1]{\textsc{#1}}
+     
+% remove et al.
+\DefineBibliographyStrings{english}{andothers={}}
+
+%parentheses around cite and modify field
+%\AtEveryBibitem{%
+%  \iffieldequalstr{entrykey}{#1}
+%    {}
+%    {}%
+%}
+\renewcommand{\cite}[1]{\parencite{#1}}
+%\renewcommand*{\nameyeardelim}{\addcomma\space} % add comma
+
+% remove entries
+\DeclareSourcemap{
+  \maps[datatype=bibtex]{
+    \map{
+      \step[fieldset=issn, null]
+	  \step[fieldsource=issue, match=\regexp{\A(\d+)\Z}, final]
+      \step[fieldset=number, fieldvalue={$1}] %$
+      \step[fieldset=issue, null]
+    }
+  }
+} 
+
+\usepackage[nottoc]{tocbibind}		% to print biblio in table of contents
+%\usepackage{tocloft}				% spacing in table of contents
+%\setcounter{tocdepth}{2}			% depth of title in table of contents entries: 0=chap, 1=sec, 2=subsec
+%\setcounter{secnumdepth}{2}			% depth of numbering in table of contents entries: 0=chap, 1=sec, 2=subsec
+
+% personal bibliography heading
+\newcommand{\SubBib}[1]{%
+\defbibheading{subbibliography}{%
+\section*{#1}}
+\addcontentsline{toc}{section}{#1}
+%\printbibliography[section=1,heading=subbibliography]
+}

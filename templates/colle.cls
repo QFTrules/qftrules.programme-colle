@@ -1,0 +1,499 @@
+% LaTeX class for exercises colle in Physics
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesClass{colle}[2014/08/16 Example LaTeX class]
+
+%%% OPTIONS %%%
+\RequirePackage{kvoptions}
+\DeclareStringOption{repeat}[1]
+\DeclareStringOption[PC]{class}[PC]
+\ProcessKeyvalOptions*
+
+%%% DOCUMENT %%%
+\LoadClass[a4paper,10pt,twocolumn,landscape]{book}
+\RequirePackage[headheight=30pt,top=1.5cm,bottom=0.5cm,left=0.5cm,right=0.5cm]{geometry}
+\RequirePackage[utf8]{inputenc}
+\RequirePackage[T1]{fontenc}
+\RequirePackage[french]{babel}
+\RequirePackage[autolanguage]{numprint}
+\RequirePackage{lmodern}
+\RequirePackage{amsmath}
+\RequirePackage{amssymb}
+\RequirePackage{cases}
+\RequirePackage{mathrsfs}
+\RequirePackage{textcomp}
+\RequirePackage{stmaryrd}
+% \RequirePackage{moreverb}
+\RequirePackage{listings}
+\RequirePackage{graphicx}
+% \RequirePackage{fancyvrb}
+\RequirePackage{listings}
+\RequirePackage{wrapfig}
+\RequirePackage{subfigure}
+\RequirePackage{pgfplots}
+\RequirePackage{esint}
+\RequirePackage[font=small,
+			%labelfont=bf,
+			labelsep=endash]{caption}
+% \RequirePackage{tikz}
+\RequirePackage[europeanresistors]{circuitikz}
+% \RequirePackage{multicol}
+\RequirePackage{tabularx}
+\RequirePackage{lipsum}
+\RequirePackage{chngcntr}
+\RequirePackage{exercise}
+\RequirePackage{titlesec}
+\RequirePackage{titletoc}
+\RequirePackage{vwcol}
+\RequirePackage{forloop}
+% \counterwithin{table}{section}
+% \RequirePackage[titletoc]{appendix}
+\RequirePackage{changepage}
+\RequirePackage{mdframed}
+\RequirePackage{pdfpages}
+% \RequirePackage{enumitem}
+\RequirePackage{multirow}
+\pgfplotsset{compat=1.15}
+
+
+%%% LAYOUT %%%
+\RequirePackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{\small \colle@class}
+\rhead{\small \colle@class}
+\chead{\small Colles \theyears}
+\cfoot{}
+\fancyhead[R]{\nouppercase{\rightmark}\quad\quad\bfseries\thepage}
+\renewcommand{\headrulewidth}{0.8pt}
+\setlength{\columnsep}{15pt}
+\setlength{\columnseprule}{0.5pt}
+
+
+
+% \newcommand{\count}{0}
+% \DeclareOption{}
+% \ProcessOptions\relax
+
+%%% DEPENDANCES %%%
+\input{$HOME/Dropbox/texmf/tex/latex/Preambles/symbols.sty}%$
+\input{$HOME/Dropbox/texmf/tex/latex/Preambles/programme.tex}%$
+\input{$HOME/Dropbox/texmf/tex/latex/Preambles/URL.tex}%$
+\input{$HOME/Dropbox/texmf/tex/latex/Preambles/_preambule_CdE_PC.tex}
+
+
+%%% FIGURE WITHIN EXERCISE ENVIRONNEMENT %%%
+\newcommand{\capt}[1]{\captionof{figure}{#1}}
+\addto\captionsfrench{
+  \renewcommand{\figurename}{Fig.}
+  }
+  
+% redefine enumerate environment
+\setlist[enumerate]{label=\alph*)}
+
+%%% LAYOUT %%%
+% \newmdenv[
+%   topline=false,
+%   bottomline=false,
+%   rightline=false,
+%   linecolor=brickred,
+%   linewidth=1pt,
+%   skipabove=\topsep,
+%   skipbelow=\topsep
+% ]{siderule}
+
+\RequirePackage[colorlinks=true,
+pdfstartview=FitV,
+linkcolor= brickred,
+citecolor= brickred,
+urlcolor= brickred,
+hyperindex=true,
+hyperfigures=true]
+{hyperref}
+\hypersetup{linktoc=page}
+
+\usetikzlibrary{arrows}
+
+%%% NUMBERING STYLE %%%
+%\makeatletter
+%\renewcommand{\thefigure}{
+%\ifnum \c@section>\z@ \thesection.\fi
+%\@arabic\c@figure
+%}
+%\@addtoreset{figure}{section}
+%\let\p@subfigure\thefigure
+%\makeatother
+
+\makeatletter
+%\renewcommand\theequation{\arabic{equation}}
+\@addtoreset{equation}{Exercise}
+\@addtoreset{section}{part}
+\makeatother
+
+\renewcommand{\thepart}{\arabic{part}}
+\renewcommand{\thesection}{\thepart.\arabic{section}}
+
+%%% TITLE FORMAT %%%
+% \titleformat{\chapter}[display]{\bfseries\huge}{}{1ex}{\center\quad}[\vspace{0.25cm}]
+% \titlespacing*{\chapter}{0pt}{-1cm}{1cm}[0pt]
+\titleformat{\section}[display]{\thispagestyle{plain}\bfseries\huge}{}{1ex}{\center\arabic{section}\ \;}[\vspace{0.5cm}\hrule]
+\titlespacing*{\section}{0pt}{0cm}{1cm}[0pt]
+\titleformat{\part}[display]{\thispagestyle{empty}\bfseries\filcenter}{}{1ex}{\Huge}[\vspace{1ex}{}]
+
+\newcommand{\sectionbreak}{\clearpage}
+
+% \pagestyle{fancy}
+% \fancyhead[L]{\scriptsize \bsc{Fascicule d'exercices - MP*}}
+% \fancyhead[R]{\scriptsize \textsc{Camille Eloy}}
+% \fancyfoot[C]{ \thepage}
+
+\renewcommand{\ExerciseHeaderTitle}{\hspace{-0.35em}\thesubsubsection~~\ExerciseTitle}
+%\renewcommand{\ExerciseHeaderOrigin}{\ (\textit{\ExerciseOrigin})}
+\renewcommand{\ExerciseName}{}
+\renewcommand{\ExerciseHeader}{\noindent\textcolor{coolblack}{\textbf{\Large
+\ExerciseName \space \ExerciseHeaderNB}\Large\ExerciseHeaderTitle
+\hfill \ExerciseHeaderOrigin}\medskip\newline}
+
+%%% EXERCISE NUMBERING %%%
+\renewcounter{Exercise}[part]% Reset counter every section
+%\renewcommand{\theExercise}{\thepart.\arabic{Exercise}}
+\renewcommand{\theExercise}{}
+
+\titlecontents{section}
+[0.75cm]             % left margin
+{\thispagestyle{plain}\vspace{0.2cm}}                  % above code
+{\bfseries                  % numbered format
+{\thecontentslabel\ }%
+}%
+{}         % unnumbered format
+{}         % filler-page-format, e.g dots
+
+\titlecontents{subsection}
+[1cm]             % left margin
+{\vspace{0cm}}                  % above code
+{                  % numbered format
+{\thecontentslabel\ }%
+}%
+{}         % unnumbered format
+{\titlerule*[0.5pc]{.}\large \contentspage}         % filler-page-format, e.g dots
+
+%%% QUESTION COURS ENVIRONMENT %%%
+\newcounter{exocolle}
+\setcounter{exocolle}{0}
+
+\makeatletter
+\newenvironment{cours}[1][1]{
+\setcounter{exocolle}{\value{exocolle}+1}
+{\noindent \textcolor{coolblack}{\textbf{\Large
+Exercice~\theexocolle}\newline}}
+\vspace{-0.5cm}
+\setcounter{subsubsection}{1}
+\subsubsection{Question de cours}
+\setcounter{quest}{0}
+\begin{quest}
+}
+{
+\end{quest}
+\vspace{-0.25cm}
+% \addtocounter{subsubsection}{1}
+}
+\makeatother
+
+%-------------- exo de colle avec cours ------------
+\NewDocumentEnvironment{Exocolle}{O{} O{} m}{
+\ifthenelse{\equal{\detokenize{#2}}{\detokenize{nofig}}}
+{\vspace{0.5cm}}{\begin{figure}}
+\begin{cours}[#1]
+}
+{
+\end{cours}
+\setcounter{subsubsection}{2}
+\setcounter{subfigure}{2}
+\ifthenelse{\equal{\detokenize{#2}}{\detokenize{*}}}{
+   \Ex*{#3}
+}{
+   \Ex{#3}
+}
+\ifthenelse{\equal{\detokenize{#2}}{\detokenize{nofig}}}
+{\vspace{0.5cm}}{\end{figure}}
+}
+
+% exercise with bonus part or question
+\RequirePackage{suffix}
+\WithSuffix\newcommand\Ex*[2][0]{
+	\setcounter{figure}{\theexofigure}
+	\renewcommand{\qbonus}[1]{}
+	\renewcommand{\bonus}[1]{}
+	\ExerciseSelect[exam={#2}]
+	\ifthenelse{\equal{#1}{0}}
+	{\input{\source}}
+	{\renewcommand{\source}{#1.tex}
+	\input{#1.tex}}
+	\renewcommand{\qbonus}[1]{\item #1}
+	\renewcommand{\bonus}[1]{#1}
+}
+
+
+% % exercise with bonus part or question
+% \RequirePackage{suffix}
+% \WithSuffix
+% \NewDocumentEnvironment{Exocolle}*{O{} O{} m}{
+%    \ifthenelse{\equal{\detokenize{#2}}{\detokenize{nofig}}}
+%    {\vspace{0.5cm}}{\begin{figure}}
+%    \begin{cours}[#1]
+%    }
+%    {
+%    \end{cours}
+%    \setcounter{subsubsection}{2}
+%    \Ex*{#3}
+%    \ifthenelse{\equal{\detokenize{#2}}{\detokenize{nofig}}}
+%    {\vspace{0.5cm}}{\end{figure}}
+%    }
+
+
+\renewcommand{\thesubsubsection}{\theexocolle.\arabic{subsubsection}}
+\titleformat{\subsubsection}
+{\color{coolblack}\Large}{}{0em}
+{\color{coolblack}\Large\thesubsubsection\ \;}
+
+% ----------------------------------
+% EXERCISE
+% ----------------------------------
+% \NewDocumentEnvironment{exo}{O{PC} O{1} O{colle} m}
+% {
+% \setcounter{subsubsection}{2}
+% \begin{Exercise}[title={#4}, label={#4}]
+% \setcounter{figure}{0}
+% \setcounter{equation}{0}
+% \setcounter{quest}{0}
+% }
+% {
+% \end{Exercise}
+% }
+
+% \makeatletter
+% \newenvironment{exo}[2][]
+% {
+% \setcounter{subsubsection}{2}
+% \begin{Exercise}[title={#2}, label={#2}]
+% %\ref{exo:{#2}}
+% \setcounter{figure}{0}
+% \setcounter{equation}{0}
+% \setcounter{quest}{0}
+% }
+% {
+% \end{Exercise}
+% }
+% \makeatother
+
+\RenewDocumentEnvironment{exo}{O{PC} O{1} O{colle} m}
+{
+% counter redefinition
+\setcounter{equation}{0}
+\setcounter{quest}{0}
+
+% exercice de colle
+\begin{Exercise}[title={#4}, exam={#4}]
+}{\end{Exercise}}
+
+
+\makeatletter
+\newenvironment{exodm}[2][]
+{
+\begin{Exercise}[title={#2}, label={#2}]
+%\ref{exo:{#2}}
+\setcounter{equation}{0}
+\setcounter{quest}{0}
+}
+{
+\end{Exercise}
+}
+\makeatother
+
+\makeatletter
+\newenvironment{exotd}[3][]
+{
+\begin{Exercise}[title={#2}, label={#2}]
+%\ref{exo:{#2}}
+\setcounter{equation}{0}
+\setcounter{quest}{0}
+}
+{
+\end{Exercise}
+}
+\makeatother
+
+\makeatletter
+\newenvironment{exopython}[3][]
+{
+%\renewcommand{\ExerciseHeaderOrigin}{%
+%\includegraphics[height=15pt]{python.jpeg}[\textit{\!\ExerciseOrigin\!}]}
+\def\diff{
+$\star$\ifnum#3=1\else
+$\star$\ifnum#3=2\else
+$\star$\ifnum#3=3\fi\fi\fi}
+\renewcommand{\ExerciseName}{{\normalsize \faPython
+}~\large Exercice}
+\begin{Exercise}[title={#2}, label={#2}, origin={\diff~}]
+%\ref{exo:{#2}}
+\setcounter{equation}{0}
+\setcounter{quest}{0}
+}
+{
+\end{Exercise}
+\renewcommand{\ExerciseName}{\large Exercice}
+}
+\makeatother
+
+% insert exercices
+% \newcommand{\source}{}
+% \newcommand{\Ex}[1]{
+% \ExerciseSelect[label=#1]
+% \input{\source}
+%\input{dimension.tex}
+%\input{referentiels.tex}
+%\input{cinemapoint.tex}
+%\input{dynapoint.tex}
+%\input{geometrique.tex}
+%\input{instrument.tex}
+%\input{ouverts.tex}
+%\input{principes.tex}
+% \medskip
+% }
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% \makeatletter
+% \newenvironment{answer}
+% {\begin{adjustwidth}{1.5cm}{}
+%   \begin{siderule}
+%  \footnotesize}
+% {\end{siderule}
+% \end{adjustwidth}
+% \normalsize
+% \setcounter{equation}{0}}
+% \makeatother
+
+\newcommand*\parttitle{}
+\let\origpart\part
+\renewcommand*{\part}[2][]{%
+   \ifx\\#1\\% optional argument not present?
+      \origpart{#2}%
+      \renewcommand*\parttitle{#2}%
+i   \else
+      \origpart[#1]{#2}%
+      \renewcommand*\parttitle{#1}%
+   \fi
+}
+
+
+%%% TO PREDEFINE SOLUTION ENVIRONMENT %%%
+\newcommand{\sol}[1]{}
+%\newcommand{\sol}{}
+
+%\RequirePackage{fancyhdr}
+% \renewcommand{\sectionmark}[1]{\bfseries{#1}}
+% \renewcommand{\subsectionmark}[1]{}
+
+
+\ListOfExerciseInToc
+\ExerciseLevelInToc{subsection}
+
+\date{}
+
+% ----------------------------------
+% PATHS
+% ----------------------------------
+%%% PATH %%%
+\def\pathtocolles{$HOME/Dropbox/CPGE/Physique/Exercices/Recueil}%$
+\makeatletter
+\def\input@path{{\pathtocolles/Dimensionnelle/}{\pathtocolles/Optique/}{\pathtocolles/Mecanique/}{\pathtocolles/Thermo/}{\pathtocolles/Fluide/}{\pathtocolles/Electromag/}{\pathtocolles/Ondes/}{\pathtocolles/Quantique/}{\pathtocolles/Figure/}{\pathtocolles/Mecanique/Figures/}{\pathtocolles/Thermo/Figures/}{\pathtocolles/Optique/Figures/}{\pathtocolles/Fluide/Figures/}{\pathtocolles/Electromag/Figures/}{\pathtocolles/Ondes/Figures/}{\pathtocolles/Quantique/Figures/}}
+\makeatother
+\graphicspath{{\pathtocolles/Figure/}{\pathtocolles/Mecanique/Figures/}{\pathtocolles/Thermo/Figures/}{\pathtocolles/Optique/Figures/}{\pathtocolles/Fluide/Figures/}{\pathtocolles/Electromag/Figures/}{\pathtocolles/Ondes/Figures/}{\pathtocolles/Quantique/Figures/}{./Figure}}
+
+
+% ----------------------------------
+% FIGURES
+% ----------------------------------
+% \RequirePackage{wrapfig}
+
+%%% PYTHON CODE %%%%
+% \RequirePackage{minted}
+% \setminted{fontsize=\footnotesize}
+% \renewcommand{\inputminted}[2]{}
+
+
+%%% MINTED %%%
+\RequirePackage[cache=false]{minted}
+\setminted{fontsize=\footnotesize}
+
+% \RequirePackage[cache=false]{minted}
+% \setminted{fontsize=\footnotesize}
+
+% personal minted command to add default path
+\ExplSyntaxOn
+\NewDocumentCommand{\mintedpath}{m}
+ {
+  \seq_gset_split:Nnn \g_paulie_mintedpath_seq { } { #1 }
+  \seq_gput_left:Nn \g_paulie_mintedpath_seq { }
+ }
+
+\seq_new:N \g_paulie_mintedpath_seq
+
+\NewDocumentCommand{\python}{O{linenos=true}m}
+ {
+  \seq_map_inline:Nn \g_paulie_mintedpath_seq
+   {
+    \file_if_exist:nT { ##1 #2 }
+     {
+    %  \ifnum\pdfmatch{\detokenize{.py}}{\detokenize{#2}}=1
+       \def\filename{##1 #2}
+    %  \else
+    %    \def\filename{##1 #2.py}
+    %  \fi
+      \inputminted[#1]{python}{\filename}
+      \seq_map_break:
+     }
+   }
+ }
+\ExplSyntaxOff
+
+%%% ARGUMENTS %%%
+% command to repeat text within document n times
+
+
+
+% COUNT FUNCTION
+\newcommand{\Count}[2]{
+% loop to repeat argument #1 times
+\newcounter{loop}
+\forloop{loop}{0}{\value{loop} < #1}{
+#2
+}
+}
+
+
+% \ExplSyntaxOn
+% \box_new:N \l_krirkrirk_box
+% \NewDocumentEnvironment{Count}{m +b}{
+%   \box_clear:N \l_krirkrirk_box
+%   \vbox_set:Nn \l_krirkrirk_box {#2}
+%   \prg_replicate:nn {#1} {\box_use:N \l_krirkrirk_box }
+% }{}
+% \ExplSyntaxOff
+
+%%% HEADER %%%
+%\lhead{\small PC Th\'eophile Gautier}
+\newcommand{\classe}{}
+\newcommand{\Classe}[1][PC]{
+   \lhead{\small #1}
+   \rhead{\small #1}
+}
+% \AtEndOfClass{
+% \lhead{\small \class}
+% \rhead{\small \class}
+% }
+
+% \chead{\small Colles \theyears}
+% \rhead{\small Eric Brillaux}
+
+%%% REDEFINITION \d %%%
+\renewcommand{\d}{\mathrm{d}}
+\renewcommand{\Notions}[1]{}

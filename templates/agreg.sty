@@ -1,0 +1,290 @@
+% CE FICHIER DEFINIT LE PREAMde dimension infinieBULE POUR LES 
+% TD (ISSU DES TD D'HENNING)
+
+%%% DOCUMENT %%%
+\documentclass[11pt]{article}
+\usepackage{fmtcount}
+\usepackage{titlesec}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[francais]{babel}
+\usepackage[autolanguage]{numprint}
+\usepackage{lmodern}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{cases}
+\usepackage{mathrsfs}
+\usepackage{textcomp}
+%\usepackage[top=2cm,bottom=2cm,left=2cm,right=2cm]{geometry}
+\usepackage{stmaryrd}
+\usepackage{inputenc}
+\usepackage{moreverb} 
+\usepackage{listings}
+\usepackage{color}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage{graphicx}
+\usepackage{fancyvrb}  % Pour le verbatim
+\usepackage{listings}
+\usepackage{wrapfig}
+\usepackage{subfigure}
+\usepackage{pgfplots}
+\usepackage{esint}
+\usepackage[font=small,labelfont=bf,labelsep=space]{caption}
+\usepackage{tikz}
+\usepackage[europeanresistors]{circuitikz}
+\usepackage{multicol}
+\usepackage{tabularx}
+\usepackage{lipsum}
+\usepackage{chngcntr}
+\usepackage{fancyhdr}
+\usepackage{exercise}
+\usepackage{titlesec}
+\usepackage{titletoc}
+\usepackage{vwcol}
+\counterwithin{table}{section}
+\usepackage[titletoc]{appendix}
+\usepackage{changepage}
+\usepackage{mdframed}
+\usepackage{pdfpages}
+%\usepackage[squaren,Gray]{SIunits}
+\usepackage{enumitem}
+\setlist[enumerate,1]{leftmargin=3em}
+\definecolor{darkcyan}{rgb}{0.0, 0.55, 0.55}
+\definecolor{coolblack}{rgb}{0.0, 0.18, 0.39}
+\usepackage{hyperref}[
+		colorlinks=true,
+	    	linkcolor=coolblack]
+
+\usepackage{siunitx}
+\sisetup{
+    inter-unit-product = \ensuremath{{}\!\cdot\!{}},
+    detect-all,
+    separate-uncertainty = true,
+    exponent-product = \times,
+    space-before-unit = true,
+    output-decimal-marker = {,},
+    multi-part-units = brackets,
+    range-phrase = --,
+    % allow-number-unit-breaks,
+    list-final-separator = { et },
+    list-pair-separator = { et },
+    abbreviations
+}
+
+
+\newcommand{\mybox}[1]{
+\begin{center}
+\fbox{$#1$}
+\end{center}
+}
+
+%%% COLORS %%%
+\definecolor{linkcolor}{rgb}{0,0,0.6} % définition de la couleur des liens pdf
+\definecolor{cornellred}{rgb}{0.7, 0.11, 0.11}
+
+%\usepackage[colorlinks=true,$
+%pdfstartview=FitV,
+%linkcolor= BrickRed,
+%citecolor= BrickRed,
+%urlcolor= BrickRed,
+%hyperindex=true,
+%hyperfigures=true]
+%{hyperref}
+%\hypersetup{linktoc=page}
+
+
+%%% GEOMETRY %%%
+\newcounter{serie}
+\newcounter{exo}[serie]
+\textheight=22 true cm
+\textwidth=16.5 true cm
+\oddsidemargin=0.5truecm
+\topmargin=-1truecm
+
+%%% ENTETE %%%
+\newcommand{\entete}[1]{
+\newpage\stepcounter{serie}\noindent
+{\large Licence Sciences de la Mati\`ere (L3) \hfill 2021--2022}
+\par \vspace{0.4cm}\par
+\begin{center}
+{\Large {TD Outils Math\'ematiques} \qquad --- \,\No #1 \,\,---  }
+\end{center}
+\par \vspace{0.2cm}\par
+\hrule
+}
+
+
+%%% PERSONAL SYMBOLS %%%
+\newcommand{\der}{\mathrm{d}}
+
+\newcommand{\pr}{\prime}
+\newcommand{\epr}{{\, \prime}}
+\newcommand{\xp}{x^{\pr}}
+
+\newcommand{\vare}{\varepsilon}
+\newcommand{\vap}{\varphi}
+\newcommand{\vapt}{\tilde{\vp}}
+\newcommand{\tg}{\tilde{G}}
+
+\newcommand{\pa}{\partial}
+
+\newcommand{\ga}{\gamma}
+\newcommand{\la}{\lambda}
+%\newcommand{\th}{\theta}
+\newcommand{\vp}{\varphi}
+
+\newcommand{\de}{\delta}
+
+\newcommand{\re}{{\rm e}}
+\newcommand{\ri}{{\rm i}}
+
+\newcommand{\hh}{{\cal H}}
+\newcommand{\br}{{\bf R}}
+\newcommand{\brn}{{\bf R}^n}
+\newcommand{\bc}{{\bf C}}
+\newcommand{\bn}{{\bf N}}
+\newcommand{\ns}{{\bf N}^*}
+\newcommand{\lt}{{L^2 ({\br},dx)}}
+\newcommand{\ltp}{{L^2 ({\br},dp)}}
+\newcommand{\hs}{{\cal H}}
+\newcommand{\fo}{{\cal F}}
+\newcommand{\po}{{\cal P}}
+\newcommand{\dd}{{\cal D}}
+\newcommand{\ii}{{\cal I}}
+\newcommand{\st}{{\cal S}(\br)}
+\newcommand{\std}{{\cal S}^{\prime} (\br)}
+
+\newcommand{\ds}{\displaystyle}
+
+% math sets
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\p}{\!\cdot\!}
+
+\renewcommand{\dag}{\ds{\dagger}}
+\newcommand{\be}{\begin{equation}}
+\newcommand{\ee}{\end{equation}}
+\newcommand{\beq}{\begin{eqnarray*}}
+\newcommand{\eeq}{\end{eqnarray*}}
+\newcommand{\bea}{\begin{eqnarray}}
+\newcommand{\eea}{\end{eqnarray}}
+
+% vectorial analysis
+\renewcommand{\div}{{\vec \nabla} \cdot \vec }
+\newcommand{\grad}{{\vec \nabla}}
+\newcommand{\rot}{{\vec \nabla} \times \vec}
+
+
+\newcommand{\F}{\mathcal{F}}
+
+% matrix-related operations
+\renewcommand{\det}{\text{det}}
+\newcommand{\com}{\text{Com}}
+
+\newtheorem{defin}{D\'efinition}
+\newtheorem{theo}{Th\'eor\`eme}
+\newtheorem{lem}{Lemme}
+\newtheorem{prop}{Proposition}
+\newtheorem{cor}{Corollaire}
+
+
+\setcounter{enumiv}{1}
+
+\usepackage[T1]{fontenc}
+\usepackage{kantlipsum}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage[breakable, theorems, skins]{tcolorbox}
+\tcbset{enhanced}
+
+%%% PERSONNAL COMMANDS %%%
+\newcommand{\fig}[1]{Fig.~\ref{fig:#1}}
+\newcommand{\eq}[1]{Éq.~\eqref{eq:#1}}
+\renewcommand{\P}{\mathcal{P}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\scal}[2]{\langle #1 , #2\rangle}
+
+%%% GRAY BOX FOR EXERCISE TITLE %%%
+\DeclareRobustCommand{\greybox}[2][gray!20]{%
+\begin{tcolorbox}[   %% Adjust the following parameters at will.
+        breakable,
+        left=0pt,
+        right=0pt,
+        top=0pt,
+        bottom=0pt,
+        colback=#1,
+        colframe=#1,
+        width=\dimexpr\textwidth\relax, 
+        enlarge left by=0mm,
+        boxsep=5pt,
+        arc=0pt,outer arc=0pt,
+        ]
+        #2
+\end{tcolorbox}
+}
+
+\newcommand{\redbox}[1]{\greybox[blue!10]{#1}}
+
+%%% PERSO ITEMIZE %%%
+\newcounter{quest}
+\setcounter{quest}{0}
+
+\newcommand{\mysubsection}[1]{
+\subsection{#1}
+\setcounter{quest}{0}
+}
+
+\newcommand{\mysection}[1]{
+\section{#1}
+\setcounter{quest}{0}
+}
+
+\newenvironment{quest}
+{\begin{enumerate}[label=\thesubsection.\arabic*)]
+\setcounter{enumi}{\value{quest}}
+}
+{\end{enumerate}
+\setcounter{quest}{\value{enumi}}
+}
+
+\newenvironment{compo}
+{\begin{enumerate}[label=\arabic*)]
+\setcounter{enumi}{\value{quest}}
+}
+{\end{enumerate}
+\setcounter{quest}{\value{enumi}}
+}
+
+
+%%% TO PREDEFINE SOLUTION ENVIRONMENT %%%
+
+\newcommand{\sol}[1]{}
+
+%%% ANSWER ENVIRONMENT %%%
+\makeatletter
+\newenvironment{answer}
+%{\bigskip\qquad\textbf{\textcolor{BrickRed}{Solution}}\medskip
+{\begin{adjustwidth}{1.5cm}{}
+  \begin{siderule}
+ \footnotesize}
+{\end{siderule}
+\end{adjustwidth}
+\normalsize
+\setcounter{equation}{0}}
+\makeatother
+
+%%% EXO ENVIRONMENT %%%
+\titleformat{\subsection}
+{\color{coolblack}\large}{}{1em}
+{\color{coolblack}\large\thesubsection\,}
+
+\titleformat{\section}
+{\color{coolblack}\Large}{}{0em}
+{\color{coolblack}\Large\thesection\,}
+
+\makeatletter
+\newenvironment{exo}[1][\unskip]
+{\setcounter{subsubsection}{2}\subsubsection{ #1}}
+{}
+\makeatother
+

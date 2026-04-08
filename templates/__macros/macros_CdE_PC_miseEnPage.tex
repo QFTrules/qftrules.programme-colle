@@ -1,0 +1,248 @@
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~%
+%  dernière                   %
+%  modification = 09/04/2023  %
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~%
+%      Colas Bardavid
+
+
+% ===================================================================== %
+% ============================ Size pages ============================= %
+% \def\setSizeOfPages{%
+% \geometry{	inner				= 2.25cm,
+% 			outer				= 2.5cm,
+% 			top					= 1.75cm,
+% 			bottom				= 2.75cm,
+% 			footskip			= 9mm,
+% 			%showframe
+% 		 }
+% }
+
+% \setSizeOfPages
+
+% ===================================================================== %
+% ======================== Force displaystyle ========================= %
+\everymath{\displaystyle}
+
+
+% ===================================================================== %
+% ============================ left/right ============================= %
+% see: https://tex.stackexchange.com/a/2610/8323
+\let\originalleft\left
+\let\originalright\right
+\renewcommand{\left}{\mathopen{}\mathclose\bgroup\originalleft}
+\renewcommand{\right}{\aftergroup\egroup\originalright}
+
+
+% ===================================================================== %
+% ============================= Spacing =============================== %
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.15cm}
+
+
+% ===================================================================== %
+% ========================= The colored box =========================== %
+\newtcolorbox{coloredBox}		   {colback 		= \couleurFond,
+									colframe 		= \couleurFond,
+									boxsep 			= 0pt,
+									top 			= 2mm,
+									bottom 			= 2mm,
+									left			= 3mm,
+									right			= 3mm,
+									arc				= 1.5mm,
+									width			= 0.7\linewidth,
+									center}
+
+% ===================================================================== %
+% ========================= The colored box =========================== %
+\newtcolorbox{coloredBoxLarge}		{colback 		= \couleurFond,
+									colframe 		= \couleurFond,
+									boxsep 			= 0pt,
+									top 			= 2mm,
+									bottom 			= 2mm,
+									left			= 3mm,
+									right			= 3mm,
+									arc				= 1.5mm,
+									width			= 0.9\linewidth,
+									center}
+
+% ===================================================================== %
+% ====================== Box for shuffled answers ===================== %
+\newtcolorbox{boxForShuffledAnswers}{colback 		= white,
+									colframe 		= \couleurFoncee,
+									boxsep 			= 0pt,
+									top 			= 2mm,
+									bottom 			= 2mm,
+									left			= 3mm,
+									right			= 3mm,
+									arc				= 1.5mm,
+									width			= \linewidth,
+									boxrule			= 1mm,
+									halign			= center,
+									title			= Réponses mélangées,
+									halign title	= center,
+									fonttitle		= \sffamily\bfseries,
+									before upper    = {\setstretch{1.9}},
+									center}
+
+
+% ===================================================================== %
+% ==================== Box for title corrige fiche ==================== %
+\newtcolorbox{boxForTitleCorrigeFiche}{colback 		= \couleurFond,
+									colframe 		= \couleurFond,
+									boxsep 			= 0pt,
+									top 			= 2mm,
+									bottom 			= 2mm,
+									left			= 10mm,
+									right			= 3mm,
+									arc				= 0.5mm,
+									width			= \linewidth,
+									boxrule			= 1mm,
+									center}
+
+
+% ===================================================================== %
+% ============================ Tight dotfill ========================== %
+% https://tex.stackexchange.com/a/85338/8323
+\makeatletter
+\newcommand \tightdotfill {\leavevmode \cleaders \hb@xt@ .33em{\hss .\hss }\hfill \kern \z@}
+\makeatother
+
+
+% ===================================================================== %
+% =================== Space settings for columns ====================== %
+\setlength{\columnsep}{7mm}
+% see https://tex.stackexchange.com/a/37919/8323
+\setlength{\multicolsep}{5.0pt plus 2.0pt minus 1.5pt}% 50% of original values
+
+
+
+% ===================================================================== %
+% =============================== Footer ============================== %
+\pagestyle{fancy}
+
+\def\myHeaderAndFooterStyle{
+\renewcommand{\headrulewidth}{0pt}%
+\renewcommand{\footrulewidth}{0.4pt}%
+\fancyhf{}
+\fancyhf[OLF]{{\footnotesize \textForFooter}}
+\fancyhf[ORF]{{\footnotesize \thepage}}
+\fancyhf[ERF]{{\footnotesize \textForFooter}}
+\fancyhf[ELF]{{\footnotesize \thepage}}}
+
+% \fancypagestyle{plain}{\myHeaderAndFooterStyle}
+% \myHeaderAndFooterStyle
+
+\def\startNoFooter{\global\def\textForFooter{}}
+\def\startFooterForSolutions{\global\def\textForFooter{Réponses et corrigés}}
+\def\startFooterForFiches{\global\def\textForFooter{Fiche \no\printCounterForSheet{}. \varForTitreFicheEntrainement}}
+\startFooterForFiches
+
+
+% ===================================================================== %
+% ======================= Table des matières ========================== %
+
+% \contentsmargin{0cm}
+
+% \titlecontents*{section}[0em]
+%   {}
+%   {\\[0mm]\makebox[0pt][l]{\thecontentslabel\textbf{.}}\hspace{12mm}}
+%   {}
+%   {\dotfill  \thecontentspage\\[2mm]}%\\[-3mm]}
+%   [][]
+
+% \setcounter{tocdepth}{1}     % Dans la table des matieres
+
+% \addto\captionsfrench{% Replace "english" with the language you use
+%   \renewcommand{\contentsname}%
+%     {Sommaire}%
+% }
+
+
+% ===================================================================== %
+% ========= Gestion des parties dans la table des matières ============ %
+
+% \newcommand{\ajoutePartieTableDesMatieres}[1]
+% {\addtocontents{toc}{\hrule\prevdepth=0pt\par\vspace*{1.5mm}{\strut\large \bfseries #1}\smallskip\par}}
+
+
+% ===================================================================== %
+% ================== Nice symbol for \leq and \geq ==================== %
+
+\renewcommand\leq{\leqslant}
+\renewcommand\geq{\geqslant}
+\renewcommand\le{\leqslant}
+\renewcommand\ge{\geqslant}
+
+
+% ===================================================================== %
+% ========================== Managing QCM ============================= %
+
+% see: https://tex.stackexchange.com/a/354024/8323
+
+\RequirePackage{tikz}
+
+\newcommand\QCMcircled[1]{\tikz[baseline=(char.base)]{%
+        \node[circle,draw,minimum size=1.25em,inner sep=0] (char) {#1};}}
+\newcommand\QCMcircledalt[1]{\vphantom{\LARGE A}\tikz[baseline=(char.base)]{%
+        \node[circle,draw,inner sep=0pt] (char) {\strut #1};}}
+
+\newcommand{\circleForAnswer}[1]{\protect\QCMcircled{{#1}}}
+
+\newlist{listeQCMaux}{enumerate}{1}
+\setlist[listeQCMaux]{	label 		= \protect\QCMcircledalt{{\alph*}},
+						topsep		= 0mm,
+						partopsep	= 0mm,
+						nolistsep}
+
+\newenvironment{listeQCM1Colonne}{\begin{listeQCMaux}}{\end{listeQCMaux}\vspace{-5mm}}
+\newenvironment{listeQCM2Colonnes}{\begin{multicols}{2}\begin{listeQCMaux}}{\end{listeQCMaux}\end{multicols}\vspace{-5mm}}
+\newenvironment{listeQCM3Colonnes}{\begin{multicols}{3}\begin{listeQCMaux}}{\end{listeQCMaux}\end{multicols}\vspace{-5mm}}
+\newenvironment{listeQCM4Colonnes}{\begin{multicols}{4}\begin{listeQCMaux}}{\end{listeQCMaux}\end{multicols}\vspace{-5mm}}
+\newenvironment{listeQCM5Colonnes}{\begin{multicols}{5}\begin{listeQCMaux}}{\end{listeQCMaux}\end{multicols}\vspace{-5mm}}
+
+\def\reponseA{\circleForAnswer{a}}
+\def\reponseB{\circleForAnswer{b}}
+\def\reponseC{\circleForAnswer{c}}
+\def\reponseD{\circleForAnswer{d}}
+\def\reponseE{\circleForAnswer{e}}
+\def\reponseF{\circleForAnswer{f}}
+\def\reponseX{\circleForAnswer{x}}
+\def\reponseY{\circleForAnswer{y}}
+
+% ===================================================================== %
+% ================ Managing Image siding some text ==================== %
+
+\newlength{\currentparskip}
+% see: https://tex.stackexchange.com/a/43005/8323
+
+\def\varForPourcentageDeLaPartieAGauche{0.4}
+\newcommand{\pourcentageDeLaPartieAGauche}[1]{\global\def\varForPourcentageDeLaPartieAGauche{#1}}
+
+\def\initialisationPartieGauche
+{\setlength{\currentparskip}{\parskip}%
+\begin{minipage}[c][1\totalheight][t]{\varForPourcentageDeLaPartieAGauche\linewidth}%
+\setlength{\parskip}{\currentparskip}}
+
+\def\initialisationPartieDroite
+{\end{minipage}\hfill
+\FPeval{\varForPourcentageDeLaPartieADroite}{clip(1-\varForPourcentageDeLaPartieAGauche)}
+\begin{minipage}[c][1\totalheight][t]{\varForPourcentageDeLaPartieADroite\linewidth}%
+\setlength{\parskip}{\currentparskip}}
+
+\def\finalisationDuPartageDePage
+{\end{minipage}}
+
+
+% ===================================================================== %
+% ============================== Lists ================================ %
+
+% \setlist[itemize, 1]{$\textbullet$, leftmargin = 2em, labelsep = 0.5em}
+% \setlist[itemize, 2]{$\rhd$}
+
+
+% ===================================================================== %
+% ======================== Negative spaces ============================ %
+
+\def\minusSmallskip{\vspace*{-\smallskipamount}}
+\def\minusMedskip{\vspace*{-\medskipamount}}
+\def\minusBigskip{\vspace*{-\bigskipamount}}

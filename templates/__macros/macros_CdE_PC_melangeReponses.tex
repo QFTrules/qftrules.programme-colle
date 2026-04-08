@@ -1,0 +1,49 @@
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~%
+%  dernière                   %
+%  modification = 12/07/2021  %
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~%
+%      Julien Bureaux
+
+\RequirePackage[seed=2021]{randomlist}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\makeatletter
+
+% Définitions globales des macros
+\RL@let{RL@nameldef}{RL@namelgdef}
+\RL@let{RL@nameledef}{RL@namelxdef}
+
+% Commandes à placer avant / entre / après les réponses.
+\def\debReponses{}
+\def\sepReponses{\qquad}%{\quad;\quad}
+\def\finReponses{\par}%{.}
+
+% Définition globale de la liste
+\NewList{@ListeReponses}
+
+% Ajout d'une réponse à la liste pour affichage ultérieur
+\def\ajouteReponse#1{\InsertLastItem{@ListeReponses}{#1}}
+
+% Vide et affiche la liste des réponses dans un ordre aléatoire
+\def\afficheReponses{
+  \debReponses\relax
+  \loop\ifnum\RL@lenof{@ListeReponses}>0
+    \ExtractRandomItem{@ListeReponses}{Element}
+    \Element
+    \ifnum\RL@lenof{@ListeReponses}>0
+      \sepReponses\relax
+    \fi
+  \repeat
+  \finReponses\relax
+}
+
+% Vide le contenu de la liste sans affichage
+\def\videListeReponses{\ClearList{@ListeReponses}}
+
+% Affiche le contenu de la liste
+% \def\debug{\ShowList{@ListeReponses}}
+  
+\makeatother
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

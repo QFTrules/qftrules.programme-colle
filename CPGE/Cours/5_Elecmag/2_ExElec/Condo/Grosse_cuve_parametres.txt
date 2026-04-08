@@ -1,4 +1,0 @@
-a = 39.8 cm
-b = 14.7 cm
-e_ext = 3.1 cm
-e_int = 2.0 cm

@@ -82,8 +82,12 @@
 
 
 %%% ANNALES %%%
-\renewcommand{\Annale}[3][Physique PC]{
-	\vspace{-1cm}\begin{flushleft}\faIcon{book-open} #2, #1, #3. \medskip  \end{flushleft}}
+% \renewcommand{\Annale}[3][Physique PC]{
+% 	% \vspace{-1cm}\begin{flushleft}
+% 		{\color{coolblack}\faIcon{book-open}} #2, #1, #3. \medskip  
+% 	% \end{flushleft}
+% 		}
+\renewcommand{\Annale}[3][Physique PC]{\begin{flushleft}{\color{coolblack}\faIcon{book-open}} #2 : \emph{#1}, #3. \medskip  \end{flushleft}}
 
 %%% MINTED %%%
 \usepackage[cache=false]{minted}

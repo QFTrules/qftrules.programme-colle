@@ -49,6 +49,7 @@
 \newrobustcmd{\ChapitName}[2]{%
 \ifthenelse{\equal{#1}{10}}{Syllabus}{}%
 \ifthenelse{\equal{#1}{0}}{RÉVISIONS PCSI}{}%
+\ifthenelse{\equal{#1}{-1}}{Révisions pour les Oraux}{}%
 \ifthenelse{\equal{#1}{1}}{%
     \ifthenelse{\equal{#2}{1}}{Cinématique du point}{}%
     \ifthenelse{\equal{#2}{2}}{Changements de référentiels}{}%

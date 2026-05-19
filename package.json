@@ -223,6 +223,14 @@
 				}
 			},
 			{
+				"command": "flash.md",
+				"title": "Générer markdown",
+				"icon": {
+					"light": "images/markdown-brands-solid_light.svg",
+					"dark": "images/markdown-brands-solid_dark.svg"
+				}
+			},
+			{
 				"command": "flash.amc",
 				"title": "Ouvrir AMC"
 			},
@@ -276,6 +284,11 @@
 			"editor/title": [
 				{
 					"command": "flash.send",
+					"group": "navigation@-1",
+					"when": "resourceExtname == .tex"
+				},
+				{
+					"command": "flash.md",
 					"group": "navigation@-1",
 					"when": "resourceExtname == .tex"
 				},

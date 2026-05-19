@@ -1,6 +1,9 @@
 # Programme de colle README
 
 Ceci est le README pour l'extension "Programme de colle".
+Choix de couleur pour les icones :
+ - dark : rgba(210, 210, 210, 1.00)
+ - light : rgba(0, 0, 0, 1.00)
 
 ## Caractéristiques
 

@@ -406,6 +406,22 @@ function activate(context) {
 		vscode.window.showInformationMessage('Questions de cours générées avec succès.');
 	})
 
+	// commande pour créer markdown document associé à un fichier latex ouvert dans l'éditeur
+	vscode.commands.registerCommand('flash.md', function () {
+		// get the active text editor
+		let editor = vscode.window.activeTextEditor;
+		if (!editor) {
+			return;
+		}
+		// get the file path
+		const filePath = editor.document.fileName;
+		// apply compile-md.py to the file path to create the md file
+		const mdname = child_process.execSync(pythonCommand + ` /home/eb/qftrules.github.io/compile-md.py ` + filePath).toString().trim();
+		vscode.window.showInformationMessage('Markdown généré : ' + mdname);
+		// open the md file in vscode
+		vscode.commands.executeCommand('vscode.open', vscode.Uri.file(mdname), { viewColumn: vscode.ViewColumn.Two });
+	});
+	
 	// PROGRAMME DE COLLE commands
 
 	// commande pour téléverser le programme de colle sur le cahier de prépa depuis title view : programme de colle
@@ -443,7 +459,7 @@ function activate(context) {
 		vscode.commands.executeCommand('vscode.open', vscode.Uri.file(pdfFile), { viewColumn: vscode.ViewColumn.Two });
 	});
 
-		// commande pour afficher md affiché dans le programme de colle
+		// commande pour afficher md dans le programme de colle
 	vscode.commands.registerCommand('programme.md', function (document) {
 		// define md file associated to latex document
 		const mdFile = document.filePath.replace(/\.[^/.]+$/, ".md");

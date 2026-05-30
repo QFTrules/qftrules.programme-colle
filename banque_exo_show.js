@@ -9,6 +9,32 @@ const TreeItem = require('./treeItem');
 // Object.defineProperty(exports, "__esModule", { value: true });
 // import { DepNodeProvider, Dependency } from './treeview';
 
+function prettifyLatexLabel(label) {
+	if (!label) return label;
+	let out = String(label);
+	// Remove math delimiters for display in tree label.
+	out = out.replace(/\$/g, '');
+	// Simple LaTeX -> unicode replacements for readability.
+	const replacements = [
+		[/\\alpha/g, 'α'], [/\\beta/g, 'β'], [/\\gamma/g, 'γ'], [/\\delta/g, 'δ'],
+		[/\\epsilon/g, 'ε'], [/\\theta/g, 'θ'], [/\\lambda/g, 'λ'], [/\\mu/g, 'μ'],
+		[/\\omega/g, 'ω'], [/\\Omega/g, 'Ω'], [/\\pi/g, 'π'], [/\\sigma/g, 'σ'],
+		[/\\times/g, '×'], [/\\cdot/g, '·'], [/\\to/g, '→'], [/\\infty/g, '∞'],
+		[/\\leq/g, '≤'], [/\\geq/g, '≥'], [/\\neq/g, '≠'], [/\\pm/g, '±'],
+		[/\\approx/g, '≈'], [/\\Delta/g, 'Δ'], [/\\nabla/g, '∇']
+	];
+	for (const [re, sym] of replacements) {
+		out = out.replace(re, sym);
+	}
+	// Flatten common wrappers.
+	out = out.replace(/\\mathrm\{([^}]*)\}/g, '$1');
+	out = out.replace(/\\text\{([^}]*)\}/g, '$1');
+	out = out.replace(/\\frac\{([^}]*)\}\{([^}]*)\}/g, '($1)/($2)');
+	out = out.replace(/[{}]/g, '');
+	out = out.replace(/\s+/g, ' ').trim();
+	return out;
+}
+
 function GetTypeExo(label, filepath) {
 	// filepath is undefined for items in programme de colle
 	if (typeof filepath === 'undefined') {
@@ -20,15 +46,11 @@ function GetTypeExo(label, filepath) {
 	const lines = fileContent.split('\n');
 	for (let i = 0; i < lines.length; i++) {
 		var line = lines[i];
-		if (line.includes(label)) {
-			// get the type of exercise (python, devoir, ...)
-			var startIndex = line.lastIndexOf('[') + 1;
-			var endIndex = line.lastIndexOf(']');
-			const typeExo = line.substring(startIndex, endIndex);
-			// get the difficulty of the exercise (on, two, three stars)
-			var startIndex = line.indexOf('[', line.indexOf('[') + 1) + 1;
-			var endIndex = line.indexOf(']', line.indexOf(']') + 1);
-			const difficulty = line.substring(startIndex, endIndex);
+		const m = line.match(/\\begin\{exo\}(?:\[([^\]]*)\])?(?:\[([^\]]*)\])?(?:\[([^\]]*)\])?\{([^}]*)\}/);
+		if (m && m[4] === label) {
+			// Signature in styles: [theme][difficulty][type]{label}
+			const difficulty = (m[2] || '').trim();
+			const typeExo = (m[3] || '').trim();
 			return [typeExo, difficulty];
 			}
 		}
@@ -73,18 +95,26 @@ function generateTreeItems() {
 
 				return new TreeItem(basename, // chapter level
 					exercices.map(function (exoLine) {
-						// get exercise name
+						// Parse exo declaration robustly: \begin{exo}[theme][difficulty][type]{label}
+						const parsed = exoLine.match(/\\begin\{exo\}(?:\[([^\]]*)\])?(?:\[([^\]]*)\])?(?:\[([^\]]*)\])?\{([^}]*)\}/);
 						const isCommented = /^\s*%/.test(exoLine);
-						var start = exoLine.indexOf('{', exoLine.indexOf('{') + 1) + 1;
-						var end = exoLine.indexOf('}', exoLine.indexOf('}') + 1);
-						var exo = exoLine.substring(start, end);
-						const [typeExo, difficulty] = GetTypeExo(exo, filePath);
+						var exo = parsed ? parsed[4].trim() : '';
+						const typeExo = parsed ? (parsed[3] || '').trim() : 'undefined';
+						const difficulty = parsed ? (parsed[2] || '').trim() : 'undefined';
+
+						// fallback for edge cases where regex could not parse
+						if (!exo) {
+							var start = exoLine.indexOf('{', exoLine.indexOf('{') + 1) + 1;
+							var end = exoLine.indexOf('}', exoLine.indexOf('}') + 1);
+							exo = exoLine.substring(start, end);
+						}
 						if (difficulty === '') {
 							// add this exercise to a file that stores all exercices where the difficulty is not specified
 							// this will be used by the suggestions tree view panel
 							fs.appendFileSync(suggestion_liste, filePath + ':' + exo + '\n');
 						}
-						return new TreeItem(exo,      				// label
+						const displayExo = prettifyLatexLabel(exo);
+						const exoItem = new TreeItem(displayExo,      				// label (display)
 											undefined, 				// children
 											filePath,  				// filePath
 											'file',    				// contextValue
@@ -94,6 +124,8 @@ function generateTreeItems() {
 											basename,				// chapter
 											theme.toUpperCase(),	// theme
 											isCommented); 			// isCommented
+						exoItem.rawLabel = exo;
+						return exoItem;
 					}),
 					filePath, 			// filePath
 					'chapter', 			// contextValue
@@ -175,6 +207,7 @@ class BanqueExoShow {
 	getTreeItem(element) {
 		// var item = element;
 		var item = new TreeItem(element.label, element.children, element.filePath, element.contextValue, vscode.TreeItemCollapsibleState.Collapsed, element.typeExo, element.difficulty, element.chapter, element.theme, element.isCommented);
+		item.rawLabel = element.rawLabel || element.label;
 		if (element.contextValue === 'file') {
 			item.tooltip = "Voir l'exercice";
 			item.command = {
@@ -271,7 +304,8 @@ class BanqueExoShow {
 						// 	return node2;
 						// }
 						for (let k = 0; k < node2.children.length; k++) {
-							if (node2.children[k].label === label) {
+							const exoLabel = node2.children[k].rawLabel || node2.children[k].label;
+							if (exoLabel === label) {
 								// vscode.window.showInformationMessage(treeItems[i].children[j].children[k].label);
 								return node2.children[k];
 							}

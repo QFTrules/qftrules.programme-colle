@@ -120,9 +120,9 @@
 		"prefix": "protocole",
 		"body": "\\\\begin{protocole}\n\t\\\\item $0\n\\\\end{protocole}"
 	  },
-	  "oral": {
-		"prefix": "oral",
-		"body": "\\\\begin{oral}[1]\n\t\\\\Principal[$1]{$2}\n\t\\\\Probleme[$3]{$4}\n\\\\end{oral}"
+	  "problem": {
+		"prefix": "problem",
+		"body": "\\\\begin{problem}[1]\n\t\\\\Principal[$1]{$2}\n\t\\\\Probleme[$3]{$4}\n\\\\end{problem}"
 	  },
 	  "Count": {
 		"prefix": "Count",

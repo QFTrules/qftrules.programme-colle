@@ -155,6 +155,7 @@ function activate(context) {
 	const explorerCommand = vscode.workspace.getConfiguration('banque-exercices').get('explorerCommand');
 	const cpgePath = vscode.workspace.getConfiguration('programme-colle').get('cpgePath');
 	const mdPath = vscode.workspace.getConfiguration('programme-colle').get('mdPath');
+	const texPath = vscode.workspace.getConfiguration('mathpix-pdf').get('texPath');
 	// const mathpixCommand = vscode.workspace.getConfiguration('mathpix-pdf').get('mpxCommand');
 	// const texPath = vscode.workspace.getConfiguration('mathpix-pdf').get('texPath');
 	// const texArchives = vscode.workspace.getConfiguration('mathpix-pdf').get('texArchives');
@@ -426,6 +427,21 @@ function activate(context) {
 	// Banque item commands are now registered in ./commands/banqueItemCommands.js
 	registerBanqueItemCommands(context, { exoenvi, explorerCommand, styPath, programmeBalise, extensionPath: __dirname });
 
+	// Auto-refresh banque tree view when a Recueil latex file is saved.
+	const banqueAutoRefreshOnSave = vscode.workspace.onDidSaveTextDocument((document) => {
+		if (document.languageId !== 'latex') {
+			return;
+		}
+		if (typeof texPath === 'string' && texPath.length > 0) {
+			const base = path.resolve(texPath);
+			const saved = path.resolve(document.uri.fsPath);
+			if (!saved.startsWith(base)) {
+				return;
+			}
+		}
+		vscode.commands.executeCommand('banque.refresh');
+	});
+
 	// banque.compile and banque.reveal are now registered in ./commands/banqueItemCommands.js
 
 	// COMMANDS AT LAUNCH //
@@ -433,7 +449,7 @@ function activate(context) {
 	// update_graphics_path();
 
 	// command to build a QCM for a given chapter
-	vscode.commands.registerCommand('flash.test', function () {
+	let test = vscode.commands.registerCommand('flash.test', function () {
 		// get the active text editor
 		let editor = vscode.window.activeTextEditor;
 		if (!editor) {
@@ -720,6 +736,7 @@ function activate(context) {
 	context.subscriptions.push(flash_fiche_colle);
 	context.subscriptions.push(flash_view_soluce);
 	context.subscriptions.push(colle_qcours);
+	context.subscriptions.push(banqueAutoRefreshOnSave);
 	// context.subscriptions.push(convert);
 	// context.subscriptions.push(flash_soluce_only);
 

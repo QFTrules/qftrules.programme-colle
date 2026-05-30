@@ -4,25 +4,76 @@ const fs = require('fs');
 const path = require('path');
 const BanqueExoShow = require('../banque_exo_show');
 
-// Helper: insert the TEX root line at the beginning of the file
-function insertLatexMagic(editor, rootFile) {
-	const editorText = editor.document.getText();
-	const latex_magic = `% !TEX root = ${rootFile}.tex`;
-	if (editorText.includes(`% !TEX root `)) {
-		editor.edit(editBuilder => {
-			const lineIndex = editorText.indexOf(latex_magic);
-			const line = editor.document.lineAt(editor.document.positionAt(lineIndex).line);
-			editBuilder.delete(line.range);
-		}).then(() => {
-			editor.edit(editBuilder => {
-				editBuilder.insert(new vscode.Position(0, 0), latex_magic);
-			});
-		});
-	} else {
-		editor.edit(editBuilder => {
-			editBuilder.insert(new vscode.Position(0, 0), latex_magic);
-		});
+// Helper: insert/update the TEX root line at the beginning of the file.
+async function insertLatexMagic(editor, rootFile) {
+	const latexMagic = `% !TEX root = ${rootFile}.tex`;
+	const lineCount = editor.document.lineCount;
+	let existingMagicLine = -1;
+	for (let i = 0; i < lineCount; i++) {
+		const txt = editor.document.lineAt(i).text;
+		if (txt.includes('% !TEX root')) {
+			existingMagicLine = i;
+			break;
+		}
 	}
+
+	await editor.edit(editBuilder => {
+		if (existingMagicLine >= 0) {
+			const line = editor.document.lineAt(existingMagicLine);
+			editBuilder.replace(line.range, latexMagic);
+			if (existingMagicLine !== 0) {
+				editBuilder.delete(line.rangeIncludingLineBreak);
+				editBuilder.insert(new vscode.Position(0, 0), `${latexMagic}\n`);
+			}
+		} else {
+			editBuilder.insert(new vscode.Position(0, 0), `${latexMagic}\n`);
+		}
+	});
+}
+
+function getExerciseRangeInDocument(document, exerciseLabel, exoEnvironment) {
+	const text = document.getText();
+	const escapedLabel = exerciseLabel.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+	const envPattern = `\\\\begin\\{${exoEnvironment}\\}[^\n]*\\{${escapedLabel}\\}`;
+	const regex = new RegExp(envPattern, 'g');
+	let match = regex.exec(text);
+	while (match) {
+		const start = document.positionAt(match.index);
+		const end = document.positionAt(match.index + match[0].length);
+		return new vscode.Range(start, end);
+	}
+	return undefined;
+}
+
+async function openAndFetchExercise(doc, exoenvi, programmeBalise) {
+	await vscode.commands.executeCommand('vscode.open', vscode.Uri.file(doc.filePath), { viewColumn: vscode.ViewColumn.One });
+	const editor = vscode.window.activeTextEditor;
+	if (!editor) {
+		return undefined;
+	}
+
+	if (doc.contextValue === 'latex') {
+		const text = editor.document.getText();
+		const position = text.indexOf(programmeBalise);
+		if (position >= 0) {
+			const start = editor.document.positionAt(position);
+			const end = editor.document.positionAt(position + programmeBalise.length);
+			const range = new vscode.Range(start, end);
+			editor.selection = new vscode.Selection(range.start, range.end);
+			editor.revealRange(range, vscode.TextEditorRevealType.AtTop);
+		}
+		return { editor };
+	}
+
+	const exoLabel = String(doc.rawLabel || doc.label || '').replace(/"/g, '');
+	const range = getExerciseRangeInDocument(editor.document, exoLabel, exoenvi);
+	if (range) {
+		editor.selection = new vscode.Selection(range.start, range.end);
+		editor.revealRange(range, vscode.TextEditorRevealType.AtTop);
+	} else {
+		vscode.window.showWarningMessage(`Exercise "${exoLabel}" not found in ${path.basename(doc.filePath)}.`);
+	}
+	return { editor, exoLabel, range };
 }
 
 function registerBanqueItemCommands(context, options) {
@@ -113,51 +164,14 @@ function registerBanqueItemCommands(context, options) {
 	});
 
 	// fetch a string in a latex file, like exercise name or balise
-	vscode.commands.registerCommand('banque.fetch', function (doc) {
-		vscode.commands.executeCommand('vscode.open', vscode.Uri.file(doc.filePath), { viewColumn: vscode.ViewColumn.One }).then(() => {
-			// Get the active text editor and string to search
-			var editor = vscode.window.activeTextEditor;
-			if (!editor) {
-				return;
-			}
-
-			// determine the string according to banque d'exercices or programme colle call
-			if (doc.contextValue === 'latex') {
-				var searchString = programmeBalise;
-			} else {
-				var searchString = '{' + doc.label + '}';
-			}
-
-			// first occurrence of string to search in the document
-			var searchString = '{' + doc.label + '}';
-			let document = editor.document;
-			var text = document.getText();
-			var position = text.indexOf(searchString);
-			var startPosition = document.positionAt(position);
-			var endPosition = document.positionAt(position + searchString.length);
-
-			// check that the string \begin{exo} is also at the beginning of the line
-			var line = document.lineAt(startPosition.line).text;
-			while (!line.includes('{exo}')) {
-				// look for next occurrence of searchString
-				position = text.indexOf(searchString, position + 1);
-				startPosition = document.positionAt(position);
-				endPosition = document.positionAt(position + searchString.length);
-				range = new vscode.Range(startPosition, endPosition);
-				line = document.lineAt(startPosition.line).text;
-			}
-
-			// select the range and reveal it in the editor
-			var range = new vscode.Range(startPosition, endPosition);
-			editor.selection = new vscode.Selection(range.start, range.end);
-			editor.revealRange(range, vscode.TextEditorRevealType.AtTop);
-		});
+	vscode.commands.registerCommand('banque.fetch', async function (doc) {
+		await openAndFetchExercise(doc, exoenvi, programmeBalise);
 	});
 
 	// FUNCTIONS OF VIEW - ITEM - EXERCICE INLINE //
 
 	// command to compile an exercise separately
-	const banqueCompile = vscode.commands.registerCommand('banque.compile', function (document) {
+	const banqueCompile = vscode.commands.registerCommand('banque.compile', async function (document) {
 
 		// string to search in the document
 		const searchString = '\\begin{' + exoenvi + '}';
@@ -167,16 +181,21 @@ function registerBanqueItemCommands(context, options) {
 			var editor = vscode.window.activeTextEditor;
 			if (!editor) {
 				vscode.window.showInformationMessage('No active editor found.');
+				return;
 			}
 
 			// declare the cursorPosition variable
 			const cursorPosition = editor.selection.active;
 			// find the first line before the cursor position that contains the string '\begin{exo}'
 			let lineNumber = cursorPosition.line - 1;
-			let lineText = editor.document.lineAt(lineNumber).text;
+			let lineText = lineNumber >= 0 ? editor.document.lineAt(lineNumber).text : '';
 			while (lineNumber >= 0 && !lineText.includes(searchString)) {
 				lineNumber--;
-				lineText = editor.document.lineAt(lineNumber).text;
+				lineText = lineNumber >= 0 ? editor.document.lineAt(lineNumber).text : '';
+			}
+			if (lineNumber < 0) {
+				vscode.window.showWarningMessage(`No ${searchString} found before cursor.`);
+				return;
 			}
 			// get second { character in line
 			const start = lineText.indexOf('{', lineText.indexOf('{') + 1) + 1;
@@ -186,10 +205,14 @@ function registerBanqueItemCommands(context, options) {
 			var FilePath = editor.document.fileName;
 			var SourceFile = path.basename(FilePath);
 		} else {
-			// open document.path
-			vscode.commands.executeCommand('vscode.open', vscode.Uri.file(document.filePath), { viewColumn: vscode.ViewColumn.One });
-			var editor = vscode.window.activeTextEditor;
-			var exo = document.label.replace(/"/g, '');
+			// When invoked from tree item: fetch/highlight exercise in source file first.
+			const fetched = await openAndFetchExercise(document, exoenvi, programmeBalise);
+			if (!fetched || !fetched.editor) {
+				vscode.window.showWarningMessage('Unable to open source file for selected exercise.');
+				return;
+			}
+			var editor = fetched.editor;
+			var exo = fetched.exoLabel || (document.rawLabel || document.label).replace(/"/g, '');
 			var FilePath = document.filePath;
 			var SourceFile = path.basename(FilePath);
 		}
@@ -197,7 +220,7 @@ function registerBanqueItemCommands(context, options) {
 		// name of temporary latex exercise file
 		const exercice_name = 'Exercice';
 		const exercice = extensionPath + `/tmp/${exercice_name}`;
-		insertLatexMagic(editor, exercice);
+		await insertLatexMagic(editor, exercice);
 		// create the exercise latex file
 		const template = `%&Exercice\n%\\input{${styPath}TDappli.sty}\n%\\Soluce\n% \\endofdump\n\\begin{document}\n\\Source{${SourceFile}}\n\\Ex{${exo}}\n\\end{document}`;
 		fs.writeFileSync(exercice + '.tex', template);

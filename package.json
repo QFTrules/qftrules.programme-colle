@@ -177,7 +177,7 @@
 			{
 				"command": "banque.open",
 				"title": "Ouvrir source",
-				"icon": "$(file-code)"
+				"icon": "$(file-symlink-file)"
 			},
 			{
 				"command": "banque.compile",

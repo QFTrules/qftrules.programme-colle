@@ -374,24 +374,9 @@
 			],
 			"view/title": [
 				{
-					"command": "programme.upload",
-					"when": "view == programme-colle && static",
-					"group": "navigation@1"
-				},
-				{
-					"command": "programme.uploading",
-					"when": "view == programme-colle && !static",
-					"group": "navigation@1"
-				},
-				{
 					"command": "programme.compile",
 					"when": "view == programme-colle",
 					"group": "navigation@2"
-				},
-				{
-					"command": "programme.build",
-					"when": "view == programme-colle",
-					"group": "navigation@3"
 				},
 				{
 					"command": "programme.refresh",

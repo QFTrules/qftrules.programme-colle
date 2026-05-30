@@ -26,7 +26,7 @@ var __extends = (this && this.__extends) || (function () {
 // define the properties of the tree items, notably the icons, descriptions, and the collapsible states
 var TreeItem = /** @class */ (function (_super) {
 	__extends(TreeItem, _super);
-	function TreeItem(label, children, filePath, contextValue, collapsed, typeExo, difficulty, chapter, theme) {
+	function TreeItem(label, children, filePath, contextValue, collapsed, typeExo, difficulty, chapter, theme, isCommented) {
 		// _this is used to keep the initial object this available in the constructor
 		var _this = _super.call(this, label, children === undefined ? vscode.TreeItemCollapsibleState.None :
 			vscode.TreeItemCollapsibleState.Expanded, collapsed, typeExo, difficulty, chapter, theme) || this;
@@ -37,6 +37,7 @@ var TreeItem = /** @class */ (function (_super) {
 			_this.difficulty = difficulty;
 			_this.chapter = chapter;
 			_this.theme = theme;
+			_this.isCommented = !!isCommented;
 
 			// indicate difficulty level in the tree view
 			_this.description = _this.contextValue === 'file' ? '★'.repeat(difficulty) : '';
@@ -166,6 +167,11 @@ var TreeItem = /** @class */ (function (_super) {
 					}
 				}
 			}
+		// Apply commented marker.
+		if (_this.contextValue === 'file' && _this.isCommented) {
+			_this.description = '(commented)' + (_this.description ? ' ' + _this.description : '');
+		}
+
 		return _this;
 	}
 

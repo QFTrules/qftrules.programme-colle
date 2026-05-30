@@ -67,18 +67,18 @@ function generateTreeItems() {
 			latex_files.map(function (filePath) {
 				// get chapter latex file basename
 				// vscode.window.showInformationMessage(filePath);
-				var exercices = child_process.execSync('grep -E "\\\\\\\\begin{exo}" ' + filePath.toString()).toString().split('\n');
+				var exercices = child_process.execSync('grep -E "\\\\\\begin{exo}" ' + filePath.toString()).toString().split('\n');
 				exercices.pop();
 				const basename = path.parse(filePath).name
 
 				return new TreeItem(basename, // chapter level
-					exercices.map(function (exo) {
+					exercices.map(function (exoLine) {
 						// get exercise name
-						var start = exo.indexOf('{', exo.indexOf('{') + 1) + 1;
-						var end = exo.indexOf('}', exo.indexOf('}') + 1);
-						var exo = exo.substring(start, end);
-						var typeExo = GetTypeExo(exo, filePath)[0];
-						var difficulty = GetTypeExo(exo, filePath)[1];
+						const isCommented = /^\s*%/.test(exoLine);
+						var start = exoLine.indexOf('{', exoLine.indexOf('{') + 1) + 1;
+						var end = exoLine.indexOf('}', exoLine.indexOf('}') + 1);
+						var exo = exoLine.substring(start, end);
+						const [typeExo, difficulty] = GetTypeExo(exo, filePath);
 						if (difficulty === '') {
 							// add this exercise to a file that stores all exercices where the difficulty is not specified
 							// this will be used by the suggestions tree view panel
@@ -92,7 +92,8 @@ function generateTreeItems() {
 											typeExo,   				// typeExo
 											difficulty,			  	// difficulty
 											basename,				// chapter
-											theme.toUpperCase()); 	// theme
+											theme.toUpperCase(),	// theme
+											isCommented); 			// isCommented
 					}),
 					filePath, 			// filePath
 					'chapter', 			// contextValue
@@ -162,17 +163,10 @@ function generateTreeItems() {
 // define the data providers for the programme de colle panel
 class BanqueExoShow {
     constructor() {
-		
 		// event emitter
 		// this.onDidChangeTreeData = new vscode.EventEmitter();
 
-		// Get the active text editor
-		var editor = vscode.window.activeTextEditor;
-		if (!editor) {
-			return;
-		}
-
-		// Generate tree data
+		// Generate tree data even when no editor is open.
 		this.data = generateTreeItems();
 		
     }
@@ -180,7 +174,7 @@ class BanqueExoShow {
 	// define here the command to call when clicking on the tree items
 	getTreeItem(element) {
 		// var item = element;
-		var item = new TreeItem(element.label, element.children, element.filePath, element.contextValue, vscode.TreeItemCollapsibleState.Collapsed, element.typeExo, element.difficulty, element.chapter, element.theme);
+		var item = new TreeItem(element.label, element.children, element.filePath, element.contextValue, vscode.TreeItemCollapsibleState.Collapsed, element.typeExo, element.difficulty, element.chapter, element.theme, element.isCommented);
 		if (element.contextValue === 'file') {
 			item.tooltip = "Voir l'exercice";
 			item.command = {

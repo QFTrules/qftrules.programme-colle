@@ -140,7 +140,7 @@ hyperfigures=true]
 \renewenvironment{answer}{%
 
 \vspace{0.1cm}%
-\begin{adjustwidth}{0cm}{}%
+\begin{adjustwidth}{0.18cm}{}%
   \begin{minipage}{0.95\columnwidth}
     \begin{siderule}%
       \itshape%
@@ -195,13 +195,13 @@ i   \else
 {\color{iconcolor}\small\faFlask}%
 }
 
-% \newcommand{proof}[1]{%
 \newenvironment{materiel}{%
 \noindent\iconMateriel~~\textbf{\textcolor{iconcolor}{Matériel}}%
 \begin{answer}%
 % \begin{awesomeblock}[JoliRouge]{1pt}{\iconProof}{JoliRouge}%
 }{%
 \end{answer}%
+\par\vspace{1.5em}%
 % \end{awesomeblock}%
 }%
 
@@ -397,26 +397,6 @@ i   \else
 
 %%% REDIFINITION OF \d %%%
 \renewcommand{\d}{\mathrm{d}}
-
-%%% ENVIRONNENT SPÉCIFIQUES %%%
-% \newcommand{\matos}[1]{
-% \begin{materiel}%
-% \begin{liste}[leftmargin=0.45cm]%
-%   #1%
-% \end{liste}%
-% \end{materiel}%
-% }
-% }
-
-% \newcommand{\prerequis}[1]{
-% \noindent\underline{Prérequis}~:
-% % \begin{minipage}{0.49\textwidth}
-% \begin{liste}
-% #1
-% \end{liste}
-% % \end{minipage}
-% }
-
 
 %----------------------------------------------------------------------------------------
 %	REMARQUE ET REMARQUETECH ET EXEMPLE

@@ -616,7 +616,7 @@ R_{\rm th, #1}%
   innertopmargin=0mm,
   innerbottommargin=0.2mm,
   innerleftmargin=3mm,
-  leftmargin=-15pt,
+  leftmargin=-10pt,
   linewidth=1pt,
   % shadow=true,
   % shadowsize=2pt,
@@ -756,12 +756,14 @@ R_{\rm th, #1}%
 }
 
 \newenvironment{consigne}{%
+\Needspace{10\baselineskip}%
 \noindent\iconConsigne~~\textbf{\textcolor{iconcolor}{Consignes}}%
 \begin{answer}%
 % \begin{liste}
 }{%
 % \end{liste}
 \end{answer}%
+\par\vspace{1.5em}%
 }
 
 \newcommand{\ConsignesTP}{
@@ -786,7 +788,7 @@ R_{\rm th, #1}%
 \renewcommand{\matos}[1]{
 \vspace{0.1cm}
   \begin{materiel}%
-    \begin{liste}[leftmargin=0.45cm]%
+    \begin{liste}[leftmargin=10pt]%
       ##1%
     \end{liste}%
     \end{materiel}%
@@ -1328,15 +1330,14 @@ title={#2},#1
                     % \vspace{0.5em}
                     \noindent%
                     \vspace{0pt}%
-                    \noindent\underline{Consignes}~:%
-                    \begin{liste}[leftmargin=0.45cm]%
-                    {\small\itshape 
+                    \begin{consigne}
+                    \begin{liste}[leftmargin=0.45cm]
                     \item Le sujet de l'épreuve est composée d'une phase de préparation de 45 min et d'une phase de manipulation de 2h15.
                     \item Le candidat devra commencer par la phase de préparation A, et ne pourra aborder la phase de manipulation B qu'une fois la phase de préparation terminée.
                     \item Le candidat devra faire valider sa progression par l'examinateur entre chaque question de la partie manipulation B, avant de passer à la suite.
                     \item Le candidat devra rendre un compte-rendu de TP à l'issue de l'épreuve.
-                    }%
-                    \end{liste}%
+                    \end{liste}
+                    \end{consigne}%
                     % sectionning
                     \renewcommand{\thesection}{\Alph{section}}
                     \titleformat{\section}[hang]{\bfseries}{

@@ -26,6 +26,33 @@
 \ifthenelse{\equal{#2}{8}}{A}{}%
 }
 
+\newcommand{\ThemeLetterCode}[1]{%
+\ifcase\numexpr#1\relax
+\or M%
+\or T%
+\or I%
+\or F%
+\or E%
+\or O%
+\or R%
+\or A%
+\fi
+}
+
+\newcommand{\myQRcodeThemeChapter}[3][1.8cm]{%
+\begingroup
+\edef\ThemeCodeInvoker{\endgroup
+    \noexpand\myQRcode[#1]{\ThemeLetterCode{#2}#3}}%
+\ThemeCodeInvoker
+}
+
+\newcommand{\myURLThemeChapter}[3]{%
+\begingroup
+\edef\ThemeCodeInvoker{\endgroup
+    \noexpand\myURL{\ThemeLetterCode{#1}#2}{#3}}%
+\ThemeCodeInvoker
+}
+
 %% LISTE DES TP %%%
 \newrobustcmd{\TPName}[1]{%
 \ifthenelse{\equal{#1}{0}}{Incertitudes}{}%
@@ -164,6 +191,7 @@
 \ifthenelse{\equal{\detokenize{#1}}{\detokenize{C}}}{Analyse vectorielle}{}%
 \ifthenelse{\equal{\detokenize{#1}}{\detokenize{D}}}{Trigonométrie}{}%
 \ifthenelse{\equal{\detokenize{#1}}{\detokenize{E}}}{Techniques expérimentales}{}%
+\ifthenelse{\equal{\detokenize{#1}}{\detokenize{F}}}{Analyse de Fourier}{}%
 }
 
 % CAPACITÉS NUMÉRIQUES NAMES 
@@ -190,6 +218,7 @@
 \setcounter{part}{#2}
 \ifthenelse{\equal{#1}{0}}{\cover{#2.jpg}}{\cover{full_blank.png}}
 \title{\ThemeName{#2}}
+\def\theqrcode{\miniQR[cours][#2]{1}}
 % \newcommand{\themeletter}{\ThemeLetter{#1}}
 }
 % Chapitres pour programme de colle partie TD
@@ -198,8 +227,7 @@
 % ------------------------
 % LIST OF REFS
 \newrobustcmd{\refChap}[2]{%
-% \myURL{\ThemeLetter{#1}#2}{Chap.~\ThemeLetter{#1}#2~:~\ChapitName{#1}{#2}}%
-\myURL{M1}{Chap.~\ThemeLetter{#1}#2~:~\ChapitName{#1}{#2}}%
+\myURLThemeChapter{#1}{#2}{Chap.~\ThemeLetter{#1}#2~:~\ChapitName{#1}{#2}}%
 }%
 \newrobustcmd{\refTP}[1]{%
 \StrLen{#1}[\myLength]%

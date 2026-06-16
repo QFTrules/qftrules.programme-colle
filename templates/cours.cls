@@ -307,11 +307,14 @@
 % corlor definition
 \definecolor{winered}{rgb}{0.5,0,0}
 \definecolor{bule}{RGB}{18,29,57}
+\definecolor{coolblack}{rgb}{0.0, 0.18, 0.39}
+% Set coolblack as the main structure color for sections and table of contents
+\colorlet{structurecolor}{coolblack}
 \colorlet{coverlinecolor}{second}
 
 
-% ----- Title Style -----
 \ifdefstring{\ELEGANT@titlestyle}{hang}{\def\style{hang}}{\relax}
+% ----- Title Style -----
 \ifdefstring{\ELEGANT@titlestyle}{display}{\def\style{display}}{\relax}
 
 % reference:
@@ -919,12 +922,19 @@
   \setlength{\fboxsep}{0pt}
   \colorbox{structurecolor}{\makebox[\linewidth][c]{\shortstack[c]{\vspace{\blueribbon}}}}
   \vfill
-  \hspace{2em}
   \vspace{\courstopspace}
-  \parbox{0.8\textwidth}{
-    \bfseries\Huge%\scshape
-      \ifcsname @title\endcsname \@title \fi
-    \par}
+  \noindent\makebox[\linewidth][l]{%
+    \hspace{2em}%
+    \begin{minipage}[c]{\dimexpr\linewidth-2em\relax}
+      \parbox[c]{0.78\linewidth}{
+        \bfseries\Huge%\scshape
+          \ifcsname @title\endcsname \@title \fi
+        \par}%%
+      \ifcsname theqrcode\endcsname
+        \makebox[2.2cm][c]{\theqrcode}
+      \fi
+    \end{minipage}%
+  }
   \vfill
   % \vspace{-1cm}
   % \vspace{-0.5cm}

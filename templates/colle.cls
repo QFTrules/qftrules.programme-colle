@@ -74,10 +74,11 @@
 % \ProcessOptions\relax
 
 %%% DEPENDANCES %%%
-\input{$HOME/Dropbox/texmf/tex/latex/Preambles/symbols.sty}%$
-\input{$HOME/Dropbox/texmf/tex/latex/Preambles/programme.tex}%$
-\input{$HOME/Dropbox/texmf/tex/latex/Preambles/URL.tex}%$
-\input{$HOME/Dropbox/texmf/tex/latex/Preambles/_preambule_CdE_PC.tex}
+\input{symbols.sty}%$
+\input{programme.tex}%$
+\input{URL_qftrules.tex}%$
+\input{QR_qftrules.tex}
+\input{_preambule_CdE_PC.tex}
 
 
 %%% FIGURE WITHIN EXERCISE ENVIRONNEMENT %%%

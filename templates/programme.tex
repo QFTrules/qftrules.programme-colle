@@ -231,11 +231,11 @@
 }%
 \newrobustcmd{\refTP}[1]{%
 \StrLen{#1}[\myLength]%
-\ifthenelse{\myLength>1}{%
+% \ifthenelse{\myLength>1}{%
     \myURL{TP#1}{TP#1~:~\TPName{#1}}%
-}{%
-    \myURL{TP0#1}{TP#1~:~\TPName{#1}}%
-}%
+% }{%
+    % \myURL{TP0#1}{TP#1~:~\TPName{#1}}%
+% }%
 }%
 \newrobustcmd{\refTD}[1]{%
 \myURL{TD#1}{TD#1~:~\TDName{#1}}%

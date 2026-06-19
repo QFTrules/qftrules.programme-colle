@@ -1,0 +1,61 @@
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~%
+%  dernière                   %
+%  modification = 27/04/2023  %
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~%
+%      Colas Bardavid
+
+% ===================================================================== %
+% ======================== Options globales  ========================== %
+\def\documentEnNoirEtBlanc{\gdef\versionNBGlobale{versionNBGlobale}}
+\def\documentEnCouleurs{\gdef\versionCouleurGlobale{versionCouleurGlobale}}
+
+
+% ===================================================================== %
+% ======================= Conditional colors ========================== %
+\newcommand{\couleurNBouCouleur}[2]
+{% #1 est la couleur NB ; #2 est la couleur "en couleur"
+\ifdefined\versionNBGlobale
+#1%
+\else
+	\ifdefined\versionCouleurGlobale
+	 	#2%
+	\else
+		\ifdefined\versionNB
+			#1%
+		\else
+			#2%
+		\fi
+	\fi
+\fi}
+
+
+% ===================================================================== %
+% ======================= Predefined colors =========================== %
+\def\couleurFond{\couleurNBouCouleur{black!15}{blue!15}}%{blue!15}%{Snow3}
+\def\couleurContour{\couleurNBouCouleur{black!50}{blue!30}}%{blue!30}%{black!50!Snow3}
+\def\couleurFoncee{\couleurNBouCouleur{black!70}{blue!50}}%{blue!50}%{black!50!Snow3}
+
+\def\myCBDBlue{Blue1}
+\def\myCBDRed{Red2}
+
+\def\redOrBlack{\couleurNBouCouleur{black}{\myCBDRed}}
+\def\redOrDarkGray{\couleurNBouCouleur{white!30!black}{\myCBDRed}}
+\def\blueOrBlack{\couleurNBouCouleur{black}{\myCBDBlue}}
+\def\greenOrDarkGray{\couleurNBouCouleur{white!30!black}{green}}
+\def\blueOrDarkGray{\couleurNBouCouleur{white!30!black}{\myCBDBlue}}
+\def\darkRedOrDarkGray{\couleurNBouCouleur{white!30!black}{red!70!black}}
+
+% ===================================================================== %
+% ======================== Jimmy's colors ============================= %
+\gdef\JRLred{\couleurNBouCouleur{black}{red!66}}
+\gdef\JRLcyanclair{\couleurNBouCouleur{lightgray!30}{cyan!10}}
+
+\def\JRLorange{\couleurNBouCouleur{gray}{orange}}
+\def\JRLgreen{\couleurNBouCouleur{gray}{green!70!blue}}
+\def\JRLorangeOrBlack{\couleurNBouCouleur{black}{orange}}
+\def\JRLgreenOrBlack{\couleurNBouCouleur{black}{green!70!blue}}
+\def\JRLblueCC{\couleurNBouCouleur{lightgray!10}{blue!8}}
+\def\JRLblue{\couleurNBouCouleur{black}{blue!75}}
+\def\JRLblueC{\couleurNBouCouleur{lightgray!30}{blue!15}}
+\def\JRLcyan{\couleurNBouCouleur{gray}{cyan}}
+\def\JRLcyanC{\couleurNBouCouleur{lightgray!30}{cyan!10}}

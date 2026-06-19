@@ -1,0 +1,224 @@
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~%
+%  dernière                   %
+%  modification = 26/04/2023  %
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~%
+%      Colas Bardavid
+
+
+% --------------------------------------------------------- %
+%                       Physique
+% --------------------------------------------------------- %
+
+\DeclareMathOperator{\incertitude}{\textsf{\textup{u}}}
+\def\zScore{\textsf{\textup{z}}}
+
+% --------------------------------------------------------- %
+%                           Listes
+% --------------------------------------------------------- %
+
+\newlist{listeBullet}{itemize}{1}
+\setlist[listeBullet]{label = \textbullet}
+
+\newlist{listeEtoile}{itemize}{1}
+\setlist[listeEtoile]{label = $\circledast$}
+
+
+% --------------------------------------------------------- %
+%              Diverses macros pour les maths
+% --------------------------------------------------------- %
+
+\def\Q{\mathbb{Q}}
+\def\R{\mathbb{R}}
+\def\Z{\mathbb{Z}}
+\def\N{\mathbb{N}}
+\def\C{\mathbb{C}}
+\def\K{\mathbb{K}}
+\def\U{\mathbb{U}}
+
+\renewcommand{\d}[1]{\ensuremath{\operatorname{d}\!{#1}}} % le d des intégrales
+
+\def\iC{\textrm{i}} % le i des nombres complexes
+\def\jC{\textrm{j}} % le j des nombres complexes
+
+\def\eEuler{\textrm{e}} % le e de Euler
+
+\newcommand{\etc}{\emph{etc.}}
+
+\let\Im\relax
+\let\Re\relax
+\DeclareMathOperator{\Im}{\mathsf{Im}}
+\DeclareMathOperator{\Re}{\mathsf{Re}}
+
+\def\longto{\mathop{\longrightarrow}}
+
+\newcommand{\cvg}[1]{\xrightarrow[#1]{}}
+
+
+% --------------------------------------------------------- %
+%                  Lettres pour les points
+% --------------------------------------------------------- %
+
+\newcommand{\macroPourLesPoints}[1]{\text{$\mathrm{#1}$} }
+\def\ptA{\macroPourLesPoints{A}}
+\def\ptB{\macroPourLesPoints{B}}
+\def\ptC{\macroPourLesPoints{C}}
+\def\ptD{\macroPourLesPoints{D}}
+\def\ptE{\macroPourLesPoints{E}}
+\def\ptF{\macroPourLesPoints{F}}
+\def\ptG{\macroPourLesPoints{G}}
+\def\ptH{\macroPourLesPoints{H}}
+\def\ptI{\macroPourLesPoints{I}}
+\def\ptJ{\macroPourLesPoints{J}}
+\def\ptK{\macroPourLesPoints{K}}
+\def\ptL{\macroPourLesPoints{L}}
+\def\ptM{\macroPourLesPoints{M}}
+\def\ptN{\macroPourLesPoints{N}}
+\def\ptO{\macroPourLesPoints{O}}
+\def\ptP{\macroPourLesPoints{P}}
+\def\ptQ{\macroPourLesPoints{Q}}
+\def\ptR{\macroPourLesPoints{R}}
+\def\ptS{\macroPourLesPoints{S}}
+\def\ptT{\macroPourLesPoints{T}}
+\def\ptU{\macroPourLesPoints{U}}
+\def\ptV{\macroPourLesPoints{V}}
+\def\ptW{\macroPourLesPoints{W}}
+\def\ptX{\macroPourLesPoints{X}}
+\def\ptY{\macroPourLesPoints{Y}}
+\def\ptZ{\macroPourLesPoints{Z}}
+\def\ptOmega{\macroPourLesPoints{\Omega}}
+
+
+% --------------------------------------------------------- %
+%          Commandes pour dessiner les fonctions
+% --------------------------------------------------------- %
+% Exemples :
+% \fonction{\R}{\R}{x}{x^2}				fonction R->R, x |-> x^2
+% \fonctionAccolade{\R}{\R}{x}{x^2}		fonction R->R, x |-> x^2 avec une accolade
+%
+% Warning: xypic changed to xy
+\RequirePackage[all]{xy}
+\makeatother
+\newlength\longueurdudiagramme
+\newcommand{\fonction}[4]
+{%
+\settowidth{\longueurdudiagramme}
+{%
+$\xymatrix@R=0mm{
+{#1} \ar[r] & {#2} \\
+{#3} \ar@{|->}[r] & {#4}}$
+}
+\begin{minipage}{\longueurdudiagramme}
+$\xymatrix@R=0mm{
+{#1} \ar[r] & {#2} \\
+{#3} \ar@{|->}[r] & {#4}}$
+\end{minipage}
+}
+\makeatletter
+
+\newcommand{\fonctionAccolade}[4]
+{\left\{
+\fonction{#1}{#2}{#3}{#4}
+\right.}
+
+
+
+% --------------------------------------------------------- %
+%                       Guillemets
+% --------------------------------------------------------- %
+
+\newcommand{\glm}[1]{\enquote{#1}}
+
+
+
+% --------------------------------------------------------- %
+%                  Signe d'équivalence
+% --------------------------------------------------------- %
+
+\def\ssi{\iff}
+\def\quadSSI{\quad\ssi\quad}
+\def\qquadSSI{\qquad\ssi\qquad}
+\def\spaceSSI{\ \ssi\ }
+
+
+
+% --------------------------------------------------------- %
+%                      Valeur absolue
+% --------------------------------------------------------- %
+
+\DeclarePairedDelimiter{\myVA}{\lvert}{\rvert}
+\newcommand{\va}[1]{\myVA*{#1}}
+\newcommand{\vaN}[1]{\myVA[\normalsize]{#1}}
+\newcommand{\vaB}[1]{\myVA[\big]{#1}}
+\newcommand{\vaBB}[1]{\myVA[\Big]{#1}}
+\newcommand{\vaBBB}[1]{\myVA[\bigg]{#1}}
+\newcommand{\vaBBBB}[1]{\myVA[\Bigg]{#1}}
+
+
+
+
+% --------------------------------------------------------- %
+%               Macros perso de Jimmy Roussel
+% --------------------------------------------------------- %
+
+% commande \resistanceH{option}{nom}  : résistance de longueur unité, centrée en (0,0).
+\newcommand{\resistanceH}[2]{
+	\draw[#1,fill=white] (-0.5,3pt)--++(1,0)--++(0,-6pt)--++(-1,0)--cycle;
+	\draw[#1] (0,0) node[above=3pt]{#2};
+}
+
+% commande \resistanceV{option}{nom}  : résistance de longueur unité, centrée en (0,0).
+\newcommand{\resistanceV}[2]{
+	\draw[#1,fill=white] (-3pt,0.5)--++(0,-1)--++(6pt,0)--++(0,1)--cycle;
+	\draw[#1] (0,0) node[left=3pt]{#2};
+}
+% \pile{options}{valeur} : pile avec le voltage à gauche
+\newcommand{\pileL}[2]%
+{
+\draw[#1,draw=white,very thick](0,.5)--(0,-.5);
+\draw[#1](0,.5)--(0,2pt);
+\draw[#1](0,-.5)--(0,-2pt);
+\draw[#1] (-10pt,2pt)--++(20pt,0)node[right]{\scriptsize +};
+\draw[#1,ultra thick] (-3pt,-2pt)--++(6pt,0);
+\draw[#1](-10pt,0)node[left]{ #2};
+}
+% \pile{options}{valeur} : pile avec le voltage à droite
+\newcommand{\pileR}[2]%
+{
+\draw[#1,draw=white,very thick](0,.5)--(0,-.5);
+\draw[#1](0,.5)--(0,2pt);
+\draw[#1](0,-.5)--(0,-2pt);
+\draw[#1] (-10pt,2pt)node[left]{\scriptsize +}--++(20pt,0);
+\draw[#1,ultra thick] (-3pt,-2pt)--++(6pt,0);
+\draw[#1](10pt,0)node[right]{ #2};
+}
+% \voltmetre{options} : voltmètre de longueur unité, centrée en (0,0)
+\newcommand{\voltmetre}[1]%
+{
+\draw[thick,fill=white,#1] (-.5,-.25)rectangle(.5,.75);
+\draw[#1] (0,.75)node[above]{Voltmètre};
+\draw[#1,fill=lightgray] (0,-.25)++(120:9mm)arc(120:60:9mm)--++(-120:2mm)arc(60:120:7mm)--++(120:2mm);
+\draw[#1,thick](0,-.25)++(80:7mm)--++(80:1.5mm);
+\draw[#1](-.5,0)--++(10pt,0);
+\draw[#1](.5,0)--++(-10pt,0);
+\draw[#1,fill=white](-.5cm+10pt,0)circle(2pt);
+\draw[#1,fill=white](.5cm-10pt,0)circle(2pt);
+\draw[#1](.5cm-12pt,5pt)--++(4pt,0);
+\draw[#1](-.5cm+12pt,5pt)--++(-4pt,0);
+\draw[#1](-.5cm+10pt,7pt)--++(0,-4pt);
+}
+
+% \FEMVL{options}{valeur à gauche}: source de tension verticale
+\newcommand{\FEMVL}[2]%
+{
+\draw[#1,fill=white] (0,0) circle(0.3);
+\draw[#1] (0,-0.5)--++(0,1);
+\draw[#1,->] (-4mm,-3mm)--(-4mm,3mm)node[midway,left]{\footnotesize #2};
+}
+
+% \FEMVR{options}{valeur à droite}: source de tension verticale
+\newcommand{\FEMVR}[2]%
+{
+\draw[#1,fill=white] (0,0) circle(0.3);
+\draw[#1] (0,-0.5)--++(0,1);
+\draw[#1,->] (4mm,-3mm)--(4mm,3mm)node[midway,right]{\footnotesize #2};
+}

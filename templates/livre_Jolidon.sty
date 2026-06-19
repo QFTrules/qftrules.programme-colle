@@ -1,0 +1,801 @@
+\documentclass[openany,10pt]{book}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[autolanguage]{numprint}
+\usepackage{lmodern}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{cases}
+\usepackage{mathrsfs}
+\usepackage{textcomp}
+\usepackage{stmaryrd}
+\usepackage{moreverb}
+\usepackage{listings}
+\usepackage{color}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage{graphicx}
+\usepackage{fancyvrb}  % Pour le verbatim
+\usepackage{esint}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{lipsum}
+\usepackage{chngcntr}
+\usepackage{changepage}
+\usepackage{pdfpages}
+\usepackage[shortlabels]{enumitem}
+\usepackage{dsfont}
+\usepackage{nicefrac}
+\usepackage{csquotes}
+\usepackage[version=4]{mhchem}
+\usepackage{cancel}
+\usepackage{eurosym}
+
+%----------------------------------------------------------------------------------------
+%	PAPER LAYOUT
+%----------------------------------------------------------------------------------------
+\usepackage[paperwidth=16cm, paperheight=24cm,top=2.2cm,bottom=1.8cm,inner=1.8cm,outer=1.5cm]{geometry}
+
+%----------------------------------------------------------------------------------------
+% BIBLIOGRAPHY
+%----------------------------------------------------------------------------------------
+\usepackage[refsection=chapter,backend=biber,url=false,doi=false,isbn=false,style=ieee,citestyle=numeric-comp,sorting=none,dashed=false,maxbibnames=5,minbibnames=4,sortcites=true]{biblatex} %ùettre refsection à la place de refsegment et sorting=none à la place de nty pour la version finale
+\addbibresource{biblio.bib}
+
+% Pour et al. en italique
+\renewbibmacro*{name:andothers}{% Based on name:andothers from biblatex.def
+  \ifboolexpr{
+    test {\ifnumequal{\value{listcount}}{\value{liststop}}}
+    and
+    test \ifmorenames
+  }
+    {\ifnumgreater{\value{liststop}}{1}
+       {\finalandcomma}
+       {}%
+     \andothersdelim\bibstring[\emph]{andothers}}
+    {}}
+
+% Pour les collabarations
+\DeclareSourcemap{
+    \maps[datatype=bibtex,overwrite=true]{
+     \map{
+       \step[fieldsource=collaboration, final=true]
+       \step[fieldset=usera, origfieldval, final=true]
+     }
+    }
+}
+
+\renewbibmacro*{author}{%
+     \iffieldundef{usera}{%
+       \printnames{author}%
+     }{%
+       \printfield{usera}, \printnames{author}%
+     }%
+}%
+
+\DeclareFieldFormat[article]{volume}{\textbf{#1}}
+\renewcommand\bibpagespunct{\ifentrytype{article}{\addcomma}{\addcomma}\space}
+\renewbibmacro*{volume+number+eid}{%
+  \printfield{volume}
+  \printfield[parens]{number}%
+  \setunit{\addcolon\space}%
+  \printfield{eid}
+  }
+
+\renewbibmacro{in:}{\space dans \addcolon\space}
+
+%----------------------------------------------------------------------------------------
+%	FORMATS TITRES
+%----------------------------------------------------------------------------------------
+\usepackage{titlesec}
+\setcounter{secnumdepth}{3}
+\newcommand*{\sectionfont}{\fontfamily{qag}\selectfont}
+\counterwithin{chapter}{part}
+
+%%%%%%%% FORMAT PART %%%%%%%%
+\renewcommand{\thepart}{\Roman{part}}
+
+\titleformat{\part}[display]{\bfseries\filcenter}{}{1ex}{\Huge}[]
+
+\assignpagestyle{\part}{empty}
+
+%%%%%%%% FORMAT CHAPTER %%%%%%%%
+\usepackage{changepage}
+\usepackage{mdframed}
+
+\newmdenv[
+  topline=false,
+  bottomline=false,
+  rightline=false,
+  linecolor=black,
+  linewidth=1.5pt,
+  skipabove=\topsep,
+  skipbelow=\topsep
+]{siderule}
+
+\renewcommand{\thechapter}{\thepart.\arabic{chapter}}
+
+\titleformat{\chapter}[block]{\bfseries}
+{\begin{minipage}{0.2\linewidth}
+    \begin{center}
+     \fontsize{25}{0}\selectfont\thechapter
+    \end{center}
+ \end{minipage}
+}
+{0ex}
+{\begin{minipage}{0.8\linewidth}
+  \begin{siderule}
+    \begin{flushleft}
+     \vspace{0.35cm}
+     \huge
+}
+[
+  \end{flushleft}
+  \end{siderule}\end{minipage}
+]
+
+\titlespacing{\chapter}{0pt}{0pt}{0.75cm}
+
+\assignpagestyle{\chapter}{chapter}
+
+
+%%%%%%%% FORMAT SECTION %%%%%%%%
+\usepackage{xstring}
+\newcommand*{\IsInteger}[3]{%
+    \IfStrEq{#1}{ }{%
+        #3% is a blank string
+    }{%
+        \IfInteger{#1}{#2}{#3}%
+    }%
+}
+\setcounter{tocdepth}{2}
+
+\renewcommand{\thesection}{\arabic{section}}
+
+\titleformat{\section}[block]{\Large\bfseries}{\IsInteger{\thesection}{\thesection}{Complément \thesection~-}}{0.5em}{}
+
+\titlespacing*{\section}{0pt}{0.5cm}{0.2cm}[0pt]
+
+%%%%%%%% FORMAT SUBSECTION %%%%%%%%
+\renewcommand{\thesubsection}{\thesection.\arabic{subsection}}
+
+\titleformat{\subsection}[block]{\large\bfseries}{\thesubsection}{0.5em}{}
+
+\titlespacing*{\subsection}{0pt}{0.4cm}{0.2cm}[0pt]
+
+%%%%%%%% FORMAT SUBSUBSECTION %%%%%%%%
+\renewcommand{\thesubsubsection}{\thesubsection.\arabic{subsubsection}}
+
+\titleformat{\subsubsection}[block]{\bfseries}{\thesubsubsection}{0.5em}{}
+
+\titlespacing*{\subsubsection}{0pt}{0.4cm}{0.2cm}[0pt]
+
+%----------------------------------------------------------------------------------------
+%	ANNEXES
+%----------------------------------------------------------------------------------------
+\usepackage[title]{appendix}
+\renewcommand{\setthesection}{\Alph{section}}
+\renewcommand{\appendixname}{Complément}
+
+%----------------------------------------------------------------------------------------
+%	TOC
+%----------------------------------------------------------------------------------------
+\usepackage{titletoc}
+\setcounter{tocdepth}{0}
+
+%%%%%%%% PART %%%%%%%%
+\titlecontents{part}
+[0pt]             % left margin
+{\vspace{0.5cm}\filcenter}                  % above code
+{}                  % numbered format
+{\bfseries\large}         % unnumbered format
+{}         % filler-page-format, e.g dots
+
+%%%%%%%% CHAPTER %%%%%%%%
+\titlecontents{chapter}
+[0cm]             % left margin
+{\thispagestyle{plain}\vspace{0.2cm}}                  % above code
+{                  % numbered format
+{\thecontentslabel\ }%
+}%
+{}         % unnumbered format
+{\titlerule*[0.5pc]{.}\large \contentspage}         % filler-page-format, e.g dots
+
+%%%%%%%% SECTION IN PARTIAL TOC %%%%%%%%
+\titlecontents{lsection}
+[2cm]             % left margin
+{\contentsmargin[1.7cm]{0.4cm}\ifthenelse{\equal{\thecontentslabel}{A}}{\smallskip\hspace{-2cm} {\bfseries Compléments} \\}{}}                  % above code
+{\small\bfseries\contentslabel{0.8cm}}%
+{\small\bfseries}         % unnumbered format
+{\small\ \titlerule*[0.75pc]{.}\contentspage\quad\quad\hspace{2cm}}         % filler-page-format, e.g dots
+
+%----------------------------------------------------------------------------------------
+%	FOOTERS AND HEADERS
+%----------------------------------------------------------------------------------------
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\cfoot{}
+\fancyhead[RO]{\nouppercase{\leftmark}\quad\quad\bfseries\thepage}
+\fancyhead[LO]{}
+\fancyhead[LE]{{\bfseries\thepage}\quad\quad\parttitle}
+\fancyhead[RE]{}
+\renewcommand{\headrulewidth}{0.8pt}
+\renewcommand{\chaptermark}[1]{\markboth{\thechapter\ #1}{#1}}
+\newcommand*\parttitle{}
+\let\origpart\part
+\renewcommand*{\part}[2][]{%
+   \ifx\\#1\\% optional argument not present?
+      \origpart{#2}%
+      \renewcommand*\parttitle{#2}%
+   \else
+      \origpart[#1]{#2}%
+      \renewcommand*\parttitle{#1}%
+   \fi
+}
+
+\fancypagestyle{chapter}{%
+    \cfoot{\bfseries \thepage}
+    \fancyhead{}
+    \renewcommand{\headrulewidth}{0pt}
+}
+
+\usepackage[bottom]{footmisc}
+\interfootnotelinepenalty=10000
+
+%----------------------------------------------------------------------------------------
+%	FIGURES, EQUATIONS AND TABLES
+%----------------------------------------------------------------------------------------
+\usepackage[font=small,labelfont=bf,labelsep=space]{caption}
+\usepackage{subfigure}
+
+\makeatletter
+\renewcommand{\thefigure}{\ifnum \c@section>\z@ \fi
+ \@arabic\c@figure}
+ \let\p@subfigure\thefigure
+\makeatother
+\makeatletter
+\renewcommand\theequation{\arabic{equation}}
+\renewcommand\thetable{\arabic{table}}
+\@addtoreset{equation}{chapter}
+\@addtoreset{section}{chapter}
+\@addtoreset{table}{chapter}
+\makeatother
+
+\addto\captionsfrench{\renewcommand{\figurename}{Fig.}}
+\addto\captionsfrench{\renewcommand{\tablename}{Tab.}}
+
+
+\captionsetup{width=0.9\textwidth}
+
+
+%----------------------------------------------------------------------------------------
+%	HYPERREF
+%----------------------------------------------------------------------------------------
+\usepackage[colorlinks=true,
+pdfstartview=FitV,
+linkcolor= JoliRouge!50!black,
+citecolor= JoliRouge!50!black,
+urlcolor= JoliGris!60!black,
+hyperindex=true,
+hyperfigures=true,
+hypertexnames=false]
+{hyperref}
+\hypersetup{linktoc=page}
+
+%----------------------------------------------------------------------------------------
+%	CLEARDDOUBLEPAGES
+%----------------------------------------------------------------------------------------
+\makeatletter
+\def\emptypage@emptypage{%
+   $ $
+    \thispagestyle{empty}
+    \newpage%
+    \thispagestyle{empty}
+}%
+\def\cleardoublepages{%
+        \clearpage%
+        \if@twoside%
+            \ifodd\c@page%
+                % do nothing
+            \else%
+                \emptypage@emptypage%
+            \fi%
+        \fi%
+    }%
+\def\cleardoublepageseven{%
+        \clearpage%
+        \if@twoside%
+            \ifodd\c@page%
+            \emptypage@emptypage%
+                
+            \else%
+               % do nothing
+            \fi%
+        \fi%
+    }%
+\makeatother
+
+%----------------------------------------------------------------------------------------
+% CONCLUSION
+%----------------------------------------------------------------------------------------
+
+\newcommand{\conclusion}{
+  \begin{center}
+    \begin{tikzpicture}
+      \draw[color=white,fill=black] (0,0) ellipse [x radius=2,y radius=0.05]; 
+    \end{tikzpicture}
+  \end{center}
+
+  \paragraph{}
+}
+
+%----------------------------------------------------------------------------------------
+% REMARQUE ET REMARQUETECH ET EXEMPLE
+%----------------------------------------------------------------------------------------
+\newmdenv[
+  topline=false,
+  bottomline=false,
+  rightline=false,
+  linecolor=black,
+  linewidth=1.5pt,
+  skipabove=\topsep,
+  skipbelow=\topsep
+]{sideruleremarque}
+
+\makeatletter
+\newenvironment{remarque}
+{  \begin{sideruleremarque}
+ \small}
+{\end{sideruleremarque}
+\normalsize}
+\makeatother
+
+\newmdenv[
+  topline=false,
+  bottomline=false,
+  rightline=false,
+  linecolor=JoliRouge,
+  linewidth=1.5pt,
+  skipabove=\topsep,
+  skipbelow=\topsep
+]{sideruleremarquetech}
+
+\makeatletter
+\newenvironment{remarquetech}
+{  \begin{sideruleremarquetech}
+ \small}
+{\end{sideruleremarquetech}
+\normalsize}
+\makeatother
+
+\newmdenv[
+  topline=false,
+  bottomline=false,
+  rightline=false,
+  linecolor=JoliVert,
+  linewidth=1.5pt,
+  skipabove=\topsep,
+  skipbelow=\topsep
+]{sideruleexemple}
+
+\makeatletter
+\newenvironment{exemple}
+{  \begin{sideruleexemple}
+ \small}
+{\end{sideruleexemple}
+\normalsize}
+\makeatother
+
+\newcommand{\ligne}[1]{\xspace\tikz[baseline=0.6ex]{\draw[ultra thick, #1] (0,0) -- +(0,0.4);}\xspace}
+
+%----------------------------------------------------------------------------------------
+% Commande important
+%---------------------------------------------------------------------------------------
+\makeatletter
+\newcommand{\important}[1]{{\bfseries #1}}
+\makeatother
+
+%----------------------------------------------------------------------------------------
+%	TIKZ
+%----------------------------------------------------------------------------------------
+\usepackage{tikz}
+\usepackage{xifthen}
+\usepackage[cuteinductors,europeancurrents,european voltages,europeanresistors]{circuitikz}
+\usetikzlibrary{decorations.markings,arrows.meta,positioning,calc,patterns}\usepackage{tikzpagenodes}  % position of page corners. see chapter headers.
+\usepackage{pgfplots}
+\tikzset{RARROW/.style={line width=0.9pt, arrows={-Stealth[scale=1.1]},fill=black}} % define the right arrow pattern
+\tikzset{LARROW/.style={line width=0.9pt, arrows={Stealth[scale=1.1]}-,fill=black}} % define the left arrow pattern
+\tikzset{LRARROW/.style={line width=0.9pt, arrows={Stealth[scale=1.1]}-{Stealth[scale=1.1]},fill=black}} % define the left/right arrow pattern
+\ctikzset{bipoles/thickness=0.9}
+% Define le multiplieur
+\newcommand{\MULTIPLIEUR}[2]{%
+    %Component Shape
+    \node (origin) at #1 {};
+    \path[draw=black,line width = 0.9pt] (origin) ++(-0.7,0.9)
+     -- ++(1.8,0) -- ++(0,-1.8) -- ++ (-1.8,0) -- cycle;
+    % Multiplication symbol
+    \path[draw=black,line width = 0.9pt] (origin) ++ (0.2,0) ++ (-0.65,0.65) -- ++(1.3,-1.3);
+    \path[draw=black,line width = 0.9pt] (origin) ++ (0.2,0) ++ (-0.65,-0.65) -- ++(1.3,1.3);
+    % Set labels for extremities
+    \path[draw=black,line width = 0.9pt] (origin) ++(-0.7,-0.65) -- ++(-0.15,0);
+    \path[draw=black,line width = 0.9pt] (origin) ++(-0.7,0.65) -- ++(-0.15,0);
+    \path[draw=black,line width = 0.9pt] (origin) ++(1.1,0) -- ++(0.15,0);
+    \node (out_#2) at ($ (origin) + (1.25,0)$) {};
+    \node (non_inv_#2) at ($ (origin) + (-0.85,-0.65)$) {};
+    \node (inv_#2) at ($ (origin) + (-0.85,0.65)$) {};
+    % Label and component identifier
+    \node at ($ (origin) + (0.75,0)$) {\large #2};
+}
+
+\newcommand{\AMPLIOP}[2]{%
+    %Component Shape
+    \node (origin) at #1 {};
+    \path[draw=black,line width = 0.9pt] (origin) ++(-0.7,0.9)
+     -- ++(1.8,0) -- ++(0,-1.8) -- ++ (-1.8,0) -- cycle;
+    % Set labels for extremities
+    \path[draw=black,line width = 0.9pt] (origin) ++(-0.7,-0.65) -- ++(-0.15,0);
+    \path[draw=black,line width = 0.9pt] (origin) ++(-0.7,0.65) -- ++(-0.15,0);
+    \path[draw=black,line width = 0.9pt] (origin) ++(1.1,0) -- ++(0.15,0);
+    \node (out_#2) at ($ (origin) + (1.25,0)$) {};
+    \node (non_inv_#2) at ($ (origin) + (-0.85,-0.65)$) {};
+    \node (inv_#2) at ($ (origin) + (-0.85,0.65)$) {};
+    % Label and component identifier
+    \node at ($ (origin) + (0.8,0.6)$) {\large #2};
+    \node at ($ (origin) + (-0.5,0.65)$) {-};
+    \node at ($ (origin) + (-0.5,-0.65)$) {+};
+}
+
+% Definit la masse
+\newcommand{\MASSE}[3]{%
+    \node (origin) at #1 {};
+    \path[draw=black,line width = 0.9pt] (origin) ++ (0,0.02) -- ++(0,-0.37);
+    \path[draw=black,line width = 0.9pt] (origin) ++ (-0.5*#2,-0.35) -- ++(#2,0);
+    \pgfmathsetmacro\endloop{#2/0.14-1}
+    \foreach \x in {0,...,\endloop}
+    {\path[draw=black,line width = 0.9pt] (origin) ++ (-0.5*#2+0.14*\x,-0.35) -- ++ (-0.07,-0.2);}
+    \path[draw=black,line width = 0.9pt] (origin) ++ (0.5*#2,-0.35) -- ++ (-0.07,-0.2);
+    \ifthenelse{\equal{#3}{}}{}{
+    \path[draw=black,line width = 0.9pt] (origin) ++ ({(1-#3)*(-0.5*#2+0.14*\endloop)+0.5*#2*#3},-0.35) -- ++ (-0.07,-0.2)};
+}
+
+\newcommand{\PASSEBAS}[3]{%
+    % Set labels for extremities
+    \node[inner sep=0pt,outer sep=0pt] (entree) at #1 {};
+    \node[inner sep=0pt,outer sep=0pt] (sortie) at ($ (entree) + (1.5,0)$) {};
+    \path[draw=black,line width = 0.9pt] (entree)++(-0.02,0) -- +(0.17,0);
+    \path[draw=black,line width = 0.9pt] (sortie)++(+0.02,0) -- +(-0.17,0);
+    %Component Shape
+    \path[draw=black,line width = 0.9pt] (entree) ++(0.15,-0.6) rectangle ($(sortie)+(-0.15,0.6)$);
+    % Filter symbol
+    \path[draw=black,line width = 0.9pt] (entree) ++ (0.3,0.25) -- +(0.55,0) -- +(0.9,-0.5);
+    % Label and component identifier
+    \node at ($ (entree) + (0.75,0.6)$) [above] {#2};
+    \node[inner sep=0pt,outer sep=0pt] (entree_#3) at ($(entree)+(0.02,0)$) {};
+    \node[inner sep=0pt,outer sep=0pt] (sortie_#3) at ($(sortie)+(-0.02,0)$) {};
+}
+
+\newcommand{\PASSEHAUT}[3]{%
+    % Set labels for extremities
+    \node[inner sep=0pt,outer sep=0pt] (entree) at #1 {};
+    \node[inner sep=0pt,outer sep=0pt] (sortie) at ($ (entree) + (1.5,0)$) {};
+    \path[draw=black,line width = 0.9pt] (entree)++(-0.02,0) -- +(0.17,0);
+    \path[draw=black,line width = 0.9pt] (sortie)++(+0.02,0) -- +(-0.17,0);
+    %Component Shape
+    \path[draw=black,line width = 0.9pt] (entree) ++(0.15,-0.6) rectangle ($(sortie)+(-0.15,0.6)$);
+    % Filter symbol
+    \path[draw=black,line width = 0.9pt] (entree) ++ (0.3,-0.25) -- +(0.35,0.5) -- +(0.9,0.5);
+    % Label and component identifier
+    \node at ($ (entree) + (0.75,0.6)$) [above] {#2};
+    \node[inner sep=0pt,outer sep=0pt] (entree_#3) at ($(entree)+(0.02,0)$) {};
+    \node[inner sep=0pt,outer sep=0pt] (sortie_#3) at ($(sortie)+(-0.02,0)$) {};
+}
+
+% Define colors for sketches in Tikz (the same as for Python plots)
+\definecolor{JoliBleu}{rgb}{0,0.55,0.55}
+\definecolor{JoliVert}{rgb}{0.15,0.6,0}
+\definecolor{JoliRouge}{rgb}{0.86,0.08,0}
+\definecolor{JoliJaune}{rgb}{1,0.75,0}
+\definecolor{JoliGris}{rgb}{0.52,0.52,0.51}
+
+% Customize the hatcher pattern to get the desired spacing (spread), width (thickness), shift from the origin
+\newlength{\hatchspread}
+\newlength{\hatchthickness}
+\newlength{\hatchshift}
+\newcommand{\hatchcolor}{}
+\tikzset{hatchspread/.code={\setlength{\hatchspread}{#1}},
+         hatchthickness/.code={\setlength{\hatchthickness}{#1}},
+         hatchshift/.code={\setlength{\hatchshift}{#1}},
+         hatchcolor/.code={\renewcommand{\hatchcolor}{#1}}}
+% setting the default values
+\tikzset{hatchspread=3pt,
+         hatchthickness=0.4pt,
+         hatchshift=0pt,
+         hatchcolor=black}
+% declaring the pattern
+\pgfdeclarepatternformonly[\hatchspread,\hatchthickness,\hatchshift,\hatchcolor]% variables
+   {custom north west lines}% name
+   {\pgfqpoint{\dimexpr-2\hatchthickness}{\dimexpr-2\hatchthickness}}% lower left corner
+   {\pgfqpoint{\dimexpr\hatchspread+2\hatchthickness}{\dimexpr\hatchspread+2\hatchthickness}}% upper right corner
+   {\pgfqpoint{\dimexpr\hatchspread}{\dimexpr\hatchspread}}% tile size
+   {% shape description
+    \pgfsetlinewidth{\hatchthickness}
+    \pgfpathmoveto{\pgfqpoint{0pt}{\dimexpr\hatchspread+\hatchshift}}
+    \pgfpathlineto{\pgfqpoint{\dimexpr\hatchspread+0.15pt+\hatchshift}{-0.15pt}}
+    \ifdim \hatchshift > 0pt
+      \pgfpathmoveto{\pgfqpoint{0pt}{\hatchshift}}
+      \pgfpathlineto{\pgfqpoint{\dimexpr0.15pt+\hatchshift}{-0.15pt}}
+    \fi
+    \pgfsetstrokecolor{\hatchcolor}
+    \pgfusepath{stroke}
+   }
+
+   \pgfdeclarepatternformonly[\hatchspread,\hatchthickness,\hatchshift,\hatchcolor]% variables
+   {custom north east lines}% name
+   {\pgfqpoint{\dimexpr-2\hatchthickness}{\dimexpr-2\hatchthickness}}% lower left corner
+   {\pgfqpoint{\dimexpr\hatchspread+2\hatchthickness}{\dimexpr\hatchspread+2\hatchthickness}}% upper right corner
+   {\pgfqpoint{\dimexpr\hatchspread}{\dimexpr\hatchspread}}% tile size
+   {% shape description
+    \pgfsetlinewidth{\hatchthickness}
+    \pgfpathmoveto{\pgfqpoint{\dimexpr\hatchshift-0.15pt}{-0.15pt}}
+    \pgfpathlineto{\pgfqpoint{\dimexpr\hatchspread+0.15pt}{\dimexpr\hatchspread-\hatchshift+0.15pt}}
+    \ifdim \hatchshift > 0pt
+      \pgfpathmoveto{\pgfqpoint{-0.15pt}{\dimexpr\hatchspread-\hatchshift-0.15pt}}
+      \pgfpathlineto{\pgfqpoint{\dimexpr\hatchshift+0.15pt}{\dimexpr\hatchspread+0.15pt}}
+    \fi
+    \pgfsetstrokecolor{\hatchcolor}
+    \pgfusepath{stroke}
+   }
+
+%----------------------------------------------------------------------------------------
+%	ENVIRONNEMENT EXPERIENCE
+%----------------------------------------------------------------------------------------
+
+\makeatletter
+\newenvironment{experience}[2]
+{
+  \chapter{{#1}}
+  \startcontents[chapters]
+
+  {#2}
+
+  % \minitoc
+  \bigskip
+
+  \noindent{\large \bfseries Sommaire}
+
+  \smallskip
+
+  \titlerule
+  \smallskip
+
+  \printcontents[chapters]{l}{1}{\setcounter{tocdepth}{1}} 
+
+  \smallskip
+
+  \titlerule
+  \smallskip
+
+}
+{
+  \printbibliography[segment=\therefsegment,heading=subbibliography]
+}
+\makeatother
+
+\makeatletter
+\newenvironment{experience*}[2]
+{
+  \chapter*{{#1}}
+  \addcontentsline{toc}{chapter}{{#1}}
+  \startcontents[chapters]
+
+  {#2}
+
+  % \minitoc
+  \bigskip
+
+  \noindent{\large \bfseries Sommaire}
+
+  \smallskip
+
+  \titlerule
+  \smallskip
+
+  \printcontents[chapters]{l}{1}{\setcounter{tocdepth}{1}} 
+
+  \smallskip
+
+  \titlerule
+  \smallskip
+
+}
+{
+  \printbibliography[segment=\therefsegment,heading=subbibliography]
+}
+\makeatother
+
+%----------------------------------------------------------------------------------------
+%	ENVIRONNEMENT equationimportante
+%----------------------------------------------------------------------------------------
+
+\usepackage[most]{tcolorbox}
+\tcbset{colframe = black, colback = white, boxrule = 0.6 pt, arc = 1pt}
+\usepackage{empheq}
+
+\newenvironment{eqimportante}
+    {\empheq[box=\tcboxmath]{equation}
+    }
+    {\endempheq
+    }
+
+%----------------------------------------------------------------------------------------
+%	ENVIRONNEMENT protocole
+%---------------------------------------------------------------------------------------
+
+\newcommand{\carre}{\begin{tikzpicture} \draw[thick] (0,0) rectangle (0.15,0.15); \end{tikzpicture}}
+
+\newenvironment{protocole}
+        {\begin{itemize}[label=\carre,leftmargin=0.4cm]
+        }
+        {\end{itemize}}
+
+%----------------------------------------------------------------------------------------
+% ENVIRONNEMENTS POUR INCLURE LES FIGURES
+%---------------------------------------------------------------------------------------
+\usepackage{calc}
+\newlength{\mylength}
+\usepackage{xargs}
+
+\makeatletter
+\newcommand{\sousfigure}[6]
+{ \tikz[remember picture] \coordinate(figtop);
+
+  \tikz[remember picture] \coordinate(figleft);
+  \subfigure{\includegraphics[{#3}]{#1}\label{#2}}
+   \tikz[remember picture]\coordinate(figcenter);
+  \subfigure{\includegraphics[{#6}]{#4}\label{#5}}
+  \begin{tikzpicture}[overlay, remember picture]
+    \draw ($(figtop -| figleft)-(0,0)$) node {\small (a)};
+    \draw ($(figtop -| figcenter)-(0,0)$) node {\small (b)};
+  \end{tikzpicture}
+}
+\newcommand{\sousfigurecd}[6]
+{ \tikz[remember picture] \coordinate(figtop);
+
+  \tikz[remember picture] \coordinate(figleft);
+  \subfigure{\includegraphics[{#3}]{#1}\label{#2}}
+   \tikz[remember picture]\coordinate(figcenter);
+  \subfigure{\includegraphics[{#6}]{#4}\label{#5}}
+  \begin{tikzpicture}[overlay, remember picture]
+    \draw ($(figtop -| figleft)-(0,0)$) node {\small (c)};
+    \draw ($(figtop -| figcenter)-(0,0)$) node {\small (d)};
+  \end{tikzpicture}
+}
+\newcommand{\sousfigurecolonne}[6]
+{ \tikz[remember picture] \coordinate(figtop);
+
+  \tikz[remember picture] \coordinate(figleft);
+  \subfigure{\includegraphics[{#3}]{#1}\label{#2}}
+
+  \tikz[remember picture] \coordinate(figcenter);
+
+  \subfigure{\includegraphics[{#6}]{#4}\label{#5}}
+  \begin{tikzpicture}[overlay, remember picture]
+    \draw ($(figtop -| figleft)-(0,0)$) node {\small (a)};
+    \draw ($(figleft |- figcenter)-(0,0)$) node {\small (b)};
+  \end{tikzpicture}
+}
+\newcommand{\troissousfigures}[9]
+{ \tikz[remember picture] \coordinate(figtop);
+
+  \tikz[remember picture] \coordinate(figleft);
+  \subfigure{\includegraphics[{#3}]{#1}\label{#2}}\tikz[remember picture] \coordinate(figcenter1);
+  \subfigure{\includegraphics[{#6}]{#4}\label{#5}}
+  \tikz[remember picture] \coordinate(figcenter2);
+  \subfigure{\includegraphics[{#9}]{#7}\label{#8}}
+  \begin{tikzpicture}[overlay, remember picture]
+    \draw ($(figtop -| figleft)-(0,0)$) node {\small (a)};
+    \draw ($(figtop -| figcenter1)-(0,0)$) node {\small (b)};
+    \draw ($(figtop -| figcenter2)-(0,0)$) node {\small (c)};
+  \end{tikzpicture}
+}
+\newcommand{\troissousfigurescolonne}[9]
+{ \tikz[remember picture] \coordinate(figtop);
+
+  \tikz[remember picture] \coordinate(figleft);
+  \subfigure{\includegraphics[{#3}]{#1}\label{#2}}
+
+  \tikz[remember picture] \coordinate(figcenter1);
+
+  \subfigure{\includegraphics[{#6}]{#4}\label{#5}}
+
+  \tikz[remember picture] \coordinate(figcenter2);
+
+  \subfigure{\includegraphics[{#9}]{#7}\label{#8}}
+  \begin{tikzpicture}[overlay, remember picture]
+    \draw ($(figtop -| figleft)-(0,0)$) node {\small (a)};
+    \draw ($(figleft |- figcenter1)-(0,0)$) node {\small (b)};
+    \draw ($(figleft |- figcenter2)-(0,0)$) node {\small (c)};
+  \end{tikzpicture}
+  \vspace{-0.4cm}
+}
+\newcommand{\sousfigurescolonnedeuxun}[9]
+{\tikz[remember picture] \coordinate(figtop);
+
+  \tikz[remember picture] \coordinate(figleft);
+  \subfigure{\includegraphics[{#3}]{#1}\label{#2}}\tikz[remember picture] \coordinate(figcenter);
+  \subfigure{\includegraphics[{#6}]{#4}\label{#5}}
+
+  \tikz[remember picture] \coordinate(figcenter1);
+
+  \subfigure{\includegraphics[{#9}]{#7}\label{#8}}
+  \begin{tikzpicture}[overlay, remember picture]
+    \draw ($(figtop -| figleft)-(0,0)$) node {\small (a)};
+    \draw ($(figtop -| figcenter)-(0,0)$) node {\small (b)};
+    \draw ($(figleft |- figcenter1)-(0,0)$) node {\small (c)};
+  \end{tikzpicture}
+  \vspace{-0.7cm}
+}
+\makeatother
+
+\newcommand{\sousfigurescolonneundeux}[9]
+{\tikz[remember picture] \coordinate(figtop);
+
+  \tikz[remember picture] \coordinate(figleft);
+  \subfigure{\includegraphics[{#3}]{#1}\label{#2}}
+
+  \tikz[remember picture] \coordinate(figcenter);
+
+  \tikz[remember picture] \coordinate(figcenter1);\subfigure{\includegraphics[{#6}]{#4}\label{#5}}
+  \subfigure{\includegraphics[{#9}]{#7}\label{#8}}
+  \begin{tikzpicture}[overlay, remember picture]
+    \draw ($(figtop -| figleft)-(0,0)$) node {\small (a)};
+    \draw ($(figcenter1 |- figcenter)-(0,0)$) node {\small (b)};
+    \draw ($(figtop |- figcenter)-(0,0)$) node {\small (c)};
+  \end{tikzpicture}
+  \vspace{-0.7cm}
+}
+\makeatother
+%----------------------------------------------------------------------------------------
+%	siunitx
+%----------------------------------------------------------------------------------------
+\usepackage{siunitx}
+\sisetup{
+    inter-unit-product = \ensuremath{{}\!\cdot\!{}},
+    detect-all,
+    separate-uncertainty = true,
+    exponent-product = \times,
+    space-before-unit = true,
+    output-decimal-marker = {,},
+    multi-part-units = brackets,
+    range-phrase = --,
+    % allow-number-unit-breaks,
+    list-final-separator = { et },
+    list-pair-separator = { et },
+    abbreviations
+}
+
+\DeclareSIUnit{\px}{px}
+
+%----------------------------------------------------------------------------------------
+% minted
+%----------------------------------------------------------------------------------------
+
+\usepackage[zerostyle=d]{newtxtt}
+\usepackage{minted}
+\setminted{style=joli,
+    frame=lines, framerule=0.5pt,
+    fontsize=\small, fontfamily=newtxtt,
+    stepnumber=3, stepnumberfromfirst=true,
+    linenos=true, breaklines=true, tabsize=4}
+\renewcommand{\theFancyVerbLine}{\textcolor[rgb]{0.52,0.52,0.51}{\scriptsize\arabic{FancyVerbLine}}}
+\renewcommand{\listingscaption}{Code}
+
+%%POUR CIRCUITIKZ
+\newcommand{\wattmeter}[5]{
+    \draw #1 node{W};
+    \draw #1 circle(0.4);
+    \draw #1 + (0,-0.6) node[circle,draw,anchor=south,inner sep=0,fill=white,minimum width=2.5mm]{\tiny -} to #2;
+    \draw #1 + (0,0.6) node[circle,draw,anchor=north,inner sep=0,fill=white,minimum width=2.5mm]{\tiny -} to #3;
+    \draw #1 + (-0.6,0) node[circle,draw,anchor=west,inner sep=0,fill=white,minimum width=2.5mm]{\tiny +} to #4;
+    \draw #1 + (0.6,0) node[circle,draw,anchor=east,inner sep=0,fill=white,minimum width=2.5mm]{\tiny +} to #5;
+}

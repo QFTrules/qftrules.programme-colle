@@ -1,0 +1,81 @@
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~%
+%  dernière                   %
+%  modification = 12/03/2023  %
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~%
+%      Colas Bardavid
+
+
+\def\bleedingColor{\couleurFond}
+
+
+% ===================================================================== %
+% ====================  Bleeding ("fond perdu")  ====================== %
+
+% --------------------------------------------------------------------- %
+% Color the top of the page
+% cf. 
+\def\sizeBleeding{10mm}
+\def\sizePadding{5mm}
+\def\drawTopBleeding{%
+\begin{tikzpicture}[remember picture,overlay]
+  \fill[\bleedingColor] ([yshift=-\sizeBleeding, xshift=-\sizePadding]current page.north west) rectangle ([yshift=\sizePadding, xshift=\sizePadding]current page.north east);
+\end{tikzpicture}}
+
+\def\drawExteriorBleeding{
+\checkoddpage
+\ifoddpage 
+{%
+\begin{tikzpicture}[remember picture,overlay]
+  \fill[\bleedingColor] ([xshift=-\sizeBleeding, yshift=\sizeBleeding]current page.north east) rectangle ([xshift=\sizePadding, yshift=-\sizeBleeding]current page.south east);
+\end{tikzpicture}%
+}%
+\else%
+{%
+\begin{tikzpicture}[remember picture,overlay]
+  \fill[\bleedingColor] ([xshift=\sizeBleeding, yshift=\sizeBleeding]current page.north west) rectangle ([xshift=-\sizePadding, yshift=-\sizeBleeding]current page.south west);
+\end{tikzpicture}%
+}%
+\fi}
+
+\def\drawBottomBleeding{%
+\begin{tikzpicture}[remember picture,overlay]
+  \fill[\bleedingColor] ([yshift=\sizeBleeding, xshift=-\sizePadding]current page.south west) rectangle ([yshift=-\sizePadding, xshift=\sizePadding]current page.south east);
+\end{tikzpicture}}
+
+\def\drawBleeding{%
+\drawExteriorBleeding
+%\drawTopBleeding
+%\drawBottomBleeding
+}
+% --------------------------------------------------------------------- %
+
+
+
+
+
+
+% ===================================================================== %
+% ================  Managing the change of geometry  ================== %
+
+\makeatletter
+\def\fixCroppingBugCausedByChangeOfGeometry
+{\ifdefined\withCropPackage%
+% see:https://tex.stackexchange.com/a/118824/8323
+\CROP@center
+\fi}
+\makeatother
+
+
+
+% ===================================================================== %
+% ======================  Gestion des options  ======================== %
+\def\manageBleeding{}
+
+\def\withBleedingMargin
+{\gdef\manageBleeding{\AddEverypageHook{\drawBleeding}}}
+
+\def\withoutBleedingMargin
+{\gdef\manageBleeding{}}
+
+
+

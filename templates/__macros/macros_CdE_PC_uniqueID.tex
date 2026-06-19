@@ -1,0 +1,109 @@
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~%
+%  dernière                   %
+%  modification = 07/07/2021  %
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~%
+%      Colas Bardavid
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%      Test if a random strings are unique       %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\makeatletter
+\newcommand{\isUniqueID}[1]{%
+  % First see if #1 is empty (https://tex.stackexchange.com/a/53091/5764)
+  \if\relax\detokenize{#1}\relax\else
+    \ifcsname ID-#1\endcsname % Check if ID already exists
+      \printRandomString
+      \@latex@error{ID #1 already used}{}
+    \fi
+  \fi
+  \expandafter\gdef\csname ID-#1\endcsname{}% Create ID
+  %#1% <process ID>
+}
+\makeatother
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%              Create a random string            %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\randomstring}[1]{%
+  \expandafter\generatestring{#1}%\expandafter{\pdfuniformdeviate 26}%
+}
+\makeatletter
+\newcommand{\generatestring}[1]{%
+  \expandafter\generatestringbis{#1}{\pdfuniformdeviate 2}%
+}
+\newcommand{\generatestringbis}[2]{%
+  \ifnum\numexpr#2>\z@
+    \expandafter\@alph\expandafter{\number\numexpr1+\pdfuniformdeviate 26}%
+  \else
+  	\expandafter\@Alph\expandafter{\number\numexpr1+\pdfuniformdeviate 26}%
+  \fi
+  \ifnum#1>\z@
+    \expandafter\@firstofone
+  \else
+    \expandafter\@gobble
+  \fi
+  {\expandafter\generatestring\expandafter{\number\numexpr#1-1}}%
+}
+\makeatother
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%       Random string with LaTeX
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\printRandomString{%
+\message{%
+^^J
+^^J
+=============================================================
+^^J
+\space\space\space\space\space\space\space\space[Cahier d'entraînement en physique/chimie]
+^^J
+\space\space\space\space\space\space\space\space\space\space
+\space\space
+Propositions de chaînes aléatoires 
+^^J
+\space\space\space\space\space\space\space\space\space\space
+\space\space\space\space\space\space\space\space\space\space\space
+pour les uniqueID
+^^J
+=============================================================
+^^J
+\randomstring{10}
+^^J
+\randomstring{10}
+^^J
+\randomstring{10}
+^^J
+\randomstring{10}
+^^J
+\randomstring{10}
+^^J
+=============================================================
+^^J
+=============================================================
+^^J
+^^J
+}}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%       Random string with LaTeX
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\AtEndDocument{%
+% Print random number and string in the console
+\printRandomString
+}

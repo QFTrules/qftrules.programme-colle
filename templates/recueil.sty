@@ -1,0 +1,541 @@
+% CE FICHIER DEFINIT LE PREAMBULE POUR LES
+% EXOS DE COLLES VERSION JOLIDON
+%%% DOCUMENT %%%
+\documentclass[a4paper,11pt,oneside]{book}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[autolanguage]{numprint}
+\usepackage{lmodern}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{cases}
+\usepackage{mathrsfs}
+\usepackage{textcomp}
+\usepackage[headheight=14pt,top=1.5cm,bottom=1.5cm,left=1.5cm,right=1.5cm]{geometry}
+\usepackage{stmaryrd}
+\usepackage{inputenc}
+\usepackage{moreverb}
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage{fancyvrb}
+\usepackage{listings}
+\usepackage{wrapfig}
+\usepackage{subfigure}
+\usepackage{pgfplots}
+\usepackage{esint}
+\usepackage[font=small,
+			%labelfont=bf,
+			labelsep=endash]{caption}
+\usepackage{tikz}
+\usepackage[europeanresistors]{circuitikz}
+\usepackage{multicol}
+\usepackage{tabularx}
+\usepackage{lipsum}
+\usepackage{chngcntr}
+\usepackage{fancyhdr}
+\usepackage{exercise}
+\usepackage{titlesec}
+\usepackage{titletoc}
+\setcounter{tocdepth}{3}
+\setcounter{secnumdepth}{3}
+\usepackage{vwcol}
+\counterwithin{table}{section}
+\usepackage[titletoc]{appendix}
+\usepackage{changepage}
+\usepackage{mdframed}
+\usepackage{pdfpages}
+% \usepackage{enumitem}
+\usepackage{multirow}
+\pgfplotsset{compat=1.15}
+% \usepackage{empheq}
+
+%%% PROGRAMME %%%
+
+
+%%% SYMBOLS %%%
+\input{/home/eb/Dropbox/texmf/tex/latex/Preambles/symbols.sty}
+\input{/home/eb/Dropbox/texmf/tex/latex/Preambles/programme.tex}
+\input{/home/eb/Dropbox/texmf/tex/latex/Preambles/_preambule_CdE_PC.tex}
+
+
+\renewrobustcmd{\Chapit}[2]{
+\setcounter{chapter}{#2-1}\subtitle{\ChapitName{#1}{#2}}
+}
+\renewcommand{\title}[1]{\part{#1}}
+\newcommand{\subtitle}[1]{\chapter{#1}}
+\newcommand{\cover}[1]{}
+
+%%% LAYOUT %%%
+% \newmdenv[
+%   topline=false,
+%   bottomline=false,
+%   rightline=false,
+%   linecolor=brickred,
+%   linewidth=1pt,
+%   skipabove=\topsep,
+%   skipbelow=\topsep
+% ]{siderule}
+
+\usepackage[colorlinks=true,
+pdfstartview=FitV,
+linkcolor= brickred,
+citecolor= brickred,
+urlcolor= brickred,
+hyperindex=true,
+hyperfigures=true]
+{hyperref}
+\hypersetup{linktoc=page}
+
+\usetikzlibrary{arrows}
+
+%%% EQUATION NUMBERING %%%
+\makeatletter
+\renewcommand\theequation{\theExercise.\arabic{equation}}
+\@addtoreset{equation}{section}
+\@addtoreset{chapter}{part}
+\makeatother
+
+
+%\renewcounter{Exercise}[part]
+%\renewcommand{\theExercise}{\arabic{Exercise}}
+\renewcounter{Exercise}[section]
+\renewcommand{\theExercise}{\thechapter.\arabic{Exercise}}
+
+\renewcommand{\thepart}{\Roman{part}}
+\renewcommand{\thechapter}{\thepart.\arabic{chapter}}
+\renewcommand{\thesection}{\thechapter.\arabic{section}}
+\renewcommand{\thesubsection}{\theExercise.\arabic{subsection}}
+\renewcommand{\thesubsubsection}{\theExercise.\arabic{subsubsection}}
+
+%%% TITLE FORMAT %%%
+\titleformat{\part}[display]{\thispagestyle{empty}\hrule\filcenter\color{coolblack}}{}{1ex}{\center\scshape\Huge}[\vspace{1cm}\hrule]
+% \titleformat{\chapter}[display]{\thispagestyle{plain}\bfseries\huge\color{coolblack}}{}{1ex}{\center\ifnum\value{chapter}>0\relax\thepart.\arabic{chapter} \;~ -- \fi}[\vspace{0.5cm}\hrule]
+\titleformat{\chapter}[display]{\thispagestyle{plain}\bfseries\huge\color{coolblack}}{}{1ex}{\center\ifnum\value{chapter}>0\relax\thepart.\arabic{chapter}\fi}[\vspace{0.5cm}\hrule]
+\titlespacing*{\chapter}{0pt}{0cm}{1cm}[0pt]
+\titleformat{\subsection}[display]{\thispagestyle{plain}\bfseries\large\color{coolblack}}{}{1ex}{\thesubsection\ \;}[]
+\titleformat{\subsubsection}[display]{\thispagestyle{plain}\bfseries\color{coolblack}}{}{1ex}{\thesubsubsection\ \;}[]
+
+\newcommand{\sectionbreak}{\clearpage}
+
+%%%% EXERCISE CUSTOMISATION %%%%
+\renewcommand{\ExerciseHeaderTitle}{~\textbf{--}~\ExerciseTitle\dotfill}
+% \renewcommand{\ExerciseHeaderOrigin}{{\!\dotfill\textrm{\ExerciseOrigin}}}
+\renewcommand{\ExerciseHeaderOrigin}{\!\dotfill[\textit{\!\ExerciseOrigin\!}]}
+% \renewcommand{\ExerciseName}{Exercice}
+\renewcommand{\ExerciseName}{Ex.}
+\renewcommand{\ExerciseHeader}{\noindent \textcolor{coolblack}{\textbf{\Large
+\ExerciseName \space \ExerciseHeaderNB}\Large\ExerciseHeaderTitle\ExerciseHeaderOrigin}\medskip\newline}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%% TOC CUSTOMISATION %%%
+
+\newcommand{\EnteteRecueil}{
+	\hrulefill \\
+  {\small\color{coolblack}\faSortAmountUp} {\small : Notions travaillées} \hfill {\color{coolblack}\large\textbf{$[\,\star\star\,]$}} {\small : Difficulté} 
+  \hfill {\color{coolblack}\normalsize\faPython} {\small : Résolution numérique} 
+  \hfill {\color{coolblack}\small\faPencil*} {\small : Exercice d'application}
+  }
+\addto\captionsfrench{%
+\renewcommand{\contentsname}{Sommaire\\ \EnteteRecueil}
+}
+
+% THEME
+\titlecontents{part}
+[0cm]             % left margin
+{\thispagestyle{plain}\vspace{0.5cm}\hrulefill\large}                  % above code
+{
+	\bfseries 
+	% {\thecontentslabel \; -- } 
+	\large\scshape % numbered format
+}%
+{
+	\bfseries 
+	% {\thecontentslabel \; -- } 
+	\large\scshape % unnumbered format
+}         
+{\hrulefill\large \contentspage}         % filler-page-format, e.g dots
+
+% CHAPITRE
+\titlecontents{chapter}
+[0.75cm]             % left margin
+{\thispagestyle{plain}\vspace{0.2cm}}                  % above code
+{\bfseries                  % numbered format
+{\thecontentslabel \; --}%
+}%
+{}         % unnumbered format
+{\hrulefill\large \contentspage}         % filler-page-format, e.g dots
+
+% TYPE OF EXERCICE
+\titlecontents{section}
+[1.25cm]             % left margin
+{\thispagestyle{plain}\vspace{0.2cm}}                  % above code
+{\bfseries                  % numbered format
+{\thecontentslabel\ }%
+}%
+{}         % unnumbered format
+{\titlerule*[0.5pc]{.}\large \contentspage}         % filler-page-format, e.g dots
+
+% EXERCICE
+\titlecontents{subsection}
+[1.75cm]             % left margin
+% [2.5cm]             % left margin
+{\vspace{0cm}}                  % above code
+{                  % numbered format
+{\thecontentslabel\ }%
+}%
+{}         % unnumbered format
+{\titlerule*[0.5pc]{.}\large \contentspage}         % filler-page-format, e.g dots
+% {\titlerule*[0.5pc]{.}\ExerciseHeaderOrigin~\large \contentspage}         % filler-page-format, e.g dots
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% gSECTION WITHIN EXERCICE
+\titlecontents{subsubsection}
+[2.32cm]             % left margin
+{\vspace{0cm}}                  % above code
+{                  % numbered format
+{\thecontentslabel\ -- }%
+}%
+{}         % unnumbered format
+{\hfill \large \contentspage}         % no filler page
+% {\titlerule*[0.5pc]{.}\large \contentspage}         % filler-page-format, e.g dots
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% %%% QUESTION COURS ENVIRONMENT %%%
+% \makeatletter
+% \newenvironment{cours}[1][\unskip]
+% {\begin{Exercise}[
+% 		%title=\textbf{ #1}
+% 		]
+% \vspace{-0.5cm}\setcounter{subsubsection}{1}
+% \subsubsection{Question de cours}
+% \setcounter{quest}{0}\begin{quest}}
+% {\end{quest}
+% \end{Exercise}}
+% \makeatother
+%
+% \renewcommand{\thesubsubsection}{\arabic{Exercise}.\arabic{subsubsection}}
+%
+% \titleformat{\subsubsection}
+% {\color{coolblack}\Large}{}{0em}
+% {\color{coolblack}\Large\thesubsubsection\ \;}
+
+%%% EXO ENVIRONMENT %%%
+% \makeatletter
+% \newenvironment{exo}[2][]
+% {\begin{Exercise}[title={#2}, origin={\textsc{#1}}, label=Colles]
+% %\ref{exo:{#2}}
+% \setcounter{quest}{0}
+% }
+% {
+% \end{Exercise}
+% }
+% \makeatother
+
+% REDEFINE exo command
+\RenewDocumentEnvironment{exo}{O{PC} O{1} O{colle} m}
+{
+\setcounter{equation}{0}
+\setcounter{quest}{0}
+\setcounter{subsection}{0}
+\setcounter{subsubsection}{0}
+\def\diff{
+$\star$\ifnum#2=1\else
+$\star$\ifnum#2=2\else
+$\star$\ifnum#2=3\fi\fi\fi}
+% counter redefinition
+\ifthenelse{\equal{\detokenize{#3}}{\detokenize{appli}}}
+	{
+	% \setcounter{nombreExercices}{0}
+	\initializeCounterForCalcul
+	\hauteurLargeurCadreReponse		{8mm}{3cm}
+	\dureeResolutionFacultative		{2} % 1, 2, 3 ou 4
+	\typeEntrainement				{Newton} % Newton ou QCM ou AN ou vide (exercice "normal")
+	\basiqueEtTransversal			{Y}
+	\nombreColonnesQuestions		{1} % vide, 1, 2, 3, etc.
+	\avecPlusieursQuestions			{Y} % Y ou N
+	\renewcommand{\ExerciseName}{{
+	% \normalsize
+	% \includegraphics[height=10pt]{Bulldozer.pdf}
+	% \faPenSquare
+	\faPencil*
+	}
+	% \large 
+	Ex.}
+	\begin{Exercise}[title={#4}, exam={#4}, origin={\diff~}, label=appli, type={\textsc{#1}}]
+	\vspace{-0.5cm}
+	\begin{adjustwidth}{0.01cm}{0cm}
+	% \indent
+	}{
+		\ifthenelse{\equal{\detokenize{#3}}{\detokenize{python}}}
+		{
+		\renewcommand{\ExerciseName}{{\normalsize \faPython}~\large Ex.}
+		\begin{Exercise}[title={#4}, exam={#4}, origin={\diff~}, label=TD, type={\textsc{#1}}]
+		}
+		{
+		\begin{Exercise}[title={#4}, exam={#4}, origin={\diff~}, label=#3, type={\textsc{#1}}]
+		}
+	}
+}{
+\ifthenelse{\equal{\detokenize{#3}}{\detokenize{appli}}}
+{
+\end{adjustwidth}
+\end{Exercise}
+}
+{\end{Exercise}}
+}
+
+% REMOVE Cahier exercices commands
+\renewcommand{\initialisationEntrainement}{}
+\renewcommand{\debutEntrainement}{}
+\renewcommand{\pauseEntrainement}{}
+\renewcommand{\repriseEntrainement}{}
+\renewcommand{\finEntrainement}{}
+
+% redefine reponse if corrige absent
+\renewcommand{\reponse}[1]{
+% \vspace{-1cm}\hspace{2cm}
+\sol{
+#1
+}
+}
+
+\makeatletter
+\newenvironment{exotd}[2][]
+{\begin{Exercise}[title={#2}, origin={\textsc{#1}}, label=TD]
+%\ref{exo:{#2}}
+\setcounter{quest}{0}
+}
+{
+\end{Exercise}
+}
+\makeatother
+
+
+% exodm
+\makeatletter
+\newenvironment{exodm}[2][]{
+\setcounter{subsection}{0}
+\setcounter{quest}{\value{questexo}}
+%\addtocounter{quest}{\value{questexo}}
+\begin{Exercise}[title={#2}, label={#2}]
+}{
+\end{Exercise}
+}
+\makeatother
+
+\makeatletter
+\newenvironment{exods}[2][]
+{\begin{Exercise}[title={#2}, origin={\textsc{#1}}, label=DS]
+%\ref{exo:{#2}}
+\setcounter{quest}{0}
+}
+{
+\end{Exercise}
+}
+\makeatother
+
+%%% PYTHON EXERCICES %%%
+\makeatletter
+\newenvironment{exopython}[2][]
+{
+%\def\diff{
+%$\star$\ifnum#3=1\else
+%$\star$\ifnum#3=2\else
+%$\star$\ifnum#3=3\fi\fi\fi}
+%\renewcommand{\ExerciseName}{{\normalsize \faPython}~\large Exercice}
+\begin{Exercise}[title={#2}, origin={\textsc{#1}}, label=TD]
+%\ref{exo:{#2}}
+%\setcounter{equation}{0}
+\setcounter{quest}{0}
+}
+{
+\end{Exercise}
+%\renewcommand{\ExerciseName}{\large Exercice}
+}
+\makeatother
+
+%%% PYTHON CODE %%%%
+%\usepackage[outputdir=$HOME/Dropbox/CPGE/Physique/Exercices/Recueil/]%${minted}
+%\setminted{fontsize=\footnotesize}
+% \newcommand{\inputminted}[2]{}
+
+
+%%% ANSWER ENVIRONMENT %%%
+% \makeatletter
+% \newenvironment{answer}
+% {\begin{adjustwidth}{1.5cm}{}
+%   \begin{siderule}
+%  \footnotesize}
+% {\end{siderule}
+% \end{adjustwidth}
+% \normalsize
+% \setcounter{equation}{0}}
+% \makeatother
+
+%%% PERSO ITEMIZE %%%
+% \newcounter{quest}
+% \setcounter{quest}{0}
+%
+% \newenvironment{quest}
+% {\begin{enumerate}[label=\arabic*)]
+% \setcounter{enumi}{\value{quest}}
+% }
+% {\end{enumerate}
+% \setcounter{quest}{\value{enumi}}
+% }
+
+%%% SOLUTION COMMAND %%%
+\newcommand{\sol}[1]{
+\begin{answer}
+{#1}
+\end{answer}
+}
+
+%\usepackage{fancyhdr}
+% \renewcommand{\sectionmark}[1]{\bfseries{#1}}
+% \renewcommand{\subsectionmark}[1]{}
+\pagestyle{fancy}
+\cfoot{}
+%\rhead{}
+% \fancyhead[RO,LE]{\bfseries\thepage}
+\fancyhead[R]{\bfseries\thepage}
+%\fancyhead[L]{\nouppercase{\rightmark}\quad\quad\bfseries\thepage}
+%\fancyhead[RE]{{\bfseries\thepage}\quad\quad\parttitle}
+\renewcommand{\headrulewidth}{0.8pt}
+
+\ListOfExerciseInToc
+\ExerciseLevelInToc{subsection}
+
+\date{}
+
+%%% PATH %%%
+% \def\pathtocolles{$HOME/Dropbox/CPGE/Physique/Exercices/Recueil}%$
+% \makeatletter
+% \def\input@path{{\pathtocolles/Dimensionnelle/}{\pathtocolles/Optique/}{\pathtocolles/Mecanique/}{\pathtocolles/Thermo/}{\pathtocolles/Fluide/}{\pathtocolles/Electromag/}{\pathtocolles/Ondes/}{\pathtocolles/Quantique/}{\pathtocolles/Figure/}{\pathtocolles/Mecanique/Figures/}{\pathtocolles/Thermo/Figures/}{\pathtocolles/Optique/Figures/}{\pathtocolles/Fluide/Figures/}{\pathtocolles/Electromag/Figures/}{\pathtocolles/Ondes/Figures/}{\pathtocolles/Quantique/Figures/}}
+% \makeatother
+% \graphicspath{{\pathtocolles/Figure/}{\pathtocolles/Mecanique/Figures/}{\pathtocolles/Thermo/Figures/}{\pathtocolles/Optique/Figures/}{\pathtocolles/Fluide/Figures/}{\pathtocolles/Electromag/Figures/}{\pathtocolles/Ondes/Figures/}{\pathtocolles/Quantique/Figures/}{./Figure}}
+
+
+%%% END PAGE %%%
+%\newcommand{\EndPage}{
+%%\newpage
+%%\begin{figure}[p]
+%%   \vspace*{-2.05cm}
+%%    \hspace*{-0.65cm}
+%%    \makebox[\linewidth]{
+%%        \includegraphics[width=1.35\linewidth]{Figure/Backpage.pdf}
+%%    }
+%%\end{figure}
+%}
+
+%%% SOLVE PROBLEM OF REDEFINITION OF \d %%%
+\renewcommand{\d}{\mathrm{d}}
+
+%%% INCLUDE TEX FILE ACCORDING TO ORIGIN %%%
+\newrobustcmd{\ExoList}[3][spé]{
+\ifthenelse{\equal{\detokenize{#1}}{\detokenize{spé}}}
+{
+\ExerciseSelect[label=#2,type={\textsc{PC}}]
+\input{#3.tex}
+\ExerciseStopSelect
+\ExerciseSelect[label=#2,type={\textsc{PSI}}]
+\input{#3.tex}
+\ExerciseStopSelect
+\ExerciseSelect[label=#2,type={\textsc{PT}}]
+\input{#3.tex}
+\ExerciseStopSelect
+% \ExerciseSelect[label=#2,origin={$\star$~}]
+% \input{#3.tex}
+% \ExerciseStopSelect
+% \ExerciseSelect[label=#2,origin={$\star$$\star$~}]
+% \input{#3.tex}
+% \ExerciseStopSelect
+% \ExerciseSelect[label=#2,origin={$\star$$\star$$\star$~}]
+% \input{#3.tex}
+% \ExerciseStopSelect
+}
+{
+\ExerciseSelect[type={\textsc{PCSI}}]
+\input{#3.tex}
+\ExerciseSelect[type={\textsc{MPSI}}]
+\input{#3.tex}
+\ExerciseStopSelect
+}
+}
+
+%%%% COMMANDES INSERT %%%
+\newrobustcmd{\Insert}[2][spé]{
+	\addcontentsline{toc}{section}{\textsc{Colles}}
+	\ExoList[#1]{colle}{#2}
+	\addcontentsline{toc}{section}{\textsc{TD}}
+	\ExoList[#1]{appli}{#2}
+	\ExoList[#1]{TD}{#2}
+	\addcontentsline{toc}{section}{\textsc{Devoirs}}
+	\ExoList[#1]{devoir}{#2}
+}
+
+% Annale command
+\renewcommand{\Annale}[3][Physique PC]{\begin{flushleft}\faIcon{book-open} #2, #1, #3. \medskip  \end{flushleft}}
+% \renewcommand{\Annale}[3][Physique PC]{}
+
+%----------------------------------------------------------------------------------------
+%	REMARQUE ET REMARQUETECH ET EXEMPLE
+%----------------------------------------------------------------------------------------
+% \usepackage{mdframed}
+% \newmdenv[
+%   topline=false,
+%   bottomline=false,
+%   rightline=false,
+%   linecolor=black,
+%   linewidth=1.5pt,
+%   skipabove=\topsep,
+%   skipbelow=\topsep
+% ]{sideruleremarque}
+
+
+% \makeatletter
+% \newenvironment{remarque}
+% {\begin{sideruleremarque}
+%   \small}
+% {\end{sideruleremarque}
+% \normalsize}
+% \makeatother
+
+
+
+% ----------------------------
+% DOCUMENT
+% ----------------------------
+%\begin{document}
+%
+%%%% FIRST PAGE %%%
+%\frontmatter
+%%\thispagestyle{empty}
+%%\begin{figure}[p]
+%%    \vspace*{-2.05cm}
+%%    \hspace*{-0.65cm}
+%%    \makebox[\linewidth]{
+%%        \includegraphics[width=1.35\linewidth]{Figure/Frontpage.pdf}
+%%    }
+%%\end{figure}
+%%\setcounter{page}{-1}
+%\tableofcontents
+%\mainmatter
+%\setcounter{page}{1}
+
+
+% % redefine boxed equation
+% \renewcommand{\eqbox}[2][*]{
+% 	\begin{empheq}{equation#1}
+% 		#2
+% 	\end{empheq}
+% }
+\renewcommand{\eqbox}[2][*]{
+\begin{equation*}
+\boxed{#2}
+\end{equation*}
+}
+

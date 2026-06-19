@@ -1,0 +1,587 @@
+% THIS DOCUMENT LOADS THE PACKAGES AND COMMANDS FOR A THESIS
+% FILE. IT MUST BE LOADED AT THE BEGGINNING OF
+%
+\documentclass[12pt,a4paper,twoside]{book}
+
+% geometry
+\usepackage[	left  = 2.5cm,
+			right = 2.5cm,
+			%showframe = true,
+			top    = 3cm,
+			bottom = 3cm,
+			headheight = 6mm
+]{geometry} 
+			
+%-----------------------------------
+% PACKAGES AND CUSTOMIZATION
+%-----------------------------------
+
+%%% MATH PACKAGES %%%
+\usepackage{amsmath,
+			amssymb,
+			amsfonts,
+			amsthm}		% maths symbols
+\usepackage{mathtools}	% advanced maths		
+\usepackage{siunitx}		% units
+\sisetup{inter-unit-product=\ensuremath{{}\cdot{}}}
+\usepackage{bm}			% bold symbols for vectors
+\usepackage{nicefrac}	% slanted fractions
+\usepackage{textcomp}	% more symbols
+\usepackage{mathrsfs}	% calligraphic symbols
+%\usepackage{bbold}		% identity matrix
+\usepackage{bbm}			% identity matrix
+
+%%% FLOATS AND LISTS %%%
+\usepackage{graphicx}				% graphics directives
+\usepackage{tabularx}				% table directives
+\usepackage{tablefootnote}
+%\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+\renewcommand{\arraystretch}{1.2}
+\usepackage{subfigure}				% subfigure management
+\usepackage{dcolumn}					% align table columns on decimal point
+\usepackage{multirow}				% several nested rows in tables
+\usepackage{booktabs}				% table settings
+\usepackage{array}					% table settings
+\usepackage{paralist}				% list settings
+\usepackage{listings}				% list settings
+\usepackage[shortlabels]{enumitem} 	% item settings
+\usepackage{ragged2e}
+
+% blank pages
+%\usepackage{afterpage}
+
+%\newcommand\blankpage{
+ %   \newpage
+  %  \thispagestyle{empty}
+   % \mbox{}
+    %\newpage
+    %\addtocounter{page}{-1}
+    %\clearpage
+    %}
+    
+%%% PREDEFINED SYMBOLS %%%
+\input{$HOME/Dropbox/.latex/Preambles/symbols.sty}%$
+    
+%%% CROSS REFERENCING %%%
+%\usepackage{xr-hyper}
+
+\makeatletter
+\newcommand*{\addFileDependency}[1]{% argument=file name and extension
+  \typeout{(#1)}
+  \@addtofilelist{#1}
+  \IfFileExists{#1}{}{\typeout{No file #1.}}
+}
+\makeatother
+
+%\newcommand*{\myexternaldocument}[1]{%
+%    \externaldocument{#1}%
+%    \addFileDependency{#1.tex}%
+%    \addFileDependency{#1.aux}%
+%}
+
+\newcommand{\Include}[1]{
+\input{#1}
+%\myexternaldocument{#1}
+}
+
+\usepackage{simplewick}				% Wick contractions
+%\usepackage{feynmp-auto}
+
+\usepackage[autolanguage]{numprint}
+\usepackage{cases}			% easy use of equations in leftbrace
+\usepackage{mathrsfs}
+\usepackage{stmaryrd}		% better bold math font
+\SetSymbolFont{stmry}{bold}{U}{stmry}{m}{n} % prevent Font shape warning
+\usepackage{moreverb}
+
+
+%%% LAYOUT %%%
+\usepackage[utf8]{inputenc}				% encoding
+\usepackage[T1]{fontenc}					% encoding
+\usepackage{lmodern}						% encoding
+\usepackage[english]{babel}				% english typography
+\usepackage{csquotes}	% language dependent quote symbols
+%\usepackage{parskip} 	% spacing between paragraph
+\usepackage{microtype}   % perfecting typography
+\usepackage{fancyvrb} 
+\usepackage{fancyhdr}		% customization of page layout
+\usepackage{emptypage}		% ensure empty pages are blank
+\usepackage[Lenny]{fncychap}	% cool chapter box
+\usepackage{changepage}		% chapter format
+\usepackage{mdframed}		% chapter format
+\usepackage{pdfpages}
+\pagestyle{fancy}			% customize page style
+\renewcommand{\chaptermark}[1]{\markboth{\chaptername \ \thechapter.\ #1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection.\ #1}}
+\fancyhf{} 					% clear headings
+\fancyhead[LE]{\leftmark}
+\fancyhead[RO]{\rightmark}
+\fancyfoot[LE,RO]{\thepage}
+\fancypagestyle{plain}{		% style for special pages
+\fancyhf{}
+\fancyfoot[RO,RE]{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}}
+%\usepackage{indentfirst}	% to enforce indent after section
+
+\usepackage{esint}
+\usepackage{lipsum}
+\usepackage{chngcntr}
+\usepackage{dsfont}
+
+%%% TIKZ %%%
+\usepackage{tikz}			% tikz
+\usetikzlibrary{patterns}	% specific tikz commands
+\usetikzlibrary{calc}		% enables calculus in tikz
+\usepackage{tikzpagenodes}	% specific tikz commands
+%\usetikzlibrary{shadows.blur}
+%\usetikzlibrary{shapes.symbols}
+%\usetikzlibrary{decorations.pathreplacing,calc}
+
+%%% COLORS %%%
+%\usepackage{color}					% basic colors
+%\usepackage{xcolor}		% advanced colors
+%\definecolor{mypink1}{rgb}{1, 0.2, 0.6}
+%\colorlet{mdtRed}{red!70!black}
+%\definecolor{tealblue}{rgb}{0.21,0.46,0.53}
+%\definecolor{darkgreen}{rgb}{0.0,0.2,0.13}
+%\definecolor{asparagus}{rgb}{0.53,0.66,0.42}
+%\definecolor{JoliBleu}{rgb}{0,0.55,0.55}
+%\definecolor{JoliVert}{rgb}{0.15,0.6,0}
+%\definecolor{JoliRouge}{rgb}{0.86,0.08,0}
+%\definecolor{JoliJaune}{rgb}{1,0.75,0}
+%\definecolor{JoliGris}{rgb}{0.52,0.52,0.51}
+%\definecolor{blueryb}{rgb}{0.01,0.28,1.0}
+%\definecolor{bluegray}{rgb}{0.4,0.6 0.8}
+%\definecolor{lightgray}{gray}{0.85}
+%\definecolor{greenblue}{rgb}{0,0.5,0.3}
+%\definecolor{slateblue}{rgb}{0,0.1,0.35}
+%\definecolor{lightblue}{rgb}{0.95,0.95,1}
+
+%%% HYPERLINKS %%%
+\usepackage{url}							% hyperlinks
+\usepackage[
+	colorlinks   = true,
+	linkcolor    = mdtRed, 
+	citecolor    = slateblue,
+	urlcolor     = JoliBleu]{hyperref} 	% hyperlink colors
+%\usepackage{natbib}
+\hypersetup{pdfstartview = FitV}		    % open fullscreen pdf
+\usepackage{bookmark}
+%\usepackage{cite}  % citation settings: [1-3] instead of [1,2,3]
+
+%%% QUOTES %%%
+\usepackage{epigraph}	% chapter quotes
+
+%%% BIBLIOGRAPHY %%%
+\usepackage[
+	%authordate,
+    backend     = biber,
+    bibencoding = utf8,
+    style        = authoryear,%-comp,
+   %authoryear-comp, % authoryear-comp, % Style for the end biblio
+    url		    = false,
+    hyperref    = true,
+    eprint	    = false,
+    maxbibnames = 99,
+    %natbib,
+    doi			= false,
+    maxcitenames = 1,
+    %maxnames     = 1,
+    mincitenames = 1,
+    	uniquelist   = false,
+    	uniquename   = false,
+   % 	minyear      = 1,
+    %nohashothers = true,
+    dashed      = false, % to repeat author name in list ref
+    %citestyle   = authoryear, %numeric-comp, % style refs
+    giveninits  = true,
+    sorting     = nyt,%none,
+    clearlang   = true]{biblatex}%-chicago}	 % biblio setting
+    
+% removes the In:
+\renewbibmacro{in:}{}
+    
+% clear language in bib entries
+%\DeclareFieldFormat{keyword}{\thechapter}
+\AtEveryBibitem{\clearlist{language}
+				\clearlist{day}
+				\clearlist{note}
+				\clearfield{note}
+				%\clearlist{keyword}
+				%\savefield{keyword}{\thechapter}
+				%\restorelist{keyword}{bla}%\thechapter}
+}
+
+
+% hyperlink around name also
+\DeclareCiteCommand{\parencite}[\mkbibparens]
+  {\usebibmacro{prenote}}
+  {\usebibmacro{citeindex}%
+    \printtext[bibhyperref]{\usebibmacro{cite}}}
+  {\multicitedelim}
+  {\usebibmacro{postnote}}
+
+
+% prints author names as small caps
+\renewcommand{\mkbibnamegiven}[1]{\textsc{#1}}
+%\renewcommand{\mkbibnamelast}[1]{\textsc{#1}}
+%\renewcommand{\mkbibnamefirst}[1]{\textsc{#1}}
+%\renewcommand{\mkbibnameaffix}[1]{\textsc{#1}}
+\renewcommand{\mkbibnamefamily}[1]{\textsc{#1}}
+\renewcommand{\mkbibnameprefix}[1]{\textsc{#1}}
+\renewcommand{\mkbibnamesuffix}[1]{\textsc{#1}}
+     
+% remove et al.
+\DefineBibliographyStrings{english}{andothers={}}
+
+%parentheses around cite and modify field
+%\AtEveryBibitem{%
+%  \iffieldequalstr{entrykey}{#1}
+%    {}
+%    {}%
+%}
+\renewcommand{\cite}[1]{\parencite{#1}}
+%\renewcommand*{\nameyeardelim}{\addcomma\space} % add comma
+
+% remove entries
+\DeclareSourcemap{
+  \maps[datatype=bibtex]{
+    \map{
+      \step[fieldset=issn, null]
+	  \step[fieldsource=issue, match=\regexp{\A(\d+)\Z}, final]
+      \step[fieldset=number, fieldvalue={$1}] %$
+      \step[fieldset=issue, null]
+    }
+  }
+} 
+
+\addbibresource{PhDbiblio_ref.bib}		% biblio file
+%\usepackage{calrsfs}
+\usepackage[nottoc]{tocbibind}		% to print biblio in table of contents
+%\usepackage{tocloft}				% spacing in table of contents
+%\setcounter{tocdepth}{2}			% depth of title in table of contents entries: 0=chap, 1=sec, 2=subsec
+%\setcounter{secnumdepth}{2}			% depth of numbering in table of contents entries: 0=chap, 1=sec, 2=subsec
+
+% personal bibliography heading
+\newcommand{\SubBib}[1]{%
+\defbibheading{subbibliography}{%
+\section*{#1}}
+\addcontentsline{toc}{section}{#1}
+%\printbibliography[section=1,heading=subbibliography]
+}
+
+%%% CAPTIONS %%%
+\usepackage{caption}
+%\usepackage{subcaption}
+\DeclareCaptionLabelSeparator{vert}{$~\bm{\mid}~$}
+\usepackage[font      = small,
+			labelfont = bf,
+			labelsep  = vert]{caption}
+\addto\captionsenglish{\def\tablename{{Table}}} 
+\addto\captionsenglish{\def\figurename{{Figure}}}
+
+%----------------------------------------------------------------------------------------
+%	MINITOC
+%----------------------------------------------------------------------------------------
+\usepackage{minitoc}
+\mtcsetdepth{minitoc}{2}
+%\firstchapteris{1}
+\dominitoc
+\renewcommand{\mtctitle}{} % to remove the string "CONTENTS"
+
+\setlength{\epigraphwidth}{0.5\textwidth}
+\newcommand{\persotoc}[3]{
+%\epigraph{\textit{#2}}{#3}
+{\justifying{#1}\par}
+\hspace{2cm}
+\minitoc
+%\hspace{-2cm}
+}
+
+%%% INDEX %%%
+\usepackage{makeidx}
+\makeindex
+
+%%% LIST OF SYMBOLS %%%
+\usepackage[intoc]{nomencl}	% package for list of symbols
+\newcommand{\docR}[2]{#2}	% personal command for the python routine
+\newcommand{\docL}[2]{#2}	% personal command for the python routine
+\renewcommand{\nomname}{List of Symbols}	
+							% title of list of symbols
+\renewcommand{\nompreamble}{The next list describes several symbols that will be later used within the body of the document}
+							% Description of list of symbols section
+\usepackage{etoolbox}		% box for nomenclature groups
+\renewcommand\nomgroup[1]{	% nomenclature groups
+  \item[\bfseries
+  \ifthenelse{\equal{#1}{A}}{Latin symbols}{}
+  \ifthenelse{\equal{#1}{B}}{\hspace{-0.155cm}Greek symbols}{}
+  \ifthenelse{\equal{#1}{C}}{\hspace{-0.295cm}Other symbols}{}
+]}
+\makenomenclature
+
+%-----------------------------------
+% MATHEMATICAL SYMBOLS
+%-----------------------------------
+
+% Feynman slash
+\newcommand{\fsl}[1]{\ensuremath{\mathrlap{\!\not{\phantom{#1}}}#1}}
+
+% scalars
+\newcommand{\eps}{\varepsilon}
+\newcommand{\G}{G} % conductance
+\newcommand{\Gbar}{\bar{G}}
+\newcommand{\Zps}{Z_{\psi(\text{s})}}
+\newcommand{\Zos}{Z_{\omega(\text{s})}}
+\newcommand{\vF}{v_{\rm F}}
+
+%matrices
+\newcommand{\proj}{\hat{\tau}}
+\newcommand{\projs}{\hat{\sigma}}
+
+% Various vectors
+\newcommand{\E}{\bm{\mathcal{E}}}
+\renewcommand{\k}{\bm{k}}
+\newcommand{\p}{\bm{p}}
+\newcommand{\x}{\bm{x}}
+\renewcommand{\r}{\bm{r}}
+\newcommand{\q}{\bm{q}}
+\newcommand{\del}{\bm{\nabla}}
+\newcommand{\weyl}[1]{\bm{\sigma} \cdot \bm{#1}}
+\newcommand{\dirac}[1]{\bm{\gamma} \cdot \bm{#1}}
+\newcommand{\weylstar}[1]{\bm{\sigma}^* \! \cdot \bm{#1}}
+\newcommand{\qj}{\bm{q_j}}
+\newcommand{\ql}{\bm{q_l}}
+\newcommand{\qk}{\bm{q_k}}
+\newcommand{\vg}{\bm{v_{\rm g}}}
+\renewcommand{\j}{J} % current operator
+
+% Surface properties
+\newcommand{\kchi}{\bm{k}^{\chi}}
+\newcommand{\Echi}{E_{\rm s}}
+\newcommand{\qchi}{\varkappa}
+\newcommand{\angl}{\theta}
+\newcommand{\round}[1]{({#1})}
+\newcommand{\EF}{\epsilon}
+\renewcommand{\th}{\vartheta} 
+\newcommand{\PsiS}{\Psi_{\rm S}}
+\newcommand{\psis}{\psi_{\rm s}}
+
+% Quantum fields
+\newcommand{\Op}{\mathcal{O}}
+\newcommand{\Obis}{\mathcal{\tilde{O}}}
+\newcommand{\overbar}[1]{\,\overline{\!{#1}}}
+\newcommand{\scal}{\varphi}
+\newcommand{\scals}{\varphi_{\rm s}}
+\newcommand{\scald}{\overbar{\varphi}}
+\newcommand{\psid}{\shortstack{$\,\rule{5.5pt}{.1mm}$\\[-4pt]$\psi$}\hspace{0.3mm}}
+\newcommand{\psidh}{\hat{\shortstack{$\,\rule{5.5pt}{.1mm}$\\[-4pt]$\psi$}\hspace{0.3mm}\hspace{0.3mm}}\hspace{-0.3mm}}
+\newcommand{\psih}{\hat{\shortstack{$\,\rule{0pt}{.1mm}$\\[-4pt]$\psi$}\hspace{0.3mm}\hspace{0.3mm}}\hspace{-0.3mm}}
+\newcommand{\psids}{\psid_{\rm s}}
+\newcommand{\psidsF}[2]{({\psid_{\rm s}})_{{#1}{#2}}}
+\newcommand{\psisF}[2]{({\psi_{\rm s}})_{{#1}{#2}}}
+\newcommand{\chid}{\overbar{\chi}}
+\newcommand{\psiF}[2]{{\psi^{}\hspace{-1pt}}_{{#1}{#2}}}
+\newcommand{\psidF}[2]{{\shortstack{$\,\rule{5.5pt}{.1mm}$\\[-4pt]$\psi$}\hspace{-0.5pt}}_{{#1}{#2}}}
+\newcommand{\etad}{\bar{\eta}}
+\newcommand{\phid}{\phi^{\dagger}}
+\newcommand{\Psid}{\overline{\Psi}}
+\newcommand{\moys}[1]{\ensuremath{\langle{#1}\rangle}}
+%\newcommand{\moy}[1]{\ensuremath{\left\langle{#1}\right\rangle}}
+\newcommand{\moyfree}[1]{\ensuremath{\left\langle{#1}\right\rangle}}
+\newcommand{\ket}[1]{|#1\rangle}
+\newcommand{\bra}[1]{\langle #1|}
+%\newcommand{\imp}[1]{\emph{#1}}
+\newcommand{\bare}[1]{\,\mathring{\!\shortstack{$\,$\\[-3.5pt]${#1}$}}}
+\newcommand{\bared}[1]{\,\mathring{\!{#1}}}
+
+% Integration measure and integrals
+\renewcommand{\d}{\mathrm{d}}
+\newcommand{\D}{{\rm D}}
+\renewcommand{\O}{O}
+\newcommand{\intx}{\int \d^d x}
+\newcommand{\intr}{\int \d^d r}
+\newcommand{\intz}{\int_0^{\infty} \! \d z}
+\newcommand{\intzp}{\int\limits_0^{\infty} \! \d z'}
+\newcommand{\intkbis}{\int \dfrac{\d^{d-1} k}{(2\pi)^{d-1}}}
+\newcommand{\intk}{\int \dfrac{\d^3 k}{(2\pi)^3}}
+\newcommand{\intkd}{\int \dfrac{\d^d k}{(2\pi)^d}}
+\newcommand{\intp}{\int \dfrac{\d^3 p}{(2\pi)^3}}
+\newcommand{\intpd}{\int \dfrac{\d^{d'} p}{(2\pi)^{d'}}}
+\newcommand{\intq}{\int \dfrac{\d^3 q}{(2\pi)^3}}
+\newcommand{\intqd}{\int \dfrac{\d^d q}{(2\pi)^d}}
+\newcommand{\measq}{\dfrac{\d^3 q}{(2\pi)^3}}
+\newcommand{\measp}{\dfrac{\d^3 p}{(2\pi)^3}}
+\newcommand{\measpd}{\dfrac{\d^d p}{(2\pi)^d}}
+\newcommand{\ksl}{\bm{\sigma}\! \cdot \! \k}
+\newcommand{\diff}[2]{\dfrac{\d}{\d #2} #1}
+\newcommand{\drond}[2]{\ensuremath{\dfrac{\partial{#1}}{\partial{#2}}}}
+
+% Quantities
+\newcommand{\rhom}{\bar{\rho}} %mean density
+\renewcommand{\H}{H} % Hamiltonian (QFT)
+\newcommand{\HW}{\mathcal{H}} % Bloch Hamiltonian/Hamiltonian density
+\newcommand{\HD}{H} % Dirac Hamiltonian
+\renewcommand{\S}{S} % Action
+\newcommand{\Sbi}{S_{0}'} % Action bilayer
+\newcommand{\Sig}{\Sigma'}
+\newcommand{\Surf}{\mathcal{S}} % Surface
+\renewcommand{\L}{L} % Lagrangian
+%\newcommand{\Z}{\mathcal{Z}} % Lagrangian
+\newcommand{\A}{\mathcal{A}} % Berry connection
+\newcommand{\F}{\mathcal{F}} % Berry connection
+%\newcommand{\C}{\mathcal{C}} % path
+\newcommand{\Ec}{E_{\rm c}}  % path
+\newcommand{\tq}{\tau_q}  	% multifractal exp
+\newcommand{\rhon}{\varrho}
+\newcommand{\rhot}{\rho_{\rm t}}  
+\newcommand{\betat}{\beta_{\rm t}}  
+\newcommand{\f}{f_{\tau}}   %singular spectrum
+\newcommand{\g}{f_{\Delta}}  %anomalous singular
+\newcommand{\gap}{\Delta} % gap
+\newcommand{\Ekin}{E_{\rm K}} % kinetic energy
+
+% operators
+\newcommand{\fdiff}[2]{\dfrac{\delta #1}{\delta #2}}
+\renewcommand{\det}{\text{det}}
+\newcommand{\Tr}{\text{Tr}}
+\newcommand{\Pdis}{P}		% distribution
+\newcommand{\I}{\mathcal{I}}			% inversion
+\newcommand{\id}{\mathbbm{1}} % identity
+\newcommand{\GammaE}{\Gamma_{\rm E}}
+
+% representations
+\newcommand{\Rep}{\Upsilon}
+\newcommand{\Du}{\tilde{\text{D}}_3}
+\newcommand{\T}{\mathcal{T}} % time reversal
+\renewcommand{\P}{\mathcal{P}} %particle-hole
+\newcommand{\IT}{\Theta}
+\newcommand{\Cd}{\mathcal{C}_2}
+\newcommand{\Ct}{\mathcal{C}_3}
+\newcommand{\rhorep}{\varpi}
+\newcommand{\Ddoubl}{\text{D}_3^{(2)}}
+
+% Equal sign with question mark
+\newcommand\eg{\stackrel{\mathclap{\normalfont\mbox{?}}}{=}}
+
+%%% FULLCITE COMMAND %%%%
+\DeclareCiteCommand{\fullcitebib}
+  {\renewcommand{\finalnamedelim}
+   {\ifnum\value{liststop}>2 \finalandcomma\fi\addspace\&\space}%
+   \list{}
+   {\setlength{\leftmargin}{\bibhang}%
+     \setlength{\itemindent}{-\leftmargin}%
+     \setlength{\itemsep}{\bibitemsep}%
+     \setlength{\parsep}{\bibparsep}}\item}
+  {\usedriver
+    {}
+    {\thefield{entrytype}}\finentry}
+  {\item}
+  {\endlist\global\undef\bbx@lasthash}
+\makeatother
+
+\renewcommand{\Eq}[1]{Eq.~\ref{eq:#1}}
+
+%-----------------------------------
+% LATEX COMMAND SHORTCUTS
+%-----------------------------------
+
+% conclusion
+\newcommand{\conclu}[2]{
+\newpage
+\section*{Conclusion}
+\addcontentsline{toc}{section}{Conclusion}
+\paragra{Summary} #1
+
+\paragra{Outlook} #2
+}
+
+% paragraph
+\newcommand{\paragra}[1]{
+\paragraph{{#1}~---$\!\!\!\!$}}
+
+% Subfigures
+\newcommand{\subfig}[3]{
+\subfigure[]{\label{fig:#2}\includegraphics[#1]{#2.#3}}
+}
+
+\newcommand{\subfigcap}[4]{
+\subfigure[#4]{\label{fig:#2}\includegraphics[#1]{#2.#3}}
+}
+\newcommand{\subfiganx}[4]{
+\subfigure[#4]{\label{fig:#2_app}\includegraphics[#1]{#2.#3}}
+}
+
+%-----------------------------------
+%	ENVIRONNEMENT eqimportante
+%-----------------------------------
+\usepackage[most]{tcolorbox}
+\tcbset{colframe = black, colback = white, boxrule = 1 pt, arc = 1pt}
+\usepackage{empheq}
+
+ \newenvironment{eqimportante}
+     {
+
+   \tikz[remember picture] \coordinate(NW); \empheq[innerbox=\fbox]{equation} \tikz[remember picture] \coordinate(eqleft);
+     }
+     {\tikz[remember picture] \coordinate(eqright);\endempheq
+   \tikz[remember picture] \coordinate(SW);
+       \begin{tikzpicture}[overlay, remember picture]
+             \node (bottompageright) at (current page.south east){};
+             \node (toppageright) at (current page.north east){};
+             \node (rectN) at (NW -| toppageright){};
+             \node (rectS) at (SW -| bottompageright){};
+             \draw[tealblue,fill,opacity=0.2] ($(rectN)+(0,0)$) rectangle ($(rectS)+(-1,0)$);
+       \end{tikzpicture}\\
+       }
+       
+%----------------------------
+%	ENVIRONNEMENT REMARQUE
+%----------------------------
+\newmdenv[
+  topline    = false,
+  bottomline = false,
+  rightline  = false,
+  linecolor  = black,
+  linewidth  = 1.5pt,
+  skipabove  = \topsep,
+  skipbelow  = \topsep
+]{sideruleremarque}
+
+\makeatletter
+\newenvironment{remarque}
+{  \begin{sideruleremarque}
+ \small}
+{\end{sideruleremarque}
+\normalsize}
+\makeatother
+
+%-----------------------------------
+%	ACRONYMES
+%-----------------------------------
+\usepackage{acro}
+\DeclareAcronym{ARPES}{short = ARPES, 
+					  long  = angle-resolved photoemission spectroscopy}
+\DeclareAcronym{HQHE}{short = HQHE, 
+					  long  = half-integer quantum Hall effect}
+\DeclareAcronym{AQHE}{short = AQHE, 
+					  long  = anomalous quantum Hall effect}
+\DeclareAcronym{DoS}{short = DoS, 
+					  long  = density of states}
+\DeclareAcronym{SCBA}{short = SCBA, 
+					  long  = self-consistent Born approximation}
+\DeclareAcronym{TBG}{short = TBG, 
+					  long  = twisted bilayer graphene}				\DeclareAcronym{irrep}{short = irrep., 
+					  long  = irreducible representations}	
+					  
+% Common phrases
+\newcommand{\ext}[1]{Extracted from~\cite{#1}.}
+\newcommand{\aexp}{disorder correlation exponent~}
+					  
+%-----------------------------------
+%	REPORT STRUCTURE
+%-----------------------------------
+
+\title{Template de thèse minimaliste}
+\author{Eric Brillaux}
+\date\today

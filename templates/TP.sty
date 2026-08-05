@@ -176,6 +176,10 @@ hyperfigures=true]
 % \setcounter{equation}{0}}
 % \makeatother
 
+\newcommand{\parag}[1]{%
+\paragraph{{\color{coolblack}#1}~---$\!\!\!\!$}%
+}
+
 \newcommand*\parttitle{}
 \let\origpart\part
 \renewcommand*{\part}[2][]{%
@@ -583,3 +587,11 @@ IfBooleanTF={#2}{label=#3}{}}
 
 % predefine \technique exp command
 \newcommand{\technique}[1]{}
+
+% appel examinATEUR TP blanc
+\usepackage{bbding}
+\newcommand{\examinateur}{%
+\newline%
+\noindent{\color{iconcolor}\HandRight \emph{Appeler l'examinateur pour validation.}}%
+%
+}

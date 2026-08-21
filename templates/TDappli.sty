@@ -73,7 +73,8 @@
 \input{symbols.sty}
 \input{programme.tex}
 \input{_preambule_CdE_PC.tex}
-\input{URL.tex}
+\input{URL_qftrules.tex}
+\input{QR_qftrules.tex}
 
 % HYPERREF
 \usepackage[colorlinks=true,
@@ -395,11 +396,11 @@ $\star$\ifnum#2=2\else$\star$\ifnum#2=3\fi\fi\fi}
 	\basiqueEtTransversal			{Y}
 	\nombreColonnesQuestions		{1} % vide, 1, 2, 3, etc.
 	\avecPlusieursQuestions			{Y} % Y ou N
-	\renewcommand{\ExerciseName}{{\normalsize
+	% \renewcommand{\ExerciseName}{{\normalsize
 	% \includegraphics[height=10pt]{Bulldozer.pdf}
 	% \faPenSquare
-	\faPencil*
-	}\large Exercice}
+	% \faPencil*
+	% }\large Exercice}
 	\begin{Exercise}[title={#4}, exam={#4}, origin={\diff~}, label=appli, type={\textsc{#1}}]
 	\vspace{-0.5cm}
 	\begin{adjustwidth}{0.01cm}{0cm}

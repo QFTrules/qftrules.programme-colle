@@ -715,6 +715,48 @@ R_{\rm th, #1}%
 \end{minipage}
 }
 
+%%% OBJECTIFS %%%
+\newcommand{\iconObjectifs}{%
+{\color{iconcolor}\small\faCrosshairs}%
+}
+
+\newcommand{\TPObjectifsPrerequis}[2]{%
+  \noindent%
+  \vspace{0.5cm}%
+  \begin{adjustwidth}{0cm}{0pt}%
+    \begin{minipage}[t]{0.67\linewidth}%
+      #1%
+    \end{minipage}%\hfill%
+    \begin{minipage}[t]{0.3\linewidth}%
+      #2%
+    \end{minipage}%
+  \end{adjustwidth}%
+  \vspace{0.3cm}%
+}
+
+\NewDocumentEnvironment{objectifs}{ O{Objectifs} }{%
+  \noindent\iconObjectifs~~\textbf{\textcolor{iconcolor}{#1}}%
+  \begin{answer}%
+  \begin{liste}[leftmargin=0.45cm]%
+}{%
+  \end{liste}
+  \end{answer}%
+}%
+
+%%% Prérequis %%%
+\newcommand{\iconPrerequis}{%
+{\color{iconcolor}\small\faBook}%
+} 
+
+\NewDocumentEnvironment{prerequis}{ O{Prérequis} }{%
+  \noindent\iconPrerequis~~\textbf{\textcolor{iconcolor}{#1}}%
+  \begin{answer}%
+  \begin{liste}[leftmargin=0.45cm]%
+}{%
+  \end{liste}
+  \end{answer}%
+}%
+
 %%% REMARQUE %%%
 \newcommand{\iconSoluce}{%
 {\color{iconcolor}\small\faCheckCircle}%
@@ -1230,38 +1272,34 @@ title={#2},#1
             \begin{minipage}{0.09\textwidth}%
             {\color{white}Test}%
             \end{minipage}%
-            \begin{minipage}{0.72\textwidth}%
+            \begin{minipage}{0.6\textwidth}%
               \centering%
             \Large\textsc{\color{\colorTP}%
             {\TPName{#4}}}%
             \vspace{0.5em}%
             \end{minipage}%
+            \hfill%
             \miniQR[TP]{#4}%
             \hfill%
-            \vspace{-1.7em}%
+            % \vspace{-1.7em}%
+            \vspace{-0.5em}%
             \end{TPbox}%
             \noindent%
             \!\!\icontodo~:~question à préparer avant le TP%
             \hfill\iconBomb~:~indication pratique importante%
             % \hfill
             \vspace{-0.3cm}%
-            \begin{center}%
-            \begin{minipage}[t]{0.27\textwidth}%
-              \vspace{0pt}%
-              \noindent\underline{Objectifs}~:%
-              \begin{liste}[leftmargin=0.45cm]%
+            \TPObjectifsPrerequis{%
+              \begin{objectifs}%
                 {\small\itshape #2}%
-              \end{liste}%
-            \end{minipage}\hfill%
-            \begin{minipage}[t]{0.2\textwidth}%
-              \vspace{0pt}%
-              \noindent\underline{Prérequis}~:%
-              \begin{liste}[leftmargin=0.45cm]%
+              \end{objectifs}%
+            }{%
+              \begin{prerequis}%
                 {\small\itshape #3}%
-              \end{liste}%
-            \end{minipage}%
+              \end{prerequis}%
+            }%
+            % \end{minipage}%
             % Consigne de TP
-          \end{center}%
           \ConsignesTP
             }%
             {% entete de TP evaluation
@@ -1488,9 +1526,9 @@ title={Solution}
 
   \tikz[remember picture] \coordinate(figleft);
   \subfigure{\includegraphics[{#3}]{#1}\label{#2}}\tikz[remember picture] \coordinate(figcenter1);
-  \subfigure{\includegraphics[{#6}]{#4}\label{#5}}
+  \subfigure{\includegraphics[{#6}]{#4}\label{5}}
   \tikz[remember picture] \coordinate(figcenter2);
-  \subfigure{\includegraphics[{#9}]{#7}\label{#8}}
+  \subfigure{\includegraphics[{#9}]{#7}\label{8}}
   \begin{tikzpicture}[overlay, remember picture]
     \draw ($(figtop -| figleft)-(0,0)$) node {\small (a)};
     \draw ($(figtop -| figcenter1)-(0,0)$) node {\small (b)};
@@ -1506,11 +1544,11 @@ title={Solution}
 
   \tikz[remember picture] \coordinate(figcenter1);
 
-  \subfigure{\includegraphics[{#6}]{#4}\label{#5}}
+  \subfigure{\includegraphics[{#6}]{#4}\label{5}}
 
   \tikz[remember picture] \coordinate(figcenter2);
 
-  \subfigure{\includegraphics[{#9}]{#7}\label{#8}}
+  \subfigure{\includegraphics[{#9}]{#7}\label{8}}
   \begin{tikzpicture}[overlay, remember picture]
     \draw ($(figtop -| figleft)-(0,0)$) node {\small (a)};
     \draw ($(figleft |- figcenter1)-(0,0)$) node {\small (b)};
@@ -1523,11 +1561,11 @@ title={Solution}
 
   \tikz[remember picture] \coordinate(figleft);
   \subfigure{\includegraphics[{#3}]{#1}\label{#2}}\tikz[remember picture] \coordinate(figcenter);
-  \subfigure{\includegraphics[{#6}]{#4}\label{#5}}
+  \subfigure{\includegraphics[{#6}]{#4}\label{5}}
 
   \tikz[remember picture] \coordinate(figcenter1);
 
-  \subfigure{\includegraphics[{#9}]{#7}\label{#8}}
+  \subfigure{\includegraphics[{#9}]{#7}\label{8}}
   \begin{tikzpicture}[overlay, remember picture]
     \draw ($(figtop -| figleft)-(0,0)$) node {\small (a)};
     \draw ($(figtop -| figcenter)-(0,0)$) node {\small (b)};
@@ -1652,8 +1690,8 @@ title={Solution}
 {\pathtoexos/Fluide/}
 {\pathtoexos/Electromag/}
 {\pathtoexos/Ondes/}
-{\pathtoexos/Oraux/}
 {\pathtoexos/Quantique/}
+{\pathtoexos/Oraux/}
 {\pathtoexos/Relativite/}
 {\pathtoexos/Relativite/Figures/}
 {\pathtoexos/Figure/}

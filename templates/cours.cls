@@ -1248,10 +1248,19 @@ format=custom}
 \setcounter{quest}{\value{enumi}}
 }
 
+% Cours-only override: keep triangular bullets but use section color.
+\renewenvironment{liste}[1][]
+{\begin{itemize}
+[labelindent=\parindent, label={\color{\ColorStructure}$\blacktriangleright$},#1]
+}
+{\end{itemize}}
+
 \RenewDocumentEnvironment{soluce}{ O{Solution} }{%
 
 % \begin{minipage}{\linewidth}%
+\Needspace{5\baselineskip}%
 \noindent\iconSoluce~~\textbf{\textcolor{iconcolor}{#1}}%
+\par\nobreak
 \begin{answer}%
 }{%
 \end{answer}%

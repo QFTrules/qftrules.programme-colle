@@ -699,6 +699,18 @@ R_{\rm th, #1}%
 }%
 \makeatother
 
+% answer-style block without left indentation (used for warning/attention)
+\newenvironment{answerNoIndent}{%
+\begin{adjustwidth}{10pt}{}%
+\begin{siderule}%
+\itshape%
+\footnotesize%
+}{%
+\end{siderule}%
+\end{adjustwidth}%
+\normalsize%
+}%
+
 % my wrap environment
 \NewDocumentEnvironment{mywrap}{ m m }{
 \begin{minipage}{\textwidth}
@@ -748,7 +760,7 @@ R_{\rm th, #1}%
 {\color{iconcolor}\small\faBook}%
 } 
 
-\NewDocumentEnvironment{prerequis}{ O{Prérequis} }{%
+\NewDocumentEnvironment{prerequisite}{ O{Prérequis} }{%
   \noindent\iconPrerequis~~\textbf{\textcolor{iconcolor}{#1}}%
   \begin{answer}%
   \begin{liste}[leftmargin=0.45cm]%
@@ -770,6 +782,23 @@ R_{\rm th, #1}%
 }{%
 \end{answer}%
 \end{minipage}%
+}%
+
+\NewDocumentEnvironment{warning}{ O{Attention} }{%
+\Needspace{5\baselineskip}%
+\noindent\makebox[1.4em][l]{{\color{iconcolor}\faBomb}}%
+\parbox[t]{\dimexpr\linewidth-1.4em\relax}{\textbf{\textcolor{iconcolor}{#1}}}%
+\par\nobreak%
+\begin{answer}%
+}{%
+\end{answer}%
+\par\vspace{0.4em}%
+}%
+
+\NewDocumentEnvironment{attention}{ O{Attention} }{%
+\begin{warning}[#1]%
+}{%
+\end{warning}%
 }%
 
 %%% DÉMONSTRATION %%%
@@ -1294,9 +1323,9 @@ title={#2},#1
                 {\small\itshape #2}%
               \end{objectifs}%
             }{%
-              \begin{prerequis}%
+              \begin{prerequisite}%
                 {\small\itshape #3}%
-              \end{prerequis}%
+              \end{prerequisite}%
             }%
             % \end{minipage}%
             % Consigne de TP

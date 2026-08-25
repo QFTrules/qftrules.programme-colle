@@ -572,8 +572,13 @@ $\star$\ifnum#2=3\fi\fi\fi}
 			$\star$\ifnum#2=2\else
 			$\star$\ifnum#2=3\fi\fi\fi}
 			% \renewcommand{\ExerciseName}{\large Problème}
-			\begin{Exercise}[title={#4}, exam={#4}, origin={\diff~}, label=TD, type={\textsc{#1}}]
-			}{ % expérience
+				\begin{Exercise}[title={#4}, exam={#4}, origin={\diff~}, label=TD, type={\textsc{#1}}]
+				}{
+				\ifthenelse{\equal{\detokenize{#3}}{\detokenize{reflex}}}
+				{
+				\renewcommand{\ExerciseName}{{\normalsize \faLightbulb}~\large Exercice}
+				\begin{Exercise}[title={#4}, exam={#4}, origin={\diff~}, label=reflex, type={\textsc{#1}}]
+				}{ % expérience
 			\ifthenelse{\equal{\detokenize{#3}}{\detokenize{exp}}}
                 {
                 \def\diff{
@@ -590,6 +595,7 @@ $\star$\ifnum#2=3\fi\fi\fi}
 				}
 			}
 		}
+	}
 	}
 }{
 \ifthenelse{\equal{\detokenize{#3}}{\detokenize{appli}}}

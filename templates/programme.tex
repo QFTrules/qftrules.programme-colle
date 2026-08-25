@@ -212,7 +212,8 @@
 \newrobustcmd{\Chapit}[3][0]{
 \Theme[#1]{#2}
 % \renewcommand{\chaptername}{\Large\textsc{Chapitre}~M\thechapter}
-\setcounter{chapter}{#3-1}\subtitle{\ChapitName{#2}{#3}}}
+\setcounter{chapter}{#3-1}\subtitle{\ChapitName{#2}{#3}}
+\def\theqrcode{\miniQR[cours][#2]{#3}}}
 % Thème du cours
 \newrobustcmd{\Theme}[2][0]{
 \setcounter{part}{#2}

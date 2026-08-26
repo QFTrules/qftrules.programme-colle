@@ -720,7 +720,7 @@ R_{\rm th, #1}%
 {\color{iconcolor}\small\faCrosshairs}%
 }
 
-\newcommand{\TPObjectifsPrerequis}[2]{%
+\newcommand{\TPObjectifsprerequisite}[2]{%
   \noindent%
   \vspace{0.5cm}%
   \begin{adjustwidth}{0cm}{0pt}%
@@ -744,12 +744,12 @@ R_{\rm th, #1}%
 }%
 
 %%% Prérequis %%%
-\newcommand{\iconPrerequis}{%
+\newcommand{\iconprerequisite}{%
 {\color{iconcolor}\small\faBook}%
 } 
 
-\NewDocumentEnvironment{prerequis}{ O{Prérequis} }{%
-  \noindent\iconPrerequis~~\textbf{\textcolor{iconcolor}{#1}}%
+\NewDocumentEnvironment{prerequisite}{ O{Prérequis} }{%
+  \noindent\iconprerequisite~~\textbf{\textcolor{iconcolor}{#1}}%
   \begin{answer}%
   \begin{liste}[leftmargin=0.45cm]%
 }{%
@@ -1289,14 +1289,14 @@ title={#2},#1
             \hfill\iconBomb~:~indication pratique importante%
             % \hfill
             \vspace{-0.3cm}%
-            \TPObjectifsPrerequis{%
+            \TPObjectifsprerequisite{%
               \begin{objectifs}%
                 {\small\itshape #2}%
               \end{objectifs}%
             }{%
-              \begin{prerequis}%
+              \begin{prerequisite}%
                 {\small\itshape #3}%
-              \end{prerequis}%
+              \end{prerequisite}%
             }%
             % \end{minipage}%
             % Consigne de TP

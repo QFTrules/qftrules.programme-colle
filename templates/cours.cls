@@ -367,10 +367,10 @@
 %%中文结构名字
 
 % BIBTEX NOT NECESSARY %
-% \RequirePackage[
-  % backend=biber,
-  % citestyle=\ELEGANT@citestyle,
-  % bibstyle=\ELEGANT@bibstyle]{biblatex}
+\RequirePackage[
+  backend=biber,
+  citestyle=\ELEGANT@citestyle,
+  bibstyle=\ELEGANT@bibstyle]{biblatex}
 
 
 

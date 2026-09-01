@@ -850,6 +850,7 @@ R_{\rm th, #1}%
 
 % additional command to print ONLY the solutions
 \newrobustcmd{\SoluceOnly}{%
+\renewcommand{\ConsignesPhy}{}%
 \renewcommand{\question}[1]{\item}%
 \renewcommand{\Enonce}[1]{}
 \renewcommand{\sol}[2][Solution]{%
@@ -985,7 +986,21 @@ R_{\rm th, #1}%
                 }~\large Exercice}
                 \begin{Exercise}[title={#4}, exam={#4}, label=exp, type={\textsc{#1}}]
                 % \begin{adjustwidth}{-0.85cm}{0cm}
-                }{}
+                }{
+                  \ifthenelse{\equal{\detokenize{#3}}{\detokenize{reflex}}}
+                  {
+                  \def\diff{
+                  $\star$\ifnum#2=1\else
+                  $\star$\ifnum#2=2\else
+                  $\star$\ifnum#2=3\fi\fi\fi}
+                  % \renewcommand{\ExerciseName}{{\normalsize
+                  % \includegraphics{Bulldozer.pdf}
+                  % \faPenToSquare
+                  % }~\large Exercice}
+                  \begin{Exercise}[title={#4}, exam={#4}, label=reflex, type={\textsc{#1}}]
+                  % \begin{adjustwidth}{-0.85cm}{0cm}
+                  }{}
+                }
             }
           }
         }

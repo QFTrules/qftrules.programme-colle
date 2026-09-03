@@ -61,7 +61,8 @@
 %%% SYMBOLS %%%
 \input{symbols.sty}%$
 \input{programme.tex}%$
-\input{URL.tex}%$
+\input{URL_qftrules.tex}%$
+\input{QR_qftrules.tex}%$
 %\newcommand{\vv}[1]{\Vec{#1}}
 
 
@@ -855,14 +856,14 @@ IfBooleanTF={#2}{label=#3}{}}
   % \trim{\expandafter\ThemeLetter{#2}}#3
   % \ThemeLetter{#2}#3
   \begin{liste}%
-    \item \myURL{M3}{Exp.~\ThemeLetter{#2}#3.#4} : #5%
+    \item \myURLThemeChapter{#2}{#3}{Exp.~\ThemeLetter{#2}#3.#4} : #5%
   \end{liste}%
 }
 
 \newcommand{\techTP}[4][]{%
   \ifthenelse{\equal{#1}{}}{}{\textsc{#1}}%
   \begin{liste}%
-    \item \myURL{TP01}{#3} : #4%
+    \item \myURL{#3}{#3} : #4%
   \end{liste}%
 }
 

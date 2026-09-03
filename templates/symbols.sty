@@ -626,20 +626,38 @@ R_{\rm th, #1}%
 ]{siderule}
 
 %%% BOXES %%%
-\newcommand{\iconBomb}{
-\faBomb
-}
-\newenvironment{danger}[1][0]
-{
-\begin{itemize}[leftmargin=*]
-\vspace{0.1em}
-\item[\iconBomb] \small \color{JoliRouge!65!black}
-}
-{
-\end{itemize}
-\normalsize
+% \newcommand{\iconBomb}{
+% \faBomb
+% }
+% \newenvironment{danger}[1][0]
+% {
+% \begin{itemize}[leftmargin=*]
+% \vspace{0.1em}
+% \item[\iconBomb] \small \color{JoliRouge!65!black}
+% }
+% {
+% \end{itemize}
+% \normalsize
+% }
+
+%%% REMARQUE %%%
+\newcommand{\iconBomb}{%
+{\color{iconcolor}\small\faBomb}%
 }
 
+% \newcommand{proof}[1]{%
+\newenvironment{warning}{%
+
+% \begin{minipage}{\columnwidth}
+\noindent\iconBomb~~\textbf{\textcolor{iconcolor}{Avertissement}}%
+\begin{answer}%
+% \begin{awesomeblock}[JoliRouge]{1pt}{\iconProof}{JoliRouge}%
+}{%
+\end{answer}%
+% \end{minipage}%
+
+% \end{awesomeblock}%
+}%
 
 % for boxes
 \usepackage{awesomebox}

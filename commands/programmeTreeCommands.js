@@ -212,7 +212,10 @@ function buildProgrammeColle({ collePath, styPath, pythonCommand, cpgePath, mdPa
 
 	// Write MD file for GitHub Pages
 	const mdSuffix = '_PC_Phy_colle.md';
-	const collePathFwd = collePath.replace(/\/?$/, '/');
+	// Convert the absolute filesystem collePath to a site-relative /assets/... URL
+	const collePathNormalized = collePath.replace(/\\/g, '/');
+	const assetsIndex = collePathNormalized.indexOf('/assets/');
+	const collePathFwd = (assetsIndex !== -1 ? collePathNormalized.slice(assetsIndex) : collePathNormalized).replace(/\/?$/, '/');
 	fs.writeFileSync(path.join(mdPath, Filedate + mdSuffix), [
 		'---',
 		'layout: document',

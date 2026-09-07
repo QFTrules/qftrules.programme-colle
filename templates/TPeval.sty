@@ -503,9 +503,9 @@ IfBooleanTF={#2}{label=#3}{}}
 
 % MAIN COMMAND FOR TP EVALUATION GRID %
 \newcommand{\TPeval}[5]{
-\def\crit #1 {
-& $\triangleright$~#1 &&&&\\
-\cline{2-6}
+\global\def\crit##1{%
+& $\triangleright$~##1 &&&&\\
+\cline{2-6}%
 }
 \def\Seval{
 % $\mathcal{S}$
@@ -603,17 +603,17 @@ IfBooleanTF={#2}{label=#3}{}}
 % \end{large}}
 % #6
 % \hline
-\multicolumn{2}{|c|}{
-% \begin{Large}
-\textsc{TOTAL}
-% \end{Large}
-}&&&&\\
+% \multicolumn{2}{|c|}{
+% % \begin{Large}
+% \textsc{TOTAL}
+% % \end{Large}
+% }&&&&\\
 % \hline
 % \multicolumn{2}{|c|}{\begin{Large}
 % \textsc{Note}\end{Large}}&\multicolumn{4}{|c|}{}
 %&\multicolumn{4}{|c|}{}
 % \\
-\hline
+% \hline
 \end{tabularx}
 \end{center}
 }

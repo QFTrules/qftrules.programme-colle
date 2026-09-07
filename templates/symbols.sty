@@ -1342,17 +1342,18 @@ title={#2},#1
               % optional #3 is the list of goals
               % mandatory #4 is the TP number
               \begin{center}%
-              \begin{tabularx}{\linewidth}{|l|X|r|}%
+              \begin{tabularx}{\linewidth}{|p{10cm}|X|X|}%
               \hline%
               % \begin{minipage}{0.4\linewidth}
               % \begin{center}
               % \begin{large}
+              \rule{0pt}{0.65cm}%
               {%
               \color{coolblack}%
               \large%
               \ifthenelse{\equal{\detokenize{#4}}{\detokenize{-1}}}%
                 {TIPE : \textsc{Présentation orale}}%
-                {TP~#4~:\!\TPName{#4}\hspace{-0.7em}}%
+                {TP~#4~:~\TPName{#4}\hspace{-0.7em}}%
               }%
               % \end{large}
               % \end{center}
@@ -1360,7 +1361,7 @@ title={#2},#1
                &%
                % \begin{minipage}{0.3\linewidth}
               % \begin{LARGE}
-               \textsc{\textsc{Nom} :}%
+               \textsc{Nom} :
               % \end{LARGE}
                % \end{minipage}
                &%

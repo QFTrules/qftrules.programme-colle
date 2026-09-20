@@ -186,14 +186,17 @@ ${\color{JoliRouge}^*}$%
 \newcommand{\nomRprime}{{référentiel relatif}}
 
 % vitesses et accélération
-\newcommand{\vR}{\Vec{v}_{\!\Rcal}}
+\newcommand{\OM}{\Vec{\rm OM}}
+\newcommand{\dOM}{\Vec{\d \rm OM}}
+\newcommand{\vM}[1][M]{\Vec{v}({\rm #1})}
+\newcommand{\vR}[1][M]{\Vec{v}_{\!\Rcal}({\rm #1})}
 \newcommand{\vRef}[1]{\Vec{v}_{\!#1}}
-\newcommand{\vRp}{\Vec{v}_{\!\Rcal'}}
-\newcommand{\ve}{\Vec{v_{\rm{e}}}(M)}
+\newcommand{\vRp}[1][M]{\Vec{v}_{\!\Rcal'}({\rm #1})}
+\newcommand{\ve}[1][M]{\Vec{v_{\rm{e}}}({\rm #1})}
 \newcommand{\aR}{\Vec{a}_\Rcal}
 \newcommand{\aRp}{\Vec{a}_{\!\Rcal'}}
 \newcommand{\aRef}[1]{\Vec{a}_{#1}}
-\renewcommand{\ae}{\Vec{a_{\rm{e}}}(M)}
+% \newcommand{\ae}[1][M]{\Vec{a_{\rm{e}}}({\rm #1})}
 \newcommand{\aC}{\Vec{a_{\rm{C}}}(M)}
 \newcommand{\dR}[3]{\ensuremath{\frac{\mathrm{d}{#1}}{\mathrm{d}{#2}}\left.{\color{white}\frac{l}{a}}\hspace{-0.9em}\right\rvert_{#3}}}
 \newcommand{\PC}{M^*}

@@ -590,7 +590,7 @@
           %$\heartsuit$
           }};}},
     propstyle/.style={
-      regular,
+      common,
       % boxed title style={
       %   boxrule=1pt,
       %   colframe=third,
@@ -615,14 +615,14 @@
   % \newtcbtheorem[auto counter,number within=chapter]{theorem}{\theoremname}{thmstyle}{thm}
   \DeclareTColorBox[auto counter,number within=chapter]{theorem}{ o t\label g }{
     common,
-    %thmstyle,
-    defstyle,
+    thmstyle,
+    % defstyle,
     IfValueTF={#1}{title={\theoremname~\thetcbcounter\ (#1)}}{title=\theoremname~\thetcbcounter},
     IfBooleanTF={#2}{label=#3}{}}
-    \DeclareTColorBox[auto counter,number within=chapter]{prop}{ o t\label g }{
+  \DeclareTColorBox[auto counter,number within=chapter]{prop}{ o t\label g }{
     common,
-    %propstyle,
-    defstyle,
+    propstyle,
+    % defstyle,
     IfValueTF={#1}{title={\propname~\thetcbcounter\ (#1)}}{title=\propname~\thetcbcounter},
     IfBooleanTF={#2}{label=#3}{}}
   % \newtcbtheorem[auto counter,number within=chapter]{postulate}{\postulatename}{thmstyle}{pos}
@@ -671,7 +671,7 @@
   \let\openbox\relax
   \RequirePackage{amsthm}
   \let\proof\relax
-  % \let\proofname\relax
+  % \let\proofname\relaxp
   \let\endproof\relax
 
   % declare a new theorem style
@@ -1476,19 +1476,48 @@ format=custom}
 }
 \makeatother
 
-% environnement exemple
-\makeatletter
-\NewDocumentEnvironment{exemple}{ m }{
-\begin{example}[#1]
-\setcounter{quest}{0}
-}
-{
-  % \vspace{5cm}
-\end{example}
-% \sol{#2}
-}
-\makeatother
+% %%% EXEMPLE DE COURS %%%
+% \makeatletter
+% \NewDocumentEnvironment{exemple}{ m }{
+% \begin{example}[#1]
+% \setcounter{quest}{0}
+% }
+% {
+%   % \vspace{5cm}
+% \end{example}
+% % \sol{#2}
+% }
+% \makeatother
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+
+%%% EXEMPLE DE COURS %%%
+\makeatletter
+\newcounter{exemple}
+\setcounter{exemple}{0}
+\NewDocumentEnvironment{exemple}{ m }{%
+\stepcounter{exemple}%
+{\color{coolblack}%
+\noindent\textbf{Exemple~\thechapter.\theexemple~:~{#1}~%
+% \dotfill
+\hrulefill%
+}%
+
+}%
+\setcounter{quest}{0}%
+}%
+{%
+{\color{coolblack}%
+\noindent%
+\textbf{%
+  % \dotfill
+  \hrulefill%
+  }%
+}%
+
+}%
+\makeatother
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % prérequis PCSI %
 % \newcommand{\pcsi}[1]{

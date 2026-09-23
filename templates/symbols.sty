@@ -193,13 +193,13 @@ ${\color{JoliRouge}^*}$%
 \newcommand{\vRef}[1]{\Vec{v}_{\!#1}}
 \newcommand{\vRp}[1][M]{\Vec{v}_{\!\Rcal'}({\rm #1})}
 \newcommand{\ve}[1][M]{\Vec{v_{\rm{e}}}({\rm #1})}
-\newcommand{\aR}{\Vec{a}_\Rcal}
-\newcommand{\aRp}{\Vec{a}_{\!\Rcal'}}
+\newcommand{\aR}[1][M]{\Vec{a}_{\!\Rcal}({\rm #1})}
+\newcommand{\aRp}[1][M]{\Vec{a}_{\!\Rcal'}({\rm #1})}
 \newcommand{\aRef}[1]{\Vec{a}_{#1}}
-% \newcommand{\ae}[1][M]{\Vec{a_{\rm{e}}}({\rm #1})}
+\renewcommand{\ae}[1][M]{\Vec{a_{\rm{e}}}({\rm #1})}
 \newcommand{\aC}{\Vec{a_{\rm{C}}}(M)}
 \newcommand{\dR}[3]{\ensuremath{\frac{\mathrm{d}{#1}}{\mathrm{d}{#2}}\left.{\color{white}\frac{l}{a}}\hspace{-0.9em}\right\rvert_{#3}}}
-\newcommand{\PC}{M^*}
+\newcommand{\PC}{{\rm M^*}}
 \newcommand{\OR}{\Vec{\Omega}_{\Rcal'/\Rcal}}
 \newcommand{\Rcal}{\mathcal{R}}
 \newcommand{\Rg}{\Rcal_{\rm g}}

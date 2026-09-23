@@ -1496,11 +1496,12 @@ format=custom}
 \newcounter{exemple}
 \setcounter{exemple}{0}
 \NewDocumentEnvironment{exemple}{ m }{%
+\medskip%
 \stepcounter{exemple}%
 {\color{coolblack}%
 \noindent\textbf{Exemple~\thechapter.\theexemple~:~{#1}~%
-% \dotfill
-\hrulefill%
+\dotfill
+% \hrulefill%
 }%
 
 }%
@@ -1510,8 +1511,8 @@ format=custom}
 {\color{coolblack}%
 \noindent%
 \textbf{%
-  % \dotfill
-  \hrulefill%
+  \dotfill
+  % \hrulefill%
   }%
 }%
 

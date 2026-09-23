@@ -1145,7 +1145,7 @@ title={#2},#1
 
 \NewDocumentCommand{\miniQR}{O{TD} O{} m}{
   \ifthenelse{\equal{\detokenize{#1}}{\detokenize{cours}}}{}{%
-    \begin{minipage}[c]{0.45cm}
+    \begin{minipage}[c]{0.2cm}
       \rotatebox{90}{\textcolor{coolblack}{corrigé}}
     \end{minipage}
   }
@@ -1305,10 +1305,10 @@ title={#2},#1
             \begin{TPbox}[]{TP~#4\!\!}%
             % \vspace{-7em}
             \vspace{-2.2em}%
-            \begin{minipage}{0.09\textwidth}%
+            \begin{minipage}{0.15\textwidth}%
             {\color{white}Test}%
             \end{minipage}%
-            \begin{minipage}{0.6\textwidth}%
+            \begin{minipage}{0.55\textwidth}%
               \centering%
             \Large\textsc{\color{\colorTP}%
             {\TPName{#4}}}%
@@ -1316,7 +1316,7 @@ title={#2},#1
             \end{minipage}%
             \hfill%
             \miniQR[TP]{#4}%
-            \hfill%
+            \hspace{-1.25em}%
             % \vspace{-1.7em}%
             \vspace{-0.5em}%
             \end{TPbox}%

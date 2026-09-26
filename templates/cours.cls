@@ -1465,16 +1465,45 @@ format=custom}
 }
 
 % environnement expérience
+% \makeatletter
+% \newcommand\listofdefinitions{\@starttoc{lod}}
+% \newenvironment{experience}[2][]{
+% \addcontentsline{lod}{chapter}{{#2}}{}
+% % \begin{postulate}[#2]
+% }
+% {
+% % \end{postulate}
+% }
+% \makeatother
+
+%%% EXEMPLE DE COURS %%%
 \makeatletter
-\newcommand\listofdefinitions{\@starttoc{lod}}
-\newenvironment{experience}[2][]{
-\addcontentsline{lod}{chapter}{{#2}}{}
-\begin{postulate}[#2]
-}
-{
-\end{postulate}
-}
+\newcounter{experience}
+\setcounter{experience}{0}
+\NewDocumentEnvironment{experience}{ o m }{%
+\medskip%
+\stepcounter{experience}%
+{\color{coolblack}%
+\noindent\textbf{\faFlask~Expérience~\thechapter.\theexperience~:~{#2}~%
+\dotfill
+% \hrulefill%
+}%
+
+}%
+\setcounter{quest}{0}%
+}%
+{%
+{\color{coolblack}%
+\noindent%
+\textbf{%
+  \dotfill
+  % \hrulefill%
+  }%
+}%
+
+}%
 \makeatother
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % %%% EXEMPLE DE COURS %%%
 % \makeatletter
@@ -1499,7 +1528,7 @@ format=custom}
 \medskip%
 \stepcounter{exemple}%
 {\color{coolblack}%
-\noindent\textbf{Exemple~\thechapter.\theexemple~:~{#1}~%
+\noindent\textbf{{\small\faPen}~Exemple~\thechapter.\theexemple~:~{#1}~%
 \dotfill
 % \hrulefill%
 }%

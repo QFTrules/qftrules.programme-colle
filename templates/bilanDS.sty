@@ -490,7 +490,7 @@ $\star$\ifnum#2=3\fi\fi\fi}
 
 % STRUCTURE OF BILAN PAGE
 \newcommand{\Perso}{%
-\noindent{\color{coolblack}\hrulefill~\Large\textsc{Ma copie}~\hrulefill\\}%
+\noindent{\color{coolblack}\Large\faFile~\textsc{Ma copie}~\dotfill\\}%
 
 \noindent%
 }%
@@ -498,16 +498,15 @@ $\star$\ifnum#2=3\fi\fi\fi}
 \newcommand{\Histo}{%
 
 \vspace{0.3cm}%
-\noindent{\color{coolblack}\hrulefill~\Large\textsc{Histogramme des notes}~\hrulefill\\}%
+\noindent{\color{coolblack}\Large\faChartBar~\textsc{Histogramme des notes}~\dotfill\\}%
 % \vspace{-0.5cm}%
 }%
 
 
 \newcommand{\Remarques}{%
 	{\footnotesize%
-	\noindent{\color{coolblack}\hrulefill~\Large\textsc{Remarques}~\hrulefill\\}%
+	\noindent{\color{coolblack}\Large\faExclamationTriangle~\textsc{Erreurs fréquentes}~\dotfill\\}%
 	\par\vspace{0.2cm}
-	#9%
 	}%
 }
 
@@ -527,9 +526,9 @@ $\star$\ifnum#2=3\fi\fi\fi}
 
 % define command for entete bilan
 \newcommand{\EnteteBilan}[9]{
+	{\large\textsc{Rapport de correction}\hfill~#6}
 	\begin{center}
-		{\large\textsc{Rapport de correction}}\\[-0.1cm]
-		{\large $-$}\\
+		% {\large $-$}\\
 		\fbox{\Large\textsc{#1}}%
 	\end{center}
 	\Perso
@@ -573,7 +572,10 @@ $\star$\ifnum#2=3\fi\fi\fi}
 	% \end{tabular}
 	\end{minipage}
 
-	\Remarques
+	\Remarques 
+	\begin{liste}
+	#9
+	\end{liste}
 	\Glossaire
 	\Histo
 	% La barre noire indique où se situe votre note dans l'histogramme.
@@ -589,7 +591,7 @@ $\star$\ifnum#2=3\fi\fi\fi}
 		\end{moyenne}
 	\end{center}
 		\begin{center}
-			\includegraphics[width=0.7\columnwidth]{#6}
+			\includegraphics[width=0.7\columnwidth]{#6_#1_histo.pdf}
 		\end{center}
 	% \end{minipage}
 	% \begin{minipage}{0.39\columnwidth}

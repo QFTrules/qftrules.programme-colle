@@ -502,6 +502,16 @@ $\star$\ifnum#2=3\fi\fi\fi}
 % \vspace{-0.5cm}%
 }%
 
+
+\newcommand{\Remarques}{%
+	{\footnotesize%
+	\noindent{\color{coolblack}\hrulefill~\Large\textsc{Remarques}~\hrulefill\\}%
+	\par\vspace{0.2cm}
+	#9%
+	}%
+}
+
+
 \newcommand{\Glossaire}{
 	{\footnotesize%
 	\begin{liste}
@@ -516,7 +526,7 @@ $\star$\ifnum#2=3\fi\fi\fi}
 }
 
 % define command for entete bilan
-\newcommand{\EnteteBilan}[8]{
+\newcommand{\EnteteBilan}[9]{
 	\begin{center}
 		{\large\textsc{Rapport de correction}}\\[-0.1cm]
 		{\large $-$}\\
@@ -563,6 +573,7 @@ $\star$\ifnum#2=3\fi\fi\fi}
 	% \end{tabular}
 	\end{minipage}
 
+	\Remarques
 	\Glossaire
 	\Histo
 	% La barre noire indique où se situe votre note dans l'histogramme.

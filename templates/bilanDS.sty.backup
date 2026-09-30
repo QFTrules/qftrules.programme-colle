@@ -522,20 +522,6 @@ $\star$\ifnum#2=3\fi\fi\fi}
 	}%
 }
 
-\newcommand{\GaugePourcentage}[2]{%
-	% #1 = label, #2 = numeric percentage (0-100)
-	% Fixed-width box ensures bars align vertically
-	\makebox[3.5cm][l]{\small\textbf{#1}}\hspace{0.2cm}%
-	\begin{tikzpicture}[baseline={([yshift=-0.75ex]current bounding box.center)}]
-		\draw[line width=0.8pt, fill=gray!50, color=gray!50] (0,0) rectangle (3.5,0.3);
-		\draw[line width=0.8pt, fill=main!50, color=main] (0,0) rectangle (3.5*#2/100,0.3);
-	\end{tikzpicture}\hspace{0.3cm}%
-	\textbf{#2\%}
-}
-
-
-
-
 % define command for entete bilan
 \newcommand{\EnteteBilan}[9]{
 	\noindent{\large\textsc{Rapport de correction}\hfill~#6}
@@ -543,7 +529,7 @@ $\star$\ifnum#2=3\fi\fi\fi}
 		% {\large $-$}\\
 		\fbox{\Large\textsc{#1}}%
 	\end{center}
-	% \Perso{\color{coolblack}\textbf{{#3}}}\\
+	\Perso{\color{coolblack}\textbf{{#3}}}\\
 	% \begin{minipage}{0.45\columnwidth}
 	% 	\begin{notes}[*]
 	% 	\centering
@@ -570,12 +556,10 @@ $\star$\ifnum#2=3\fi\fi\fi}
 			% 	Note finale & #3 \\
 			% 	\hline
 			% \end{tabular}
-			% Note}{#3} \\[0.3cm]
-			\GaugePourcentage{Efficacité$^*$}{#4}\\[0.3cm]
-			\GaugePourcentage{Productivité$^\dagger$}{#5}\\
-			\noindent{\small $^*$nombre de points gagnés sur nombre de points abordés.}\\
-			{\small $^\dagger$nombre de questions abordées sur nombre de questions total.}
-			\medskip
+			\begin{tabular}{lclc}
+				Efficacité$^*$ :& #4 &
+				Productivité$^\dagger$ :& #5 \\
+			\end{tabular}
 		\end{notes}
 	% \begin{tabular}{|c|c|}
 	% \hline
@@ -586,35 +570,35 @@ $\star$\ifnum#2=3\fi\fi\fi}
 	% \end{tabular}
 	% \end{minipage}
 
+	\noindent{\small $^*$nombre de points gagnés sur nombre de points abordés.}\\
+	{\small $^\dagger$nombre de questions abordées sur nombre de questions total.}
+	\medskip
 
-	% \Remarques
-	\begin{erreurs}
-		% \vspace{-0.5cm}
-		\begin{liste}
-			#9
-		\end{liste}
-	\end{erreurs}
+	\Remarques
+	\vspace{-0.5cm}
+	\begin{liste}
+	#9
+	\end{liste}
 	% \Glossaire
-	% \Histo
+	\Histo
 	% La barre noire indique où se situe votre note dans l'histogramme.
-	\begin{histo}
+
 	% \begin{minipage}{0.59\columnwidth}
-	% \begin{center}
-	% 	\begin{moyenne}
-	% 		\centering
-	% 		\begin{tabular}{lc}
-	% 			Moyenne :& #7 \\
-	% 			Écart-type :& #8 \\
-	% 		\end{tabular}
-	% 	\end{moyenne}
-	% \end{center}
+	\begin{center}
+		\begin{moyenne}
+			\centering
+			\begin{tabular}{lc}
+				Moyenne :& #7 \\
+				Écart-type :& #8 \\
+			\end{tabular}
+		\end{moyenne}
+	\end{center}
 		\begin{center}
 			\includegraphics[width=0.7\columnwidth]{#6_#1_histo.pdf}
 		\end{center}
 	% \end{minipage}
 	% \begin{minipage}{0.39\columnwidth}
 	% \end{minipage}
-	\end{histo}
 }
 
 %%% TCOLORBOX %%%
@@ -698,19 +682,7 @@ overlay unbroken and last={
 % \newtcbtheorem[auto counter,number within=chapter]{definition}{\definitionname}{defstyle}{def}
 \DeclareTColorBox[auto counter]{notes}{ o t\label g }{
 common,defstyle,
-IfValueTF={#1}{title={Notes}}{title=\Large\faFile~Ma copie},
-IfBooleanTF={#2}{label=#3}{}}
-
-% Erreur box
-\DeclareTColorBox[auto counter]{erreurs}{ o t\label g }{
-common,defstyle,
-IfValueTF={#1}{title={Erreurs fréquentes}}{title=\Large\faExclamationTriangle~Erreurs fréquentes},
-IfBooleanTF={#2}{label=#3}{}}
-
-% Histogramme box
-\DeclareTColorBox[auto counter]{histo}{ o t\label g }{
-common,defstyle,
-IfValueTF={#1}{title={Histogramme des notes}}{title=\Large\faChartBar~Histogramme des notes},
+IfValueTF={#1}{title={Notes}}{title=Indicateurs},
 IfBooleanTF={#2}{label=#3}{}}
 
 \DeclareTColorBox[auto counter]{moyenne}{ o t\label g }{

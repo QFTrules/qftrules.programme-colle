@@ -28,6 +28,7 @@ with open(filename, 'r') as f:
         in_enonce = False
         in_qr_question = False
         in_qr_answer = False
+        in_quest_spacing = False
         in_quest = False
         todo_depth = 0
         sol_depth = 0
@@ -35,6 +36,15 @@ with open(filename, 'r') as f:
         qr_depth = 0
         
         for line in f:
+            # Skip LaTeX root comment
+            if '% !TEX root' in line:
+                continue
+            
+            # Write end of document first (highest priority)
+            if '\\end{document}' in line:
+                g.write(line)
+                continue
+            
             # Handle Entete block
             if '\\Entete' in line or entete:
                 g.write(line)
@@ -43,11 +53,7 @@ with open(filename, 'r') as f:
                     entete = False
                 continue
             
-            # Skip LaTeX root comment
-            if '% !TEX root' in line:
-                continue
-            
-            # Handle input commands
+            # Handle input commands and add soluce settings
             if '\\input{' in line:
                 if 'devoir.sty' in line:
                     g.write('\\input{devoir_soluce.sty}\n')
@@ -89,6 +95,7 @@ with open(filename, 'r') as f:
                     in_enonce = False
                 continue
             
+            # Skip if in enonce block
             if in_enonce:
                 continue
             
@@ -102,11 +109,29 @@ with open(filename, 'r') as f:
                 g.write(line)
                 continue
             
-            # Handle multi-line QR answer
+            # Skip spacing between question and answer in QR blocks
+            if in_quest_spacing:
+                if '{' in line:
+                    # Answer block starts
+                    in_quest_spacing = False
+                    in_qr_answer = True
+                    qr_depth = 1 + count_braces(line[line.index('{')+1:])
+                    if qr_depth <= 0:
+                        # Empty answer - skip this QR entirely
+                        in_qr_answer = False
+                    else:
+                        # Multi-line answer
+                        g.write('\\item ' + line[line.index('{')+1:])
+                    continue
+                else:
+                    # Skip whitespace lines
+                    continue
+            
+            # Handle multi-line QR answer extraction
             if in_qr_answer:
                 qr_depth += count_braces(line)
                 if qr_depth <= 0:
-                    # End of answer
+                    # End of QR answer
                     content = line.rstrip()
                     if content.endswith('}'):
                         content = content[:-1]
@@ -117,36 +142,27 @@ with open(filename, 'r') as f:
                     g.write(line)
                 continue
             
-            # Handle question part of QR
+            # Skip question part of QR
             if in_qr_question:
-                # Check if answer starts with { on this line
-                if '{' in line and not '\\' in line[:line.index('{')]:
-                    # Found answer opening {
-                    in_qr_question = False
-                    in_qr_answer = True
-                    idx = line.index('{')
-                    answer_content = line[idx+1:]
-                    qr_depth = 1 + count_braces(answer_content)
-                    
-                    if qr_depth <= 0:
-                        # Empty or single-line answer
-                        content = answer_content.rstrip()
-                        if content.endswith('}'):
-                            content = content[:-1]
-                        if content.strip():
-                            g.write('\\item ' + content.rstrip() + '\n')
-                        in_qr_answer = False
-                    else:
-                        # Multi-line answer
-                        g.write('\\item ' + answer_content)
-                    continue
-                
-                # Still in question, count braces
                 qr_depth += count_braces(line)
                 if qr_depth <= 0:
-                    # Question ended without finding answer opening {
+                    # Question complete, look for answer on current line
                     in_qr_question = False
-                    # This shouldn't happen in well-formed input
+                    match = re.search(r'\{', line)
+                    if match and line[match.start():].strip().startswith('{'):
+                        # Answer starts on this line
+                        answer_content = line[match.end():]
+                        in_qr_answer = True
+                        qr_depth = 1 + count_braces(answer_content)
+                        if qr_depth <= 0:
+                            # Empty answer - skip
+                            in_qr_answer = False
+                        else:
+                            # Multi-line answer
+                            g.write('\\item ' + answer_content)
+                    else:
+                        # Answer is on next line - enter spacing mode
+                        in_quest_spacing = True
                 continue
             
             # Detect QR start
@@ -156,38 +172,29 @@ with open(filename, 'r') as f:
                 if match:
                     after_qr = line[match.end():]
                     qr_depth = 1 + count_braces(after_qr)
-                    
-                    # Check if question closes and answer starts on same line
-                    if '}' in after_qr:
-                        idx_close = after_qr.rfind('}')
-                        after_close = after_qr[idx_close+1:]
-                        if '{' in after_close:
-                            # Answer starts on same line
-                            idx_open = after_close.index('{')
-                            answer_content = after_close[idx_open+1:]
-                            in_qr_question = False
-                            in_qr_answer = True
-                            qr_depth = 1 + count_braces(answer_content)
-                            
-                            if qr_depth <= 0:
-                                # Single-line answer
-                                content = answer_content.rstrip()
-                                if content.endswith('}'):
-                                    content = content[:-1]
-                                if content.strip():
-                                    g.write('\\item ' + content.rstrip() + '\n')
-                                in_qr_answer = False
+                    if qr_depth <= 0:
+                        # Question ends on same line
+                        in_qr_question = False
+                        idx = after_qr.rfind('}')
+                        if idx >= 0:
+                            answer_part = after_qr[idx+1:]
+                            match_ans = re.search(r'\{', answer_part)
+                            if match_ans:
+                                # Answer starts on same line
+                                answer_content = answer_part[match_ans.end():]
+                                in_qr_answer = True
+                                qr_depth = 1 + count_braces(answer_content)
+                                if qr_depth <= 0:
+                                    # Empty answer
+                                    in_qr_answer = False
+                                else:
+                                    g.write('\\item ' + answer_content)
                             else:
-                                # Multi-line answer
-                                g.write('\\item ' + answer_content)
-                            continue
-                        else:
-                            # Answer on next line
-                            in_qr_question = False
-                            continue
+                                # Answer is on next line
+                                in_quest_spacing = True
                 continue
             
-            # Handle todo blocks
+            # Handle todo blocks (skip entirely)
             if '\\todo' in line and '{' in line and not in_sol:
                 in_todo = True
                 todo_depth = 1 + count_braces(line.split('\\todo{')[1] if '\\todo{' in line else '')
@@ -198,7 +205,7 @@ with open(filename, 'r') as f:
                     in_todo = False
                 continue
             
-            # Handle sol blocks
+            # Handle sol blocks (write content)
             if '\\sol{' in line:
                 in_sol = True
                 sol_depth = 0
@@ -208,16 +215,19 @@ with open(filename, 'r') as f:
                     rest = line[match.end():]
                     sol_depth = 1 + count_braces(rest)
                     
+                    # Add \item if in quest
                     if in_quest and prefix.strip() == '':
                         prefix = '\\item '
                     
                     if sol_depth <= 0:
+                        # Single line sol
                         content = rest.rstrip()
                         if content.endswith('}'):
                             content = content[:-1]
                         g.write(prefix + content.rstrip() + '\n')
                         in_sol = False
                     else:
+                        # Multi-line sol
                         g.write(prefix + rest)
                 continue
             elif in_sol:
@@ -231,11 +241,6 @@ with open(filename, 'r') as f:
                     in_sol = False
                 else:
                     g.write(line)
-                continue
-            
-            # End of document
-            if '\\end{document}' in line:
-                g.write(line)
                 continue
             
             # Write other content

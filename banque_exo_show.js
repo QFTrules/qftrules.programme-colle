@@ -6,8 +6,6 @@ var child_process = require('child_process');
 const fs = require('fs');
 const path = require('path');
 const TreeItem = require('./treeItem');
-// Object.defineProperty(exports, "__esModule", { value: true });
-// import { DepNodeProvider, Dependency } from './treeview';
 
 function prettifyLatexLabel(label) {
 	if (!label) return label;
@@ -40,7 +38,7 @@ function GetTypeExo(label, filepath) {
 	if (typeof filepath === 'undefined') {
 		return ['undefined','undefined'];
 	}
-	
+
 	// if no error, returns the info about the exercise
 	const fileContent = fs.readFileSync(filepath, 'utf8');
 	const lines = fileContent.split('\n');
@@ -59,9 +57,10 @@ function GetTypeExo(label, filepath) {
 
 // define data for the tree view
 function generateTreeItems() {
+	const startTime = Date.now();
+	BanqueExoShow.log(`[START] generateTreeItems`);
 	// list of themes
 	const texPath = vscode.workspace.getConfiguration('mathpix-pdf').get('texPath');
-	// const path_to_recueil = vscode.workspace.getConfiguration('banque-exercices').get("RecueilPath");
 	// list all folders in the recueil directory
 	var themes_list = fs.readdirSync(texPath).filter(file => fs.statSync(path.join(texPath, file)).isDirectory());
 	// list all folders in the recueil directory and remove the ones excluded
@@ -70,12 +69,16 @@ function generateTreeItems() {
 	// exclude themes that start with an underscore
 	themes_list = themes_list.filter(theme => !theme.startsWith('_'));
 
-	return themes_list.map(function (theme) {
-		// vscode.window.showInformationMessage(theme);
+	const result = themes_list.map(function (theme) {
+		const themeStart = Date.now();
+		BanqueExoShow.log(`  [START] theme: ${theme}`);
 		const folderPath = path.join(texPath, theme.trim(), '/');
 
-		// get the list of latex files for the theme 
+		// get the list of latex files for the theme
+		const findStart = Date.now();
+		BanqueExoShow.log(`    [START] find files for ${theme}`);
 		var latex_files = child_process.execSync('find ' + texPath  + theme + ' -maxdepth 1 -type f -name "*.tex"').toString().split('\n');
+		BanqueExoShow.log(`    [END] find files: ${Date.now() - findStart}ms (${latex_files.length - 1} files)`);
 		latex_files.pop();
 
 		// remove the file that stores all exercices where the difficulty is not specified
@@ -84,146 +87,122 @@ function generateTreeItems() {
 			fs.unlinkSync(suggestion_liste);
 		}
 
-		// return a tree item for each theme
-		return new TreeItem(theme.toUpperCase(), // theme level
+		// return a tree item for each theme with lazy-loaded chapters
+		const themeItem = new TreeItem(theme.toUpperCase(),
 			latex_files.map(function (filePath) {
-				// get chapter latex file basename
-				// vscode.window.showInformationMessage(filePath);
-				var exercices = child_process.execSync('grep -E "\\\\\\begin{exo}" ' + filePath.toString()).toString().split('\n');
-				exercices.pop();
-				const basename = path.parse(filePath).name
-
-				return new TreeItem(basename, // chapter level
-					exercices.map(function (exoLine) {
-						// Parse exo declaration robustly: \begin{exo}[theme][difficulty][type]{label}
-						const parsed = exoLine.match(/\\begin\{exo\}(?:\[([^\]]*)\])?(?:\[([^\]]*)\])?(?:\[([^\]]*)\])?\{([^}]*)\}/);
-						const isCommented = /^\s*%/.test(exoLine);
-						var exo = parsed ? parsed[4].trim() : '';
-						const typeExo = parsed ? (parsed[3] || '').trim() : 'undefined';
-						const difficulty = parsed ? (parsed[2] || '').trim() : 'undefined';
-
-						// fallback for edge cases where regex could not parse
-						if (!exo) {
-							var start = exoLine.indexOf('{', exoLine.indexOf('{') + 1) + 1;
-							var end = exoLine.indexOf('}', exoLine.indexOf('}') + 1);
-							exo = exoLine.substring(start, end);
-						}
-						if (difficulty === '') {
-							// add this exercise to a file that stores all exercices where the difficulty is not specified
-							// this will be used by the suggestions tree view panel
-							fs.appendFileSync(suggestion_liste, filePath + ':' + exo + '\n');
-						}
-						const displayExo = prettifyLatexLabel(exo);
-						const exoItem = new TreeItem(displayExo,      				// label (display)
-											undefined, 				// children
-											filePath,  				// filePath
-											'file',    				// contextValue
-											undefined, 				// collapsed
-											typeExo,   				// typeExo
-											difficulty,			  	// difficulty
-											basename,				// chapter
-											theme.toUpperCase(),	// theme
-											isCommented); 			// isCommented
-						exoItem.rawLabel = exo;
-						return exoItem;
-					}),
-					filePath, 			// filePath
-					'chapter', 			// contextValue
-					undefined, 			// collapsed
-					undefined, 			// typeExo
-					undefined,			// difficulty
-					basename, 			// chapter
-					theme.toUpperCase() // theme
-				);
+				const basename = path.parse(filePath).name;
+				// Create chapter item WITHOUT exercises (lazy loading)
+				return new TreeItem(basename, undefined, filePath, 'chapter',
+					vscode.TreeItemCollapsibleState.Collapsed, undefined, undefined, basename, theme.toUpperCase());
 			}),
-			folderPath, // filePath
-			'folder',  // contextValue
-			undefined, // collapsed
-			undefined, // typeExo
-			undefined, // difficulty
-			undefined, // chapter
-			theme.toUpperCase()  // theme
-		);
+			folderPath, 'folder', undefined, undefined, undefined, undefined, theme.toUpperCase());
+
+		BanqueExoShow.log(`  [END] theme: ${Date.now() - themeStart}ms`);
+		return themeItem;
 	});
 
 	// return data;
+	BanqueExoShow.log(`[END] generateTreeItems: ${Date.now() - startTime}ms`);
+	return result;
 }
-
-// refresh suggestions at extension activation
-// function suggestions_refresh() {
-// 	// list of themes
-// 	const themes_list = [
-// 		'Thermo',
-// 		'Fluide',
-// 		'Ondes',
-// 		'Optique',
-// 		'Mecanique',
-// 	]
-
-// 	themes_list.forEach(function(theme) {
-// 	// get the list of latex files for the theme 
-// 	var latex_files = child_process.execSync('find ~/Dropbox/CPGE/Physique/Exercices/Recueil/' + theme + ' -maxdepth 1 -type f -name "*.tex"').toString().split('\n');
-// 	latex_files.pop()
-
-// 	// try to remove the file exercices-sans-difficulte.txt, pass if already removed
-// 	try {
-// 		fs.unlinkSync(__dirname + '/tmp/exercices-sans-difficulte.txt');
-// 	} catch (error) {
-// 			// pass
-// 		}
-
-// 	// look for all chapters in each theme
-// 	latex_files.forEach(function(chapter) {
-// 			// fetch all exercise names in latex file basename
-// 			var exercices = child_process.execSync('grep -E "\\\\\\\\begin{exo}" ' + chapter).toString().split('\n');
-// 			exercices.pop();
-// 			exercices.forEach(function(exo) {
-// 					var start = exo.indexOf('{', exo.indexOf('{') + 1) + 1;
-// 					var end = exo.indexOf('}', exo.indexOf('}') + 1);
-// 					var exo =  exo.substring(start, end);
-// 					// look if the difficulty is defined for each exercise
-// 					// var typeExo = GetTypeExo(exo, filePath)[0];
-// 					var difficulty = GetTypeExo(exo, chapter)[1];
-// 					if (difficulty === '') {
-// 							fs.appendFileSync(__dirname  + '/tmp/exercices-sans-difficulte.txt', chapter + ':' + exo + '\n');
-// 						}
-// 					});
-// 				});
-// 			});
-// 		}
 
 // define the data providers for the programme de colle panel
 class BanqueExoShow {
-    constructor() {
-		// event emitter
-		// this.onDidChangeTreeData = new vscode.EventEmitter();
+	static sortMode = 'file';
+	static outputChannel = null;
+	static cache = {}; // filepath -> {mtime, exercises}
 
-		// Generate tree data even when no editor is open.
+	static log(message) {
+		if (BanqueExoShow.outputChannel) {
+			BanqueExoShow.outputChannel.appendLine(message);
+		}
+		console.log(message);
+	}
+
+	static getExercises(filePath) {
+		const stats = fs.statSync(filePath);
+		const cached = BanqueExoShow.cache[filePath];
+
+		if (cached && cached.mtime === stats.mtimeMs) {
+			return cached.exercises;
+		}
+
+		const grepStart = Date.now();
+		var exercices = child_process.execSync('grep -E "\\\\\\begin{exo}" ' + filePath.toString()).toString().split('\n');
+		exercices.pop();
+		BanqueExoShow.log(`      [grep] ${path.parse(filePath).name}: ${Date.now() - grepStart}ms (cached: ${!!cached})`);
+
+		BanqueExoShow.cache[filePath] = { mtime: stats.mtimeMs, exercises: exercices };
+		return exercices;
+	}
+
+	static loadExercises(chapterItem) {
+		const filePath = chapterItem.filePath;
+		const basename = chapterItem.label;
+		const theme = chapterItem.theme;
+		const suggestion_liste = __dirname + '/tmp/exercices-sans-difficulte.txt';
+
+		const exerciceLines = BanqueExoShow.getExercises(filePath);
+
+		return exerciceLines.map(function (exoLine) {
+			const parsed = exoLine.match(/\\begin\{exo\}(?:\[([^\]]*)\])?(?:\[([^\]]*)\])?(?:\[([^\]]*)\])?\{([^}]*)\}/);
+			const isCommented = /^\s*%/.test(exoLine);
+			var exo = parsed ? parsed[4].trim() : '';
+			const typeExo = parsed ? (parsed[3] || '').trim() : 'undefined';
+			const difficulty = parsed ? (parsed[2] || '').trim() : 'undefined';
+
+			if (!exo) {
+				var start = exoLine.indexOf('{', exoLine.indexOf('{') + 1) + 1;
+				var end = exoLine.indexOf('}', exoLine.indexOf('}') + 1);
+				exo = exoLine.substring(start, end);
+			}
+			if (difficulty === '') {
+				fs.appendFileSync(suggestion_liste, filePath + ':' + exo + '\n');
+			}
+			const displayExo = prettifyLatexLabel(exo);
+			const exoItem = new TreeItem(displayExo, undefined, filePath, 'file', undefined, typeExo, difficulty, basename, theme, isCommented);
+			exoItem.rawLabel = exo;
+			return exoItem;
+		});
+	}
+
+	static sortItems(items, mode) {
+		const sortStart = Date.now();
+		if (!items || items.length === 0) return items;
+		const sorted = [...items];
+
+		if (mode === 'alpha') {
+			sorted.sort((a, b) => a.label.localeCompare(b.label));
+		} else if (mode === 'type') {
+			sorted.sort((a, b) => {
+				const typeA = a.typeExo || 'undefined';
+				const typeB = b.typeExo || 'undefined';
+				return typeA.localeCompare(typeB);
+			});
+		} else if (mode === 'difficulty') {
+			sorted.sort((a, b) => parseInt(b.difficulty || '0') - parseInt(a.difficulty || '0'));
+		}
+
+		BanqueExoShow.log(`sortItems(mode=${mode}, items=${items.length}): ${Date.now() - sortStart}ms`);
+		return sorted;
+	}
+
+    constructor() {
 		this.data = generateTreeItems();
-		
     }
 
 	// define here the command to call when clicking on the tree items
 	getTreeItem(element) {
-		// var item = element;
 		var item = new TreeItem(element.label, element.children, element.filePath, element.contextValue, vscode.TreeItemCollapsibleState.Collapsed, element.typeExo, element.difficulty, element.chapter, element.theme, element.isCommented);
 		item.rawLabel = element.rawLabel || element.label;
 		if (element.contextValue === 'file') {
-			item.tooltip = "Voir l'exercice";
+			item.tooltip = `Voir l'exercice (${element.typeExo || 'undefined'})`;
 			item.command = {
 				command: 'banque.fetch',
 				title: 'Ouvrir exercice',
 				arguments: [element],
 			}
-		} 
-		// if (element.contextValue === 'chapter') {
-		// 	item.tooltip = "Ouvrir fichier latex";
-		// 	item.command = {
-		// 		command: 'vscode.open',
-		// 		title: 'Ouvrir fichier latex',
-		// 		arguments: [element.filePath],
-		// 	}
-		// } 
+		}
 		return item;
 	};
 
@@ -231,6 +210,23 @@ class BanqueExoShow {
         if (element === undefined) {
             return this.data;
         }
+
+		// Lazy load exercises for chapters
+		if (element.contextValue === 'chapter' && !element.children) {
+			const loadStart = Date.now();
+			BanqueExoShow.log(`  [LAZY] loading chapter ${element.label}...`);
+			element.children = BanqueExoShow.loadExercises(element);
+			BanqueExoShow.log(`  [LAZY] loaded ${element.children.length} exercises in ${Date.now() - loadStart}ms`);
+		}
+
+		// Apply sorting to exercise items
+		if (element.contextValue === 'chapter' && element.children) {
+			const sortStart = Date.now();
+			const result = BanqueExoShow.sortItems(element.children, BanqueExoShow.sortMode);
+			BanqueExoShow.log(`getChildren(${element.label}): ${Date.now() - sortStart}ms`);
+			return result;
+		}
+
         return element.children;
     };
 
@@ -247,46 +243,16 @@ class BanqueExoShow {
 					return parent1;
 				}
 				var parent2 = parent1.children[j];
-				for (let k = 0; k < parent2.children.length; k++) {
-					if (parent2.children[k].label === element.label) {
-						return parent2;
+				if (parent2.children) {
+					for (let k = 0; k < parent2.children.length; k++) {
+						if (parent2.children[k].label === element.label) {
+							return parent2;
+						}
 					}
 				}
 			}
 		}
 	}
-	// getParent(element) {
-	// 	if (element.contextValue === 'folder') {
-	// 		return undefined;
-	// 	}
-	// 	if (element.contextValue === 'chapter') {
-	// 		return this.data.find(theme => theme.label === element.theme);
-	// 	}
-	// 	if (element.contextValue === 'file') {
-	// 		const Theme = this.data.find(theme => theme.label === element.theme);
-	// 		return Theme.find(chapter => chapter.label === element.chapter);
-	// 	}
-	// }
-
-	// getParent(element) {
-	// 	// get the tree item with the given label
-	// 	const treeItems = this.data;
-	// 	const label = element.label; 
-	// 	for (let i = 0; i < treeItems.length; i++) {
-	// 		var node1 = treeItems[i];
-	// 		if (node1.label.trim() === label.trim())  {
-	// 			return node1;
-	// 		}
-	// 		var children1 = node1.children;
-	// 		for (let j = 0; j < children1.length; j++) {
-	// 			if (children1[j].label === label) {
-	// 				return children1[j];
-	// 			}
-	// 		}
-	// 	}
-	// }
-
-	
 
 	getTreeItemByLabel(folderName,filename,label) {
 		// get the tree item with the given label
@@ -294,19 +260,16 @@ class BanqueExoShow {
 		for (let i = 0; i < treeItems.length; i++) {
 			if (folderName === 'undefined' || treeItems[i].label.trim() === folderName.toUpperCase().trim())  {
 				var node1 = treeItems[i];
-				// if (folderName === label) {
-				// 	return node1;
-				// }
 				for (let j = 0; j < node1.children.length; j++) {
 					if (node1.children[j].label === filename) {
 						var node2 = node1.children[j];
-						// if (filename === label) {
-						// 	return node2;
-						// }
+						// Load exercises if not already loaded
+						if (!node2.children) {
+							node2.children = BanqueExoShow.loadExercises(node2);
+						}
 						for (let k = 0; k < node2.children.length; k++) {
 							const exoLabel = node2.children[k].rawLabel || node2.children[k].label;
 							if (exoLabel === label) {
-								// vscode.window.showInformationMessage(treeItems[i].children[j].children[k].label);
 								return node2.children[k];
 							}
 						}
@@ -320,21 +283,7 @@ class BanqueExoShow {
 		item.tooltip = item.filePath;
 		return item;
 	};
-
-	// to refresh tree elements of the programme de colle
-	// get onDidChangeTreeData() {
-	// 	return this._onDidChangeTreeData && this._onDidChangeTreeData.event;
-	// };
-
-	// refresh() {
-	// 	// update the data in your tree view
-	// 	this.data = generateTreeItems();
-	// 	// return this.data
-	// 	// fire the event
-	// 	// this.onDidChangeTreeData.fire();
-	// };
 };
 
 module.exports = BanqueExoShow
 module.exports.GetTypeExo = GetTypeExo
-	

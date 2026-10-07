@@ -136,6 +136,9 @@ function activate(context) {
 	// Use the console to output diagnostic information (console.log) and errors (console.error)
 	console.log('Congratulations, your extension "show-programme-colle" is now active!');
 
+	const outputChannel = vscode.window.createOutputChannel('programme-de-colle');
+	context.subscriptions.push(outputChannel);
+
 	// remove all files in /tmp directory
 	// fs.readdir(__dirname + '/tmp', (err, files) => {
 	// 	if (err) throw err;
@@ -416,9 +419,25 @@ function activate(context) {
 		});
 	});
 
-// -----------------------------------
-// BANQUE D'EXERCICES COMMANDS //
-// -----------------------------------
+	// BANQUE D'EXERCICES COMMANDS //
+	// -----------------------------------
+
+	const banqueProvider = new BanqueExoShow();
+	BanqueExoShow.outputChannel = outputChannel;
+
+	let banque_sort = vscode.commands.registerCommand('banque.sort', async function () {
+		const modes = [
+			{ label: 'Ordre du fichier', value: 'file' },
+			{ label: 'Ordre alphabétique', value: 'alpha' },
+			{ label: 'Ordre par type', value: 'type' },
+			{ label: 'Ordre par difficulté', value: 'difficulty' }
+		];
+		const choice = await vscode.window.showQuickPick(modes, { placeHolder: 'Sélectionner un tri' });
+		if (choice) {
+			BanqueExoShow.sortMode = choice.value;
+			vscode.commands.executeCommand('banque.refresh');
+		}
+	});
 
 	// FUNCTIONS OF VIEW - TITLE //
 	// Banque tree commands are now registered in ./commands/banqueTreeCommands.js
@@ -445,7 +464,7 @@ function activate(context) {
 	// banque.compile and banque.reveal are now registered in ./commands/banqueItemCommands.js
 
 	// COMMANDS AT LAUNCH //
-	vscode.window.registerTreeDataProvider('banque-exercices', new BanqueExoShow())
+	vscode.window.registerTreeDataProvider('banque-exercices', banqueProvider)
 	// update_graphics_path();
 
 	// command to build a QCM for a given chapter
@@ -737,11 +756,12 @@ function activate(context) {
 	context.subscriptions.push(flash_view_soluce);
 	context.subscriptions.push(colle_qcours);
 	context.subscriptions.push(banqueAutoRefreshOnSave);
+	context.subscriptions.push(banque_sort);
 	// context.subscriptions.push(convert);
 	// context.subscriptions.push(flash_soluce_only);
 
 	// call here all commands necessary at launch
-	vscode.window.registerTreeDataProvider('banque-exercices', new BanqueExoShow());
+	vscode.window.registerTreeDataProvider('banque-exercices', banqueProvider);
 	programme_colle.refresh();
 
 }

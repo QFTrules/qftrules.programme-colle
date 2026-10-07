@@ -195,6 +195,11 @@
 				"icon": "$(refresh)"
 			},
 			{
+				"command": "banque.sort",
+				"title": "Trier",
+				"icon": "$(sort-precedence)"
+			},
+			{
 				"command": "banque.collapse",
 				"title": "Réduire",
 				"icon": "$(collapse-all)"
@@ -389,6 +394,11 @@
 					"command": "banque.refresh",
 					"when": "view == banque-exercices",
 					"group": "navigation@4"
+				},
+				{
+					"command": "banque.sort",
+					"when": "view == banque-exercices",
+					"group": "navigation@3"
 				},
 				{
 				"command": "banque.collapse",

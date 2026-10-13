@@ -923,51 +923,53 @@
   \colorbox{structurecolor}{\makebox[\linewidth][c]{\shortstack[c]{\vspace{\blueribbon}}}}
   \vfill
   \vspace{\courstopspace}
-  \noindent\makebox[\linewidth][l]{%
+  \makebox[\linewidth][l]{%
     \hspace{2em}%
     \begin{minipage}[c]{\dimexpr\linewidth-2em\relax}
-      \parbox[c]{0.78\linewidth}{
-        \bfseries\Huge%\scshape
+      \parbox[c]{0.55\linewidth}{
+        \bfseries\Huge\scshape
           \ifcsname @title\endcsname \@title \fi
         \par}%%
       \ifcsname theqrcode\endcsname
-        \makebox[2.2cm][c]{\theqrcode}
-      \fi
+      \makebox[\linewidth][l]{%
+            \makebox[2.7cm][c]{\theqrcode}%
+            \makebox[2.7cm][c]{\thequizzcode}%
+            \makebox[2.7cm][c]{\theanimcode}%
+      }\fi%
     \end{minipage}%
-  }
-  \vfill
-  % \vspace{-1cm}
+  }%
+  % \hspace{2em}%
+  \vspace{-0.5cm}
   % \vspace{-0.5cm}
   \setstretch{2.5}
-  \hspace{1.75em}
-  \begin{minipage}[c]{0.95\linewidth}
-    {\color{darkgray}\bfseries
-      \ifcsname @subtitle\endcsname\chapter{:~\textsc{\Large\@subtitle}}~\\[-10ex]\fi}
-      % \vspace{-1.5cm}
-      \vspace{-0.5cm}
-    \begin{minipage}[l]{0.3\linewidth}
-    {\color{gray}\normalsize\renewcommand{\arraystretch}{0.55}
-    \begin{tabular}{l}
-      \ifx\@author\empty\else\authorname\cnormal\@author\\ \fi
-      \ifcsname @institute\endcsname \institutename \cnormal\@institute\\ \fi
-      \ifx\@date\empty\else\datename\cnormal\@date \\ \fi
-      \ifcsname @version\endcsname \cnormal\versionname\@version\\ \fi
-      \ifcsname @bioinfo\endcsname \cnormal\@bioinfo\\ \fi
-    \end{tabular}}
-      \end{minipage}
-    \begin{minipage}[r]{0.68\linewidth}
-    \setlength{\baselineskip}{20pt}
-    \ifthenelse{\equal{#1}{\string *}}{\prerequis{#3}}{
-      \ifthenelse{\equal{#1}{\string **}}{\pcsi{#3}}{
-        \ifthenelse{\equal{#1}{\string ***}}{\pcsi{#3}}{}
-      }
-      }
-    % \ifthenelse{\equal{#1}{\string }}{}{\prerequis{#3}}
+  % \hspace{1.75em}
+  \makebox[\linewidth][l]{%
+    \hspace{2em}%
+    \begin{minipage}[c]{\dimexpr\linewidth-2em\relax}
+        {\color{darkgray}\bfseries
+        \ifcsname @subtitle\endcsname\chapter{:~{\Large\@subtitle}}~\\[-10ex]\fi}
+        \vspace{-2cm}
+        \vfill
+        \begin{minipage}[l]{0.3\linewidth}
+          {\color{gray}\normalsize\renewcommand{\arraystretch}{0.55}
+          \begin{tabular}{l}
+            \ifx\@author\empty\else\authorname\cnormal\@author\\ \fi
+            \ifcsname @institute\endcsname \institutename \cnormal\@institute\\ \fi
+            \ifx\@date\empty\else\datename\cnormal\@date \\ \fi
+            \ifcsname @version\endcsname \cnormal\versionname\@version\\ \fi
+            \ifcsname @bioinfo\endcsname \cnormal\@bioinfo\\ \fi
+          \end{tabular}}
+        \end{minipage}
+        \begin{minipage}[r]{0.68\linewidth}
+          \setlength{\baselineskip}{20pt}
+          \ifthenelse{\equal{#1}{\string *}}{\prerequis{#3}}{
+            \ifthenelse{\equal{#1}{\string **}}{\pcsi{#3}}{
+              \ifthenelse{\equal{#1}{\string ***}}{\pcsi{#3}}{}
+            }
+            }
+        \end{minipage}
     \end{minipage}
-    % \begin{minipage}[r]{0.68\linewidth}
-    %   \expliste
-    %   \end{minipage}
-  \end{minipage}
+  }
   \begin{center}
     \setstretch{1}
     \parbox[t]{0.7\textwidth}{\centering \citshape
@@ -1107,6 +1109,8 @@ format=custom}
 % \input{URL.tex}%$
 \input{URL_qftrules.tex}
 \input{QR_qftrules.tex}
+\input{Quizz_qftrules.tex}
+\input{Anim_qftrules.tex}
 
 %%% FIGURE WITHIN EXERCISE ENVIRONNEMENT %%%
 \newcommand{\capt}[1]{\captionof{figure}{#1}}

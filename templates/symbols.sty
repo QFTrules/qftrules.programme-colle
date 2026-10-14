@@ -1197,7 +1197,13 @@ title={#2},#1
           \ifthenelse{\equal{\detokenize{#1}}{\detokenize{quizz}}}{%
                 \textcolor{coolblack}{\small Quizz~:~\thequizz{\ThemeLetterCode{#2}#3}}%
           }{%
+                \ifthenelse{\equal{\detokenize{#1}}{\detokenize{TP}}}{%
+                % \begin{rotatebox}{90}%
+                % \textcolor{coolblack}{\small Corrigé}%
+                % \end{rotatebox}%
+          }{%
                 \textcolor{coolblack}{\small Animation}%
+          }%
           }%
         }%
       }%

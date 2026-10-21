@@ -425,6 +425,10 @@ function activate(context) {
 	const banqueProvider = new BanqueExoShow();
 	BanqueExoShow.outputChannel = outputChannel;
 
+	// Store TreeView reference for reveal/expand functionality
+	const banqueTreeView = vscode.window.createTreeView('banque-exercices', { treeDataProvider: banqueProvider });
+	banqueProvider.treeView = banqueTreeView;
+
 	let banque_sort = vscode.commands.registerCommand('banque.sort', async function () {
 		const modes = [
 			{ label: 'Ordre du fichier', value: 'file' },
@@ -439,9 +443,54 @@ function activate(context) {
 		}
 	});
 
+	let banque_search = vscode.commands.registerCommand('banque.search', async function () {
+		const query = await vscode.window.showInputBox({
+			placeHolder: 'Entrer un terme de recherche (vide pour tout afficher)...',
+			prompt: 'Rechercher les exercices'
+		});
+
+		// If user cancelled (undefined), do nothing
+		if (query === undefined) {
+			return;
+		}
+
+		// Process the search
+		if (query.trim() === '') {
+			// Clear search and show all exercises
+			banqueProvider.clearSearchResults();
+			BanqueExoShow.log('[SEARCH] Search cleared');
+		} else {
+			// Perform search
+			const results = banqueProvider.searchExercises(query);
+			if (results.length === 0) {
+				vscode.window.showWarningMessage(`Aucun exercice trouvé pour: "${query}"`);
+				banqueProvider.clearSearchResults();
+			} else {
+				const totalExos = results.reduce((sum, t) => sum + (t.children ? t.children.reduce((s, c) => s + (c.children ? c.children.length : 0), 0) : 0), 0);
+				banqueProvider.setSearchResults(results, query);
+				BanqueExoShow.log(`[SEARCH] Found ${totalExos} result(s) for: "${query}"`);
+			}
+		}
+		vscode.commands.executeCommand('banque.refresh');
+
+		// After refresh, expand themes and chapters using reveal() API
+		if (query && query.trim() !== '') {
+			const results = banqueProvider.searchResults;
+			if (results && results.length > 0) {
+				await banqueProvider.onSearchComplete(banqueTreeView, results);
+			}
+		}
+	});
+
+	let banque_search_clear = vscode.commands.registerCommand('banque.search.clear', function () {
+		banqueProvider.clearSearchResults();
+		vscode.commands.executeCommand('banque.refresh');
+		BanqueExoShow.log('[SEARCH] Search cleared');
+	});
+
 	// FUNCTIONS OF VIEW - TITLE //
 	// Banque tree commands are now registered in ./commands/banqueTreeCommands.js
-	registerBanqueTreeCommands(context);
+	registerBanqueTreeCommands(context, { banqueProvider });
 
 	// Banque item commands are now registered in ./commands/banqueItemCommands.js
 	registerBanqueItemCommands(context, { exoenvi, explorerCommand, styPath, programmeBalise, extensionPath: __dirname });
@@ -757,12 +806,14 @@ function activate(context) {
 	context.subscriptions.push(colle_qcours);
 	context.subscriptions.push(banqueAutoRefreshOnSave);
 	context.subscriptions.push(banque_sort);
+	context.subscriptions.push(banque_search);
+	context.subscriptions.push(banque_search_clear);
 	// context.subscriptions.push(convert);
 	// context.subscriptions.push(flash_soluce_only);
 
 	// call here all commands necessary at launch
-	vscode.window.registerTreeDataProvider('banque-exercices', banqueProvider);
 	programme_colle.refresh();
+
 
 }
 

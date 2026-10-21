@@ -136,7 +136,7 @@
 			{
 				"command": "programme.remove",
 				"title": "Retirer",
-				"icon": "$(discard)"
+				"icon": "$(search-stop)"
 			},
 			{
 				"command": "programme.refresh",
@@ -198,6 +198,16 @@
 				"command": "banque.sort",
 				"title": "Trier",
 				"icon": "$(sort-precedence)"
+			},
+			{
+				"command": "banque.search",
+				"title": "Rechercher",
+				"icon": "$(search)"
+			},
+			{
+				"command": "banque.search.clear",
+				"title": "Effacer la recherche",
+				"icon": "$(discard)"
 			},
 			{
 				"command": "banque.collapse",
@@ -397,6 +407,16 @@
 				},
 				{
 					"command": "banque.sort",
+					"when": "view == banque-exercices",
+					"group": "navigation@3"
+				},
+				{
+					"command": "banque.search",
+					"when": "view == banque-exercices",
+					"group": "navigation@3"
+				},
+				{
+					"command": "banque.search.clear",
 					"when": "view == banque-exercices",
 					"group": "navigation@3"
 				},

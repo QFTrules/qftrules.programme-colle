@@ -87,6 +87,12 @@
 					"icon": "images/default_folder_opened.svg"
 				},
 				{
+					"id": "banque-search",
+					"name": "Recherche Banque",
+					"type": "webview",
+					"icon": "images/default_folder_opened.svg"
+				},
+				{
 					"id": "banque-exercices",
 					"name": "Banque d'exercices",
 					"type": "tree",
@@ -407,16 +413,6 @@
 				},
 				{
 					"command": "banque.sort",
-					"when": "view == banque-exercices",
-					"group": "navigation@3"
-				},
-				{
-					"command": "banque.search",
-					"when": "view == banque-exercices",
-					"group": "navigation@3"
-				},
-				{
-					"command": "banque.search.clear",
 					"when": "view == banque-exercices",
 					"group": "navigation@3"
 				},

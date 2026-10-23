@@ -10,6 +10,7 @@ const fs = require('fs');
 const path = require('path');
 const ProgShow = require('./prog_show');
 const BanqueExoShow = require('./banque_exo_show');
+const BanqueSearchViewProvider = require('./views/banqueSearchViewProvider');
 const { registerProgrammeTreeCommands } = require('./commands/programmeTreeCommands');
 const { registerBanqueTreeCommands } = require('./commands/banqueTreeCommands');
 const { registerBanqueItemCommands } = require('./commands/banqueItemCommands');
@@ -128,6 +129,29 @@ async function findFlashDrive() {
 // };
 
 // ------------------------------ //
+
+// Helper function to count search results
+function countSearchResults(results) {
+	let totalExercises = 0;
+	let chapterCount = 0;
+
+	results.forEach(theme => {
+		if (theme.children) {
+			theme.children.forEach(chapter => {
+				chapterCount++;
+				if (chapter.children) {
+					totalExercises += chapter.children.length;
+				}
+			});
+		}
+	});
+
+	return {
+		exercises: totalExercises,
+		chapters: chapterCount,
+		themes: results.length
+	};
+}
 
 /**
  * @param {vscode.ExtensionContext} context
@@ -425,9 +449,15 @@ function activate(context) {
 	const banqueProvider = new BanqueExoShow();
 	BanqueExoShow.outputChannel = outputChannel;
 
-	// Store TreeView reference for reveal/expand functionality
+	// Register TreeView for banque-exercices (native tree with all functionality)
 	const banqueTreeView = vscode.window.createTreeView('banque-exercices', { treeDataProvider: banqueProvider });
 	banqueProvider.treeView = banqueTreeView;
+
+	// Register WebView provider for search bar only
+	const banqueSearchViewProvider = new BanqueSearchViewProvider(banqueProvider);
+	context.subscriptions.push(
+		vscode.window.registerWebviewViewProvider('banque-search', banqueSearchViewProvider)
+	);
 
 	let banque_sort = vscode.commands.registerCommand('banque.sort', async function () {
 		const modes = [
@@ -454,28 +484,75 @@ function activate(context) {
 			return;
 		}
 
-		// Process the search
+		// Always clear first to ensure fresh results
+		banqueProvider.clearSearchResults();
+
 		if (query.trim() === '') {
-			// Clear search and show all exercises
-			banqueProvider.clearSearchResults();
+			// Clear search and collapse tree
 			BanqueExoShow.log('[SEARCH] Search cleared');
+			vscode.commands.executeCommand('banque.refresh');
+			// Collapse the tree after clearing
+			vscode.commands.executeCommand('list.collapseAll');
 		} else {
 			// Perform search
 			const results = banqueProvider.searchExercises(query);
 			if (results.length === 0) {
 				vscode.window.showWarningMessage(`Aucun exercice trouvé pour: "${query}"`);
-				banqueProvider.clearSearchResults();
+				banqueProvider.setSearchResults([], query);
 			} else {
 				const totalExos = results.reduce((sum, t) => sum + (t.children ? t.children.reduce((s, c) => s + (c.children ? c.children.length : 0), 0) : 0), 0);
 				banqueProvider.setSearchResults(results, query);
 				BanqueExoShow.log(`[SEARCH] Found ${totalExos} result(s) for: "${query}"`);
 			}
-		}
-		vscode.commands.executeCommand('banque.refresh');
+			vscode.commands.executeCommand('banque.refresh');
 
-		// After refresh, expand themes and chapters using reveal() API
-		if (query && query.trim() !== '') {
-			const results = banqueProvider.searchResults;
+			// After refresh, expand themes and chapters using reveal() API
+			if (results && results.length > 0) {
+				await banqueProvider.onSearchComplete(banqueTreeView, results);
+			}
+		}
+	});
+
+	// Alternative search handler for WebView search bar
+	let banque_search_webview = vscode.commands.registerCommand('banque.search.fromWebview', async function (query) {
+		console.log('[SEARCH] WebView search for:', query);
+
+		// Always clear first to ensure fresh results
+		banqueProvider.clearSearchResults();
+
+		if (query.trim() === '') {
+			// Clear search and collapse tree
+			BanqueExoShow.log('[SEARCH] Search cleared from WebView');
+			vscode.commands.executeCommand('banque.refresh');
+			// Collapse the tree after clearing
+			vscode.commands.executeCommand('list.collapseAll');
+			// Clear the no-results message
+			banqueSearchViewProvider.clearNoResults();
+		} else {
+			// Perform search
+			const results = banqueProvider.searchExercises(query);
+			if (results.length === 0) {
+				BanqueExoShow.log(`[SEARCH] No results for: "${query}"`);
+				banqueProvider.setSearchResults([], query);
+				// Send message to WebView to show "no results" message
+				banqueSearchViewProvider.showNoResults();
+				// Focus tree view, then collapse with delay
+				vscode.commands.executeCommand('workbench.view.extension.banque-exercices');
+				setTimeout(() => {
+					vscode.commands.executeCommand('list.collapseAll');
+				}, 100);
+			} else {
+				// Found results - calculate counts and show message
+				const counts = countSearchResults(results);
+				const msg = `${counts.exercises} exercices trouvés dans ${counts.chapters} chapitres et ${counts.themes} thèmes`;
+
+				banqueProvider.setSearchResults(results, query);
+				banqueSearchViewProvider.showResultsMessage(msg);
+				BanqueExoShow.log(`[SEARCH] Found ${counts.exercises} result(s) for: "${query}"`);
+			}
+			vscode.commands.executeCommand('banque.refresh');
+
+			// After refresh, expand themes and chapters using reveal() API
 			if (results && results.length > 0) {
 				await banqueProvider.onSearchComplete(banqueTreeView, results);
 			}
@@ -513,7 +590,6 @@ function activate(context) {
 	// banque.compile and banque.reveal are now registered in ./commands/banqueItemCommands.js
 
 	// COMMANDS AT LAUNCH //
-	vscode.window.registerTreeDataProvider('banque-exercices', banqueProvider)
 	// update_graphics_path();
 
 	// command to build a QCM for a given chapter

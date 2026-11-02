@@ -87,6 +87,12 @@
 					"icon": "images/default_folder_opened.svg"
 				},
 				{
+					"id": "banque-search",
+					"name": "Recherche Banque",
+					"type": "webview",
+					"icon": "images/default_folder_opened.svg"
+				},
+				{
 					"id": "banque-exercices",
 					"name": "Banque d'exercices",
 					"type": "tree",
@@ -136,7 +142,7 @@
 			{
 				"command": "programme.remove",
 				"title": "Retirer",
-				"icon": "$(discard)"
+				"icon": "$(search-stop)"
 			},
 			{
 				"command": "programme.refresh",
@@ -198,6 +204,16 @@
 				"command": "banque.sort",
 				"title": "Trier",
 				"icon": "$(sort-precedence)"
+			},
+			{
+				"command": "banque.search",
+				"title": "Rechercher",
+				"icon": "$(search)"
+			},
+			{
+				"command": "banque.search.clear",
+				"title": "Effacer la recherche",
+				"icon": "$(discard)"
 			},
 			{
 				"command": "banque.collapse",

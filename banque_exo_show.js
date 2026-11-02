@@ -189,11 +189,23 @@ class BanqueExoShow {
 
     constructor() {
 		this.data = generateTreeItems();
+		this.searchResults = null;
+		this.isSearchMode = false;
+		this.currentSearchQuery = '';
+		// Create event emitter for tree data changes
+		this._onDidChangeTreeData = new vscode.EventEmitter();
+		this.onDidChangeTreeData = this._onDidChangeTreeData.event;
     }
 
 	// define here the command to call when clicking on the tree items
 	getTreeItem(element) {
-		var item = new TreeItem(element.label, element.children, element.filePath, element.contextValue, vscode.TreeItemCollapsibleState.Collapsed, element.typeExo, element.difficulty, element.chapter, element.theme, element.isCommented);
+		// Use Collapsed for folders/chapters, None for files
+		let collapsibleState = vscode.TreeItemCollapsibleState.Collapsed;
+		if (element.contextValue === 'file') {
+			collapsibleState = vscode.TreeItemCollapsibleState.None;
+		}
+
+		var item = new TreeItem(element.label, element.children, element.filePath, element.contextValue, collapsibleState, element.typeExo, element.difficulty, element.chapter, element.theme, element.isCommented);
 		item.rawLabel = element.rawLabel || element.label;
 		if (element.contextValue === 'file') {
 			item.tooltip = `Voir l'exercice (${element.typeExo || 'undefined'})`;
@@ -207,7 +219,27 @@ class BanqueExoShow {
 	};
 
     getChildren(element) {
+        // If element is undefined (root level)
         if (element === undefined) {
+            // In search mode, return themes with pre-loaded chapters
+            if (this.isSearchMode && this.searchResults) {
+                BanqueExoShow.log(`[TREE] getChildren(root) - search mode - returning ${this.searchResults.length} themes`);
+                // Ensure all chapters in results are loaded with exercises
+                for (const theme of this.searchResults) {
+                    if (theme.children) {
+                        for (const chapter of theme.children) {
+                            if (!chapter.children) {
+                                // Lazy load exercises for this chapter
+                                chapter.children = BanqueExoShow.loadExercises(chapter);
+                            }
+                            BanqueExoShow.log(`[TREE]   Chapter "${chapter.label}" has ${chapter.children.length} exercises, collapsible=${chapter.collapsibleState}`);
+                        }
+                    }
+                }
+                return this.searchResults;
+            }
+            // Normal mode: return all themes
+            BanqueExoShow.log(`[TREE] getChildren(root) - normal mode - returning ${this.data.length} themes`);
             return this.data;
         }
 
@@ -219,8 +251,8 @@ class BanqueExoShow {
 			BanqueExoShow.log(`  [LAZY] loaded ${element.children.length} exercises in ${Date.now() - loadStart}ms`);
 		}
 
-		// Apply sorting to exercise items
-		if (element.contextValue === 'chapter' && element.children) {
+		// Apply sorting to exercise items (unless in search mode)
+		if (element.contextValue === 'chapter' && element.children && !this.isSearchMode) {
 			const sortStart = Date.now();
 			const result = BanqueExoShow.sortItems(element.children, BanqueExoShow.sortMode);
 			BanqueExoShow.log(`getChildren(${element.label}): ${Date.now() - sortStart}ms`);
@@ -283,6 +315,137 @@ class BanqueExoShow {
 		item.tooltip = item.filePath;
 		return item;
 	};
+
+	searchExercises(searchQuery) {
+		if (!searchQuery || searchQuery.trim() === '') {
+			return [];
+		}
+
+		const query = searchQuery.trim().toLowerCase();
+		const results = [];
+		const searchStart = Date.now();
+		BanqueExoShow.log(`[SEARCH] Starting search for: "${query}"`);
+
+		// Iterate through all themes and chapters
+		for (let i = 0; i < this.data.length; i++) {
+			const themeItem = this.data[i];
+			const themeMatches = [];
+
+			// Iterate through chapters in this theme
+			if (themeItem.children) {
+				for (let j = 0; j < themeItem.children.length; j++) {
+					const chapterItem = themeItem.children[j];
+
+					// Lazy load exercises if not already loaded
+					if (!chapterItem.children) {
+						chapterItem.children = BanqueExoShow.loadExercises(chapterItem);
+					}
+
+					// Filter exercises matching search query
+					const matchingExercises = chapterItem.children.filter(exo => {
+						const exoLabel = (exo.rawLabel || exo.label || '').toLowerCase();
+						return exoLabel.includes(query);
+					});
+
+					// If any exercises match in this chapter, add chapter with matching exercises
+					if (matchingExercises.length > 0) {
+						const chapterCopy = new TreeItem(
+							chapterItem.label,
+							matchingExercises,
+							chapterItem.filePath,
+							'chapter',
+							undefined,
+							undefined,
+							undefined,
+							chapterItem.chapter,
+							chapterItem.theme
+						);
+						themeMatches.push(chapterCopy);
+					}
+				}
+			}
+
+			// If any chapters have matches in this theme, add theme with filtered chapters
+			if (themeMatches.length > 0) {
+				const themeCopy = new TreeItem(
+					themeItem.label,
+					themeMatches,
+					themeItem.folderPath,
+					'folder',
+					undefined,
+					undefined,
+					undefined,
+					undefined,
+					themeItem.theme
+				);
+				results.push(themeCopy);
+			}
+		}
+
+		BanqueExoShow.log(`[SEARCH] Found ${results.reduce((sum, t) => sum + (t.children ? t.children.length : 0), 0)} results in ${Date.now() - searchStart}ms`);
+		return results;
+	}
+
+	setSearchResults(results, searchQuery) {
+		this.searchResults = results;
+		this.currentSearchQuery = searchQuery || '';
+		this.isSearchMode = results && results.length > 0;
+	}
+
+	clearSearchResults() {
+		this.searchResults = null;
+		this.currentSearchQuery = '';
+		this.isSearchMode = false;
+	}
+
+	getSearchMode() {
+		return this.isSearchMode || false;
+	}
+
+	refresh() {
+		// Notify VSCode that tree data has changed
+		this._onDidChangeTreeData.fire();
+	}
+
+	async onSearchComplete(treeView, results) {
+		// Use TreeView.reveal() API to expand themes and chapters (2 levels)
+		try {
+			for (const theme of results) {
+				if (theme && treeView) {
+					BanqueExoShow.log(`[REVEAL] Expanding theme: ${theme.label}`);
+					await treeView.reveal(theme, { expand: 2, focus: false, select: false });
+				}
+			}
+		} catch (error) {
+			BanqueExoShow.log(`[REVEAL] Error expanding items: ${error.message}`);
+		}
+	}
+
+	createFilterNode(searchQuery) {
+		const label = searchQuery
+			? `🔍 Filter: "${searchQuery}"`
+			: '🔍 Filter Exercises...';
+
+		const filterNode = new TreeItem(
+			label,
+			[],
+			undefined,
+			'filter',
+			vscode.TreeItemCollapsibleState.None,
+			undefined,
+			undefined,
+			undefined,
+			undefined
+		);
+
+		filterNode.command = {
+			command: 'banque.search',
+			title: 'Search',
+			arguments: [searchQuery]
+		};
+
+		return filterNode;
+	}
 };
 
 module.exports = BanqueExoShow

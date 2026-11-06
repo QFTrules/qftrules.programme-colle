@@ -150,7 +150,7 @@ class BanqueSearchViewProvider {
 			type="text"
 			id="searchInput"
 			class="search-input"
-			placeholder="Filter (e.g. text, !exclude, @tag)"
+			placeholder="Filtrer"
 		/>
 		<button id="clearBtn" class="clear-btn" data-tooltip="Effacer">✕</button>
 	</div>

@@ -1,19 +1,19 @@
 {
 	".text.tex.latex .text.sty.latex": {
 	  "refChap": {
-		"prefix": "refChap",
+		"prefix": "\\\\refChap",
 		"body": "\\\\refChap{${1:Theme}}{${2:Chapter}}"
 	  },
 	  "refTP": {
-		"prefix": "refTP",
+		"prefix": "\\\\refTP",
 		"body": "\\\\refTP{${1:Number}}"
 	  },
 	  "refTD": {
-		"prefix": "refTD",
+		"prefix": "\\\\refTD",
 		"body": "\\\\refTD{${1:Number}}"
 	  },
 	  "refFormu": {
-		"prefix": "refFormu",
+		"prefix": "\\\\refFormu",
 		"body": "\\\\refFormu{${1:Number}}"
 	  },
 	  "refCN": {
@@ -21,7 +21,7 @@
 		"body": "\\\\refCN{${1:Number}}"
 	  },
 	  "ProgrammeColle": {
-		"prefix": "ProgrammeColle",
+		"prefix": "\\\\ProgrammeColle",
 		"body": "\\\\ProgrammeColle"
 	  },
 	  "ansbox": {
@@ -57,7 +57,7 @@
 		"body": "\\\\begin{methode}[]\n\t\\\\item\t$0\n\\\\end{methode}"
 	  },
 	  "quest": {
-		"prefix": "quest",
+		"prefix": "\\\\quest",
 		"body": "\\\\begin{quest}\n\t\\\\item\t$0\n\\\\end{quest}"
 	  },
 		"QR": {

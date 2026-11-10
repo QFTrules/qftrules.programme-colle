@@ -57,7 +57,7 @@
 		"body": "\\\\begin{methode}[]\n\t\\\\item\t$0\n\\\\end{methode}"
 	  },
 	  "quest": {
-		"prefix": "\\\\quest",
+		"prefix": "\\",
 		"body": "\\\\begin{quest}\n\t\\\\item\t$0\n\\\\end{quest}"
 	  },
 		"QR": {
@@ -133,7 +133,7 @@
 		"body": "\\\\subfigure[$0]{\\\\label{fig:}\n\t$1\n}"
 	  },
 	  "eqbox": {
-		"prefix": "eqbox",
+		"prefix": "\\eqbox",
 		"body": "\\\\eqbox{\n$0\n}"
 	  },
 	  "imp": {

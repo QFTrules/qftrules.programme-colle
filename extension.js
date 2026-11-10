@@ -686,6 +686,117 @@ function activate(context) {
 		vscode.window.showInformationMessage(`${basename} généré avec succès`);
 	});
 
+	// command to compile a selected equation to PDF
+	let flash_math_pdf = vscode.commands.registerCommand('flash.math-pdf', function () {
+		console.log('[math-pdf] Command triggered');
+		let editor = vscode.window.activeTextEditor;
+		if (!editor) {
+			vscode.window.showErrorMessage('Aucun éditeur LaTeX actif');
+			return;
+		}
+
+		const selection = editor.selection;
+		const selectedText = editor.document.getText(selection);
+
+		if (!selectedText) {
+			vscode.window.showErrorMessage('Veuillez sélectionner une équation');
+			return;
+		}
+
+		try {
+			const timestamp = Date.now();
+			const tmp_tex = `${__dirname}/tmp/math_pdf_${timestamp}.tex`;
+			const tmp_pdf = tmp_tex.replace('.tex', '.pdf');
+			const tmp_png = tmp_tex.replace('.tex', '.png');
+
+			console.log(`[math-pdf] Paths: tex=${tmp_tex}`);
+
+			const symbols_sty = path.join(__dirname, 'templates', 'symbols.sty');
+			const latexContent = `\\documentclass[12pt]{article}
+\\usepackage[utf8]{inputenc}
+\\usepackage{xcolor}
+\\usepackage{amsmath}
+\\usepackage[margin=10mm]{geometry}
+\\input{${symbols_sty}}
+\\begin{document}
+\\thispagestyle{empty}
+$$
+${selectedText}
+$$
+\\end{document}`;
+
+			fs.writeFileSync(tmp_tex, latexContent);
+			console.log(`[math-pdf] LaTeX file written`);
+
+			compileLatex(tmp_tex);
+			console.log(`[math-pdf] LaTeX compilation done`);
+
+			if (!fs.existsSync(tmp_pdf)) {
+				console.log(`[math-pdf] PDF file missing!`);
+				vscode.window.showErrorMessage('Erreur: PDF non créé');
+				return;
+			}
+			console.log(`[math-pdf] PDF exists`);
+
+			const convertCmd = `convert -density 900 "${tmp_pdf}" -background white -alpha off -filter Lanczos -quality 95 -units PixelsPerInch -trim +repage -define png:color-type=2 -enhance -sharpen 0x1 "${tmp_png}"`;
+			try {
+				child_process.execSync(convertCmd, { timeout: 30000 });
+				console.log(`[math-pdf] ImageMagick convert done`);
+			} catch (convertError) {
+				console.log(`[math-pdf] Convert error: ${convertError.message}`);
+				if (convertError.killed) {
+					console.log(`[math-pdf] Convert timed out after 30 seconds`);
+					vscode.window.showErrorMessage('Erreur: Conversion PNG timeout (convert command too slow)');
+				} else {
+					vscode.window.showErrorMessage(`Erreur ImageMagick: ${convertError.message}`);
+				}
+				return;
+			}
+
+			// Wait for file to be written completely and verify size
+			let pngSize = 0;
+			for (let i = 0; i < 10; i++) {
+				try {
+					if (fs.existsSync(tmp_png)) {
+						const stat = fs.statSync(tmp_png);
+						pngSize = stat.size;
+						console.log(`[math-pdf] PNG file size: ${pngSize} bytes`);
+						if (pngSize > 0) {
+							break;
+						}
+					}
+				} catch (e) {}
+				if (i < 9) {
+					require('child_process').execSync('sleep 0.1');
+				}
+			}
+
+			if (!fs.existsSync(tmp_png)) {
+				console.log(`[math-pdf] PNG file missing!`);
+				vscode.window.showErrorMessage('Erreur: PNG non créé');
+				return;
+			}
+			console.log(`[math-pdf] PNG exists`);
+
+			// Simple clipboard copy with xclip - timeout after 2 seconds
+			try {
+				const cmd = `/bin/bash -c 'cat "${tmp_png}" | xclip -selection clipboard -t image/png'`;
+				child_process.execSync(cmd, { timeout: 2000 });
+				console.log(`[math-pdf] Clipboard copy successful`);
+				vscode.window.showInformationMessage('✓ Image copiée au presse-papiers');
+			} catch (e) {
+				console.log(`[math-pdf] Clipboard error: ${e.message}`);
+				vscode.window.showInformationMessage('✓ Image générée (presse-papiers non disponible)');
+			}
+
+			console.log(`[math-pdf] Command completed successfully`);
+		} catch (error) {
+			console.log(`[math-pdf] FATAL ERROR: ${error.message}`);
+			console.log(`[math-pdf] Stack: ${error.stack}`);
+			vscode.window.showErrorMessage(`Erreur: ${error.message}`);
+		}
+	});
+
 	// command to see the soluce version of tex file
 	let flash_view_soluce = vscode.commands.registerCommand('flash.view_soluce', function () {
 		// get the active text editor
@@ -879,6 +990,7 @@ function activate(context) {
 	// context.subscriptions.push(flash_amc);
 	context.subscriptions.push(flash_fiche_colle);
 	context.subscriptions.push(flash_view_soluce);
+	context.subscriptions.push(flash_math_pdf);
 	context.subscriptions.push(colle_qcours);
 	context.subscriptions.push(banqueAutoRefreshOnSave);
 	context.subscriptions.push(banque_sort);

@@ -73,6 +73,11 @@
 				"when": "editorTextFocus && editorLangId == latex"
 			},
 			{
+				"key": "ctrl+shift+c",
+				"command": "flash.math-pdf",
+				"when": "editorTextFocus && editorLangId == latex"
+			},
+			{
 				"key": "f1",
 				"command": "flash.compile_bilan_DS",
 				"when": "editorTextFocus && editorLangId == 'ods'"
@@ -299,6 +304,11 @@
 				"command": "flash.compile_bilan_DS",
 				"title": "Compiler bilan",
 				"icon": "$(debug-stackframe-active)"
+			},
+			{
+				"command": "flash.math-pdf",
+				"title": "Générer PDF maths",
+				"icon": "$(file-pdf)"
 			}
 		],
 		"menus": {
@@ -342,6 +352,13 @@
 					"command": "flash.compile_bilan_DS",
 					"group": "navigation@-1",
 					"when": "resourceExtname == .ods"
+				}
+			],
+			"editor/context": [
+				{
+					"command": "flash.math-pdf",
+					"group": "navigation",
+					"when": "editorTextFocus && editorLangId == latex"
 				}
 			],
 			"explorer/context": [

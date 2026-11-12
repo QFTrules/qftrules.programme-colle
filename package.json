@@ -73,9 +73,9 @@
 				"when": "editorTextFocus && editorLangId == latex"
 			},
 			{
-				"key": "ctrl+shift+c",
+				"key": "ctrl+alt+p",
 				"command": "flash.math-pdf",
-				"when": "editorTextFocus && editorLangId == latex"
+				"when": "editorLangId == latex"
 			},
 			{
 				"key": "f1",

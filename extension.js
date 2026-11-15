@@ -712,17 +712,28 @@ function activate(context) {
 			console.log(`[math-pdf] Paths: tex=${tmp_tex}`);
 
 			const symbols_sty = path.join(__dirname, 'templates', 'symbols.sty');
-			const latexContent = `\\documentclass[12pt]{article}
+			const latexContent = `\\documentclass[crop]{standalone}
 \\usepackage[utf8]{inputenc}
 \\usepackage{xcolor}
 \\usepackage{amsmath}
-\\usepackage[margin=10mm]{geometry}
+\\usepackage{tikz}
+\\thispagestyle{empty}
 \\input{${symbols_sty}}
 \\begin{document}
-\\thispagestyle{empty}
-$$
-${selectedText}
-$$
+\\begin{tikzpicture}
+\\def\\length{2cm}
+\\def\\height{0.5cm}
+\\def\\minipagelength{4cm}
+\\clip(-\\length,-\\height) rectangle (\\length,\\height);
+  \\node at (0, 0) {
+  \\begin{minipage}{\\minipagelength}
+	\\centering
+    $
+    ${selectedText}
+    $
+    \\end{minipage}
+  };
+\\end{tikzpicture}
 \\end{document}`;
 
 			fs.writeFileSync(tmp_tex, latexContent);
@@ -738,7 +749,9 @@ $$
 			}
 			console.log(`[math-pdf] PDF exists`);
 
-			const convertCmd = `convert -density 900 "${tmp_pdf}" -background white -alpha off -filter Lanczos -quality 95 -units PixelsPerInch -trim +repage -define png:color-type=2 -enhance -sharpen 0x1 "${tmp_png}"`;
+			// TikZ handles fixed dimensions (7cm × 1cm)
+			// Use 600 DPI and simpler conversion to avoid ImageMagick cache exhaustion
+			const convertCmd = `convert -density 600 "${tmp_pdf}" -background white -alpha off -define png:color-type=2 "${tmp_png}"`;
 			try {
 				child_process.execSync(convertCmd, { timeout: 30000 });
 				console.log(`[math-pdf] ImageMagick convert done`);

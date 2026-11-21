@@ -5,6 +5,24 @@ const fs = require('fs');
 const path = require('path');
 const child_process = require('child_process');
 
+function findPdflatex() {
+	const systemPaths = (process.env.PATH || '').split(path.delimiter)
+		.filter(Boolean)
+		.map(dir => path.join(dir, 'pdflatex'));
+	const texliveRoot = '/usr/local/texlive';
+	const texliveVersions = fs.existsSync(texliveRoot)
+		? fs.readdirSync(texliveRoot).sort().reverse()
+		: [];
+	const texlivePaths = texliveVersions.flatMap(version =>
+		['x86_64-linux', 'aarch64-linux', 'universal-darwin'].map(platform =>
+			path.join(texliveRoot, version, 'bin', platform, 'pdflatex')
+		)
+	);
+	return [...systemPaths, ...texlivePaths].find(candidate =>
+		fs.existsSync(candidate) && fs.statSync(candidate).isFile()
+	);
+}
+
 // Recursively find files under dir where testFn(entry.name) is true, sorted
 function findTexFiles(dir, testFn) {
 	if (!fs.existsSync(dir)) return [];
@@ -24,6 +42,7 @@ function findTexFiles(dir, testFn) {
 // JS equivalent of build_programme_colle.sh
 function buildProgrammeColle({ collePath, styPath, pythonCommand, cpgePath, mdPath, extensionPath }) {
 	const tmpdir = path.join(extensionPath, 'tmp');
+	fs.mkdirSync(tmpdir, { recursive: true });
 	const progColleBase = 'ProgrammeColle';
 	const ProgColleFile = progColleBase + '.tex';
 	const ProgCollePath = path.join(tmpdir, ProgColleFile);
@@ -49,6 +68,11 @@ function buildProgrammeColle({ collePath, styPath, pythonCommand, cpgePath, mdPa
 	const texStyDir = resolvedStyDir.replace(/\\/g, '/').replace(/\/?$/, '/');
 	const fallbackStyDir = path.join(extensionPath, 'templates').replace(/\\/g, '/').replace(/\/?$/, '/');
 	const texInputs = [texStyDir, fallbackStyDir].filter(Boolean).join(':') + ':' + (process.env.TEXINPUTS || '');
+	const pdflatex = findPdflatex();
+	if (!pdflatex) {
+		throw new Error('pdflatex was not found in PATH or /usr/local/texlive.');
+	}
+	const texBinDir = path.dirname(pdflatex);
 
 	// Write ProgrammeColle.tex header
 	fs.writeFileSync(ProgCollePath, [
@@ -101,12 +125,13 @@ function buildProgrammeColle({ collePath, styPath, pythonCommand, cpgePath, mdPa
 		try {
 			const texFullPath = path.join(tmpdir, texFile);
 			child_process.execSync(
-				`pdflatex -synctex=1 --shell-escape -interaction=nonstopmode "${texFullPath}"`,
+				`"${pdflatex}" -synctex=1 --shell-escape -interaction=nonstopmode "${texFullPath}"`,
 				{
 					cwd: tmpdir,
 					stdio: 'pipe',
 					env: {
 						...process.env,
+						PATH: `${texBinDir}${path.delimiter}${process.env.PATH || ''}`,
 						TEXINPUTS: texInputs,
 					},
 				}
@@ -118,6 +143,10 @@ function buildProgrammeColle({ collePath, styPath, pythonCommand, cpgePath, mdPa
 			if (fs.existsSync(logFile)) {
 				const lines = fs.readFileSync(logFile, 'utf8').split('\n');
 				logTail = lines.filter(l => l.startsWith('!')).slice(0, 5).join('\n') || lines.slice(-20).join('\n');
+			}
+			if (!logTail) {
+				const stderr = e.stderr ? String(e.stderr).trim() : '';
+				logTail = stderr || e.message;
 			}
 			// Only throw if the PDF was not produced (non-zero exit on warnings is ok)
 			const pdfOut = path.join(tmpdir, texFile.replace(/\.tex$/, '.pdf'));

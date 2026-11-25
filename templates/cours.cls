@@ -904,32 +904,47 @@
 \begin{titlepage}
   \newgeometry{margin = 0in}
   \parindent=0pt
+  \tikzfading[name=coverfade,left color=transparent!100,middle color=transparent!0]
   \ifdefstring{\ELEGANT@device}{normal}{
     \ifcsname @cover\endcsname
-      \includegraphics[width=\linewidth]{\@cover}
+      \begin{tikzpicture}
+        \node[inner sep=0pt] (coverimage) {\includegraphics[width=\linewidth]{\@cover}};
+        \fill[white,path fading=coverfade] (coverimage.south west) rectangle (coverimage.north east);
+      \end{tikzpicture}
       % \includegraphics[trim=0 5cm 0 5cm,clip, width=\linewidth]{\@cover}
     \else
-      \includegraphics[width=\linewidth]{example-image}
+      \begin{tikzpicture}
+        \node[inner sep=0pt] (coverimage) {\includegraphics[width=\linewidth]{example-image}};
+        \fill[white,path fading=coverfade] (coverimage.south west) rectangle (coverimage.north east);
+      \end{tikzpicture}
     \fi
   }{\relax}
   \ifdefstring{\ELEGANT@device}{pad}{
     \ifcsname @cover\endcsname
-      \includegraphics[trim=0 5cm 0 5cm,clip=true, width=\linewidth]{\@cover}
+      \begin{tikzpicture}
+        \node[inner sep=0pt] (coverimage) {\includegraphics[trim=0 5cm 0 5cm,clip=true, width=\linewidth]{\@cover}};
+        \fill[white,path fading=coverfade] (coverimage.south west) rectangle (coverimage.north east);
+      \end{tikzpicture}
     \else
-      \includegraphics[trim=0 26bp 0 26bp,clip=true, width=\linewidth]{example-image}
+      \begin{tikzpicture}
+        \node[inner sep=0pt] (coverimage) {\includegraphics[trim=0 26bp 0 26bp,clip=true, width=\linewidth]{example-image}};
+        \fill[white,path fading=coverfade] (coverimage.south west) rectangle (coverimage.north east);
+      \end{tikzpicture}
     \fi
   }{\relax}
   \setlength{\fboxsep}{0pt}
-  \colorbox{structurecolor}{\makebox[\linewidth][c]{\shortstack[c]{\vspace{\blueribbon}}}}
-  \vfill
+  % \colorbox{structurecolor}{\makebox[\linewidth][c]{\shortstack[c]{\vspace{\blueribbon}}}}
+  % \vfill
   \vspace{\courstopspace}
-  \makebox[\linewidth][l]{%
-    \hspace{2em}%
-    \begin{minipage}[c]{\dimexpr\linewidth-2em\relax}
-      \parbox[c]{0.55\linewidth}{
+  % \makebox[\linewidth][l]{%
+  \hspace{2em}%
+  % \hspace{-20em}%
+  \begin{minipage}[c]{\dimexpr\linewidth-2em\relax}
+    \vspace{-4cm}
+      \tikz[baseline=(titlebox.base)]{\node[fill=white,fill opacity=0.5,text opacity=1,inner sep=3pt] (titlebox) {\parbox[c]{0.55\linewidth}{
         \bfseries\Huge\scshape
           \ifcsname @title\endcsname \@title \fi
-        \par}%%
+        \par}};}%%
       \ifcsname theqrcode\endcsname
       \makebox[\linewidth][l]{%
             \makebox[2.7cm][c]{\theqrcode}%
@@ -937,7 +952,7 @@
             \makebox[2.7cm][c]{\theanimcode}%
       }\fi%
     \end{minipage}%
-  }%
+  % }%
   % \hspace{2em}%
   \vspace{-0.5cm}
   % \vspace{-0.5cm}

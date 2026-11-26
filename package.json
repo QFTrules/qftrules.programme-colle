@@ -60,7 +60,7 @@
 			{
 				"key": "ctrl+f1",
 				"command": "flash.soluce",
-				"when": "editorTextFocus && editorLangId == latex"
+				"when": "editorTextFocus && resourceExtname == .tex"
 			},
 			{
 				"key": "ctrl+f3",

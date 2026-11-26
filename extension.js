@@ -834,14 +834,23 @@ function activate(context) {
 		}
 		// get the file path
 		const latex = editor.document.fileName;
+		if (!latex.toLowerCase().endsWith('.tex')) {
+			vscode.window.showErrorMessage('Compiler soluce : ouvrez un fichier .tex.');
+			return;
+		}
 		// get current day as a string in yyyy-mm-dd format
 		const today = new Date().toISOString().slice(0, 10);
 		// copy file to file_soluce.tex
 		const corrige = latex.replace('.tex', '_soluce.tex');
 		// fs.copyFileSync(latex, corrige);
 		// apply $HOME/Dropbox/.latex/Commands/build-soluce.py
-		child_process.execSync(pythonCommand + ` ${__dirname}/build-soluce.py ${latex} ${today}`, () => {
-		});
+		try {
+			child_process.execFileSync(pythonCommand, [path.join(__dirname, 'build-soluce.py'), latex, today]);
+		} catch (error) {
+			const stderr = error.stderr ? error.stderr.toString().trim() : '';
+			vscode.window.showErrorMessage(`Compiler soluce : ${stderr || error.message}`);
+			return;
+		}
 		// build using latex-workshop
 		// child_process.execSync(`pdflatex ${corrige}`, () => {});
 		// define magic comment for root file
